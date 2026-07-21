@@ -275,7 +275,7 @@ function openDetail(ref) {
   const list = (keys, dict) => (keys || []).map((k) => dict[k] || k).join(", ");
   const region = [esc(ins.region), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
 
-  const glass = glassFor(ins.style);
+  const glass = glassFor(ins.style, ins.grape);
   const noteText = item.note && (item.note[lang] || item.note.hr || item.note.en);
   $("modal-body").innerHTML = `
     ${glass ? `<div class="detail-glass">${GLASS_ICONS[glass]}</div>` : ""}
@@ -321,17 +321,26 @@ const HELPER_STYLE = {
 };
 const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [0, Infinity] };
 
+/* Glass silhouettes drawn after Riedel stemware profiles (the house
+   glassware): Champagne Wine Glass (slim tulip, not a flute),
+   Riesling, Cabernet/Merlot, Pinot Noir with its flared lip, and a
+   small dessert tulip. Open rims, hair-thin stems. */
 const GLASS_ICONS = {
-  flute: '<svg viewBox="0 0 40 72" aria-hidden="true"><path d="M15.5,6 h9 C24.5,24 23.5,31 20,33.5 C16.5,31 15.5,24 15.5,6 Z M20,33.5 V60 M12,64 c3,-2.7 13,-2.7 16,0"/></svg>',
-  white: '<svg viewBox="0 0 40 72" aria-hidden="true"><path d="M12.5,6 h15 C27.5,20 25,28 20,30.5 C15,28 12.5,20 12.5,6 Z M20,30.5 V60 M12,64 c3,-2.7 13,-2.7 16,0"/></svg>',
-  red: '<svg viewBox="0 0 40 72" aria-hidden="true"><path d="M10.5,6 h19 C30,22 26.5,30 20,32.5 C13.5,30 10,22 10.5,6 Z M20,32.5 V60 M12,64 c3,-2.7 13,-2.7 16,0"/></svg>',
-  sweet: '<svg viewBox="0 0 40 72" aria-hidden="true"><path d="M15,14 h10 C25,24 23.5,29 20,31 C16.5,29 15,24 15,14 Z M20,31 V60 M12,64 c3,-2.7 13,-2.7 16,0"/></svg>'
+  champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M14.8,4 C13.4,16 13,25 14.3,33 C15.7,40.5 17.6,43.6 20,44.6 C22.4,43.6 24.3,40.5 25.7,33 C27,25 26.6,16 25.2,4"/><path d="M20,44.6 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>',
+  white: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.2,8 C11.4,18 10.9,27 12.7,35.5 C14.4,43 16.8,46 20,47 C23.2,46 25.6,43 27.3,35.5 C29.1,27 28.6,18 26.8,8"/><path d="M20,47 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>',
+  bordeaux: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M12.6,4 C10.2,17 9.4,29 11.2,38.5 C13.2,47 16.2,50 20,51 C23.8,50 26.8,47 28.8,38.5 C30.6,29 29.8,17 27.4,4"/><path d="M20,51 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>',
+  burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M12.3,4 C13.6,5.6 13.8,6.4 13.4,7.4 C9.6,13.8 7.6,22 9.2,30 C11.2,40.6 14.8,45.4 20,46.4 C25.2,45.4 28.8,40.6 30.8,30 C32.4,22 30.4,13.8 26.6,7.4 C26.2,6.4 26.4,5.6 27.7,4"/><path d="M20,46.4 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>',
+  dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15.2,22 C13.9,30 13.7,36 15,42 C16.4,47 18,49.2 20,50 C22,49.2 23.6,47 25,42 C26.3,36 26.1,30 24.8,22"/><path d="M20,50 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>'
 };
-function glassFor(style) {
+function glassFor(style, grape) {
   if (!style) return null;
-  if (style.startsWith("sparkling") || style.startsWith("champagne")) return "flute";
-  if (style === "sweet") return "sweet";
-  if (style.startsWith("red")) return "red";
+  if (style.startsWith("sparkling") || style.startsWith("champagne")) return "champagne";
+  if (style === "sweet") return "dessert";
+  if (style.startsWith("red")) {
+    /* Riedel logic: Pinot Noir & Nebbiolo take the wide Burgundy bowl
+       with the flared lip; other reds the taller Cabernet shape. */
+    return /pinot|nebbiolo|burgund/i.test(grape || "") || style === "red_light" ? "burgundy" : "bordeaux";
+  }
   return "white";
 }
 
