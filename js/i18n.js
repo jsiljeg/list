@@ -27,7 +27,19 @@ hr: {
     recommended: "Filho preporučuje",
     storyNav: "Priča",
     enter: "Otvori kartu",
-    ratings: "Ocjene kritičara"
+    ratings: "Ocjene kritičara",
+    picks: "Filhov izbor"
+  },
+  helper: {
+    title: "Pomozi mi odabrati",
+    qFood: "Što jedete?",
+    qStyle: "Kakav stil volite?",
+    qBudget: "Budžet za bocu?",
+    food: { seafood: "Riba i plodovi mora", meat: "Odrezak i crveno meso", pasta: "Tjestenina, rižoto, pizza", white: "Perad i bijelo meso", cheese: "Sir i naresci", dessert: "Desert", none: "Samo piće / aperitiv" },
+    style: { fresh: "Svježe i lagano", rich: "Bogato i snažno", bold: "Nešto posebno i drugačije" },
+    budget: { b1: "do 60 €", b2: "60–120 €", b3: "iznad 120 €", any: "Bez ograničenja" },
+    results: "Naše preporuke",
+    again: "Ispočetka"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -114,7 +126,19 @@ en: {
     recommended: "Filho recommends",
     storyNav: "The story",
     enter: "View the list",
-    ratings: "Critic scores"
+    ratings: "Critic scores",
+    picks: "Filho's picks"
+  },
+  helper: {
+    title: "Help me choose",
+    qFood: "What are you eating?",
+    qStyle: "Which style do you prefer?",
+    qBudget: "Bottle budget?",
+    food: { seafood: "Fish & seafood", meat: "Steak & red meat", pasta: "Pasta, risotto, pizza", white: "Poultry & white meat", cheese: "Cheese & charcuterie", dessert: "Dessert", none: "Just drinks / aperitif" },
+    style: { fresh: "Fresh & light", rich: "Rich & powerful", bold: "Something special & different" },
+    budget: { b1: "under 60 €", b2: "60–120 €", b3: "over 120 €", any: "No limit" },
+    results: "Our suggestions",
+    again: "Start over"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -201,7 +225,19 @@ it: {
     recommended: "Filho consiglia",
     storyNav: "La storia",
     enter: "Apri la carta",
-    ratings: "Punteggi della critica"
+    ratings: "Punteggi della critica",
+    picks: "La selezione di Filho"
+  },
+  helper: {
+    title: "Aiutami a scegliere",
+    qFood: "Cosa mangiate?",
+    qStyle: "Che stile preferite?",
+    qBudget: "Budget per la bottiglia?",
+    food: { seafood: "Pesce e frutti di mare", meat: "Bistecca e carni rosse", pasta: "Pasta, risotto, pizza", white: "Pollame e carni bianche", cheese: "Formaggi e salumi", dessert: "Dessert", none: "Solo da bere / aperitivo" },
+    style: { fresh: "Fresco e leggero", rich: "Ricco e potente", bold: "Qualcosa di speciale e diverso" },
+    budget: { b1: "fino a 60 €", b2: "60–120 €", b3: "oltre 120 €", any: "Senza limite" },
+    results: "I nostri consigli",
+    again: "Ricomincia"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -288,7 +324,19 @@ fr: {
     recommended: "Filho recommande",
     storyNav: "L'histoire",
     enter: "Voir la carte",
-    ratings: "Notes des critiques"
+    ratings: "Notes des critiques",
+    picks: "La sélection de Filho"
+  },
+  helper: {
+    title: "Aidez-moi à choisir",
+    qFood: "Que mangez-vous ?",
+    qStyle: "Quel style préférez-vous ?",
+    qBudget: "Budget pour la bouteille ?",
+    food: { seafood: "Poisson et fruits de mer", meat: "Steak et viandes rouges", pasta: "Pâtes, risotto, pizza", white: "Volaille et viandes blanches", cheese: "Fromages et charcuterie", dessert: "Dessert", none: "Juste un verre / apéritif" },
+    style: { fresh: "Frais et léger", rich: "Riche et puissant", bold: "Quelque chose de spécial" },
+    budget: { b1: "moins de 60 €", b2: "60–120 €", b3: "plus de 120 €", any: "Sans limite" },
+    results: "Nos suggestions",
+    again: "Recommencer"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -375,7 +423,19 @@ de: {
     recommended: "Filho empfiehlt",
     storyNav: "Die Geschichte",
     enter: "Zur Karte",
-    ratings: "Kritiker-Bewertungen"
+    ratings: "Kritiker-Bewertungen",
+    picks: "Filhos Auswahl"
+  },
+  helper: {
+    title: "Hilfe bei der Auswahl",
+    qFood: "Was essen Sie?",
+    qStyle: "Welchen Stil bevorzugen Sie?",
+    qBudget: "Budget für die Flasche?",
+    food: { seafood: "Fisch & Meeresfrüchte", meat: "Steak & rotes Fleisch", pasta: "Pasta, Risotto, Pizza", white: "Geflügel & helles Fleisch", cheese: "Käse & Aufschnitt", dessert: "Dessert", none: "Nur Getränke / Aperitif" },
+    style: { fresh: "Frisch & leicht", rich: "Reich & kraftvoll", bold: "Etwas Besonderes" },
+    budget: { b1: "bis 60 €", b2: "60–120 €", b3: "über 120 €", any: "Ohne Limit" },
+    results: "Unsere Empfehlungen",
+    again: "Neu beginnen"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",

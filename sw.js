@@ -3,7 +3,7 @@
    and the whole app keeps working if the restaurant Wi-Fi drops. */
 "use strict";
 
-const CACHE = "theatrium-v1";
+const CACHE = "theatrium-v2";
 
 self.addEventListener("install", () => self.skipWaiting());
 
