@@ -38,7 +38,7 @@ Tablet-first digital wine/drinks list for **Theatrium by Filho** (Teslina 7, Zag
 - [x] Local verify (HTTP 200 on all resources, node --check, i18n/data key consistency). Visual check on a real tablet viewport still worth doing.
 - [x] GitHub Actions Pages workflow (`.github/workflows/deploy.yml`, deploys repo root); Pages enabled with build_type=workflow; deploy run green. `theatrium` GH environment created — **secrets/vars still empty (need Cloudflare token from owner)**.
 - [x] Cloudflare DNS: CNAME `theatrium.list` → `jsiljeg.github.io` created DNS-only (record `76fd1ebd8d55416347dc987d8ac65308`, zone `80ee450e09773979a46dc1336e1ab1a1`). Token stored as `CLOUDFLARE_API_TOKEN` secret + `CLOUDFLARE_ZONE_ID`/`SITE_DOMAIN` variables in GH environment `theatrium`. **Site live over HTTP.**
-- [ ] HTTPS: waiting for GitHub to issue the Let's Encrypt cert, then `gh api -X PUT repos/jsiljeg/list/pages -f https_enforced=true` (background poll doing this automatically; verify `https_enforced` later).
+- [x] HTTPS: Let's Encrypt cert issued (~35 min after DNS; a remove/re-add of the cname retriggered provisioning), `https_enforced=true` set and verified — `https://theatrium.list.devinos.hr` serves 200, HTTP 301-redirects to HTTPS. **Site fully live.**
 - [x] QR code (`assets/qr.png`, `assets/qr.svg`, printable `qr.html`) for https://theatrium.list.devinos.hr
 - [x] Commit & push to `main`
 
