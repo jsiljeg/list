@@ -405,6 +405,30 @@ body {
 .helper .item { border-radius: 12px; background: var(--bg-card); margin-bottom: .6rem; border: 1px solid var(--line); }
 .helper .item + .item { border-top: 1px solid var(--line); }
 
+/* ---------- Regions view ---------- */
+.nav button.region-chip:not(.active) { color: var(--gold-soft); border-color: var(--gold-soft); }
+.region-card {
+  display: flex; gap: 1.4rem; align-items: flex-start;
+  padding: 1.4rem 0; border-bottom: 1px solid var(--line);
+}
+.region-card:last-child { border-bottom: none; }
+.region-map { flex: 0 0 46%; max-width: 340px; }
+.rmap { width: 100%; height: auto; display: block; }
+.rmap .zone { fill: rgba(201,169,97,.16); stroke: var(--gold-soft); stroke-width: 1.2; }
+.rmap .river, .rmap .coast { fill: none; stroke: #5f6b86; stroke-width: 2; opacity: .7; stroke-linecap: round; }
+.rmap .road { fill: none; stroke: var(--text-faint); stroke-width: 1; opacity: .7; stroke-dasharray: 3 3; }
+.rmap .town, .rmap .dot { fill: var(--gold); }
+.rmap .t-town { fill: var(--text); font-size: 9px; font-family: var(--sans); }
+.rmap .t-dot { fill: var(--text-dim); font-size: 7.5px; font-family: var(--sans); }
+.rmap .t-zone { fill: var(--gold); font-size: 9px; font-family: var(--serif); font-style: italic; }
+.region-text { flex: 1; min-width: 0; }
+.region-name { font-family: var(--serif); font-size: 1.9rem; font-weight: 500; color: var(--gold); line-height: 1.1; }
+.region-sub { color: var(--text-dim); font-style: italic; font-family: var(--serif); font-size: 1.15rem; margin-bottom: .5rem; }
+.region-blurb { color: var(--text); line-height: 1.6; font-weight: 300; }
+.region-apps { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+.region-app { padding: .2rem .7rem; border: 1px solid var(--line); border-radius: 999px; color: var(--text-dim); font-size: .82rem; }
+@media (max-width: 640px) { .region-card { flex-direction: column; } .region-map { flex-basis: auto; max-width: 100%; } }
+
 /* ---------- Footer ---------- */
 .footer {
   border-top: 1px solid var(--line);

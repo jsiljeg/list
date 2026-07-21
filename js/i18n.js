@@ -33,7 +33,8 @@ hr: {
     picks: "Filhov izbor",
     bestRated: "Najbolje ocijenjeni",
     newBadge: "Novo",
-    newArrivals: "Novo u ponudi"
+    newArrivals: "Novo u ponudi",
+    regions: "Vinske regije"
   },
   helper: {
     title: "Pomozi mi odabrati",
@@ -138,7 +139,8 @@ en: {
     picks: "Filho's picks",
     bestRated: "Top rated",
     newBadge: "New",
-    newArrivals: "New arrivals"
+    newArrivals: "New arrivals",
+    regions: "Wine regions"
   },
   helper: {
     title: "Help me choose",
@@ -243,7 +245,8 @@ it: {
     picks: "La selezione di Filho",
     bestRated: "I più premiati",
     newBadge: "Novità",
-    newArrivals: "Novità in carta"
+    newArrivals: "Novità in carta",
+    regions: "Regioni"
   },
   helper: {
     title: "Aiutami a scegliere",
@@ -348,7 +351,8 @@ fr: {
     picks: "La sélection de Filho",
     bestRated: "Les mieux notés",
     newBadge: "Nouveau",
-    newArrivals: "Nouveautés"
+    newArrivals: "Nouveautés",
+    regions: "Régions"
   },
   helper: {
     title: "Aidez-moi à choisir",
@@ -453,7 +457,8 @@ de: {
     picks: "Filhos Auswahl",
     bestRated: "Bestbewertet",
     newBadge: "Neu",
-    newArrivals: "Neu auf der Karte"
+    newArrivals: "Neu auf der Karte",
+    regions: "Regionen"
   },
   helper: {
     title: "Hilfe bei der Auswahl",
@@ -558,7 +563,8 @@ zh: {
     picks: "Filho 精选",
     bestRated: "评分最高",
     newBadge: "新品",
-    newArrivals: "新品上架"
+    newArrivals: "新品上架",
+    regions: "产区"
   },
   helper: {
     title: "帮我选酒",

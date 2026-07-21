@@ -70,15 +70,18 @@ const T = () => I18N[lang] || I18N.en;
 
 let MENU = null;
 let PRODUCERS = {};
+let REGIONS = [];
 function init() {
   Promise.all([
     fetch("data/wines.json").then((r) => r.json()),
     fetch("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] })),
-    fetch("data/producers.json").then((r) => r.json()).catch(() => ({ producers: {} }))
-  ]).then(([d, m, pr]) => {
+    fetch("data/producers.json").then((r) => r.json()).catch(() => ({ producers: {} })),
+    fetch("data/regions.json").then((r) => r.json()).catch(() => ({ regions: [] }))
+  ]).then(([d, m, pr, rg]) => {
       DATA = d;
       MENU = m;
       PRODUCERS = pr.producers || {};
+      REGIONS = rg.regions || [];
       currentSection = d.sections[0].id;
       const idleReset = sessionStorage.getItem("idle-reset");
       sessionStorage.removeItem("idle-reset");
@@ -156,9 +159,11 @@ function renderLangSwitch() {
 function renderNav() {
   const t = T();
   const nav = $("nav");
-  nav.innerHTML = DATA.sections.map((s) =>
-    `<button data-sec="${s.id}" class="${s.id === currentSection ? "active" : ""}">${esc(t.sections[s.id] || s.id)}</button>`
-  ).join("");
+  nav.innerHTML =
+    `<button data-sec="__regions" class="region-chip ${currentSection === "__regions" ? "active" : ""}">◆ ${esc(t.ui.regions)}</button>` +
+    DATA.sections.map((s) =>
+      `<button data-sec="${s.id}" class="${s.id === currentSection ? "active" : ""}">${esc(t.sections[s.id] || s.id)}</button>`
+    ).join("");
   nav.querySelectorAll("button").forEach((b) =>
     b.addEventListener("click", () => {
       currentSection = b.dataset.sec;
@@ -268,6 +273,21 @@ function renderContent() {
       });
     });
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
+  } else if (currentSection === "__regions") {
+    html = REGIONS.map((rg) => {
+      const map = (typeof REGION_MAPS !== "undefined" && REGION_MAPS[rg.id]) || "";
+      const apps = (rg.appellations || []).map((a) => `<span class="region-app">${esc(a)}</span>`).join("");
+      return `<section class="region-card">
+        <div class="region-map">${map}</div>
+        <div class="region-text">
+          <h2 class="region-name">${esc(rg.name[lang] || rg.name.en)}</h2>
+          <div class="region-sub">${esc((rg.sub && (rg.sub[lang] || rg.sub.en)) || "")}</div>
+          <p class="region-blurb">${esc(rg.blurb[lang] || rg.blurb.en)}</p>
+          <div class="region-apps">${apps}</div>
+        </div>
+      </section>`;
+    }).join("");
+    if (!REGIONS.length) html = `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (ratedOnly) {
     const rated = [];
     DATA.sections.forEach((sec, si) => {
