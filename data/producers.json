@@ -1,0 +1,225 @@
+{
+ "_comment": "Winemaker blurbs in Filho's voice, keyed by producer. The app matches a wine's producer to the longest key contained in it (case-insensitive), so 'Clai' also covers 'Giorgio Clai'. Each blurb is 2 sentences, all 6 languages. Add producers freely.",
+ "producers": {
+  "Jacques Selosse": {
+   "region": "Avize, Champagne",
+   "blurb": {
+    "hr": "Anselme Selosse je vinar koji je promijenio percepciju šampanjca — u Avizeu je krede pretvorio u dijalog zemlje i vremena. Njegove su boce oksidativne, duboke i žive, daleko od svake pozlate.",
+    "en": "Anselme Selosse is the grower who changed how Champagne is understood — in Avize he turned chalk into a dialogue between soil and time. His bottles are oxidative, deep and alive, far from any gilding.",
+    "it": "Anselme Selosse è il vignaiolo che ha cambiato la percezione dello Champagne — ad Avize ha trasformato la creta in un dialogo tra suolo e tempo. Le sue bottiglie sono ossidative, profonde e vive, lontane da ogni doratura.",
+    "fr": "Anselme Selosse est le vigneron qui a changé la perception du champagne — à Avize, il a fait de la craie un dialogue entre le sol et le temps. Ses bouteilles sont oxydatives, profondes et vivantes, loin de toute dorure.",
+    "de": "Anselme Selosse ist der Winzer, der die Wahrnehmung des Champagners verändert hat — in Avize machte er aus Kreide einen Dialog zwischen Boden und Zeit. Seine Flaschen sind oxidativ, tief und lebendig, fern jeder Vergoldung.",
+    "zh": "Anselme Selosse 是改变香槟认知的酿酒师——在 Avize，他让白垩土成为土壤与时间的对话。他的酒氧化、深邃而鲜活，绝无浮华。"
+   }
+  },
+  "Krug": {
+   "region": "Reims, Champagne",
+   "blurb": {
+    "hr": "Krug gradi svaku cuvée poput orkestra — stotine mirnih vina i rezervi iz mnogih godina slažu se u jedan raskošan, kremozan glas. To je champagne za sjećanje, a ne za trenutak.",
+    "en": "Krug builds every cuvée like an orchestra — hundreds of still wines and reserves from many years composed into one opulent, creamy voice. This is Champagne for memory, not for the moment.",
+    "it": "Krug costruisce ogni cuvée come un'orchestra — centinaia di vini fermi e riserve di molte annate composti in un'unica voce opulenta e cremosa. È uno Champagne per la memoria, non per l'istante.",
+    "fr": "Krug compose chaque cuvée comme un orchestre — des centaines de vins tranquilles et de réserves de nombreuses années réunis en une seule voix opulente et crémeuse. C'est un champagne pour la mémoire, pas pour l'instant.",
+    "de": "Krug baut jede Cuvée wie ein Orchester — Hunderte Stillweine und Reserven vieler Jahre zu einer einzigen opulenten, cremigen Stimme komponiert. Das ist Champagner für die Erinnerung, nicht für den Augenblick.",
+    "zh": "Krug 像编织交响乐般酿造每一款调配——数百款静态酒与多年陈酿汇成一个丰盈奶油般的声音。这是为记忆而生的香槟，而非一时之欢。"
+   }
+  },
+  "Roederer": {
+   "region": "Reims, Champagne",
+   "blurb": {
+    "hr": "Louis Roederer je jedna od rijetkih velikih kuća koja posjeduje gotovo sve svoje vinograde, i to se osjeti u preciznosti Cristala. Elegancija ovdje nije poza nego posljedica vlasništva nad terroirom.",
+    "en": "Louis Roederer is one of the few grandes maisons that owns nearly all its vineyards, and you taste it in Cristal's precision. Here elegance is not a pose but the consequence of owning the terroir.",
+    "it": "Louis Roederer è una delle poche grandi maison a possedere quasi tutti i propri vigneti, e lo si assapora nella precisione del Cristal. Qui l'eleganza non è una posa ma la conseguenza del possedere il terroir.",
+    "fr": "Louis Roederer est l'une des rares grandes maisons à posséder la quasi-totalité de ses vignes, et cela se goûte dans la précision de Cristal. Ici l'élégance n'est pas une pose mais la conséquence de la propriété du terroir.",
+    "de": "Louis Roederer ist eines der wenigen großen Häuser, das fast alle seine Weinberge besitzt, und das schmeckt man in der Präzision des Cristal. Eleganz ist hier keine Pose, sondern Folge des eigenen Terroirs.",
+    "zh": "Louis Roederer 是少数几乎自有全部葡萄园的大香槟庄之一，这份底气尽显于 Cristal 的精准。此处的优雅并非姿态，而是拥有风土的必然。"
+   }
+  },
+  "Egly-Ouriet": {
+   "region": "Ambonnay, Champagne",
+   "blurb": {
+    "hr": "Egly-Ouriet radi champagne kao veliki crveni burgundac — niski prinosi, stare loze i duga zrenja na talogu. Ambonnay ovdje daje snagu i teksturu, a ne samo mjehuriće.",
+    "en": "Egly-Ouriet makes Champagne like a great red Burgundy — low yields, old vines and long ageing on the lees. Ambonnay here gives power and texture, not just bubbles.",
+    "it": "Egly-Ouriet fa lo Champagne come un grande rosso di Borgogna — rese basse, vigne vecchie e lunghi affinamenti sui lieviti. Ambonnay qui dà potenza e trama, non solo bollicine.",
+    "fr": "Egly-Ouriet élabore le champagne comme un grand bourgogne rouge — faibles rendements, vieilles vignes et longs élevages sur lies. Ambonnay donne ici de la puissance et de la texture, pas seulement des bulles.",
+    "de": "Egly-Ouriet macht Champagner wie einen großen roten Burgunder — niedrige Erträge, alte Reben und lange Hefelager. Ambonnay gibt hier Kraft und Textur, nicht nur Perlen.",
+    "zh": "Egly-Ouriet 以酿造伟大红勃艮第的方式酿香槟——低产、老藤、长时间带酒泥陈酿。Ambonnay 在此赋予的是力量与质地，而非仅仅气泡。"
+   }
+  },
+  "De Sousa": {
+   "region": "Avize, Champagne",
+   "blurb": {
+    "hr": "Obitelj De Sousa u Avizeu biodinamički obrađuje stare loze na čistoj kredi grand cru sela. Rezultat je mineralnost bez pozlate — champagne koji priča o mjestu, ne o etiketi.",
+    "en": "The De Sousa family biodynamically farms old vines on the pure chalk of Avize's grand cru villages. The result is minerality without gilding — Champagne that speaks of place, not of label.",
+    "it": "La famiglia De Sousa coltiva in biodinamica vecchie vigne sulla creta pura dei villaggi grand cru di Avize. Il risultato è mineralità senza doratura — uno Champagne che parla del luogo, non dell'etichetta.",
+    "fr": "La famille De Sousa cultive en biodynamie de vieilles vignes sur la craie pure des villages grand cru d'Avize. Le résultat : une minéralité sans dorure — un champagne qui parle du lieu, non de l'étiquette.",
+    "de": "Die Familie De Sousa bewirtschaftet biodynamisch alte Reben auf dem reinen Kalk der Grand-Cru-Dörfer um Avize. Das Ergebnis ist Mineralität ohne Vergoldung — Champagner, der vom Ort spricht, nicht vom Etikett.",
+    "zh": "De Sousa 家族以生物动力法耕作 Avize 特级村纯净白垩土上的老藤。成果是不加镀金的矿物感——诉说风土而非标签的香槟。"
+   }
+  },
+  "Domaine Armand Rousseau": {
+   "region": "Gevrey-Chambertin, Burgundija",
+   "blurb": {
+    "hr": "Rousseau je mjerilo za Gevrey-Chambertin — parcele obrađivane generacijama, s preciznošću kirurga i osjećajem pjesnika. Njihova su vina istovremeno svilenkasta i duboka, referenca burgundijskog terroira.",
+    "en": "Rousseau is the benchmark for Gevrey-Chambertin — parcels farmed for generations, with a surgeon's precision and a poet's feeling. Their wines are at once silken and profound, a reference for Burgundian terroir.",
+    "it": "Rousseau è il punto di riferimento per Gevrey-Chambertin — parcelle coltivate da generazioni, con la precisione di un chirurgo e la sensibilità di un poeta. I loro vini sono insieme setosi e profondi, un riferimento del terroir borgognone.",
+    "fr": "Rousseau est la référence de Gevrey-Chambertin — des parcelles cultivées depuis des générations, avec la précision d'un chirurgien et la sensibilité d'un poète. Leurs vins sont à la fois soyeux et profonds, une référence du terroir bourguignon.",
+    "de": "Rousseau ist der Maßstab für Gevrey-Chambertin — Parzellen, die über Generationen bewirtschaftet werden, mit der Präzision eines Chirurgen und dem Gefühl eines Dichters. Ihre Weine sind zugleich seidig und tief, eine Referenz des burgundischen Terroirs.",
+    "zh": "Rousseau 是 Gevrey-Chambertin 的标杆——世代耕作的地块，兼具外科医生的精准与诗人的情感。其酒既如丝绸又深邃，是勃艮第风土的典范。"
+   }
+  },
+  "Hubert Lamy": {
+   "region": "Saint-Aubin, Burgundija",
+   "blurb": {
+    "hr": "Olivier Lamy je od Saint-Aubina napravio jednu od najuzbudljivijih adresa bijele Burgundije — gustom sadnjom i preciznošću vadi napetost iz vapnenca. Njegova vina stoje uz bok mnogo skupljim susjedima.",
+    "en": "Olivier Lamy has made Saint-Aubin one of white Burgundy's most exciting addresses — high-density planting and precision drawing tension from the limestone. His wines stand beside far pricier neighbours.",
+    "it": "Olivier Lamy ha reso Saint-Aubin uno degli indirizzi più entusiasmanti della Borgogna bianca — impianti fitti e precisione che estraggono tensione dal calcare. I suoi vini reggono il confronto con vicini ben più costosi.",
+    "fr": "Olivier Lamy a fait de Saint-Aubin l'une des adresses les plus passionnantes de la Bourgogne blanche — plantations serrées et précision tirant la tension du calcaire. Ses vins tiennent tête à des voisins bien plus chers.",
+    "de": "Olivier Lamy hat Saint-Aubin zu einer der spannendsten Adressen des weißen Burgunds gemacht — dichte Pflanzung und Präzision, die dem Kalkstein Spannung entlocken. Seine Weine bestehen neben weit teureren Nachbarn.",
+    "zh": "Olivier Lamy 让 Saint-Aubin 成为白勃艮第最激动人心的产地之一——高密度种植与精准从石灰岩中萃取张力。他的酒足以比肩身价高出许多的邻居。"
+   }
+  },
+  "Pascal Cotat": {
+   "region": "Chavignol, Sancerre, Loire",
+   "blurb": {
+    "hr": "Pascal Cotat radi Sancerre kao stari majstor — ručna berba na vrtoglavoj strmini Monts Damnés i spontana fermentacija. To je Sauvignon koji se pije kao veliko bijelo vino, s godinama u vidu.",
+    "en": "Pascal Cotat makes Sancerre like an old master — hand-harvested from the dizzying slope of Monts Damnés and fermented wild. This is Sauvignon to drink like a great white wine, with years in mind.",
+    "it": "Pascal Cotat fa il Sancerre come un vecchio maestro — vendemmia manuale sul pendio vertiginoso di Monts Damnés e fermentazione spontanea. È un Sauvignon da bere come un grande bianco, pensando agli anni.",
+    "fr": "Pascal Cotat élabore le sancerre comme un vieux maître — vendange à la main sur la pente vertigineuse des Monts Damnés et fermentation spontanée. C'est un sauvignon à boire comme un grand blanc, avec les années en tête.",
+    "de": "Pascal Cotat macht Sancerre wie ein alter Meister — von Hand gelesen am schwindelerregenden Hang der Monts Damnés und spontan vergoren. Ein Sauvignon, den man wie einen großen Weißwein trinkt, mit Blick auf die Jahre.",
+    "zh": "Pascal Cotat 以老派大师的方式酿造 Sancerre——手工采摘自 Monts Damnés 令人目眩的陡坡，野生酵母发酵。这是一款可当伟大白葡萄酒陈年细品的长相思。"
+   }
+  },
+  "Heymann-Löwenstein": {
+   "region": "Winningen, Terrassenmosel",
+   "blurb": {
+    "hr": "Na vrtoglavim škriljevim terasama donjeg Mosela Heymann-Löwenstein radi rizling koji ne skriva svoje tlo — svaka lozna parcela govori vlastitim glasom. Mineralnost je ovdje doslovna, kremen i mokri kamen.",
+    "en": "On the vertiginous slate terraces of the lower Mosel, Heymann-Löwenstein makes Riesling that hides nothing of its soil — each single vineyard speaks in its own voice. Minerality here is literal: flint and wet stone.",
+    "it": "Sulle vertiginose terrazze di ardesia della Mosella inferiore, Heymann-Löwenstein fa un Riesling che non nasconde nulla del suo suolo — ogni singola vigna parla con la propria voce. La mineralità qui è letterale: pietra focaia e pietra bagnata.",
+    "fr": "Sur les terrasses d'ardoise vertigineuses de la basse Moselle, Heymann-Löwenstein élabore un riesling qui ne cache rien de son sol — chaque lieu-dit parle de sa propre voix. La minéralité est ici littérale : pierre à fusil et pierre mouillée.",
+    "de": "Auf den schwindelerregenden Schieferterrassen der unteren Mosel macht Heymann-Löwenstein einen Riesling, der nichts von seinem Boden verbirgt — jede Einzellage spricht mit eigener Stimme. Mineralität ist hier wörtlich: Feuerstein und nasser Stein.",
+    "zh": "在下摩泽尔令人目眩的板岩梯田上，Heymann-Löwenstein 酿造毫不掩饰其土壤的雷司令——每一块单一园都以自己的嗓音诉说。此处的矿物感是字面意义上的：燧石与湿石。"
+   }
+  },
+  "Egon Müller": {
+   "region": "Wiltingen, Saar",
+   "blurb": {
+    "hr": "Scharzhofberg u rukama Egona Müllera daje možda najčišći rizling na svijetu — lebdeći, kristalan, gotovo bestežinski. Ovdje hladni Saar i plavi škriljevac stvaraju napetost koja traje desetljećima.",
+    "en": "The Scharzhofberg in Egon Müller's hands yields perhaps the purest Riesling on earth — floating, crystalline, almost weightless. Here the cold Saar and blue slate create a tension that lasts for decades.",
+    "it": "Lo Scharzhofberg nelle mani di Egon Müller dà forse il Riesling più puro al mondo — sospeso, cristallino, quasi senza peso. Qui la fredda Saar e l'ardesia blu creano una tensione che dura decenni.",
+    "fr": "Le Scharzhofberg entre les mains d'Egon Müller donne peut-être le riesling le plus pur du monde — flottant, cristallin, presque sans poids. Ici la Sarre froide et l'ardoise bleue créent une tension qui dure des décennies.",
+    "de": "Der Scharzhofberg in Egon Müllers Händen bringt vielleicht den reinsten Riesling der Welt hervor — schwebend, kristallin, fast schwerelos. Hier schaffen die kühle Saar und der blaue Schiefer eine Spannung, die Jahrzehnte hält.",
+    "zh": "Scharzhofberg 在 Egon Müller 手中或许诞生了世上最纯净的雷司令——轻盈、晶莹、近乎失重。冰冷的萨尔河与蓝色板岩在此造就可延续数十年的张力。"
+   }
+  },
+  "Zilliken": {
+   "region": "Saarburg, Saar",
+   "blurb": {
+    "hr": "Zilliken u Saaru njeguje napetost kao vrlinu — rizling s crvenog škriljevca Rauscha spaja zrelost breskve i britku kiselinu. Njihova duboka hladna podrumska rosa daje vinima gotovo vječnu svježinu.",
+    "en": "Zilliken on the Saar cultivates tension as a virtue — Riesling from the red slate of the Rausch marries peach ripeness with cutting acidity. Their deep, cold cellar dew lends the wines an almost eternal freshness.",
+    "it": "Zilliken sulla Saar coltiva la tensione come virtù — il Riesling dell'ardesia rossa del Rausch unisce la maturità della pesca a un'acidità tagliente. La loro cantina profonda e fredda dona ai vini una freschezza quasi eterna.",
+    "fr": "Zilliken, sur la Sarre, cultive la tension comme une vertu — le riesling de l'ardoise rouge du Rausch marie la maturité de la pêche à une acidité tranchante. Leur cave profonde et froide confère aux vins une fraîcheur presque éternelle.",
+    "de": "Zilliken an der Saar kultiviert Spannung als Tugend — der Riesling vom roten Schiefer des Rausch vereint Pfirsichreife mit schneidender Säure. Ihr tiefer, kalter Keller verleiht den Weinen eine fast ewige Frische.",
+    "zh": "萨尔河畔的 Zilliken 将张力奉为美德——Rausch 红色板岩的雷司令兼具桃子的成熟与凌厉的酸度。深邃冰冷的酒窖赋予酒近乎永恒的清新。"
+   }
+  },
+  "Giuseppe Quintarelli": {
+   "region": "Valpolicella Classica, Veneto",
+   "blurb": {
+    "hr": "Quintarelli je poezija Valpolicelle — beskompromisno sušenje grožđa i godine strpljenja u velikim bačvama. Njegov Amarone se ne objašnjava, nego doživljava; vino za sjećanje.",
+    "en": "Quintarelli is the poetry of Valpolicella — uncompromising grape-drying and years of patience in large casks. His Amarone is not to be explained but experienced; a wine for memory.",
+    "it": "Quintarelli è la poesia della Valpolicella — appassimento senza compromessi e anni di pazienza in grandi botti. Il suo Amarone non si spiega, si vive; un vino per la memoria.",
+    "fr": "Quintarelli est la poésie de la Valpolicella — passerillage sans compromis et années de patience en grands foudres. Son amarone ne s'explique pas, il se vit ; un vin pour la mémoire.",
+    "de": "Quintarelli ist die Poesie der Valpolicella — kompromissloses Trocknen der Trauben und Jahre der Geduld in großen Fässern. Sein Amarone wird nicht erklärt, sondern erlebt; ein Wein für die Erinnerung.",
+    "zh": "Quintarelli 是瓦坡里切拉的诗篇——毫不妥协的葡萄风干与大桶中多年的耐心等待。他的 Amarone 无须解释，只须体验；是为记忆而酿的酒。"
+   }
+  },
+  "Dal Forno": {
+   "region": "Valpolicella, Veneto",
+   "blurb": {
+    "hr": "Romano Dal Forno je modernistički vizionar Valpolicelle — fanatična preciznost u vinogradu i podrumu daje vina goleme koncentracije i dubine. Svaka je boca izjava o tome što ovaj kraj može postići.",
+    "en": "Romano Dal Forno is Valpolicella's modernist visionary — fanatical precision in vineyard and cellar yielding wines of immense concentration and depth. Every bottle is a statement of what this land can achieve.",
+    "it": "Romano Dal Forno è il visionario modernista della Valpolicella — precisione fanatica in vigna e in cantina per vini di immensa concentrazione e profondità. Ogni bottiglia è una dichiarazione di ciò che questa terra può raggiungere.",
+    "fr": "Romano Dal Forno est le visionnaire moderniste de la Valpolicella — une précision fanatique à la vigne et au chai donnant des vins d'une concentration et d'une profondeur immenses. Chaque bouteille affirme ce que cette terre peut atteindre.",
+    "de": "Romano Dal Forno ist der modernistische Visionär der Valpolicella — fanatische Präzision im Weinberg und Keller für Weine von immenser Konzentration und Tiefe. Jede Flasche ist eine Aussage darüber, was dieses Land erreichen kann.",
+    "zh": "Romano Dal Forno 是瓦坡里切拉的现代主义远见者——园中与窖中近乎狂热的精准，成就极致浓郁深邃的酒。每一瓶都是这片土地所能企及之境的宣言。"
+   }
+  },
+  "Roagna": {
+   "region": "Barbaresco & Barolo, Piemont",
+   "blurb": {
+    "hr": "Roagna čuva staru školu Piemonta — stare loze, duge maceracije i nula žurbe. Njihovi Nebbioli iz Asilija i Pajéa spajaju ružu, katran i vrijeme u vina beskrajne finoće.",
+    "en": "Roagna keeps the old school of Piedmont alive — old vines, long macerations and zero hurry. Their Nebbiolos from Asili and Pajé weave rose, tar and time into wines of endless finesse.",
+    "it": "Roagna mantiene viva la vecchia scuola del Piemonte — vigne vecchie, lunghe macerazioni e nessuna fretta. I loro Nebbioli di Asili e Pajé intrecciano rosa, catrame e tempo in vini di finezza infinita.",
+    "fr": "Roagna perpétue la vieille école du Piémont — vieilles vignes, longues macérations et aucune hâte. Leurs nebbiolos d'Asili et de Pajé tissent la rose, le goudron et le temps en des vins d'une finesse infinie.",
+    "de": "Roagna hält die alte Schule des Piemont am Leben — alte Reben, lange Maischestandzeiten und keine Eile. Ihre Nebbioli aus Asili und Pajé verweben Rose, Teer und Zeit zu Weinen von endloser Finesse.",
+    "zh": "Roagna 守护着皮埃蒙特的老派传统——老藤、长时间浸渍、从不匆忙。他们来自 Asili 与 Pajé 的内比奥罗将玫瑰、焦油与时光织入无尽细腻的酒中。"
+   }
+  },
+  "Montevertine": {
+   "region": "Radda in Chianti, Toscana",
+   "blurb": {
+    "hr": "Montevertine je pobunjenik iz srca Chiantija — čisti Sangiovese, bez cabernet krinke, iz visokih vinograda Radde. Le Pergole Torte je vino za razmišljanje, elegantno i beskompromisno toskansko.",
+    "en": "Montevertine is the rebel at the heart of Chianti — pure Sangiovese, no cabernet mask, from the high vineyards of Radda. Le Pergole Torte is a wine for thinking: elegant and uncompromisingly Tuscan.",
+    "it": "Montevertine è il ribelle nel cuore del Chianti — Sangiovese puro, senza maschera di cabernet, dalle alte vigne di Radda. Le Pergole Torte è un vino da meditazione: elegante e toscano senza compromessi.",
+    "fr": "Montevertine est le rebelle au cœur du Chianti — sangiovese pur, sans masque de cabernet, des vignes hautes de Radda. Le Pergole Torte est un vin de réflexion : élégant et toscan sans compromis.",
+    "de": "Montevertine ist der Rebell im Herzen des Chianti — reiner Sangiovese, ohne Cabernet-Maske, aus den hohen Lagen von Radda. Le Pergole Torte ist ein Wein zum Nachdenken: elegant und kompromisslos toskanisch.",
+    "zh": "Montevertine 是基安蒂腹地的叛逆者——纯粹的桑娇维塞，不以赤霞珠为面具，源自 Radda 的高海拔葡萄园。Le Pergole Torte 是一款值得沉思的酒：优雅而毫不妥协的托斯卡纳。"
+   }
+  },
+  "Tenuta San Guido": {
+   "region": "Bolgheri, Toscana",
+   "blurb": {
+    "hr": "Tenuta San Guido je rodno mjesto Sassicaie — vina koje je dokazalo da Bolgheri može stajati uz bok Bordeauxu. Morski povjetarac i šljunčano tlo daju cabernetu eleganciju i mediteranski dah.",
+    "en": "Tenuta San Guido is the birthplace of Sassicaia — the wine that proved Bolgheri could stand beside Bordeaux. Sea breeze and gravel soils give the cabernet elegance and a Mediterranean breath.",
+    "it": "Tenuta San Guido è la culla del Sassicaia — il vino che ha dimostrato che Bolgheri poteva reggere il confronto con Bordeaux. La brezza marina e i suoli ghiaiosi donano al cabernet eleganza e un respiro mediterraneo.",
+    "fr": "Tenuta San Guido est le berceau du Sassicaia — le vin qui a prouvé que Bolgheri pouvait rivaliser avec Bordeaux. La brise marine et les sols de graves donnent au cabernet élégance et souffle méditerranéen.",
+    "de": "Tenuta San Guido ist die Wiege des Sassicaia — des Weins, der bewies, dass Bolgheri neben Bordeaux bestehen kann. Meeresbrise und Kiesböden verleihen dem Cabernet Eleganz und einen mediterranen Atem.",
+    "zh": "Tenuta San Guido 是 Sassicaia 的诞生地——这款酒证明了博格利可与波尔多比肩。海风与砾石土壤赋予赤霞珠优雅与地中海的气息。"
+   }
+  },
+  "Miloš": {
+   "region": "Pelješac, Dalmacija",
+   "blurb": {
+    "hr": "Frano Miloš vadi plavac mali i pošip iz kamena Ponikvi s gotovo redovničkim strpljenjem. Njegova vina — živa, mineralna, bez šminke — dokaz su da hrvatska klasika može stariti desetljećima.",
+    "en": "Frano Miloš coaxes Plavac Mali and Pošip from the stone of Ponikve with almost monastic patience. His wines — alive, mineral, uncosmetic — prove that Croatian classics can age for decades.",
+    "it": "Frano Miloš estrae Plavac Mali e Pošip dalla pietra di Ponikve con pazienza quasi monastica. I suoi vini — vivi, minerali, senza trucco — dimostrano che i classici croati possono invecchiare per decenni.",
+    "fr": "Frano Miloš tire le plavac mali et le pošip de la pierre de Ponikve avec une patience presque monastique. Ses vins — vivants, minéraux, sans fard — prouvent que les classiques croates peuvent vieillir des décennies.",
+    "de": "Frano Miloš entlockt Plavac Mali und Pošip dem Stein von Ponikve mit fast klösterlicher Geduld. Seine Weine — lebendig, mineralisch, ungeschminkt — beweisen, dass kroatische Klassiker jahrzehntelang reifen können.",
+    "zh": "Frano Miloš 以近乎修士般的耐心，从 Ponikve 的岩石中唤出 Plavac Mali 与 Pošip。他的酒鲜活、矿物、毫无修饰，证明克罗地亚经典能够陈年数十载。"
+   }
+  },
+  "Tomac": {
+   "region": "Plešivica",
+   "blurb": {
+    "hr": "Obitelj Tomac pionir je pjenušaca i amfora u Hrvatskoj — na plešivičkim padinama spaja klasičnu metodu s glinom i strpljenjem. Njihova vina imaju živac brežuljaka i karakter koji ne popunjava kategoriju, nego je stvara.",
+    "en": "The Tomac family are Croatia's pioneers of sparkling wine and amphora — on Plešivica's slopes they marry the classic method with clay and patience. Their wines carry the nerve of the hills and a character that doesn't fill a category but creates one.",
+    "it": "La famiglia Tomac è pioniera degli spumanti e delle anfore in Croazia — sui pendii di Plešivica uniscono il metodo classico all'argilla e alla pazienza. I loro vini hanno il nervo delle colline e un carattere che non riempie una categoria, la crea.",
+    "fr": "La famille Tomac est pionnière du vin effervescent et de l'amphore en Croatie — sur les coteaux de Plešivica, elle marie la méthode classique à l'argile et à la patience. Leurs vins ont le nerf des collines et un caractère qui ne remplit pas une catégorie, il la crée.",
+    "de": "Die Familie Tomac ist Kroatiens Pionier für Schaumwein und Amphore — an den Hängen von Plešivica verbinden sie die klassische Methode mit Ton und Geduld. Ihre Weine tragen den Nerv der Hügel und einen Charakter, der keine Kategorie füllt, sondern erschafft.",
+    "zh": "Tomac 家族是克罗地亚起泡酒与陶罐酿造的先驱——在 Plešivica 的坡地上，他们将传统方法与陶土和耐心结合。其酒承载着丘陵的张力，其个性不是填补品类，而是开创品类。"
+   }
+  },
+  "Clai": {
+   "region": "Krasica, Istra",
+   "blurb": {
+    "hr": "Giorgio Clai vratio je Istri macerirana bijela vina i beskompromisni prirodni pristup. Njegova malvazija odležana na kožici pokazuje identitet mjesta — istarska istina bez kompromisa.",
+    "en": "Giorgio Clai brought skin-macerated whites and an uncompromising natural approach back to Istria. His skin-contact Malvazija shows the identity of its place — an Istrian truth without compromise.",
+    "it": "Giorgio Clai ha riportato in Istria i bianchi macerati e un approccio naturale senza compromessi. La sua Malvasia macerata sulle bucce mostra l'identità del luogo — una verità istriana senza compromessi.",
+    "fr": "Giorgio Clai a ramené en Istrie les blancs de macération et une approche nature sans compromis. Sa malvoisie macérée sur peaux montre l'identité de son lieu — une vérité istrienne sans compromis.",
+    "de": "Giorgio Clai hat maischevergorene Weißweine und einen kompromisslosen Naturansatz nach Istrien zurückgebracht. Seine maischevergorene Malvazija zeigt die Identität ihres Ortes — eine istrische Wahrheit ohne Kompromiss.",
+    "zh": "Giorgio Clai 为伊斯特拉带回了浸皮白葡萄酒与毫不妥协的自然酿造。他带皮浸渍的玛尔维萨展现着风土身份——毫不妥协的伊斯特拉真味。"
+   }
+  },
+  "Sauternes": {
+   "region": "Sauternes, Bordeaux",
+   "blurb": {
+    "hr": "Château d'Yquem je vrhunac Sauternesa — plemenita plijesan na sémillonu daje nektar raskoši i preciznosti. Bira se samo kad je struktura idealna, u trenutku vrhunske ravnoteže: ni premlado, ni preumorno.",
+    "en": "Château d'Yquem is the summit of Sauternes — noble rot on sémillon yielding a nectar of opulence and precision. It is chosen only when the structure is ideal, at the moment of perfect balance: neither too young nor too tired.",
+    "it": "Château d'Yquem è la vetta del Sauternes — muffa nobile sul sémillon per un nettare di opulenza e precisione. Si sceglie solo quando la struttura è ideale, nel momento del perfetto equilibrio: né troppo giovane né troppo stanco.",
+    "fr": "Château d'Yquem est le sommet du Sauternes — la pourriture noble sur le sémillon donne un nectar d'opulence et de précision. On ne le choisit que lorsque la structure est idéale, au moment de l'équilibre parfait : ni trop jeune, ni trop fatigué.",
+    "de": "Château d'Yquem ist der Gipfel des Sauternes — Edelfäule auf Sémillon ergibt einen Nektar aus Opulenz und Präzision. Er wird nur gewählt, wenn die Struktur ideal ist, im Moment perfekter Balance: weder zu jung noch zu müde.",
+    "zh": "Château d'Yquem 是苏玳的巅峰——赛美蓉上的贵腐霉成就丰盈而精准的琼浆。唯有结构理想、平衡臻于完美时方才入选：既不太年轻，也不太疲惫。"
+   }
+  }
+ }
+}

@@ -29,6 +29,7 @@ hr: {
     storyNav: "Priča",
     enter: "Otvori kartu",
     ratings: "Ocjene kritičara",
+    winemaker: "O vinaru", terroir: "Teroar", pairsWith: "Uz jelo iz našeg menija",
     picks: "Filhov izbor",
     bestRated: "Najbolje ocijenjeni",
     newBadge: "Novo",
@@ -84,6 +85,7 @@ hr: {
     sweet: "Slatko · desertno vino"
   },
   bodies: { light: "lagano", medium: "srednje puno", full: "puno" },
+  tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
     almond: "badem", apricot: "marelica", balsamic: "balzamične note", blackberry: "kupina",
     blackcurrant: "crni ribiz", brioche: "brioche", butter: "maslac", candied_fruit: "kandirano voće",
@@ -132,6 +134,7 @@ en: {
     storyNav: "The story",
     enter: "View the list",
     ratings: "Critic scores",
+    winemaker: "The winemaker", terroir: "Terroir", pairsWith: "From our kitchen",
     picks: "Filho's picks",
     bestRated: "Top rated",
     newBadge: "New",
@@ -187,6 +190,7 @@ en: {
     sweet: "Sweet · dessert wine"
   },
   bodies: { light: "light", medium: "medium", full: "full" },
+  tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
     almond: "almond", apricot: "apricot", balsamic: "balsamic notes", blackberry: "blackberry",
     blackcurrant: "blackcurrant", brioche: "brioche", butter: "butter", candied_fruit: "candied fruit",
@@ -235,6 +239,7 @@ it: {
     storyNav: "La storia",
     enter: "Apri la carta",
     ratings: "Punteggi della critica",
+    winemaker: "Il vignaiolo", terroir: "Terroir", pairsWith: "Dal nostro menù",
     picks: "La selezione di Filho",
     bestRated: "I più premiati",
     newBadge: "Novità",
@@ -290,6 +295,7 @@ it: {
     sweet: "Dolce · vino da dessert"
   },
   bodies: { light: "leggero", medium: "medio", full: "corposo" },
+  tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
     almond: "mandorla", apricot: "albicocca", balsamic: "note balsamiche", blackberry: "mora",
     blackcurrant: "ribes nero", brioche: "brioche", butter: "burro", candied_fruit: "frutta candita",
@@ -338,6 +344,7 @@ fr: {
     storyNav: "L'histoire",
     enter: "Voir la carte",
     ratings: "Notes des critiques",
+    winemaker: "Le vigneron", terroir: "Terroir", pairsWith: "De notre cuisine",
     picks: "La sélection de Filho",
     bestRated: "Les mieux notés",
     newBadge: "Nouveau",
@@ -393,6 +400,7 @@ fr: {
     sweet: "Doux · vin de dessert"
   },
   bodies: { light: "léger", medium: "moyen", full: "corsé" },
+  tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
     almond: "amande", apricot: "abricot", balsamic: "notes balsamiques", blackberry: "mûre",
     blackcurrant: "cassis", brioche: "brioche", butter: "beurre", candied_fruit: "fruits confits",
@@ -441,6 +449,7 @@ de: {
     storyNav: "Die Geschichte",
     enter: "Zur Karte",
     ratings: "Kritiker-Bewertungen",
+    winemaker: "Der Winzer", terroir: "Terroir", pairsWith: "Aus unserer Küche",
     picks: "Filhos Auswahl",
     bestRated: "Bestbewertet",
     newBadge: "Neu",
@@ -496,6 +505,7 @@ de: {
     sweet: "Süß · Dessertwein"
   },
   bodies: { light: "leicht", medium: "mittel", full: "vollmundig" },
+  tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
     almond: "Mandel", apricot: "Aprikose", balsamic: "balsamische Noten", blackberry: "Brombeere",
     blackcurrant: "schwarze Johannisbeere", brioche: "Brioche", butter: "Butter", candied_fruit: "kandierte Früchte",
@@ -544,6 +554,7 @@ zh: {
     storyNav: "故事",
     enter: "查看酒单",
     ratings: "酒评家评分",
+    winemaker: "酿酒师", terroir: "风土", pairsWith: "搭配本店菜肴",
     picks: "Filho 精选",
     bestRated: "评分最高",
     newBadge: "新品",
@@ -599,6 +610,7 @@ zh: {
     sweet: "甜型 · 餐后甜酒"
   },
   bodies: { light: "轻盈", medium: "中等", full: "饱满" },
+  tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
     almond: "杏仁", apricot: "杏子", balsamic: "香脂调", blackberry: "黑莓",
     blackcurrant: "黑加仑", brioche: "布里欧修", butter: "黄油", candied_fruit: "蜜饯",

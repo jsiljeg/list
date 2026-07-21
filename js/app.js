@@ -69,13 +69,16 @@ const esc = (s) => String(s == null ? "" : s)
 const T = () => I18N[lang] || I18N.en;
 
 let MENU = null;
+let PRODUCERS = {};
 function init() {
   Promise.all([
     fetch("data/wines.json").then((r) => r.json()),
-    fetch("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] }))
-  ]).then(([d, m]) => {
+    fetch("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] })),
+    fetch("data/producers.json").then((r) => r.json()).catch(() => ({ producers: {} }))
+  ]).then(([d, m, pr]) => {
       DATA = d;
       MENU = m;
+      PRODUCERS = pr.producers || {};
       currentSection = d.sections[0].id;
       const idleReset = sessionStorage.getItem("idle-reset");
       sessionStorage.removeItem("idle-reset");
@@ -307,6 +310,30 @@ function renderContent() {
   );
 }
 
+/* producer blurb: longest producers.json key contained in the wine's
+   producer string (case-insensitive), so "Clai" also covers "Giorgio Clai". */
+function producerInfo(producer) {
+  if (!producer) return null;
+  const p = producer.toLowerCase();
+  let best = null;
+  for (const key of Object.keys(PRODUCERS)) {
+    if (key.charAt(0) === "_") continue;
+    if (p.includes(key.toLowerCase()) && (!best || key.length > best.length)) best = key;
+  }
+  return best ? PRODUCERS[best] : null;
+}
+
+/* top dishes from the kitchen menu that suit this wine */
+function dishesForWine(ins) {
+  if (!ins || !MENU || !MENU.dishes) return [];
+  const scored = MENU.dishes.map((dish) => {
+    let sc = (dish.pairings || []).filter((k) => (ins.pairings || []).includes(k)).length * 3;
+    if ((dish.styles || []).includes(ins.style)) sc += 3;
+    return { dish, sc };
+  }).filter((x) => x.sc > 0).sort((a, b) => b.sc - a.sc);
+  return scored.slice(0, 2).map((x) => x.dish);
+}
+
 /* ---------- detail modal ---------- */
 function openDetail(ref) {
   const [si, ci, gi, ii] = ref.split(".").map(Number);
@@ -327,6 +354,7 @@ function openDetail(ref) {
     ${item.producer ? `<div class="detail-producer">${esc(item.producer)}</div>` : ""}
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
     ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
+    ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
     <div class="detail-style">${esc(t.styles[ins.style] || "")}</div>
@@ -338,7 +366,19 @@ function openDetail(ref) {
       ${field(t.ui.temp, ins.temp ? esc(ins.temp) + " °C" : "")}
       ${field(t.ui.aromas, esc(list(ins.aromas, t.aromas)), true)}
       ${field(t.ui.pairings, esc(list(ins.pairings, t.pairings)), true)}
-    </div>`;
+    </div>
+    ${(() => {
+      const info = producerInfo(item.producer);
+      const blurb = info && info.blurb && (info.blurb[lang] || info.blurb.en);
+      if (!blurb) return "";
+      const ter = info.region ? `<div class="detail-terroir"><span class="detail-label">${esc(t.ui.terroir)}</span> ${esc(info.region)}</div>` : "";
+      return `<div class="detail-winemaker"><div class="detail-label">${esc(t.ui.winemaker)}${item.producer ? " · " + esc(item.producer) : ""}</div><p>${esc(blurb)}</p>${ter}</div>`;
+    })()}
+    ${(() => {
+      const dishes = dishesForWine(ins);
+      if (!dishes.length) return "";
+      return `<div class="detail-dishes"><span class="detail-label">${esc(t.ui.pairsWith)}</span>${dishes.map((dn) => `<span class="dish-chip">${esc(dn.name[lang] || dn.name.en || dn.name.hr)}</span>`).join("")}</div>`;
+    })()}`;
   $("modal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
 }

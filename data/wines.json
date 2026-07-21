@@ -1429,6 +1429,10 @@
            "critic": "James Suckling",
            "score": "97"
           }
+         ],
+         "tags": [
+          "excellent_vintage",
+          "rare"
          ]
         },
         {
@@ -1652,7 +1656,10 @@
           "de": "Der Winzer, der die Wahrnehmung des Champagners verändert hat — eine Flasche zum Nachdenken und zum Erinnern.",
           "zh": "改变香槟认知的酿酒师——一瓶值得思考与铭记的酒。"
          },
-         "recommended": true
+         "recommended": true,
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Version Originale",
@@ -1676,7 +1683,10 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Les Carelles",
@@ -1700,7 +1710,10 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Rosé Brut",
@@ -1724,7 +1737,10 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Dom Pérignon 2015",
@@ -1754,6 +1770,9 @@
            "critic": "James Suckling",
            "score": "97"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -1777,7 +1796,10 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Dom Pérignon P3 1993",
@@ -1800,7 +1822,10 @@
            "caviar"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Salon Blanc de Blancs 2013",
@@ -1824,7 +1849,10 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Krug 1996",
@@ -1847,7 +1875,10 @@
            "caviar"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Krug Grande Cuvée",
@@ -1917,7 +1948,10 @@
            "caviar"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Clos d'Ambonnay 1996",
@@ -1939,7 +1973,10 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         }
        ]
       }
@@ -2844,7 +2881,10 @@
            "asian"
           ],
           "temp": "8–10"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         }
        ]
       },
@@ -3069,7 +3109,10 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Chablis Grand Cru Les Clos 2023",
@@ -3141,7 +3184,10 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Bourgogne Côte d'Or Blanc 2022",
@@ -3625,7 +3671,10 @@
            "truffles"
           ],
           "temp": "12–14"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Meursault La Rencontre 2023",
@@ -3649,7 +3698,10 @@
            "truffles"
           ],
           "temp": "12–14"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Meursault Clos du Cromin Le Pre Manche 2023",
@@ -3673,7 +3725,10 @@
            "risotto"
           ],
           "temp": "12–14"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Meursault Les Narvaux Dessus 2023",
@@ -3697,7 +3752,10 @@
            "truffles"
           ],
           "temp": "12–14"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Meursault Villages Le Limozin 2023",
@@ -3720,7 +3778,10 @@
            "cheese_hard"
           ],
           "temp": "12–14"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Corton-Charlemagne Grand Cru 2022",
@@ -3968,7 +4029,10 @@
            "mushrooms"
           ],
           "temp": "12–14"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Château-Chalon 2014",
@@ -3992,7 +4056,10 @@
            "truffles"
           ],
           "temp": "12–14"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         }
        ]
       },
@@ -4337,7 +4404,10 @@
            "cheese_hard"
           ],
           "temp": "10–12"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Orange Republic 2021",
@@ -4926,7 +4996,10 @@
           "de": "Stein, Wind und Geduld — ein Plavac Mali, der beweist, dass kroatischer Wein zu den Besten gehört.",
           "zh": "石头、海风与耐心——证明克罗地亚葡萄酒足以比肩最优秀者的 Plavac Mali。"
          },
-         "recommended": true
+         "recommended": true,
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Jeka 2020",
@@ -5285,7 +5358,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Nuits-Saint-Georges “Les Didiers” 1er Cru 2013",
@@ -5309,7 +5385,10 @@
            "truffles"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Gevrey-Chambertin 1er Cru Lavaux 2018",
@@ -5342,7 +5421,10 @@
           "de": "Eine Flasche, die die Wahrnehmung von Wein verändert — Tiefe und Weite Burgunds in einem Schluck.",
           "zh": "一瓶改变你对葡萄酒认知的酒——一口之间，勃艮第的深度与广度。"
          },
-         "recommended": true
+         "recommended": true,
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Volnay 1er Cru Les Santenots 2022",
@@ -5468,6 +5550,9 @@
            "critic": "Decanter",
            "score": "100"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -5546,6 +5631,9 @@
            "critic": "Decanter",
            "score": "99"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -5657,7 +5745,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Barbera d'Alba Superiore 2021",
@@ -5785,7 +5876,10 @@
           "de": "Alte Reben, langsame Mazeration, keine Eile — ein Barbaresco mit Charakter und einem Grund, hier zu sein.",
           "zh": "老藤、缓慢浸渍、从不匆忙——有个性、有理由在此的 Barbaresco。"
          },
-         "recommended": true
+         "recommended": true,
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Barbaresco Pajé 2019",
@@ -5880,7 +5974,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Cepparello 2019",
@@ -6230,6 +6327,9 @@
            "critic": "Vinous",
            "score": "95"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -6278,7 +6378,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Amarone della Valpolicella D.O.C. 2015",
@@ -6316,6 +6419,11 @@
            "critic": "Wine Advocate",
            "score": "97"
           }
+         ],
+         "tags": [
+          "legendary_vintage",
+          "rare",
+          "drinking_now"
          ]
         },
         {
@@ -6340,7 +6448,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Amarone Classico 2015",
@@ -6373,7 +6484,11 @@
           "de": "Ein Wein für den Tisch und ein Wein für die Erinnerung — ein Amarone, den man nicht erklärt, sondern erlebt.",
           "zh": "佐餐之酒，亦是记忆之酒——无须解释、只须体验的 Amarone。"
          },
-         "recommended": true
+         "recommended": true,
+         "tags": [
+          "rare",
+          "drinking_now"
+         ]
         },
         {
          "name": "Valpolicella Superiore 2015",
@@ -6397,7 +6512,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Le Pergole Torte 2020",
@@ -6526,7 +6644,10 @@
            "charcuterie"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Case Basse 2020",
@@ -6550,7 +6671,10 @@
            "solo"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Barbaresco 2020",
@@ -6574,7 +6698,10 @@
            "truffles"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Sassicaia 2020",
@@ -6612,6 +6739,10 @@
            "critic": "Vinous",
            "score": "97"
           }
+         ],
+         "tags": [
+          "excellent_vintage",
+          "rare"
          ]
         },
         {
@@ -6646,6 +6777,10 @@
            "critic": "Wine Advocate",
            "score": "97"
           }
+         ],
+         "tags": [
+          "excellent_vintage",
+          "rare"
          ]
         },
         {
@@ -6676,6 +6811,10 @@
            "critic": "Wine Advocate",
            "score": "100"
           }
+         ],
+         "tags": [
+          "legendary_vintage",
+          "rare"
          ]
         },
         {
@@ -6714,6 +6853,10 @@
            "critic": "Wine Advocate",
            "score": "96"
           }
+         ],
+         "tags": [
+          "excellent_vintage",
+          "rare"
          ]
         },
         {
@@ -6868,7 +7011,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "CL98 2020",
@@ -6939,7 +7085,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         }
        ]
       },
@@ -6992,7 +7141,10 @@
            "veal"
           ],
           "temp": "14–16"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Occidental 2018",
@@ -7112,7 +7264,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Cabernet Sauvignon 2019",
@@ -7285,7 +7440,10 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "tags": [
+          "rare"
+         ]
         }
        ]
       }
@@ -7506,7 +7664,10 @@
            "cheese_blue"
           ],
           "temp": "8–10"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Riesling Auslese Goldkapsel 2009 – 0,375l",
@@ -7530,7 +7691,10 @@
            "cheese_blue"
           ],
           "temp": "8–10"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         }
        ]
       },
@@ -7559,7 +7723,10 @@
            "cheese_blue"
           ],
           "temp": "14–16"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Recioto Classico 2015",
@@ -7583,7 +7750,10 @@
            "cheese_blue"
           ],
           "temp": "14–16"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Ben Ryé 2019 – 0,75 l",
@@ -7666,6 +7836,10 @@
            "critic": "James Suckling",
            "score": "96"
           }
+         ],
+         "tags": [
+          "excellent_vintage",
+          "rare"
          ]
         },
         {
@@ -7704,6 +7878,11 @@
            "critic": "Wine Spectator",
            "score": "98"
           }
+         ],
+         "tags": [
+          "legendary_vintage",
+          "rare",
+          "drinking_now"
          ]
         }
        ]

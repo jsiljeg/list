@@ -289,6 +289,39 @@ body {
   transform: translateY(-.15em);
 }
 .detail-new { margin-left: .5rem; }
+
+/* vintage / rarity badges */
+.detail-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin: .7rem 0 .2rem; }
+.wine-tag {
+  padding: .22rem .7rem; border-radius: 999px;
+  font-size: .74rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  border: 1px solid; white-space: nowrap;
+}
+.tag-legendary_vintage { color: #e7c66a; border-color: #b8912f; background: rgba(201,169,97,.14); }
+.tag-excellent_vintage { color: #d8c69a; border-color: #7a6a45; }
+.tag-rare { color: #cbb4d6; border-color: #6f5980; background: rgba(140,110,160,.12); }
+.tag-drinking_now { color: #a7c6a0; border-color: #55704e; }
+
+/* winemaker + terroir */
+.detail-winemaker {
+  margin: 1.3rem 0 .2rem; padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+.detail-winemaker p {
+  font-family: var(--serif); font-size: 1.12rem; line-height: 1.55;
+  color: var(--text); margin-top: .3rem;
+}
+.detail-terroir { margin-top: .6rem; color: var(--text-dim); font-size: .95rem; }
+.detail-terroir .detail-label { display: inline; margin-right: .3rem; }
+
+/* dish pairings from the kitchen menu */
+.detail-dishes { margin: 1.2rem 0 .2rem; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.detail-dishes .detail-label { margin: 0 .3rem 0 0; }
+.dish-chip {
+  padding: .3rem .8rem; border-radius: 10px;
+  background: var(--bg-card); border: 1px solid var(--gold-soft);
+  color: var(--text); font-size: .92rem;
+}
 .detail-rec {
   display: inline-block;
   margin-top: .55rem;
