@@ -23,7 +23,18 @@ hr: {
     body: "Tijelo", aromas: "Arome i okusi", pairings: "Uz jela",
     temp: "Temperatura posluživanja",
     legal: "Cijene su izražene u eurima, PDV i porezi uračunati su u cijenu. Zabranjeno je usluživanje alkoholnih pića maloljetnim osobama. Za informacije o alergenima obratite se našem osoblju.",
-    company: "Restoran Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb"
+    company: "Restoran Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    recommended: "Filho preporučuje",
+    storyNav: "Priča"
+  },
+  story: {
+    title: "Theatrium Wine Program — Filho Edition",
+    paras: [
+      "Vinska karta koju držite pred sobom nije katalog, nije popis, nije inventar. To je odraz jedne filozofije, jednog puta i jednog pogleda na vino. Filho ju je gradio godinama — kroz putovanja, razgovore i osobna iskustva u vinogradima, kroz stotine degustacija i nebrojene susrete s vinarima koji stvaraju vina koja nisu samo pića, nego priče, krajolici i emocije.",
+      "Ova karta je rezultat izbora, a ne ponude. Svako je vino ovdje zato što je nešto pokazalo: karakter, preciznost, čistoću, stil ili osobnost vinara. Svaka berba je odabrana zato što poštuje terroir, godinu, klimatsku sliku i rukopis podruma.",
+      "Srce karte čini burgundijska filozofija terroira. Champagne je tu kao elegancija, a ne pozlata. A hrvatska vina dobivaju ozbiljan prostor koji zaslužuju: vinari koji rade čiste, fokusirane, karakterne stilove i mogu stajati uz bok najboljima iz Francuske, Italije i Njemačke.",
+      "Nema vina iz navike. Postoje samo vina s karakterom, vinari s vizijom i berbe koje nose priču. Ova karta nije zatvorena — ona se razvija, raste, uči i mijenja, baš kao i ljudi koji je stvaraju. Filho vjeruje da je vino živi organizam; zato i vinska karta mora biti živa."
+    ]
   },
   sections: {
     "glass": "Vina na čašu", "bottle-sparkling": "Pjenušci i Champagne",
@@ -97,7 +108,18 @@ en: {
     body: "Body", aromas: "Tasting notes", pairings: "Food pairing",
     temp: "Serving temperature",
     legal: "Prices are in euros, VAT and taxes included. Serving alcoholic beverages to minors is prohibited. For allergen information, please ask our staff.",
-    company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb"
+    company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    recommended: "Filho recommends",
+    storyNav: "The story"
+  },
+  story: {
+    title: "Theatrium Wine Program — Filho Edition",
+    paras: [
+      "The wine list in front of you is not a catalogue, not an inventory. It is the reflection of a philosophy, of a journey and of one view of wine. Filho has built it over the years — through travels, conversations and personal experience in the vineyards, through hundreds of tastings and countless encounters with winemakers whose wines are not merely drinks, but stories, landscapes and emotions.",
+      "This list is the result of selection, not supply. Every wine is here because it has shown something: character, precision, purity, style, or the personality of its maker. Every vintage was chosen because it respects the terroir, the year, the climate and the signature of the cellar.",
+      "At the heart of the list lies the Burgundian philosophy of terroir. Champagne is here as elegance, not gilding. And Croatian wines are given the serious space they deserve: winemakers crafting pure, focused, characterful styles that stand shoulder to shoulder with the best of France, Italy and Germany.",
+      "There are no wines out of habit. There are only wines with character, winemakers with vision and vintages that carry a story. This list is not closed — it develops, grows, learns and changes, just like the people who create it. Filho believes wine is a living organism; that is why a wine list must be alive as well."
+    ]
   },
   sections: {
     "glass": "Wines by the glass", "bottle-sparkling": "Sparkling & Champagne",
@@ -171,7 +193,18 @@ it: {
     body: "Corpo", aromas: "Note di degustazione", pairings: "Abbinamenti",
     temp: "Temperatura di servizio",
     legal: "I prezzi sono espressi in euro, IVA e tasse incluse. È vietato servire bevande alcoliche ai minori. Per informazioni sugli allergeni rivolgetevi al nostro personale.",
-    company: "Ristorante Theatrium · Apelacija d.o.o. · Teslina 7, Zagabria"
+    company: "Ristorante Theatrium · Apelacija d.o.o. · Teslina 7, Zagabria",
+    recommended: "Filho consiglia",
+    storyNav: "La storia"
+  },
+  story: {
+    title: "Theatrium Wine Program — Filho Edition",
+    paras: [
+      "La carta dei vini che avete davanti non è un catalogo, non è un inventario. È il riflesso di una filosofia, di un percorso e di uno sguardo sul vino. Filho l'ha costruita negli anni — attraverso viaggi, conversazioni ed esperienze personali nei vigneti, centinaia di degustazioni e innumerevoli incontri con vignaioli i cui vini non sono semplici bevande, ma storie, paesaggi ed emozioni.",
+      "Questa carta è il risultato di una selezione, non di un'offerta. Ogni vino è qui perché ha dimostrato qualcosa: carattere, precisione, purezza, stile o la personalità del produttore. Ogni annata è stata scelta perché rispetta il terroir, l'anno, il clima e la firma della cantina.",
+      "Il cuore della carta è la filosofia borgognona del terroir. Lo Champagne è qui come eleganza, non come doratura. E i vini croati ricevono lo spazio serio che meritano: vignaioli che creano stili puri, precisi e di carattere, alla pari con i migliori di Francia, Italia e Germania.",
+      "Non ci sono vini per abitudine. Ci sono solo vini con carattere, vignaioli con visione e annate che raccontano una storia. Questa carta non è chiusa — si sviluppa, cresce, impara e cambia, proprio come le persone che la creano. Filho crede che il vino sia un organismo vivo; per questo anche la carta dei vini deve essere viva."
+    ]
   },
   sections: {
     "glass": "Vini al calice", "bottle-sparkling": "Spumanti e Champagne",
@@ -245,7 +278,18 @@ fr: {
     body: "Corps", aromas: "Notes de dégustation", pairings: "Accords mets-vins",
     temp: "Température de service",
     legal: "Les prix sont exprimés en euros, TVA et taxes comprises. Il est interdit de servir des boissons alcoolisées aux mineurs. Pour toute information sur les allergènes, adressez-vous à notre personnel.",
-    company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb"
+    company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    recommended: "Filho recommande",
+    storyNav: "L'histoire"
+  },
+  story: {
+    title: "Theatrium Wine Program — Filho Edition",
+    paras: [
+      "La carte des vins que vous avez sous les yeux n'est ni un catalogue ni un inventaire. Elle est le reflet d'une philosophie, d'un parcours et d'un regard sur le vin. Filho l'a construite au fil des années — à travers des voyages, des conversations et des expériences personnelles dans les vignobles, des centaines de dégustations et d'innombrables rencontres avec des vignerons dont les vins ne sont pas de simples boissons, mais des histoires, des paysages et des émotions.",
+      "Cette carte est le fruit d'une sélection, non d'une offre. Chaque vin est ici parce qu'il a montré quelque chose : du caractère, de la précision, de la pureté, du style ou la personnalité de son vigneron. Chaque millésime a été choisi parce qu'il respecte le terroir, l'année, le climat et la signature de la cave.",
+      "Au cœur de la carte se trouve la philosophie bourguignonne du terroir. Le Champagne y est présent comme élégance, non comme dorure. Et les vins croates reçoivent la place sérieuse qu'ils méritent : des vignerons aux styles purs, précis et de caractère, à la hauteur des meilleurs de France, d'Italie et d'Allemagne.",
+      "Il n'y a pas de vins par habitude. Il n'y a que des vins de caractère, des vignerons visionnaires et des millésimes porteurs d'histoire. Cette carte n'est pas figée — elle évolue, grandit, apprend et change, tout comme ceux qui la créent. Filho croit que le vin est un organisme vivant ; c'est pourquoi la carte des vins doit l'être aussi."
+    ]
   },
   sections: {
     "glass": "Vins au verre", "bottle-sparkling": "Effervescents et Champagne",
@@ -319,7 +363,18 @@ de: {
     body: "Körper", aromas: "Aromen", pairings: "Speiseempfehlung",
     temp: "Serviertemperatur",
     legal: "Die Preise sind in Euro angegeben, inklusive Mehrwertsteuer und Abgaben. Der Ausschank alkoholischer Getränke an Minderjährige ist verboten. Informationen zu Allergenen erhalten Sie bei unserem Personal.",
-    company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb"
+    company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    recommended: "Filho empfiehlt",
+    storyNav: "Die Geschichte"
+  },
+  story: {
+    title: "Theatrium Wine Program — Filho Edition",
+    paras: [
+      "Die Weinkarte, die Sie vor sich haben, ist kein Katalog und kein Inventar. Sie ist der Ausdruck einer Philosophie, eines Weges und eines Blicks auf den Wein. Filho hat sie über Jahre aufgebaut — durch Reisen, Gespräche und persönliche Erfahrungen in den Weinbergen, durch Hunderte von Verkostungen und unzählige Begegnungen mit Winzern, deren Weine nicht bloß Getränke sind, sondern Geschichten, Landschaften und Emotionen.",
+      "Diese Karte ist das Ergebnis einer Auswahl, nicht eines Angebots. Jeder Wein ist hier, weil er etwas gezeigt hat: Charakter, Präzision, Reinheit, Stil oder die Persönlichkeit seines Winzers. Jeder Jahrgang wurde gewählt, weil er Terroir, Jahr, Klima und die Handschrift des Kellers respektiert.",
+      "Das Herz der Karte bildet die burgundische Terroir-Philosophie. Champagner steht hier für Eleganz, nicht für Vergoldung. Und kroatische Weine erhalten den ernsthaften Platz, den sie verdienen: Winzer mit reinen, fokussierten, charaktervollen Stilen, die den Besten aus Frankreich, Italien und Deutschland ebenbürtig sind.",
+      "Es gibt keine Weine aus Gewohnheit. Es gibt nur Weine mit Charakter, Winzer mit Vision und Jahrgänge, die eine Geschichte tragen. Diese Karte ist nicht abgeschlossen — sie entwickelt sich, wächst, lernt und verändert sich, genau wie die Menschen, die sie gestalten. Filho glaubt, dass Wein ein lebendiger Organismus ist; deshalb muss auch eine Weinkarte lebendig sein."
+    ]
   },
   sections: {
     "glass": "Offene Weine", "bottle-sparkling": "Schaumwein & Champagner",

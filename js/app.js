@@ -81,9 +81,11 @@ function renderLangSwitch() {
 function renderNav() {
   const t = T();
   const nav = $("nav");
-  nav.innerHTML = DATA.sections.map((s) =>
-    `<button data-sec="${s.id}" class="${s.id === currentSection ? "active" : ""}">${esc(t.sections[s.id] || s.id)}</button>`
-  ).join("");
+  nav.innerHTML =
+    `<button data-sec="__story" class="story-chip ${currentSection === "__story" ? "active" : ""}">✦ ${esc(t.ui.storyNav)}</button>` +
+    DATA.sections.map((s) =>
+      `<button data-sec="${s.id}" class="${s.id === currentSection ? "active" : ""}">${esc(t.sections[s.id] || s.id)}</button>`
+    ).join("");
   nav.querySelectorAll("button").forEach((b) =>
     b.addEventListener("click", () => {
       currentSection = b.dataset.sec;
@@ -104,7 +106,7 @@ function itemHtml(item, ref, context) {
   const clickable = !!item.insight;
   return `<${clickable ? `button class="item clickable" data-ref="${ref}"` : 'div class="item"'}>
     <span class="item-main">
-      <span class="item-name">${esc(item.name)}</span>
+      <span class="item-name">${esc(item.name)}${item.recommended ? ` <span class="rec-badge" title="${esc(T().ui.recommended)}">★</span>` : ""}</span>
       ${item.producer ? `<span class="item-producer">${esc(item.producer)}</span>` : ""}
       ${context ? `<span class="search-context">${esc(context)}</span>` : ""}
     </span>
@@ -140,6 +142,12 @@ function renderContent() {
       });
     });
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
+  } else if (currentSection === "__story") {
+    html = `<section class="story">
+      <h2 class="story-title">${esc(t.story.title)}</h2>
+      ${t.story.paras.map((p) => `<p>${esc(p)}</p>`).join("")}
+      <p class="story-legend"><span class="rec-badge">★</span> ${esc(t.ui.recommended)}</p>
+    </section>`;
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
@@ -175,6 +183,7 @@ function openDetail(ref) {
   $("modal-body").innerHTML = `
     <div class="detail-name">${esc(item.name)}</div>
     ${item.producer ? `<div class="detail-producer">${esc(item.producer)}</div>` : ""}
+    ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${item.price} €</div>` : ""}
     <div class="detail-style">${esc(t.styles[ins.style] || "")}</div>
     <div class="detail-grid">
@@ -200,5 +209,10 @@ $("modal-close").addEventListener("click", closeModal);
 $("modal-backdrop").addEventListener("click", closeModal);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 $("home-logo").addEventListener("click", showStart);
+
+if ("serviceWorker" in navigator &&
+    (location.protocol === "https:" || location.hostname === "localhost")) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
 
 init();

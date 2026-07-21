@@ -78,7 +78,8 @@
            "white_fish"
           ],
           "temp": "6–8"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Diplomat",
@@ -101,7 +102,8 @@
            "cheese_hard"
           ],
           "temp": "6–8"
-         }
+         },
+         "recommended": true
         }
        ]
       }
@@ -335,7 +337,8 @@
            "grilled_fish"
           ],
           "temp": "10–12"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Pošip 2023",
@@ -407,7 +410,8 @@
            "spicy"
           ],
           "temp": "8–10"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Vistamare 2023",
@@ -917,7 +921,8 @@
            "nuts"
           ],
           "temp": "12–14"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Rajnski rizling izborna berba 2019",
@@ -1025,7 +1030,8 @@
            "white_fish"
           ],
           "temp": "6–8"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Diplomat",
@@ -1048,7 +1054,8 @@
            "cheese_hard"
           ],
           "temp": "6–8"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Blanc de Noirs",
@@ -1269,7 +1276,8 @@
            "cheese_hard"
           ],
           "temp": "8–10"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Mycorhize Grand Cru",
@@ -1482,7 +1490,8 @@
            "cheese_hard"
           ],
           "temp": "10–12"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Cristal 2015",
@@ -1672,7 +1681,8 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Version Originale",
@@ -2229,7 +2239,8 @@
            "mushrooms"
           ],
           "temp": "12–14"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Ottocento bijeli 2020",
@@ -2421,7 +2432,8 @@
            "grilled_fish"
           ],
           "temp": "10–12"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Dan po dan 2022",
@@ -2568,7 +2580,8 @@
            "spicy"
           ],
           "temp": "8–10"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Riesling Schieferterrassen 2023",
@@ -3627,7 +3640,8 @@
            "solo"
           ],
           "temp": "12–14"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Saint-Aubin 1er Cru Les Frionnes 2023",
@@ -3867,7 +3881,8 @@
            "shellfish"
           ],
           "temp": "10–12"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Riesling 2022",
@@ -5055,7 +5070,8 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Jeka 2019",
@@ -5103,7 +5119,8 @@
            "game"
           ],
           "temp": "16–18"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Red 2019",
@@ -5348,7 +5365,8 @@
            "truffles"
           ],
           "temp": "16–18"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Vosne-Romanée Les Barreaux 2022",
@@ -5516,7 +5534,8 @@
            "solo"
           ],
           "temp": "16–18"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Chambolle-Musigny 2018",
@@ -5976,7 +5995,8 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Barbaresco Pajé 2019",
@@ -6623,7 +6643,8 @@
            "solo"
           ],
           "temp": "16–18"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Valpolicella Superiore 2015",
@@ -6671,7 +6692,8 @@
            "truffles"
           ],
           "temp": "16–18"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Montevertine 2019",
@@ -7545,7 +7567,8 @@
            "nuts"
           ],
           "temp": "12–14"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Tasel – 0,375 l",
@@ -7824,7 +7847,8 @@
            "cheese_blue"
           ],
           "temp": "10–12"
-         }
+         },
+         "recommended": true
         }
        ]
       }

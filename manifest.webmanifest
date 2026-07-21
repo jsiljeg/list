@@ -1,0 +1,14 @@
+{
+  "name": "Theatrium by Filho — Wine & Drinks List",
+  "short_name": "Theatrium",
+  "description": "Digital wine and drinks list of Theatrium by Filho, Teslina 7, Zagreb.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#161513",
+  "theme_color": "#161513",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
