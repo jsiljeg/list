@@ -37,7 +37,8 @@ Tablet-first digital wine/drinks list for **Theatrium by Filho** (Teslina 7, Zag
 - [x] Wine detail views with insights (grape, region, style, body, aromas, pairings, serving temp) in all 5 languages
 - [x] Local verify (HTTP 200 on all resources, node --check, i18n/data key consistency). Visual check on a real tablet viewport still worth doing.
 - [x] GitHub Actions Pages workflow (`.github/workflows/deploy.yml`, deploys repo root); Pages enabled with build_type=workflow; deploy run green. `theatrium` GH environment created — **secrets/vars still empty (need Cloudflare token from owner)**.
-- [ ] Cloudflare DNS: CNAME `theatrium.list` → `jsiljeg.github.io`, **DNS-only (grey cloud)** — blocked on owner's Cloudflare API token (or owner adds the record manually in the dashboard). Custom domain already set on Pages; after DNS resolves, enable "Enforce HTTPS" (`gh api -X PUT repos/jsiljeg/list/pages -f https_enforced=true` once cert is issued).
+- [x] Cloudflare DNS: CNAME `theatrium.list` → `jsiljeg.github.io` created DNS-only (record `76fd1ebd8d55416347dc987d8ac65308`, zone `80ee450e09773979a46dc1336e1ab1a1`). Token stored as `CLOUDFLARE_API_TOKEN` secret + `CLOUDFLARE_ZONE_ID`/`SITE_DOMAIN` variables in GH environment `theatrium`. **Site live over HTTP.**
+- [ ] HTTPS: waiting for GitHub to issue the Let's Encrypt cert, then `gh api -X PUT repos/jsiljeg/list/pages -f https_enforced=true` (background poll doing this automatically; verify `https_enforced` later).
 - [x] QR code (`assets/qr.png`, `assets/qr.svg`, printable `qr.html`) for https://theatrium.list.devinos.hr
 - [x] Commit & push to `main`
 
