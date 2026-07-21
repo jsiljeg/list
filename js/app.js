@@ -225,12 +225,26 @@ function renderContent() {
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (picksOnly) {
     let total = 0;
+    let newHtml = "";
+    DATA.sections.forEach((sec, si) => {
+      sec.categories.forEach((cat, ci) => {
+        cat.groups.forEach((g, gi) => {
+          g.items.forEach((item, ii) => {
+            if (!item.new) return;
+            total++;
+            const ctx = [t.sections[sec.id], g.country ? t.countries[g.country] : null].filter(Boolean).join(" · ");
+            newHtml += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
+          });
+        });
+      });
+    });
+    if (newHtml) html += `<section class="cat"><h2 class="cat-title">${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">◆</div>${newHtml}</section>`;
     DATA.sections.forEach((sec, si) => {
       let secHtml = "";
       sec.categories.forEach((cat, ci) => {
         cat.groups.forEach((g, gi) => {
           g.items.forEach((item, ii) => {
-            if (!item.recommended && !item.new) return;
+            if (!item.recommended) return;
             total++;
             const ctx = g.country ? t.countries[g.country] : null;
             secHtml += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
@@ -326,11 +340,11 @@ const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [0
    Riesling, Cabernet/Merlot, Pinot Noir with its flared lip, and a
    small dessert tulip. Open rims, hair-thin stems. */
 const GLASS_ICONS = {
-  champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M14.8,4 C13.4,16 13,25 14.3,33 C15.7,40.5 17.6,43.6 20,44.6 C22.4,43.6 24.3,40.5 25.7,33 C27,25 26.6,16 25.2,4"/><path d="M20,44.6 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>',
-  white: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.2,8 C11.4,18 10.9,27 12.7,35.5 C14.4,43 16.8,46 20,47 C23.2,46 25.6,43 27.3,35.5 C29.1,27 28.6,18 26.8,8"/><path d="M20,47 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>',
-  bordeaux: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M12.6,4 C10.2,17 9.4,29 11.2,38.5 C13.2,47 16.2,50 20,51 C23.8,50 26.8,47 28.8,38.5 C30.6,29 29.8,17 27.4,4"/><path d="M20,51 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>',
-  burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M12.3,4 C13.6,5.6 13.8,6.4 13.4,7.4 C9.6,13.8 7.6,22 9.2,30 C11.2,40.6 14.8,45.4 20,46.4 C25.2,45.4 28.8,40.6 30.8,30 C32.4,22 30.4,13.8 26.6,7.4 C26.2,6.4 26.4,5.6 27.7,4"/><path d="M20,46.4 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>',
-  dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15.2,22 C13.9,30 13.7,36 15,42 C16.4,47 18,49.2 20,50 C22,49.2 23.6,47 25,42 C26.3,36 26.1,30 24.8,22"/><path d="M20,50 V88"/><path d="M11.5,92.5 c3.4,-2.8 13.6,-2.8 17,0"/></svg>'
+  champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15.5,6 C14.2,13 13.5,22 13.5,29 L20,46 L26.5,29 C26.5,22 25.8,13 24.5,6 L15.5,6"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  white: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  bordeaux: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,4 C11,12 9.5,22 9.5,30 L20,50 L30.5,30 C30.5,22 29,12 27,4 L13,4"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M12.5,6 C10,14 7.8,22 7.8,28 L20,46 L32.2,28 C32.2,22 30,14 27.5,6 L12.5,6"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
 function glassFor(style, grape) {
   if (!style) return null;
