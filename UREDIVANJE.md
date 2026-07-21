@@ -52,6 +52,33 @@ tekst svojim riječima:
 },
 ```
 
+### Dodati oznaku vintagea / rijetkosti (bedž)
+Dodajte polje `tags` s jednom ili više vrijednosti:
+```json
+"tags": ["legendary_vintage", "rare"],
+```
+Dopušteno: `legendary_vintage` (legendarna berba), `excellent_vintage`
+(izvrsna berba), `rare` (rijetka boca), `drinking_now` (za piti sada).
+Prikazuju se kao zlatni/ljubičasti bedževi u detaljima vina.
+
+### Tekst o vinaru (prikazuje se u detaljima svih njegovih vina)
+Uređuje se u zasebnoj datoteci `data/producers.json`, po vinaru (ne po
+vinu). Nađite vinara po imenu ili dodajte novog:
+```json
+"Miloš": {
+ "region": "Pelješac, Dalmacija",
+ "blurb": { "hr": "…", "en": "…", "it": "…", "fr": "…", "de": "…", "zh": "…" }
+}
+```
+Ime vinara mora se podudarati s onim u `wines.json` (dovoljno je da je
+sadržano — npr. ključ `"Clai"` pokriva i `"Giorgio Clai"`).
+
+### Preporuka jela uz vino
+Ovo se **ne uređuje ručno** — aplikacija sama predlaže 1–2 jela iz
+menija (`data/menu.json`) prema profilu vina. Ako se promijeni jelovnik,
+uredite `data/menu.json` (ista pravila kao za vina: `pairings` i
+`styles` su ključne riječi iz `js/i18n.js`).
+
 ### Dodati ocjenu kritičara
 ```json
 "ratings": [
