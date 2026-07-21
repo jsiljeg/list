@@ -113,7 +113,7 @@ function showStory() {
   $("story-body").innerHTML =
     `<h2 class="story-title">${esc(t.story.title)}</h2>` +
     t.story.paras.map((p) => `<p>${esc(p)}</p>`).join("") +
-    `<p class="story-legend"><span class="rec-badge">★</span> ${esc(t.ui.recommended)}</p>`;
+    `<div class="story-legend">${legendHtml()}</div>`;
   $("story-enter").textContent = t.ui.enter;
   window.scrollTo({ top: 0 });
 }
@@ -182,10 +182,42 @@ function priceHtml(item) {
   return `<span class="item-price">${fmtPrice(item.price)}&nbsp;€</span>`;
 }
 
+/* minimalist gold marker icons for the list + legend */
+const ICONS = {
+  star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.5 1.55 6.74L12 17.2 5.85 20.6 7.4 13.86 2.2 9.36l6.9-.6z"/></svg>',
+  crown: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.2 3.4L12 4l4.8 7.4L21 8l-1.7 11H4.7L3 8z"/></svg>',
+  sparkle: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 7.6L21.5 12l-7.6 2.4L12 22l-1.9-7.6L2.5 12l7.6-2.4z"/></svg>',
+  gem: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3h12l3.5 6L12 21.5 2.5 9zM2.5 9h19M8.5 3l-2.5 6 6 12.5 6-12.5-2.5-6"/></svg>',
+  glass: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10l-1.3 8.5a3.7 3.7 0 0 1-7.4 0zM12 15.5V21M8 21h8"/></svg>',
+  trophy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v4a5 5 0 0 1-10 0zM7 5H4v2a3 3 0 0 0 3 3M17 5h3v2a3 3 0 0 1-3 3M12 13v4M8.5 21h7M9.5 21l.5-4h4l.5 4"/></svg>'
+};
+const TAG_ICON = { legendary_vintage: "crown", excellent_vintage: "sparkle", rare: "gem", drinking_now: "glass" };
+
+function markerIcons(item) {
+  const t = T();
+  let h = "";
+  if (item.recommended) h += `<span class="marker" title="${esc(t.ui.recommended)}">${ICONS.star}</span>`;
+  (item.tags || []).forEach((tg) => {
+    if (TAG_ICON[tg]) h += `<span class="marker" title="${esc(t.tags[tg] || tg)}">${ICONS[TAG_ICON[tg]]}</span>`;
+  });
+  if (item.ratings && item.ratings.length) h += `<span class="marker" title="${esc(t.ui.bestRated)}">${ICONS.trophy}</span>`;
+  return h;
+}
+
+function legendHtml() {
+  const t = T();
+  const items = [["star", t.ui.recommended], ["crown", t.tags.legendary_vintage],
+    ["sparkle", t.tags.excellent_vintage], ["gem", t.tags.rare],
+    ["glass", t.tags.drinking_now], ["trophy", t.ui.bestRated]];
+  return `<div class="legend">` + items.map(([ic, lbl]) =>
+    `<span class="legend-item"><span class="marker">${ICONS[ic]}</span>${esc(lbl)}</span>`).join("") + `</div>`;
+}
+
 function nameHtml(item) {
   const marked = esc(item.name).replace(/((?:19|20)\d{2})/, '<span class="vintage">$1</span>');
+  const marks = markerIcons(item);
   return marked +
-    (item.recommended ? ` <span class="rec-badge" title="${esc(T().ui.recommended)}">★</span>` : "") +
+    (marks ? ` <span class="markers">${marks}</span>` : "") +
     (item.new ? ` <span class="new-badge">${esc(T().ui.newBadge)}</span>` : "");
 }
 
@@ -354,7 +386,7 @@ function openDetail(ref) {
     ${item.producer ? `<div class="detail-producer">${esc(item.producer)}</div>` : ""}
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
     ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
-    ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
+    ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
     <div class="detail-style">${esc(t.styles[ins.style] || "")}</div>

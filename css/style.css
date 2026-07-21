@@ -193,6 +193,9 @@ body {
   transform: translateY(-.28em);
 }
 .vintage { color: var(--text-dim); font-size: .82em; }
+.markers { display: inline-flex; align-items: center; gap: .3em; vertical-align: middle; margin-left: .15em; }
+.marker { width: .82em; height: .82em; display: inline-block; color: var(--gold); line-height: 0; }
+.marker svg { width: 100%; height: 100%; display: block; }
 .item.clickable { cursor: pointer; transition: background .15s; }
 .item.clickable:hover, .item.clickable:focus-visible { background: var(--bg-raised); outline: none; }
 .item-name {
@@ -292,6 +295,7 @@ body {
 
 /* vintage / rarity badges */
 .detail-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin: .7rem 0 .2rem; }
+.wine-tag .marker { width: 13px; height: 13px; margin-right: .25em; vertical-align: -2px; }
 .wine-tag {
   padding: .22rem .7rem; border-radius: 999px;
   font-size: .74rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
@@ -364,11 +368,10 @@ body {
   font-family: var(--serif); font-size: 2.6em; float: left;
   line-height: .85; padding-right: .12em; color: var(--gold);
 }
-.story-legend {
-  margin-top: 1.8rem; padding-top: 1rem;
-  border-top: 1px solid var(--line);
-  color: var(--text-dim) !important; font-size: .9rem; text-align: center;
-}
+.story-legend { margin-top: 1.8rem; padding-top: 1.1rem; border-top: 1px solid var(--line); }
+.legend { display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; justify-content: center; max-width: 540px; margin: 0 auto; }
+.legend-item { display: flex; align-items: center; gap: .5rem; color: var(--text-dim); font-family: var(--sans); font-size: .92rem; }
+.legend-item .marker { width: 18px; height: 18px; }
 
 /* ---------- Helper wizard ---------- */
 .helper-title {

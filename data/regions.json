@@ -1,0 +1,89 @@
+{
+ "_comment": "Wine regions shown in the Regions view. Each has a schematic map (drawn in js/app.js REGION_MAPS by id) and a Filho-voice terroir blurb in all 6 languages.",
+ "regions": [
+  {
+   "id": "champagne", "country": "FR",
+   "name": {"hr":"Champagne","en":"Champagne","it":"Champagne","fr":"Champagne","de":"Champagne","zh":"香槟"},
+   "sub": {"hr":"Kreda, hladnoća i strpljenje","en":"Chalk, cold and patience","it":"Creta, freddo e pazienza","fr":"Craie, froid et patience","de":"Kalk, Kälte und Geduld","zh":"白垩、寒冷与耐心"},
+   "appellations": ["Montagne de Reims", "Vallée de la Marne", "Côte des Blancs", "Avize", "Aÿ", "Ambonnay", "Le Mesnil"],
+   "blurb": {
+    "hr": "Najsjevernija velika francuska regija: hladna klima i duboka kreda daju napetost i finoću mjehurića. Montagne de Reims nosi Pinot Noir, Côte des Blancs čisti Chardonnay, a Vallée de la Marne Pinot Meunier — Champagne kao elegancija, a ne pozlata.",
+    "en": "France's northernmost great region: a cold climate and deep chalk give the bubbles their tension and finesse. The Montagne de Reims carries Pinot Noir, the Côte des Blancs pure Chardonnay, the Vallée de la Marne Pinot Meunier — Champagne as elegance, not gilding.",
+    "it": "La regione grande più a nord della Francia: clima freddo e creta profonda danno alle bollicine tensione e finezza. La Montagne de Reims porta il Pinot Noir, la Côte des Blancs lo Chardonnay puro, la Vallée de la Marne il Pinot Meunier — lo Champagne come eleganza, non doratura.",
+    "fr": "La région septentrionale par excellence : climat froid et craie profonde donnent aux bulles leur tension et leur finesse. La Montagne de Reims porte le pinot noir, la Côte des Blancs le chardonnay pur, la Vallée de la Marne le pinot meunier — le champagne comme élégance, non comme dorure.",
+    "de": "Frankreichs nördlichste große Region: kühles Klima und tiefer Kalk geben den Perlen Spannung und Finesse. Die Montagne de Reims trägt Pinot Noir, die Côte des Blancs reinen Chardonnay, das Marnetal Pinot Meunier — Champagner als Eleganz, nicht als Vergoldung.",
+    "zh": "法国最北端的伟大产区：寒冷气候与深厚白垩土赋予气泡张力与细腻。兰斯山出黑皮诺，白丘产纯霞多丽，马恩河谷孕育莫尼耶皮诺——香槟意味着优雅，而非镀金。"
+   }
+  },
+  {
+   "id": "burgundy", "country": "FR",
+   "name": {"hr":"Burgundija — Côte d'Or","en":"Burgundy — Côte d'Or","it":"Borgogna — Côte d'Or","fr":"Bourgogne — Côte d'Or","de":"Burgund — Côte d'Or","zh":"勃艮第 — 金丘"},
+   "sub": {"hr":"Srce Filhove karte","en":"The heart of Filho's list","it":"Il cuore della carta di Filho","fr":"Le cœur de la carte de Filho","de":"Das Herz von Filhos Karte","zh":"Filho 酒单的核心"},
+   "appellations": ["Gevrey-Chambertin", "Vosne-Romanée", "Nuits-St-Georges", "Beaune", "Pommard", "Volnay", "Meursault", "Puligny", "Chassagne", "Saint-Aubin"],
+   "blurb": {
+    "hr": "Tanka vrpca vapnenca i lapora između Dijona i juga, podijeljena na stotine climata — mikroparcela s vlastitim mikroklimatom. Côte de Nuits daje velike crvene Pinote, Côte de Beaune najveće bijele Chardonnaye; preciznost kirurga i osjećaj pjesnika.",
+    "en": "A thin ribbon of limestone and marl between Dijon and the south, divided into hundreds of climats — micro-parcels each with their own microclimate. The Côte de Nuits gives the great red Pinots, the Côte de Beaune the greatest white Chardonnays; a surgeon's precision and a poet's feeling.",
+    "it": "Un sottile nastro di calcare e marna tra Digione e il sud, diviso in centinaia di climat — micro-parcelle ciascuna col proprio microclima. La Côte de Nuits dà i grandi Pinot rossi, la Côte de Beaune i più grandi Chardonnay bianchi; precisione di chirurgo e sensibilità di poeta.",
+    "fr": "Un mince ruban de calcaire et de marne entre Dijon et le sud, divisé en centaines de climats — des micro-parcelles au microclimat propre. La Côte de Nuits donne les grands pinots rouges, la Côte de Beaune les plus grands chardonnays blancs ; précision de chirurgien et sensibilité de poète.",
+    "de": "Ein schmales Band aus Kalk und Mergel zwischen Dijon und dem Süden, in Hunderte Climats geteilt — Mikroparzellen mit je eigenem Mikroklima. Die Côte de Nuits gibt die großen roten Pinots, die Côte de Beaune die größten weißen Chardonnays; Chirurgenpräzision und Dichtergefühl.",
+    "zh": "第戎与南部之间一条狭长的石灰岩与泥灰岩带，划分为数百个 climat——各具微气候的微型地块。夜丘出伟大的红皮诺，博讷丘产最卓越的白霞多丽；外科医生的精准，诗人的情感。"
+   }
+  },
+  {
+   "id": "bordeaux", "country": "FR",
+   "name": {"hr":"Bordeaux","en":"Bordeaux","it":"Bordeaux","fr":"Bordeaux","de":"Bordeaux","zh":"波尔多"},
+   "sub": {"hr":"Dvije obale, jedna estuarija","en":"Two banks, one estuary","it":"Due rive, un estuario","fr":"Deux rives, un estuaire","de":"Zwei Ufer, ein Ästuar","zh":"两岸，一河口"},
+   "appellations": ["Médoc", "Saint-Estèphe", "Pauillac", "Saint-Julien", "Margaux", "Saint-Émilion", "Pomerol", "Graves", "Sauternes"],
+   "blurb": {
+    "hr": "Estuarij Gironde dijeli regiju na dvije obale: šljunčani Lijevi breg (Médoc) gdje vlada Cabernet Sauvignon, i glineni Desni breg (Saint-Émilion, Pomerol) gdje blista Merlot. Na jugu, magle Sauternesa rađaju plemenitu plijesan i besmrtne slatke bijele.",
+    "en": "The Gironde estuary splits the region into two banks: the gravelly Left Bank (Médoc) where Cabernet Sauvignon rules, and the clay Right Bank (Saint-Émilion, Pomerol) where Merlot shines. To the south, the mists of Sauternes breed noble rot and immortal sweet whites.",
+    "it": "L'estuario della Gironda divide la regione in due rive: la Riva Sinistra ghiaiosa (Médoc) dove regna il Cabernet Sauvignon, e la Riva Destra argillosa (Saint-Émilion, Pomerol) dove brilla il Merlot. A sud, le nebbie di Sauternes generano la muffa nobile e immortali bianchi dolci.",
+    "fr": "L'estuaire de la Gironde partage la région en deux rives : la rive gauche graveleuse (Médoc) où règne le cabernet sauvignon, et la rive droite argileuse (Saint-Émilion, Pomerol) où brille le merlot. Au sud, les brumes de Sauternes engendrent la pourriture noble et d'immortels blancs liquoreux.",
+    "de": "Das Gironde-Ästuar teilt die Region in zwei Ufer: das kiesige linke Ufer (Médoc), wo Cabernet Sauvignon herrscht, und das lehmige rechte Ufer (Saint-Émilion, Pomerol), wo Merlot glänzt. Im Süden bringen die Nebel von Sauternes die Edelfäule und unsterbliche Süßweine hervor.",
+    "zh": "吉伦特河口将产区分为两岸：砾石左岸（梅多克）由赤霞珠主宰，黏土右岸（圣埃美隆、波美侯）美乐闪耀。南部，苏玳的雾气孕育贵腐霉与不朽的甜白。"
+   }
+  },
+  {
+   "id": "piedmont", "country": "IT",
+   "name": {"hr":"Piemont — Langhe","en":"Piedmont — Langhe","it":"Piemonte — Langhe","fr":"Piémont — Langhe","de":"Piemont — Langhe","zh":"皮埃蒙特 — 朗格"},
+   "sub": {"hr":"Nebbiolo, magla i brežuljci","en":"Nebbiolo, fog and hills","it":"Nebbiolo, nebbia e colline","fr":"Nebbiolo, brouillard et collines","de":"Nebbiolo, Nebel und Hügel","zh":"内比奥罗、雾与丘陵"},
+   "appellations": ["Barolo", "Barbaresco", "La Morra", "Alba", "Langhe"],
+   "blurb": {
+    "hr": "Brežuljci Langhe oko Albe, često umotani u jesenju maglu (nebbia) po kojoj je Nebbiolo dobio ime. Barolo na jugozapadu daje snažna, dugovječna vina, Barbaresco na sjeveroistoku nešto elegantnija — ruža, katran i vrijeme.",
+    "en": "The Langhe hills around Alba, often wrapped in the autumn fog (nebbia) that gives Nebbiolo its name. Barolo to the south-west gives powerful, long-lived wines, Barbaresco to the north-east something more elegant — rose, tar and time.",
+    "it": "Le colline delle Langhe attorno ad Alba, spesso avvolte nella nebbia autunnale che dà il nome al Nebbiolo. Il Barolo a sud-ovest dà vini potenti e longevi, il Barbaresco a nord-est qualcosa di più elegante — rosa, catrame e tempo.",
+    "fr": "Les collines des Langhe autour d'Alba, souvent enveloppées du brouillard d'automne (nebbia) qui donne son nom au nebbiolo. Le barolo au sud-ouest donne des vins puissants et de longue garde, le barbaresco au nord-est quelque chose de plus élégant — rose, goudron et temps.",
+    "de": "Die Langhe-Hügel um Alba, oft in den Herbstnebel (nebbia) gehüllt, der dem Nebbiolo seinen Namen gibt. Barolo im Südwesten gibt kraftvolle, langlebige Weine, Barbaresco im Nordosten etwas Eleganteres — Rose, Teer und Zeit.",
+    "zh": "阿尔巴周边的朗格丘陵，常被赋予内比奥罗之名的秋雾（nebbia）笼罩。西南的巴罗洛出强劲耐陈的酒，东北的巴巴莱斯科则更为优雅——玫瑰、焦油与时光。"
+   }
+  },
+  {
+   "id": "tuscany", "country": "IT",
+   "name": {"hr":"Toskana","en":"Tuscany","it":"Toscana","fr":"Toscane","de":"Toskana","zh":"托斯卡纳"},
+   "sub": {"hr":"Sangiovese i obala","en":"Sangiovese and the coast","it":"Sangiovese e la costa","fr":"Sangiovese et la côte","de":"Sangiovese und die Küste","zh":"桑娇维塞与海岸"},
+   "appellations": ["Chianti Classico", "Montalcino", "Bolgheri", "Maremma"],
+   "blurb": {
+    "hr": "Unutrašnja brda daju Sangiovese — Chianti Classico i moćni Brunello iz Montalcina. Uz obalu, u Bolgheriju, morski povjetarac i šljunak rađaju bordoške sorte i legendu supertoskanaca.",
+    "en": "The inland hills give Sangiovese — Chianti Classico and the powerful Brunello of Montalcino. On the coast, in Bolgheri, sea breeze and gravel raise Bordeaux varieties and the legend of the Super Tuscans.",
+    "it": "Le colline interne danno il Sangiovese — il Chianti Classico e il potente Brunello di Montalcino. Sulla costa, a Bolgheri, la brezza marina e la ghiaia allevano le varietà bordolesi e la leggenda dei Super Tuscan.",
+    "fr": "Les collines intérieures donnent le sangiovese — le Chianti Classico et le puissant Brunello de Montalcino. Sur la côte, à Bolgheri, la brise marine et les graves élèvent les cépages bordelais et la légende des Super Toscans.",
+    "de": "Die Hügel im Landesinneren geben Sangiovese — Chianti Classico und den kraftvollen Brunello di Montalcino. An der Küste, in Bolgheri, ziehen Meeresbrise und Kies die Bordeaux-Sorten und die Legende der Super Tuscans groß.",
+    "zh": "内陆丘陵孕育桑娇维塞——基安蒂经典与蒙塔奇诺强劲的布鲁奈罗。海岸的博格利，海风与砾石培育波尔多品种，成就超级托斯卡纳的传奇。"
+   }
+  },
+  {
+   "id": "dalmatia", "country": "HR",
+   "name": {"hr":"Dalmacija","en":"Dalmatia","it":"Dalmazia","fr":"Dalmatie","de":"Dalmatien","zh":"达尔马提亚"},
+   "sub": {"hr":"Kamen, sunce i more","en":"Stone, sun and sea","it":"Pietra, sole e mare","fr":"Pierre, soleil et mer","de":"Stein, Sonne und Meer","zh":"岩石、阳光与海"},
+   "appellations": ["Pelješac — Dingač", "Postup", "Korčula", "Komarna", "Hvar"],
+   "blurb": {
+    "hr": "Strme, kamenite padine Pelješca spuštaju se prema moru — na Dingaču i Postupu Plavac mali sazrijeva pod trostrukim suncem: s neba, od mora i od bijelog kamena. Otoci Korčula i Hvar daju bijele Pošip i Grk, žive i mineralne.",
+    "en": "The steep, stony slopes of Pelješac drop toward the sea — on Dingač and Postup, Plavac Mali ripens under a triple sun: from the sky, from the sea, and from the white stone. The islands of Korčula and Hvar give the white Pošip and Grk, alive and mineral.",
+    "it": "I ripidi pendii pietrosi di Pelješac scendono verso il mare — a Dingač e Postup il Plavac Mali matura sotto un triplo sole: dal cielo, dal mare e dalla pietra bianca. Le isole di Korčula e Hvar danno i bianchi Pošip e Grk, vivi e minerali.",
+    "fr": "Les pentes escarpées et pierreuses de Pelješac plongent vers la mer — à Dingač et Postup, le plavac mali mûrit sous un triple soleil : du ciel, de la mer et de la pierre blanche. Les îles de Korčula et Hvar donnent les blancs pošip et grk, vivants et minéraux.",
+    "de": "Die steilen, steinigen Hänge von Pelješac fallen zum Meer ab — auf Dingač und Postup reift Plavac Mali unter dreifacher Sonne: vom Himmel, vom Meer und vom weißen Stein. Die Inseln Korčula und Hvar geben die weißen Pošip und Grk, lebendig und mineralisch.",
+    "zh": "佩列沙茨陡峭多石的坡地向海倾泻——在 Dingač 与 Postup，Plavac Mali 在三重阳光下成熟：来自天空、海洋与白石。科尔丘拉与赫瓦尔岛出产白葡萄 Pošip 与 Grk，鲜活而富矿物感。"
+   }
+  }
+ ]
+}
