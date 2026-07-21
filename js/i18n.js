@@ -59,7 +59,7 @@ hr: {
   },
   categories: {
     sparkling: "Pjenušava vina", champagne: "Šampanjac", white: "Bijela vina",
-    orange: "Narančasta vina", red: "Crna vina", rose: "Rosé vina",
+    orange: "Macerirana bijela vina", red: "Crna vina", rose: "Rosé vina",
     dessert: "Desertna vina", vodka: "Vodka", gin: "Gin", vermouth: "Vermut",
     "tequila-mezcal": "Tequila i mezcal", whisky: "Viski", rum: "Rum",
     cognac: "Cognac", shochu: "Shochu", rakija: "Rakija", grappa: "Grappa",
@@ -73,7 +73,7 @@ hr: {
     champagne_rose: "Champagne rosé", champagne_prestige: "Prestižni champagne · kompleksan i zreo",
     white_fresh: "Bijelo · svježe i voćno", white_aromatic: "Bijelo · aromatično",
     white_mineral: "Bijelo · mineralno i precizno", white_rich: "Bijelo · bogato i kremasto",
-    orange: "Narančasto · macerirano na kožici", rose: "Rosé · svježe i lagano",
+    orange: "Macerirano bijelo · odležano na kožici", rose: "Rosé · svježe i lagano",
     red_light: "Crno · lagano i elegantno", red_medium: "Crno · srednje puno",
     red_full: "Crno · puno i snažno", red_mature: "Crno · zrelo, razvijene tercijarne arome",
     sweet: "Slatko · desertno vino"

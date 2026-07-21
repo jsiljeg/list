@@ -71,7 +71,9 @@ function init() {
     .then((d) => {
       DATA = d;
       currentSection = d.sections[0].id;
-      if (lang && I18N[lang]) showApp(); else showStart();
+      const idleReset = sessionStorage.getItem("idle-reset");
+      sessionStorage.removeItem("idle-reset");
+      if (lang && I18N[lang] && !idleReset) showApp(); else showStart();
     });
 }
 
@@ -374,10 +376,10 @@ let lastActivity = Date.now();
 setInterval(() => {
   if (Date.now() - lastActivity < IDLE_MS) return;
   if ($("start").classList.contains("hidden")) {
-    closeModal();
-    picksOnly = false;
-    $("search").value = "";
-    showStart();
+    /* Reload (not just reset): the tablet silently picks up newly
+       deployed versions while idle, then lands on the language screen. */
+    sessionStorage.setItem("idle-reset", "1");
+    location.reload();
   }
 }, 30000);
 
