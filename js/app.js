@@ -335,15 +335,17 @@ const HELPER_STYLE = {
 };
 const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [0, Infinity] };
 
-/* Glass silhouettes drawn after Riedel stemware profiles (the house
-   glassware): Champagne Wine Glass (slim tulip, not a flute),
-   Riesling, Cabernet/Merlot, Pinot Noir with its flared lip, and a
-   small dessert tulip. Open rims, hair-thin stems. */
+/* Glass silhouettes traced from the house stemware (product photos):
+   RIEDEL Veloce Champagne, Veloce Riesling, Veloce Chardonnay (white
+   Burgundy), Winewings Pinot Noir/Nebbiolo (barrel bowl on the flat
+   "wing" base), Winewings Cabernet/Merlot (tall tapered cone on the
+   wing), small dessert tulip. */
 const GLASS_ICONS = {
   champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15.5,6 C14.2,13 13.5,22 13.5,29 L20,46 L26.5,29 C26.5,22 25.8,13 24.5,6 L15.5,6"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  white: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  bordeaux: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,4 C11,12 9.5,22 9.5,30 L20,50 L30.5,30 C30.5,22 29,12 27,4 L13,4"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M12.5,6 C10,14 7.8,22 7.8,28 L20,46 L32.2,28 C32.2,22 30,14 27.5,6 L12.5,6"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  cabernet: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M14.5,4 C12.6,14 11,26 10.4,34 C10,40 10.4,42.8 11.2,44.6 C13.4,46.7 26.6,46.7 28.8,44.6 C29.6,42.8 30,40 29.6,34 C29,26 27.4,14 25.5,4 L14.5,4"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
 function glassFor(style, grape) {
@@ -351,11 +353,12 @@ function glassFor(style, grape) {
   if (style.startsWith("sparkling") || style.startsWith("champagne")) return "champagne";
   if (style === "sweet") return "dessert";
   if (style.startsWith("red")) {
-    /* Riedel logic: Pinot Noir & Nebbiolo take the wide Burgundy bowl
-       with the flared lip; other reds the taller Cabernet shape. */
-    return /pinot|nebbiolo|burgund/i.test(grape || "") || style === "red_light" ? "burgundy" : "bordeaux";
+    /* Winewings varietal logic: Pinot Noir & Nebbiolo take the barrel
+       bowl; Cabernet, Merlot and other cuvées the tall tapered one. */
+    return /pinot|nebbiolo|burgund/i.test(grape || "") || style === "red_light" ? "pinot" : "cabernet";
   }
-  return "white";
+  if (style === "white_rich") return "chardonnay";
+  return "riesling";
 }
 
 const helperState = { step: 0, food: null, style: null };
