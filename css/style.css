@@ -197,6 +197,10 @@ body {
   white-space: nowrap;
 }
 .item-chevron { color: var(--text-faint); font-size: 1.1rem; align-self: center; }
+.item-flag { margin-left: .55rem; line-height: 0; display: inline-block; vertical-align: -3px; }
+.item-flag svg { width: 19px; height: 13px; border-radius: 2px; opacity: .9; box-shadow: 0 0 0 1px rgba(255,255,255,.1); }
+.detail-flag { margin-left: .5rem; line-height: 0; display: inline-block; vertical-align: -2px; }
+.detail-flag svg { width: 21px; height: 14px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
 .search-context { display: block; color: var(--text-faint); font-size: .8rem; margin-top: .15rem; }
 .no-results { color: var(--text-dim); text-align: center; padding: 3rem 0; font-size: 1.05rem; }
 

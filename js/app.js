@@ -152,6 +152,8 @@ function renderNav() {
     b.addEventListener("click", () => {
       currentSection = b.dataset.sec;
       $("search").value = "";
+      picksOnly = false;
+      $("picks-toggle").classList.remove("active");
       renderNav();
       renderContent();
       window.scrollTo({ top: 0 });
@@ -159,9 +161,12 @@ function renderNav() {
   );
 }
 
+const PRICE_LOCALE = { hr: "hr-HR", en: "en-GB", it: "it-IT", fr: "fr-FR", de: "de-DE" };
+const fmtPrice = (n) => n.toLocaleString(PRICE_LOCALE[lang] || "hr-HR");
+
 function priceHtml(item) {
   if (item.price == null) return "";
-  return `<span class="item-price">${item.price}&nbsp;€</span>`;
+  return `<span class="item-price">${fmtPrice(item.price)}&nbsp;€</span>`;
 }
 
 function nameHtml(item) {
@@ -171,7 +176,12 @@ function nameHtml(item) {
     (item.new ? ` <span class="new-badge">${esc(T().ui.newBadge)}</span>` : "");
 }
 
-function itemHtml(item, ref, context) {
+function itemFlag(item) {
+  const c = item.insight && item.insight.country;
+  return c && COUNTRY_FLAGS[c] ? `<span class="item-flag" title="${esc(T().countries[c] || c)}">${COUNTRY_FLAGS[c]()}</span>` : "";
+}
+
+function itemHtml(item, ref, context, showFlag) {
   const clickable = !!item.insight;
   return `<${clickable ? `button class="item clickable" data-ref="${ref}"` : 'div class="item"'}>
     <span class="item-row">
@@ -180,7 +190,7 @@ function itemHtml(item, ref, context) {
       ${priceHtml(item)}
       ${clickable ? '<span class="item-chevron">›</span>' : ""}
     </span>
-    ${item.producer ? `<span class="item-producer">${esc(item.producer)}</span>` : ""}
+    ${item.producer || showFlag ? `<span class="item-producer">${esc(item.producer || "")}${showFlag ? itemFlag(item) : ""}</span>` : ""}
     ${context ? `<span class="search-context">${esc(context)}</span>` : ""}
   </${clickable ? "button" : "div"}>`;
 }
@@ -222,8 +232,7 @@ function renderContent() {
           g.items.forEach((item, ii) => {
             if (!item.recommended && !item.new) return;
             total++;
-            const ctx = g.country ? t.countries[g.country] : null;
-            secHtml += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
+            secHtml += itemHtml(item, [si, ci, gi, ii].join("."), null, true);
           });
         });
       });
@@ -238,7 +247,7 @@ function renderContent() {
       if (cat.priceNote) html += `<p class="price-note">${t.ui.priceNote}</p>`;
       cat.groups.forEach((g, gi) => {
         if (g.country) html += `<h3 class="country">${COUNTRY_FLAGS[g.country] ? `<span class="country-flag">${COUNTRY_FLAGS[g.country]()}</span>` : ""}<span>${esc(t.countries[g.country] || g.country)}</span></h3>`;
-        html += g.items.map((item, ii) => itemHtml(item, [si, ci, gi, ii].join("."))).join("");
+        html += g.items.map((item, ii) => itemHtml(item, [si, ci, gi, ii].join("."), null, !g.country)).join("");
       });
       html += `</section>`;
     });
@@ -260,7 +269,8 @@ function openDetail(ref) {
   const field = (label, value, wide) =>
     value ? `<div class="detail-field${wide ? " wide" : ""}"><div class="detail-label">${label}</div><div class="detail-value">${value}</div></div>` : "";
   const list = (keys, dict) => (keys || []).map((k) => dict[k] || k).join(", ");
-  const region = [esc(ins.region), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
+  const flagSm = COUNTRY_FLAGS[ins.country] ? `<span class="detail-flag">${COUNTRY_FLAGS[ins.country]()}</span>` : "";
+  const region = [esc(ins.region), t.countries[ins.country] || ins.country].filter(Boolean).join(", ") + flagSm;
 
   $("modal-body").innerHTML = `
     <div class="detail-name">${esc(item.name)}</div>
@@ -268,7 +278,7 @@ function openDetail(ref) {
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
     ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
-    ${item.price != null ? `<div class="detail-price">${item.price} €</div>` : ""}
+    ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
     <div class="detail-style">${esc(t.styles[ins.style] || "")}</div>
     <div class="detail-grid">
       ${field(t.ui.grape, esc(ins.grape))}
@@ -362,7 +372,7 @@ function renderHelperResults(budgetKey) {
   scored.sort((a, b) => b.score - a.score);
   const top = scored.slice(0, 3);
   const list = top.length
-    ? top.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("")
+    ? top.map((r) => itemHtml(r.item, r.ref, t.sections[r.sec.id], true)).join("")
     : `<p class="no-results">${t.ui.noResults}</p>`;
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${list}<button class="helper-opt helper-again">${esc(t.helper.again)}</button></div>`;
   $("modal-body").querySelectorAll(".item.clickable").forEach((b) =>
