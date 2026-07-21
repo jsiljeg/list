@@ -31,15 +31,21 @@ Tablet-first digital wine/drinks list for **Theatrium by Filho** (Teslina 7, Zag
 ## Status / TODO
 
 - [x] Scrape site list + identity (fonts, logo URL)
-- [ ] Parse prices PDF → `data/wines.json`
-- [ ] Download logo to `assets/` (a `curl` for it was interrupted — retry)
-- [ ] Build app (HTML/CSS/JS, 5-language i18n)
-- [ ] Wine detail views with generated insights (grape, region, tasting notes, pairings) in all 5 languages
-- [ ] Local run + verify on tablet-sized viewport
-- [ ] GitHub Actions Pages workflow; create `theatrium` GH environment; secrets/vars (need token from owner)
-- [ ] Cloudflare DNS: CNAME `theatrium.list` → `jsiljeg.github.io`, DNS-only; Pages custom domain + HTTPS
-- [ ] QR code for https://theatrium.list.devinos.hr
-- [ ] Commit & push to `main` as work progresses
+- [x] Parse prices PDF → `data/wines.json` (392 items; 319 wines with insight blocks; PDF archived at `data/source/vinska-karta-2025-12-08.pdf`)
+- [x] Download logo to `assets/` (white fill — works on dark bg directly)
+- [x] Build app (HTML/CSS/JS, 5-language i18n; descriptor-key vocabulary translated once in `js/i18n.js` — style/body/aroma/pairing keys in `wines.json` must exist there; run a key-consistency check after editing either file)
+- [x] Wine detail views with insights (grape, region, style, body, aromas, pairings, serving temp) in all 5 languages
+- [x] Local verify (HTTP 200 on all resources, node --check, i18n/data key consistency). Visual check on a real tablet viewport still worth doing.
+- [x] GitHub Actions Pages workflow (`.github/workflows/deploy.yml`, deploys repo root); Pages enabled with build_type=workflow; deploy run green. `theatrium` GH environment created — **secrets/vars still empty (need Cloudflare token from owner)**.
+- [ ] Cloudflare DNS: CNAME `theatrium.list` → `jsiljeg.github.io`, **DNS-only (grey cloud)** — blocked on owner's Cloudflare API token (or owner adds the record manually in the dashboard). Custom domain already set on Pages; after DNS resolves, enable "Enforce HTTPS" (`gh api -X PUT repos/jsiljeg/list/pages -f https_enforced=true` once cert is issued).
+- [x] QR code (`assets/qr.png`, `assets/qr.svg`, printable `qr.html`) for https://theatrium.list.devinos.hr
+- [x] Commit & push to `main`
+
+## Deployment notes (learned 2026-07-21)
+
+- Remote switched to SSH (`git@github.com:jsiljeg/list.git`): the keyring OAuth token lacks `workflow` scope, so HTTPS pushes touching `.github/workflows/` are rejected; SSH pushes work (key authenticates as `jsiljegmrt`).
+- Repo was made **public** (was private) — required for GitHub Pages on the free plan.
+- `https://jsiljeg.github.io/list/` 301-redirects to the custom domain (expected Pages behaviour once cname is set), so the site is only reachable after the DNS record exists.
 
 ## Windows environment notes
 
