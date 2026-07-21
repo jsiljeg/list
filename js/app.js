@@ -178,7 +178,7 @@ function nameHtml(item) {
 
 function itemFlag(item) {
   const c = item.insight && item.insight.country;
-  return c && COUNTRY_FLAGS[c] ? `<span class="item-flag" title="${esc(T().countries[c] || c)}">${COUNTRY_FLAGS[c]()}</span>` : "";
+  return c && COUNTRY_FLAGS[c] ? ` <span class="item-flag" title="${esc(T().countries[c] || c)}">${COUNTRY_FLAGS[c]()}</span>` : "";
 }
 
 function itemHtml(item, ref, context, showFlag) {
@@ -232,28 +232,32 @@ function renderContent() {
           g.items.forEach((item, ii) => {
             if (!item.recommended && !item.new) return;
             total++;
-            secHtml += itemHtml(item, [si, ci, gi, ii].join("."), null, true);
+            const ctx = g.country ? t.countries[g.country] : null;
+            secHtml += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
           });
         });
       });
-      if (secHtml) html += `<section class="cat"><h2 class="cat-title">${esc(t.sections[sec.id])}</h2>${secHtml}</section>`;
+      if (secHtml) html += `<section class="cat"><h2 class="cat-title">${esc(t.sections[sec.id])}</h2><div class="ornament" aria-hidden="true">◆</div>${secHtml}</section>`;
     });
     if (!total) html = `<p class="no-results">${t.ui.noResults}</p>`;
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
     sec.categories.forEach((cat, ci) => {
-      html += `<section class="cat"><h2 class="cat-title">${esc(t.categories[cat.id] || cat.id)}${cat.serving ? ` <span class="cat-serving">${cat.serving}</span>` : ""}</h2>`;
+      html += `<section class="cat"><h2 class="cat-title">${esc(t.categories[cat.id] || cat.id)}${cat.serving ? ` <span class="cat-serving">${cat.serving}</span>` : ""}</h2><div class="ornament" aria-hidden="true">◆</div>`;
       if (cat.priceNote) html += `<p class="price-note">${t.ui.priceNote}</p>`;
       cat.groups.forEach((g, gi) => {
         if (g.country) html += `<h3 class="country">${COUNTRY_FLAGS[g.country] ? `<span class="country-flag">${COUNTRY_FLAGS[g.country]()}</span>` : ""}<span>${esc(t.countries[g.country] || g.country)}</span></h3>`;
-        html += g.items.map((item, ii) => itemHtml(item, [si, ci, gi, ii].join("."), null, !g.country)).join("");
+        html += g.items.map((item, ii) => itemHtml(item, [si, ci, gi, ii].join("."))).join("");
       });
       html += `</section>`;
     });
   }
 
   box.innerHTML = html;
+  box.classList.remove("content-fade");
+  void box.offsetWidth;
+  box.classList.add("content-fade");
   box.querySelectorAll(".item.clickable").forEach((b) =>
     b.addEventListener("click", () => openDetail(b.dataset.ref))
   );
@@ -269,10 +273,12 @@ function openDetail(ref) {
   const field = (label, value, wide) =>
     value ? `<div class="detail-field${wide ? " wide" : ""}"><div class="detail-label">${label}</div><div class="detail-value">${value}</div></div>` : "";
   const list = (keys, dict) => (keys || []).map((k) => dict[k] || k).join(", ");
-  const flagSm = COUNTRY_FLAGS[ins.country] ? `<span class="detail-flag">${COUNTRY_FLAGS[ins.country]()}</span>` : "";
-  const region = [esc(ins.region), t.countries[ins.country] || ins.country].filter(Boolean).join(", ") + flagSm;
+  const region = [esc(ins.region), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
 
+  const glass = glassFor(ins.style);
+  const noteText = item.note && (item.note[lang] || item.note.hr || item.note.en);
   $("modal-body").innerHTML = `
+    ${glass ? `<div class="detail-glass">${GLASS_ICONS[glass]}</div>` : ""}
     <div class="detail-name">${esc(item.name)}</div>
     ${item.producer ? `<div class="detail-producer">${esc(item.producer)}</div>` : ""}
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
@@ -280,6 +286,7 @@ function openDetail(ref) {
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
     <div class="detail-style">${esc(t.styles[ins.style] || "")}</div>
+    ${noteText ? `<div class="detail-note">„${esc(noteText)}“ <span class="detail-note-sig">— Filho</span></div>` : ""}
     <div class="detail-grid">
       ${field(t.ui.grape, esc(ins.grape))}
       ${field(t.ui.region, region)}
@@ -313,6 +320,20 @@ const HELPER_STYLE = {
   bold: { bodies: [], styles: ["orange", "red_mature", "sweet", "champagne_prestige"] }
 };
 const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [0, Infinity] };
+
+const GLASS_ICONS = {
+  flute: '<svg viewBox="0 0 40 72" aria-hidden="true"><path d="M15.5,6 h9 C24.5,24 23.5,31 20,33.5 C16.5,31 15.5,24 15.5,6 Z M20,33.5 V60 M12,64 c3,-2.7 13,-2.7 16,0"/></svg>',
+  white: '<svg viewBox="0 0 40 72" aria-hidden="true"><path d="M12.5,6 h15 C27.5,20 25,28 20,30.5 C15,28 12.5,20 12.5,6 Z M20,30.5 V60 M12,64 c3,-2.7 13,-2.7 16,0"/></svg>',
+  red: '<svg viewBox="0 0 40 72" aria-hidden="true"><path d="M10.5,6 h19 C30,22 26.5,30 20,32.5 C13.5,30 10,22 10.5,6 Z M20,32.5 V60 M12,64 c3,-2.7 13,-2.7 16,0"/></svg>',
+  sweet: '<svg viewBox="0 0 40 72" aria-hidden="true"><path d="M15,14 h10 C25,24 23.5,29 20,31 C16.5,29 15,24 15,14 Z M20,31 V60 M12,64 c3,-2.7 13,-2.7 16,0"/></svg>'
+};
+function glassFor(style) {
+  if (!style) return null;
+  if (style.startsWith("sparkling") || style.startsWith("champagne")) return "flute";
+  if (style === "sweet") return "sweet";
+  if (style.startsWith("red")) return "red";
+  return "white";
+}
 
 const helperState = { step: 0, food: null, style: null };
 

@@ -37,6 +37,10 @@ for (const sec of data.sections) {
         if (item.ratings) for (const r of item.ratings) {
           if (!r.critic || !r.score) errors.push(`${where}: each rating needs "critic" and "score"`);
         }
+        if (item.note != null && (typeof item.note !== "object" || Array.isArray(item.note) ||
+            Object.values(item.note).some((v) => typeof v !== "string"))) {
+          errors.push(`${where}: "note" must be an object like {"hr": "...", "en": "..."}`);
+        }
         const ins = item.insight;
         if (!ins) continue;
         for (const lc of langs) {

@@ -40,6 +40,18 @@ Vino dobiva zlatnu oznaku **NOVO** u popisu i u detaljima te se, uz
 označena ★ vina, pojavljuje u pregledu **„Filhov izbor"** (gumb u
 zaglavlju). Kad vino više nije novost, samo obrišite taj redak.
 
+### Filhova rečenica o vinu (citat u detaljima vina)
+Vino može imati Filhov citat koji se prikazuje u detaljima, na svih
+5 jezika. Zvjezdicom označena vina već ga imaju — slobodno prepravite
+tekst svojim riječima:
+```json
+"note": {
+ "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
+ "en": "Pošip from the stone of Pelješac — nerve and minerality, nothing cosmetic.",
+ "it": "…", "fr": "…", "de": "…"
+},
+```
+
 ### Dodati ocjenu kritičara
 ```json
 "ratings": [

@@ -79,7 +79,14 @@
           ],
           "temp": "6–8"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Plešivica ima živac i preciznost — Pavel je dokaz da pjenušac ne mora nositi francusko ime.",
+          "en": "Plešivica has nerve and precision — Pavel is proof that sparkling wine needs no French name.",
+          "it": "La Plešivica ha nervo e precisione — Pavel è la prova che uno spumante non ha bisogno di un nome francese.",
+          "fr": "Plešivica a du nerf et de la précision — Pavel prouve qu'une bulle n'a pas besoin d'un nom français.",
+          "de": "Plešivica hat Nerv und Präzision — Pavel beweist, dass Schaumwein keinen französischen Namen braucht."
+         }
         },
         {
          "name": "Diplomat",
@@ -103,7 +110,14 @@
           ],
           "temp": "6–8"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Amfora, strpljenje i karakter — Diplomat ne popunjava kategoriju, on je stvara.",
+          "en": "Amphora, patience and character — Diplomat doesn't fill a category, it creates one.",
+          "it": "Anfora, pazienza e carattere — Diplomat non riempie una categoria, la crea.",
+          "fr": "Amphore, patience et caractère — Diplomat ne remplit pas une catégorie, il la crée.",
+          "de": "Amphore, Geduld und Charakter — Diplomat füllt keine Kategorie, er erschafft eine."
+         }
         }
        ]
       }
@@ -338,7 +352,14 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
+          "en": "Pošip from the stone of Pelješac — nerve and minerality, nothing cosmetic.",
+          "it": "Pošip dalla pietra di Pelješac — nervo e mineralità, senza trucco.",
+          "fr": "Un pošip né de la pierre de Pelješac — du nerf et de la minéralité, sans fard.",
+          "de": "Pošip aus dem Stein von Pelješac — Nerv und Mineralität, ganz ohne Schminke."
+         }
         },
         {
          "name": "Pošip 2023",
@@ -411,7 +432,14 @@
           ],
           "temp": "8–10"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Hladniji obronci Saara, napetija berba — rizling koji treba živac, i ima ga.",
+          "en": "The cooler slopes of the Saar, a tense vintage — a Riesling that needs nerve, and has it.",
+          "it": "I pendii più freschi della Saar, un'annata tesa — un Riesling che ha bisogno di nervo, e lo ha.",
+          "fr": "Les pentes fraîches de la Sarre, un millésime tendu — un riesling qui demande du nerf, et qui en a.",
+          "de": "Die kühleren Hänge der Saar, ein gespannter Jahrgang — ein Riesling, der Nerv braucht und ihn hat."
+         }
         },
         {
          "name": "Vistamare 2023",
@@ -922,7 +950,14 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Dalmatinska tradicija bez kompromisa — prošek koji nosi priču starih berbi.",
+          "en": "Dalmatian tradition without compromise — a prošek carrying the story of old harvests.",
+          "it": "La tradizione dalmata senza compromessi — un prošek che porta la storia delle vecchie vendemmie.",
+          "fr": "La tradition dalmate sans compromis — un prošek porteur de l'histoire des vieilles récoltes.",
+          "de": "Dalmatinische Tradition ohne Kompromisse — ein Prošek, der die Geschichte alter Ernten trägt."
+         }
         },
         {
          "name": "Rajnski rizling izborna berba 2019",
@@ -1031,7 +1066,14 @@
           ],
           "temp": "6–8"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Plešivica ima živac i preciznost — Pavel je dokaz da pjenušac ne mora nositi francusko ime.",
+          "en": "Plešivica has nerve and precision — Pavel is proof that sparkling wine needs no French name.",
+          "it": "La Plešivica ha nervo e precisione — Pavel è la prova che uno spumante non ha bisogno di un nome francese.",
+          "fr": "Plešivica a du nerf et de la précision — Pavel prouve qu'une bulle n'a pas besoin d'un nom français.",
+          "de": "Plešivica hat Nerv und Präzision — Pavel beweist, dass Schaumwein keinen französischen Namen braucht."
+         }
         },
         {
          "name": "Diplomat",
@@ -1055,7 +1097,14 @@
           ],
           "temp": "6–8"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Amfora, strpljenje i karakter — Diplomat ne popunjava kategoriju, on je stvara.",
+          "en": "Amphora, patience and character — Diplomat doesn't fill a category, it creates one.",
+          "it": "Anfora, pazienza e carattere — Diplomat non riempie una categoria, la crea.",
+          "fr": "Amphore, patience et caractère — Diplomat ne remplit pas une catégorie, il la crée.",
+          "de": "Amphore, Geduld und Charakter — Diplomat füllt keine Kategorie, er erschafft eine."
+         }
         },
         {
          "name": "Blanc de Noirs",
@@ -1277,7 +1326,14 @@
           ],
           "temp": "8–10"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Avize, Aÿ i Ambonnay — tri velika sela, jedan rukopis: mineralnost bez pozlate.",
+          "en": "Avize, Aÿ and Ambonnay — three great villages, one signature: minerality without gilding.",
+          "it": "Avize, Aÿ e Ambonnay — tre grandi villaggi, un'unica firma: mineralità senza doratura.",
+          "fr": "Avize, Aÿ et Ambonnay — trois grands villages, une seule écriture : la minéralité sans dorure.",
+          "de": "Avize, Aÿ und Ambonnay — drei große Dörfer, eine Handschrift: Mineralität ohne Vergoldung."
+         }
         },
         {
          "name": "Mycorhize Grand Cru",
@@ -1491,7 +1547,14 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Champagne mora biti elegancija, a ne pozlata — Ambonnay u svom najiskrenijem izdanju.",
+          "en": "Champagne must be elegance, not gilding — Ambonnay at its most honest.",
+          "it": "Lo Champagne deve essere eleganza, non doratura — Ambonnay nella sua versione più sincera.",
+          "fr": "Le champagne doit être élégance, non dorure — Ambonnay dans sa version la plus sincère.",
+          "de": "Champagner muss Eleganz sein, nicht Vergoldung — Ambonnay in seiner ehrlichsten Form."
+         }
         },
         {
          "name": "Cristal 2015",
@@ -1692,7 +1755,14 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Vinar koji je promijenio percepciju šampanjca — boca za razmišljanje i za sjećanje.",
+          "en": "The grower who changed how Champagne is understood — a bottle to think with, and to remember.",
+          "it": "Il vignaiolo che ha cambiato la percezione dello Champagne — una bottiglia per riflettere e per ricordare.",
+          "fr": "Le vigneron qui a changé la perception du champagne — une bouteille pour réfléchir et pour se souvenir.",
+          "de": "Der Winzer, der die Wahrnehmung des Champagners verändert hat — eine Flasche zum Nachdenken und zum Erinnern."
+         }
         },
         {
          "name": "Version Originale",
@@ -2256,7 +2326,14 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Malvazija koja pokazuje identitet mjesta — Istra bez kompromisa, vino koje je istinito.",
+          "en": "A Malvazija that shows the identity of its place — Istria without compromise, a wine that tells the truth.",
+          "it": "Una malvasia che mostra l'identità del luogo — l'Istria senza compromessi, un vino che dice la verità.",
+          "fr": "Une malvoisie qui montre l'identité de son lieu — l'Istrie sans compromis, un vin qui dit vrai.",
+          "de": "Eine Malvazija, die die Identität ihres Ortes zeigt — Istrien ohne Kompromisse, ein Wein, der die Wahrheit sagt."
+         }
         },
         {
          "name": "Ottocento bijeli 2020",
@@ -2449,7 +2526,14 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
+          "en": "Pošip from the stone of Pelješac — nerve and minerality, nothing cosmetic.",
+          "it": "Pošip dalla pietra di Pelješac — nervo e mineralità, senza trucco.",
+          "fr": "Un pošip né de la pierre de Pelješac — du nerf et de la minéralité, sans fard.",
+          "de": "Pošip aus dem Stein von Pelješac — Nerv und Mineralität, ganz ohne Schminke."
+         }
         },
         {
          "name": "Dan po dan 2022",
@@ -2597,7 +2681,14 @@
           ],
           "temp": "8–10"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Hladniji obronci Saara, napetija berba — rizling koji treba živac, i ima ga.",
+          "en": "The cooler slopes of the Saar, a tense vintage — a Riesling that needs nerve, and has it.",
+          "it": "I pendii più freschi della Saar, un'annata tesa — un Riesling che ha bisogno di nervo, e lo ha.",
+          "fr": "Les pentes fraîches de la Sarre, un millésime tendu — un riesling qui demande du nerf, et qui en a.",
+          "de": "Die kühleren Hänge der Saar, ein gespannter Jahrgang — ein Riesling, der Nerv braucht und ihn hat."
+         }
         },
         {
          "name": "Riesling Schieferterrassen 2023",
@@ -3657,7 +3748,14 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Preciznost kirurga, osjećaj pjesnika — Saint-Aubin koji stoji uz bok velikim imenima Burgundije.",
+          "en": "A surgeon's precision, a poet's feeling — a Saint-Aubin that stands beside Burgundy's great names.",
+          "it": "La precisione di un chirurgo, la sensibilità di un poeta — un Saint-Aubin alla pari dei grandi nomi di Borgogna.",
+          "fr": "La précision d'un chirurgien, la sensibilité d'un poète — un saint-aubin à la hauteur des grands noms de Bourgogne.",
+          "de": "Die Präzision eines Chirurgen, das Gefühl eines Dichters — ein Saint-Aubin auf Augenhöhe mit Burgunds großen Namen."
+         }
         },
         {
          "name": "Saint-Aubin 1er Cru Les Frionnes 2023",
@@ -3898,7 +3996,14 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Strmina Chavignola u čaši — klasik i raritet istovremeno, vino koje se pamti.",
+          "en": "The steep slope of Chavignol in a glass — classic and rarity at once, a wine you remember.",
+          "it": "Il pendio ripido di Chavignol nel bicchiere — classico e rarità insieme, un vino che si ricorda.",
+          "fr": "La pente raide de Chavignol dans le verre — classique et rareté à la fois, un vin dont on se souvient.",
+          "de": "Der Steilhang von Chavignol im Glas — Klassiker und Rarität zugleich, ein Wein, den man nicht vergisst."
+         }
         },
         {
          "name": "Riesling 2022",
@@ -5087,7 +5192,14 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Kamen, bura i strpljenje — plavac mali koji dokazuje da hrvatska vina stoje uz bok najboljima.",
+          "en": "Stone, wind and patience — a Plavac Mali proving Croatian wine stands beside the very best.",
+          "it": "Pietra, vento e pazienza — un Plavac Mali che dimostra che il vino croato sta accanto ai migliori.",
+          "fr": "La pierre, le vent et la patience — un plavac mali qui prouve que le vin croate côtoie les meilleurs.",
+          "de": "Stein, Wind und Geduld — ein Plavac Mali, der beweist, dass kroatischer Wein zu den Besten gehört."
+         }
         },
         {
          "name": "Jeka 2019",
@@ -5136,7 +5248,14 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Stare loze Dingača — kompleksnost i zrelost tamo gdje vino trenutno pruža najviše.",
+          "en": "Old vines of Dingač — complexity and maturity where the wine gives its most right now.",
+          "it": "Vecchie vigne di Dingač — complessità e maturità dove il vino oggi dà il massimo.",
+          "fr": "Vieilles vignes de Dingač — complexité et maturité, là où le vin donne aujourd'hui le meilleur.",
+          "de": "Alte Reben von Dingač — Komplexität und Reife, wo der Wein gerade am meisten gibt."
+         }
         },
         {
          "name": "Red 2019",
@@ -5382,7 +5501,14 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Mikroparcele, preciznost, kontinuitet — Vosne-Romanée kakav je Filho upoznao na svojim putovanjima.",
+          "en": "Micro-parcels, precision, continuity — Vosne-Romanée as Filho came to know it on his travels.",
+          "it": "Micro-parcelle, precisione, continuità — il Vosne-Romanée come Filho l'ha conosciuto nei suoi viaggi.",
+          "fr": "Micro-parcelles, précision, continuité — le vosne-romanée tel que Filho l'a découvert au fil de ses voyages.",
+          "de": "Mikroparzellen, Präzision, Kontinuität — Vosne-Romanée, wie Filho es auf seinen Reisen kennengelernt hat."
+         }
         },
         {
          "name": "Vosne-Romanée Les Barreaux 2022",
@@ -5551,7 +5677,14 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Boca koja mijenja percepciju vina — dubina i širina burgundijskog stila u jednom gutljaju.",
+          "en": "A bottle that changes how you see wine — the depth and breadth of Burgundy in a single sip.",
+          "it": "Una bottiglia che cambia la percezione del vino — la profondità e l'ampiezza della Borgogna in un sorso.",
+          "fr": "Une bouteille qui change la perception du vin — la profondeur et l'ampleur de la Bourgogne en une gorgée.",
+          "de": "Eine Flasche, die die Wahrnehmung von Wein verändert — Tiefe und Weite Burgunds in einem Schluck."
+         }
         },
         {
          "name": "Chambolle-Musigny 2018",
@@ -6034,7 +6167,14 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Stare loze, spore maceracije, nula žurbe — Barbaresco s karakterom i razlogom zašto je ovdje.",
+          "en": "Old vines, slow maceration, zero hurry — a Barbaresco with character and a reason to be here.",
+          "it": "Vecchie viti, macerazioni lente, nessuna fretta — un Barbaresco con carattere e una ragione per essere qui.",
+          "fr": "Vieilles vignes, macérations lentes, aucune hâte — un barbaresco avec du caractère et une raison d'être ici.",
+          "de": "Alte Reben, langsame Mazeration, keine Eile — ein Barbaresco mit Charakter und einem Grund, hier zu sein."
+         }
         },
         {
          "name": "Barbaresco Pajé 2019",
@@ -6728,7 +6868,14 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Vino za stol i vino za sjećanje — Amarone koji se ne objašnjava, nego doživljava.",
+          "en": "A wine for the table and a wine for memory — an Amarone not to be explained, but experienced.",
+          "it": "Un vino per la tavola e un vino per la memoria — un Amarone da vivere, non da spiegare.",
+          "fr": "Un vin de table et un vin de mémoire — un amarone qui ne s'explique pas, il se vit.",
+          "de": "Ein Wein für den Tisch und ein Wein für die Erinnerung — ein Amarone, den man nicht erklärt, sondern erlebt."
+         }
         },
         {
          "name": "Valpolicella Superiore 2015",
@@ -6777,7 +6924,14 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Sangiovese s vizijom — vino za razmišljanje i berba koja nosi priču.",
+          "en": "Sangiovese with vision — a wine for thinking, a vintage that carries a story.",
+          "it": "Sangiovese con visione — un vino da meditazione, un'annata che porta una storia.",
+          "fr": "Un sangiovese visionnaire — un vin de réflexion, un millésime porteur d'histoire.",
+          "de": "Sangiovese mit Vision — ein Wein zum Nachdenken, ein Jahrgang, der eine Geschichte trägt."
+         }
         },
         {
          "name": "Montevertine 2019",
@@ -7710,7 +7864,14 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Dalmatinska tradicija bez kompromisa — prošek koji nosi priču starih berbi.",
+          "en": "Dalmatian tradition without compromise — a prošek carrying the story of old harvests.",
+          "it": "La tradizione dalmata senza compromessi — un prošek che porta la storia delle vecchie vendemmie.",
+          "fr": "La tradition dalmate sans compromis — un prošek porteur de l'histoire des vieilles récoltes.",
+          "de": "Dalmatinische Tradition ohne Kompromisse — ein Prošek, der die Geschichte alter Ernten trägt."
+         }
         },
         {
          "name": "Tasel – 0,375 l",
@@ -8010,7 +8171,14 @@
            "critic": "Wine Spectator",
            "score": "98"
           }
-         ]
+         ],
+         "note": {
+          "hr": "Raskoš kultne etikete u trenutku vrhunske ravnoteže — ni premlada, ni preumorna.",
+          "en": "The splendour of a cult label at its point of perfect balance — neither too young nor too tired.",
+          "it": "Lo splendore di un'etichetta di culto nel momento del perfetto equilibrio — né troppo giovane, né troppo stanca.",
+          "fr": "La splendeur d'une étiquette culte à son point d'équilibre parfait — ni trop jeune, ni trop fatiguée.",
+          "de": "Der Glanz eines Kultetiketts im Moment perfekter Balance — weder zu jung noch zu müde."
+         }
         }
        ]
       }
