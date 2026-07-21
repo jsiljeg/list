@@ -58,67 +58,26 @@
          }
         },
         {
-         "name": "Pavel",
-         "producer": "Šember",
+         "name": "Blanc de blanc",
+         "producer": "Menenghetti",
          "price": 9,
          "insight": {
-          "grape": "Chardonnay, Pinot Noir",
-          "region": "Plešivica",
+          "grape": "Chardonnay",
+          "region": "Bale, Istra",
           "country": "HR",
           "style": "sparkling",
           "body": "medium",
           "aromas": [
            "green_apple",
            "brioche",
-           "hazelnut"
+           "citrus"
           ],
           "pairings": [
            "aperitif",
-           "oysters",
-           "white_fish"
-          ],
-          "temp": "6–8"
-         },
-         "recommended": true,
-         "note": {
-          "hr": "Plešivica ima živac i preciznost — Pavel je dokaz da pjenušac ne mora nositi francusko ime.",
-          "en": "Plešivica has nerve and precision — Pavel is proof that sparkling wine needs no French name.",
-          "it": "La Plešivica ha nervo e precisione — Pavel è la prova che uno spumante non ha bisogno di un nome francese.",
-          "fr": "Plešivica a du nerf et de la précision — Pavel prouve qu'une bulle n'a pas besoin d'un nom français.",
-          "de": "Plešivica hat Nerv und Präzision — Pavel beweist, dass Schaumwein keinen französischen Namen braucht.",
-          "zh": "Plešivica 拥有张力与精准——Pavel 证明起泡酒不需要法国名字。"
-         }
-        },
-        {
-         "name": "Diplomat",
-         "producer": "Tomac",
-         "price": 10,
-         "insight": {
-          "grape": "Chardonnay",
-          "region": "Plešivica",
-          "country": "HR",
-          "style": "sparkling",
-          "body": "medium",
-          "aromas": [
-           "quince",
-           "toast",
-           "mineral"
-          ],
-          "pairings": [
-           "oysters",
            "seafood",
-           "cheese_hard"
+           "light_starters"
           ],
           "temp": "6–8"
-         },
-         "recommended": true,
-         "note": {
-          "hr": "Amfora, strpljenje i karakter — Diplomat ne popunjava kategoriju, on je stvara.",
-          "en": "Amphora, patience and character — Diplomat doesn't fill a category, it creates one.",
-          "it": "Anfora, pazienza e carattere — Diplomat non riempie una categoria, la crea.",
-          "fr": "Amphore, patience et caractère — Diplomat ne remplit pas une catégorie, il la crée.",
-          "de": "Amphore, Geduld und Charakter — Diplomat füllt keine Kategorie, er erschafft eine.",
-          "zh": "陶罐、耐心与个性——Diplomat 不是填补品类，而是开创品类。"
          }
         }
        ]
@@ -132,53 +91,6 @@
       {
        "country": null,
        "items": [
-        {
-         "name": "Blanc de Blancs 1er Cru",
-         "producer": "Marc Hébrart",
-         "price": 13,
-         "insight": {
-          "grape": "Chardonnay",
-          "region": "Mareuil-sur-Aÿ, Champagne",
-          "country": "FR",
-          "style": "champagne_bdb",
-          "body": "light",
-          "aromas": [
-           "citrus",
-           "white_flowers",
-           "brioche",
-           "mineral"
-          ],
-          "pairings": [
-           "aperitif",
-           "oysters",
-           "caviar"
-          ],
-          "temp": "8–10"
-         }
-        },
-        {
-         "name": "Mareuil-sur-Aÿ Rosé 1er Cru",
-         "producer": "Marc Hébrart",
-         "price": 13,
-         "insight": {
-          "grape": "Pinot Noir, Chardonnay",
-          "region": "Mareuil-sur-Aÿ, Champagne",
-          "country": "FR",
-          "style": "champagne_rose",
-          "body": "light",
-          "aromas": [
-           "raspberry",
-           "red_currant",
-           "brioche"
-          ],
-          "pairings": [
-           "aperitif",
-           "prosciutto",
-           "seafood"
-          ],
-          "temp": "8–10"
-         }
-        },
         {
          "name": "Brut Classic",
          "producer": "Deutz",
@@ -204,42 +116,20 @@
          }
         },
         {
-         "name": "Le Réserve",
-         "producer": "Billecart-Salmon",
+         "name": "Esprit Nature",
+         "producer": "Henri Giraud",
          "price": 16,
          "insight": {
-          "grape": "Chardonnay, Pinot Noir, Pinot Meunier",
-          "region": "Mareuil-sur-Aÿ, Champagne",
-          "country": "FR",
-          "style": "champagne",
-          "body": "medium",
-          "aromas": [
-           "pear",
-           "white_flowers",
-           "brioche"
-          ],
-          "pairings": [
-           "aperitif",
-           "sushi",
-           "light_starters"
-          ],
-          "temp": "8–10"
-         }
-        },
-        {
-         "name": "Yellow Label Brut",
-         "producer": "Veuve Clicquot",
-         "price": 16,
-         "insight": {
-          "grape": "Pinot Noir, Chardonnay, Pinot Meunier",
-          "region": "Reims, Champagne",
+          "grape": "Pinot Noir, Chardonnay",
+          "region": "Aÿ, Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
           "aromas": [
            "red_apple",
            "brioche",
-           "vanilla"
+           "citrus",
+           "mineral"
           ],
           "pairings": [
            "aperitif",
@@ -287,7 +177,7 @@
         {
          "name": "Menenghetti White",
          "producer": "Menenghetti",
-         "price": 13,
+         "price": 10,
          "insight": {
           "grape": "Chardonnay, Pinot bijeli",
           "region": "Bale, Istra",
@@ -354,7 +244,6 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true,
          "note": {
           "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
           "en": "Pošip from the stone of Pelješac — nerve and minerality, nothing cosmetic.",
@@ -362,7 +251,8 @@
           "fr": "Un pošip né de la pierre de Pelješac — du nerf et de la minéralité, sans fard.",
           "de": "Pošip aus dem Stein von Pelješac — Nerv und Mineralität, ganz ohne Schminke.",
           "zh": "来自佩列沙茨石灰岩的 Pošip——张力与矿物感，毫无粉饰。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Pošip 2023",
@@ -413,7 +303,7 @@
          }
         },
         {
-         "name": "Rausch Kabinett 2024",
+         "name": "Rausch Kabinett 2025",
          "producer": "Zilliken",
          "price": 13,
          "insight": {
@@ -435,7 +325,6 @@
           ],
           "temp": "8–10"
          },
-         "recommended": true,
          "note": {
           "hr": "Hladniji obronci Saara, napetija berba — rizling koji treba živac, i ima ga.",
           "en": "The cooler slopes of the Saar, a tense vintage — a Riesling that needs nerve, and has it.",
@@ -443,28 +332,29 @@
           "fr": "Les pentes fraîches de la Sarre, un millésime tendu — un riesling qui demande du nerf, et qui en a.",
           "de": "Die kühleren Hänge der Saar, ein gespannter Jahrgang — ein Riesling, der Nerv braucht und ihn hat.",
           "zh": "萨尔河凉爽的坡地、紧致的年份——一款需要张力的雷司令，而它正拥有。"
-         }
+         },
+         "recommended": true
         },
         {
-         "name": "Vistamare 2023",
-         "producer": "Ca' Marcanda – Gaja",
-         "price": 13,
+         "name": "Friulano 2023",
+         "producer": "Vie di Romans",
+         "price": 12,
          "insight": {
-          "grape": "Vermentino, Viognier",
-          "region": "Bolgheri, Toscana",
+          "grape": "Friulano",
+          "region": "Friuli Isonzo",
           "country": "IT",
-          "style": "white_aromatic",
+          "style": "white_mineral",
           "body": "medium",
           "aromas": [
-           "peach",
+           "almond",
            "white_flowers",
-           "saline",
-           "herbs"
+           "herbs",
+           "citrus"
           ],
           "pairings": [
            "seafood",
-           "pasta",
-           "white_fish"
+           "white_fish",
+           "prosciutto"
           ],
           "temp": "10–12"
          }
@@ -540,39 +430,29 @@
           ],
           "temp": "10–12"
          }
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "id": "orange",
-     "groups": [
-      {
-       "country": null,
-       "items": [
+        },
         {
-         "name": "Ribolla 2020",
-         "producer": "Damijan Podversic",
+         "name": "Pinot Grigio 2023",
+         "producer": "Vie di Romans",
          "price": 11,
          "insight": {
-          "grape": "Ribolla Gialla",
-          "region": "Gorizia, Furlanija",
+          "grape": "Pinot Grigio",
+          "region": "Friuli Isonzo",
           "country": "IT",
-          "style": "orange",
-          "body": "full",
+          "style": "white_fresh",
+          "body": "medium",
           "aromas": [
-           "orange_peel",
-           "dried_fruit",
-           "honey",
-           "spice"
+           "pear",
+           "citrus",
+           "almond",
+           "mineral"
           ],
           "pairings": [
-           "cheese_hard",
-           "charcuterie",
-           "mushrooms"
+           "seafood",
+           "white_fish",
+           "salads"
           ],
-          "temp": "12–14"
+          "temp": "10–12"
          }
         }
        ]
@@ -657,7 +537,7 @@
          }
         },
         {
-         "name": "Sagul Plavac mali 2017",
+         "name": "Sagul Plavac mali 2022",
          "producer": "Ivan Violić",
          "price": 8,
          "insight": {
@@ -705,7 +585,7 @@
          }
         },
         {
-         "name": "Tribidrag 2021",
+         "name": "Tribidrag 2022",
          "producer": "Rizman",
          "price": 10,
          "insight": {
@@ -801,31 +681,55 @@
          }
         },
         {
-         "name": "Bosconia Tinto Reserva 2013",
-         "producer": "López de Heredia",
-         "price": 11,
+         "name": "Red 2019",
+         "producer": "Menenghetti",
+         "price": 15,
          "insight": {
-          "grape": "Tempranillo, Garnacha, Graciano",
-          "region": "Rioja",
-          "country": "ES",
-          "style": "red_mature",
-          "body": "medium",
+          "grape": "Merlot, Cabernet Sauvignon",
+          "region": "Bale, Istra",
+          "country": "HR",
+          "style": "red_full",
+          "body": "full",
           "aromas": [
-           "dried_fruit",
-           "leather",
-           "tobacco",
-           "balsamic"
+           "blackcurrant",
+           "plum",
+           "cedar",
+           "chocolate"
           ],
           "pairings": [
-           "lamb",
-           "game",
+           "steak",
+           "beef",
            "cheese_hard"
           ],
           "temp": "16–18"
          }
         },
         {
-         "name": "Syrah Le Fales 2023",
+         "name": "Santa Elizabeta 2021",
+         "producer": "Benvenuti",
+         "price": 15,
+         "insight": {
+          "grape": "Muškat",
+          "region": "Motovun, Istra",
+          "country": "HR",
+          "style": "sweet",
+          "body": "full",
+          "aromas": [
+           "apricot",
+           "honey",
+           "candied_fruit",
+           "orange_peel"
+          ],
+          "pairings": [
+           "desserts",
+           "fruit_desserts",
+           "cheese_blue"
+          ],
+          "temp": "10–12"
+         }
+        },
+        {
+         "name": "Syrah Le Fales 2024",
          "producer": "Moret-Nominé",
          "price": 12,
          "insight": {
@@ -844,54 +748,6 @@
            "beef",
            "bbq",
            "stews"
-          ],
-          "temp": "16–18"
-         }
-        },
-        {
-         "name": "Guidalberto Rosso 2020",
-         "producer": "Tenuta San Guido (Sassicaia)",
-         "price": 14,
-         "insight": {
-          "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Bolgheri, Toscana",
-          "country": "IT",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "blackcurrant",
-           "cherry",
-           "cedar",
-           "spice"
-          ],
-          "pairings": [
-           "steak",
-           "beef",
-           "cheese_hard"
-          ],
-          "temp": "16–18"
-         }
-        },
-        {
-         "name": "Le Volte dell'Ornellaia Rosso 2020",
-         "producer": "Tenuta dell'Ornellaia",
-         "price": 12,
-         "insight": {
-          "grape": "Merlot, Sangiovese, Cabernet Sauvignon",
-          "region": "Toscana",
-          "country": "IT",
-          "style": "red_medium",
-          "body": "medium",
-          "aromas": [
-           "cherry",
-           "plum",
-           "spice",
-           "vanilla"
-          ],
-          "pairings": [
-           "pasta",
-           "pizza",
-           "white_meat"
           ],
           "temp": "16–18"
          }
@@ -954,7 +810,6 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true,
          "note": {
           "hr": "Dalmatinska tradicija bez kompromisa — prošek koji nosi priču starih berbi.",
           "en": "Dalmatian tradition without compromise — a prošek carrying the story of old harvests.",
@@ -962,7 +817,8 @@
           "fr": "La tradition dalmate sans compromis — un prošek porteur de l'histoire des vieilles récoltes.",
           "de": "Dalmatinische Tradition ohne Kompromisse — ein Prošek, der die Geschichte alter Ernten trägt.",
           "zh": "毫不妥协的达尔马提亚传统——承载古老年份故事的 prošek。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Rajnski rizling izborna berba 2019",
@@ -1071,7 +927,6 @@
           ],
           "temp": "6–8"
          },
-         "recommended": true,
          "note": {
           "hr": "Plešivica ima živac i preciznost — Pavel je dokaz da pjenušac ne mora nositi francusko ime.",
           "en": "Plešivica has nerve and precision — Pavel is proof that sparkling wine needs no French name.",
@@ -1079,7 +934,8 @@
           "fr": "Plešivica a du nerf et de la précision — Pavel prouve qu'une bulle n'a pas besoin d'un nom français.",
           "de": "Plešivica hat Nerv und Präzision — Pavel beweist, dass Schaumwein keinen französischen Namen braucht.",
           "zh": "Plešivica 拥有张力与精准——Pavel 证明起泡酒不需要法国名字。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Diplomat",
@@ -1103,7 +959,6 @@
           ],
           "temp": "6–8"
          },
-         "recommended": true,
          "note": {
           "hr": "Amfora, strpljenje i karakter — Diplomat ne popunjava kategoriju, on je stvara.",
           "en": "Amphora, patience and character — Diplomat doesn't fill a category, it creates one.",
@@ -1111,7 +966,8 @@
           "fr": "Amphore, patience et caractère — Diplomat ne remplit pas une catégorie, il la crée.",
           "de": "Amphore, Geduld und Charakter — Diplomat füllt keine Kategorie, er erschafft eine.",
           "zh": "陶罐、耐心与个性——Diplomat 不是填补品类，而是开创品类。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Blanc de Noirs",
@@ -1333,7 +1189,6 @@
           ],
           "temp": "8–10"
          },
-         "recommended": true,
          "note": {
           "hr": "Avize, Aÿ i Ambonnay — tri velika sela, jedan rukopis: mineralnost bez pozlate.",
           "en": "Avize, Aÿ and Ambonnay — three great villages, one signature: minerality without gilding.",
@@ -1341,7 +1196,8 @@
           "fr": "Avize, Aÿ et Ambonnay — trois grands villages, une seule écriture : la minéralité sans dorure.",
           "de": "Avize, Aÿ und Ambonnay — drei große Dörfer, eine Handschrift: Mineralität ohne Vergoldung.",
           "zh": "Avize、Aÿ 与 Ambonnay——三个伟大村庄，同一种笔迹：不加镀金的矿物感。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Mycorhize Grand Cru",
@@ -1365,30 +1221,6 @@
            "seafood"
           ],
           "temp": "8–10"
-         }
-        },
-        {
-         "name": "Cuvée des Caudalies 2010",
-         "producer": "De Sousa",
-         "price": 710,
-         "insight": {
-          "grape": "Chardonnay",
-          "region": "Avize, Champagne",
-          "country": "FR",
-          "style": "champagne_prestige",
-          "body": "full",
-          "aromas": [
-           "citrus",
-           "honey",
-           "toast",
-           "hazelnut"
-          ],
-          "pairings": [
-           "caviar",
-           "white_fish",
-           "solo"
-          ],
-          "temp": "10–12"
          }
         },
         {
@@ -1555,7 +1387,6 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true,
          "note": {
           "hr": "Champagne mora biti elegancija, a ne pozlata — Ambonnay u svom najiskrenijem izdanju.",
           "en": "Champagne must be elegance, not gilding — Ambonnay at its most honest.",
@@ -1563,7 +1394,8 @@
           "fr": "Le champagne doit être élégance, non dorure — Ambonnay dans sa version la plus sincère.",
           "de": "Champagner muss Eleganz sein, nicht Vergoldung — Ambonnay in seiner ehrlichsten Form.",
           "zh": "香槟应是优雅，而非镀金——最真诚的 Ambonnay。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Cristal 2015",
@@ -1742,6 +1574,54 @@
          }
         },
         {
+         "name": "Esprit Nature",
+         "producer": "Henri Giraud",
+         "price": 120,
+         "insight": {
+          "grape": "Pinot Noir, Chardonnay",
+          "region": "Aÿ, Champagne",
+          "country": "FR",
+          "style": "champagne",
+          "body": "medium",
+          "aromas": [
+           "red_apple",
+           "brioche",
+           "citrus",
+           "mineral"
+          ],
+          "pairings": [
+           "aperitif",
+           "seafood",
+           "poultry"
+          ],
+          "temp": "8–10"
+         }
+        },
+        {
+         "name": "Hommage au Pinot Noir",
+         "producer": "Henri Giraud",
+         "price": 135,
+         "insight": {
+          "grape": "Pinot Noir",
+          "region": "Aÿ, Champagne",
+          "country": "FR",
+          "style": "champagne",
+          "body": "full",
+          "aromas": [
+           "red_currant",
+           "brioche",
+           "spice",
+           "toast"
+          ],
+          "pairings": [
+           "poultry",
+           "white_meat",
+           "cheese_hard"
+          ],
+          "temp": "10–12"
+         }
+        },
+        {
          "name": "Initial Brut",
          "producer": "Jacques Selosse",
          "price": 560,
@@ -1764,7 +1644,6 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true,
          "note": {
           "hr": "Vinar koji je promijenio percepciju šampanjca — boca za razmišljanje i za sjećanje.",
           "en": "The grower who changed how Champagne is understood — a bottle to think with, and to remember.",
@@ -1772,7 +1651,8 @@
           "fr": "Le vigneron qui a changé la perception du champagne — une bouteille pour réfléchir et pour se souvenir.",
           "de": "Der Winzer, der die Wahrnehmung des Champagners verändert hat — eine Flasche zum Nachdenken und zum Erinnern.",
           "zh": "改变香槟认知的酿酒师——一瓶值得思考与铭记的酒。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Version Originale",
@@ -2004,15 +1884,14 @@
           "style": "champagne_prestige",
           "body": "full",
           "aromas": [
-           "citrus",
+           "dried_fruit",
            "honey",
            "toast",
-           "smoke"
+           "hazelnut"
           ],
           "pairings": [
-           "caviar",
-           "white_fish",
-           "solo"
+           "solo",
+           "caviar"
           ],
           "temp": "10–12"
          }
@@ -2124,29 +2003,6 @@
          }
         },
         {
-         "name": "Blend One 2022",
-         "producer": "Erdoro",
-         "price": 40,
-         "insight": {
-          "grape": "Graševina, Chardonnay, Sauvignon Blanc",
-          "region": "Erdut, Slavonija i Podunavlje",
-          "country": "HR",
-          "style": "white_fresh",
-          "body": "medium",
-          "aromas": [
-           "peach",
-           "citrus",
-           "white_flowers"
-          ],
-          "pairings": [
-           "white_fish",
-           "salads",
-           "white_meat"
-          ],
-          "temp": "10–12"
-         }
-        },
-        {
          "name": "Sauvignon Classy 2022",
          "producer": "Erdoro",
          "price": 75,
@@ -2171,7 +2027,7 @@
          }
         },
         {
-         "name": "Sauvignon 2023",
+         "name": "Sauvignon 2024",
          "producer": "Korak",
          "price": 54,
          "insight": {
@@ -2219,7 +2075,7 @@
          }
         },
         {
-         "name": "Sauvignon 2021",
+         "name": "Sauvignon 2024",
          "producer": "Jakopić",
          "price": 45,
          "insight": {
@@ -2236,13 +2092,13 @@
           "pairings": [
            "salads",
            "cheese_fresh",
-           "light_starters"
+           "asparagus"
           ],
           "temp": "8–10"
          }
         },
         {
-         "name": "Riesling 2023",
+         "name": "Riesling 2024",
          "producer": "Jakopić",
          "price": 45,
          "insight": {
@@ -2266,7 +2122,7 @@
          }
         },
         {
-         "name": "Malvazija 2023",
+         "name": "Malvazija 2025",
          "producer": "Benvenuti",
          "price": 44,
          "insight": {
@@ -2290,7 +2146,7 @@
          }
         },
         {
-         "name": "Grimalda bijela 2020",
+         "name": "Grimalda bijela 2022",
          "producer": "Matošević",
          "price": 60,
          "insight": {
@@ -2314,7 +2170,7 @@
          }
         },
         {
-         "name": "Malvazija Sv. Jakov 2019",
+         "name": "Malvazija Sv. Jakov 2021",
          "producer": "Clai",
          "price": 60,
          "insight": {
@@ -2336,7 +2192,6 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true,
          "note": {
           "hr": "Malvazija koja pokazuje identitet mjesta — Istra bez kompromisa, vino koje je istinito.",
           "en": "A Malvazija that shows the identity of its place — Istria without compromise, a wine that tells the truth.",
@@ -2344,10 +2199,11 @@
           "fr": "Une malvoisie qui montre l'identité de son lieu — l'Istrie sans compromis, un vin qui dit vrai.",
           "de": "Eine Malvazija, die die Identität ihres Ortes zeigt — Istrien ohne Kompromisse, ein Wein, der die Wahrheit sagt.",
           "zh": "展现风土身份的玛尔维萨——毫不妥协的伊斯特拉，一款诚实的酒。"
-         }
+         },
+         "recommended": true
         },
         {
-         "name": "Ottocento bijeli 2020",
+         "name": "Ottocento bijeli 2022",
          "producer": "Clai",
          "price": 62,
          "insight": {
@@ -2371,31 +2227,7 @@
          }
         },
         {
-         "name": "Omo Malvazija 2021",
-         "producer": "Budinski",
-         "price": 80,
-         "insight": {
-          "grape": "Malvazija istarska",
-          "region": "Buzet, Istra",
-          "country": "HR",
-          "style": "orange",
-          "body": "full",
-          "aromas": [
-           "quince",
-           "orange_peel",
-           "herbs",
-           "mineral"
-          ],
-          "pairings": [
-           "truffles",
-           "cheese_hard",
-           "white_meat"
-          ],
-          "temp": "12–14"
-         }
-        },
-        {
-         "name": "Menenghetti white 2022",
+         "name": "Menenghetti white 2023",
          "producer": "Menenghetti",
          "price": 87,
          "insight": {
@@ -2419,7 +2251,7 @@
          }
         },
         {
-         "name": "Le Chiffre 2021",
+         "name": "Le Chiffre 2023",
          "producer": "Saints Hills",
          "price": 140,
          "insight": {
@@ -2443,8 +2275,8 @@
          }
         },
         {
-         "name": "Pošip Intrada 2023",
-         "producer": "Krajančić",
+         "name": "Pošip Intrada 2025",
+         "producer": "Krajčić",
          "price": 73,
          "insight": {
           "grape": "Pošip",
@@ -2467,7 +2299,7 @@
          }
         },
         {
-         "name": "Pošip 2023",
+         "name": "Pošip 2024",
          "producer": "Kunjas",
          "price": 49,
          "insight": {
@@ -2491,7 +2323,7 @@
          }
         },
         {
-         "name": "Grk 2022",
+         "name": "Grk 2024",
          "producer": "Kunjas",
          "price": 63,
          "insight": {
@@ -2515,7 +2347,7 @@
          }
         },
         {
-         "name": "Stalagmit 2021",
+         "name": "Stalagmit 2022",
          "producer": "Miloš",
          "price": 120,
          "insight": {
@@ -2537,7 +2369,6 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true,
          "note": {
           "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
           "en": "Pošip from the stone of Pelješac — nerve and minerality, nothing cosmetic.",
@@ -2545,7 +2376,8 @@
           "fr": "Un pošip né de la pierre de Pelješac — du nerf et de la minéralité, sans fard.",
           "de": "Pošip aus dem Stein von Pelješac — Nerv und Mineralität, ganz ohne Schminke.",
           "zh": "来自佩列沙茨石灰岩的 Pošip——张力与矿物感，毫无粉饰。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Dan po dan 2022",
@@ -2571,7 +2403,7 @@
          }
         },
         {
-         "name": "Grk 2023",
+         "name": "Grk 2025",
          "producer": "Bire",
          "price": 100,
          "insight": {
@@ -2590,6 +2422,30 @@
            "oysters",
            "shellfish",
            "grilled_fish"
+          ],
+          "temp": "10–12"
+         }
+        },
+        {
+         "name": "Jela Blanc 2024",
+         "producer": "Čečavac",
+         "price": 130,
+         "insight": {
+          "grape": "Autohtone dalmatinske sorte",
+          "region": "Dalmacija",
+          "country": "HR",
+          "style": "white_mineral",
+          "body": "medium",
+          "aromas": [
+           "citrus",
+           "herbs",
+           "saline",
+           "almond"
+          ],
+          "pairings": [
+           "seafood",
+           "grilled_fish",
+           "shellfish"
           ],
           "temp": "10–12"
          }
@@ -2647,7 +2503,7 @@
          }
         },
         {
-         "name": "Riesling Butterfly 2023",
+         "name": "Riesling Butterfly 2024",
          "producer": "Zilliken",
          "price": 55,
          "insight": {
@@ -2671,7 +2527,7 @@
          }
         },
         {
-         "name": "Rausch Kabinett 2024",
+         "name": "Rausch Kabinett 2025",
          "producer": "Zilliken",
          "price": 91,
          "insight": {
@@ -2693,7 +2549,6 @@
           ],
           "temp": "8–10"
          },
-         "recommended": true,
          "note": {
           "hr": "Hladniji obronci Saara, napetija berba — rizling koji treba živac, i ima ga.",
           "en": "The cooler slopes of the Saar, a tense vintage — a Riesling that needs nerve, and has it.",
@@ -2701,7 +2556,8 @@
           "fr": "Les pentes fraîches de la Sarre, un millésime tendu — un riesling qui demande du nerf, et qui en a.",
           "de": "Die kühleren Hänge der Saar, ein gespannter Jahrgang — ein Riesling, der Nerv braucht und ihn hat.",
           "zh": "萨尔河凉爽的坡地、紧致的年份——一款需要张力的雷司令，而它正拥有。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Riesling Schieferterrassen 2023",
@@ -2800,31 +2656,7 @@
          }
         },
         {
-         "name": "Riesling Morstein GG 2021",
-         "producer": "Weingut Wittmann",
-         "price": 123,
-         "insight": {
-          "grape": "Riesling",
-          "region": "Westhofen, Rheinhessen",
-          "country": "DE",
-          "style": "white_mineral",
-          "body": "full",
-          "aromas": [
-           "citrus",
-           "flint",
-           "herbs",
-           "honey"
-          ],
-          "pairings": [
-           "white_fish",
-           "white_meat",
-           "cheese_hard"
-          ],
-          "temp": "10–12"
-         }
-        },
-        {
-         "name": "Riesling Aulerde GG 2019",
+         "name": "Riesling Aulerde GG 2020",
          "producer": "Weingut Wittmann",
          "price": 136,
          "insight": {
@@ -2848,7 +2680,7 @@
          }
         },
         {
-         "name": "Riesling Kirchspiel GG 2019",
+         "name": "Riesling Kirchspiel GG 2020",
          "producer": "Weingut Wittmann",
          "price": 180,
          "insight": {
@@ -2872,7 +2704,7 @@
          }
         },
         {
-         "name": "Riesling Röttgen GG 2017",
+         "name": "Riesling Röttgen GG 2023",
          "producer": "Weingut Knebel",
          "price": 110,
          "insight": {
@@ -2891,30 +2723,6 @@
            "white_fish",
            "pork",
            "asian"
-          ],
-          "temp": "10–12"
-         }
-        },
-        {
-         "name": "Riesling Wachenheimer Goldbächel P.C. 2017",
-         "producer": "Dr. Bürklin-Wolf",
-         "price": 134,
-         "insight": {
-          "grape": "Riesling",
-          "region": "Wachenheim, Pfalz",
-          "country": "DE",
-          "style": "white_mineral",
-          "body": "medium",
-          "aromas": [
-           "citrus",
-           "peach",
-           "mineral",
-           "petrol"
-          ],
-          "pairings": [
-           "white_fish",
-           "poultry",
-           "cheese_hard"
           ],
           "temp": "10–12"
          }
@@ -3068,30 +2876,6 @@
          }
         },
         {
-         "name": "Pinot Blanc Schützen 2023",
-         "producer": "Weingut Prieler",
-         "price": 45,
-         "insight": {
-          "grape": "Pinot Blanc",
-          "region": "Schützen, Burgenland",
-          "country": "AT",
-          "style": "white_fresh",
-          "body": "medium",
-          "aromas": [
-           "red_apple",
-           "pear",
-           "almond",
-           "mineral"
-          ],
-          "pairings": [
-           "white_fish",
-           "poultry",
-           "cheese_fresh"
-          ],
-          "temp": "10–12"
-         }
-        },
-        {
          "name": "Grüner Veltliner Federspiel Ried Hinter der Burg 2024",
          "producer": "Weingut Prager",
          "price": 110,
@@ -3140,7 +2924,7 @@
          }
         },
         {
-         "name": "Sauvignon vom Opok",
+         "name": "Sauvignon vom Opok 2021",
          "producer": "Maria & Sepp Muster",
          "price": 67,
          "insight": {
@@ -3193,7 +2977,7 @@
        "country": "FR",
        "items": [
         {
-         "name": "Chablis La Grande Vallée 2023",
+         "name": "Chablis La Grande Vallée 2024",
          "producer": "Patrick Piuze",
          "price": 90,
          "insight": {
@@ -3217,7 +3001,7 @@
          }
         },
         {
-         "name": "Chablis 2021",
+         "name": "Chablis 2022",
          "producer": "Pattes Loup",
          "price": 87,
          "insight": {
@@ -3572,7 +3356,7 @@
          }
         },
         {
-         "name": "Aligoté 2019",
+         "name": "Aligoté 2021",
          "producer": "Hubert Lignier",
          "price": 65,
          "insight": {
@@ -3595,7 +3379,7 @@
          }
         },
         {
-         "name": "Chassagne-Montrachet Les Benoites 2021",
+         "name": "Chassagne-Montrachet Les Benoites 2022",
          "producer": "Domaine Jean Chartron",
          "price": 146,
          "insight": {
@@ -3619,7 +3403,7 @@
          }
         },
         {
-         "name": "Puligny-Montrachet 1er Cru Clos de la Pucelle Monopole 2020",
+         "name": "Puligny-Montrachet 1er Cru Clos de la Pucelle Monopole 2021",
          "producer": "Jean Chartron",
          "price": 245,
          "insight": {
@@ -3643,7 +3427,7 @@
          }
         },
         {
-         "name": "St-Aubin 1er Cru Les Murgers des Dents de Chien 2020",
+         "name": "St-Aubin 1er Cru Les Murgers des Dents de Chien 2021",
          "producer": "Philippe Chavy",
          "price": 127,
          "insight": {
@@ -3662,78 +3446,6 @@
            "white_fish",
            "shellfish",
            "poultry"
-          ],
-          "temp": "12–14"
-         }
-        },
-        {
-         "name": "Saint-Aubin 1er Cru Clos du Meix 2023",
-         "producer": "Hubert Lamy",
-         "price": 290,
-         "insight": {
-          "grape": "Chardonnay",
-          "region": "Saint-Aubin, Burgundija",
-          "country": "FR",
-          "style": "white_rich",
-          "body": "full",
-          "aromas": [
-           "citrus",
-           "flint",
-           "white_flowers",
-           "toast"
-          ],
-          "pairings": [
-           "white_fish",
-           "shellfish",
-           "poultry"
-          ],
-          "temp": "12–14"
-         }
-        },
-        {
-         "name": "Saint-Aubin 1er Cru Derrière Chez Édouard 2020",
-         "producer": "Hubert Lamy",
-         "price": 350,
-         "insight": {
-          "grape": "Chardonnay",
-          "region": "Saint-Aubin, Burgundija",
-          "country": "FR",
-          "style": "white_rich",
-          "body": "full",
-          "aromas": [
-           "citrus",
-           "flint",
-           "hazelnut",
-           "toast"
-          ],
-          "pairings": [
-           "white_fish",
-           "poultry",
-           "truffles"
-          ],
-          "temp": "12–14"
-         }
-        },
-        {
-         "name": "Saint-Aubin 1er Cru Derrière Chez Édouard 2023",
-         "producer": "Hubert Lamy",
-         "price": 290,
-         "insight": {
-          "grape": "Chardonnay",
-          "region": "Saint-Aubin, Burgundija",
-          "country": "FR",
-          "style": "white_rich",
-          "body": "full",
-          "aromas": [
-           "citrus",
-           "flint",
-           "hazelnut",
-           "toast"
-          ],
-          "pairings": [
-           "white_fish",
-           "poultry",
-           "truffles"
           ],
           "temp": "12–14"
          }
@@ -3761,7 +3473,6 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true,
          "note": {
           "hr": "Preciznost kirurga, osjećaj pjesnika — Saint-Aubin koji stoji uz bok velikim imenima Burgundije.",
           "en": "A surgeon's precision, a poet's feeling — a Saint-Aubin that stands beside Burgundy's great names.",
@@ -3769,7 +3480,8 @@
           "fr": "La précision d'un chirurgien, la sensibilité d'un poète — un saint-aubin à la hauteur des grands noms de Bourgogne.",
           "de": "Die Präzision eines Chirurgen, das Gefühl eines Dichters — ein Saint-Aubin auf Augenhöhe mit Burgunds großen Namen.",
           "zh": "外科医生的精准，诗人的情感——足以比肩勃艮第伟大名字的 Saint-Aubin。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Saint-Aubin 1er Cru Les Frionnes 2023",
@@ -3820,55 +3532,7 @@
          }
         },
         {
-         "name": "Meursault Le Limozin 2022",
-         "producer": "Pierre-Vincent Girardin",
-         "price": 300,
-         "insight": {
-          "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
-          "country": "FR",
-          "style": "white_rich",
-          "body": "full",
-          "aromas": [
-           "butter",
-           "hazelnut",
-           "citrus",
-           "toast"
-          ],
-          "pairings": [
-           "white_fish",
-           "poultry",
-           "truffles"
-          ],
-          "temp": "12–14"
-         }
-        },
-        {
-         "name": "Beaune 1er Cru Les Grèves 2021",
-         "producer": "Pierre-Vincent Girardin",
-         "price": 220,
-         "insight": {
-          "grape": "Chardonnay",
-          "region": "Beaune, Burgundija",
-          "country": "FR",
-          "style": "white_rich",
-          "body": "full",
-          "aromas": [
-           "citrus",
-           "butter",
-           "toast",
-           "mineral"
-          ],
-          "pairings": [
-           "white_fish",
-           "poultry",
-           "cheese_hard"
-          ],
-          "temp": "12–14"
-         }
-        },
-        {
-         "name": "Meursault 1er Cru Les Charmes 2020",
+         "name": "Meursault 1er Cru Les Charmes 2021",
          "producer": "Philippe Chavy",
          "price": 268,
          "insight": {
@@ -3892,7 +3556,7 @@
          }
         },
         {
-         "name": "Meursault Sous la Velle 2020",
+         "name": "Meursault Sous la Velle 2022",
          "producer": "Rémi Jobard",
          "price": 190,
          "insight": {
@@ -3916,7 +3580,7 @@
          }
         },
         {
-         "name": "Meursault 1er Cru Le Poruzot Dessus 2020",
+         "name": "Meursault 1er Cru Le Poruzot Dessus 2022",
          "producer": "Rémi Jobard",
          "price": 284,
          "insight": {
@@ -3935,6 +3599,125 @@
            "white_fish",
            "poultry",
            "truffles"
+          ],
+          "temp": "12–14"
+         }
+        },
+        {
+         "name": "Meursault Les Tillets 2023",
+         "producer": "Bernard-Bonin",
+         "price": 920,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Meursault, Burgundija",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "full",
+          "aromas": [
+           "butter",
+           "hazelnut",
+           "citrus",
+           "flint"
+          ],
+          "pairings": [
+           "white_fish",
+           "poultry",
+           "truffles"
+          ],
+          "temp": "12–14"
+         }
+        },
+        {
+         "name": "Meursault La Rencontre 2023",
+         "producer": "Bernard-Bonin",
+         "price": 790,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Meursault, Burgundija",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "full",
+          "aromas": [
+           "butter",
+           "hazelnut",
+           "toast",
+           "mineral"
+          ],
+          "pairings": [
+           "white_fish",
+           "poultry",
+           "truffles"
+          ],
+          "temp": "12–14"
+         }
+        },
+        {
+         "name": "Meursault Clos du Cromin Le Pre Manche 2023",
+         "producer": "Bernard-Bonin",
+         "price": 790,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Meursault, Burgundija",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "full",
+          "aromas": [
+           "butter",
+           "citrus",
+           "hazelnut",
+           "flint"
+          ],
+          "pairings": [
+           "white_fish",
+           "poultry",
+           "risotto"
+          ],
+          "temp": "12–14"
+         }
+        },
+        {
+         "name": "Meursault Les Narvaux Dessus 2023",
+         "producer": "Bernard-Bonin",
+         "price": 970,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Meursault, Burgundija",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "full",
+          "aromas": [
+           "citrus",
+           "butter",
+           "toast",
+           "mineral"
+          ],
+          "pairings": [
+           "white_fish",
+           "poultry",
+           "truffles"
+          ],
+          "temp": "12–14"
+         }
+        },
+        {
+         "name": "Meursault Villages Le Limozin 2023",
+         "producer": "Bernard-Bonin",
+         "price": 970,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Meursault, Burgundija",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "full",
+          "aromas": [
+           "butter",
+           "hazelnut",
+           "citrus"
+          ],
+          "pairings": [
+           "white_fish",
+           "poultry",
+           "cheese_hard"
           ],
           "temp": "12–14"
          }
@@ -4010,7 +3793,6 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true,
          "note": {
           "hr": "Strmina Chavignola u čaši — klasik i raritet istovremeno, vino koje se pamti.",
           "en": "The steep slope of Chavignol in a glass — classic and rarity at once, a wine you remember.",
@@ -4018,7 +3800,8 @@
           "fr": "La pente raide de Chavignol dans le verre — classique et rareté à la fois, un vin dont on se souvient.",
           "de": "Der Steilhang von Chavignol im Glas — Klassiker und Rarität zugleich, ein Wein, den man nicht vergisst.",
           "zh": "杯中的 Chavignol 陡坡——既是经典也是珍稀，令人难忘。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Riesling 2022",
@@ -4217,7 +4000,7 @@
        "country": "IT",
        "items": [
         {
-         "name": "Chardonnay 2023",
+         "name": "Chardonnay 2024",
          "producer": "Alois Lageder",
          "price": 47,
          "insight": {
@@ -4481,7 +4264,7 @@
         },
         {
          "name": "Jakot 2019",
-         "producer": "Dario Prinčič",
+         "producer": "Dario Prinčić",
          "price": 75,
          "insight": {
           "grape": "Friulano",
@@ -4508,30 +4291,6 @@
       {
        "country": "ES",
        "items": [
-        {
-         "name": "Pazo Barrantes Albariño 2021",
-         "producer": "Marqués de Murrieta",
-         "price": 79,
-         "insight": {
-          "grape": "Albariño",
-          "region": "Rías Baixas, Galicija",
-          "country": "ES",
-          "style": "white_fresh",
-          "body": "medium",
-          "aromas": [
-           "peach",
-           "citrus",
-           "saline",
-           "white_flowers"
-          ],
-          "pairings": [
-           "seafood",
-           "shellfish",
-           "white_fish"
-          ],
-          "temp": "8–10"
-         }
-        },
         {
          "name": "Capellanía 2019",
          "producer": "Marqués de Murrieta",
@@ -4608,54 +4367,6 @@
       {
        "country": "SI",
        "items": [
-        {
-         "name": "Chardonnay 2022",
-         "producer": "Movia",
-         "price": 55,
-         "insight": {
-          "grape": "Chardonnay",
-          "region": "Goriška brda",
-          "country": "SI",
-          "style": "white_rich",
-          "body": "medium",
-          "aromas": [
-           "red_apple",
-           "butter",
-           "hazelnut",
-           "mineral"
-          ],
-          "pairings": [
-           "white_fish",
-           "poultry",
-           "risotto"
-          ],
-          "temp": "10–12"
-         }
-        },
-        {
-         "name": "Pinot Gris",
-         "producer": "Marjan Simčič",
-         "price": 72,
-         "insight": {
-          "grape": "Pinot Gris (Sivi pinot)",
-          "region": "Goriška brda",
-          "country": "SI",
-          "style": "white_rich",
-          "body": "medium",
-          "aromas": [
-           "pear",
-           "honey",
-           "almond",
-           "mineral"
-          ],
-          "pairings": [
-           "white_fish",
-           "white_meat",
-           "cheese_fresh"
-          ],
-          "temp": "10–12"
-         }
-        },
         {
          "name": "Sauvignon Vert",
          "producer": "Marjan Simčič",
@@ -4757,7 +4468,7 @@
        "country": "HR",
        "items": [
         {
-         "name": "Karizma Cuvée 2021",
+         "name": "Karizma Cuvée 2022",
          "producer": "Petrač",
          "price": 50,
          "insight": {
@@ -4851,7 +4562,7 @@
          }
         },
         {
-         "name": "Pinot Crni 2022",
+         "name": "Pinot Crni 2023",
          "producer": "Korak",
          "price": 70,
          "insight": {
@@ -4898,7 +4609,7 @@
          }
         },
         {
-         "name": "Ottocento Crni 2021",
+         "name": "Ottocento Crni 2022",
          "producer": "Giorgio Clai",
          "price": 66,
          "insight": {
@@ -4946,7 +4657,7 @@
          }
         },
         {
-         "name": "Teran 2020",
+         "name": "Teran 2022",
          "producer": "Tomaz",
          "price": 60,
          "insight": {
@@ -4994,7 +4705,7 @@
          }
         },
         {
-         "name": "Sagul Plavac mali 2017",
+         "name": "Sagul Plavac mali 2022",
          "producer": "Violić",
          "price": 49,
          "insight": {
@@ -5042,7 +4753,7 @@
          }
         },
         {
-         "name": "Dingač 2020",
+         "name": "Dingač 2021",
          "producer": "Benmosche Family",
          "price": 91,
          "insight": {
@@ -5066,7 +4777,7 @@
          }
         },
         {
-         "name": "Zinfandel 2020",
+         "name": "Zinfandel 2019",
          "producer": "Benmosche Family",
          "price": 89,
          "insight": {
@@ -5090,7 +4801,7 @@
          }
         },
         {
-         "name": "Black 2021",
+         "name": "Black 2022",
          "producer": "Saints Hills",
          "price": 70,
          "insight": {
@@ -5114,7 +4825,7 @@
          }
         },
         {
-         "name": "Tribidrag 2021",
+         "name": "Tribidrag 2022",
          "producer": "Rizman",
          "price": 75,
          "insight": {
@@ -5161,7 +4872,7 @@
          }
         },
         {
-         "name": "Pape 2022",
+         "name": "Pape 2023",
          "producer": "Saints Hills",
          "price": 70,
          "insight": {
@@ -5185,7 +4896,7 @@
          }
         },
         {
-         "name": "Stagnum 2015",
+         "name": "Stagnum 2016",
          "producer": "Miloš",
          "price": 145,
          "insight": {
@@ -5207,7 +4918,6 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true,
          "note": {
           "hr": "Kamen, bura i strpljenje — plavac mali koji dokazuje da hrvatska vina stoje uz bok najboljima.",
           "en": "Stone, wind and patience — a Plavac Mali proving Croatian wine stands beside the very best.",
@@ -5215,11 +4925,12 @@
           "fr": "La pierre, le vent et la patience — un plavac mali qui prouve que le vin croate côtoie les meilleurs.",
           "de": "Stein, Wind und Geduld — ein Plavac Mali, der beweist, dass kroatischer Wein zu den Besten gehört.",
           "zh": "石头、海风与耐心——证明克罗地亚葡萄酒足以比肩最优秀者的 Plavac Mali。"
-         }
+         },
+         "recommended": true
         },
         {
-         "name": "Jeka 2019",
-         "producer": "Čečavac–Gašpar–Gašpar",
+         "name": "Jeka 2020",
+         "producer": "Čečavac",
          "price": 250,
          "insight": {
           "grape": "Plavac mali",
@@ -5264,7 +4975,6 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true,
          "note": {
           "hr": "Stare loze Dingača — kompleksnost i zrelost tamo gdje vino trenutno pruža najviše.",
           "en": "Old vines of Dingač — complexity and maturity where the wine gives its most right now.",
@@ -5272,10 +4982,11 @@
           "fr": "Vieilles vignes de Dingač — complexité et maturité, là où le vin donne aujourd'hui le meilleur.",
           "de": "Alte Reben von Dingač — Komplexität und Reife, wo der Wein gerade am meisten gibt.",
           "zh": "Dingač 的老藤——在酒最绽放的时刻呈现复杂与成熟。"
-         }
+         },
+         "recommended": true
         },
         {
-         "name": "Red 2019",
+         "name": "Red 2020",
          "producer": "Menenghetti",
          "price": 180,
          "insight": {
@@ -5299,7 +5010,7 @@
          }
         },
         {
-         "name": "Fetivi 2018",
+         "name": "Fetivi 2020",
          "producer": "Markus",
          "price": 145,
          "insight": {
@@ -5354,13 +5065,13 @@
           "grape": "Plavac mali",
           "region": "Dalmacija",
           "country": "HR",
-          "style": "red_mature",
+          "style": "red_full",
           "body": "full",
           "aromas": [
            "dried_fruit",
-           "tobacco",
-           "leather",
-           "balsamic"
+           "plum",
+           "smoke",
+           "herbs"
           ],
           "pairings": [
            "game",
@@ -5518,7 +5229,6 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true,
          "note": {
           "hr": "Mikroparcele, preciznost, kontinuitet — Vosne-Romanée kakav je Filho upoznao na svojim putovanjima.",
           "en": "Micro-parcels, precision, continuity — Vosne-Romanée as Filho came to know it on his travels.",
@@ -5526,7 +5236,8 @@
           "fr": "Micro-parcelles, précision, continuité — le vosne-romanée tel que Filho l'a découvert au fil de ses voyages.",
           "de": "Mikroparzellen, Präzision, Kontinuität — Vosne-Romanée, wie Filho es auf seinen Reisen kennengelernt hat.",
           "zh": "微型地块、精准与延续——Filho 旅途中所认识的 Vosne-Romanée。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Vosne-Romanée Les Barreaux 2022",
@@ -5577,30 +5288,6 @@
          }
         },
         {
-         "name": "Nuits-Saint-Georges 1er Cru Clos de Thorey Monopole 2016",
-         "producer": "Domaine de la Vougeraie",
-         "price": 210,
-         "insight": {
-          "grape": "Pinot Noir",
-          "region": "Nuits-Saint-Georges, Burgundija",
-          "country": "FR",
-          "style": "red_medium",
-          "body": "full",
-          "aromas": [
-           "blackberry",
-           "cherry",
-           "forest_floor",
-           "spice"
-          ],
-          "pairings": [
-           "beef",
-           "game",
-           "truffles"
-          ],
-          "temp": "16–18"
-         }
-        },
-        {
          "name": "Nuits-Saint-Georges “Les Didiers” 1er Cru 2013",
          "producer": "Hubert & Laurent Lignier",
          "price": 340,
@@ -5620,54 +5307,6 @@
            "game",
            "beef",
            "truffles"
-          ],
-          "temp": "16–18"
-         }
-        },
-        {
-         "name": "Vosne-Romanée Les Charmes 2016",
-         "producer": "Méo-Camuzet",
-         "price": 650,
-         "insight": {
-          "grape": "Pinot Noir",
-          "region": "Vosne-Romanée, Burgundija",
-          "country": "FR",
-          "style": "red_medium",
-          "body": "full",
-          "aromas": [
-           "cherry",
-           "violet",
-           "spice",
-           "forest_floor"
-          ],
-          "pairings": [
-           "game",
-           "beef",
-           "truffles"
-          ],
-          "temp": "16–18"
-         }
-        },
-        {
-         "name": "Corton Les Perrières 2018",
-         "producer": "Méo-Camuzet",
-         "price": 780,
-         "insight": {
-          "grape": "Pinot Noir",
-          "region": "Corton Grand Cru, Burgundija",
-          "country": "FR",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "blackberry",
-           "cherry",
-           "earth",
-           "spice"
-          ],
-          "pairings": [
-           "game",
-           "beef",
-           "cheese_hard"
           ],
           "temp": "16–18"
          }
@@ -5695,7 +5334,6 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true,
          "note": {
           "hr": "Boca koja mijenja percepciju vina — dubina i širina burgundijskog stila u jednom gutljaju.",
           "en": "A bottle that changes how you see wine — the depth and breadth of Burgundy in a single sip.",
@@ -5703,31 +5341,8 @@
           "fr": "Une bouteille qui change la perception du vin — la profondeur et l'ampleur de la Bourgogne en une gorgée.",
           "de": "Eine Flasche, die die Wahrnehmung von Wein verändert — Tiefe und Weite Burgunds in einem Schluck.",
           "zh": "一瓶改变你对葡萄酒认知的酒——一口之间，勃艮第的深度与广度。"
-         }
-        },
-        {
-         "name": "Chambolle-Musigny 2018",
-         "producer": "Domaine G. Roumier",
-         "price": 1350,
-         "insight": {
-          "grape": "Pinot Noir",
-          "region": "Chambolle-Musigny, Burgundija",
-          "country": "FR",
-          "style": "red_medium",
-          "body": "medium",
-          "aromas": [
-           "raspberry",
-           "violet",
-           "forest_floor",
-           "spice"
-          ],
-          "pairings": [
-           "game",
-           "poultry",
-           "solo"
-          ],
-          "temp": "16–18"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Volnay 1er Cru Les Santenots 2022",
@@ -5802,31 +5417,7 @@
          }
         },
         {
-         "name": "Château La Fleur-Pétrus 2016",
-         "producer": "Pomerol",
-         "price": 360,
-         "insight": {
-          "grape": "Merlot, Cabernet Franc",
-          "region": "Pomerol, Bordeaux",
-          "country": "FR",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "plum",
-           "violet",
-           "truffle",
-           "cedar"
-          ],
-          "pairings": [
-           "beef",
-           "game",
-           "truffles"
-          ],
-          "temp": "16–18"
-         }
-        },
-        {
-         "name": "Château de Pez 2016",
+         "name": "Château de Pez 2022",
          "producer": "Saint-Estèphe",
          "price": 155,
          "insight": {
@@ -5992,7 +5583,7 @@
          ]
         },
         {
-         "name": "Syrah Le Fales 2023",
+         "name": "Syrah Le Fales 2024",
          "producer": "Moret-Nominé",
          "price": 80,
          "insight": {
@@ -6023,7 +5614,7 @@
         {
          "name": "Pinot Nero Krafuss 2019",
          "producer": "Alois Lageder",
-         "price": 83,
+         "price": 110,
          "insight": {
           "grape": "Pinot Nero",
           "region": "Alto Adige",
@@ -6069,7 +5660,7 @@
          }
         },
         {
-         "name": "Barbera d'Alba Superiore 2022",
+         "name": "Barbera d'Alba Superiore 2021",
          "producer": "Az. Agr. E. Pira & Figli – Chiara Boschis",
          "price": 63,
          "insight": {
@@ -6092,7 +5683,7 @@
          }
         },
         {
-         "name": "Barolo Cannubi 2018",
+         "name": "Barolo 2018",
          "producer": "Az. Agr. E. Pira & Figli – Chiara Boschis",
          "price": 210,
          "insight": {
@@ -6142,7 +5733,7 @@
         {
          "name": "Barbaresco Albesani 2019",
          "producer": "Roagna",
-         "price": 290,
+         "price": 580,
          "insight": {
           "grape": "Nebbiolo",
           "region": "Barbaresco, Piemont",
@@ -6166,7 +5757,7 @@
         {
          "name": "Barbaresco Asili “Vecchie Viti” 2019",
          "producer": "Roagna",
-         "price": 350,
+         "price": 550,
          "insight": {
           "grape": "Nebbiolo",
           "region": "Barbaresco, Piemont",
@@ -6186,7 +5777,6 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true,
          "note": {
           "hr": "Stare loze, spore maceracije, nula žurbe — Barbaresco s karakterom i razlogom zašto je ovdje.",
           "en": "Old vines, slow maceration, zero hurry — a Barbaresco with character and a reason to be here.",
@@ -6194,7 +5784,8 @@
           "fr": "Vieilles vignes, macérations lentes, aucune hâte — un barbaresco avec du caractère et une raison d'être ici.",
           "de": "Alte Reben, langsame Mazeration, keine Eile — ein Barbaresco mit Charakter und einem Grund, hier zu sein.",
           "zh": "老藤、缓慢浸渍、从不匆忙——有个性、有理由在此的 Barbaresco。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Barbaresco Pajé 2019",
@@ -6388,75 +5979,9 @@
          }
         },
         {
-         "name": "Brunello di Montalcino 2016",
-         "producer": "Valdicava",
-         "price": 280,
-         "insight": {
-          "grape": "Sangiovese Grosso",
-          "region": "Montalcino, Toscana",
-          "country": "IT",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "sour_cherry",
-           "plum",
-           "tobacco",
-           "balsamic"
-          ],
-          "pairings": [
-           "beef",
-           "game",
-           "cheese_hard"
-          ],
-          "temp": "16–18"
-         },
-         "ratings": [
-          {
-           "critic": "James Suckling",
-           "score": "98"
-          },
-          {
-           "critic": "Jeb Dunnuck",
-           "score": "97"
-          },
-          {
-           "critic": "Vinous",
-           "score": "96"
-          },
-          {
-           "critic": "Wine Advocate",
-           "score": "95"
-          }
-         ]
-        },
-        {
-         "name": "Madonna del Piano 2010",
-         "producer": "Valdicava",
-         "price": 410,
-         "insight": {
-          "grape": "Sangiovese Grosso",
-          "region": "Montalcino, Toscana",
-          "country": "IT",
-          "style": "red_mature",
-          "body": "full",
-          "aromas": [
-           "dried_fruit",
-           "tobacco",
-           "leather",
-           "balsamic"
-          ],
-          "pairings": [
-           "game",
-           "beef",
-           "cheese_hard"
-          ],
-          "temp": "16–18"
-         }
-        },
-        {
          "name": "Brunello di Montalcino 2018",
          "producer": "Conti Costanti",
-         "price": 165,
+         "price": 190,
          "insight": {
           "grape": "Sangiovese Grosso",
           "region": "Montalcino, Toscana",
@@ -6670,54 +6195,6 @@
          }
         },
         {
-         "name": "Guidalberto Rosso 2020",
-         "producer": "Tenuta San Guido (Sassicaia)",
-         "price": 105,
-         "insight": {
-          "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Bolgheri, Toscana",
-          "country": "IT",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "blackcurrant",
-           "cherry",
-           "cedar",
-           "spice"
-          ],
-          "pairings": [
-           "steak",
-           "beef",
-           "cheese_hard"
-          ],
-          "temp": "16–18"
-         }
-        },
-        {
-         "name": "Le Volte dell'Ornellaia Rosso 2020",
-         "producer": "Tenuta dell'Ornellaia",
-         "price": 97,
-         "insight": {
-          "grape": "Merlot, Sangiovese, Cabernet Sauvignon",
-          "region": "Toscana",
-          "country": "IT",
-          "style": "red_medium",
-          "body": "medium",
-          "aromas": [
-           "cherry",
-           "plum",
-           "spice",
-           "vanilla"
-          ],
-          "pairings": [
-           "pasta",
-           "pizza",
-           "white_meat"
-          ],
-          "temp": "16–18"
-         }
-        },
-        {
          "name": "Tignanello 2019",
          "producer": "Antinori",
          "price": 284,
@@ -6888,7 +6365,6 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true,
          "note": {
           "hr": "Vino za stol i vino za sjećanje — Amarone koji se ne objašnjava, nego doživljava.",
           "en": "A wine for the table and a wine for memory — an Amarone not to be explained, but experienced.",
@@ -6896,7 +6372,8 @@
           "fr": "Un vin de table et un vin de mémoire — un amarone qui ne s'explique pas, il se vit.",
           "de": "Ein Wein für den Tisch und ein Wein für die Erinnerung — ein Amarone, den man nicht erklärt, sondern erlebt.",
           "zh": "佐餐之酒，亦是记忆之酒——无须解释、只须体验的 Amarone。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Valpolicella Superiore 2015",
@@ -6945,7 +6422,6 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true,
          "note": {
           "hr": "Sangiovese s vizijom — vino za razmišljanje i berba koja nosi priču.",
           "en": "Sangiovese with vision — a wine for thinking, a vintage that carries a story.",
@@ -6953,7 +6429,8 @@
           "fr": "Un sangiovese visionnaire — un vin de réflexion, un millésime porteur d'histoire.",
           "de": "Sangiovese mit Vision — ein Wein zum Nachdenken, ein Jahrgang, der eine Geschichte trägt.",
           "zh": "有远见的桑娇维塞——一款值得思考的酒，一个承载故事的年份。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Montevertine 2019",
@@ -7050,44 +6527,6 @@
           ],
           "temp": "16–18"
          }
-        },
-        {
-         "name": "Masseto 2019",
-         "producer": "Tenuta Masseto",
-         "price": 1740,
-         "insight": {
-          "grape": "Merlot",
-          "region": "Bolgheri, Toscana",
-          "country": "IT",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "plum",
-           "blackberry",
-           "chocolate",
-           "truffle"
-          ],
-          "pairings": [
-           "beef",
-           "game",
-           "solo"
-          ],
-          "temp": "16–18"
-         },
-         "ratings": [
-          {
-           "critic": "James Suckling",
-           "score": "99"
-          },
-          {
-           "critic": "Wine Advocate",
-           "score": "98"
-          },
-          {
-           "critic": "Vinous",
-           "score": "98+"
-          }
-         ]
         },
         {
          "name": "Case Basse 2020",
@@ -7276,6 +6715,54 @@
            "score": "96"
           }
          ]
+        },
+        {
+         "name": "Brunello di Montalcino 2019",
+         "producer": "Poggio di Sotto",
+         "price": 495,
+         "insight": {
+          "grape": "Sangiovese Grosso",
+          "region": "Montalcino, Toscana",
+          "country": "IT",
+          "style": "red_full",
+          "body": "full",
+          "aromas": [
+           "sour_cherry",
+           "violet",
+           "tobacco",
+           "balsamic"
+          ],
+          "pairings": [
+           "beef",
+           "game",
+           "cheese_hard"
+          ],
+          "temp": "16–18"
+         }
+        },
+        {
+         "name": "Brunello di Montalcino 2020",
+         "producer": "Poggio di Sotto",
+         "price": 495,
+         "insight": {
+          "grape": "Sangiovese Grosso",
+          "region": "Montalcino, Toscana",
+          "country": "IT",
+          "style": "red_full",
+          "body": "full",
+          "aromas": [
+           "sour_cherry",
+           "plum",
+           "tobacco",
+           "spice"
+          ],
+          "pairings": [
+           "beef",
+           "game",
+           "cheese_hard"
+          ],
+          "temp": "16–18"
+         }
         }
        ]
       },
@@ -7283,7 +6770,7 @@
        "country": "SI",
        "items": [
         {
-         "name": "Duet Lex 2018",
+         "name": "Duet Lex 2022",
          "producer": "Edi Simčič",
          "price": 130,
          "insight": {
@@ -7331,7 +6818,7 @@
          }
         },
         {
-         "name": "Pinot Noir Opoka 2018",
+         "name": "Pinot Noir Opoka 2021",
          "producer": "Marjan Simčič",
          "price": 125,
          "insight": {
@@ -7886,7 +7373,6 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true,
          "note": {
           "hr": "Dalmatinska tradicija bez kompromisa — prošek koji nosi priču starih berbi.",
           "en": "Dalmatian tradition without compromise — a prošek carrying the story of old harvests.",
@@ -7894,7 +7380,8 @@
           "fr": "La tradition dalmate sans compromis — un prošek porteur de l'histoire des vieilles récoltes.",
           "de": "Dalmatinische Tradition ohne Kompromisse — ein Prošek, der die Geschichte alter Ernten trägt.",
           "zh": "毫不妥协的达尔马提亚传统——承载古老年份故事的 prošek。"
-         }
+         },
+         "recommended": true
         },
         {
          "name": "Tasel – 0,375 l",
@@ -8022,24 +7509,24 @@
          }
         },
         {
-         "name": "Auslese 2012 – 0,375 l",
-         "producer": "Dr. Loosen",
-         "price": 120,
+         "name": "Riesling Auslese Goldkapsel 2009 – 0,375l",
+         "producer": "Zilliken",
+         "price": 390,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel",
+          "region": "Saarburger Rausch, Saar",
           "country": "DE",
           "style": "sweet",
-          "body": "medium",
+          "body": "full",
           "aromas": [
-           "peach",
+           "apricot",
            "honey",
            "petrol",
            "candied_fruit"
           ],
           "pairings": [
-           "fruit_desserts",
            "foie_gras",
+           "fruit_desserts",
            "cheese_blue"
           ],
           "temp": "8–10"
@@ -8121,6 +7608,30 @@
           ],
           "temp": "10–12"
          }
+        },
+        {
+         "name": "Amabile del Cere 2017 – 0,375l",
+         "producer": "Giuseppe Quintarelli",
+         "price": 495,
+         "insight": {
+          "grape": "Autochthone bijele sorte",
+          "region": "Veneto",
+          "country": "IT",
+          "style": "sweet",
+          "body": "full",
+          "aromas": [
+           "apricot",
+           "honey",
+           "dried_fruit",
+           "orange_peel"
+          ],
+          "pairings": [
+           "desserts",
+           "fruit_desserts",
+           "cheese_blue"
+          ],
+          "temp": "10–12"
+         }
         }
        ]
       },
@@ -8170,8 +7681,8 @@
           "aromas": [
            "apricot",
            "honey",
-           "caramel",
-           "candied_fruit"
+           "candied_fruit",
+           "vanilla"
           ],
           "pairings": [
            "foie_gras",
@@ -8180,7 +7691,6 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true,
          "ratings": [
           {
            "critic": "James Suckling",
@@ -8194,15 +7704,7 @@
            "critic": "Wine Spectator",
            "score": "98"
           }
-         ],
-         "note": {
-          "hr": "Raskoš kultne etikete u trenutku vrhunske ravnoteže — ni premlada, ni preumorna.",
-          "en": "The splendour of a cult label at its point of perfect balance — neither too young nor too tired.",
-          "it": "Lo splendore di un'etichetta di culto nel momento del perfetto equilibrio — né troppo giovane, né troppo stanca.",
-          "fr": "La splendeur d'une étiquette culte à son point d'équilibre parfait — ni trop jeune, ni trop fatiguée.",
-          "de": "Der Glanz eines Kultetiketts im Moment perfekter Balance — weder zu jung noch zu müde.",
-          "zh": "传奇酒标的华彩，正处于完美平衡的时刻——既不太年轻，也不太疲惫。"
-         }
+         ]
         }
        ]
       }
