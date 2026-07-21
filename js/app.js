@@ -166,7 +166,9 @@ function priceHtml(item) {
 
 function nameHtml(item) {
   const marked = esc(item.name).replace(/((?:19|20)\d{2})/, '<span class="vintage">$1</span>');
-  return marked + (item.recommended ? ` <span class="rec-badge" title="${esc(T().ui.recommended)}">★</span>` : "");
+  return marked +
+    (item.recommended ? ` <span class="rec-badge" title="${esc(T().ui.recommended)}">★</span>` : "") +
+    (item.new ? ` <span class="new-badge">${esc(T().ui.newBadge)}</span>` : "");
 }
 
 function itemHtml(item, ref, context) {
@@ -198,7 +200,7 @@ function renderContent() {
           g.items.forEach((item, ii) => {
             const ins = item.insight || {};
             const hay = [item.name, item.producer, ins.grape, ins.region].filter(Boolean).join(" ").toLowerCase();
-            if (hay.includes(q) && (!picksOnly || item.recommended)) {
+            if (hay.includes(q) && (!picksOnly || item.recommended || item.new)) {
               if (found === 0) html += `<div class="cat">`;
               found++;
               const ref = [si, ci, gi, ii].join(".");
@@ -212,21 +214,22 @@ function renderContent() {
     });
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (picksOnly) {
-    let found = 0;
+    let total = 0;
     DATA.sections.forEach((sec, si) => {
+      let secHtml = "";
       sec.categories.forEach((cat, ci) => {
         cat.groups.forEach((g, gi) => {
           g.items.forEach((item, ii) => {
-            if (!item.recommended) return;
-            if (found === 0) html += `<div class="cat"><h2 class="cat-title">★ ${esc(t.ui.picks)}</h2>`;
-            found++;
-            const ctx = [t.sections[sec.id], g.country ? t.countries[g.country] : null].filter(Boolean).join(" · ");
-            html += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
+            if (!item.recommended && !item.new) return;
+            total++;
+            const ctx = g.country ? t.countries[g.country] : null;
+            secHtml += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
           });
         });
       });
+      if (secHtml) html += `<section class="cat"><h2 class="cat-title">${esc(t.sections[sec.id])}</h2>${secHtml}</section>`;
     });
-    html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
+    if (!total) html = `<p class="no-results">${t.ui.noResults}</p>`;
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
@@ -263,6 +266,7 @@ function openDetail(ref) {
     <div class="detail-name">${esc(item.name)}</div>
     ${item.producer ? `<div class="detail-producer">${esc(item.producer)}</div>` : ""}
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
+    ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${item.price} €</div>` : ""}
     <div class="detail-style">${esc(t.styles[ins.style] || "")}</div>

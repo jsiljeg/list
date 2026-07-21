@@ -31,6 +31,15 @@ Dodajte ili obrišite ovaj redak unutar vina:
 "recommended": true,
 ```
 
+### Istaknuti novo vino u ponudi ("NOVO")
+Dodajte redak:
+```json
+"new": true,
+```
+Vino dobiva zlatnu oznaku **NOVO** u popisu i u detaljima te se, uz
+označena ★ vina, pojavljuje u pregledu **„Filhov izbor"** (gumb u
+zaglavlju). Kad vino više nije novost, samo obrišite taj redak.
+
 ### Dodati ocjenu kritičara
 ```json
 "ratings": [

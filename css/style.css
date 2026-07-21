@@ -175,13 +175,12 @@ body {
 .item-row { display: flex; align-items: baseline; gap: .55rem; }
 .dots {
   flex: 1; min-width: 1.5rem;
-  border-bottom: 1px dotted rgba(168, 159, 143, .45);
+  border-bottom: 1px dotted rgba(168, 159, 143, .3);
   transform: translateY(-.28em);
 }
 .vintage { color: var(--text-dim); font-size: .82em; }
 .item.clickable { cursor: pointer; transition: background .15s; }
 .item.clickable:hover, .item.clickable:focus-visible { background: var(--bg-raised); outline: none; }
-.item + .item { border-top: 1px solid rgba(53,50,45,.55); border-radius: 0 0 10px 10px; }
 .item-name {
   font-family: var(--serif);
   font-size: 1.3rem; font-weight: 500; color: var(--text);
@@ -248,6 +247,16 @@ body {
 
 /* ---------- Recommendation badge & story ---------- */
 .rec-badge { color: var(--gold); font-size: .95em; }
+.new-badge {
+  display: inline-block; vertical-align: middle;
+  padding: .05rem .55rem; margin-left: .15rem;
+  border: 1px solid var(--gold); border-radius: 999px;
+  color: var(--gold);
+  font-family: var(--sans); font-size: .62em; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  transform: translateY(-.15em);
+}
+.detail-new { margin-left: .5rem; }
 .detail-rec {
   display: inline-block;
   margin-top: .55rem;

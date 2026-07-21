@@ -28,7 +28,8 @@ hr: {
     storyNav: "Priča",
     enter: "Otvori kartu",
     ratings: "Ocjene kritičara",
-    picks: "Filhov izbor"
+    picks: "Filhov izbor",
+    newBadge: "Novo"
   },
   helper: {
     title: "Pomozi mi odabrati",
@@ -127,7 +128,8 @@ en: {
     storyNav: "The story",
     enter: "View the list",
     ratings: "Critic scores",
-    picks: "Filho's picks"
+    picks: "Filho's picks",
+    newBadge: "New"
   },
   helper: {
     title: "Help me choose",
@@ -226,7 +228,8 @@ it: {
     storyNav: "La storia",
     enter: "Apri la carta",
     ratings: "Punteggi della critica",
-    picks: "La selezione di Filho"
+    picks: "La selezione di Filho",
+    newBadge: "Novità"
   },
   helper: {
     title: "Aiutami a scegliere",
@@ -325,7 +328,8 @@ fr: {
     storyNav: "L'histoire",
     enter: "Voir la carte",
     ratings: "Notes des critiques",
-    picks: "La sélection de Filho"
+    picks: "La sélection de Filho",
+    newBadge: "Nouveau"
   },
   helper: {
     title: "Aidez-moi à choisir",
@@ -424,7 +428,8 @@ de: {
     storyNav: "Die Geschichte",
     enter: "Zur Karte",
     ratings: "Kritiker-Bewertungen",
-    picks: "Filhos Auswahl"
+    picks: "Filhos Auswahl",
+    newBadge: "Neu"
   },
   helper: {
     title: "Hilfe bei der Auswahl",
