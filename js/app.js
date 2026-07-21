@@ -35,6 +35,7 @@ const FLAGS = {
   fr: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ed2939"/></svg>',
   de: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="13.4" fill="#000"/><rect y="13.4" width="60" height="13.3" fill="#dd0000"/><rect y="26.7" width="60" height="13.3" fill="#ffce00"/></svg>'
 };
+FLAGS.zh = '<svg viewBox="0 0 40 40" aria-hidden="true"><rect width="60" height="40" fill="#de2910"/><path d="M13,5 L14.7,9.6 19.7,9.6 15.6,12.6 17.1,17.3 13,14.4 8.9,17.3 10.4,12.6 6.3,9.6 11.3,9.6 Z" fill="#ffde00"/></svg>';
 const flagHTML = (code) => (code === "hr" ? hrFlag() : FLAGS[code]);
 
 const COUNTRY_FLAGS = {
@@ -161,7 +162,7 @@ function renderNav() {
   );
 }
 
-const PRICE_LOCALE = { hr: "hr-HR", en: "en-GB", it: "it-IT", fr: "fr-FR", de: "de-DE" };
+const PRICE_LOCALE = { hr: "hr-HR", en: "en-GB", it: "it-IT", fr: "fr-FR", de: "de-DE", zh: "zh-CN" };
 const fmtPrice = (n) => n.toLocaleString(PRICE_LOCALE[lang] || "hr-HR");
 
 function priceHtml(item) {

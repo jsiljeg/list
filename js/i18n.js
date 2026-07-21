@@ -7,7 +7,8 @@ const LANGS = [
   { code: "en", name: "English" },
   { code: "it", name: "Italiano" },
   { code: "fr", name: "Français" },
-  { code: "de", name: "Deutsch" }
+  { code: "de", name: "Deutsch" },
+  { code: "zh", name: "中文" }
 ];
 
 const I18N = {
@@ -514,6 +515,107 @@ de: {
     solo: "pur genießen, für besondere Momente", spicy: "scharfe Gerichte", steak: "Steak",
     stews: "Schmorgerichte", sushi: "Sushi", truffles: "Trüffelgerichte",
     veal: "Kalb", vegetables: "Gemüse", white_fish: "weißer Fisch", white_meat: "helles Fleisch"
+  }
+},
+zh: {
+  ui: {
+    subtitle: "葡萄酒与饮品单",
+    chooseLanguage: "请选择语言",
+    back: "返回",
+    search: "搜索葡萄酒…",
+    noResults: "无结果",
+    priceNote: "本部分价格请询问服务人员。",
+    grape: "葡萄品种", region: "产区", country: "国家", style: "风格",
+    body: "酒体", aromas: "品鉴笔记", pairings: "餐酒搭配",
+    temp: "侍酒温度",
+    legal: "价格以欧元计，已含增值税及各项税费。禁止向未成年人提供酒精饮品。如需过敏原信息，请咨询我们的服务人员。",
+    company: "Theatrium 餐厅 · Apelacija d.o.o. · Teslina 7, 萨格勒布",
+    recommended: "Filho 推荐",
+    storyNav: "故事",
+    enter: "查看酒单",
+    ratings: "酒评家评分",
+    picks: "Filho 精选",
+    newBadge: "新品",
+    newArrivals: "新品上架"
+  },
+  helper: {
+    title: "帮我选酒",
+    qFood: "您用什么餐？",
+    qStyle: "您喜欢什么风格？",
+    qBudget: "整瓶预算？",
+    food: { seafood: "鱼类与海鲜", meat: "牛排与红肉", pasta: "意面、烩饭、披萨", white: "禽类与白肉", cheese: "奶酪与腌肉", dessert: "甜点", none: "仅饮品 / 开胃酒" },
+    style: { fresh: "清新轻盈", rich: "浓郁强劲", bold: "特别与独特" },
+    budget: { b1: "60 € 以内", b2: "60–120 €", b3: "120 € 以上", any: "不限" },
+    results: "我们的推荐",
+    again: "重新开始"
+  },
+  story: {
+    title: "Theatrium Wine Program — Filho Edition",
+    paras: [
+      "您面前的这份酒单不是目录，也不是清单。它是一种哲学、一段旅程和一种葡萄酒观的映照。Filho 多年来精心打造这份酒单——通过旅行、交流和亲身走访葡萄园，通过数百次品鉴，以及与无数酿酒师的相遇；他们的酒不只是饮品，更是故事、风景与情感。",
+      "这份酒单是精心挑选的结果，而非简单的供应。每一款酒都因其展现出的特质而入选：个性、精准、纯净、风格，或酿酒师的个人魅力。每一个年份的选择都尊重风土、年份、气候与酒窖的笔迹。",
+      "酒单的核心是勃艮第的风土哲学。香槟在这里代表优雅，而非浮华。克罗地亚葡萄酒也获得了应有的重要位置：那些酿造纯净、专注、有个性风格的酿酒师，足以与法国、意大利和德国最优秀的酒庄并肩。",
+      "没有一款酒是出于习惯而存在。这里只有有个性的酒、有远见的酿酒师和承载故事的年份。这份酒单并未完结——它在发展、成长、学习和变化，正如创造它的人们。Filho 相信葡萄酒是有生命的；因此酒单也必须是鲜活的。"
+    ]
+  },
+  sections: {
+    "glass": "单杯葡萄酒", "bottle-sparkling": "起泡酒与香槟",
+    "bottle-white": "白葡萄酒", "bottle-rose": "桃红葡萄酒",
+    "bottle-red": "红葡萄酒", "bottle-dessert": "甜酒",
+    "spirits": "烈酒", "rakija-beer": "拉基亚、格拉帕、利口酒与啤酒",
+    "other": "水与其他饮品"
+  },
+  categories: {
+    sparkling: "起泡酒", champagne: "香槟", white: "白葡萄酒",
+    orange: "浸皮白葡萄酒", red: "红葡萄酒", rose: "桃红葡萄酒",
+    dessert: "甜酒", vodka: "伏特加", gin: "金酒", vermouth: "味美思",
+    "tequila-mezcal": "龙舌兰与梅斯卡尔", whisky: "威士忌", rum: "朗姆酒",
+    cognac: "干邑", shochu: "烧酒", rakija: "拉基亚（果味白兰地）", grappa: "格拉帕",
+    liqueur: "利口酒", beer: "啤酒", water: "矿泉水", tonic: "汤力水",
+    juice: "果汁与软饮", coffee: "咖啡"
+  },
+  countries: { HR: "克罗地亚", DE: "德国", AT: "奥地利", FR: "法国", IT: "意大利", ES: "西班牙", SI: "斯洛文尼亚", US: "美国", CN: "中国" },
+  styles: {
+    sparkling: "起泡 · 清新干型", sparkling_rose: "桃红起泡酒",
+    champagne: "香槟 · 经典干型", champagne_bdb: "香槟 · 白中白",
+    champagne_rose: "桃红香槟", champagne_prestige: "顶级香槟 · 复杂而成熟",
+    white_fresh: "白葡萄酒 · 清新果香", white_aromatic: "白葡萄酒 · 芳香型",
+    white_mineral: "白葡萄酒 · 矿物感与精准", white_rich: "白葡萄酒 · 浓郁绵密",
+    orange: "橙酒 · 带皮浸渍", rose: "桃红 · 清新轻盈",
+    red_light: "红葡萄酒 · 轻盈优雅", red_medium: "红葡萄酒 · 中等酒体",
+    red_full: "红葡萄酒 · 饱满强劲", red_mature: "红葡萄酒 · 成熟的陈年香气",
+    sweet: "甜型 · 餐后甜酒"
+  },
+  bodies: { light: "轻盈", medium: "中等", full: "饱满" },
+  aromas: {
+    almond: "杏仁", apricot: "杏子", balsamic: "香脂调", blackberry: "黑莓",
+    blackcurrant: "黑加仑", brioche: "布里欧修", butter: "黄油", candied_fruit: "蜜饯",
+    caramel: "焦糖", cedar: "雪松", cherry: "樱桃", chocolate: "巧克力",
+    citrus: "柑橘", coffee: "咖啡", dried_fruit: "果干", earth: "泥土气息",
+    elderflower: "接骨木花", fig: "无花果", flint: "燧石", forest_floor: "森林地表",
+    grapefruit: "西柚", grass: "青草", green_apple: "青苹果", hazelnut: "榛子",
+    herbs: "地中海香草", honey: "蜂蜜", leather: "皮革", licorice: "甘草",
+    lime: "青柠", mineral: "矿物感", mint: "薄荷", orange_peel: "橙皮",
+    peach: "桃子", pear: "梨", pepper: "胡椒", petrol: "汽油调",
+    plum: "李子", quince: "榅桲", raisin: "葡萄干", raspberry: "覆盆子",
+    red_apple: "红苹果", red_currant: "红醋栗", rose: "玫瑰", saline: "海盐咸鲜",
+    smoke: "烟熏", sour_cherry: "酸樱桃", spice: "香料", strawberry: "草莓",
+    toast: "烤面包", tobacco: "烟草", tropical: "热带水果", truffle: "松露",
+    vanilla: "香草荚", violet: "紫罗兰", walnut: "核桃", wet_stone: "湿石",
+    white_flowers: "白花", yeast: "酵母"
+  },
+  pairings: {
+    aperitif: "开胃酒", asian: "亚洲菜", asparagus: "芦笋", bbq: "烧烤",
+    beef: "牛肉", caviar: "鱼子酱", charcuterie: "腌肉拼盘", cheese_blue: "蓝纹奶酪",
+    cheese_fresh: "新鲜奶酪", cheese_hard: "陈年硬质奶酪", chocolate: "巧克力",
+    desserts: "甜点", foie_gras: "鹅肝", fruit_desserts: "水果甜点", game: "野味",
+    grilled_fish: "烤鱼", lamb: "羊肉", light_starters: "清淡前菜",
+    mushrooms: "蘑菇", nuts: "坚果", oysters: "生蚝", pasta: "意面",
+    pizza: "披萨", pork: "猪肉", poultry: "禽类", prosciutto: "生火腿",
+    risotto: "烩饭", salads: "沙拉", seafood: "海鲜", shellfish: "贝类与甲壳类",
+    solo: "单独细品，享受特别时刻", spicy: "辛辣菜肴", steak: "牛排",
+    stews: "炖菜", sushi: "寿司", truffles: "松露菜肴",
+    veal: "小牛肉", vegetables: "蔬菜", white_fish: "白身鱼", white_meat: "白肉"
   }
 }
 };
