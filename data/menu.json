@@ -1,0 +1,38 @@
+{
+ "courses": ["starters", "soups", "mains", "desserts"],
+ "dishes": [
+  {"course":"starters","name":{"hr":"Salata od pečene cikle i kozjeg sira","en":"Roasted beetroot & goat cheese salad"},"pairings":["salads","cheese_fresh","vegetables"],"styles":["white_fresh","white_aromatic","rose","orange"]},
+  {"course":"starters","name":{"hr":"Salata od burrate, šparoga i jagoda","en":"Burrata, asparagus & strawberry salad"},"pairings":["cheese_fresh","asparagus","salads"],"styles":["white_fresh","sparkling","white_aromatic","rose"]},
+  {"course":"starters","name":{"hr":"Carpaccio od jadranskih škampi","en":"Adriatic prawn carpaccio"},"pairings":["seafood","shellfish","light_starters"],"styles":["white_mineral","white_fresh","champagne_bdb","sparkling"]},
+  {"course":"starters","name":{"hr":"Tartar od bifteka","en":"Beef tartare"},"pairings":["beef","charcuterie","light_starters"],"styles":["red_light","red_medium","champagne"]},
+  {"course":"starters","name":{"hr":"Tartar od lososa","en":"Salmon tartare"},"pairings":["seafood","white_fish","light_starters"],"styles":["white_fresh","white_mineral","champagne_bdb","sparkling"]},
+  {"course":"starters","name":{"hr":"Drniški pršut vs. Jamón Ibérico","en":"Drniš prosciutto vs. Jamón Ibérico"},"pairings":["prosciutto","charcuterie","cheese_hard"],"styles":["orange","red_light","red_medium","sparkling_rose"]},
+  {"course":"starters","name":{"hr":"Foie gras","en":"Foie gras"},"pairings":["foie_gras"],"styles":["sweet","white_rich","champagne_prestige"]},
+  {"course":"starters","name":{"hr":"Fritto misto","en":"Fritto misto"},"pairings":["seafood","grilled_fish","light_starters"],"styles":["white_fresh","white_mineral","sparkling","champagne"]},
+  {"course":"starters","name":{"hr":"Artičoke u tempuri","en":"Artichoke tempura"},"pairings":["vegetables","cheese_fresh","asparagus"],"styles":["white_fresh","white_aromatic","orange"]},
+
+  {"course":"soups","name":{"hr":"Juha od kozica (Tom Kha Gai)","en":"Prawn soup (our Tom Kha Gai)"},"pairings":["seafood","asian","spicy"],"styles":["white_aromatic","white_mineral"]},
+  {"course":"soups","name":{"hr":"Juha od graška i mente","en":"Pea & mint soup"},"pairings":["vegetables","light_starters"],"styles":["white_fresh","white_aromatic"]},
+
+  {"course":"mains","name":{"hr":"Rižoto od bifteka","en":"Beef risotto"},"pairings":["risotto","beef","cheese_hard"],"styles":["red_medium","red_full"]},
+  {"course":"mains","name":{"hr":"Proljetni gnocchi","en":"Spring gnocchi (broad bean, pea, artichoke)"},"pairings":["pasta","vegetables","risotto"],"styles":["white_fresh","white_rich","white_mineral"]},
+  {"course":"mains","name":{"hr":"Morska carbonara","en":"Squid-ink seafood carbonara"},"pairings":["pasta","seafood","shellfish"],"styles":["white_rich","white_mineral","champagne"]},
+  {"course":"mains","name":{"hr":"Paccheri alla amatriciana","en":"Paccheri alla amatriciana"},"pairings":["pasta","pork","charcuterie"],"styles":["red_medium","red_light"]},
+  {"course":"mains","name":{"hr":"Ravioli punjeni mesom jastoga","en":"Lobster ravioli"},"pairings":["pasta","shellfish","seafood"],"styles":["white_rich","champagne_prestige","white_mineral"]},
+  {"course":"mains","name":{"hr":"Wiener Schnitzel","en":"Wiener Schnitzel (veal)"},"pairings":["veal","white_meat"],"styles":["white_rich","red_light","sparkling"]},
+  {"course":"mains","name":{"hr":"Teletina","en":"Slow-roasted veal"},"pairings":["veal","white_meat","mushrooms"],"styles":["red_light","red_medium","white_rich"]},
+  {"course":"mains","name":{"hr":"Sirloin steak","en":"Sirloin steak"},"pairings":["steak","beef"],"styles":["red_full","red_medium"]},
+  {"course":"mains","name":{"hr":"Chicken tikka masala","en":"Chicken tikka masala"},"pairings":["asian","spicy","poultry"],"styles":["white_aromatic","white_mineral","sweet"]},
+  {"course":"mains","name":{"hr":"Pašticada na naš način","en":"Pašticada (braised beef cheeks)"},"pairings":["beef","stews","game"],"styles":["red_full","red_mature","red_medium"]},
+  {"course":"mains","name":{"hr":"Janjetina","en":"Lamb cutlets"},"pairings":["lamb","cheese_hard"],"styles":["red_full","red_mature","red_medium"]},
+  {"course":"mains","name":{"hr":"Šiš-ćevap od tune","en":"Adriatic tuna skewer"},"pairings":["grilled_fish","white_fish","asian"],"styles":["red_light","rose","white_rich","white_mineral"]},
+  {"course":"mains","name":{"hr":"File svježe jadranske ribe","en":"Fillet of fresh Adriatic fish"},"pairings":["white_fish","grilled_fish","seafood"],"styles":["white_mineral","white_rich","white_fresh"]},
+  {"course":"mains","name":{"hr":"Beef Wellington","en":"Beef Wellington"},"pairings":["beef","steak","mushrooms"],"styles":["red_full","red_mature"]},
+
+  {"course":"desserts","name":{"hr":"Soufflé od pistacija","en":"Pistachio soufflé"},"pairings":["desserts","nuts"],"styles":["sweet","champagne_prestige"]},
+  {"course":"desserts","name":{"hr":"Tiramisu","en":"Tiramisu"},"pairings":["desserts","chocolate","coffee"],"styles":["sweet"]},
+  {"course":"desserts","name":{"hr":"Jagoda","en":"Strawberry"},"pairings":["fruit_desserts","desserts"],"styles":["sweet","sparkling_rose","champagne_rose"]},
+  {"course":"desserts","name":{"hr":"Juha od čokolade (Valrhona)","en":"Chocolate soup (Valrhona)"},"pairings":["chocolate","desserts"],"styles":["sweet"]},
+  {"course":"desserts","name":{"hr":"Izbor domaćih sladoleda","en":"Selection of house ice creams"},"pairings":["desserts","fruit_desserts"],"styles":["sweet","sparkling_rose"]}
+ ]
+}

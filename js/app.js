@@ -60,22 +60,27 @@ let DATA = null;
 let lang = localStorage.getItem(LS_KEY);
 let currentSection = null;
 let picksOnly = false;
+let ratedOnly = false;
 
 const $ = (id) => document.getElementById(id);
+const bestScore = (item) => (item.ratings || []).reduce((m, r) => Math.max(m, parseFloat(r.score) || 0), 0);
 const esc = (s) => String(s == null ? "" : s)
   .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const T = () => I18N[lang] || I18N.en;
 
+let MENU = null;
 function init() {
-  fetch("data/wines.json")
-    .then((r) => r.json())
-    .then((d) => {
+  Promise.all([
+    fetch("data/wines.json").then((r) => r.json()),
+    fetch("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] }))
+  ]).then(([d, m]) => {
       DATA = d;
+      MENU = m;
       currentSection = d.sections[0].id;
       const idleReset = sessionStorage.getItem("idle-reset");
       sessionStorage.removeItem("idle-reset");
       if (lang && I18N[lang] && !idleReset) showApp(); else showStart();
-    });
+  });
 }
 
 /* ---------- start screen ---------- */
@@ -123,6 +128,8 @@ function showApp() {
   $("company").textContent = t.ui.company;
   $("picks-toggle").querySelector("span").textContent = t.ui.picks;
   $("picks-toggle").classList.toggle("active", picksOnly);
+  $("rated-toggle").querySelector("span").textContent = t.ui.bestRated;
+  $("rated-toggle").classList.toggle("active", ratedOnly);
   $("helper-open").querySelector("span").textContent = t.helper.title;
   renderLangSwitch();
   renderNav();
@@ -154,7 +161,9 @@ function renderNav() {
       currentSection = b.dataset.sec;
       $("search").value = "";
       picksOnly = false;
+      ratedOnly = false;
       $("picks-toggle").classList.remove("active");
+      $("rated-toggle").classList.remove("active");
       renderNav();
       renderContent();
       window.scrollTo({ top: 0 });
@@ -224,6 +233,26 @@ function renderContent() {
       });
     });
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
+  } else if (ratedOnly) {
+    const rated = [];
+    DATA.sections.forEach((sec, si) => {
+      sec.categories.forEach((cat, ci) => {
+        cat.groups.forEach((g, gi) => {
+          g.items.forEach((item, ii) => {
+            if (!(item.ratings && item.ratings.length)) return;
+            rated.push({ item, ref: [si, ci, gi, ii].join("."), sec, country: g.country, best: bestScore(item) });
+          });
+        });
+      });
+    });
+    rated.sort((a, b) => b.best - a.best);
+    if (rated.length) {
+      html += `<section class="cat"><h2 class="cat-title">${esc(t.ui.bestRated)}</h2><div class="ornament" aria-hidden="true">◆</div>`;
+      html += rated.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
+      html += `</section>`;
+    } else {
+      html = `<p class="no-results">${t.ui.noResults}</p>`;
+    }
   } else if (picksOnly) {
     let total = 0;
     let newHtml = "";
@@ -320,22 +349,6 @@ function closeModal() {
 }
 
 /* ---------- "Help me choose" sommelier wizard ---------- */
-const HELPER_FOOD = {
-  seafood: ["seafood", "oysters", "shellfish", "white_fish", "grilled_fish", "sushi", "caviar"],
-  meat: ["steak", "beef", "lamb", "game", "bbq", "stews"],
-  pasta: ["pasta", "risotto", "pizza", "truffles", "mushrooms"],
-  white: ["poultry", "white_meat", "veal", "pork"],
-  cheese: ["cheese_hard", "cheese_blue", "cheese_fresh", "charcuterie", "prosciutto"],
-  dessert: ["desserts", "chocolate", "fruit_desserts", "nuts", "foie_gras"],
-  none: ["aperitif", "light_starters", "salads", "solo"]
-};
-const HELPER_STYLE = {
-  fresh: { bodies: ["light", "medium"], styles: ["white_fresh", "white_mineral", "white_aromatic", "sparkling", "sparkling_rose", "rose", "red_light", "champagne", "champagne_bdb", "champagne_rose"] },
-  rich: { bodies: ["full"], styles: ["white_rich", "red_medium", "red_full", "red_mature", "champagne_prestige"] },
-  bold: { bodies: [], styles: ["orange", "red_mature", "sweet", "champagne_prestige"] }
-};
-const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [0, Infinity] };
-
 /* Glass silhouettes traced from the house stemware (product photos):
    RIEDEL Veloce Champagne, Veloce Riesling, Veloce Chardonnay (white
    Burgundy), Winewings Pinot Noir/Nebbiolo (barrel bowl on the flat
@@ -362,41 +375,56 @@ function glassFor(style, grape) {
   return "riesling";
 }
 
-const helperState = { step: 0, food: null, style: null };
+const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [0, Infinity] };
+const helperState = { step: 0, dish: null };
 
 function openHelper() {
-  helperState.step = 0; helperState.food = null; helperState.style = null;
+  helperState.step = 0; helperState.dish = null;
   renderHelperStep();
   $("modal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
 }
 
-function helperOptions(map, onPick) {
-  return Object.keys(map).map((k) => `<button class="helper-opt" data-k="${k}">${esc(map[k])}</button>`).join("");
+function dishName(dish) {
+  return dish.name[lang] || dish.name.en || dish.name.hr;
 }
 
 function renderHelperStep() {
   const t = T();
   const h = t.helper;
   let inner;
-  if (helperState.step === 0) inner = `<h3 class="helper-q">${esc(h.qFood)}</h3><div class="helper-opts">${helperOptions(h.food)}</div>`;
-  else if (helperState.step === 1) inner = `<h3 class="helper-q">${esc(h.qStyle)}</h3><div class="helper-opts">${helperOptions(h.style)}</div>`;
-  else inner = `<h3 class="helper-q">${esc(h.qBudget)}</h3><div class="helper-opts">${helperOptions(h.budget)}</div>`;
+  if (helperState.step === 0) {
+    /* Step 1: pick a real dish from the kitchen menu, grouped by course. */
+    let groups = "";
+    (MENU.courses || []).forEach((course) => {
+      const dishes = MENU.dishes.filter((d) => d.course === course);
+      if (!dishes.length) return;
+      groups += `<div class="helper-course">${esc(h.courses[course] || course)}</div><div class="helper-opts">` +
+        dishes.map((d) => `<button class="helper-opt" data-dish="${esc(dishName(d))}">${esc(dishName(d))}</button>`).join("") +
+        `</div>`;
+    });
+    inner = `<h3 class="helper-q">${esc(h.pickDish)}</h3>${groups}`;
+  } else {
+    inner = `<h3 class="helper-q">${esc(h.qBudget)}</h3><div class="helper-opts">` +
+      Object.keys(h.budget).map((k) => `<button class="helper-opt" data-k="${k}">${esc(h.budget[k])}</button>`).join("") + `</div>`;
+  }
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(h.title)}</div>${inner}</div>`;
   $("modal-body").querySelectorAll(".helper-opt").forEach((b) =>
     b.addEventListener("click", () => {
-      const k = b.dataset.k;
-      if (helperState.step === 0) { helperState.food = k; helperState.step = 1; renderHelperStep(); }
-      else if (helperState.step === 1) { helperState.style = k; helperState.step = 2; renderHelperStep(); }
-      else renderHelperResults(k);
+      if (helperState.step === 0) {
+        helperState.dish = MENU.dishes.find((d) => dishName(d) === b.dataset.dish);
+        helperState.step = 1;
+        renderHelperStep();
+      } else {
+        renderHelperResults(b.dataset.k);
+      }
     })
   );
 }
 
 function renderHelperResults(budgetKey) {
   const t = T();
-  const foodKeys = HELPER_FOOD[helperState.food] || [];
-  const style = HELPER_STYLE[helperState.style] || { bodies: [], styles: [] };
+  const dish = helperState.dish || { pairings: [], styles: [] };
   const [lo, hi] = HELPER_BUDGET[budgetKey] || [0, Infinity];
   const scored = [];
   DATA.sections.forEach((sec, si) => {
@@ -407,22 +435,22 @@ function renderHelperResults(budgetKey) {
           const ins = item.insight;
           if (!ins || item.price == null || item.price < lo || item.price > hi) return;
           let score = 0;
-          score += (ins.pairings || []).filter((p) => foodKeys.includes(p)).length * 3;
-          if (style.styles.includes(ins.style)) score += 2;
-          if (style.bodies.includes(ins.body)) score += 1;
-          if (item.recommended) score += 1.5;
+          score += (ins.pairings || []).filter((p) => (dish.pairings || []).includes(p)).length * 3;
+          if ((dish.styles || []).includes(ins.style)) score += 3;
+          if (item.recommended) score += 1;
           if (score <= 0) return;
-          scored.push({ score: score + Math.random() * 0.5, ref: [si, ci, gi, ii].join("."), item, sec, country: g.country });
+          scored.push({ score: score + Math.random() * 0.4, ref: [si, ci, gi, ii].join("."), item, sec, country: g.country });
         });
       });
     });
   });
   scored.sort((a, b) => b.score - a.score);
   const top = scored.slice(0, 3);
+  const forDish = helperState.dish ? `<div class="helper-fordish">${esc(dishName(helperState.dish))}</div>` : "";
   const list = top.length
     ? top.map((r) => itemHtml(r.item, r.ref, t.sections[r.sec.id], true)).join("")
     : `<p class="no-results">${t.ui.noResults}</p>`;
-  $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${list}<button class="helper-opt helper-again">${esc(t.helper.again)}</button></div>`;
+  $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}<button class="helper-opt helper-again">${esc(t.helper.again)}</button></div>`;
   $("modal-body").querySelectorAll(".item.clickable").forEach((b) =>
     b.addEventListener("click", () => openDetail(b.dataset.ref))
   );
@@ -446,7 +474,15 @@ setInterval(() => {
 }, 30000);
 
 /* ---------- events ---------- */
-$("search").addEventListener("input", renderContent);
+$("search").addEventListener("input", () => {
+  if ($("search").value.trim() && (picksOnly || ratedOnly)) {
+    picksOnly = false;
+    ratedOnly = false;
+    $("picks-toggle").classList.remove("active");
+    $("rated-toggle").classList.remove("active");
+  }
+  renderContent();
+});
 $("modal-close").addEventListener("click", closeModal);
 $("modal-backdrop").addEventListener("click", closeModal);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
@@ -454,7 +490,19 @@ $("home-logo").addEventListener("click", showStart);
 $("story-enter").addEventListener("click", showApp);
 $("picks-toggle").addEventListener("click", () => {
   picksOnly = !picksOnly;
+  if (picksOnly) ratedOnly = false;
+  $("search").value = "";
   $("picks-toggle").classList.toggle("active", picksOnly);
+  $("rated-toggle").classList.remove("active");
+  renderContent();
+  window.scrollTo({ top: 0 });
+});
+$("rated-toggle").addEventListener("click", () => {
+  ratedOnly = !ratedOnly;
+  if (ratedOnly) picksOnly = false;
+  $("search").value = "";
+  $("rated-toggle").classList.toggle("active", ratedOnly);
+  $("picks-toggle").classList.remove("active");
   renderContent();
   window.scrollTo({ top: 0 });
 });
