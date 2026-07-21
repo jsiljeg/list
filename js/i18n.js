@@ -25,7 +25,9 @@ hr: {
     legal: "Cijene su izražene u eurima, PDV i porezi uračunati su u cijenu. Zabranjeno je usluživanje alkoholnih pića maloljetnim osobama. Za informacije o alergenima obratite se našem osoblju.",
     company: "Restoran Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
     recommended: "Filho preporučuje",
-    storyNav: "Priča"
+    storyNav: "Priča",
+    enter: "Otvori kartu",
+    ratings: "Ocjene kritičara"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -37,14 +39,14 @@ hr: {
     ]
   },
   sections: {
-    "glass": "Vina na čašu", "bottle-sparkling": "Pjenušci i Champagne",
+    "glass": "Vina na čašu", "bottle-sparkling": "Pjenušci i šampanjci",
     "bottle-white": "Bijela vina", "bottle-rose": "Rosé vina",
     "bottle-red": "Crna vina", "bottle-dessert": "Desertna vina",
     "spirits": "Žestoka pića", "rakija-beer": "Rakije, grappe, likeri i pivo",
     "other": "Vode i ostala pića"
   },
   categories: {
-    sparkling: "Pjenušava vina", champagne: "Champagne", white: "Bijela vina",
+    sparkling: "Pjenušava vina", champagne: "Šampanjac", white: "Bijela vina",
     orange: "Narančasta vina", red: "Crna vina", rose: "Rosé vina",
     dessert: "Desertna vina", vodka: "Vodka", gin: "Gin", vermouth: "Vermut",
     "tequila-mezcal": "Tequila i mezcal", whisky: "Viski", rum: "Rum",
@@ -110,7 +112,9 @@ en: {
     legal: "Prices are in euros, VAT and taxes included. Serving alcoholic beverages to minors is prohibited. For allergen information, please ask our staff.",
     company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
     recommended: "Filho recommends",
-    storyNav: "The story"
+    storyNav: "The story",
+    enter: "View the list",
+    ratings: "Critic scores"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -195,7 +199,9 @@ it: {
     legal: "I prezzi sono espressi in euro, IVA e tasse incluse. È vietato servire bevande alcoliche ai minori. Per informazioni sugli allergeni rivolgetevi al nostro personale.",
     company: "Ristorante Theatrium · Apelacija d.o.o. · Teslina 7, Zagabria",
     recommended: "Filho consiglia",
-    storyNav: "La storia"
+    storyNav: "La storia",
+    enter: "Apri la carta",
+    ratings: "Punteggi della critica"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -280,7 +286,9 @@ fr: {
     legal: "Les prix sont exprimés en euros, TVA et taxes comprises. Il est interdit de servir des boissons alcoolisées aux mineurs. Pour toute information sur les allergènes, adressez-vous à notre personnel.",
     company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
     recommended: "Filho recommande",
-    storyNav: "L'histoire"
+    storyNav: "L'histoire",
+    enter: "Voir la carte",
+    ratings: "Notes des critiques"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -365,7 +373,9 @@ de: {
     legal: "Die Preise sind in Euro angegeben, inklusive Mehrwertsteuer und Abgaben. Der Ausschank alkoholischer Getränke an Minderjährige ist verboten. Informationen zu Allergenen erhalten Sie bei unserem Personal.",
     company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
     recommended: "Filho empfiehlt",
-    storyNav: "Die Geschichte"
+    storyNav: "Die Geschichte",
+    enter: "Zur Karte",
+    ratings: "Kritiker-Bewertungen"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",

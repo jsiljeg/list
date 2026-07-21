@@ -1515,7 +1515,17 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Wine Enthusiast",
+           "score": "98"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          }
+         ]
         },
         {
          "name": "Textures Brut Nature",
@@ -1778,7 +1788,13 @@
            "solo"
           ],
           "temp": "10–12"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          }
+         ]
         },
         {
          "name": "Dom Pérignon P2 2004",
@@ -5703,7 +5719,13 @@
            "game"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "100"
+          }
+         ]
         },
         {
          "name": "Château Gazin 2020",
@@ -5775,7 +5797,13 @@
            "truffles"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "99"
+          }
+         ]
         },
         {
          "name": "Château Léoville Barton 2021",
@@ -5799,7 +5827,17 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Wine Advocate",
+           "score": "95"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Syrah Le Fales 2023",
@@ -6211,7 +6249,25 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "98"
+          },
+          {
+           "critic": "Jeb Dunnuck",
+           "score": "97"
+          },
+          {
+           "critic": "Vinous",
+           "score": "96"
+          },
+          {
+           "critic": "Wine Advocate",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Madonna del Piano 2010",
@@ -6523,7 +6579,21 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "95"
+          },
+          {
+           "critic": "Vinous",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Tignanello 2020",
@@ -6595,7 +6665,21 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "100"
+          },
+          {
+           "critic": "Vinous",
+           "score": "98"
+          },
+          {
+           "critic": "Wine Advocate",
+           "score": "97"
+          }
+         ]
         },
         {
          "name": "Amarone Classico Vigna Ravazzol 2016",
@@ -6813,7 +6897,21 @@
            "solo"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "99"
+          },
+          {
+           "critic": "Wine Advocate",
+           "score": "98"
+          },
+          {
+           "critic": "Vinous",
+           "score": "98+"
+          }
+         ]
         },
         {
          "name": "Case Basse 2020",
@@ -6885,7 +6983,21 @@
            "solo"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Advocate",
+           "score": "96"
+          },
+          {
+           "critic": "Vinous",
+           "score": "97"
+          }
+         ]
         },
         {
          "name": "Ornellaia 2020",
@@ -6909,7 +7021,17 @@
            "solo"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "98"
+          },
+          {
+           "critic": "Wine Advocate",
+           "score": "97"
+          }
+         ]
         },
         {
          "name": "Sassicaia 2021",
@@ -6933,7 +7055,13 @@
            "solo"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Wine Advocate",
+           "score": "100"
+          }
+         ]
         },
         {
          "name": "Solaia 2020",
@@ -6957,7 +7085,21 @@
            "solo"
           ],
           "temp": "16–18"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "98"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Advocate",
+           "score": "96"
+          }
+         ]
         }
        ]
       },
@@ -7823,7 +7965,13 @@
            "cheese_blue"
           ],
           "temp": "10–12"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "96"
+          }
+         ]
         },
         {
          "name": "Château d'Yquem, 1er Cru Supérieur 2015",
@@ -7848,7 +7996,21 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "100"
+          },
+          {
+           "critic": "Wine Advocate",
+           "score": "100"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "98"
+          }
+         ]
         }
        ]
       }

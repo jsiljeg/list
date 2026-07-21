@@ -4,9 +4,12 @@
 const LS_KEY = "theatrium-lang";
 
 const FLAGS = {
-  hr: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#fff"/><rect width="60" height="13.4" fill="#e8112d"/><rect y="26.6" width="60" height="13.4" fill="#171796"/><g>' +
-      Array.from({length:20},(_,i)=>{const c=i%5,r=(i-c)/5;return ((c+r)%2===0)?`<rect x="${23+c*2.8}" y="${9+r*2.9}" width="2.8" height="2.9" fill="#e8112d"/>`:`<rect x="${23+c*2.8}" y="${9+r*2.9}" width="2.8" height="2.9" fill="#fff"/>`;}).join("") +
-      '<rect x="23" y="9" width="14" height="11.6" fill="none" stroke="#8d8d8d" stroke-width="0.6"/></g></svg>',
+  hr: '<svg viewBox="0 0 60 40" aria-hidden="true">' +
+      '<rect width="60" height="40" fill="#fff"/><rect width="60" height="13.4" fill="#e8112d"/><rect y="26.6" width="60" height="13.4" fill="#171796"/>' +
+      '<clipPath id="hr-shield"><path d="M21,10 h18 v11 a9,9 0 0 1 -18,0 z"/></clipPath>' +
+      '<g clip-path="url(#hr-shield)"><rect x="21" y="10" width="18" height="20" fill="#fff"/>' +
+      Array.from({length:25},(_,i)=>{const c=i%5,r=(i-c)/5;return ((c+r)%2===0)?`<rect x="${21+c*3.6}" y="${10+r*4}" width="3.6" height="4" fill="#e8112d"/>`:"";}).join("") +
+      '</g><path d="M21,10 h18 v11 a9,9 0 0 1 -18,0 z" fill="none" stroke="#fff" stroke-width="1.1"/></svg>',
   en: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="13"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="7"/></svg>',
   it: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#009246"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ce2b37"/></svg>',
   fr: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ed2939"/></svg>',
@@ -35,6 +38,7 @@ function init() {
 /* ---------- start screen ---------- */
 function showStart() {
   $("app").classList.add("hidden");
+  $("story-screen").classList.add("hidden");
   $("start").classList.remove("hidden");
   const box = $("lang-buttons");
   box.innerHTML = LANGS.map((l) =>
@@ -44,14 +48,29 @@ function showStart() {
     b.addEventListener("click", () => {
       lang = b.dataset.lang;
       localStorage.setItem(LS_KEY, lang);
-      showApp();
+      showStory();
     })
   );
+}
+
+/* ---------- story splash (front page, after language pick) ---------- */
+function showStory() {
+  const t = T();
+  $("start").classList.add("hidden");
+  $("app").classList.add("hidden");
+  $("story-screen").classList.remove("hidden");
+  $("story-body").innerHTML =
+    `<h2 class="story-title">${esc(t.story.title)}</h2>` +
+    t.story.paras.map((p) => `<p>${esc(p)}</p>`).join("") +
+    `<p class="story-legend"><span class="rec-badge">★</span> ${esc(t.ui.recommended)}</p>`;
+  $("story-enter").textContent = t.ui.enter;
+  window.scrollTo({ top: 0 });
 }
 
 /* ---------- main app ---------- */
 function showApp() {
   $("start").classList.add("hidden");
+  $("story-screen").classList.add("hidden");
   $("app").classList.remove("hidden");
   document.documentElement.lang = lang;
   const t = T();
@@ -81,11 +100,9 @@ function renderLangSwitch() {
 function renderNav() {
   const t = T();
   const nav = $("nav");
-  nav.innerHTML =
-    `<button data-sec="__story" class="story-chip ${currentSection === "__story" ? "active" : ""}">✦ ${esc(t.ui.storyNav)}</button>` +
-    DATA.sections.map((s) =>
-      `<button data-sec="${s.id}" class="${s.id === currentSection ? "active" : ""}">${esc(t.sections[s.id] || s.id)}</button>`
-    ).join("");
+  nav.innerHTML = DATA.sections.map((s) =>
+    `<button data-sec="${s.id}" class="${s.id === currentSection ? "active" : ""}">${esc(t.sections[s.id] || s.id)}</button>`
+  ).join("");
   nav.querySelectorAll("button").forEach((b) =>
     b.addEventListener("click", () => {
       currentSection = b.dataset.sec;
@@ -142,12 +159,6 @@ function renderContent() {
       });
     });
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
-  } else if (currentSection === "__story") {
-    html = `<section class="story">
-      <h2 class="story-title">${esc(t.story.title)}</h2>
-      ${t.story.paras.map((p) => `<p>${esc(p)}</p>`).join("")}
-      <p class="story-legend"><span class="rec-badge">★</span> ${esc(t.ui.recommended)}</p>
-    </section>`;
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
@@ -184,6 +195,7 @@ function openDetail(ref) {
     <div class="detail-name">${esc(item.name)}</div>
     ${item.producer ? `<div class="detail-producer">${esc(item.producer)}</div>` : ""}
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
+    ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${item.price} €</div>` : ""}
     <div class="detail-style">${esc(t.styles[ins.style] || "")}</div>
     <div class="detail-grid">
@@ -209,6 +221,7 @@ $("modal-close").addEventListener("click", closeModal);
 $("modal-backdrop").addEventListener("click", closeModal);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 $("home-logo").addEventListener("click", showStart);
+$("story-enter").addEventListener("click", showApp);
 
 if ("serviceWorker" in navigator &&
     (location.protocol === "https:" || location.hostname === "localhost")) {

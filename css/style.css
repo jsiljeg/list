@@ -229,7 +229,29 @@ body {
   color: var(--gold); font-size: .82rem; font-weight: 600;
   letter-spacing: .08em; text-transform: uppercase;
 }
-.nav button.story-chip:not(.active) { color: var(--gold-soft); border-color: var(--gold-soft); }
+.story-screen { justify-content: flex-start; padding-top: 3rem; gap: 1.4rem; min-height: 100vh; }
+.start-logo.small { width: min(220px, 55vw); }
+.enter-btn {
+  min-height: 60px; min-width: 240px;
+  padding: .8rem 2.4rem; margin-bottom: 2.5rem;
+  background: var(--gold); border: none; border-radius: 999px;
+  color: #171512; font-family: var(--sans); font-size: 1.15rem; font-weight: 600;
+  letter-spacing: .04em; cursor: pointer;
+  transition: transform .1s, filter .15s;
+}
+.enter-btn:hover { filter: brightness(1.08); }
+.enter-btn:active { transform: scale(.97); }
+.detail-ratings {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+  margin: .2rem 0 1rem;
+}
+.detail-ratings .detail-label { margin: 0 .3rem 0 0; }
+.rating-chip {
+  padding: .25rem .7rem;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: 999px;
+  color: var(--text-dim); font-size: .85rem;
+}
+.rating-chip b { color: var(--gold); font-weight: 600; }
 .story { max-width: 640px; margin: 0 auto; padding: 1rem 0 2rem; }
 .story-title {
   font-family: var(--serif);
