@@ -341,7 +341,7 @@ function renderContent() {
       });
     });
     html = newHtml
-      ? `<section class="cat"><h2 class="cat-title">${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">◆</div>${newHtml}</section>`
+      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.sparkle}</span>${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">◆</div>${newHtml}</section>`
       : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (prideOnly) {
     const pride = [];
@@ -377,7 +377,7 @@ function renderContent() {
     });
     rated.sort((a, b) => b.best - a.best);
     if (rated.length) {
-      html += `<section class="cat"><h2 class="cat-title">${esc(t.ui.bestRated)}</h2><div class="ornament" aria-hidden="true">◆</div>`;
+      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.trophy}</span>${esc(t.ui.bestRated)}</h2><div class="ornament" aria-hidden="true">◆</div>`;
       html += rated.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
       html += `</section>`;
     } else {

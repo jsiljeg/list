@@ -483,6 +483,11 @@ body {
   .nav::-webkit-scrollbar { display: none; }
   .nav button { flex: none; }
   .nav button[data-sec="__regions"] { order: 99; }
+
+  /* tablet header like mobile: search on its own row, four buttons in a 2x2 grid */
+  .header-tools { gap: .5rem; }
+  .search { flex: 1 1 100%; }
+  .tool-btn { flex: 1 1 calc(50% - .3rem); justify-content: center; }
 }
 
 @media (max-width: 560px) {

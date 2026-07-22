@@ -35,8 +35,8 @@ hr: {
     pride: "Arhiva",
     prideSub: "Za velike trenutke. Za Vas.",
     newBadge: "Novo",
-    newArrivals: "Novo u ponudi",
-    regions: "Vinske regije"
+    newArrivals: "Novo",
+    regions: "Regije"
   },
   helper: {
     title: "Pomozi mi odabrati",
@@ -48,7 +48,7 @@ hr: {
         style: { fresh: "Svježe i lagano", rich: "Bogato i snažno", bold: "Nešto posebno i drugačije" },
     budget: { b1: "do 60 €", b2: "60–120 €", b3: "iznad 120 €", any: "Bez ograničenja" },
     results: "Naše preporuke",
-    again: "Ispočetka",
+    again: "Odaberi drugo jelo",
     backToWines: "← Natrag na prijedloge",
     changeBudget: "Promijeni budžet"
   },
@@ -145,8 +145,8 @@ en: {
     pride: "The Treasury",
     prideSub: "For the great moments. For you.",
     newBadge: "New",
-    newArrivals: "New arrivals",
-    regions: "Wine regions"
+    newArrivals: "New",
+    regions: "Regions"
   },
   helper: {
     title: "Help me choose",
@@ -158,7 +158,7 @@ en: {
         style: { fresh: "Fresh & light", rich: "Rich & powerful", bold: "Something special & different" },
     budget: { b1: "under 60 €", b2: "60–120 €", b3: "over 120 €", any: "No limit" },
     results: "Our suggestions",
-    again: "Start over",
+    again: "Choose another dish",
     backToWines: "← Back to the suggestions",
     changeBudget: "Change budget"
   },
@@ -255,7 +255,7 @@ it: {
     pride: "Il Tesoro",
     prideSub: "Per i grandi momenti. Per Voi.",
     newBadge: "Novità",
-    newArrivals: "Novità in carta",
+    newArrivals: "Novità",
     regions: "Regioni"
   },
   helper: {
@@ -268,7 +268,7 @@ it: {
         style: { fresh: "Fresco e leggero", rich: "Ricco e potente", bold: "Qualcosa di speciale e diverso" },
     budget: { b1: "fino a 60 €", b2: "60–120 €", b3: "oltre 120 €", any: "Senza limite" },
     results: "I nostri consigli",
-    again: "Ricomincia",
+    again: "Scegli un altro piatto",
     backToWines: "← Torna ai suggerimenti",
     changeBudget: "Cambia budget"
   },
@@ -378,7 +378,7 @@ fr: {
         style: { fresh: "Frais et léger", rich: "Riche et puissant", bold: "Quelque chose de spécial" },
     budget: { b1: "moins de 60 €", b2: "60–120 €", b3: "plus de 120 €", any: "Sans limite" },
     results: "Nos suggestions",
-    again: "Recommencer",
+    again: "Choisir un autre plat",
     backToWines: "← Retour aux suggestions",
     changeBudget: "Changer de budget"
   },
@@ -475,7 +475,7 @@ de: {
     pride: "Die Schatzkammer",
     prideSub: "Für die großen Momente. Für Sie.",
     newBadge: "Neu",
-    newArrivals: "Neu auf der Karte",
+    newArrivals: "Neu",
     regions: "Regionen"
   },
   helper: {
@@ -488,7 +488,7 @@ de: {
         style: { fresh: "Frisch & leicht", rich: "Reich & kraftvoll", bold: "Etwas Besonderes" },
     budget: { b1: "bis 60 €", b2: "60–120 €", b3: "über 120 €", any: "Ohne Limit" },
     results: "Unsere Empfehlungen",
-    again: "Neu beginnen",
+    again: "Anderes Gericht wählen",
     backToWines: "← Zurück zu den Vorschlägen",
     changeBudget: "Budget ändern"
   },
@@ -585,7 +585,7 @@ zh: {
     pride: "珍藏阁",
     prideSub: "为重要时刻，为您。",
     newBadge: "新品",
-    newArrivals: "新品上架",
+    newArrivals: "新品",
     regions: "产区"
   },
   helper: {
@@ -598,7 +598,7 @@ zh: {
         style: { fresh: "清新轻盈", rich: "浓郁强劲", bold: "特别与独特" },
     budget: { b1: "60 € 以内", b2: "60–120 €", b3: "120 € 以上", any: "不限" },
     results: "我们的推荐",
-    again: "重新开始",
+    again: "选择其他菜肴",
     backToWines: "← 返回推荐",
     changeBudget: "更改预算"
   },
