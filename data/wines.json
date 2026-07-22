@@ -68,7 +68,7 @@
         },
         {
          "name": "Blanc de blanc",
-         "producer": "Menenghetti",
+         "producer": "Meneghetti",
          "price": 9,
          "insight": {
           "grape": "Chardonnay",
@@ -202,8 +202,8 @@
          }
         },
         {
-         "name": "Menenghetti White",
-         "producer": "Menenghetti",
+         "name": "Meneghetti White",
+         "producer": "Meneghetti",
          "price": 10,
          "insight": {
           "grape": "Chardonnay, Pinot bijeli",
@@ -736,7 +736,7 @@
         },
         {
          "name": "Red 2019",
-         "producer": "Menenghetti",
+         "producer": "Meneghetti",
          "price": 15,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon",
@@ -2363,8 +2363,8 @@
          }
         },
         {
-         "name": "Menenghetti white 2023",
-         "producer": "Menenghetti",
+         "name": "Meneghetti white 2023",
+         "producer": "Meneghetti",
          "price": 87,
          "insight": {
           "grape": "Chardonnay, Pinot bijeli",
@@ -5371,7 +5371,7 @@
         },
         {
          "name": "Red 2020",
-         "producer": "Menenghetti",
+         "producer": "Meneghetti",
          "price": 180,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon",
@@ -8116,12 +8116,12 @@
          ],
          "recommended": true,
          "note": {
-          "hr": "Saar u zlatnoj kapsuli — slatkoću drži kiselina poput žice: med, breskva i beskraj.",
-          "en": "The Saar under a gold capsule — sweetness held by acidity like a wire: honey, peach and infinity.",
-          "it": "La Saar sotto capsula d'oro — dolcezza tenuta dall'acidità come un filo: miele, pesca e infinito.",
-          "fr": "La Sarre sous capsule d'or — une douceur tenue par l'acidité comme un fil : miel, pêche et infini.",
-          "de": "Die Saar unter Goldkapsel — Süsse, von der Säure wie an einem Draht gehalten: Honig, Pfirsich und Unendlichkeit.",
-          "zh": "金帽之下的萨尔——被酸度如钢丝般拉住的甜：蜂蜜、桃子，与无尽。"
+          "hr": "Saar u zlatnoj kapsuli — slatkoću drži kiselina poput žice: med, klementina i beskraj.",
+          "en": "The Saar under a gold capsule — sweetness held by acidity like a wire: honey, clementine and infinity.",
+          "it": "La Saar sotto capsula d'oro — dolcezza tenuta dall'acidità come un filo: miele, clementina e infinito.",
+          "fr": "La Sarre sous capsule d'or — une douceur tenue par l'acidité comme un fil : miel, clémentine et infini.",
+          "de": "Die Saar unter Goldkapsel — Süsse, von der Säure wie an einem Draht gehalten: Honig, Klementine und Unendlichkeit.",
+          "zh": "金帽之下的萨尔——被酸度如钢丝般拉住的甜：蜂蜜、克莱门丁，与无尽。"
          }
         }
        ]
