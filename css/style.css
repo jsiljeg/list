@@ -81,7 +81,7 @@ body {
   margin-top: .1rem; letter-spacing: .06em;
 }
 .header-tools {
-  display: flex; gap: .8rem; align-items: center;
+  display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; justify-content: center;
   max-width: 900px; margin: .8rem auto 0;
 }
 .search {
@@ -120,12 +120,9 @@ body {
 
 /* ---------- Nav ---------- */
 .nav {
-  display: flex; gap: .5rem;
-  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center;
   padding: .8rem .2rem;
-  scrollbar-width: none;
 }
-.nav::-webkit-scrollbar { display: none; }
 .nav button {
   flex: none;
   min-height: 48px;
@@ -220,19 +217,19 @@ body {
 .no-results { color: var(--text-dim); text-align: center; padding: 3rem 0; font-size: 1.05rem; }
 
 /* ---------- Modal ---------- */
-.modal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; }
+.modal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
 .modal-sheet {
   position: relative;
   width: 100%; max-width: 700px;
-  max-height: 86vh; overflow-y: auto;
+  max-height: 90vh; overflow-y: auto;
   background: var(--bg-raised);
-  border: 1px solid var(--line); border-bottom: none;
-  border-radius: 22px 22px 0 0;
+  border: 1px solid var(--line);
+  border-radius: 18px;
   padding: 1.6rem 1.6rem 2.2rem;
   animation: sheet-up .22s ease-out;
 }
-@keyframes sheet-up { from { transform: translateY(40px); opacity: .4; } to { transform: none; opacity: 1; } }
+@keyframes sheet-up { from { transform: translateY(24px); opacity: .4; } to { transform: none; opacity: 1; } }
 .modal-close {
   position: absolute; top: .8rem; right: .9rem;
   width: 44px; height: 44px;

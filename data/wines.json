@@ -8806,32 +8806,80 @@
         {
          "name": "Römerquelle gazirana 0,75 l",
          "producer": "",
-         "price": 5
+         "price": 5,
+         "nameI18n": {
+          "hr": "Römerquelle gazirana 0,75 l",
+          "en": "Römerquelle sparkling 0.75 l",
+          "it": "Römerquelle frizzante 0,75 l",
+          "fr": "Römerquelle pétillante 0,75 l",
+          "de": "Römerquelle prickelnd 0,75 l",
+          "zh": "Römerquelle 气泡水 0,75 l"
+         }
         },
         {
          "name": "Römerquelle limunska trava 0,35 l",
          "producer": "",
-         "price": 3.7
+         "price": 3.7,
+         "nameI18n": {
+          "hr": "Römerquelle limunska trava 0,35 l",
+          "en": "Römerquelle lemongrass 0.35 l",
+          "it": "Römerquelle citronella 0,35 l",
+          "fr": "Römerquelle citronnelle 0,35 l",
+          "de": "Römerquelle Zitronengras 0,35 l",
+          "zh": "Römerquelle 柠檬草 0,35 l"
+         }
         },
         {
          "name": "Saint Géron negazirana",
          "producer": "",
-         "price": 9
+         "price": 9,
+         "nameI18n": {
+          "hr": "Saint Géron negazirana",
+          "en": "Saint Géron still",
+          "it": "Saint Géron naturale",
+          "fr": "Saint Géron plate",
+          "de": "Saint Géron still",
+          "zh": "Saint Géron 无气"
+         }
         },
         {
          "name": "Saint Géron gazirana",
          "producer": "",
-         "price": 9
+         "price": 9,
+         "nameI18n": {
+          "hr": "Saint Géron gazirana",
+          "en": "Saint Géron sparkling",
+          "it": "Saint Géron frizzante",
+          "fr": "Saint Géron pétillante",
+          "de": "Saint Géron prickelnd",
+          "zh": "Saint Géron 气泡"
+         }
         },
         {
          "name": "Artesian negazirana voda",
          "producer": "",
-         "price": 9
+         "price": 9,
+         "nameI18n": {
+          "hr": "Artesian negazirana voda",
+          "en": "Artesian still water",
+          "it": "Artesian acqua naturale",
+          "fr": "Artesian eau plate",
+          "de": "Artesian stilles Wasser",
+          "zh": "Artesian 无气水"
+         }
         },
         {
          "name": "Artesian gazirana voda",
          "producer": "",
-         "price": 9
+         "price": 9,
+         "nameI18n": {
+          "hr": "Artesian gazirana voda",
+          "en": "Artesian sparkling water",
+          "it": "Artesian acqua frizzante",
+          "fr": "Artesian eau pétillante",
+          "de": "Artesian Wasser mit Kohlensäure",
+          "zh": "Artesian 气泡水"
+         }
         }
        ]
       }

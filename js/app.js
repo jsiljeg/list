@@ -247,8 +247,12 @@ function legendHtml() {
     `<span class="legend-item"><span class="marker">${ICONS[ic]}</span>${esc(lbl)}</span>`).join("") + `</div>`;
 }
 
+/* localized item name (wines keep their original name; some non-wine
+   items — e.g. waters — carry a nameI18n map for descriptor words) */
+const itemName = (item) => (item.nameI18n && item.nameI18n[lang]) || item.name;
+
 function nameHtml(item) {
-  const marked = esc(item.name).replace(/((?:19|20)\d{2})/, '<span class="vintage">$1</span>');
+  const marked = esc(itemName(item)).replace(/((?:19|20)\d{2})/, '<span class="vintage">$1</span>');
   const marks = markerIcons(item);
   return marked +
     (marks ? ` <span class="markers">${marks}</span>` : "") +
@@ -288,7 +292,7 @@ function renderContent() {
         cat.groups.forEach((g, gi) => {
           g.items.forEach((item, ii) => {
             const ins = item.insight || {};
-            const hay = [item.name, item.producer, ins.grape, ins.region].filter(Boolean).join(" ").toLowerCase();
+            const hay = [item.name, itemName(item), item.producer, ins.grape, ins.region].filter(Boolean).join(" ").toLowerCase();
             if (hay.includes(q) && (!picksOnly || item.recommended || item.new)) {
               if (found === 0) html += `<div class="cat">`;
               found++;
@@ -354,21 +358,9 @@ function renderContent() {
       html = `<p class="no-results">${t.ui.noResults}</p>`;
     }
   } else if (picksOnly) {
+    /* Filho's selection = recommended wines only; new arrivals live in
+       their own "__new" category, not here. */
     let total = 0;
-    let newHtml = "";
-    DATA.sections.forEach((sec, si) => {
-      sec.categories.forEach((cat, ci) => {
-        cat.groups.forEach((g, gi) => {
-          g.items.forEach((item, ii) => {
-            if (!item.new) return;
-            total++;
-            const ctx = [t.sections[sec.id], g.country ? t.countries[g.country] : null].filter(Boolean).join(" · ");
-            newHtml += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
-          });
-        });
-      });
-    });
-    if (newHtml) html += `<section class="cat"><h2 class="cat-title">${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">◆</div>${newHtml}</section>`;
     DATA.sections.forEach((sec, si) => {
       let secHtml = "";
       sec.categories.forEach((cat, ci) => {
@@ -447,7 +439,7 @@ function openDetail(ref) {
   const noteText = item.note && (item.note[lang] || item.note.hr || item.note.en);
   $("modal-body").innerHTML = `
     ${glass ? `<div class="detail-glass">${GLASS_ICONS[glass]}</div>` : ""}
-    <div class="detail-name">${esc(item.name)}</div>
+    <div class="detail-name">${esc(itemName(item))}</div>
     ${item.producer ? `<div class="detail-producer">${esc(item.producer)}</div>` : ""}
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
     ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
@@ -478,6 +470,7 @@ function openDetail(ref) {
     })()}`;
   $("modal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
+  const _ms = document.querySelector(".modal-sheet"); if (_ms) _ms.scrollTop = 0;
 }
 
 function closeModal() {
@@ -496,8 +489,8 @@ const GLASS_ICONS = {
   champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M14.8,3 C13.4,10 12.2,16 11.4,22 C10.7,27 10.6,31 11.4,36 C12.6,44 15.8,49 20,52 C24.2,49 27.4,44 28.6,36 C29.4,31 29.3,27 28.6,22 C27.8,16 26.6,10 25.2,3 L14.8,3"/><path d="M20,52 V90"/><path d="M9.5,95 c4,-3.2 17,-3.2 21,0"/><path d="M14.6,11 C13.4,17 12.9,23 13.2,29" style="stroke-width:.8;opacity:.5"/></svg>',
   riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  cabernet: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M14.5,4 C12.6,14 11,26 10.4,34 C10,40 10.4,42.8 11.2,44.6 C13.4,46.7 26.6,46.7 28.8,44.6 C29.6,42.8 30,40 29.6,34 C29,26 27.4,14 25.5,4 L14.5,4"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M8,5 C5.8,16 6,28 9,37.5 C10.6,42 13.6,43.5 16,43.5 L24,43.5 C26.4,43.5 29.4,42 31,37.5 C34,28 34.2,16 32,5 Z"/><path d="M20,43.5 V86"/><path d="M9.5,91 c4,-3 17,-3 21,0"/></svg>',
+  cabernet: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M6.5,4 C8.8,21 13,37 17,43 L23,43 C27,37 31.2,21 33.5,4 Z"/><path d="M20,43 V86"/><path d="M9.5,91 c4,-3 17,-3 21,0"/></svg>',
   dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
 function glassFor(style, grape) {
@@ -521,6 +514,7 @@ function openHelper() {
   renderHelperStep();
   $("modal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
+  const _ms = document.querySelector(".modal-sheet"); if (_ms) _ms.scrollTop = 0;
 }
 
 function dishName(dish) {
