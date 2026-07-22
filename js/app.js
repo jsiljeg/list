@@ -16,12 +16,14 @@ function hrFlag() {
     for (let c = 0; c < 5; c++)
       if ((r + c) % 2 === 0)
         checks += `<rect x="${20 + c * 4}" y="${(11 + r * 4.6).toFixed(2)}" width="4" height="4.6" fill="#e8112d"/>`;
-  /* crown: five little shields arcing across the top, middle one highest */
+  /* crown: five little shields arcing across the top (middle highest),
+     each with a gold emblem hint, as on the real coat of arms */
   const crown = [0, 1, 2, 3, 4].map((i) => {
     const x = 20.6 + i * 3.72, y = +(8.6 - Math.sin((i / 4) * Math.PI) * 1.5).toFixed(2);
-    return `<path d="M${x},${y} h3.9 v1.9 L${(x + 1.95).toFixed(2)},${(y + 3.4).toFixed(2)} L${x},${(y + 1.9).toFixed(2)} z" fill="#2350a6" stroke="#fff" stroke-width="0.4"/>`;
+    return `<path d="M${x},${y} h3.9 v1.9 L${(x + 1.95).toFixed(2)},${(y + 3.4).toFixed(2)} L${x},${(y + 1.9).toFixed(2)} z" fill="#2350a6" stroke="#fff" stroke-width="0.4"/>` +
+      `<circle cx="${(x + 1.95).toFixed(2)}" cy="${(y + 1.5).toFixed(2)}" r="0.5" fill="#d4af37"/>`;
   }).join("");
-  const shield = "M20,11 H40 V21 Q38,32 30,34 Q22,32 20,21 Z";
+  const shield = "M20,11 H40 V25 C40,29.5 36,32.5 30,34 C24,32.5 20,29.5 20,25 Z";
   return `<svg viewBox="0 0 60 40" aria-hidden="true">
     <rect width="60" height="40" fill="#fff"/>
     <rect width="60" height="13.333" fill="#e8112d"/>
