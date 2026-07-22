@@ -29,13 +29,34 @@ function hrFlag() {
   </svg>`;
 }
 
+/* Five-point star path; rot rotates the first (topmost) point. */
+function starPath(cx, cy, r, rot) {
+  let p = "";
+  for (let i = 0; i < 5; i++) {
+    const ao = rot + (i * 2 * Math.PI) / 5;
+    const ai = ao + Math.PI / 5;
+    const ri = r * 0.382;
+    p += (i ? "L" : "M") + (cx + r * Math.sin(ao)).toFixed(2) + "," + (cy - r * Math.cos(ao)).toFixed(2);
+    p += "L" + (cx + ri * Math.sin(ai)).toFixed(2) + "," + (cy - ri * Math.cos(ai)).toFixed(2);
+  }
+  return p + "Z";
+}
+/* China: big star in the canton with four small stars each pointing at it. */
+function cnFlag() {
+  const big = starPath(10, 10, 6, 0);
+  const smalls = [[20, 4], [24, 8], [24, 14], [20, 18]]
+    .map(([x, y]) => starPath(x, y, 2, Math.atan2(10 - x, y - 10)))
+    .join("");
+  return `<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#de2910"/><path d="${big}${smalls}" fill="#ffde00"/></svg>`;
+}
+
 const FLAGS = {
   en: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="13"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="7"/></svg>',
   it: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#009246"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ce2b37"/></svg>',
   fr: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="20" height="40" fill="#002395"/><rect x="20" width="20" height="40" fill="#fff"/><rect x="40" width="20" height="40" fill="#ed2939"/></svg>',
   de: '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="13.4" fill="#000"/><rect y="13.4" width="60" height="13.3" fill="#dd0000"/><rect y="26.7" width="60" height="13.3" fill="#ffce00"/></svg>'
 };
-FLAGS.zh = '<svg viewBox="0 0 40 40" aria-hidden="true"><rect width="60" height="40" fill="#de2910"/><path d="M13,5 L14.7,9.6 19.7,9.6 15.6,12.6 17.1,17.3 13,14.4 8.9,17.3 10.4,12.6 6.3,9.6 11.3,9.6 Z" fill="#ffde00"/></svg>';
+FLAGS.zh = cnFlag();
 const flagHTML = (code) => (code === "hr" ? hrFlag() : FLAGS[code]);
 
 const COUNTRY_FLAGS = {
@@ -53,7 +74,7 @@ const COUNTRY_FLAGS = {
     for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) stars += `<circle cx="${3.5 + c * 5.5}" cy="${3.5 + r * 5.5}" r="1.1" fill="#fff"/>`;
     return `<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#fff"/>${stripes}<rect width="24" height="21.5" fill="#3c3b6e"/>${stars}</svg>`;
   },
-  CN: () => '<svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#de2910"/><path d="M13,5 L14.7,9.6 19.7,9.6 15.6,12.6 17.1,17.3 13,14.4 8.9,17.3 10.4,12.6 6.3,9.6 11.3,9.6 Z" fill="#ffde00"/></svg>'
+  CN: () => cnFlag()
 };
 
 let DATA = null;

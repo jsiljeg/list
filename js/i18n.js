@@ -29,7 +29,7 @@ hr: {
     storyNav: "Priča",
     enter: "Otvori kartu",
     ratings: "Ocjene kritičara",
-    winemaker: "O vinaru", terroir: "Teroar", pairsWith: "Uz jelo iz našeg menija",
+    winemaker: "O vinaru", terroir: "Terroir", pairsWith: "Uz jelo iz našeg menija",
     picks: "Filhov izbor",
     bestRated: "Najbolje ocijenjeni",
     newBadge: "Novo",

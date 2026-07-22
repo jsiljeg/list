@@ -17,7 +17,7 @@
          "price": 8,
          "insight": {
           "grape": "Chardonnay, Rajnski rizling",
-          "region": "Međimurje",
+          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sparkling",
           "body": "light",
@@ -40,7 +40,7 @@
          "price": 8,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Sveti Ivan Zelina, Prigorje",
+          "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "sparkling_rose",
           "body": "light",
@@ -204,7 +204,7 @@
          "price": 9,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Štrigova, Međimurje",
+          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "white_aromatic",
           "body": "light",
@@ -218,7 +218,7 @@
            "cheese_fresh",
            "asparagus"
           ],
-          "temp": "8–10"
+          "temp": "10–12"
          }
         },
         {
@@ -472,7 +472,7 @@
          "price": 8,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot, Pinot crni",
-          "region": "Sveti Ivan Zelina, Prigorje",
+          "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -495,7 +495,7 @@
          "price": 10,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Sveti Ivan Zelina, Prigorje",
+          "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -709,23 +709,23 @@
          "producer": "Benvenuti",
          "price": 15,
          "insight": {
-          "grape": "Muškat",
+          "grape": "Teran",
           "region": "Motovun, Istra",
           "country": "HR",
-          "style": "sweet",
+          "style": "red_full",
           "body": "full",
           "aromas": [
-           "apricot",
-           "honey",
-           "candied_fruit",
-           "orange_peel"
+           "blackberry",
+           "plum",
+           "pepper",
+           "forest_floor"
           ],
           "pairings": [
-           "desserts",
-           "fruit_desserts",
-           "cheese_blue"
+           "game",
+           "steak",
+           "cheese_hard"
           ],
-          "temp": "10–12"
+          "temp": "16–18"
          }
         },
         {
@@ -826,7 +826,7 @@
          "price": 8,
          "insight": {
           "grape": "Rajnski rizling",
-          "region": "Štrigova, Međimurje",
+          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -841,7 +841,7 @@
            "fruit_desserts",
            "cheese_blue"
           ],
-          "temp": "8–10"
+          "temp": "10–12"
          }
         }
        ]
@@ -865,7 +865,7 @@
          "price": 49,
          "insight": {
           "grape": "Chardonnay, Rajnski rizling",
-          "region": "Međimurje",
+          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sparkling",
           "body": "light",
@@ -888,7 +888,7 @@
          "price": 48,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Sveti Ivan Zelina, Prigorje",
+          "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "sparkling_rose",
           "body": "light",
@@ -1999,7 +1999,7 @@
          "price": 39,
          "insight": {
           "grape": "Graševina",
-          "region": "Sveti Ivan Zelina, Prigorje",
+          "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "white_fresh",
           "body": "light",
@@ -2022,14 +2022,15 @@
          "price": 46,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Sveti Ivan Zelina, Prigorje",
+          "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "white_rich",
           "body": "medium",
           "aromas": [
-           "red_apple",
-           "butter",
-           "vanilla"
+           "green_apple",
+           "vanilla",
+           "caramel",
+           "butter"
           ],
           "pairings": [
            "poultry",
@@ -2045,7 +2046,7 @@
          "price": 75,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Erdut, Slavonija i Podunavlje",
+          "region": "Plešivica",
           "country": "HR",
           "style": "white_aromatic",
           "body": "medium",
@@ -2061,7 +2062,13 @@
            "cheese_fresh"
           ],
           "temp": "8–10"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Sauvignon 2024",
@@ -2117,7 +2124,7 @@
          "price": 45,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Štrigova, Međimurje",
+          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "white_aromatic",
           "body": "light",
@@ -2131,7 +2138,7 @@
            "cheese_fresh",
            "asparagus"
           ],
-          "temp": "8–10"
+          "temp": "10–12"
          }
         },
         {
@@ -2140,7 +2147,7 @@
          "price": 45,
          "insight": {
           "grape": "Rajnski rizling",
-          "region": "Štrigova, Međimurje",
+          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "white_aromatic",
           "body": "light",
@@ -2155,7 +2162,7 @@
            "white_fish",
            "salads"
           ],
-          "temp": "8–10"
+          "temp": "10–12"
          }
         },
         {
@@ -4543,7 +4550,7 @@
          "price": 50,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot, Pinot crni",
-          "region": "Sveti Ivan Zelina, Prigorje",
+          "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -4566,7 +4573,7 @@
          "price": 75,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Sveti Ivan Zelina, Prigorje",
+          "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -4613,7 +4620,7 @@
          "price": 70,
          "insight": {
           "grape": "Pinot crni",
-          "region": "Erdut, Slavonija i Podunavlje",
+          "region": "Plešivica",
           "country": "HR",
           "style": "red_light",
           "body": "light",
@@ -7571,7 +7578,7 @@
          "price": 60,
          "insight": {
           "grape": "Rajnski rizling",
-          "region": "Štrigova, Međimurje",
+          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -7586,7 +7593,7 @@
            "fruit_desserts",
            "cheese_blue"
           ],
-          "temp": "8–10"
+          "temp": "10–12"
          }
         }
        ]
