@@ -32,7 +32,7 @@ hr: {
     winemaker: "O vinaru", terroir: "Terroir", pairsWith: "Uz jelo iz našeg menija",
     picks: "Filhov izbor",
     bestRated: "Najbolje ocijenjeni",
-    pride: "Škrinja",
+    pride: "Arhiva",
     prideSub: "Za velike trenutke. Za Vas.",
     newBadge: "Novo",
     newArrivals: "Novo u ponudi",
