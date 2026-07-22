@@ -144,8 +144,9 @@ body {
 
 /* ---------- Nav ---------- */
 .nav {
-  display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center;
-  padding: .8rem .2rem;
+  display: flex; flex-wrap: wrap; gap: .5rem; justify-content: flex-start;
+  max-width: 900px; margin: 0 auto;
+  padding: .8rem 1.2rem 0;
 }
 .nav button {
   flex: none;
