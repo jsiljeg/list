@@ -180,8 +180,10 @@ function renderLangSwitch() {
 function renderNav() {
   const t = T();
   const nav = $("nav");
+  const hasNew = DATA.sections.some((s) => s.categories.some((c) => c.groups.some((g) => g.items.some((i) => i.new))));
   nav.innerHTML =
     `<button data-sec="__regions" class="region-chip ${currentSection === "__regions" ? "active" : ""}">◆ ${esc(t.ui.regions)}</button>` +
+    (hasNew ? `<button data-sec="__new" class="region-chip ${currentSection === "__new" ? "active" : ""}">✦ ${esc(t.ui.newArrivals)}</button>` : "") +
     DATA.sections.map((s) =>
       `<button data-sec="${s.id}" class="${s.id === currentSection ? "active" : ""}">${esc(t.sections[s.id] || s.id)}</button>`
     ).join("");
@@ -309,6 +311,22 @@ function renderContent() {
       </section>`;
     }).join("");
     if (!REGIONS.length) html = `<p class="no-results">${t.ui.noResults}</p>`;
+  } else if (currentSection === "__new") {
+    let newHtml = "";
+    DATA.sections.forEach((sec, si) => {
+      sec.categories.forEach((cat, ci) => {
+        cat.groups.forEach((g, gi) => {
+          g.items.forEach((item, ii) => {
+            if (!item.new) return;
+            const ctx = [t.sections[sec.id], g.country ? t.countries[g.country] : null].filter(Boolean).join(" · ");
+            newHtml += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
+          });
+        });
+      });
+    });
+    html = newHtml
+      ? `<section class="cat"><h2 class="cat-title">${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">◆</div>${newHtml}</section>`
+      : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (ratedOnly) {
     const rated = [];
     DATA.sections.forEach((sec, si) => {

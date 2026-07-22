@@ -4067,6 +4067,131 @@
          "tags": [
           "drinking_now"
          ]
+        },
+        {
+         "name": "Mâcon Prissé En Chailloux Blanc 2021",
+         "producer": "Jules Desjourneys",
+         "price": 90,
+         "new": true,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Mâcon-Prissé, Bourgogne",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "medium",
+          "aromas": [
+           "citrus",
+           "white_flowers",
+           "hazelnut",
+           "mineral"
+          ],
+          "pairings": [
+           "seafood",
+           "poultry",
+           "cheese_hard"
+          ],
+          "temp": "10–12"
+         }
+        },
+        {
+         "name": "Mâcon Verzé Blanc 2021",
+         "producer": "Jules Desjourneys",
+         "price": 90,
+         "new": true,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Mâcon-Verzé, Bourgogne",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "medium",
+          "aromas": [
+           "citrus",
+           "peach",
+           "white_flowers",
+           "mineral"
+          ],
+          "pairings": [
+           "seafood",
+           "white_fish",
+           "poultry"
+          ],
+          "temp": "10–12"
+         }
+        },
+        {
+         "name": "Pouilly-Fuissé Blanc 2021",
+         "producer": "Jules Desjourneys",
+         "price": 120,
+         "new": true,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Pouilly-Fuissé, Bourgogne",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "full",
+          "aromas": [
+           "citrus",
+           "peach",
+           "hazelnut",
+           "mineral"
+          ],
+          "pairings": [
+           "white_fish",
+           "poultry",
+           "cheese_hard"
+          ],
+          "temp": "11–13"
+         }
+        },
+        {
+         "name": "Pouilly-Fuissé Les Longays Blanc 2021",
+         "producer": "Jules Desjourneys",
+         "price": 139,
+         "new": true,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Pouilly-Fuissé Les Longays, Bourgogne",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "full",
+          "aromas": [
+           "peach",
+           "hazelnut",
+           "white_flowers",
+           "mineral"
+          ],
+          "pairings": [
+           "white_fish",
+           "veal",
+           "cheese_hard"
+          ],
+          "temp": "11–13"
+         }
+        },
+        {
+         "name": "Saint-Véran Blanc 2021",
+         "producer": "Jules Desjourneys",
+         "price": 129,
+         "new": true,
+         "insight": {
+          "grape": "Chardonnay",
+          "region": "Saint-Véran, Bourgogne",
+          "country": "FR",
+          "style": "white_rich",
+          "body": "medium",
+          "aromas": [
+           "citrus",
+           "white_flowers",
+           "peach",
+           "mineral"
+          ],
+          "pairings": [
+           "seafood",
+           "poultry",
+           "salads"
+          ],
+          "temp": "10–12"
+         }
         }
        ]
       },
@@ -5699,6 +5824,56 @@
            "stews"
           ],
           "temp": "16–18"
+         }
+        },
+        {
+         "name": "Beaujolais Patacaisse Rouge 2022",
+         "producer": "Jules Desjourneys",
+         "price": 80,
+         "new": true,
+         "insight": {
+          "grape": "Gamay",
+          "region": "Beaujolais",
+          "country": "FR",
+          "style": "red_medium",
+          "body": "medium",
+          "aromas": [
+           "cherry",
+           "raspberry",
+           "violet",
+           "mineral"
+          ],
+          "pairings": [
+           "poultry",
+           "charcuterie",
+           "cheese_hard"
+          ],
+          "temp": "14–16"
+         }
+        },
+        {
+         "name": "Rouge 2023",
+         "producer": "Jules Desjourneys",
+         "price": 80,
+         "new": true,
+         "insight": {
+          "grape": "Gamay",
+          "region": "Beaujolais",
+          "country": "FR",
+          "style": "red_light",
+          "body": "light",
+          "aromas": [
+           "cherry",
+           "raspberry",
+           "violet",
+           "spice"
+          ],
+          "pairings": [
+           "charcuterie",
+           "poultry",
+           "pork"
+          ],
+          "temp": "13–15"
          }
         }
        ]
@@ -7903,7 +8078,6 @@
    "categories": [
     {
      "id": "vodka",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -7919,7 +8093,6 @@
     },
     {
      "id": "gin",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -7955,7 +8128,6 @@
     },
     {
      "id": "vermouth",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -7986,7 +8158,6 @@
     },
     {
      "id": "tequila-mezcal",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8012,7 +8183,6 @@
     },
     {
      "id": "whisky",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8088,7 +8258,6 @@
     },
     {
      "id": "rum",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8184,7 +8353,6 @@
     },
     {
      "id": "cognac",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8205,7 +8373,6 @@
     },
     {
      "id": "shochu",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8226,7 +8393,6 @@
    "categories": [
     {
      "id": "rakija",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8277,7 +8443,6 @@
     },
     {
      "id": "grappa",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8308,7 +8473,6 @@
     },
     {
      "id": "liqueur",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8339,7 +8503,6 @@
     },
     {
      "id": "beer",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8360,7 +8523,6 @@
    "categories": [
     {
      "id": "water",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8441,7 +8603,6 @@
     },
     {
      "id": "tonic",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8457,7 +8618,6 @@
     },
     {
      "id": "juice",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
@@ -8483,7 +8643,6 @@
     },
     {
      "id": "coffee",
-     "priceNote": true,
      "groups": [
       {
        "country": null,
