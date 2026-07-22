@@ -131,7 +131,7 @@ function showStart() {
     b.addEventListener("click", () => {
       lang = b.dataset.lang;
       localStorage.setItem(LS_KEY, lang);
-      showStory();
+      appEntered ? showApp() : showStory();   /* changing language skips the intro splash */
     })
   );
 }
@@ -151,7 +151,9 @@ function showStory() {
 }
 
 /* ---------- main app ---------- */
+let appEntered = false;
 function showApp() {
+  appEntered = true;
   $("start").classList.add("hidden");
   $("story-screen").classList.add("hidden");
   $("app").classList.remove("hidden");
@@ -173,18 +175,15 @@ function showApp() {
   renderContent();
 }
 
+/* One compact language control (globe + current language) instead of a row
+   of flags — the flags belong on the pick screen, not over the wines. Tap
+   it to return to the language picker. */
+const GLOBE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.9 5.6 3.9 9s-1.4 6.6-3.9 9c-2.5-2.4-3.9-5.6-3.9-9s1.4-6.6 3.9-9z"/></svg>';
 function renderLangSwitch() {
   const box = $("lang-switch");
-  box.innerHTML = LANGS.map((l) =>
-    `<button data-lang="${l.code}" class="${l.code === lang ? "active" : ""}" aria-label="${l.name}" title="${l.name}">${flagHTML(l.code)}</button>`
-  ).join("");
-  box.querySelectorAll("button").forEach((b) =>
-    b.addEventListener("click", () => {
-      lang = b.dataset.lang;
-      localStorage.setItem(LS_KEY, lang);
-      showApp();
-    })
-  );
+  const cur = LANGS.find((l) => l.code === lang) || LANGS[0];
+  box.innerHTML = `<button class="lang-current" type="button" aria-label="${esc(cur.name)}" title="${esc(cur.name)}"><span class="globe-sm">${GLOBE_SVG}</span><span class="lang-name">${esc(cur.name)}</span></button>`;
+  box.querySelector("button").addEventListener("click", showStart);
 }
 
 function renderNav() {
@@ -497,15 +496,28 @@ function openDetail(ref) {
       if (!dishes.length) return "";
       return `<div class="detail-dishes"><span class="detail-label">${esc(t.ui.pairsWith)}</span>${dishes.map((dn) => `<span class="dish-chip">${esc(dn.name[lang] || dn.name.en || dn.name.hr)}</span>`).join("")}</div>`;
     })()}`;
-  $("modal").classList.remove("hidden");
-  document.body.style.overflow = "hidden";
-  const _ms = document.querySelector(".modal-sheet"); if (_ms) _ms.scrollTop = 0;
+  showModal();
 }
 
-function closeModal() {
+/* Modal open/close with a history entry so the phone/tablet back button
+   (and Esc) just closes the modal instead of leaving the page. */
+let modalOpen = false;
+function showModal() {
+  const ms = document.querySelector(".modal-sheet"); if (ms) ms.scrollTop = 0;
+  $("modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  if (!modalOpen) { modalOpen = true; history.pushState({ theaModal: true }, ""); }
+}
+function hideModal() {
+  modalOpen = false;
   $("modal").classList.add("hidden");
   document.body.style.overflow = "";
 }
+function closeModal() {
+  if (modalOpen && history.state && history.state.theaModal) history.back(); // → popstate → hideModal
+  else hideModal();
+}
+window.addEventListener("popstate", () => { if (modalOpen) hideModal(); });
 
 /* ---------- "Help me choose" sommelier wizard ---------- */
 /* Glass silhouettes traced from the house stemware (product photos):
@@ -541,9 +553,7 @@ const helperState = { step: 0, dish: null };
 function openHelper() {
   helperState.step = 0; helperState.dish = null;
   renderHelperStep();
-  $("modal").classList.remove("hidden");
-  document.body.style.overflow = "hidden";
-  const _ms = document.querySelector(".modal-sheet"); if (_ms) _ms.scrollTop = 0;
+  showModal();
 }
 
 function dishName(dish) {

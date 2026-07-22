@@ -130,15 +130,17 @@ body {
   font-family: var(--serif); font-style: italic; color: var(--gold-soft);
   font-size: 1.05rem; margin: -.2rem 0 1.1rem; text-align: center;
 }
-.lang-switch { display: flex; gap: .35rem; }
-.lang-switch button {
-  background: none; border: 1px solid transparent; border-radius: 6px;
-  padding: 4px; cursor: pointer; line-height: 0;
-  opacity: .5; transition: opacity .15s;
+.lang-switch { position: absolute; top: .7rem; right: 1rem; z-index: 3; }
+.lang-current {
+  display: inline-flex; align-items: center; gap: .38rem;
+  background: rgba(22,21,19,.6); border: 1px solid var(--line); border-radius: 999px;
+  padding: .32rem .7rem; cursor: pointer;
+  color: var(--gold-soft); font-family: var(--sans); font-size: .82rem; letter-spacing: .01em;
+  transition: color .15s, border-color .15s;
 }
-.lang-switch button svg { width: 30px; height: 20px; border-radius: 2px; }
-.lang-switch button.active { opacity: 1; border-color: var(--gold); }
-.lang-switch button:hover { opacity: 1; }
+.lang-current:hover, .lang-current:focus-visible { color: var(--text); border-color: var(--gold); outline: none; }
+.lang-current .globe-sm { line-height: 0; }
+.lang-current .globe-sm svg { width: 15px; height: 15px; }
 
 /* ---------- Nav ---------- */
 .nav {
@@ -482,10 +484,15 @@ body {
   .header { padding: .5rem .7rem 0; }
   .header-logo { width: 120px; }
   .header-subtitle { display: none; }
-  .header-tools { flex-wrap: wrap; gap: .45rem; margin-top: .5rem; }
+  .header-tools { flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
   .search { flex: 1 1 100%; min-height: 42px; }        /* search on its own row */
-  .tool-btn { min-height: 42px; padding: 0 .75rem; gap: .35rem; font-size: .85rem; }
-  #lang-switch { display: none; }                      /* language already chosen; tap the logo to change it */
+  .tool-btn {                                          /* four equal buttons in a 2x2 grid */
+    flex: 1 1 calc(50% - .25rem); justify-content: center; min-height: 48px;
+    padding: .3rem .5rem; gap: .35rem; font-size: .8rem; line-height: 1.15; text-align: center;
+  }
+  .lang-switch { top: .5rem; right: .7rem; }
+  .lang-current { padding: .28rem .42rem; }
+  .lang-current .lang-name { display: none; }          /* globe only on phones */
 
   /* one compact, swipeable row of category chips; Vinske regije goes last */
   .nav { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
