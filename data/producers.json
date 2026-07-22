@@ -506,6 +506,292 @@
     "de": "Der unmögliche Weinberg am Fusse des Himalaya — Ao Yun vermählt Bordeaux-Sorten und 2.500 Meter Höhe zu einem Wein, den es nicht geben dürfte und den es doch gibt.",
     "zh": "喜马拉雅山麓那片不可能的葡萄园——敖云将波尔多品种与 2500 米海拔融为一款本不该存在、却真实存在的酒。"
    }
+  },
+  "Billecart-Salmon": {
+   "region": "Mareuil-sur-Aÿ, Champagne",
+   "blurb": {
+    "hr": "Obiteljska kuća poznata po hladnoj, sporoj fermentaciji — šampanjac tkao čipka, s ružičastim koje mnogi smatraju najljepšim u regiji.",
+    "en": "A family house famed for cold, slow fermentation — Champagne like lace, with a rosé many consider the finest in the region.",
+    "it": "Una maison di famiglia celebre per la fermentazione fredda e lenta — Champagne come merletto, con un rosé che molti giudicano il più bello della regione.",
+    "fr": "Une maison familiale réputée pour sa fermentation lente et froide — un champagne comme de la dentelle, avec un rosé que beaucoup tiennent pour le plus beau de la région.",
+    "de": "Ein Familienhaus, berühmt für kalte, langsame Gärung — Champagner wie Spitze, mit einem Rosé, den viele für den schönsten der Region halten.",
+    "zh": "以低温缓慢发酵闻名的家族酒庄——香槟如蕾丝，其桃红被许多人视为全区最美。"
+   }
+  },
+  "Delamotte": {
+   "region": "Le Mesnil-sur-Oger, Champagne",
+   "blurb": {
+    "hr": "Tiha sestra Salona — blanc de blancs izgovoren šapatom, finoća bez potrebe da išta dokazuje.",
+    "en": "The quiet sister of Salon — a blanc de blancs spoken in a whisper, finesse with nothing to prove.",
+    "it": "La sorella discreta di Salon — un blanc de blancs pronunciato sottovoce, finezza che non ha nulla da dimostrare.",
+    "fr": "La sœur discrète de Salon — un blanc de blancs prononcé à voix basse, une finesse qui n'a rien à prouver.",
+    "de": "Die stille Schwester von Salon — ein Blanc de Blancs im Flüsterton, Finesse, die nichts beweisen muss.",
+    "zh": "沙龙沉静的姊妹——低声吐露的白中白，无需证明什么的细腻。"
+   }
+  },
+  "Deutz": {
+   "region": "Aÿ, Champagne",
+   "blurb": {
+    "hr": "Stara garda Aÿa — suzdržan, uglađen šampanjac bez ijedne teatralne geste.",
+    "en": "The old guard of Aÿ — a restrained, polished Champagne without a single theatrical gesture.",
+    "it": "La vecchia guardia di Aÿ — uno Champagne sobrio e levigato, senza un solo gesto teatrale.",
+    "fr": "La vieille garde d'Aÿ — un champagne sobre et poli, sans un seul geste théâtral.",
+    "de": "Die alte Garde von Aÿ — ein zurückhaltender, geschliffener Champagner ohne eine einzige theatralische Geste.",
+    "zh": "阿伊村的老派卫士——克制而温润的香槟，没有一丝戏剧化的姿态。"
+   }
+  },
+  "Vouette": {
+   "region": "Aube, Champagne",
+   "blurb": {
+    "hr": "Biodinamički vinogradar Aubea koji radi šampanjac koji se ponaša kao vino — sirov, zemljan, iskren do kosti.",
+    "en": "A biodynamic grower in the Aube making Champagne that behaves like wine — raw, earthy, honest to the bone.",
+    "it": "Un vignaiolo biodinamico dell'Aube che fa uno Champagne che si comporta come un vino — grezzo, terroso, sincero fino all'osso.",
+    "fr": "Un vigneron biodynamique de l'Aube qui fait un champagne qui se comporte comme un vin — brut, terrien, honnête jusqu'à l'os.",
+    "de": "Ein biodynamischer Winzer im Aube, der Champagner macht, der sich wie Wein benimmt — roh, erdig, ehrlich bis auf die Knochen.",
+    "zh": "奥布地区的生物动力种植者，酿出像葡萄酒般的香槟——粗粝、带着泥土气，坦诚到骨子里。"
+   }
+  },
+  "Lageder": {
+   "region": "Alto Adige",
+   "blurb": {
+    "hr": "Alpski pionir biodinamike — vina rođena iz planinske svjetlosti, čista i uspravna kao zrak na visini.",
+    "en": "An Alpine pioneer of biodynamics — wines born of mountain light, clean and upright as high-altitude air.",
+    "it": "Un pioniere alpino della biodinamica — vini nati dalla luce di montagna, netti e diritti come l'aria d'alta quota.",
+    "fr": "Un pionnier alpin de la biodynamie — des vins nés de la lumière des montagnes, nets et droits comme l'air d'altitude.",
+    "de": "Ein alpiner Pionier der Biodynamik — Weine aus Berglicht, klar und aufrecht wie die Luft der Höhe.",
+    "zh": "阿尔卑斯生物动力的先驱——诞生于山间光线的酒，如高海拔的空气般纯净而挺拔。"
+   }
+  },
+  "Isole e Olena": {
+   "region": "Chianti Classico, Toscana",
+   "blurb": {
+    "hr": "Cepparello Paola De Marchija — desetljeća predanosti jednoj sorti pretočena u mjeru toskanskog sangiovesea.",
+    "en": "Paolo De Marchi's Cepparello — decades of devotion to one grape distilled into the measure of Tuscan Sangiovese.",
+    "it": "Il Cepparello di Paolo De Marchi — decenni di dedizione a un vitigno distillati nel metro del Sangiovese toscano.",
+    "fr": "Le Cepparello de Paolo De Marchi — des décennies de dévotion à un cépage distillées dans l'étalon du sangiovese toscan.",
+    "de": "Paolo De Marchis Cepparello — Jahrzehnte der Hingabe an eine Rebe, destilliert zum Massstab des toskanischen Sangiovese.",
+    "zh": "保罗·德·马奇的 Cepparello——数十年对单一品种的执着，凝成托斯卡纳桑娇维塞的标尺。"
+   }
+  },
+  "Poggio di Sotto": {
+   "region": "Montalcino, Toscana",
+   "blurb": {
+    "hr": "Brunello kao svila i zrak — parfumiran, prozračan, dokaz da snaga i nježnost mogu živjeti u istoj boci.",
+    "en": "Brunello as silk and air — perfumed, weightless, proof that power and tenderness can live in one bottle.",
+    "it": "Brunello come seta e aria — profumato, impalpabile, la prova che forza e tenerezza possono convivere nella stessa bottiglia.",
+    "fr": "Un brunello de soie et d'air — parfumé, aérien, la preuve que puissance et tendresse peuvent cohabiter dans une même bouteille.",
+    "de": "Brunello wie Seide und Luft — duftig, schwerelos, der Beweis, dass Kraft und Zartheit in einer Flasche wohnen können.",
+    "zh": "如丝似气的布鲁奈罗——芬芳、轻盈，证明力量与温柔可共存于一瓶之中。"
+   }
+  },
+  "Radikon": {
+   "region": "Oslavia, Friuli",
+   "blurb": {
+    "hr": "Pionir maceriranih bijelih vina koji je ponovno otvorio drevna vrata — jantarna vina koja traže vrijeme i hrabrost.",
+    "en": "A pioneer of skin-macerated whites who reopened an ancient door — amber wines that ask for time and courage.",
+    "it": "Un pioniere dei bianchi macerati che ha riaperto una porta antica — vini ambrati che chiedono tempo e coraggio.",
+    "fr": "Un pionnier des blancs de macération qui a rouvert une porte ancienne — des vins ambrés qui demandent du temps et du courage.",
+    "de": "Ein Pionier maischevergorener Weissweine, der eine uralte Tür wieder öffnete — bernsteinfarbene Weine, die Zeit und Mut verlangen.",
+    "zh": "浸皮白葡萄酒的先驱，重新推开一扇古老之门——需要时间与勇气的琥珀之酒。"
+   }
+  },
+  "Vodopivec": {
+   "region": "Carso, Friuli",
+   "blurb": {
+    "hr": "Vitovska na kraškom kamenu — vino vjetra i stijene, strogo, mineralno i beskompromisno.",
+    "en": "Vitovska on karst stone — a wine of wind and rock, austere, mineral and uncompromising.",
+    "it": "Vitovska sulla pietra carsica — un vino di vento e roccia, austero, minerale e senza compromessi.",
+    "fr": "Vitovska sur la pierre du Karst — un vin de vent et de roche, austère, minéral et sans compromis.",
+    "de": "Vitovska auf Karststein — ein Wein aus Wind und Fels, streng, mineralisch und kompromisslos.",
+    "zh": "喀斯特岩石上的维托斯卡——风与石之酒，冷峻、矿感十足、毫不妥协。"
+   }
+  },
+  "Damijan": {
+   "region": "Friuli",
+   "blurb": {
+    "hr": "Duge maceracije koje hvataju sunce u čaši — jantarna bijela vina dubine, kože i sušenog voća.",
+    "en": "Long macerations that trap the sun in the glass — amber whites of depth, leather and dried fruit.",
+    "it": "Lunghe macerazioni che imprigionano il sole nel bicchiere — bianchi ambrati di profondità, cuoio e frutta secca.",
+    "fr": "De longues macérations qui emprisonnent le soleil dans le verre — des blancs ambrés de profondeur, de cuir et de fruits secs.",
+    "de": "Lange Maischestandzeiten, die die Sonne im Glas einfangen — bernsteinfarbene Weisse von Tiefe, Leder und Trockenfrüchten.",
+    "zh": "长时间浸皮，将阳光锁入杯中——深邃的琥珀白，带着皮革与果干气息。"
+   }
+  },
+  "López de Heredia": {
+   "region": "Haro, Rioja",
+   "blurb": {
+    "hr": "Kuća u kojoj vrijeme stoji — Rioja koja odbija modu i pušta desetljeća da rade svoj posao prije nego što boca izađe.",
+    "en": "A house where time stands still — a Rioja that refuses fashion and lets decades do their work before a bottle ever leaves.",
+    "it": "Una casa dove il tempo si ferma — una Rioja che rifiuta la moda e lascia lavorare i decenni prima che una bottiglia esca.",
+    "fr": "Une maison où le temps s'arrête — une Rioja qui refuse la mode et laisse les décennies faire leur œuvre avant qu'une bouteille ne sorte.",
+    "de": "Ein Haus, in dem die Zeit stillsteht — ein Rioja, der die Mode verweigert und die Jahrzehnte arbeiten lässt, bevor eine Flasche das Haus verlässt.",
+    "zh": "一座时间静止的酒庄——拒绝潮流的里奥哈，任由数十年光阴打磨，方才出窖。"
+   }
+  },
+  "Murrieta": {
+   "region": "Rioja",
+   "blurb": {
+    "hr": "Aristokratsko strpljenje Rioje — Castillo Ygay, vino građeno da nadživi generacije koje ga otvaraju.",
+    "en": "The aristocratic patience of Rioja — Castillo Ygay, a wine built to outlive the generations that open it.",
+    "it": "La pazienza aristocratica della Rioja — Castillo Ygay, un vino costruito per sopravvivere alle generazioni che lo aprono.",
+    "fr": "La patience aristocratique de la Rioja — Castillo Ygay, un vin bâti pour survivre aux générations qui l'ouvrent.",
+    "de": "Die aristokratische Geduld der Rioja — Castillo Ygay, ein Wein, gebaut, um die Generationen zu überdauern, die ihn öffnen.",
+    "zh": "里奥哈的贵族式耐心——Castillo Ygay，一款注定比开瓶者的世代更长寿的酒。"
+   }
+  },
+  "Donnafugata": {
+   "region": "Sicilija",
+   "blurb": {
+    "hr": "Sicilija u boji i toplini — vina koja nose sunce, more i vjetar juga, izražajna i puna života.",
+    "en": "Sicily in colour and warmth — wines carrying the sun, the sea and the southern wind, expressive and full of life.",
+    "it": "La Sicilia nel colore e nel calore — vini che portano il sole, il mare e il vento del sud, espressivi e pieni di vita.",
+    "fr": "La Sicile en couleur et en chaleur — des vins qui portent le soleil, la mer et le vent du sud, expressifs et pleins de vie.",
+    "de": "Sizilien in Farbe und Wärme — Weine, die Sonne, Meer und den Südwind tragen, ausdrucksstark und voller Leben.",
+    "zh": "色彩与温度里的西西里——承载着阳光、海洋与南风的酒，奔放而充满生命力。"
+   }
+  },
+  "Bürklin-Wolf": {
+   "region": "Pfalz",
+   "blurb": {
+    "hr": "Biodinamički veliki položaji Pfalza — rizling s burgundskom ambicijom, grandiozan i precizan u isti mah.",
+    "en": "The biodynamic grand crus of the Pfalz — Riesling with Burgundian ambition, grand and precise at once.",
+    "it": "I grand cru biodinamici del Palatinato — Riesling con ambizione borgognona, grandioso e preciso al tempo stesso.",
+    "fr": "Les grands crus biodynamiques du Palatinat — un riesling à l'ambition bourguignonne, grandiose et précis à la fois.",
+    "de": "Die biodynamischen Grossen Gewächse der Pfalz — Riesling mit burgundischem Ehrgeiz, grandios und präzise zugleich.",
+    "zh": "普法尔茨的生物动力特级园——怀揣勃艮第野心的雷司令，恢弘与精准并存。"
+   }
+  },
+  "Prager": {
+   "region": "Wachau",
+   "blurb": {
+    "hr": "Vrtoglave terase iznad Dunava — grüner i rizling kristalne bistrine, rođeni iz kamena i strmine.",
+    "en": "Vertiginous terraces above the Danube — Grüner and Riesling of crystalline clarity, born of stone and steepness.",
+    "it": "Terrazze vertiginose sopra il Danubio — Grüner e Riesling di limpidezza cristallina, nati da pietra e pendenza.",
+    "fr": "Des terrasses vertigineuses au-dessus du Danube — grüner et riesling d'une clarté cristalline, nés de la pierre et de la pente.",
+    "de": "Schwindelerregende Terrassen über der Donau — Grüner und Riesling von kristalliner Klarheit, aus Stein und Steilheit geboren.",
+    "zh": "多瑙河上令人目眩的梯田——如水晶般澄澈的绿维特利纳与雷司令，生于岩石与陡坡。"
+   }
+  },
+  "Bernhard Ott": {
+   "region": "Wagram",
+   "blurb": {
+    "hr": "Prvak grünera na wagramskom loessu — začin, dubina i teksturа koja pokazuje koliko sorta može biti ozbiljna.",
+    "en": "The champion of Grüner on Wagram loess — spice, depth and a texture that shows how serious the grape can be.",
+    "it": "Il campione del Grüner sul loess del Wagram — spezia, profondità e una texture che mostra quanto serio possa essere il vitigno.",
+    "fr": "Le champion du grüner sur le lœss du Wagram — épice, profondeur et une texture qui montre à quel point le cépage peut être sérieux.",
+    "de": "Der Meister des Grüners auf Wagramer Löss — Würze, Tiefe und eine Textur, die zeigt, wie ernsthaft die Rebe sein kann.",
+    "zh": "瓦格拉姆黄土上的绿维特利纳冠军——香料、深度，与一种展现该品种可以何等严肃的质地。"
+   }
+  },
+  "Albert Mann": {
+   "region": "Alsace",
+   "blurb": {
+    "hr": "Biodinamički veliki položaji Alzasa — aromatika puna parfema, ali s ravnom, čvrstom kičmom.",
+    "en": "The biodynamic grand crus of Alsace — aromatics full of perfume, yet with a straight, firm spine.",
+    "it": "I grand cru biodinamici dell'Alsazia — aromi pieni di profumo, ma con una spina dorsale dritta e salda.",
+    "fr": "Les grands crus biodynamiques d'Alsace — des arômes pleins de parfum, mais avec une colonne droite et ferme.",
+    "de": "Die biodynamischen Grands Crus des Elsass — Aromatik voller Parfüm, doch mit gerader, fester Wirbelsäule.",
+    "zh": "阿尔萨斯的生物动力特级园——芳香馥郁，却有一条笔直而坚实的脊梁。"
+   }
+  },
+  "Mikulski": {
+   "region": "Meursault, Burgundija",
+   "blurb": {
+    "hr": "Tihi majstor Meursaulta — sol, kamen i suzdržanost čovjeka koji radije pušta vino da govori.",
+    "en": "A quiet master of Meursault — salt, stone and the reserve of a man who would rather let the wine speak.",
+    "it": "Un maestro discreto di Meursault — sale, pietra e il riserbo di un uomo che preferisce lasciar parlare il vino.",
+    "fr": "Un maître discret de Meursault — sel, pierre et la réserve d'un homme qui préfère laisser parler le vin.",
+    "de": "Ein stiller Meister des Meursault — Salz, Stein und die Zurückhaltung eines Mannes, der lieber den Wein sprechen lässt.",
+    "zh": "默尔索沉默的大师——盐、石，与一位宁愿让酒自己说话之人的克制。"
+   }
+  },
+  "Ridge": {
+   "region": "Santa Cruz Mountains, Kalifornija",
+   "blurb": {
+    "hr": "Kalifornija s europskom dušom — Monte Bello, kabernet za desetljeća, i etiketa koja pošteno navodi svaki sastojak.",
+    "en": "California with a European soul — Monte Bello, a Cabernet for decades, and a label that honestly lists every ingredient.",
+    "it": "California con un'anima europea — Monte Bello, un Cabernet per decenni, e un'etichetta che elenca onestamente ogni ingrediente.",
+    "fr": "La Californie avec une âme européenne — Monte Bello, un cabernet pour des décennies, et une étiquette qui liste honnêtement chaque ingrédient.",
+    "de": "Kalifornien mit europäischer Seele — Monte Bello, ein Cabernet für Jahrzehnte, und ein Etikett, das ehrlich jede Zutat nennt.",
+    "zh": "带着欧洲灵魂的加州——Monte Bello，一款陈放数十年的赤霞珠，酒标诚实列出每一种成分。"
+   }
+  },
+  "Marjan Simčič": {
+   "region": "Goriška Brda, Slovenija",
+   "blurb": {
+    "hr": "Brda koja ne mare za granicu — raskošna, ali precizna bijela i crna vina s brežuljaka koji spajaju Sloveniju i Italiju.",
+    "en": "The hills that ignore the border — opulent yet precise whites and reds from slopes that join Slovenia and Italy.",
+    "it": "Le colline che ignorano il confine — bianchi e rossi opulenti ma precisi da pendii che uniscono Slovenia e Italia.",
+    "fr": "Les collines qui ignorent la frontière — des blancs et rouges opulents mais précis, de coteaux qui unissent Slovénie et Italie.",
+    "de": "Die Hügel, die die Grenze ignorieren — opulente, doch präzise Weisse und Rote von Hängen, die Slowenien und Italien verbinden.",
+    "zh": "无视国界的山丘——来自连接斯洛文尼亚与意大利之坡的白与红，丰腴却精准。"
+   }
+  },
+  "Movia": {
+   "region": "Goriška Brda, Slovenija",
+   "blurb": {
+    "hr": "Aleš Kristančič i njegova živa, biodinamička vina po mjesečevu ritmu — divlja, neukroćena, uvijek na rubu čuda.",
+    "en": "Aleš Kristančič and his living, biodynamic wines by the rhythm of the moon — wild, untamed, always on the edge of a miracle.",
+    "it": "Aleš Kristančič e i suoi vini vivi e biodinamici al ritmo della luna — selvaggi, indomiti, sempre sull'orlo del miracolo.",
+    "fr": "Aleš Kristančič et ses vins vivants, biodynamiques au rythme de la lune — sauvages, indomptés, toujours au bord du miracle.",
+    "de": "Aleš Kristančič und seine lebendigen, biodynamischen Weine im Rhythmus des Mondes — wild, ungezähmt, stets am Rande eines Wunders.",
+    "zh": "Aleš Kristančič 与他随月律而生的生物动力活酒——狂野、不羁，永远处在奇迹的边缘。"
+   }
+  },
+  "Boškinac": {
+   "region": "Pag",
+   "blurb": {
+    "hr": "Otok kamena, soli i bure — Boškinac hvata sve to u vina koja mirišu na paški krajolik i vjetar s mora.",
+    "en": "An island of stone, salt and the bura wind — Boškinac captures it all in wines that smell of the Pag landscape and the sea breeze.",
+    "it": "Un'isola di pietra, sale e vento di bora — Boškinac cattura tutto questo in vini che profumano del paesaggio di Pag e della brezza marina.",
+    "fr": "Une île de pierre, de sel et de vent bora — Boškinac capte tout cela dans des vins qui sentent le paysage de Pag et la brise marine.",
+    "de": "Eine Insel aus Stein, Salz und Bura-Wind — Boškinac fängt all das in Weinen ein, die nach der Landschaft von Pag und der Meeresbrise duften.",
+    "zh": "石头、盐与布拉风之岛——Boškinac 将这一切凝入散发着帕格岛风景与海风气息的酒中。"
+   }
+  },
+  "Korak": {
+   "region": "Plešivica",
+   "blurb": {
+    "hr": "Plešivička finoća — obiteljski podrum majstor pjenušaca i chardonnaya, s napetošću koju daju hladni zeleni brežuljci.",
+    "en": "Plešivica finesse — a family cellar masterful with sparkling wine and Chardonnay, with the tension its cool green hills provide.",
+    "it": "Finezza di Plešivica — una cantina di famiglia maestra di spumante e Chardonnay, con la tensione che donano le fresche colline verdi.",
+    "fr": "La finesse de Plešivica — une cave familiale maîtresse du mousseux et du chardonnay, avec la tension qu'apportent ses fraîches collines vertes.",
+    "de": "Die Finesse von Plešivica — ein Familienkeller, meisterhaft bei Schaumwein und Chardonnay, mit der Spannung, die seine kühlen grünen Hügel schenken.",
+    "zh": "普莱希维察的细腻——一座精于起泡与霞多丽的家族酒窖，带着清凉绿丘赋予的张力。"
+   }
+  },
+  "Saints Hills": {
+   "region": "Dingač / Istra",
+   "blurb": {
+    "hr": "Hrvatska ambicija s međunarodnim rukopisom — projekt koji spaja plavac i istarske sorte s preciznošću vrhunskog konzultanta.",
+    "en": "Croatian ambition with an international hand — a project marrying Plavac and Istrian varieties to the precision of a top consultant.",
+    "it": "Ambizione croata con firma internazionale — un progetto che sposa il Plavac e i vitigni istriani alla precisione di un grande consulente.",
+    "fr": "L'ambition croate avec une main internationale — un projet qui marie le plavac et les cépages istriens à la précision d'un grand consultant.",
+    "de": "Kroatischer Ehrgeiz mit internationaler Handschrift — ein Projekt, das Plavac und istrische Sorten mit der Präzision eines Spitzenberaters verbindet.",
+    "zh": "带着国际笔触的克罗地亚雄心——将普拉瓦茨与伊斯特拉品种融入顶级顾问之精准的项目。"
+   }
+  },
+  "Matošević": {
+   "region": "Istra",
+   "blurb": {
+    "hr": "Moderno lice istarske malvazije — svježa, precizna i sunčana bijela vina koja su redefinirala sortu.",
+    "en": "The modern face of Istrian Malvazija — fresh, precise, sun-lit whites that redefined the grape.",
+    "it": "Il volto moderno della Malvasia istriana — bianchi freschi, precisi e solari che hanno ridefinito il vitigno.",
+    "fr": "Le visage moderne de la malvoisie istrienne — des blancs frais, précis et solaires qui ont redéfini le cépage.",
+    "de": "Das moderne Gesicht der istrischen Malvazija — frische, präzise, sonnige Weissweine, die die Rebe neu definierten.",
+    "zh": "伊斯特拉玛尔维萨的现代面孔——清新、精准、洒满阳光的白，重新定义了这一品种。"
+   }
+  },
+  "Heitz": {
+   "region": "Napa Valley, Kalifornija",
+   "blurb": {
+    "hr": "Stara škola Nape — Martha's Vineyard kabernet od metvice i crnog ribiza, klasičan i strpljiv, građen da stari.",
+    "en": "Old-school Napa — Martha's Vineyard Cabernet of mint and cassis, classic and patient, built to age.",
+    "it": "Napa di vecchia scuola — Cabernet di Martha's Vineyard, di menta e ribes nero, classico e paziente, fatto per invecchiare.",
+    "fr": "La Napa à l'ancienne — le cabernet de Martha's Vineyard, de menthe et de cassis, classique et patient, bâti pour vieillir.",
+    "de": "Napa alter Schule — Martha's-Vineyard-Cabernet aus Minze und Cassis, klassisch und geduldig, zum Reifen gebaut.",
+    "zh": "老派的纳帕——Martha's Vineyard 赤霞珠，薄荷与黑加仑气息，经典而耐心，为陈年而生。"
+   }
   }
  }
 }
