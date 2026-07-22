@@ -33,7 +33,7 @@ hr: {
     picks: "Filhov izbor",
     bestRated: "Najbolje ocijenjeni",
     pride: "Filhov ponos",
-    prideSub: "Najveće etikete naše karte — boce od 500 € naviše.",
+    prideSub: "Najveće etikete naše karte.",
     newBadge: "Novo",
     newArrivals: "Novo u ponudi",
     regions: "Vinske regije"
@@ -141,7 +141,7 @@ en: {
     picks: "Filho's picks",
     bestRated: "Top rated",
     pride: "Filho's pride",
-    prideSub: "The great labels of our list — bottles of €500 and above.",
+    prideSub: "The great labels of our list.",
     newBadge: "New",
     newArrivals: "New arrivals",
     regions: "Wine regions"
@@ -249,7 +249,7 @@ it: {
     picks: "La selezione di Filho",
     bestRated: "I più premiati",
     pride: "L'orgoglio di Filho",
-    prideSub: "Le grandi etichette della nostra carta — bottiglie da 500 € in su.",
+    prideSub: "Le grandi etichette della nostra carta.",
     newBadge: "Novità",
     newArrivals: "Novità in carta",
     regions: "Regioni"
@@ -357,7 +357,7 @@ fr: {
     picks: "La sélection de Filho",
     bestRated: "Les mieux notés",
     pride: "La fierté de Filho",
-    prideSub: "Les grandes étiquettes de notre carte — bouteilles à partir de 500 €.",
+    prideSub: "Les grandes étiquettes de notre carte.",
     newBadge: "Nouveau",
     newArrivals: "Nouveautés",
     regions: "Régions"
@@ -465,7 +465,7 @@ de: {
     picks: "Filhos Auswahl",
     bestRated: "Bestbewertet",
     pride: "Filhos Stolz",
-    prideSub: "Die großen Namen unserer Karte — Flaschen ab 500 €.",
+    prideSub: "Die großen Namen unserer Karte.",
     newBadge: "Neu",
     newArrivals: "Neu auf der Karte",
     regions: "Regionen"
@@ -573,7 +573,7 @@ zh: {
     picks: "Filho 精选",
     bestRated: "评分最高",
     pride: "Filho 的骄傲",
-    prideSub: "酒单上的殿堂级名庄——500 欧元以上的珍藏。",
+    prideSub: "酒单上的殿堂级名庄。",
     newBadge: "新品",
     newArrivals: "新品上架",
     regions: "产区"
