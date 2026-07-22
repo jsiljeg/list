@@ -40,10 +40,17 @@ body {
   0%, 100% { opacity: .82; filter: drop-shadow(0 0 0 rgba(201,169,97,0)); }
   50% { opacity: 1; filter: drop-shadow(0 0 22px rgba(201,169,97,.28)); }
 }
+.lang-prompt { display: flex; flex-direction: column; align-items: center; gap: .45rem; }
+.globe { color: var(--gold); line-height: 0; opacity: .9; }
+.globe svg { width: 32px; height: 32px; }
 .start-title {
   font-family: var(--serif);
   font-size: 1.7rem; color: var(--gold);
-  letter-spacing: .04em;
+  letter-spacing: .04em; text-align: center;
+}
+.start-sub {
+  color: var(--text-dim); font-size: .92rem; letter-spacing: .02em;
+  text-align: center; max-width: 520px; line-height: 1.5;
 }
 .lang-buttons {
   display: flex; flex-wrap: wrap; justify-content: center;
@@ -464,7 +471,9 @@ body {
   /* language start screen: fit all five without scrolling */
   .start { gap: 1.3rem; padding: 1.5rem; }
   .start-logo { width: min(230px, 52vw); }
-  .start-title { font-size: 1.2rem; }
+  .start-title { font-size: 1.15rem; }
+  .globe svg { width: 26px; height: 26px; }
+  .start-sub { font-size: .76rem; max-width: 300px; }
   .lang-buttons { gap: .55rem; }
   .lang-btn { min-width: 46%; min-height: 50px; padding: .5rem .8rem; font-size: .98rem; gap: .55rem; }
   .lang-btn svg { width: 34px; height: 22px; }
