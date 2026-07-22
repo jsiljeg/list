@@ -7910,7 +7910,8 @@
        "items": [
         {
          "name": "Elit",
-         "producer": "Stolichnaya"
+         "producer": "Stolichnaya",
+         "price": 5
         }
        ]
       }
@@ -7925,23 +7926,28 @@
        "items": [
         {
          "name": "London Dry Gin",
-         "producer": "Gibson's"
+         "producer": "Gibson's",
+         "price": 5
         },
         {
          "name": "Karbun",
-         "producer": "Aura"
+         "producer": "Aura",
+         "price": 5
         },
         {
          "name": "Straight Organic Distilled Dry Gin",
-         "producer": "Brick Gin"
+         "producer": "Brick Gin",
+         "price": 5
         },
         {
          "name": "American Gin",
-         "producer": "Aviation"
+         "producer": "Aviation",
+         "price": 5
         },
         {
          "name": "Schwarzwald Dry Gin",
-         "producer": "Monkey 47"
+         "producer": "Monkey 47",
+         "price": 7
         },
         {
          "name": "Luftbremzer",
@@ -7960,19 +7966,23 @@
        "items": [
         {
          "name": "Vermouth Bianco",
-         "producer": "Mulassano"
+         "producer": "Mulassano",
+         "price": 5
         },
         {
          "name": "Vermouth Rosso",
-         "producer": "Mulassano"
+         "producer": "Mulassano",
+         "price": 5
         },
         {
          "name": "Vermouth Extra Dry",
-         "producer": "Mulassano"
+         "producer": "Mulassano",
+         "price": 5
         },
         {
          "name": "Bitter",
-         "producer": "Mulassano"
+         "producer": "Mulassano",
+         "price": 5
         }
        ]
       }
@@ -7987,15 +7997,18 @@
        "items": [
         {
          "name": "Blanco Tequila",
-         "producer": "Cimarrón"
+         "producer": "Cimarrón",
+         "price": 4
         },
         {
          "name": "Vida Mezcal",
-         "producer": "Del Maguey"
+         "producer": "Del Maguey",
+         "price": 7
         },
         {
          "name": "Bruxo Mezcal",
-         "producer": "Bruxo"
+         "producer": "Bruxo",
+         "price": 7
         }
        ]
       }
@@ -8010,7 +8023,8 @@
        "items": [
         {
          "name": "Machir Bay",
-         "producer": "Kilchoman, Škotska"
+         "producer": "Kilchoman, Škotska",
+         "price": 6
         },
         {
          "name": "10 YO",
@@ -8026,35 +8040,43 @@
         },
         {
          "name": "Bladnoch 19 Y",
-         "producer": "Bladnoch, Škotska"
+         "producer": "Bladnoch, Škotska",
+         "price": 36
         },
         {
          "name": "Glenmorangie Signet",
-         "producer": "Glenmorangie, Škotska"
+         "producer": "Glenmorangie, Škotska",
+         "price": 36
         },
         {
          "name": "Distillery Select",
-         "producer": "Kavalan, Tajvan"
+         "producer": "Kavalan, Tajvan",
+         "price": 8
         },
         {
          "name": "Ex-Sherry Oak",
-         "producer": "Kavalan, Tajvan"
+         "producer": "Kavalan, Tajvan",
+         "price": 11
         },
         {
          "name": "Maltage Cosmo",
-         "producer": "Mars, Japan"
+         "producer": "Mars, Japan",
+         "price": 9
         },
         {
          "name": "Komagatake Limited Edition 2018",
-         "producer": "Mars, Japan"
+         "producer": "Mars, Japan",
+         "price": 36
         },
         {
          "name": "Westward",
-         "producer": "SAD"
+         "producer": "SAD",
+         "price": 18
         },
         {
          "name": "Redemption",
-         "producer": "SAD"
+         "producer": "SAD",
+         "price": 6
         },
         {
          "name": "Teeling",
@@ -8073,19 +8095,23 @@
        "items": [
         {
          "name": "White Blended Rum",
-         "producer": "Veritas"
+         "producer": "Veritas",
+         "price": 5
         },
         {
          "name": "Sajous",
-         "producer": "Clairin"
+         "producer": "Clairin",
+         "price": 6
         },
         {
          "name": "Casimir",
-         "producer": "Clairin"
+         "producer": "Clairin",
+         "price": 6
         },
         {
          "name": "Vaval",
-         "producer": "Clairin"
+         "producer": "Clairin",
+         "price": 6
         },
         {
          "name": "Bumbu XO",
@@ -8093,15 +8119,18 @@
         },
         {
          "name": "HLCF Classic 4 Y",
-         "producer": "Hampden Estate"
+         "producer": "Hampden Estate",
+         "price": 7
         },
         {
          "name": "Pure Single Jamaican Rum 8 Y",
-         "producer": "Hampden Estate"
+         "producer": "Hampden Estate",
+         "price": 10
         },
         {
          "name": "Papalin 7 Y",
-         "producer": "Velier"
+         "producer": "Velier",
+         "price": 10
         }
        ]
       }
@@ -8143,7 +8172,8 @@
        "items": [
         {
          "name": "Premium Mizunara",
-         "producer": "Ohishi"
+         "producer": "Ohishi",
+         "price": 16
         }
        ]
       }
@@ -8163,27 +8193,33 @@
        "items": [
         {
          "name": "Šljivovica",
-         "producer": "Markova"
+         "producer": "Markova",
+         "price": 5
         },
         {
          "name": "Viljamovka",
-         "producer": "Markova"
+         "producer": "Markova",
+         "price": 5
         },
         {
          "name": "Orahovac",
-         "producer": "Markova"
+         "producer": "Markova",
+         "price": 5
         },
         {
          "name": "Višnjevac",
-         "producer": "Markova"
+         "producer": "Markova",
+         "price": 5
         },
         {
          "name": "Medica",
-         "producer": "Markova"
+         "producer": "Markova",
+         "price": 5
         },
         {
          "name": "Teranino",
-         "producer": "Aura"
+         "producer": "Aura",
+         "price": 5
         }
        ]
       }
@@ -8198,15 +8234,18 @@
        "items": [
         {
          "name": "Grappa Bianca",
-         "producer": "Lorenzo Inga"
+         "producer": "Lorenzo Inga",
+         "price": 5
         },
         {
          "name": "Grappa Barrique",
-         "producer": "Lorenzo Inga"
+         "producer": "Lorenzo Inga",
+         "price": 5
         },
         {
          "name": "Grappa Riserva 18 Mesi",
-         "producer": "Lorenzo Inga"
+         "producer": "Lorenzo Inga",
+         "price": 6
         },
         {
          "name": "Tignanello Grappa",
@@ -8214,7 +8253,8 @@
         },
         {
          "name": "Amarone Grappa",
-         "producer": ""
+         "producer": "",
+         "price": 8
         }
        ]
       }
@@ -8229,11 +8269,13 @@
        "items": [
         {
          "name": "Umeshu Genshu",
-         "producer": ""
+         "producer": "",
+         "price": 6
         },
         {
          "name": "Appenzeller",
-         "producer": ""
+         "producer": "",
+         "price": 6
         },
         {
          "name": "Antique Pelinkovac",
@@ -8241,7 +8283,8 @@
         },
         {
          "name": "Jägermeister Manifest",
-         "producer": "Jägermeister"
+         "producer": "Jägermeister",
+         "price": 9
         }
        ]
       }
@@ -8260,7 +8303,8 @@
         },
         {
          "name": "Pils 0,5 l",
-         "producer": "Zmajska pivovara"
+         "producer": "Zmajska pivovara",
+         "price": 6
         }
        ]
       }
@@ -8280,39 +8324,48 @@
        "items": [
         {
          "name": "Jana 0,25 l",
-         "producer": ""
+         "producer": "",
+         "price": 4
         },
         {
          "name": "Jana 0,75 l",
-         "producer": ""
+         "producer": "",
+         "price": 5
         },
         {
          "name": "Jamnica 0,25 l",
-         "producer": ""
+         "producer": "",
+         "price": 4
         },
         {
          "name": "Jamnica Sensation 0,25 l",
-         "producer": ""
+         "producer": "",
+         "price": 3
         },
         {
          "name": "Jamnica 0,75 l",
-         "producer": ""
+         "producer": "",
+         "price": 5
         },
         {
          "name": "Acqua Panna 0,25 l",
-         "producer": ""
+         "producer": "",
+         "price": 4
         },
         {
          "name": "Acqua Panna 0,75 l",
-         "producer": ""
+         "producer": "",
+         "price": 7
         },
         {
          "name": "San Pellegrino 0,25 l",
-         "producer": ""
+         "producer": "",
+         "price": 4
         },
         {
          "name": "San Pellegrino 0,75 l",
-         "producer": ""
+         "producer": "",
+         "price": 7
         }
        ]
       }
@@ -8331,7 +8384,8 @@
         },
         {
          "name": "Schweppes Indian Tonic Water 0,25 l",
-         "producer": ""
+         "producer": "",
+         "price": 4
         }
        ]
       }
@@ -8346,15 +8400,18 @@
        "items": [
         {
          "name": "Svježe cijeđeni sok 0,3 l",
-         "producer": ""
+         "producer": "",
+         "price": 5
         },
         {
          "name": "Coca-Cola",
-         "producer": ""
+         "producer": "",
+         "price": 4
         },
         {
          "name": "Coca-Cola Zero",
-         "producer": ""
+         "producer": "",
+         "price": 4
         }
        ]
       }
@@ -8369,11 +8426,13 @@
        "items": [
         {
          "name": "Espresso",
-         "producer": ""
+         "producer": "",
+         "price": 4
         },
         {
          "name": "Macchiato",
-         "producer": ""
+         "producer": "",
+         "price": 4
         }
        ]
       }
