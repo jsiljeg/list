@@ -499,15 +499,16 @@ body {
   .sheet-grip { display: block; width: 42px; height: 4px; border-radius: 999px;
                 background: var(--line); margin: 0 auto .7rem; }
 
-  /* language start screen: fit all five without scrolling */
-  .start { gap: 1.3rem; padding: 1.5rem; }
-  .start-logo { width: min(230px, 52vw); }
-  .start-title { font-size: 1.15rem; }
-  .globe svg { width: 26px; height: 26px; }
-  .start-sub { font-size: .76rem; max-width: 300px; }
-  .lang-buttons { gap: .55rem; }
-  .lang-btn { min-width: 46%; min-height: 50px; padding: .5rem .8rem; font-size: .98rem; gap: .55rem; }
-  .lang-btn svg { width: 34px; height: 22px; }
+  /* language start screen: fit the whole viewport, no scrolling */
+  .start { height: 100vh; height: 100dvh; gap: .75rem; padding: 1rem 1.3rem; overflow: hidden; }
+  .start-logo { width: min(180px, 42vw); }
+  .lang-prompt { gap: .3rem; }
+  .start-title { font-size: 1.02rem; }
+  .globe svg { width: 22px; height: 22px; }
+  .start-sub { font-size: .7rem; max-width: 280px; line-height: 1.4; }
+  .lang-buttons { gap: .45rem; }
+  .lang-btn { min-width: 46%; min-height: 44px; padding: .4rem .7rem; font-size: .9rem; gap: .5rem; }
+  .lang-btn svg { width: 28px; height: 18px; }
 
   /* main app header: keep it small so wine content shows immediately */
   .header { padding: .5rem .7rem 0; }
