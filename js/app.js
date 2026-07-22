@@ -503,7 +503,8 @@ function openDetail(ref) {
    (and Esc) just closes the modal instead of leaving the page. */
 let modalOpen = false;
 function showModal() {
-  const ms = document.querySelector(".modal-sheet"); if (ms) ms.scrollTop = 0;
+  const ms = $("modal-sheet");
+  if (ms) { ms.scrollTop = 0; ms.style.transform = ""; ms.style.transition = ""; }
   $("modal").classList.remove("hidden");
   document.body.style.overflow = "hidden";
   if (!modalOpen) { modalOpen = true; history.pushState({ theaModal: true }, ""); }
@@ -655,6 +656,40 @@ $("search").addEventListener("input", () => {
 $("modal-close").addEventListener("click", closeModal);
 $("modal-backdrop").addEventListener("click", closeModal);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+/* swipe the wine sheet downward to dismiss (phones), but only when it is
+   scrolled to the top so normal content scrolling still works */
+(function () {
+  const sheet = $("modal-sheet");
+  if (!sheet) return;
+  let startY = 0, dy = 0, dragging = false;
+  sheet.addEventListener("touchstart", (e) => {
+    if (sheet.scrollTop > 0 || e.touches.length !== 1) { dragging = false; return; }
+    startY = e.touches[0].clientY; dy = 0; dragging = true;
+    sheet.style.transition = "none";
+  }, { passive: true });
+  sheet.addEventListener("touchmove", (e) => {
+    if (!dragging) return;
+    dy = e.touches[0].clientY - startY;
+    if (dy > 0) {
+      sheet.style.transform = `translateY(${dy}px)`;
+      $("modal-backdrop").style.opacity = String(Math.max(.25, 1 - dy / 450));
+    } else { dy = 0; sheet.style.transform = ""; }
+  }, { passive: true });
+  function end() {
+    if (!dragging) return;
+    dragging = false;
+    $("modal-backdrop").style.opacity = "";
+    if (dy > 110) {
+      closeModal();
+    } else {
+      sheet.style.transition = "transform .2s ease";
+      sheet.style.transform = "";
+    }
+  }
+  sheet.addEventListener("touchend", end);
+  sheet.addEventListener("touchcancel", end);
+})();
 $("home-logo").addEventListener("click", showStart);
 $("story-enter").addEventListener("click", showApp);
 function bindToggle(id, get, set) {
