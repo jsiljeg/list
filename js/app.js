@@ -82,6 +82,9 @@ const COUNTRY_FLAGS = {
   },
   CN: () => cnFlag()
 };
+/* language-picker flags for the two languages whose flag isn't otherwise in FLAGS */
+FLAGS.sl = COUNTRY_FLAGS.SI();
+FLAGS.es = COUNTRY_FLAGS.ES();
 
 let DATA = null;
 let lang = localStorage.getItem(LS_KEY);
@@ -213,7 +216,7 @@ function renderNav() {
   );
 }
 
-const PRICE_LOCALE = { hr: "hr-HR", en: "en-GB", it: "it-IT", fr: "fr-FR", de: "de-DE", zh: "zh-CN" };
+const PRICE_LOCALE = { hr: "hr-HR", en: "en-GB", it: "it-IT", fr: "fr-FR", de: "de-DE", sl: "sl-SI", es: "es-ES", zh: "zh-CN" };
 const fmtPrice = (n) => n.toLocaleString(PRICE_LOCALE[lang] || "hr-HR");
 
 function priceHtml(item) {
@@ -464,7 +467,7 @@ function openDetail(ref, back) {
   const region = [esc(ins.region), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
 
   const glass = glassFor(ins.style, ins.grape);
-  const noteText = item.note && (item.note[lang] || item.note.hr || item.note.en);
+  const noteText = item.note && (item.note[lang] || item.note.en || item.note.hr);
   $("modal-body").innerHTML = `
     ${back ? `<button class="detail-back" type="button">${esc(t.helper.backToWines)}</button>` : ""}
     ${glass ? `<div class="detail-glass">${GLASS_ICONS[glass]}</div>` : ""}
