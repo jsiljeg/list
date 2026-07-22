@@ -113,6 +113,12 @@ body {
 .tool-btn.pride svg { width: 1.15em; height: 1.15em; }
 .pride-badge { display: inline-flex; vertical-align: -.12em; margin-right: .5rem; color: var(--gold); }
 .pride-badge svg { width: .82em; height: .82em; }
+.picks-group {
+  font-family: var(--serif); color: var(--gold-soft);
+  font-size: 1.15rem; letter-spacing: .02em;
+  margin: 1.5rem 0 .5rem; padding-top: .7rem; border-top: 1px solid var(--line);
+}
+.picks-group:first-of-type { margin-top: .5rem; padding-top: 0; border-top: none; }
 .pride-sub {
   font-family: var(--serif); font-style: italic; color: var(--gold-soft);
   font-size: 1.05rem; margin: -.2rem 0 1.1rem; text-align: center;

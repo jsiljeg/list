@@ -385,9 +385,9 @@ function renderContent() {
       html = `<p class="no-results">${t.ui.noResults}</p>`;
     }
   } else if (picksOnly) {
-    /* Filho's selection = recommended wines only; new arrivals live in
-       their own "__new" category, not here. */
-    let total = 0;
+    /* Filho's selection = recommended wines only, under one clear title
+       with per-section sub-groups; new arrivals live in "__new". */
+    let total = 0, body = "";
     DATA.sections.forEach((sec, si) => {
       let secHtml = "";
       sec.categories.forEach((cat, ci) => {
@@ -400,9 +400,11 @@ function renderContent() {
           });
         });
       });
-      if (secHtml) html += `<section class="cat"><h2 class="cat-title">${esc(t.sections[sec.id])}</h2><div class="ornament" aria-hidden="true">◆</div>${secHtml}</section>`;
+      if (secHtml) body += `<h3 class="picks-group">${esc(t.sections[sec.id])}</h3>${secHtml}`;
     });
-    if (!total) html = `<p class="no-results">${t.ui.noResults}</p>`;
+    html = total
+      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.picks)}</h2><div class="ornament" aria-hidden="true">◆</div>${body}</section>`
+      : `<p class="no-results">${t.ui.noResults}</p>`;
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
