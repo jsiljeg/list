@@ -516,7 +516,7 @@ const GLASS_ICONS = {
   riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,4 C11,7 7,14 6.2,23 C5.6,31 7.5,42 20,48 C32.5,42 34.4,31 33.8,23 C33,14 29,7 25,4 Z"/><path d="M20,48 V90"/><path d="M9.5,94 c4,-3 17,-3 21,0"/></svg>',
+  burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,3.5 C8.5,5.5 3.4,13 3.4,24 C3.4,35 8,45 20,49 C32,45 36.6,35 36.6,24 C36.6,13 31.5,5.5 25,3.5 Z"/><path d="M20,49 V91"/><path d="M9.5,94 c4,-3 17,-3 21,0"/></svg>',
   dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
 function glassFor(style, grape) {
