@@ -220,6 +220,292 @@
     "de": "Château d'Yquem ist der Gipfel des Sauternes — Edelfäule auf Sémillon ergibt einen Nektar aus Opulenz und Präzision. Er wird nur gewählt, wenn die Struktur ideal ist, im Moment perfekter Balance: weder zu jung noch zu müde.",
     "zh": "Château d'Yquem 是苏玳的巅峰——赛美蓉上的贵腐霉成就丰盈而精准的琼浆。唯有结构理想、平衡臻于完美时方才入选：既不太年轻，也不太疲惫。"
    }
+  },
+  "Petrač": {
+   "region": "Hršak Breg, Zagorje – Međimurje",
+   "blurb": {
+    "hr": "Obiteljski podrum na zagorskom brijegu koji radi ozbiljna bordoška crna i burgundske bijele vinske stilove ondje gdje ih nitko ne očekuje — dokaz da kontinentalna Hrvatska može stajati uz bok velikima.",
+    "en": "A family cellar on a Zagorje hill making serious Bordeaux reds and Burgundian whites where no one expects them — proof that continental Croatia can stand beside the greats.",
+    "it": "Una cantina di famiglia su una collina dello Zagorje che firma seri rossi bordolesi e bianchi di stampo borgognone là dove nessuno se li aspetta — la prova che la Croazia continentale può stare al pari dei grandi.",
+    "fr": "Une cave familiale sur une colline du Zagorje qui signe de sérieux rouges bordelais et des blancs d'esprit bourguignon là où personne ne les attend — la preuve que la Croatie continentale peut côtoyer les grands.",
+    "de": "Ein Familienkeller auf einem Hügel im Zagorje, der ernsthafte Bordeaux-Rote und Weine burgundischer Prägung dort keltert, wo niemand sie erwartet — der Beweis, dass das kontinentale Kroatien den Grossen ebenbürtig ist.",
+    "zh": "扎戈列山丘上的一座家族酒窖，在无人期待之处酿出严肃的波尔多红与勃艮第风格的白——足以证明克罗地亚内陆能与名庄比肩。"
+   }
+  },
+  "Meneghetti": {
+   "region": "Bale, Istra",
+   "blurb": {
+    "hr": "Istarsko imanje kod Bala gdje se mediteranska elegancija susreće s preciznošću — bordoške mješavine i chardonnay čiste linije, uz sol istarskog vjetra.",
+    "en": "An Istrian estate near Bale where Mediterranean elegance meets precision — Bordeaux blends and Chardonnay of clean line, carrying the salt of the Istrian wind.",
+    "it": "Una tenuta istriana presso Bale dove l'eleganza mediterranea incontra la precisione — tagli bordolesi e Chardonnay dalla linea netta, con il sale del vento d'Istria.",
+    "fr": "Un domaine istrien près de Bale où l'élégance méditerranéenne rencontre la précision — assemblages bordelais et Chardonnay à la ligne nette, portant le sel du vent d'Istrie.",
+    "de": "Ein istrisches Gut bei Bale, wo mediterrane Eleganz auf Präzision trifft — Bordeaux-Cuvées und Chardonnay von klarer Linie, mit dem Salz des istrischen Windes.",
+    "zh": "巴莱附近的伊斯特拉酒庄，地中海的优雅在此遇见精准——波尔多混酿与线条干净的霞多丽，带着伊斯特拉海风的咸意。"
+   }
+  },
+  "Henri Giraud": {
+   "region": "Aÿ, Champagne",
+   "blurb": {
+    "hr": "Kuća iz Aÿa koja svoj pinot odgaja u hrastu iz šume Argonne — šampanjac terroira i drveta, bez šećera i bez maske.",
+    "en": "A house from Aÿ that raises its Pinot in oak from the Argonne forest — a Champagne of terroir and wood, without sugar and without a mask.",
+    "it": "Una maison di Aÿ che alleva il suo Pinot in rovere della foresta d'Argonne — uno Champagne di terroir e legno, senza zucchero e senza maschera.",
+    "fr": "Une maison d'Aÿ qui élève son pinot dans le chêne de la forêt d'Argonne — un champagne de terroir et de bois, sans sucre et sans masque.",
+    "de": "Ein Haus aus Aÿ, das seinen Pinot in Eiche aus dem Argonner Wald ausbaut — ein Champagner aus Terroir und Holz, ohne Zucker und ohne Maske.",
+    "zh": "来自阿伊村的酒庄，用阿贡森林的橡木培养黑皮诺——一款关乎风土与木桶的香槟，不加糖，不戴面具。"
+   }
+  },
+  "Pertois-Moriset": {
+   "region": "Le Mesnil-sur-Oger, Champagne",
+   "blurb": {
+    "hr": "Vinogradar iz srca Côte des Blancs — kreda Le Mesnila pretočena u blanc de blancs napet kao struna i čist kao izvor.",
+    "en": "A grower from the heart of the Côte des Blancs — the chalk of Le Mesnil poured into a blanc de blancs taut as a string and clear as a spring.",
+    "it": "Un vigneron nel cuore della Côte des Blancs — il gesso di Le Mesnil versato in un blanc de blancs teso come una corda e limpido come una sorgente.",
+    "fr": "Un vigneron au cœur de la Côte des Blancs — la craie du Mesnil coulée dans un blanc de blancs tendu comme une corde et clair comme une source.",
+    "de": "Ein Winzer im Herzen der Côte des Blancs — der Kalk von Le Mesnil, gegossen in einen Blanc de Blancs, gespannt wie eine Saite und klar wie eine Quelle.",
+    "zh": "白丘核心的种植者——勒梅尼尔的白垩化作一款白中白，如弦般紧绷，如泉般清澈。"
+   }
+  },
+  "Benanti": {
+   "region": "Etna, Sicilija",
+   "blurb": {
+    "hr": "Kuća koja je pokrenula preporod Etne — vulkanski carricante i nerello koji nose pepeo, sol i sjećanje na lavu.",
+    "en": "The house that sparked Etna's revival — volcanic Carricante and Nerello carrying ash, salt and the memory of lava.",
+    "it": "La casa che ha acceso la rinascita dell'Etna — Carricante e Nerello vulcanici che portano cenere, sale e la memoria della lava.",
+    "fr": "La maison qui a lancé la renaissance de l'Etna — Carricante et Nerello volcaniques portant la cendre, le sel et la mémoire de la lave.",
+    "de": "Das Haus, das Ätnas Wiedergeburt entfachte — vulkanischer Carricante und Nerello, die Asche, Salz und die Erinnerung an die Lava tragen.",
+    "zh": "点燃埃特纳复兴的酒庄——火山的卡里坎特与内雷洛，携着灰烬、盐，与熔岩的记忆。"
+   }
+  },
+  "Čečavac": {
+   "region": "Dalmacija",
+   "blurb": {
+    "hr": "Vinar koji vraća u život zaboravljene dalmatinske sorte — vino sunca, kamena i tvrdoglave vjere u ono što je gotovo nestalo.",
+    "en": "A vigneron bringing forgotten Dalmatian varieties back to life — wines of sun, stone and stubborn faith in what nearly vanished.",
+    "it": "Un vignaiolo che riporta in vita antiche varietà dalmate — vini di sole, pietra e fede testarda in ciò che era quasi scomparso.",
+    "fr": "Un vigneron qui ramène à la vie des cépages dalmates oubliés — des vins de soleil, de pierre et de foi têtue en ce qui avait presque disparu.",
+    "de": "Ein Winzer, der vergessene dalmatinische Sorten zurück ins Leben holt — Weine aus Sonne, Stein und sturem Glauben an das, was fast verschwand.",
+    "zh": "让被遗忘的达尔马提亚本土品种重获新生的酿酒人——阳光、石头，与对那几近消失之物的固执信念。"
+   }
+  },
+  "Wittmann": {
+   "region": "Westhofen, Rheinhessen",
+   "blurb": {
+    "hr": "Biodinamički vrh Rheinhessena — suhi rizling s vapnenca Westhofena, velike klase i bez ijedne suvišne riječi.",
+    "en": "The biodynamic summit of Rheinhessen — dry Riesling from the limestone of Westhofen, grand-cru class without a single wasted word.",
+    "it": "La vetta biodinamica della Rheinhessen — Riesling secco dal calcare di Westhofen, di gran classe e senza una parola di troppo.",
+    "fr": "Le sommet biodynamique de la Hesse rhénane — riesling sec sur le calcaire de Westhofen, de grande classe et sans un mot de trop.",
+    "de": "Der biodynamische Gipfel Rheinhessens — trockener Riesling vom Kalk aus Westhofen, Grosses-Gewächs-Klasse und ohne ein überflüssiges Wort.",
+    "zh": "莱茵黑森的生物动力之巅——韦斯特霍芬石灰岩上的干型雷司令，大 Cru 级别，没有一个多余的字。"
+   }
+  },
+  "Piuze": {
+   "region": "Chablis, Burgundija",
+   "blurb": {
+    "hr": "Vigneron rođen u Québecu koji čita Chablis parcelu po parcelu — prozirna, precizna vina koja govore samo o kredi i mjestu.",
+    "en": "A Québec-born vigneron who reads Chablis plot by plot — transparent, precise wines that speak only of chalk and place.",
+    "it": "Un vigneron nato in Québec che legge lo Chablis parcella per parcella — vini trasparenti e precisi che parlano solo di gesso e di luogo.",
+    "fr": "Un vigneron né au Québec qui lit Chablis parcelle par parcelle — des vins transparents et précis qui ne parlent que de craie et de lieu.",
+    "de": "Ein in Québec geborener Vigneron, der Chablis Parzelle für Parzelle liest — transparente, präzise Weine, die nur von Kalk und Ort erzählen.",
+    "zh": "出生于魁北克的种植者，逐块地读懂夏布利——通透而精准的酒，只讲述白垩与风土。"
+   }
+  },
+  "Pattes Loup": {
+   "region": "Chablis, Burgundija",
+   "blurb": {
+    "hr": "Thomas Pico i njegov organski Chablis stare škole — kimeridžijska školjka, napetost i ništa suvišno.",
+    "en": "Thomas Pico and his old-school organic Chablis — Kimmeridgian shell, tension and nothing superfluous.",
+    "it": "Thomas Pico e il suo Chablis biologico di vecchia scuola — conchiglia kimmeridgiana, tensione e nulla di superfluo.",
+    "fr": "Thomas Pico et son chablis bio à l'ancienne — coquille kimméridgienne, tension et rien de superflu.",
+    "de": "Thomas Pico und sein biologischer Chablis alter Schule — kimmeridgische Muschel, Spannung und nichts Überflüssiges.",
+    "zh": "托马·皮科与他老派的有机夏布利——启莫里阶的贝壳、张力，别无冗余。"
+   }
+  },
+  "Rémi Jobard": {
+   "region": "Meursault, Burgundija",
+   "blurb": {
+    "hr": "Organski Meursault bez pretjerivanja — lješnjak, maslac i mineralna kičma koja sve drži na mjestu.",
+    "en": "Organic Meursault without excess — hazelnut, butter and a mineral spine that holds it all in place.",
+    "it": "Meursault biologico senza eccessi — nocciola, burro e una spina dorsale minerale che tiene tutto al suo posto.",
+    "fr": "Meursault bio sans excès — noisette, beurre et une colonne minérale qui tient tout en place.",
+    "de": "Biologischer Meursault ohne Übertreibung — Haselnuss, Butter und ein mineralisches Rückgrat, das alles zusammenhält.",
+    "zh": "不事张扬的有机默尔索——榛子、黄油，与一条把一切稳住的矿物脊梁。"
+   }
+  },
+  "Bernard-Bonin": {
+   "region": "Meursault, Burgundija",
+   "blurb": {
+    "hr": "Mladi par, stari trsovi — Meursault svjež, precizan i pun tihe energije koja nagovještava veliku budućnost.",
+    "en": "A young couple, old vines — a Meursault fresh, precise and full of a quiet energy that hints at a great future.",
+    "it": "Una giovane coppia, vecchie vigne — un Meursault fresco, preciso e pieno di quieta energia che lascia intravedere un grande futuro.",
+    "fr": "Un jeune couple, de vieilles vignes — un Meursault frais, précis et plein d'une énergie tranquille qui laisse deviner un grand avenir.",
+    "de": "Ein junges Paar, alte Reben — ein Meursault, frisch, präzise und voll stiller Energie, die eine grosse Zukunft erahnen lässt.",
+    "zh": "年轻的伴侣，年迈的老藤——清新、精准的默尔索，蕴含着预示远大前程的静默能量。"
+   }
+  },
+  "Ivanić": {
+   "region": "Sveti Ivan Zelina, Prigorje",
+   "blurb": {
+    "hr": "Kontinentalni pinot lagane ruke iz Zeline — svila, višnja i preciznost koja iznenađuje.",
+    "en": "A continental Pinot of a light hand from Zelina — silk, cherry and a precision that surprises.",
+    "it": "Un Pinot continentale dalla mano leggera, da Zelina — seta, ciliegia e una precisione che sorprende.",
+    "fr": "Un pinot continental à la main légère, de Zelina — soie, cerise et une précision qui surprend.",
+    "de": "Ein kontinentaler Pinot mit leichter Hand aus Zelina — Seide, Kirsche und eine Präzision, die überrascht.",
+    "zh": "来自泽利纳、手法轻盈的大陆黑皮诺——丝绸、樱桃，与出人意料的精准。"
+   }
+  },
+  "Le Piane": {
+   "region": "Boca, Alto Piemonte",
+   "blurb": {
+    "hr": "Oživljeni Boca sjevernog Piemonta — nebbiolo s vulkanskih tala koji spaja snagu i eleganciju, strpljiv i dubok.",
+    "en": "The revived Boca of northern Piedmont — Nebbiolo from volcanic soils joining power and grace, patient and deep.",
+    "it": "La Boca rinata dell'Alto Piemonte — Nebbiolo da suoli vulcanici che unisce forza e grazia, paziente e profondo.",
+    "fr": "La Boca renaissante du haut Piémont — un nebbiolo de sols volcaniques qui unit puissance et grâce, patient et profond.",
+    "de": "Das wiederbelebte Boca im Norden Piemonts — Nebbiolo aus vulkanischen Böden, der Kraft und Anmut verbindet, geduldig und tief.",
+    "zh": "上皮埃蒙特重生的博卡——火山土壤的内比奥罗，兼具力量与优雅，耐心而深邃。"
+   }
+  },
+  "Machard de Gramont": {
+   "region": "Vosne-Romanée, Burgundija",
+   "blurb": {
+    "hr": "Tradicionalna Côte de Nuits — burgundac koji šapće raskoš: ruža, začin i baršun bez pretjerivanja.",
+    "en": "Traditional Côte de Nuits — a Burgundy that whispers opulence: rose, spice and velvet without excess.",
+    "it": "Côte de Nuits tradizionale — una Borgogna che sussurra opulenza: rosa, spezie e velluto senza eccessi.",
+    "fr": "Côte de Nuits traditionnelle — une Bourgogne qui murmure l'opulence : rose, épices et velours sans excès.",
+    "de": "Traditionelle Côte de Nuits — ein Burgund, das Opulenz flüstert: Rose, Gewürz und Samt ohne Übertreibung.",
+    "zh": "传统的夜丘——一款低语着丰盈的勃艮第：玫瑰、香料与天鹅绒，不事张扬。"
+   }
+  },
+  "Conti Costanti": {
+   "region": "Montalcino, Toscana",
+   "blurb": {
+    "hr": "Povijesno ime Montalcina — sangiovese od trešnje, kože i zemlje, klasičan i građen za desetljeća.",
+    "en": "A historic name of Montalcino — Sangiovese of cherry, leather and earth, classic and built for decades.",
+    "it": "Un nome storico di Montalcino — Sangiovese di ciliegia, cuoio e terra, classico e costruito per decenni.",
+    "fr": "Un nom historique de Montalcino — un sangiovese de cerise, cuir et terre, classique et bâti pour des décennies.",
+    "de": "Ein historischer Name aus Montalcino — Sangiovese aus Kirsche, Leder und Erde, klassisch und für Jahrzehnte gebaut.",
+    "zh": "蒙塔奇诺的历史名庄——樱桃、皮革与泥土的桑娇维塞，经典而为数十年而生。"
+   }
+  },
+  "Magliano": {
+   "region": "Maremma, Toscana",
+   "blurb": {
+    "hr": "Maremma na suncu — sangiovese topao i otvoren, iskren kao stisak ruke uz more.",
+    "en": "Sun-drenched Maremma — a Sangiovese warm and open, honest as a handshake by the sea.",
+    "it": "Maremma al sole — un Sangiovese caldo e aperto, sincero come una stretta di mano in riva al mare.",
+    "fr": "La Maremme au soleil — un sangiovese chaleureux et ouvert, sincère comme une poignée de main au bord de la mer.",
+    "de": "Sonnendurchflutete Maremma — ein Sangiovese, warm und offen, ehrlich wie ein Händedruck am Meer.",
+    "zh": "阳光浸透的马雷玛——温暖开放的桑娇维塞，坦诚如海边的一次握手。"
+   }
+  },
+  "Moët": {
+   "region": "Épernay, Champagne",
+   "blurb": {
+    "hr": "Dom Pérignon — ikona koja pretvara vrijeme u eleganciju; svaka je plénitude dokaz da strpljenje mijenja sve.",
+    "en": "Dom Pérignon — the icon that turns time into elegance; each plénitude is proof that patience changes everything.",
+    "it": "Dom Pérignon — l'icona che trasforma il tempo in eleganza; ogni plénitude è la prova che la pazienza cambia tutto.",
+    "fr": "Dom Pérignon — l'icône qui transforme le temps en élégance ; chaque plénitude prouve que la patience change tout.",
+    "de": "Dom Pérignon — die Ikone, die Zeit in Eleganz verwandelt; jede Plénitude beweist, dass Geduld alles verändert.",
+    "zh": "唐培里侬——将时间化为优雅的传奇；每一次「臻酿」都证明，耐心足以改变一切。"
+   }
+  },
+  "Salon": {
+   "region": "Le Mesnil-sur-Oger, Champagne",
+   "blurb": {
+    "hr": "Legenda iz jednog sela, jedne sorte, i samo velikih godina — blanc de blancs koji ne postoji kad berba to ne zaslužuje.",
+    "en": "A legend of one village, one grape, and only great years — a blanc de blancs that does not exist when the vintage doesn't deserve it.",
+    "it": "Una leggenda di un solo villaggio, un solo vitigno e solo le grandi annate — un blanc de blancs che non esiste quando l'annata non lo merita.",
+    "fr": "Une légende d'un seul village, d'un seul cépage, et des seules grandes années — un blanc de blancs qui n'existe pas quand le millésime ne le mérite pas.",
+    "de": "Eine Legende aus einem Dorf, einer Rebsorte und nur grossen Jahren — ein Blanc de Blancs, den es nicht gibt, wenn der Jahrgang es nicht verdient.",
+    "zh": "一村、一葡萄、且只在伟大年份的传奇——若年份不配，这款白中白便不存在。"
+   }
+  },
+  "Raveneau": {
+   "region": "Chablis, Burgundija",
+   "blurb": {
+    "hr": "Mjerilo velikog Chablisa — vino kreda i napetosti kojem se svi drugi tiho uspoređuju.",
+    "en": "The benchmark of great Chablis — a wine of chalk and tension against which all others quietly measure themselves.",
+    "it": "Il metro del grande Chablis — un vino di gesso e tensione con cui tutti gli altri si misurano in silenzio.",
+    "fr": "La référence du grand Chablis — un vin de craie et de tension auquel tous les autres se comparent en silence.",
+    "de": "Der Massstab des grossen Chablis — ein Wein aus Kalk und Spannung, an dem sich alle anderen still messen.",
+    "zh": "伟大夏布利的标杆——白垩与张力之酒，众庄皆默默以其为尺。"
+   }
+  },
+  "Antinori": {
+   "region": "Toscana",
+   "blurb": {
+    "hr": "Šest stoljeća firentinske obitelji koja se usudila — od Tignanella do Solaie, kuća koja je iznova napisala pravila Toskane.",
+    "en": "Six centuries of a Florentine family that dared — from Tignanello to Solaia, the house that rewrote Tuscany's rules.",
+    "it": "Sei secoli di una famiglia fiorentina che ha osato — dal Tignanello al Solaia, la casa che ha riscritto le regole della Toscana.",
+    "fr": "Six siècles d'une famille florentine qui a osé — de Tignanello à Solaia, la maison qui a réécrit les règles de la Toscane.",
+    "de": "Sechs Jahrhunderte einer florentinischen Familie, die es wagte — von Tignanello bis Solaia, das Haus, das die Regeln der Toskana neu schrieb.",
+    "zh": "一个敢于冒险的佛罗伦萨家族，六百年传承——从天娜到索拉雅，改写托斯卡纳规则的名门。"
+   }
+  },
+  "Ornellaia": {
+   "region": "Bolgheri, Toscana",
+   "blurb": {
+    "hr": "Bolgheri u velikom stilu — bordoška mješavina mediteranske raskoši, gusta, baršunasta i sunčana.",
+    "en": "Bolgheri in the grand manner — a Bordeaux blend of Mediterranean opulence, dense, velvety and sun-filled.",
+    "it": "Bolgheri in grande stile — un taglio bordolese di opulenza mediterranea, denso, vellutato e pieno di sole.",
+    "fr": "Bolgheri dans le grand style — un assemblage bordelais d'opulence méditerranéenne, dense, velouté et gorgé de soleil.",
+    "de": "Bolgheri im grossen Stil — eine Bordeaux-Cuvée mediterraner Opulenz, dicht, samtig und sonnendurchflutet.",
+    "zh": "宏大格调的博格利——地中海丰腴的波尔多混酿，浓密、天鹅绒般柔滑，充满阳光。"
+   }
+  },
+  "Dauvissat": {
+   "region": "Chablis, Burgundija",
+   "blurb": {
+    "hr": "Aristokracija Chablisa — kreda, preciznost i dužina koja godinama ne popušta.",
+    "en": "The aristocracy of Chablis — chalk, precision and a length that does not yield for years.",
+    "it": "L'aristocrazia dello Chablis — gesso, precisione e una lunghezza che non cede per anni.",
+    "fr": "L'aristocratie du Chablis — craie, précision et une longueur qui ne cède pas des années durant.",
+    "de": "Die Aristokratie des Chablis — Kalk, Präzision und ein Nachhall, der über Jahre nicht nachlässt.",
+    "zh": "夏布利的贵族——白垩、精准，与经年不散的悠长余韵。"
+   }
+  },
+  "Gaja": {
+   "region": "Barbaresco, Piemonte",
+   "blurb": {
+    "hr": "Čovjek koji je Barbaresco iznio na svjetsku pozornicu — nebbiolo snage i uglađenosti, ambasador Piemonta.",
+    "en": "The man who brought Barbaresco onto the world stage — Nebbiolo of power and polish, Piedmont's ambassador.",
+    "it": "L'uomo che ha portato il Barbaresco sul palcoscenico mondiale — Nebbiolo di forza e finezza, ambasciatore del Piemonte.",
+    "fr": "L'homme qui a porté le Barbaresco sur la scène mondiale — un nebbiolo de puissance et de finesse, ambassadeur du Piémont.",
+    "de": "Der Mann, der Barbaresco auf die Weltbühne brachte — Nebbiolo von Kraft und Schliff, Botschafter des Piemont.",
+    "zh": "将巴巴莱斯科带上世界舞台的人——力量与雅致兼备的内比奥罗，皮埃蒙特的大使。"
+   }
+  },
+  "Lignier": {
+   "region": "Morey-Saint-Denis, Burgundija",
+   "blurb": {
+    "hr": "Morey-Saint-Denis u velikim vinogradima — pinot dubine i svile, tih, ali nezaboravan.",
+    "en": "Morey-Saint-Denis in its grand crus — a Pinot of depth and silk, quiet yet unforgettable.",
+    "it": "Morey-Saint-Denis nei suoi grand cru — un Pinot di profondità e seta, discreto ma indimenticabile.",
+    "fr": "Morey-Saint-Denis dans ses grands crus — un pinot de profondeur et de soie, discret mais inoubliable.",
+    "de": "Morey-Saint-Denis in seinen Grands Crus — ein Pinot von Tiefe und Seide, leise, aber unvergesslich.",
+    "zh": "特级园中的莫雷-圣丹尼——深邃如丝的黑皮诺，安静却难忘。"
+   }
+  },
+  "Chartron": {
+   "region": "Puligny-Montrachet, Burgundija",
+   "blurb": {
+    "hr": "Plemstvo bijele Burgundije — od Corton-Charlemagnea do Montracheta, chardonnay mramorne preciznosti.",
+    "en": "The nobility of white Burgundy — from Corton-Charlemagne to Montrachet, Chardonnay of marble precision.",
+    "it": "La nobiltà della Borgogna bianca — dal Corton-Charlemagne al Montrachet, Chardonnay di precisione marmorea.",
+    "fr": "La noblesse de la Bourgogne blanche — du corton-charlemagne au montrachet, un chardonnay d'une précision de marbre.",
+    "de": "Der Adel des weissen Burgunds — vom Corton-Charlemagne bis zum Montrachet, Chardonnay von marmorner Präzision.",
+    "zh": "白勃艮第的贵族——从科尔登-查理曼到蒙哈榭，如大理石般精准的霞多丽。"
+   }
+  },
+  "Shangri-La": {
+   "region": "Yunnan, Kina",
+   "blurb": {
+    "hr": "Nemogući vinograd u podnožju Himalaje — Ao Yun spaja bordoške sorte i visinu od 2500 metara u vino koje ne bi smjelo postojati, a postoji.",
+    "en": "The impossible vineyard in the Himalayan foothills — Ao Yun marries Bordeaux varieties and 2,500 metres of altitude into a wine that shouldn't exist, yet does.",
+    "it": "Il vigneto impossibile ai piedi dell'Himalaya — Ao Yun sposa vitigni bordolesi e 2.500 metri di quota in un vino che non dovrebbe esistere, eppure esiste.",
+    "fr": "Le vignoble impossible au pied de l'Himalaya — Ao Yun marie cépages bordelais et 2 500 mètres d'altitude en un vin qui ne devrait pas exister, et pourtant.",
+    "de": "Der unmögliche Weinberg am Fusse des Himalaya — Ao Yun vermählt Bordeaux-Sorten und 2.500 Meter Höhe zu einem Wein, den es nicht geben dürfte und den es doch gibt.",
+    "zh": "喜马拉雅山麓那片不可能的葡萄园——敖云将波尔多品种与 2500 米海拔融为一款本不该存在、却真实存在的酒。"
+   }
   }
  }
 }
