@@ -8809,11 +8809,11 @@
          "price": 5,
          "nameI18n": {
           "hr": "Römerquelle gazirana 0,75 l",
-          "en": "Römerquelle sparkling 0.75 l",
+          "en": "Römerquelle sparkling 0,75 l",
           "it": "Römerquelle frizzante 0,75 l",
           "fr": "Römerquelle pétillante 0,75 l",
           "de": "Römerquelle prickelnd 0,75 l",
-          "zh": "Römerquelle 气泡水 0,75 l"
+          "zh": "Römerquelle 气泡 0,75 l"
          }
         },
         {
@@ -8822,7 +8822,7 @@
          "price": 3.7,
          "nameI18n": {
           "hr": "Römerquelle limunska trava 0,35 l",
-          "en": "Römerquelle lemongrass 0.35 l",
+          "en": "Römerquelle lemongrass 0,35 l",
           "it": "Römerquelle citronella 0,35 l",
           "fr": "Römerquelle citronnelle 0,35 l",
           "de": "Römerquelle Zitronengras 0,35 l",
@@ -8830,17 +8830,9 @@
          }
         },
         {
-         "name": "Saint Géron negazirana",
+         "name": "Saint Géron",
          "producer": "",
-         "price": 9,
-         "nameI18n": {
-          "hr": "Saint Géron negazirana",
-          "en": "Saint Géron still",
-          "it": "Saint Géron naturale",
-          "fr": "Saint Géron plate",
-          "de": "Saint Géron still",
-          "zh": "Saint Géron 无气"
-         }
+         "price": 9
         },
         {
          "name": "Saint Géron gazirana",
@@ -8856,29 +8848,21 @@
          }
         },
         {
-         "name": "Artesian negazirana voda",
+         "name": "Artesian",
          "producer": "",
-         "price": 9,
-         "nameI18n": {
-          "hr": "Artesian negazirana voda",
-          "en": "Artesian still water",
-          "it": "Artesian acqua naturale",
-          "fr": "Artesian eau plate",
-          "de": "Artesian stilles Wasser",
-          "zh": "Artesian 无气水"
-         }
+         "price": 9
         },
         {
-         "name": "Artesian gazirana voda",
+         "name": "Artesian gazirana",
          "producer": "",
          "price": 9,
          "nameI18n": {
-          "hr": "Artesian gazirana voda",
-          "en": "Artesian sparkling water",
-          "it": "Artesian acqua frizzante",
-          "fr": "Artesian eau pétillante",
-          "de": "Artesian Wasser mit Kohlensäure",
-          "zh": "Artesian 气泡水"
+          "hr": "Artesian gazirana",
+          "en": "Artesian sparkling",
+          "it": "Artesian frizzante",
+          "fr": "Artesian pétillante",
+          "de": "Artesian prickelnd",
+          "zh": "Artesian 气泡"
          }
         }
        ]

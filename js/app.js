@@ -516,7 +516,7 @@ const GLASS_ICONS = {
   riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  cabernet: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M6.5,4 C8.8,21 13,37 17,43 L23,43 C27,37 31.2,21 33.5,4 Z"/><path d="M20,43 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  cabernet: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M8.5,4 C7.8,16 9,32 12.5,39 C14,42.5 16.5,43.5 20,43.5 C23.5,43.5 26,42.5 27.5,39 C31,32 32.2,16 31.5,4 Z"/><path d="M20,43.5 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
 function glassFor(style, grape) {
