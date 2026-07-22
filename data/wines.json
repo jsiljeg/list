@@ -392,7 +392,7 @@
          "price": 12,
          "insight": {
           "grape": "Carricante",
-          "region": "Etna, Sicilija",
+          "region": "Etna, Sicilia",
           "country": "IT",
           "style": "white_mineral",
           "body": "medium",
@@ -425,7 +425,7 @@
          "price": 12,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis, Burgundija",
+          "region": "Chablis, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "medium",
@@ -449,7 +449,7 @@
          "price": 14,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte de Beaune, Burgundija",
+          "region": "Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -668,7 +668,7 @@
          "price": 10,
          "insight": {
           "grape": "Tempranillo",
-          "region": "Španjolska",
+          "region": "España",
           "country": "ES",
           "style": "red_medium",
           "body": "medium",
@@ -797,7 +797,7 @@
          "price": 12,
          "insight": {
           "grape": "Syrah",
-          "region": "Francuska",
+          "region": "France",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -1113,7 +1113,7 @@
          "price": 67,
          "insight": {
           "grape": "Chardonnay, Pinot Nero",
-          "region": "Franciacorta, Lombardija",
+          "region": "Franciacorta, Lombardia",
           "country": "IT",
           "style": "sparkling",
           "body": "medium",
@@ -1137,7 +1137,7 @@
          "price": 84,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Franciacorta, Lombardija",
+          "region": "Franciacorta, Lombardia",
           "country": "IT",
           "style": "sparkling",
           "body": "medium",
@@ -3139,7 +3139,7 @@
          "price": 90,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis, Burgundija",
+          "region": "Chablis, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "medium",
@@ -3163,7 +3163,7 @@
          "price": 87,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis, Burgundija",
+          "region": "Chablis, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "medium",
@@ -3195,7 +3195,7 @@
          "price": 178,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis, Burgundija",
+          "region": "Chablis, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -3219,7 +3219,7 @@
          "price": 750,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis, Burgundija",
+          "region": "Chablis, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -3246,7 +3246,7 @@
          "price": 250,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis Grand Cru, Burgundija",
+          "region": "Chablis Grand Cru, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -3270,7 +3270,7 @@
          "price": 250,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis Grand Cru, Burgundija",
+          "region": "Chablis Grand Cru, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -3303,7 +3303,7 @@
          "price": 1450,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis Grand Cru, Burgundija",
+          "region": "Chablis Grand Cru, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -3330,7 +3330,7 @@
          "price": 75,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte de Beaune, Burgundija",
+          "region": "Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -3353,7 +3353,7 @@
          "price": 89,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte de Beaune, Burgundija",
+          "region": "Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -3377,7 +3377,7 @@
          "price": 110,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -3401,7 +3401,7 @@
          "price": 88,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte Chalonnaise, Burgundija",
+          "region": "Côte Chalonnaise, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -3424,7 +3424,7 @@
          "price": 97,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte Chalonnaise, Burgundija",
+          "region": "Côte Chalonnaise, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -3447,7 +3447,7 @@
          "price": 115,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte de Beaune, Burgundija",
+          "region": "Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -3471,7 +3471,7 @@
          "price": 107,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte de Beaune, Burgundija",
+          "region": "Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -3495,7 +3495,7 @@
          "price": 210,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3519,7 +3519,7 @@
          "price": 135,
          "insight": {
           "grape": "Aligoté",
-          "region": "Burgundija",
+          "region": "Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "light",
@@ -3542,7 +3542,7 @@
          "price": 65,
          "insight": {
           "grape": "Aligoté",
-          "region": "Burgundija",
+          "region": "Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "light",
@@ -3565,7 +3565,7 @@
          "price": 146,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chassagne-Montrachet, Burgundija",
+          "region": "Chassagne-Montrachet, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3589,7 +3589,7 @@
          "price": 245,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Puligny-Montrachet, Burgundija",
+          "region": "Puligny-Montrachet, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3613,7 +3613,7 @@
          "price": 127,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Saint-Aubin, Burgundija",
+          "region": "Saint-Aubin, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3637,7 +3637,7 @@
          "price": 400,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Saint-Aubin, Burgundija",
+          "region": "Saint-Aubin, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3670,7 +3670,7 @@
          "price": 295,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Saint-Aubin, Burgundija",
+          "region": "Saint-Aubin, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3703,7 +3703,7 @@
          "price": 270,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Saint-Aubin, Burgundija",
+          "region": "Saint-Aubin, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -3727,7 +3727,7 @@
          "price": 268,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3751,7 +3751,7 @@
          "price": 190,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3784,7 +3784,7 @@
          "price": 284,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3808,7 +3808,7 @@
          "price": 920,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3835,7 +3835,7 @@
          "price": 790,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3871,7 +3871,7 @@
          "price": 790,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3898,7 +3898,7 @@
          "price": 970,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3925,7 +3925,7 @@
          "price": 970,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Burgundija",
+          "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -3951,7 +3951,7 @@
          "price": 560,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Corton-Charlemagne, Burgundija",
+          "region": "Corton-Charlemagne, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -4453,7 +4453,7 @@
          "price": 95,
          "insight": {
           "grape": "Ribolla Gialla",
-          "region": "Gorizia, Furlanija",
+          "region": "Gorizia, Friuli",
           "country": "IT",
           "style": "orange",
           "body": "full",
@@ -4477,7 +4477,7 @@
          "price": 95,
          "insight": {
           "grape": "Chardonnay, Malvazija, Friulano",
-          "region": "Gorizia, Furlanija",
+          "region": "Gorizia, Friuli",
           "country": "IT",
           "style": "orange",
           "body": "full",
@@ -4501,7 +4501,7 @@
          "price": 93,
          "insight": {
           "grape": "Malvasia",
-          "region": "Gorizia, Furlanija",
+          "region": "Gorizia, Friuli",
           "country": "IT",
           "style": "orange",
           "body": "full",
@@ -4525,7 +4525,7 @@
          "price": 95,
          "insight": {
           "grape": "Carricante",
-          "region": "Etna, Sicilija",
+          "region": "Etna, Sicilia",
           "country": "IT",
           "style": "white_mineral",
           "body": "medium",
@@ -4558,7 +4558,7 @@
          "price": 77,
          "insight": {
           "grape": "Ribolla Gialla",
-          "region": "Gorizia, Furlanija",
+          "region": "Gorizia, Friuli",
           "country": "IT",
           "style": "orange",
           "body": "full",
@@ -4630,7 +4630,7 @@
          "price": 75,
          "insight": {
           "grape": "Friulano",
-          "region": "Oslavia, Furlanija",
+          "region": "Oslavia, Friuli",
           "country": "IT",
           "style": "orange",
           "body": "full",
@@ -4710,7 +4710,7 @@
          "price": 68,
          "insight": {
           "grape": "Godello",
-          "region": "Španjolska",
+          "region": "España",
           "country": "ES",
           "style": "orange",
           "body": "medium",
@@ -5509,7 +5509,7 @@
          "price": 106,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Côte de Nuits, Burgundija",
+          "region": "Côte de Nuits, Bourgogne",
           "country": "FR",
           "style": "red_light",
           "body": "light",
@@ -5533,7 +5533,7 @@
          "price": 186,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Pommard, Burgundija",
+          "region": "Pommard, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -5557,7 +5557,7 @@
          "price": 650,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Gevrey-Chambertin, Burgundija",
+          "region": "Gevrey-Chambertin, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "full",
@@ -5581,7 +5581,7 @@
          "price": 178,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Morey-Saint-Denis, Burgundija",
+          "region": "Morey-Saint-Denis, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -5605,7 +5605,7 @@
          "price": 178,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Vosne-Romanée, Burgundija",
+          "region": "Vosne-Romanée, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -5637,7 +5637,7 @@
          "price": 210,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Vosne-Romanée, Burgundija",
+          "region": "Vosne-Romanée, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -5670,7 +5670,7 @@
          "price": 127,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Nuits-Saint-Georges, Burgundija",
+          "region": "Nuits-Saint-Georges, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -5697,7 +5697,7 @@
          "price": 340,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Nuits-Saint-Georges, Burgundija",
+          "region": "Nuits-Saint-Georges, Bourgogne",
           "country": "FR",
           "style": "red_mature",
           "body": "medium",
@@ -5724,7 +5724,7 @@
          "price": 1400,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Gevrey-Chambertin, Burgundija",
+          "region": "Gevrey-Chambertin, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "full",
@@ -5760,7 +5760,7 @@
          "price": 235,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Volnay, Burgundija",
+          "region": "Volnay, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -5793,7 +5793,7 @@
          "price": 280,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Chassagne-Montrachet, Burgundija",
+          "region": "Chassagne-Montrachet, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -5817,7 +5817,7 @@
          "price": 290,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Santenay, Burgundija",
+          "region": "Santenay, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -6013,7 +6013,7 @@
          "price": 80,
          "insight": {
           "grape": "Syrah",
-          "region": "Francuska",
+          "region": "France",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -6143,7 +6143,7 @@
          "price": 63,
          "insight": {
           "grape": "Barbera",
-          "region": "Alba, Piemont",
+          "region": "Alba, Piemonte",
           "country": "IT",
           "style": "red_medium",
           "body": "medium",
@@ -6166,7 +6166,7 @@
          "price": 210,
          "insight": {
           "grape": "Nebbiolo",
-          "region": "Barolo, Piemont",
+          "region": "Barolo, Piemonte",
           "country": "IT",
           "style": "red_full",
           "body": "full",
@@ -6190,7 +6190,7 @@
          "price": 380,
          "insight": {
           "grape": "Nebbiolo",
-          "region": "Barolo, Piemont",
+          "region": "Barolo, Piemonte",
           "country": "IT",
           "style": "red_full",
           "body": "full",
@@ -6214,7 +6214,7 @@
          "price": 580,
          "insight": {
           "grape": "Nebbiolo",
-          "region": "Barbaresco, Piemont",
+          "region": "Barbaresco, Piemonte",
           "country": "IT",
           "style": "red_full",
           "body": "full",
@@ -6238,7 +6238,7 @@
          "price": 550,
          "insight": {
           "grape": "Nebbiolo",
-          "region": "Barbaresco, Piemont",
+          "region": "Barbaresco, Piemonte",
           "country": "IT",
           "style": "red_full",
           "body": "full",
@@ -6273,7 +6273,7 @@
          "price": 410,
          "insight": {
           "grape": "Nebbiolo",
-          "region": "Barbaresco, Piemont",
+          "region": "Barbaresco, Piemonte",
           "country": "IT",
           "style": "red_full",
           "body": "full",
@@ -6297,7 +6297,7 @@
          "price": 290,
          "insight": {
           "grape": "Nebbiolo",
-          "region": "La Morra, Barolo, Piemont",
+          "region": "La Morra, Barolo, Piemonte",
           "country": "IT",
           "style": "red_full",
           "body": "full",
@@ -6321,7 +6321,7 @@
          "price": 95,
          "insight": {
           "grape": "Nebbiolo",
-          "region": "Langhe, Piemont",
+          "region": "Langhe, Piemonte",
           "country": "IT",
           "style": "red_medium",
           "body": "medium",
@@ -7039,7 +7039,7 @@
          "price": 94,
          "insight": {
           "grape": "Pignolo",
-          "region": "Oslavia, Furlanija",
+          "region": "Oslavia, Friuli",
           "country": "IT",
           "style": "red_mature",
           "body": "full",
@@ -7102,7 +7102,7 @@
          "price": 745,
          "insight": {
           "grape": "Nebbiolo",
-          "region": "Barbaresco, Piemont",
+          "region": "Barbaresco, Piemonte",
           "country": "IT",
           "style": "red_full",
           "body": "full",
@@ -7442,7 +7442,7 @@
          "price": 68,
          "insight": {
           "grape": "Tempranillo",
-          "region": "Španjolska",
+          "region": "España",
           "country": "ES",
           "style": "red_medium",
           "body": "medium",
@@ -7466,7 +7466,7 @@
          "price": 180,
          "insight": {
           "grape": "Španjolske sorte",
-          "region": "Španjolska",
+          "region": "España",
           "country": "ES",
           "style": "red_full",
           "body": "full",
@@ -7521,7 +7521,7 @@
          "price": 120,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Sta. Rita Hills, Kalifornija",
+          "region": "Sta. Rita Hills, California",
           "country": "US",
           "style": "red_light",
           "body": "medium",
@@ -7572,7 +7572,7 @@
          "price": 140,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Sonoma Coast, Kalifornija",
+          "region": "Sonoma Coast, California",
           "country": "US",
           "style": "red_light",
           "body": "medium",
@@ -7596,7 +7596,7 @@
          "price": 170,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Napa Valley, Kalifornija",
+          "region": "Napa Valley, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -7620,7 +7620,7 @@
          "price": 160,
          "insight": {
           "grape": "Merlot",
-          "region": "Napa Valley, Kalifornija",
+          "region": "Napa Valley, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -7644,7 +7644,7 @@
          "price": 170,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Santa Cruz Mountains, Kalifornija",
+          "region": "Santa Cruz Mountains, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -7668,7 +7668,7 @@
          "price": 225,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Napa Valley, Kalifornija",
+          "region": "Napa Valley, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -7791,7 +7791,7 @@
          "price": 140,
          "insight": {
           "grape": "Zinfandel, Carignane, Petite Sirah",
-          "region": "Alexander Valley, Kalifornija",
+          "region": "Alexander Valley, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -7815,7 +7815,7 @@
          "price": 170,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Santa Cruz Mountains, Kalifornija",
+          "region": "Santa Cruz Mountains, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -7844,7 +7844,7 @@
          "price": 525,
          "insight": {
           "grape": "Cabernet Sauvignon, Cabernet Franc",
-          "region": "Yunnan, Himalaja",
+          "region": "Yunnan, Himalaya",
           "country": "CN",
           "style": "red_full",
           "body": "full",
@@ -8189,7 +8189,7 @@
          "price": 100,
          "insight": {
           "grape": "Zibibbo (Muscat of Alexandria)",
-          "region": "Pantelleria, Sicilija",
+          "region": "Pantelleria, Sicilia",
           "country": "IT",
           "style": "sweet",
           "body": "full",
