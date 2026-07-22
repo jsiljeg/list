@@ -16,7 +16,7 @@
          "producer": "Jakopić",
          "price": 8,
          "insight": {
-          "grape": "Chardonnay, Rajnski rizling",
+          "grape": "Chardonnay, Riesling",
           "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sparkling",
@@ -206,7 +206,7 @@
          "producer": "Meneghetti",
          "price": 10,
          "insight": {
-          "grape": "Chardonnay, Pinot bijeli",
+          "grape": "Chardonnay, Pinot Blanc",
           "region": "Bale, Istra",
           "country": "HR",
           "style": "white_rich",
@@ -507,7 +507,7 @@
          "producer": "Petrač",
          "price": 8,
          "insight": {
-          "grape": "Cabernet Sauvignon, Merlot, Pinot crni",
+          "grape": "Cabernet Sauvignon, Merlot, Pinot Noir",
           "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "red_medium",
@@ -563,7 +563,7 @@
          "producer": "Igor Ivanić",
          "price": 8,
          "insight": {
-          "grape": "Pinot crni",
+          "grape": "Pinot Noir",
           "region": "Kontinentalna Hrvatska",
           "country": "HR",
           "style": "red_light",
@@ -831,7 +831,7 @@
          "producer": "Geržinić",
          "price": 5,
          "insight": {
-          "grape": "Muškat",
+          "grape": "Muscat",
           "region": "Vižinada, Istra",
           "country": "HR",
           "style": "sweet",
@@ -887,7 +887,7 @@
          "producer": "Jakopić",
          "price": 8,
          "insight": {
-          "grape": "Rajnski rizling",
+          "grape": "Riesling",
           "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sweet",
@@ -926,7 +926,7 @@
          "producer": "Jakopić",
          "price": 49,
          "insight": {
-          "grape": "Chardonnay, Rajnski rizling",
+          "grape": "Chardonnay, Riesling",
           "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sparkling",
@@ -1043,7 +1043,7 @@
          "producer": "Tomac",
          "price": 67,
          "insight": {
-          "grape": "Pinot crni",
+          "grape": "Pinot Noir",
           "region": "Plešivica",
           "country": "HR",
           "style": "sparkling",
@@ -1066,7 +1066,7 @@
          "producer": "Tomac",
          "price": 48,
          "insight": {
-          "grape": "Pinot crni",
+          "grape": "Pinot Noir",
           "region": "Plešivica",
           "country": "HR",
           "style": "sparkling_rose",
@@ -1183,7 +1183,7 @@
          "producer": "Movia",
          "price": 70,
          "insight": {
-          "grape": "Rebula, Chardonnay",
+          "grape": "Ribolla Gialla, Chardonnay",
           "region": "Goriška brda",
           "country": "SI",
           "style": "sparkling",
@@ -2239,7 +2239,7 @@
          "producer": "Jakopić",
          "price": 45,
          "insight": {
-          "grape": "Rajnski rizling",
+          "grape": "Riesling",
           "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "white_aromatic",
@@ -2343,7 +2343,7 @@
          "producer": "Clai",
          "price": 62,
          "insight": {
-          "grape": "Malvazija, Pinot sivi, Sauvignon",
+          "grape": "Malvazija, Pinot Gris, Sauvignon",
           "region": "Krasica, Istra",
           "country": "HR",
           "style": "orange",
@@ -2367,7 +2367,7 @@
          "producer": "Meneghetti",
          "price": 87,
          "insight": {
-          "grape": "Chardonnay, Pinot bijeli",
+          "grape": "Chardonnay, Pinot Blanc",
           "region": "Bale, Istra",
           "country": "HR",
           "style": "white_rich",
@@ -4737,7 +4737,7 @@
          "producer": "Marjan Simčič",
          "price": 100,
          "insight": {
-          "grape": "Sauvignonasse (Furlanski tokaj)",
+          "grape": "Sauvignonasse (Friulano)",
           "region": "Goriška brda",
           "country": "SI",
           "style": "white_mineral",
@@ -4837,7 +4837,7 @@
          "producer": "Petrač",
          "price": 50,
          "insight": {
-          "grape": "Cabernet Sauvignon, Merlot, Pinot crni",
+          "grape": "Cabernet Sauvignon, Merlot, Pinot Noir",
           "region": "Hršak Breg, Zagorje – Međimurje",
           "country": "HR",
           "style": "red_medium",
@@ -4893,7 +4893,7 @@
          "producer": "Igor Ivanić",
          "price": 54,
          "insight": {
-          "grape": "Pinot crni",
+          "grape": "Pinot Noir",
           "region": "Kontinentalna Hrvatska",
           "country": "HR",
           "style": "red_light",
@@ -4925,7 +4925,7 @@
          "producer": "Erdoro",
          "price": 70,
          "insight": {
-          "grape": "Pinot crni",
+          "grape": "Pinot Noir",
           "region": "Plešivica",
           "country": "HR",
           "style": "red_light",
@@ -4949,7 +4949,7 @@
          "producer": "Korak",
          "price": 70,
          "insight": {
-          "grape": "Pinot crni",
+          "grape": "Pinot Noir",
           "region": "Plešivica",
           "country": "HR",
           "style": "red_light",
@@ -7885,7 +7885,7 @@
          "producer": "Geržinić",
          "price": 31,
          "insight": {
-          "grape": "Muškat",
+          "grape": "Muscat",
           "region": "Vižinada, Istra",
           "country": "HR",
           "style": "sweet",
@@ -7989,7 +7989,7 @@
          "producer": "Jakopić",
          "price": 60,
          "insight": {
-          "grape": "Rajnski rizling",
+          "grape": "Riesling",
           "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sweet",
