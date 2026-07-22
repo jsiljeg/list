@@ -675,7 +675,7 @@
   "Bernhard Ott": {
    "region": "Wagram",
    "blurb": {
-    "hr": "Prvak grünera na wagramskom loessu — začin, dubina i teksturа koja pokazuje koliko sorta može biti ozbiljna.",
+    "hr": "Prvak grünera na wagramskom loessu — začin, dubina i tekstura koja pokazuje koliko sorta može biti ozbiljna.",
     "en": "The champion of Grüner on Wagram loess — spice, depth and a texture that shows how serious the grape can be.",
     "it": "Il campione del Grüner sul loess del Wagram — spezia, profondità e una texture che mostra quanto serio possa essere il vitigno.",
     "fr": "Le champion du grüner sur le lœss du Wagram — épice, profondeur et une texture qui montre à quel point le cépage peut être sérieux.",
@@ -791,6 +791,292 @@
     "fr": "La Napa à l'ancienne — le cabernet de Martha's Vineyard, de menthe et de cassis, classique et patient, bâti pour vieillir.",
     "de": "Napa alter Schule — Martha's-Vineyard-Cabernet aus Minze und Cassis, klassisch und geduldig, zum Reifen gebaut.",
     "zh": "老派的纳帕——Martha's Vineyard 赤霞珠，薄荷与黑加仑气息，经典而耐心，为陈年而生。"
+   }
+  },
+  "Jules Desjourneys": {
+   "region": "Beaujolais / Mâconnais",
+   "blurb": {
+    "hr": "Fanatik koji s gamayem postupa kao s velikim položajem — sitni prinosi, dugo odležavanje i burgundska strogost ondje gdje je svijet vidio samo jednostavno vino.",
+    "en": "A fanatic who treats Gamay like a grand cru — tiny yields, long ageing and Burgundian rigour where the world saw only simple wine.",
+    "it": "Un fanatico che tratta il Gamay come un grand cru — rese minime, lunghi affinamenti e rigore borgognone dove il mondo vedeva solo vino semplice.",
+    "fr": "Un fanatique qui traite le gamay comme un grand cru — rendements minuscules, longs élevages et rigueur bourguignonne là où le monde ne voyait qu'un vin simple.",
+    "de": "Ein Fanatiker, der Gamay wie ein Grand Cru behandelt — winzige Erträge, lange Reife und burgundische Strenge, wo die Welt nur einfachen Wein sah.",
+    "zh": "一位将佳美视作特级园的狂热者——极低的产量、漫长的陈酿，与勃艮第式的严谨，用在世人只当作简单餐酒之处。"
+   }
+  },
+  "Prüm": {
+   "region": "Wehlen, Mosel",
+   "blurb": {
+    "hr": "Vječnost Mosela — Wehlener Sonnenuhr koji u mladosti krije snagu, a s godinama otvara beskraj cvijeta, breskve i škriljevca.",
+    "en": "The eternity of the Mosel — a Wehlener Sonnenuhr that hides its power in youth and, with years, opens an infinity of blossom, peach and slate.",
+    "it": "L'eternità della Mosella — un Wehlener Sonnenuhr che in gioventù nasconde la sua forza e, con gli anni, apre un infinito di fiori, pesca e ardesia.",
+    "fr": "L'éternité de la Moselle — un Wehlener Sonnenuhr qui cache sa puissance dans sa jeunesse et, avec les années, ouvre un infini de fleur, de pêche et d'ardoise.",
+    "de": "Die Ewigkeit der Mosel — ein Wehlener Sonnenuhr, der in der Jugend seine Kraft verbirgt und mit den Jahren eine Unendlichkeit aus Blüte, Pfirsich und Schiefer öffnet.",
+    "zh": "摩泽尔的永恒——年轻时深藏力量的 Wehlener Sonnenuhr，历经岁月才绽放出花香、桃子与板岩的无尽。"
+   }
+  },
+  "Soldera": {
+   "region": "Montalcino, Toscana",
+   "blurb": {
+    "hr": "Usamljeni purist Montalcina — sangiovese eteričan i vječan, vino čovjeka koji je radije napustio konzorcij nego pristao na kompromis.",
+    "en": "The lone purist of Montalcino — Sangiovese ethereal and eternal, the wine of a man who left the consortium rather than compromise.",
+    "it": "Il purista solitario di Montalcino — Sangiovese etereo ed eterno, il vino di un uomo che ha lasciato il consorzio piuttosto che scendere a compromessi.",
+    "fr": "Le puriste solitaire de Montalcino — un sangiovese éthéré et éternel, le vin d'un homme qui a quitté le consortium plutôt que de transiger.",
+    "de": "Der einsame Purist von Montalcino — Sangiovese, ätherisch und ewig, der Wein eines Mannes, der das Konsortium verliess, statt Kompromisse einzugehen.",
+    "zh": "蒙塔奇诺孤独的纯粹主义者——空灵而永恒的桑娇维塞，一位宁愿退出协会也绝不妥协之人的酒。"
+   }
+  },
+  "Clüsserath": {
+   "region": "Trittenheim, Mosel",
+   "blurb": {
+    "hr": "Strme škriljaste padine Trittenheima — Eva Clüsserath vinificira rizling čipkaste finoće, s napetošću koju daju siva stijena i rijeka.",
+    "en": "The steep slate of Trittenheim — Eva Clüsserath vinifies Riesling of lacework finesse, with the tension grey rock and river provide.",
+    "it": "L'ardesia ripida di Trittenheim — Eva Clüsserath vinifica un Riesling di finezza a merletto, con la tensione che donano la roccia grigia e il fiume.",
+    "fr": "L'ardoise escarpée de Trittenheim — Eva Clüsserath vinifie un riesling d'une finesse de dentelle, avec la tension qu'apportent la roche grise et la rivière.",
+    "de": "Der steile Schiefer von Trittenheim — Eva Clüsserath keltert Riesling von spitzenhafter Finesse, mit der Spannung, die grauer Fels und Fluss schenken.",
+    "zh": "特里滕海姆陡峭的板岩——Eva Clüsserath 酿出蕾丝般精致的雷司令，携着灰岩与河流赋予的张力。"
+   }
+  },
+  "Christmann": {
+   "region": "Pfalz",
+   "blurb": {
+    "hr": "Biodinamička jasnoća Pfalza — suhi rizling velikih položaja, precizan i uspravan, iz ruku jednog od predvodnika njemačkog vinarstva.",
+    "en": "The biodynamic clarity of the Pfalz — dry grand-cru Riesling, precise and upright, from one of German wine's standard-bearers.",
+    "it": "La chiarezza biodinamica del Palatinato — Riesling secco da grandi cru, preciso e diritto, dalle mani di un alfiere del vino tedesco.",
+    "fr": "La clarté biodynamique du Palatinat — un riesling sec de grands crus, précis et droit, de la main d'un porte-drapeau du vin allemand.",
+    "de": "Die biodynamische Klarheit der Pfalz — trockener Grosslagen-Riesling, präzise und aufrecht, aus der Hand eines Bannerträgers des deutschen Weins.",
+    "zh": "普法尔茨的生物动力澄澈——大园干型雷司令，精准而挺拔，出自德国葡萄酒旗手之手。"
+   }
+  },
+  "Knebel": {
+   "region": "Winningen, Terrassenmosel",
+   "blurb": {
+    "hr": "Divlji donji Mosel — rizling s plavog škriljevca terasa Winningena, snažan, slan i pun energije rijeke.",
+    "en": "The wild lower Mosel — Riesling from the blue slate terraces of Winningen, powerful, saline and full of the river's energy.",
+    "it": "La bassa Mosella selvaggia — Riesling dall'ardesia blu dei terrazzamenti di Winningen, potente, salino e pieno dell'energia del fiume.",
+    "fr": "La basse Moselle sauvage — un riesling de l'ardoise bleue des terrasses de Winningen, puissant, salin et plein de l'énergie du fleuve.",
+    "de": "Die wilde untere Mosel — Riesling vom blauen Schiefer der Terrassen von Winningen, kraftvoll, salzig und voller Energie des Flusses.",
+    "zh": "狂野的下摩泽尔——维宁根梯田蓝板岩上的雷司令，强劲、带咸感，充满河流的能量。"
+   }
+  },
+  "Duckhorn": {
+   "region": "Napa Valley, Kalifornija",
+   "blurb": {
+    "hr": "Kuća koja je merlot u Napi učinila ozbiljnim — baršunast, zreo i precizan, dokaz da sorta zaslužuje glavnu ulogu.",
+    "en": "The house that made Merlot serious in Napa — velvety, ripe and precise, proof the grape deserves a leading role.",
+    "it": "La casa che ha reso serio il Merlot in Napa — vellutato, maturo e preciso, la prova che il vitigno merita un ruolo da protagonista.",
+    "fr": "La maison qui a rendu le merlot sérieux en Napa — velouté, mûr et précis, la preuve que le cépage mérite le premier rôle.",
+    "de": "Das Haus, das Merlot im Napa ernst nahm — samtig, reif und präzise, der Beweis, dass die Rebe eine Hauptrolle verdient.",
+    "zh": "让梅洛在纳帕受人尊重的酒庄——天鹅绒般、成熟而精准，证明这一品种配得上主角。"
+   }
+  },
+  "Mayacamas": {
+   "region": "Mount Veeder, Napa",
+   "blurb": {
+    "hr": "Planinska strogost iznad Nape — kabernet visokih položaja, uspravan, mineralan i gotovo bezvremen, daleko od raskoši doline.",
+    "en": "Mountain austerity above Napa — high-elevation Cabernet, upright, mineral and all but timeless, far from the valley's opulence.",
+    "it": "L'austerità di montagna sopra Napa — Cabernet d'alta quota, diritto, minerale e quasi senza tempo, lontano dall'opulenza della valle.",
+    "fr": "L'austérité de la montagne au-dessus de Napa — un cabernet d'altitude, droit, minéral et presque intemporel, loin de l'opulence de la vallée.",
+    "de": "Bergstrenge über Napa — Höhen-Cabernet, aufrecht, mineralisch und beinahe zeitlos, fern der Opulenz des Tals.",
+    "zh": "纳帕之上的高山冷峻——高海拔赤霞珠，挺拔、矿感、近乎永恒，远离谷底的丰腴。"
+   }
+  },
+  "Togni": {
+   "region": "Spring Mountain, Napa",
+   "blurb": {
+    "hr": "Željezo planine — strukturiran, tanski kabernet Spring Mountaina, građen da desetljećima prkosi vremenu.",
+    "en": "Mountain iron — the structured, tannic Cabernet of Spring Mountain, built to defy time for decades.",
+    "it": "Il ferro della montagna — il Cabernet strutturato e tannico di Spring Mountain, costruito per sfidare il tempo per decenni.",
+    "fr": "Le fer de la montagne — le cabernet structuré et tannique de Spring Mountain, bâti pour défier le temps des décennies durant.",
+    "de": "Das Eisen des Berges — der strukturierte, tanninreiche Cabernet vom Spring Mountain, gebaut, um dem Lauf der Zeit über Jahrzehnte zu trotzen.",
+    "zh": "山之铁骨——春山产区结构坚实、单宁厚重的赤霞珠，为对抗数十年光阴而生。"
+   }
+  },
+  "Vie di Romans": {
+   "region": "Friuli Isonzo",
+   "blurb": {
+    "hr": "Friulske bijele sa širinom i svjetlom — bogata, teksturirana vina ravnice Isonza, precizna unatoč raskoši.",
+    "en": "Friulian whites with breadth and light — rich, textured wines from the Isonzo plain, precise despite their opulence.",
+    "it": "Bianchi friulani con ampiezza e luce — vini ricchi e materici della piana dell'Isonzo, precisi nonostante l'opulenza.",
+    "fr": "Des blancs frioulans amples et lumineux — des vins riches et texturés de la plaine de l'Isonzo, précis malgré leur opulence.",
+    "de": "Friauler Weisse mit Weite und Licht — reiche, texturreiche Weine aus der Isonzo-Ebene, präzise trotz ihrer Opulenz.",
+    "zh": "宽广而明亮的弗留利白——伊松佐平原上丰厚、有质感的酒，纵然丰腴仍不失精准。"
+   }
+  },
+  "Chiara Condello": {
+   "region": "Predappio, Romagna",
+   "blurb": {
+    "hr": "Sangiovese Romagne shvaćen ozbiljno — dubok, elegantan i pun mjesta, iz predjela koji je predugo bio u sjeni Toskane.",
+    "en": "Romagna's Sangiovese taken seriously — deep, elegant and full of place, from a land too long in Tuscany's shadow.",
+    "it": "Il Sangiovese di Romagna preso sul serio — profondo, elegante e pieno di territorio, da una terra troppo a lungo all'ombra della Toscana.",
+    "fr": "Le sangiovese de Romagne pris au sérieux — profond, élégant et plein de terroir, d'une terre trop longtemps à l'ombre de la Toscane.",
+    "de": "Der Sangiovese der Romagna, ernst genommen — tief, elegant und voller Herkunft, aus einem Land, das zu lange im Schatten der Toskana stand.",
+    "zh": "被认真对待的罗马涅桑娇维塞——深邃、优雅、满载风土，来自一片长久活在托斯卡纳阴影下的土地。"
+   }
+  },
+  "Duemani": {
+   "region": "Costa Toscana",
+   "blurb": {
+    "hr": "Cabernet Franc kao umjetnost — biodinamički vinograd na toskanskoj obali koji jednu sortu vodi do dubine i finoće.",
+    "en": "Cabernet Franc as art — a biodynamic vineyard on the Tuscan coast that takes one grape to depth and finesse.",
+    "it": "Il Cabernet Franc come arte — un vigneto biodinamico sulla costa toscana che porta un solo vitigno a profondità e finezza.",
+    "fr": "Le cabernet franc comme un art — un vignoble biodynamique sur la côte toscane qui mène un seul cépage vers la profondeur et la finesse.",
+    "de": "Cabernet Franc als Kunst — ein biodynamischer Weinberg an der toskanischen Küste, der eine einzige Rebe zu Tiefe und Finesse führt.",
+    "zh": "作为艺术的品丽珠——托斯卡纳海岸的生物动力园，将单一品种引向深度与细腻。"
+   }
+  },
+  "Ca' La Bionda": {
+   "region": "Valpolicella Classica",
+   "blurb": {
+    "hr": "Klasična Valpolicella bez šminke — pošten Amarone i Valpolicella iz srca zone, gdje tradicija još nešto znači.",
+    "en": "Classical Valpolicella without artifice — honest Amarone and Valpolicella from the heart of the zone, where tradition still means something.",
+    "it": "La Valpolicella classica senza artifici — Amarone e Valpolicella onesti dal cuore della zona, dove la tradizione significa ancora qualcosa.",
+    "fr": "La Valpolicella classique sans artifice — un amarone et une valpolicella honnêtes, au cœur de la zone, où la tradition compte encore.",
+    "de": "Klassische Valpolicella ohne Künstelei — ehrlicher Amarone und Valpolicella aus dem Herzen der Zone, wo Tradition noch etwas bedeutet.",
+    "zh": "毫无雕饰的经典瓦坡里切拉——产区核心地带诚实的阿玛罗尼与瓦坡里切拉，传统在此仍有分量。"
+   }
+  },
+  "Boschis": {
+   "region": "Barolo, Piemonte",
+   "blurb": {
+    "hr": "Milost Cannubija — Chiara Boschis, pionirka među ženama Barola, spaja klasičnu eleganciju i moderni sjaj.",
+    "en": "The grace of Cannubi — Chiara Boschis, a pioneer among the women of Barolo, marries classical elegance and modern shine.",
+    "it": "La grazia del Cannubi — Chiara Boschis, pioniera tra le donne del Barolo, unisce eleganza classica e luce moderna.",
+    "fr": "La grâce du Cannubi — Chiara Boschis, pionnière parmi les femmes du Barolo, marie l'élégance classique et l'éclat moderne.",
+    "de": "Die Anmut des Cannubi — Chiara Boschis, eine Pionierin unter den Frauen des Barolo, verbindet klassische Eleganz und modernen Glanz.",
+    "zh": "卡努比的优雅——Chiara Boschis，巴罗洛女酿酒人中的先驱，融合古典优雅与现代光泽。"
+   }
+  },
+  "l'Écu": {
+   "region": "Muscadet, Loire",
+   "blurb": {
+    "hr": "Muscadet uzdignut do veličine — biodinamički granit koji jednostavnu sortu pretvara u duboko, mineralno i dugovječno vino.",
+    "en": "Muscadet raised to greatness — biodynamic granite that turns a humble grape into a deep, mineral, long-lived wine.",
+    "it": "Il Muscadet elevato alla grandezza — granito biodinamico che trasforma un vitigno umile in un vino profondo, minerale e longevo.",
+    "fr": "Le muscadet élevé à la grandeur — un granite biodynamique qui transforme un cépage modeste en un vin profond, minéral et de longue garde.",
+    "de": "Muscadet zur Grösse erhoben — biodynamischer Granit, der eine bescheidene Rebe in einen tiefen, mineralischen, langlebigen Wein verwandelt.",
+    "zh": "被提升至伟大的慕斯卡黛——生物动力的花岗岩，将朴素品种化为深邃、矿感、耐久的酒。"
+   }
+  },
+  "Crochet": {
+   "region": "Sancerre, Loire",
+   "blurb": {
+    "hr": "Kremen Sancerrea — sauvignon oštre linije i dima, precizan izraz gornje Loire.",
+    "en": "The flint of Sancerre — Sauvignon of sharp line and smoke, a precise expression of the upper Loire.",
+    "it": "La selce di Sancerre — Sauvignon dalla linea tagliente e affumicata, espressione precisa dell'alta Loira.",
+    "fr": "Le silex de Sancerre — un sauvignon à la ligne tranchante et fumée, expression précise de la haute Loire.",
+    "de": "Der Feuerstein von Sancerre — Sauvignon von scharfer Linie und Rauch, präziser Ausdruck der oberen Loire.",
+    "zh": "桑塞尔的燧石——线条凌厉、带烟熏感的长相思，卢瓦尔河上游的精准表达。"
+   }
+  },
+  "Bourdy": {
+   "region": "Jura",
+   "blurb": {
+    "hr": "Vremenska kapsula Jure — kuća stoljetnih podruma i oksidativnih vina, gdje savagnin i vrijeme rade zajedno.",
+    "en": "A time capsule of the Jura — a house of centuries-old cellars and oxidative wines, where savagnin and time work together.",
+    "it": "Una capsula del tempo del Giura — una casa di cantine secolari e vini ossidativi, dove savagnin e tempo lavorano insieme.",
+    "fr": "Une capsule temporelle du Jura — une maison aux caves centenaires et aux vins oxydatifs, où le savagnin et le temps œuvrent ensemble.",
+    "de": "Eine Zeitkapsel des Jura — ein Haus jahrhundertealter Keller und oxidativer Weine, wo Savagnin und Zeit zusammenwirken.",
+    "zh": "汝拉的时间胶囊——拥有数百年酒窖与氧化型酒的酒庄，萨瓦涅与时间在此协力。"
+   }
+  },
+  "Muster": {
+   "region": "Štajerska, Austrija",
+   "blurb": {
+    "hr": "Žive jantarne kapljice štajerskih brežuljaka — biodinamička bijela vina s maceracijom, divlja, teksturirana i puna karaktera.",
+    "en": "The living amber of the Styrian hills — biodynamic skin-contact whites, wild, textured and full of character.",
+    "it": "L'ambra viva delle colline della Stiria — bianchi biodinamici macerati, selvaggi, materici e pieni di carattere.",
+    "fr": "L'ambre vivant des collines de Styrie — des blancs biodynamiques de macération, sauvages, texturés et pleins de caractère.",
+    "de": "Das lebendige Bernstein der steirischen Hügel — biodynamische Maischeweisse, wild, texturreich und voller Charakter.",
+    "zh": "施泰尔马克丘陵鲜活的琥珀——生物动力浸皮白，狂野、有质感、充满个性。"
+   }
+  },
+  "Dipoli": {
+   "region": "Alto Adige",
+   "blurb": {
+    "hr": "Alpski sauvignon reza i bistrine — Peter Dipoli radi bijela i crna vina sjeverne preciznosti, bez ijedne suvišne note.",
+    "en": "Alpine Sauvignon of cut and clarity — Peter Dipoli makes whites and reds of northern precision, without a single note too many.",
+    "it": "Sauvignon alpino di taglio e limpidezza — Peter Dipoli firma bianchi e rossi di precisione settentrionale, senza una nota di troppo.",
+    "fr": "Sauvignon alpin, tranchant et limpide — Peter Dipoli signe des blancs et des rouges d'une précision nordique, sans une note de trop.",
+    "de": "Alpiner Sauvignon von Schliff und Klarheit — Peter Dipoli keltert Weisse und Rote von nördlicher Präzision, ohne eine Note zu viel.",
+    "zh": "凌厉澄澈的高山长相思——Peter Dipoli 酿出北方般精准的白与红，没有一个多余的音符。"
+   }
+  },
+  "Edi Simčič": {
+   "region": "Goriška Brda, Slovenija",
+   "blurb": {
+    "hr": "Uglađenost Brda — bijela i crna vina uokvirena hrastom i vremenom, profinjena i samouvjerena.",
+    "en": "The polish of Brda — whites and reds framed by oak and time, refined and self-assured.",
+    "it": "La levigatezza del Collio sloveno — bianchi e rossi incorniciati da rovere e tempo, raffinati e sicuri di sé.",
+    "fr": "Le poli de la Brda — des blancs et des rouges encadrés par le chêne et le temps, raffinés et sûrs d'eux.",
+    "de": "Der Schliff der Brda — Weisse und Rote, gerahmt von Eiche und Zeit, verfeinert und selbstbewusst.",
+    "zh": "布尔达的雅致——以橡木与时间为框的白与红，精致而自信。"
+   }
+  },
+  "Prinčić": {
+   "region": "Oslavia, Friuli",
+   "blurb": {
+    "hr": "Jantar Oslavije — Dario Prinčić macerira ribollu i vraća drevni friulski način, vina topline, kože i sunca.",
+    "en": "The amber of Oslavia — Dario Prinčić macerates Ribolla and reclaims the ancient Friulian way, wines of warmth, leather and sun.",
+    "it": "L'ambra di Oslavia — Dario Prinčić macera la Ribolla e recupera l'antico metodo friulano, vini di calore, cuoio e sole.",
+    "fr": "L'ambre d'Oslavia — Dario Prinčić macère la ribolla et renoue avec l'ancienne manière frioulane, des vins de chaleur, de cuir et de soleil.",
+    "de": "Der Bernstein von Oslavia — Dario Prinčić vergärt die Ribolla auf der Maische und knüpft an die alte friaulische Art an, Weine aus Wärme, Leder und Sonne.",
+    "zh": "奥斯拉维亚的琥珀——Dario Prinčić 浸渍丽波拉，重拾古老的弗留利方式，酿出温暖、皮革与阳光之酒。"
+   }
+  },
+  "Benvenuti": {
+   "region": "Kaldir, Istra",
+   "blurb": {
+    "hr": "Istarska obitelj širokog raspona — od svježe malvazije do tamnog, dugovječnog terana i medenih slatkih berbi.",
+    "en": "An Istrian family of wide range — from crisp Malvazija to dark, long-lived Teran and honeyed sweet harvests.",
+    "it": "Una famiglia istriana dall'ampio raggio — dalla fresca Malvasia al Teran scuro e longevo, fino alle vendemmie dolci e mielose.",
+    "fr": "Une famille istrienne au large registre — de la malvoisie vive au teran sombre et longevif, jusqu'aux vendanges douces et miellées.",
+    "de": "Eine istrische Familie mit weitem Spektrum — von frischer Malvazija bis zum dunklen, langlebigen Teran und honigsüssen Lesen.",
+    "zh": "涉猎广泛的伊斯特拉家族——从清爽的玛尔维萨，到深沉耐久的特兰，再到蜜甜的迟摘。"
+   }
+  },
+  "Niko Bura": {
+   "region": "Dingač, Pelješac",
+   "blurb": {
+    "hr": "Vrtoglavi Dingač — plavac s najstrmijih peljeških padina, vino sunca, mora i soli, uz tradicionalni prošek.",
+    "en": "Vertiginous Dingač — Plavac from the steepest Pelješac slopes, a wine of sun, sea and salt, alongside a traditional prošek.",
+    "it": "Il vertiginoso Dingač — Plavac dai pendii più ripidi di Pelješac, un vino di sole, mare e sale, accanto a un prošek tradizionale.",
+    "fr": "Le vertigineux Dingač — un plavac des pentes les plus abruptes de Pelješac, un vin de soleil, de mer et de sel, aux côtés d'un prošek traditionnel.",
+    "de": "Der schwindelerregende Dingač — Plavac von den steilsten Hängen der Pelješac, ein Wein aus Sonne, Meer und Salz, neben einem traditionellen Prošek.",
+    "zh": "令人目眩的丁加奇——来自佩列沙茨最陡坡地的普拉瓦茨，阳光、海洋与盐之酒，佐以传统的 prošek。"
+   }
+  },
+  "Skaramuča": {
+   "region": "Dingač, Pelješac",
+   "blurb": {
+    "hr": "Snaga Dingača — gusti, sunčani plavac s poznate strmine iznad mora, topao i moćan kao sam kraj.",
+    "en": "The power of Dingač — dense, sunlit Plavac from the famous cliff above the sea, warm and mighty as the land itself.",
+    "it": "La potenza del Dingač — Plavac denso e solare dalla celebre rupe sul mare, caldo e possente come la terra stessa.",
+    "fr": "La puissance de Dingač — un plavac dense et solaire de la célèbre falaise au-dessus de la mer, chaud et puissant comme la terre elle-même.",
+    "de": "Die Kraft des Dingač — dichter, sonnendurchfluteter Plavac von der berühmten Klippe über dem Meer, warm und mächtig wie das Land selbst.",
+    "zh": "丁加奇的力量——来自海上著名峭壁、浓郁而洒满阳光的普拉瓦茨，如这片土地般温暖而雄浑。"
+   }
+  },
+  "Rizman": {
+   "region": "Komarna, Dalmacija",
+   "blurb": {
+    "hr": "Mlada apelacija Komarne — organski vinograd okrenut moru, gdje dalmatinske sorte zru u čistoći soli i vjetra.",
+    "en": "The young Komarna appellation — an organic vineyard facing the sea, where Dalmatian varieties ripen in the purity of salt and wind.",
+    "it": "La giovane denominazione di Komarna — un vigneto biologico affacciato sul mare, dove le varietà dalmate maturano nella purezza di sale e vento.",
+    "fr": "La jeune appellation de Komarna — un vignoble bio face à la mer, où les cépages dalmates mûrissent dans la pureté du sel et du vent.",
+    "de": "Die junge Appellation Komarna — ein biologischer Weinberg zum Meer hin, wo dalmatinische Sorten in der Reinheit von Salz und Wind reifen.",
+    "zh": "年轻的科马尔纳产区——面朝大海的有机园，达尔马提亚品种在盐与风的纯净中成熟。"
+   }
+  },
+  "Jakopić": {
+   "region": "Štrigova, Međimurje",
+   "blurb": {
+    "hr": "Zeleni brežuljci Međimurja — obitelj Jakopić s imanja Terbotz radi aromatične, precizne bijele visoke napetosti.",
+    "en": "The green hills of Međimurje — the Jakopić family of the Terbotz estate makes aromatic, precise whites of high tension.",
+    "it": "Le colline verdi del Međimurje — la famiglia Jakopić della tenuta Terbotz firma bianchi aromatici e precisi di grande tensione.",
+    "fr": "Les collines vertes du Međimurje — la famille Jakopić du domaine Terbotz signe des blancs aromatiques et précis d'une grande tension.",
+    "de": "Die grünen Hügel des Međimurje — die Familie Jakopić vom Gut Terbotz keltert aromatische, präzise Weisse von hoher Spannung.",
+    "zh": "梅吉穆列的绿色丘陵——Terbotz 庄园的 Jakopić 家族酿出芳香、精准、张力十足的白。"
    }
   }
  }
