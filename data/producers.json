@@ -1298,6 +1298,182 @@
     "de": "Das Kalkplateau des rechten Ufers — Merlot und Cabernet Franc von üppiger, samtiger Textur und warmer Tiefe.",
     "zh": "右岸的石灰岩高地——梅洛与品丽珠，质地丰腴天鹅绒般，深沉而温暖。"
    }
+  },
+  "Bastian": {
+   "region": "Dalmacija",
+   "blurb": {
+    "hr": "Mala dalmatinska obitelj bez buke — pošteno vino sunca i mora, napravljeno za stol, ne za izlog.",
+    "en": "A small Dalmatian family with no fanfare — honest wine of sun and sea, made for the table, not the shop window.",
+    "it": "Una piccola famiglia dalmata senza clamore — vino onesto di sole e mare, fatto per la tavola, non per la vetrina.",
+    "fr": "Une petite famille dalmate sans tapage — un vin honnête de soleil et de mer, fait pour la table, non pour la vitrine.",
+    "de": "Eine kleine dalmatinische Familie ohne Getöse — ehrlicher Wein aus Sonne und Meer, für den Tisch gemacht, nicht fürs Schaufenster.",
+    "zh": "一个不事张扬的达尔马提亚小家族——阳光与海洋的诚实之酒，为餐桌而非橱窗而酿。"
+   }
+  },
+  "Budinski": {
+   "region": "Buzet, Istra",
+   "blurb": {
+    "hr": "Istarski refošk u tamnom izdanju — vino divlje višnje, željeza i mineralne oštrine iz zaleđa Buzeta.",
+    "en": "Istrian Refošk in a dark register — a wine of wild cherry, iron and mineral edge from the Buzet hinterland.",
+    "it": "Refošk istriano in chiave scura — un vino di ciliegia selvatica, ferro e taglio minerale dall'entroterra di Buzet.",
+    "fr": "Le refosco istrien en clé sombre — un vin de cerise sauvage, de fer et de tranchant minéral de l'arrière-pays de Buzet.",
+    "de": "Istrischer Refošk in dunkler Tonart — ein Wein aus Wildkirsche, Eisen und mineralischer Schärfe aus dem Hinterland von Buzet.",
+    "zh": "深沉格调的伊斯特拉 Refošk——来自布泽特内陆，散发野樱桃、铁质与矿物锋芒的酒。"
+   }
+  },
+  "Casa Rojo": {
+   "region": "Španjolska",
+   "blurb": {
+    "hr": "Španjolsko sunce razigrano — smjela, moderna vina koja se ne shvaćaju preozbiljno, ali čašu pune užitkom.",
+    "en": "Spanish sun at play — bold, modern wines that don't take themselves too seriously, yet fill the glass with pleasure.",
+    "it": "Il sole spagnolo che gioca — vini audaci e moderni che non si prendono troppo sul serio, ma riempiono il bicchiere di piacere.",
+    "fr": "Le soleil espagnol qui s'amuse — des vins audacieux et modernes qui ne se prennent pas trop au sérieux, mais remplissent le verre de plaisir.",
+    "de": "Die spanische Sonne beim Spiel — kühne, moderne Weine, die sich nicht zu ernst nehmen, das Glas aber mit Genuss füllen.",
+    "zh": "嬉戏中的西班牙阳光——大胆而现代的酒，不把自己看得太重，却让杯中满溢愉悦。"
+   }
+  },
+  "David Moret": {
+   "region": "Côte de Beaune, Burgundija",
+   "blurb": {
+    "hr": "Beaunska izrada bez pompe — bijeli burgundac čiste ruke, precizan, mineralan i pouzdano dobar.",
+    "en": "Beaune craftsmanship without pomp — white Burgundy of a clean hand, precise, mineral and reliably fine.",
+    "it": "Artigianato di Beaune senza pompa — Borgogna bianca dalla mano netta, precisa, minerale e affidabilmente buona.",
+    "fr": "Le savoir-faire de Beaune sans pompe — une Bourgogne blanche à la main nette, précise, minérale et sûrement bonne.",
+    "de": "Beaune-Handwerk ohne Pomp — weisser Burgunder von klarer Hand, präzise, mineralisch und verlässlich gut.",
+    "zh": "毫无浮华的博讷工艺——手法干净的白勃艮第，精准、矿感，且稳定出色。"
+   }
+  },
+  "Domaine Eden": {
+   "region": "Santa Cruz Mountains, Kalifornija",
+   "blurb": {
+    "hr": "Planinska Kalifornija suzdržane ruke — kabernet i pinot svježine i strukture, daleko od bujnosti doline.",
+    "en": "Mountain California of a restrained hand — Cabernet and Pinot of freshness and structure, far from the valley's exuberance.",
+    "it": "California di montagna dalla mano trattenuta — Cabernet e Pinot di freschezza e struttura, lontani dall'esuberanza della valle.",
+    "fr": "La Californie de montagne, main retenue — cabernet et pinot de fraîcheur et de structure, loin de l'exubérance de la vallée.",
+    "de": "Berg-Kalifornien mit zurückhaltender Hand — Cabernet und Pinot von Frische und Struktur, fern der Üppigkeit des Tals.",
+    "zh": "手法克制的高山加州——清新而有结构的赤霞珠与黑皮诺，远离谷地的丰盛。"
+   }
+  },
+  "Geržinić": {
+   "region": "Vižinada, Istra",
+   "blurb": {
+    "hr": "Istarski mirisi s vižinadskih brežuljaka — malvazija i muškat pune cvijeta, badema i mediteranske svježine.",
+    "en": "Istrian aromatics from the Vižinada hills — Malvazija and Muškat full of blossom, almond and Mediterranean freshness.",
+    "it": "Aromi istriani dalle colline di Vižinada — Malvasia e Moscato pieni di fiori, mandorla e freschezza mediterranea.",
+    "fr": "Des arômes istriens des collines de Vižinada — malvoisie et muscat pleins de fleurs, d'amande et de fraîcheur méditerranéenne.",
+    "de": "Istrische Aromatik von den Hügeln um Vižinada — Malvazija und Muskat voller Blüten, Mandel und mediterraner Frische.",
+    "zh": "维日纳达丘陵的伊斯特拉芳香——满载花香、杏仁与地中海清新的玛尔维萨与麝香。"
+   }
+  },
+  "Kunjas": {
+   "region": "Dalmacija",
+   "blurb": {
+    "hr": "Pošip iz dalmatinskog kamena — bijelo vino soli i badema, jednostavno i pošteno kao ribarski stol.",
+    "en": "Pošip from Dalmatian stone — a white of salt and almond, simple and honest as a fisherman's table.",
+    "it": "Pošip dalla pietra dalmata — un bianco di sale e mandorla, semplice e onesto come la tavola di un pescatore.",
+    "fr": "Le pošip de la pierre dalmate — un blanc de sel et d'amande, simple et honnête comme la table d'un pêcheur.",
+    "de": "Pošip vom dalmatinischen Stein — ein Weisswein aus Salz und Mandel, schlicht und ehrlich wie der Tisch eines Fischers.",
+    "zh": "达尔马提亚石地上的 Pošip——盐与杏仁之白，如渔夫餐桌般质朴而诚实。"
+   }
+  },
+  "L'Hoste": {
+   "region": "Champagne",
+   "blurb": {
+    "hr": "Vinogradarski šampanjac malog imena — pošteni mjehurići koji govore o parceli, a ne o marketingu.",
+    "en": "Grower Champagne of a small name — honest bubbles that speak of the plot, not of marketing.",
+    "it": "Champagne di vignaiolo dal piccolo nome — bollicine oneste che parlano della parcella, non del marketing.",
+    "fr": "Champagne de vigneron au petit nom — des bulles honnêtes qui parlent de la parcelle, non du marketing.",
+    "de": "Winzerchampagner mit kleinem Namen — ehrliche Perlage, die von der Parzelle spricht, nicht vom Marketing.",
+    "zh": "小名号的种植者香槟——诚实的气泡，讲述地块，而非营销。"
+   }
+  },
+  "Markus": {
+   "region": "Dalmacija",
+   "blurb": {
+    "hr": "Dalmacija dan po dan — strpljivo, malo vino napravljeno bez žurbe i bez kompromisa.",
+    "en": "Dalmatia, day by day — a patient, small-scale wine made without haste and without compromise.",
+    "it": "Dalmazia, giorno per giorno — un vino piccolo e paziente, fatto senza fretta e senza compromessi.",
+    "fr": "La Dalmatie, jour après jour — un vin modeste et patient, fait sans hâte et sans compromis.",
+    "de": "Dalmatien, Tag für Tag — ein geduldiger, kleiner Wein, ohne Eile und ohne Kompromiss gemacht.",
+    "zh": "达尔马提亚，日复一日——一款耐心的小批量酒，不慌不忙，毫不妥协。"
+   }
+  },
+  "Moret-Nominé": {
+   "region": "Francuska",
+   "blurb": {
+    "hr": "Francuski syrah bez uljepšavanja — papar, ljubičica i tamno voće u vinu ravne, iskrene linije.",
+    "en": "French Syrah with no gloss — pepper, violet and dark fruit in a wine of a straight, honest line.",
+    "it": "Syrah francese senza fronzoli — pepe, violetta e frutta scura in un vino dalla linea dritta e onesta.",
+    "fr": "Une syrah française sans fioritures — poivre, violette et fruits noirs dans un vin à la ligne droite et honnête.",
+    "de": "Französischer Syrah ohne Beschönigung — Pfeffer, Veilchen und dunkle Frucht in einem Wein von gerader, ehrlicher Linie.",
+    "zh": "毫不粉饰的法国西拉——胡椒、紫罗兰与黑色果实，酿成一款线条笔直而诚实的酒。"
+   }
+  },
+  "Philippe Chavy": {
+   "region": "Puligny-Montrachet, Burgundija",
+   "blurb": {
+    "hr": "Finoća Pulignyja — bijeli burgundac cvijeta, krede i suzdržane napetosti, elegantan bez napora.",
+    "en": "The finesse of Puligny — white Burgundy of blossom, chalk and restrained tension, elegant without effort.",
+    "it": "La finezza di Puligny — Borgogna bianca di fiori, gesso e tensione trattenuta, elegante senza sforzo.",
+    "fr": "La finesse de Puligny — Bourgogne blanche de fleurs, de craie et de tension retenue, élégante sans effort.",
+    "de": "Die Finesse von Puligny — weisser Burgunder aus Blüte, Kalk und verhaltener Spannung, mühelos elegant.",
+    "zh": "普利尼的细腻——花香、白垩与克制张力的白勃艮第，毫不费力的优雅。"
+   }
+  },
+  "Ruppert-Leroy": {
+   "region": "Aube, Champagne",
+   "blurb": {
+    "hr": "Sirovi biodinamički Aube — šampanjac bez dosaže, vinozan, zemljan i posve živ.",
+    "en": "Raw biodynamic Aube — Champagne with no dosage, vinous, earthy and utterly alive.",
+    "it": "Aube biodinamico e grezzo — Champagne senza dosaggio, vinoso, terroso e assolutamente vivo.",
+    "fr": "L'Aube biodynamique et brut — un champagne sans dosage, vineux, terrien et pleinement vivant.",
+    "de": "Rohes biodynamisches Aube — Champagner ohne Dosage, weinig, erdig und ganz lebendig.",
+    "zh": "原生的生物动力奥布——无补液香槟，酒感十足、带泥土气，鲜活至极。"
+   }
+  },
+  "Résonance": {
+   "region": "Willamette Valley, Oregon",
+   "blurb": {
+    "hr": "Burgundska kuća u Oregonu — Louis Jadot i pinot noir hladne doline, svilen, precizan i uzdržan.",
+    "en": "A Burgundy house in Oregon — Louis Jadot and Pinot Noir of the cool valley, silken, precise and restrained.",
+    "it": "Una casa borgognona in Oregon — Louis Jadot e Pinot Noir della valle fredda, setoso, preciso e trattenuto.",
+    "fr": "Une maison bourguignonne en Oregon — Louis Jadot et un pinot noir de la vallée fraîche, soyeux, précis et retenu.",
+    "de": "Ein burgundisches Haus in Oregon — Louis Jadot und Pinot Noir des kühlen Tals, seidig, präzise und zurückhaltend.",
+    "zh": "落户俄勒冈的勃艮第名庄——Louis Jadot 与冷凉谷地的黑皮诺，丝滑、精准而克制。"
+   }
+  },
+  "Saint-Estèphe": {
+   "region": "Saint-Estèphe, Bordeaux",
+   "blurb": {
+    "hr": "Čvrsti sjeverni Médoc — cabernet snažne strukture i tamnog voća, ozbiljan i građen za dugu stazu.",
+    "en": "The firm northern Médoc — Cabernet of sturdy structure and dark fruit, serious and built for the long haul.",
+    "it": "Il Médoc settentrionale e saldo — Cabernet di struttura robusta e frutto scuro, serio e costruito per durare.",
+    "fr": "Le Médoc septentrional et ferme — un cabernet de structure robuste et de fruits noirs, sérieux et bâti pour durer.",
+    "de": "Der feste nördliche Médoc — Cabernet von robuster Struktur und dunkler Frucht, ernst und für die lange Strecke gebaut.",
+    "zh": "坚实的北梅多克——结构强健、黑色果实的赤霞珠，严肃而为长久而生。"
+   }
+  },
+  "Tyler": {
+   "region": "Sta. Rita Hills, Kalifornija",
+   "blurb": {
+    "hr": "Preciznost Santa Barbare — chardonnay i pinot hladnih brežuljaka, vitki, slani i suzdržani.",
+    "en": "The precision of Santa Barbara — Chardonnay and Pinot of the cool hills, lean, saline and restrained.",
+    "it": "La precisione di Santa Barbara — Chardonnay e Pinot delle colline fresche, snelli, salini e trattenuti.",
+    "fr": "La précision de Santa Barbara — chardonnay et pinot des collines fraîches, tendus, salins et retenus.",
+    "de": "Die Präzision von Santa Barbara — Chardonnay und Pinot der kühlen Hügel, schlank, salzig und zurückhaltend.",
+    "zh": "圣巴巴拉的精准——冷凉丘陵的霞多丽与黑皮诺，紧致、带咸感而克制。"
+   }
+  },
+  "Téo Dancer": {
+   "region": "Mâconnais, Burgundija",
+   "blurb": {
+    "hr": "Mlada burgundska ruka — svjež aligoté i chardonnay živahne kiseline, bez tereta, pun energije.",
+    "en": "A young Burgundian hand — fresh Aligoté and Chardonnay of lively acidity, unburdened and full of energy.",
+    "it": "Una giovane mano borgognona — Aligoté e Chardonnay freschi di acidità vivace, senza pesi e pieni di energia.",
+    "fr": "Une jeune main bourguignonne — aligoté et chardonnay frais à l'acidité vive, sans lourdeur et pleins d'énergie.",
+    "de": "Eine junge burgundische Hand — frischer Aligoté und Chardonnay von lebhafter Säure, unbeschwert und voller Energie.",
+    "zh": "年轻的勃艮第之手——清新的阿里高特与霞多丽，酸度活泼，轻盈而充满能量。"
+   }
   }
  }
 }
