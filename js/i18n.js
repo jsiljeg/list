@@ -48,7 +48,9 @@ hr: {
         style: { fresh: "Svježe i lagano", rich: "Bogato i snažno", bold: "Nešto posebno i drugačije" },
     budget: { b1: "do 60 €", b2: "60–120 €", b3: "iznad 120 €", any: "Bez ograničenja" },
     results: "Naše preporuke",
-    again: "Ispočetka"
+    again: "Ispočetka",
+    backToWines: "← Natrag na prijedloge",
+    changeBudget: "Promijeni budžet"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -156,7 +158,9 @@ en: {
         style: { fresh: "Fresh & light", rich: "Rich & powerful", bold: "Something special & different" },
     budget: { b1: "under 60 €", b2: "60–120 €", b3: "over 120 €", any: "No limit" },
     results: "Our suggestions",
-    again: "Start over"
+    again: "Start over",
+    backToWines: "← Back to the suggestions",
+    changeBudget: "Change budget"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -264,7 +268,9 @@ it: {
         style: { fresh: "Fresco e leggero", rich: "Ricco e potente", bold: "Qualcosa di speciale e diverso" },
     budget: { b1: "fino a 60 €", b2: "60–120 €", b3: "oltre 120 €", any: "Senza limite" },
     results: "I nostri consigli",
-    again: "Ricomincia"
+    again: "Ricomincia",
+    backToWines: "← Torna ai suggerimenti",
+    changeBudget: "Cambia budget"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -372,7 +378,9 @@ fr: {
         style: { fresh: "Frais et léger", rich: "Riche et puissant", bold: "Quelque chose de spécial" },
     budget: { b1: "moins de 60 €", b2: "60–120 €", b3: "plus de 120 €", any: "Sans limite" },
     results: "Nos suggestions",
-    again: "Recommencer"
+    again: "Recommencer",
+    backToWines: "← Retour aux suggestions",
+    changeBudget: "Changer de budget"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -480,7 +488,9 @@ de: {
         style: { fresh: "Frisch & leicht", rich: "Reich & kraftvoll", bold: "Etwas Besonderes" },
     budget: { b1: "bis 60 €", b2: "60–120 €", b3: "über 120 €", any: "Ohne Limit" },
     results: "Unsere Empfehlungen",
-    again: "Neu beginnen"
+    again: "Neu beginnen",
+    backToWines: "← Zurück zu den Vorschlägen",
+    changeBudget: "Budget ändern"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -588,7 +598,9 @@ zh: {
         style: { fresh: "清新轻盈", rich: "浓郁强劲", bold: "特别与独特" },
     budget: { b1: "60 € 以内", b2: "60–120 €", b3: "120 € 以上", any: "不限" },
     results: "我们的推荐",
-    again: "重新开始"
+    again: "重新开始",
+    backToWines: "← 返回推荐",
+    changeBudget: "更改预算"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",

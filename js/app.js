@@ -452,7 +452,7 @@ function dishesForWine(ins) {
 }
 
 /* ---------- detail modal ---------- */
-function openDetail(ref) {
+function openDetail(ref, back) {
   const [si, ci, gi, ii] = ref.split(".").map(Number);
   const item = DATA.sections[si].categories[ci].groups[gi].items[ii];
   const ins = item.insight;
@@ -466,6 +466,7 @@ function openDetail(ref) {
   const glass = glassFor(ins.style, ins.grape);
   const noteText = item.note && (item.note[lang] || item.note.hr || item.note.en);
   $("modal-body").innerHTML = `
+    ${back ? `<button class="detail-back" type="button">${esc(t.helper.backToWines)}</button>` : ""}
     ${glass ? `<div class="detail-glass">${GLASS_ICONS[glass]}</div>` : ""}
     <div class="detail-name">${esc(itemName(item))}</div>
     ${item.producer ? `<div class="detail-producer">${esc(item.producer)}</div>` : ""}
@@ -497,6 +498,7 @@ function openDetail(ref) {
       return `<div class="detail-dishes"><span class="detail-label">${esc(t.ui.pairsWith)}</span>${dishes.map((dn) => `<span class="dish-chip">${esc(dn.name[lang] || dn.name.en || dn.name.hr)}</span>`).join("")}</div>`;
     })()}`;
   showModal();
+  if (back) { const bb = $("modal-body").querySelector(".detail-back"); if (bb) bb.addEventListener("click", back); }
 }
 
 /* Modal open/close with a history entry so the phone/tablet back button
@@ -549,7 +551,7 @@ function glassFor(style, grape) {
 /* "Bez ograničenja" (any) = spare no expense → only the Filhov ponos
    500 €+ bottles that suit the dish. */
 const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [PRIDE_MIN, Infinity] };
-const helperState = { step: 0, dish: null };
+const helperState = { step: 0, dish: null, budgetKey: "any" };
 
 function openHelper() {
   helperState.step = 0; helperState.dish = null;
@@ -596,6 +598,7 @@ function renderHelperStep() {
 
 function renderHelperResults(budgetKey) {
   const t = T();
+  helperState.budgetKey = budgetKey;
   const dish = helperState.dish || { pairings: [], styles: [] };
   const [lo, hi] = HELPER_BUDGET[budgetKey] || [0, Infinity];
   const scored = [];
@@ -622,10 +625,11 @@ function renderHelperResults(budgetKey) {
   const list = top.length
     ? top.map((r) => itemHtml(r.item, r.ref, t.sections[r.sec.id], true)).join("")
     : `<p class="no-results">${t.ui.noResults}</p>`;
-  $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}<button class="helper-opt helper-again">${esc(t.helper.again)}</button></div>`;
+  $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
   $("modal-body").querySelectorAll(".item.clickable").forEach((b) =>
-    b.addEventListener("click", () => openDetail(b.dataset.ref))
+    b.addEventListener("click", () => openDetail(b.dataset.ref, () => renderHelperResults(budgetKey)))
   );
+  $("modal-body").querySelector(".helper-budget").addEventListener("click", () => { helperState.step = 1; renderHelperStep(); });
   $("modal-body").querySelector(".helper-again").addEventListener("click", openHelper);
 }
 
@@ -657,35 +661,36 @@ $("modal-close").addEventListener("click", closeModal);
 $("modal-backdrop").addEventListener("click", closeModal);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 
-/* swipe the wine sheet downward to dismiss (phones), but only when it is
-   scrolled to the top so normal content scrolling still works */
+/* Swipe the wine sheet away to dismiss (phones): drag down when already at
+   the top, or up when already at the bottom (you finished reading and keep
+   swiping). Normal content scrolling is untouched in between. */
 (function () {
   const sheet = $("modal-sheet");
   if (!sheet) return;
-  let startY = 0, dy = 0, dragging = false;
+  let startY = 0, dy = 0, mode = "none", dragging = false;
   sheet.addEventListener("touchstart", (e) => {
-    if (sheet.scrollTop > 0 || e.touches.length !== 1) { dragging = false; return; }
+    if (e.touches.length !== 1) { dragging = false; return; }
+    const atTop = sheet.scrollTop <= 0;
+    const atBottom = sheet.scrollTop + sheet.clientHeight >= sheet.scrollHeight - 1;
+    mode = atTop && atBottom ? "both" : atTop ? "down" : atBottom ? "up" : "none";
+    if (mode === "none") { dragging = false; return; }
     startY = e.touches[0].clientY; dy = 0; dragging = true;
     sheet.style.transition = "none";
   }, { passive: true });
+  const allowed = () => mode === "both" || (mode === "down" && dy > 0) || (mode === "up" && dy < 0);
   sheet.addEventListener("touchmove", (e) => {
     if (!dragging) return;
     dy = e.touches[0].clientY - startY;
-    if (dy > 0) {
-      sheet.style.transform = `translateY(${dy}px)`;
-      $("modal-backdrop").style.opacity = String(Math.max(.25, 1 - dy / 450));
-    } else { dy = 0; sheet.style.transform = ""; }
+    if (!allowed()) { dy = 0; sheet.style.transform = ""; $("modal-backdrop").style.opacity = ""; return; }
+    sheet.style.transform = `translateY(${dy}px)`;
+    $("modal-backdrop").style.opacity = String(Math.max(.25, 1 - Math.abs(dy) / 450));
   }, { passive: true });
   function end() {
     if (!dragging) return;
     dragging = false;
     $("modal-backdrop").style.opacity = "";
-    if (dy > 110) {
-      closeModal();
-    } else {
-      sheet.style.transition = "transform .2s ease";
-      sheet.style.transform = "";
-    }
+    if (allowed() && Math.abs(dy) > 110) closeModal();
+    else { sheet.style.transition = "transform .2s ease"; sheet.style.transform = ""; }
   }
   sheet.addEventListener("touchend", end);
   sheet.addEventListener("touchcancel", end);

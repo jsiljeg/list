@@ -414,7 +414,14 @@ body {
   transition: border-color .15s, background .15s;
 }
 .helper-opt:hover, .helper-opt:focus-visible { border-color: var(--gold); outline: none; }
-.helper-again { margin-top: 1.1rem; text-align: center; color: var(--text-dim); }
+.helper-again { text-align: center; color: var(--text-dim); }
+.helper-nav { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.1rem; }
+.helper-nav .helper-opt { flex: 1 1 40%; text-align: center; }
+.detail-back {
+  display: inline-block; background: none; border: none; padding: 0 0 .5rem;
+  color: var(--gold-soft); font-family: var(--sans); font-size: .92rem; cursor: pointer;
+}
+.detail-back:hover { color: var(--text); }
 .helper-course {
   font-family: var(--serif); color: var(--gold-soft);
   font-size: 1.05rem; letter-spacing: .06em; text-transform: uppercase;
@@ -461,11 +468,21 @@ body {
 }
 .footer p + p { margin-top: .4rem; }
 
-/* story splash fits the viewport ("Otvori kartu" always in view) on tablet + phone */
+/* tablet + phone: one clean, swipeable row of category chips (Vinske regije
+   last) instead of a ragged wrapped block; and the story splash fits the view */
 @media (max-width: 1024px) {
   .story-screen { height: 100vh; height: 100dvh; }
   .story-screen .story { flex: 1 1 auto; min-height: 0; overflow-y: auto; width: 100%; }
   .enter-btn { flex: none; }
+
+  .nav {
+    flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    padding: .7rem 1.2rem 0;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav button { flex: none; }
+  .nav button[data-sec="__regions"] { order: 99; }
 }
 
 @media (max-width: 560px) {
