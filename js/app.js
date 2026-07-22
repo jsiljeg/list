@@ -88,6 +88,8 @@ let lang = localStorage.getItem(LS_KEY);
 let currentSection = null;
 let picksOnly = false;
 let ratedOnly = false;
+let prideOnly = false;
+const PRIDE_MIN = 500;
 
 const $ = (id) => document.getElementById(id);
 const bestScore = (item) => (item.ratings || []).reduce((m, r) => Math.max(m, parseFloat(r.score) || 0), 0);
@@ -163,6 +165,8 @@ function showApp() {
   $("picks-toggle").classList.toggle("active", picksOnly);
   $("rated-toggle").querySelector("span").textContent = t.ui.bestRated;
   $("rated-toggle").classList.toggle("active", ratedOnly);
+  $("pride-toggle").querySelector("span").textContent = t.ui.pride;
+  $("pride-toggle").classList.toggle("active", prideOnly);
   $("helper-open").querySelector("span").textContent = t.helper.title;
   renderLangSwitch();
   renderNav();
@@ -199,8 +203,10 @@ function renderNav() {
       $("search").value = "";
       picksOnly = false;
       ratedOnly = false;
+      prideOnly = false;
       $("picks-toggle").classList.remove("active");
       $("rated-toggle").classList.remove("active");
+      $("pride-toggle").classList.remove("active");
       renderNav();
       renderContent();
       window.scrollTo({ top: 0 });
@@ -306,7 +312,7 @@ function renderContent() {
       });
     });
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
-  } else if (currentSection === "__regions" && !picksOnly && !ratedOnly) {
+  } else if (currentSection === "__regions" && !picksOnly && !ratedOnly && !prideOnly) {
     html = REGIONS.map((rg) => {
       const map = (typeof REGION_MAPS !== "undefined" && REGION_MAPS[rg.id]) || "";
       const apps = (rg.appellations || []).map((a) => `<span class="region-app">${esc(a)}</span>`).join("");
@@ -321,7 +327,7 @@ function renderContent() {
       </section>`;
     }).join("");
     if (!REGIONS.length) html = `<p class="no-results">${t.ui.noResults}</p>`;
-  } else if (currentSection === "__new" && !picksOnly && !ratedOnly) {
+  } else if (currentSection === "__new" && !picksOnly && !ratedOnly && !prideOnly) {
     let newHtml = "";
     DATA.sections.forEach((sec, si) => {
       sec.categories.forEach((cat, ci) => {
@@ -337,6 +343,26 @@ function renderContent() {
     html = newHtml
       ? `<section class="cat"><h2 class="cat-title">${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">◆</div>${newHtml}</section>`
       : `<p class="no-results">${t.ui.noResults}</p>`;
+  } else if (prideOnly) {
+    const pride = [];
+    DATA.sections.forEach((sec, si) => {
+      sec.categories.forEach((cat, ci) => {
+        cat.groups.forEach((g, gi) => {
+          g.items.forEach((item, ii) => {
+            if (!(typeof item.price === "number" && item.price >= PRIDE_MIN)) return;
+            pride.push({ item, ref: [si, ci, gi, ii].join("."), sec, country: g.country });
+          });
+        });
+      });
+    });
+    pride.sort((a, b) => b.item.price - a.item.price);
+    if (pride.length) {
+      html += `<section class="cat"><h2 class="cat-title">${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">◆</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
+      html += pride.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
+      html += `</section>`;
+    } else {
+      html = `<p class="no-results">${t.ui.noResults}</p>`;
+    }
   } else if (ratedOnly) {
     const rated = [];
     DATA.sections.forEach((sec, si) => {
@@ -489,8 +515,8 @@ const GLASS_ICONS = {
   champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M14.8,3 C13.4,10 12.2,16 11.4,22 C10.7,27 10.6,31 11.4,36 C12.6,44 15.8,49 20,52 C24.2,49 27.4,44 28.6,36 C29.4,31 29.3,27 28.6,22 C27.8,16 26.6,10 25.2,3 L14.8,3"/><path d="M20,52 V90"/><path d="M9.5,95 c4,-3.2 17,-3.2 21,0"/><path d="M14.6,11 C13.4,17 12.9,23 13.2,29" style="stroke-width:.8;opacity:.5"/></svg>',
   riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M8,5 C5.8,16 6,28 9,37.5 C10.6,42 13.6,43.5 16,43.5 L24,43.5 C26.4,43.5 29.4,42 31,37.5 C34,28 34.2,16 32,5 Z"/><path d="M20,43.5 V86"/><path d="M9.5,91 c4,-3 17,-3 21,0"/></svg>',
-  cabernet: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M6.5,4 C8.8,21 13,37 17,43 L23,43 C27,37 31.2,21 33.5,4 Z"/><path d="M20,43 V86"/><path d="M9.5,91 c4,-3 17,-3 21,0"/></svg>',
+  pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  cabernet: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M6.5,4 C8.8,21 13,37 17,43 L23,43 C27,37 31.2,21 33.5,4 Z"/><path d="M20,43 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
 function glassFor(style, grape) {
@@ -607,11 +633,9 @@ setInterval(() => {
 
 /* ---------- events ---------- */
 $("search").addEventListener("input", () => {
-  if ($("search").value.trim() && (picksOnly || ratedOnly)) {
-    picksOnly = false;
-    ratedOnly = false;
-    $("picks-toggle").classList.remove("active");
-    $("rated-toggle").classList.remove("active");
+  if ($("search").value.trim() && (picksOnly || ratedOnly || prideOnly)) {
+    picksOnly = ratedOnly = prideOnly = false;
+    ["picks-toggle", "rated-toggle", "pride-toggle"].forEach((b) => $(b).classList.remove("active"));
   }
   renderContent();
 });
@@ -620,28 +644,23 @@ $("modal-backdrop").addEventListener("click", closeModal);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
 $("home-logo").addEventListener("click", showStart);
 $("story-enter").addEventListener("click", showApp);
-$("picks-toggle").addEventListener("click", () => {
-  picksOnly = !picksOnly;
-  if (picksOnly) { ratedOnly = false; currentSection = ""; }
-  else currentSection = DATA.sections[0].id;
-  $("search").value = "";
-  $("picks-toggle").classList.toggle("active", picksOnly);
-  $("rated-toggle").classList.remove("active");
-  renderNav();
-  renderContent();
-  window.scrollTo({ top: 0 });
-});
-$("rated-toggle").addEventListener("click", () => {
-  ratedOnly = !ratedOnly;
-  if (ratedOnly) { picksOnly = false; currentSection = ""; }
-  else currentSection = DATA.sections[0].id;
-  $("search").value = "";
-  $("rated-toggle").classList.toggle("active", ratedOnly);
-  $("picks-toggle").classList.remove("active");
-  renderNav();
-  renderContent();
-  window.scrollTo({ top: 0 });
-});
+function bindToggle(id, get, set) {
+  $(id).addEventListener("click", () => {
+    const on = !get();
+    picksOnly = ratedOnly = prideOnly = false;
+    set(on);
+    currentSection = on ? "" : DATA.sections[0].id;
+    $("search").value = "";
+    ["picks-toggle", "rated-toggle", "pride-toggle"].forEach((b) => $(b).classList.remove("active"));
+    $(id).classList.toggle("active", on);
+    renderNav();
+    renderContent();
+    window.scrollTo({ top: 0 });
+  });
+}
+bindToggle("picks-toggle", () => picksOnly, (v) => { picksOnly = v; });
+bindToggle("rated-toggle", () => ratedOnly, (v) => { ratedOnly = v; });
+bindToggle("pride-toggle", () => prideOnly, (v) => { prideOnly = v; });
 $("helper-open").addEventListener("click", openHelper);
 
 if ("serviceWorker" in navigator &&

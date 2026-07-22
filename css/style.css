@@ -108,6 +108,12 @@ body {
 .tool-btn.active { background: var(--gold); border-color: var(--gold); color: #171512; font-weight: 600; }
 .tool-btn.helper { border-color: var(--gold-soft); color: var(--gold); }
 .tool-btn.helper:hover { background: rgba(201,169,97,.12); }
+.tool-btn.pride { border-color: var(--gold-soft); color: var(--gold); }
+.tool-btn.pride:hover { background: rgba(201,169,97,.12); }
+.pride-sub {
+  font-family: var(--serif); font-style: italic; color: var(--gold-soft);
+  font-size: 1.05rem; margin: -.2rem 0 1.1rem; text-align: center;
+}
 .lang-switch { display: flex; gap: .35rem; }
 .lang-switch button {
   background: none; border: 1px solid transparent; border-radius: 6px;

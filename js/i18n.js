@@ -32,6 +32,8 @@ hr: {
     winemaker: "O vinaru", terroir: "Terroir", pairsWith: "Uz jelo iz našeg menija",
     picks: "Filhov izbor",
     bestRated: "Najbolje ocijenjeni",
+    pride: "Filhov ponos",
+    prideSub: "Najveće etikete naše karte — boce od 500 € naviše.",
     newBadge: "Novo",
     newArrivals: "Novo u ponudi",
     regions: "Vinske regije"
@@ -138,6 +140,8 @@ en: {
     winemaker: "The winemaker", terroir: "Terroir", pairsWith: "From our kitchen",
     picks: "Filho's picks",
     bestRated: "Top rated",
+    pride: "Filho's pride",
+    prideSub: "The great labels of our list — bottles of €500 and above.",
     newBadge: "New",
     newArrivals: "New arrivals",
     regions: "Wine regions"
@@ -244,6 +248,8 @@ it: {
     winemaker: "Il vignaiolo", terroir: "Terroir", pairsWith: "Dal nostro menù",
     picks: "La selezione di Filho",
     bestRated: "I più premiati",
+    pride: "L'orgoglio di Filho",
+    prideSub: "Le grandi etichette della nostra carta — bottiglie da 500 € in su.",
     newBadge: "Novità",
     newArrivals: "Novità in carta",
     regions: "Regioni"
@@ -350,6 +356,8 @@ fr: {
     winemaker: "Le vigneron", terroir: "Terroir", pairsWith: "De notre cuisine",
     picks: "La sélection de Filho",
     bestRated: "Les mieux notés",
+    pride: "La fierté de Filho",
+    prideSub: "Les grandes étiquettes de notre carte — bouteilles à partir de 500 €.",
     newBadge: "Nouveau",
     newArrivals: "Nouveautés",
     regions: "Régions"
@@ -456,6 +464,8 @@ de: {
     winemaker: "Der Winzer", terroir: "Terroir", pairsWith: "Aus unserer Küche",
     picks: "Filhos Auswahl",
     bestRated: "Bestbewertet",
+    pride: "Filhos Stolz",
+    prideSub: "Die großen Namen unserer Karte — Flaschen ab 500 €.",
     newBadge: "Neu",
     newArrivals: "Neu auf der Karte",
     regions: "Regionen"
@@ -562,6 +572,8 @@ zh: {
     winemaker: "酿酒师", terroir: "风土", pairsWith: "搭配本店菜肴",
     picks: "Filho 精选",
     bestRated: "评分最高",
+    pride: "Filho 的骄傲",
+    prideSub: "酒单上的殿堂级名庄——500 欧元以上的珍藏。",
     newBadge: "新品",
     newArrivals: "新品上架",
     regions: "产区"
