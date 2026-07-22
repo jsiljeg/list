@@ -1078,6 +1078,226 @@
     "de": "Die grünen Hügel des Međimurje — die Familie Jakopić vom Gut Terbotz keltert aromatische, präzise Weisse von hoher Spannung.",
     "zh": "梅吉穆列的绿色丘陵——Terbotz 庄园的 Jakopić 家族酿出芳香、精准、张力十足的白。"
    }
+  },
+  "Baraka": {
+   "region": "Skradin, Dalmacija",
+   "blurb": {
+    "hr": "Zaleđe Krke oživljeno — obiteljski podrum koji autohtone dalmatinske sorte vraća na krševite padine iznad rijeke.",
+    "en": "The Krka hinterland brought back to life — a family cellar returning native Dalmatian grapes to the rocky slopes above the river.",
+    "it": "L'entroterra della Krka riportato in vita — una cantina di famiglia che riporta le varietà autoctone dalmate sui pendii rocciosi sopra il fiume.",
+    "fr": "L'arrière-pays de la Krka ressuscité — une cave familiale qui rend les cépages dalmates autochtones aux pentes rocheuses au-dessus de la rivière.",
+    "de": "Das wiederbelebte Hinterland der Krka — ein Familienkeller, der autochthone dalmatinische Sorten an die felsigen Hänge über dem Fluss zurückbringt.",
+    "zh": "被唤醒的克尔卡内陆——一座将达尔马提亚本土品种带回河上岩坡的家族酒窖。"
+   }
+  },
+  "Benmosche Family": {
+   "region": "Dingač, Pelješac",
+   "blurb": {
+    "hr": "Stranci koji su se zaljubili u Dingač — projekt s najstrmije pelješke padine, plavac ozbiljne ambicije i mjesta.",
+    "en": "Outsiders who fell for Dingač — a project on the steepest Pelješac slope, Plavac of serious ambition and place.",
+    "it": "Forestieri innamorati del Dingač — un progetto sul pendio più ripido di Pelješac, Plavac di seria ambizione e territorio.",
+    "fr": "Des étrangers tombés amoureux du Dingač — un projet sur la pente la plus raide de Pelješac, un plavac d'ambition et de terroir.",
+    "de": "Fremde, die sich in den Dingač verliebten — ein Projekt am steilsten Hang von Pelješac, Plavac von ernsthaftem Ehrgeiz und Herkunft.",
+    "zh": "为丁加奇倾心的外来者——坐落于佩列沙茨最陡坡的项目，怀有严肃野心与风土的普拉瓦茨。"
+   }
+  },
+  "Bire": {
+   "region": "Lumbarda, Korčula",
+   "blurb": {
+    "hr": "Grk s pijeska Lumbarde — sorta koja raste gotovo nigdje drugdje, slana i tvrdoglava kao otok koji je rodio.",
+    "en": "Grk from the sands of Lumbarda — a grape that grows almost nowhere else, saline and stubborn as the island that bore it.",
+    "it": "Grk dalle sabbie di Lumbarda — un vitigno che cresce quasi solo qui, salino e testardo come l'isola che l'ha generato.",
+    "fr": "Le grk des sables de Lumbarda — un cépage qui ne pousse presque nulle part ailleurs, salin et têtu comme l'île qui l'a vu naître.",
+    "de": "Grk aus dem Sand von Lumbarda — eine Rebe, die fast nirgendwo sonst wächst, salzig und stur wie die Insel, die sie hervorbrachte.",
+    "zh": "来自卢姆巴尔达沙地的 Grk——一个几乎别处不长的品种，如孕育它的海岛般咸而倔强。"
+   }
+  },
+  "Krajčić": {
+   "region": "Korčula, Dalmacija",
+   "blurb": {
+    "hr": "Pošip s Korčule u najčišćem izdanju — bijelo vino soli, badema i mediteranskog svjetla.",
+    "en": "Pošip from Korčula in its purest form — a white of salt, almond and Mediterranean light.",
+    "it": "Pošip di Korčula nella sua forma più pura — un bianco di sale, mandorla e luce mediterranea.",
+    "fr": "Le pošip de Korčula dans sa forme la plus pure — un blanc de sel, d'amande et de lumière méditerranéenne.",
+    "de": "Pošip von Korčula in reinster Form — ein Weisswein aus Salz, Mandel und mediterranem Licht.",
+    "zh": "科尔丘拉最纯粹的 Pošip——盐、杏仁与地中海光线之白。"
+   }
+  },
+  "Mrgudić": {
+   "region": "Postup, Pelješac",
+   "blurb": {
+    "hr": "Postup, tiši susjed Dingača — plavac sa strmih terasa nad morem, topao, gust i pun sunca.",
+    "en": "Postup, Dingač's quieter neighbour — Plavac from steep terraces above the sea, warm, dense and full of sun.",
+    "it": "Postup, il vicino più tranquillo del Dingač — Plavac da ripide terrazze sul mare, caldo, denso e pieno di sole.",
+    "fr": "Postup, le voisin plus discret du Dingač — un plavac de terrasses abruptes au-dessus de la mer, chaud, dense et gorgé de soleil.",
+    "de": "Postup, der stillere Nachbar des Dingač — Plavac von steilen Terrassen über dem Meer, warm, dicht und voller Sonne.",
+    "zh": "波斯图普，丁加奇更安静的邻居——来自海上陡峭梯田的普拉瓦茨，温暖、浓郁、饱含阳光。"
+   }
+  },
+  "Tomaz": {
+   "region": "Motovun, Istra",
+   "blurb": {
+    "hr": "Istarski tradicionalist iz motovunske šume — teran i malvazija koji mirišu na zemlju, gljive i vlažni kamen.",
+    "en": "An Istrian traditionalist from the Motovun forest — Teran and Malvazija that smell of earth, mushroom and damp stone.",
+    "it": "Un tradizionalista istriano dalla foresta di Motovun — Teran e Malvasia che profumano di terra, funghi e pietra umida.",
+    "fr": "Un traditionaliste istrien de la forêt de Motovun — teran et malvoisie qui sentent la terre, le champignon et la pierre humide.",
+    "de": "Ein istrischer Traditionalist aus dem Wald von Motovun — Teran und Malvazija, die nach Erde, Pilz und feuchtem Stein duften.",
+    "zh": "来自莫托文森林的伊斯特拉传统主义者——散发着泥土、菌菇与湿石气息的特兰与玛尔维萨。"
+   }
+  },
+  "Violić": {
+   "region": "Pelješac, Dalmacija",
+   "blurb": {
+    "hr": "Plavac s pelješkog kamena — sunce, sol i divlje bilje juga u vinu bez okolišanja.",
+    "en": "Plavac from Pelješac stone — sun, salt and the wild herbs of the south in a wine that minces no words.",
+    "it": "Plavac dalla pietra di Pelješac — sole, sale e le erbe selvatiche del sud in un vino che non gira intorno.",
+    "fr": "Le plavac de la pierre de Pelješac — soleil, sel et les herbes sauvages du sud dans un vin sans détour.",
+    "de": "Plavac vom Stein der Pelješac — Sonne, Salz und die wilden Kräuter des Südens in einem Wein ohne Umschweife.",
+    "zh": "佩列沙茨石地上的普拉瓦茨——阳光、盐与南方野草，酿成一款毫不拐弯抹角的酒。"
+   }
+  },
+  "Šember": {
+   "region": "Plešivica",
+   "blurb": {
+    "hr": "Plešivički mjehurići koji ne trebaju francusko ime — pjenušac klasične metode, napet, precizan i ponosno domaći.",
+    "en": "Plešivica bubbles that need no French name — a classic-method sparkling, taut, precise and proudly homegrown.",
+    "it": "Bollicine di Plešivica che non hanno bisogno di un nome francese — uno spumante metodo classico, teso, preciso e orgogliosamente locale.",
+    "fr": "Des bulles de Plešivica qui n'ont pas besoin d'un nom français — un mousseux de méthode classique, tendu, précis et fièrement local.",
+    "de": "Plešivica-Perlage, die keinen französischen Namen braucht — ein Schaumwein klassischer Methode, straff, präzise und stolz heimisch.",
+    "zh": "无需法国名字的普莱希维察气泡——传统工艺起泡酒，紧致、精准，自豪地扎根本土。"
+   }
+  },
+  "Erdoro": {
+   "region": "Plešivica",
+   "blurb": {
+    "hr": "Ambiciozna premium linija Plešivice — vina koja su domaću apelaciju iznijela na međunarodnu ocjenu i pobijedila.",
+    "en": "The ambitious premium line of Plešivica — wines that carried a local appellation to international scoring and won.",
+    "it": "La linea premium ambiziosa di Plešivica — vini che hanno portato una denominazione locale alla valutazione internazionale, e hanno vinto.",
+    "fr": "La ligne premium ambitieuse de Plešivica — des vins qui ont porté une appellation locale à la notation internationale, et l'ont emporté.",
+    "de": "Die ehrgeizige Premium-Linie von Plešivica — Weine, die eine lokale Appellation zur internationalen Bewertung trugen und gewannen.",
+    "zh": "普莱希维察雄心勃勃的高端系列——将本土产区带上国际评分并胜出的酒。"
+   }
+  },
+  "Cakebread": {
+   "region": "Napa Valley, Kalifornija",
+   "blurb": {
+    "hr": "Napa gostoljubivost u čaši — kabernet i chardonnay dozreli, uglađeni i topli, građeni za stol i društvo.",
+    "en": "Napa hospitality in a glass — Cabernet and Chardonnay ripe, polished and warm, built for the table and good company.",
+    "it": "L'ospitalità di Napa nel bicchiere — Cabernet e Chardonnay maturi, levigati e caldi, fatti per la tavola e la buona compagnia.",
+    "fr": "L'hospitalité de Napa dans un verre — cabernet et chardonnay mûrs, polis et chaleureux, faits pour la table et la bonne compagnie.",
+    "de": "Napa-Gastfreundschaft im Glas — Cabernet und Chardonnay, reif, geschliffen und warm, für Tisch und gute Gesellschaft gemacht.",
+    "zh": "杯中的纳帕好客之情——成熟、圆润而温暖的赤霞珠与霞多丽，为餐桌与美好陪伴而生。"
+   }
+  },
+  "Contarini": {
+   "region": "Veneto",
+   "blurb": {
+    "hr": "Pošten Prosecco — venecijanska pjena bez pretenzija, svježa, cvjetna i lagana kao ljetno popodne.",
+    "en": "Honest Prosecco — Venetian fizz without pretension, fresh, floral and light as a summer afternoon.",
+    "it": "Prosecco onesto — spuma veneziana senza pretese, fresca, floreale e leggera come un pomeriggio d'estate.",
+    "fr": "Un prosecco honnête — une effervescence vénitienne sans prétention, fraîche, florale et légère comme un après-midi d'été.",
+    "de": "Ehrlicher Prosecco — venezianische Perlage ohne Prätention, frisch, blumig und leicht wie ein Sommernachmittag.",
+    "zh": "诚实的普罗塞克——毫不做作的威尼托气泡，清新、花香，轻盈如夏日午后。"
+   }
+  },
+  "Corte Aura": {
+   "region": "Franciacorta, Lombardija",
+   "blurb": {
+    "hr": "Talijanski odgovor Champagnu — Franciacorta klasične metode, kremasta, fina i pomno njegovana.",
+    "en": "Italy's answer to Champagne — a classic-method Franciacorta, creamy, fine and carefully nurtured.",
+    "it": "La risposta italiana allo Champagne — una Franciacorta metodo classico, cremosa, fine e curata con attenzione.",
+    "fr": "La réponse italienne au champagne — une franciacorta de méthode classique, crémeuse, fine et soignée.",
+    "de": "Italiens Antwort auf den Champagner — ein Franciacorta klassischer Methode, cremig, fein und sorgsam gepflegt.",
+    "zh": "意大利对香槟的回答——传统工艺的弗朗齐亚柯达，绵密、细致、悉心培育。"
+   }
+  },
+  "Crissante Alessandria": {
+   "region": "La Morra, Barolo",
+   "blurb": {
+    "hr": "Parfem La Morre — klasičan Barolo ruže, katrana i strpljenja, elegantan prije nego moćan.",
+    "en": "The perfume of La Morra — a classical Barolo of rose, tar and patience, elegant before it is powerful.",
+    "it": "Il profumo di La Morra — un Barolo classico di rosa, catrame e pazienza, elegante prima che potente.",
+    "fr": "Le parfum de La Morra — un barolo classique de rose, de goudron et de patience, élégant avant d'être puissant.",
+    "de": "Der Duft von La Morra — ein klassischer Barolo aus Rose, Teer und Geduld, elegant, bevor er kraftvoll ist.",
+    "zh": "拉莫拉的芬芳——玫瑰、焦油与耐心的经典巴罗洛，优雅先于力量。"
+   }
+  },
+  "Lalù": {
+   "region": "Langhe, Piemont",
+   "blurb": {
+    "hr": "Šarm mladog nebbiola — Langhe u pristupačnom ključu, ruža i višnja bez desetljeća čekanja.",
+    "en": "The charm of young Nebbiolo — Langhe in an approachable key, rose and cherry without the decades of waiting.",
+    "it": "Il fascino del Nebbiolo giovane — Langhe in chiave accessibile, rosa e ciliegia senza i decenni di attesa.",
+    "fr": "Le charme du jeune nebbiolo — les Langhe en clé accessible, rose et cerise sans les décennies d'attente.",
+    "de": "Der Charme des jungen Nebbiolo — Langhe in zugänglicher Tonart, Rose und Kirsche ohne die Jahrzehnte des Wartens.",
+    "zh": "年轻内比奥罗的魅力——平易近人的朗格，玫瑰与樱桃，无需等待数十年。"
+   }
+  },
+  "Poggio Scalette": {
+   "region": "Greve in Chianti, Toscana",
+   "blurb": {
+    "hr": "Jedno brdo starih trsova — Il Carbonaione, čisti sangiovese s jedne parcele, dubok i uspravan.",
+    "en": "A single hill of old vines — Il Carbonaione, pure Sangiovese from one parcel, deep and upright.",
+    "it": "Una sola collina di vecchie vigne — Il Carbonaione, Sangiovese puro da una singola parcella, profondo e diritto.",
+    "fr": "Une seule colline de vieilles vignes — Il Carbonaione, sangiovese pur d'une seule parcelle, profond et droit.",
+    "de": "Ein einziger Hügel alter Reben — Il Carbonaione, reiner Sangiovese aus einer einzigen Parzelle, tief und aufrecht.",
+    "zh": "一座老藤之丘——Il Carbonaione，源自单一地块的纯粹桑娇维塞，深邃而挺拔。"
+   }
+  },
+  "Occidental": {
+   "region": "Sonoma Coast, Kalifornija",
+   "blurb": {
+    "hr": "Opsesija hladnom obalom — Steve Kistler i pinot noir s maglovitog ruba Sonome, napet, precizan i dubok.",
+    "en": "An obsession with the cold coast — Steve Kistler and Pinot Noir from Sonoma's foggy edge, taut, precise and deep.",
+    "it": "Un'ossessione per la costa fredda — Steve Kistler e il Pinot Noir dal bordo nebbioso della Sonoma, teso, preciso e profondo.",
+    "fr": "Une obsession de la côte froide — Steve Kistler et le pinot noir du bord brumeux de Sonoma, tendu, précis et profond.",
+    "de": "Eine Besessenheit von der kühlen Küste — Steve Kistler und Pinot Noir vom nebligen Rand der Sonoma, straff, präzise und tief.",
+    "zh": "对冷凉海岸的痴迷——Steve Kistler 与来自索诺玛雾锁边缘的黑皮诺，紧致、精准而深邃。"
+   }
+  },
+  "Walter Scott": {
+   "region": "Willamette Valley, Oregon",
+   "blurb": {
+    "hr": "Oregonska preciznost, burgundski san — pinot noir i chardonnay čiste linije, svježi i profinjeni.",
+    "en": "Oregon precision, a Burgundian dream — Pinot Noir and Chardonnay of clean line, fresh and refined.",
+    "it": "Precisione dell'Oregon, sogno borgognone — Pinot Noir e Chardonnay dalla linea netta, freschi e raffinati.",
+    "fr": "La précision de l'Oregon, un rêve bourguignon — pinot noir et chardonnay à la ligne nette, frais et raffinés.",
+    "de": "Oregon-Präzision, ein burgundischer Traum — Pinot Noir und Chardonnay von klarer Linie, frisch und verfeinert.",
+    "zh": "俄勒冈的精准，勃艮第的梦——线条干净、清新而精致的黑皮诺与霞多丽。"
+   }
+  },
+  "Pomerol": {
+   "region": "Pomerol, Bordeaux",
+   "blurb": {
+    "hr": "Baršun na glini i željezu — merlot desne obale najplemenitijeg izdanja, gust, topao i duboko elegantan.",
+    "en": "Velvet on clay and iron — right-bank Merlot at its most noble, dense, warm and deeply elegant.",
+    "it": "Velluto su argilla e ferro — Merlot della riva destra nella sua veste più nobile, denso, caldo e profondamente elegante.",
+    "fr": "Velours sur argile et fer — le merlot de la rive droite dans sa forme la plus noble, dense, chaud et profondément élégant.",
+    "de": "Samt auf Lehm und Eisen — Merlot vom rechten Ufer in edelster Form, dicht, warm und tief elegant.",
+    "zh": "黏土与铁质上的天鹅绒——右岸梅洛最高贵的姿态，浓郁、温暖、深具优雅。"
+   }
+  },
+  "Saint-Julien": {
+   "region": "Saint-Julien, Bordeaux",
+   "blurb": {
+    "hr": "Najskladniji Médoc — cabernet ravnoteže i uglađenosti, ni pretjerano moćan ni suzdržan, savršena sredina.",
+    "en": "The most harmonious Médoc — Cabernet of balance and polish, neither overpowering nor restrained, the perfect middle.",
+    "it": "Il Médoc più armonioso — Cabernet di equilibrio e finezza, né troppo potente né trattenuto, il giusto mezzo.",
+    "fr": "Le Médoc le plus harmonieux — un cabernet d'équilibre et de poli, ni trop puissant ni retenu, le juste milieu.",
+    "de": "Der harmonischste Médoc — Cabernet aus Gleichgewicht und Schliff, weder übermächtig noch zurückhaltend, die perfekte Mitte.",
+    "zh": "最和谐的梅多克——均衡而圆润的赤霞珠，不过分强劲也不拘谨，恰到好处的中庸。"
+   }
+  },
+  "Saint-Émilion": {
+   "region": "Saint-Émilion, Bordeaux",
+   "blurb": {
+    "hr": "Vapnenačka visoravan desne obale — merlot i cabernet franc pune, baršunaste teksture i tople dubine.",
+    "en": "The limestone plateau of the right bank — Merlot and Cabernet Franc of plush, velvety texture and warm depth.",
+    "it": "L'altopiano calcareo della riva destra — Merlot e Cabernet Franc di texture morbida e vellutata e calda profondità.",
+    "fr": "Le plateau calcaire de la rive droite — merlot et cabernet franc à la texture pulpeuse et veloutée, d'une profondeur chaleureuse.",
+    "de": "Das Kalkplateau des rechten Ufers — Merlot und Cabernet Franc von üppiger, samtiger Textur und warmer Tiefe.",
+    "zh": "右岸的石灰岩高地——梅洛与品丽珠，质地丰腴天鹅绒般，深沉而温暖。"
+   }
   }
  }
 }
