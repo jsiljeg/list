@@ -32,8 +32,8 @@ hr: {
     winemaker: "O vinaru", terroir: "Terroir", pairsWith: "Uz jelo iz našeg menija",
     picks: "Filhov izbor",
     bestRated: "Najbolje ocijenjeni",
-    pride: "Riznica",
-    prideSub: "Najveće etikete naše karte.",
+    pride: "Škrinja",
+    prideSub: "Za velike trenutke. Za Vas.",
     newBadge: "Novo",
     newArrivals: "Novo u ponudi",
     regions: "Vinske regije"
@@ -141,7 +141,7 @@ en: {
     picks: "Filho's picks",
     bestRated: "Top rated",
     pride: "The Treasury",
-    prideSub: "The great labels of our list.",
+    prideSub: "For the great moments. For you.",
     newBadge: "New",
     newArrivals: "New arrivals",
     regions: "Wine regions"
@@ -249,7 +249,7 @@ it: {
     picks: "La selezione di Filho",
     bestRated: "I più premiati",
     pride: "Il Tesoro",
-    prideSub: "Le grandi etichette della nostra carta.",
+    prideSub: "Per i grandi momenti. Per Voi.",
     newBadge: "Novità",
     newArrivals: "Novità in carta",
     regions: "Regioni"
@@ -357,7 +357,7 @@ fr: {
     picks: "La sélection de Filho",
     bestRated: "Les mieux notés",
     pride: "Le Trésor",
-    prideSub: "Les grandes étiquettes de notre carte.",
+    prideSub: "Pour les grands moments. Pour Vous.",
     newBadge: "Nouveau",
     newArrivals: "Nouveautés",
     regions: "Régions"
@@ -465,7 +465,7 @@ de: {
     picks: "Filhos Auswahl",
     bestRated: "Bestbewertet",
     pride: "Die Schatzkammer",
-    prideSub: "Die großen Namen unserer Karte.",
+    prideSub: "Für die großen Momente. Für Sie.",
     newBadge: "Neu",
     newArrivals: "Neu auf der Karte",
     regions: "Regionen"
@@ -573,7 +573,7 @@ zh: {
     picks: "Filho 精选",
     bestRated: "评分最高",
     pride: "珍藏阁",
-    prideSub: "酒单上的殿堂级名庄。",
+    prideSub: "为重要时刻，为您。",
     newBadge: "新品",
     newArrivals: "新品上架",
     regions: "产区"

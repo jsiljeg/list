@@ -110,6 +110,9 @@ body {
 .tool-btn.helper:hover { background: rgba(201,169,97,.12); }
 .tool-btn.pride:not(.active) { border-color: var(--gold-soft); color: var(--gold); }
 .tool-btn.pride:not(.active):hover { background: rgba(201,169,97,.12); }
+.tool-btn.pride svg { width: 1.15em; height: 1.15em; }
+.pride-badge { display: inline-flex; vertical-align: -.12em; margin-right: .5rem; color: var(--gold); }
+.pride-badge svg { width: .82em; height: .82em; }
 .pride-sub {
   font-family: var(--serif); font-style: italic; color: var(--gold-soft);
   font-size: 1.05rem; margin: -.2rem 0 1.1rem; text-align: center;

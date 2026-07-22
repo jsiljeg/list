@@ -165,7 +165,7 @@ function showApp() {
   $("picks-toggle").classList.toggle("active", picksOnly);
   $("rated-toggle").querySelector("span").textContent = t.ui.bestRated;
   $("rated-toggle").classList.toggle("active", ratedOnly);
-  $("pride-toggle").querySelector("span").textContent = t.ui.pride;
+  $("pride-toggle").innerHTML = `${ICONS.chest}<span>${esc(t.ui.pride)}</span>`;
   $("pride-toggle").classList.toggle("active", prideOnly);
   $("helper-open").querySelector("span").textContent = t.helper.title;
   renderLangSwitch();
@@ -229,7 +229,8 @@ const ICONS = {
   sparkle: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 7.6L21.5 12l-7.6 2.4L12 22l-1.9-7.6L2.5 12l7.6-2.4z"/></svg>',
   gem: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3h12l3.5 6L12 21.5 2.5 9zM2.5 9h19M8.5 3l-2.5 6 6 12.5 6-12.5-2.5-6"/></svg>',
   glass: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10l-1.3 8.5a3.7 3.7 0 0 1-7.4 0zM12 15.5V21M8 21h8"/></svg>',
-  trophy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v4a5 5 0 0 1-10 0zM7 5H4v2a3 3 0 0 0 3 3M17 5h3v2a3 3 0 0 1-3 3M12 13v4M8.5 21h7M9.5 21l.5-4h4l.5 4"/></svg>'
+  trophy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v4a5 5 0 0 1-10 0zM7 5H4v2a3 3 0 0 0 3 3M17 5h3v2a3 3 0 0 1-3 3M12 13v4M8.5 21h7M9.5 21l.5-4h4l.5 4"/></svg>',
+  chest: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5,10.5 C3.5,6 20.5,6 20.5,10.5 V18 C20.5,18.6 20,19 19.4,19 H4.6 C4,19 3.5,18.6 3.5,18 Z"/><path d="M3.5,13 H20.5"/><path d="M11,13 V15.6 H13 V13"/></svg>'
 };
 const TAG_ICON = { legendary_vintage: "crown", excellent_vintage: "sparkle", rare: "gem", drinking_now: "glass" };
 
@@ -357,7 +358,7 @@ function renderContent() {
     });
     pride.sort((a, b) => b.item.price - a.item.price);
     if (pride.length) {
-      html += `<section class="cat"><h2 class="cat-title">${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">◆</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
+      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.chest}</span>${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">◆</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
       html += pride.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
       html += `</section>`;
     } else {
@@ -516,7 +517,7 @@ const GLASS_ICONS = {
   riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,3.5 C8.5,5.5 3.4,13 3.4,24 C3.4,35 8,45 20,49 C32,45 36.6,35 36.6,24 C36.6,13 31.5,5.5 25,3.5 Z"/><path d="M20,49 V91"/><path d="M9.5,94 c4,-3 17,-3 21,0"/></svg>',
+  burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,4 C16,6.8 13,8.6 9.4,11.6 C5.4,15 3.8,20 3.8,25 C3.8,35 8.2,45 20,49 C31.8,45 36.2,35 36.2,25 C36.2,20 34.6,15 30.6,11.6 C27,8.6 24,6.8 25,4 Z"/><path d="M20,49 V91"/><path d="M9.5,94 c4,-3 17,-3 21,0"/></svg>',
   dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
 function glassFor(style, grape) {
