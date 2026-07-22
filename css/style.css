@@ -484,16 +484,15 @@ body {
   .header-subtitle { display: none; }
   .header-tools { flex-wrap: wrap; gap: .45rem; margin-top: .5rem; }
   .search { flex: 1 1 100%; min-height: 42px; }        /* search on its own row */
-  .tool-btn { min-height: 42px; padding: 0 .7rem; gap: 0; }
-  .tool-btn > span { display: none; }                  /* icon-only toggles on phones */
-  .tool-btn.pride svg { width: 1.35em; height: 1.35em; }
-  .lang-switch button svg { width: 26px; height: 17px; }
+  .tool-btn { min-height: 42px; padding: 0 .75rem; gap: .35rem; font-size: .85rem; }
+  #lang-switch { display: none; }                      /* language already chosen; tap the logo to change it */
 
-  /* one compact, swipeable row of category chips */
+  /* one compact, swipeable row of category chips; Vinske regije goes last */
   .nav { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
          gap: .35rem; padding: .45rem .2rem; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .nav::-webkit-scrollbar { display: none; }
   .nav button { flex: none; min-height: 34px; padding: .28rem .8rem; font-size: .82rem; }
+  .nav button[data-sec="__regions"] { order: 99; }
 
   /* story splash fits the screen; "Otvori kartu" always in view */
   .story-screen { height: 100dvh; padding-top: 1.4rem; gap: .7rem; }
