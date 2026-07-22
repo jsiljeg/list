@@ -463,12 +463,13 @@ function closeModal() {
 
 /* ---------- "Help me choose" sommelier wizard ---------- */
 /* Glass silhouettes traced from the house stemware (product photos):
-   Grand Cru Champagne wine glass (tall tulip), Veloce Riesling, Veloce Chardonnay (white
+   Sophienwald Grand Cru Champagne wine glass (elongated vertical tulip on a
+   filigree stem, with a faint crystal sheen), Veloce Riesling, Veloce Chardonnay (white
    Burgundy), Winewings Pinot Noir/Nebbiolo (barrel bowl on the flat
    "wing" base), Winewings Cabernet/Merlot (tall tapered cone on the
    wing), small dessert tulip. */
 const GLASS_ICONS = {
-  champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,5 C10.8,14 9.8,22 10.2,29 C10.6,37 13.5,43.5 20,46 C26.5,43.5 29.4,37 29.8,29 C30.2,22 29.2,14 26.5,5 L13.5,5"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M14.8,3 C13.4,10 12.2,16 11.4,22 C10.7,27 10.6,31 11.4,36 C12.6,44 15.8,49 20,52 C24.2,49 27.4,44 28.6,36 C29.4,31 29.3,27 28.6,22 C27.8,16 26.6,10 25.2,3 L14.8,3"/><path d="M20,52 V90"/><path d="M9.5,95 c4,-3.2 17,-3.2 21,0"/><path d="M14.6,11 C13.4,17 12.9,23 13.2,29" style="stroke-width:.8;opacity:.5"/></svg>',
   riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
