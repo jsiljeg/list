@@ -56,7 +56,15 @@
           ],
           "temp": "6–8"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Pinot iz zagorskih brežuljaka — ružičasti pjenušac koji ne glumi Champagne, već govori svojim jezikom.",
+          "en": "Pinot from the hills of Zagorje — a rosé sparkling that never imitates Champagne, it speaks its own tongue.",
+          "it": "Pinot dalle colline dello Zagorje — uno spumante rosé che non imita lo Champagne, parla la propria lingua.",
+          "fr": "Du Pinot des collines du Zagorje — un rosé effervescent qui n'imite pas le Champagne, il parle sa propre langue.",
+          "de": "Pinot von den Hügeln des Zagorje — ein Rosé-Schaumwein, der den Champagner nicht nachahmt, sondern seine eigene Sprache spricht.",
+          "zh": "来自扎戈列丘陵的黑皮诺——一款不模仿香槟、只说自己语言的桃红起泡酒。"
+         }
         },
         {
          "name": "Blanc de blanc",
@@ -80,7 +88,15 @@
           ],
           "temp": "6–8"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Istarski chardonnay u pjenušavom ključu — fini mjehurići i sol istarskog vjetra.",
+          "en": "Istrian Chardonnay in a sparkling key — fine bubbles and the salt of the Istrian wind.",
+          "it": "Chardonnay istriano in chiave spumante — bollicine fini e il sale del vento d'Istria.",
+          "fr": "Chardonnay istrien en clé effervescente — bulles fines et le sel du vent d'Istrie.",
+          "de": "Istrischer Chardonnay in schäumender Tonart — feine Perlage und das Salz des istrischen Windes.",
+          "zh": "起泡形态的伊斯特拉霞多丽——细腻的气泡，与伊斯特拉海风的咸意。"
+         }
         }
        ]
       }
@@ -140,7 +156,15 @@
           ],
           "temp": "8–10"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Aÿ i hrastova bačva — Champagne bez šećera i bez maske, samo duh mjesta.",
+          "en": "Aÿ and the oak cask — Champagne with no sugar and no mask, only the spirit of the place.",
+          "it": "Aÿ e la botte di rovere — Champagne senza zucchero e senza maschera, solo lo spirito del luogo.",
+          "fr": "Aÿ et le fût de chêne — un Champagne sans sucre ni masque, rien que l'esprit du lieu.",
+          "de": "Aÿ und das Eichenfass — Champagner ohne Zucker und ohne Maske, nur der Geist des Ortes.",
+          "zh": "阿伊村与橡木桶——不加糖、不戴面具的香槟，只余这片土地的灵魂。"
+         }
         }
        ]
       }
@@ -385,7 +409,15 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Carricante s vulkana — limun, pepeo i morska sol, vino koje pamti lavu.",
+          "en": "Carricante from the volcano — lemon, ash and sea salt, a wine that remembers the lava.",
+          "it": "Carricante dal vulcano — limone, cenere e sale marino, un vino che ricorda la lava.",
+          "fr": "Carricante du volcan — citron, cendre et sel marin, un vin qui se souvient de la lave.",
+          "de": "Carricante vom Vulkan — Zitrone, Asche und Meersalz, ein Wein, der sich an die Lava erinnert.",
+          "zh": "火山之上的卡里坎特——柠檬、灰烬与海盐，一款记得熔岩的酒。"
+         }
         },
         {
          "name": "Chablis La Grande Vallée 2023",
@@ -516,7 +548,15 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Bordoške sorte na zagorskom brijegu — ozbiljan, taman i samouvjeren, bez kompleksa.",
+          "en": "Bordeaux varieties on a Zagorje hill — serious, dark and self-assured, without complexes.",
+          "it": "Vitigni bordolesi su una collina dello Zagorje — serio, scuro e sicuro di sé, senza complessi.",
+          "fr": "Cépages bordelais sur une colline du Zagorje — sérieux, sombre et sûr de lui, sans complexe.",
+          "de": "Bordeaux-Sorten auf einem Hügel im Zagorje — ernst, dunkel und selbstbewusst, ohne Komplexe.",
+          "zh": "扎戈列山丘上的波尔多品种——严肃、深沉而自信，毫无自卑。"
+         }
         },
         {
          "name": "Pinot Crni Dvije Ruže 2021",
@@ -540,7 +580,15 @@
           ],
           "temp": "14–16"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Kontinentalni pinot lagane ruke — svila, višnja i preciznost koja iznenađuje.",
+          "en": "A continental Pinot of a light hand — silk, cherry and a precision that surprises.",
+          "it": "Un Pinot continentale dalla mano leggera — seta, ciliegia e una precisione che sorprende.",
+          "fr": "Un Pinot continental à la main légère — soie, cerise et une précision qui surprend.",
+          "de": "Ein kontinentaler Pinot mit leichter Hand — Seide, Kirsche und eine Präzision, die überrascht.",
+          "zh": "一款手法轻盈的大陆黑皮诺——丝绸、樱桃，与出人意料的精准。"
+         }
         },
         {
          "name": "Sagul Plavac mali 2022",
@@ -709,7 +757,15 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Istarski odgovor Bordeauxu — gusto, elegantno i dozrelo pod mediteranskim suncem.",
+          "en": "Istria's answer to Bordeaux — dense, elegant and ripened under a Mediterranean sun.",
+          "it": "La risposta istriana a Bordeaux — denso, elegante e maturato sotto il sole mediterraneo.",
+          "fr": "La réponse istrienne à Bordeaux — dense, élégant et mûri sous un soleil méditerranéen.",
+          "de": "Istriens Antwort auf Bordeaux — dicht, elegant und unter mediterraner Sonne gereift.",
+          "zh": "伊斯特拉对波尔多的回答——紧致、优雅，在地中海的阳光下成熟。"
+         }
         },
         {
          "name": "Santa Elizabeta 2021",
@@ -824,8 +880,7 @@
           "fr": "La tradition dalmate sans compromis — un prošek porteur de l'histoire des vieilles récoltes.",
           "de": "Dalmatinische Tradition ohne Kompromisse — ein Prošek, der die Geschichte alter Ernten trägt.",
           "zh": "毫不妥协的达尔马提亚传统——承载古老年份故事的 prošek。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Rajnski rizling izborna berba 2019",
@@ -911,7 +966,15 @@
           ],
           "temp": "6–8"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Pinot iz zagorskih brežuljaka — ružičasti pjenušac koji ne glumi Champagne, već govori svojim jezikom.",
+          "en": "Pinot from the hills of Zagorje — a rosé sparkling that never imitates Champagne, it speaks its own tongue.",
+          "it": "Pinot dalle colline dello Zagorje — uno spumante rosé che non imita lo Champagne, parla la propria lingua.",
+          "fr": "Du Pinot des collines du Zagorje — un rosé effervescent qui n'imite pas le Champagne, il parle sa propre langue.",
+          "de": "Pinot von den Hügeln des Zagorje — ein Rosé-Schaumwein, der den Champagner nicht nachahmt, sondern seine eigene Sprache spricht.",
+          "zh": "来自扎戈列丘陵的黑皮诺——一款不模仿香槟、只说自己语言的桃红起泡酒。"
+         }
         },
         {
          "name": "Pavel",
@@ -942,8 +1005,7 @@
           "fr": "Plešivica a du nerf et de la précision — Pavel prouve qu'une bulle n'a pas besoin d'un nom français.",
           "de": "Plešivica hat Nerv und Präzision — Pavel beweist, dass Schaumwein keinen französischen Namen braucht.",
           "zh": "Plešivica 拥有张力与精准——Pavel 证明起泡酒不需要法国名字。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Diplomat",
@@ -974,8 +1036,7 @@
           "fr": "Amphore, patience et caractère — Diplomat ne remplit pas une catégorie, il la crée.",
           "de": "Amphore, Geduld und Charakter — Diplomat füllt keine Kategorie, er erschafft eine.",
           "zh": "陶罐、耐心与个性——Diplomat 不是填补品类，而是开创品类。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Blanc de Noirs",
@@ -1204,8 +1265,7 @@
           "fr": "Avize, Aÿ et Ambonnay — trois grands villages, une seule écriture : la minéralité sans dorure.",
           "de": "Avize, Aÿ und Ambonnay — drei große Dörfer, eine Handschrift: Mineralität ohne Vergoldung.",
           "zh": "Avize、Aÿ 与 Ambonnay——三个伟大村庄，同一种笔迹：不加镀金的矿物感。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Mycorhize Grand Cru",
@@ -1277,7 +1337,15 @@
           ],
           "temp": "8–10"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Kreda Le Mesnila u jednoj berbi — blanc de blancs napet kao struna, čist kao izvor.",
+          "en": "The chalk of Le Mesnil in a single vintage — a blanc de blancs taut as a string, clear as a spring.",
+          "it": "Il gesso di Le Mesnil in una sola annata — un blanc de blancs teso come una corda, limpido come una sorgente.",
+          "fr": "La craie du Mesnil en un seul millésime — un blanc de blancs tendu comme une corde, clair comme une source.",
+          "de": "Der Kalk von Le Mesnil in einem einzigen Jahrgang — ein Blanc de Blancs, gespannt wie eine Saite, klar wie eine Quelle.",
+          "zh": "一个年份里的勒梅尼尔白垩——如弦般紧绷、如泉般清澈的白中白。"
+         }
         },
         {
          "name": "La Collection Rosé & Blanc Grand Cru",
@@ -1403,8 +1471,7 @@
           "fr": "Le champagne doit être élégance, non dorure — Ambonnay dans sa version la plus sincère.",
           "de": "Champagner muss Eleganz sein, nicht Vergoldung — Ambonnay in seiner ehrlichsten Form.",
           "zh": "香槟应是优雅，而非镀金——最真诚的 Ambonnay。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Cristal 2015",
@@ -1609,7 +1676,15 @@
           ],
           "temp": "8–10"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Aÿ i hrastova bačva — Champagne bez šećera i bez maske, samo duh mjesta.",
+          "en": "Aÿ and the oak cask — Champagne with no sugar and no mask, only the spirit of the place.",
+          "it": "Aÿ e la botte di rovere — Champagne senza zucchero e senza maschera, solo lo spirito del luogo.",
+          "fr": "Aÿ et le fût de chêne — un Champagne sans sucre ni masque, rien que l'esprit du lieu.",
+          "de": "Aÿ und das Eichenfass — Champagner ohne Zucker und ohne Maske, nur der Geist des Ortes.",
+          "zh": "阿伊村与橡木桶——不加糖、不戴面具的香槟，只余这片土地的灵魂。"
+         }
         },
         {
          "name": "Hommage au Pinot Noir",
@@ -1666,7 +1741,6 @@
           "de": "Der Winzer, der die Wahrnehmung des Champagners verändert hat — eine Flasche zum Nachdenken und zum Erinnern.",
           "zh": "改变香槟认知的酿酒师——一瓶值得思考与铭记的酒。"
          },
-         "recommended": true,
          "tags": [
           "rare"
          ]
@@ -1751,7 +1825,15 @@
          "tags": [
           "rare"
          ],
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Selosse ne radi ružičasto zbog boje — ovo je vino s tijelom, dubinom i vlastitim mišljenjem.",
+          "en": "Selosse doesn't make rosé for the colour — this is a wine with body, depth and a mind of its own.",
+          "it": "Selosse non fa il rosé per il colore — è un vino con corpo, profondità e un'idea propria.",
+          "fr": "Selosse ne fait pas le rosé pour la couleur — c'est un vin avec du corps, de la profondeur et une pensée propre.",
+          "de": "Selosse macht keinen Rosé wegen der Farbe — dies ist ein Wein mit Körper, Tiefe und eigenem Kopf.",
+          "zh": "塞洛斯做桃红从不为颜色——这是一款有酒体、有深度、有主见的酒。"
+         }
         },
         {
          "name": "Dom Pérignon 2015",
@@ -2254,8 +2336,7 @@
           "fr": "Une malvoisie qui montre l'identité de son lieu — l'Istrie sans compromis, un vin qui dit vrai.",
           "de": "Eine Malvazija, die die Identität ihres Ortes zeigt — Istrien ohne Kompromisse, ein Wein, der die Wahrheit sagt.",
           "zh": "展现风土身份的玛尔维萨——毫不妥协的伊斯特拉，一款诚实的酒。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Ottocento bijeli 2022",
@@ -2482,7 +2563,7 @@
          }
         },
         {
-         "name": "Jela Blanc 2024",
+         "name": "Jeka Blanc 2024",
          "producer": "Čečavac",
          "price": 130,
          "insight": {
@@ -2503,6 +2584,15 @@
            "shellfish"
           ],
           "temp": "10–12"
+         },
+         "recommended": true,
+         "note": {
+          "hr": "Zaboravljene dalmatinske sorte, vraćene u život — bijelo vino sunca, kamena i tvrdoglave vjere.",
+          "en": "Forgotten Dalmatian varieties brought back to life — a white of sun, stone and stubborn faith.",
+          "it": "Antiche varietà dalmate riportate in vita — un bianco di sole, pietra e fede testarda.",
+          "fr": "Des cépages dalmates oubliés, ramenés à la vie — un blanc de soleil, de pierre et de foi têtue.",
+          "de": "Vergessene dalmatinische Sorten, zurück ins Leben geholt — ein Weisswein aus Sonne, Stein und sturem Glauben.",
+          "zh": "被遗忘又被唤醒的达尔马提亚本土品种——阳光、石头与固执信念酿成的白葡萄酒。"
          }
         }
        ]
@@ -2757,7 +2847,15 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Vapnenac Westhofena, biodinamička preciznost — suhi rizling velike klase, bez ijedne suvišne riječi.",
+          "en": "The limestone of Westhofen, biodynamic precision — a dry Riesling of grand-cru class, without a single wasted word.",
+          "it": "Il calcare di Westhofen, precisione biodinamica — un Riesling secco di gran classe, senza una parola di troppo.",
+          "fr": "Le calcaire de Westhofen, précision biodynamique — un riesling sec de grande classe, sans un mot de trop.",
+          "de": "Der Kalk von Westhofen, biodynamische Präzision — ein trockener Riesling von Grosser-Gewächs-Klasse, ohne ein überflüssiges Wort.",
+          "zh": "韦斯特霍芬的石灰岩，生物动力的精准——一款大 Cru 级别的干型雷司令，没有一个多余的字。"
+         }
         },
         {
          "name": "Riesling Röttgen GG 2023",
@@ -3081,7 +3179,15 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Chablis kakav je nekad bio — kimeridžijska školjka, napetost i ništa suvišno.",
+          "en": "Chablis as it once was — Kimmeridgian shell, tension and nothing superfluous.",
+          "it": "Lo Chablis come una volta — conchiglia kimmeridgiana, tensione e nulla di superfluo.",
+          "fr": "Le Chablis comme autrefois — coquille kimméridgienne, tension et rien de superflu.",
+          "de": "Chablis, wie er einmal war — kimmeridgische Muschel, Spannung und nichts Überflüssiges.",
+          "zh": "昔日模样的夏布利——启莫里阶的贝壳、张力，别无冗余。"
+         }
         },
         {
          "name": "Chablis 1er Cru Butteaux 2019",
@@ -3181,7 +3287,15 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Les Preuses — vrh chablisa: sol, kamen i dužina koja ne prestaje.",
+          "en": "Les Preuses — the summit of Chablis: salt, stone and a length that will not end.",
+          "it": "Les Preuses — la vetta dello Chablis: sale, pietra e una lunghezza che non finisce.",
+          "fr": "Les Preuses — le sommet du Chablis : sel, pierre et une longueur qui ne finit pas.",
+          "de": "Les Preuses — der Gipfel des Chablis: Salz, Stein und ein Nachhall, der nicht enden will.",
+          "zh": "普勒斯园——夏布利之巅：盐、石，以及不肯散去的余韵。"
+         }
         },
         {
          "name": "Chablis Grand Cru Valmur 2020",
@@ -3573,7 +3687,15 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Lamy radi burgundac s laserskom preciznošću — Les Frionnes: napetost, kreda i suzdržana raskoš.",
+          "en": "Lamy makes Burgundy with laser precision — Les Frionnes: tension, chalk and restrained opulence.",
+          "it": "Lamy fa Borgogna con precisione laser — Les Frionnes: tensione, gesso e opulenza trattenuta.",
+          "fr": "Lamy fait de la Bourgogne au laser — Les Frionnes : tension, craie et opulence retenue.",
+          "de": "Lamy macht Burgund mit Laserpräzision — Les Frionnes: Spannung, Kalk und zurückgehaltene Opulenz.",
+          "zh": "拉米以激光般的精准酿造勃艮第——Les Frionnes：张力、白垩，与克制的丰腴。"
+         }
         },
         {
          "name": "Saint-Aubin La Princée 2023",
@@ -3646,7 +3768,15 @@
           ],
           "temp": "12–14"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Meursault bez pretjerivanja — lješnjak, maslac i mineralna kičma koja sve drži na mjestu.",
+          "en": "Meursault without excess — hazelnut, butter and a mineral spine holding it all in place.",
+          "it": "Meursault senza eccessi — nocciola, burro e una spina dorsale minerale che tiene tutto al suo posto.",
+          "fr": "Meursault sans excès — noisette, beurre et une colonne minérale qui tient tout en place.",
+          "de": "Meursault ohne Übertreibung — Haselnuss, Butter und ein mineralisches Rückgrat, das alles zusammenhält.",
+          "zh": "不事张扬的默尔索——榛子、黄油，与一条把一切稳住的矿物脊梁。"
+         }
         },
         {
          "name": "Meursault 1er Cru Le Poruzot Dessus 2022",
@@ -3725,7 +3855,15 @@
          "tags": [
           "rare"
          ],
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Mladi vinari, stari trsovi — Meursault svjež, precizan i pun tihe energije.",
+          "en": "Young vignerons, old vines — a Meursault fresh, precise and full of quiet energy.",
+          "it": "Giovani vignaioli, vecchie vigne — un Meursault fresco, preciso e pieno di quieta energia.",
+          "fr": "Jeunes vignerons, vieilles vignes — un Meursault frais, précis et plein d'une énergie tranquille.",
+          "de": "Junge Winzer, alte Reben — ein Meursault, frisch, präzise und voll stiller Energie.",
+          "zh": "年轻的酿酒人，年迈的老藤——一款清新、精准、蕴含静默能量的默尔索。"
+         }
         },
         {
          "name": "Meursault Clos du Cromin Le Pre Manche 2023",
@@ -3885,8 +4023,7 @@
           "fr": "La pente raide de Chavignol dans le verre — classique et rareté à la fois, un vin dont on se souvient.",
           "de": "Der Steilhang von Chavignol im Glas — Klassiker und Rarität zugleich, ein Wein, den man nicht vergisst.",
           "zh": "杯中的 Chavignol 陡坡——既是经典也是珍稀，令人难忘。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Riesling 2022",
@@ -4405,7 +4542,15 @@
           ],
           "temp": "10–12"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Carricante s vulkana — limun, pepeo i morska sol, vino koje pamti lavu.",
+          "en": "Carricante from the volcano — lemon, ash and sea salt, a wine that remembers the lava.",
+          "it": "Carricante dal vulcano — limone, cenere e sale marino, un vino che ricorda la lava.",
+          "fr": "Carricante du volcan — citron, cendre et sel marin, un vin qui se souvient de la lave.",
+          "de": "Carricante vom Vulkan — Zitrone, Asche und Meersalz, ein Wein, der sich an die Lava erinnert.",
+          "zh": "火山之上的卡里坎特——柠檬、灰烬与海盐，一款记得熔岩的酒。"
+         }
         },
         {
          "name": "Ribolla 2020",
@@ -4733,7 +4878,15 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Bordoške sorte na zagorskom brijegu — ozbiljan, taman i samouvjeren, bez kompleksa.",
+          "en": "Bordeaux varieties on a Zagorje hill — serious, dark and self-assured, without complexes.",
+          "it": "Vitigni bordolesi su una collina dello Zagorje — serio, scuro e sicuro di sé, senza complessi.",
+          "fr": "Cépages bordelais sur une colline du Zagorje — sérieux, sombre et sûr de lui, sans complexe.",
+          "de": "Bordeaux-Sorten auf einem Hügel im Zagorje — ernst, dunkel und selbstbewusst, ohne Komplexe.",
+          "zh": "扎戈列山丘上的波尔多品种——严肃、深沉而自信，毫无自卑。"
+         }
         },
         {
          "name": "Pinot Crni Dvije Ruže 2021",
@@ -4757,7 +4910,15 @@
           ],
           "temp": "14–16"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Kontinentalni pinot lagane ruke — svila, višnja i preciznost koja iznenađuje.",
+          "en": "A continental Pinot of a light hand — silk, cherry and a precision that surprises.",
+          "it": "Un Pinot continentale dalla mano leggera — seta, ciliegia e una precisione che sorprende.",
+          "fr": "Un Pinot continental à la main légère — soie, cerise et une précision qui surprend.",
+          "de": "Ein kontinentaler Pinot mit leichter Hand — Seide, Kirsche und eine Präzision, die überrascht.",
+          "zh": "一款手法轻盈的大陆黑皮诺——丝绸、樱桃，与出人意料的精准。"
+         }
         },
         {
          "name": "Pinot Noir 2021",
@@ -5148,7 +5309,6 @@
           "de": "Stein, Wind und Geduld — ein Plavac Mali, der beweist, dass kroatischer Wein zu den Besten gehört.",
           "zh": "石头、海风与耐心——证明克罗地亚葡萄酒足以比肩最优秀者的 Plavac Mali。"
          },
-         "recommended": true,
          "tags": [
           "drinking_now"
          ]
@@ -5175,8 +5335,7 @@
            "cheese_hard"
           ],
           "temp": "16–18"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Bura 2021",
@@ -5208,8 +5367,7 @@
           "fr": "Vieilles vignes de Dingač — complexité et maturité, là où le vin donne aujourd'hui le meilleur.",
           "de": "Alte Reben von Dingač — Komplexität und Reife, wo der Wein gerade am meisten gibt.",
           "zh": "Dingač 的老藤——在酒最绽放的时刻呈现复杂与成熟。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Red 2020",
@@ -5234,7 +5392,15 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Istarski odgovor Bordeauxu — gusto, elegantno i dozrelo pod mediteranskim suncem.",
+          "en": "Istria's answer to Bordeaux — dense, elegant and ripened under a Mediterranean sun.",
+          "it": "La risposta istriana a Bordeaux — denso, elegante e maturato sotto il sole mediterraneo.",
+          "fr": "La réponse istrienne à Bordeaux — dense, élégant et mûri sous un soleil méditerranéen.",
+          "de": "Istriens Antwort auf Bordeaux — dicht, elegant und unter mediterraner Sonne gereift.",
+          "zh": "伊斯特拉对波尔多的回答——紧致、优雅，在地中海的阳光下成熟。"
+         }
         },
         {
          "name": "Fetivi 2020",
@@ -5463,8 +5629,7 @@
           "fr": "Micro-parcelles, précision, continuité — le vosne-romanée tel que Filho l'a découvert au fil de ses voyages.",
           "de": "Mikroparzellen, Präzision, Kontinuität — Vosne-Romanée, wie Filho es auf seinen Reisen kennengelernt hat.",
           "zh": "微型地块、精准与延续——Filho 旅途中所认识的 Vosne-Romanée。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Vosne-Romanée Les Barreaux 2022",
@@ -5489,7 +5654,15 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Vosne-Romanée — selo koje šapće raskoš: ruža, začin i baršun po burgundski.",
+          "en": "Vosne-Romanée — the village that whispers opulence: rose, spice and velvet, the Burgundian way.",
+          "it": "Vosne-Romanée — il villaggio che sussurra opulenza: rosa, spezie e velluto, alla borgognona.",
+          "fr": "Vosne-Romanée — le village qui murmure l'opulence : rose, épices et velours, à la bourguignonne.",
+          "de": "Vosne-Romanée — das Dorf, das Opulenz flüstert: Rose, Gewürz und Samt, auf burgundische Art.",
+          "zh": "沃恩-罗曼尼——低语着丰盈的村庄：玫瑰、香料与天鹅绒，勃艮第的方式。"
+         }
         },
         {
          "name": "Nuits-Saint-Georges Les Hauts-Pruliers 2016",
@@ -5604,7 +5777,15 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Volnay je nježnost s karakterom — crveni pinot, cvijeće i fina, svilena tanina.",
+          "en": "Volnay is tenderness with backbone — red Pinot fruit, flowers and fine, silken tannin.",
+          "it": "Volnay è tenerezza con carattere — frutto rosso di Pinot, fiori e tannino fine e setoso.",
+          "fr": "Volnay, c'est la tendresse avec du caractère — fruit rouge du Pinot, fleurs et tanin fin et soyeux.",
+          "de": "Volnay ist Zartheit mit Rückgrat — rote Pinot-Frucht, Blüten und feines, seidiges Tannin.",
+          "zh": "沃尔奈是有骨架的温柔——黑皮诺的红色果香、花香，与细腻如丝的单宁。"
+         }
         },
         {
          "name": "Chassagne-Montrachet La Goujonne VV Rouge 2023",
@@ -6082,7 +6263,6 @@
           "de": "Alte Reben, langsame Mazeration, keine Eile — ein Barbaresco mit Charakter und einem Grund, hier zu sein.",
           "zh": "老藤、缓慢浸渍、从不匆忙——有个性、有理由在此的 Barbaresco。"
          },
-         "recommended": true,
          "tags": [
           "rare"
          ]
@@ -6232,7 +6412,15 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Vulkanska tla sjevernog Piemonta — nebbiolo koji spaja snagu i eleganciju, strpljiv i dubok.",
+          "en": "The volcanic soils of northern Piedmont — a Nebbiolo joining power and grace, patient and deep.",
+          "it": "I suoli vulcanici dell'Alto Piemonte — un Nebbiolo che unisce forza e grazia, paziente e profondo.",
+          "fr": "Les sols volcaniques du haut Piémont — un Nebbiolo qui unit puissance et grâce, patient et profond.",
+          "de": "Die vulkanischen Böden des Alto Piemonte — ein Nebbiolo, der Kraft und Anmut verbindet, geduldig und tief.",
+          "zh": "上皮埃蒙特的火山土壤——一款兼具力量与优雅、耐心而深邃的内比奥罗。"
+         }
         },
         {
          "name": "Plinius 2017",
@@ -6305,7 +6493,15 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Klasika Montalcina — sangiovese od trešnje, kože i zemlje, građen za desetljeća.",
+          "en": "A Montalcino classic — Sangiovese of cherry, leather and earth, built for decades.",
+          "it": "Un classico di Montalcino — Sangiovese di ciliegia, cuoio e terra, costruito per decenni.",
+          "fr": "Un classique de Montalcino — Sangiovese de cerise, cuir et terre, bâti pour des décennies.",
+          "de": "Ein Klassiker aus Montalcino — Sangiovese aus Kirsche, Leder und Erde, für Jahrzehnte gebaut.",
+          "zh": "蒙塔奇诺的经典——樱桃、皮革与泥土的桑娇维塞，为数十年而生。"
+         }
         },
         {
          "name": "Heba 2021",
@@ -6330,7 +6526,15 @@
           ],
           "temp": "16–18"
          },
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Maremma na suncu — sangiovese topao i otvoren, iskren kao stisak ruke.",
+          "en": "Sun-drenched Maremma — a Sangiovese warm and open, honest as a handshake.",
+          "it": "Maremma al sole — un Sangiovese caldo e aperto, sincero come una stretta di mano.",
+          "fr": "La Maremme au soleil — un Sangiovese chaleureux et ouvert, sincère comme une poignée de main.",
+          "de": "Sonnendurchflutete Maremma — ein Sangiovese, warm und offen, ehrlich wie ein Händedruck.",
+          "zh": "阳光浸透的马雷玛——温暖而开放的桑娇维塞，坦诚如一次握手。"
+         }
         },
         {
          "name": "Poggio Bestiale 2020",
@@ -6693,7 +6897,6 @@
           "de": "Ein Wein für den Tisch und ein Wein für die Erinnerung — ein Amarone, den man nicht erklärt, sondern erlebt.",
           "zh": "佐餐之酒，亦是记忆之酒——无须解释、只须体验的 Amarone。"
          },
-         "recommended": true,
          "tags": [
           "rare",
           "drinking_now"
@@ -6756,8 +6959,7 @@
           "fr": "Un sangiovese visionnaire — un vin de réflexion, un millésime porteur d'histoire.",
           "de": "Sangiovese mit Vision — ein Wein zum Nachdenken, ein Jahrgang, der eine Geschichte trägt.",
           "zh": "有远见的桑娇维塞——一款值得思考的酒，一个承载故事的年份。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Montevertine 2019",
@@ -6884,7 +7086,15 @@
          "tags": [
           "rare"
          ],
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Soldera — legenda bez kompromisa: sangiovese čist, eteričan i vječan.",
+          "en": "Soldera — a legend without compromise: Sangiovese pure, ethereal and timeless.",
+          "it": "Soldera — una leggenda senza compromessi: Sangiovese puro, etereo ed eterno.",
+          "fr": "Soldera — une légende sans compromis : Sangiovese pur, éthéré et intemporel.",
+          "de": "Soldera — eine Legende ohne Kompromiss: Sangiovese, rein, ätherisch und zeitlos.",
+          "zh": "索尔黛拉——毫不妥协的传奇：纯净、空灵而永恒的桑娇维塞。"
+         }
         },
         {
          "name": "Barbaresco 2020",
@@ -7748,8 +7958,7 @@
           "fr": "La tradition dalmate sans compromis — un prošek porteur de l'histoire des vieilles récoltes.",
           "de": "Dalmatinische Tradition ohne Kompromisse — ein Prošek, der die Geschichte alter Ernten trägt.",
           "zh": "毫不妥协的达尔马提亚传统——承载古老年份故事的 prošek。"
-         },
-         "recommended": true
+         }
         },
         {
          "name": "Tasel – 0,375 l",
@@ -7905,7 +8114,15 @@
          "tags": [
           "drinking_now"
          ],
-         "recommended": true
+         "recommended": true,
+         "note": {
+          "hr": "Saar u zlatnoj kapsuli — slatkoću drži kiselina poput žice: med, breskva i beskraj.",
+          "en": "The Saar under a gold capsule — sweetness held by acidity like a wire: honey, peach and infinity.",
+          "it": "La Saar sotto capsula d'oro — dolcezza tenuta dall'acidità come un filo: miele, pesca e infinito.",
+          "fr": "La Sarre sous capsule d'or — une douceur tenue par l'acidité comme un fil : miel, pêche et infini.",
+          "de": "Die Saar unter Goldkapsel — Süsse, von der Säure wie an einem Draht gehalten: Honig, Pfirsich und Unendlichkeit.",
+          "zh": "金帽之下的萨尔——被酸度如钢丝般拉住的甜：蜂蜜、桃子，与无尽。"
+         }
         }
        ]
       },
