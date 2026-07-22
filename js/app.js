@@ -10,22 +10,26 @@ const LS_KEY = "theatrium-lang";
 let flagUid = 0;
 function hrFlag() {
   const id = "hrsh" + (flagUid++);
-  const checks = Array.from({ length: 25 }, (_, i) => {
-    const c = i % 5, r = (i - c) / 5;
-    return (c + r) % 2 === 0
-      ? `<rect x="${20 + c * 4}" y="${11 + r * 4.4}" width="4" height="4.4" fill="#e8112d"/>` : "";
+  /* 5×5 šahovnica — red square in the top-left corner (13 red, 12 white) */
+  let checks = "";
+  for (let r = 0; r < 5; r++)
+    for (let c = 0; c < 5; c++)
+      if ((r + c) % 2 === 0)
+        checks += `<rect x="${20 + c * 4}" y="${(11 + r * 4.6).toFixed(2)}" width="4" height="4.6" fill="#e8112d"/>`;
+  /* crown: five little shields arcing across the top, middle one highest */
+  const crown = [0, 1, 2, 3, 4].map((i) => {
+    const x = 20.6 + i * 3.72, y = +(8.6 - Math.sin((i / 4) * Math.PI) * 1.5).toFixed(2);
+    return `<path d="M${x},${y} h3.9 v1.9 L${(x + 1.95).toFixed(2)},${(y + 3.4).toFixed(2)} L${x},${(y + 1.9).toFixed(2)} z" fill="#2350a6" stroke="#fff" stroke-width="0.4"/>`;
   }).join("");
-  const crown = [0, 1, 2, 3, 4].map((i) =>
-    `<rect x="${20.4 + i * 3.9}" y="${8.6 - Math.sin((i / 4) * Math.PI) * 1.6}" width="3.5" height="3.2" rx="0.6" fill="#4a67b0" stroke="#fff" stroke-width="0.5"/>`
-  ).join("");
+  const shield = "M20,11 H40 V21 Q38,32 30,34 Q22,32 20,21 Z";
   return `<svg viewBox="0 0 60 40" aria-hidden="true">
     <rect width="60" height="40" fill="#fff"/>
-    <rect width="60" height="13.4" fill="#e8112d"/>
-    <rect y="26.6" width="60" height="13.4" fill="#171796"/>
+    <rect width="60" height="13.333" fill="#e8112d"/>
+    <rect y="26.667" width="60" height="13.333" fill="#171796"/>
     ${crown}
-    <defs><clipPath id="${id}"><path d="M20,11 h20 v11.5 a10,10 0 0 1 -20,0 z"/></clipPath></defs>
-    <g clip-path="url(#${id})"><rect x="20" y="11" width="20" height="23" fill="#fff"/>${checks}</g>
-    <path d="M20,11 h20 v11.5 a10,10 0 0 1 -20,0 z" fill="none" stroke="#fff" stroke-width="1.2"/>
+    <defs><clipPath id="${id}"><path d="${shield}"/></clipPath></defs>
+    <g clip-path="url(#${id})"><rect x="20" y="11" width="20" height="24" fill="#fff"/>${checks}</g>
+    <path d="${shield}" fill="none" stroke="#fff" stroke-width="1"/>
   </svg>`;
 }
 
