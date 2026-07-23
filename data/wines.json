@@ -2446,7 +2446,7 @@
          "producer": "Krug",
          "price": 1780,
          "insight": {
-          "grape": "Pinot Noir, Chardonnay, Pinot Meunier",
+          "grape": "Pinot Noir (48%), Chardonnay (31%), Pinot Meunier (21%)",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
@@ -2461,12 +2461,26 @@
            "solo",
            "caviar"
           ],
-          "temp": "10–12",
-          "alcohol": "",
+          "temp": "9–12",
+          "alcohol": "12",
           "dosage": "Brut"
          },
          "tags": [
           "rare"
+         ],
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "99"
+          },
+          {
+           "critic": "Jeannie Cho Lee",
+           "score": "99"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "95-97"
+          }
          ]
         },
         {
