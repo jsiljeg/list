@@ -477,6 +477,15 @@ body {
 }
 .footer p + p { margin-top: .4rem; }
 
+/* desktop: search on its own row, the four tool buttons in a compact 2x2 grid
+   below it (like tablet/phone). Category chips already wrap on desktop, so
+   they stay fully visible — no horizontal sliding needed. */
+@media (min-width: 1025px) {
+  .header-tools { max-width: 560px; gap: .7rem; }
+  .search { flex: 1 1 100%; }
+  .tool-btn { flex: 1 1 calc(50% - .35rem); justify-content: center; }
+}
+
 /* tablet + phone: one clean, swipeable row of category chips (Vinske regije
    last) instead of a ragged wrapped block; and the story splash fits the view */
 @media (max-width: 1024px) {
