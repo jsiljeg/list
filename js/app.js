@@ -480,7 +480,7 @@ function openDetail(ref, back) {
     ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
-    <div class="detail-style">${esc(t.styles[ins.style] || "")}${ins.dosage ? " · " + esc(ins.dosage) : ""}</div>
+    <div class="detail-style">${esc(t.styles[ins.style] || "")}${ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : ""}</div>
     ${noteText ? `<div class="detail-note">„${esc(noteText)}“ <span class="detail-note-sig">— Filho</span></div>` : ""}
     <div class="detail-grid">
       ${field(t.ui.grape, esc(localizeGrape(ins.grape)))}
@@ -569,6 +569,10 @@ function localizeGrape(str) {
 }
 function localizeRegion(str) {
   return lang === "zh" && str && typeof ZH_REGION !== "undefined" ? zhTokens(str, ZH_REGION) : str;
+}
+function localizeDosage(str) {
+  if (lang !== "zh" || !str || typeof ZH_DOSAGE === "undefined") return str;
+  return ZH_DOSAGE[str] ? `${ZH_DOSAGE[str]}（${str}）` : str;
 }
 /* Icon producer/cuvée names: keep Latin PRIMARY (it's what's on the label) and
    append the established Chinese as a gloss — Latin（中文）. Only in the zh view,

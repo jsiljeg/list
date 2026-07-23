@@ -284,6 +284,15 @@
     "Egon Müller Scharzhof": "伊慕",
     "Domaine Armand Rousseau Père & Fils": "阿曼·卢梭"
   };
+  /* Sparkling dosage → Chinese, rendered bilingually 中文（Latin） like grapes.
+   * Only the three terms actually on the list are mapped; the sweeter end of the
+   * scale (Extra Dry/Sec/Demi-Sec/Doux) is deliberately left to the Latin term to
+   * avoid the well-known Chinese mislabelling of that range. */
+  g.ZH_DOSAGE = {
+    "Brut Nature": "自然干型",
+    "Extra Brut": "特干型",
+    "Brut": "天然干型"
+  };
   g.ZH_WINE = {
     "Sassicaia": "西施佳雅",
     "Tignanello": "天娜",

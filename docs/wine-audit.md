@@ -38,51 +38,51 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 
 ## Sparkling (43) — first research pass
 
-| # | Producer — wine | Grape | Dosage | ABV | Notes |
-|---|---|---|---|---|---|
-| 1 | Jakopić — Terbotz | Furmint | Brut | 📷 | grape+brut from owner |
-| 2 | Petrač — Bregh Rose | Cabernet Sauvignon | Brut 🔎 | 13% 🔎 | ⚠ sources say **Cab Sauvignon + Merlot** (you said Cab Sauv only) — verify; aromas per source strawberry/raspberry |
-| 3 | Šember — Pavel | Chardonnay 90%, Plavec žuti 10% 🔎 | Brut | 12.5% | refined to 90/10 per source |
-| 4 | Tomac — Diplomat | Chardonnay 80%, Plavec žuti 20% | Extra Brut 🔎 | 12.5% | ⚠ both Extra Brut & Brut Nature versions exist — verify bottle |
-| 5 | Tomac — Blanc de Noirs | Pinot Noir | 📷 | 📷 | needs bottle |
-| 6 | Tomac — Rose | Pinot Noir | 📷 | 📷 | needs bottle |
-| 7 | Contarini — Prosecco Millesimato 2023 | Glera | 📷 | 11% 🔎 | ⚠ comes as Brut **or** Extra Dry (both 11%) — which do you carry? |
-| 8 | Corte Aura — Franciacorta Brut | Chardonnay, Pinot Nero | Brut | 📷 | ABV needs bottle (~12.5–13) |
-| 9 | Corte Aura — Franciacorta Satèn | Chardonnay | Brut | 📷 | ABV needs bottle |
-| 10 | Movia — Puro Rose | Pinot Nero | Brut Nature | 📷 | zero-dosage |
-| 11 | Movia — Puro Brut | Ribolla Gialla, Chardonnay | Brut Nature | 12.5% 🔎 | ⚠ sources vary on blend (Ribolla+Chard vs +Pinot Noir) — verify |
-| 12 | De Sousa — Chemins des Terroirs | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 📷 | blend 50/30/20 confirmed |
-| 13 | De Sousa — Cuvée 3A Grand Cru | Chardonnay, Pinot Noir | Extra Brut 🔎 | 12.5% | |
-| 14 | De Sousa — Mycorhize Grand Cru | Chardonnay | Extra Brut | 12.5% | |
-| 15 | Pertois-Moriset — L'Assemblage Brut | Chardonnay, Pinot Noir | Brut | 📷 | |
-| 16 | Pertois-Moriset — L'Année Millésime GC BdB 2017 | Chardonnay | Extra Brut 🔎 | 📷 | house style Extra Brut |
-| 17 | Pertois-Moriset — La Collection Rosé & Blanc GC | Chardonnay, Pinot Noir | 📷 | 📷 | needs bottle |
-| 18 | L'Hoste — L'Hoste Rosé | Pinot Noir, Chardonnay | 📷 | 📷 | needs bottle |
-| 19 | Delamotte — Blanc de Blancs 2018 | Chardonnay | Brut | 12.5% | |
-| 20 | Deutz — Brut Classic | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12% | |
-| 21 | Egly-Ouriet — Grand Cru Brut Tradition | Pinot Noir, Chardonnay | Brut 🔎 | 12.5% | ⚠ recent releases relabelled "Extra Brut Grand Cru" — verify |
-| 22 | Louis Roederer — Cristal 2015 | Pinot Noir, Chardonnay | Brut | 12.5% | 60/40 |
-| 23 | Vouette & Sorbée — Textures Brut Nature | Pinot Blanc | Brut Nature | 12% | |
-| 24 | Ruppert-Leroy — Martin Fontaine 2019 | Chardonnay | Brut Nature | 📷 | ABV ~12 |
-| 25 | Ruppert-Leroy — Papillon | Pinot Noir | Brut Nature | 12% | |
-| 26 | Billecart-Salmon — Le Réserve | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12.5% | 40 Meunier/30/30 |
-| 27 | Billecart-Salmon — Blanc de Blancs Grand Cru | Chardonnay | Brut | 12% | |
-| 28 | Billecart-Salmon — Le Rosé | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 📷 | ABV needs bottle |
-| 29 | Henri Giraud — Esprit Nature | Pinot Noir, Chardonnay | Brut Nature | 📷 | |
-| 30 | Henri Giraud — Hommage au Pinot Noir | Pinot Noir | Brut | 📷 | |
-| 31 | Jacques Selosse — Initial Brut | Chardonnay | Brut 🔎 | 📷 | dosage ~2.7 g/l; ABV not published |
-| 32 | Jacques Selosse — Version Originale | Chardonnay | Extra Brut | 📷 | ~1.2 g/l |
-| 33 | Jacques Selosse — Les Carelles | Chardonnay | Extra Brut | 📷 | 0–1.5 g/l |
-| 34 | Jacques Selosse — Rosé Brut | Chardonnay, Pinot Noir | Brut 🔎 | 12.5% | |
-| 35 | Moët & Chandon — Dom Pérignon 2015 | Chardonnay, Pinot Noir | Brut | 12.5% | 51/49 |
-| 36 | Moët & Chandon — Dom Pérignon P2 2004 | Chardonnay, Pinot Noir | Brut | 12.5% | |
-| 37 | Moët & Chandon — Dom Pérignon P3 1993 | Chardonnay, Pinot Noir | Brut | 📷 | ABV needs bottle |
-| 38 | Salon — Blanc de Blancs 2013 | Chardonnay | Brut | 12.5% | |
-| 39 | Krug — Krug 1996 | Pinot Noir, Chardonnay, Pinot Meunier | Brut | 📷 | |
-| 40 | Krug — Grande Cuvée | Pinot Noir, Chardonnay, Pinot Meunier | Brut | 12.5% | ~44/34/22 |
-| 41 | Krug — Krug 2004 | Pinot Noir, Chardonnay, Pinot Meunier | Brut | 📷 | 39/37/24 |
-| 42 | Krug — Clos du Mesnil 2008 | Chardonnay | Brut | 📷 | |
-| 43 | Krug — Clos d'Ambonnay 1996 | Pinot Noir | Brut | 📷 | |
+| # | Producer — wine | Grape | Dosage | ABV | Source | Notes |
+|---|---|---|---|---|---|---|
+| 1 | Jakopić — Terbotz | Furmint | Brut | 📷 | — | grape + Brut from owner |
+| 2 | Petrač — Bregh Rose | Cabernet Sauvignon | Brut | 13% | [wineandmore](https://www.wineandmore.com/wines/petrac-bregh-rose/) | ⚠ source says Cab Sauv **+ Merlot**, 13%, brut, aromas strawberry/raspberry — verify |
+| 3 | Šember — Pavel | Chardonnay 90%, Plavec žuti 10% | Brut | 12.5% | [vivino](https://www.vivino.com/US/en/sember-pavel-pjenusac-brut-plesivica/w/8009619) | refined to 90/10 per source |
+| 4 | Tomac — Diplomat | Chardonnay 80%, Plavec žuti 20% | Extra Brut | 12.5% | [wineandmore](https://wineandmore.com/wines/tomac-diplomat/) | ⚠ Extra Brut **and** Brut Nature versions exist — verify bottle |
+| 5 | Tomac — Blanc de Noirs | Pinot Noir | 📷 | 📷 | — | needs bottle |
+| 6 | Tomac — Rose | Pinot Noir | 📷 | 📷 | — | needs bottle |
+| 7 | Contarini — Prosecco Millesimato 2023 | Glera | 📷 | 11% | [contarinivini](https://contarinivini.it/en/product/prosecco-doc-millesimato-brut/) | ⚠ Brut **or** Extra Dry (both 11%) — which do you carry? |
+| 8 | Corte Aura — Franciacorta Brut | Chardonnay, Pinot Nero | Brut | 📷 | — | ABV needs bottle (~12.5–13) |
+| 9 | Corte Aura — Franciacorta Satèn | Chardonnay | Brut | 📷 | — | ABV needs bottle |
+| 10 | Movia — Puro Rose | Pinot Nero | Brut Nature | 📷 | [wineandmore](https://www.wineandmore.com/stories/movia-puro-sparkling-wine/) | zero-dosage |
+| 11 | Movia — Puro Brut | Ribolla Gialla, Chardonnay | Brut Nature | 12.5% | [wineandmore](https://www.wineandmore.com/stories/movia-puro-sparkling-wine/) | ⚠ blend varies by source — verify |
+| 12 | De Sousa — Chemins des Terroirs | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 📷 | [champagnedesousa](https://www.champagnedesousa.com/en/bouteille/chemins-des-terroirs/) | blend 50/30/20 confirmed |
+| 13 | De Sousa — Cuvée 3A Grand Cru | Chardonnay, Pinot Noir | Extra Brut | 12.5% | [premiumgrandscrus](https://www.premiumgrandscrus.com/en/extra-brut/229-de-sousa-cuvee-3a-champagne-grand-cru.html) |  |
+| 14 | De Sousa — Mycorhize Grand Cru | Chardonnay | Extra Brut | 12.5% | [wine.com](https://www.wine.com/product/de-sousa-mycorhize-blanc-de-blancs-extra-brut-grand-cru/251495) |  |
+| 15 | Pertois-Moriset — L'Assemblage Brut | Chardonnay, Pinot Noir | Brut | 📷 | — | ABV needs bottle |
+| 16 | Pertois-Moriset — L'Année Millésime Grand Cru Blanc de Blancs 2017 | Chardonnay | Extra Brut | 📷 | [premiumgrandscrus](https://www.premiumgrandscrus.com/en/champagne-blanc-de-blancs/3795-pertois-moriset-oger-2017-champagne-grand-cru.html) | house style Extra Brut |
+| 17 | Pertois-Moriset — La Collection Rosé & Blanc Grand Cru | Chardonnay, Pinot Noir | 📷 | 📷 | — | needs bottle |
+| 18 | L'Hoste Père & Fils — L'Hoste Rosé | Pinot Noir, Chardonnay | 📷 | 📷 | — | needs bottle |
+| 19 | Delamotte — Blanc de Blancs 2018 | Chardonnay | Brut | 12.5% | [delamotte](https://www.champagne-delamotte.com/en/products/blanc-de-blancs-vintage-2018) |  |
+| 20 | Deutz — Brut Classic | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12% | [theliquorbarn](https://theliquorbarn.com/products/deutz-brut-classic-champagne-750ml) |  |
+| 21 | Egly-Ouriet — Grand Cru Brut Tradition | Pinot Noir, Chardonnay | Brut | 12.5% | [depanneurwines](https://www.depanneurwines.com/products/egly-ouriet-champagne-extra-brut-grand-cru-nv-750ml-12-5-abv) | ⚠ recent releases relabelled 'Extra Brut Grand Cru' — verify |
+| 22 | Louis Roederer — Cristal 2015 | Pinot Noir, Chardonnay | Brut | 12.5% | [whwc](https://whwc.com/roederer-louis-brut-champagne-cristal-2015/) | 60/40 |
+| 23 | Vouette & Sorbée — Textures Brut Nature | Pinot Blanc | Brut Nature | 12% | [glugulp](https://www.glugulp.com/vouette-sorbee-champagne-brut-nature-textures-en) |  |
+| 24 | Ruppert-Leroy — Martin Fontaine 2019 | Chardonnay | Brut Nature | 📷 | — |  |
+| 25 | Ruppert-Leroy — Papillon | Pinot Noir | Brut Nature | 12% | [glugulp](https://www.glugulp.com/ruppert-leroy-champagne-brut-nature-papillon-en) |  |
+| 26 | Billecart-Salmon — Le Réserve | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12.5% | [whwc](https://whwc.com/billecart-salmon-brut-champagne-reserve-nv/) | 40 Meunier/30/30 |
+| 27 | Billecart-Salmon — Blanc de Blancs Grand Cru | Chardonnay | Brut | 12% | [wine.com](https://www.wine.com/product/billecart-salmon-le-blanc-de-blancs-grand-cru/25061) |  |
+| 28 | Billecart-Salmon — Le Rosé | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 📷 | — | ABV needs bottle |
+| 29 | Henri Giraud — Esprit Nature | Pinot Noir, Chardonnay | Brut Nature | 📷 | — | ABV needs bottle |
+| 30 | Henri Giraud — Hommage au Pinot Noir | Pinot Noir | Brut | 📷 | — | ABV needs bottle |
+| 31 | Jacques Selosse — Initial Brut | Chardonnay | Brut | 📷 | [wine.com](https://www.wine.com/product/jacques-selosse-initial-blanc-de-blancs-grand-cru-brut/657501) | ~2.7 g/l; ABV not published |
+| 32 | Jacques Selosse — Version Originale | Chardonnay | Extra Brut | 📷 | [bordeauxindex](https://bordeauxindex.com/fine-wine/france/champagne/selo-1000) | ~1.2 g/l |
+| 33 | Jacques Selosse — Les Carelles | Chardonnay | Extra Brut | 📷 | [cellartracker](https://www.cellartracker.com/wine.asp?iWine=2781223) | 0–1.5 g/l |
+| 34 | Jacques Selosse — Rosé Brut | Chardonnay, Pinot Noir | Brut | 12.5% | [whwc](https://whwc.com/selosse-brut-rose-champagne-nv/) |  |
+| 35 | Moët & Chandon — Dom Pérignon 2015 | Chardonnay, Pinot Noir | Brut | 12.5% | [wine.com](https://www.wine.com/product/dom-perignon-vintage-2015/2368723) | 51/49 |
+| 36 | Moët & Chandon — Dom Pérignon P2 2004 | Chardonnay, Pinot Noir | Brut | 12.5% | [thefinestbubble](https://thefinestbubble.com/champagne-dom-perignon-vintage-2004-plenitude-2-p2-75cl) |  |
+| 37 | Moët & Chandon — Dom Pérignon P3 1993 | Chardonnay, Pinot Noir | Brut | 📷 | — | ABV needs bottle |
+| 38 | Salon — Salon Blanc de Blancs 2013 | Chardonnay | Brut | 12.5% | [whwc](https://whwc.com/salon-brut-blanc-de-blancs-champagne-le-mesnil-2013/) |  |
+| 39 | Krug — Krug 1996 | Pinot Noir, Chardonnay, Pinot Meunier | Brut | 📷 | [wine-searcher](https://www.wine-searcher.com/find/krug+vintage+brut+champagne+france/1996) |  |
+| 40 | Krug — Krug Grande Cuvée | Pinot Noir, Chardonnay, Pinot Meunier | Brut | 12.5% | [theliquorbarn](https://theliquorbarn.com/products/krug-grand-cuvee) | ~44/34/22 |
+| 41 | Krug — Krug 2004 | Pinot Noir, Chardonnay, Pinot Meunier | Brut | 📷 | [krug.com](https://www.krug.com/en-us/champagne/krug-2004) | 39/37/24 |
+| 42 | Krug — Clos du Mesnil 2008 | Chardonnay | Brut | 📷 | — |  |
+| 43 | Krug — Clos d'Ambonnay 1996 | Pinot Noir | Brut | 📷 | [wine-searcher](https://www.wine-searcher.com/find/krug+clos+d+ambonnay+blanc+de+noir+brut+champagne+france/1996) |  |
 
 ### ⚠ Owner decisions for the manual sparkling pass
 
