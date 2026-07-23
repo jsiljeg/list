@@ -195,6 +195,7 @@
     // for local Croatian/Slovenian places that have no standard Chinese name.
     "Ambonnay": "昂博纳伊",
     "Bouzy": "布齐",
+    "Verzenay": "韦泽奈",
     "Ambonnay – Champagne": "昂博纳伊-香槟",
     "Avize": "阿维兹",
     "Chouilly": "舒伊",

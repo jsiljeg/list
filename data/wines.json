@@ -1637,7 +1637,7 @@
          "producer": "Egly-Ouriet",
          "price": 170,
          "insight": {
-          "grape": "Pinot Noir, Chardonnay",
+          "grape": "Pinot Noir 70%, Chardonnay 30%",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne",
@@ -1666,7 +1666,22 @@
           "zh": "香槟应是优雅，而非镀金——最真诚的 Ambonnay。",
           "sl": "Šampanjec mora biti eleganca, ne pozlata — Ambonnay v najbolj iskreni podobi.",
           "es": "El Champagne debe ser elegancia, no dorado — Ambonnay en su forma más honesta."
-         }
+         },
+         "terroir": "Ambonnay, Verzenay, Bouzy",
+         "ratings": [
+          {
+           "critic": "Jeb Dunnuck",
+           "score": "94"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "93"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "93"
+          }
+         ]
         },
         {
          "name": "Cristal 2015",

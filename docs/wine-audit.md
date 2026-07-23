@@ -60,7 +60,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 18 | L'Hoste Père & Fils — L'Hoste Rosé | Chardonnay 90%, Pinot Noir 10% | Brut | 12% | owner | from owner |
 | 19 | Delamotte — Blanc de Blancs 2018 | Chardonnay | Extra Brut | 12.5% | owner | Côte des Blancs villages; 10–12°C; WS 95 / JD 94 / RP 92 / JS 92 / Vinous 91 (owner) |
 | 20 | Deutz — Brut Classic | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12% | owner | region 3 Champagne sub-zones; JS 93 / WE 92 / RP 90 (owner) |
-| 21 | Egly-Ouriet — Grand Cru Brut Tradition | Pinot Noir, Chardonnay | Brut | 12.5% | [depanneurwines](https://www.depanneurwines.com/products/egly-ouriet-champagne-extra-brut-grand-cru-nv-750ml-12-5-abv) | ⚠ recent releases relabelled 'Extra Brut Grand Cru' — verify |
+| 21 | Egly-Ouriet — Grand Cru Brut Tradition | Pinot Noir 70%, Chardonnay 30% | Brut | 12.5% | owner | terroir Ambonnay/Verzenay/Bouzy; JD 94 / RP 93 / JS 93 (owner) — Brut confirmed |
 | 22 | Louis Roederer — Cristal 2015 | Pinot Noir, Chardonnay | Brut | 12.5% | [whwc](https://whwc.com/roederer-louis-brut-champagne-cristal-2015/) | 60/40 |
 | 23 | Vouette & Sorbée — Textures Brut Nature | Pinot Blanc | Brut Nature | 12% | [glugulp](https://www.glugulp.com/vouette-sorbee-champagne-brut-nature-textures-en) |  |
 | 24 | Ruppert-Leroy — Martin Fontaine 2019 | Chardonnay | Brut Nature | 📷 | — |  |
