@@ -67,7 +67,7 @@
    }
   },
   "Domaine Armand Rousseau": {
-   "region": "Gevrey-Chambertin, Burgundija",
+   "region": "Gevrey-Chambertin, Bourgogne",
    "blurb": {
     "hr": "Rousseau je mjerilo za Gevrey-Chambertin — parcele obrađivane generacijama, s preciznošću kirurga i osjećajem pjesnika. Njihova su vina istovremeno svilenkasta i duboka, referenca burgundijskog terroira.",
     "en": "Rousseau is the benchmark for Gevrey-Chambertin — parcels farmed for generations, with a surgeon's precision and a poet's feeling. Their wines are at once silken and profound, a reference for Burgundian terroir.",
@@ -80,7 +80,7 @@
    }
   },
   "Hubert Lamy": {
-   "region": "Saint-Aubin, Burgundija",
+   "region": "Saint-Aubin, Bourgogne",
    "blurb": {
     "hr": "Olivier Lamy je od Saint-Aubina napravio jednu od najuzbudljivijih adresa bijele Burgundije — gustom sadnjom i preciznošću vadi napetost iz vapnenca. Njegova vina stoje uz bok mnogo skupljim susjedima.",
     "en": "Olivier Lamy has made Saint-Aubin one of white Burgundy's most exciting addresses — high-density planting and precision drawing tension from the limestone. His wines stand beside far pricier neighbours.",
@@ -171,7 +171,7 @@
    }
   },
   "Roagna": {
-   "region": "Barbaresco & Barolo, Piemont",
+   "region": "Barbaresco & Barolo, Piemonte",
    "blurb": {
     "hr": "Roagna čuva staru školu Piemonta — stare loze, duge maceracije i nula žurbe. Njihovi Nebbioli iz Asilija i Pajéa spajaju ružu, katran i vrijeme u vina beskrajne finoće.",
     "en": "Roagna keeps the old school of Piedmont alive — old vines, long macerations and zero hurry. Their Nebbiolos from Asili and Pajé weave rose, tar and time into wines of endless finesse.",
@@ -314,7 +314,7 @@
    }
   },
   "Benanti": {
-   "region": "Etna, Sicilija",
+   "region": "Etna, Sicilia",
    "blurb": {
     "hr": "Kuća koja je pokrenula preporod Etne — vulkanski carricante i nerello koji nose pepeo, sol i sjećanje na lavu.",
     "en": "The house that sparked Etna's revival — volcanic Carricante and Nerello carrying ash, salt and the memory of lava.",
@@ -353,7 +353,7 @@
    }
   },
   "Piuze": {
-   "region": "Chablis, Burgundija",
+   "region": "Chablis, Bourgogne",
    "blurb": {
     "hr": "Vigneron rođen u Québecu koji čita Chablis parcelu po parcelu — prozirna, precizna vina koja govore samo o kredi i mjestu.",
     "en": "A Québec-born vigneron who reads Chablis plot by plot — transparent, precise wines that speak only of chalk and place.",
@@ -366,7 +366,7 @@
    }
   },
   "Pattes Loup": {
-   "region": "Chablis, Burgundija",
+   "region": "Chablis, Bourgogne",
    "blurb": {
     "hr": "Thomas Pico i njegov organski Chablis stare škole — kimeridžijska školjka, napetost i ništa suvišno.",
     "en": "Thomas Pico and his old-school organic Chablis — Kimmeridgian shell, tension and nothing superfluous.",
@@ -379,7 +379,7 @@
    }
   },
   "Rémi Jobard": {
-   "region": "Meursault, Burgundija",
+   "region": "Meursault, Bourgogne",
    "blurb": {
     "hr": "Organski Meursault bez pretjerivanja — lješnjak, maslac i mineralna kičma koja sve drži na mjestu.",
     "en": "Organic Meursault without excess — hazelnut, butter and a mineral spine that holds it all in place.",
@@ -392,7 +392,7 @@
    }
   },
   "Bernard-Bonin": {
-   "region": "Meursault, Burgundija",
+   "region": "Meursault, Bourgogne",
    "blurb": {
     "hr": "Mladi par, stari trsovi — Meursault svjež, precizan i pun tihe energije koja nagovještava veliku budućnost.",
     "en": "A young couple, old vines — a Meursault fresh, precise and full of a quiet energy that hints at a great future.",
@@ -431,7 +431,7 @@
    }
   },
   "Machard de Gramont": {
-   "region": "Vosne-Romanée, Burgundija",
+   "region": "Vosne-Romanée, Bourgogne",
    "blurb": {
     "hr": "Tradicionalna Côte de Nuits — burgundac koji šapće raskoš: ruža, začin i baršun bez pretjerivanja.",
     "en": "Traditional Côte de Nuits — a Burgundy that whispers opulence: rose, spice and velvet without excess.",
@@ -496,7 +496,7 @@
    }
   },
   "Raveneau": {
-   "region": "Chablis, Burgundija",
+   "region": "Chablis, Bourgogne",
    "blurb": {
     "hr": "Mjerilo velikog Chablisa — vino kreda i napetosti kojem se svi drugi tiho uspoređuju.",
     "en": "The benchmark of great Chablis — a wine of chalk and tension against which all others quietly measure themselves.",
@@ -535,7 +535,7 @@
    }
   },
   "Dauvissat": {
-   "region": "Chablis, Burgundija",
+   "region": "Chablis, Bourgogne",
    "blurb": {
     "hr": "Aristokracija Chablisa — kreda, preciznost i dužina koja godinama ne popušta.",
     "en": "The aristocracy of Chablis — chalk, precision and a length that does not yield for years.",
@@ -561,7 +561,7 @@
    }
   },
   "Lignier": {
-   "region": "Morey-Saint-Denis, Burgundija",
+   "region": "Morey-Saint-Denis, Bourgogne",
    "blurb": {
     "hr": "Morey-Saint-Denis u velikim vinogradima — pinot dubine i svile, tih, ali nezaboravan.",
     "en": "Morey-Saint-Denis in its grand crus — a Pinot of depth and silk, quiet yet unforgettable.",
@@ -574,7 +574,7 @@
    }
   },
   "Chartron": {
-   "region": "Puligny-Montrachet, Burgundija",
+   "region": "Puligny-Montrachet, Bourgogne",
    "blurb": {
     "hr": "Plemstvo bijele Burgundije — od Corton-Charlemagnea do Montracheta, chardonnay mramorne preciznosti.",
     "en": "The nobility of white Burgundy — from Corton-Charlemagne to Montrachet, Chardonnay of marble precision.",
@@ -587,7 +587,7 @@
    }
   },
   "Shangri-La": {
-   "region": "Yunnan, Kina",
+   "region": "Yunnan, China",
    "blurb": {
     "hr": "Nemogući vinograd u podnožju Himalaje — Ao Yun spaja bordoške sorte i visinu od 2500 metara u vino koje ne bi smjelo postojati, a postoji.",
     "en": "The impossible vineyard in the Himalayan foothills — Ao Yun marries Bordeaux varieties and 2,500 metres of altitude into a wine that shouldn't exist, yet does.",
@@ -756,7 +756,7 @@
    }
   },
   "Donnafugata": {
-   "region": "Sicilija",
+   "region": "Sicilia",
    "blurb": {
     "hr": "Sicilija u boji i toplini — vina koja nose sunce, more i vjetar juga, izražajna i puna života.",
     "en": "Sicily in colour and warmth — wines carrying the sun, the sea and the southern wind, expressive and full of life.",
@@ -821,7 +821,7 @@
    }
   },
   "Mikulski": {
-   "region": "Meursault, Burgundija",
+   "region": "Meursault, Bourgogne",
    "blurb": {
     "hr": "Tihi majstor Meursaulta — sol, kamen i suzdržanost čovjeka koji radije pušta vino da govori.",
     "en": "A quiet master of Meursault — salt, stone and the reserve of a man who would rather let the wine speak.",
@@ -834,7 +834,7 @@
    }
   },
   "Ridge": {
-   "region": "Santa Cruz Mountains, Kalifornija",
+   "region": "Santa Cruz Mountains, California",
    "blurb": {
     "hr": "Kalifornija s europskom dušom — Monte Bello, kabernet za desetljeća, i etiketa koja pošteno navodi svaki sastojak.",
     "en": "California with a European soul — Monte Bello, a Cabernet for decades, and a label that honestly lists every ingredient.",
@@ -847,7 +847,7 @@
    }
   },
   "Marjan Simčič": {
-   "region": "Goriška Brda, Slovenija",
+   "region": "Goriška Brda, Slovenia",
    "blurb": {
     "hr": "Brda koja ne mare za granicu — raskošna, ali precizna bijela i crna vina s brežuljaka koji spajaju Sloveniju i Italiju.",
     "en": "The hills that ignore the border — opulent yet precise whites and reds from slopes that join Slovenia and Italy.",
@@ -860,7 +860,7 @@
    }
   },
   "Movia": {
-   "region": "Goriška Brda, Slovenija",
+   "region": "Goriška Brda, Slovenia",
    "blurb": {
     "hr": "Aleš Kristančič i njegova živa, biodinamička vina po mjesečevu ritmu — divlja, neukroćena, uvijek na rubu čuda.",
     "en": "Aleš Kristančič and his living, biodynamic wines by the rhythm of the moon — wild, untamed, always on the edge of a miracle.",
@@ -925,7 +925,7 @@
    }
   },
   "Heitz": {
-   "region": "Napa Valley, Kalifornija",
+   "region": "Napa Valley, California",
    "blurb": {
     "hr": "Stara škola Nape — Martha's Vineyard kabernet od metvice i crnog ribiza, klasičan i strpljiv, građen da stari.",
     "en": "Old-school Napa — Martha's Vineyard Cabernet of mint and cassis, classic and patient, built to age.",
@@ -1016,7 +1016,7 @@
    }
   },
   "Duckhorn": {
-   "region": "Napa Valley, Kalifornija",
+   "region": "Napa Valley, California",
    "blurb": {
     "hr": "Kuća koja je merlot u Napi učinila ozbiljnim — baršunast, zreo i precizan, dokaz da sorta zaslužuje glavnu ulogu.",
     "en": "The house that made Merlot serious in Napa — velvety, ripe and precise, proof the grape deserves a leading role.",
@@ -1029,7 +1029,7 @@
    }
   },
   "Mayacamas": {
-   "region": "Mount Veeder, Napa",
+   "region": "Mount Veeder, Napa Valley",
    "blurb": {
     "hr": "Planinska strogost iznad Nape — kabernet visokih položaja, uspravan, mineralan i gotovo bezvremen, daleko od raskoši doline.",
     "en": "Mountain austerity above Napa — high-elevation Cabernet, upright, mineral and all but timeless, far from the valley's opulence.",
@@ -1042,7 +1042,7 @@
    }
   },
   "Togni": {
-   "region": "Spring Mountain, Napa",
+   "region": "Spring Mountain, Napa Valley",
    "blurb": {
     "hr": "Željezo planine — strukturiran, tanski kabernet Spring Mountaina, građen da desetljećima prkosi vremenu.",
     "en": "Mountain iron — the structured, tannic Cabernet of Spring Mountain, built to defy time for decades.",
@@ -1159,7 +1159,7 @@
    }
   },
   "Muster": {
-   "region": "Štajerska, Austrija",
+   "region": "Štajerska, Austria",
    "blurb": {
     "hr": "Žive jantarne kapljice štajerskih brežuljaka — biodinamička bijela vina s maceracijom, divlja, teksturirana i puna karaktera.",
     "en": "The living amber of the Styrian hills — biodynamic skin-contact whites, wild, textured and full of character.",
@@ -1185,7 +1185,7 @@
    }
   },
   "Edi Simčič": {
-   "region": "Goriška Brda, Slovenija",
+   "region": "Goriška Brda, Slovenia",
    "blurb": {
     "hr": "Uglađenost Brda — bijela i crna vina uokvirena hrastom i vremenom, profinjena i samouvjerena.",
     "en": "The polish of Brda — whites and reds framed by oak and time, refined and self-assured.",
@@ -1393,7 +1393,7 @@
    }
   },
   "Cakebread": {
-   "region": "Napa Valley, Kalifornija",
+   "region": "Napa Valley, California",
    "blurb": {
     "hr": "Napa gostoljubivost u čaši — kabernet i chardonnay dozreli, uglađeni i topli, građeni za stol i društvo.",
     "en": "Napa hospitality in a glass — Cabernet and Chardonnay ripe, polished and warm, built for the table and good company.",
@@ -1419,7 +1419,7 @@
    }
   },
   "Corte Aura": {
-   "region": "Franciacorta, Lombardija",
+   "region": "Franciacorta, Lombardia",
    "blurb": {
     "hr": "Talijanski odgovor Champagnu — Franciacorta klasične metode, kremasta, fina i pomno njegovana.",
     "en": "Italy's answer to Champagne — a classic-method Franciacorta, creamy, fine and carefully nurtured.",
@@ -1445,7 +1445,7 @@
    }
   },
   "Lalù": {
-   "region": "Langhe, Piemont",
+   "region": "Langhe, Piemonte",
    "blurb": {
     "hr": "Šarm mladog nebbiola — Langhe u pristupačnom ključu, ruža i višnja bez desetljeća čekanja.",
     "en": "The charm of young Nebbiolo — Langhe in an approachable key, rose and cherry without the decades of waiting.",
@@ -1471,7 +1471,7 @@
    }
   },
   "Occidental": {
-   "region": "Sonoma Coast, Kalifornija",
+   "region": "Sonoma Coast, California",
    "blurb": {
     "hr": "Opsesija hladnom obalom — Steve Kistler i pinot noir s maglovitog ruba Sonome, napet, precizan i dubok.",
     "en": "An obsession with the cold coast — Steve Kistler and Pinot Noir from Sonoma's foggy edge, taut, precise and deep.",
@@ -1562,7 +1562,7 @@
    }
   },
   "Casa Rojo": {
-   "region": "Španjolska",
+   "region": "España",
    "blurb": {
     "hr": "Španjolsko sunce razigrano — smjela, moderna vina koja se ne shvaćaju preozbiljno, ali čašu pune užitkom.",
     "en": "Spanish sun at play — bold, modern wines that don't take themselves too seriously, yet fill the glass with pleasure.",
@@ -1575,7 +1575,7 @@
    }
   },
   "David Moret": {
-   "region": "Côte de Beaune, Burgundija",
+   "region": "Côte de Beaune, Bourgogne",
    "blurb": {
     "hr": "Beaunska izrada bez pompe — bijeli burgundac čiste ruke, precizan, mineralan i pouzdano dobar.",
     "en": "Beaune craftsmanship without pomp — white Burgundy of a clean hand, precise, mineral and reliably fine.",
@@ -1588,7 +1588,7 @@
    }
   },
   "Domaine Eden": {
-   "region": "Santa Cruz Mountains, Kalifornija",
+   "region": "Santa Cruz Mountains, California",
    "blurb": {
     "hr": "Planinska Kalifornija suzdržane ruke — kabernet i pinot svježine i strukture, daleko od bujnosti doline.",
     "en": "Mountain California of a restrained hand — Cabernet and Pinot of freshness and structure, far from the valley's exuberance.",
@@ -1653,7 +1653,7 @@
    }
   },
   "Moret-Nominé": {
-   "region": "Francuska",
+   "region": "France",
    "blurb": {
     "hr": "Francuski syrah bez uljepšavanja — papar, ljubičica i tamno voće u vinu ravne, iskrene linije.",
     "en": "French Syrah with no gloss — pepper, violet and dark fruit in a wine of a straight, honest line.",
@@ -1666,7 +1666,7 @@
    }
   },
   "Philippe Chavy": {
-   "region": "Puligny-Montrachet, Burgundija",
+   "region": "Puligny-Montrachet, Bourgogne",
    "blurb": {
     "hr": "Finoća Pulignyja — bijeli burgundac cvijeta, krede i suzdržane napetosti, elegantan bez napora.",
     "en": "The finesse of Puligny — white Burgundy of blossom, chalk and restrained tension, elegant without effort.",
@@ -1718,7 +1718,7 @@
    }
   },
   "Tyler": {
-   "region": "Sta. Rita Hills, Kalifornija",
+   "region": "Sta. Rita Hills, California",
    "blurb": {
     "hr": "Preciznost Santa Barbare — chardonnay i pinot hladnih brežuljaka, vitki, slani i suzdržani.",
     "en": "The precision of Santa Barbara — Chardonnay and Pinot of the cool hills, lean, saline and restrained.",
@@ -1731,7 +1731,7 @@
    }
   },
   "Téo Dancer": {
-   "region": "Mâconnais, Burgundija",
+   "region": "Mâconnais, Bourgogne",
    "blurb": {
     "hr": "Mlada burgundska ruka — svjež aligoté i chardonnay živahne kiseline, bez tereta, pun energije.",
     "en": "A young Burgundian hand — fresh Aligoté and Chardonnay of lively acidity, unburdened and full of energy.",

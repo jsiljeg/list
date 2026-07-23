@@ -464,7 +464,7 @@ function openDetail(ref, back) {
   const field = (label, value, wide) =>
     value ? `<div class="detail-field${wide ? " wide" : ""}"><div class="detail-label">${label}</div><div class="detail-value">${value}</div></div>` : "";
   const list = (keys, dict) => (keys || []).map((k) => dict[k] || k).join(", ");
-  const region = [esc(ins.region), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
+  const region = [esc(localizeRegion(ins.region)), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
 
   const glass = glassFor(ins.style, ins.grape);
   const noteText = item.note && (item.note[lang] || item.note.en || item.note.hr);
@@ -481,7 +481,7 @@ function openDetail(ref, back) {
     <div class="detail-style">${esc(t.styles[ins.style] || "")}</div>
     ${noteText ? `<div class="detail-note">„${esc(noteText)}“ <span class="detail-note-sig">— Filho</span></div>` : ""}
     <div class="detail-grid">
-      ${field(t.ui.grape, esc(ins.grape))}
+      ${field(t.ui.grape, esc(localizeGrape(ins.grape)))}
       ${field(t.ui.region, region)}
       ${field(t.ui.body, esc(t.bodies[ins.body] || ins.body))}
       ${field(t.ui.temp, ins.temp ? esc(ins.temp) + " °C" : "")}
@@ -492,7 +492,7 @@ function openDetail(ref, back) {
       const info = producerInfo(item.producer);
       const blurb = info && info.blurb && (info.blurb[lang] || info.blurb.en);
       if (!blurb) return "";
-      const ter = info.region ? `<div class="detail-terroir"><span class="detail-label">${esc(t.ui.terroir)}</span> ${esc(info.region)}</div>` : "";
+      const ter = info.region ? `<div class="detail-terroir"><span class="detail-label">${esc(t.ui.terroir)}</span> ${esc(localizeRegion(info.region))}</div>` : "";
       return `<div class="detail-winemaker"><div class="detail-label">${esc(t.ui.winemaker)}${item.producer ? " · " + esc(item.producer) : ""}</div><p>${esc(blurb)}</p>${ter}</div>`;
     })()}
     ${(() => {
@@ -540,6 +540,29 @@ const GLASS_ICONS = {
   burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M9,7 C4.5,9 2.8,15.5 2.8,25 C2.8,34.5 8,44.5 20,48.5 C32,44.5 37.2,34.5 37.2,25 C37.2,15.5 35.5,9 31,7 Z"/><path d="M20,48.5 V91"/><path d="M9.5,94 c4,-3 17,-3 21,0"/></svg>',
   dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
+/* Bilingual Chinese rendering for the free-text grape/region fields.
+ * Only transforms when lang === "zh": each comma-separated token is looked up
+ * in ZH_GRAPE / ZH_REGION and shown as 中文 (Latin); unknown tokens (indigenous
+ * grapes, small villages) stay Latin. ZH_ONLY tokens render Chinese-only. */
+function zhTokens(str, map) {
+  return str
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((tok) => {
+      const zh = map[tok];
+      if (!zh) return tok;
+      if (typeof ZH_ONLY !== "undefined" && ZH_ONLY[tok]) return zh;
+      return `${zh}（${tok}）`;
+    })
+    .join("、");
+}
+function localizeGrape(str) {
+  return lang === "zh" && str && typeof ZH_GRAPE !== "undefined" ? zhTokens(str, ZH_GRAPE) : str;
+}
+function localizeRegion(str) {
+  return lang === "zh" && str && typeof ZH_REGION !== "undefined" ? zhTokens(str, ZH_REGION) : str;
+}
 function glassFor(style, grape) {
   if (!style) return null;
   if (style.startsWith("sparkling") || style.startsWith("champagne")) return "champagne";
