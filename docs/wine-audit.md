@@ -50,7 +50,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 8 | Corte Aura — Franciacorta Brut | Chardonnay 90%, Pinot Noir 10% | Brut | 12.5% | owner | from owner |
 | 9 | Corte Aura — Franciacorta Satèn | Chardonnay | Brut | 12.5% | owner | from owner |
 | 10 | Movia — Puro Rose | Pinot Noir | Brut Nature | 12% | owner | zero-dosage; ABV from owner |
-| 11 | Movia — Puro Brut | Ribolla Gialla, Chardonnay | Brut Nature | 12.5% | [wineandmore](https://www.wineandmore.com/stories/movia-puro-sparkling-wine/) | ⚠ blend varies by source — verify |
+| 11 | Movia — Puro Brut | Chardonnay | Brut Nature | 12.5% | owner | grape corrected to Chardonnay (owner); zero-dosage |
 | 12 | De Sousa — Chemins des Terroirs | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 📷 | [champagnedesousa](https://www.champagnedesousa.com/en/bouteille/chemins-des-terroirs/) | blend 50/30/20 confirmed |
 | 13 | De Sousa — Cuvée 3A Grand Cru | Chardonnay, Pinot Noir | Extra Brut | 12.5% | [premiumgrandscrus](https://www.premiumgrandscrus.com/en/extra-brut/229-de-sousa-cuvee-3a-champagne-grand-cru.html) |  |
 | 14 | De Sousa — Mycorhize Grand Cru | Chardonnay | Extra Brut | 12.5% | [wine.com](https://www.wine.com/product/de-sousa-mycorhize-blanc-de-blancs-extra-brut-grand-cru/251495) |  |
