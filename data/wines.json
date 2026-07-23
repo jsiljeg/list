@@ -2113,10 +2113,11 @@
           "style": "champagne_prestige",
           "body": "full",
           "aromas": [
-           "quince",
+           "red_apple",
+           "hazelnut",
            "honey",
-           "walnut",
-           "toast"
+           "orange_peel",
+           "spice"
           ],
           "pairings": [
            "caviar",
@@ -2124,11 +2125,26 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "12",
           "dosage": "Extra Brut"
          },
          "tags": [
           "rare"
+         ],
+         "terroir": "Avize, Cramant, Oger",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "98"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "96"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "16/20"
+          }
          ]
         },
         {

@@ -71,7 +71,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 29 | Henri Giraud — Esprit Nature | Pinot Noir 80%, Chardonnay 20% | Brut Nature | 12.5% | owner | RP 92 / Decanter 91 (owner) |
 | 30 | Henri Giraud — Hommage au Pinot Noir | Pinot Noir | Brut | 12.5% | owner | Blanc de Noirs style; +chocolate pairing; Falstaff 96 / Vinous 93 / Tim Atkin 92 (owner) |
 | 31 | Jacques Selosse — Initial Brut | Chardonnay | Brut | 12.5% | owner | terroir Avize/Cramant/Oger; WS 96 / RP 94 (owner) |
-| 32 | Jacques Selosse — Version Originale | Chardonnay | Extra Brut | 📷 | [bordeauxindex](https://bordeauxindex.com/fine-wine/france/champagne/selo-1000) | ~1.2 g/l |
+| 32 | Jacques Selosse — Version Originale | Chardonnay | Extra Brut | 12% | owner | terroir Avize/Cramant/Oger; aromas apple/hazelnut/honey/orange-peel/spice; JS 98 / RP 96 / Jancis 16/20 (owner) |
 | 33 | Jacques Selosse — Les Carelles | Chardonnay | Extra Brut | 📷 | [cellartracker](https://www.cellartracker.com/wine.asp?iWine=2781223) | 0–1.5 g/l |
 | 34 | Jacques Selosse — Rosé Brut | Chardonnay, Pinot Noir | Brut | 12.5% | [whwc](https://whwc.com/selosse-brut-rose-champagne-nv/) |  |
 | 35 | Moët & Chandon — Dom Pérignon 2015 | Chardonnay, Pinot Noir | Brut | 12.5% | [wine.com](https://www.wine.com/product/dom-perignon-vintage-2015/2368723) | 51/49 |
