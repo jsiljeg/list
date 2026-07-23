@@ -2553,7 +2553,7 @@
          "producer": "Krug",
          "price": 890,
          "insight": {
-          "grape": "Pinot Noir, Chardonnay, Pinot Meunier",
+          "grape": "Chardonnay (39%), Pinot Noir (37%), Pinot Meunier (24%)",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
@@ -2562,16 +2562,48 @@
            "dried_fruit",
            "honey",
            "toast",
-           "hazelnut"
+           "hazelnut",
+           "ginger",
+           "candied_citrus",
+           "quince",
+           "lemon_meringue_tart",
+           "plum",
+           "mirabelle"
           ],
           "pairings": [
            "solo",
            "caviar"
           ],
-          "temp": "10–12",
-          "alcohol": "",
+          "temp": "9–12",
+          "alcohol": "12",
           "dosage": "Brut"
-         }
+         },
+         "tags": [
+          "rare"
+         ],
+         "terroir": "Clos du Mesnil, Clos d'Ambonnay",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "97"
+          },
+          {
+           "critic": "Decanter",
+           "score": "96"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "95"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "18.5/20"
+          }
+         ]
         },
         {
          "name": "Clos du Mesnil 2008",
