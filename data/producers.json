@@ -2,7 +2,7 @@
  "_comment": "Winemaker blurbs in Filho's voice, keyed by producer. The app matches a wine's producer to the longest key contained in it (case-insensitive), so 'Clai' also covers 'Giorgio Clai'. Each blurb is 2 sentences, all 6 languages. Add producers freely.",
  "producers": {
   "Jacques Selosse": {
-   "region": "Avize, Champagne",
+   "region": "Avize",
    "blurb": {
     "hr": "Anselme Selosse je vinar koji je promijenio percepciju šampanjca — u Avizeu je krede pretvorio u dijalog zemlje i vremena. Njegove su boce oksidativne, duboke i žive, daleko od svake pozlate.",
     "en": "Anselme Selosse is the grower who changed how Champagne is understood — in Avize he turned chalk into a dialogue between soil and time. His bottles are oxidative, deep and alive, far from any gilding.",
@@ -15,7 +15,7 @@
    }
   },
   "Krug": {
-   "region": "Reims, Champagne",
+   "region": "Reims",
    "blurb": {
     "hr": "Krug gradi svaku cuvée poput orkestra — stotine mirnih vina i rezervi iz mnogih godina slažu se u jedan raskošan, kremozan glas. To je champagne za sjećanje, a ne za trenutak.",
     "en": "Krug builds every cuvée like an orchestra — hundreds of still wines and reserves from many years composed into one opulent, creamy voice. This is Champagne for memory, not for the moment.",
@@ -28,7 +28,7 @@
    }
   },
   "Roederer": {
-   "region": "Reims, Champagne",
+   "region": "Reims",
    "blurb": {
     "hr": "Louis Roederer je jedna od rijetkih velikih kuća koja posjeduje gotovo sve svoje vinograde, i to se osjeti u preciznosti Cristala. Elegancija ovdje nije poza nego posljedica vlasništva nad terroirom.",
     "en": "Louis Roederer is one of the few grandes maisons that owns nearly all its vineyards, and you taste it in Cristal's precision. Here elegance is not a pose but the consequence of owning the terroir.",
@@ -41,7 +41,7 @@
    }
   },
   "Egly-Ouriet": {
-   "region": "Ambonnay, Champagne",
+   "region": "Ambonnay",
    "blurb": {
     "hr": "Egly-Ouriet radi champagne kao veliki crveni burgundac — niski prinosi, stare loze i duga zrenja na talogu. Ambonnay ovdje daje snagu i teksturu, a ne samo mjehuriće.",
     "en": "Egly-Ouriet makes Champagne like a great red Burgundy — low yields, old vines and long ageing on the lees. Ambonnay here gives power and texture, not just bubbles.",
@@ -54,7 +54,7 @@
    }
   },
   "De Sousa": {
-   "region": "Avize, Champagne",
+   "region": "Avize",
    "blurb": {
     "hr": "Obitelj De Sousa u Avizeu biodinamički obrađuje stare loze na čistoj kredi grand cru sela. Rezultat je mineralnost bez pozlate — champagne koji priča o mjestu, ne o etiketi.",
     "en": "The De Sousa family biodynamically farms old vines on the pure chalk of Avize's grand cru villages. The result is minerality without gilding — Champagne that speaks of place, not of label.",
@@ -288,7 +288,7 @@
    }
   },
   "Henri Giraud": {
-   "region": "Aÿ, Champagne",
+   "region": "Aÿ",
    "blurb": {
     "hr": "Kuća iz Aÿa koja svoj pinot odgaja u hrastu iz šume Argonne — šampanjac terroira i drveta, bez šećera i bez maske.",
     "en": "A house from Aÿ that raises its Pinot in oak from the Argonne forest — a Champagne of terroir and wood, without sugar and without a mask.",
@@ -301,7 +301,7 @@
    }
   },
   "Pertois-Moriset": {
-   "region": "Le Mesnil-sur-Oger, Champagne",
+   "region": "Le Mesnil-sur-Oger",
    "blurb": {
     "hr": "Vinogradarska obitelj ukorijenjena u čistoj kredi Le Mesnila, duboko u Côte des Blancs — niske doze, visoke napetosti; njihovi šampanjci imaju okus soli, svjetla i tihog strpljenja, kamen koji govori šapatom.",
     "en": "A grower family anchored in the pure chalk of Le Mesnil, deep in the Côte des Blancs — low on dosage, high on nerve; their champagnes taste of salt, light and quiet patience, the stone speaking in a whisper.",
@@ -470,7 +470,7 @@
    }
   },
   "Moët": {
-   "region": "Épernay, Champagne",
+   "region": "Épernay",
    "blurb": {
     "hr": "Dom Pérignon — ikona koja pretvara vrijeme u eleganciju; svaka je plénitude dokaz da strpljenje mijenja sve.",
     "en": "Dom Pérignon — the icon that turns time into elegance; each plénitude is proof that patience changes everything.",
@@ -483,7 +483,7 @@
    }
   },
   "Salon": {
-   "region": "Le Mesnil-sur-Oger, Champagne",
+   "region": "Le Mesnil-sur-Oger",
    "blurb": {
     "hr": "Legenda iz jednog sela, jedne sorte, i samo velikih godina — blanc de blancs koji ne postoji kad berba to ne zaslužuje.",
     "en": "A legend of one village, one grape, and only great years — a blanc de blancs that does not exist when the vintage doesn't deserve it.",
@@ -600,7 +600,7 @@
    }
   },
   "Billecart-Salmon": {
-   "region": "Mareuil-sur-Aÿ, Champagne",
+   "region": "Mareuil-sur-Aÿ",
    "blurb": {
     "hr": "Obiteljska kuća poznata po hladnoj, sporoj fermentaciji — šampanjac tkao čipka, s ružičastim koje mnogi smatraju najljepšim u regiji.",
     "en": "A family house famed for cold, slow fermentation — Champagne like lace, with a rosé many consider the finest in the region.",
@@ -613,7 +613,7 @@
    }
   },
   "Delamotte": {
-   "region": "Le Mesnil-sur-Oger, Champagne",
+   "region": "Avize, Chouilly, Cramant, Le Mesnil-sur-Oger, Oger, Oiry, Côte des Blancs",
    "blurb": {
     "hr": "Tiha sestra Salona — blanc de blancs izgovoren šapatom, finoća bez potrebe da išta dokazuje.",
     "en": "The quiet sister of Salon — a blanc de blancs spoken in a whisper, finesse with nothing to prove.",
@@ -626,7 +626,7 @@
    }
   },
   "Deutz": {
-   "region": "Aÿ, Champagne",
+   "region": "Montagne de Reims, Côte des Blancs, Vallée de la Marne",
    "blurb": {
     "hr": "Stara garda Aÿa — suzdržan, uglađen šampanjac bez ijedne teatralne geste.",
     "en": "The old guard of Aÿ — a restrained, polished Champagne without a single theatrical gesture.",
@@ -639,7 +639,7 @@
    }
   },
   "Vouette": {
-   "region": "Aube, Champagne",
+   "region": "Aube",
    "blurb": {
     "hr": "Biodinamički vinogradar Aubea koji radi šampanjac koji se ponaša kao vino — sirov, zemljan, iskren do kosti.",
     "en": "A biodynamic grower in the Aube making Champagne that behaves like wine — raw, earthy, honest to the bone.",
@@ -1627,7 +1627,7 @@
    }
   },
   "L'Hoste": {
-   "region": "Champagne",
+   "region": "",
    "blurb": {
     "hr": "Vinogradarski šampanjac malog imena — pošteni mjehurići koji govore o parceli, a ne o marketingu.",
     "en": "Grower Champagne of a small name — honest bubbles that speak of the plot, not of marketing.",
@@ -1679,7 +1679,7 @@
    }
   },
   "Ruppert-Leroy": {
-   "region": "Aube, Champagne",
+   "region": "Aube",
    "blurb": {
     "hr": "Sirovi biodinamički Aube — šampanjac bez dosaže, vinozan, zemljan i posve živ.",
     "en": "Raw biodynamic Aube — Champagne with no dosage, vinous, earthy and utterly alive.",

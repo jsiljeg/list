@@ -125,7 +125,7 @@
          "price": 16,
          "insight": {
           "grape": "Chardonnay, Pinot Noir, Pinot Meunier",
-          "region": "Montagne de Reims, Côte des Blancs, Vallée de la Marne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -165,7 +165,7 @@
          "price": 16,
          "insight": {
           "grape": "Pinot Noir, Chardonnay",
-          "region": "Aÿ, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -1318,7 +1318,7 @@
          "price": 100,
          "insight": {
           "grape": "Chardonnay 50%, Pinot Noir 30%, Pinot Meunier 20%",
-          "region": "Vallée de la Marne, Coteaux du Vitryat",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -1349,7 +1349,7 @@
          "price": 170,
          "insight": {
           "grape": "Chardonnay, Pinot Noir",
-          "region": "Avize, Aÿ, Ambonnay – Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "full",
@@ -1399,7 +1399,7 @@
          "price": 167,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Avize, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_bdb",
           "body": "medium",
@@ -1427,7 +1427,7 @@
          "price": 100,
          "insight": {
           "grape": "Chardonnay, Pinot Noir",
-          "region": "Le Mesnil-sur-Oger, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -1458,7 +1458,7 @@
          "price": 190,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte des Blancs, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_bdb",
           "body": "medium",
@@ -1496,7 +1496,7 @@
          "price": 127,
          "insight": {
           "grape": "Chardonnay 92%, Pinot Noir 8%",
-          "region": "Côte des Blancs, Bouzy, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_rose",
           "body": "medium",
@@ -1547,7 +1547,7 @@
          "price": 240,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Avize, Chouilly, Cramant, Le Mesnil-sur-Oger, Oger, Oiry, Côte des Blancs",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_bdb",
           "body": "medium",
@@ -1595,7 +1595,7 @@
          "price": 115,
          "insight": {
           "grape": "Chardonnay, Pinot Noir, Pinot Meunier",
-          "region": "Montagne de Reims, Côte des Blancs, Vallée de la Marne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -1635,7 +1635,7 @@
          "price": 170,
          "insight": {
           "grape": "Pinot Noir, Chardonnay",
-          "region": "Ambonnay, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "full",
@@ -1671,7 +1671,7 @@
          "price": 540,
          "insight": {
           "grape": "Pinot Noir, Chardonnay",
-          "region": "Reims, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -1711,7 +1711,7 @@
          "price": 170,
          "insight": {
           "grape": "Pinot Blanc",
-          "region": "Aube, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -1737,7 +1737,7 @@
          "price": 160,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Aube, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_bdb",
           "body": "medium",
@@ -1763,7 +1763,7 @@
          "price": 170,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Aube, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -1789,7 +1789,7 @@
          "price": 135,
          "insight": {
           "grape": "Chardonnay, Pinot Noir, Pinot Meunier",
-          "region": "Mareuil-sur-Aÿ, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -1840,7 +1840,7 @@
          "price": 185,
          "insight": {
           "grape": "Chardonnay, Pinot Noir, Pinot Meunier",
-          "region": "Mareuil-sur-Aÿ, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_rose",
           "body": "light",
@@ -1865,7 +1865,7 @@
          "price": 120,
          "insight": {
           "grape": "Pinot Noir, Chardonnay",
-          "region": "Aÿ, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -1902,7 +1902,7 @@
          "price": 135,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Aÿ, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne",
           "body": "full",
@@ -1928,7 +1928,7 @@
          "price": 560,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Avize, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -1967,7 +1967,7 @@
          "price": 650,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Avize, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -1996,7 +1996,7 @@
          "price": 850,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Le Mesnil-sur-Oger, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2025,7 +2025,7 @@
          "price": 790,
          "insight": {
           "grape": "Chardonnay, Pinot Noir",
-          "region": "Avize, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2065,7 +2065,7 @@
          "price": 480,
          "insight": {
           "grape": "Chardonnay, Pinot Noir",
-          "region": "Épernay, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2100,7 +2100,7 @@
          "price": 1450,
          "insight": {
           "grape": "Chardonnay, Pinot Noir",
-          "region": "Épernay, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2128,7 +2128,7 @@
          "price": 4850,
          "insight": {
           "grape": "Chardonnay, Pinot Noir",
-          "region": "Épernay, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2156,7 +2156,7 @@
          "price": 1650,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Le Mesnil-sur-Oger, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2185,7 +2185,7 @@
          "price": 1780,
          "insight": {
           "grape": "Pinot Noir, Chardonnay, Pinot Meunier",
-          "region": "Reims, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2213,7 +2213,7 @@
          "price": 510,
          "insight": {
           "grape": "Pinot Noir, Chardonnay, Pinot Meunier",
-          "region": "Reims, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2239,7 +2239,7 @@
          "price": 890,
          "insight": {
           "grape": "Pinot Noir, Chardonnay, Pinot Meunier",
-          "region": "Reims, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2264,7 +2264,7 @@
          "price": 2780,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Le Mesnil-sur-Oger, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
@@ -2292,7 +2292,7 @@
          "price": 4890,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Ambonnay, Champagne",
+          "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
           "body": "full",
