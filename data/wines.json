@@ -2491,7 +2491,7 @@
          "producer": "Krug",
          "price": 510,
          "insight": {
-          "grape": "Pinot Noir, Chardonnay, Pinot Meunier",
+          "grape": "Pinot Noir (44%), Chardonnay (34%), Pinot Meunier (22%)",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
@@ -2510,6 +2510,30 @@
           "temp": "10–12",
           "alcohol": "12.5",
           "dosage": "Brut"
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "94+"
+          }
+         ],
+         "note": {
+          "hr": "Kupaža 150 vina iz 13 različitih godišta — najmlađe je iz 2017., a najstarije seže u 2001.",
+          "en": "A blend of 150 wines from 13 different years — the youngest from 2017, the oldest dating back to 2001.",
+          "it": "Un assemblaggio di 150 vini di 13 annate diverse — il più giovane del 2017, il più vecchio risale al 2001.",
+          "fr": "Un assemblage de 150 vins de 13 années différentes — le plus jeune de 2017, le plus ancien remontant à 2001.",
+          "de": "Eine Assemblage aus 150 Weinen aus 13 verschiedenen Jahrgängen — der jüngste von 2017, der älteste aus dem Jahr 2001.",
+          "zh": "由 13 个不同年份的 150 款葡萄酒调配而成——最年轻的来自 2017 年，最古老的可追溯至 2001 年。",
+          "sl": "Zvrst 150 vin iz 13 različnih letnikov — najmlajše je iz leta 2017, najstarejše sega v leto 2001.",
+          "es": "Un ensamblaje de 150 vinos de 13 añadas diferentes — el más joven de 2017 y el más antiguo se remonta a 2001."
          }
         },
         {
