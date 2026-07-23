@@ -2169,11 +2169,22 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Extra Brut"
          },
          "tags": [
           "rare"
+         ],
+         "terroir": "Le Mesnil-sur-Oger",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "95-98"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17/20"
+          }
          ]
         },
         {
