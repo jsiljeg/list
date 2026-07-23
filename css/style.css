@@ -125,6 +125,11 @@ body {
 .tool-btn.pride:not(.active) { border-color: var(--gold-soft); color: var(--gold); }
 .tool-btn.pride:not(.active):hover { background: rgba(201,169,97,.12); }
 .tool-btn.pride svg { width: 1.15em; height: 1.15em; }
+/* Wrapper around the four mode buttons. `display: contents` by default makes it
+   invisible to layout, so on tablet/phone the buttons behave as direct flex
+   children of .header-tools (their 2x2 rules are unchanged). Desktop turns it
+   into a real segmented control (see the min-width:1025 block). */
+.tool-group { display: contents; }
 .pride-badge { display: inline-flex; vertical-align: -.12em; margin-right: .5rem; color: var(--gold); }
 .pride-badge svg { width: .82em; height: .82em; }
 .picks-group {
@@ -484,18 +489,22 @@ body {
    & last button are rounded, so the four read as one pill. Category chips
    already wrap on desktop — no horizontal sliding needed. */
 @media (min-width: 1025px) {
-  .header-tools { column-gap: 0; row-gap: 1.05rem; }
+  /* stack the two rows: centred pill search, then the segmented button group */
+  .header-tools { flex-direction: column; align-items: center; gap: 1.05rem; }
   .search {
-    flex: 1 1 100%; max-width: 520px; margin: 0 auto;
+    width: 100%; max-width: 520px;
     border-radius: 999px; text-align: center;
   }
-  .header-tools .tool-btn:not(.active) {
+  /* the four buttons become one connected pill: no gaps, -1px border overlap
+     collapses adjacent borders into single hairline dividers, ends rounded */
+  .tool-group { display: inline-flex; flex-wrap: nowrap; }
+  .tool-group .tool-btn { border-radius: 0; margin-left: -1px; }
+  .tool-group .tool-btn:first-child { border-radius: 999px 0 0 999px; margin-left: 0; }
+  .tool-group .tool-btn:last-child { border-radius: 0 999px 999px 0; }
+  .tool-group .tool-btn:not(.active) {
     background: rgba(36, 34, 32, .5); color: var(--gold-soft); border-color: var(--line);
   }
-  .header-tools .tool-btn:not(.active):hover { color: var(--gold); background: rgba(201, 169, 97, .10); }
-  .tool-btn { border-radius: 0; margin-left: -1px; }
-  .tool-btn:first-of-type { border-radius: 999px 0 0 999px; margin-left: 0; }
-  .tool-btn:last-of-type { border-radius: 0 999px 999px 0; }
+  .tool-group .tool-btn:not(.active):hover { color: var(--gold); background: rgba(201, 169, 97, .10); }
 }
 
 /* tablet + phone: one clean, swipeable row of category chips (Vinske regije
