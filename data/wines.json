@@ -159,7 +159,7 @@
            "red_apple",
            "brioche",
            "citrus",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "aperitif",
@@ -341,7 +341,7 @@
           "aromas": [
            "lime",
            "peach",
-           "mineral",
+           "wet_stone",
            "honey"
           ],
           "pairings": [
@@ -489,7 +489,7 @@
            "citrus",
            "butter",
            "hazelnut",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -514,7 +514,7 @@
            "pear",
            "citrus",
            "almond",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "seafood",
@@ -1088,7 +1088,7 @@
           "aromas": [
            "quince",
            "toast",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "oysters",
@@ -1276,7 +1276,7 @@
            "green_apple",
            "yeast",
            "citrus",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "aperitif",
@@ -1311,7 +1311,7 @@
           "aromas": [
            "citrus",
            "brioche",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "aperitif",
@@ -1343,7 +1343,7 @@
            "citrus",
            "toast",
            "hazelnut",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -1515,7 +1515,7 @@
            "citrus",
            "white_flowers",
            "toast",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "oysters",
@@ -1603,7 +1603,7 @@
            "citrus",
            "white_flowers",
            "toast",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "caviar",
@@ -1669,7 +1669,7 @@
            "citrus",
            "white_flowers",
            "honey",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "seafood",
@@ -1695,7 +1695,7 @@
            "red_apple",
            "red_currant",
            "yeast",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "poultry",
@@ -1797,7 +1797,7 @@
            "red_apple",
            "brioche",
            "citrus",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "aperitif",
@@ -1997,7 +1997,7 @@
            "citrus",
            "toast",
            "smoke",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "caviar",
@@ -2346,7 +2346,7 @@
            "elderflower",
            "citrus",
            "herbs",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -2420,7 +2420,7 @@
            "lime",
            "peach",
            "white_flowers",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "asian",
@@ -2470,7 +2470,7 @@
            "peach",
            "citrus",
            "toast",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -2830,7 +2830,7 @@
            "peach",
            "lime",
            "honey",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "asian",
@@ -2854,7 +2854,7 @@
           "aromas": [
            "lime",
            "peach",
-           "mineral",
+           "wet_stone",
            "honey"
           ],
           "pairings": [
@@ -3015,7 +3015,7 @@
           "aromas": [
            "peach",
            "citrus",
-           "mineral",
+           "wet_stone",
            "honey"
           ],
           "pairings": [
@@ -3151,7 +3151,7 @@
           "aromas": [
            "citrus",
            "green_apple",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -3477,7 +3477,7 @@
            "citrus",
            "flint",
            "honey",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "shellfish",
@@ -3590,7 +3590,7 @@
            "citrus",
            "butter",
            "hazelnut",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -3614,7 +3614,7 @@
           "aromas": [
            "citrus",
            "hazelnut",
-           "mineral",
+           "wet_stone",
            "butter"
           ],
           "pairings": [
@@ -3663,7 +3663,7 @@
           "aromas": [
            "citrus",
            "butter",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -3687,7 +3687,7 @@
           "aromas": [
            "citrus",
            "white_flowers",
-           "mineral",
+           "wet_stone",
            "butter"
           ],
           "pairings": [
@@ -3713,7 +3713,7 @@
            "citrus",
            "hazelnut",
            "butter",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -3786,7 +3786,7 @@
           "aromas": [
            "citrus",
            "green_apple",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "oysters",
@@ -3957,7 +3957,7 @@
           "aromas": [
            "citrus",
            "white_flowers",
-           "mineral",
+           "wet_stone",
            "butter"
           ],
           "pairings": [
@@ -4008,7 +4008,7 @@
            "citrus",
            "butter",
            "hazelnut",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -4097,7 +4097,7 @@
            "butter",
            "hazelnut",
            "toast",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -4164,7 +4164,7 @@
            "citrus",
            "butter",
            "toast",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -4303,7 +4303,7 @@
           "aromas": [
            "citrus",
            "white_flowers",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -4428,7 +4428,7 @@
            "walnut",
            "citrus",
            "herbs",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "cheese_hard",
@@ -4510,7 +4510,7 @@
            "citrus",
            "white_flowers",
            "hazelnut",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "seafood",
@@ -4536,7 +4536,7 @@
            "citrus",
            "peach",
            "white_flowers",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "seafood",
@@ -4562,7 +4562,7 @@
            "citrus",
            "peach",
            "hazelnut",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -4588,7 +4588,7 @@
            "peach",
            "hazelnut",
            "white_flowers",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -4614,7 +4614,7 @@
            "citrus",
            "white_flowers",
            "peach",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "seafood",
@@ -4668,7 +4668,7 @@
            "pear",
            "red_apple",
            "almond",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -4693,7 +4693,7 @@
            "pear",
            "citrus",
            "almond",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "seafood",
@@ -4959,7 +4959,7 @@
            "citrus",
            "butter",
            "toast",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -5041,7 +5041,7 @@
            "citrus",
            "herbs",
            "almond",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -6312,7 +6312,7 @@
            "cherry",
            "plum",
            "violet",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "beef",
@@ -6407,7 +6407,7 @@
            "cherry",
            "raspberry",
            "violet",
-           "mineral"
+           "wet_stone"
           ],
           "pairings": [
            "poultry",
