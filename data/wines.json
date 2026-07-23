@@ -2201,7 +2201,10 @@
            "strawberry",
            "dried_fruit",
            "honey",
-           "yeast"
+           "yeast",
+           "pink_pepper",
+           "walnut",
+           "oriental_spices"
           ],
           "pairings": [
            "poultry",
@@ -2216,6 +2219,17 @@
           "rare"
          ],
          "recommended": true,
+         "terroir": "Avize, Verzy, Ambonnay",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "94"
+          }
+         ],
          "note": {
           "hr": "Selosse ne radi ružičasto zbog boje — ovo je vino s tijelom, dubinom i vlastitim mišljenjem.",
           "en": "Selosse doesn't make rosé for the colour — this is a wine with body, depth and a mind of its own.",
