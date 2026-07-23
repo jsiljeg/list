@@ -62,7 +62,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 20 | Deutz — Brut Classic | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12% | owner | region 3 Champagne sub-zones; JS 93 / WE 92 / RP 90 (owner) |
 | 21 | Egly-Ouriet — Grand Cru Brut Tradition | Pinot Noir 70%, Chardonnay 30% | Brut | 12.5% | owner | terroir Ambonnay/Verzenay/Bouzy; JD 94 / RP 93 / JS 93 (owner) — Brut confirmed |
 | 22 | Louis Roederer — Cristal 2015 | Pinot Noir 60%, Chardonnay 40% | Brut | 12.5% | owner | terroir 7 GC villages; WE 98 / JS 97 / WS 96 / RP 95+ / Jancis 17.5+/20 (owner) |
-| 23 | Vouette & Sorbée — Textures Brut Nature | Pinot Blanc | Brut Nature | 12% | [glugulp](https://www.glugulp.com/vouette-sorbee-champagne-brut-nature-textures-en) |  |
+| 23 | Vouette & Sorbée — Textures Brut Nature | Pinot Blanc | Brut Nature | 12% | owner | terroir Buxières-sur-Arce/Côte des Bar; 10–12°C; Robert Parker 93 (owner) |
 | 24 | Ruppert-Leroy — Martin Fontaine 2019 | Chardonnay | Brut Nature | 📷 | — |  |
 | 25 | Ruppert-Leroy — Papillon | Pinot Noir | Brut Nature | 12% | [glugulp](https://www.glugulp.com/ruppert-leroy-champagne-brut-nature-papillon-en) |  |
 | 26 | Billecart-Salmon — Le Réserve | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12.5% | [whwc](https://whwc.com/billecart-salmon-brut-champagne-reserve-nv/) | 40 Meunier/30/30 |

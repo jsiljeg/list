@@ -1757,10 +1757,17 @@
            "sushi",
            "light_starters"
           ],
-          "temp": "8–10",
+          "temp": "10–12",
           "alcohol": "12",
           "dosage": "Brut Nature"
-         }
+         },
+         "terroir": "Buxières-sur-Arce, Côte des Bar",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "93"
+          }
+         ]
         },
         {
          "name": "Martin Fontaine 2019",
