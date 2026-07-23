@@ -57,7 +57,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 15 | Pertois-Moriset — L'Assemblage Brut | Chardonnay, Pinot Noir | Brut | 12.5% | owner | Falstaff 89 (owner) |
 | 16 | Pertois-Moriset — L'Année Millésime Grand Cru Blanc de Blancs 2017 | Chardonnay | Extra Brut | 12.5% | owner | house style Extra Brut; ABV + Côte des Blancs region from owner |
 | 17 | Pertois-Moriset — La Collection Rosé & Blanc Grand Cru | Chardonnay 92%, Pinot Noir 8% | Brut Nature | 12% | owner | blend + dosage + ABV + Côte des Blancs/Bouzy region from owner |
-| 18 | L'Hoste Père & Fils — L'Hoste Rosé | Pinot Noir, Chardonnay | 📷 | 📷 | — | needs bottle |
+| 18 | L'Hoste Père & Fils — L'Hoste Rosé | Chardonnay 90%, Pinot Noir 10% | Brut | 12% | owner | from owner |
 | 19 | Delamotte — Blanc de Blancs 2018 | Chardonnay | Brut | 12.5% | [delamotte](https://www.champagne-delamotte.com/en/products/blanc-de-blancs-vintage-2018) |  |
 | 20 | Deutz — Brut Classic | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12% | [theliquorbarn](https://theliquorbarn.com/products/deutz-brut-classic-champagne-750ml) |  |
 | 21 | Egly-Ouriet — Grand Cru Brut Tradition | Pinot Noir, Chardonnay | Brut | 12.5% | [depanneurwines](https://www.depanneurwines.com/products/egly-ouriet-champagne-extra-brut-grand-cru-nv-750ml-12-5-abv) | ⚠ recent releases relabelled 'Extra Brut Grand Cru' — verify |

@@ -1507,7 +1507,7 @@
          "producer": "L'Hoste Père & Fils",
          "price": 97,
          "insight": {
-          "grape": "Pinot Noir, Chardonnay",
+          "grape": "Chardonnay 90%, Pinot Noir 10%",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne_rose",
@@ -1523,7 +1523,8 @@
            "fruit_desserts"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "12",
+          "dosage": "Brut"
          }
         },
         {
