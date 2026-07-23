@@ -1242,7 +1242,7 @@
          "producer": "Movia",
          "price": 70,
          "insight": {
-          "grape": "Pinot Nero",
+          "grape": "Pinot Noir",
           "region": "Goriška brda",
           "country": "SI",
           "style": "sparkling_rose",
@@ -6448,7 +6448,7 @@
          "producer": "Alois Lageder",
          "price": 110,
          "insight": {
-          "grape": "Pinot Nero",
+          "grape": "Pinot Noir",
           "region": "Alto Adige",
           "country": "IT",
           "style": "red_light",

@@ -564,8 +564,28 @@ function zhTokens(str, map) {
     })
     .join("、");
 }
+/* Italian-only grape name overrides: the canonical stored name is the French/
+   international form (e.g. "Pinot Noir"); in the Italian view it shows as the
+   Italian name. Other languages keep the canonical name. */
+const IT_GRAPE = { "Pinot Noir": "Pinot Nero" };
+function itTokens(str) {
+  return str
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((tok) => {
+      const m = tok.match(/^(.*?)\s*(\d+(?:[.,]\d+)?\s*%)$/);
+      const name = m ? m[1].trim() : tok;
+      const pct = m ? " " + m[2].replace(/\s+/g, "") : "";
+      return IT_GRAPE[name] ? IT_GRAPE[name] + pct : tok;
+    })
+    .join(", ");
+}
 function localizeGrape(str) {
-  return lang === "zh" && str && typeof ZH_GRAPE !== "undefined" ? zhTokens(str, ZH_GRAPE) : str;
+  if (!str) return str;
+  if (lang === "zh" && typeof ZH_GRAPE !== "undefined") return zhTokens(str, ZH_GRAPE);
+  if (lang === "it") return itTokens(str);
+  return str;
 }
 function localizeRegion(str) {
   return lang === "zh" && str && typeof ZH_REGION !== "undefined" ? zhTokens(str, ZH_REGION) : str;
