@@ -2074,7 +2074,7 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut"
          },
          "note": {
@@ -2089,6 +2089,17 @@
          },
          "tags": [
           "rare"
+         ],
+         "terroir": "Avize, Cramant, Oger",
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "94"
+          }
          ]
         },
         {
