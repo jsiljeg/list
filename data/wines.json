@@ -1931,9 +1931,10 @@
            "fruit_desserts"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "12",
           "dosage": "Brut"
-         }
+         },
+         "terroir": "Montagne de Reims, Vallée de la Marne"
         },
         {
          "name": "Esprit Nature",

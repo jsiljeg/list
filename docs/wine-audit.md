@@ -67,7 +67,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 25 | Ruppert-Leroy — Papillon | Pinot Noir | Brut Nature | 12% | [glugulp](https://www.glugulp.com/ruppert-leroy-champagne-brut-nature-papillon-en) |  |
 | 26 | Billecart-Salmon — Le Réserve | Chardonnay, Pinot Noir, Pinot Meunier | Extra Brut | 12% | owner | terroir Montagne de Reims/Grande Vallée de la Marne; JS 93 / RP 91 / WE 90 / Jancis 17/20 (owner) |
 | 27 | Billecart-Salmon — Blanc de Blancs Grand Cru | Chardonnay | Brut | 12% | owner | terroir Avize/Chouilly/Cramant/Le Mesnil; Falstaff 94 / RP 93 / JS 93 / Decanter 90 (owner) |
-| 28 | Billecart-Salmon — Le Rosé | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 📷 | — | ABV needs bottle |
+| 28 | Billecart-Salmon — Le Rosé | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12% | owner | terroir Montagne de Reims/Vallée de la Marne (owner) |
 | 29 | Henri Giraud — Esprit Nature | Pinot Noir, Chardonnay | Brut Nature | 📷 | — | ABV needs bottle |
 | 30 | Henri Giraud — Hommage au Pinot Noir | Pinot Noir | Brut | 📷 | — | ABV needs bottle |
 | 31 | Jacques Selosse — Initial Brut | Chardonnay | Brut | 📷 | [wine.com](https://www.wine.com/product/jacques-selosse-initial-blanc-de-blancs-grand-cru-brut/657501) | ~2.7 g/l; ABV not published |
