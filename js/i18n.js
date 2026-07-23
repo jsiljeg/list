@@ -83,7 +83,7 @@ hr: {
   countries: { HR: "Hrvatska", DE: "Njemačka", AT: "Austrija", FR: "Francuska", IT: "Italija", ES: "Španjolska", SI: "Slovenija", US: "SAD", CN: "Kina" },
   styles: {
     sparkling: "Pjenušavo vino", sparkling_rose: "Pjenušavi rosé",
-    champagne: "Champagne · klasični brut", champagne_bdb: "Champagne · Blanc de Blancs",
+    champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs",
     champagne_rose: "Champagne rosé", champagne_prestige: "Prestižni champagne · kompleksan i zreo",
     white_fresh: "Bijelo · svježe i voćno", white_aromatic: "Bijelo · aromatično",
     white_mineral: "Bijelo · mineralno i precizno", white_rich: "Bijelo · bogato i kremasto",
@@ -195,7 +195,7 @@ en: {
   countries: { HR: "Croatia", DE: "Germany", AT: "Austria", FR: "France", IT: "Italy", ES: "Spain", SI: "Slovenia", US: "USA", CN: "China" },
   styles: {
     sparkling: "Sparkling wine", sparkling_rose: "Sparkling rosé",
-    champagne: "Champagne · classic brut", champagne_bdb: "Champagne · Blanc de Blancs",
+    champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs",
     champagne_rose: "Champagne rosé", champagne_prestige: "Prestige champagne · complex and mature",
     white_fresh: "White · fresh and fruity", white_aromatic: "White · aromatic",
     white_mineral: "White · mineral and precise", white_rich: "White · rich and creamy",
@@ -307,7 +307,7 @@ it: {
   countries: { HR: "Croazia", DE: "Germania", AT: "Austria", FR: "Francia", IT: "Italia", ES: "Spagna", SI: "Slovenia", US: "Stati Uniti", CN: "Cina" },
   styles: {
     sparkling: "Spumante", sparkling_rose: "Spumante rosato",
-    champagne: "Champagne · brut classico", champagne_bdb: "Champagne · Blanc de Blancs",
+    champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs",
     champagne_rose: "Champagne rosé", champagne_prestige: "Champagne di prestigio · complesso e maturo",
     white_fresh: "Bianco · fresco e fruttato", white_aromatic: "Bianco · aromatico",
     white_mineral: "Bianco · minerale e preciso", white_rich: "Bianco · ricco e cremoso",
@@ -419,7 +419,7 @@ fr: {
   countries: { HR: "Croatie", DE: "Allemagne", AT: "Autriche", FR: "France", IT: "Italie", ES: "Espagne", SI: "Slovénie", US: "États-Unis", CN: "Chine" },
   styles: {
     sparkling: "Vin effervescent", sparkling_rose: "Effervescent rosé",
-    champagne: "Champagne · brut classique", champagne_bdb: "Champagne · Blanc de Blancs",
+    champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs",
     champagne_rose: "Champagne rosé", champagne_prestige: "Champagne de prestige · complexe et mûr",
     white_fresh: "Blanc · frais et fruité", white_aromatic: "Blanc · aromatique",
     white_mineral: "Blanc · minéral et précis", white_rich: "Blanc · riche et crémeux",
@@ -531,7 +531,7 @@ de: {
   countries: { HR: "Kroatien", DE: "Deutschland", AT: "Österreich", FR: "Frankreich", IT: "Italien", ES: "Spanien", SI: "Slowenien", US: "USA", CN: "China" },
   styles: {
     sparkling: "Schaumwein", sparkling_rose: "Rosé-Schaumwein",
-    champagne: "Champagner · klassischer Brut", champagne_bdb: "Champagner · Blanc de Blancs",
+    champagne: "Champagner", champagne_bdb: "Champagner · Blanc de Blancs",
     champagne_rose: "Rosé-Champagner", champagne_prestige: "Prestige-Champagner · komplex und reif",
     white_fresh: "Weiß · frisch und fruchtig", white_aromatic: "Weiß · aromatisch",
     white_mineral: "Weiß · mineralisch und präzise", white_rich: "Weiß · reich und cremig",
@@ -643,7 +643,7 @@ zh: {
   countries: { HR: "克罗地亚", DE: "德国", AT: "奥地利", FR: "法国", IT: "意大利", ES: "西班牙", SI: "斯洛文尼亚", US: "美国", CN: "中国" },
   styles: {
     sparkling: "起泡酒", sparkling_rose: "桃红起泡酒",
-    champagne: "香槟 · 经典干型", champagne_bdb: "香槟 · 白中白",
+    champagne: "香槟", champagne_bdb: "香槟 · 白中白",
     champagne_rose: "桃红香槟", champagne_prestige: "顶级香槟 · 复杂而成熟",
     white_fresh: "白葡萄酒 · 清新果香", white_aromatic: "白葡萄酒 · 芳香型",
     white_mineral: "白葡萄酒 · 矿物感与精准", white_rich: "白葡萄酒 · 浓郁绵密",
@@ -807,7 +807,7 @@ sl: {
   "styles": {
     "sparkling": "Peneče vino",
     "sparkling_rose": "Peneči rosé",
-    "champagne": "Champagne · klasični brut",
+    "champagne": "Champagne",
     "champagne_bdb": "Champagne · Blanc de Blancs",
     "champagne_rose": "Champagne rosé",
     "champagne_prestige": "Prestižni champagne · kompleksen in zrel",
@@ -1059,7 +1059,7 @@ es: {
   "styles": {
     "sparkling": "Espumoso",
     "sparkling_rose": "Espumoso rosado",
-    "champagne": "Champagne · brut clásico",
+    "champagne": "Champagne",
     "champagne_bdb": "Champagne · Blanc de Blancs",
     "champagne_rose": "Champagne rosado",
     "champagne_prestige": "Champagne de prestigio · complejo y maduro",

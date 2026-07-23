@@ -1303,8 +1303,8 @@
          "producer": "De Sousa",
          "price": 100,
          "insight": {
-          "grape": "Chardonnay, Pinot Noir, Pinot Meunier",
-          "region": "Avize, Champagne",
+          "grape": "Chardonnay 50%, Pinot Noir 30%, Pinot Meunier 20%",
+          "region": "Vallée de la Marne, Coteaux du Vitryat",
           "country": "FR",
           "style": "champagne",
           "body": "medium",
@@ -1319,9 +1319,15 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "93"
+          }
+         ]
         },
         {
          "name": "Cuvée 3A Grand Cru",
