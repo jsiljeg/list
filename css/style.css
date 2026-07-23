@@ -477,13 +477,25 @@ body {
 }
 .footer p + p { margin-top: .4rem; }
 
-/* desktop: search on its own row, the four tool buttons in a compact 2x2 grid
-   below it (like tablet/phone). Category chips already wrap on desktop, so
-   they stay fully visible — no horizontal sliding needed. */
+/* desktop: editorial header — a centred pill search on its own row, and the
+   four mode buttons as one connected segmented control below it. Flex-wrap
+   (search flex-basis 100%) drops the buttons to a second row; a -1px overlap
+   collapses adjacent borders into single hairline dividers, and only the first
+   & last button are rounded, so the four read as one pill. Category chips
+   already wrap on desktop — no horizontal sliding needed. */
 @media (min-width: 1025px) {
-  .header-tools { max-width: 560px; gap: .7rem; }
-  .search { flex: 1 1 100%; }
-  .tool-btn { flex: 1 1 calc(50% - .35rem); justify-content: center; }
+  .header-tools { column-gap: 0; row-gap: 1.05rem; }
+  .search {
+    flex: 1 1 100%; max-width: 520px; margin: 0 auto;
+    border-radius: 999px; text-align: center;
+  }
+  .header-tools .tool-btn:not(.active) {
+    background: rgba(36, 34, 32, .5); color: var(--gold-soft); border-color: var(--line);
+  }
+  .header-tools .tool-btn:not(.active):hover { color: var(--gold); background: rgba(201, 169, 97, .10); }
+  .tool-btn { border-radius: 0; margin-left: -1px; }
+  .tool-btn:first-of-type { border-radius: 999px 0 0 999px; margin-left: 0; }
+  .tool-btn:last-of-type { border-radius: 0 999px 999px 0; }
 }
 
 /* tablet + phone: one clean, swipeable row of category chips (Vinske regije
