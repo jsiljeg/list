@@ -1430,7 +1430,13 @@
           "temp": "8–10",
           "alcohol": "",
           "dosage": "Brut"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "90"
+          }
+         ]
         },
         {
          "name": "L'Année Millésime Grand Cru Blanc de Blancs 2017",

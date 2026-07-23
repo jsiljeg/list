@@ -54,7 +54,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 12 | De Sousa — Chemins des Terroirs | Chardonnay 50%, Pinot Noir 30%, Pinot Meunier 20% | Brut | 12.5% | owner | region→Vallée de la Marne/Coteaux du Vitryat; JS 93 (owner) |
 | 13 | De Sousa — Cuvée 3A Grand Cru | Chardonnay, Pinot Noir | Extra Brut | 12.5% | [premiumgrandscrus](https://www.premiumgrandscrus.com/en/extra-brut/229-de-sousa-cuvee-3a-champagne-grand-cru.html) | ratings JS 95 / WA 92 / Jancis 16+/20 (owner) |
 | 14 | De Sousa — Mycorhize Grand Cru | Chardonnay | Extra Brut | 12.5% | [wine.com](https://www.wine.com/product/de-sousa-mycorhize-blanc-de-blancs-extra-brut-grand-cru/251495) |  |
-| 15 | Pertois-Moriset — L'Assemblage Brut | Chardonnay, Pinot Noir | Brut | 📷 | — | ABV needs bottle |
+| 15 | Pertois-Moriset — L'Assemblage Brut | Chardonnay, Pinot Noir | Brut | 📷 | — | ABV needs bottle; Falstaff 90 (owner) |
 | 16 | Pertois-Moriset — L'Année Millésime Grand Cru Blanc de Blancs 2017 | Chardonnay | Extra Brut | 📷 | [premiumgrandscrus](https://www.premiumgrandscrus.com/en/champagne-blanc-de-blancs/3795-pertois-moriset-oger-2017-champagne-grand-cru.html) | house style Extra Brut |
 | 17 | Pertois-Moriset — La Collection Rosé & Blanc Grand Cru | Chardonnay, Pinot Noir | 📷 | 📷 | — | needs bottle |
 | 18 | L'Hoste Père & Fils — L'Hoste Rosé | Pinot Noir, Chardonnay | 📷 | 📷 | — | needs bottle |
