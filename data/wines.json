@@ -1341,7 +1341,8 @@
            "critic": "James Suckling",
            "score": "93"
           }
-         ]
+         ],
+         "terroir": "Vallée de la Marne, Coteaux du Vitryat"
         },
         {
          "name": "Cuvée 3A Grand Cru",
@@ -1391,7 +1392,8 @@
            "critic": "Jancis Robinson",
            "score": "16+/20"
           }
-         ]
+         ],
+         "terroir": "Avize, Aÿ, Ambonnay"
         },
         {
          "name": "Mycorhize Grand Cru",
@@ -1419,7 +1421,8 @@
           "temp": "12–14",
           "alcohol": "12.5",
           "dosage": "Extra Brut"
-         }
+         },
+         "terroir": "Avize"
         },
         {
          "name": "L'Assemblage Brut",
@@ -1477,7 +1480,7 @@
           "alcohol": "12.5",
           "dosage": "Extra Brut"
          },
-         "terroir": "Côte des Blancs, Champagne",
+         "terroir": "Côte des Blancs",
          "recommended": true,
          "note": {
           "hr": "Kreda Le Mesnila u jednoj berbi — blanc de blancs napet kao struna, čist kao izvor.",
@@ -1514,7 +1517,7 @@
           "alcohol": "12",
           "dosage": "Brut Nature"
          },
-         "terroir": "Côte des Blancs, Bouzy, Champagne"
+         "terroir": "Côte des Blancs, Bouzy"
         },
         {
          "name": "L'Hoste Rosé",
