@@ -164,7 +164,7 @@
          "producer": "Henri Giraud",
          "price": 16,
          "insight": {
-          "grape": "Pinot Noir, Chardonnay",
+          "grape": "Pinot Noir 80%, Chardonnay 20%",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne",
@@ -181,7 +181,7 @@
            "poultry"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut Nature"
          },
          "recommended": true,
@@ -194,7 +194,17 @@
           "zh": "阿伊村与橡木桶——不加糖、不戴面具的香槟，只余这片土地的灵魂。",
           "sl": "Aÿ in hrastov sod — šampanjec brez sladkorja in brez maske, le duh kraja.",
           "es": "Aÿ y la barrica de roble — un Champagne sin azúcar y sin máscara, solo el espíritu del lugar."
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "92"
+          },
+          {
+           "critic": "Decanter",
+           "score": "91"
+          }
+         ]
         }
        ]
       }
@@ -1959,7 +1969,7 @@
          "producer": "Henri Giraud",
          "price": 120,
          "insight": {
-          "grape": "Pinot Noir, Chardonnay",
+          "grape": "Pinot Noir 80%, Chardonnay 20%",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne",
@@ -1976,7 +1986,7 @@
            "poultry"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut Nature"
          },
          "recommended": true,
@@ -1989,7 +1999,17 @@
           "zh": "阿伊村与橡木桶——不加糖、不戴面具的香槟，只余这片土地的灵魂。",
           "sl": "Aÿ in hrastov sod — šampanjec brez sladkorja in brez maske, le duh kraja.",
           "es": "Aÿ y la barrica de roble — un Champagne sin azúcar y sin máscara, solo el espíritu del lugar."
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "92"
+          },
+          {
+           "critic": "Decanter",
+           "score": "91"
+          }
+         ]
         },
         {
          "name": "Hommage au Pinot Noir",

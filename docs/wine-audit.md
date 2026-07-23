@@ -68,7 +68,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 26 | Billecart-Salmon — Le Réserve | Chardonnay, Pinot Noir, Pinot Meunier | Extra Brut | 12% | owner | terroir Montagne de Reims/Grande Vallée de la Marne; JS 93 / RP 91 / WE 90 / Jancis 17/20 (owner) |
 | 27 | Billecart-Salmon — Blanc de Blancs Grand Cru | Chardonnay | Brut | 12% | owner | terroir Avize/Chouilly/Cramant/Le Mesnil; Falstaff 94 / RP 93 / JS 93 / Decanter 90 (owner) |
 | 28 | Billecart-Salmon — Le Rosé | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12% | owner | terroir Montagne de Reims/Vallée de la Marne; Decanter 93 / Vinous 92 / RP 92 / Jancis 16.5/20 (owner) |
-| 29 | Henri Giraud — Esprit Nature | Pinot Noir, Chardonnay | Brut Nature | 📷 | — | ABV needs bottle |
+| 29 | Henri Giraud — Esprit Nature | Pinot Noir 80%, Chardonnay 20% | Brut Nature | 12.5% | owner | RP 92 / Decanter 91 (owner) |
 | 30 | Henri Giraud — Hommage au Pinot Noir | Pinot Noir | Brut | 📷 | — | ABV needs bottle |
 | 31 | Jacques Selosse — Initial Brut | Chardonnay | Brut | 📷 | [wine.com](https://www.wine.com/product/jacques-selosse-initial-blanc-de-blancs-grand-cru-brut/657501) | ~2.7 g/l; ABV not published |
 | 32 | Jacques Selosse — Version Originale | Chardonnay | Extra Brut | 📷 | [bordeauxindex](https://bordeauxindex.com/fine-wine/france/champagne/selo-1000) | ~1.2 g/l |
