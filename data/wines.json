@@ -2019,7 +2019,7 @@
           "grape": "Pinot Noir",
           "region": "Champagne",
           "country": "FR",
-          "style": "champagne",
+          "style": "champagne_bdn",
           "body": "full",
           "aromas": [
            "red_currant",
@@ -2030,12 +2030,27 @@
           "pairings": [
            "poultry",
            "white_meat",
-           "cheese_hard"
+           "cheese_hard",
+           "chocolate"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut"
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "96"
+          },
+          {
+           "critic": "Vinous",
+           "score": "93"
+          },
+          {
+           "critic": "Tim Atkin",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Initial Brut",

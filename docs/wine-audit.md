@@ -69,7 +69,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 27 | Billecart-Salmon — Blanc de Blancs Grand Cru | Chardonnay | Brut | 12% | owner | terroir Avize/Chouilly/Cramant/Le Mesnil; Falstaff 94 / RP 93 / JS 93 / Decanter 90 (owner) |
 | 28 | Billecart-Salmon — Le Rosé | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12% | owner | terroir Montagne de Reims/Vallée de la Marne; Decanter 93 / Vinous 92 / RP 92 / Jancis 16.5/20 (owner) |
 | 29 | Henri Giraud — Esprit Nature | Pinot Noir 80%, Chardonnay 20% | Brut Nature | 12.5% | owner | RP 92 / Decanter 91 (owner) |
-| 30 | Henri Giraud — Hommage au Pinot Noir | Pinot Noir | Brut | 📷 | — | ABV needs bottle |
+| 30 | Henri Giraud — Hommage au Pinot Noir | Pinot Noir | Brut | 12.5% | owner | Blanc de Noirs style; +chocolate pairing; Falstaff 96 / Vinous 93 / Tim Atkin 92 (owner) |
 | 31 | Jacques Selosse — Initial Brut | Chardonnay | Brut | 📷 | [wine.com](https://www.wine.com/product/jacques-selosse-initial-blanc-de-blancs-grand-cru-brut/657501) | ~2.7 g/l; ABV not published |
 | 32 | Jacques Selosse — Version Originale | Chardonnay | Extra Brut | 📷 | [bordeauxindex](https://bordeauxindex.com/fine-wine/france/champagne/selo-1000) | ~1.2 g/l |
 | 33 | Jacques Selosse — Les Carelles | Chardonnay | Extra Brut | 📷 | [cellartracker](https://www.cellartracker.com/wine.asp?iWine=2781223) | 0–1.5 g/l |
