@@ -1463,6 +1463,7 @@
           "alcohol": "12.5",
           "dosage": "Extra Brut"
          },
+         "terroir": "Côte des Blancs, Champagne",
          "recommended": true,
          "note": {
           "hr": "Kreda Le Mesnila u jednoj berbi — blanc de blancs napet kao struna, čist kao izvor.",
@@ -1498,7 +1499,8 @@
           "temp": "8–10",
           "alcohol": "12",
           "dosage": "Brut Nature"
-         }
+         },
+         "terroir": "Côte des Blancs, Bouzy, Champagne"
         },
         {
          "name": "L'Hoste Rosé",
