@@ -1934,7 +1934,25 @@
           "alcohol": "12",
           "dosage": "Brut"
          },
-         "terroir": "Montagne de Reims, Vallée de la Marne"
+         "terroir": "Montagne de Reims, Vallée de la Marne",
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "93"
+          },
+          {
+           "critic": "Vinous",
+           "score": "92"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "92"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "16.5/20"
+          }
+         ]
         },
         {
          "name": "Esprit Nature",
