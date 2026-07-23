@@ -61,7 +61,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 19 | Delamotte — Blanc de Blancs 2018 | Chardonnay | Extra Brut | 12.5% | owner | Côte des Blancs villages; 10–12°C; WS 95 / JD 94 / RP 92 / JS 92 / Vinous 91 (owner) |
 | 20 | Deutz — Brut Classic | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12% | owner | region 3 Champagne sub-zones; JS 93 / WE 92 / RP 90 (owner) |
 | 21 | Egly-Ouriet — Grand Cru Brut Tradition | Pinot Noir 70%, Chardonnay 30% | Brut | 12.5% | owner | terroir Ambonnay/Verzenay/Bouzy; JD 94 / RP 93 / JS 93 (owner) — Brut confirmed |
-| 22 | Louis Roederer — Cristal 2015 | Pinot Noir, Chardonnay | Brut | 12.5% | [whwc](https://whwc.com/roederer-louis-brut-champagne-cristal-2015/) | 60/40 |
+| 22 | Louis Roederer — Cristal 2015 | Pinot Noir 60%, Chardonnay 40% | Brut | 12.5% | owner | terroir 7 GC villages; WE 98 / JS 97 / WS 96 / RP 95+ / Jancis 17.5+/20 (owner) |
 | 23 | Vouette & Sorbée — Textures Brut Nature | Pinot Blanc | Brut Nature | 12% | [glugulp](https://www.glugulp.com/vouette-sorbee-champagne-brut-nature-textures-en) |  |
 | 24 | Ruppert-Leroy — Martin Fontaine 2019 | Chardonnay | Brut Nature | 📷 | — |  |
 | 25 | Ruppert-Leroy — Papillon | Pinot Noir | Brut Nature | 12% | [glugulp](https://www.glugulp.com/ruppert-leroy-champagne-brut-nature-papillon-en) |  |

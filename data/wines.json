@@ -1688,7 +1688,7 @@
          "producer": "Louis Roederer",
          "price": 540,
          "insight": {
-          "grape": "Pinot Noir, Chardonnay",
+          "grape": "Pinot Noir 60%, Chardonnay 40%",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
@@ -1716,12 +1716,25 @@
           {
            "critic": "James Suckling",
            "score": "97"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "95+"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17.5+/20"
           }
          ],
          "tags": [
           "excellent_vintage",
           "rare"
-         ]
+         ],
+         "terroir": "Verzenay, Verzy, Beaumont-sur-Vesle, Aÿ, Avize, Le Mesnil-sur-Oger, Cramant"
         },
         {
          "name": "Textures Brut Nature",

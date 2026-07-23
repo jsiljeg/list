@@ -196,6 +196,8 @@
     "Ambonnay": "昂博纳伊",
     "Bouzy": "布齐",
     "Verzenay": "韦泽奈",
+    "Verzy": "韦尔济",
+    "Beaumont-sur-Vesle": "博蒙-叙尔-韦勒",
     "Ambonnay – Champagne": "昂博纳伊-香槟",
     "Avize": "阿维兹",
     "Chouilly": "舒伊",
