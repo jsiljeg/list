@@ -262,4 +262,33 @@
     "Dalmatinske autohtone sorte": 1,
     "Španjolske sorte": 1
   };
+
+  /* Icon producers & cuvées — ONLY genuine, market-established Chinese names
+   * (never invented). Unlike grapes/regions these are proper brand names, so
+   * the Latin (what's actually on the label) stays PRIMARY and the Chinese is
+   * appended as a gloss: Latin（中文）. Producers not listed here keep bare
+   * Latin — that is the convention on premium Chinese lists.
+   * ZH_PRODUCER: exact match on the full producer string.
+   * ZH_WINE: substring match on the cuvée name (which also carries a vintage). */
+  g.ZH_PRODUCER = {
+    "Moët & Chandon": "酩悦",
+    "Krug": "库克",
+    "Salon": "沙龙",
+    "Louis Roederer": "路易王妃",
+    "Jacques Selosse": "塞洛斯",
+    "Angelo Gaja": "嘉雅",
+    "Antinori": "安蒂诺里",
+    "Giuseppe Quintarelli": "昆达雷利",
+    "Egon Müller Scharzhof": "伊慕",
+    "Domaine Armand Rousseau Père & Fils": "阿曼·卢梭"
+  };
+  g.ZH_WINE = {
+    "Sassicaia": "西施佳雅",
+    "Tignanello": "天娜",
+    "Solaia": "索拉雅",
+    "Ornellaia": "奥纳亚",
+    "Cristal": "水晶",
+    "Dom Pérignon": "唐培里侬",
+    "Château d'Yquem": "滴金"
+  };
 })(window);

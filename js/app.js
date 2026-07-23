@@ -261,9 +261,11 @@ function legendHtml() {
 const itemName = (item) => (item.nameI18n && item.nameI18n[lang]) || item.name;
 
 function nameHtml(item) {
-  const marked = esc(itemName(item)).replace(/((?:19|20)\d{2})/, '<span class="vintage">$1</span>');
+  const marked = esc(itemName(item)).replace(/\b((?:19|20)\d{2})\b/, '<span class="vintage">$1</span>');
+  const gloss = wineZh(itemName(item));
   const marks = markerIcons(item);
   return marked +
+    (gloss ? ` <span class="zh-gloss">（${gloss}）</span>` : "") +
     (marks ? ` <span class="markers">${marks}</span>` : "") +
     (item.new ? ` <span class="new-badge">${esc(T().ui.newBadge)}</span>` : "");
 }
@@ -282,7 +284,7 @@ function itemHtml(item, ref, context, showFlag) {
       ${priceHtml(item)}
       ${clickable ? '<span class="item-chevron">›</span>' : ""}
     </span>
-    ${item.producer || showFlag ? `<span class="item-producer">${esc(item.producer || "")}${showFlag ? itemFlag(item) : ""}</span>` : ""}
+    ${item.producer || showFlag ? `<span class="item-producer">${esc(item.producer || "")}${producerZh(item.producer) ? `<span class="zh-gloss">（${producerZh(item.producer)}）</span>` : ""}${showFlag ? itemFlag(item) : ""}</span>` : ""}
     ${context ? `<span class="search-context">${esc(context)}</span>` : ""}
   </${clickable ? "button" : "div"}>`;
 }
@@ -471,8 +473,8 @@ function openDetail(ref, back) {
   $("modal-body").innerHTML = `
     ${back ? `<button class="detail-back" type="button">${esc(t.helper.backToWines)}</button>` : ""}
     ${glass ? `<div class="detail-glass">${GLASS_ICONS[glass]}</div>` : ""}
-    <div class="detail-name">${esc(itemName(item))}</div>
-    ${item.producer ? `<div class="detail-producer">${esc(item.producer)}</div>` : ""}
+    <div class="detail-name">${esc(itemName(item))}${wineZh(itemName(item)) ? ` <span class="zh-gloss">（${wineZh(itemName(item))}）</span>` : ""}</div>
+    ${item.producer ? `<div class="detail-producer">${esc(item.producer)}${producerZh(item.producer) ? ` <span class="zh-gloss">（${producerZh(item.producer)}）</span>` : ""}</div>` : ""}
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
     ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
     ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
@@ -562,6 +564,19 @@ function localizeGrape(str) {
 }
 function localizeRegion(str) {
   return lang === "zh" && str && typeof ZH_REGION !== "undefined" ? zhTokens(str, ZH_REGION) : str;
+}
+/* Icon producer/cuvée names: keep Latin PRIMARY (it's what's on the label) and
+   append the established Chinese as a gloss — Latin（中文）. Only in the zh view,
+   only for curated names in ZH_PRODUCER / ZH_WINE. Returns the gloss text (中文)
+   or "" so callers can format/escape as they like. */
+function producerZh(str) {
+  if (lang !== "zh" || !str || typeof ZH_PRODUCER === "undefined") return "";
+  return ZH_PRODUCER[str] || "";
+}
+function wineZh(name) {
+  if (lang !== "zh" || !name || typeof ZH_WINE === "undefined") return "";
+  for (const k in ZH_WINE) if (name.indexOf(k) !== -1) return ZH_WINE[k];
+  return "";
 }
 function glassFor(style, grape) {
   if (!style) return null;

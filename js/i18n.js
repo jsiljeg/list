@@ -55,7 +55,7 @@ hr: {
     changeBudget: "Promijeni budžet"
   },
   story: {
-    title: "Theatrium vinski program — Filho izdanje",
+    title: "Theatrium vinski program — Filhov način",
     paras: [
       "Vinska karta koju držite pred sobom nije katalog, nije popis, nije inventar. To je odraz jedne filozofije, jednog puta i jednog pogleda na vino. Filho ju je gradio godinama — kroz putovanja, razgovore i osobna iskustva u vinogradima, kroz stotine degustacija i nebrojene susrete s vinarima koji stvaraju vina koja nisu samo pića, nego priče, krajolici i emocije.",
       "Ova karta je rezultat izbora, a ne ponude. Svako je vino ovdje zato što je nešto pokazalo: karakter, preciznost, čistoću, stil ili osobnost vinara. Svaka berba je odabrana zato što poštuje terroir, godinu, klimatsku sliku i rukopis podruma.",
