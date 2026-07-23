@@ -2688,12 +2688,27 @@
           "pairings": [
            "solo"
           ],
-          "temp": "10–12",
-          "alcohol": "",
+          "temp": "9–12",
+          "alcohol": "12",
           "dosage": "Brut"
          },
          "tags": [
           "rare"
+         ],
+         "terroir": "Clos d'Ambonnay",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "97"
+          },
+          {
+           "critic": "Jeannie Cho Lee",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "92"
+          }
          ]
         }
        ]
