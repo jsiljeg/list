@@ -123,7 +123,7 @@ hr: {
     risotto: "rižoto", salads: "salate", seafood: "plodovi mora", shellfish: "školjke i rakovi",
     solo: "samostalno, za posebne trenutke", spicy: "začinjena jela", steak: "odrezak",
     stews: "gulaši i složena jela", sushi: "sushi", truffles: "jela s tartufima",
-    veal: "teletina", lobster: "jastog", pigeon: "golub", green_tomato_sorbet: "sorbet od zelene rajčice", vegetables: "povrće", white_fish: "bijela riba", white_meat: "bijelo meso"
+    veal: "teletina", lobster: "jastog", pigeon: "golub", green_tomato_sorbet: "sorbet od zelene rajčice", salmon_zucchini_tart: "tart od lososa s tikvicama", goat_cheese_veg_tiramisu: "kozji sir ili povrtni tiramisu", scallops_basil_mustard: "jakobove kapice ili škampi u umaku od bosiljka i senfa", vegetables: "povrće", white_fish: "bijela riba", white_meat: "bijelo meso"
   }
 },
 en: {
@@ -235,7 +235,7 @@ en: {
     risotto: "risotto", salads: "salads", seafood: "seafood", shellfish: "shellfish",
     solo: "on its own, for special moments", spicy: "spicy dishes", steak: "steak",
     stews: "stews", sushi: "sushi", truffles: "truffle dishes",
-    veal: "veal", lobster: "lobster", pigeon: "pigeon", green_tomato_sorbet: "green tomato sorbet", vegetables: "vegetables", white_fish: "white fish", white_meat: "white meat"
+    veal: "veal", lobster: "lobster", pigeon: "pigeon", green_tomato_sorbet: "green tomato sorbet", salmon_zucchini_tart: "salmon tart with zucchini", goat_cheese_veg_tiramisu: "goat cheese or vegetable tiramisu", scallops_basil_mustard: "scallops or shrimp in basil-mustard sauce", vegetables: "vegetables", white_fish: "white fish", white_meat: "white meat"
   }
 },
 it: {
@@ -347,7 +347,7 @@ it: {
     risotto: "risotto", salads: "insalate", seafood: "frutti di mare", shellfish: "crostacei",
     solo: "da meditazione", spicy: "piatti speziati", steak: "bistecca",
     stews: "stufati", sushi: "sushi", truffles: "piatti al tartufo",
-    veal: "vitello", lobster: "aragosta", pigeon: "piccione", green_tomato_sorbet: "sorbetto al pomodoro verde", vegetables: "verdure", white_fish: "pesce bianco", white_meat: "carni bianche"
+    veal: "vitello", lobster: "aragosta", pigeon: "piccione", green_tomato_sorbet: "sorbetto al pomodoro verde", salmon_zucchini_tart: "tart di salmone con zucchine", goat_cheese_veg_tiramisu: "formaggio di capra o tiramisù di verdure", scallops_basil_mustard: "capesante o gamberi in salsa di basilico e senape", vegetables: "verdure", white_fish: "pesce bianco", white_meat: "carni bianche"
   }
 },
 fr: {
@@ -459,7 +459,7 @@ fr: {
     risotto: "risotto", salads: "salades", seafood: "fruits de mer", shellfish: "coquillages et crustacés",
     solo: "à déguster seul, pour les grands moments", spicy: "plats épicés", steak: "steak",
     stews: "plats mijotés", sushi: "sushi", truffles: "plats à la truffe",
-    veal: "veau", lobster: "homard", pigeon: "pigeon", green_tomato_sorbet: "sorbet à la tomate verte", vegetables: "légumes", white_fish: "poisson blanc", white_meat: "viandes blanches"
+    veal: "veau", lobster: "homard", pigeon: "pigeon", green_tomato_sorbet: "sorbet à la tomate verte", salmon_zucchini_tart: "tarte au saumon et courgettes", goat_cheese_veg_tiramisu: "fromage de chèvre ou tiramisu de légumes", scallops_basil_mustard: "Saint-Jacques ou crevettes, sauce basilic-moutarde", vegetables: "légumes", white_fish: "poisson blanc", white_meat: "viandes blanches"
   }
 },
 de: {
@@ -571,7 +571,7 @@ de: {
     risotto: "Risotto", salads: "Salate", seafood: "Meeresfrüchte", shellfish: "Schalentiere",
     solo: "pur genießen, für besondere Momente", spicy: "scharfe Gerichte", steak: "Steak",
     stews: "Schmorgerichte", sushi: "Sushi", truffles: "Trüffelgerichte",
-    veal: "Kalb", lobster: "Hummer", pigeon: "Taube", green_tomato_sorbet: "Sorbet von grüner Tomate", vegetables: "Gemüse", white_fish: "weißer Fisch", white_meat: "helles Fleisch"
+    veal: "Kalb", lobster: "Hummer", pigeon: "Taube", green_tomato_sorbet: "Sorbet von grüner Tomate", salmon_zucchini_tart: "Lachstarte mit Zucchini", goat_cheese_veg_tiramisu: "Ziegenkäse oder Gemüse-Tiramisu", scallops_basil_mustard: "Jakobsmuscheln oder Garnelen in Basilikum-Senf-Sauce", vegetables: "Gemüse", white_fish: "weißer Fisch", white_meat: "helles Fleisch"
   }
 },
 zh: {
@@ -683,7 +683,7 @@ zh: {
     risotto: "烩饭", salads: "沙拉", seafood: "海鲜", shellfish: "贝类与甲壳类",
     solo: "单独细品，享受特别时刻", spicy: "辛辣菜肴", steak: "牛排",
     stews: "炖菜", sushi: "寿司", truffles: "松露菜肴",
-    veal: "小牛肉", lobster: "龙虾", pigeon: "乳鸽", green_tomato_sorbet: "青番茄雪葩", vegetables: "蔬菜", white_fish: "白身鱼", white_meat: "白肉"
+    veal: "小牛肉", lobster: "龙虾", pigeon: "乳鸽", green_tomato_sorbet: "青番茄雪葩", salmon_zucchini_tart: "西葫芦三文鱼挞", goat_cheese_veg_tiramisu: "山羊奶酪或蔬菜提拉米苏", scallops_basil_mustard: "扇贝或虾配罗勒芥末酱", vegetables: "蔬菜", white_fish: "白身鱼", white_meat: "白肉"
   }
 },
 sl: {
@@ -945,6 +945,9 @@ sl: {
     "lobster": "jastog",
     "pigeon": "golob",
     "green_tomato_sorbet": "sorbet iz zelenega paradižnika",
+    "salmon_zucchini_tart": "lososova tortica z bučkami",
+    "goat_cheese_veg_tiramisu": "kozji sir ali zelenjavni tiramisu",
+    "scallops_basil_mustard": "pokrovače ali škampi v omaki iz bazilike in gorčice",
     "vegetables": "zelenjava",
     "white_fish": "bela riba",
     "white_meat": "belo meso"
@@ -1209,6 +1212,9 @@ es: {
     "lobster": "bogavante",
     "pigeon": "pichón",
     "green_tomato_sorbet": "sorbete de tomate verde",
+    "salmon_zucchini_tart": "tarta de salmón con calabacín",
+    "goat_cheese_veg_tiramisu": "queso de cabra o tiramisú de verduras",
+    "scallops_basil_mustard": "vieiras o gambas en salsa de albahaca y mostaza",
     "vegetables": "verduras",
     "white_fish": "pescado blanco",
     "white_meat": "carne blanca"
