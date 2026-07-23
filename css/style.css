@@ -142,7 +142,29 @@ body {
   font-family: var(--serif); font-style: italic; color: var(--gold-soft);
   font-size: 1.05rem; margin: -.2rem 0 1.1rem; text-align: center;
 }
-.lang-switch { position: absolute; top: .7rem; right: 1rem; z-index: 3; }
+/* top-right corner group: search icon + language switch */
+.header-actions { position: absolute; top: .7rem; right: 1rem; z-index: 3; display: flex; align-items: center; gap: .5rem; }
+.lang-switch { display: inline-flex; }
+.search-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 33px; height: 33px;
+  background: rgba(22,21,19,.6); border: 1px solid var(--line); border-radius: 999px;
+  color: var(--gold-soft); cursor: pointer;
+  transition: color .15s, border-color .15s;
+}
+.search-toggle:hover, .search-toggle:focus-visible, .search-toggle.active { color: var(--text); border-color: var(--gold); outline: none; }
+.search-toggle svg { width: 16px; height: 16px; }
+/* collapsible search bar (revealed by the corner icon) */
+.search-bar { display: none; }
+.search-bar.open { display: flex; align-items: center; gap: .5rem; max-width: 640px; margin: .8rem auto 0; animation: search-in .16s ease; }
+.search-bar .search { flex: 1; }
+.search-close {
+  flex: none; width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px;
+  color: var(--text-dim); font-size: 1.05rem; cursor: pointer; transition: color .15s, border-color .15s;
+}
+.search-close:hover, .search-close:focus-visible { color: var(--text); border-color: var(--gold); outline: none; }
+@keyframes search-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 .lang-current {
   display: inline-flex; align-items: center; gap: .38rem;
   background: rgba(22,21,19,.6); border: 1px solid var(--line); border-radius: 999px;
@@ -489,12 +511,8 @@ body {
    & last button are rounded, so the four read as one pill. Category chips
    already wrap on desktop — no horizontal sliding needed. */
 @media (min-width: 1025px) {
-  /* stack the two rows: centred pill search, then the segmented button group */
-  .header-tools { flex-direction: column; align-items: center; gap: 1.05rem; }
-  .search {
-    width: 100%; max-width: 520px;
-    border-radius: 999px; text-align: center;
-  }
+  /* just the segmented button group now (search moved to the corner icon) */
+  .header-tools { flex-direction: column; align-items: center; }
   /* the four buttons become one connected pill: no gaps, -1px border overlap
      collapses adjacent borders into single hairline dividers, ends rounded */
   .tool-group { display: inline-flex; flex-wrap: nowrap; }
@@ -523,9 +541,8 @@ body {
   .nav button { flex: none; }
   .nav button[data-sec="__regions"] { order: 99; }
 
-  /* tablet header like mobile: search on its own row, four buttons in a 2x2 grid */
+  /* tablet header: four mode buttons in a 2x2 grid (search is a corner icon) */
   .header-tools { gap: .5rem; }
-  .search { flex: 1 1 100%; }
   .tool-btn { flex: 1 1 calc(50% - .3rem); justify-content: center; }
 }
 
@@ -554,12 +571,12 @@ body {
   .header-logo { width: 120px; }
   .header-subtitle { display: none; }
   .header-tools { flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
-  .search { flex: 1 1 100%; min-height: 42px; }        /* search on its own row */
+  .search { min-height: 42px; }
   .tool-btn {                                          /* four equal buttons in a 2x2 grid */
     flex: 1 1 calc(50% - .25rem); justify-content: center; min-height: 48px;
     padding: .3rem .5rem; gap: .35rem; font-size: .8rem; line-height: 1.15; text-align: center;
   }
-  .lang-switch { top: .5rem; right: .7rem; }
+  .header-actions { top: .5rem; right: .7rem; }
   .lang-current { padding: .28rem .42rem; }
   .lang-current .lang-name { display: none; }          /* globe only on phones */
 

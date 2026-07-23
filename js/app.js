@@ -729,7 +729,28 @@ $("search").addEventListener("input", () => {
 });
 $("modal-close").addEventListener("click", closeModal);
 $("modal-backdrop").addEventListener("click", closeModal);
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+/* search: revealed by the corner icon; close via ✕ / Esc / the icon */
+function openSearch() {
+  $("search-bar").classList.add("open");
+  $("search-toggle").classList.add("active");
+  $("search").focus();
+}
+function closeSearch() {
+  $("search-bar").classList.remove("open");
+  $("search-toggle").classList.remove("active");
+  if ($("search").value) { $("search").value = ""; renderContent(); }
+}
+$("search-toggle").addEventListener("click", () =>
+  $("search-bar").classList.contains("open") ? closeSearch() : openSearch()
+);
+$("search-close").addEventListener("click", closeSearch);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  if (modalOpen) { closeModal(); return; }
+  if ($("search-bar").classList.contains("open")) closeSearch();
+});
 
 /* Swipe the wine sheet away to dismiss (phones): drag down when already at
    the top, or up when already at the bottom (you finished reading and keep

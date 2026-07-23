@@ -38,17 +38,23 @@
 <!-- Main app -->
 <div id="app" class="app hidden">
   <header class="header">
-    <div id="lang-switch" class="lang-switch"></div>
+    <div class="header-actions">
+      <button id="search-toggle" class="search-toggle" type="button" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.2-4.2"/></svg></button>
+      <div id="lang-switch" class="lang-switch"></div>
+    </div>
     <img class="header-logo" src="assets/theatrium-logo.svg" alt="Theatrium by Filho" id="home-logo">
     <p class="header-subtitle" id="subtitle"></p>
     <div class="header-tools">
-      <input id="search" class="search" type="search" autocomplete="off">
       <div class="tool-group">
         <button id="picks-toggle" class="tool-btn" type="button">★ <span></span></button>
         <button id="rated-toggle" class="tool-btn" type="button">🏆 <span></span></button>
         <button id="pride-toggle" class="tool-btn pride" type="button"><span></span></button>
         <button id="helper-open" class="tool-btn helper" type="button">🍷 <span></span></button>
       </div>
+    </div>
+    <div id="search-bar" class="search-bar">
+      <input id="search" class="search" type="search" autocomplete="off">
+      <button id="search-close" class="search-close" type="button" aria-label="Close search">✕</button>
     </div>
     <nav id="nav" class="nav"></nav>
   </header>
