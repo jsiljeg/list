@@ -55,7 +55,7 @@ hr: {
     changeBudget: "Promijeni budžet"
   },
   story: {
-    title: "Theatrium Wine Program — Filho Edition",
+    title: "Theatrium vinski program — Filho izdanje",
     paras: [
       "Vinska karta koju držite pred sobom nije katalog, nije popis, nije inventar. To je odraz jedne filozofije, jednog puta i jednog pogleda na vino. Filho ju je gradio godinama — kroz putovanja, razgovore i osobna iskustva u vinogradima, kroz stotine degustacija i nebrojene susrete s vinarima koji stvaraju vina koja nisu samo pića, nego priče, krajolici i emocije.",
       "Ova karta je rezultat izbora, a ne ponude. Svako je vino ovdje zato što je nešto pokazalo: karakter, preciznost, čistoću, stil ili osobnost vinara. Svaka berba je odabrana zato što poštuje terroir, godinu, klimatsku sliku i rukopis podruma.",
@@ -275,7 +275,7 @@ it: {
     changeBudget: "Cambia budget"
   },
   story: {
-    title: "Theatrium Wine Program — Filho Edition",
+    title: "Programma vini Theatrium — Edizione Filho",
     paras: [
       "La carta dei vini che avete davanti non è un catalogo, non è un inventario. È il riflesso di una filosofia, di un percorso e di uno sguardo sul vino. Filho l'ha costruita negli anni — attraverso viaggi, conversazioni ed esperienze personali nei vigneti, centinaia di degustazioni e innumerevoli incontri con vignaioli i cui vini non sono semplici bevande, ma storie, paesaggi ed emozioni.",
       "Questa carta è il risultato di una selezione, non di un'offerta. Ogni vino è qui perché ha dimostrato qualcosa: carattere, precisione, purezza, stile o la personalità del produttore. Ogni annata è stata scelta perché rispetta il terroir, l'anno, il clima e la firma della cantina.",
@@ -385,7 +385,7 @@ fr: {
     changeBudget: "Changer de budget"
   },
   story: {
-    title: "Theatrium Wine Program — Filho Edition",
+    title: "Programme des vins Theatrium — Édition Filho",
     paras: [
       "La carte des vins que vous avez sous les yeux n'est ni un catalogue ni un inventaire. Elle est le reflet d'une philosophie, d'un parcours et d'un regard sur le vin. Filho l'a construite au fil des années — à travers des voyages, des conversations et des expériences personnelles dans les vignobles, des centaines de dégustations et d'innombrables rencontres avec des vignerons dont les vins ne sont pas de simples boissons, mais des histoires, des paysages et des émotions.",
       "Cette carte est le fruit d'une sélection, non d'une offre. Chaque vin est ici parce qu'il a montré quelque chose : du caractère, de la précision, de la pureté, du style ou la personnalité de son vigneron. Chaque millésime a été choisi parce qu'il respecte le terroir, l'année, le climat et la signature de la cave.",
@@ -495,7 +495,7 @@ de: {
     changeBudget: "Budget ändern"
   },
   story: {
-    title: "Theatrium Wine Program — Filho Edition",
+    title: "Theatrium Weinprogramm — Filho Edition",
     paras: [
       "Die Weinkarte, die Sie vor sich haben, ist kein Katalog und kein Inventar. Sie ist der Ausdruck einer Philosophie, eines Weges und eines Blicks auf den Wein. Filho hat sie über Jahre aufgebaut — durch Reisen, Gespräche und persönliche Erfahrungen in den Weinbergen, durch Hunderte von Verkostungen und unzählige Begegnungen mit Winzern, deren Weine nicht bloß Getränke sind, sondern Geschichten, Landschaften und Emotionen.",
       "Diese Karte ist das Ergebnis einer Auswahl, nicht eines Angebots. Jeder Wein ist hier, weil er etwas gezeigt hat: Charakter, Präzision, Reinheit, Stil oder die Persönlichkeit seines Winzers. Jeder Jahrgang wurde gewählt, weil er Terroir, Jahr, Klima und die Handschrift des Kellers respektiert.",
@@ -605,7 +605,7 @@ zh: {
     changeBudget: "更改预算"
   },
   story: {
-    title: "Theatrium Wine Program — Filho Edition",
+    title: "Theatrium 葡萄酒单 — Filho 臻选版",
     paras: [
       "您面前的这份酒单不是目录，也不是清单。它是一种哲学、一段旅程和一种葡萄酒观的映照。Filho 多年来精心打造这份酒单——通过旅行、交流和亲身走访葡萄园，通过数百次品鉴，以及与无数酿酒师的相遇；他们的酒不只是饮品，更是故事、风景与情感。",
       "这份酒单是精心挑选的结果，而非简单的供应。每一款酒都因其展现出的特质而入选：个性、精准、纯净、风格，或酿酒师的个人魅力。每一个年份的选择都尊重风土、年份、气候与酒窖的笔迹。",
@@ -736,7 +736,7 @@ sl: {
     "changeBudget": "Spremeni proračun"
   },
   "story": {
-    "title": "Theatrium Wine Program — Filho Edition",
+    "title": "Theatrium vinski program — izdaja Filho",
     "paras": [
       "Vinska karta, ki jo držite pred seboj, ni katalog, ni seznam, ni inventar. Je odraz ene filozofije, ene poti in enega pogleda na vino. Filho jo je gradil leta — skozi potovanja, pogovore in osebne izkušnje v vinogradih, skozi stotine degustacij in nešteta srečanja z vinarji, ki ustvarjajo vina, ki niso le pijača, ampak zgodbe, pokrajine in čustva.",
       "Ta karta je rezultat izbora, ne ponudbe. Vsako vino je tu, ker je nekaj pokazalo: značaj, natančnost, čistost, slog ali osebnost vinarja. Vsaka letina je izbrana, ker spoštuje terroir, leto, podnebno sliko in rokopis kleti.",
@@ -986,7 +986,7 @@ es: {
     "changeBudget": "Cambiar presupuesto"
   },
   "story": {
-    "title": "Theatrium Wine Program — Filho Edition",
+    "title": "Programa de vinos Theatrium — Edición Filho",
     "paras": [
       "La carta de vinos que tiene ante usted no es un catálogo, ni una lista, ni un inventario. Es el reflejo de una filosofía, de un camino y de una mirada sobre el vino. Filho la ha construido durante años — a través de viajes, conversaciones y experiencias personales en los viñedos, de cientos de catas e incontables encuentros con bodegueros que crean vinos que no son solo bebida, sino historias, paisajes y emociones.",
       "Esta carta es el resultado de una selección, no de una oferta. Cada vino está aquí porque ha mostrado algo: carácter, precisión, pureza, estilo o la personalidad de su creador. Cada añada ha sido elegida porque respeta el terroir, el año, el clima y la firma de la bodega.",
