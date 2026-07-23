@@ -58,7 +58,8 @@
            "light_starters"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "13",
+          "dosage": "Brut"
          },
          "recommended": true,
          "note": {
@@ -140,7 +141,7 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "12",
           "dosage": "Brut"
          }
         },
@@ -1024,7 +1025,8 @@
            "light_starters"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "13",
+          "dosage": "Brut"
          },
          "recommended": true,
          "note": {
@@ -1043,7 +1045,7 @@
          "producer": "Šember",
          "price": 58,
          "insight": {
-          "grape": "Chardonnay, Plavec žuti",
+          "grape": "Chardonnay 90%, Plavec žuti 10%",
           "region": "Plešivica",
           "country": "HR",
           "style": "sparkling",
@@ -1059,7 +1061,8 @@
            "white_fish"
           ],
           "temp": "6–8",
-          "alcohol": "12.5"
+          "alcohol": "12.5",
+          "dosage": "Brut"
          },
          "note": {
           "hr": "Plešivica ima živac i preciznost — Pavel je dokaz da pjenušac ne mora nositi francusko ime.",
@@ -1093,7 +1096,8 @@
            "cheese_hard"
           ],
           "temp": "6–8",
-          "alcohol": "12.5"
+          "alcohol": "12.5",
+          "dosage": "Extra Brut"
          },
          "note": {
           "hr": "Amfora, strpljenje i karakter — Diplomat ne popunjava kategoriju, on je stvara.",
@@ -1175,7 +1179,7 @@
            "prosciutto"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "11"
          }
         },
         {
@@ -1251,7 +1255,8 @@
            "charcuterie"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut Nature"
          }
         },
         {
@@ -1276,7 +1281,8 @@
            "light_starters"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Brut Nature"
          }
         }
        ]
@@ -1310,7 +1316,8 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -1335,7 +1342,8 @@
            "cheese_hard"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Extra Brut"
          },
          "note": {
           "hr": "Avize, Aÿ i Ambonnay — tri velika sela, jedan rukopis: mineralnost bez pozlate.",
@@ -1370,7 +1378,8 @@
            "seafood"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Extra Brut"
          }
         },
         {
@@ -1420,7 +1429,8 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Extra Brut"
          },
          "recommended": true,
          "note": {
@@ -1530,7 +1540,7 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "12",
           "dosage": "Brut"
          }
         },
@@ -1556,7 +1566,7 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut"
          },
          "note": {
@@ -1632,7 +1642,7 @@
            "light_starters"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "12",
           "dosage": "Brut Nature"
          }
         },
@@ -1684,7 +1694,7 @@
            "seafood"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "12",
           "dosage": "Brut Nature"
          }
         },
@@ -1735,7 +1745,7 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "12",
           "dosage": "Brut"
          }
         },
@@ -1849,7 +1859,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          },
          "note": {
           "hr": "Vinar koji je promijenio percepciju šampanjca — boca za razmišljanje i za sjećanje.",
@@ -1887,7 +1898,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Extra Brut"
          },
          "tags": [
           "rare"
@@ -1915,7 +1927,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Extra Brut"
          },
          "tags": [
           "rare"
@@ -1943,7 +1956,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Brut"
          },
          "tags": [
           "rare"
@@ -2016,7 +2030,7 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut"
          },
          "tags": [
