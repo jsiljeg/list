@@ -2266,6 +2266,7 @@
           "alcohol": "12.5",
           "dosage": "Brut"
          },
+         "terroir": "Côte des Blancs, Montagne de Reims",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -2310,11 +2311,18 @@
            "citrus",
            "toast",
            "honey",
-           "smoke"
+           "smoke",
+           "pink_grapefruit",
+           "blood_orange",
+           "fig"
           ],
           "pairings": [
            "caviar",
-           "solo"
+           "solo",
+           "lobster",
+           "veal",
+           "pigeon",
+           "green_tomato_sorbet"
           ],
           "temp": "10–12",
           "alcohol": "12.5",
@@ -2322,6 +2330,25 @@
          },
          "tags": [
           "rare"
+         ],
+         "terroir": "Côte des Blancs, Montagne de Reims",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "96"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "97"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "16.5/20"
+          }
          ]
         },
         {
@@ -2345,11 +2372,18 @@
            "caviar"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut"
          },
          "tags": [
           "rare"
+         ],
+         "terroir": "Côte des Blancs, Montagne de Reims",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "96"
+          }
          ]
         },
         {

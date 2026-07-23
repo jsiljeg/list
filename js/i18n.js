@@ -100,7 +100,7 @@ hr: {
     caramel: "karamela", cedar: "cedrovina", cherry: "trešnja", chocolate: "čokolada",
     citrus: "citrusi", coffee: "kava", dried_fruit: "suho voće", earth: "zemljane note",
     elderflower: "cvijet bazge", fig: "smokva", flint: "kremen", forest_floor: "šumsko tlo",
-    grapefruit: "grejp", grass: "pokošena trava", green_apple: "zelena jabuka", hazelnut: "lješnjak",
+    grapefruit: "grejp", pink_grapefruit: "rozi grejp", blood_orange: "krvava naranča", grass: "pokošena trava", green_apple: "zelena jabuka", hazelnut: "lješnjak",
     herbs: "mediteransko bilje", honey: "med", leather: "koža", licorice: "sladić",
     lime: "limeta", wet_stone: "mokri kamen", mint: "metvica", orange_peel: "narančina kora",
     peach: "breskva", pear: "kruška", pepper: "papar", pink_pepper: "ružičasti papar", oriental_spices: "orijentalni začini", petrol: "petrolej",
@@ -123,7 +123,7 @@ hr: {
     risotto: "rižoto", salads: "salate", seafood: "plodovi mora", shellfish: "školjke i rakovi",
     solo: "samostalno, za posebne trenutke", spicy: "začinjena jela", steak: "odrezak",
     stews: "gulaši i složena jela", sushi: "sushi", truffles: "jela s tartufima",
-    veal: "teletina", vegetables: "povrće", white_fish: "bijela riba", white_meat: "bijelo meso"
+    veal: "teletina", lobster: "jastog", pigeon: "golub", green_tomato_sorbet: "sorbet od zelene rajčice", vegetables: "povrće", white_fish: "bijela riba", white_meat: "bijelo meso"
   }
 },
 en: {
@@ -212,7 +212,7 @@ en: {
     caramel: "caramel", cedar: "cedar", cherry: "cherry", chocolate: "chocolate",
     citrus: "citrus", coffee: "coffee", dried_fruit: "dried fruit", earth: "earthy notes",
     elderflower: "elderflower", fig: "fig", flint: "flint", forest_floor: "forest floor",
-    grapefruit: "grapefruit", grass: "cut grass", green_apple: "green apple", hazelnut: "hazelnut",
+    grapefruit: "grapefruit", pink_grapefruit: "pink grapefruit", blood_orange: "blood orange", grass: "cut grass", green_apple: "green apple", hazelnut: "hazelnut",
     herbs: "Mediterranean herbs", honey: "honey", leather: "leather", licorice: "licorice",
     lime: "lime", wet_stone: "wet stone", mint: "mint", orange_peel: "orange peel",
     peach: "peach", pear: "pear", pepper: "pepper", pink_pepper: "pink pepper", oriental_spices: "oriental spices", petrol: "petrol",
@@ -235,7 +235,7 @@ en: {
     risotto: "risotto", salads: "salads", seafood: "seafood", shellfish: "shellfish",
     solo: "on its own, for special moments", spicy: "spicy dishes", steak: "steak",
     stews: "stews", sushi: "sushi", truffles: "truffle dishes",
-    veal: "veal", vegetables: "vegetables", white_fish: "white fish", white_meat: "white meat"
+    veal: "veal", lobster: "lobster", pigeon: "pigeon", green_tomato_sorbet: "green tomato sorbet", vegetables: "vegetables", white_fish: "white fish", white_meat: "white meat"
   }
 },
 it: {
@@ -324,7 +324,7 @@ it: {
     caramel: "caramello", cedar: "cedro", cherry: "ciliegia", chocolate: "cioccolato",
     citrus: "agrumi", coffee: "caffè", dried_fruit: "frutta secca", earth: "note terrose",
     elderflower: "fiori di sambuco", fig: "fico", flint: "pietra focaia", forest_floor: "sottobosco",
-    grapefruit: "pompelmo", grass: "erba tagliata", green_apple: "mela verde", hazelnut: "nocciola",
+    grapefruit: "pompelmo", pink_grapefruit: "pompelmo rosa", blood_orange: "arancia rossa", grass: "erba tagliata", green_apple: "mela verde", hazelnut: "nocciola",
     herbs: "erbe mediterranee", honey: "miele", leather: "cuoio", licorice: "liquirizia",
     lime: "lime", wet_stone: "pietra bagnata", mint: "menta", orange_peel: "scorza d'arancia",
     peach: "pesca", pear: "pera", pepper: "pepe", pink_pepper: "pepe rosa", oriental_spices: "spezie orientali", petrol: "idrocarburi",
@@ -347,7 +347,7 @@ it: {
     risotto: "risotto", salads: "insalate", seafood: "frutti di mare", shellfish: "crostacei",
     solo: "da meditazione", spicy: "piatti speziati", steak: "bistecca",
     stews: "stufati", sushi: "sushi", truffles: "piatti al tartufo",
-    veal: "vitello", vegetables: "verdure", white_fish: "pesce bianco", white_meat: "carni bianche"
+    veal: "vitello", lobster: "aragosta", pigeon: "piccione", green_tomato_sorbet: "sorbetto al pomodoro verde", vegetables: "verdure", white_fish: "pesce bianco", white_meat: "carni bianche"
   }
 },
 fr: {
@@ -436,7 +436,7 @@ fr: {
     caramel: "caramel", cedar: "cèdre", cherry: "cerise", chocolate: "chocolat",
     citrus: "agrumes", coffee: "café", dried_fruit: "fruits secs", earth: "notes terreuses",
     elderflower: "fleur de sureau", fig: "figue", flint: "pierre à fusil", forest_floor: "sous-bois",
-    grapefruit: "pamplemousse", grass: "herbe coupée", green_apple: "pomme verte", hazelnut: "noisette",
+    grapefruit: "pamplemousse", pink_grapefruit: "pamplemousse rose", blood_orange: "orange sanguine", grass: "herbe coupée", green_apple: "pomme verte", hazelnut: "noisette",
     herbs: "herbes méditerranéennes", honey: "miel", leather: "cuir", licorice: "réglisse",
     lime: "citron vert", wet_stone: "pierre mouillée", mint: "menthe", orange_peel: "écorce d'orange",
     peach: "pêche", pear: "poire", pepper: "poivre", pink_pepper: "poivre rose", oriental_spices: "épices orientales", petrol: "notes pétrolées",
@@ -459,7 +459,7 @@ fr: {
     risotto: "risotto", salads: "salades", seafood: "fruits de mer", shellfish: "coquillages et crustacés",
     solo: "à déguster seul, pour les grands moments", spicy: "plats épicés", steak: "steak",
     stews: "plats mijotés", sushi: "sushi", truffles: "plats à la truffe",
-    veal: "veau", vegetables: "légumes", white_fish: "poisson blanc", white_meat: "viandes blanches"
+    veal: "veau", lobster: "homard", pigeon: "pigeon", green_tomato_sorbet: "sorbet à la tomate verte", vegetables: "légumes", white_fish: "poisson blanc", white_meat: "viandes blanches"
   }
 },
 de: {
@@ -548,7 +548,7 @@ de: {
     caramel: "Karamell", cedar: "Zeder", cherry: "Kirsche", chocolate: "Schokolade",
     citrus: "Zitrus", coffee: "Kaffee", dried_fruit: "Trockenfrüchte", earth: "erdige Noten",
     elderflower: "Holunderblüte", fig: "Feige", flint: "Feuerstein", forest_floor: "Waldboden",
-    grapefruit: "Grapefruit", grass: "frisches Gras", green_apple: "grüner Apfel", hazelnut: "Haselnuss",
+    grapefruit: "Grapefruit", pink_grapefruit: "rosa Grapefruit", blood_orange: "Blutorange", grass: "frisches Gras", green_apple: "grüner Apfel", hazelnut: "Haselnuss",
     herbs: "mediterrane Kräuter", honey: "Honig", leather: "Leder", licorice: "Lakritz",
     lime: "Limette", wet_stone: "nasser Stein", mint: "Minze", orange_peel: "Orangenschale",
     peach: "Pfirsich", pear: "Birne", pepper: "Pfeffer", pink_pepper: "rosa Pfeffer", oriental_spices: "orientalische Gewürze", petrol: "Petrolnote",
@@ -571,7 +571,7 @@ de: {
     risotto: "Risotto", salads: "Salate", seafood: "Meeresfrüchte", shellfish: "Schalentiere",
     solo: "pur genießen, für besondere Momente", spicy: "scharfe Gerichte", steak: "Steak",
     stews: "Schmorgerichte", sushi: "Sushi", truffles: "Trüffelgerichte",
-    veal: "Kalb", vegetables: "Gemüse", white_fish: "weißer Fisch", white_meat: "helles Fleisch"
+    veal: "Kalb", lobster: "Hummer", pigeon: "Taube", green_tomato_sorbet: "Sorbet von grüner Tomate", vegetables: "Gemüse", white_fish: "weißer Fisch", white_meat: "helles Fleisch"
   }
 },
 zh: {
@@ -660,7 +660,7 @@ zh: {
     caramel: "焦糖", cedar: "雪松", cherry: "樱桃", chocolate: "巧克力",
     citrus: "柑橘", coffee: "咖啡", dried_fruit: "果干", earth: "泥土气息",
     elderflower: "接骨木花", fig: "无花果", flint: "燧石", forest_floor: "森林地表",
-    grapefruit: "西柚", grass: "青草", green_apple: "青苹果", hazelnut: "榛子",
+    grapefruit: "西柚", pink_grapefruit: "粉红西柚", blood_orange: "血橙", grass: "青草", green_apple: "青苹果", hazelnut: "榛子",
     herbs: "地中海香草", honey: "蜂蜜", leather: "皮革", licorice: "甘草",
     lime: "青柠", wet_stone: "湿石", mint: "薄荷", orange_peel: "橙皮",
     peach: "桃子", pear: "梨", pepper: "胡椒", pink_pepper: "粉红胡椒", oriental_spices: "东方香料", petrol: "汽油调",
@@ -683,7 +683,7 @@ zh: {
     risotto: "烩饭", salads: "沙拉", seafood: "海鲜", shellfish: "贝类与甲壳类",
     solo: "单独细品，享受特别时刻", spicy: "辛辣菜肴", steak: "牛排",
     stews: "炖菜", sushi: "寿司", truffles: "松露菜肴",
-    veal: "小牛肉", vegetables: "蔬菜", white_fish: "白身鱼", white_meat: "白肉"
+    veal: "小牛肉", lobster: "龙虾", pigeon: "乳鸽", green_tomato_sorbet: "青番茄雪葩", vegetables: "蔬菜", white_fish: "白身鱼", white_meat: "白肉"
   }
 },
 sl: {
@@ -857,6 +857,8 @@ sl: {
     "flint": "kremen",
     "forest_floor": "gozdna tla",
     "grapefruit": "grenivka",
+    "pink_grapefruit": "rožnata grenivka",
+    "blood_orange": "krvava pomaranča",
     "grass": "pokošena trava",
     "green_apple": "zeleno jabolko",
     "hazelnut": "lešnik",
@@ -937,6 +939,9 @@ sl: {
     "sushi": "suši",
     "truffles": "jedi z gomoljikami",
     "veal": "teletina",
+    "lobster": "jastog",
+    "pigeon": "golob",
+    "green_tomato_sorbet": "sorbet iz zelenega paradižnika",
     "vegetables": "zelenjava",
     "white_fish": "bela riba",
     "white_meat": "belo meso"
@@ -1113,6 +1118,8 @@ es: {
     "flint": "pedernal",
     "forest_floor": "sotobosque",
     "grapefruit": "pomelo",
+    "pink_grapefruit": "pomelo rosa",
+    "blood_orange": "naranja sanguina",
     "grass": "hierba cortada",
     "green_apple": "manzana verde",
     "hazelnut": "avellana",
@@ -1193,6 +1200,9 @@ es: {
     "sushi": "sushi",
     "truffles": "platos con trufa",
     "veal": "ternera",
+    "lobster": "bogavante",
+    "pigeon": "pichón",
+    "green_tomato_sorbet": "sorbete de tomate verde",
     "vegetables": "verduras",
     "white_fish": "pescado blanco",
     "white_meat": "carne blanca"
