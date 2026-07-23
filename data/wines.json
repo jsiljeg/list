@@ -2484,7 +2484,17 @@
            "critic": "Robert Parker",
            "score": "95-97"
           }
-         ]
+         ],
+         "note": {
+          "hr": "Paul Krug II., poznat po svojim strogo objektivnim opažanjima, izjavio je: „Mislim da bi ovo lako mogao biti sljedeći 1928.“",
+          "en": "Paul Krug II, known for his strictly objective observations, proclaimed: \"I think this may well be the next 1928.\"",
+          "it": "Paul Krug II, noto per le sue osservazioni rigorosamente oggettive, dichiarò: «Penso che questo possa benissimo essere il prossimo 1928».",
+          "fr": "Paul Krug II, connu pour ses observations rigoureusement objectives, déclara : « Je pense que ce pourrait bien être le prochain 1928. »",
+          "de": "Paul Krug II., bekannt für seine streng objektiven Beobachtungen, erklärte: „Ich glaube, das könnte durchaus der nächste 1928 sein.“",
+          "zh": "以严谨客观著称的 Paul Krug II 断言：“我认为这很可能就是下一个 1928 年份。”",
+          "sl": "Paul Krug II., znan po svojih strogo objektivnih opažanjih, je razglasil: »Mislim, da bi to lahko bil naslednji 1928.«",
+          "es": "Paul Krug II, conocido por sus observaciones estrictamente objetivas, proclamó: «Creo que este bien podría ser el próximo 1928»."
+         }
         },
         {
          "name": "Krug Grande Cuvée",
