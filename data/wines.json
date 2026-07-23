@@ -2270,6 +2270,26 @@
           {
            "critic": "James Suckling",
            "score": "97"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "Vinous",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "94+"
+          },
+          {
+           "critic": "Decanter",
+           "score": "94"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17+/20"
           }
          ],
          "tags": [
