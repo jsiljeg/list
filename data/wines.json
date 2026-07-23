@@ -2400,19 +2400,45 @@
            "citrus",
            "flint",
            "white_flowers",
-           "toast"
+           "toast",
+           "lime_blossom",
+           "jasmine",
+           "bergamot"
           ],
           "pairings": [
            "caviar",
            "oysters",
            "solo"
           ],
-          "temp": "10–12",
-          "alcohol": "12.5",
+          "temp": "13–15",
+          "alcohol": "12",
           "dosage": "Brut"
          },
          "tags": [
-          "rare"
+          "rare",
+          "excellent_vintage"
+         ],
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "97"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "96+"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "95"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "18.5+/20"
+          }
          ]
         },
         {
