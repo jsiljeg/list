@@ -1396,11 +1396,13 @@
            "brioche"
           ],
           "pairings": [
-           "oysters",
-           "caviar",
-           "seafood"
+           "shellfish",
+           "white_fish",
+           "poultry",
+           "cheese_hard",
+           "japanese"
           ],
-          "temp": "8–10",
+          "temp": "12–14",
           "alcohol": "12.5",
           "dosage": "Extra Brut"
          }

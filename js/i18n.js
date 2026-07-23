@@ -113,7 +113,7 @@ hr: {
     white_flowers: "bijelo cvijeće", yeast: "kvasac"
   },
   pairings: {
-    aperitif: "aperitiv", asian: "azijska kuhinja", asparagus: "šparoge", bbq: "jela s roštilja",
+    aperitif: "aperitiv", asian: "azijska kuhinja", japanese: "japanska kuhinja", asparagus: "šparoge", bbq: "jela s roštilja",
     beef: "govedina", caviar: "kavijar", charcuterie: "suhomesnati naresci", cheese_blue: "plavi sirevi",
     cheese_fresh: "svježi sirevi", cheese_hard: "tvrdi, zreli sirevi", chocolate: "čokolada",
     desserts: "deserti", foie_gras: "foie gras", fruit_desserts: "voćni deserti", game: "divljač",
@@ -225,7 +225,7 @@ en: {
     white_flowers: "white flowers", yeast: "yeast"
   },
   pairings: {
-    aperitif: "aperitif", asian: "Asian cuisine", asparagus: "asparagus", bbq: "barbecue",
+    aperitif: "aperitif", asian: "Asian cuisine", japanese: "Japanese cuisine", asparagus: "asparagus", bbq: "barbecue",
     beef: "beef", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "blue cheese",
     cheese_fresh: "fresh cheese", cheese_hard: "aged cheese", chocolate: "chocolate",
     desserts: "desserts", foie_gras: "foie gras", fruit_desserts: "fruit desserts", game: "game",
@@ -337,7 +337,7 @@ it: {
     white_flowers: "fiori bianchi", yeast: "lievito"
   },
   pairings: {
-    aperitif: "aperitivo", asian: "cucina asiatica", asparagus: "asparagi", bbq: "grigliate",
+    aperitif: "aperitivo", asian: "cucina asiatica", japanese: "cucina giapponese", asparagus: "asparagi", bbq: "grigliate",
     beef: "manzo", caviar: "caviale", charcuterie: "salumi", cheese_blue: "formaggi erborinati",
     cheese_fresh: "formaggi freschi", cheese_hard: "formaggi stagionati", chocolate: "cioccolato",
     desserts: "dolci", foie_gras: "foie gras", fruit_desserts: "dolci alla frutta", game: "selvaggina",
@@ -449,7 +449,7 @@ fr: {
     white_flowers: "fleurs blanches", yeast: "levure"
   },
   pairings: {
-    aperitif: "apéritif", asian: "cuisine asiatique", asparagus: "asperges", bbq: "grillades",
+    aperitif: "apéritif", asian: "cuisine asiatique", japanese: "cuisine japonaise", asparagus: "asperges", bbq: "grillades",
     beef: "bœuf", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "fromages bleus",
     cheese_fresh: "fromages frais", cheese_hard: "fromages affinés", chocolate: "chocolat",
     desserts: "desserts", foie_gras: "foie gras", fruit_desserts: "desserts aux fruits", game: "gibier",
@@ -561,7 +561,7 @@ de: {
     white_flowers: "weiße Blüten", yeast: "Hefe"
   },
   pairings: {
-    aperitif: "Aperitif", asian: "asiatische Küche", asparagus: "Spargel", bbq: "Gegrilltes",
+    aperitif: "Aperitif", asian: "asiatische Küche", japanese: "japanische Küche", asparagus: "Spargel", bbq: "Gegrilltes",
     beef: "Rind", caviar: "Kaviar", charcuterie: "Wurstwaren", cheese_blue: "Blauschimmelkäse",
     cheese_fresh: "Frischkäse", cheese_hard: "gereifter Käse", chocolate: "Schokolade",
     desserts: "Desserts", foie_gras: "Foie gras", fruit_desserts: "Fruchtdesserts", game: "Wild",
@@ -673,7 +673,7 @@ zh: {
     white_flowers: "白花", yeast: "酵母"
   },
   pairings: {
-    aperitif: "开胃酒", asian: "亚洲菜", asparagus: "芦笋", bbq: "烧烤",
+    aperitif: "开胃酒", asian: "亚洲菜", japanese: "日本料理", asparagus: "芦笋", bbq: "烧烤",
     beef: "牛肉", caviar: "鱼子酱", charcuterie: "腌肉拼盘", cheese_blue: "蓝纹奶酪",
     cheese_fresh: "新鲜奶酪", cheese_hard: "陈年硬质奶酪", chocolate: "巧克力",
     desserts: "甜点", foie_gras: "鹅肝", fruit_desserts: "水果甜点", game: "野味",
@@ -898,6 +898,7 @@ sl: {
   "pairings": {
     "aperitif": "aperitiv",
     "asian": "azijska kuhinja",
+    "japanese": "japonska kuhinja",
     "asparagus": "šparglji",
     "bbq": "jedi z žara",
     "beef": "govedina",
@@ -1150,6 +1151,7 @@ es: {
   "pairings": {
     "aperitif": "aperitivo",
     "asian": "cocina asiática",
+    "japanese": "cocina japonesa",
     "asparagus": "espárragos",
     "bbq": "a la brasa",
     "beef": "carne de vacuno",
