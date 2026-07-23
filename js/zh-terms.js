@@ -155,6 +155,7 @@
     "Pouilly-Fuissé": "普伊-富赛",
     "Puligny-Montrachet": "普利尼-蒙哈榭",
     "Reims": "兰斯",
+    "Montagne de Reims": "兰斯山",
     "Rheinhessen": "莱茵黑森",
     "Rioja": "里奥哈",
     "Saar": "萨尔",
