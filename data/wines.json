@@ -2582,6 +2582,7 @@
           "rare"
          ],
          "terroir": "Clos du Mesnil, Clos d'Ambonnay",
+         "music": "III. Presto from Sinfonia Concertante in E-Flat, K. 364, for Violin, Viola and Orchestra — Shlomo Mintz",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -2625,13 +2626,48 @@
            "solo",
            "caviar"
           ],
-          "temp": "10–12",
-          "alcohol": "",
+          "temp": "9–12",
+          "alcohol": "12.5",
           "dosage": "Brut"
          },
          "tags": [
           "rare"
-         ]
+         ],
+         "terroir": "Clos du Mesnil",
+         "music": "Suite for Krug in 2008 — Ryuichi Sakamoto",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "100"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "99"
+          },
+          {
+           "critic": "Vinous",
+           "score": "99"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "98+"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "98"
+          }
+         ],
+         "noteSig": "Krug",
+         "note": {
+          "hr": "20. šampanjac s ove jedinstvene parcele; prvi je nastao iz berbe 1979.",
+          "en": "The 20th champagne from this unique plot; the first was created from the 1979 harvest.",
+          "it": "Il 20° champagne di questa parcella unica; il primo nacque dalla vendemmia del 1979.",
+          "fr": "Le 20e champagne de cette parcelle unique ; le premier est né de la vendange 1979.",
+          "de": "Der 20. Champagner von dieser einzigartigen Parzelle; der erste entstand aus der Ernte 1979.",
+          "zh": "来自这块独特地块的第 20 款香槟；第一款诞生于 1979 年的采收。",
+          "sl": "20. šampanjec s te edinstvene parcele; prvi je nastal iz trgatve 1979.",
+          "es": "El 20.º champán de esta parcela única; el primero se creó con la vendimia de 1979."
+         }
         },
         {
          "name": "Clos d'Ambonnay 1996",

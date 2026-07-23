@@ -545,6 +545,7 @@ function openDetail(ref, back) {
       ${field(t.ui.temp, ins.temp ? esc(ins.temp) + " °C" : "")}
       ${field(t.ui.aromas, esc(list(ins.aromas, t.aromas)), true)}
       ${field(t.ui.pairings, esc(list(ins.pairings, t.pairings)), true)}
+      ${field(t.ui.musicPairing, item.music ? esc(item.music) : "", true)}
     </div>
     ${(() => {
       const info = producerInfo(item.producer);
