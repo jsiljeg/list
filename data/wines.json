@@ -1480,8 +1480,8 @@
          "producer": "Pertois-Moriset",
          "price": 127,
          "insight": {
-          "grape": "Chardonnay, Pinot Noir",
-          "region": "Le Mesnil-sur-Oger, Champagne",
+          "grape": "Chardonnay 92%, Pinot Noir 8%",
+          "region": "Côte des Blancs, Bouzy, Champagne",
           "country": "FR",
           "style": "champagne_rose",
           "body": "medium",
@@ -1496,7 +1496,8 @@
            "desserts"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "12",
+          "dosage": "Brut Nature"
          }
         },
         {
