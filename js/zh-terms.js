@@ -75,6 +75,7 @@
     "Plavac mali": "普拉瓦茨·马利",
     "Plavac mali (prošek)": "普拉瓦茨·马利",
     "Pošip": "波希普",
+    "Plavec žuti": "普拉韦茨·茹蒂",
     "Refošk": "雷福什克",
     "Sauvignonasse (Friulano)": "弗留拉诺",
     "Teran": "特兰",

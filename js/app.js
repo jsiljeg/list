@@ -486,6 +486,7 @@ function openDetail(ref, back) {
       ${field(t.ui.grape, esc(localizeGrape(ins.grape)))}
       ${field(t.ui.region, region)}
       ${field(t.ui.body, esc(t.bodies[ins.body] || ins.body))}
+      ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + " % vol." : "")}
       ${field(t.ui.temp, ins.temp ? esc(ins.temp) + " °C" : "")}
       ${field(t.ui.aromas, esc(list(ins.aromas, t.aromas)), true)}
       ${field(t.ui.pairings, esc(list(ins.pairings, t.pairings)), true)}
@@ -552,10 +553,14 @@ function zhTokens(str, map) {
     .map((s) => s.trim())
     .filter(Boolean)
     .map((tok) => {
-      const zh = map[tok];
+      // split off a trailing blend percentage (e.g. "Chardonnay 80%")
+      const m = tok.match(/^(.*?)\s*(\d+(?:[.,]\d+)?\s*%)$/);
+      const name = m ? m[1].trim() : tok;
+      const pct = m ? " " + m[2].replace(/\s+/g, "") : "";
+      const zh = map[name];
       if (!zh) return tok;
-      if (typeof ZH_ONLY !== "undefined" && ZH_ONLY[tok]) return zh;
-      return `${zh}（${tok}）`;
+      if (typeof ZH_ONLY !== "undefined" && ZH_ONLY[name]) return zh + pct;
+      return `${zh}（${name}）${pct}`;
     })
     .join("、");
 }

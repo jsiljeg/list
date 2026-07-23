@@ -1003,7 +1003,7 @@
          "producer": "Šember",
          "price": 58,
          "insight": {
-          "grape": "Chardonnay, Pinot Noir",
+          "grape": "Chardonnay, Plavec žuti",
           "region": "Plešivica",
           "country": "HR",
           "style": "sparkling",
@@ -1018,7 +1018,8 @@
            "oysters",
            "white_fish"
           ],
-          "temp": "6–8"
+          "temp": "6–8",
+          "alcohol": "12.5"
          },
          "note": {
           "hr": "Plešivica ima živac i preciznost — Pavel je dokaz da pjenušac ne mora nositi francusko ime.",
@@ -1036,7 +1037,7 @@
          "producer": "Tomac",
          "price": 55,
          "insight": {
-          "grape": "Chardonnay",
+          "grape": "Chardonnay 80%, Plavec žuti 20%",
           "region": "Plešivica",
           "country": "HR",
           "style": "sparkling",
@@ -1051,7 +1052,8 @@
            "seafood",
            "cheese_hard"
           ],
-          "temp": "6–8"
+          "temp": "6–8",
+          "alcohol": "12.5"
          },
          "note": {
           "hr": "Amfora, strpljenje i karakter — Diplomat ne popunjava kategoriju, on je stvara.",
