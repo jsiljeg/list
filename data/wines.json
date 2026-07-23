@@ -1181,7 +1181,8 @@
            "prosciutto"
           ],
           "temp": "6–8",
-          "alcohol": "11"
+          "alcohol": "11",
+          "dosage": "Extra Dry"
          }
         },
         {
@@ -1189,7 +1190,7 @@
          "producer": "Corte Aura",
          "price": 67,
          "insight": {
-          "grape": "Chardonnay, Pinot Nero",
+          "grape": "Chardonnay 90%, Pinot Noir 10%",
           "region": "Franciacorta, Lombardia",
           "country": "IT",
           "style": "sparkling",
@@ -1206,7 +1207,7 @@
            "risotto"
           ],
           "temp": "6–8",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut"
          }
         },
@@ -1232,7 +1233,7 @@
            "cheese_fresh"
           ],
           "temp": "6–8",
-          "alcohol": "",
+          "alcohol": "12.5",
           "dosage": "Brut"
          }
         },
