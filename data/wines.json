@@ -1533,7 +1533,7 @@
          "price": 240,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Le Mesnil-sur-Oger, Champagne",
+          "region": "Avize, Chouilly, Cramant, Le Mesnil-sur-Oger, Oger, Oiry, Côte des Blancs",
           "country": "FR",
           "style": "champagne_bdb",
           "body": "medium",
@@ -1548,10 +1548,32 @@
            "caviar",
            "white_fish"
           ],
-          "temp": "8–10",
+          "temp": "10–12",
           "alcohol": "12.5",
-          "dosage": "Brut"
-         }
+          "dosage": "Extra Brut"
+         },
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "95"
+          },
+          {
+           "critic": "Jeb Dunnuck",
+           "score": "94"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "92"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "92"
+          },
+          {
+           "critic": "Vinous",
+           "score": "91"
+          }
+         ]
         },
         {
          "name": "Brut Classic",
