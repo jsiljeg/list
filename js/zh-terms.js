@@ -27,6 +27,7 @@
     "Corvinone": "科尔维诺内",
     "Croatina": "克罗地纳",
     "Friulano": "弗留拉诺",
+    "Furmint": "福尔明特",
     "Gamay": "佳美",
     "Garnacha": "歌海娜",
     "Glera": "歌蕾拉",

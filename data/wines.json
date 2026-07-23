@@ -16,7 +16,7 @@
          "producer": "Jakopić",
          "price": 8,
          "insight": {
-          "grape": "Chardonnay, Riesling",
+          "grape": "Furmint",
           "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sparkling",
@@ -32,7 +32,8 @@
            "salads"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -139,7 +140,8 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -164,7 +166,8 @@
            "poultry"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut Nature"
          },
          "recommended": true,
          "note": {
@@ -979,7 +982,7 @@
          "producer": "Jakopić",
          "price": 49,
          "insight": {
-          "grape": "Chardonnay, Riesling",
+          "grape": "Furmint",
           "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sparkling",
@@ -995,7 +998,8 @@
            "salads"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -1196,7 +1200,8 @@
            "risotto"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -1221,7 +1226,8 @@
            "cheese_fresh"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -1388,7 +1394,8 @@
            "light_starters"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -1497,7 +1504,8 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Brut"
          }
         },
         {
@@ -1522,7 +1530,8 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -1547,7 +1556,8 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          },
          "note": {
           "hr": "Champagne mora biti elegancija, a ne pozlata — Ambonnay u svom najiskrenijem izdanju.",
@@ -1582,7 +1592,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Brut"
          },
          "ratings": [
           {
@@ -1621,7 +1632,8 @@
            "light_starters"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut Nature"
          }
         },
         {
@@ -1646,7 +1658,8 @@
            "cheese_fresh"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut Nature"
          }
         },
         {
@@ -1671,7 +1684,8 @@
            "seafood"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut Nature"
          }
         },
         {
@@ -1695,7 +1709,8 @@
            "light_starters"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Brut"
          }
         },
         {
@@ -1720,7 +1735,8 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -1744,7 +1760,8 @@
            "fruit_desserts"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -1769,7 +1786,8 @@
            "poultry"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut Nature"
          },
          "recommended": true,
          "note": {
@@ -1805,7 +1823,8 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -1963,7 +1982,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Brut"
          },
          "ratings": [
           {
@@ -1996,7 +2016,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          },
          "tags": [
           "rare"
@@ -2023,7 +2044,8 @@
            "caviar"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          },
          "tags": [
           "rare"
@@ -2051,7 +2073,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Brut"
          },
          "tags": [
           "rare"
@@ -2078,7 +2101,8 @@
            "caviar"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          },
          "tags": [
           "rare"
@@ -2106,7 +2130,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Brut"
          }
         },
         {
@@ -2130,7 +2155,8 @@
            "caviar"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          }
         },
         {
@@ -2154,7 +2180,8 @@
            "caviar"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          },
          "tags": [
           "rare"
@@ -2180,7 +2207,8 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "dosage": "Brut"
          },
          "tags": [
           "rare"
