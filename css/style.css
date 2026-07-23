@@ -156,7 +156,9 @@ body {
 .search-toggle svg { width: 16px; height: 16px; }
 /* collapsible search bar (revealed by the corner icon) */
 .search-bar { display: none; }
-.search-bar.open { display: flex; align-items: center; gap: .5rem; max-width: 640px; margin: .8rem auto 0; animation: search-in .16s ease; }
+/* the search bar takes the category-chip row's place (no content jump) */
+.search-bar.open { display: flex; align-items: center; gap: .5rem; max-width: 900px; margin: 0 auto; padding: .8rem 1.2rem 0; animation: search-in .15s ease; }
+.search-bar.open ~ .nav { display: none; }
 .search-bar .search { flex: 1; }
 .search-close {
   flex: none; width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
@@ -164,7 +166,7 @@ body {
   color: var(--text-dim); font-size: 1.05rem; cursor: pointer; transition: color .15s, border-color .15s;
 }
 .search-close:hover, .search-close:focus-visible { color: var(--text); border-color: var(--gold); outline: none; }
-@keyframes search-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@keyframes search-in { from { opacity: 0; } to { opacity: 1; } }
 .lang-current {
   display: inline-flex; align-items: center; gap: .38rem;
   background: rgba(22,21,19,.6); border: 1px solid var(--line); border-radius: 999px;

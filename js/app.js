@@ -289,6 +289,62 @@ function itemHtml(item, ref, context, showFlag) {
   </${clickable ? "button" : "div"}>`;
 }
 
+/* Cross-language search aliases: canonical region/grape token (as stored, lower-
+   case) → extra searchable terms in other languages + Chinese, so e.g. "Burgun"
+   finds Bourgogne wines. Keys are matched as substrings of the item haystack. */
+const SEARCH_ALIAS = {
+  // regions
+  "bourgogne": "burgundy burgundija burgund borgogna borgoña 勃艮第",
+  "toscana": "tuscany toskana toscane toskana 托斯卡纳",
+  "piemonte": "piedmont piemont piémont 皮埃蒙特",
+  "sicilia": "sicily sicilija sizilien sicile 西西里",
+  "bordeaux": "bordo 波尔多",
+  "champagne": "šampanjac 香槟",
+  "españa": "spain spanish spanien espagne španjolska 西班牙",
+  "rioja": "里奥哈",
+  "mosel": "moselle 摩泽尔",
+  "napa": "纳帕",
+  "dalmacija": "dalmatia dalmatien dalmazia dalmatie 达尔马提亚",
+  "istra": "istria istrien istrie 伊斯特拉",
+  "veneto": "威尼托",
+  "friuli": "friaul 弗留利",
+  "alto adige": "südtirol sudtirol south tyrol 上阿迪杰",
+  "loire": "卢瓦尔",
+  "rheinhessen": "rhine hesse 莱茵黑森",
+  "chablis": "夏布利",
+  "barolo": "巴罗洛",
+  "barbaresco": "巴巴莱斯科",
+  "montalcino": "brunello 蒙塔奇诺",
+  // grapes
+  "pinot noir": "crni pinot pinot nero spätburgunder spatburgunder blauburgunder modri pinot 黑皮诺",
+  "pinot grigio": "pinot gris grauburgunder sivi pinot 灰皮诺",
+  "pinot blanc": "pinot bianco weissburgunder bijeli pinot 白皮诺",
+  "chardonnay": "霞多丽",
+  "riesling": "rajnski rizling rizling 雷司令",
+  "cabernet sauvignon": "赤霞珠",
+  "merlot": "美乐",
+  "sauvignon blanc": "长相思",
+  "syrah": "shiraz 西拉",
+  "nebbiolo": "内比奥罗",
+  "sangiovese": "brunello 桑娇维塞",
+  "malvazija": "malvasia malvasia istriana 马尔瓦齐娅",
+  "plavac mali": "plavac 普拉瓦茨",
+  "furmint": "福尔明特"
+};
+function itemHay(item) {
+  if (item._hay) return item._hay;
+  const ins = item.insight || {};
+  const parts = [item.name, item.producer, ins.grape, ins.region];
+  if (item.nameI18n) parts.push(...Object.values(item.nameI18n));
+  if (ins.country) for (const l of LANGS) {
+    const c = I18N[l.code] && I18N[l.code].countries && I18N[l.code].countries[ins.country];
+    if (c) parts.push(c);
+  }
+  let hay = parts.filter(Boolean).join(" ").toLowerCase();
+  for (const k in SEARCH_ALIAS) if (hay.indexOf(k) !== -1) hay += " " + SEARCH_ALIAS[k];
+  return (item._hay = hay);
+}
+
 function renderContent() {
   const t = T();
   const q = $("search").value.trim().toLowerCase();
@@ -302,8 +358,7 @@ function renderContent() {
       sec.categories.forEach((cat, ci) => {
         cat.groups.forEach((g, gi) => {
           g.items.forEach((item, ii) => {
-            const ins = item.insight || {};
-            const hay = [item.name, itemName(item), item.producer, ins.grape, ins.region].filter(Boolean).join(" ").toLowerCase();
+            const hay = itemHay(item);
             if (hay.includes(q) && (!picksOnly || item.recommended || item.new)) {
               if (found === 0) html += `<div class="cat">`;
               found++;
@@ -495,7 +550,8 @@ function openDetail(ref, back) {
       const info = producerInfo(item.producer);
       const blurb = info && info.blurb && (info.blurb[lang] || info.blurb.en);
       if (!blurb) return "";
-      const ter = info.region ? `<div class="detail-terroir"><span class="detail-label">${esc(t.ui.terroir)}</span> ${esc(localizeRegion(info.region))}</div>` : "";
+      const terroir = item.terroir || info.region;
+      const ter = terroir ? `<div class="detail-terroir"><span class="detail-label">${esc(t.ui.terroir)}</span> ${esc(localizeRegion(terroir))}</div>` : "";
       return `<div class="detail-winemaker"><div class="detail-label">${esc(t.ui.winemaker)}${item.producer ? " · " + esc(item.producer) : ""}</div><p>${esc(blurb)}</p>${ter}</div>`;
     })()}
     ${(() => {
