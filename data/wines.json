@@ -1889,7 +1889,26 @@
           "temp": "8–10",
           "alcohol": "12",
           "dosage": "Brut"
-         }
+         },
+         "terroir": "Avize, Chouilly, Cramant, Le Mesnil-sur-Oger",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "94"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "93"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "93"
+          },
+          {
+           "critic": "Decanter",
+           "score": "90"
+          }
+         ]
         },
         {
          "name": "Le Rosé",
