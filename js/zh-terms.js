@@ -120,6 +120,7 @@
     "Côte Chalonnaise": "夏隆内丘",
     "Côte de Beaune": "博讷丘",
     "Côte de Nuits": "夜丘",
+    "Côte des Blancs": "白丘",
     "Dalmacija": "达尔马提亚",
     "Emilia-Romagna": "艾米利亚-罗马涅",
     "España": "西班牙",
@@ -192,6 +193,7 @@
     // Established renderings where they exist; careful phonetic transliteration
     // for local Croatian/Slovenian places that have no standard Chinese name.
     "Ambonnay": "昂博纳伊",
+    "Bouzy": "布齐",
     "Ambonnay – Champagne": "昂博纳伊-香槟",
     "Avize": "阿维兹",
     "Aÿ": "艾伊",
