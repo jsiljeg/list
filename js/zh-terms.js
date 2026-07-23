@@ -185,6 +185,7 @@
     "Yunnan": "云南",
     "Épernay": "埃佩尔奈",
     "Vallée de la Marne": "马恩河谷",
+    "Grande Vallée de la Marne": "大马恩河谷",
     "Coteaux du Vitryat": "维特里丘",
     // Country-level tokens used in the producer terroir line.
     "Slovenia": "斯洛文尼亚",

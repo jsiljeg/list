@@ -65,7 +65,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 23 | Vouette & Sorbée — Textures Brut Nature | Pinot Blanc | Brut Nature | 12% | owner | terroir Buxières-sur-Arce/Côte des Bar; 10–12°C; Robert Parker 93 (owner) |
 | 24 | Ruppert-Leroy — Martin Fontaine 2019 | Chardonnay | Brut Nature | 12% | owner | ABV from owner |
 | 25 | Ruppert-Leroy — Papillon | Pinot Noir | Brut Nature | 12% | [glugulp](https://www.glugulp.com/ruppert-leroy-champagne-brut-nature-papillon-en) |  |
-| 26 | Billecart-Salmon — Le Réserve | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 12.5% | [whwc](https://whwc.com/billecart-salmon-brut-champagne-reserve-nv/) | 40 Meunier/30/30 |
+| 26 | Billecart-Salmon — Le Réserve | Chardonnay, Pinot Noir, Pinot Meunier | Extra Brut | 12% | owner | terroir Montagne de Reims/Grande Vallée de la Marne; JS 93 / RP 91 / WE 90 / Jancis 17/20 (owner) |
 | 27 | Billecart-Salmon — Blanc de Blancs Grand Cru | Chardonnay | Brut | 12% | [wine.com](https://www.wine.com/product/billecart-salmon-le-blanc-de-blancs-grand-cru/25061) |  |
 | 28 | Billecart-Salmon — Le Rosé | Chardonnay, Pinot Noir, Pinot Meunier | Brut | 📷 | — | ABV needs bottle |
 | 29 | Henri Giraud — Esprit Nature | Pinot Noir, Chardonnay | Brut Nature | 📷 | — | ABV needs bottle |

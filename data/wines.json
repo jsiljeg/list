@@ -1842,9 +1842,28 @@
            "light_starters"
           ],
           "temp": "8–10",
-          "alcohol": "12.5",
-          "dosage": "Brut"
-         }
+          "alcohol": "12",
+          "dosage": "Extra Brut"
+         },
+         "terroir": "Montagne de Reims, Grande Vallée de la Marne",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "93"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "91"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "90"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17/20"
+          }
+         ]
         },
         {
          "name": "Blanc de Blancs Grand Cru",
