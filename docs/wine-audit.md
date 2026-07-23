@@ -55,7 +55,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 13 | De Sousa — Cuvée 3A Grand Cru | Chardonnay, Pinot Noir | Extra Brut | 12.5% | [premiumgrandscrus](https://www.premiumgrandscrus.com/en/extra-brut/229-de-sousa-cuvee-3a-champagne-grand-cru.html) | ratings JS 95 / WA 92 / Jancis 16+/20 (owner) |
 | 14 | De Sousa — Mycorhize Grand Cru | Chardonnay | Extra Brut | 12.5% | [wine.com](https://www.wine.com/product/de-sousa-mycorhize-blanc-de-blancs-extra-brut-grand-cru/251495) |  |
 | 15 | Pertois-Moriset — L'Assemblage Brut | Chardonnay, Pinot Noir | Brut | 12.5% | owner | Falstaff 89 (owner) |
-| 16 | Pertois-Moriset — L'Année Millésime Grand Cru Blanc de Blancs 2017 | Chardonnay | Extra Brut | 12.5% | owner | house style Extra Brut; ABV from owner |
+| 16 | Pertois-Moriset — L'Année Millésime Grand Cru Blanc de Blancs 2017 | Chardonnay | Extra Brut | 12.5% | owner | house style Extra Brut; ABV + Côte des Blancs region from owner |
 | 17 | Pertois-Moriset — La Collection Rosé & Blanc Grand Cru | Chardonnay, Pinot Noir | 📷 | 📷 | — | needs bottle |
 | 18 | L'Hoste Père & Fils — L'Hoste Rosé | Pinot Noir, Chardonnay | 📷 | 📷 | — | needs bottle |
 | 19 | Delamotte — Blanc de Blancs 2018 | Chardonnay | Brut | 12.5% | [delamotte](https://www.champagne-delamotte.com/en/products/blanc-de-blancs-vintage-2018) |  |
