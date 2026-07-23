@@ -1363,7 +1363,21 @@
           "zh": "Avize、Aÿ 与 Ambonnay——三个伟大村庄，同一种笔迹：不加镀金的矿物感。",
           "sl": "Avize, Aÿ in Ambonnay — tri velike vasi, en podpis: mineralnost brez pozlate.",
           "es": "Avize, Aÿ y Ambonnay — tres grandes pueblos, una firma: mineralidad sin dorado."
-         }
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "95"
+          },
+          {
+           "critic": "Wine Advocate",
+           "score": "92"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "16+/20"
+          }
+         ]
         },
         {
          "name": "Mycorhize Grand Cru",
