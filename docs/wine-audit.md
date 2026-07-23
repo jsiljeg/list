@@ -45,7 +45,7 @@ in [wine-ratings-research.md](wine-ratings-research.md).
 | 3 | Šember — Pavel | Chardonnay 90%, Plavec žuti 10% | Brut | 12.5% | [vivino](https://www.vivino.com/US/en/sember-pavel-pjenusac-brut-plesivica/w/8009619) | refined to 90/10 per source |
 | 4 | Tomac — Diplomat | Chardonnay 80%, Plavec žuti 20% | Extra Brut | 12.5% | [wineandmore](https://wineandmore.com/wines/tomac-diplomat/) | ⚠ Extra Brut **and** Brut Nature versions exist — verify bottle |
 | 5 | Tomac — Blanc de Noirs | Pinot Noir | Brut Nature | 12.5% | owner | grape + Brut Nature + ABV from owner |
-| 6 | Tomac — Rose | Pinot Noir | 📷 | 📷 | — | needs bottle |
+| 6 | Tomac — Rose | Pinot Noir | Brut | 12.5% | owner | from owner |
 | 7 | Contarini — Prosecco Millesimato 2023 | Glera | 📷 | 11% | [contarinivini](https://contarinivini.it/en/product/prosecco-doc-millesimato-brut/) | ⚠ Brut **or** Extra Dry (both 11%) — which do you carry? |
 | 8 | Corte Aura — Franciacorta Brut | Chardonnay, Pinot Nero | Brut | 📷 | — | ABV needs bottle (~12.5–13) |
 | 9 | Corte Aura — Franciacorta Satèn | Chardonnay | Brut | 📷 | — | ABV needs bottle |
