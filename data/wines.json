@@ -6142,18 +6142,49 @@
           "style": "white_rich",
           "body": "full",
           "aromas": [
-           "citrus",
-           "butter",
-           "toast",
-           "wet_stone"
+           "white_stone_fruit",
+           "pine_nut",
+           "bay_leaf",
+           "hazelnut_skin",
+           "smoke"
           ],
           "pairings": [
            "white_fish",
            "poultry",
            "cheese_hard"
           ],
-          "temp": "10–12",
-          "alcohol": ""
+          "temp": "12–14",
+          "alcohol": "14",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          },
+          {
+           "critic": "Vinous",
+           "score": "94"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "93"
+          }
+         ],
+         "notePlain": true,
+         "note": {
+          "hr": "„Hrast u vinu je poput parfema na ženi: nikad ne smije nadjačati.“ – Maria Vargas, enologinja vinarije",
+          "en": "\"Oak in a wine is like perfume on a woman: it must never overpower.\" – Maria Vargas, the winery's oenologist",
+          "it": "«Il legno in un vino è come il profumo su una donna: non deve mai prevalere.» – Maria Vargas, enologa della cantina",
+          "fr": "« Le bois dans un vin, c'est comme le parfum sur une femme : il ne doit jamais dominer. » – Maria Vargas, œnologue du domaine",
+          "de": "„Holz im Wein ist wie Parfüm bei einer Frau: Es darf niemals dominieren.“ – Maria Vargas, Önologin des Weinguts",
+          "zh": "“酒中的橡木味就像女人身上的香水：绝不能喧宾夺主。” —— Maria Vargas，酒庄酿酒师",
+          "sl": "»Hrast v vinu je kot parfum na ženski: nikoli ne sme prevladati.« – Maria Vargas, enologinja kleti",
+          "es": "«La madera en un vino es como el perfume en una mujer: nunca debe dominar.» – María Vargas, enóloga de la bodega"
          }
         },
         {
@@ -6167,19 +6198,27 @@
           "style": "white_rich",
           "body": "medium",
           "aromas": [
-           "dried_fruit",
-           "walnut",
-           "honey",
-           "smoke"
+           "melon",
+           "lemon_zest",
+           "verbena",
+           "tarragon",
+           "hazelnut"
           ],
           "pairings": [
            "white_fish",
            "poultry",
            "cheese_hard"
           ],
-          "temp": "10–12",
-          "alcohol": ""
+          "temp": "12–14",
+          "alcohol": "12.5",
+          "sweetness": "dry"
          },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "95"
+          }
+         ],
          "tags": [
           "drinking_now"
          ]
@@ -6190,7 +6229,7 @@
          "price": 68,
          "insight": {
           "grape": "Godello",
-          "region": "España",
+          "region": "Valdeorras",
           "country": "ES",
           "style": "orange",
           "body": "medium",
@@ -6204,8 +6243,9 @@
            "cheese_hard",
            "asian"
           ],
-          "temp": "10–12",
-          "alcohol": ""
+          "temp": "8–10",
+          "alcohol": "13",
+          "sweetness": "dry"
          }
         }
        ]
@@ -6224,10 +6264,13 @@
           "style": "white_mineral",
           "body": "medium",
           "aromas": [
-           "citrus",
-           "herbs",
-           "almond",
-           "wet_stone"
+           "lemon_zest",
+           "lemon_verbena",
+           "golden_melon",
+           "nettle",
+           "apple",
+           "honeydew_melon",
+           "saline"
           ],
           "pairings": [
            "white_fish",
@@ -6235,7 +6278,8 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          }
         }
        ]
