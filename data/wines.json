@@ -243,7 +243,8 @@
            "prosciutto"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Motovun"
         },
@@ -269,7 +270,8 @@
            "white_meat"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Bale"
         },
@@ -294,7 +296,8 @@
            "asparagus"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Štrigova"
         },
@@ -320,7 +323,8 @@
            "grilled_fish"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Pelješac",
          "note": {
@@ -357,7 +361,8 @@
            "risotto"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Korčula"
         },
@@ -398,9 +403,9 @@
           "body": "light",
           "aromas": [
            "citrus",
-           "wet_stone",
-           "white_flowers",
-           "honey"
+           "quince",
+           "blossom_honey",
+           "jasmine"
           ],
           "pairings": [
            "asian",
@@ -590,7 +595,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Hršak Breg"
         },
@@ -616,7 +622,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Hršak Breg",
          "recommended": true,
@@ -652,7 +659,8 @@
            "charcuterie"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "recommended": true,
          "note": {
@@ -688,7 +696,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Pelješac"
         },
@@ -714,7 +723,8 @@
            "pasta"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Motovun"
         },
@@ -740,7 +750,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Komarna"
         },
@@ -816,7 +827,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Dingač, Pelješac"
         },
@@ -842,7 +854,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Bale",
          "recommended": true,
@@ -879,7 +892,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Motovun"
         },
@@ -941,7 +955,8 @@
            "cheese_blue"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Vižinada"
         },
@@ -967,7 +982,8 @@
            "nuts"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Pelješac",
          "note": {
@@ -1003,7 +1019,8 @@
            "cheese_blue"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Štrigova"
         }
@@ -2794,7 +2811,8 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": "12.5"
+          "alcohol": "12.5",
+          "sweetness": "dry"
          },
          "terroir": "Hršak Breg"
         },
@@ -2820,7 +2838,8 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "Hršak Breg"
         },
@@ -2849,7 +2868,8 @@
            "cheese_fresh"
           ],
           "temp": "8–10",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "ratings": [
           {
@@ -2880,7 +2900,8 @@
            "cheese_fresh"
           ],
           "temp": "8–10",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          }
         },
         {
@@ -2907,7 +2928,8 @@
            "risotto"
           ],
           "temp": "12–14",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          }
         },
         {
@@ -2931,7 +2953,8 @@
            "asparagus"
           ],
           "temp": "10–12",
-          "alcohol": "13.3"
+          "alcohol": "13.3",
+          "sweetness": "dry"
          },
          "terroir": "Štrigova"
         },
@@ -2957,7 +2980,8 @@
            "salads"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Štrigova"
         },
@@ -2988,7 +3012,8 @@
            "turkey"
           ],
           "temp": "10–12",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "Kaldir, Šubijent, Brkač"
         },
@@ -3015,7 +3040,8 @@
            "risotto"
           ],
           "temp": "10–12",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "Grimalda"
         },
@@ -3041,7 +3067,8 @@
            "mushrooms"
           ],
           "temp": "12–14",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "note": {
           "hr": "Malvazija koja pokazuje identitet mjesta — Istra bez kompromisa, vino koje je istinito.",
@@ -3076,7 +3103,8 @@
            "cheese_hard"
           ],
           "temp": "12–14",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Krasica"
         },
@@ -3104,7 +3132,8 @@
            "white_meat"
           ],
           "temp": "10–12",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Stancija Meneghetti"
         },
@@ -3130,7 +3159,8 @@
            "truffles"
           ],
           "temp": "10–12",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "Radovani"
         },
@@ -3156,7 +3186,8 @@
            "seafood"
           ],
           "temp": "10–12",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "Korčula"
         },
@@ -3182,7 +3213,8 @@
            "risotto"
           ],
           "temp": "10–12",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Korčula"
         },
@@ -3208,7 +3240,8 @@
            "white_fish"
           ],
           "temp": "10–12",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Lumbarda, Korčula"
         },
@@ -3234,7 +3267,8 @@
            "grilled_fish"
           ],
           "temp": "10–12",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Pelješac",
          "note": {
@@ -3270,7 +3304,8 @@
            "shellfish"
           ],
           "temp": "10–12",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Čara, Korčula"
         },
@@ -3296,7 +3331,8 @@
            "grilled_fish"
           ],
           "temp": "10–12",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Lumbarda, Korčula"
         },
@@ -3322,7 +3358,8 @@
            "shellfish"
           ],
           "temp": "10–12",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "ratings": [
           {
@@ -3360,7 +3397,8 @@
           "aromas": [
            "lime",
            "green_apple",
-           "wet_stone"
+           "wet_stone",
+           "lime_blossom"
           ],
           "pairings": [
            "white_fish",
@@ -3395,9 +3433,9 @@
           "body": "light",
           "aromas": [
            "peach",
-           "lime",
-           "honey",
-           "wet_stone"
+           "apricot",
+           "blossom_honey",
+           "jasmine"
           ],
           "pairings": [
            "asian",
@@ -3437,8 +3475,8 @@
           "aromas": [
            "lime",
            "peach",
-           "wet_stone",
-           "honey"
+           "acacia",
+           "saline"
           ],
           "pairings": [
            "asian",
@@ -3463,9 +3501,9 @@
           "body": "light",
           "aromas": [
            "citrus",
-           "wet_stone",
-           "white_flowers",
-           "honey"
+           "quince",
+           "blossom_honey",
+           "jasmine"
           ],
           "pairings": [
            "asian",
@@ -3510,9 +3548,9 @@
           "style": "white_mineral",
           "body": "medium",
           "aromas": [
-           "peach",
+           "greengage",
            "flint",
-           "herbs",
+           "meadow_herbs",
            "honey"
           ],
           "pairings": [
@@ -3573,10 +3611,10 @@
           "style": "white_mineral",
           "body": "full",
           "aromas": [
-           "citrus",
+           "lemon",
            "flint",
-           "herbs",
-           "saline"
+           "saline",
+           "petrol"
           ],
           "pairings": [
            "white_fish",
@@ -3610,10 +3648,10 @@
           "style": "white_mineral",
           "body": "medium",
           "aromas": [
-           "citrus",
+           "lemon",
            "peach",
-           "wet_stone",
-           "herbs"
+           "herbs",
+           "wet_stone"
           ],
           "pairings": [
            "white_fish",
@@ -3648,9 +3686,9 @@
           "body": "full",
           "aromas": [
            "peach",
-           "citrus",
-           "wet_stone",
-           "honey"
+           "quince",
+           "flint",
+           "blossom_honey"
           ],
           "pairings": [
            "white_fish",
@@ -3683,7 +3721,7 @@
            "citrus",
            "flint",
            "white_flowers",
-           "honey"
+           "saline"
           ],
           "pairings": [
            "white_fish",
@@ -3738,8 +3776,8 @@
           "aromas": [
            "apricot",
            "flint",
-           "honey",
-           "petrol"
+           "petrol",
+           "ginger"
           ],
           "pairings": [
            "white_fish",
@@ -3763,8 +3801,8 @@
           "style": "white_mineral",
           "body": "full",
           "aromas": [
-           "citrus",
            "apricot",
+           "pineapple",
            "flint",
            "honey"
           ],
@@ -3810,8 +3848,8 @@
           "aromas": [
            "green_apple",
            "peach",
-           "wet_stone",
-           "honey"
+           "lime_blossom",
+           "blossom_honey"
           ],
           "pairings": [
            "asian",
@@ -3849,9 +3887,10 @@
           "style": "white_mineral",
           "body": "medium",
           "aromas": [
-           "citrus",
+           "lemon",
            "green_apple",
-           "wet_stone"
+           "wet_stone",
+           "herbs"
           ],
           "pairings": [
            "white_fish",
@@ -3880,10 +3919,10 @@
           "style": "white_mineral",
           "body": "full",
           "aromas": [
-           "citrus",
-           "flint",
+           "apricot",
            "white_flowers",
-           "honey"
+           "flint",
+           "saline"
           ],
           "pairings": [
            "white_fish",
@@ -3961,7 +4000,7 @@
          "price": 57,
          "insight": {
           "grape": "Grüner Veltliner",
-          "region": "Wagram",
+          "region": "Niederösterreich",
           "country": "AT",
           "style": "white_fresh",
           "body": "medium",
@@ -3977,8 +4016,16 @@
            "asian"
           ],
           "temp": "8–10",
-          "alcohol": ""
-         }
+          "alcohol": "12.5",
+          "sweetness": "dry"
+         },
+         "terroir": "Wagram",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "93"
+          }
+         ]
         },
         {
          "name": "Grüner Veltliner Federspiel Ried Hinter der Burg 2024",
@@ -3986,7 +4033,7 @@
          "price": 110,
          "insight": {
           "grape": "Grüner Veltliner",
-          "region": "Weißenkirchen, Wachau",
+          "region": "Wachau",
           "country": "AT",
           "style": "white_mineral",
           "body": "medium",
@@ -4002,8 +4049,16 @@
            "salads"
           ],
           "temp": "8–10",
-          "alcohol": ""
-         }
+          "alcohol": "12.5",
+          "sweetness": "dry"
+         },
+         "terroir": "Weißenkirchen",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Riesling Smaragd Ried Klaus 2024",
@@ -4011,15 +4066,18 @@
          "price": 150,
          "insight": {
           "grape": "Riesling",
-          "region": "Weißenkirchen, Wachau",
+          "region": "Wachau",
           "country": "AT",
           "style": "white_mineral",
           "body": "full",
           "aromas": [
            "apricot",
-           "citrus",
            "flint",
-           "white_flowers"
+           "white_flowers",
+           "greengage",
+           "blossom_honey",
+           "lemon",
+           "saline"
           ],
           "pairings": [
            "white_fish",
@@ -4027,8 +4085,24 @@
            "asian"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13.5",
+          "sweetness": "dry"
+         },
+         "terroir": "Weißenkirchen",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "98"
+          },
+          {
+           "critic": "Lobenberg",
+           "score": "97+"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "96"
+          }
+         ]
         },
         {
          "name": "Sauvignon vom Opok 2021",
@@ -4052,7 +4126,8 @@
            "vegetables"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "sweetness": "dry"
          }
         },
         {
@@ -5823,7 +5898,8 @@
            "prosciutto"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Skradin"
         },
@@ -5848,7 +5924,8 @@
            "salads"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Zapadna Istra"
         }
@@ -5888,7 +5965,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Hršak Breg"
         },
@@ -5914,7 +5992,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Hršak Breg",
          "recommended": true,
@@ -5950,7 +6029,8 @@
            "charcuterie"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "recommended": true,
          "note": {
@@ -5986,7 +6066,8 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          }
         },
         {
@@ -6010,7 +6091,8 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          }
         },
         {
@@ -6035,7 +6117,8 @@
            "white_meat"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Grimalda"
         },
@@ -6061,7 +6144,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Krasica"
         },
@@ -6087,7 +6171,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Buzet"
         },
@@ -6113,7 +6198,8 @@
            "pasta"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Motovun"
         },
@@ -6139,7 +6225,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Pag"
         },
@@ -6165,7 +6252,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Pelješac"
         },
@@ -6191,7 +6279,8 @@
            "game"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Postup, Pelješac"
         },
@@ -6217,7 +6306,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Dingač, Pelješac"
         },
@@ -6243,7 +6333,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Pelješac"
         },
@@ -6269,7 +6360,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          }
         },
         {
@@ -6294,7 +6386,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Komarna"
         },
@@ -6319,7 +6412,8 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Korčula"
         },
@@ -6345,7 +6439,8 @@
            "white_meat"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          }
         },
         {
@@ -6370,7 +6465,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Ponikve, Pelješac",
          "note": {
@@ -6409,7 +6505,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          }
         },
         {
@@ -6434,7 +6531,8 @@
            "game"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Dingač, Pelješac",
          "note": {
@@ -6470,7 +6568,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Bale",
          "recommended": true,
@@ -6507,7 +6606,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Čara, Korčula"
         },
@@ -6533,7 +6633,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Čara, Korčula"
         },
@@ -6559,7 +6660,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Čara, Korčula"
         },
@@ -6585,7 +6687,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Dingač, Pelješac"
         }
@@ -9101,7 +9204,8 @@
            "cheese_blue"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Vižinada"
         },
@@ -9127,7 +9231,8 @@
            "cheese_blue"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Pelješac"
         },
@@ -9153,7 +9258,8 @@
            "nuts"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Pelješac",
          "note": {
@@ -9189,7 +9295,8 @@
            "cheese_blue"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Krasica"
         },
@@ -9215,7 +9322,8 @@
            "cheese_blue"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Štrigova"
         }
