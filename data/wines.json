@@ -3180,7 +3180,7 @@
            "white_fish"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13.5"
          }
         },
         {
@@ -3188,7 +3188,7 @@
          "producer": "Miloš",
          "price": 120,
          "insight": {
-          "grape": "Pošip",
+          "grape": "Rukatac",
           "region": "Pelješac, Dalmacija",
           "country": "HR",
           "style": "white_mineral",
@@ -3205,7 +3205,7 @@
            "grilled_fish"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13.5"
          },
          "note": {
           "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
@@ -3224,7 +3224,7 @@
          "producer": "Markus",
          "price": 90,
          "insight": {
-          "grape": "Dalmatinske autohtone sorte",
+          "grape": "Pošip",
           "region": "Dalmacija",
           "country": "HR",
           "style": "white_mineral",
@@ -3240,8 +3240,9 @@
            "shellfish"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13.5"
+         },
+         "terroir": "Čara, Korčula"
         },
         {
          "name": "Grk 2025",
@@ -3249,7 +3250,7 @@
          "price": 100,
          "insight": {
           "grape": "Grk",
-          "region": "Lumbarda, Korčula",
+          "region": "Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3265,8 +3266,9 @@
            "grilled_fish"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13.5"
+         },
+         "terroir": "Lumbarda, Korčula"
         },
         {
          "name": "Jeka Blanc 2024",
@@ -3290,8 +3292,14 @@
            "shellfish"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13.5"
          },
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "95"
+          }
+         ],
          "recommended": true,
          "note": {
           "hr": "Zaboravljene dalmatinske sorte, vraćene u život — bijelo vino sunca, kamena i tvrdoglave vjere.",

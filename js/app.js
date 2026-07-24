@@ -642,12 +642,25 @@ function itTokens(str) {
 }
 function localizeGrape(str) {
   if (!str) return str;
+  // Whole-string descriptor phrases (e.g. "Autohtone dalmatinske sorte").
+  if (typeof GRAPE_I18N !== "undefined" && GRAPE_I18N[str]) return GRAPE_I18N[str][lang] || GRAPE_I18N[str].en || str;
   if (lang === "zh" && typeof ZH_GRAPE !== "undefined") return zhTokens(str, ZH_GRAPE);
   if (lang === "it") return itTokens(str);
   return str;
 }
 function localizeRegion(str) {
-  return lang === "zh" && str && typeof ZH_REGION !== "undefined" ? zhTokens(str, ZH_REGION) : str;
+  if (!str) return str;
+  if (lang === "zh" && typeof ZH_REGION !== "undefined") return zhTokens(str, ZH_REGION);
+  // Translate any region token with an established exonym (e.g. Dalmacija→Dalmatia).
+  if (typeof REGION_I18N !== "undefined") {
+    return str
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .map((tok) => (REGION_I18N[tok] && REGION_I18N[tok][lang]) || tok)
+      .join(", ");
+  }
+  return str;
 }
 function localizeDosage(str) {
   if (lang !== "zh" || !str || typeof ZH_DOSAGE === "undefined") return str;

@@ -1267,3 +1267,26 @@ es: {
   }
 }
 };
+
+/* Region names with an established per-language exonym. localizeRegion()
+   translates any comma-separated token found here; unknown tokens (villages,
+   most appellations) stay in their original Latin form. Chinese is handled
+   separately via ZH_REGION (bilingual gloss). */
+const REGION_I18N = {
+  "Dalmacija": { hr: "Dalmacija", en: "Dalmatia", it: "Dalmazia", fr: "Dalmatie", de: "Dalmatien", sl: "Dalmacija", es: "Dalmacia" }
+};
+
+/* Free-text grape descriptors (phrases, not single varieties) that need a full
+   per-language translation. localizeGrape() matches the whole string. */
+const GRAPE_I18N = {
+  "Autohtone dalmatinske sorte": {
+    hr: "Autohtone dalmatinske sorte",
+    en: "Indigenous Dalmatian varieties",
+    it: "Varietà autoctone dalmate",
+    fr: "Cépages autochtones dalmates",
+    de: "Autochthone dalmatinische Rebsorten",
+    sl: "Avtohtone dalmatinske sorte",
+    es: "Variedades autóctonas dálmatas",
+    zh: "达尔马提亚原生品种"
+  }
+};
