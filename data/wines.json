@@ -4867,12 +4867,14 @@
           "region": "Saint-Aubin, Bourgogne",
           "country": "FR",
           "style": "white_rich",
-          "body": "full",
+          "body": "medium",
           "aromas": [
-           "citrus",
-           "flint",
-           "butter",
-           "toast"
+           "nashi_pear",
+           "white_flowers",
+           "oyster_juice",
+           "white_peach",
+           "lemon_oil",
+           "flint"
           ],
           "pairings": [
            "white_fish",
@@ -4880,8 +4882,23 @@
            "shellfish"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
+         "ratings": [
+          {
+           "critic": "Jasper Morris",
+           "score": "93"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "93"
+          },
+          {
+           "critic": "Tim Atkin",
+           "score": "91"
+          }
+         ],
          "recommended": true,
          "note": {
           "hr": "Lamy radi burgundac s laserskom preciznošću — Les Frionnes: napetost, kreda i suzdržana raskoš.",
@@ -4908,7 +4925,10 @@
            "citrus",
            "white_flowers",
            "wet_stone",
-           "butter"
+           "butter",
+           "pear",
+           "green_apple",
+           "hawthorn"
           ],
           "pairings": [
            "white_fish",
@@ -4916,8 +4936,19 @@
            "risotto"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Jasper Morris",
+           "score": "93"
+          },
+          {
+           "critic": "Tim Atkin",
+           "score": "91"
+          }
+         ]
         },
         {
          "name": "Meursault 1er Cru Les Charmes 2021",
@@ -4933,7 +4964,10 @@
            "butter",
            "hazelnut",
            "toast",
-           "citrus"
+           "citrus",
+           "flint",
+           "lemon",
+           "lime"
           ],
           "pairings": [
            "white_fish",
@@ -4941,7 +4975,8 @@
            "truffles"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "14",
+          "sweetness": "dry"
          }
         },
         {
@@ -4958,7 +4993,11 @@
            "citrus",
            "butter",
            "hazelnut",
-           "wet_stone"
+           "wet_stone",
+           "brioche",
+           "chalk",
+           "jasmine",
+           "peach"
           ],
           "pairings": [
            "white_fish",
@@ -4966,8 +5005,15 @@
            "risotto"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
+         "ratings": [
+          {
+           "critic": "Jasper Morris",
+           "score": "91"
+          }
+         ],
          "recommended": true,
          "note": {
           "hr": "Meursault bez pretjerivanja — lješnjak, maslac i mineralna kičma koja sve drži na mjestu.",
@@ -4991,10 +5037,14 @@
           "style": "white_rich",
           "body": "full",
           "aromas": [
-           "butter",
-           "hazelnut",
-           "flint",
-           "toast"
+           "white_fruit",
+           "quince",
+           "mandarin",
+           "pear",
+           "lemongrass",
+           "herbs",
+           "white_pepper",
+           "flint"
           ],
           "pairings": [
            "white_fish",
@@ -5002,8 +5052,19 @@
            "truffles"
           ],
           "temp": "12–14",
-          "alcohol": ""
-         }
+          "alcohol": "13.5",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Lobenberg",
+           "score": "96-97"
+          },
+          {
+           "critic": "Jasper Morris",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Meursault Les Tillets 2023",
@@ -5014,7 +5075,7 @@
           "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
-          "body": "full",
+          "body": "medium",
           "aromas": [
            "butter",
            "hazelnut",
@@ -5027,7 +5088,8 @@
            "truffles"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "tags": [
           "rare"
@@ -5042,12 +5104,13 @@
           "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
-          "body": "full",
+          "body": "medium",
           "aromas": [
-           "butter",
-           "hazelnut",
-           "toast",
-           "wet_stone"
+           "citrus",
+           "green_apple",
+           "almond",
+           "white_flowers",
+           "dried_fruit"
           ],
           "pairings": [
            "white_fish",
@@ -5055,8 +5118,10 @@
            "truffles"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
+         "terroir": "Les Pelles, Sous La Velle",
          "tags": [
           "rare"
          ],
@@ -5081,11 +5146,12 @@
           "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
-          "body": "full",
+          "body": "medium",
           "aromas": [
-           "butter",
            "citrus",
+           "white_fruit",
            "hazelnut",
+           "smoke",
            "flint"
           ],
           "pairings": [
@@ -5094,7 +5160,8 @@
            "risotto"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "tags": [
           "rare"
@@ -5109,12 +5176,15 @@
           "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
-          "body": "full",
+          "body": "medium",
           "aromas": [
-           "citrus",
-           "butter",
-           "toast",
-           "wet_stone"
+           "orchard_fruit",
+           "lemon_oil",
+           "hazelnut",
+           "flint",
+           "honey",
+           "chalk",
+           "saline"
           ],
           "pairings": [
            "white_fish",
@@ -5122,7 +5192,8 @@
            "truffles"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "tags": [
           "rare"
@@ -5137,11 +5208,13 @@
           "region": "Meursault, Bourgogne",
           "country": "FR",
           "style": "white_rich",
-          "body": "full",
+          "body": "medium",
           "aromas": [
-           "butter",
-           "hazelnut",
-           "citrus"
+           "lemon_oil",
+           "white_peach",
+           "acacia",
+           "saline",
+           "chalk"
           ],
           "pairings": [
            "white_fish",
@@ -5149,7 +5222,8 @@
            "cheese_hard"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "tags": [
           "rare"
@@ -5161,15 +5235,18 @@
          "price": 560,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Corton-Charlemagne, Bourgogne",
+          "region": "Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
           "aromas": [
-           "citrus",
-           "flint",
-           "hazelnut",
-           "toast"
+           "apricot",
+           "nectarine",
+           "pomelo",
+           "passion_fruit",
+           "vanilla",
+           "butter",
+           "smoke"
           ],
           "pairings": [
            "white_fish",
@@ -5177,8 +5254,20 @@
            "solo"
           ],
           "temp": "12–14",
-          "alcohol": ""
-         }
+          "alcohol": "14",
+          "sweetness": "dry"
+         },
+         "terroir": "Corton-Charlemagne (Grand Cru)",
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "95"
+          },
+          {
+           "critic": "Jasper Morris",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Sancerre Blanc 2023",
@@ -5202,7 +5291,8 @@
            "salads"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          }
         },
         {
