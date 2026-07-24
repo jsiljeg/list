@@ -474,7 +474,8 @@
            "seafood"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "12",
+          "sweetness": "dry"
          },
          "recommended": true,
          "note": {
@@ -5763,8 +5764,9 @@
            "salads",
            "poultry"
           ],
-          "temp": "10–12",
-          "alcohol": ""
+          "temp": "8–10",
+          "alcohol": "12",
+          "sweetness": "dry"
          }
         },
         {
@@ -5779,9 +5781,12 @@
           "body": "medium",
           "aromas": [
            "pear",
-           "red_apple",
-           "almond",
-           "wet_stone"
+           "apple",
+           "peach",
+           "chalk",
+           "butter",
+           "lime",
+           "pink_grapefruit"
           ],
           "pairings": [
            "white_fish",
@@ -5789,8 +5794,19 @@
            "cheese_fresh"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "11.5",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "95"
+          },
+          {
+           "critic": "Vinous",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Pinot Grigio Porer 2023",
@@ -5803,10 +5819,12 @@
           "style": "white_fresh",
           "body": "medium",
           "aromas": [
-           "pear",
-           "citrus",
-           "almond",
-           "wet_stone"
+           "thyme",
+           "lemon_leaves",
+           "peonies",
+           "green_melon",
+           "chamomile",
+           "saline"
           ],
           "pairings": [
            "seafood",
@@ -5814,8 +5832,27 @@
            "salads"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "11.5",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Wine Enthusiast",
+           "score": "95"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "92"
+          },
+          {
+           "critic": "Vinous",
+           "score": "91"
+          },
+          {
+           "critic": "Decanter",
+           "score": "91"
+          }
+         ]
         },
         {
          "name": "Sauvignon Voglar 2019",
@@ -5839,7 +5876,8 @@
            "cheese_fresh"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          }
         },
         {
@@ -5856,16 +5894,24 @@
            "orange_peel",
            "dried_fruit",
            "honey",
-           "spice"
+           "spice",
+           "botrytis"
           ],
           "pairings": [
            "cheese_hard",
            "charcuterie",
            "mushrooms"
           ],
-          "temp": "12–14",
-          "alcohol": ""
-         }
+          "temp": "15",
+          "alcohol": "14",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Kaplja 2018",
@@ -5881,15 +5927,17 @@
            "quince",
            "honey",
            "orange_peel",
-           "herbs"
+           "herbs",
+           "botrytis"
           ],
           "pairings": [
            "white_meat",
            "cheese_hard",
            "mushrooms"
           ],
-          "temp": "12–14",
-          "alcohol": ""
+          "temp": "15",
+          "alcohol": "14.5",
+          "sweetness": "dry"
          }
         },
         {
@@ -5906,7 +5954,8 @@
            "apricot",
            "honey",
            "herbs",
-           "spice"
+           "spice",
+           "botrytis"
           ],
           "pairings": [
            "charcuterie",
@@ -5914,8 +5963,15 @@
            "white_meat"
           ],
           "temp": "12–14",
-          "alcohol": ""
-         }
+          "alcohol": "14",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Vinous",
+           "score": "93"
+          }
+         ]
         },
         {
          "name": "Etna Bianco 2023",
@@ -5939,7 +5995,8 @@
            "seafood"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "12",
+          "sweetness": "dry"
          },
          "recommended": true,
          "note": {
@@ -5967,7 +6024,8 @@
            "orange_peel",
            "dried_fruit",
            "honey",
-           "spice"
+           "spice",
+           "botrytis"
           ],
           "pairings": [
            "cheese_hard",
@@ -5975,7 +6033,8 @@
            "mushrooms"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "14",
+          "sweetness": "dry"
          }
         },
         {
@@ -6000,7 +6059,8 @@
            "white_meat"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "sweetness": "dry"
          }
         },
         {
@@ -6025,7 +6085,8 @@
            "game"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "sweetness": "dry"
          }
         },
         {
@@ -6050,7 +6111,19 @@
            "white_meat"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
+         },
+         "notePlain": true,
+         "note": {
+          "hr": "Jakot = Tokaj. Unatrag.",
+          "en": "Jakot = Tokaj. Backwards.",
+          "it": "Jakot = Tokaj. Al contrario.",
+          "fr": "Jakot = Tokaj. À l'envers.",
+          "de": "Jakot = Tokaj. Rückwärts.",
+          "zh": "Jakot = Tokaj，倒着写。",
+          "sl": "Jakot = Tokaj. Nazaj.",
+          "es": "Jakot = Tokaj. Al revés."
          }
         }
        ]

@@ -624,11 +624,15 @@ function zhTokens(str, map) {
     })
     .join("、");
 }
-/* Italian-only grape name overrides: the canonical stored name is the French/
-   international form (e.g. "Pinot Noir"); in the Italian view it shows as the
-   Italian name. Other languages keep the canonical name. */
-const IT_GRAPE = { "Pinot Noir": "Pinot Nero" };
-function itTokens(str) {
+/* Per-language grape name overrides: the canonical stored name is the French/
+   international or source-label form (e.g. "Pinot Noir", "Ribolla Gialla");
+   in some language views a single grape shows under its local name instead.
+   Other languages keep the canonical name. */
+const LANG_GRAPE = {
+  it: { "Pinot Noir": "Pinot Nero" },
+  hr: { "Pinot Bianco": "Pinot Blanc", "Ribolla Gialla": "Rebula" }
+};
+function langTokens(str, map) {
   return str
     .split(",")
     .map((s) => s.trim())
@@ -637,7 +641,7 @@ function itTokens(str) {
       const m = tok.match(/^(.*?)\s*(\d+(?:[.,]\d+)?\s*%)$/);
       const name = m ? m[1].trim() : tok;
       const pct = m ? " " + m[2].replace(/\s+/g, "") : "";
-      return IT_GRAPE[name] ? IT_GRAPE[name] + pct : tok;
+      return map[name] ? map[name] + pct : tok;
     })
     .join(", ");
 }
@@ -646,7 +650,7 @@ function localizeGrape(str) {
   // Whole-string descriptor phrases (e.g. "Autohtone dalmatinske sorte").
   if (typeof GRAPE_I18N !== "undefined" && GRAPE_I18N[str]) return GRAPE_I18N[str][lang] || GRAPE_I18N[str].en || str;
   if (lang === "zh" && typeof ZH_GRAPE !== "undefined") return zhTokens(str, ZH_GRAPE);
-  if (lang === "it") return itTokens(str);
+  if (LANG_GRAPE[lang]) return langTokens(str, LANG_GRAPE[lang]);
   return str;
 }
 function localizeRegion(str) {
