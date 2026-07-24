@@ -637,7 +637,7 @@
          "price": 8,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Plešivica",
+          "region": "Moslavina",
           "country": "HR",
           "style": "red_light",
           "body": "light",
@@ -5652,8 +5652,8 @@
          "producer": "Bastian",
          "price": 50,
          "insight": {
-          "grape": "Dalmatinske autohtone sorte",
-          "region": "Srednja i Južna Dalmacija",
+          "grape": "Merlot 70%, Cabernet Franc 30%",
+          "region": "Primorska Hrvatska",
           "country": "HR",
           "style": "rose",
           "body": "light",
@@ -5669,7 +5669,8 @@
           ],
           "temp": "8–10",
           "alcohol": ""
-         }
+         },
+         "terroir": "Zapadna Istra"
         }
        ]
       }
@@ -5754,7 +5755,7 @@
          "price": 54,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Plešivica",
+          "region": "Moslavina",
           "country": "HR",
           "style": "red_light",
           "body": "light",

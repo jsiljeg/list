@@ -280,6 +280,10 @@
     "Srednja i Južna Dalmacija": "中南达尔马提亚",
     "Sjeverna Dalmacija": "北达尔马提亚",
     "Dalmatinska zagora": "达尔马提亚腹地",
+    "Primorska Hrvatska": "滨海克罗地亚",
+    "Kontinentalna Hrvatska": "大陆克罗地亚",
+    "Moslavina": "莫斯拉维纳",
+    "Zapadna Istra": "西伊斯特拉",
     "Štajerska": "施泰尔斯卡",
     "Štrigova": "什特里戈瓦"
   };

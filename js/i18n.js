@@ -1277,8 +1277,11 @@ es: {
    for display (the country field is appended separately, so we avoid
    "Hrvatska Istra, Hrvatska"). To add a region, add its canonical key here. */
 const REGION_I18N = {
+  // Croatian macro-regions (regije)
+  "Primorska Hrvatska":        { hr: "Primorska Hrvatska", en: "Coastal Croatia", it: "Croazia costiera", fr: "Croatie côtière", de: "Küstenkroatien", sl: "Primorska Hrvaška", es: "Croacia costera" },
+  "Kontinentalna Hrvatska":    { hr: "Kontinentalna Hrvatska", en: "Continental Croatia", it: "Croazia continentale", fr: "Croatie continentale", de: "Kontinentales Kroatien", sl: "Celinska Hrvaška", es: "Croacia continental" },
   // Official Croatian podregije (GI/PDO)
-  "Hrvatska Istra":            { hr: "Istra", en: "Istria", it: "Istria", fr: "Istrie", de: "Istrien", sl: "Istra", es: "Istria" },
+  "Hrvatska Istra":            { hr: "Hrvatska Istra", en: "Croatian Istria", it: "Istria croata", fr: "Istrie croate", de: "Kroatisch-Istrien", sl: "Hrvaška Istra", es: "Istria croata" },
   "Hrvatsko primorje":         { hr: "Kvarner", en: "Kvarner", it: "Quarnaro", fr: "Kvarner", de: "Kvarner", sl: "Kvarner", es: "Kvarner" },
   "Srednja i Južna Dalmacija": { hr: "Srednja i Južna Dalmacija", en: "Central & Southern Dalmatia", it: "Dalmazia centrale e meridionale", fr: "Dalmatie centrale et méridionale", de: "Mittel- und Süddalmatien", sl: "Srednja in Južna Dalmacija", es: "Dalmacia central y meridional" },
   "Sjeverna Dalmacija":        { hr: "Sjeverna Dalmacija", en: "Northern Dalmatia", it: "Dalmazia settentrionale", fr: "Dalmatie du Nord", de: "Norddalmatien", sl: "Severna Dalmacija", es: "Dalmacia septentrional" },

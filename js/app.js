@@ -521,7 +521,13 @@ function openDetail(ref, back) {
   const field = (label, value, wide) =>
     value ? `<div class="detail-field${wide ? " wide" : ""}"><div class="detail-label">${label}</div><div class="detail-value">${value}</div></div>` : "";
   const list = (keys, dict) => (keys || []).map((k) => dict[k] || k).join(", ");
-  const region = [esc(localizeRegion(ins.region)), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
+  // Region + country, but skip the country when the (localized) region name
+  // already conveys it — e.g. "Hrvatska Istra", "Coastal Croatia" — so we never
+  // render "Hrvatska Istra, Hrvatska".
+  const localizedRegion = localizeRegion(ins.region) || "";
+  const countryName = t.countries[ins.country] || ins.country || "";
+  const showCountry = countryName && !localizedRegion.toLowerCase().includes(countryName.toLowerCase());
+  const region = [esc(localizedRegion), showCountry ? esc(countryName) : ""].filter(Boolean).join(", ");
 
   const glass = glassFor(ins.style, ins.grape);
   const noteText = item.note && (item.note[lang] || item.note.en || item.note.hr);
