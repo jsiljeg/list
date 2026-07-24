@@ -536,7 +536,7 @@ function openDetail(ref, back) {
     ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
-    <div class="detail-style">${esc(t.styles[ins.style] || "")}${ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : ""}</div>
+    <div class="detail-style">${esc(t.styles[ins.style] || "")}${ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : ""}${ins.sweetness && t.sweetness ? " · " + esc(t.sweetness[ins.sweetness] || ins.sweetness) : ""}</div>
     ${noteText ? (item.notePlain
       ? `<div class="detail-note">${esc(noteText)}</div>`
       : `<div class="detail-note">„${esc(noteText)}“ <span class="detail-note-sig">— ${esc(item.noteSig || "Filho")}</span></div>`) : ""}

@@ -147,6 +147,7 @@
     "Montalcino": "蒙塔奇诺",
     "Morey-Saint-Denis": "莫雷-圣丹尼",
     "Mosel": "摩泽尔",
+    "Mosel-Saar-Ruwer": "摩泽尔-萨尔-鲁沃",
     "Mount Veeder": "维德山",
     "Napa Valley": "纳帕谷",
     "Nuits-Saint-Georges": "夜圣乔治",

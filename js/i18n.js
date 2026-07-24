@@ -93,6 +93,7 @@ hr: {
     sweet: "Slatko · desertno vino"
   },
   bodies: { light: "lagano", medium: "srednje puno", full: "puno" },
+  sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
     almond: "badem", apricot: "marelica", balsamic: "balzamične note", blackberry: "kupina",
@@ -205,6 +206,7 @@ en: {
     sweet: "Sweet · dessert wine"
   },
   bodies: { light: "light", medium: "medium", full: "full" },
+  sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
     almond: "almond", apricot: "apricot", balsamic: "balsamic notes", blackberry: "blackberry",
@@ -317,6 +319,7 @@ it: {
     sweet: "Dolce · vino da dessert"
   },
   bodies: { light: "leggero", medium: "medio", full: "corposo" },
+  sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
     almond: "mandorla", apricot: "albicocca", balsamic: "note balsamiche", blackberry: "mora",
@@ -429,6 +432,7 @@ fr: {
     sweet: "Doux · vin de dessert"
   },
   bodies: { light: "léger", medium: "moyen", full: "corsé" },
+  sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
     almond: "amande", apricot: "abricot", balsamic: "notes balsamiques", blackberry: "mûre",
@@ -541,6 +545,7 @@ de: {
     sweet: "Süß · Dessertwein"
   },
   bodies: { light: "leicht", medium: "mittel", full: "vollmundig" },
+  sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
     almond: "Mandel", apricot: "Aprikose", balsamic: "balsamische Noten", blackberry: "Brombeere",
@@ -653,6 +658,7 @@ zh: {
     sweet: "甜型 · 餐后甜酒"
   },
   bodies: { light: "轻盈", medium: "中等", full: "饱满" },
+  sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
     almond: "杏仁", apricot: "杏子", balsamic: "香脂调", blackberry: "黑莓",
@@ -830,6 +836,7 @@ sl: {
     "medium": "srednje polno",
     "full": "polno"
   },
+  "sweetness": { "dry": "Suho", "off_dry": "Polsuho", "sweet": "Sladko" },
   "tags": {
     "legendary_vintage": "Legendarna letina",
     "excellent_vintage": "Odlična letina",
@@ -1120,6 +1127,7 @@ es: {
     "medium": "medio",
     "full": "potente"
   },
+  "sweetness": { "dry": "Seco", "off_dry": "Semiseco", "sweet": "Dulce" },
   "tags": {
     "legendary_vintage": "Añada legendaria",
     "excellent_vintage": "Añada excelente",
