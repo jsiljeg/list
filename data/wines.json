@@ -2266,7 +2266,7 @@
           "alcohol": "12.5",
           "dosage": "Brut"
          },
-         "terroir": "Côte des Blancs, Montagne de Reims",
+         "terroir": "Best of 17 Grands Crus + Hautvillers (Premier Cru)",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -2318,20 +2318,21 @@
           ],
           "pairings": [
            "caviar",
-           "solo",
            "lobster",
            "veal",
            "pigeon",
-           "green_tomato_sorbet"
+           "green_tomato_sorbet",
+           "solo"
           ],
           "temp": "10–12",
           "alcohol": "12.5",
           "dosage": "Brut"
          },
          "tags": [
+          "excellent_vintage",
           "rare"
          ],
-         "terroir": "Côte des Blancs, Montagne de Reims",
+         "terroir": "Best of 17 Grands Crus + Hautvillers (Premier Cru)",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -2349,7 +2350,18 @@
            "critic": "Jancis Robinson",
            "score": "16.5/20"
           }
-         ]
+         ],
+         "notePlain": true,
+         "note": {
+          "hr": "Druga Plénitude — drugi život vina, otkriven nakon 18 godina odležavanja na talogu.",
+          "en": "The Second Plénitude — a second life, revealed after 18 years maturing on its lees.",
+          "it": "La Seconda Plénitude — una seconda vita, svelata dopo 18 anni di maturazione sui lieviti.",
+          "fr": "La Deuxième Plénitude — une seconde vie, révélée après 18 ans de maturation sur lies.",
+          "de": "Die Zweite Plénitude — ein zweites Leben, enthüllt nach 18 Jahren Reifung auf der Hefe.",
+          "zh": "第二次绽放（P2）——在酒泥上陈酿 18 年后焕发的第二次生命。",
+          "sl": "Druga Plénitude — drugo življenje vina, razkrito po 18 letih zorenja na drožeh.",
+          "es": "La Segunda Plénitude — una segunda vida, revelada tras 18 años de crianza sobre lías."
+         }
         },
         {
          "name": "Dom Pérignon P3 1993",
@@ -2376,15 +2388,27 @@
           "dosage": "Brut"
          },
          "tags": [
+          "excellent_vintage",
           "rare"
          ],
-         "terroir": "Côte des Blancs, Montagne de Reims",
+         "terroir": "Best of 17 Grands Crus + Hautvillers (Premier Cru)",
          "ratings": [
           {
            "critic": "Robert Parker",
            "score": "96"
           }
-         ]
+         ],
+         "notePlain": true,
+         "note": {
+          "hr": "Treća Plénitude — objavljena nakon otprilike 25 godina na talogu, u iznimno malim količinama.",
+          "en": "The Third Plénitude — released after roughly 25 years on the lees, in exceptionally small quantities.",
+          "it": "La Terza Plénitude — rilasciata dopo circa 25 anni sui lieviti, in quantità eccezionalmente ridotte.",
+          "fr": "La Troisième Plénitude — libérée après près de 25 ans sur lies, en quantités exceptionnellement rares.",
+          "de": "Die Dritte Plénitude — freigegeben nach rund 25 Jahren auf der Hefe, in außergewöhnlich kleinen Mengen.",
+          "zh": "第三次绽放（P3）——在酒泥上陈酿约 25 年后释出，产量极为稀少。",
+          "sl": "Tretja Plénitude — sproščena po približno 25 letih na drožeh, v izjemno majhnih količinah.",
+          "es": "La Tercera Plénitude — liberada tras cerca de 25 años sobre lías, en cantidades excepcionalmente escasas."
+         }
         },
         {
          "name": "Salon Blanc de Blancs 2013",
@@ -2469,6 +2493,7 @@
           "dosage": "Brut"
          },
          "tags": [
+          "legendary_vintage",
           "rare"
          ],
          "ratings": [
