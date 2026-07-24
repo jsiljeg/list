@@ -4174,7 +4174,11 @@
            "citrus",
            "green_apple",
            "flint",
-           "saline"
+           "saline",
+           "pear",
+           "oyster_juice",
+           "lemon_oil",
+           "spring_flowers"
           ],
           "pairings": [
            "oysters",
@@ -4182,8 +4186,15 @@
            "white_fish"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "12.5",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "90"
+          }
+         ]
         },
         {
          "name": "Chablis 2022",
@@ -4206,7 +4217,8 @@
            "white_fish"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "sweetness": "dry"
          },
          "recommended": true,
          "note": {
@@ -4242,7 +4254,8 @@
            "poultry"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          }
         },
         {
@@ -4267,10 +4280,33 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "tags": [
           "rare"
+         ],
+         "ratings": [
+          {
+           "critic": "Tim Atkin",
+           "score": "94"
+          },
+          {
+           "critic": "Jasper Morris",
+           "score": "90-94"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "92-93"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "92"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "92"
+          }
          ]
         },
         {
@@ -4294,9 +4330,16 @@
            "white_fish",
            "poultry"
           ],
-          "temp": "10–12",
-          "alcohol": ""
-         }
+          "temp": "8–10",
+          "alcohol": "12.5",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Chablis Grand Cru Preuses 2022",
@@ -4320,8 +4363,23 @@
            "poultry"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
+         "ratings": [
+          {
+           "critic": "Jasper Morris",
+           "score": "94"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "93"
+          },
+          {
+           "critic": "Vinous",
+           "score": "93"
+          }
+         ],
          "recommended": true,
          "note": {
           "hr": "Les Preuses — vrh chablisa: sol, kamen i dužina koja ne prestaje.",
@@ -4345,10 +4403,14 @@
           "style": "white_mineral",
           "body": "full",
           "aromas": [
-           "citrus",
-           "flint",
-           "honey",
-           "wet_stone"
+           "tart_orange",
+           "pear",
+           "green_apple",
+           "anise",
+           "citrus_peel",
+           "wet_stone",
+           "spring_flowers",
+           "beeswax"
           ],
           "pairings": [
            "shellfish",
@@ -4356,10 +4418,25 @@
            "solo"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "tags": [
           "rare"
+         ],
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "96"
+          },
+          {
+           "critic": "Tim Atkin",
+           "score": "95"
+          },
+          {
+           "critic": "Jasper Morris",
+           "score": "94-96"
+          }
          ]
         },
         {
@@ -4383,8 +4460,15 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Jasper Morris",
+           "score": "87"
+          }
+         ]
         },
         {
          "name": "Bourgogne Chardonnay 2023",
