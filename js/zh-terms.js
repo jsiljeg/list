@@ -227,6 +227,8 @@
     "Hršak Breg": "赫尔沙克布雷格",
     "Južna Štajerska": "南施泰尔斯卡",
     "Kaldir": "卡尔迪尔",
+    "Šubijent": "舒比延特",
+    "Brkač": "布尔卡奇",
     "Komarna": "科马尔纳",
     "Korčula": "科尔丘拉",
     "Kras": "喀斯特",

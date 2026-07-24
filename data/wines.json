@@ -2799,7 +2799,7 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13"
          }
         },
         {
@@ -2813,10 +2813,13 @@
           "style": "white_aromatic",
           "body": "medium",
           "aromas": [
-           "elderflower",
-           "grapefruit",
+           "smoke",
+           "nutty",
            "tropical",
-           "grass"
+           "papaya",
+           "candied_orange",
+           "meadow_herbs",
+           "saline"
           ],
           "pairings": [
            "seafood",
@@ -2824,7 +2827,7 @@
            "cheese_fresh"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "14"
          },
          "ratings": [
           {
@@ -2855,7 +2858,7 @@
            "cheese_fresh"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "13"
          }
         },
         {
@@ -2869,18 +2872,20 @@
           "style": "white_rich",
           "body": "full",
           "aromas": [
-           "citrus",
-           "butter",
            "hazelnut",
-           "toast"
+           "melon",
+           "fig",
+           "butter",
+           "brioche",
+           "smoke"
           ],
           "pairings": [
            "white_fish",
            "poultry",
            "risotto"
           ],
-          "temp": "10–12",
-          "alcohol": ""
+          "temp": "12–14",
+          "alcohol": "13"
          }
         },
         {
@@ -2904,7 +2909,7 @@
            "asparagus"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13.3"
          }
         },
         {
@@ -2943,19 +2948,25 @@
           "style": "white_fresh",
           "body": "medium",
           "aromas": [
-           "white_flowers",
+           "herbs",
            "peach",
-           "almond",
-           "saline"
+           "lime",
+           "mediterranean_herbs"
           ],
           "pairings": [
-           "seafood",
-           "white_fish",
-           "prosciutto"
+           "fish",
+           "shrimp_risotto",
+           "scallops",
+           "pasta_white_seafood",
+           "chicken_rice",
+           "sushi_sashimi",
+           "istrian_fuzi",
+           "turkey"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13"
+         },
+         "terroir": "Kaldir, Šubijent, Brkač"
         },
         {
          "name": "Grimalda bijela 2022",
