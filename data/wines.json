@@ -2973,16 +2973,17 @@
          "producer": "Matošević",
          "price": 60,
          "insight": {
-          "grape": "Chardonnay, Sauvignon Blanc",
+          "grape": "Malvazija, Chardonnay, Sauvignon Blanc",
           "region": "Grimalda, Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "medium",
           "aromas": [
            "peach",
-           "citrus",
-           "toast",
-           "wet_stone"
+           "pineapple",
+           "acacia",
+           "biscuit",
+           "oak"
           ],
           "pairings": [
            "white_fish",
@@ -2990,7 +2991,7 @@
            "risotto"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13"
          }
         },
         {
@@ -2999,7 +3000,7 @@
          "price": 60,
          "insight": {
           "grape": "Malvazija istarska",
-          "region": "Krasica, Istra",
+          "region": "Istra",
           "country": "HR",
           "style": "orange",
           "body": "full",
@@ -3015,7 +3016,7 @@
            "mushrooms"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "14.5"
          },
          "note": {
           "hr": "Malvazija koja pokazuje identitet mjesta — Istra bez kompromisa, vino koje je istinito.",
@@ -3033,7 +3034,7 @@
          "producer": "Clai",
          "price": 62,
          "insight": {
-          "grape": "Malvazija, Pinot Gris, Sauvignon",
+          "grape": "Malvazija, Pinot Gris, Sauvignon Blanc",
           "region": "Krasica, Istra",
           "country": "HR",
           "style": "orange",
@@ -3050,7 +3051,7 @@
            "cheese_hard"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "14"
          }
         },
         {
@@ -3058,15 +3059,17 @@
          "producer": "Meneghetti",
          "price": 87,
          "insight": {
-          "grape": "Chardonnay, Pinot Blanc",
+          "grape": "Chardonnay 60%, Pinot Blanc 40%",
           "region": "Bale, Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "full",
           "aromas": [
-           "peach",
+           "pineapple",
+           "citrus",
+           "melon",
            "butter",
-           "toast",
+           "hazelnut",
            "vanilla"
           ],
           "pairings": [
@@ -3075,8 +3078,9 @@
            "white_meat"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13.5"
+         },
+         "terroir": "Stancija Meneghetti"
         },
         {
          "name": "Le Chiffre 2023",
@@ -3100,12 +3104,13 @@
            "truffles"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13"
+         },
+         "terroir": "Radovani"
         },
         {
          "name": "Pošip Intrada 2025",
-         "producer": "Krajčić",
+         "producer": "Krajančić",
          "price": 73,
          "insight": {
           "grape": "Pošip",
@@ -3125,7 +3130,7 @@
            "seafood"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13"
          }
         },
         {
@@ -3150,7 +3155,7 @@
            "risotto"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "14"
          }
         },
         {

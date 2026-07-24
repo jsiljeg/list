@@ -251,6 +251,8 @@
     "Plešivica": "普莱希维察",
     "Ponikve": "波尼克韦",
     "Postup": "波斯图普",
+    "Radovani": "拉多瓦尼",
+    "Stancija Meneghetti": "梅内盖蒂庄园",
     "Pouilly-Fuissé Les Longays": "普伊-富赛·雷隆盖",
     "Predappio": "普雷达皮奥",
     "Prigorje": "普里戈列",
