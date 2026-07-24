@@ -5301,15 +5301,19 @@
          "price": 127,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Chavignol, Sancerre, Loire",
+          "region": "Loire",
           "country": "FR",
           "style": "white_mineral",
-          "body": "full",
+          "body": "medium",
           "aromas": [
-           "citrus",
-           "flint",
-           "honey",
-           "herbs"
+           "melon",
+           "herbs",
+           "white_flowers",
+           "white_fruit",
+           "saline",
+           "creamy",
+           "lime_zest",
+           "grapefruit"
           ],
           "pairings": [
            "cheese_fresh",
@@ -5317,8 +5321,10 @@
            "shellfish"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          },
+         "terroir": "Chavignol, Sancerre",
          "note": {
           "hr": "Strmina Chavignola u čaši — klasik i raritet istovremeno, vino koje se pamti.",
           "en": "The steep slope of Chavignol in a glass — classic and rarity at once, a wine you remember.",
@@ -5343,7 +5349,10 @@
           "aromas": [
            "citrus",
            "white_flowers",
-           "wet_stone"
+           "wet_stone",
+           "tangerine",
+           "floral",
+           "smoke"
           ],
           "pairings": [
            "white_fish",
@@ -5351,7 +5360,8 @@
            "poultry"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "13",
+          "sweetness": "dry"
          }
         },
         {
@@ -5365,10 +5375,12 @@
           "style": "white_mineral",
           "body": "full",
           "aromas": [
+           "apple",
+           "yellow_pear",
+           "floral",
            "citrus",
-           "flint",
-           "white_flowers",
-           "honey"
+           "wet_stone",
+           "petrol"
           ],
           "pairings": [
            "white_fish",
@@ -5376,8 +5388,15 @@
            "asian"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13.5",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Riesling Grand Cru Furstentum 2020",
@@ -5391,9 +5410,9 @@
           "body": "full",
           "aromas": [
            "citrus",
-           "apricot",
-           "flint",
-           "honey"
+           "stone_fruit",
+           "petrol",
+           "orange"
           ],
           "pairings": [
            "white_fish",
@@ -5401,8 +5420,23 @@
            "asian"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13.5",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "96"
+          },
+          {
+           "critic": "Vinous",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "93+"
+          }
+         ]
         },
         {
          "name": "Pinot Gris Grand Cru Hengst 2020",
@@ -5415,10 +5449,14 @@
           "style": "white_rich",
           "body": "full",
           "aromas": [
-           "pear",
+           "peach",
+           "pineapple",
+           "dried_fruit",
+           "acacia",
            "honey",
-           "smoke",
-           "spice"
+           "ginger",
+           "anise",
+           "creamy"
           ],
           "pairings": [
            "foie_gras",
@@ -5426,11 +5464,12 @@
            "mushrooms"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "14.5",
+          "sweetness": "off_dry"
          }
         },
         {
-         "name": "Matris 2018 (Chenin)",
+         "name": "Matris 2018",
          "producer": "Domaine de l'Écu",
          "price": 65,
          "insight": {
@@ -5440,18 +5479,19 @@
           "style": "white_mineral",
           "body": "medium",
           "aromas": [
-           "quince",
-           "honey",
            "citrus",
-           "wet_stone"
+           "white_flowers",
+           "honey",
+           "acacia"
           ],
           "pairings": [
            "white_fish",
            "poultry",
            "cheese_fresh"
           ],
-          "temp": "10–12",
-          "alcohol": ""
+          "temp": "12–13",
+          "alcohol": "14",
+          "sweetness": "dry"
          }
         },
         {
@@ -5463,12 +5503,14 @@
           "region": "Jura",
           "country": "FR",
           "style": "white_mineral",
-          "body": "medium",
+          "body": "full",
           "aromas": [
            "walnut",
            "citrus",
            "herbs",
-           "wet_stone"
+           "wet_stone",
+           "almond",
+           "acetaldehyde"
           ],
           "pairings": [
            "cheese_hard",
@@ -5476,7 +5518,8 @@
            "mushrooms"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "15",
+          "sweetness": "dry"
          }
         },
         {
@@ -5493,7 +5536,9 @@
            "walnut",
            "spice",
            "dried_fruit",
-           "smoke"
+           "smoke",
+           "acetaldehyde",
+           "almond"
           ],
           "pairings": [
            "cheese_hard",
@@ -5501,7 +5546,8 @@
            "mushrooms"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "13.7",
+          "sweetness": "dry"
          },
          "tags": [
           "drinking_now"
@@ -5521,7 +5567,9 @@
            "walnut",
            "spice",
            "dried_fruit",
-           "honey"
+           "honey",
+           "curry",
+           "acetaldehyde"
           ],
           "pairings": [
            "cheese_hard",
@@ -5529,7 +5577,8 @@
            "truffles"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "15",
+          "sweetness": "dry"
          },
          "tags": [
           "drinking_now"
