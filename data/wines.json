@@ -5596,10 +5596,11 @@
           "style": "white_rich",
           "body": "medium",
           "aromas": [
-           "citrus",
            "white_flowers",
+           "citrus",
+           "green_apple",
            "hazelnut",
-           "wet_stone"
+           "saline"
           ],
           "pairings": [
            "seafood",
@@ -5607,8 +5608,13 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13",
+          "sweetness": "dry"
+         },
+         "terroir": "En Chailloux",
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Mâcon Verzé Blanc 2021",
@@ -5622,10 +5628,10 @@
           "style": "white_rich",
           "body": "medium",
           "aromas": [
-           "citrus",
-           "peach",
-           "white_flowers",
-           "wet_stone"
+           "chalk",
+           "citrus_peel",
+           "stone_fruit",
+           "saline"
           ],
           "pairings": [
            "seafood",
@@ -5633,8 +5639,12 @@
            "poultry"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13",
+          "sweetness": "dry"
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Pouilly-Fuissé Blanc 2021",
@@ -5649,9 +5659,9 @@
           "body": "full",
           "aromas": [
            "citrus",
-           "peach",
-           "hazelnut",
-           "wet_stone"
+           "white_flowers",
+           "wet_stone",
+           "saline"
           ],
           "pairings": [
            "white_fish",
@@ -5659,25 +5669,29 @@
            "cheese_hard"
           ],
           "temp": "11–13",
-          "alcohol": ""
-         }
+          "alcohol": "13",
+          "sweetness": "dry"
+         },
+         "tags": [
+          "rare"
+         ]
         },
         {
-         "name": "Pouilly-Fuissé Les Longays Blanc 2021",
+         "name": "Pouilly-Vinzelles Les Longeays Blanc 2021",
          "producer": "Jules Desjourneys",
          "price": 139,
          "new": true,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Pouilly-Fuissé Les Longays, Bourgogne",
+          "region": "Pouilly-Vinzelles, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
           "aromas": [
-           "peach",
-           "hazelnut",
-           "white_flowers",
-           "wet_stone"
+           "orange_oil",
+           "pear",
+           "nutmeg",
+           "iodine"
           ],
           "pairings": [
            "white_fish",
@@ -5685,8 +5699,13 @@
            "cheese_hard"
           ],
           "temp": "11–13",
-          "alcohol": ""
-         }
+          "alcohol": "13",
+          "sweetness": "dry"
+         },
+         "terroir": "Les Longeays",
+         "tags": [
+          "rare"
+         ]
         },
         {
          "name": "Saint-Véran Blanc 2021",
@@ -5700,9 +5719,9 @@
           "style": "white_rich",
           "body": "medium",
           "aromas": [
-           "citrus",
-           "white_flowers",
-           "peach",
+           "citrus_peel",
+           "acacia",
+           "blossom_honey",
            "wet_stone"
           ],
           "pairings": [
@@ -5711,8 +5730,13 @@
            "salads"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13",
+          "sweetness": "dry"
+         },
+         "terroir": "Les Condemines, Leynes",
+         "tags": [
+          "rare"
+         ]
         }
        ]
       },
