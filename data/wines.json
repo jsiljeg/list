@@ -16,7 +16,7 @@
          "producer": "Jakopić",
          "price": 8,
          "insight": {
-          "grape": "Furmint",
+          "grape": "Pušipel/Furmint",
           "region": "Štrigova, Međimurje – Bregovita Hrvatska",
           "country": "HR",
           "style": "sparkling",
@@ -78,8 +78,8 @@
          "producer": "Meneghetti",
          "price": 9,
          "insight": {
-          "grape": "Chardonnay",
-          "region": "Bale, Istra",
+          "grape": "Chardonnay 60%, Pinot Blanc 40%",
+          "region": "Istra",
           "country": "HR",
           "style": "sparkling",
           "body": "medium",
@@ -94,8 +94,10 @@
            "light_starters"
           ],
           "temp": "6–8",
-          "alcohol": ""
+          "alcohol": "12.5",
+          "dosage": "Brut Nature"
          },
+         "terroir": "Višnjan, Motovun",
          "recommended": true,
          "note": {
           "hr": "Istarski chardonnay u pjenušavom ključu — fini mjehurići i sol istarskog vjetra.",
@@ -2470,7 +2472,7 @@
          "producer": "Krug",
          "price": 1780,
          "insight": {
-          "grape": "Pinot Noir (48%), Chardonnay (31%), Pinot Meunier (21%)",
+          "grape": "Pinot Noir 48%, Chardonnay 31%, Pinot Meunier 21%",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
@@ -2527,7 +2529,7 @@
          "producer": "Krug",
          "price": 510,
          "insight": {
-          "grape": "Pinot Noir (44%), Chardonnay (34%), Pinot Meunier (22%)",
+          "grape": "Pinot Noir 44%, Chardonnay 34%, Pinot Meunier 22%",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
@@ -2578,7 +2580,7 @@
          "producer": "Krug",
          "price": 890,
          "insight": {
-          "grape": "Chardonnay (39%), Pinot Noir (37%), Pinot Meunier (24%)",
+          "grape": "Chardonnay 39%, Pinot Noir 37%, Pinot Meunier 24%",
           "region": "Champagne",
           "country": "FR",
           "style": "champagne_prestige",
@@ -2772,7 +2774,7 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "12.5"
          }
         },
         {
