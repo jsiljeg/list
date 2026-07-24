@@ -2485,16 +2485,16 @@
            "score": "95-97"
           }
          ],
-         "noteSig": "Krug",
+         "notePlain": true,
          "note": {
-          "hr": "Paul Krug II., poznat po svojim strogo objektivnim opažanjima, izjavio je: „Mislim da bi ovo lako mogao biti sljedeći 1928.“",
-          "en": "Paul Krug II, known for his strictly objective observations, proclaimed: \"I think this may well be the next 1928.\"",
-          "it": "Paul Krug II, noto per le sue osservazioni rigorosamente oggettive, dichiarò: «Penso che questo possa benissimo essere il prossimo 1928».",
-          "fr": "Paul Krug II, connu pour ses observations rigoureusement objectives, déclara : « Je pense que ce pourrait bien être le prochain 1928. »",
-          "de": "Paul Krug II., bekannt für seine streng objektiven Beobachtungen, erklärte: „Ich glaube, das könnte durchaus der nächste 1928 sein.“",
-          "zh": "以严谨客观著称的 Paul Krug II 断言：“我认为这很可能就是下一个 1928 年份。”",
-          "sl": "Paul Krug II., znan po svojih strogo objektivnih opažanjih, je razglasil: »Mislim, da bi to lahko bil naslednji 1928.«",
-          "es": "Paul Krug II, conocido por sus observaciones estrictamente objetivas, proclamó: «Creo que este bien podría ser el próximo 1928»."
+          "hr": "„Mislim da bi ovo lako mogao biti sljedeći 1928.“ – Paul Krug II., poznat po svojim strogo objektivnim opažanjima",
+          "en": "\"I think this may well be the next 1928.\" – Paul Krug II, known for his strictly objective observations",
+          "it": "«Penso che questo possa benissimo essere il prossimo 1928.» – Paul Krug II, noto per le sue osservazioni rigorosamente oggettive",
+          "fr": "« Je pense que ce pourrait bien être le prochain 1928. » – Paul Krug II, connu pour ses observations rigoureusement objectives",
+          "de": "„Ich glaube, das könnte durchaus der nächste 1928 sein.“ – Paul Krug II., bekannt für seine streng objektiven Beobachtungen",
+          "zh": "“我认为这很可能就是下一个 1928 年份。” —— Paul Krug II，以严谨客观著称",
+          "sl": "»Mislim, da bi to lahko bil naslednji 1928.« – Paul Krug II., znan po svojih strogo objektivnih opažanjih",
+          "es": "«Creo que este bien podría ser el próximo 1928.» – Paul Krug II, conocido por sus observaciones estrictamente objetivas"
          }
         },
         {
@@ -2536,7 +2536,7 @@
            "score": "94+"
           }
          ],
-         "noteSig": "Krug",
+         "notePlain": true,
          "note": {
           "hr": "Kupaža 150 vina iz 13 različitih godišta — najmlađe je iz 2017., a najstarije seže u 2001.",
           "en": "A blend of 150 wines from 13 different years — the youngest from 2017, the oldest dating back to 2001.",
@@ -2657,7 +2657,7 @@
            "score": "98"
           }
          ],
-         "noteSig": "Krug",
+         "notePlain": true,
          "note": {
           "hr": "20. šampanjac s ove jedinstvene parcele; prvi je nastao iz berbe 1979.",
           "en": "The 20th champagne from this unique plot; the first was created from the 1979 harvest.",

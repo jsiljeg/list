@@ -32,7 +32,7 @@ hr: {
     storyNav: "Priča",
     enter: "Otvori kartu",
     ratings: "Ocjene kritičara",
-    winemaker: "O vinaru", terroir: "Terroir", pairsWith: "Uz jelo iz našeg menija", musicPairing: "Glazbeno uparivanje",
+    winemaker: "O vinaru", terroir: "Terroir", pairsWith: "Uz jelo iz našeg menija", musicPairing: "Uz glazbu",
     picks: "Filhov izbor",
     bestRated: "Najbolje ocijenjeni",
     pride: "Arhiva",
