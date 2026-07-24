@@ -17,7 +17,7 @@
          "price": 8,
          "insight": {
           "grape": "Pušipel/Furmint",
-          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling",
           "body": "light",
@@ -34,7 +34,8 @@
           "temp": "6–8",
           "alcohol": "",
           "dosage": "Brut"
-         }
+         },
+         "terroir": "Štrigova"
         },
         {
          "name": "Bregh Rose",
@@ -42,7 +43,7 @@
          "price": 8,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Hršak Breg, Zagorje – Međimurje",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling_rose",
           "body": "light",
@@ -61,6 +62,7 @@
           "alcohol": "13",
           "dosage": "Brut"
          },
+         "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
           "hr": "Pinot iz zagorskih brežuljaka — ružičasti pjenušac koji ne glumi Champagne, već govori svojim jezikom.",
@@ -79,7 +81,7 @@
          "price": 9,
          "insight": {
           "grape": "Chardonnay 60%, Pinot Blanc 40%",
-          "region": "Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "sparkling",
           "body": "medium",
@@ -225,7 +227,7 @@
          "price": 8,
          "insight": {
           "grape": "Malvazija istarska",
-          "region": "Motovun, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "white_fresh",
           "body": "medium",
@@ -242,7 +244,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": "Motovun"
         },
         {
          "name": "Meneghetti White",
@@ -250,7 +253,7 @@
          "price": 10,
          "insight": {
           "grape": "Chardonnay, Pinot Blanc",
-          "region": "Bale, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "full",
@@ -267,7 +270,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": "Bale"
         },
         {
          "name": "Sauvignon 2023",
@@ -275,7 +279,7 @@
          "price": 9,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "white_aromatic",
           "body": "light",
@@ -291,7 +295,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": "Štrigova"
         },
         {
          "name": "Stalagmit 2021",
@@ -299,7 +304,7 @@
          "price": 15,
          "insight": {
           "grape": "Pošip",
-          "region": "Pelješac, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -317,6 +322,7 @@
           "temp": "10–12",
           "alcohol": ""
          },
+         "terroir": "Pelješac",
          "note": {
           "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
           "en": "Pošip from the stone of Pelješac — nerve and minerality, nothing cosmetic.",
@@ -335,7 +341,7 @@
          "price": 9,
          "insight": {
           "grape": "Pošip",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_fresh",
           "body": "medium",
@@ -352,7 +358,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": "Korčula"
         },
         {
          "name": "Riesling Butterfly 2023",
@@ -568,7 +575,7 @@
          "price": 8,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot, Pinot Noir",
-          "region": "Hršak Breg, Zagorje – Međimurje",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -584,7 +591,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Hršak Breg"
         },
         {
          "name": "Enigma 2019",
@@ -592,7 +600,7 @@
          "price": 10,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Hršak Breg, Zagorje – Međimurje",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -610,6 +618,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
           "hr": "Bordoške sorte na zagorskom brijegu — ozbiljan, taman i samouvjeren, bez kompleksa.",
@@ -628,7 +637,7 @@
          "price": 8,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Kontinentalna Hrvatska",
+          "region": "Plešivica",
           "country": "HR",
           "style": "red_light",
           "body": "light",
@@ -663,7 +672,7 @@
          "price": 8,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Pelješac, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -680,7 +689,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Pelješac"
         },
         {
          "name": "Teran Barbarossa 2020",
@@ -688,7 +698,7 @@
          "price": 8,
          "insight": {
           "grape": "Teran",
-          "region": "Motovun, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -705,7 +715,8 @@
           ],
           "temp": "14–16",
           "alcohol": ""
-         }
+         },
+         "terroir": "Motovun"
         },
         {
          "name": "Tribidrag 2022",
@@ -713,7 +724,7 @@
          "price": 10,
          "insight": {
           "grape": "Tribidrag (Crljenak)",
-          "region": "Komarna, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -730,7 +741,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Komarna"
         },
         {
          "name": "CL 98",
@@ -788,7 +800,7 @@
          "price": 14,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Dingač, Pelješac",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -805,7 +817,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Dingač, Pelješac"
         },
         {
          "name": "Red 2019",
@@ -813,7 +826,7 @@
          "price": 15,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon",
-          "region": "Bale, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -831,6 +844,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Bale",
          "recommended": true,
          "note": {
           "hr": "Istarski odgovor Bordeauxu — gusto, elegantno i dozrelo pod mediteranskim suncem.",
@@ -849,7 +863,7 @@
          "price": 15,
          "insight": {
           "grape": "Teran",
-          "region": "Motovun, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -866,7 +880,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Motovun"
         },
         {
          "name": "Syrah Le Fales 2024",
@@ -910,7 +925,7 @@
          "price": 5,
          "insight": {
           "grape": "Muscat",
-          "region": "Vižinada, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -927,7 +942,8 @@
           ],
           "temp": "8–10",
           "alcohol": ""
-         }
+         },
+         "terroir": "Vižinada"
         },
         {
          "name": "Prošek Ruža Dalmatinska",
@@ -935,7 +951,7 @@
          "price": 8,
          "insight": {
           "grape": "Plavac mali (prošek)",
-          "region": "Pelješac, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "sweet",
           "body": "full",
@@ -953,6 +969,7 @@
           "temp": "12–14",
           "alcohol": ""
          },
+         "terroir": "Pelješac",
          "note": {
           "hr": "Dalmatinska tradicija bez kompromisa — prošek koji nosi priču starih berbi.",
           "en": "Dalmatian tradition without compromise — a prošek carrying the story of old harvests.",
@@ -970,7 +987,7 @@
          "price": 8,
          "insight": {
           "grape": "Riesling",
-          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -987,7 +1004,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": "Štrigova"
         }
        ]
       }
@@ -1010,7 +1028,7 @@
          "price": 49,
          "insight": {
           "grape": "Furmint",
-          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling",
           "body": "light",
@@ -1027,7 +1045,8 @@
           "temp": "6–8",
           "alcohol": "",
           "dosage": "Brut"
-         }
+         },
+         "terroir": "Štrigova"
         },
         {
          "name": "Bregh Rose",
@@ -1035,7 +1054,7 @@
          "price": 48,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Hršak Breg, Zagorje – Međimurje",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling_rose",
           "body": "light",
@@ -1054,6 +1073,7 @@
           "alcohol": "13",
           "dosage": "Brut"
          },
+         "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
           "hr": "Pinot iz zagorskih brežuljaka — ružičasti pjenušac koji ne glumi Champagne, već govori svojim jezikom.",
@@ -2759,7 +2779,7 @@
          "price": 39,
          "insight": {
           "grape": "Graševina",
-          "region": "Hršak Breg, Zagorje – Međimurje",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "white_fresh",
           "body": "light",
@@ -2775,7 +2795,8 @@
           ],
           "temp": "8–10",
           "alcohol": "12.5"
-         }
+         },
+         "terroir": "Hršak Breg"
         },
         {
          "name": "Chardonnay 2023",
@@ -2783,7 +2804,7 @@
          "price": 46,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Hršak Breg, Zagorje – Međimurje",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "white_rich",
           "body": "medium",
@@ -2800,7 +2821,8 @@
           ],
           "temp": "10–12",
           "alcohol": "13"
-         }
+         },
+         "terroir": "Hršak Breg"
         },
         {
          "name": "Sauvignon Classy 2022",
@@ -2894,7 +2916,7 @@
          "price": 45,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "white_aromatic",
           "body": "light",
@@ -2910,7 +2932,8 @@
           ],
           "temp": "10–12",
           "alcohol": "13.3"
-         }
+         },
+         "terroir": "Štrigova"
         },
         {
          "name": "Riesling 2024",
@@ -2918,7 +2941,7 @@
          "price": 45,
          "insight": {
           "grape": "Riesling",
-          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "white_aromatic",
           "body": "light",
@@ -2935,7 +2958,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": "Štrigova"
         },
         {
          "name": "Malvazija 2025",
@@ -2943,7 +2967,7 @@
          "price": 44,
          "insight": {
           "grape": "Malvazija istarska",
-          "region": "Motovun, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "white_fresh",
           "body": "medium",
@@ -2974,7 +2998,7 @@
          "price": 60,
          "insight": {
           "grape": "Malvazija, Chardonnay, Sauvignon Blanc",
-          "region": "Grimalda, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "medium",
@@ -2992,7 +3016,8 @@
           ],
           "temp": "10–12",
           "alcohol": "13"
-         }
+         },
+         "terroir": "Grimalda"
         },
         {
          "name": "Malvazija Sv. Jakov 2021",
@@ -3000,7 +3025,7 @@
          "price": 60,
          "insight": {
           "grape": "Malvazija istarska",
-          "region": "Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "orange",
           "body": "full",
@@ -3035,7 +3060,7 @@
          "price": 62,
          "insight": {
           "grape": "Malvazija, Pinot Gris, Sauvignon Blanc",
-          "region": "Krasica, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "orange",
           "body": "full",
@@ -3052,7 +3077,8 @@
           ],
           "temp": "12–14",
           "alcohol": "14"
-         }
+         },
+         "terroir": "Krasica"
         },
         {
          "name": "Meneghetti white 2023",
@@ -3060,7 +3086,7 @@
          "price": 87,
          "insight": {
           "grape": "Chardonnay 60%, Pinot Blanc 40%",
-          "region": "Bale, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "full",
@@ -3088,7 +3114,7 @@
          "price": 140,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "full",
@@ -3114,7 +3140,7 @@
          "price": 73,
          "insight": {
           "grape": "Pošip",
-          "region": "Korčula, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3131,7 +3157,8 @@
           ],
           "temp": "10–12",
           "alcohol": "13"
-         }
+         },
+         "terroir": "Korčula"
         },
         {
          "name": "Pošip 2024",
@@ -3139,7 +3166,7 @@
          "price": 49,
          "insight": {
           "grape": "Pošip",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_fresh",
           "body": "medium",
@@ -3156,7 +3183,8 @@
           ],
           "temp": "10–12",
           "alcohol": "14"
-         }
+         },
+         "terroir": "Korčula"
         },
         {
          "name": "Grk 2024",
@@ -3164,7 +3192,7 @@
          "price": 63,
          "insight": {
           "grape": "Grk",
-          "region": "Lumbarda, Korčula",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3181,7 +3209,8 @@
           ],
           "temp": "10–12",
           "alcohol": "13.5"
-         }
+         },
+         "terroir": "Lumbarda, Korčula"
         },
         {
          "name": "Stalagmit 2022",
@@ -3189,7 +3218,7 @@
          "price": 120,
          "insight": {
           "grape": "Rukatac",
-          "region": "Pelješac, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3207,6 +3236,7 @@
           "temp": "10–12",
           "alcohol": "13.5"
          },
+         "terroir": "Pelješac",
          "note": {
           "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
           "en": "Pošip from the stone of Pelješac — nerve and minerality, nothing cosmetic.",
@@ -3225,7 +3255,7 @@
          "price": 90,
          "insight": {
           "grape": "Pošip",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3250,7 +3280,7 @@
          "price": 100,
          "insight": {
           "grape": "Grk",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3276,7 +3306,7 @@
          "price": 130,
          "insight": {
           "grape": "Autohtone dalmatinske sorte",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -5598,7 +5628,7 @@
          "price": 50,
          "insight": {
           "grape": "Babić",
-          "region": "Skradin, Dalmacija",
+          "region": "Sjeverna Dalmacija",
           "country": "HR",
           "style": "rose",
           "body": "light",
@@ -5614,7 +5644,8 @@
           ],
           "temp": "8–10",
           "alcohol": ""
-         }
+         },
+         "terroir": "Skradin"
         },
         {
          "name": "Rose",
@@ -5622,7 +5653,7 @@
          "price": 50,
          "insight": {
           "grape": "Dalmatinske autohtone sorte",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "rose",
           "body": "light",
@@ -5661,7 +5692,7 @@
          "price": 50,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot, Pinot Noir",
-          "region": "Hršak Breg, Zagorje – Međimurje",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -5677,7 +5708,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Hršak Breg"
         },
         {
          "name": "Enigma 2019",
@@ -5685,7 +5717,7 @@
          "price": 75,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Hršak Breg, Zagorje – Međimurje",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -5703,6 +5735,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
           "hr": "Bordoške sorte na zagorskom brijegu — ozbiljan, taman i samouvjeren, bez kompleksa.",
@@ -5721,7 +5754,7 @@
          "price": 54,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Kontinentalna Hrvatska",
+          "region": "Plešivica",
           "country": "HR",
           "style": "red_light",
           "body": "light",
@@ -5805,7 +5838,7 @@
          "price": 66,
          "insight": {
           "grape": "Merlot, Teran",
-          "region": "Grimalda, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -5822,7 +5855,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Grimalda"
         },
         {
          "name": "Ottocento Crni 2022",
@@ -5830,7 +5864,7 @@
          "price": 66,
          "insight": {
           "grape": "Refošk, Merlot, Cabernet Sauvignon",
-          "region": "Krasica, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -5847,7 +5881,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Krasica"
         },
         {
          "name": "Refošk Omo 2020",
@@ -5855,7 +5890,7 @@
          "price": 100,
          "insight": {
           "grape": "Refošk",
-          "region": "Buzet, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -5872,7 +5907,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Buzet"
         },
         {
          "name": "Teran 2022",
@@ -5880,7 +5916,7 @@
          "price": 60,
          "insight": {
           "grape": "Teran",
-          "region": "Motovun, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -5897,7 +5933,8 @@
           ],
           "temp": "14–16",
           "alcohol": ""
-         }
+         },
+         "terroir": "Motovun"
         },
         {
          "name": "Cuvée Boškinac Crni 2018",
@@ -5905,7 +5942,7 @@
          "price": 90,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Pag",
+          "region": "Hrvatsko primorje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -5922,7 +5959,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Pag"
         },
         {
          "name": "Sagul Plavac mali 2022",
@@ -5930,7 +5968,7 @@
          "price": 49,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Pelješac, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -5947,7 +5985,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Pelješac"
         },
         {
          "name": "Postup Mare 2020",
@@ -5955,7 +5994,7 @@
          "price": 96,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Postup, Pelješac",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -5972,7 +6011,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Postup, Pelješac"
         },
         {
          "name": "Dingač 2021",
@@ -5980,7 +6020,7 @@
          "price": 91,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Dingač, Pelješac",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -5997,7 +6037,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Dingač, Pelješac"
         },
         {
          "name": "Zinfandel 2019",
@@ -6005,7 +6046,7 @@
          "price": 89,
          "insight": {
           "grape": "Zinfandel (Crljenak)",
-          "region": "Pelješac, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6022,7 +6063,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Pelješac"
         },
         {
          "name": "Black 2022",
@@ -6030,7 +6072,7 @@
          "price": 70,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6055,7 +6097,7 @@
          "price": 75,
          "insight": {
           "grape": "Tribidrag (Crljenak)",
-          "region": "Komarna, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6072,7 +6114,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Komarna"
         },
         {
          "name": "Pagadebit 2018",
@@ -6080,7 +6123,7 @@
          "price": 85,
          "insight": {
           "grape": "Autohtone dalmatinske sorte",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -6096,7 +6139,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Korčula"
         },
         {
          "name": "Pape 2023",
@@ -6104,7 +6148,7 @@
          "price": 70,
          "insight": {
           "grape": "Plavac mali, Syrah",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -6129,7 +6173,7 @@
          "price": 145,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Ponikve, Pelješac",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_mature",
           "body": "full",
@@ -6147,6 +6191,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Ponikve, Pelješac",
          "note": {
           "hr": "Kamen, bura i strpljenje — plavac mali koji dokazuje da hrvatska vina stoje uz bok najboljima.",
           "en": "Stone, wind and patience — a Plavac Mali proving Croatian wine stands beside the very best.",
@@ -6167,7 +6212,7 @@
          "price": 250,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6192,7 +6237,7 @@
          "price": 195,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Dingač, Pelješac",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6210,6 +6255,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Dingač, Pelješac",
          "note": {
           "hr": "Stare loze Dingača — kompleksnost i zrelost tamo gdje vino trenutno pruža najviše.",
           "en": "Old vines of Dingač — complexity and maturity where the wine gives its most right now.",
@@ -6227,7 +6273,7 @@
          "price": 180,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon",
-          "region": "Bale, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6245,6 +6291,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Bale",
          "recommended": true,
          "note": {
           "hr": "Istarski odgovor Bordeauxu — gusto, elegantno i dozrelo pod mediteranskim suncem.",
@@ -6263,7 +6310,7 @@
          "price": 145,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6280,7 +6327,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Čara, Korčula"
         },
         {
          "name": "Pepejuh 2019",
@@ -6288,7 +6336,7 @@
          "price": 150,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6305,7 +6353,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Čara, Korčula"
         },
         {
          "name": "Pepejuh 2017",
@@ -6313,7 +6362,7 @@
          "price": 160,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6330,7 +6379,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Čara, Korčula"
         },
         {
          "name": "Dingač Elegance 2020",
@@ -6338,7 +6388,7 @@
          "price": 75,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Dingač, Pelješac",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6355,7 +6405,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Dingač, Pelješac"
         }
        ]
       },
@@ -8853,7 +8904,7 @@
          "price": 31,
          "insight": {
           "grape": "Muscat",
-          "region": "Vižinada, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -8870,7 +8921,8 @@
           ],
           "temp": "8–10",
           "alcohol": ""
-         }
+         },
+         "terroir": "Vižinada"
         },
         {
          "name": "Prošek Moskar – 0,375 l",
@@ -8878,7 +8930,7 @@
          "price": 45,
          "insight": {
           "grape": "Autohtone dalmatinske sorte (prošek)",
-          "region": "Pelješac, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "sweet",
           "body": "full",
@@ -8895,7 +8947,8 @@
           ],
           "temp": "12–14",
           "alcohol": ""
-         }
+         },
+         "terroir": "Pelješac"
         },
         {
          "name": "Prošek Ruža Dalmatinska – 0,375 l",
@@ -8903,7 +8956,7 @@
          "price": 58,
          "insight": {
           "grape": "Plavac mali (prošek)",
-          "region": "Pelješac, Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "sweet",
           "body": "full",
@@ -8921,6 +8974,7 @@
           "temp": "12–14",
           "alcohol": ""
          },
+         "terroir": "Pelješac",
          "note": {
           "hr": "Dalmatinska tradicija bez kompromisa — prošek koji nosi priču starih berbi.",
           "en": "Dalmatian tradition without compromise — a prošek carrying the story of old harvests.",
@@ -8938,7 +8992,7 @@
          "price": 64,
          "insight": {
           "grape": "Muškat momjanski",
-          "region": "Krasica, Istra",
+          "region": "Hrvatska Istra",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -8955,7 +9009,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": "Krasica"
         },
         {
          "name": "Rajnski rizling izborna berba 2019",
@@ -8963,7 +9018,7 @@
          "price": 60,
          "insight": {
           "grape": "Riesling",
-          "region": "Štrigova, Međimurje – Bregovita Hrvatska",
+          "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -8980,7 +9035,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": "Štrigova"
         }
        ]
       },

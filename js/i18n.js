@@ -1271,9 +1271,23 @@ es: {
 /* Region names with an established per-language exonym. localizeRegion()
    translates any comma-separated token found here; unknown tokens (villages,
    most appellations) stay in their original Latin form. Chinese is handled
-   separately via ZH_REGION (bilingual gloss). */
+   separately via ZH_REGION (bilingual gloss).
+
+   Values are the official Croatian GI/PDO podregija names, kept COUNTRY-FREE
+   for display (the country field is appended separately, so we avoid
+   "Hrvatska Istra, Hrvatska"). To add a region, add its canonical key here. */
 const REGION_I18N = {
-  "Dalmacija": { hr: "Dalmacija", en: "Dalmatia", it: "Dalmazia", fr: "Dalmatie", de: "Dalmatien", sl: "Dalmacija", es: "Dalmacia" }
+  // Official Croatian podregije (GI/PDO)
+  "Hrvatska Istra":            { hr: "Istra", en: "Istria", it: "Istria", fr: "Istrie", de: "Istrien", sl: "Istra", es: "Istria" },
+  "Hrvatsko primorje":         { hr: "Kvarner", en: "Kvarner", it: "Quarnaro", fr: "Kvarner", de: "Kvarner", sl: "Kvarner", es: "Kvarner" },
+  "Srednja i Južna Dalmacija": { hr: "Srednja i Južna Dalmacija", en: "Central & Southern Dalmatia", it: "Dalmazia centrale e meridionale", fr: "Dalmatie centrale et méridionale", de: "Mittel- und Süddalmatien", sl: "Srednja in Južna Dalmacija", es: "Dalmacia central y meridional" },
+  "Sjeverna Dalmacija":        { hr: "Sjeverna Dalmacija", en: "Northern Dalmatia", it: "Dalmazia settentrionale", fr: "Dalmatie du Nord", de: "Norddalmatien", sl: "Severna Dalmacija", es: "Dalmacia septentrional" },
+  "Dalmatinska zagora":        { hr: "Dalmatinska zagora", en: "Dalmatian Hinterland", it: "Entroterra dalmata", fr: "Arrière-pays dalmate", de: "Dalmatinisches Hinterland", sl: "Dalmatinska zagora", es: "Interior dálmata" },
+  "Slavonija":                 { hr: "Slavonija", en: "Slavonia", it: "Slavonia", fr: "Slavonie", de: "Slawonien", sl: "Slavonija", es: "Eslavonia" },
+  "Hrvatsko Podunavlje":       { hr: "Hrvatsko Podunavlje", en: "Croatian Danube", it: "Danubio croato", fr: "Danube croate", de: "Kroatische Donau", sl: "Hrvaško Podonavje", es: "Danubio croata" },
+  // legacy short forms (kept so any stray value still localizes)
+  "Istra":                     { hr: "Istra", en: "Istria", it: "Istria", fr: "Istrie", de: "Istrien", sl: "Istra", es: "Istria" },
+  "Dalmacija":                 { hr: "Dalmacija", en: "Dalmatia", it: "Dalmazia", fr: "Dalmatie", de: "Dalmatien", sl: "Dalmacija", es: "Dalmacia" }
 };
 
 /* Free-text grape descriptors (phrases, not single varieties) that need a full
