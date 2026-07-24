@@ -3859,8 +3859,15 @@
            "asian"
           ],
           "temp": "8–10",
-          "alcohol": ""
-         }
+          "alcohol": "12",
+          "sweetness": "dry"
+         },
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Idig Riesling GG 2021",
@@ -3868,7 +3875,7 @@
          "price": 189,
          "insight": {
           "grape": "Riesling",
-          "region": "Königsbach, Pfalz",
+          "region": "Pfalz",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3884,8 +3891,24 @@
            "white_meat"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "12.5",
+          "sweetness": "dry"
+         },
+         "terroir": "Königsbach",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Riesling Scharzhof 2023",
@@ -3893,7 +3916,7 @@
          "price": 170,
          "insight": {
           "grape": "Riesling",
-          "region": "Wiltingen, Saar",
+          "region": "Mosel-Saar-Ruwer",
           "country": "DE",
           "style": "white_aromatic",
           "body": "light",
@@ -3909,8 +3932,20 @@
            "asian"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "8.5",
+          "sweetness": "off_dry"
          },
+         "terroir": "Wiltingen",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "93"
+          },
+          {
+           "critic": "Vinous",
+           "score": "91"
+          }
+         ],
          "tags": [
           "rare"
          ]
