@@ -3605,7 +3605,7 @@
          "price": 87,
          "insight": {
           "grape": "Riesling",
-          "region": "Westhofen, Rheinhessen",
+          "region": "Rheinhessen",
           "country": "DE",
           "style": "white_mineral",
           "body": "medium",
@@ -3620,9 +3620,21 @@
            "poultry",
            "asian"
           ],
-          "temp": "10–12",
-          "alcohol": ""
-         }
+          "temp": "10–11",
+          "alcohol": "12.5",
+          "sweetness": "dry"
+         },
+         "terroir": "Westhofen",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "93"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Riesling Aulerde GG 2020",
@@ -3630,7 +3642,7 @@
          "price": 136,
          "insight": {
           "grape": "Riesling",
-          "region": "Westhofen, Rheinhessen",
+          "region": "Rheinhessen",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3646,8 +3658,16 @@
            "asian"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "12.5",
+          "sweetness": "dry"
+         },
+         "terroir": "Westhofen",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "93+"
+          }
+         ]
         },
         {
          "name": "Riesling Kirchspiel GG 2020",
@@ -3655,7 +3675,7 @@
          "price": 180,
          "insight": {
           "grape": "Riesling",
-          "region": "Westhofen, Rheinhessen",
+          "region": "Rheinhessen",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3670,9 +3690,29 @@
            "shellfish",
            "white_meat"
           ],
-          "temp": "10–12",
-          "alcohol": ""
+          "temp": "11–12",
+          "alcohol": "12.5",
+          "sweetness": "dry"
          },
+         "terroir": "Westhofen",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "94"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "94"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "18/20"
+          }
+         ],
          "recommended": true,
          "note": {
           "hr": "Vapnenac Westhofena, biodinamička preciznost — suhi rizling velike klase, bez ijedne suvišne riječi.",
@@ -3691,7 +3731,7 @@
          "price": 110,
          "insight": {
           "grape": "Riesling",
-          "region": "Winningen, Terrassenmosel",
+          "region": "Mosel-Saar-Ruwer",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3706,9 +3746,11 @@
            "pork",
            "asian"
           ],
-          "temp": "10–12",
-          "alcohol": ""
-         }
+          "temp": "11–12",
+          "alcohol": "12.5",
+          "sweetness": "dry"
+         },
+         "terroir": "Winningen"
         },
         {
          "name": "Riesling Gaisböhl GG 2017",
@@ -3716,7 +3758,7 @@
          "price": 140,
          "insight": {
           "grape": "Riesling",
-          "region": "Ruppertsberg, Pfalz",
+          "region": "Pfalz",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3732,8 +3774,28 @@
            "asian"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "13",
+          "sweetness": "dry"
+         },
+         "terroir": "Ruppertsberg",
+         "ratings": [
+          {
+           "critic": "Lobenberg",
+           "score": "97"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "95"
+          },
+          {
+           "critic": "Vinous",
+           "score": "93"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Riesling Wehlener Sonnenuhr Kabinett 2023",
@@ -3741,7 +3803,7 @@
          "price": 110,
          "insight": {
           "grape": "Riesling",
-          "region": "Wehlen, Mosel",
+          "region": "Mosel-Saar-Ruwer",
           "country": "DE",
           "style": "white_aromatic",
           "body": "light",
@@ -3757,8 +3819,24 @@
            "white_fish"
           ],
           "temp": "8–10",
-          "alcohol": ""
-         }
+          "alcohol": "8.5",
+          "sweetness": "sweet"
+         },
+         "terroir": "Wehlen",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "96"
+          },
+          {
+           "critic": "Lobenberg",
+           "score": "96+"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Riesling Aus den Lagen 2021",
