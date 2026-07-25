@@ -580,7 +580,7 @@
          "producer": "Petrač",
          "price": 8,
          "insight": {
-          "grape": "Cabernet Sauvignon, Merlot, Pinot Noir",
+          "grape": "Cabernet Sauvignon, Merlot",
           "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "red_medium",
@@ -595,11 +595,22 @@
            "white_meat",
            "cheese_hard"
           ],
-          "temp": "16–18",
-          "alcohol": "",
+          "temp": "14–16",
+          "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Hršak Breg"
+         "terroir": "Hršak Breg",
+         "notePlain": true,
+         "note": {
+          "hr": "Zastavni brod vinarije Petrač — ručno brani cabernet sauvignon i merlot s najboljih dijelova vlastitog vinograda, 18 mjeseci u hrastovim bačvama. Bordoška kupaža iz hrvatskog Zagorja; 1 g/l šećera, 5,5 g/l kiselina.",
+          "en": "Petrač's flagship wine — hand-picked Cabernet Sauvignon and Merlot from the best parts of their own vineyard, aged 18 months in oak. A Bordeaux blend from Croatian Zagorje; 1 g/L sugar, 5.5 g/L acidity.",
+          "it": "Il vino di punta di Petrač — cabernet sauvignon e merlot vendemmiati a mano dalle migliori parti del proprio vigneto, 18 mesi in botte. Un blend bordolese dallo Zagorje croato; 1 g/l di zucchero, 5,5 g/l di acidità.",
+          "fr": "Le vin phare de Petrač — cabernet sauvignon et merlot vendangés à la main sur les meilleures parcelles de leur propre vignoble, élevés 18 mois en fût de chêne. Un assemblage bordelais du Zagorje croate ; 1 g/l de sucre, 5,5 g/l d'acidité.",
+          "de": "Der Flaggschiff-Wein von Petrač — von Hand gelesener Cabernet Sauvignon und Merlot aus den besten Lagen des eigenen Weinbergs, 18 Monate im Eichenfass gereift. Eine Bordeaux-Assemblage aus dem kroatischen Zagorje; 1 g/l Zucker, 5,5 g/l Säure.",
+          "zh": "Petrač 酒庄的旗舰之作——手工采摘自自家葡萄园最佳地块的赤霞珠与梅洛，在橡木桶中陈酿 18 个月。产自克罗地亚扎戈列的波尔多式调配；含糖 1 克/升，酸度 5.5 克/升。",
+          "sl": "Zastavna ladja kleti Petrač — ročno obrane grozdje cabernet sauvignon in merlot z najboljših delov lastnega vinograda, 18 mesecev v hrastu. Bordojska zvrst iz hrvaškega Zagorja; 1 g/l sladkorja, 5,5 g/l kislin.",
+          "es": "El vino insignia de Petrač — Cabernet Sauvignon y Merlot vendimiados a mano en las mejores parcelas de su propio viñedo, criado 18 meses en roble. Un ensamblaje bordelés del Zagorje croata; 1 g/l de azúcar, 5,5 g/l de acidez."
+         }
         },
         {
          "name": "Enigma 2019",
@@ -6383,7 +6394,7 @@
          "producer": "Petrač",
          "price": 50,
          "insight": {
-          "grape": "Cabernet Sauvignon, Merlot, Pinot Noir",
+          "grape": "Cabernet Sauvignon, Merlot",
           "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "red_medium",
@@ -6398,11 +6409,22 @@
            "white_meat",
            "cheese_hard"
           ],
-          "temp": "16–18",
-          "alcohol": "",
+          "temp": "14–16",
+          "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Hršak Breg"
+         "terroir": "Hršak Breg",
+         "notePlain": true,
+         "note": {
+          "hr": "Zastavni brod vinarije Petrač — ručno brani cabernet sauvignon i merlot s najboljih dijelova vlastitog vinograda, 18 mjeseci u hrastovim bačvama. Bordoška kupaža iz hrvatskog Zagorja; 1 g/l šećera, 5,5 g/l kiselina.",
+          "en": "Petrač's flagship wine — hand-picked Cabernet Sauvignon and Merlot from the best parts of their own vineyard, aged 18 months in oak. A Bordeaux blend from Croatian Zagorje; 1 g/L sugar, 5.5 g/L acidity.",
+          "it": "Il vino di punta di Petrač — cabernet sauvignon e merlot vendemmiati a mano dalle migliori parti del proprio vigneto, 18 mesi in botte. Un blend bordolese dallo Zagorje croato; 1 g/l di zucchero, 5,5 g/l di acidità.",
+          "fr": "Le vin phare de Petrač — cabernet sauvignon et merlot vendangés à la main sur les meilleures parcelles de leur propre vignoble, élevés 18 mois en fût de chêne. Un assemblage bordelais du Zagorje croate ; 1 g/l de sucre, 5,5 g/l d'acidité.",
+          "de": "Der Flaggschiff-Wein von Petrač — von Hand gelesener Cabernet Sauvignon und Merlot aus den besten Lagen des eigenen Weinbergs, 18 Monate im Eichenfass gereift. Eine Bordeaux-Assemblage aus dem kroatischen Zagorje; 1 g/l Zucker, 5,5 g/l Säure.",
+          "zh": "Petrač 酒庄的旗舰之作——手工采摘自自家葡萄园最佳地块的赤霞珠与梅洛，在橡木桶中陈酿 18 个月。产自克罗地亚扎戈列的波尔多式调配；含糖 1 克/升，酸度 5.5 克/升。",
+          "sl": "Zastavna ladja kleti Petrač — ročno obrane grozdje cabernet sauvignon in merlot z najboljših delov lastnega vinograda, 18 mesecev v hrastu. Bordojska zvrst iz hrvaškega Zagorja; 1 g/l sladkorja, 5,5 g/l kislin.",
+          "es": "El vino insignia de Petrač — Cabernet Sauvignon y Merlot vendimiados a mano en las mejores parcelas de su propio viñedo, criado 18 meses en roble. Un ensamblaje bordelés del Zagorje croata; 1 g/l de azúcar, 5,5 g/l de acidez."
+         }
         },
         {
          "name": "Enigma 2019",
