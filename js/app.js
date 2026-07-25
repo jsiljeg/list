@@ -567,6 +567,19 @@ function openDetail(ref, back) {
       if (!dishes.length) return "";
       return `<div class="detail-dishes"><span class="detail-label">${esc(t.ui.pairsWith)}</span>${dishes.map((dn) => `<span class="dish-chip">${esc(dn.name[lang] || dn.name.en || dn.name.hr)}</span>`).join("")}</div>`;
     })()}`;
+  // The glass icon is absolutely positioned inside .detail-header so a short
+  // name+producer never leaves dead space below it — but that also means the
+  // header's auto height can be shorter than the icon needs. Only when that
+  // happens, bump the header's min-height just enough to clear the icon,
+  // so tall wine names get zero extra space and short ones get exactly what's needed.
+  if (glass) {
+    const headerEl = $("modal-body").querySelector(".detail-header");
+    const glassEl = headerEl && headerEl.querySelector(".detail-glass");
+    if (headerEl && glassEl) {
+      const needed = glassEl.offsetTop + glassEl.offsetHeight;
+      if (headerEl.offsetHeight < needed) headerEl.style.minHeight = needed + "px";
+    }
+  }
   showModal();
   if (back) { const bb = $("modal-body").querySelector(".detail-back"); if (bb) bb.addEventListener("click", back); }
 }

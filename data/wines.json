@@ -6556,6 +6556,12 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "90"
+          }
+         ],
          "terroir": "Grimalda"
         },
         {
@@ -6563,7 +6569,7 @@
          "producer": "Giorgio Clai",
          "price": 66,
          "insight": {
-          "grape": "Refošk, Merlot, Cabernet Sauvignon",
+          "grape": "Merlot, Refošk",
           "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
@@ -6580,7 +6586,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "14.5",
           "sweetness": "dry"
          },
          "terroir": "Krasica"
@@ -6599,15 +6605,16 @@
            "sour_cherry",
            "red_currant",
            "earth",
-           "pepper"
+           "pepper",
+           "herbs"
           ],
           "pairings": [
            "game",
            "stews",
            "cheese_hard"
           ],
-          "temp": "16–18",
-          "alcohol": "",
+          "temp": "14–16",
+          "alcohol": "13",
           "sweetness": "dry"
          },
          "terroir": "Buzet"

@@ -303,21 +303,20 @@ body {
 .modal-close:hover { color: var(--text); border-color: var(--gold); }
 .sheet-grip { display: none; }   /* drag-to-close handle, shown on phones */
 .detail-header {
-  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+  position: relative;
+  padding-right: 4.5rem; /* reserve horizontal room for the icon; vertical space is added only when needed, via JS */
 }
-.detail-head-text { min-width: 0; flex: 1 1 auto; }
 .detail-name {
   font-family: var(--serif);
   font-size: 2.1rem; font-weight: 500; color: var(--text);
   line-height: 1.15;
 }
 .detail-glass {
-  flex: 0 0 auto;
-  margin-top: 2.2rem; /* clear the close button (top: .8rem, 44px tall) */
+  position: absolute; top: 1.95rem; right: 0;
   color: var(--gold); opacity: .8; line-height: 0;
 }
 .detail-glass svg {
-  height: 96px; width: auto;
+  height: 76px; width: auto;
   fill: none; stroke: currentColor; stroke-width: 1.4;
   stroke-linecap: round; stroke-linejoin: round;
 }
