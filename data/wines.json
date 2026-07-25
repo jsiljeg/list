@@ -10091,16 +10091,32 @@
          },
          "ratings": [
           {
-           "critic": "James Suckling",
+           "critic": "Jeff Leve",
+           "score": "98"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "97"
+          },
+          {
+           "critic": "Decanter",
            "score": "96"
           },
           {
-           "critic": "Vinous",
-           "score": "97"
+           "critic": "Wine Spectator",
+           "score": "95"
           },
           {
            "critic": "Robert Parker",
-           "score": "97"
+           "score": "94"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17/20"
           }
          ],
          "tags": [
@@ -10134,16 +10150,36 @@
          },
          "ratings": [
           {
+           "critic": "Decanter",
+           "score": "99"
+          },
+          {
            "critic": "James Suckling",
-           "score": "100"
+           "score": "99"
           },
           {
            "critic": "Robert Parker",
-           "score": "100"
+           "score": "98"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "98"
+          },
+          {
+           "critic": "Jeff Leve",
+           "score": "98"
+          },
+          {
+           "critic": "Vinous",
+           "score": "98"
           },
           {
            "critic": "Wine Spectator",
            "score": "98"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "97"
           }
          ],
          "tags": [
