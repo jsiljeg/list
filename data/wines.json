@@ -752,7 +752,7 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "13.5",
           "sweetness": "dry"
          },
          "terroir": "Komarna"
@@ -6764,7 +6764,7 @@
          "producer": "Benmosche Family",
          "price": 89,
          "insight": {
-          "grape": "Zinfandel (Crljenak)",
+          "grape": "Tribidrag (Zinfandel)",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
@@ -6781,7 +6781,7 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "15",
           "sweetness": "dry"
          },
          "terroir": "Pelješac"
@@ -6808,8 +6808,8 @@
            "bbq",
            "cheese_hard"
           ],
-          "temp": "16–18",
-          "alcohol": "",
+          "temp": "16–19",
+          "alcohol": "14",
           "sweetness": "dry"
          }
         },
@@ -6835,7 +6835,7 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "13.5",
           "sweetness": "dry"
          },
          "terroir": "Komarna"
@@ -6845,15 +6845,16 @@
          "producer": "Kunjas",
          "price": 85,
          "insight": {
-          "grape": "Autohtone dalmatinske sorte",
+          "grape": "Plavac mali",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
-          "style": "red_medium",
-          "body": "medium",
+          "style": "red_full",
+          "body": "full",
           "aromas": [
            "cherry",
            "herbs",
-           "earth"
+           "earth",
+           "prune"
           ],
           "pairings": [
            "stews",
@@ -6861,7 +6862,7 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "14.5",
           "sweetness": "dry"
          },
          "terroir": "Korčula"
