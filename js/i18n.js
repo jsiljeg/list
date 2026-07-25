@@ -1418,7 +1418,7 @@ const REGION_I18N = {
   "Kontinentalna Hrvatska":    { hr: "Kontinentalna Hrvatska", en: "Continental Croatia", it: "Croazia continentale", fr: "Croatie continentale", de: "Kontinentales Kroatien", sl: "Celinska Hrvaška", es: "Croacia continental" },
   // Official Croatian podregije (GI/PDO)
   "Hrvatska Istra":            { hr: "Hrvatska Istra", en: "Croatian Istria", it: "Istria croata", fr: "Istrie croate", de: "Kroatisch-Istrien", sl: "Hrvaška Istra", es: "Istria croata" },
-  "Hrvatsko primorje":         { hr: "Kvarner", en: "Kvarner", it: "Quarnaro", fr: "Kvarner", de: "Kvarner", sl: "Kvarner", es: "Kvarner" },
+  "Hrvatsko primorje":         { hr: "Hrvatsko primorje", en: "Croatian Littoral", it: "Litorale croato", fr: "Littoral croate", de: "Kroatisches Küstenland", sl: "Hrvaško primorje", es: "Litoral croata" },
   "Srednja i Južna Dalmacija": { hr: "Srednja i Južna Dalmacija", en: "Central & Southern Dalmatia", it: "Dalmazia centrale e meridionale", fr: "Dalmatie centrale et méridionale", de: "Mittel- und Süddalmatien", sl: "Srednja in Južna Dalmacija", es: "Dalmacia central y meridional" },
   "Sjeverna Dalmacija":        { hr: "Sjeverna Dalmacija", en: "Northern Dalmatia", it: "Dalmazia settentrionale", fr: "Dalmatie du Nord", de: "Norddalmatien", sl: "Severna Dalmacija", es: "Dalmacia septentrional" },
   "Dalmatinska zagora":        { hr: "Dalmatinska zagora", en: "Dalmatian Hinterland", it: "Entroterra dalmata", fr: "Arrière-pays dalmate", de: "Dalmatinisches Hinterland", sl: "Dalmatinska zagora", es: "Interior dálmata" },

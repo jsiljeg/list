@@ -282,7 +282,7 @@
     "Zagorje – Međimurje": "扎戈列-梅吉穆列",
     "Zagorje-Međimurje": "扎戈列-梅吉穆列",
     "Hrvatska Istra": "伊斯特拉",
-    "Hrvatsko primorje": "克瓦内尔",
+    "Hrvatsko primorje": "克罗地亚滨海地区",
     "Srednja i Južna Dalmacija": "中南达尔马提亚",
     "Sjeverna Dalmacija": "北达尔马提亚",
     "Dalmatinska zagora": "达尔马提亚腹地",

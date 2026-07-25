@@ -873,9 +873,27 @@ document.addEventListener("keydown", (e) => {
   function end() {
     if (!dragging) return;
     dragging = false;
-    $("modal-backdrop").style.opacity = "";
-    if (allowed() && Math.abs(dy) > 110) closeModal();
-    else { sheet.style.transition = "transform .2s ease"; sheet.style.transform = ""; }
+    if (allowed() && Math.abs(dy) > 110) {
+      // Finish the gesture instead of cutting it short: keep sliding the sheet
+      // the rest of the way off-screen (same direction the finger was already
+      // going) and fade the backdrop, then close once that's actually done.
+      const backdrop = $("modal-backdrop");
+      const dir = dy > 0 ? 1 : -1;
+      const dist = (sheet.getBoundingClientRect().height || window.innerHeight) + 60;
+      sheet.style.transition = "transform .28s cubic-bezier(.22,.61,.36,1)";
+      sheet.style.transform = `translateY(${dir * dist}px)`;
+      backdrop.style.transition = "opacity .28s ease-out";
+      backdrop.style.opacity = "0";
+      setTimeout(() => {
+        closeModal();
+        sheet.style.transition = ""; sheet.style.transform = "";
+        backdrop.style.transition = ""; backdrop.style.opacity = "";
+      }, 280);
+    } else {
+      $("modal-backdrop").style.opacity = "";
+      sheet.style.transition = "transform .25s cubic-bezier(.22,.61,.36,1)";
+      sheet.style.transform = "";
+    }
   }
   sheet.addEventListener("touchend", end);
   sheet.addEventListener("touchcancel", end);
