@@ -90,13 +90,13 @@ hr: {
     orange: "Macerirano bijelo · odležano na kožici", rose: "Rosé · svježe",
     red_light: "Crno · lagano", red_medium: "Crno · srednje puno",
     red_full: "Crno · puno", red_mature: "Crno · zrelo",
-    sweet: "Slatko · desertno vino"
+    sweet: "Desertno vino"
   },
   bodies: { light: "lagano", medium: "srednje puno", full: "puno" },
   sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
-    almond: "badem", apricot: "marelica", balsamic: "balzamične note", blackberry: "kupina",
+    almond: "badem", apricot: "marelica", dried_apricot: "suha marelica", molasses: "melasa", baked_apple: "pečena jabuka", marzipan: "marcipan", balsamic: "balzamične note", blackberry: "kupina",
     blackcurrant: "crni ribiz", brioche: "brioche", butter: "maslac", candied_fruit: "kandirano voće",
     caramel: "karamela", cedar: "cedrovina", cherry: "trešnja", chocolate: "čokolada",
     citrus: "citrusi", coffee: "kava", dried_fruit: "suho voće", earth: "zemljane note",
@@ -203,13 +203,13 @@ en: {
     orange: "Orange · skin-macerated", rose: "Rosé · fresh",
     red_light: "Red · light", red_medium: "Red · medium-bodied",
     red_full: "Red · full-bodied", red_mature: "Red · mature",
-    sweet: "Sweet · dessert wine"
+    sweet: "Dessert wine"
   },
   bodies: { light: "light", medium: "medium", full: "full" },
   sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
-    almond: "almond", apricot: "apricot", balsamic: "balsamic notes", blackberry: "blackberry",
+    almond: "almond", apricot: "apricot", dried_apricot: "dried apricot", molasses: "molasses", baked_apple: "baked apple", marzipan: "marzipan", balsamic: "balsamic notes", blackberry: "blackberry",
     blackcurrant: "blackcurrant", brioche: "brioche", butter: "butter", candied_fruit: "candied fruit",
     caramel: "caramel", cedar: "cedar", cherry: "cherry", chocolate: "chocolate",
     citrus: "citrus", coffee: "coffee", dried_fruit: "dried fruit", earth: "earthy notes",
@@ -316,13 +316,13 @@ it: {
     orange: "Orange · macerato sulle bucce", rose: "Rosato · fresco",
     red_light: "Rosso · leggero", red_medium: "Rosso · di medio corpo",
     red_full: "Rosso · corposo", red_mature: "Rosso · maturo",
-    sweet: "Dolce · vino da dessert"
+    sweet: "Vino da dessert"
   },
   bodies: { light: "leggero", medium: "medio", full: "corposo" },
   sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
-    almond: "mandorla", apricot: "albicocca", balsamic: "note balsamiche", blackberry: "mora",
+    almond: "mandorla", apricot: "albicocca", dried_apricot: "albicocca secca", molasses: "melassa", baked_apple: "mela cotta", marzipan: "marzapane", balsamic: "note balsamiche", blackberry: "mora",
     blackcurrant: "ribes nero", brioche: "brioche", butter: "burro", candied_fruit: "frutta candita",
     caramel: "caramello", cedar: "cedro", cherry: "ciliegia", chocolate: "cioccolato",
     citrus: "agrumi", coffee: "caffè", dried_fruit: "frutta secca", earth: "note terrose",
@@ -429,13 +429,13 @@ fr: {
     orange: "Orange · macéré sur peaux", rose: "Rosé · frais",
     red_light: "Rouge · léger", red_medium: "Rouge · de corps moyen",
     red_full: "Rouge · corsé", red_mature: "Rouge · mature",
-    sweet: "Doux · vin de dessert"
+    sweet: "Vin de dessert"
   },
   bodies: { light: "léger", medium: "moyen", full: "corsé" },
   sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
-    almond: "amande", apricot: "abricot", balsamic: "notes balsamiques", blackberry: "mûre",
+    almond: "amande", apricot: "abricot", dried_apricot: "abricot sec", molasses: "mélasse", baked_apple: "pomme cuite", marzipan: "massepain", balsamic: "notes balsamiques", blackberry: "mûre",
     blackcurrant: "cassis", brioche: "brioche", butter: "beurre", candied_fruit: "fruits confits",
     caramel: "caramel", cedar: "cèdre", cherry: "cerise", chocolate: "chocolat",
     citrus: "agrumes", coffee: "café", dried_fruit: "fruits secs", earth: "notes terreuses",
@@ -542,13 +542,13 @@ de: {
     orange: "Orange · maischevergoren", rose: "Rosé · frisch",
     red_light: "Rot · leicht", red_medium: "Rot · mittelkräftig",
     red_full: "Rot · vollmundig", red_mature: "Rot · gereift",
-    sweet: "Süß · Dessertwein"
+    sweet: "Dessertwein"
   },
   bodies: { light: "leicht", medium: "mittel", full: "vollmundig" },
   sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
-    almond: "Mandel", apricot: "Aprikose", balsamic: "balsamische Noten", blackberry: "Brombeere",
+    almond: "Mandel", apricot: "Aprikose", dried_apricot: "getrocknete Aprikose", molasses: "Melasse", baked_apple: "Bratapfel", marzipan: "Marzipan", balsamic: "balsamische Noten", blackberry: "Brombeere",
     blackcurrant: "schwarze Johannisbeere", brioche: "Brioche", butter: "Butter", candied_fruit: "kandierte Früchte",
     caramel: "Karamell", cedar: "Zeder", cherry: "Kirsche", chocolate: "Schokolade",
     citrus: "Zitrus", coffee: "Kaffee", dried_fruit: "Trockenfrüchte", earth: "erdige Noten",
@@ -655,13 +655,13 @@ zh: {
     orange: "橙酒 · 带皮浸渍", rose: "桃红 · 清新",
     red_light: "红葡萄酒 · 轻盈", red_medium: "红葡萄酒 · 中等酒体",
     red_full: "红葡萄酒 · 饱满", red_mature: "红葡萄酒 · 成熟",
-    sweet: "甜型 · 餐后甜酒"
+    sweet: "餐后甜酒"
   },
   bodies: { light: "轻盈", medium: "中等", full: "饱满" },
   sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
-    almond: "杏仁", apricot: "杏子", balsamic: "香脂调", blackberry: "黑莓",
+    almond: "杏仁", apricot: "杏子", dried_apricot: "杏干", molasses: "糖蜜", baked_apple: "烤苹果", marzipan: "杏仁膏", balsamic: "香脂调", blackberry: "黑莓",
     blackcurrant: "黑加仑", brioche: "布里欧修", butter: "黄油", candied_fruit: "蜜饯",
     caramel: "焦糖", cedar: "雪松", cherry: "樱桃", chocolate: "巧克力",
     citrus: "柑橘", coffee: "咖啡", dried_fruit: "果干", earth: "泥土气息",
@@ -829,7 +829,7 @@ sl: {
     "red_medium": "Rdeče · srednje polno",
     "red_full": "Rdeče · polno",
     "red_mature": "Rdeče · zrelo",
-    "sweet": "Sladko · desertno vino"
+    "sweet": "Desertno vino"
   },
   "bodies": {
     "light": "lahko",
@@ -846,6 +846,10 @@ sl: {
   "aromas": {
     "almond": "mandelj",
     "apricot": "marelica",
+    "dried_apricot": "suha marelica",
+    "molasses": "melasa",
+    "baked_apple": "pečeno jabolko",
+    "marzipan": "marcipan",
     "balsamic": "balzamične note",
     "blackberry": "robida",
     "blackcurrant": "črni ribez",
@@ -1179,7 +1183,7 @@ es: {
     "red_medium": "Tinto · medio",
     "red_full": "Tinto · potente",
     "red_mature": "Tinto · maduro",
-    "sweet": "Dulce · vino de postre"
+    "sweet": "Vino de postre"
   },
   "bodies": {
     "light": "ligero",
@@ -1196,6 +1200,10 @@ es: {
   "aromas": {
     "almond": "almendra",
     "apricot": "albaricoque",
+    "dried_apricot": "albaricoque seco",
+    "molasses": "melaza",
+    "baked_apple": "manzana asada",
+    "marzipan": "mazapán",
     "balsamic": "notas balsámicas",
     "blackberry": "mora",
     "blackcurrant": "grosella negra",
@@ -1435,5 +1443,15 @@ const GRAPE_I18N = {
     sl: "Avtohtone dalmatinske sorte",
     es: "Variedades autóctonas dálmatas",
     zh: "达尔马提亚原生品种"
+  },
+  "Autohtone dalmatinske sorte (prošek)": {
+    hr: "Autohtone dalmatinske sorte (prošek)",
+    en: "Indigenous Dalmatian varieties (prošek)",
+    it: "Varietà autoctone dalmate (prošek)",
+    fr: "Cépages autochtones dalmates (prošek)",
+    de: "Autochthone dalmatinische Rebsorten (prošek)",
+    sl: "Avtohtone dalmatinske sorte (prošek)",
+    es: "Variedades autóctonas dálmatas (prošek)",
+    zh: "达尔马提亚原生品种（prošek）"
   }
 };
