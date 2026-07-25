@@ -9999,7 +9999,7 @@
          "price": 100,
          "insight": {
           "grape": "Zibibbo (Muscat of Alexandria)",
-          "region": "Pantelleria, Sicilia",
+          "region": "Sicilia",
           "country": "IT",
           "style": "sweet",
           "body": "full",
@@ -10015,8 +10015,15 @@
            "cheese_blue"
           ],
           "temp": "10–12",
-          "alcohol": ""
-         }
+          "alcohol": "14.2"
+         },
+         "terroir": "Pantelleria",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Amabile del Cere 2017 – 0,375l",
@@ -10123,7 +10130,7 @@
            "cheese_blue"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "13.9"
          },
          "ratings": [
           {
