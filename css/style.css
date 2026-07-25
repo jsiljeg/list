@@ -410,6 +410,7 @@ body {
 .detail-ratings {
   display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
   margin: .2rem 0 1rem;
+  padding-right: 6.5rem; /* keep clear of the glass icon, same reserve as .detail-name */
 }
 .detail-ratings .detail-label { margin: 0 .3rem 0 0; }
 .rating-chip {
