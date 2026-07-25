@@ -302,13 +302,17 @@ body {
 }
 .modal-close:hover { color: var(--text); border-color: var(--gold); }
 .sheet-grip { display: none; }   /* drag-to-close handle, shown on phones */
+.detail-header {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+}
+.detail-head-text { min-width: 0; flex: 1 1 auto; }
 .detail-name {
   font-family: var(--serif);
   font-size: 2.1rem; font-weight: 500; color: var(--text);
-  line-height: 1.15; padding-right: 6.5rem;
+  line-height: 1.15;
 }
 .detail-glass {
-  position: absolute; top: 4.4rem; right: 2rem;
+  flex: 0 0 auto;
   color: var(--gold); opacity: .8; line-height: 0;
 }
 .detail-glass svg {
@@ -410,7 +414,6 @@ body {
 .detail-ratings {
   display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
   margin: .2rem 0 1rem;
-  padding-right: 6.5rem; /* keep clear of the glass icon, same reserve as .detail-name */
 }
 .detail-ratings .detail-label { margin: 0 .3rem 0 0; }
 .rating-chip {

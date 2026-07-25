@@ -528,12 +528,16 @@ function openDetail(ref, back) {
   const noteText = item.note && (item.note[lang] || item.note.en || item.note.hr);
   $("modal-body").innerHTML = `
     ${back ? `<button class="detail-back" type="button">${esc(t.helper.backToWines)}</button>` : ""}
-    ${glass ? `<div class="detail-glass">${GLASS_ICONS[glass]}</div>` : ""}
-    <div class="detail-name">${esc(itemName(item))}${wineZh(itemName(item)) ? ` <span class="zh-gloss">（${wineZh(itemName(item))}）</span>` : ""}</div>
-    ${item.producer ? `<div class="detail-producer">${esc(item.producer)}${producerZh(item.producer) ? ` <span class="zh-gloss">（${producerZh(item.producer)}）</span>` : ""}</div>` : ""}
-    ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
-    ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
-    ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
+    <div class="detail-header">
+      <div class="detail-head-text">
+        <div class="detail-name">${esc(itemName(item))}${wineZh(itemName(item)) ? ` <span class="zh-gloss">（${wineZh(itemName(item))}）</span>` : ""}</div>
+        ${item.producer ? `<div class="detail-producer">${esc(item.producer)}${producerZh(item.producer) ? ` <span class="zh-gloss">（${producerZh(item.producer)}）</span>` : ""}</div>` : ""}
+        ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
+        ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
+        ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
+      </div>
+      ${glass ? `<div class="detail-glass">${GLASS_ICONS[glass]}</div>` : ""}
+    </div>
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
     <div class="detail-style">${esc(t.styles[ins.style] || "")}${ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : ""}${ins.sweetness && t.sweetness ? " · " + esc(t.sweetness[ins.sweetness] || ins.sweetness) : ""}</div>
