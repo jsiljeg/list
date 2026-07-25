@@ -6534,7 +6534,7 @@
          "producer": "Matošević",
          "price": 66,
          "insight": {
-          "grape": "Merlot, Teran",
+          "grape": "Teran 50%, Merlot 50%",
           "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
@@ -6543,7 +6543,9 @@
            "cherry",
            "plum",
            "earth",
-           "spice"
+           "spice",
+           "blackberry",
+           "blueberry"
           ],
           "pairings": [
            "pasta",
@@ -6551,7 +6553,7 @@
            "white_meat"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "13",
           "sweetness": "dry"
          },
          "terroir": "Grimalda"

@@ -96,7 +96,7 @@ hr: {
   sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
-    almond: "badem", apricot: "marelica", dried_apricot: "suha marelica", molasses: "melasa", baked_apple: "pečena jabuka", marzipan: "marcipan", balsamic: "balzamične note", blackberry: "kupina",
+    almond: "badem", apricot: "marelica", dried_apricot: "suha marelica", molasses: "melasa", baked_apple: "pečena jabuka", marzipan: "marcipan", balsamic: "balzamične note", blackberry: "kupina", blueberry: "borovnica",
     blackcurrant: "crni ribiz", brioche: "brioche", butter: "maslac", candied_fruit: "kandirano voće",
     caramel: "karamela", cedar: "cedrovina", cherry: "trešnja", chocolate: "čokolada",
     citrus: "citrusi", coffee: "kava", dried_fruit: "suho voće", earth: "zemljane note",
@@ -209,7 +209,7 @@ en: {
   sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
-    almond: "almond", apricot: "apricot", dried_apricot: "dried apricot", molasses: "molasses", baked_apple: "baked apple", marzipan: "marzipan", balsamic: "balsamic notes", blackberry: "blackberry",
+    almond: "almond", apricot: "apricot", dried_apricot: "dried apricot", molasses: "molasses", baked_apple: "baked apple", marzipan: "marzipan", balsamic: "balsamic notes", blackberry: "blackberry", blueberry: "blueberry",
     blackcurrant: "blackcurrant", brioche: "brioche", butter: "butter", candied_fruit: "candied fruit",
     caramel: "caramel", cedar: "cedar", cherry: "cherry", chocolate: "chocolate",
     citrus: "citrus", coffee: "coffee", dried_fruit: "dried fruit", earth: "earthy notes",
@@ -322,7 +322,7 @@ it: {
   sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
-    almond: "mandorla", apricot: "albicocca", dried_apricot: "albicocca secca", molasses: "melassa", baked_apple: "mela cotta", marzipan: "marzapane", balsamic: "note balsamiche", blackberry: "mora",
+    almond: "mandorla", apricot: "albicocca", dried_apricot: "albicocca secca", molasses: "melassa", baked_apple: "mela cotta", marzipan: "marzapane", balsamic: "note balsamiche", blackberry: "mora", blueberry: "mirtillo",
     blackcurrant: "ribes nero", brioche: "brioche", butter: "burro", candied_fruit: "frutta candita",
     caramel: "caramello", cedar: "cedro", cherry: "ciliegia", chocolate: "cioccolato",
     citrus: "agrumi", coffee: "caffè", dried_fruit: "frutta secca", earth: "note terrose",
@@ -435,7 +435,7 @@ fr: {
   sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
-    almond: "amande", apricot: "abricot", dried_apricot: "abricot sec", molasses: "mélasse", baked_apple: "pomme cuite", marzipan: "massepain", balsamic: "notes balsamiques", blackberry: "mûre",
+    almond: "amande", apricot: "abricot", dried_apricot: "abricot sec", molasses: "mélasse", baked_apple: "pomme cuite", marzipan: "massepain", balsamic: "notes balsamiques", blackberry: "mûre", blueberry: "myrtille",
     blackcurrant: "cassis", brioche: "brioche", butter: "beurre", candied_fruit: "fruits confits",
     caramel: "caramel", cedar: "cèdre", cherry: "cerise", chocolate: "chocolat",
     citrus: "agrumes", coffee: "café", dried_fruit: "fruits secs", earth: "notes terreuses",
@@ -548,7 +548,7 @@ de: {
   sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
-    almond: "Mandel", apricot: "Aprikose", dried_apricot: "getrocknete Aprikose", molasses: "Melasse", baked_apple: "Bratapfel", marzipan: "Marzipan", balsamic: "balsamische Noten", blackberry: "Brombeere",
+    almond: "Mandel", apricot: "Aprikose", dried_apricot: "getrocknete Aprikose", molasses: "Melasse", baked_apple: "Bratapfel", marzipan: "Marzipan", balsamic: "balsamische Noten", blackberry: "Brombeere", blueberry: "Blaubeere",
     blackcurrant: "schwarze Johannisbeere", brioche: "Brioche", butter: "Butter", candied_fruit: "kandierte Früchte",
     caramel: "Karamell", cedar: "Zeder", cherry: "Kirsche", chocolate: "Schokolade",
     citrus: "Zitrus", coffee: "Kaffee", dried_fruit: "Trockenfrüchte", earth: "erdige Noten",
@@ -661,7 +661,7 @@ zh: {
   sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
-    almond: "杏仁", apricot: "杏子", dried_apricot: "杏干", molasses: "糖蜜", baked_apple: "烤苹果", marzipan: "杏仁膏", balsamic: "香脂调", blackberry: "黑莓",
+    almond: "杏仁", apricot: "杏子", dried_apricot: "杏干", molasses: "糖蜜", baked_apple: "烤苹果", marzipan: "杏仁膏", balsamic: "香脂调", blackberry: "黑莓", blueberry: "蓝莓",
     blackcurrant: "黑加仑", brioche: "布里欧修", butter: "黄油", candied_fruit: "蜜饯",
     caramel: "焦糖", cedar: "雪松", cherry: "樱桃", chocolate: "巧克力",
     citrus: "柑橘", coffee: "咖啡", dried_fruit: "果干", earth: "泥土气息",
@@ -852,6 +852,7 @@ sl: {
     "marzipan": "marcipan",
     "balsamic": "balzamične note",
     "blackberry": "robida",
+    "blueberry": "borovnica",
     "blackcurrant": "črni ribez",
     "brioche": "brioš",
     "butter": "maslo",
@@ -1206,6 +1207,7 @@ es: {
     "marzipan": "mazapán",
     "balsamic": "notas balsámicas",
     "blackberry": "mora",
+    "blueberry": "arándano",
     "blackcurrant": "grosella negra",
     "brioche": "brioche",
     "butter": "mantequilla",
