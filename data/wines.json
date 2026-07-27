@@ -908,7 +908,7 @@
          "price": 12,
          "insight": {
           "grape": "Syrah",
-          "region": "France",
+          "region": "",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -924,7 +924,7 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13"
          },
          "terroir": ""
         }
@@ -7674,7 +7674,7 @@
          "producer": "Saint-Estèphe",
          "price": 155,
          "insight": {
-          "grape": "Cabernet Sauvignon, Merlot",
+          "grape": "Merlot 59%, Cabernet Sauvignon 38%, Cabernet Franc 2%, Petit Verdot 1%",
           "region": "Saint-Estèphe, Médoc, Bordeaux",
           "country": "FR",
           "style": "red_full",
@@ -7691,16 +7691,38 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "94"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "94"
+          },
+          {
+           "critic": "Decanter",
+           "score": "94"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "92"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "16.5/20"
+          }
+         ]
         },
         {
          "name": "Château Troplong Mondot 2020",
          "producer": "Saint-Émilion Grand Cru",
          "price": 478,
          "insight": {
-          "grape": "Merlot, Cabernet Sauvignon, Cabernet Franc",
+          "grape": "Merlot 85%, Cabernet Sauvignon 13%, Cabernet Franc 2%",
           "region": "Saint-Émilion, Libournais, Bordeaux",
           "country": "FR",
           "style": "red_full",
@@ -7724,6 +7746,30 @@
           {
            "critic": "Decanter",
            "score": "100"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "98"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "97"
+          },
+          {
+           "critic": "Jeff Leve",
+           "score": "97"
+          },
+          {
+           "critic": "Vinous",
+           "score": "95"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "92"
           }
          ],
          "tags": [
@@ -7735,7 +7781,7 @@
          "producer": "Pomerol",
          "price": 390,
          "insight": {
-          "grape": "Merlot, Cabernet Sauvignon, Cabernet Franc",
+          "grape": "Merlot 91.6%, Cabernet Sauvignon 8.4%",
           "region": "Pomerol, Libournais, Bordeaux",
           "country": "FR",
           "style": "red_full",
@@ -7754,14 +7800,44 @@
           "temp": "16–18",
           "alcohol": "14.5"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "96"
+          },
+          {
+           "critic": "Vinous",
+           "score": "95"
+          },
+          {
+           "critic": "Jeff Leve",
+           "score": "95"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "94"
+          },
+          {
+           "critic": "Decanter",
+           "score": "94"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "94"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17/20"
+          }
+         ]
         },
         {
          "name": "La Pointe Rouge 2022",
          "producer": "Château La Pointe, Pomerol",
          "price": 220,
          "insight": {
-          "grape": "Merlot, Cabernet Franc",
+          "grape": "Merlot 84%, Cabernet Franc 16%",
           "region": "Pomerol, Libournais, Bordeaux",
           "country": "FR",
           "style": "red_full",
@@ -7778,16 +7854,34 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14.2"
+          "alcohol": "14"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "94"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "92"
+          },
+          {
+           "critic": "Vinous",
+           "score": "92"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "16/20"
+          }
+         ]
         },
         {
          "name": "Château Canon 2020",
          "producer": "Saint-Émilion Grand Cru",
          "price": 390,
          "insight": {
-          "grape": "Merlot, Cabernet Franc",
+          "grape": "Merlot 68%, Cabernet Franc 32%",
           "region": "Saint-Émilion, Libournais, Bordeaux",
           "country": "FR",
           "style": "red_full",
@@ -7809,8 +7903,16 @@
          "terroir": "",
          "ratings": [
           {
-           "critic": "Decanter",
-           "score": "99"
+           "critic": "Robert Parker",
+           "score": "100"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "98"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17.5/20"
           }
          ],
          "tags": [
@@ -7822,7 +7924,7 @@
          "producer": "Saint-Julien",
          "price": 390,
          "insight": {
-          "grape": "Cabernet Sauvignon, Merlot",
+          "grape": "Cabernet Sauvignon 84%, Merlot 11%, Cabernet Franc 5%",
           "region": "Saint-Julien, Médoc, Bordeaux",
           "country": "FR",
           "style": "red_full",
@@ -7844,12 +7946,36 @@
          "terroir": "",
          "ratings": [
           {
-           "critic": "Robert Parker",
-           "score": "95"
+           "critic": "Wine Enthusiast",
+           "score": "96"
           },
           {
            "critic": "James Suckling",
+           "score": "95"
+          },
+          {
+           "critic": "Decanter",
            "score": "94"
+          },
+          {
+           "critic": "Vinous",
+           "score": "94"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "94+"
+          },
+          {
+           "critic": "Jeff Leve",
+           "score": "93"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "93"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "93"
           }
          ]
         },
@@ -7859,7 +7985,7 @@
          "price": 80,
          "insight": {
           "grape": "Syrah",
-          "region": "France",
+          "region": "",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -7875,7 +8001,7 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13"
          },
          "terroir": ""
         },
