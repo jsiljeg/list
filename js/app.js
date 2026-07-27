@@ -558,7 +558,10 @@ function openDetail(ref, back) {
       const info = producerInfo(item.producer);
       const blurb = info && info.blurb && (info.blurb[lang] || info.blurb.en);
       if (!blurb) return "";
-      const terroir = item.terroir || info.region;
+      // The producer's home region is only a fallback. An explicit terroir on the
+      // item wins — including an empty one, which deliberately suppresses the line
+      // for wines that don't come from where the domaine is based.
+      const terroir = item.terroir !== undefined ? item.terroir : info.region;
       const ter = terroir ? `<div class="detail-terroir"><span class="detail-label">${esc(t.ui.terroir)}</span> ${esc(localizeRegion(terroir))}</div>` : "";
       return `<div class="detail-winemaker"><div class="detail-label">${esc(t.ui.winemaker)}${item.producer ? " · " + esc(item.producer) : ""}</div><p>${esc(blurb)}</p>${ter}</div>`;
     })()}

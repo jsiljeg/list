@@ -3358,7 +3358,7 @@
          "producer": "Čečavac",
          "price": 130,
          "insight": {
-          "grape": "Autohtone dalmatinske sorte",
+          "grape": "Pošip 50%, Žilavka 35%, Kujundžuša 15%",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
@@ -3378,6 +3378,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
+         "terroir": "Čara (Korčula), Bušanje (Imotski)",
          "ratings": [
           {
            "critic": "Falstaff",
@@ -4729,6 +4730,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
+         "terroir": "",
          "ratings": [
           {
            "critic": "Tim Atkin",
@@ -7212,11 +7214,18 @@
           ],
           "temp": "14–16",
           "alcohol": ""
-         }
+         },
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Jasper Morris",
+           "score": "88"
+          }
+         ]
         },
         {
          "name": "Pommard 1er Cru Les Arvelets 2019",
-         "producer": "Hubert & Laurent Lignier",
+         "producer": "Hubert Lignier",
          "price": 186,
          "insight": {
           "grape": "Pinot Noir",
@@ -7237,11 +7246,12 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Charmes-Chambertin Grand Cru 2021",
-         "producer": "Hubert & Laurent Lignier",
+         "producer": "Hubert Lignier",
          "price": 650,
          "insight": {
           "grape": "Pinot Noir",
@@ -7262,11 +7272,12 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Morey-Saint-Denis 2019",
-         "producer": "Hubert & Laurent Lignier",
+         "producer": "Hubert Lignier",
          "price": 178,
          "insight": {
           "grape": "Pinot Noir",
@@ -7390,7 +7401,7 @@
         },
         {
          "name": "Nuits-Saint-Georges “Les Didiers” 1er Cru 2013",
-         "producer": "Hubert & Laurent Lignier",
+         "producer": "Hubert Lignier",
          "price": 340,
          "insight": {
           "grape": "Pinot Noir",
@@ -7412,6 +7423,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "",
          "tags": [
           "drinking_now"
          ]
