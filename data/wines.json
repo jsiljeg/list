@@ -8838,7 +8838,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14.5"
          },
          "terroir": "Ruffoli",
          "tags": [
@@ -8886,6 +8886,16 @@
          "terroir": "Ruffoli",
          "tags": [
           "excellent_vintage"
+         ],
+         "ratings": [
+          {
+           "critic": "Vinous",
+           "score": "93"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "92"
+          }
          ]
         },
         {
