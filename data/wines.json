@@ -512,7 +512,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": "La Grande Vallée"
         },
         {
          "name": "Bourgogne 2023",
@@ -537,7 +538,8 @@
           ],
           "temp": "10–12",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Pinot Grigio 2023",
@@ -923,7 +925,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         }
        ]
       }
@@ -4207,6 +4210,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
+         "terroir": "La Grande Vallée",
          "ratings": [
           {
            "critic": "Robert Parker",
@@ -4238,6 +4242,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
+         "terroir": "",
          "recommended": true,
          "note": {
           "hr": "Chablis kakav je nekad bio — kimeridžijska školjka, napetost i ništa suvišno.",
@@ -4274,7 +4279,8 @@
           "temp": "10–12",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": "Butteaux"
         },
         {
          "name": "Chablis 1er Cru Vaillons 2018",
@@ -4301,6 +4307,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
+         "terroir": "Vaillons",
          "tags": [
           "rare"
          ],
@@ -4333,7 +4340,7 @@
          "price": 250,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis Grand Cru, Bourgogne",
+          "region": "Chablis, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -4352,6 +4359,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
+         "terroir": "Les Clos",
          "ratings": [
           {
            "critic": "Robert Parker",
@@ -4365,7 +4373,7 @@
          "price": 250,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis Grand Cru, Bourgogne",
+          "region": "Chablis, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -4384,6 +4392,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "Preuses",
          "ratings": [
           {
            "critic": "Jasper Morris",
@@ -4416,7 +4425,7 @@
          "price": 1450,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chablis Grand Cru, Bourgogne",
+          "region": "Chablis, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -4439,6 +4448,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "Valmur",
          "tags": [
           "rare"
          ],
@@ -4481,6 +4491,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "",
          "ratings": [
           {
            "critic": "Jasper Morris",
@@ -4513,6 +4524,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "",
          "ratings": [
           {
            "critic": "Jasper Morris",
@@ -4526,7 +4538,7 @@
          "price": 110,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -4544,7 +4556,8 @@
           "temp": "10–12",
           "alcohol": "12.5",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Rully Montmorin 2023",
@@ -4552,7 +4565,7 @@
          "price": 88,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte Chalonnaise, Bourgogne",
+          "region": "Rully, Côte Chalonnaise, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -4572,7 +4585,8 @@
           "temp": "13–15",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": "Montmorin"
         },
         {
          "name": "Rully 2023",
@@ -4580,7 +4594,7 @@
          "price": 97,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte Chalonnaise, Bourgogne",
+          "region": "Rully, Côte Chalonnaise, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -4599,7 +4613,8 @@
           "temp": "10–12",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Saint-Romain 2023",
@@ -4607,7 +4622,7 @@
          "price": 115,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte de Beaune, Bourgogne",
+          "region": "Saint-Romain, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -4627,7 +4642,8 @@
           "temp": "10–12",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Auxey-Duresses 2023",
@@ -4635,7 +4651,7 @@
          "price": 107,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Côte de Beaune, Bourgogne",
+          "region": "Auxey-Duresses, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -4653,7 +4669,8 @@
           "temp": "10–12",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Meursault 2020",
@@ -4661,7 +4678,7 @@
          "price": 210,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Meursault, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -4679,7 +4696,8 @@
           "temp": "12–14",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Bourgogne Aligoté 2023",
@@ -4704,7 +4722,8 @@
           "temp": "8–10",
           "alcohol": "12.5",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Aligoté 2021",
@@ -4712,7 +4731,7 @@
          "price": 65,
          "insight": {
           "grape": "Aligoté",
-          "region": "Bourgogne",
+          "region": "Côte de Nuits, Bourgogne",
           "country": "FR",
           "style": "white_mineral",
           "body": "light",
@@ -4748,7 +4767,7 @@
          "price": 146,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Chassagne-Montrachet, Bourgogne",
+          "region": "Chassagne-Montrachet, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -4766,7 +4785,8 @@
           "temp": "12–14",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": "Les Benoites"
         },
         {
          "name": "Puligny-Montrachet 1er Cru Clos de la Pucelle Monopole 2021",
@@ -4774,7 +4794,7 @@
          "price": 245,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Puligny-Montrachet, Bourgogne",
+          "region": "Puligny-Montrachet, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -4793,6 +4813,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
+         "terroir": "Clos de la Pucelle",
          "ratings": [
           {
            "critic": "Decanter",
@@ -4806,7 +4827,7 @@
          "price": 127,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Saint-Aubin, Bourgogne",
+          "region": "Saint-Aubin, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -4826,6 +4847,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "Les Murgers des Dents de Chien",
          "ratings": [
           {
            "critic": "Jasper Morris",
@@ -4839,7 +4861,7 @@
          "price": 400,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Saint-Aubin, Bourgogne",
+          "region": "Saint-Aubin, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -4859,6 +4881,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "En Remilly",
          "ratings": [
           {
            "critic": "Robert Parker",
@@ -4883,7 +4906,7 @@
          "price": 295,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Saint-Aubin, Bourgogne",
+          "region": "Saint-Aubin, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -4904,6 +4927,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "Les Frionnes",
          "ratings": [
           {
            "critic": "Jasper Morris",
@@ -4936,7 +4960,7 @@
          "price": 270,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Saint-Aubin, Bourgogne",
+          "region": "Saint-Aubin, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -4958,6 +4982,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "La Princée",
          "ratings": [
           {
            "critic": "Jasper Morris",
@@ -4975,7 +5000,7 @@
          "price": 268,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Meursault, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -4996,7 +5021,8 @@
           "temp": "12–14",
           "alcohol": "14",
           "sweetness": "dry"
-         }
+         },
+         "terroir": "Les Charmes"
         },
         {
          "name": "Meursault Sous la Velle 2022",
@@ -5004,7 +5030,7 @@
          "price": 190,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Meursault, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -5027,6 +5053,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "Sous la Velle",
          "ratings": [
           {
            "critic": "Jasper Morris",
@@ -5051,7 +5078,7 @@
          "price": 284,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Meursault, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -5074,6 +5101,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
+         "terroir": "Le Poruzot Dessus",
          "ratings": [
           {
            "critic": "Lobenberg",
@@ -5091,7 +5119,7 @@
          "price": 920,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Meursault, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -5110,6 +5138,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "Les Tillets",
          "tags": [
           "rare"
          ]
@@ -5120,7 +5149,7 @@
          "price": 790,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Meursault, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -5140,7 +5169,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": "Les Pelles, Sous La Velle",
+         "terroir": "Les Pelles, Sous la Velle",
          "tags": [
           "rare"
          ],
@@ -5162,7 +5191,7 @@
          "price": 790,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Meursault, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -5182,6 +5211,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "Clos du Cromin, Le Pré Manche",
          "tags": [
           "rare"
          ]
@@ -5192,7 +5222,7 @@
          "price": 970,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Meursault, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -5214,6 +5244,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "Les Narvaux Dessus",
          "tags": [
           "rare"
          ]
@@ -5224,7 +5255,7 @@
          "price": 970,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Meursault, Bourgogne",
+          "region": "Meursault, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -5244,6 +5275,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "Le Limozin",
          "tags": [
           "rare"
          ]
@@ -5276,7 +5308,7 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Corton-Charlemagne (Grand Cru)",
+         "terroir": "Corton-Charlemagne",
          "ratings": [
           {
            "critic": "Decanter",
@@ -5312,7 +5344,8 @@
           "temp": "8–10",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Sancerre Blanc Les Monts Damnés 2020",
@@ -5320,7 +5353,7 @@
          "price": 127,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Loire",
+          "region": "Sancerre, Loire",
           "country": "FR",
           "style": "white_mineral",
           "body": "medium",
@@ -5343,7 +5376,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": "Chavignol, Sancerre",
+         "terroir": "Les Monts Damnés, Chavignol",
          "note": {
           "hr": "Strmina Chavignola u čaši — klasik i raritet istovremeno, vino koje se pamti.",
           "en": "The steep slope of Chavignol in a glass — classic and rarity at once, a wine you remember.",
@@ -5381,7 +5414,8 @@
           "temp": "8–10",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Riesling Grand Cru Schlossberg 2020",
@@ -5389,7 +5423,7 @@
          "price": 155,
          "insight": {
           "grape": "Riesling",
-          "region": "Alsace Grand Cru",
+          "region": "Alsace",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -5410,6 +5444,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
+         "terroir": "Schlossberg",
          "ratings": [
           {
            "critic": "Robert Parker",
@@ -5423,7 +5458,7 @@
          "price": 155,
          "insight": {
           "grape": "Riesling",
-          "region": "Alsace Grand Cru",
+          "region": "Alsace",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -5442,6 +5477,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
+         "terroir": "Furstentum",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -5463,7 +5499,7 @@
          "price": 87,
          "insight": {
           "grape": "Pinot Gris",
-          "region": "Alsace Grand Cru",
+          "region": "Alsace",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -5485,7 +5521,8 @@
           "temp": "10–12",
           "alcohol": "14.5",
           "sweetness": "off_dry"
-         }
+         },
+         "terroir": "Hengst"
         },
         {
          "name": "Matris 2018",
@@ -5511,7 +5548,8 @@
           "temp": "12–13",
           "alcohol": "14",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Savagnin 2018",
@@ -5519,7 +5557,7 @@
          "price": 53,
          "insight": {
           "grape": "Savagnin",
-          "region": "Jura",
+          "region": "Côtes du Jura, Jura",
           "country": "FR",
           "style": "white_mineral",
           "body": "full",
@@ -5539,7 +5577,8 @@
           "temp": "10–12",
           "alcohol": "15",
           "sweetness": "dry"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Vin Jaune 2014",
@@ -5547,7 +5586,7 @@
          "price": 64,
          "insight": {
           "grape": "Savagnin",
-          "region": "Jura",
+          "region": "Côtes du Jura, Jura",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -5568,6 +5607,7 @@
           "alcohol": "13.7",
           "sweetness": "dry"
          },
+         "terroir": "",
          "tags": [
           "drinking_now"
          ]
@@ -5599,6 +5639,7 @@
           "alcohol": "15",
           "sweetness": "dry"
          },
+         "terroir": "",
          "tags": [
           "drinking_now"
          ]
@@ -5610,7 +5651,7 @@
          "new": true,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Mâcon-Prissé, Bourgogne",
+          "region": "Mâcon-Prissé, Mâconnais, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -5642,7 +5683,7 @@
          "new": true,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Mâcon-Verzé, Bourgogne",
+          "region": "Mâcon-Verzé, Mâconnais, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -5661,6 +5702,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "",
          "tags": [
           "rare"
          ]
@@ -5672,7 +5714,7 @@
          "new": true,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Pouilly-Fuissé, Bourgogne",
+          "region": "Pouilly-Fuissé, Mâconnais, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -5691,6 +5733,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
+         "terroir": "",
          "tags": [
           "rare"
          ]
@@ -5702,7 +5745,7 @@
          "new": true,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Pouilly-Vinzelles, Bourgogne",
+          "region": "Pouilly-Vinzelles, Mâconnais, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "full",
@@ -5733,7 +5776,7 @@
          "new": true,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Saint-Véran, Bourgogne",
+          "region": "Saint-Véran, Mâconnais, Bourgogne",
           "country": "FR",
           "style": "white_rich",
           "body": "medium",
@@ -7229,7 +7272,7 @@
          "price": 186,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Pommard, Bourgogne",
+          "region": "Pommard, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -7247,7 +7290,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
-         "terroir": ""
+         "terroir": "Les Arvelets"
         },
         {
          "name": "Charmes-Chambertin Grand Cru 2021",
@@ -7255,7 +7298,7 @@
          "price": 650,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Gevrey-Chambertin, Bourgogne",
+          "region": "Gevrey-Chambertin, Côte de Nuits, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "full",
@@ -7273,7 +7316,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
-         "terroir": ""
+         "terroir": "Charmes-Chambertin"
         },
         {
          "name": "Morey-Saint-Denis 2019",
@@ -7281,7 +7324,7 @@
          "price": 178,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Morey-Saint-Denis, Bourgogne",
+          "region": "Morey-Saint-Denis, Côte de Nuits, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -7298,7 +7341,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Vosne-Romanée 2022",
@@ -7306,7 +7350,7 @@
          "price": 178,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Vosne-Romanée, Bourgogne",
+          "region": "Vosne-Romanée, Côte de Nuits, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -7324,6 +7368,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "",
          "note": {
           "hr": "Mikroparcele, preciznost, kontinuitet — Vosne-Romanée kakav je Filho upoznao na svojim putovanjima.",
           "en": "Micro-parcels, precision, continuity — Vosne-Romanée as Filho came to know it on his travels.",
@@ -7341,7 +7386,7 @@
          "price": 210,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Vosne-Romanée, Bourgogne",
+          "region": "Vosne-Romanée, Côte de Nuits, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -7359,6 +7404,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Les Barreaux",
          "recommended": true,
          "note": {
           "hr": "Vosne-Romanée — selo koje šapće raskoš: ruža, začin i baršun po burgundski.",
@@ -7377,7 +7423,7 @@
          "price": 127,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Nuits-Saint-Georges, Bourgogne",
+          "region": "Nuits-Saint-Georges, Côte de Nuits, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -7395,6 +7441,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Les Hauts Pruliers (1er Cru)",
          "tags": [
           "drinking_now"
          ]
@@ -7405,7 +7452,7 @@
          "price": 340,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Nuits-Saint-Georges, Bourgogne",
+          "region": "Nuits-Saint-Georges, Côte de Nuits, Bourgogne",
           "country": "FR",
           "style": "red_mature",
           "body": "medium",
@@ -7423,7 +7470,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
-         "terroir": "",
+         "terroir": "Les Didiers",
          "tags": [
           "drinking_now"
          ]
@@ -7434,7 +7481,7 @@
          "price": 1400,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Gevrey-Chambertin, Bourgogne",
+          "region": "Gevrey-Chambertin, Côte de Nuits, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "full",
@@ -7452,6 +7499,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Lavaux Saint-Jacques",
          "note": {
           "hr": "Boca koja mijenja percepciju vina — dubina i širina burgundijskog stila u jednom gutljaju.",
           "en": "A bottle that changes how you see wine — the depth and breadth of Burgundy in a single sip.",
@@ -7473,7 +7521,7 @@
          "price": 235,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Volnay, Bourgogne",
+          "region": "Volnay, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -7491,6 +7539,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "Les Santenots",
          "recommended": true,
          "note": {
           "hr": "Volnay je nježnost s karakterom — crveni pinot, cvijeće i fina, svilena tanina.",
@@ -7509,7 +7558,7 @@
          "price": 280,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Chassagne-Montrachet, Bourgogne",
+          "region": "Chassagne-Montrachet, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -7526,7 +7575,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "La Goujonne"
         },
         {
          "name": "Santenay 1er Cru Clos des Gravières Rouge 2023",
@@ -7534,7 +7584,7 @@
          "price": 290,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Santenay, Bourgogne",
+          "region": "Santenay, Côte de Beaune, Bourgogne",
           "country": "FR",
           "style": "red_medium",
           "body": "medium",
@@ -7551,7 +7601,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Clos des Gravières"
         },
         {
          "name": "Château de Pez 2022",
@@ -7559,7 +7610,7 @@
          "price": 155,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Saint-Estèphe, Bordeaux",
+          "region": "Saint-Estèphe, Médoc, Bordeaux",
           "country": "FR",
           "style": "red_full",
           "body": "full",
@@ -7576,7 +7627,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Château Troplong Mondot 2020",
@@ -7584,7 +7636,7 @@
          "price": 478,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon, Cabernet Franc",
-          "region": "Saint-Émilion, Bordeaux",
+          "region": "Saint-Émilion, Libournais, Bordeaux",
           "country": "FR",
           "style": "red_full",
           "body": "full",
@@ -7602,6 +7654,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "",
          "ratings": [
           {
            "critic": "Decanter",
@@ -7618,7 +7671,7 @@
          "price": 390,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon, Cabernet Franc",
-          "region": "Pomerol, Bordeaux",
+          "region": "Pomerol, Libournais, Bordeaux",
           "country": "FR",
           "style": "red_full",
           "body": "full",
@@ -7635,7 +7688,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "La Pointe Rouge 2022",
@@ -7643,7 +7697,7 @@
          "price": 220,
          "insight": {
           "grape": "Merlot, Cabernet Franc",
-          "region": "Pomerol, Bordeaux",
+          "region": "Pomerol, Libournais, Bordeaux",
           "country": "FR",
           "style": "red_full",
           "body": "full",
@@ -7660,7 +7714,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Château Canon 2020",
@@ -7668,7 +7723,7 @@
          "price": 390,
          "insight": {
           "grape": "Merlot, Cabernet Franc",
-          "region": "Saint-Émilion, Bordeaux",
+          "region": "Saint-Émilion, Libournais, Bordeaux",
           "country": "FR",
           "style": "red_full",
           "body": "full",
@@ -7686,6 +7741,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "",
          "ratings": [
           {
            "critic": "Decanter",
@@ -7702,7 +7758,7 @@
          "price": 390,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Saint-Julien, Bordeaux",
+          "region": "Saint-Julien, Médoc, Bordeaux",
           "country": "FR",
           "style": "red_full",
           "body": "full",
@@ -7720,6 +7776,7 @@
           "temp": "16–18",
           "alcohol": ""
          },
+         "terroir": "",
          "ratings": [
           {
            "critic": "Robert Parker",
@@ -7754,7 +7811,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Beaujolais Patacaisse Rouge 2022",
@@ -7780,7 +7838,8 @@
           ],
           "temp": "14–16",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Rouge 2023",
@@ -7806,7 +7865,8 @@
           ],
           "temp": "13–15",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         }
        ]
       },
