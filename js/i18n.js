@@ -98,7 +98,7 @@ hr: {
   aromas: {
     almond: "badem", apricot: "marelica", dried_apricot: "suha marelica", molasses: "melasa", baked_apple: "pečena jabuka", marzipan: "marcipan", balsamic: "balzamične note", blackberry: "kupina", blueberry: "borovnica", dates: "datulje",
     blackcurrant: "crni ribiz", brioche: "brioche", butter: "maslac", candied_fruit: "kandirano voće",
-    caramel: "karamela", cedar: "cedrovina", cherry: "trešnja", kirsch: "kirsch", cinnamon: "cimet", sweet_spice: "slatki začini", rose_hip: "šipak", eucalyptus: "eukaliptus", lemon_balm: "matičnjak", toasted_wood: "prženo drvo", dark_cherry: "tamna trešnja", pine_resin: "borova smola", tar: "katran", chocolate: "čokolada",
+    caramel: "karamela", cedar: "cedrovina", cherry: "trešnja", kirsch: "kirsch", cinnamon: "cimet", sweet_spice: "slatki začini", rose_hip: "šipak", eucalyptus: "eukaliptus", lemon_balm: "matičnjak", toasted_wood: "prženo drvo", dark_cherry: "tamna trešnja", dark_berries: "tamno bobičasto voće", elderberry: "bazga", pine_resin: "borova smola", tar: "katran", chocolate: "čokolada",
     citrus: "citrusi", coffee: "kava", dried_fruit: "suho voće", earth: "zemljane note",
     elderflower: "cvijet bazge", fig: "smokva", flint: "kremen", forest_floor: "šumsko tlo",
     grapefruit: "grejp", pink_grapefruit: "rozi grejp", blood_orange: "krvava naranča", grass: "pokošena trava", green_apple: "zelena jabuka", ginger: "đumbir", candied_citrus: "kandirani citrusi", lemon_meringue_tart: "tart od limuna s meringom", mirabelle: "mirabela", hazelnut: "lješnjak",
@@ -211,7 +211,7 @@ en: {
   aromas: {
     almond: "almond", apricot: "apricot", dried_apricot: "dried apricot", molasses: "molasses", baked_apple: "baked apple", marzipan: "marzipan", balsamic: "balsamic notes", blackberry: "blackberry", blueberry: "blueberry", dates: "dates",
     blackcurrant: "blackcurrant", brioche: "brioche", butter: "butter", candied_fruit: "candied fruit",
-    caramel: "caramel", cedar: "cedar", cherry: "cherry", kirsch: "kirsch", cinnamon: "cinnamon", sweet_spice: "sweet spice", rose_hip: "rose hip", eucalyptus: "eucalyptus", lemon_balm: "lemon balm", toasted_wood: "toasted wood", dark_cherry: "dark cherry", pine_resin: "pine resin", tar: "tar", chocolate: "chocolate",
+    caramel: "caramel", cedar: "cedar", cherry: "cherry", kirsch: "kirsch", cinnamon: "cinnamon", sweet_spice: "sweet spice", rose_hip: "rose hip", eucalyptus: "eucalyptus", lemon_balm: "lemon balm", toasted_wood: "toasted wood", dark_cherry: "dark cherry", dark_berries: "dark berries", elderberry: "elderberry", pine_resin: "pine resin", tar: "tar", chocolate: "chocolate",
     citrus: "citrus", coffee: "coffee", dried_fruit: "dried fruit", earth: "earthy notes",
     elderflower: "elderflower", fig: "fig", flint: "flint", forest_floor: "forest floor",
     grapefruit: "grapefruit", pink_grapefruit: "pink grapefruit", blood_orange: "blood orange", grass: "cut grass", green_apple: "green apple", ginger: "ginger", candied_citrus: "candied citrus", lemon_meringue_tart: "lemon meringue tart", mirabelle: "mirabelle plum", hazelnut: "hazelnut",
@@ -324,7 +324,7 @@ it: {
   aromas: {
     almond: "mandorla", apricot: "albicocca", dried_apricot: "albicocca secca", molasses: "melassa", baked_apple: "mela cotta", marzipan: "marzapane", balsamic: "note balsamiche", blackberry: "mora", blueberry: "mirtillo", dates: "datteri",
     blackcurrant: "ribes nero", brioche: "brioche", butter: "burro", candied_fruit: "frutta candita",
-    caramel: "caramello", cedar: "cedro", cherry: "ciliegia", kirsch: "kirsch", cinnamon: "cannella", sweet_spice: "spezie dolci", rose_hip: "rosa canina", eucalyptus: "eucalipto", lemon_balm: "melissa", toasted_wood: "legno tostato", dark_cherry: "ciliegia nera", pine_resin: "resina di pino", tar: "catrame", chocolate: "cioccolato",
+    caramel: "caramello", cedar: "cedro", cherry: "ciliegia", kirsch: "kirsch", cinnamon: "cannella", sweet_spice: "spezie dolci", rose_hip: "rosa canina", eucalyptus: "eucalipto", lemon_balm: "melissa", toasted_wood: "legno tostato", dark_cherry: "ciliegia nera", dark_berries: "frutti di bosco scuri", elderberry: "sambuco", pine_resin: "resina di pino", tar: "catrame", chocolate: "cioccolato",
     citrus: "agrumi", coffee: "caffè", dried_fruit: "frutta secca", earth: "note terrose",
     elderflower: "fiori di sambuco", fig: "fico", flint: "pietra focaia", forest_floor: "sottobosco",
     grapefruit: "pompelmo", pink_grapefruit: "pompelmo rosa", blood_orange: "arancia rossa", grass: "erba tagliata", green_apple: "mela verde", ginger: "zenzero", candied_citrus: "agrumi canditi", lemon_meringue_tart: "crostata al limone e meringa", mirabelle: "mirabella", hazelnut: "nocciola",
@@ -437,7 +437,7 @@ fr: {
   aromas: {
     almond: "amande", apricot: "abricot", dried_apricot: "abricot sec", molasses: "mélasse", baked_apple: "pomme cuite", marzipan: "massepain", balsamic: "notes balsamiques", blackberry: "mûre", blueberry: "myrtille", dates: "dattes",
     blackcurrant: "cassis", brioche: "brioche", butter: "beurre", candied_fruit: "fruits confits",
-    caramel: "caramel", cedar: "cèdre", cherry: "cerise", kirsch: "kirsch", cinnamon: "cannelle", sweet_spice: "épices douces", rose_hip: "cynorhodon", eucalyptus: "eucalyptus", lemon_balm: "mélisse", toasted_wood: "bois toasté", dark_cherry: "cerise noire", pine_resin: "résine de pin", tar: "goudron", chocolate: "chocolat",
+    caramel: "caramel", cedar: "cèdre", cherry: "cerise", kirsch: "kirsch", cinnamon: "cannelle", sweet_spice: "épices douces", rose_hip: "cynorhodon", eucalyptus: "eucalyptus", lemon_balm: "mélisse", toasted_wood: "bois toasté", dark_cherry: "cerise noire", dark_berries: "fruits noirs", elderberry: "sureau", pine_resin: "résine de pin", tar: "goudron", chocolate: "chocolat",
     citrus: "agrumes", coffee: "café", dried_fruit: "fruits secs", earth: "notes terreuses",
     elderflower: "fleur de sureau", fig: "figue", flint: "pierre à fusil", forest_floor: "sous-bois",
     grapefruit: "pamplemousse", pink_grapefruit: "pamplemousse rose", blood_orange: "orange sanguine", grass: "herbe coupée", green_apple: "pomme verte", ginger: "gingembre", candied_citrus: "agrumes confits", lemon_meringue_tart: "tarte au citron meringuée", mirabelle: "mirabelle", hazelnut: "noisette",
@@ -550,7 +550,7 @@ de: {
   aromas: {
     almond: "Mandel", apricot: "Aprikose", dried_apricot: "getrocknete Aprikose", molasses: "Melasse", baked_apple: "Bratapfel", marzipan: "Marzipan", balsamic: "balsamische Noten", blackberry: "Brombeere", blueberry: "Blaubeere", dates: "Datteln",
     blackcurrant: "schwarze Johannisbeere", brioche: "Brioche", butter: "Butter", candied_fruit: "kandierte Früchte",
-    caramel: "Karamell", cedar: "Zeder", cherry: "Kirsche", kirsch: "Kirsch", cinnamon: "Zimt", sweet_spice: "süße Gewürze", rose_hip: "Hagebutte", eucalyptus: "Eukalyptus", lemon_balm: "Zitronenmelisse", toasted_wood: "Röstnoten vom Holz", dark_cherry: "dunkle Kirsche", pine_resin: "Kiefernharz", tar: "Teer", chocolate: "Schokolade",
+    caramel: "Karamell", cedar: "Zeder", cherry: "Kirsche", kirsch: "Kirsch", cinnamon: "Zimt", sweet_spice: "süße Gewürze", rose_hip: "Hagebutte", eucalyptus: "Eukalyptus", lemon_balm: "Zitronenmelisse", toasted_wood: "Röstnoten vom Holz", dark_cherry: "dunkle Kirsche", dark_berries: "dunkle Beeren", elderberry: "Holunder", pine_resin: "Kiefernharz", tar: "Teer", chocolate: "Schokolade",
     citrus: "Zitrus", coffee: "Kaffee", dried_fruit: "Trockenfrüchte", earth: "erdige Noten",
     elderflower: "Holunderblüte", fig: "Feige", flint: "Feuerstein", forest_floor: "Waldboden",
     grapefruit: "Grapefruit", pink_grapefruit: "rosa Grapefruit", blood_orange: "Blutorange", grass: "frisches Gras", green_apple: "grüner Apfel", ginger: "Ingwer", candied_citrus: "kandierte Zitrusfrüchte", lemon_meringue_tart: "Zitronen-Baiser-Tarte", mirabelle: "Mirabelle", hazelnut: "Haselnuss",
@@ -663,7 +663,7 @@ zh: {
   aromas: {
     almond: "杏仁", apricot: "杏子", dried_apricot: "杏干", molasses: "糖蜜", baked_apple: "烤苹果", marzipan: "杏仁膏", balsamic: "香脂调", blackberry: "黑莓", blueberry: "蓝莓", dates: "椰枣",
     blackcurrant: "黑加仑", brioche: "布里欧修", butter: "黄油", candied_fruit: "蜜饯",
-    caramel: "焦糖", cedar: "雪松", cherry: "樱桃", kirsch: "樱桃利口酒", cinnamon: "肉桂", sweet_spice: "甜香料", rose_hip: "玫瑰果", eucalyptus: "桉树", lemon_balm: "柠檬香蜂草", toasted_wood: "烘烤橡木", dark_cherry: "黑樱桃", pine_resin: "松脂", tar: "焦油", chocolate: "巧克力",
+    caramel: "焦糖", cedar: "雪松", cherry: "樱桃", kirsch: "樱桃利口酒", cinnamon: "肉桂", sweet_spice: "甜香料", rose_hip: "玫瑰果", eucalyptus: "桉树", lemon_balm: "柠檬香蜂草", toasted_wood: "烘烤橡木", dark_cherry: "黑樱桃", dark_berries: "深色浆果", elderberry: "接骨木果", pine_resin: "松脂", tar: "焦油", chocolate: "巧克力",
     citrus: "柑橘", coffee: "咖啡", dried_fruit: "果干", earth: "泥土气息",
     elderflower: "接骨木花", fig: "无花果", flint: "燧石", forest_floor: "森林地表",
     grapefruit: "西柚", pink_grapefruit: "粉红西柚", blood_orange: "血橙", grass: "青草", green_apple: "青苹果", ginger: "姜", candied_citrus: "蜜饯柑橘", lemon_meringue_tart: "柠檬蛋白挞", mirabelle: "黄香李", hazelnut: "榛子",
@@ -869,6 +869,8 @@ sl: {
     "lemon_balm": "melisa",
     "toasted_wood": "opečen les",
     "dark_cherry": "temna češnja",
+    "dark_berries": "temni gozdni sadeži",
+    "elderberry": "bezeg",
     "pine_resin": "borova smola",
     "tar": "katran",
     "chocolate": "čokolada",
@@ -1240,6 +1242,8 @@ es: {
     "lemon_balm": "melisa",
     "toasted_wood": "madera tostada",
     "dark_cherry": "cereza negra",
+    "dark_berries": "frutos negros",
+    "elderberry": "saúco",
     "pine_resin": "resina de pino",
     "tar": "alquitrán",
     "chocolate": "chocolate",
