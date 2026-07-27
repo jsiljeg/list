@@ -8730,7 +8730,7 @@
          "price": 52,
          "insight": {
           "grape": "Sangiovese",
-          "region": "Maremma Toscana",
+          "region": "Morellino di Scansano, Maremma Toscana",
           "country": "IT",
           "style": "red_medium",
           "body": "medium",
@@ -8748,7 +8748,7 @@
           "temp": "14–16",
           "alcohol": "13"
          },
-         "terroir": "Morellino di Scansano",
+         "terroir": "",
          "recommended": true,
          "note": {
           "hr": "Maremma na suncu — sangiovese topao i otvoren, iskren kao stisak ruke.",
@@ -8825,7 +8825,12 @@
            "sour_cherry",
            "plum",
            "tobacco",
-           "spice"
+           "spice",
+           "cherry",
+           "violet",
+           "earth",
+           "graphite",
+           "leather"
           ],
           "pairings": [
            "beef",
