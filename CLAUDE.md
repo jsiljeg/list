@@ -48,6 +48,81 @@ Tablet-first digital wine/drinks list for **Theatrium by Filho** (Teslina 7, Zag
 - Repo was made **public** (was private) — required for GitHub Pages on the free plan.
 - `https://jsiljeg.github.io/list/` 301-redirects to the custom domain (expected Pages behaviour once cname is set), so the site is only reachable after the DNS record exists.
 
+## Wine-data conventions (settled 2026-07-27 — follow these, don't re-litigate)
+
+**region / terroir.** `insight.region` is the appellation ladder, most specific
+first; the app appends the localized country, so never put the country in it
+(a bare `"France"` produced "France, Francuska"). `terroir` is the named
+vineyard/climat/cru **only**, and `""` when the label names none — an explicit
+empty string deliberately suppresses the producer-region fallback in
+`openDetail()` (`item.terroir !== undefined ? item.terroir : info.region`).
+
+- **France:** `<appellation>, <subregion>, <region>` — `Pommard, Côte de Beaune,
+  Bourgogne`; `Saint-Estèphe, Médoc, Bordeaux`; two rungs where the appellation
+  is its own côte (`Chablis, Bourgogne`).
+- **Italy:** `<comune/subzone>, <denominazione/zone>, <regione>` —
+  `Castiglione Falletto, Barolo, Piemonte`; `Marano di Valpolicella,
+  Valpolicella Classica, Veneto`. The comune matters most here: Barolo spans 11
+  of them.
+- **Cru rank stays out of both fields** — the wine name carries "1er Cru" /
+  "Grand Cru". Only exception so far: `Les Hauts Pruliers (1er Cru)`, whose name
+  doesn't say it. Bordeaux château rankings are château-level, not site-level, so
+  they are recorded nowhere (owner's decision).
+
+**Blends:** `Variety NN%, Variety NN%`, name first, descending share. Never
+percent-first — `zhTokens`/`langTokens` strip a *trailing* percentage per token.
+
+**Critic names** (exact strings already in use): Robert Parker (never "Wine
+Advocate"), James Suckling, Wine Spectator, Wine Enthusiast, Vinous, Decanter,
+Falstaff, Jasper Morris, Tim Atkin, Jancis Robinson (always `NN/20`), Lobenberg,
+Jeff Leve, Jeb Dunnuck, Jeannie Cho Lee, Stuart Pigott. `+` and ranges kept
+(`94+`, `91-93`). Order: 100-point scores high→low, the `/20` entry last.
+
+**Alcohol:** only from a producer tech sheet or an EU/vintage-specific retailer
+listing **for that exact wine and vintage**. A neighbouring vintage is not a
+source. Conflicting sources ⇒ leave blank and ask the owner to read the label.
+
+**Notes:** `note` + `noteSig` renders as a signed quote (defaults to "Filho");
+`notePlain: true` renders unsigned prose. Large-format twins (`– 1,5 l`,
+`– 0,375 l`) are the same wine and must carry identical insight/notes/ratings/tags.
+
+**Vocabulary:** every aroma/pairing/tag key in `wines.json` must exist in
+`js/i18n.js` in **all 8 languages** (hr, en, it, fr, de, zh, sl, es), plus zh
+tokens in `js/zh-terms.js` for new grape/region names. Run `node scripts/validate.mjs`
+after every edit. Both JSON data files round-trip exactly with
+`json.dumps(..., ensure_ascii=False, indent=1) + "\n"` and CRLF — edit them
+structurally in Python, not by string surgery.
+
+**Producer blurbs:** written per **estate**, not per flagship — a guest must not
+read about a wine we don't pour, and every wine on the list should feel covered.
+Naming the flagship is good (it upsells) as long as it doesn't stand in for the
+house. Keep the Filho voice: vivid, honest, punchy — never a neutral list of
+grapes. Croatian keeps grape names as on the label (**Cabernet/Caberneta**, not
+"kabernet"); "rizling" was left as-is (accepted Croatian) — owner may revisit.
+
+## Session state 2026-07-27 — resume here
+
+Done today: Croatian + French + Italian **red** passes (alcohol, blends, critic
+scores, aromas, region/terroir rework), the scroll-to-top fix for the detail
+sheet, and a sweep of all 79 multi-wine producers whose blurbs described only one
+wine (17 rewritten — full from/to in `docs/producer-blurb-changes.md`).
+
+**Next up: continue with reds.** Wines still missing `insight.alcohol`, by
+country: **US 13** (Ridge Geyserville + Cabernet, both Togni, Heitz, Mayacamas,
+Domaine Eden, Cakebread, Duckhorn, Tyler, Résonance, Occidental, Walter Scott),
+**IT 10** (Pira & Figli Barolo 2018, Isole e Olena Cabernet 2013, Piane 2019,
+Tignanello 2019, both Valpolicella Superiore, both Montevertine, Duemani 2018,
+Soldera 2020), **HR 7**, **FR 7** (all five Lignier reds, NSG Les Hauts-Pruliers
+2016, both Desjourneys Beaujolais), **ES 5**, **SI 3**, **CN 1** (Ao Yun 2018).
+
+Open questions for the owner:
+- Desjourneys Beaujolais 2022/2023 ABV — 13% in 2020 and 2021, unverified for ours.
+- Whether "rizling"/lowercase "chardonnay" in Croatian blurbs should become
+  Riesling/Chardonnay, as "kabernet" did.
+- Five blurbs that name an estate wine we don't stock (Benvenuti/Teran,
+  Ca' La Bionda/Valpolicella, Geržinić/Malvazija, Tomaz/Malvazija, Niko
+  Bura/Dingač) — reported, deliberately left alone.
+
 ## Windows environment notes
 
 - Git Bash paths (`/c/...`) don't work inside `python -c` — pass `C:/...` style paths.
