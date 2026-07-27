@@ -96,7 +96,7 @@ hr: {
   sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
-    almond: "badem", apricot: "marelica", dried_apricot: "suha marelica", molasses: "melasa", baked_apple: "pečena jabuka", marzipan: "marcipan", balsamic: "balzamične note", blackberry: "kupina", blueberry: "borovnica",
+    almond: "badem", apricot: "marelica", dried_apricot: "suha marelica", molasses: "melasa", baked_apple: "pečena jabuka", marzipan: "marcipan", balsamic: "balzamične note", blackberry: "kupina", blueberry: "borovnica", dates: "datulje",
     blackcurrant: "crni ribiz", brioche: "brioche", butter: "maslac", candied_fruit: "kandirano voće",
     caramel: "karamela", cedar: "cedrovina", cherry: "trešnja", chocolate: "čokolada",
     citrus: "citrusi", coffee: "kava", dried_fruit: "suho voće", earth: "zemljane note",
@@ -115,7 +115,7 @@ hr: {
   },
   pairings: {
     aperitif: "aperitiv", asian: "azijska kuhinja", japanese: "japanska kuhinja", asparagus: "šparoge", bbq: "jela s roštilja",
-    beef: "govedina", caviar: "kavijar", charcuterie: "suhomesnati naresci", cheese_blue: "plavi sirevi",
+    beef: "govedina", boeuf_bourguignon: "boeuf bourguignon", pasticada: "pašticada", caviar: "kavijar", charcuterie: "suhomesnati naresci", cheese_blue: "plavi sirevi",
     cheese_fresh: "svježi sirevi", cheese_hard: "tvrdi, zreli sirevi", chocolate: "čokolada",
     desserts: "deserti", foie_gras: "foie gras", fruit_desserts: "voćni deserti", game: "divljač",
     grilled_fish: "riba s gradela", lamb: "janjetina", light_starters: "lagana predjela",
@@ -209,7 +209,7 @@ en: {
   sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
-    almond: "almond", apricot: "apricot", dried_apricot: "dried apricot", molasses: "molasses", baked_apple: "baked apple", marzipan: "marzipan", balsamic: "balsamic notes", blackberry: "blackberry", blueberry: "blueberry",
+    almond: "almond", apricot: "apricot", dried_apricot: "dried apricot", molasses: "molasses", baked_apple: "baked apple", marzipan: "marzipan", balsamic: "balsamic notes", blackberry: "blackberry", blueberry: "blueberry", dates: "dates",
     blackcurrant: "blackcurrant", brioche: "brioche", butter: "butter", candied_fruit: "candied fruit",
     caramel: "caramel", cedar: "cedar", cherry: "cherry", chocolate: "chocolate",
     citrus: "citrus", coffee: "coffee", dried_fruit: "dried fruit", earth: "earthy notes",
@@ -228,7 +228,7 @@ en: {
   },
   pairings: {
     aperitif: "aperitif", asian: "Asian cuisine", japanese: "Japanese cuisine", asparagus: "asparagus", bbq: "barbecue",
-    beef: "beef", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "blue cheese",
+    beef: "beef", boeuf_bourguignon: "boeuf bourguignon", pasticada: "pašticada (Dalmatian braised beef)", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "blue cheese",
     cheese_fresh: "fresh cheese", cheese_hard: "aged cheese", chocolate: "chocolate",
     desserts: "desserts", foie_gras: "foie gras", fruit_desserts: "fruit desserts", game: "game",
     grilled_fish: "grilled fish", lamb: "lamb", light_starters: "light starters",
@@ -322,7 +322,7 @@ it: {
   sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
-    almond: "mandorla", apricot: "albicocca", dried_apricot: "albicocca secca", molasses: "melassa", baked_apple: "mela cotta", marzipan: "marzapane", balsamic: "note balsamiche", blackberry: "mora", blueberry: "mirtillo",
+    almond: "mandorla", apricot: "albicocca", dried_apricot: "albicocca secca", molasses: "melassa", baked_apple: "mela cotta", marzipan: "marzapane", balsamic: "note balsamiche", blackberry: "mora", blueberry: "mirtillo", dates: "datteri",
     blackcurrant: "ribes nero", brioche: "brioche", butter: "burro", candied_fruit: "frutta candita",
     caramel: "caramello", cedar: "cedro", cherry: "ciliegia", chocolate: "cioccolato",
     citrus: "agrumi", coffee: "caffè", dried_fruit: "frutta secca", earth: "note terrose",
@@ -341,7 +341,7 @@ it: {
   },
   pairings: {
     aperitif: "aperitivo", asian: "cucina asiatica", japanese: "cucina giapponese", asparagus: "asparagi", bbq: "grigliate",
-    beef: "manzo", caviar: "caviale", charcuterie: "salumi", cheese_blue: "formaggi erborinati",
+    beef: "manzo", boeuf_bourguignon: "boeuf bourguignon", pasticada: "pašticada (manzo brasato dalmata)", caviar: "caviale", charcuterie: "salumi", cheese_blue: "formaggi erborinati",
     cheese_fresh: "formaggi freschi", cheese_hard: "formaggi stagionati", chocolate: "cioccolato",
     desserts: "dolci", foie_gras: "foie gras", fruit_desserts: "dolci alla frutta", game: "selvaggina",
     grilled_fish: "pesce alla griglia", lamb: "agnello", light_starters: "antipasti leggeri",
@@ -435,7 +435,7 @@ fr: {
   sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
-    almond: "amande", apricot: "abricot", dried_apricot: "abricot sec", molasses: "mélasse", baked_apple: "pomme cuite", marzipan: "massepain", balsamic: "notes balsamiques", blackberry: "mûre", blueberry: "myrtille",
+    almond: "amande", apricot: "abricot", dried_apricot: "abricot sec", molasses: "mélasse", baked_apple: "pomme cuite", marzipan: "massepain", balsamic: "notes balsamiques", blackberry: "mûre", blueberry: "myrtille", dates: "dattes",
     blackcurrant: "cassis", brioche: "brioche", butter: "beurre", candied_fruit: "fruits confits",
     caramel: "caramel", cedar: "cèdre", cherry: "cerise", chocolate: "chocolat",
     citrus: "agrumes", coffee: "café", dried_fruit: "fruits secs", earth: "notes terreuses",
@@ -454,7 +454,7 @@ fr: {
   },
   pairings: {
     aperitif: "apéritif", asian: "cuisine asiatique", japanese: "cuisine japonaise", asparagus: "asperges", bbq: "grillades",
-    beef: "bœuf", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "fromages bleus",
+    beef: "bœuf", boeuf_bourguignon: "bœuf bourguignon", pasticada: "pašticada (bœuf braisé dalmate)", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "fromages bleus",
     cheese_fresh: "fromages frais", cheese_hard: "fromages affinés", chocolate: "chocolat",
     desserts: "desserts", foie_gras: "foie gras", fruit_desserts: "desserts aux fruits", game: "gibier",
     grilled_fish: "poisson grillé", lamb: "agneau", light_starters: "entrées légères",
@@ -548,7 +548,7 @@ de: {
   sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
-    almond: "Mandel", apricot: "Aprikose", dried_apricot: "getrocknete Aprikose", molasses: "Melasse", baked_apple: "Bratapfel", marzipan: "Marzipan", balsamic: "balsamische Noten", blackberry: "Brombeere", blueberry: "Blaubeere",
+    almond: "Mandel", apricot: "Aprikose", dried_apricot: "getrocknete Aprikose", molasses: "Melasse", baked_apple: "Bratapfel", marzipan: "Marzipan", balsamic: "balsamische Noten", blackberry: "Brombeere", blueberry: "Blaubeere", dates: "Datteln",
     blackcurrant: "schwarze Johannisbeere", brioche: "Brioche", butter: "Butter", candied_fruit: "kandierte Früchte",
     caramel: "Karamell", cedar: "Zeder", cherry: "Kirsche", chocolate: "Schokolade",
     citrus: "Zitrus", coffee: "Kaffee", dried_fruit: "Trockenfrüchte", earth: "erdige Noten",
@@ -567,7 +567,7 @@ de: {
   },
   pairings: {
     aperitif: "Aperitif", asian: "asiatische Küche", japanese: "japanische Küche", asparagus: "Spargel", bbq: "Gegrilltes",
-    beef: "Rind", caviar: "Kaviar", charcuterie: "Wurstwaren", cheese_blue: "Blauschimmelkäse",
+    beef: "Rind", boeuf_bourguignon: "Boeuf bourguignon", pasticada: "Pašticada (dalmatinischer Schmorbraten)", caviar: "Kaviar", charcuterie: "Wurstwaren", cheese_blue: "Blauschimmelkäse",
     cheese_fresh: "Frischkäse", cheese_hard: "gereifter Käse", chocolate: "Schokolade",
     desserts: "Desserts", foie_gras: "Foie gras", fruit_desserts: "Fruchtdesserts", game: "Wild",
     grilled_fish: "gegrillter Fisch", lamb: "Lamm", light_starters: "leichte Vorspeisen",
@@ -661,7 +661,7 @@ zh: {
   sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
-    almond: "杏仁", apricot: "杏子", dried_apricot: "杏干", molasses: "糖蜜", baked_apple: "烤苹果", marzipan: "杏仁膏", balsamic: "香脂调", blackberry: "黑莓", blueberry: "蓝莓",
+    almond: "杏仁", apricot: "杏子", dried_apricot: "杏干", molasses: "糖蜜", baked_apple: "烤苹果", marzipan: "杏仁膏", balsamic: "香脂调", blackberry: "黑莓", blueberry: "蓝莓", dates: "椰枣",
     blackcurrant: "黑加仑", brioche: "布里欧修", butter: "黄油", candied_fruit: "蜜饯",
     caramel: "焦糖", cedar: "雪松", cherry: "樱桃", chocolate: "巧克力",
     citrus: "柑橘", coffee: "咖啡", dried_fruit: "果干", earth: "泥土气息",
@@ -680,7 +680,7 @@ zh: {
   },
   pairings: {
     aperitif: "开胃酒", asian: "亚洲菜", japanese: "日本料理", asparagus: "芦笋", bbq: "烧烤",
-    beef: "牛肉", caviar: "鱼子酱", charcuterie: "腌肉拼盘", cheese_blue: "蓝纹奶酪",
+    beef: "牛肉", boeuf_bourguignon: "勃艮第红酒炖牛肉", pasticada: "帕什蒂察达（达尔马提亚炖牛肉）", caviar: "鱼子酱", charcuterie: "腌肉拼盘", cheese_blue: "蓝纹奶酪",
     cheese_fresh: "新鲜奶酪", cheese_hard: "陈年硬质奶酪", chocolate: "巧克力",
     desserts: "甜点", foie_gras: "鹅肝", fruit_desserts: "水果甜点", game: "野味",
     grilled_fish: "烤鱼", lamb: "羊肉", light_starters: "清淡前菜",
@@ -853,6 +853,7 @@ sl: {
     "balsamic": "balzamične note",
     "blackberry": "robida",
     "blueberry": "borovnica",
+    "dates": "datlji",
     "blackcurrant": "črni ribez",
     "brioche": "brioš",
     "butter": "maslo",
@@ -993,6 +994,8 @@ sl: {
     "asparagus": "šparglji",
     "bbq": "jedi z žara",
     "beef": "govedina",
+    "boeuf_bourguignon": "boeuf bourguignon",
+    "pasticada": "pašticada (dalmatinska dušena govedina)",
     "caviar": "kaviar",
     "charcuterie": "suhomesnati narezki",
     "cheese_blue": "modri siri",
@@ -1208,6 +1211,7 @@ es: {
     "balsamic": "notas balsámicas",
     "blackberry": "mora",
     "blueberry": "arándano",
+    "dates": "dátiles",
     "blackcurrant": "grosella negra",
     "brioche": "brioche",
     "butter": "mantequilla",
@@ -1348,6 +1352,8 @@ es: {
     "asparagus": "espárragos",
     "bbq": "a la brasa",
     "beef": "carne de vacuno",
+    "boeuf_bourguignon": "boeuf bourguignon",
+    "pasticada": "pašticada (ternera estofada dálmata)",
     "caviar": "caviar",
     "charcuterie": "embutidos",
     "cheese_blue": "quesos azules",

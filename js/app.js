@@ -589,8 +589,12 @@ function openDetail(ref, back) {
 let modalOpen = false;
 function showModal() {
   const ms = $("modal-sheet");
-  if (ms) { ms.scrollTop = 0; ms.style.transform = ""; ms.style.transition = ""; }
+  if (ms) { ms.style.transform = ""; ms.style.transition = ""; }
   $("modal").classList.remove("hidden");
+  // Reset the scroll only *after* the sheet is visible again: while the modal
+  // is display:none the assignment is ignored and the browser restores the
+  // previous offset, so the next wine would open mid-way down.
+  if (ms) ms.scrollTop = 0;
   document.body.style.overflow = "hidden";
   if (!modalOpen) { modalOpen = true; history.pushState({ theaModal: true }, ""); }
 }

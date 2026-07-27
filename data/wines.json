@@ -6872,7 +6872,7 @@
          "producer": "Saints Hills",
          "price": 70,
          "insight": {
-          "grape": "Plavac mali, Syrah",
+          "grape": "Tribidrag",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_medium",
@@ -6881,17 +6881,19 @@
            "cherry",
            "prune",
            "herbs",
-           "spice"
+           "spice",
+           "blueberry"
           ],
           "pairings": [
            "bbq",
            "pasta",
            "white_meat"
           ],
-          "temp": "16–18",
-          "alcohol": "",
+          "temp": "14–16",
+          "alcohol": "14.5",
           "sweetness": "dry"
-         }
+         },
+         "terroir": "Komarna"
         },
         {
          "name": "Stagnum 2016",
@@ -6916,7 +6918,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "14.5",
           "sweetness": "dry"
          },
          "terroir": "Ponikve, Pelješac",
@@ -6935,11 +6937,11 @@
          ]
         },
         {
-         "name": "Jeka 2020",
-         "producer": "Čečavac",
+         "name": "Jeka Dalmatia 2020",
+         "producer": "Čečavac & Gašpar",
          "price": 250,
          "insight": {
-          "grape": "Plavac mali",
+          "grape": "Plavac mali 50%, Trnjak 25%, Vranac 25%",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
@@ -6957,9 +6959,10 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "15",
           "sweetness": "dry"
-         }
+         },
+         "terroir": "Medvid Bod (Hvar), Umčani (Vrgorac), Bušanje (Imotski)"
         },
         {
          "name": "Bura 2021",
@@ -6976,7 +6979,9 @@
            "fig",
            "chocolate",
            "herbs",
-           "prune"
+           "prune",
+           "raisin",
+           "dates"
           ],
           "pairings": [
            "beef",
@@ -6984,7 +6989,7 @@
            "game"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "15",
           "sweetness": "dry"
          },
          "terroir": "Dingač, Pelješac",
@@ -7004,7 +7009,7 @@
          "producer": "Meneghetti",
          "price": 180,
          "insight": {
-          "grape": "Merlot, Cabernet Sauvignon",
+          "grape": "Merlot 80%, Cabernet Sauvignon 15%, Cabernet Franc 5%",
           "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_full",
@@ -7021,10 +7026,10 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Bale",
+         "terroir": "Stancija Meneghetti, Bale",
          "recommended": true,
          "note": {
           "hr": "Istarski odgovor Bordeauxu — gusto, elegantno i dozrelo pod mediteranskim suncem.",
@@ -7042,7 +7047,7 @@
          "producer": "Markus",
          "price": 145,
          "insight": {
-          "grape": "Plavac mali",
+          "grape": "Tribidrag 87%, Babić 13%",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
@@ -7052,7 +7057,9 @@
            "cherry",
            "herbs",
            "spice",
-           "prune"
+           "prune",
+           "tobacco",
+           "blackberry"
           ],
           "pairings": [
            "beef",
@@ -7060,10 +7067,10 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Čara, Korčula"
+         "terroir": "Podgreben, Primošten"
         },
         {
          "name": "Pepejuh 2019",
@@ -7079,18 +7086,33 @@
            "dried_fruit",
            "prune",
            "smoke",
-           "herbs"
+           "herbs",
+           "coffee",
+           "chocolate"
           ],
           "pairings": [
            "game",
            "beef",
-           "cheese_hard"
+           "cheese_hard",
+           "boeuf_bourguignon",
+           "pasticada"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": "Čara, Korčula"
+         "terroir": "Pelješac",
+         "note": {
+          "hr": "Jedan od najboljih Dingača koji ne može nositi to ime jer vino dozrijeva u zagrebačkom Markuševcu.",
+          "en": "One of the finest Dingač wines that cannot carry the name, because it matures in Markuševec, Zagreb.",
+          "it": "Uno dei migliori Dingač che non può portare quel nome, perché il vino matura a Markuševec, a Zagabria.",
+          "fr": "L’un des meilleurs Dingač qui ne peut pas porter ce nom, car le vin mûrit à Markuševec, à Zagreb.",
+          "de": "Einer der besten Dingač, der diesen Namen nicht tragen darf, weil der Wein im Zagreber Markuševec reift.",
+          "zh": "最出色的 Dingač 之一，却无法冠以此名——因为酒在萨格勒布的 Markuševec 陈酿。",
+          "sl": "Eden najboljših Dingačev, ki tega imena ne sme nositi, ker vino zori v zagrebškem Markuševcu.",
+          "es": "Uno de los mejores Dingač que no puede llevar ese nombre, porque el vino madura en Markuševec, en Zagreb."
+         },
+         "noteSig": "Saša Špiranec"
         },
         {
          "name": "Pepejuh 2017",
@@ -7106,18 +7128,33 @@
            "dried_fruit",
            "prune",
            "smoke",
-           "herbs"
+           "herbs",
+           "coffee",
+           "chocolate"
           ],
           "pairings": [
            "game",
            "beef",
-           "cheese_hard"
+           "cheese_hard",
+           "boeuf_bourguignon",
+           "pasticada"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": "Čara, Korčula"
+         "terroir": "Pelješac",
+         "note": {
+          "hr": "Jedan od najboljih Dingača koji ne može nositi to ime jer vino dozrijeva u zagrebačkom Markuševcu.",
+          "en": "One of the finest Dingač wines that cannot carry the name, because it matures in Markuševec, Zagreb.",
+          "it": "Uno dei migliori Dingač che non può portare quel nome, perché il vino matura a Markuševec, a Zagabria.",
+          "fr": "L’un des meilleurs Dingač qui ne peut pas porter ce nom, car le vin mûrit à Markuševec, à Zagreb.",
+          "de": "Einer der besten Dingač, der diesen Namen nicht tragen darf, weil der Wein im Zagreber Markuševec reift.",
+          "zh": "最出色的 Dingač 之一，却无法冠以此名——因为酒在萨格勒布的 Markuševec 陈酿。",
+          "sl": "Eden najboljših Dingačev, ki tega imena ne sme nositi, ker vino zori v zagrebškem Markuševcu.",
+          "es": "Uno de los mejores Dingač que no puede llevar ese nombre, porque el vino madura en Markuševec, en Zagreb."
+         },
+         "noteSig": "Saša Špiranec"
         },
         {
          "name": "Dingač Elegance 2020",
@@ -7142,7 +7179,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "15",
           "sweetness": "dry"
          },
          "terroir": "Dingač, Pelješac"
