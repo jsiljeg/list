@@ -667,14 +667,14 @@
   "Isole e Olena": {
    "region": "Chianti Classico, Toscana",
    "blurb": {
-    "hr": "Paolo De Marchi u Chianti Classicu — Cepparello mu je potpis, ali ista mjera stoji iza svake boce, od chiantija do kabernea.",
-    "en": "Paolo De Marchi in Chianti Classico — Cepparello is his signature, but the same measure stands behind every bottle, from the Chianti to the Cabernet.",
-    "it": "Paolo De Marchi nel Chianti Classico — il Cepparello è la sua firma, ma la stessa misura sta dietro ogni bottiglia, dal Chianti al Cabernet.",
-    "fr": "Paolo De Marchi en Chianti Classico — le Cepparello est sa signature, mais la même mesure se tient derrière chaque bouteille, du chianti au cabernet.",
-    "de": "Paolo De Marchi im Chianti Classico — Cepparello ist seine Signatur, doch dasselbe Mass steht hinter jeder Flasche, vom Chianti bis zum Cabernet.",
-    "zh": "基安蒂古典产区的保罗·德·马奇——Cepparello 是他的签名，但同样的分寸立于每一瓶酒背后，从基安蒂到赤霞珠。",
-    "sl": "Paolo De Marchi v Chianti Classicu — Cepparello je njegov podpis, a ista mera stoji za vsako steklenico, od chiantija do caberneta.",
-    "es": "Paolo De Marchi en el Chianti Classico — el Cepparello es su firma, pero la misma medida está detrás de cada botella, del Chianti al Cabernet."
+    "hr": "Desetljeća predanosti pretočena u mjeru toskanskog sangiovesea — Cepparello je potpis Paola De Marchija, ali iza svake njegove boce stoje ista ruka i isto strpljenje.",
+    "en": "Decades of devotion distilled into the measure of Tuscan Sangiovese — Cepparello is Paolo De Marchi's signature, yet the same hand and the same patience stand behind every bottle he makes.",
+    "it": "Decenni di dedizione distillati nel metro del Sangiovese toscano — il Cepparello è la firma di Paolo De Marchi, ma dietro ogni sua bottiglia stanno la stessa mano e la stessa pazienza.",
+    "fr": "Des décennies de dévotion distillées dans l'étalon du sangiovese toscan — le Cepparello est la signature de Paolo De Marchi, mais la même main et la même patience se tiennent derrière chacune de ses bouteilles.",
+    "de": "Jahrzehnte der Hingabe, destilliert zum Massstab des toskanischen Sangiovese — Cepparello ist Paolo De Marchis Signatur, doch hinter jeder seiner Flaschen stehen dieselbe Hand und dieselbe Geduld.",
+    "zh": "数十年的执着，凝成托斯卡纳桑娇维塞的标尺——Cepparello 是保罗·德·马奇的签名，但他每一瓶酒背后，都是同一双手与同样的耐心。",
+    "sl": "Desetletja predanosti, destilirana v merilo toskanskega sangiovesa — Cepparello je podpis Paola De Marchija, a za vsako njegovo steklenico stojita ista roka in isto potrpljenje.",
+    "es": "Décadas de devoción destiladas en la medida del Sangiovese toscano — el Cepparello es la firma de Paolo De Marchi, pero detrás de cada botella suya están la misma mano y la misma paciencia."
    }
   },
   "Poggio di Sotto": {
@@ -836,7 +836,7 @@
   "Ridge": {
    "region": "Santa Cruz Mountains, California",
    "blurb": {
-    "hr": "Kalifornija s europskom dušom — Monte Bello, kabernet za desetljeća, i etiketa koja pošteno navodi svaki sastojak.",
+    "hr": "Kalifornija s europskom dušom — Monte Bello, Cabernet za desetljeća, i etiketa koja pošteno navodi svaki sastojak.",
     "en": "California with a European soul — Monte Bello, a Cabernet for decades, and a label that honestly lists every ingredient.",
     "it": "California con un'anima europea — Monte Bello, un Cabernet per decenni, e un'etichetta che elenca onestamente ogni ingrediente.",
     "fr": "La Californie avec une âme européenne — Monte Bello, un cabernet pour des décennies, et une étiquette qui liste honnêtement chaque ingrédient.",
@@ -927,7 +927,7 @@
   "Heitz": {
    "region": "Napa Valley, California",
    "blurb": {
-    "hr": "Stara škola Nape — Martha's Vineyard kabernet od metvice i crnog ribiza, klasičan i strpljiv, građen da stari.",
+    "hr": "Stara škola Nape — Martha's Vineyard Cabernet od metvice i crnog ribiza, klasičan i strpljiv, građen da stari.",
     "en": "Old-school Napa — Martha's Vineyard Cabernet of mint and cassis, classic and patient, built to age.",
     "it": "Napa di vecchia scuola — Cabernet di Martha's Vineyard, di menta e ribes nero, classico e paziente, fatto per invecchiare.",
     "fr": "La Napa à l'ancienne — le cabernet de Martha's Vineyard, de menthe et de cassis, classique et patient, bâti pour vieillir.",
@@ -1031,7 +1031,7 @@
   "Mayacamas": {
    "region": "Mount Veeder, Napa Valley",
    "blurb": {
-    "hr": "Planinska strogost iznad Nape — kabernet visokih položaja, uspravan, mineralan i gotovo bezvremen, daleko od raskoši doline.",
+    "hr": "Planinska strogost iznad Nape — Cabernet visokih položaja, uspravan, mineralan i gotovo bezvremen, daleko od raskoši doline.",
     "en": "Mountain austerity above Napa — high-elevation Cabernet, upright, mineral and all but timeless, far from the valley's opulence.",
     "it": "L'austerità di montagna sopra Napa — Cabernet d'alta quota, diritto, minerale e quasi senza tempo, lontano dall'opulenza della valle.",
     "fr": "L'austérité de la montagne au-dessus de Napa — un cabernet d'altitude, droit, minéral et presque intemporel, loin de l'opulence de la vallée.",
@@ -1044,7 +1044,7 @@
   "Togni": {
    "region": "Spring Mountain, Napa Valley",
    "blurb": {
-    "hr": "Željezo planine — strukturiran, tanski kabernet Spring Mountaina, građen da desetljećima prkosi vremenu.",
+    "hr": "Željezo planine — strukturiran, tanski Cabernet Spring Mountaina, građen da desetljećima prkosi vremenu.",
     "en": "Mountain iron — the structured, tannic Cabernet of Spring Mountain, built to defy time for decades.",
     "it": "Il ferro della montagna — il Cabernet strutturato e tannico di Spring Mountain, costruito per sfidare il tempo per decenni.",
     "fr": "Le fer de la montagne — le cabernet structuré et tannique de Spring Mountain, bâti pour défier le temps des décennies durant.",
@@ -1395,7 +1395,7 @@
   "Cakebread": {
    "region": "Napa Valley, California",
    "blurb": {
-    "hr": "Napa gostoljubivost u čaši — kabernet i chardonnay dozreli, uglađeni i topli, građeni za stol i društvo.",
+    "hr": "Napa gostoljubivost u čaši — Cabernet i chardonnay dozreli, uglađeni i topli, građeni za stol i društvo.",
     "en": "Napa hospitality in a glass — Cabernet and Chardonnay ripe, polished and warm, built for the table and good company.",
     "it": "L'ospitalità di Napa nel bicchiere — Cabernet e Chardonnay maturi, levigati e caldi, fatti per la tavola e la buona compagnia.",
     "fr": "L'hospitalité de Napa dans un verre — cabernet et chardonnay mûrs, polis et chaleureux, faits pour la table et la bonne compagnie.",
@@ -1590,7 +1590,7 @@
   "Domaine Eden": {
    "region": "Santa Cruz Mountains, California",
    "blurb": {
-    "hr": "Planinska Kalifornija suzdržane ruke — kabernet i pinot svježine i strukture, daleko od bujnosti doline.",
+    "hr": "Planinska Kalifornija suzdržane ruke — Cabernet i pinot svježine i strukture, daleko od bujnosti doline.",
     "en": "Mountain California of a restrained hand — Cabernet and Pinot of freshness and structure, far from the valley's exuberance.",
     "it": "California di montagna dalla mano trattenuta — Cabernet e Pinot di freschezza e struttura, lontani dall'esuberanza della valle.",
     "fr": "La Californie de montagne, main retenue — cabernet et pinot de fraîcheur et de structure, loin de l'exubérance de la vallée.",

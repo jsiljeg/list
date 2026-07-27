@@ -115,7 +115,7 @@ hr: {
   },
   pairings: {
     aperitif: "aperitiv", asian: "azijska kuhinja", japanese: "japanska kuhinja", asparagus: "šparoge", bbq: "jela s roštilja",
-    beef: "govedina", red_meat: "crveno meso", game_birds: "pernata divljač", boeuf_bourguignon: "boeuf bourguignon", pasticada: "pašticada", caviar: "kavijar", charcuterie: "suhomesnati naresci", cheese_blue: "plavi sirevi",
+    beef: "govedina", red_meat: "crveno meso", dark_meat: "tamno meso", game_birds: "pernata divljač", boeuf_bourguignon: "boeuf bourguignon", pasticada: "pašticada", caviar: "kavijar", charcuterie: "suhomesnati naresci", cheese_blue: "plavi sirevi",
     cheese_fresh: "svježi sirevi", cheese_hard: "tvrdi, zreli sirevi", chocolate: "čokolada",
     desserts: "deserti", foie_gras: "foie gras", fruit_desserts: "voćni deserti", game: "divljač",
     grilled_fish: "riba s gradela", lamb: "janjetina", light_starters: "lagana predjela",
@@ -228,7 +228,7 @@ en: {
   },
   pairings: {
     aperitif: "aperitif", asian: "Asian cuisine", japanese: "Japanese cuisine", asparagus: "asparagus", bbq: "barbecue",
-    beef: "beef", red_meat: "red meat", game_birds: "feathered game", boeuf_bourguignon: "boeuf bourguignon", pasticada: "pašticada (Dalmatian braised beef)", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "blue cheese",
+    beef: "beef", red_meat: "red meat", dark_meat: "dark meat", game_birds: "feathered game", boeuf_bourguignon: "boeuf bourguignon", pasticada: "pašticada (Dalmatian braised beef)", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "blue cheese",
     cheese_fresh: "fresh cheese", cheese_hard: "aged cheese", chocolate: "chocolate",
     desserts: "desserts", foie_gras: "foie gras", fruit_desserts: "fruit desserts", game: "game",
     grilled_fish: "grilled fish", lamb: "lamb", light_starters: "light starters",
@@ -341,7 +341,7 @@ it: {
   },
   pairings: {
     aperitif: "aperitivo", asian: "cucina asiatica", japanese: "cucina giapponese", asparagus: "asparagi", bbq: "grigliate",
-    beef: "manzo", red_meat: "carni rosse", game_birds: "selvaggina da piuma", boeuf_bourguignon: "boeuf bourguignon", pasticada: "pašticada (manzo brasato dalmata)", caviar: "caviale", charcuterie: "salumi", cheese_blue: "formaggi erborinati",
+    beef: "manzo", red_meat: "carni rosse", dark_meat: "carni scure", game_birds: "selvaggina da piuma", boeuf_bourguignon: "boeuf bourguignon", pasticada: "pašticada (manzo brasato dalmata)", caviar: "caviale", charcuterie: "salumi", cheese_blue: "formaggi erborinati",
     cheese_fresh: "formaggi freschi", cheese_hard: "formaggi stagionati", chocolate: "cioccolato",
     desserts: "dolci", foie_gras: "foie gras", fruit_desserts: "dolci alla frutta", game: "selvaggina",
     grilled_fish: "pesce alla griglia", lamb: "agnello", light_starters: "antipasti leggeri",
@@ -454,7 +454,7 @@ fr: {
   },
   pairings: {
     aperitif: "apéritif", asian: "cuisine asiatique", japanese: "cuisine japonaise", asparagus: "asperges", bbq: "grillades",
-    beef: "bœuf", red_meat: "viandes rouges", game_birds: "gibier à plume", boeuf_bourguignon: "bœuf bourguignon", pasticada: "pašticada (bœuf braisé dalmate)", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "fromages bleus",
+    beef: "bœuf", red_meat: "viandes rouges", dark_meat: "viandes brunes", game_birds: "gibier à plume", boeuf_bourguignon: "bœuf bourguignon", pasticada: "pašticada (bœuf braisé dalmate)", caviar: "caviar", charcuterie: "charcuterie", cheese_blue: "fromages bleus",
     cheese_fresh: "fromages frais", cheese_hard: "fromages affinés", chocolate: "chocolat",
     desserts: "desserts", foie_gras: "foie gras", fruit_desserts: "desserts aux fruits", game: "gibier",
     grilled_fish: "poisson grillé", lamb: "agneau", light_starters: "entrées légères",
@@ -567,7 +567,7 @@ de: {
   },
   pairings: {
     aperitif: "Aperitif", asian: "asiatische Küche", japanese: "japanische Küche", asparagus: "Spargel", bbq: "Gegrilltes",
-    beef: "Rind", red_meat: "rotes Fleisch", game_birds: "Federwild", boeuf_bourguignon: "Boeuf bourguignon", pasticada: "Pašticada (dalmatinischer Schmorbraten)", caviar: "Kaviar", charcuterie: "Wurstwaren", cheese_blue: "Blauschimmelkäse",
+    beef: "Rind", red_meat: "rotes Fleisch", dark_meat: "dunkles Fleisch", game_birds: "Federwild", boeuf_bourguignon: "Boeuf bourguignon", pasticada: "Pašticada (dalmatinischer Schmorbraten)", caviar: "Kaviar", charcuterie: "Wurstwaren", cheese_blue: "Blauschimmelkäse",
     cheese_fresh: "Frischkäse", cheese_hard: "gereifter Käse", chocolate: "Schokolade",
     desserts: "Desserts", foie_gras: "Foie gras", fruit_desserts: "Fruchtdesserts", game: "Wild",
     grilled_fish: "gegrillter Fisch", lamb: "Lamm", light_starters: "leichte Vorspeisen",
@@ -680,7 +680,7 @@ zh: {
   },
   pairings: {
     aperitif: "开胃酒", asian: "亚洲菜", japanese: "日本料理", asparagus: "芦笋", bbq: "烧烤",
-    beef: "牛肉", red_meat: "红肉", game_birds: "禽类野味", boeuf_bourguignon: "勃艮第红酒炖牛肉", pasticada: "帕什蒂察达（达尔马提亚炖牛肉）", caviar: "鱼子酱", charcuterie: "腌肉拼盘", cheese_blue: "蓝纹奶酪",
+    beef: "牛肉", red_meat: "红肉", dark_meat: "深色肉类", game_birds: "禽类野味", boeuf_bourguignon: "勃艮第红酒炖牛肉", pasticada: "帕什蒂察达（达尔马提亚炖牛肉）", caviar: "鱼子酱", charcuterie: "腌肉拼盘", cheese_blue: "蓝纹奶酪",
     cheese_fresh: "新鲜奶酪", cheese_hard: "陈年硬质奶酪", chocolate: "巧克力",
     desserts: "甜点", foie_gras: "鹅肝", fruit_desserts: "水果甜点", game: "野味",
     grilled_fish: "烤鱼", lamb: "羊肉", light_starters: "清淡前菜",
@@ -1005,6 +1005,7 @@ sl: {
     "bbq": "jedi z žara",
     "beef": "govedina",
     "red_meat": "rdeče meso",
+    "dark_meat": "temno meso",
     "game_birds": "pernata divjačina",
     "boeuf_bourguignon": "boeuf bourguignon",
     "pasticada": "pašticada (dalmatinska dušena govedina)",
@@ -1375,6 +1376,7 @@ es: {
     "bbq": "a la brasa",
     "beef": "carne de vacuno",
     "red_meat": "carnes rojas",
+    "dark_meat": "carnes oscuras",
     "game_birds": "caza de pluma",
     "boeuf_bourguignon": "boeuf bourguignon",
     "pasticada": "pašticada (ternera estofada dálmata)",

@@ -8599,7 +8599,7 @@
          "producer": "Le Piane",
          "price": 200,
          "insight": {
-          "grape": "Nebbiolo 70%, Croatina 25%, Vespolina 5%",
+          "grape": "Nebbiolo 85%, Vespolina 15%",
           "region": "Boca, Alto Piemonte",
           "country": "IT",
           "style": "red_full",
@@ -8613,12 +8613,28 @@
           "pairings": [
            "game",
            "beef",
-           "truffles"
+           "truffles",
+           "dark_meat",
+           "bbq",
+           "cheese_hard",
+           "pizza",
+           "pasta",
+           "stews"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "14"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Vinous",
+           "score": "93"
+          },
+          {
+           "critic": "Decanter",
+           "score": "93"
+          }
+         ]
         },
         {
          "name": "Piane 2019",
