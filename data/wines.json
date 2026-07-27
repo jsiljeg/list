@@ -8972,9 +8972,15 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14"
          },
-         "terroir": "Le Lucciole"
+         "terroir": "Le Lucciole",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Riserva “Le Lucciole” 2022 – 1,5 l",
@@ -8998,9 +9004,15 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14"
          },
-         "terroir": "Le Lucciole"
+         "terroir": "Le Lucciole",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Tignanello 2019",
