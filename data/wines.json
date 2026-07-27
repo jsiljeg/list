@@ -7481,7 +7481,7 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13"
          },
          "terroir": "Les Didiers",
          "tags": [
@@ -7509,8 +7509,8 @@
            "truffles",
            "solo"
           ],
-          "temp": "16–18",
-          "alcohol": ""
+          "temp": "15–17",
+          "alcohol": "13.5"
          },
          "terroir": "Lavaux Saint-Jacques",
          "note": {
@@ -7526,6 +7526,28 @@
          "recommended": true,
          "tags": [
           "rare"
+         ],
+         "ratings": [
+          {
+           "critic": "Tim Atkin",
+           "score": "94"
+          },
+          {
+           "critic": "Jasper Morris",
+           "score": "92"
+          },
+          {
+           "critic": "Vinous",
+           "score": "92"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "91-93"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17/20"
+          }
          ]
         },
         {
@@ -7563,10 +7585,16 @@
           "zh": "沃尔奈是有骨架的温柔——黑皮诺的红色果香、花香，与细腻如丝的单宁。",
           "sl": "Volnay je nežnost s hrbtenico — rdeč pinotov sad, cvetje in fin, svilnat tanin.",
           "es": "Volnay es ternura con carácter — fruta roja de Pinot, flores y un tanino fino y sedoso."
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Jasper Morris",
+           "score": "90"
+          }
+         ]
         },
         {
-         "name": "Chassagne-Montrachet La Goujonne VV Rouge 2023",
+         "name": "Chassagne-Montrachet La Goujonne Vieilles Vignes Rouge 2023",
          "producer": "Hubert Lamy",
          "price": 280,
          "insight": {
@@ -7587,12 +7615,26 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13.5"
          },
-         "terroir": "La Goujonne"
+         "terroir": "La Goujonne",
+         "ratings": [
+          {
+           "critic": "Lobenberg",
+           "score": "93-94"
+          },
+          {
+           "critic": "Tim Atkin",
+           "score": "91"
+          },
+          {
+           "critic": "Jasper Morris",
+           "score": "90"
+          }
+         ]
         },
         {
-         "name": "Santenay 1er Cru Clos des Gravières Rouge 2023",
+         "name": "Santenay 1er Cru Clos des Gravières Vieilles Vignes Rouge 2023",
          "producer": "Hubert Lamy",
          "price": 290,
          "insight": {
@@ -7613,9 +7655,19 @@
            "mushrooms"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13.5"
          },
-         "terroir": "Clos des Gravières"
+         "terroir": "Clos des Gravières",
+         "ratings": [
+          {
+           "critic": "Tim Atkin",
+           "score": "94"
+          },
+          {
+           "critic": "Jasper Morris",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Château de Pez 2022",
