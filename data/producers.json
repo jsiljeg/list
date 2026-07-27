@@ -420,14 +420,14 @@
   "Le Piane": {
    "region": "Boca, Alto Piemonte",
    "blurb": {
-    "hr": "Uskrsnula Boca sjevernog Piemonta — nebbiolo s vulkanskog tla koji spaja snagu i gracioznost, i croatina starih trsova koja podsjeća da ovi brežuljci nikad nisu bili samo o jednoj sorti.",
-    "en": "The revived Boca of northern Piedmont — Nebbiolo from volcanic soil joining power and grace, and old-vine Croatina as a reminder that these hills were never about one grape alone.",
-    "it": "La Boca risorta del Piemonte settentrionale — Nebbiolo da suoli vulcanici che unisce forza e grazia, e Croatina da vecchie vigne a ricordare che queste colline non sono mai state di un solo vitigno.",
-    "fr": "La Boca ressuscitée du Piémont septentrional — un nebbiolo de sols volcaniques qui allie puissance et grâce, et une croatina de vieilles vignes pour rappeler que ces collines n'ont jamais tenu à un seul cépage.",
-    "de": "Das wiederbelebte Boca im nördlichen Piemont — Nebbiolo von vulkanischem Boden, der Kraft und Grazie verbindet, und Croatina von alten Reben als Erinnerung, dass es hier nie um eine Sorte allein ging.",
-    "zh": "北皮埃蒙特复兴的 Boca——火山土壤上的内比奥罗，力量与优雅兼具；还有老藤 Croatina，提醒人们这片丘陵从来不只属于一个品种。",
-    "sl": "Oživljena Boca severnega Piemonta — nebbiolo z vulkanskih tal, ki združuje moč in gracioznost, in croatina starih trt, ki spomni, da ti griči nikoli niso bili le o eni sorti.",
-    "es": "El Boca resucitado del Piamonte septentrional — Nebbiolo de suelos volcánicos que une fuerza y gracia, y Croatina de viñas viejas para recordar que estas colinas nunca fueron de una sola uva."
+    "hr": "Uskrsnula Boca sjevernog Piemonta — nebbiolo s crnog vulkanskog tla, snaga i gracioznost u istom dahu, i croatina starih trsova koja podsjeća da ovi brežuljci nikad nisu pripadali jednoj sorti.",
+    "en": "The revived Boca of northern Piedmont — Nebbiolo on black volcanic soil, power and grace in the same breath, and old-vine Croatina to remind you these hills never belonged to one grape.",
+    "it": "La Boca risorta del Piemonte settentrionale — Nebbiolo su suolo vulcanico nero, forza e grazia nello stesso respiro, e Croatina da vecchie vigne a ricordare che queste colline non sono mai appartenute a un solo vitigno.",
+    "fr": "La Boca ressuscitée du Piémont septentrional — un nebbiolo sur sol volcanique noir, la puissance et la grâce d'un même souffle, et une croatina de vieilles vignes pour rappeler que ces collines n'ont jamais appartenu à un seul cépage.",
+    "de": "Das wiederbelebte Boca im nördlichen Piemont — Nebbiolo auf schwarzem Vulkanboden, Kraft und Grazie im selben Atemzug, und Croatina von alten Reben als Erinnerung, dass diese Hügel nie einer Sorte allein gehörten.",
+    "zh": "北皮埃蒙特复兴的 Boca——黑色火山土上的内比奥罗，力量与优雅同在一息之间；还有老藤 Croatina，提醒你这片丘陵从不属于单一品种。",
+    "sl": "Oživljena Boca severnega Piemonta — nebbiolo na črnih vulkanskih tleh, moč in gracioznost v istem dihu, in croatina starih trt, ki spomni, da ti griči nikoli niso pripadali eni sami sorti.",
+    "es": "El Boca resucitado del Piamonte septentrional — Nebbiolo sobre suelo volcánico negro, fuerza y gracia en el mismo aliento, y Croatina de viñas viejas para recordar que estas colinas nunca pertenecieron a una sola uva."
    }
   },
   "Machard de Gramont": {
@@ -1616,14 +1616,14 @@
   "Kunjas": {
    "region": "Dalmacija",
    "blurb": {
-    "hr": "Dalmatinski kamen i sol — pošip i grk od badema i mora, i pagadebit koji gotovo nitko više ne sadi. Iskreno kao ribarski stol, a rjeđe nego što se čini.",
-    "en": "Dalmatian stone and salt — Pošip and Grk of almond and sea air, and a Pagadebit almost nobody still plants. Honest as a fisherman's table, and rarer than it looks.",
-    "it": "Pietra e sale della Dalmazia — Pošip e Grk di mandorla e aria di mare, e un Pagadebit che quasi nessuno pianta più. Sincero come una tavola di pescatori, e più raro di quanto sembri.",
-    "fr": "Pierre et sel de Dalmatie — pošip et grk d'amande et d'air marin, et un pagadebit que presque plus personne ne plante. Sincère comme une table de pêcheurs, et plus rare qu'il n'y paraît.",
-    "de": "Dalmatinischer Stein und Salz — Pošip und Grk nach Mandel und Meerluft, und ein Pagadebit, den kaum noch jemand pflanzt. Ehrlich wie ein Fischertisch und seltener, als es aussieht.",
-    "zh": "达尔马提亚的石与盐——带着杏仁与海风的 Pošip 和 Grk，还有几乎无人再种的 Pagadebit。坦诚如渔人的餐桌，也比看上去稀少得多。",
-    "sl": "Dalmatinski kamen in sol — pošip in grk z mandljem in morskim zrakom ter pagadebit, ki ga skoraj nihče več ne sadi. Iskreno kot ribiška miza in redkeje, kot se zdi.",
-    "es": "Piedra y sal de Dalmacia — Pošip y Grk de almendra y aire de mar, y un Pagadebit que casi nadie planta ya. Honesto como una mesa de pescadores, y más raro de lo que parece."
+    "hr": "Korčula u tri glasa — pošip na kojem se još osjeti sol, grk iz lumbarajskih pijesaka kakav gotovo nigdje drugdje ne raste, i plavac koji otok još zove pagadebit, „onaj koji plaća dugove“, iz vremena kad je dobra berba podmirivala godinu.",
+    "en": "Korčula in three voices — Pošip with the salt still on it, Grk from the sands of Lumbarda that grows almost nowhere else on earth, and a Plavac the island still calls Pagadebit, “the debt-payer”, from the days when a good vintage settled the year.",
+    "it": "Korčula in tre voci — Pošip con il sale ancora addosso, Grk dalle sabbie di Lumbarda che quasi da nessun'altra parte cresce, e un Plavac che l'isola chiama ancora Pagadebit, «quello che paga i debiti», da quando una buona annata saldava l'anno.",
+    "fr": "Korčula en trois voix — un pošip qui a encore le sel sur lui, un grk né des sables de Lumbarda et de presque nulle part ailleurs, et un plavac que l'île appelle toujours pagadebit, « celui qui paie les dettes », du temps où une bonne récolte soldait l'année.",
+    "de": "Korčula in drei Stimmen — ein Pošip, dem das Salz noch anhaftet, ein Grk aus dem Sand von Lumbarda, der fast nirgendwo sonst wächst, und ein Plavac, den die Insel noch immer Pagadebit nennt, „der die Schulden zahlt“, aus der Zeit, als ein guter Jahrgang das Jahr beglich.",
+    "zh": "科尔丘拉的三种声音——仍带着盐味的 Pošip，几乎只生长在卢姆巴尔达沙地上的 Grk，以及岛民至今仍称作 Pagadebit（意为「还债的那一位」）的普拉瓦茨·马利——那是好年份能还清一整年账目的时代留下的名字。",
+    "sl": "Korčula v treh glasovih — pošip, na katerem se še pozna sol, grk iz lumbarajskih peščin, kakršen skoraj nikjer drugje ne raste, in plavac, ki mu otok še vedno pravi pagadebit, „tisti, ki plača dolgove“, iz časov, ko je dobra letina poravnala leto.",
+    "es": "Korčula en tres voces — un Pošip con la sal todavía encima, un Grk de las arenas de Lumbarda que casi no crece en ningún otro sitio, y un Plavac que la isla sigue llamando Pagadebit, «el que paga las deudas», de cuando una buena cosecha saldaba el año."
    }
   },
   "L'Hoste": {
@@ -1642,14 +1642,14 @@
   "Markus": {
    "region": "Dalmacija",
    "blurb": {
-    "hr": "Dalmacija, dan po dan — mala, strpljiva vina bez žurbe i bez kompromisa, od primoštenskog Podgrebena do peljeških padina.",
-    "en": "Dalmatia, day by day — small, patient wines made without haste and without compromise, from Podgreben above Primošten to the slopes of Pelješac.",
-    "it": "Dalmazia, giorno per giorno — vini piccoli e pazienti, fatti senza fretta e senza compromessi, da Podgreben sopra Primošten ai pendii della penisola di Pelješac.",
-    "fr": "La Dalmatie, jour après jour — de petits vins patients, faits sans hâte et sans compromis, de Podgreben au-dessus de Primošten aux coteaux de Pelješac.",
-    "de": "Dalmatien, Tag für Tag — kleine, geduldige Weine ohne Eile und ohne Kompromiss, von Podgreben über Primošten bis zu den Hängen von Pelješac.",
-    "zh": "达尔马提亚，日复一日——不慌不忙、绝不妥协的小批量耐心之作，从普里莫什滕之上的 Podgreben 到佩列沙茨的坡地。",
-    "sl": "Dalmacija, dan za dnem — majhna, potrpežljiva vina brez naglice in brez kompromisov, od Podgrebena nad Primoštnom do pobočij Pelješca.",
-    "es": "Dalmacia, día tras día — vinos pequeños y pacientes, hechos sin prisa y sin concesiones, desde Podgreben sobre Primošten hasta las laderas de Pelješac."
+    "hr": "Dalmacija, dan po dan — Podgreben iznad Primoštena, pelješke strmine i podrum koji nema namjeru požurivati ni jedno ni drugo. Male količine, dugo strpljenje, ništa u boci prije nego što ima što reći.",
+    "en": "Dalmatia, day by day — Podgreben above Primošten, the steeps of Pelješac, and a cellar with no intention of hurrying either. Small quantities, long patience, nothing bottled before it has something to say.",
+    "it": "Dalmazia, giorno per giorno — Podgreben sopra Primošten, i pendii ripidi di Pelješac e una cantina che non ha alcuna intenzione di mettere fretta né all'uno né agli altri. Piccole quantità, lunga pazienza, niente in bottiglia prima di avere qualcosa da dire.",
+    "fr": "La Dalmatie, jour après jour — Podgreben au-dessus de Primošten, les pentes raides de Pelješac, et une cave qui n'a pas l'intention de presser ni l'un ni l'autre. Petites quantités, longue patience, rien en bouteille avant d'avoir quelque chose à dire.",
+    "de": "Dalmatien, Tag für Tag — Podgreben über Primošten, die Steilhänge von Pelješac und ein Keller, der weder das eine noch das andere zu drängen gedenkt. Kleine Mengen, lange Geduld, nichts in der Flasche, bevor es etwas zu sagen hat.",
+    "zh": "达尔马提亚，日复一日——普里莫什滕之上的 Podgreben、佩列沙茨的陡坡，以及一间无意催促任何一方的酒窖。产量很小，耐心很长，没有一瓶会在无话可说之前装瓶。",
+    "sl": "Dalmacija, dan za dnem — Podgreben nad Primoštnom, strmine Pelješca in klet, ki ne namerava priganjati ne enega ne drugega. Majhne količine, dolgo potrpljenje, nič v steklenico, dokler nima česa povedati.",
+    "es": "Dalmacia, día tras día — Podgreben sobre Primošten, las laderas escarpadas de Pelješac y una bodega sin ninguna intención de meter prisa a ninguno de los dos. Cantidades pequeñas, paciencia larga, nada embotellado antes de tener algo que decir."
    }
   },
   "Moret-Nominé": {
