@@ -7316,7 +7316,13 @@
           "temp": "16–18",
           "alcohol": ""
          },
-         "terroir": "Charmes-Chambertin"
+         "terroir": "Charmes-Chambertin",
+         "ratings": [
+          {
+           "critic": "Tim Atkin",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Morey-Saint-Denis 2019",
@@ -7366,7 +7372,7 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13.5"
          },
          "terroir": "",
          "note": {
@@ -7402,7 +7408,7 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13"
          },
          "terroir": "Les Barreaux",
          "recommended": true,
@@ -7537,7 +7543,7 @@
            "veal"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13"
          },
          "terroir": "Les Santenots",
          "recommended": true,
@@ -7652,7 +7658,7 @@
            "game"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14.5"
          },
          "terroir": "",
          "ratings": [
@@ -7687,7 +7693,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14.5"
          },
          "terroir": ""
         },
@@ -7713,7 +7719,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14.2"
          },
          "terroir": ""
         },
@@ -7739,7 +7745,7 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14.5"
          },
          "terroir": "",
          "ratings": [
@@ -7774,7 +7780,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13"
          },
          "terroir": "",
          "ratings": [
