@@ -7419,15 +7419,16 @@
          "terroir": "Les Barreaux",
          "recommended": true,
          "note": {
-          "hr": "Vosne-Romanée — selo koje šapće raskoš: ruža, začin i baršun po burgundski.",
-          "en": "Vosne-Romanée — the village that whispers opulence: rose, spice and velvet, the Burgundian way.",
-          "it": "Vosne-Romanée — il villaggio che sussurra opulenza: rosa, spezie e velluto, alla borgognona.",
-          "fr": "Vosne-Romanée — le village qui murmure l'opulence : rose, épices et velours, à la bourguignonne.",
-          "de": "Vosne-Romanée — das Dorf, das Opulenz flüstert: Rose, Gewürz und Samt, auf burgundische Art.",
-          "zh": "沃恩-罗曼尼——低语着丰盈的村庄：玫瑰、香料与天鹅绒，勃艮第的方式。",
-          "sl": "Vosne-Romanée — vas, ki šepeta razkošje: vrtnica, začimbe in žamet, na burgundski način.",
-          "es": "Vosne-Romanée — el pueblo que susurra opulencia: rosa, especias y terciopelo, a la manera borgoñona."
-         }
+          "hr": "Jedna od rijetkih sjevernih ekspozicija u Vosneu, na samom vrhu padine — susjedi su joj Richebourg, Aux Brûlées i Cros Parantoux. Nikad nije klasificirana, pa uz oznaku seoske klase dobivate susjedstvo grand crua: hladniji položaj, srednja punoća, više parfema nego snage.",
+          "en": "One of the few north-facing plots in Vosne, right at the top of the slope — its neighbours are Richebourg, Aux Brûlées and Cros Parantoux. It was never classified, so a village label buys you grand cru company: cooler exposure, mid-weight, perfume ahead of power.",
+          "it": "Una delle rare esposizioni a nord di Vosne, in cima al pendio — i vicini si chiamano Richebourg, Aux Brûlées e Cros Parantoux. Non è mai stata classificata: un'etichetta village che vi mette in compagnia dei grand cru — esposizione più fresca, corpo medio, più profumo che potenza.",
+          "fr": "L’un des rares coteaux exposés au nord à Vosne, tout en haut de la pente — ses voisins s’appellent Richebourg, Aux Brûlées et Cros Parantoux. Jamais classé : une étiquette village qui vous offre le voisinage des grands crus — exposition plus fraîche, corps moyen, plus de parfum que de puissance.",
+          "de": "Eine der wenigen nach Norden ausgerichteten Lagen in Vosne, ganz oben am Hang — die Nachbarn heißen Richebourg, Aux Brûlées und Cros Parantoux. Nie klassifiziert: ein Village-Etikett in Grand-Cru-Nachbarschaft — kühlere Exposition, mittleres Gewicht, mehr Duft als Kraft.",
+          "zh": "沃恩村坡顶少见的北向地块——邻居是 Richebourg、Aux Brûlées 与 Cros Parantoux。它从未被分级：村级的标签，特级园的邻里——朝向更凉，酒体中等，香气胜过力量。",
+          "sl": "Ena redkih severno obrnjenih leg v Vosnu, na samem vrhu pobočja — sosedje se imenujejo Richebourg, Aux Brûlées in Cros Parantoux. Nikoli ni bila klasificirana: vaška etiketa v družbi grand crujev — hladnejša lega, srednja polnost, več parfuma kot moči.",
+          "es": "Una de las pocas parcelas orientadas al norte de Vosne, en lo alto de la ladera — sus vecinos se llaman Richebourg, Aux Brûlées y Cros Parantoux. Nunca fue clasificada: una etiqueta village en compañía de grand crus — exposición más fresca, cuerpo medio, más perfume que potencia."
+         },
+         "notePlain": true
         },
         {
          "name": "Nuits-Saint-Georges Les Hauts-Pruliers 2016",
