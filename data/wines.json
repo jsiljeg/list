@@ -8087,9 +8087,15 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "12"
          },
-         "terroir": "Krafuss"
+         "terroir": "Krafuss",
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "90"
+          }
+         ]
         },
         {
          "name": "Cabernet Löwengang 2013",
@@ -8113,11 +8119,17 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13"
          },
          "terroir": "Löwengang, Magrè",
          "tags": [
           "drinking_now"
+         ],
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "91"
+          }
          ]
         },
         {
@@ -8141,7 +8153,7 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14"
          },
          "terroir": ""
         },
@@ -8159,7 +8171,9 @@
            "sour_cherry",
            "rose",
            "licorice",
-           "tobacco"
+           "tobacco",
+           "tar",
+           "smoke"
           ],
           "pairings": [
            "game",
@@ -8185,7 +8199,9 @@
            "sour_cherry",
            "rose",
            "earth",
-           "licorice"
+           "licorice",
+           "tar",
+           "smoke"
           ],
           "pairings": [
            "game",
@@ -8195,7 +8211,17 @@
           "temp": "16–18",
           "alcohol": "14"
          },
-         "terroir": "Pira"
+         "terroir": "Pira",
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "97"
+          },
+          {
+           "critic": "Vinous",
+           "score": "94+"
+          }
+         ]
         },
         {
          "name": "Barbaresco Albesani 2019",
@@ -8211,7 +8237,9 @@
            "sour_cherry",
            "rose",
            "spice",
-           "earth"
+           "earth",
+           "tar",
+           "smoke"
           ],
           "pairings": [
            "game",
@@ -8221,7 +8249,21 @@
           "temp": "16–18",
           "alcohol": "14.5"
          },
-         "terroir": "Albesani"
+         "terroir": "Albesani",
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "98"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          },
+          {
+           "critic": "Vinous",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Barbaresco Asili “Vecchie Viti” 2019",
@@ -8237,7 +8279,18 @@
            "sour_cherry",
            "rose",
            "licorice",
-           "forest_floor"
+           "forest_floor",
+           "kirsch",
+           "cinnamon",
+           "sweet_spice",
+           "mint",
+           "cedar",
+           "tobacco",
+           "cherry",
+           "strawberry",
+           "rose_hip",
+           "tar",
+           "smoke"
           ],
           "pairings": [
            "game",
@@ -8245,7 +8298,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13.5"
          },
          "terroir": "Asili",
          "note": {
@@ -8260,6 +8313,16 @@
          },
          "tags": [
           "rare"
+         ],
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "98"
+          },
+          {
+           "critic": "Vinous",
+           "score": "96"
+          }
          ]
         },
         {
@@ -8276,7 +8339,9 @@
            "sour_cherry",
            "rose",
            "earth",
-           "licorice"
+           "licorice",
+           "tar",
+           "smoke"
           ],
           "pairings": [
            "game",
@@ -8284,9 +8349,27 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "14.5"
          },
-         "terroir": "Pajé"
+         "terroir": "Pajé",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "98"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "98"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "98"
+          },
+          {
+           "critic": "Vinous",
+           "score": "96+"
+          }
+         ]
         },
         {
          "name": "Barolo La Morra DOCG 2021",
@@ -8302,7 +8385,9 @@
            "sour_cherry",
            "rose",
            "licorice",
-           "spice"
+           "spice",
+           "tar",
+           "smoke"
           ],
           "pairings": [
            "game",
@@ -8312,7 +8397,13 @@
           "temp": "16–18",
           "alcohol": "14.5"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Tim Atkin",
+           "score": "90"
+          }
+         ]
         },
         {
          "name": "Langhe Nebbiolo 2023",
@@ -8337,7 +8428,13 @@
           "temp": "16–18",
           "alcohol": "14.5"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "91"
+          }
+         ]
         },
         {
          "name": "Cabernet Sauvignon Collezione de Marchi 2013",
@@ -8353,7 +8450,15 @@
            "blackcurrant",
            "cedar",
            "tobacco",
-           "spice"
+           "spice",
+           "blackberry",
+           "violet",
+           "eucalyptus",
+           "toasted_wood",
+           "mint",
+           "lemon_balm",
+           "chocolate",
+           "vanilla"
           ],
           "pairings": [
            "steak",
@@ -8366,6 +8471,20 @@
          "terroir": "",
          "tags": [
           "drinking_now"
+         ],
+         "ratings": [
+          {
+           "critic": "Vinous",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "93"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "91"
+          }
          ]
         },
         {
@@ -8382,17 +8501,55 @@
            "sour_cherry",
            "plum",
            "tobacco",
-           "spice"
+           "spice",
+           "leather",
+           "smoke",
+           "dark_cherry",
+           "blackberry",
+           "cherry",
+           "blood_orange",
+           "balsamic",
+           "pine_resin"
           ],
           "pairings": [
            "beef",
            "game",
-           "cheese_hard"
+           "cheese_hard",
+           "game_birds",
+           "red_meat",
+           "bbq",
+           "pizza",
+           "pasta"
           ],
           "temp": "16–18",
           "alcohol": "15"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "97+"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "97"
+          },
+          {
+           "critic": "Vinous",
+           "score": "96"
+          },
+          {
+           "critic": "Decanter",
+           "score": "95"
+          }
+         ],
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Boca 2019",
@@ -8416,7 +8573,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.3"
          },
          "terroir": "",
          "recommended": true,
@@ -8429,7 +8586,13 @@
           "zh": "上皮埃蒙特的火山土壤——一款兼具力量与优雅、耐心而深邃的内比奥罗。",
           "sl": "Vulkanska tla severnega Piemonta — nebbiolo, ki združuje moč in gracioznost, potrpežljiv in globok.",
           "es": "Los suelos volcánicos del norte del Piamonte — un Nebbiolo que une potencia y gracia, paciente y profundo."
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Decanter",
+           "score": "93"
+          }
+         ]
         },
         {
          "name": "Plinius 2017",
@@ -8607,7 +8770,10 @@
           "temp": "16–18",
           "alcohol": ""
          },
-         "terroir": "Ruffoli"
+         "terroir": "Ruffoli",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Piantonaia 2019",
@@ -8633,7 +8799,10 @@
           "temp": "16–18",
           "alcohol": "14"
          },
-         "terroir": "Ruffoli"
+         "terroir": "Ruffoli",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Predappio Sangiovese 2023",
@@ -9040,7 +9209,10 @@
           "temp": "16–18",
           "alcohol": ""
          },
-         "terroir": ""
+         "terroir": "",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Cifra 2021",
@@ -9177,7 +9349,9 @@
            "sour_cherry",
            "rose",
            "licorice",
-           "spice"
+           "spice",
+           "tar",
+           "smoke"
           ],
           "pairings": [
            "game",
@@ -9380,7 +9554,10 @@
           "temp": "16–18",
           "alcohol": "14"
          },
-         "terroir": "Castelnuovo dell'Abate"
+         "terroir": "Castelnuovo dell'Abate",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Brunello di Montalcino 2020",
