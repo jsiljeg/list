@@ -72,7 +72,7 @@
     "Lasina": "拉西纳",
     "Plavina": "普拉维娜",
     "Muškat bijeli": "白麝香",
-    "Tribidrag (Zinfandel)": "特里比德拉格（Zinfandel）",
+    "Tribidrag (Zinfandel)": "特里比德拉格（Tribidrag / Zinfandel）",
     "Zinfandel": "仙粉黛",
     "Cabernet": "赤霞珠",
     "Nebbiolo": "内比奥罗",

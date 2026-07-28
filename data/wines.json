@@ -766,7 +766,7 @@
          "producer": "Rizman",
          "price": 10,
          "insight": {
-          "grape": "Tribidrag (Crljenak)",
+          "grape": "Tribidrag (Zinfandel)",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
@@ -7047,7 +7047,7 @@
          "producer": "Rizman",
          "price": 75,
          "insight": {
-          "grape": "Tribidrag (Crljenak)",
+          "grape": "Tribidrag (Zinfandel)",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
@@ -7101,7 +7101,7 @@
          "producer": "Saints Hills",
          "price": 70,
          "insight": {
-          "grape": "Tribidrag",
+          "grape": "Tribidrag (Zinfandel)",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_medium",
@@ -7276,7 +7276,7 @@
          "producer": "Markus",
          "price": 145,
          "insight": {
-          "grape": "Tribidrag 87%, Babić 13%",
+          "grape": "Tribidrag (Zinfandel) 87%, Babić 13%",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
@@ -11140,7 +11140,7 @@
          "producer": "Ridge",
          "price": 140,
          "insight": {
-          "grape": "Zinfandel 76%, Carignan 16%, Petite Sirah 6%, Alicante Bouschet 2%",
+          "grape": "Tribidrag (Zinfandel) 76%, Carignan 16%, Petite Sirah 6%, Alicante Bouschet 2%",
           "region": "Alexander Valley, Sonoma County, California",
           "country": "US",
           "style": "red_full",

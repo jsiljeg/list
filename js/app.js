@@ -329,7 +329,14 @@ const SEARCH_ALIAS = {
   "sangiovese": "brunello 桑娇维塞",
   "malvazija": "malvasia malvasia istriana 马尔瓦齐娅",
   "plavac mali": "plavac 普拉瓦茨",
-  "furmint": "福尔明特"
+  "furmint": "福尔明特",
+  /* One variety, many names. Whichever a guest knows, they find all of them.
+     Diacritic-free spellings included: the search does not fold accents. */
+  "tribidrag": "zinfandel primitivo pribidrag crljenak crljenak kaštelanski " +
+    "crljenak kastelanski kaštelanski crljenak kastelanski crljenak " +
+    "kratošija kratosija 特里比德拉格 仙粉黛",
+  "graševina": "grasevina welschriesling riesling italico laški rizling " +
+    "laski rizling olaszrizling 格拉舍维纳"
 };
 function itemHay(item) {
   if (item._hay) return item._hay;
