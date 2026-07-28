@@ -102,6 +102,36 @@ Whole categories never assessed: **all Barolo and Barbaresco** (2018, 2019,
 2021 are the vintages on our list, and 2019/2021 rate very highly on Piedmont
 charts), **all Burgundy**, **all Germany**, **all USA**, **all Croatia**.
 
+## Austria — badges withdrawn (2026-07-28)
+
+Wine Spectator rates Austria with a **single national row**, "AUSTRIA • White",
+covering the Wachau, Wagram and Südsteiermark alike — three climates 250 km
+apart — and describing white wine, while Muster makes macerated orange wine.
+Too coarse to badge on, so all Austrian badges were removed and `AT` is
+excluded from the rule alongside `HR` and `SI`.
+
+The right source exists and is local: **Österreich Wein Marketing** publishes
+per-region vintage assessments at
+<https://www.austrianwine.com/our-wine/austrias-vintages> — its own text says
+"regionale Bewertungen … fallen von Jahr zu Jahr zum Teil sehr unterschiedlich
+aus", i.e. it rates Wachau separately from Steiermark. The table is rendered
+in JavaScript and could not be read by the tools available here. **Falstaff**
+(Austrian) also publishes a Jahrgangstabelle in its Weinguide, print/paywalled.
+Paste either table and the badges can be rebuilt properly.
+
+## Germany — same weakness, better source available
+
+The badges currently rest on WS's single "GERMANY • Riesling" row, which has
+sat in the 90–94 band for a decade: 2016 93, 2017 94, 2018 93, 2019 94,
+2020 94, 2021 90, 2022 93. Consequences: every German wine is izvrsna and none
+can ever be legendarna, and Mosel slate, Rheinhessen limestone and Pfalz
+sandstone share one number.
+
+**Jancis Robinson's "Germany Vintage Chart: 1985 to 2025"**
+(<https://www.jancisrobinson.com/learn/vintages/germany>) splits Germany by
+region and is the right replacement; it is subscriber-only and returned 403.
+Wine Scholar Guild also publishes German vintage charts to members.
+
 ## Croatia and Slovenia — a note
 
 Neither has a vintage-rating body of comparable authority, and no major critic
