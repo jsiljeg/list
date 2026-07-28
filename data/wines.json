@@ -781,7 +781,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -812,7 +813,8 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -941,7 +943,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": ""
         }
@@ -7273,7 +7276,8 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -7305,7 +7309,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Les Arvelets"
         },
@@ -7331,7 +7336,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Charmes-Chambertin",
          "ratings": [
@@ -7363,7 +7369,8 @@
            "mushrooms"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -7389,7 +7396,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "note": {
@@ -7431,7 +7439,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "Les Barreaux",
          "recommended": true,
@@ -7469,7 +7478,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Les Hauts Pruliers (1er Cru)",
          "tags": [
@@ -7498,7 +7508,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "Les Didiers",
          "tags": [
@@ -7527,7 +7538,8 @@
            "solo"
           ],
           "temp": "15–17",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Lavaux Saint-Jacques",
          "note": {
@@ -7589,7 +7601,8 @@
            "veal"
           ],
           "temp": "16–18",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "Les Santenots",
          "recommended": true,
@@ -7632,7 +7645,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "La Goujonne",
          "ratings": [
@@ -7672,7 +7686,8 @@
            "mushrooms"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Clos des Gravières",
          "ratings": [
@@ -7708,7 +7723,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -7756,7 +7772,8 @@
            "game"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -7815,7 +7832,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -7871,7 +7889,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -7916,7 +7935,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -7959,7 +7979,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -8019,7 +8040,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -8046,7 +8068,8 @@
            "cheese_hard"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -8073,7 +8096,8 @@
            "pork"
           ],
           "temp": "13–15",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": ""
         }
@@ -8104,7 +8128,8 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": "12"
+          "alcohol": "12",
+          "sweetness": "dry"
          },
          "terroir": "Krafuss",
          "ratings": [
@@ -8138,7 +8163,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "Löwengang, Magrè",
          "tags": [
@@ -8172,7 +8198,8 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -8200,7 +8227,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -8228,7 +8256,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Pira",
          "ratings": [
@@ -8266,7 +8295,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "Albesani",
          "ratings": [
@@ -8312,7 +8342,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Asili",
          "note": {
@@ -8363,7 +8394,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "Pajé",
          "ratings": [
@@ -8409,7 +8441,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -8440,7 +8473,8 @@
            "white_meat"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -8478,7 +8512,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "",
          "tags": [
@@ -8532,7 +8567,8 @@
            "pasta"
           ],
           "temp": "16–18",
-          "alcohol": "15"
+          "alcohol": "15",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -8583,7 +8619,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "13.3"
+          "alcohol": "13.3",
+          "sweetness": "dry"
          },
          "terroir": "",
          "recommended": true,
@@ -8632,7 +8669,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -8672,7 +8710,8 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Boca, Prato Sesia",
          "tags": [
@@ -8703,7 +8742,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "",
          "recommended": true,
@@ -8758,7 +8798,8 @@
            "charcuterie"
           ],
           "temp": "14–16",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "",
          "recommended": true,
@@ -8805,7 +8846,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -8850,7 +8892,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "Ruffoli",
          "tags": [
@@ -8893,7 +8936,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Ruffoli",
          "tags": [
@@ -8933,7 +8977,8 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -8960,7 +9005,8 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -8986,7 +9032,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Le Lucciole",
          "ratings": [
@@ -9018,7 +9065,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Le Lucciole",
          "ratings": [
@@ -9056,7 +9104,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Tenuta Tignanello",
          "ratings": [
@@ -9113,7 +9162,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Tenuta Tignanello",
          "ratings": [
@@ -9163,7 +9213,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "15"
+          "alcohol": "15",
+          "sweetness": "dry"
          },
          "terroir": "Monte Lodoletta",
          "tags": [
@@ -9220,7 +9271,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "16.5"
+          "alcohol": "16.5",
+          "sweetness": "dry"
          },
          "terroir": "Monte Lodoletta",
          "ratings": [
@@ -9271,7 +9323,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "16"
+          "alcohol": "16",
+          "sweetness": "dry"
          },
          "terroir": "Ravazzòl",
          "tags": [
@@ -9311,7 +9364,8 @@
            "solo"
           ],
           "temp": "16–18",
-          "alcohol": "16.5"
+          "alcohol": "16.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "note": {
@@ -9363,7 +9417,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "15"
+          "alcohol": "15",
+          "sweetness": "dry"
          },
          "terroir": "",
          "tags": [
@@ -9392,7 +9447,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Le Pergole Torte",
          "note": {
@@ -9439,7 +9495,8 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "13"
+          "alcohol": "13",
+          "sweetness": "dry"
          },
          "terroir": "",
          "tags": [
@@ -9483,7 +9540,8 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -9525,7 +9583,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "15"
+          "alcohol": "15",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -9567,7 +9626,8 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "tags": [
@@ -9603,7 +9663,8 @@
            "solo"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Case Basse",
          "tags": [
@@ -9655,7 +9716,8 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "",
          "tags": [
@@ -9716,7 +9778,8 @@
            "solo"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -9778,7 +9841,8 @@
            "solo"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -9840,7 +9904,8 @@
            "solo"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
@@ -9902,7 +9967,8 @@
            "solo"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": "Tenuta Tignanello",
          "ratings": [
@@ -9960,7 +10026,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Castelnuovo dell'Abate",
          "tags": [
@@ -10025,7 +10092,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": "Castelnuovo dell'Abate",
          "ratings": [
@@ -10069,6 +10137,7 @@
           "aromas": [
            "plum",
            "blackberry",
+           "tomato_leaf",
            "chocolate",
            "spice"
           ],
@@ -10078,7 +10147,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "ratings": [
           {
@@ -10099,8 +10169,12 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
+           "cherry",
            "plum",
            "blackberry",
+           "tangerine",
+           "licorice",
+           "nougat",
            "chocolate",
            "earth"
           ],
@@ -10110,9 +10184,16 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14",
+          "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Pinot Noir Opoka 2021",
@@ -10136,7 +10217,8 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Medana Breg"
         }
@@ -10167,7 +10249,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "tags": [
           "drinking_now"
@@ -10196,7 +10279,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -10221,7 +10305,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -10247,7 +10332,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "tags": [
           "drinking_now"
@@ -10281,7 +10367,8 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": "13.3"
+          "alcohol": "13.3",
+          "sweetness": "dry"
          },
          "terroir": "Mae Estate"
         },
@@ -10307,7 +10394,8 @@
            "veal"
           ],
           "temp": "14–16",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "tags": [
           "drinking_now"
@@ -10336,7 +10424,8 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": "13.4"
+          "alcohol": "13.4",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -10362,7 +10451,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14.8"
+          "alcohol": "14.8",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -10388,7 +10478,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -10414,7 +10505,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -10440,7 +10532,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14.5"
+          "alcohol": "14.5",
+          "sweetness": "dry"
          },
          "tags": [
           "drinking_now"
@@ -10469,7 +10562,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -10495,7 +10589,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "Tanbark Hill"
         },
@@ -10521,7 +10616,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -10547,7 +10643,8 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": "13.5"
+          "alcohol": "13.5",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -10573,7 +10670,8 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "14.8"
+          "alcohol": "14.8",
+          "sweetness": "dry"
          },
          "terroir": "Geyserville"
         },
@@ -10599,7 +10697,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "dry"
          },
          "terroir": "Monte Bello"
         }
@@ -10630,7 +10729,8 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "tags": [
           "rare"

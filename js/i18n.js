@@ -96,6 +96,7 @@ hr: {
   sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
+    nougat: "nugat",
     tomato_leaf: "list rajčice", asparagus: "šparoge",
    
     hay: "sijeno", hibiscus: "hibiskus", fennel: "komorač", bread: "svježe pečeni kruh",
@@ -215,6 +216,7 @@ en: {
   sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
+    nougat: "nougat",
     tomato_leaf: "tomato leaf", asparagus: "asparagus",
    
     hay: "hay", hibiscus: "hibiscus", fennel: "fennel seed", bread: "freshly baked bread",
@@ -334,6 +336,7 @@ it: {
   sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
+    nougat: "torrone",
     tomato_leaf: "foglia di pomodoro", asparagus: "asparago",
    
     hay: "fieno", hibiscus: "ibisco", fennel: "semi di finocchio", bread: "pane appena sfornato",
@@ -453,6 +456,7 @@ fr: {
   sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
+    nougat: "nougat",
     tomato_leaf: "feuille de tomate", asparagus: "asperge",
    
     hay: "foin", hibiscus: "hibiscus", fennel: "graines de fenouil", bread: "pain frais",
@@ -572,6 +576,7 @@ de: {
   sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
+    nougat: "Nougat",
     tomato_leaf: "Tomatenblatt", asparagus: "Spargel",
    
     hay: "Heu", hibiscus: "Hibiskus", fennel: "Fenchelsamen", bread: "frisches Brot",
@@ -691,6 +696,7 @@ zh: {
   sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
+    nougat: "牛轧糖",
     tomato_leaf: "番茄叶", asparagus: "芦笋",
    
     hay: "干草", hibiscus: "洛神花", fennel: "茴香籽", bread: "新鲜面包",
@@ -880,6 +886,7 @@ sl: {
     "drinking_now": "Za piti zdaj"
   },
   "aromas": {
+    "nougat": "nugat",
     "tomato_leaf": "paradižnikov list",
     "asparagus": "šparglji",
     "hay": "seno",
@@ -1291,6 +1298,7 @@ es: {
     "drinking_now": "Para beber ahora"
   },
   "aromas": {
+    "nougat": "turrón",
     "tomato_leaf": "hoja de tomate",
     "asparagus": "espárrago",
     "hay": "heno",
