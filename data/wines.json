@@ -3662,6 +3662,9 @@
            "critic": "James Suckling",
            "score": "94"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -3732,9 +3735,6 @@
            "critic": "Falstaff",
            "score": "94"
           }
-         ],
-         "tags": [
-          "excellent_vintage"
          ]
         },
         {
@@ -3772,9 +3772,6 @@
            "critic": "Wine Enthusiast",
            "score": "92"
           }
-         ],
-         "tags": [
-          "excellent_vintage"
          ]
         },
         {
@@ -3897,7 +3894,10 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
-         "terroir": "Röttgen"
+         "terroir": "Röttgen",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Riesling Gaisböhl GG 2017",
@@ -3986,6 +3986,9 @@
            "critic": "Robert Parker",
            "score": "94"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4018,9 +4021,6 @@
            "critic": "Falstaff",
            "score": "92"
           }
-         ],
-         "tags": [
-          "excellent_vintage"
          ],
          "terroir": ""
         },
@@ -4063,9 +4063,6 @@
            "critic": "Falstaff",
            "score": "95"
           }
-         ],
-         "tags": [
-          "excellent_vintage"
          ]
         },
         {
@@ -4105,6 +4102,7 @@
           }
          ],
          "tags": [
+          "excellent_vintage",
           "rare"
          ]
         }
@@ -11481,6 +11479,9 @@
            "critic": "James Suckling",
            "score": "97"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -11575,6 +11576,7 @@
          },
          "terroir": "Saarburger Rausch",
          "tags": [
+          "excellent_vintage",
           "drinking_now"
          ],
          "recommended": true,

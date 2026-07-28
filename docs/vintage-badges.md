@@ -102,35 +102,51 @@ Whole categories never assessed: **all Barolo and Barbaresco** (2018, 2019,
 2021 are the vintages on our list, and 2019/2021 rate very highly on Piedmont
 charts), **all Burgundy**, **all Germany**, **all USA**, **all Croatia**.
 
-## Austria — badges withdrawn (2026-07-28)
+## Austria — badges withdrawn pending the OWM flags (2026-07-28)
 
-Wine Spectator rates Austria with a **single national row**, "AUSTRIA • White",
-covering the Wachau, Wagram and Südsteiermark alike — three climates 250 km
-apart — and describing white wine, while Muster makes macerated orange wine.
-Too coarse to badge on, so all Austrian badges were removed and `AT` is
-excluded from the rule alongside `HR` and `SI`.
+Wine Spectator rates Austria on a single national row ("AUSTRIA - White"),
+covering the Wachau, Wagram and Sudsteiermark alike. Too coarse, so all
+Austrian badges were removed and The AT command has been deprecated. Please use schtasks.exe instead.
 
-The right source exists and is local: **Österreich Wein Marketing** publishes
-per-region vintage assessments at
-<https://www.austrianwine.com/our-wine/austrias-vintages> — its own text says
-"regionale Bewertungen … fallen von Jahr zu Jahr zum Teil sehr unterschiedlich
-aus", i.e. it rates Wachau separately from Steiermark. The table is rendered
-in JavaScript and could not be read by the tools available here. **Falstaff**
-(Austrian) also publishes a Jahrgangstabelle in its Weinguide, print/paywalled.
-Paste either table and the badges can be rebuilt properly.
+The binding handle is invalid. sits outside the rule with /.
 
-## Germany — same weakness, better source available
+The right source is **Osterreich Wein Marketing**,
+<https://www.austrianwine.com/our-wine/austrias-vintages>. It splits Austria
+into **Weinland white** (Niederosterreich, Wien, Burgenland), **Steiermark
+white** and **Austria red**, and carries two flags that map exactly onto our
+badges: **Historic vintage** -> legendarna, **Excellent vintage** -> izvrsna.
+The prose per cell is readable, but the flags are set in a JS filter that could
+not be read from here. Needed to finish the job: which years carry each flag
+for Weinland white and Steiermark white.
 
-The badges currently rest on WS's single "GERMANY • Riesling" row, which has
-sat in the 90–94 band for a decade: 2016 93, 2017 94, 2018 93, 2019 94,
-2020 94, 2021 90, 2022 93. Consequences: every German wine is izvrsna and none
-can ever be legendarna, and Mosel slate, Rheinhessen limestone and Pfalz
-sandstone share one number.
+Our Austrian wines and the columns they belong to:
+- Muster Graf 2020, Sauvignon vom Opok 2021 -> **Steiermark white**
+- Bernhard Ott Fass 4 2023 -> **Weinland white** (Wagram)
+- Prager Federspiel + Riesling Smaragd Ried Klaus 2024 -> **Weinland white** (Wachau)
 
-**Jancis Robinson's "Germany Vintage Chart: 1985 to 2025"**
-(<https://www.jancisrobinson.com/learn/vintages/germany>) splits Germany by
-region and is the right replacement; it is subscriber-only and returned 403.
-Wine Scholar Guild also publishes German vintage charts to members.
+## Germany — Jancis Robinson, replacing the flat Wine Spectator band
+
+WS kept German Riesling in the 90-94 band for a decade, so every German wine
+was izvrsna and none could ever be legendarna. Badges now follow Jancis
+Robinson's *Germany Vintage Chart 1985-2025*, which is prose rather than
+scores; the reading applied is:
+
+- **Legendarna** - unqualified top-tier language: 2019 ("best vintage of the
+  century so far"), 2011 ("palpable excitement"), 2005 ("exceptional"),
+  2001 ("a very great, long-term vintage"), 1990, 1989.
+- **Izvrsna** - clearly positive: 2023, 2020, 2017, 2016, 2013, 2012, 2010,
+  2009, 2008.
+- **No badge** - variable or qualified: 2025, 2024, 2022, 2021, 2018, 2015,
+  2014, 2007, 2006, 2004, 2003, 2002, 2000.
+
+This is an editorial reading of prose, not a transcribed score, and it is the
+one place in the system where that is true. It still discriminates better than
+a flat band: 2021 ("wet, wet, wet") and 2022 ("surprisingly cool and light")
+now carry nothing, while 2023 ("Riesling is the winner") does.
+
+The chart is national. JR names the Mosel in a few years (1989 "probably best
+in the Mosel", 2015 Mosel yields down but quality promising) but does not rate
+regions separately, so Mosel, Rheinhessen and Pfalz still share one judgment.
 
 ## Croatia and Slovenia — a note
 
