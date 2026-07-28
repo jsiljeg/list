@@ -105,10 +105,9 @@ charts), **all Burgundy**, **all Germany**, **all USA**, **all Croatia**.
 ## Austria — badges withdrawn pending the OWM flags (2026-07-28)
 
 Wine Spectator rates Austria on a single national row ("AUSTRIA - White"),
-covering the Wachau, Wagram and Sudsteiermark alike. Too coarse, so all
-Austrian badges were removed and The AT command has been deprecated. Please use schtasks.exe instead.
-
-The binding handle is invalid. sits outside the rule with /.
+covering the Wachau, Wagram and Südsteiermark alike. Too coarse, so all
+Austrian badges were removed and AT now sits outside the rule alongside HR
+and SI.
 
 The right source is **Osterreich Wein Marketing**,
 <https://www.austrianwine.com/our-wine/austrias-vintages>. It splits Austria
