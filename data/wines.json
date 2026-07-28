@@ -249,7 +249,7 @@
          "terroir": "Motovun"
         },
         {
-         "name": "Meneghetti White",
+         "name": "Meneghetti White 2023",
          "producer": "Meneghetti",
          "price": 10,
          "insight": {
@@ -340,7 +340,7 @@
          "recommended": true
         },
         {
-         "name": "Pošip 2023",
+         "name": "Pošip 2024",
          "producer": "Kunjas",
          "price": 9,
          "insight": {
@@ -361,7 +361,7 @@
            "risotto"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "14",
           "sweetness": "dry"
          },
          "terroir": "Korčula"
@@ -1020,7 +1020,7 @@
          "producer": "Niko Bura",
          "price": 8,
          "insight": {
-          "grape": "Rukatac, Maraština, Malvasia lunga",
+          "grape": "Rukatac",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "sweet",
@@ -2761,6 +2761,7 @@
           "dosage": "Brut"
          },
          "tags": [
+          "legendary_vintage",
           "rare"
          ],
          "terroir": "Clos du Mesnil",
@@ -3486,6 +3487,9 @@
            "critic": "James Suckling",
            "score": "92"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -3665,7 +3669,10 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Hatzenport"
+         "terroir": "Hatzenport",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Riesling GG Uhlen Blaufüßer Lay 2022",
@@ -3739,6 +3746,9 @@
            "critic": "Wine Enthusiast",
            "score": "92"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -3772,6 +3782,9 @@
            "critic": "Falstaff",
            "score": "93+"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -3828,7 +3841,10 @@
           "zh": "韦斯特霍芬的石灰岩，生物动力的精准——一款大 Cru 级别的干型雷司令，没有一个多余的字。",
           "sl": "Apnenec Westhofna, biodinamična natančnost — suh rizling velikega razreda, brez ene odvečne besede.",
           "es": "La caliza de Westhofen, precisión biodinámica — un Riesling seco de categoría grand cru, sin una sola palabra de más."
-         }
+         },
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Riesling Röttgen GG 2023",
@@ -3900,6 +3916,9 @@
            "critic": "Robert Parker",
            "score": "92"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -3973,6 +3992,9 @@
            "critic": "Falstaff",
            "score": "92"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4014,6 +4036,9 @@
            "critic": "Falstaff",
            "score": "95"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4195,7 +4220,10 @@
           "temp": "10–12",
           "alcohol": "12.5",
           "sweetness": "dry"
-         }
+         },
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Graf 2020",
@@ -4221,7 +4249,10 @@
           "temp": "12–14",
           "alcohol": "",
           "sweetness": "dry"
-         }
+         },
+         "tags": [
+          "excellent_vintage"
+         ]
         }
        ]
       },
@@ -4327,7 +4358,10 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": "Butteaux"
+         "terroir": "Butteaux",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Chablis 1er Cru Vaillons 2018",
@@ -4356,6 +4390,7 @@
          },
          "terroir": "Vaillons",
          "tags": [
+          "excellent_vintage",
           "rare"
          ],
          "ratings": [
@@ -4497,6 +4532,7 @@
          },
          "terroir": "Valmur",
          "tags": [
+          "excellent_vintage",
           "rare"
          ],
          "ratings": [
@@ -4744,7 +4780,10 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Bourgogne Aligoté 2023",
@@ -5433,7 +5472,10 @@
           "zh": "杯中的 Chavignol 陡坡——既是经典也是珍稀，令人难忘。",
           "sl": "Strmo pobočje Chavignola v kozarcu — hkrati klasika in redkost, vino, ki se ga spomniš.",
           "es": "La ladera empinada de Chavignol en una copa — clásico y rareza a la vez, un vino que se recuerda."
-         }
+         },
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Riesling 2022",
@@ -5497,6 +5539,9 @@
            "critic": "Robert Parker",
            "score": "95"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -5538,6 +5583,9 @@
            "critic": "Robert Parker",
            "score": "93+"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -5569,7 +5617,10 @@
           "alcohol": "14.5",
           "sweetness": "off_dry"
          },
-         "terroir": "Hengst"
+         "terroir": "Hengst",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Matris 2018",
@@ -6293,7 +6344,10 @@
           "zh": "“酒中的橡木味就像女人身上的香水：绝不能喧宾夺主。” —— Maria Vargas，酒庄酿酒师",
           "sl": "»Hrast v vinu je kot parfum na ženski: nikoli ne sme prevladati.« – Maria Vargas, enologinja kleti",
           "es": "«La madera en un vino es como el perfume en una mujer: nunca debe dominar.» – María Vargas, enóloga de la bodega"
-         }
+         },
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Gravonia Crianza 2015",
@@ -6328,6 +6382,7 @@
           }
          ],
          "tags": [
+          "excellent_vintage",
           "drinking_now"
          ]
         },
@@ -7339,7 +7394,10 @@
           "alcohol": "",
           "sweetness": "dry"
          },
-         "terroir": "Les Arvelets"
+         "terroir": "Les Arvelets",
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Charmes-Chambertin Grand Cru 2021",
@@ -7399,7 +7457,10 @@
           "alcohol": "",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Vosne-Romanée 2022",
@@ -7510,6 +7571,7 @@
          },
          "terroir": "Les Hauts Pruliers (1er Cru)",
          "tags": [
+          "legendary_vintage",
           "drinking_now"
          ]
         },
@@ -7581,6 +7643,7 @@
          },
          "recommended": true,
          "tags": [
+          "excellent_vintage",
           "rare"
          ],
          "ratings": [
@@ -7834,7 +7897,7 @@
           }
          ],
          "tags": [
-          "legendary_vintage"
+          "excellent_vintage"
          ]
         },
         {
@@ -7892,6 +7955,9 @@
            "critic": "Jancis Robinson",
            "score": "17/20"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -7981,7 +8047,7 @@
           }
          ],
          "tags": [
-          "legendary_vintage"
+          "excellent_vintage"
          ]
         },
         {
@@ -8257,7 +8323,10 @@
           "alcohol": "",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Barolo Pira 2018",
@@ -8296,6 +8365,9 @@
            "critic": "Vinous",
            "score": "94+"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -8621,7 +8693,7 @@
           }
          ],
          "tags": [
-          "excellent_vintage"
+          "legendary_vintage"
          ]
         },
         {
@@ -8709,6 +8781,9 @@
            "critic": "Decanter",
            "score": "93"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -8801,6 +8876,9 @@
            "critic": "Jancis Robinson",
            "score": "17.5/20"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -8890,6 +8968,9 @@
            "critic": "Wine Spectator",
            "score": "90"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -8924,7 +9005,7 @@
          },
          "terroir": "Ruffoli",
          "tags": [
-          "excellent_vintage"
+          "legendary_vintage"
          ],
          "ratings": [
           {
@@ -8968,7 +9049,7 @@
          },
          "terroir": "Ruffoli",
          "tags": [
-          "excellent_vintage"
+          "legendary_vintage"
          ],
          "ratings": [
           {
@@ -9158,7 +9239,7 @@
           }
          ],
          "tags": [
-          "excellent_vintage"
+          "legendary_vintage"
          ]
         },
         {
@@ -9210,6 +9291,9 @@
            "critic": "Wine Spectator",
            "score": "94"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -9497,6 +9581,9 @@
            "critic": "Robert Parker",
            "score": "96"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -9527,7 +9614,7 @@
          },
          "terroir": "",
          "tags": [
-          "excellent_vintage"
+          "legendary_vintage"
          ],
          "ratings": [
           {
@@ -9627,6 +9714,9 @@
            "critic": "Jancis Robinson",
            "score": "16/20"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -9695,6 +9785,7 @@
          },
          "terroir": "Case Basse",
          "tags": [
+          "legendary_vintage",
           "rare"
          ],
          "recommended": true,
@@ -10058,7 +10149,7 @@
          },
          "terroir": "Castelnuovo dell'Abate",
          "tags": [
-          "excellent_vintage"
+          "legendary_vintage"
          ],
          "ratings": [
           {
@@ -10144,6 +10235,9 @@
            "critic": "Vinous",
            "score": "94+"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         }
        ]
@@ -10299,6 +10393,7 @@
           "sweetness": "dry"
          },
          "tags": [
+          "excellent_vintage",
           "drinking_now"
          ],
          "terroir": "Finca Ygay – La Plana",
@@ -10560,6 +10655,9 @@
            "critic": "Vinous",
            "score": "94"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -10601,6 +10699,9 @@
            "critic": "Robert Parker",
            "score": "90"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -10637,6 +10738,9 @@
            "critic": "Wine Spectator",
            "score": "94"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -10717,6 +10821,7 @@
           "sweetness": "dry"
          },
          "tags": [
+          "legendary_vintage",
           "drinking_now"
          ],
          "terroir": "",
@@ -10778,6 +10883,9 @@
            "critic": "Robert Parker",
            "score": "94"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -10811,6 +10919,9 @@
            "critic": "Wine Spectator",
            "score": "92"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -10852,6 +10963,9 @@
            "critic": "Robert Parker",
            "score": "95"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -11120,7 +11234,7 @@
          "producer": "Niko Bura",
          "price": 58,
          "insight": {
-          "grape": "Rukatac, Maraština, Malvasia lunga",
+          "grape": "Rukatac",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "sweet",
@@ -11284,7 +11398,10 @@
           "alcohol": "",
           "sweetness": "sweet"
          },
-         "terroir": "Winningen"
+         "terroir": "Winningen",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Riesling Aulerde Auslese 2015 – 0,5 l",
@@ -11571,7 +11688,6 @@
           }
          ],
          "tags": [
-          "excellent_vintage",
           "rare"
          ]
         },
