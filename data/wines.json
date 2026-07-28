@@ -6144,7 +6144,8 @@
            "critic": "Robert Parker",
            "score": "95"
           }
-         ]
+         ],
+         "terroir": "Monte Calvario"
         },
         {
          "name": "Kaplja 2018",
@@ -6171,7 +6172,8 @@
           "temp": "15",
           "alcohol": "14.5",
           "sweetness": "dry"
-         }
+         },
+         "terroir": "Gradiscutta, Monte Calvario, Piedimonte, San Floriano"
         },
         {
          "name": "Malvasia 2018",
@@ -6204,7 +6206,8 @@
            "critic": "Vinous",
            "score": "93"
           }
-         ]
+         ],
+         "terroir": "Gradiscutta, Monte Calvario"
         },
         {
          "name": "Etna Bianco 2023",
@@ -6268,7 +6271,8 @@
           "temp": "12–14",
           "alcohol": "14",
           "sweetness": "dry"
-         }
+         },
+         "terroir": "Monte Calvario"
         },
         {
          "name": "Origine 2016",
