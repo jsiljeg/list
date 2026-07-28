@@ -10658,7 +10658,29 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Vinous",
+           "score": "94"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "93"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "91"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "91"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17.5/20"
+          }
+         ]
         },
         {
          "name": "Cabernet Sauvignon 2016",
@@ -10671,10 +10693,13 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
-           "blackcurrant",
-           "mint",
-           "cedar",
-           "chocolate"
+           "plum",
+           "red_currant",
+           "chocolate",
+           "coffee",
+           "rooibos",
+           "mahogany",
+           "cedar"
           ],
           "pairings": [
            "steak",
@@ -10688,7 +10713,17 @@
          "tags": [
           "drinking_now"
          ],
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "93"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "91"
+          }
+         ]
         },
         {
          "name": "Cabernet Sauvignon 2019",
