@@ -10736,10 +10736,14 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
-           "blackcurrant",
-           "earth",
-           "herbs",
-           "cedar"
+           "plum",
+           "mulberry",
+           "dark_cherry",
+           "dried_herbs",
+           "tobacco",
+           "licorice",
+           "mocha",
+           "spice"
           ],
           "pairings": [
            "steak",
@@ -10750,7 +10754,25 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Vinous",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "95"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Cabernet Sauvignon 2018",
@@ -10777,7 +10799,13 @@
           "alcohol": "",
           "sweetness": "dry"
          },
-         "terroir": "Tanbark Hill"
+         "terroir": "Tanbark Hill",
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Cabernet Sauvignon 2019",
@@ -10801,10 +10829,24 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Vinous",
+           "score": "96-99"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Cuvée Ruth Pinot Noir",
