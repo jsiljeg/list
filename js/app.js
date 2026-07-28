@@ -607,17 +607,31 @@ function openDetail(ref, back) {
   setDetailNav(ref, back);
 }
 
-/* ---------- step between wines of the same group ---------- */
-/* A ref is "section.category.group.index", so the neighbours are just index±1
-   inside the same group. The arrows hide at the ends rather than greying out:
-   on a tablet a disabled control still invites a tap. */
+/* ---------- step between wines ---------- */
+/* Straight through the whole list in menu order, across groups, categories and
+   sections — the last Barolo leads into the first Brunello, not into a wall.
+   The arrows hide only at the very first and very last wine, and hide rather
+   than grey out: on a tablet a disabled control still invites a tap. */
 let detailNav = { prev: null, next: null, back: null };
+let FLAT_REFS = null, FLAT_POS = null;
+function flatRefs() {
+  if (FLAT_REFS) return FLAT_REFS;
+  FLAT_REFS = []; FLAT_POS = Object.create(null);
+  DATA.sections.forEach((sec, si) => sec.categories.forEach((cat, ci) =>
+    cat.groups.forEach((g, gi) => g.items.forEach((it, ii) => {
+      if (!it.insight) return;
+      const ref = [si, ci, gi, ii].join(".");
+      FLAT_POS[ref] = FLAT_REFS.length;
+      FLAT_REFS.push(ref);
+    }))));
+  return FLAT_REFS;
+}
 function neighbourRef(ref, step) {
-  const [si, ci, gi, ii] = ref.split(".").map(Number);
-  const items = DATA.sections[si].categories[ci].groups[gi].items;
-  const j = ii + step;
-  if (j < 0 || j >= items.length || !items[j].insight) return null;
-  return [si, ci, gi, j].join(".");
+  const all = flatRefs();
+  const p = FLAT_POS[ref];
+  if (p == null) return null;
+  const j = p + step;
+  return j >= 0 && j < all.length ? all[j] : null;
 }
 function setDetailNav(ref, back) {
   const t = T();
@@ -635,12 +649,26 @@ function clearDetailNav() {
   detailNav = { prev: null, next: null, back: null };
   ["modal-prev", "modal-next"].forEach((id) => { const b = $(id); if (b) b.classList.add("hidden"); });
 }
+/* Swap the card with a short slide+fade so the change reads as movement rather
+   than a flicker. Only the body moves; the sheet itself stays put, which keeps
+   the ✕ and the arrows stable under the finger. */
 function stepDetail(dir) {
   const target = dir < 0 ? detailNav.prev : detailNav.next;
   if (!target) return false;
+  const body = $("modal-body"), sheet = $("modal-sheet");
+  if (sheet) { sheet.style.transition = "none"; sheet.style.transform = ""; }
+  if (body) {
+    body.style.transition = "none";
+    body.style.opacity = "0";
+    body.style.transform = `translateX(${dir > 0 ? 26 : -26}px)`;
+  }
   openDetail(target, detailNav.back);
-  const ms = $("modal-sheet");
-  if (ms) ms.scrollTop = 0;
+  if (sheet) sheet.scrollTop = 0;
+  if (body) requestAnimationFrame(() => {
+    body.style.transition = "opacity .2s ease-out, transform .2s cubic-bezier(.22,.61,.36,1)";
+    body.style.opacity = "1";
+    body.style.transform = "";
+  });
   return true;
 }
 
@@ -971,10 +999,10 @@ document.addEventListener("keydown", (e) => {
     dragging = false;
     if (axis === "x") {
       const dir = dx > 0 ? -1 : 1;               // drag right → previous wine
-      const stepped = Math.abs(dx) > 70 && stepDetail(dir);
-      sheet.style.transition = "transform .22s cubic-bezier(.22,.61,.36,1)";
-      sheet.style.transform = "";
-      if (!stepped) return;
+      if (!(Math.abs(dx) > 70 && stepDetail(dir))) {
+        sheet.style.transition = "transform .22s cubic-bezier(.22,.61,.36,1)";
+        sheet.style.transform = "";
+      }
       return;
     }
     if (allowed() && Math.abs(dy) > 110) {
@@ -999,8 +1027,19 @@ document.addEventListener("keydown", (e) => {
       sheet.style.transform = "";
     }
   }
-  sheet.addEventListener("touchend", end);
-  sheet.addEventListener("touchcancel", end);
+  /* On window, not on the sheet: a swipe often ends with the finger past the
+     sheet's edge, and a touchend the sheet never hears used to leave it stuck
+     mid-drag — with the ✕ dragged off with it, so nothing could be tapped. */
+  window.addEventListener("touchend", end);
+  window.addEventListener("touchcancel", end);
+  /* Belt and braces: whatever happened, an open sheet is never left displaced. */
+  window.addEventListener("blur", () => { if (!dragging) return; dragging = false; resetSheet(); });
+  function resetSheet() {
+    sheet.style.transition = "";
+    sheet.style.transform = "";
+    const b = $("modal-backdrop");
+    if (b) { b.style.transition = ""; b.style.opacity = ""; }
+  }
 })();
 $("home-logo").addEventListener("click", showStart);
 $("story-enter").addEventListener("click", showApp);
