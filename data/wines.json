@@ -388,7 +388,8 @@
            "sushi"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "off_dry"
          }
         },
         {
@@ -413,7 +414,8 @@
            "spicy"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "note": {
           "hr": "Hladniji obronci Saara, napetija berba — rizling koji treba živac, i ima ga.",
@@ -449,7 +451,8 @@
            "prosciutto"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          }
         },
         {
@@ -511,7 +514,8 @@
            "white_fish"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": "La Grande Vallée"
         },
@@ -537,7 +541,8 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          },
          "terroir": ""
         },
@@ -563,7 +568,8 @@
            "salads"
           ],
           "temp": "10–12",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          }
         }
        ]
@@ -4193,7 +4199,8 @@
            "white_meat"
           ],
           "temp": "12–14",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "dry"
          }
         }
        ]
@@ -10207,7 +10214,10 @@
           "body": "medium",
           "aromas": [
            "cherry",
+           "strawberry",
            "raspberry",
+           "toasted_coffee",
+           "chocolate",
            "forest_floor",
            "spice"
           ],
@@ -10217,10 +10227,20 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": "",
+          "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Medana Breg"
+         "terroir": "Medana Breg",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "94"
+          },
+          {
+           "critic": "Vinous",
+           "score": "92"
+          }
+         ]
         }
        ]
       },
@@ -10937,7 +10957,8 @@
            "cheese_blue"
           ],
           "temp": "8–10",
-          "alcohol": "8"
+          "alcohol": "8",
+          "sweetness": "sweet"
          },
          "terroir": "Wehlen",
          "ratings": [
@@ -10973,7 +10994,8 @@
            "cheese_blue"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Winningen"
         },
@@ -11004,7 +11026,8 @@
            "cheese_blue"
           ],
           "temp": "8–10",
-          "alcohol": "8"
+          "alcohol": "8",
+          "sweetness": "sweet"
          },
          "terroir": "Westhofen",
          "tags": [
@@ -11033,7 +11056,8 @@
            "cheese_blue"
           ],
           "temp": "8–10",
-          "alcohol": ""
+          "alcohol": "",
+          "sweetness": "sweet"
          },
          "terroir": "Saarburger Rausch",
          "tags": [
@@ -11078,7 +11102,8 @@
            "cheese_blue"
           ],
           "temp": "14–16",
-          "alcohol": "15.5"
+          "alcohol": "15.5",
+          "sweetness": "sweet"
          },
          "terroir": "Valpolicella",
          "ratings": [
@@ -11121,7 +11146,8 @@
            "gingerbread"
           ],
           "temp": "14–16",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "sweet"
          },
          "terroir": "Valpolicella",
          "tags": [
@@ -11150,7 +11176,8 @@
            "cheese_blue"
           ],
           "temp": "10–12",
-          "alcohol": "14.2"
+          "alcohol": "14.2",
+          "sweetness": "sweet"
          },
          "terroir": "Pantelleria",
          "ratings": [
@@ -11182,7 +11209,8 @@
            "cheese_blue"
           ],
           "temp": "14–16",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "sweet"
          },
          "ratings": [
           {
@@ -11222,7 +11250,8 @@
            "cheese_blue"
           ],
           "temp": "10–12",
-          "alcohol": "14"
+          "alcohol": "14",
+          "sweetness": "sweet"
          },
          "ratings": [
           {
@@ -11281,7 +11310,8 @@
            "cheese_blue"
           ],
           "temp": "10–12",
-          "alcohol": "13.9"
+          "alcohol": "13.9",
+          "sweetness": "sweet"
          },
          "ratings": [
           {
