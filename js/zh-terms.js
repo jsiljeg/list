@@ -72,7 +72,6 @@
     "Lasina": "拉西纳",
     "Plavina": "普拉维娜",
     "Muškat bijeli": "白麝香",
-    "Tempranillo (Tinta Fina)": "添帕尼罗（Tinta Fina）",
     "Tribidrag (Zinfandel)": "特里比德拉格（Zinfandel）",
     "Zinfandel": "仙粉黛",
     "Cabernet": "赤霞珠",
@@ -376,7 +375,6 @@
     "Autohtone dalmatinske sorte (prošek)": 1,
     "Dalmatinske autohtone sorte": 1,
     "Španjolske sorte": 1,
-    "Tempranillo (Tinta Fina)": 1,
     "Tribidrag (Zinfandel)": 1
   };
 

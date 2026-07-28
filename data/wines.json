@@ -793,7 +793,7 @@
          "producer": "Casa Rojo",
          "price": 10,
          "insight": {
-          "grape": "Tempranillo (Tinta Fina)",
+          "grape": "Tempranillo",
           "region": "Castrillo de la Vega, Ribera del Duero, Castilla y León",
           "country": "ES",
           "style": "red_medium",
@@ -10542,7 +10542,7 @@
          "producer": "Casa Rojo",
          "price": 68,
          "insight": {
-          "grape": "Tempranillo (Tinta Fina)",
+          "grape": "Tempranillo",
           "region": "Castrillo de la Vega, Ribera del Duero, Castilla y León",
           "country": "ES",
           "style": "red_medium",
