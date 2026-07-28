@@ -243,7 +243,7 @@
            "prosciutto"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "13",
           "sweetness": "dry"
          },
          "terroir": "Motovun"
@@ -253,7 +253,7 @@
          "producer": "Meneghetti",
          "price": 10,
          "insight": {
-          "grape": "Chardonnay, Pinot Blanc",
+          "grape": "Chardonnay 60%, Pinot Blanc 40%",
           "region": "Hrvatska Istra",
           "country": "HR",
           "style": "white_rich",
@@ -306,7 +306,7 @@
          "producer": "Miloš",
          "price": 15,
          "insight": {
-          "grape": "Pošip",
+          "grape": "Rukatac",
           "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
@@ -520,7 +520,7 @@
          "terroir": "La Grande Vallée"
         },
         {
-         "name": "Bourgogne 2023",
+         "name": "Bourgogne Chardonnay 2023",
          "producer": "Philippe Chavy",
          "price": 14,
          "insight": {
@@ -541,10 +541,16 @@
            "cheese_hard"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Jasper Morris",
+           "score": "89"
+          }
+         ]
         },
         {
          "name": "Pinot Grigio 2023",
@@ -877,11 +883,11 @@
          "terroir": "Dingač, Pelješac"
         },
         {
-         "name": "Red 2019",
+         "name": "Red 2020",
          "producer": "Meneghetti",
          "price": 15,
          "insight": {
-          "grape": "Merlot, Cabernet Sauvignon",
+          "grape": "Merlot 80%, Cabernet Sauvignon 15%, Cabernet Franc 5%",
           "region": "Hrvatska Istra",
           "country": "HR",
           "style": "red_full",
@@ -898,10 +904,10 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Bale",
+         "terroir": "Stancija Meneghetti, Bale",
          "recommended": true,
          "note": {
           "hr": "Istarski odgovor Bordeauxu — gusto, elegantno i dozrelo pod mediteranskim suncem.",
@@ -1408,7 +1414,7 @@
           ],
           "temp": "6–8",
           "alcohol": "12.5",
-          "dosage": "Brut Nature"
+          "dosage": "Brut"
          }
         }
        ]
@@ -6764,7 +6770,7 @@
         },
         {
          "name": "Sagul Plavac mali 2022",
-         "producer": "Violić",
+         "producer": "Ivan Violić",
          "price": 49,
          "insight": {
           "grape": "Plavac mali",
