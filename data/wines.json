@@ -803,7 +803,8 @@
            "moss",
            "violet",
            "herbs",
-           "pepper"
+           "pepper",
+           "capsicum"
           ],
           "pairings": [
            "pasta",
@@ -7906,7 +7907,8 @@
            "cherry",
            "plum",
            "violet",
-           "wet_stone"
+           "wet_stone",
+           "capsicum"
           ],
           "pairings": [
            "beef",
@@ -8126,7 +8128,9 @@
            "blackcurrant",
            "cedar",
            "tobacco",
-           "balsamic"
+           "balsamic",
+           "capsicum",
+           "vanilla"
           ],
           "pairings": [
            "beef",
@@ -8188,7 +8192,8 @@
            "licorice",
            "tobacco",
            "tar",
-           "smoke"
+           "smoke",
+           "vanilla"
           ],
           "pairings": [
            "game",
@@ -8295,12 +8300,12 @@
            "kirsch",
            "rose",
            "rose_hip",
-           "cinnamon",
            "mint",
            "tobacco",
            "tar",
            "licorice",
-           "forest_floor"
+           "forest_floor",
+           "smoke"
           ],
           "pairings": [
            "game",
@@ -8507,7 +8512,6 @@
           "body": "full",
           "aromas": [
            "sour_cherry",
-           "dark_cherry",
            "plum",
            "blackberry",
            "blood_orange",
@@ -8515,7 +8519,8 @@
            "leather",
            "smoke",
            "pine_resin",
-           "balsamic"
+           "balsamic",
+           "vanilla"
           ],
           "pairings": [
            "beef",
@@ -8689,7 +8694,9 @@
            "sour_cherry",
            "violet",
            "tobacco",
-           "spice"
+           "spice",
+           "tomato_leaf",
+           "smoke"
           ],
           "pairings": [
            "beef",
@@ -8918,7 +8925,8 @@
            "sour_cherry",
            "violet",
            "earth",
-           "spice"
+           "spice",
+           "tomato_leaf"
           ],
           "pairings": [
            "pasta",
@@ -8944,7 +8952,8 @@
            "sour_cherry",
            "violet",
            "earth",
-           "spice"
+           "spice",
+           "tomato_leaf"
           ],
           "pairings": [
            "pasta",
@@ -9037,10 +9046,10 @@
            "dried_mint",
            "blue_flower",
            "blood_orange",
-           "earth",
            "mushroom",
            "spice",
-           "cedar"
+           "cedar",
+           "vanilla"
           ],
           "pairings": [
            "steak",
@@ -9091,13 +9100,13 @@
            "dark_cherry",
            "blackberry",
            "raspberry",
-           "dark_berries",
            "lavender",
            "dark_chocolate",
            "mocha",
            "graphite",
            "spice",
-           "cedar"
+           "cedar",
+           "vanilla"
           ],
           "pairings": [
            "steak",
@@ -9146,8 +9155,8 @@
            "pomegranate",
            "fig_cake",
            "cocoa",
-           "clove",
-           "balsamic"
+           "balsamic",
+           "vanilla"
           ],
           "pairings": [
            "beef",
@@ -9199,12 +9208,12 @@
            "dates",
            "bitter_orange",
            "tar",
-           "cinnamon",
            "chestnut",
            "black_tea",
            "licorice",
            "toasted_coffee",
-           "balsamic"
+           "balsamic",
+           "vanilla"
           ],
           "pairings": [
            "game",
@@ -9422,7 +9431,8 @@
            "sour_cherry",
            "violet",
            "earth",
-           "spice"
+           "spice",
+           "tomato_leaf"
           ],
           "pairings": [
            "pasta",
@@ -9465,7 +9475,8 @@
            "moss",
            "violet",
            "herbs",
-           "pepper"
+           "pepper",
+           "capsicum"
           ],
           "pairings": [
            "pasta",
@@ -9546,7 +9557,6 @@
           "aromas": [
            "dried_fruit",
            "sour_cherry",
-           "herbaceous",
            "spice",
            "coffee",
            "earth",
@@ -9635,10 +9645,10 @@
            "rose",
            "violet",
            "blood_orange",
-           "mint",
            "black_tea",
            "wet_stone",
-           "balsamic"
+           "hibiscus",
+           "smoke"
           ],
           "pairings": [
            "game",
@@ -9759,9 +9769,9 @@
            "anise",
            "dark_chocolate",
            "graphite",
-           "mint",
            "balsamic",
-           "saline"
+           "saline",
+           "vanilla"
           ],
           "pairings": [
            "steak",
@@ -9882,10 +9892,10 @@
            "plum",
            "violet",
            "sage",
-           "mint",
            "graphite",
            "incense",
-           "toasted_coffee"
+           "toasted_coffee",
+           "vanilla"
           ],
           "pairings": [
            "steak",
@@ -9939,11 +9949,11 @@
            "rose",
            "blood_orange",
            "sage",
-           "mint",
            "licorice",
            "leather",
            "graphite",
-           "saline"
+           "saline",
+           "smoke"
           ],
           "pairings": [
            "beef",
@@ -10006,9 +10016,9 @@
            "violet",
            "geranium",
            "lavender",
-           "herbaceous",
            "licorice",
-           "flint"
+           "flint",
+           "smoke"
           ],
           "pairings": [
            "beef",

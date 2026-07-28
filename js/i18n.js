@@ -96,7 +96,8 @@ hr: {
   sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
-    herbaceous: "zelene note",
+    tomato_leaf: "list rajčice", asparagus: "šparoge",
+   
     hay: "sijeno", hibiscus: "hibiskus", fennel: "komorač", bread: "svježe pečeni kruh",
     crushed_stone: "drobljeni kamen", gravel: "šljunak", sage: "kadulja", incense: "tamjan", rosemary: "ružmarin", lilac: "jorgovan", myrtle: "mirta", geranium: "geranija",
     moss: "mahovina", cigar_box: "kutija cigara", cardamom: "kardamom",
@@ -110,7 +111,7 @@ hr: {
     herbs: "mediteransko bilje", honey: "med", leather: "koža", licorice: "sladić",
     lime: "limeta", lime_blossom: "cvijet lipe", jasmine: "jasmin", bergamot: "bergamot", wet_stone: "mokri kamen", mint: "metvica", orange_peel: "narančina kora",
     peach: "breskva", pear: "kruška", pepper: "papar", pink_pepper: "ružičasti papar", oriental_spices: "orijentalni začini", petrol: "petrolej",
-    capsicum: "paprika",
+    capsicum: "zelena paprika",
     plum: "šljiva", quince: "dunja", raisin: "grožđice", raspberry: "malina",
     red_apple: "crvena jabuka", red_currant: "crveni ribiz", rose: "ruža", saline: "slanost", nutty: "orašasti tonovi", papaya: "papaja", candied_orange: "kandirana narančina kora", meadow_herbs: "livadne trave", melon: "dinja", mediterranean_herbs: "mediteransko bilje", pineapple: "ananas", acacia: "cvijet bagrema", biscuit: "biskvit", oak: "note drveta", greengage: "ringlo", blossom_honey: "cvjetni med", lemon: "limun", oyster_juice: "sok kamenica", lemon_oil: "ulje limuna", spring_flowers: "proljetno cvijeće", tart_orange: "kisela naranča", anise: "anis", citrus_peel: "kora citrusa", beeswax: "pčelinji vosak", apple: "jabuka", white_nectarine: "bijela nektarina", nashi_pear: "nashi kruška", hawthorn: "glog", chalk: "kreda", white_peach: "bijela breskva", white_fruit: "bijelo voće", orchard_fruit: "voće iz voćnjaka", mandarin: "mandarina", lemongrass: "limunska trava", white_pepper: "bijeli papar", nectarine: "nektarina", pomelo: "pomelo", passion_fruit: "marakuja", creamy: "kremasto", lime_zest: "korica limete", tangerine: "mandarinka", floral: "cvjetno", yellow_pear: "žuta kruška", stone_fruit: "koštuničavo voće", orange: "naranča", acetaldehyde: "acetaldehid (jerez ton)", curry: "curry", orange_oil: "ulje naranče", nutmeg: "muškatni oraščić", iodine: "jod", botrytis: "plemenita plijesan", thyme: "timijan", lemon_leaves: "listovi limuna", peonies: "božuri", green_melon: "zelena dinja", chamomile: "kamilica", white_stone_fruit: "bijelo koštuničavo voće", pine_nut: "pinjol", bay_leaf: "lovorov list", hazelnut_skin: "kožica lješnjaka", lemon_zest: "korica limuna", verbena: "verbena", tarragon: "estragon", lemon_verbena: "limunska verbena", golden_melon: "žuta dinja", nettle: "kopriva", honeydew_melon: "medena dinja", prune: "suha šljiva", damson: "džanarika", dried_cherry: "suha višnja",
     smoke: "dim", sour_cherry: "višnja", spice: "začini", strawberry: "jagoda",
@@ -214,7 +215,8 @@ en: {
   sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
-    herbaceous: "herbaceous",
+    tomato_leaf: "tomato leaf", asparagus: "asparagus",
+   
     hay: "hay", hibiscus: "hibiscus", fennel: "fennel seed", bread: "freshly baked bread",
     crushed_stone: "crushed stone", gravel: "gravel", sage: "sage", incense: "incense", rosemary: "rosemary", lilac: "lilac", myrtle: "myrtle", geranium: "geranium",
     moss: "moss", cigar_box: "cigar box", cardamom: "cardamom",
@@ -228,7 +230,7 @@ en: {
     herbs: "Mediterranean herbs", honey: "honey", leather: "leather", licorice: "licorice",
     lime: "lime", lime_blossom: "lime blossom", jasmine: "jasmine", bergamot: "bergamot", wet_stone: "wet stone", mint: "mint", orange_peel: "orange peel",
     peach: "peach", pear: "pear", pepper: "pepper", pink_pepper: "pink pepper", oriental_spices: "oriental spices", petrol: "petrol",
-    "capsicum": "capsicum",
+    "capsicum": "green bell pepper",
     plum: "plum", quince: "quince", raisin: "raisins", raspberry: "raspberry",
     red_apple: "red apple", red_currant: "redcurrant", rose: "rose", saline: "salinity", nutty: "nutty", papaya: "papaya", candied_orange: "candied orange zest", meadow_herbs: "meadow herbs", melon: "melon", mediterranean_herbs: "Mediterranean herbs", pineapple: "pineapple", acacia: "acacia blossom", biscuit: "biscuit", oak: "oak", greengage: "greengage plum", blossom_honey: "blossom honey", lemon: "lemon", oyster_juice: "oyster juice", lemon_oil: "lemon oil", spring_flowers: "spring flowers", tart_orange: "tart orange", anise: "anise", citrus_peel: "citrus peel", beeswax: "beeswax", apple: "apple", white_nectarine: "white nectarine", nashi_pear: "nashi pear", hawthorn: "hawthorn", chalk: "chalk", white_peach: "white peach", white_fruit: "white fruit", orchard_fruit: "orchard fruit", mandarin: "mandarin", lemongrass: "lemongrass", white_pepper: "white pepper", nectarine: "nectarine", pomelo: "pomelo", passion_fruit: "passion fruit", creamy: "creamy", lime_zest: "lime zest", tangerine: "tangerine", floral: "floral", yellow_pear: "yellow pear", stone_fruit: "stone fruit", orange: "orange", acetaldehyde: "acetaldehyde (sherry-like)", curry: "curry", orange_oil: "orange oil", nutmeg: "nutmeg", iodine: "iodine", botrytis: "botrytis (noble rot)", thyme: "thyme", lemon_leaves: "lemon leaves", peonies: "peonies", green_melon: "green melon", chamomile: "chamomile", white_stone_fruit: "white stone fruit", pine_nut: "pine nut", bay_leaf: "bay leaf", hazelnut_skin: "hazelnut skin", lemon_zest: "lemon zest", verbena: "verbena", tarragon: "tarragon", lemon_verbena: "lemon verbena", golden_melon: "golden melon", nettle: "nettle", honeydew_melon: "honeydew melon", prune: "prune", damson: "damson plum", dried_cherry: "dried cherry",
     smoke: "smoke", sour_cherry: "sour cherry", spice: "spice", strawberry: "strawberry",
@@ -332,7 +334,8 @@ it: {
   sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
-    herbaceous: "note erbacee",
+    tomato_leaf: "foglia di pomodoro", asparagus: "asparago",
+   
     hay: "fieno", hibiscus: "ibisco", fennel: "semi di finocchio", bread: "pane appena sfornato",
     crushed_stone: "pietra frantumata", gravel: "ghiaia", sage: "salvia", incense: "incenso", rosemary: "rosmarino", lilac: "lillà", myrtle: "mirto", geranium: "geranio",
     moss: "muschio", cigar_box: "scatola di sigari", cardamom: "cardamomo",
@@ -346,7 +349,7 @@ it: {
     herbs: "erbe mediterranee", honey: "miele", leather: "cuoio", licorice: "liquirizia",
     lime: "lime", lime_blossom: "fiori di tiglio", jasmine: "gelsomino", bergamot: "bergamotto", wet_stone: "pietra bagnata", mint: "menta", orange_peel: "scorza d'arancia",
     peach: "pesca", pear: "pera", pepper: "pepe", pink_pepper: "pepe rosa", oriental_spices: "spezie orientali", petrol: "idrocarburi",
-    capsicum: "peperone",
+    capsicum: "peperone verde",
     plum: "prugna", quince: "mela cotogna", raisin: "uva passa", raspberry: "lampone",
     red_apple: "mela rossa", red_currant: "ribes rosso", rose: "rosa", saline: "salinità", nutty: "sentori di frutta secca", papaya: "papaya", candied_orange: "scorza d'arancia candita", meadow_herbs: "erbe di prato", melon: "melone", mediterranean_herbs: "erbe mediterranee", pineapple: "ananas", acacia: "fiori d'acacia", biscuit: "biscotto", oak: "legno", greengage: "susina Regina Claudia", blossom_honey: "miele di fiori", lemon: "limone", oyster_juice: "acqua di ostrica", lemon_oil: "olio di limone", spring_flowers: "fiori primaverili", tart_orange: "arancia acidula", anise: "anice", citrus_peel: "scorza di agrumi", beeswax: "cera d'api", apple: "mela", white_nectarine: "nettarina bianca", nashi_pear: "pera nashi", hawthorn: "biancospino", chalk: "gesso", white_peach: "pesca bianca", white_fruit: "frutta bianca", orchard_fruit: "frutta da frutteto", mandarin: "mandarino", lemongrass: "citronella", white_pepper: "pepe bianco", nectarine: "nettarina", pomelo: "pomelo", passion_fruit: "frutto della passione", creamy: "cremoso", lime_zest: "scorza di lime", tangerine: "mandarino", floral: "floreale", yellow_pear: "pera gialla", stone_fruit: "frutta a nocciolo", orange: "arancia", acetaldehyde: "acetaldeide (nota ossidativa)", curry: "curry", orange_oil: "olio d'arancia", nutmeg: "noce moscata", iodine: "iodio", botrytis: "botrytis (muffa nobile)", thyme: "timo", lemon_leaves: "foglie di limone", peonies: "peonie", green_melon: "melone verde", chamomile: "camomilla", white_stone_fruit: "frutta a nocciolo bianca", pine_nut: "pinolo", bay_leaf: "foglia di alloro", hazelnut_skin: "pellicina di nocciola", lemon_zest: "scorza di limone", verbena: "verbena", tarragon: "dragoncello", lemon_verbena: "erba limoncina", golden_melon: "melone dorato", nettle: "ortica", honeydew_melon: "melone bianco", prune: "prugna secca", damson: "prugna damaschina", dried_cherry: "ciliegia essiccata",
     smoke: "fumo", sour_cherry: "amarena", spice: "spezie", strawberry: "fragola",
@@ -450,7 +453,8 @@ fr: {
   sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
-    herbaceous: "notes herbacées",
+    tomato_leaf: "feuille de tomate", asparagus: "asperge",
+   
     hay: "foin", hibiscus: "hibiscus", fennel: "graines de fenouil", bread: "pain frais",
     crushed_stone: "pierre concassée", gravel: "graves", sage: "sauge", incense: "encens", rosemary: "romarin", lilac: "lilas", myrtle: "myrte", geranium: "géranium",
     moss: "mousse", cigar_box: "boîte à cigares", cardamom: "cardamome",
@@ -464,7 +468,7 @@ fr: {
     herbs: "herbes méditerranéennes", honey: "miel", leather: "cuir", licorice: "réglisse",
     lime: "citron vert", lime_blossom: "fleur de tilleul", jasmine: "jasmin", bergamot: "bergamote", wet_stone: "pierre mouillée", mint: "menthe", orange_peel: "écorce d'orange",
     peach: "pêche", pear: "poire", pepper: "poivre", pink_pepper: "poivre rose", oriental_spices: "épices orientales", petrol: "notes pétrolées",
-    capsicum: "poivron",
+    capsicum: "poivron vert",
     plum: "prune", quince: "coing", raisin: "raisins secs", raspberry: "framboise",
     red_apple: "pomme rouge", red_currant: "groseille", rose: "rose", saline: "salinité", nutty: "notes de fruits secs", papaya: "papaye", candied_orange: "écorce d'orange confite", meadow_herbs: "herbes des prés", melon: "melon", mediterranean_herbs: "herbes méditerranéennes", pineapple: "ananas", acacia: "fleur d'acacia", biscuit: "biscuit", oak: "boisé", greengage: "reine-claude", blossom_honey: "miel de fleurs", lemon: "citron", oyster_juice: "eau d'huître", lemon_oil: "huile de citron", spring_flowers: "fleurs printanières", tart_orange: "orange acidulée", anise: "anis", citrus_peel: "zeste d'agrumes", beeswax: "cire d'abeille", apple: "pomme", white_nectarine: "nectarine blanche", nashi_pear: "poire nashi", hawthorn: "aubépine", chalk: "craie", white_peach: "pêche blanche", white_fruit: "fruits blancs", orchard_fruit: "fruits du verger", mandarin: "mandarine", lemongrass: "citronnelle", white_pepper: "poivre blanc", nectarine: "nectarine", pomelo: "pomélo", passion_fruit: "fruit de la passion", creamy: "onctueux", lime_zest: "zeste de citron vert", tangerine: "mandarine", floral: "floral", yellow_pear: "poire jaune", stone_fruit: "fruits à noyau", orange: "orange", acetaldehyde: "acétaldéhyde (note oxydative)", curry: "curry", orange_oil: "huile d'orange", nutmeg: "muscade", iodine: "iode", botrytis: "botrytis (pourriture noble)", thyme: "thym", lemon_leaves: "feuilles de citronnier", peonies: "pivoines", green_melon: "melon vert", chamomile: "camomille", white_stone_fruit: "fruits à noyau blancs", pine_nut: "pignon de pin", bay_leaf: "feuille de laurier", hazelnut_skin: "peau de noisette", lemon_zest: "zeste de citron", verbena: "verveine", tarragon: "estragon", lemon_verbena: "verveine citronnée", golden_melon: "melon doré", nettle: "ortie", honeydew_melon: "melon miel", prune: "pruneau", damson: "prune de Damas", dried_cherry: "cerise séchée",
     smoke: "fumé", sour_cherry: "griotte", spice: "épices", strawberry: "fraise",
@@ -568,7 +572,8 @@ de: {
   sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
-    herbaceous: "grüne Kräuternoten",
+    tomato_leaf: "Tomatenblatt", asparagus: "Spargel",
+   
     hay: "Heu", hibiscus: "Hibiskus", fennel: "Fenchelsamen", bread: "frisches Brot",
     crushed_stone: "zerriebener Stein", gravel: "Kies", sage: "Salbei", incense: "Weihrauch", rosemary: "Rosmarin", lilac: "Flieder", myrtle: "Myrte", geranium: "Geranie",
     moss: "Moos", cigar_box: "Zigarrenkiste", cardamom: "Kardamom",
@@ -582,7 +587,7 @@ de: {
     herbs: "mediterrane Kräuter", honey: "Honig", leather: "Leder", licorice: "Lakritz",
     lime: "Limette", lime_blossom: "Lindenblüte", jasmine: "Jasmin", bergamot: "Bergamotte", wet_stone: "nasser Stein", mint: "Minze", orange_peel: "Orangenschale",
     peach: "Pfirsich", pear: "Birne", pepper: "Pfeffer", pink_pepper: "rosa Pfeffer", oriental_spices: "orientalische Gewürze", petrol: "Petrolnote",
-    capsicum: "Paprika",
+    capsicum: "grüne Paprika",
     plum: "Pflaume", quince: "Quitte", raisin: "Rosinen", raspberry: "Himbeere",
     red_apple: "roter Apfel", red_currant: "rote Johannisbeere", rose: "Rose", saline: "Salzigkeit", nutty: "nussige Noten", papaya: "Papaya", candied_orange: "kandierte Orangenschale", meadow_herbs: "Wiesenkräuter", melon: "Melone", mediterranean_herbs: "mediterrane Kräuter", pineapple: "Ananas", acacia: "Akazienblüte", biscuit: "Biskuit", oak: "Holznoten", greengage: "Reneklode", blossom_honey: "Blütenhonig", lemon: "Zitrone", oyster_juice: "Austernwasser", lemon_oil: "Zitronenöl", spring_flowers: "Frühlingsblüten", tart_orange: "herbe Orange", anise: "Anis", citrus_peel: "Zitrusschale", beeswax: "Bienenwachs", apple: "Apfel", white_nectarine: "weiße Nektarine", nashi_pear: "Nashi-Birne", hawthorn: "Weißdorn", chalk: "Kreide", white_peach: "weißer Pfirsich", white_fruit: "weiße Früchte", orchard_fruit: "Gartenobst", mandarin: "Mandarine", lemongrass: "Zitronengras", white_pepper: "weißer Pfeffer", nectarine: "Nektarine", pomelo: "Pomelo", passion_fruit: "Passionsfrucht", creamy: "cremig", lime_zest: "Limettenschale", tangerine: "Mandarine", floral: "blumig", yellow_pear: "gelbe Birne", stone_fruit: "Steinobst", orange: "Orange", acetaldehyde: "Acetaldehyd (Sherry-Note)", curry: "Curry", orange_oil: "Orangenöl", nutmeg: "Muskatnuss", iodine: "Jod", botrytis: "Botrytis (Edelfäule)", thyme: "Thymian", lemon_leaves: "Zitronenblätter", peonies: "Pfingstrosen", green_melon: "grüne Melone", chamomile: "Kamille", white_stone_fruit: "weißes Steinobst", pine_nut: "Pinienkern", bay_leaf: "Lorbeerblatt", hazelnut_skin: "Haselnusshaut", lemon_zest: "Zitronenschale", verbena: "Verbene", tarragon: "Estragon", lemon_verbena: "Zitronenverbene", golden_melon: "goldene Melone", nettle: "Brennnessel", honeydew_melon: "Honigmelone", prune: "Backpflaume", damson: "Damaszenerpflaume", dried_cherry: "getrocknete Kirsche",
     smoke: "Rauch", sour_cherry: "Sauerkirsche", spice: "Gewürze", strawberry: "Erdbeere",
@@ -686,7 +691,8 @@ zh: {
   sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
-    herbaceous: "草本气息",
+    tomato_leaf: "番茄叶", asparagus: "芦笋",
+   
     hay: "干草", hibiscus: "洛神花", fennel: "茴香籽", bread: "新鲜面包",
     crushed_stone: "碎石", gravel: "砾石", sage: "鼠尾草", incense: "熏香", rosemary: "迷迭香", lilac: "紫丁香", myrtle: "香桃木", geranium: "天竺葵",
     moss: "苔藓", cigar_box: "雪茄盒", cardamom: "小豆蔻",
@@ -874,7 +880,8 @@ sl: {
     "drinking_now": "Za piti zdaj"
   },
   "aromas": {
-    "herbaceous": "zelnate note",
+    "tomato_leaf": "paradižnikov list",
+    "asparagus": "šparglji",
     "hay": "seno",
     "hibiscus": "hibiskus",
     "fennel": "koromač",
@@ -975,7 +982,7 @@ sl: {
     "pepper": "poper",
     "pink_pepper": "rožnati poper",
     "oriental_spices": "orientalne začimbe",
-    "capsicum": "paprika",
+    "capsicum": "zelena paprika",
     "petrol": "petrolej",
     "plum": "sliva",
     "quince": "kutina",
@@ -1284,7 +1291,8 @@ es: {
     "drinking_now": "Para beber ahora"
   },
   "aromas": {
-    "herbaceous": "notas herbáceas",
+    "tomato_leaf": "hoja de tomate",
+    "asparagus": "espárrago",
     "hay": "heno",
     "hibiscus": "hibisco",
     "fennel": "semillas de hinojo",
@@ -1385,7 +1393,7 @@ es: {
     "pepper": "pimienta",
     "pink_pepper": "pimienta rosa",
     "oriental_spices": "especias orientales",
-    "capsicum": "pimiento",
+    "capsicum": "pimiento verde",
     "petrol": "petróleo",
     "plum": "ciruela",
     "quince": "membrillo",
