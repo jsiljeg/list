@@ -270,7 +270,7 @@
            "white_meat"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "13",
           "sweetness": "dry"
          },
          "terroir": "Bale"
@@ -302,7 +302,7 @@
          "terroir": "Štrigova"
         },
         {
-         "name": "Stalagmit 2021",
+         "name": "Stalagmit 2022",
          "producer": "Miloš",
          "price": 15,
          "insight": {
@@ -323,7 +323,7 @@
            "grilled_fish"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "13.5",
           "sweetness": "dry"
          },
          "terroir": "Pelješac",
