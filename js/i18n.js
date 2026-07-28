@@ -96,6 +96,7 @@ hr: {
   sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
+    herbaceous: "zelene note",
     hay: "sijeno", hibiscus: "hibiskus", fennel: "komorač", bread: "svježe pečeni kruh",
     crushed_stone: "drobljeni kamen", gravel: "šljunak", sage: "kadulja", incense: "tamjan", rosemary: "ružmarin", lilac: "jorgovan", myrtle: "mirta", geranium: "geranija",
     moss: "mahovina", cigar_box: "kutija cigara", cardamom: "kardamom",
@@ -213,6 +214,7 @@ en: {
   sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
+    herbaceous: "herbaceous",
     hay: "hay", hibiscus: "hibiscus", fennel: "fennel seed", bread: "freshly baked bread",
     crushed_stone: "crushed stone", gravel: "gravel", sage: "sage", incense: "incense", rosemary: "rosemary", lilac: "lilac", myrtle: "myrtle", geranium: "geranium",
     moss: "moss", cigar_box: "cigar box", cardamom: "cardamom",
@@ -330,6 +332,7 @@ it: {
   sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
+    herbaceous: "note erbacee",
     hay: "fieno", hibiscus: "ibisco", fennel: "semi di finocchio", bread: "pane appena sfornato",
     crushed_stone: "pietra frantumata", gravel: "ghiaia", sage: "salvia", incense: "incenso", rosemary: "rosmarino", lilac: "lillà", myrtle: "mirto", geranium: "geranio",
     moss: "muschio", cigar_box: "scatola di sigari", cardamom: "cardamomo",
@@ -447,6 +450,7 @@ fr: {
   sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
+    herbaceous: "notes herbacées",
     hay: "foin", hibiscus: "hibiscus", fennel: "graines de fenouil", bread: "pain frais",
     crushed_stone: "pierre concassée", gravel: "graves", sage: "sauge", incense: "encens", rosemary: "romarin", lilac: "lilas", myrtle: "myrte", geranium: "géranium",
     moss: "mousse", cigar_box: "boîte à cigares", cardamom: "cardamome",
@@ -564,6 +568,7 @@ de: {
   sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
+    herbaceous: "grüne Kräuternoten",
     hay: "Heu", hibiscus: "Hibiskus", fennel: "Fenchelsamen", bread: "frisches Brot",
     crushed_stone: "zerriebener Stein", gravel: "Kies", sage: "Salbei", incense: "Weihrauch", rosemary: "Rosmarin", lilac: "Flieder", myrtle: "Myrte", geranium: "Geranie",
     moss: "Moos", cigar_box: "Zigarrenkiste", cardamom: "Kardamom",
@@ -681,6 +686,7 @@ zh: {
   sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
+    herbaceous: "草本气息",
     hay: "干草", hibiscus: "洛神花", fennel: "茴香籽", bread: "新鲜面包",
     crushed_stone: "碎石", gravel: "砾石", sage: "鼠尾草", incense: "熏香", rosemary: "迷迭香", lilac: "紫丁香", myrtle: "香桃木", geranium: "天竺葵",
     moss: "苔藓", cigar_box: "雪茄盒", cardamom: "小豆蔻",
@@ -868,6 +874,7 @@ sl: {
     "drinking_now": "Za piti zdaj"
   },
   "aromas": {
+    "herbaceous": "zelnate note",
     "hay": "seno",
     "hibiscus": "hibiskus",
     "fennel": "koromač",
@@ -1277,6 +1284,7 @@ es: {
     "drinking_now": "Para beber ahora"
   },
   "aromas": {
+    "herbaceous": "notas herbáceas",
     "hay": "heno",
     "hibiscus": "hibisco",
     "fennel": "semillas de hinojo",
