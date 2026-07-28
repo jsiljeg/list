@@ -9026,7 +9026,13 @@
           "body": "full",
           "aromas": [
            "cherry",
+           "cherry_stone",
            "blackberry",
+           "dried_mint",
+           "blue_flower",
+           "blood_orange",
+           "earth",
+           "mushroom",
            "spice",
            "cedar"
           ],
@@ -9036,16 +9042,24 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14"
          },
          "terroir": "Tenuta Tignanello",
          "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "96"
+          },
           {
            "critic": "Wine Spectator",
            "score": "96"
           },
           {
            "critic": "James Suckling",
+           "score": "95"
+          },
+          {
+           "critic": "Wine Enthusiast",
            "score": "95"
           },
           {
@@ -9068,8 +9082,14 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
-           "cherry",
+           "dark_cherry",
            "blackberry",
+           "raspberry",
+           "dark_berries",
+           "lavender",
+           "dark_chocolate",
+           "mocha",
+           "graphite",
            "spice",
            "cedar"
           ],
@@ -9079,9 +9099,27 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "13.5"
+          "alcohol": "14"
          },
-         "terroir": "Tenuta Tignanello"
+         "terroir": "Tenuta Tignanello",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Valpolicella D.O.C. Superiore 2015",
@@ -9094,9 +9132,23 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
+           "dark_cherry",
+           "plum",
+           "blackcurrant",
+           "creme_de_cassis",
            "blackberry",
            "dried_fruit",
+           "dates",
+           "prune",
+           "fig_cake",
+           "pomegranate",
+           "cocoa",
            "chocolate",
+           "brown_spices",
+           "clove",
+           "medicinal_herbs",
+           "balsamic",
+           "smoke",
            "spice"
           ],
           "pairings": [
@@ -9105,11 +9157,33 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "15"
          },
          "terroir": "Monte Lodoletta",
          "tags": [
           "drinking_now"
+         ],
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "94+"
+          },
+          {
+           "critic": "Vinous",
+           "score": "94"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "94"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17/20"
+          }
          ]
         },
         {
@@ -9123,9 +9197,19 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
+           "prune",
+           "dates",
            "dried_fruit",
+           "bitter_orange",
+           "tar",
+           "balsamic",
+           "herbs",
+           "cinnamon",
+           "chestnut",
+           "black_tea",
+           "licorice",
+           "toasted_coffee",
            "chocolate",
-           "coffee",
            "spice"
           ],
           "pairings": [
@@ -9149,6 +9233,10 @@
           {
            "critic": "Robert Parker",
            "score": "97"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
           }
          ],
          "tags": [
@@ -9162,14 +9250,16 @@
          "producer": "Ca' La Bionda",
          "price": 130,
          "insight": {
-          "grape": "Corvina, Corvinone, Rondinella",
+          "grape": "Corvina 70%, Corvinone 20%, Rondinella, Molinara 10%",
           "region": "Marano di Valpolicella, Valpolicella Classica, Veneto",
           "country": "IT",
           "style": "red_full",
           "body": "full",
           "aromas": [
-           "dried_fruit",
            "cherry",
+           "dried_fruit",
+           "pepper",
+           "tobacco",
            "chocolate",
            "balsamic"
           ],
@@ -9184,6 +9274,12 @@
          "terroir": "Ravazzòl",
          "tags": [
           "drinking_now"
+         ],
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "92"
+          }
          ]
         },
         {
@@ -9191,14 +9287,19 @@
          "producer": "Giuseppe Quintarelli",
          "price": 757,
          "insight": {
-          "grape": "Corvina, Rondinella, Cabernet, Nebbiolo",
+          "grape": "Corvina 55%, Rondinella 25%, Cabernet Sauvignon 15%, Nebbiolo, Croatina, Sangiovese 5%",
           "region": "Negrar, Valpolicella Classica, Veneto",
           "country": "IT",
           "style": "red_full",
           "body": "full",
           "aromas": [
+           "brandied_cherry",
+           "plum",
            "dried_fruit",
            "fig",
+           "sweet_cigar",
+           "licorice",
+           "spice",
            "chocolate",
            "balsamic"
           ],
@@ -9224,6 +9325,12 @@
          "tags": [
           "rare",
           "drinking_now"
+         ],
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "96"
+          }
          ]
         },
         {
@@ -9231,14 +9338,20 @@
          "producer": "Giuseppe Quintarelli",
          "price": 260,
          "insight": {
-          "grape": "Corvina, Rondinella, Cabernet, Nebbiolo",
+          "grape": "Corvina 55%, Rondinella 30%, Cabernet Sauvignon 15%",
           "region": "Negrar, Valpolicella Classica, Veneto",
           "country": "IT",
           "style": "red_full",
           "body": "full",
           "aromas": [
            "cherry",
+           "plum",
+           "raisin",
            "dried_fruit",
+           "chocolate",
+           "cinnamon",
+           "cedar",
+           "nutmeg",
            "spice",
            "balsamic"
           ],
@@ -9248,7 +9361,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "15"
          },
          "terroir": "",
          "tags": [

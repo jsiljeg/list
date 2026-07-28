@@ -37,6 +37,7 @@
     "Malvasia": "玛尔维萨",
     "Mazuelo": "马苏埃洛",
     "Merlot": "美乐",
+    "Molinara": "莫利纳拉",
     "Muscat": "麝香",
     "Oseleta": "奥赛莱塔",
     "Petit Verdot": "小维铎",
