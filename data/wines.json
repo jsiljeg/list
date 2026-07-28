@@ -10779,7 +10779,7 @@
          "producer": "Tanbark Hill (Philip Togni)",
          "price": 150,
          "insight": {
-          "grape": "Cabernet Sauvignon 82%, Merlot 15%, Cabernet Franc 2%, Petit Verdot 1%",
+          "grape": "Cabernet Sauvignon, Merlot, Cabernet Franc, Petit Verdot",
           "region": "Spring Mountain District, Napa Valley, California",
           "country": "US",
           "style": "red_full",
@@ -10812,7 +10812,7 @@
          "producer": "Philip Togni",
          "price": 280,
          "insight": {
-          "grape": "Cabernet Sauvignon 82%, Merlot 15%, Cabernet Franc 2%, Petit Verdot 1%",
+          "grape": "Cabernet Sauvignon, Merlot, Cabernet Franc, Petit Verdot",
           "region": "Spring Mountain District, Napa Valley, California",
           "country": "US",
           "style": "red_full",
@@ -10860,9 +10860,15 @@
           "body": "medium",
           "aromas": [
            "cherry",
+           "strawberry",
            "raspberry",
-           "spice",
-           "earth"
+           "blood_orange",
+           "lavender",
+           "clove",
+           "licorice",
+           "vanilla",
+           "earth",
+           "spice"
           ],
           "pairings": [
            "poultry",
@@ -10873,14 +10879,28 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "94"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "93"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "91"
+          }
+         ]
         },
         {
          "name": "Geyserville 2021",
          "producer": "Ridge",
          "price": 140,
          "insight": {
-          "grape": "Zinfandel 76%, Carignane 16%, Petite Sirah 6%, Alicante Bouschet 2%",
+          "grape": "Zinfandel 76%, Carignan 16%, Petite Sirah 6%, Alicante Bouschet 2%",
           "region": "Alexander Valley, Sonoma County, California",
           "country": "US",
           "style": "red_full",
@@ -10888,6 +10908,7 @@
           "aromas": [
            "blackberry",
            "plum",
+           "dried_fruit",
            "spice",
            "vanilla"
           ],
@@ -10900,7 +10921,21 @@
           "alcohol": "14.8",
           "sweetness": "dry"
          },
-         "terroir": "Geyserville"
+         "terroir": "Geyserville",
+         "ratings": [
+          {
+           "critic": "Wine Enthusiast",
+           "score": "94"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "93"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "16.5/20"
+          }
+         ]
         },
         {
          "name": "Cabernet Sauvignon 2018",

@@ -18,7 +18,7 @@
     "Cabernet Franc": "品丽珠",
     "Cabernet Sauvignon": "赤霞珠",
     "Canaiolo": "卡内奥罗",
-    "Carignane": "佳丽酿",
+    "Carignan": "佳丽酿",
     "Carricante": "卡利坎特",
     "Chardonnay": "霞多丽",
     "Chenin Blanc": "白诗南",
