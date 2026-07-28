@@ -96,6 +96,7 @@ hr: {
   sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
+    moss: "mahovina", cigar_box: "kutija cigara", cardamom: "kardamom", herbaceous: "zeljaste note",
     dried_mint: "suha metvica", blue_flower: "plavo cvijeće", mushroom: "gljive", cherry_stone: "koštica trešnje", lavender: "lavanda", dark_chocolate: "tamna čokolada", mocha: "mocha", brown_spices: "tamni začini", cocoa: "kakao", pomegranate: "sjemenke granata", clove: "klinčić", fig_cake: "kolač od smokava", creme_de_cassis: "crème de cassis", medicinal_herbs: "ljekovito bilje", bitter_orange: "gorka naranča", chestnut: "kesten", black_tea: "crni čaj", toasted_coffee: "pržena kava", sweet_cigar: "slatka cigara", brandied_cherry: "trešnja u rakiji",
     almond: "badem", apricot: "marelica", dried_apricot: "suha marelica", molasses: "melasa", baked_apple: "pečena jabuka", marzipan: "marcipan", balsamic: "balzamične note", blackberry: "kupina", blueberry: "borovnica", dates: "datulje",
     blackcurrant: "crni ribiz", brioche: "brioche", butter: "maslac", candied_fruit: "kandirano voće",
@@ -210,6 +211,7 @@ en: {
   sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
+    moss: "moss", cigar_box: "cigar box", cardamom: "cardamom", herbaceous: "herbaceous",
     dried_mint: "dried mint", blue_flower: "blue flowers", mushroom: "mushroom", cherry_stone: "cherry stone", lavender: "lavender", dark_chocolate: "dark chocolate", mocha: "mocha", brown_spices: "brown spices", cocoa: "cocoa", pomegranate: "pomegranate seeds", clove: "cloves", fig_cake: "fig cake", creme_de_cassis: "crème de cassis", medicinal_herbs: "medicinal herbs", bitter_orange: "bitter orange", chestnut: "chestnut", black_tea: "black tea", toasted_coffee: "toasted coffee beans", sweet_cigar: "sweet cigar", brandied_cherry: "brandied cherry",
     almond: "almond", apricot: "apricot", dried_apricot: "dried apricot", molasses: "molasses", baked_apple: "baked apple", marzipan: "marzipan", balsamic: "balsamic notes", blackberry: "blackberry", blueberry: "blueberry", dates: "dates",
     blackcurrant: "blackcurrant", brioche: "brioche", butter: "butter", candied_fruit: "candied fruit",
@@ -324,6 +326,7 @@ it: {
   sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
+    moss: "muschio", cigar_box: "scatola di sigari", cardamom: "cardamomo", herbaceous: "note erbacee",
     dried_mint: "menta secca", blue_flower: "fiori blu", mushroom: "funghi", cherry_stone: "nocciolo di ciliegia", lavender: "lavanda", dark_chocolate: "cioccolato fondente", mocha: "moka", brown_spices: "spezie brune", cocoa: "cacao", pomegranate: "semi di melograno", clove: "chiodi di garofano", fig_cake: "pan di fichi", creme_de_cassis: "crème de cassis", medicinal_herbs: "erbe medicinali", bitter_orange: "arancia amara", chestnut: "castagne", black_tea: "tè nero", toasted_coffee: "caffè torrefatto", sweet_cigar: "sigaro dolce", brandied_cherry: "ciliegia sotto spirito",
     almond: "mandorla", apricot: "albicocca", dried_apricot: "albicocca secca", molasses: "melassa", baked_apple: "mela cotta", marzipan: "marzapane", balsamic: "note balsamiche", blackberry: "mora", blueberry: "mirtillo", dates: "datteri",
     blackcurrant: "ribes nero", brioche: "brioche", butter: "burro", candied_fruit: "frutta candita",
@@ -438,6 +441,7 @@ fr: {
   sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
+    moss: "mousse", cigar_box: "boîte à cigares", cardamom: "cardamome", herbaceous: "notes herbacées",
     dried_mint: "menthe séchée", blue_flower: "fleurs bleues", mushroom: "champignons", cherry_stone: "noyau de cerise", lavender: "lavande", dark_chocolate: "chocolat noir", mocha: "moka", brown_spices: "épices brunes", cocoa: "cacao", pomegranate: "grains de grenade", clove: "clou de girofle", fig_cake: "pain de figues", creme_de_cassis: "crème de cassis", medicinal_herbs: "herbes médicinales", bitter_orange: "orange amère", chestnut: "châtaigne", black_tea: "thé noir", toasted_coffee: "café torréfié", sweet_cigar: "cigare doux", brandied_cherry: "cerise à l'eau-de-vie",
     almond: "amande", apricot: "abricot", dried_apricot: "abricot sec", molasses: "mélasse", baked_apple: "pomme cuite", marzipan: "massepain", balsamic: "notes balsamiques", blackberry: "mûre", blueberry: "myrtille", dates: "dattes",
     blackcurrant: "cassis", brioche: "brioche", butter: "beurre", candied_fruit: "fruits confits",
@@ -552,6 +556,7 @@ de: {
   sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
+    moss: "Moos", cigar_box: "Zigarrenkiste", cardamom: "Kardamom", herbaceous: "grüne Kräuternoten",
     dried_mint: "getrocknete Minze", blue_flower: "blaue Blüten", mushroom: "Pilze", cherry_stone: "Kirschkern", lavender: "Lavendel", dark_chocolate: "dunkle Schokolade", mocha: "Mokka", brown_spices: "braune Gewürze", cocoa: "Kakao", pomegranate: "Granatapfelkerne", clove: "Gewürznelken", fig_cake: "Feigenbrot", creme_de_cassis: "Crème de Cassis", medicinal_herbs: "Heilkräuter", bitter_orange: "Bitterorange", chestnut: "Kastanie", black_tea: "schwarzer Tee", toasted_coffee: "geröstete Kaffeebohnen", sweet_cigar: "süsse Zigarre", brandied_cherry: "Kirsche in Weinbrand",
     almond: "Mandel", apricot: "Aprikose", dried_apricot: "getrocknete Aprikose", molasses: "Melasse", baked_apple: "Bratapfel", marzipan: "Marzipan", balsamic: "balsamische Noten", blackberry: "Brombeere", blueberry: "Blaubeere", dates: "Datteln",
     blackcurrant: "schwarze Johannisbeere", brioche: "Brioche", butter: "Butter", candied_fruit: "kandierte Früchte",
@@ -666,6 +671,7 @@ zh: {
   sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
+    moss: "苔藓", cigar_box: "雪茄盒", cardamom: "小豆蔻", herbaceous: "草本气息",
     dried_mint: "干薄荷", blue_flower: "蓝色花香", mushroom: "菌菇", cherry_stone: "樱桃核", lavender: "薰衣草", dark_chocolate: "黑巧克力", mocha: "摩卡", brown_spices: "褐色香料", cocoa: "可可", pomegranate: "石榴籽", clove: "丁香", fig_cake: "无花果糕", creme_de_cassis: "黑加仑利口酒", medicinal_herbs: "药草", bitter_orange: "苦橙", chestnut: "栗子", black_tea: "红茶", toasted_coffee: "烘焙咖啡豆", sweet_cigar: "甜雪茄", brandied_cherry: "白兰地樱桃",
     almond: "杏仁", apricot: "杏子", dried_apricot: "杏干", molasses: "糖蜜", baked_apple: "烤苹果", marzipan: "杏仁膏", balsamic: "香脂调", blackberry: "黑莓", blueberry: "蓝莓", dates: "椰枣",
     blackcurrant: "黑加仑", brioche: "布里欧修", butter: "黄油", candied_fruit: "蜜饯",
@@ -850,6 +856,10 @@ sl: {
     "drinking_now": "Za piti zdaj"
   },
   "aromas": {
+    "moss": "mah",
+    "cigar_box": "škatla za cigare",
+    "cardamom": "kardamom",
+    "herbaceous": "zelnate note",
     "dried_mint": "posušena meta",
     "blue_flower": "modro cvetje",
     "mushroom": "gobe",
@@ -1244,6 +1254,10 @@ es: {
     "drinking_now": "Para beber ahora"
   },
   "aromas": {
+    "moss": "musgo",
+    "cigar_box": "caja de puros",
+    "cardamom": "cardamomo",
+    "herbaceous": "notas herbáceas",
     "dried_mint": "menta seca",
     "blue_flower": "flores azules",
     "mushroom": "setas",

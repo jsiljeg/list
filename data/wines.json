@@ -795,9 +795,13 @@
           "style": "red_medium",
           "body": "medium",
           "aromas": [
+           "dark_cherry",
            "raspberry",
-           "herbs",
+           "blackcurrant",
+           "lavender",
+           "moss",
            "violet",
+           "herbs",
            "pepper"
           ],
           "pairings": [
@@ -806,9 +810,19 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "13.5"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "92"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Dingač Elegance",
@@ -9390,7 +9404,7 @@
            "truffles"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13.5"
          },
          "terroir": "Le Pergole Torte",
          "note": {
@@ -9402,7 +9416,17 @@
           "zh": "有远见的桑娇维塞——一款值得思考的酒，一个承载故事的年份。",
           "sl": "Sangiovese z vizijo — vino za razmišljanje, letina, ki nosi zgodbo.",
           "es": "Sangiovese con visión — un vino para pensar, una añada que lleva una historia."
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Vinous",
+           "score": "98"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "96"
+          }
+         ]
         },
         {
          "name": "Montevertine 2019",
@@ -9426,11 +9450,21 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13"
          },
          "terroir": "",
          "tags": [
           "excellent_vintage"
+         ],
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "96"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "95"
+          }
          ]
         },
         {
@@ -9444,9 +9478,13 @@
           "style": "red_medium",
           "body": "medium",
           "aromas": [
+           "dark_cherry",
            "raspberry",
-           "herbs",
+           "blackcurrant",
+           "lavender",
+           "moss",
            "violet",
+           "herbs",
            "pepper"
           ],
           "pairings": [
@@ -9455,9 +9493,19 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "13.5"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "92"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Duemani 2018",
@@ -9470,10 +9518,16 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
+           "plum",
+           "blackcurrant",
            "blackberry",
-           "violet",
-           "spice",
-           "chocolate"
+           "cigar_box",
+           "leather",
+           "clove",
+           "pepper",
+           "cardamom",
+           "dark_chocolate",
+           "violet"
           ],
           "pairings": [
            "beef",
@@ -9481,9 +9535,23 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "15"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "97"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "96"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "16/20"
+          }
+         ]
         },
         {
          "name": "Pignoli 2010 – 0,5 l",
@@ -9498,6 +9566,9 @@
           "aromas": [
            "dried_fruit",
            "sour_cherry",
+           "herbaceous",
+           "spice",
+           "coffee",
            "earth",
            "balsamic"
           ],
@@ -9507,7 +9578,7 @@
            "charcuterie"
           ],
           "temp": "16–18",
-          "alcohol": "15"
+          "alcohol": "14.5"
          },
          "terroir": "",
          "tags": [
