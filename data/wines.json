@@ -414,7 +414,7 @@
            "spicy"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "8",
           "sweetness": "sweet"
          },
          "note": {
@@ -852,6 +852,9 @@
            "critic": "James Suckling",
            "score": "92"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -1110,7 +1113,7 @@
          "producer": "Jakopić",
          "price": 49,
          "insight": {
-          "grape": "Furmint",
+          "grape": "Pušipel/Furmint",
           "region": "Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling",
@@ -1705,6 +1708,9 @@
            "critic": "Vinous",
            "score": "91"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -3709,6 +3715,9 @@
            "critic": "Falstaff",
            "score": "94"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4117,6 +4126,9 @@
            "critic": "Falstaff",
            "score": "93"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4331,7 +4343,10 @@
           "zh": "昔日模样的夏布利——启莫里阶的贝壳、张力，别无冗余。",
           "sl": "Chablis, kakršen je bil nekoč — kimeridgijska lupina, napetost in nič odvečnega.",
           "es": "El Chablis como era antaño — concha kimmeridgiense, tensión y nada superfluo."
-         }
+         },
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Chablis 1er Cru Butteaux 2019",
@@ -4499,7 +4514,10 @@
           "zh": "普勒斯园——夏布利之巅：盐、石，以及不肯散去的余韵。",
           "sl": "Les Preuses — vrh Chablisa: sol, kamen in dolžina, ki se ne konča.",
           "es": "Les Preuses — la cima de Chablis: sal, piedra y una longitud que no termina."
-         }
+         },
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Chablis Grand Cru Valmur 2020",
@@ -4580,6 +4598,9 @@
            "critic": "Jasper Morris",
            "score": "87"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -4845,6 +4866,9 @@
            "critic": "Jasper Morris",
            "score": "89"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4872,7 +4896,10 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": "Les Benoites"
+         "terroir": "Les Benoites",
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Puligny-Montrachet 1er Cru Clos de la Pucelle Monopole 2021",
@@ -4905,6 +4932,9 @@
            "critic": "Decanter",
            "score": "93"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4939,6 +4969,9 @@
            "critic": "Jasper Morris",
            "score": "91-93"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -5108,7 +5141,10 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Les Charmes"
+         "terroir": "Les Charmes",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Meursault Sous la Velle 2022",
@@ -5156,7 +5192,10 @@
           "zh": "不事张扬的默尔索——榛子、黄油，与一条把一切稳住的矿物脊梁。",
           "sl": "Meursault brez pretiravanja — lešnik, maslo in mineralna hrbtenica, ki vse drži skupaj.",
           "es": "Meursault sin excesos — avellana, mantequilla y una columna mineral que lo mantiene todo en su sitio."
-         }
+         },
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Meursault 1er Cru Le Poruzot Dessus 2022",
@@ -5197,6 +5236,9 @@
            "critic": "Jasper Morris",
            "score": "95"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -5404,6 +5446,9 @@
            "critic": "Jasper Morris",
            "score": "94"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -5431,7 +5476,10 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Sancerre Blanc Les Monts Damnés 2020",
@@ -5504,7 +5552,10 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Riesling Grand Cru Schlossberg 2020",
@@ -5771,6 +5822,7 @@
          },
          "terroir": "En Chailloux",
          "tags": [
+          "excellent_vintage",
           "rare"
          ]
         },
@@ -5802,6 +5854,7 @@
          },
          "terroir": "",
          "tags": [
+          "excellent_vintage",
           "rare"
          ]
         },
@@ -5833,6 +5886,7 @@
          },
          "terroir": "",
          "tags": [
+          "excellent_vintage",
           "rare"
          ]
         },
@@ -5864,6 +5918,7 @@
          },
          "terroir": "Les Longeays",
          "tags": [
+          "excellent_vintage",
           "rare"
          ]
         },
@@ -5895,6 +5950,7 @@
          },
          "terroir": "Les Condemines, Leynes",
          "tags": [
+          "excellent_vintage",
           "rare"
          ]
         }
@@ -7430,6 +7486,9 @@
            "critic": "Tim Atkin",
            "score": "95"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -7503,6 +7562,9 @@
            "critic": "Jasper Morris",
            "score": "91"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -7542,7 +7604,10 @@
           "sl": "Ena redkih severno obrnjenih leg v Vosnu, na samem vrhu pobočja — sosedje se imenujejo Richebourg, Aux Brûlées in Cros Parantoux. Nikoli ni bila klasificirana: vaška etiketa v družbi grand crujev — hladnejša lega, srednja polnost, več parfuma kot moči.",
           "es": "Una de las pocas parcelas orientadas al norte de Vosne, en lo alto de la ladera — sus vecinos se llaman Richebourg, Aux Brûlées y Cros Parantoux. Nunca fue clasificada: una etiqueta village en compañía de grand crus — exposición más fresca, cuerpo medio, más perfume que potencia."
          },
-         "notePlain": true
+         "notePlain": true,
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Nuits-Saint-Georges Les Hauts-Pruliers 2016",
@@ -7711,6 +7776,9 @@
            "critic": "Jasper Morris",
            "score": "90"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -7838,6 +7906,9 @@
            "critic": "Jancis Robinson",
            "score": "16.5/20"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -8003,6 +8074,9 @@
            "critic": "Jancis Robinson",
            "score": "16/20"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -8294,7 +8368,10 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Barolo 2018",
@@ -8411,6 +8488,9 @@
            "critic": "Vinous",
            "score": "95"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -8456,6 +8536,7 @@
           "es": "Viñas viejas, maceración lenta, cero prisa — un Barbaresco con carácter y una razón para estar aquí."
          },
          "tags": [
+          "legendary_vintage",
           "rare"
          ],
          "ratings": [
@@ -8514,6 +8595,9 @@
            "critic": "Vinous",
            "score": "96+"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -8549,6 +8633,9 @@
            "critic": "Tim Atkin",
            "score": "90"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -8781,9 +8868,6 @@
            "critic": "Decanter",
            "score": "93"
           }
-         ],
-         "tags": [
-          "excellent_vintage"
          ]
         },
         {
@@ -8927,6 +9011,9 @@
            "critic": "Wine Enthusiast",
            "score": "89"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -9667,6 +9754,9 @@
            "critic": "James Suckling",
            "score": "92"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -9839,6 +9929,7 @@
          },
          "terroir": "",
          "tags": [
+          "legendary_vintage",
           "rare"
          ],
          "ratings": [
@@ -10459,7 +10550,10 @@
           "sl": "Clon 98 oziroma CL98 je klon tempranilla, ki je mutiral, da se je prilagodil ekstremnemu podnebju Ribere del Duero.",
           "es": "El Clon 98, o CL98, es el clon de Tempranillo que mutó para adaptarse al clima extremo de la Ribera del Duero."
          },
-         "notePlain": true
+         "notePlain": true,
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Tokyo Gomez-Rojo 2021",
@@ -11059,6 +11153,9 @@
            "critic": "Jancis Robinson",
            "score": "16.5/20"
           }
+         ],
+         "tags": [
+          "legendary_vintage"
          ]
         },
         {
@@ -11696,7 +11793,7 @@
          "producer": "Sauternes",
          "price": 940,
          "insight": {
-          "grape": "Sémillon, Sauvignon Blanc",
+          "grape": "Sémillon 75%, Sauvignon Blanc 25%",
           "region": "Sauternes, Bordeaux",
           "country": "FR",
           "style": "sweet",
