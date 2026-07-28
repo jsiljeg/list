@@ -96,6 +96,7 @@ hr: {
   sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
+    espresso: "espresso", dried_rose: "suha ruža", cranberry: "brusnica", iron: "željezo", sea_shell: "morske školjke", coconut: "prženi kokos", autumn_leaves: "jesensko lišće", black_forest_cake: "Crna šuma torta", dried_herbs: "suho bilje",
     nougat: "nugat",
     tomato_leaf: "list rajčice", asparagus: "šparoge",
    
@@ -216,6 +217,7 @@ en: {
   sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
+    espresso: "espresso", dried_rose: "dried roses", cranberry: "cranberry", iron: "iron", sea_shell: "sea shell", coconut: "toasted coconut", autumn_leaves: "autumn leaves", black_forest_cake: "Black Forest cake", dried_herbs: "dried herbs",
     nougat: "nougat",
     tomato_leaf: "tomato leaf", asparagus: "asparagus",
    
@@ -336,6 +338,7 @@ it: {
   sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
+    espresso: "espresso", dried_rose: "rosa appassita", cranberry: "mirtillo rosso", iron: "ferro", sea_shell: "conchiglia", coconut: "cocco tostato", autumn_leaves: "foglie autunnali", black_forest_cake: "torta Foresta Nera", dried_herbs: "erbe secche",
     nougat: "torrone",
     tomato_leaf: "foglia di pomodoro", asparagus: "asparago",
    
@@ -456,6 +459,7 @@ fr: {
   sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
+    espresso: "expresso", dried_rose: "rose séchée", cranberry: "canneberge", iron: "fer", sea_shell: "coquillage", coconut: "noix de coco grillée", autumn_leaves: "feuilles d'automne", black_forest_cake: "forêt-noire", dried_herbs: "herbes séchées",
     nougat: "nougat",
     tomato_leaf: "feuille de tomate", asparagus: "asperge",
    
@@ -576,6 +580,7 @@ de: {
   sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
+    espresso: "Espresso", dried_rose: "getrocknete Rosen", cranberry: "Cranberry", iron: "Eisen", sea_shell: "Muschelschale", coconut: "geröstete Kokosnuss", autumn_leaves: "Herbstlaub", black_forest_cake: "Schwarzwälder Kirschtorte", dried_herbs: "getrocknete Kräuter",
     nougat: "Nougat",
     tomato_leaf: "Tomatenblatt", asparagus: "Spargel",
    
@@ -696,6 +701,7 @@ zh: {
   sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
+    espresso: "浓缩咖啡", dried_rose: "干玫瑰", cranberry: "蔓越莓", iron: "铁质", sea_shell: "贝壳", coconut: "烤椰香", autumn_leaves: "秋叶", black_forest_cake: "黑森林蛋糕", dried_herbs: "干香草",
     nougat: "牛轧糖",
     tomato_leaf: "番茄叶", asparagus: "芦笋",
    
@@ -886,6 +892,15 @@ sl: {
     "drinking_now": "Za piti zdaj"
   },
   "aromas": {
+    "espresso": "espresso",
+    "dried_rose": "posušena vrtnica",
+    "cranberry": "brusnica",
+    "iron": "železo",
+    "sea_shell": "morska školjka",
+    "coconut": "praženi kokos",
+    "autumn_leaves": "jesensko listje",
+    "black_forest_cake": "črnogozdna torta",
+    "dried_herbs": "posušena zelišča",
     "nougat": "nugat",
     "tomato_leaf": "paradižnikov list",
     "asparagus": "šparglji",
@@ -1298,6 +1313,15 @@ es: {
     "drinking_now": "Para beber ahora"
   },
   "aromas": {
+    "espresso": "espresso",
+    "dried_rose": "rosa seca",
+    "cranberry": "arándano rojo",
+    "iron": "hierro",
+    "sea_shell": "concha marina",
+    "coconut": "coco tostado",
+    "autumn_leaves": "hojas de otoño",
+    "black_forest_cake": "tarta Selva Negra",
+    "dried_herbs": "hierbas secas",
     "nougat": "turrón",
     "tomato_leaf": "hoja de tomate",
     "asparagus": "espárrago",

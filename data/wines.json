@@ -777,7 +777,10 @@
           "body": "medium",
           "aromas": [
            "cherry",
+           "cranberry",
+           "strawberry",
            "plum",
+           "toast",
            "vanilla",
            "spice"
           ],
@@ -790,7 +793,18 @@
           "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "note": {
+          "hr": "Clon 98 — CL98 — klon je tempranilla koji je mutirao kako bi se prilagodio ekstremnoj klimi Ribere del Duero.",
+          "en": "Clon 98, or CL98, is the Tempranillo clone that mutated to adapt to the extreme climate of the Ribera del Duero.",
+          "it": "Clon 98, o CL98, è il clone di Tempranillo mutato per adattarsi al clima estremo della Ribera del Duero.",
+          "fr": "Le Clon 98, ou CL98, est le clone de tempranillo qui a muté pour s'adapter au climat extrême de la Ribera del Duero.",
+          "de": "Clon 98, kurz CL98, ist jener Tempranillo-Klon, der mutierte, um sich dem extremen Klima der Ribera del Duero anzupassen.",
+          "zh": "Clon 98（CL98）是添帕尼罗的一个克隆株，为适应杜埃罗河岸的极端气候而发生变异。",
+          "sl": "Clon 98 oziroma CL98 je klon tempranilla, ki je mutiral, da se je prilagodil ekstremnemu podnebju Ribere del Duero.",
+          "es": "El Clon 98, o CL98, es el clon de Tempranillo que mutó para adaptarse al clima extremo de la Ribera del Duero."
+         },
+         "notePlain": true
         },
         {
          "name": "Cifra 2021 (Demeter biodinamika)",
@@ -10258,10 +10272,16 @@
           "style": "red_mature",
           "body": "full",
           "aromas": [
+           "plum",
+           "dried_cherry",
+           "raspberry",
            "dried_fruit",
-           "tobacco",
-           "leather",
-           "spice"
+           "dried_rose",
+           "anise",
+           "espresso",
+           "chocolate",
+           "earth",
+           "smoke"
           ],
           "pairings": [
            "lamb",
@@ -10275,7 +10295,29 @@
          "tags": [
           "drinking_now"
          ],
-         "terroir": "Finca Ygay – La Plana"
+         "terroir": "Finca Ygay – La Plana",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "100"
+          },
+          {
+           "critic": "Decanter",
+           "score": "97"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "97"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "CL98 2020",
@@ -10289,7 +10331,10 @@
           "body": "medium",
           "aromas": [
            "cherry",
+           "cranberry",
+           "strawberry",
            "plum",
+           "toast",
            "vanilla",
            "spice"
           ],
@@ -10302,7 +10347,18 @@
           "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "note": {
+          "hr": "Clon 98 — CL98 — klon je tempranilla koji je mutirao kako bi se prilagodio ekstremnoj klimi Ribere del Duero.",
+          "en": "Clon 98, or CL98, is the Tempranillo clone that mutated to adapt to the extreme climate of the Ribera del Duero.",
+          "it": "Clon 98, o CL98, è il clone di Tempranillo mutato per adattarsi al clima estremo della Ribera del Duero.",
+          "fr": "Le Clon 98, ou CL98, est le clone de tempranillo qui a muté pour s'adapter au climat extrême de la Ribera del Duero.",
+          "de": "Clon 98, kurz CL98, ist jener Tempranillo-Klon, der mutierte, um sich dem extremen Klima der Ribera del Duero anzupassen.",
+          "zh": "Clon 98（CL98）是添帕尼罗的一个克隆株，为适应杜埃罗河岸的极端气候而发生变异。",
+          "sl": "Clon 98 oziroma CL98 je klon tempranilla, ki je mutiral, da se je prilagodil ekstremnemu podnebju Ribere del Duero.",
+          "es": "El Clon 98, o CL98, es el clon de Tempranillo que mutó para adaptarse al clima extremo de la Ribera del Duero."
+         },
+         "notePlain": true
         },
         {
          "name": "Tokyo Gomez-Rojo 2021",
@@ -10341,10 +10397,16 @@
           "style": "red_mature",
           "body": "medium",
           "aromas": [
+           "plum",
            "dried_fruit",
+           "orange_peel",
            "leather",
            "tobacco",
-           "balsamic"
+           "walnut",
+           "graphite",
+           "iron",
+           "sea_shell",
+           "earth"
           ],
           "pairings": [
            "lamb",
@@ -10358,7 +10420,21 @@
          "tags": [
           "drinking_now"
          ],
-         "terroir": "Viña Bosconia"
+         "terroir": "Viña Bosconia",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "95"
+          },
+          {
+           "critic": "Tim Atkin",
+           "score": "95"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "93+"
+          }
+         ]
         }
        ]
       },
@@ -10378,6 +10454,7 @@
           "aromas": [
            "cherry",
            "raspberry",
+           "smoke",
            "spice",
            "earth"
           ],
@@ -10401,12 +10478,18 @@
           "region": "Yamhill-Carlton, Willamette Valley, Oregon",
           "country": "US",
           "style": "red_light",
-          "body": "medium",
+          "body": "full",
           "aromas": [
-           "cherry",
+           "blackberry",
+           "blueberry",
            "raspberry",
-           "forest_floor",
-           "spice"
+           "strawberry",
+           "peach",
+           "dark_cherry",
+           "violet",
+           "coconut",
+           "autumn_leaves",
+           "forest_floor"
           ],
           "pairings": [
            "poultry",
@@ -10420,7 +10503,25 @@
          "tags": [
           "drinking_now"
          ],
-         "terroir": "Résonance Vineyard"
+         "terroir": "Résonance Vineyard",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "93"
+          },
+          {
+           "critic": "Vinous",
+           "score": "93"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "92"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "91"
+          }
+         ]
         },
         {
          "name": "Occidental 2018",
@@ -10447,7 +10548,13 @@
           "alcohol": "13.4",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Vinous",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Cabernet Sauvignon 2018",
@@ -10461,6 +10568,10 @@
           "body": "full",
           "aromas": [
            "blackcurrant",
+           "blueberry",
+           "black_forest_cake",
+           "dried_herbs",
+           "earth",
            "chocolate",
            "vanilla",
            "cedar"
@@ -10474,7 +10585,17 @@
           "alcohol": "14.8",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "91"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "90"
+          }
+         ]
         },
         {
          "name": "Merlot 2018",
@@ -10489,6 +10610,9 @@
           "aromas": [
            "plum",
            "blackberry",
+           "cherry",
+           "raspberry",
+           "toast",
            "chocolate",
            "vanilla"
           ],
@@ -10501,7 +10625,13 @@
           "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
+           "score": "94"
+          }
+         ]
         },
         {
          "name": "Cabernet Sauvignon 2017",
