@@ -281,7 +281,7 @@
          "terroir": "Bale"
         },
         {
-         "name": "Sauvignon 2025",
+         "name": "Sauvignon 2024",
          "producer": "Jakopić",
          "price": 9,
          "insight": {
@@ -301,7 +301,7 @@
            "asparagus"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "13.3",
           "sweetness": "dry"
          },
          "terroir": "Štrigova"
@@ -377,7 +377,7 @@
          "price": 8,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Saarburg, Saar, Mosel",
           "country": "DE",
           "style": "white_aromatic",
           "body": "light",
@@ -396,7 +396,7 @@
           "alcohol": "11",
           "sweetness": "off_dry"
          },
-         "terroir": "Saar"
+         "terroir": ""
         },
         {
          "name": "Rausch Kabinett 2025",
@@ -404,7 +404,7 @@
          "price": 13,
          "insight": {
           "grape": "Riesling",
-          "region": "Saar, Mosel",
+          "region": "Saarburg, Saar, Mosel",
           "country": "DE",
           "style": "white_mineral",
           "body": "light",
@@ -3023,7 +3023,7 @@
          }
         },
         {
-         "name": "Sauvignon 2025",
+         "name": "Sauvignon 2024",
          "producer": "Jakopić",
          "price": 45,
          "insight": {
@@ -3043,7 +3043,7 @@
            "asparagus"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "13.3",
           "sweetness": "dry"
          },
          "terroir": "Štrigova"
@@ -3481,7 +3481,7 @@
          "price": 45,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Trittenheim, Mittelmosel, Mosel",
           "country": "DE",
           "style": "white_mineral",
           "body": "light",
@@ -3500,7 +3500,7 @@
           "alcohol": "11",
           "sweetness": "dry"
          },
-         "terroir": "Trittenheim",
+         "terroir": "",
          "ratings": [
           {
            "critic": "Lobenberg",
@@ -3521,7 +3521,7 @@
          "price": 80,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Trittenheim, Mittelmosel, Mosel",
           "country": "DE",
           "style": "white_aromatic",
           "body": "light",
@@ -3562,7 +3562,7 @@
          "price": 55,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Saarburg, Saar, Mosel",
           "country": "DE",
           "style": "white_aromatic",
           "body": "light",
@@ -3581,7 +3581,7 @@
           "alcohol": "11",
           "sweetness": "off_dry"
          },
-         "terroir": "Saar"
+         "terroir": ""
         },
         {
          "name": "Rausch Kabinett 2025",
@@ -3589,7 +3589,7 @@
          "price": 91,
          "insight": {
           "grape": "Riesling",
-          "region": "Saar, Mosel",
+          "region": "Saarburg, Saar, Mosel",
           "country": "DE",
           "style": "white_mineral",
           "body": "light",
@@ -3637,7 +3637,7 @@
          "price": 89,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Winningen, Terrassenmosel, Mosel",
           "country": "DE",
           "style": "white_mineral",
           "body": "medium",
@@ -3656,7 +3656,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": "Winningen",
+         "terroir": "",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -3670,7 +3670,7 @@
          "price": 97,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Hatzenport, Terrassenmosel, Mosel",
           "country": "DE",
           "style": "white_mineral",
           "body": "medium",
@@ -3692,7 +3692,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Hatzenport",
+         "terroir": "Stolzenberg",
          "tags": [
           "excellent_vintage"
          ]
@@ -3703,7 +3703,7 @@
          "price": 145,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Winningen, Terrassenmosel, Mosel",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3722,7 +3722,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
-         "terroir": "Winningen",
+         "terroir": "Uhlen Blaufüßer Lay",
          "ratings": [
           {
            "critic": "Lobenberg",
@@ -3743,7 +3743,7 @@
          "price": 87,
          "insight": {
           "grape": "Riesling",
-          "region": "Rheinhessen",
+          "region": "Westhofen, Wonnegau, Rheinhessen",
           "country": "DE",
           "style": "white_mineral",
           "body": "medium",
@@ -3762,7 +3762,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
-         "terroir": "Westhofen",
+         "terroir": "",
          "ratings": [
           {
            "critic": "Falstaff",
@@ -3783,7 +3783,7 @@
          "price": 136,
          "insight": {
           "grape": "Riesling",
-          "region": "Rheinhessen",
+          "region": "Westhofen, Wonnegau, Rheinhessen",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3802,7 +3802,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
-         "terroir": "Westhofen",
+         "terroir": "Aulerde",
          "ratings": [
           {
            "critic": "Falstaff",
@@ -3819,7 +3819,7 @@
          "price": 180,
          "insight": {
           "grape": "Riesling",
-          "region": "Rheinhessen",
+          "region": "Westhofen, Wonnegau, Rheinhessen",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3838,7 +3838,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
-         "terroir": "Westhofen",
+         "terroir": "Kirchspiel",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -3878,7 +3878,7 @@
          "price": 110,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Winningen, Terrassenmosel, Mosel",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3897,7 +3897,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
-         "terroir": "Winningen"
+         "terroir": "Röttgen"
         },
         {
          "name": "Riesling Gaisböhl GG 2017",
@@ -3905,7 +3905,7 @@
          "price": 140,
          "insight": {
           "grape": "Riesling",
-          "region": "Pfalz",
+          "region": "Ruppertsberg, Mittelhaardt, Pfalz",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -3924,7 +3924,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": "Ruppertsberg",
+         "terroir": "Gaisböhl",
          "ratings": [
           {
            "critic": "Lobenberg",
@@ -3953,7 +3953,7 @@
          "price": 110,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Wehlen, Mittelmosel, Mosel",
           "country": "DE",
           "style": "white_aromatic",
           "body": "light",
@@ -3972,7 +3972,7 @@
           "alcohol": "8.5",
           "sweetness": "sweet"
          },
-         "terroir": "Wehlen",
+         "terroir": "Wehlener Sonnenuhr",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -3994,7 +3994,7 @@
          "price": 52,
          "insight": {
           "grape": "Riesling",
-          "region": "Pfalz",
+          "region": "Gimmeldingen, Mittelhaardt, Pfalz",
           "country": "DE",
           "style": "white_mineral",
           "body": "medium",
@@ -4021,7 +4021,8 @@
          ],
          "tags": [
           "excellent_vintage"
-         ]
+         ],
+         "terroir": ""
         },
         {
          "name": "Idig Riesling GG 2021",
@@ -4029,7 +4030,7 @@
          "price": 189,
          "insight": {
           "grape": "Riesling",
-          "region": "Pfalz",
+          "region": "Königsbach, Mittelhaardt, Pfalz",
           "country": "DE",
           "style": "white_mineral",
           "body": "full",
@@ -4048,7 +4049,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
-         "terroir": "Königsbach",
+         "terroir": "Idig",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -4073,7 +4074,7 @@
          "price": 170,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Wiltingen, Saar, Mosel",
           "country": "DE",
           "style": "white_aromatic",
           "body": "light",
@@ -4092,7 +4093,7 @@
           "alcohol": "8.5",
           "sweetness": "off_dry"
          },
-         "terroir": "Wiltingen",
+         "terroir": "Scharzhofberg",
          "ratings": [
           {
            "critic": "James Suckling",
@@ -11456,7 +11457,7 @@
          "price": 70,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Wehlen, Mittelmosel, Mosel",
           "country": "DE",
           "style": "sweet",
           "body": "light",
@@ -11475,7 +11476,7 @@
           "alcohol": "8",
           "sweetness": "sweet"
          },
-         "terroir": "Wehlen",
+         "terroir": "Wehlener Sonnenuhr",
          "ratings": [
           {
            "critic": "Lobenberg",
@@ -11493,7 +11494,7 @@
          "price": 115,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Winningen, Terrassenmosel, Mosel",
           "country": "DE",
           "style": "sweet",
           "body": "medium",
@@ -11512,7 +11513,7 @@
           "alcohol": "",
           "sweetness": "sweet"
          },
-         "terroir": "Winningen",
+         "terroir": "",
          "tags": [
           "excellent_vintage"
          ]
@@ -11523,7 +11524,7 @@
          "price": 94,
          "insight": {
           "grape": "Riesling",
-          "region": "Rheinhessen",
+          "region": "Westhofen, Wonnegau, Rheinhessen",
           "country": "DE",
           "style": "sweet",
           "body": "medium",
@@ -11547,7 +11548,7 @@
           "alcohol": "8",
           "sweetness": "sweet"
          },
-         "terroir": "Westhofen",
+         "terroir": "Aulerde",
          "tags": [
           "drinking_now"
          ]
@@ -11558,7 +11559,7 @@
          "price": 390,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Saarburg, Saar, Mosel",
           "country": "DE",
           "style": "sweet",
           "body": "full",

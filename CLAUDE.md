@@ -79,6 +79,13 @@ empty string deliberately suppresses the producer-region fallback in
 - **Slovenia:** `<vinorodni okoliš>, <vinorodna dežela>` — `Goriška brda,
   Primorska`. Terroir = the cru/lega (`Medana Breg`), `""` when the label
   names none.
+- **Germany:** `<Gemeinde>, <Bereich>, <Anbaugebiet>` — `Wehlen, Mittelmosel,
+  Mosel`; `Ruppertsberg, Mittelhaardt, Pfalz`. Terroir = the Einzellage
+  (`Wehlener Sonnenuhr`, `Gaisböhl`), `""` for estate/multi-site bottlings.
+  The Anbaugebiet is **Mosel** — "Mosel-Saar-Ruwer" was renamed in 2007 and
+  must not be used. Sub-areas use the trade names (Mittelmosel,
+  Terrassenmosel, Saar, Ruwertal) rather than the official Bereich names
+  (Bernkastel, Burg Cochem), which nobody outside the paperwork says.
 - **China:** no appellation system exists, so the ladder is administrative —
   `<county>, <prefecture>, <province>`: `Deqin, Diqing, Yunnan`. Terroir = the
   named villages the fruit comes from (`Adong, Xidang, Sinong, Shuori`).
