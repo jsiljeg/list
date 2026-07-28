@@ -335,9 +335,21 @@ const SEARCH_ALIAS = {
   "tribidrag": "zinfandel primitivo pribidrag crljenak crljenak kaštelanski " +
     "crljenak kastelanski kaštelanski crljenak kastelanski crljenak " +
     "kratošija kratosija 特里比德拉格 仙粉黛",
-  "graševina": "grasevina welschriesling riesling italico laški rizling " +
-    "laski rizling olaszrizling 格拉舍维纳"
+  "graševina": "grasevina 格拉舍维纳"
 };
+
+/* Synonyms that must NOT go into the haystack, because they contain another
+   variety's name as a substring. "Riesling italico" is Graševina, which is not
+   a Riesling at all — pasting it into the haystack would make a search for
+   "riesling" return Graševina. So these rewrite the query instead: typing the
+   synonym finds the wine, typing "riesling" never does. */
+const SEARCH_QUERY_ALIAS = [
+  [/riesling italico|welschriesling|olaszrizling|laški rizling|laski rizling/g, "graševina"]
+];
+function expandQuery(q) {
+  for (const [re, to] of SEARCH_QUERY_ALIAS) q = q.replace(re, to);
+  return q;
+}
 function itemHay(item) {
   if (item._hay) return item._hay;
   const ins = item.insight || {};
@@ -354,7 +366,7 @@ function itemHay(item) {
 
 function renderContent() {
   const t = T();
-  const q = $("search").value.trim().toLowerCase();
+  const q = expandQuery($("search").value.trim().toLowerCase());
   const box = $("content");
   let html = "";
 
