@@ -764,8 +764,8 @@
          "producer": "Casa Rojo",
          "price": 10,
          "insight": {
-          "grape": "Tempranillo",
-          "region": "España",
+          "grape": "Tempranillo (Tinta Fina)",
+          "region": "Castrillo de la Vega, Ribera del Duero, Castilla y León",
           "country": "ES",
           "style": "red_medium",
           "body": "medium",
@@ -781,8 +781,9 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
-         }
+          "alcohol": "14.5"
+         },
+         "terroir": ""
         },
         {
          "name": "Cifra 2021 (Demeter biodinamika)",
@@ -9566,7 +9567,6 @@
           "aromas": [
            "dried_fruit",
            "sour_cherry",
-           "herbaceous",
            "spice",
            "coffee",
            "earth",
@@ -9654,14 +9654,25 @@
            "cherry",
            "raspberry",
            "strawberry",
-           "rose",
-           "violet",
+           "plum",
+           "peach",
+           "pomegranate",
            "blood_orange",
            "orange_peel",
+           "rose",
+           "violet",
+           "hibiscus",
+           "mint",
            "dried_mint",
+           "eucalyptus",
            "herbs",
+           "hay",
+           "fennel",
            "black_tea",
+           "dark_chocolate",
+           "tobacco",
            "wet_stone",
+           "spice",
            "balsamic"
           ],
           "pairings": [
@@ -9718,16 +9729,24 @@
            "creme_de_cassis",
            "dark_cherry",
            "blackberry",
-           "graphite",
-           "gravel",
+           "raspberry",
+           "blueberry",
+           "citrus",
            "cedar",
            "tobacco",
            "leather",
            "licorice",
-           "herbs",
-           "lavender",
+           "graphite",
+           "gravel",
            "iodine",
+           "forest_floor",
+           "herbs",
+           "sage",
+           "rosemary",
+           "lavender",
+           "black_tea",
            "earth",
+           "spice",
            "balsamic"
           ],
           "pairings": [
@@ -9784,11 +9803,12 @@
            "dark_cherry",
            "blackberry",
            "blackcurrant",
+           "red_currant",
            "licorice",
            "dark_chocolate",
-           "cedar",
-           "vanilla",
            "anise",
+           "vanilla",
+           "cedar",
            "tobacco",
            "graphite",
            "gravel",
@@ -9796,6 +9816,7 @@
            "mint",
            "earth",
            "saline",
+           "spice",
            "balsamic"
           ],
           "pairings": [
@@ -9853,16 +9874,24 @@
            "creme_de_cassis",
            "dark_cherry",
            "blackberry",
-           "graphite",
-           "gravel",
+           "raspberry",
+           "blueberry",
+           "citrus",
            "cedar",
            "tobacco",
            "leather",
            "licorice",
-           "herbs",
-           "lavender",
+           "graphite",
+           "gravel",
            "iodine",
+           "forest_floor",
+           "herbs",
+           "sage",
+           "rosemary",
+           "lavender",
+           "black_tea",
            "earth",
+           "spice",
            "balsamic"
           ],
           "pairings": [
@@ -9923,6 +9952,7 @@
            "red_currant",
            "violet",
            "sage",
+           "herbs",
            "mint",
            "graphite",
            "gravel",
@@ -9980,13 +10010,17 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
-           "sour_cherry",
+           "cherry",
+           "dark_cherry",
            "strawberry",
            "red_currant",
            "plum",
+           "blackberry",
            "blood_orange",
+           "orange_peel",
            "rose",
            "lilac",
+           "violet",
            "blue_flower",
            "rosemary",
            "sage",
@@ -9995,8 +10029,11 @@
            "licorice",
            "leather",
            "graphite",
-           "earth",
-           "saline"
+           "chalk",
+           "forest_floor",
+           "saline",
+           "pepper",
+           "balsamic"
           ],
           "pairings": [
            "beef",
@@ -10059,15 +10096,23 @@
            "pomegranate",
            "grapefruit",
            "bergamot",
+           "orange_peel",
            "rose",
            "violet",
            "geranium",
            "lavender",
            "thyme",
-           "flint",
+           "mint",
            "licorice",
            "pepper",
-           "herbaceous"
+           "flint",
+           "gravel",
+           "chalk",
+           "smoke",
+           "forest_floor",
+           "bread",
+           "beeswax",
+           "spice"
           ],
           "pairings": [
            "beef",
@@ -10111,8 +10156,8 @@
          "producer": "Edi Simčič",
          "price": 130,
          "insight": {
-          "grape": "Merlot, Cabernet Sauvignon",
-          "region": "Goriška brda",
+          "grape": "Merlot, Cabernet Sauvignon, Cabernet Franc",
+          "region": "Goriška brda, Primorska",
           "country": "SI",
           "style": "red_full",
           "body": "full",
@@ -10128,8 +10173,15 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
-         }
+          "alcohol": "14"
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "92"
+          }
+         ],
+         "terroir": ""
         },
         {
          "name": "Merlot Opoka 2017",
@@ -10137,7 +10189,7 @@
          "price": 125,
          "insight": {
           "grape": "Merlot",
-          "region": "Goriška brda",
+          "region": "Goriška brda, Primorska",
           "country": "SI",
           "style": "red_full",
           "body": "full",
@@ -10154,7 +10206,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Pinot Noir Opoka 2021",
@@ -10162,7 +10215,7 @@
          "price": 125,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Goriška brda",
+          "region": "Goriška brda, Primorska",
           "country": "SI",
           "style": "red_light",
           "body": "medium",
@@ -10179,7 +10232,8 @@
           ],
           "temp": "14–16",
           "alcohol": ""
-         }
+         },
+         "terroir": "Medana Breg"
         }
        ]
       },
@@ -10191,8 +10245,8 @@
          "producer": "Marqués de Murrieta",
          "price": 350,
          "insight": {
-          "grape": "Tempranillo, Mazuelo",
-          "region": "Rioja",
+          "grape": "Tempranillo 81%, Mazuelo 19%",
+          "region": "Ygay, Rioja Alta, Rioja",
           "country": "ES",
           "style": "red_mature",
           "body": "full",
@@ -10208,19 +10262,20 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14"
          },
          "tags": [
           "drinking_now"
-         ]
+         ],
+         "terroir": "Finca Ygay – La Plana"
         },
         {
          "name": "CL98 2020",
          "producer": "Casa Rojo",
          "price": 68,
          "insight": {
-          "grape": "Tempranillo",
-          "region": "España",
+          "grape": "Tempranillo (Tinta Fina)",
+          "region": "Castrillo de la Vega, Ribera del Duero, Castilla y León",
           "country": "ES",
           "style": "red_medium",
           "body": "medium",
@@ -10236,8 +10291,9 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
-         }
+          "alcohol": "14.5"
+         },
+         "terroir": ""
         },
         {
          "name": "Tokyo Gomez-Rojo 2021",
@@ -10245,7 +10301,7 @@
          "price": 180,
          "insight": {
           "grape": "Španjolske sorte",
-          "region": "España",
+          "region": "Murcia",
           "country": "ES",
           "style": "red_full",
           "body": "full",
@@ -10261,15 +10317,16 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Bosconia Tinto Reserva 2013",
          "producer": "López de Heredia",
          "price": 75,
          "insight": {
-          "grape": "Tempranillo, Garnacha, Graciano",
-          "region": "Rioja",
+          "grape": "Tempranillo 80%, Garnacha 15%, Graciano, Mazuelo 5%",
+          "region": "Haro, Rioja Alta, Rioja",
           "country": "ES",
           "style": "red_mature",
           "body": "medium",
@@ -10285,11 +10342,12 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "13.5"
          },
          "tags": [
           "drinking_now"
-         ]
+         ],
+         "terroir": "Viña Bosconia"
         }
        ]
       },
@@ -10302,7 +10360,7 @@
          "price": 120,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Sta. Rita Hills, California",
+          "region": "Sta. Rita Hills, Santa Barbara County, California",
           "country": "US",
           "style": "red_light",
           "body": "medium",
@@ -10318,8 +10376,9 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": ""
-         }
+          "alcohol": "13.3"
+         },
+         "terroir": "Mae Estate"
         },
         {
          "name": "Resonance 2015",
@@ -10327,7 +10386,7 @@
          "price": 100,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Willamette Valley, Oregon",
+          "region": "Yamhill-Carlton, Willamette Valley, Oregon",
           "country": "US",
           "style": "red_light",
           "body": "medium",
@@ -10343,11 +10402,12 @@
            "veal"
           ],
           "temp": "14–16",
-          "alcohol": ""
+          "alcohol": "13.5"
          },
          "tags": [
           "drinking_now"
-         ]
+         ],
+         "terroir": "Résonance Vineyard"
         },
         {
          "name": "Occidental 2018",
@@ -10355,7 +10415,7 @@
          "price": 140,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Sonoma Coast, California",
+          "region": "Freestone-Occidental, Sonoma Coast, California",
           "country": "US",
           "style": "red_light",
           "body": "medium",
@@ -10371,15 +10431,16 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": ""
-         }
+          "alcohol": "13.4"
+         },
+         "terroir": ""
         },
         {
          "name": "Cabernet Sauvignon 2018",
          "producer": "Cakebread Cellars",
          "price": 170,
          "insight": {
-          "grape": "Cabernet Sauvignon",
+          "grape": "Cabernet Sauvignon 88.2%, Merlot 6.2%, Petit Verdot 3%, Syrah 1.1%, Malbec 0.5%, Cabernet Franc 0.5%, Petite Sirah 0.5%",
           "region": "Napa Valley, California",
           "country": "US",
           "style": "red_full",
@@ -10396,15 +10457,16 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
-         }
+          "alcohol": "14.8"
+         },
+         "terroir": ""
         },
         {
          "name": "Merlot 2018",
          "producer": "Duckhorn",
          "price": 160,
          "insight": {
-          "grape": "Merlot",
+          "grape": "Merlot 82%, Cabernet Sauvignon 16%, Cabernet Franc 1.4%, Petit Verdot 0.4%, Malbec 0.2%",
           "region": "Napa Valley, California",
           "country": "US",
           "style": "red_full",
@@ -10421,15 +10483,16 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
-         }
+          "alcohol": "14.5"
+         },
+         "terroir": ""
         },
         {
          "name": "Cabernet Sauvignon 2017",
          "producer": "Domaine Eden",
          "price": 170,
          "insight": {
-          "grape": "Cabernet Sauvignon",
+          "grape": "Cabernet Sauvignon 82%, Merlot 11%, Cabernet Franc 4%, Petit Verdot 2%, Malbec 1%",
           "region": "Santa Cruz Mountains, California",
           "country": "US",
           "style": "red_full",
@@ -10446,8 +10509,9 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
-         }
+          "alcohol": "14"
+         },
+         "terroir": ""
         },
         {
          "name": "Cabernet Sauvignon 2016",
@@ -10471,11 +10535,12 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14.5"
          },
          "tags": [
           "drinking_now"
-         ]
+         ],
+         "terroir": ""
         },
         {
          "name": "Cabernet Sauvignon 2019",
@@ -10483,7 +10548,7 @@
          "price": 270,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Mount Veeder, Napa Valley",
+          "region": "Mount Veeder, Napa Valley, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -10499,16 +10564,17 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
-         }
+          "alcohol": "14"
+         },
+         "terroir": ""
         },
         {
          "name": "Cabernet Sauvignon 2018",
          "producer": "Tanbark Hill (Philip Togni)",
          "price": 150,
          "insight": {
-          "grape": "Cabernet Sauvignon",
-          "region": "Spring Mountain, Napa Valley",
+          "grape": "Cabernet Sauvignon 82%, Merlot 15%, Cabernet Franc 2%, Petit Verdot 1%",
+          "region": "Spring Mountain District, Napa Valley, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -10525,15 +10591,16 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": "Tanbark Hill"
         },
         {
          "name": "Cabernet Sauvignon 2019",
          "producer": "Philip Togni",
          "price": 280,
          "insight": {
-          "grape": "Cabernet Sauvignon",
-          "region": "Spring Mountain, Napa Valley",
+          "grape": "Cabernet Sauvignon 82%, Merlot 15%, Cabernet Franc 2%, Petit Verdot 1%",
+          "region": "Spring Mountain District, Napa Valley, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -10550,7 +10617,8 @@
           ],
           "temp": "16–18",
           "alcohol": ""
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Cuvée Ruth Pinot Noir",
@@ -10558,7 +10626,7 @@
          "price": 90,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Willamette Valley, Oregon",
+          "region": "Eola-Amity Hills, Willamette Valley, Oregon",
           "country": "US",
           "style": "red_light",
           "body": "medium",
@@ -10574,16 +10642,17 @@
            "mushrooms"
           ],
           "temp": "14–16",
-          "alcohol": ""
-         }
+          "alcohol": "13.5"
+         },
+         "terroir": ""
         },
         {
          "name": "Geyserville 2021",
          "producer": "Ridge",
          "price": 140,
          "insight": {
-          "grape": "Zinfandel, Carignane, Petite Sirah",
-          "region": "Alexander Valley, California",
+          "grape": "Zinfandel 76%, Carignane 16%, Petite Sirah 6%, Alicante Bouschet 2%",
+          "region": "Alexander Valley, Sonoma County, California",
           "country": "US",
           "style": "red_full",
           "body": "full",
@@ -10599,15 +10668,16 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": ""
-         }
+          "alcohol": "14.8"
+         },
+         "terroir": "Geyserville"
         },
         {
          "name": "Cabernet Sauvignon 2018",
          "producer": "Ridge",
          "price": 170,
          "insight": {
-          "grape": "Cabernet Sauvignon",
+          "grape": "Cabernet Sauvignon 78%, Merlot 21%, Petit Verdot 1%",
           "region": "Santa Cruz Mountains, California",
           "country": "US",
           "style": "red_full",
@@ -10624,8 +10694,9 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": ""
-         }
+          "alcohol": "14"
+         },
+         "terroir": "Monte Bello"
         }
        ]
       },

@@ -68,6 +68,17 @@ empty string deliberately suppresses the producer-region fallback in
   "Grand Cru". Only exception so far: `Les Hauts Pruliers (1er Cru)`, whose name
   doesn't say it. Bordeaux château rankings are château-level, not site-level, so
   they are recorded nowhere (owner's decision).
+- **USA:** `<nested AVA>, <parent AVA>, <state>` — `Spring Mountain District,
+  Napa Valley, California`; `Yamhill-Carlton, Willamette Valley, Oregon`. Two
+  rungs where the AVA hangs straight off the state (`Napa Valley, California`).
+  Terroir = the named vineyard (`Monte Bello`, `Geyserville`, `Mae Estate`).
+- **Spain:** `<village/subzone>, <DO/DOCa>, <comunidad>` — `Castrillo de la
+  Vega, Ribera del Duero, Castilla y León`. Rioja's DOCa *is* the wine region,
+  so it stops at two rungs: `Haro, Rioja Alta, Rioja`. Terroir = the named
+  finca/viña (`Viña Bosconia`, `Finca Ygay – La Plana`).
+- **Slovenia:** `<vinorodni okoliš>, <vinorodna dežela>` — `Goriška brda,
+  Primorska`. Terroir = the cru/lega (`Medana Breg`), `""` when the label
+  names none.
 
 **Blends:** `Variety NN%, Variety NN%`, name first, descending share. Never
 percent-first — `zhTokens`/`langTokens` strip a *trailing* percentage per token.
