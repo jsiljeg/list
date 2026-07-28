@@ -10992,16 +10992,22 @@
          "producer": "LVMH – Shangri-La",
          "price": 525,
          "insight": {
-          "grape": "Cabernet Sauvignon, Cabernet Franc",
-          "region": "Yunnan, Himalaya",
+          "grape": "Cabernet Sauvignon 60%, Cabernet Franc 19%, Merlot 10%, Syrah 7%, Petit Verdot 4%",
+          "region": "Deqin, Diqing, Yunnan",
           "country": "CN",
           "style": "red_full",
           "body": "full",
           "aromas": [
            "blackcurrant",
+           "blackberry",
            "plum",
-           "spice",
-           "cedar"
+           "ink",
+           "tar",
+           "incense",
+           "clove",
+           "licorice",
+           "thyme",
+           "earth"
           ],
           "pairings": [
            "steak",
@@ -11009,11 +11015,26 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "14.5",
           "sweetness": "dry"
          },
          "tags": [
           "rare"
+         ],
+         "terroir": "Adong, Xidang, Sinong, Shuori",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "98"
+          },
+          {
+           "critic": "Decanter",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "95"
+          }
          ]
         }
        ]

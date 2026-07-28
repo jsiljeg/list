@@ -206,6 +206,8 @@
     "Wachau": "瓦豪",
     "Niederösterreich": "下奥地利",
     "Willamette Valley": "威拉米特谷",
+    "Deqin": "德钦",
+    "Diqing": "迪庆",
     "Yunnan": "云南",
     "Épernay": "埃佩尔奈",
     "Vallée de la Marne": "马恩河谷",

@@ -79,6 +79,12 @@ empty string deliberately suppresses the producer-region fallback in
 - **Slovenia:** `<vinorodni okoliš>, <vinorodna dežela>` — `Goriška brda,
   Primorska`. Terroir = the cru/lega (`Medana Breg`), `""` when the label
   names none.
+- **China:** no appellation system exists, so the ladder is administrative —
+  `<county>, <prefecture>, <province>`: `Deqin, Diqing, Yunnan`. Terroir = the
+  named villages the fruit comes from (`Adong, Xidang, Sinong, Shuori`).
+  Mountain ranges are **not** a rung — "Himalaya" and "Shangri-La" are
+  geography and marketing, not places the wine is from (Ao Yun's vineyards sit
+  in Deqin County, a different county from Shangri-La City).
 
 **Blends:** `Variety NN%, Variety NN%`, name first, descending share. Never
 percent-first — `zhTokens`/`langTokens` strip a *trailing* percentage per token.

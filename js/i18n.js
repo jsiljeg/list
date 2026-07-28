@@ -96,6 +96,7 @@ hr: {
   sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
+    ink: "tinta",
     mulberry: "murva",
     mahogany: "mahagonij", rooibos: "rooibos čaj",
     espresso: "espresso", dried_rose: "suha ruža", cranberry: "brusnica", iron: "željezo", sea_shell: "morske školjke", coconut: "prženi kokos", autumn_leaves: "jesensko lišće", black_forest_cake: "Crna šuma torta", dried_herbs: "suho bilje",
@@ -219,6 +220,7 @@ en: {
   sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
+    ink: "ink",
     mulberry: "mulberry",
     mahogany: "mahogany", rooibos: "rooibos tea",
     espresso: "espresso", dried_rose: "dried roses", cranberry: "cranberry", iron: "iron", sea_shell: "sea shell", coconut: "toasted coconut", autumn_leaves: "autumn leaves", black_forest_cake: "Black Forest cake", dried_herbs: "dried herbs",
@@ -342,6 +344,7 @@ it: {
   sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
+    ink: "inchiostro",
     mulberry: "gelso",
     mahogany: "mogano", rooibos: "tè rooibos",
     espresso: "espresso", dried_rose: "rosa appassita", cranberry: "mirtillo rosso", iron: "ferro", sea_shell: "conchiglia", coconut: "cocco tostato", autumn_leaves: "foglie autunnali", black_forest_cake: "torta Foresta Nera", dried_herbs: "erbe secche",
@@ -465,6 +468,7 @@ fr: {
   sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
+    ink: "encre",
     mulberry: "mûre de mûrier",
     mahogany: "acajou", rooibos: "thé rooibos",
     espresso: "expresso", dried_rose: "rose séchée", cranberry: "canneberge", iron: "fer", sea_shell: "coquillage", coconut: "noix de coco grillée", autumn_leaves: "feuilles d'automne", black_forest_cake: "forêt-noire", dried_herbs: "herbes séchées",
@@ -588,6 +592,7 @@ de: {
   sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
+    ink: "Tinte",
     mulberry: "Maulbeere",
     mahogany: "Mahagoni", rooibos: "Rooibostee",
     espresso: "Espresso", dried_rose: "getrocknete Rosen", cranberry: "Cranberry", iron: "Eisen", sea_shell: "Muschelschale", coconut: "geröstete Kokosnuss", autumn_leaves: "Herbstlaub", black_forest_cake: "Schwarzwälder Kirschtorte", dried_herbs: "getrocknete Kräuter",
@@ -711,6 +716,7 @@ zh: {
   sweetness: { dry: "干型", off_dry: "半干", sweet: "甜型" },
   tags: { legendary_vintage: "传奇年份", excellent_vintage: "卓越年份", rare: "稀有酒款", drinking_now: "适饮期" },
   aromas: {
+    ink: "墨香",
     mulberry: "桑葚",
     mahogany: "红木", rooibos: "南非国宝茶",
     espresso: "浓缩咖啡", dried_rose: "干玫瑰", cranberry: "蔓越莓", iron: "铁质", sea_shell: "贝壳", coconut: "烤椰香", autumn_leaves: "秋叶", black_forest_cake: "黑森林蛋糕", dried_herbs: "干香草",
@@ -904,6 +910,7 @@ sl: {
     "drinking_now": "Za piti zdaj"
   },
   "aromas": {
+    "ink": "črnilo",
     "mulberry": "murva",
     "mahogany": "mahagoni",
     "rooibos": "rooibos čaj",
@@ -1328,6 +1335,7 @@ es: {
     "drinking_now": "Para beber ahora"
   },
   "aromas": {
+    "ink": "tinta",
     "mulberry": "mora de morera",
     "mahogany": "caoba",
     "rooibos": "té rooibos",
