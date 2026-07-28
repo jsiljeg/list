@@ -4142,6 +4142,9 @@
            "critic": "Falstaff",
            "score": "93"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4175,6 +4178,9 @@
            "critic": "Falstaff",
            "score": "92"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4219,6 +4225,9 @@
            "critic": "James Suckling",
            "score": "96"
           }
+         ],
+         "tags": [
+          "excellent_vintage"
          ]
         },
         {
@@ -4245,7 +4254,10 @@
           "temp": "10–12",
           "alcohol": "12.5",
           "sweetness": "dry"
-         }
+         },
+         "tags": [
+          "legendary_vintage"
+         ]
         },
         {
          "name": "Graf 2020",
@@ -4271,7 +4283,10 @@
           "temp": "12–14",
           "alcohol": "",
           "sweetness": "dry"
-         }
+         },
+         "tags": [
+          "excellent_vintage"
+         ]
         }
        ]
       },

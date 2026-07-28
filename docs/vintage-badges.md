@@ -102,26 +102,22 @@ Whole categories never assessed: **all Barolo and Barbaresco** (2018, 2019,
 2021 are the vintages on our list, and 2019/2021 rate very highly on Piedmont
 charts), **all Burgundy**, **all Germany**, **all USA**, **all Croatia**.
 
-## Austria — badges withdrawn pending the OWM flags (2026-07-28)
+## Austria — Osterreich Wein Marketing, per region (official)
 
-Wine Spectator rates Austria on a single national row ("AUSTRIA - White"),
-covering the Wachau, Wagram and Südsteiermark alike. Too coarse, so all
-Austrian badges were removed and AT now sits outside the rule alongside HR
-and SI.
+OeWM publishes vintage flags split into **Weinland white** (Niederosterreich,
+Wien, Burgenland), **Steiermark white** and **Austria red**, at
+<https://www.austrianwine.com/our-wine/austrias-vintages>. Its two flags map
+1:1 onto our badges: **Historic vintage** -> legendarna, **Excellent vintage**
+-> izvrsna. This is an official body, so it outranks the Wine Spectator
+national row, which is now unused for Austria.
 
-The right source is **Osterreich Wein Marketing**,
-<https://www.austrianwine.com/our-wine/austrias-vintages>. It splits Austria
-into **Weinland white** (Niederosterreich, Wien, Burgenland), **Steiermark
-white** and **Austria red**, and carries two flags that map exactly onto our
-badges: **Historic vintage** -> legendarna, **Excellent vintage** -> izvrsna.
-The prose per cell is readable, but the flags are set in a JS filter that could
-not be read from here. Needed to finish the job: which years carry each flag
-for Weinland white and Steiermark white.
+| Column | Historic | Excellent |
+|---|---|---|
+| Weinland white | 2021, 2019, 2015, 2013, 2006 | 2025, 2024, 2023, 2022, 2020, 2016, 2012, 2011, 2010, 2009 |
+| Steiermark white | 2021, 2017, 2015, 2011, 2007 | 2025, 2024, 2023, 2022, 2020, 2019, 2013, 2012, 2008 |
 
-Our Austrian wines and the columns they belong to:
-- Muster Graf 2020, Sauvignon vom Opok 2021 -> **Steiermark white**
-- Bernhard Ott Fass 4 2023 -> **Weinland white** (Wagram)
-- Prager Federspiel + Riesling Smaragd Ried Klaus 2024 -> **Weinland white** (Wachau)
+Our wines: Muster (Sudsteiermark) reads off the Steiermark column, Ott
+(Wagram) and Prager (Wachau) off Weinland.
 
 ## Germany — Jancis Robinson, replacing the flat Wine Spectator band
 
