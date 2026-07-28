@@ -10924,6 +10924,10 @@
          "terroir": "Geyserville",
          "ratings": [
           {
+           "critic": "Vinous",
+           "score": "94+"
+          },
+          {
            "critic": "Wine Enthusiast",
            "score": "94"
           },
@@ -10962,7 +10966,21 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Monte Bello"
+         "terroir": "Monte Bello",
+         "ratings": [
+          {
+           "critic": "Wine Enthusiast",
+           "score": "94"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "94"
+          },
+          {
+           "critic": "Vinous",
+           "score": "93"
+          }
+         ]
         }
        ]
       },
