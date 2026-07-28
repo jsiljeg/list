@@ -222,7 +222,7 @@
        "country": null,
        "items": [
         {
-         "name": "Malvazija 2023",
+         "name": "Malvazija 2025",
          "producer": "Benvenuti",
          "price": 8,
          "insight": {
@@ -232,21 +232,26 @@
           "style": "white_fresh",
           "body": "medium",
           "aromas": [
-           "white_flowers",
+           "herbs",
            "peach",
-           "almond",
-           "saline"
+           "lime",
+           "mediterranean_herbs"
           ],
           "pairings": [
-           "seafood",
-           "white_fish",
-           "prosciutto"
+           "fish",
+           "shrimp_risotto",
+           "scallops",
+           "pasta_white_seafood",
+           "chicken_rice",
+           "sushi_sashimi",
+           "istrian_fuzi",
+           "turkey"
           ],
           "temp": "10–12",
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": "Motovun"
+         "terroir": "Kaldir, Šubijent, Brkač"
         },
         {
          "name": "Meneghetti White 2023",
@@ -276,7 +281,7 @@
          "terroir": "Bale"
         },
         {
-         "name": "Sauvignon 2023",
+         "name": "Sauvignon 2025",
          "producer": "Jakopić",
          "price": 9,
          "insight": {
@@ -367,20 +372,20 @@
          "terroir": "Korčula"
         },
         {
-         "name": "Riesling Butterfly 2023",
+         "name": "Riesling Butterfly 2024",
          "producer": "Zilliken",
          "price": 8,
          "insight": {
           "grape": "Riesling",
-          "region": "Saar, Mosel",
+          "region": "Mosel-Saar-Ruwer",
           "country": "DE",
           "style": "white_aromatic",
           "body": "light",
           "aromas": [
            "lime",
            "peach",
-           "wet_stone",
-           "honey"
+           "acacia",
+           "saline"
           ],
           "pairings": [
            "asian",
@@ -388,9 +393,10 @@
            "sushi"
           ],
           "temp": "8–10",
-          "alcohol": "",
+          "alcohol": "11",
           "sweetness": "off_dry"
-         }
+         },
+         "terroir": "Saar"
         },
         {
          "name": "Rausch Kabinett 2025",
@@ -398,7 +404,7 @@
          "price": 13,
          "insight": {
           "grape": "Riesling",
-          "region": "Saarburger Rausch, Saar",
+          "region": "Saar, Mosel",
           "country": "DE",
           "style": "white_mineral",
           "body": "light",
@@ -427,7 +433,8 @@
           "sl": "Hladnejša pobočja Saara, napeta letina — rizling, ki potrebuje živec, in ga ima.",
           "es": "Las laderas más frescas del Saar, una añada tensa — un Riesling que necesita nervio, y lo tiene."
          },
-         "recommended": true
+         "recommended": true,
+         "terroir": "Saarburger Rausch"
         },
         {
          "name": "Friulano 2023",
@@ -493,7 +500,7 @@
          }
         },
         {
-         "name": "Chablis La Grande Vallée 2023",
+         "name": "Chablis La Grande Vallée 2024",
          "producer": "Patrick Piuze",
          "price": 12,
          "insight": {
@@ -506,7 +513,11 @@
            "citrus",
            "green_apple",
            "flint",
-           "saline"
+           "saline",
+           "pear",
+           "oyster_juice",
+           "lemon_oil",
+           "spring_flowers"
           ],
           "pairings": [
            "oysters",
@@ -514,10 +525,16 @@
            "white_fish"
           ],
           "temp": "10–12",
-          "alcohol": "",
+          "alcohol": "12.5",
           "sweetness": "dry"
          },
-         "terroir": "La Grande Vallée"
+         "terroir": "La Grande Vallée",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "90"
+          }
+         ]
         },
         {
          "name": "Bourgogne Chardonnay 2023",
@@ -590,7 +607,7 @@
        "country": null,
        "items": [
         {
-         "name": "Karizma Cuvée 2021",
+         "name": "Karizma Cuvée 2022",
          "producer": "Petrač",
          "price": 8,
          "insight": {
@@ -858,7 +875,7 @@
          ]
         },
         {
-         "name": "Dingač Elegance",
+         "name": "Dingač Elegance 2020",
          "producer": "Skaramuča",
          "price": 14,
          "insight": {
@@ -880,7 +897,7 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "15",
           "sweetness": "dry"
          },
          "terroir": "Dingač, Pelješac"
@@ -3006,7 +3023,7 @@
          }
         },
         {
-         "name": "Sauvignon 2024",
+         "name": "Sauvignon 2025",
          "producer": "Jakopić",
          "price": 45,
          "insight": {
@@ -3026,7 +3043,7 @@
            "asparagus"
           ],
           "temp": "10–12",
-          "alcohol": "13.3",
+          "alcohol": "",
           "sweetness": "dry"
          },
          "terroir": "Štrigova"
@@ -3572,7 +3589,7 @@
          "price": 91,
          "insight": {
           "grape": "Riesling",
-          "region": "Mosel-Saar-Ruwer",
+          "region": "Saar, Mosel",
           "country": "DE",
           "style": "white_mineral",
           "body": "light",
@@ -11734,7 +11751,7 @@
          "producer": "Sauternes",
          "price": 880,
          "insight": {
-          "grape": "Sémillon 75%, Sauvignon Blanc 25%",
+          "grape": "Sémillon, Sauvignon Blanc",
           "region": "Sauternes, Bordeaux",
           "country": "FR",
           "style": "sweet",
@@ -11793,7 +11810,7 @@
          "producer": "Sauternes",
          "price": 940,
          "insight": {
-          "grape": "Sémillon 75%, Sauvignon Blanc 25%",
+          "grape": "Sémillon, Sauvignon Blanc",
           "region": "Sauternes, Bordeaux",
           "country": "FR",
           "style": "sweet",
