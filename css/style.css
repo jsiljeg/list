@@ -301,6 +301,24 @@ body {
   cursor: pointer;
 }
 .modal-close:hover { color: var(--text); border-color: var(--gold); }
+/* ‹ › step through the wines of the same group without leaving the sheet.
+   Sits beside the sheet, vertically centred, so it never collides with the
+   glass icon or a long wine name and stays put while the sheet scrolls. */
+.modal-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: 50%;
+  color: var(--gold-soft); font-size: 1.7rem; line-height: 1; cursor: pointer;
+  transition: color .15s, border-color .15s;
+}
+.modal-nav.prev { left: max(.6rem, calc(50% - 350px - 62px)); }
+.modal-nav.next { right: max(.6rem, calc(50% - 350px - 62px)); }
+.modal-nav:hover { color: var(--text); border-color: var(--gold); }
+.modal-nav.hidden { display: none; }
+/* Below ~820px the sheet fills the width and there is no room beside it;
+   swipe and the keyboard arrows still step through. */
+@media (max-width: 820px) { .modal-nav { display: none; } }
 .sheet-grip { display: none; }   /* drag-to-close handle, shown on phones */
 .detail-header {
   position: relative;

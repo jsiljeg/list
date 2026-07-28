@@ -604,6 +604,44 @@ function openDetail(ref, back) {
   }
   showModal();
   if (back) { const bb = $("modal-body").querySelector(".detail-back"); if (bb) bb.addEventListener("click", back); }
+  setDetailNav(ref, back);
+}
+
+/* ---------- step between wines of the same group ---------- */
+/* A ref is "section.category.group.index", so the neighbours are just index±1
+   inside the same group. The arrows hide at the ends rather than greying out:
+   on a tablet a disabled control still invites a tap. */
+let detailNav = { prev: null, next: null, back: null };
+function neighbourRef(ref, step) {
+  const [si, ci, gi, ii] = ref.split(".").map(Number);
+  const items = DATA.sections[si].categories[ci].groups[gi].items;
+  const j = ii + step;
+  if (j < 0 || j >= items.length || !items[j].insight) return null;
+  return [si, ci, gi, j].join(".");
+}
+function setDetailNav(ref, back) {
+  const t = T();
+  detailNav = { prev: neighbourRef(ref, -1), next: neighbourRef(ref, 1), back: back || null };
+  [["modal-prev", detailNav.prev, t.ui.prevWine], ["modal-next", detailNav.next, t.ui.nextWine]]
+    .forEach(([id, target, label]) => {
+      const b = $(id);
+      if (!b) return;
+      b.classList.toggle("hidden", !target);
+      b.setAttribute("aria-label", label);
+      b.title = label;
+    });
+}
+function clearDetailNav() {
+  detailNav = { prev: null, next: null, back: null };
+  ["modal-prev", "modal-next"].forEach((id) => { const b = $(id); if (b) b.classList.add("hidden"); });
+}
+function stepDetail(dir) {
+  const target = dir < 0 ? detailNav.prev : detailNav.next;
+  if (!target) return false;
+  openDetail(target, detailNav.back);
+  const ms = $("modal-sheet");
+  if (ms) ms.scrollTop = 0;
+  return true;
 }
 
 /* Modal open/close with a history entry so the phone/tablet back button
@@ -611,6 +649,7 @@ function openDetail(ref, back) {
 let modalOpen = false;
 function showModal() {
   const ms = $("modal-sheet");
+  clearDetailNav();   // the helper and other sheets have no neighbours; openDetail re-arms it
   if (ms) { ms.style.transform = ""; ms.style.transition = ""; }
   $("modal").classList.remove("hidden");
   // Reset the scroll only *after* the sheet is visible again: while the modal
@@ -866,7 +905,14 @@ $("search-toggle").addEventListener("click", () =>
 );
 $("search-close").addEventListener("click", closeSearch);
 
+$("modal-prev").addEventListener("click", () => stepDetail(-1));
+$("modal-next").addEventListener("click", () => stepDetail(1));
+
 document.addEventListener("keydown", (e) => {
+  if (modalOpen && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+    if (stepDetail(e.key === "ArrowLeft" ? -1 : 1)) e.preventDefault();
+    return;
+  }
   if (e.key !== "Escape") return;
   if (modalOpen) { closeModal(); return; }
   if ($("search-bar").classList.contains("open")) closeSearch();
@@ -878,20 +924,44 @@ document.addEventListener("keydown", (e) => {
 (function () {
   const sheet = $("modal-sheet");
   if (!sheet) return;
-  let startY = 0, dy = 0, mode = "none", dragging = false;
+  let startY = 0, startX = 0, dy = 0, dx = 0, mode = "none", dragging = false, axis = "";
+  /* A horizontal drag that starts on a scrollable row (chip strips) belongs to
+     that row, not to us. */
+  const onScroller = (el) => {
+    for (let n = el; n && n !== sheet; n = n.parentElement) {
+      if (n.scrollWidth > n.clientWidth + 4) return true;
+    }
+    return false;
+  };
   sheet.addEventListener("touchstart", (e) => {
     if (e.touches.length !== 1) { dragging = false; return; }
     const atTop = sheet.scrollTop <= 0;
     const atBottom = sheet.scrollTop + sheet.clientHeight >= sheet.scrollHeight - 1;
     mode = atTop && atBottom ? "both" : atTop ? "down" : atBottom ? "up" : "none";
-    if (mode === "none") { dragging = false; return; }
-    startY = e.touches[0].clientY; dy = 0; dragging = true;
+    const canStep = (detailNav.prev || detailNav.next) && !onScroller(e.target);
+    if (mode === "none" && !canStep) { dragging = false; return; }
+    startY = e.touches[0].clientY; startX = e.touches[0].clientX;
+    dy = dx = 0; axis = ""; dragging = true;
     sheet.style.transition = "none";
   }, { passive: true });
   const allowed = () => mode === "both" || (mode === "down" && dy > 0) || (mode === "up" && dy < 0);
   sheet.addEventListener("touchmove", (e) => {
     if (!dragging) return;
     dy = e.touches[0].clientY - startY;
+    dx = e.touches[0].clientX - startX;
+    // Lock to one axis once the finger has committed, so a slightly diagonal
+    // scroll never turns into a dismissal and vice versa.
+    if (!axis) {
+      if (Math.abs(dx) < 12 && Math.abs(dy) < 12) return;
+      axis = Math.abs(dx) > Math.abs(dy) * 1.3 ? "x" : "y";
+      if (axis === "x" && !(detailNav.prev || detailNav.next)) { dragging = false; return; }
+    }
+    if (axis === "x") {
+      // Rubber-band when there is no wine that way, so the edge is felt.
+      const wall = (dx > 0 && !detailNav.prev) || (dx < 0 && !detailNav.next);
+      sheet.style.transform = `translateX(${wall ? dx / 4 : dx}px)`;
+      return;
+    }
     if (!allowed()) { dy = 0; sheet.style.transform = ""; $("modal-backdrop").style.opacity = ""; return; }
     sheet.style.transform = `translateY(${dy}px)`;
     $("modal-backdrop").style.opacity = String(Math.max(.25, 1 - Math.abs(dy) / 450));
@@ -899,6 +969,14 @@ document.addEventListener("keydown", (e) => {
   function end() {
     if (!dragging) return;
     dragging = false;
+    if (axis === "x") {
+      const dir = dx > 0 ? -1 : 1;               // drag right → previous wine
+      const stepped = Math.abs(dx) > 70 && stepDetail(dir);
+      sheet.style.transition = "transform .22s cubic-bezier(.22,.61,.36,1)";
+      sheet.style.transform = "";
+      if (!stepped) return;
+      return;
+    }
     if (allowed() && Math.abs(dy) > 110) {
       // Finish the gesture instead of cutting it short: keep sliding the sheet
       // the rest of the way off-screen (same direction the finger was already
