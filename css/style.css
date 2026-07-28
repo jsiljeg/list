@@ -377,8 +377,8 @@ body {
   border-top: 1px solid var(--line);
 }
 .detail-winemaker p {
-  font-family: var(--serif); font-size: 1.12rem; line-height: 1.55;
-  color: var(--text); margin-top: .3rem;
+  font-family: var(--sans); font-size: .98rem; font-weight: 300; line-height: 1.7;
+  color: var(--text); margin-top: .35rem;
 }
 .detail-terroir { margin-top: .6rem; color: var(--text-dim); font-size: .95rem; }
 .detail-terroir .detail-label { display: inline; margin-right: .3rem; }

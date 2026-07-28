@@ -9597,17 +9597,26 @@
           "body": "medium",
           "aromas": [
            "sour_cherry",
+           "cherry",
+           "strawberry",
+           "blueberry",
+           "blackcurrant",
            "rose",
+           "violet",
+           "lavender",
+           "clove",
+           "crushed_stone",
            "forest_floor",
            "balsamic"
           ],
           "pairings": [
            "game",
+           "dark_meat",
            "truffles",
            "solo"
           ],
           "temp": "16–18",
-          "alcohol": ""
+          "alcohol": "14"
          },
          "terroir": "Case Basse",
          "tags": [
@@ -9623,7 +9632,13 @@
           "zh": "索尔黛拉——毫不妥协的传奇：纯净、空灵而永恒的桑娇维塞。",
           "sl": "Soldera — legenda brez kompromisa: sangiovese, čist, eteričen in brezčasen.",
           "es": "Soldera — una leyenda sin concesiones: Sangiovese puro, etéreo y atemporal."
-         }
+         },
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "97"
+          }
+         ]
         },
         {
          "name": "Barbaresco 2020",
@@ -9636,12 +9651,18 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
-           "sour_cherry",
+           "cherry",
+           "raspberry",
+           "strawberry",
            "rose",
-           "licorice",
-           "spice",
-           "tar",
-           "smoke"
+           "violet",
+           "blood_orange",
+           "orange_peel",
+           "dried_mint",
+           "herbs",
+           "black_tea",
+           "wet_stone",
+           "balsamic"
           ],
           "pairings": [
            "game",
@@ -9654,6 +9675,32 @@
          "terroir": "",
          "tags": [
           "rare"
+         ],
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "95"
+          },
+          {
+           "critic": "Decanter",
+           "score": "95"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "95"
+          },
+          {
+           "critic": "Vinous",
+           "score": "94"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "94"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "93"
+          }
          ]
         },
         {
@@ -9668,9 +9715,20 @@
           "body": "full",
           "aromas": [
            "blackcurrant",
+           "creme_de_cassis",
+           "dark_cherry",
+           "blackberry",
+           "graphite",
+           "gravel",
            "cedar",
+           "tobacco",
+           "leather",
+           "licorice",
            "herbs",
-           "spice"
+           "lavender",
+           "iodine",
+           "earth",
+           "balsamic"
           ],
           "pairings": [
            "steak",
@@ -9683,7 +9741,19 @@
          "terroir": "",
          "ratings": [
           {
+           "critic": "Vinous",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "97"
+          },
+          {
            "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Decanter",
            "score": "97"
           },
           {
@@ -9691,8 +9761,8 @@
            "score": "96"
           },
           {
-           "critic": "Vinous",
-           "score": "97"
+           "critic": "Jancis Robinson",
+           "score": "18/20"
           }
          ],
          "tags": [
@@ -9711,10 +9781,22 @@
           "style": "red_full",
           "body": "full",
           "aromas": [
+           "dark_cherry",
            "blackberry",
-           "plum",
-           "chocolate",
-           "cedar"
+           "blackcurrant",
+           "licorice",
+           "dark_chocolate",
+           "cedar",
+           "vanilla",
+           "anise",
+           "tobacco",
+           "graphite",
+           "gravel",
+           "iodine",
+           "mint",
+           "earth",
+           "saline",
+           "balsamic"
           ],
           "pairings": [
            "steak",
@@ -9733,6 +9815,22 @@
           {
            "critic": "Robert Parker",
            "score": "97"
+          },
+          {
+           "critic": "Decanter",
+           "score": "97"
+          },
+          {
+           "critic": "Vinous",
+           "score": "96"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "18/20"
           }
          ],
          "tags": [
@@ -9752,9 +9850,20 @@
           "body": "full",
           "aromas": [
            "blackcurrant",
+           "creme_de_cassis",
+           "dark_cherry",
+           "blackberry",
+           "graphite",
+           "gravel",
            "cedar",
+           "tobacco",
+           "leather",
+           "licorice",
            "herbs",
-           "spice"
+           "lavender",
+           "iodine",
+           "earth",
+           "balsamic"
           ],
           "pairings": [
            "steak",
@@ -9769,6 +9878,26 @@
           {
            "critic": "Robert Parker",
            "score": "100"
+          },
+          {
+           "critic": "Decanter",
+           "score": "100"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "98"
+          },
+          {
+           "critic": "Vinous",
+           "score": "98"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "98"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17/20"
           }
          ],
          "tags": [
@@ -9788,9 +9917,21 @@
           "body": "full",
           "aromas": [
            "blackcurrant",
-           "cherry",
-           "cedar",
-           "chocolate"
+           "blackberry",
+           "dark_cherry",
+           "plum",
+           "red_currant",
+           "violet",
+           "sage",
+           "mint",
+           "graphite",
+           "gravel",
+           "incense",
+           "smoke",
+           "toasted_coffee",
+           "toast",
+           "tobacco",
+           "spice"
           ],
           "pairings": [
            "steak",
@@ -9803,8 +9944,16 @@
          "terroir": "Tenuta Tignanello",
          "ratings": [
           {
+           "critic": "Falstaff",
+           "score": "99"
+          },
+          {
            "critic": "James Suckling",
            "score": "98"
+          },
+          {
+           "critic": "Vinous",
+           "score": "97"
           },
           {
            "critic": "Wine Spectator",
@@ -9825,16 +9974,29 @@
          "producer": "Poggio di Sotto",
          "price": 495,
          "insight": {
-          "grape": "Sangiovese Grosso",
+          "grape": "Sangiovese",
           "region": "Montalcino, Toscana",
           "country": "IT",
           "style": "red_full",
           "body": "full",
           "aromas": [
            "sour_cherry",
-           "violet",
-           "tobacco",
-           "balsamic"
+           "strawberry",
+           "red_currant",
+           "plum",
+           "blood_orange",
+           "rose",
+           "lilac",
+           "blue_flower",
+           "rosemary",
+           "sage",
+           "myrtle",
+           "mint",
+           "licorice",
+           "leather",
+           "graphite",
+           "earth",
+           "saline"
           ],
           "pairings": [
            "beef",
@@ -9847,6 +10009,36 @@
          "terroir": "Castelnuovo dell'Abate",
          "tags": [
           "excellent_vintage"
+         ],
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "98+"
+          },
+          {
+           "critic": "Falstaff",
+           "score": "98"
+          },
+          {
+           "critic": "Decanter",
+           "score": "97"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "96"
+          },
+          {
+           "critic": "Vinous",
+           "score": "96"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "94"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17.5/20"
+          }
          ]
         },
         {
@@ -9854,16 +10046,28 @@
          "producer": "Poggio di Sotto",
          "price": 495,
          "insight": {
-          "grape": "Sangiovese Grosso",
+          "grape": "Sangiovese",
           "region": "Montalcino, Toscana",
           "country": "IT",
           "style": "red_full",
           "body": "full",
           "aromas": [
-           "sour_cherry",
-           "plum",
-           "tobacco",
-           "spice"
+           "cherry",
+           "strawberry",
+           "raspberry",
+           "red_currant",
+           "pomegranate",
+           "grapefruit",
+           "bergamot",
+           "rose",
+           "violet",
+           "geranium",
+           "lavender",
+           "thyme",
+           "flint",
+           "licorice",
+           "pepper",
+           "herbaceous"
           ],
           "pairings": [
            "beef",
@@ -9871,9 +10075,31 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "14"
+          "alcohol": "13.5"
          },
-         "terroir": "Castelnuovo dell'Abate"
+         "terroir": "Castelnuovo dell'Abate",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "99"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "97+"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Decanter",
+           "score": "95"
+          },
+          {
+           "critic": "Vinous",
+           "score": "94+"
+          }
+         ]
         }
        ]
       },
