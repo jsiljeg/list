@@ -687,9 +687,6 @@ function stepDetail(dir) {
 
   const span = Math.max(180, Math.round((sheet.clientWidth || 320) * 0.32));
   const out = dir > 0 ? -span : span;          // forward → the card exits left
-  // Painted height, not layout height: a step interrupted mid-glide starts
-  // from where the frame actually is, so heights never accumulate an error.
-  const h0 = Math.round(sheet.getBoundingClientRect().height);
   body.style.willChange = "transform, opacity";
   const outMs = 110;
   body.style.transition =
@@ -698,34 +695,22 @@ function stepDetail(dir) {
   body.style.opacity = "0";
 
   stepTimers.push(setTimeout(() => {
-    // Swap while the card is invisible, then measure what the sheet wants to
-    // be and glide to it. Snapping between a short wine and a tall one was the
-    // resize you could feel — the frame is centred, so both edges jump at once.
-    sheet.style.height = "auto";
-    sheet.style.transition = "none";
+    /* Swap while the card is invisible. Nothing measures or animates the frame
+       any more: it is a fixed size and the content scrolls inside it. The old
+       code set height:auto here to measure the incoming card, which let the
+       sheet balloon to the full page for a frame before snapping back — the
+       grow-then-crop that showed on every open and every swipe. */
     openDetail(target, detailNav.back, detailScope);
     sheet.scrollTop = 0;
-    /* In detail mode the frame is a fixed height, so there is normally nothing
-       to glide; this only ever fires if that rule is not in play. */
-    const h1 = sheet.offsetHeight;
-    const growable = h0 > 0 && h1 > 0 && Math.abs(h1 - h0) > 2;
-    if (growable) sheet.style.height = h0 + "px";
-    else sheet.style.height = "";
     body.style.transition = "none";
     body.style.transform = `translateX(${-out}px)`;
     body.style.opacity = "0";
     void body.offsetWidth;
     requestAnimationFrame(() => {
-      if (growable) {
-        sheet.style.transition = "height .34s cubic-bezier(.17,.84,.44,1)";
-        sheet.style.height = h1 + "px";
-      }
       body.style.transition = "transform .3s cubic-bezier(.17,.84,.44,1), opacity .22s ease-out";
       body.style.transform = "";
       body.style.opacity = "1";
       stepTimers.push(setTimeout(() => {
-        sheet.style.height = "";
-        sheet.style.transition = "";
         body.style.willChange = "";
         body.style.transition = "";
         pendingRef = null;
