@@ -40,6 +40,18 @@ body {
     radial-gradient(ellipse at 50% -10%, rgba(201,169,97,.13), transparent 55%),
     var(--bg);
 }
+/* The nail face from the atrium sits behind Filho's story — the one screen with
+   room for it. Monochrome, so the sculpture's cobalt never fights the gold, and
+   dimmed under a charcoal wash so the text keeps its contrast. */
+.story-screen::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(rgba(22,21,19,.9), rgba(22,21,19,.97)),
+    url("../assets/atrium-face.webp") center 18% / cover no-repeat;
+  opacity: .55;
+}
+.story-screen { position: relative; isolation: isolate; }
+
 /* Language screen: lock to the viewport so it never scrolls on any device
    (matches the "fixed" tablet feel). Scoped by #id so the story splash, which
    shares .start and needs to scroll internally, is unaffected. */
@@ -235,6 +247,9 @@ body {
 }
 .ornament::before { background: linear-gradient(to right, transparent, rgba(179,150,85,.5)); }
 .ornament::after { background: linear-gradient(to left, transparent, rgba(179,150,85,.5)); }
+/* The nail bowl closes the page — a full stop, quieter than the headings' motif. */
+.closing-mark { display: flex; justify-content: center; margin: 2.6rem 0 .5rem; color: var(--gold-soft); }
+.closing-mark svg { height: 26px; width: auto; opacity: .5; }
 .cat-serving { color: var(--text-faint); font-size: .9rem; margin-bottom: .6rem; }
 .price-note { color: var(--text-faint); font-style: italic; font-size: .92rem; margin: .3rem 0 .8rem; }
 .country {

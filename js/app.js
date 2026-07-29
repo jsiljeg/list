@@ -226,7 +226,15 @@ function priceHtml(item) {
 
 /* minimalist gold marker icons for the list + legend */
 const ICONS = {
-  nails: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 17L16 5"/><path d="M2.9 15.9L5.1 18.1"/><path d="M8 4L18 18"/><path d="M9.2 3.1L6.8 4.9"/><path d="M3 10L20 12"/><path d="M20.2 10.5L19.8 13.5"/></svg>',
+  /* Traced from the nail face in the atrium: fifteen short marks, no two
+     parallel and none of them crossing, denser in the middle and thinning at
+     the edges. Nothing intersects, so there is no stroke junction for the eye
+     to resolve into a written character — it reads as texture, which is what
+     the sculpture is. */
+  nails: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"><path d="M10.5 4.2L13.4 6.1"/><path d="M14.2 4.6L16.6 3.1"/><path d="M7.1 8.2L10 6.6"/><path d="M11.1 7.6L13.5 9.6"/><path d="M15 8.6L17.5 7"/><path d="M5 11.6L8 10"/><path d="M9 11.1L12 12.6"/><path d="M13 10.5L16 12.1"/><path d="M17.1 11.6L19.5 10"/><path d="M6.1 14L9 15.6"/><path d="M10.6 15.1L13 13.5"/><path d="M14.6 14.6L17 16.1"/><path d="M8.1 18L11 16.5"/><path d="M12 17.1L15 18.6"/><path d="M10 20.6L13 19.5"/></svg>',
+  /* The second sculpture: a shallow vessel with nails standing out of the rim.
+     Wide rather than square, so it closes a page instead of marking a line. */
+  bowl: '<svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M4 9Q20 22 36 9"/><path d="M4 9L2.6 4.6"/><path d="M7.2 11.3L4.6 6.7"/><path d="M10.4 13.2L8.4 8.4"/><path d="M13.6 14.5L12.1 9.6"/><path d="M16.8 15.2L15.9 10.2"/><path d="M20 15.5L20 10.4"/><path d="M23.2 15.2L24.1 10.2"/><path d="M26.4 14.5L27.9 9.6"/><path d="M29.6 13.2L31.6 8.4"/><path d="M32.8 11.3L35.4 6.7"/><path d="M36 9L37.4 4.6"/></svg>',
   star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.5 1.55 6.74L12 17.2 5.85 20.6 7.4 13.86 2.2 9.36l6.9-.6z"/></svg>',
   crown: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.2 3.4L12 4l4.8 7.4L21 8l-1.7 11H4.7L3 8z"/></svg>',
   sparkle: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 7.6L21.5 12l-7.6 2.4L12 22l-1.9-7.6L2.5 12l7.6-2.4z"/></svg>',
@@ -530,6 +538,9 @@ function renderContent() {
     });
   }
 
+  /* The second sculpture closes the page: a mark for the end, not a divider.
+     Only where something was actually listed — nothing to close under "no results". */
+  if (html.includes('class="item')) html += `<div class="closing-mark" aria-hidden="true">${ICONS.bowl}</div>`;
   box.innerHTML = html;
   box.classList.remove("content-fade");
   void box.offsetWidth;
