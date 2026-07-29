@@ -225,9 +225,11 @@ body {
 }
 .ornament {
   display: flex; align-items: center; gap: .8rem;
-  color: var(--gold-soft); font-size: .5rem;
+  color: var(--gold-soft);
   margin: .3rem 0 .9rem;
 }
+/* the house motif, traced from the nail sculpture in the atrium */
+.ornament svg { width: 16px; height: 16px; flex: none; opacity: .85; }
 .ornament::before, .ornament::after {
   content: ""; flex: 1; height: 1px;
 }

@@ -226,6 +226,7 @@ function priceHtml(item) {
 
 /* minimalist gold marker icons for the list + legend */
 const ICONS = {
+  nails: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 17L16 5"/><path d="M2.9 15.9L5.1 18.1"/><path d="M8 4L18 18"/><path d="M9.2 3.1L6.8 4.9"/><path d="M3 10L20 12"/><path d="M20.2 10.5L19.8 13.5"/></svg>',
   star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.26 6.9.6-5.2 4.5 1.55 6.74L12 17.2 5.85 20.6 7.4 13.86 2.2 9.36l6.9-.6z"/></svg>',
   crown: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.2 3.4L12 4l4.8 7.4L21 8l-1.7 11H4.7L3 8z"/></svg>',
   sparkle: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 7.6L21.5 12l-7.6 2.4L12 22l-1.9-7.6L2.5 12l7.6-2.4z"/></svg>',
@@ -452,7 +453,7 @@ function renderContent() {
       });
     });
     html = newHtml
-      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.sparkle}</span>${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">◆</div>${newHtml}</section>`
+      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.sparkle}</span>${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div>${newHtml}</section>`
       : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (prideOnly) {
     const pride = [];
@@ -468,7 +469,7 @@ function renderContent() {
     });
     pride.sort((a, b) => b.item.price - a.item.price);
     if (pride.length) {
-      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.crown}</span>${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">◆</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
+      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.crown}</span>${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
       html += pride.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
       html += `</section>`;
     } else {
@@ -488,7 +489,7 @@ function renderContent() {
     });
     rated.sort((a, b) => b.best - a.best);
     if (rated.length) {
-      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.trophy}</span>${esc(t.ui.bestRated)}</h2><div class="ornament" aria-hidden="true">◆</div>`;
+      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.trophy}</span>${esc(t.ui.bestRated)}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div>`;
       html += rated.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
       html += `</section>`;
     } else {
@@ -513,13 +514,13 @@ function renderContent() {
       if (secHtml) body += `<h3 class="picks-group">${esc(t.sections[sec.id])}</h3>${secHtml}`;
     });
     html = total
-      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.picks)}</h2><div class="ornament" aria-hidden="true">◆</div>${body}</section>`
+      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.picks)}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div>${body}</section>`
       : `<p class="no-results">${t.ui.noResults}</p>`;
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
     sec.categories.forEach((cat, ci) => {
-      html += `<section class="cat"><h2 class="cat-title">${esc(t.categories[cat.id] || cat.id)}${cat.serving ? ` <span class="cat-serving">${cat.serving}</span>` : ""}</h2><div class="ornament" aria-hidden="true">◆</div>`;
+      html += `<section class="cat"><h2 class="cat-title">${esc(t.categories[cat.id] || cat.id)}${cat.serving ? ` <span class="cat-serving">${cat.serving}</span>` : ""}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div>`;
       if (cat.priceNote) html += `<p class="price-note">${t.ui.priceNote}</p>`;
       cat.groups.forEach((g, gi) => {
         if (g.country) html += `<h3 class="country">${COUNTRY_FLAGS[g.country] ? `<span class="country-flag">${COUNTRY_FLAGS[g.country]()}</span>` : ""}<span>${esc(t.countries[g.country] || g.country)}</span></h3>`;
