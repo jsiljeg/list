@@ -503,12 +503,15 @@ function renderContent() {
   box.classList.remove("content-fade");
   void box.offsetWidth;
   box.classList.add("content-fade");
-  /* Searching narrows the world: stepping stays among the hits, the same way
-     the sommelier's three picks stay three. */
-  const scope = q ? searchRefs.slice() : null;
-  box.querySelectorAll(".item.clickable").forEach((b) =>
-    b.addEventListener("click", () => openDetail(b.dataset.ref, null, scope))
-  );
+  /* Stepping stays inside whatever the guest is actually looking at — this
+     section, these search hits, this filter — in the order shown. Someone
+     choosing a dessert wine is choosing between dessert wines; swiping out of
+     the category and into the reds is noise, and it makes both ends of the
+     set mean something ("that is all of them") instead of one end being the
+     end of the entire cellar. */
+  const shown = Array.from(box.querySelectorAll(".item.clickable"));
+  const scope = shown.map((b) => b.dataset.ref);
+  shown.forEach((b) => b.addEventListener("click", () => openDetail(b.dataset.ref, null, scope)));
 }
 
 /* producer blurb: longest producers.json key contained in the wine's

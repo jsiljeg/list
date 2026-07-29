@@ -291,13 +291,24 @@ body {
 .no-results { color: var(--text-dim); text-align: center; padding: 3rem 0; font-size: 1.05rem; }
 
 /* ---------- Modal ---------- */
-.modal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+/* Anchored to the top, not centred. Centring meant every height change moved
+   both edges, so the wine name shifted whenever you stepped to a card of a
+   different length — the stretching that is obvious between the two prošeks
+   on a laptop and invisible on a phone, where the sheet nearly fills the
+   screen anyway. Pinning the top keeps the name, producer and glass exactly
+   where they were; only the bottom edge moves, and min-height damps that. */
+.modal {
+  position: fixed; inset: 0; z-index: 50;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 4vh 1rem 1rem;
+}
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
 .modal-sheet {
   position: relative;
   width: 100%; max-width: 700px;
   /* clip sideways so a card entering or leaving is cut at the sheet's rounded
      edge instead of spilling across the backdrop */
+  min-height: min(520px, 74vh);
   max-height: 90vh; overflow-y: auto; overflow-x: clip;
   background: var(--bg-raised);
   border: 1px solid var(--line);
@@ -321,7 +332,9 @@ body {
    Sits beside the sheet, vertically centred, so it never collides with the
    glass icon or a long wine name and stays put while the sheet scrolls. */
 .modal-nav {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  /* Follows the sheet, which is anchored to the top: half-way down a tall card,
+     but never past the bottom of a short one. */
+  position: absolute; top: min(50%, calc(4vh + 240px)); transform: translateY(-50%); z-index: 2;
   width: 48px; height: 48px;
   display: flex; align-items: center; justify-content: center;
   background: var(--bg-card); border: 1px solid var(--line); border-radius: 50%;
