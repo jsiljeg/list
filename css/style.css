@@ -46,9 +46,9 @@ body {
 .story-screen::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
-    linear-gradient(rgba(22,21,19,.9), rgba(22,21,19,.97)),
-    url("../assets/atrium-face.webp") center 18% / cover no-repeat;
-  opacity: .55;
+    radial-gradient(ellipse at 50% 34%, rgba(22,21,19,0) 30%, rgba(22,21,19,.86) 78%),
+    url("../assets/atrium-face.svg") center 22% / cover no-repeat;
+  opacity: .5;
 }
 .story-screen { position: relative; isolation: isolate; }
 

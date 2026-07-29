@@ -226,12 +226,12 @@ function priceHtml(item) {
 
 /* minimalist gold marker icons for the list + legend */
 const ICONS = {
-  /* Traced from the nail face in the atrium: fifteen short marks, no two
-     parallel and none of them crossing, denser in the middle and thinning at
-     the edges. Nothing intersects, so there is no stroke junction for the eye
-     to resolve into a written character — it reads as texture, which is what
-     the sculpture is. */
-  nails: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"><path d="M10.5 4.2L13.4 6.1"/><path d="M14.2 4.6L16.6 3.1"/><path d="M7.1 8.2L10 6.6"/><path d="M11.1 7.6L13.5 9.6"/><path d="M15 8.6L17.5 7"/><path d="M5 11.6L8 10"/><path d="M9 11.1L12 12.6"/><path d="M13 10.5L16 12.1"/><path d="M17.1 11.6L19.5 10"/><path d="M6.1 14L9 15.6"/><path d="M10.6 15.1L13 13.5"/><path d="M14.6 14.6L17 16.1"/><path d="M8.1 18L11 16.5"/><path d="M12 17.1L15 18.6"/><path d="M10 20.6L13 19.5"/></svg>',
+  /* The atrium's nails, arranged as a bunch of grapes: the restaurant's own
+     material, the list's own subject. Fifteen short marks laid out 3-4-3-2-1
+     under a stem — no two parallel, none of them touching. The bunch comes
+     from the arrangement alone, never from an outline, so there is no stroke
+     junction for the eye to resolve into a written character. */
+  grape: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M12 6.4L12.6 2.4"/><path d="M11.2 2.9L13.9 2.2"/><path d="M7.7 8.2L10.3 9.2"/><path d="M10.9 9.5L13.2 8.1"/><path d="M13.9 8.4L16.3 9.5"/><path d="M6.2 11.6L8.7 10.4"/><path d="M9.3 11.1L11.8 12.3"/><path d="M12.4 12.1L14.8 10.8"/><path d="M15.4 11.3L17.8 12.4"/><path d="M7.6 14.3L10.2 15.4"/><path d="M10.8 15.2L13.2 13.9"/><path d="M13.8 14.4L16.2 15.5"/><path d="M9.2 17.6L11.7 18.6"/><path d="M12.3 18.4L14.7 17.1"/><path d="M11 20.7L13.2 21.4"/></svg>',
   /* The second sculpture: a shallow vessel with nails standing out of the rim.
      Wide rather than square, so it closes a page instead of marking a line. */
   bowl: '<svg viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M4 9Q20 22 36 9"/><path d="M4 9L2.6 4.6"/><path d="M7.2 11.3L4.6 6.7"/><path d="M10.4 13.2L8.4 8.4"/><path d="M13.6 14.5L12.1 9.6"/><path d="M16.8 15.2L15.9 10.2"/><path d="M20 15.5L20 10.4"/><path d="M23.2 15.2L24.1 10.2"/><path d="M26.4 14.5L27.9 9.6"/><path d="M29.6 13.2L31.6 8.4"/><path d="M32.8 11.3L35.4 6.7"/><path d="M36 9L37.4 4.6"/></svg>',
@@ -461,7 +461,7 @@ function renderContent() {
       });
     });
     html = newHtml
-      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.sparkle}</span>${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div>${newHtml}</section>`
+      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.sparkle}</span>${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${newHtml}</section>`
       : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (prideOnly) {
     const pride = [];
@@ -477,7 +477,7 @@ function renderContent() {
     });
     pride.sort((a, b) => b.item.price - a.item.price);
     if (pride.length) {
-      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.crown}</span>${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
+      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.crown}</span>${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
       html += pride.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
       html += `</section>`;
     } else {
@@ -497,7 +497,7 @@ function renderContent() {
     });
     rated.sort((a, b) => b.best - a.best);
     if (rated.length) {
-      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.trophy}</span>${esc(t.ui.bestRated)}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div>`;
+      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.trophy}</span>${esc(t.ui.bestRated)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>`;
       html += rated.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
       html += `</section>`;
     } else {
@@ -522,13 +522,13 @@ function renderContent() {
       if (secHtml) body += `<h3 class="picks-group">${esc(t.sections[sec.id])}</h3>${secHtml}`;
     });
     html = total
-      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.picks)}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div>${body}</section>`
+      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.picks)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${body}</section>`
       : `<p class="no-results">${t.ui.noResults}</p>`;
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
     sec.categories.forEach((cat, ci) => {
-      html += `<section class="cat"><h2 class="cat-title">${esc(t.categories[cat.id] || cat.id)}${cat.serving ? ` <span class="cat-serving">${cat.serving}</span>` : ""}</h2><div class="ornament" aria-hidden="true">${ICONS.nails}</div>`;
+      html += `<section class="cat"><h2 class="cat-title">${esc(t.categories[cat.id] || cat.id)}${cat.serving ? ` <span class="cat-serving">${cat.serving}</span>` : ""}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>`;
       if (cat.priceNote) html += `<p class="price-note">${t.ui.priceNote}</p>`;
       cat.groups.forEach((g, gi) => {
         if (g.country) html += `<h3 class="country">${COUNTRY_FLAGS[g.country] ? `<span class="country-flag">${COUNTRY_FLAGS[g.country]()}</span>` : ""}<span>${esc(t.countries[g.country] || g.country)}</span></h3>`;
