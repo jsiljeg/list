@@ -1072,7 +1072,10 @@
           "zh": "金琥珀色，质地浓稠近乎油润——层层叠叠的果干、橙皮与核桃气息，余韵极长的普罗塞克（prošek）。",
           "sl": "Zlato-jantarne barve, gost in skoraj oljnat po teksturi — prošek, prepleten s suhim sadjem, pomarančno lupino in orehom, z zelo dolgim zaključkom.",
           "es": "Ámbar dorado y denso, de textura casi aceitosa — un prošek con capas de fruta seca, piel de naranja y nuez, de final muy largo."
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Rajnski rizling izborna berba 2019",
@@ -1108,7 +1111,10 @@
            "score": "95"
           }
          ],
-         "terroir": "Štrigova"
+         "terroir": "Štrigova",
+         "tags": [
+          "drinking_now"
+         ]
         }
        ]
       }
@@ -2458,7 +2464,8 @@
          },
          "tags": [
           "excellent_vintage",
-          "rare"
+          "rare",
+          "drinking_now"
          ],
          "terroir": "Best of 17 Grands Crus + Hautvillers (Premier Cru)",
          "ratings": [
@@ -2517,7 +2524,8 @@
          },
          "tags": [
           "excellent_vintage",
-          "rare"
+          "rare",
+          "drinking_now"
          ],
          "terroir": "Best of 17 Grands Crus + Hautvillers (Premier Cru)",
          "ratings": [
@@ -2568,7 +2576,8 @@
          },
          "tags": [
           "rare",
-          "excellent_vintage"
+          "excellent_vintage",
+          "drinking_now"
          ],
          "ratings": [
           {
@@ -2674,7 +2683,8 @@
          },
          "tags": [
           "legendary_vintage",
-          "rare"
+          "rare",
+          "drinking_now"
          ],
          "ratings": [
           {
@@ -2734,7 +2744,8 @@
           "dosage": "Brut"
          },
          "tags": [
-          "rare"
+          "rare",
+          "drinking_now"
          ],
          "terroir": "",
          "music": "III. Presto from Sinfonia Concertante in E-Flat, K. 364, for Violin, Viola and Orchestra — Shlomo Mintz",
@@ -2787,7 +2798,8 @@
          },
          "tags": [
           "legendary_vintage",
-          "rare"
+          "rare",
+          "drinking_now"
          ],
          "terroir": "Clos du Mesnil",
          "music": "Suite for Krug in 2008 — Ryuichi Sakamoto",
@@ -2849,7 +2861,8 @@
           "dosage": "Brut"
          },
          "tags": [
-          "rare"
+          "rare",
+          "drinking_now"
          ],
          "terroir": "Clos d'Ambonnay",
          "ratings": [
@@ -3700,7 +3713,8 @@
          },
          "terroir": "Stolzenberg",
          "tags": [
-          "excellent_vintage"
+          "excellent_vintage",
+          "drinking_now"
          ]
         },
         {
@@ -6152,7 +6166,10 @@
            "score": "95"
           }
          ],
-         "terroir": "Monte Calvario"
+         "terroir": "Monte Calvario",
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Ribolla 2020",
@@ -6305,7 +6322,10 @@
           "temp": "12–14",
           "alcohol": "12.5",
           "sweetness": "dry"
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Solo 2018",
@@ -7386,7 +7406,10 @@
           "sl": "Eden najboljših Dingačev, ki tega imena ne sme nositi, ker vino zori v zagrebškem Markuševcu.",
           "es": "Uno de los mejores Dingač que no puede llevar ese nombre, porque el vino madura en Markuševec, en Zagreb."
          },
-         "noteSig": "Saša Špiranec"
+         "noteSig": "Saša Špiranec",
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Dingač Elegance 2020",
@@ -8928,10 +8951,7 @@
           "alcohol": "",
           "sweetness": "dry"
          },
-         "terroir": "Boca, Prato Sesia",
-         "tags": [
-          "drinking_now"
-         ]
+         "terroir": "Boca, Prato Sesia"
         },
         {
          "name": "Brunello di Montalcino 2018",
@@ -10434,6 +10454,9 @@
            "critic": "Falstaff",
            "score": "95"
           }
+         ],
+         "tags": [
+          "drinking_now"
          ]
         },
         {
@@ -10944,8 +10967,7 @@
           "sweetness": "dry"
          },
          "tags": [
-          "legendary_vintage",
-          "drinking_now"
+          "legendary_vintage"
          ],
          "terroir": "",
          "ratings": [
@@ -11353,7 +11375,10 @@
           "alcohol": "",
           "sweetness": "sweet"
          },
-         "terroir": "Pelješac"
+         "terroir": "Pelješac",
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Prošek Ruža Dalmatinska – 0,375 l",
@@ -11392,7 +11417,10 @@
           "zh": "金琥珀色，质地浓稠近乎油润——层层叠叠的果干、橙皮与核桃气息，余韵极长的普罗塞克（prošek）。",
           "sl": "Zlato-jantarne barve, gost in skoraj oljnat po teksturi — prošek, prepleten s suhim sadjem, pomarančno lupino in orehom, z zelo dolgim zaključkom.",
           "es": "Ámbar dorado y denso, de textura casi aceitosa — un prošek con capas de fruta seca, piel de naranja y nuez, de final muy largo."
-         }
+         },
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Tasel – 0,375 l",
@@ -11419,7 +11447,10 @@
           "alcohol": "12.5",
           "sweetness": "sweet"
          },
-         "terroir": "Krasica"
+         "terroir": "Krasica",
+         "tags": [
+          "drinking_now"
+         ]
         },
         {
          "name": "Rajnski rizling izborna berba 2019",
@@ -11455,7 +11486,10 @@
            "score": "95"
           }
          ],
-         "terroir": "Štrigova"
+         "terroir": "Štrigova",
+         "tags": [
+          "drinking_now"
+         ]
         }
        ]
       },
@@ -11562,10 +11596,7 @@
           "alcohol": "8",
           "sweetness": "sweet"
          },
-         "terroir": "Aulerde",
-         "tags": [
-          "drinking_now"
-         ]
+         "terroir": "Aulerde"
         },
         {
          "name": "Riesling Auslese Goldkapsel 2009 – 0,375l",
@@ -11755,6 +11786,9 @@
            "critic": "Vinous",
            "score": "94"
           }
+         ],
+         "tags": [
+          "drinking_now"
          ]
         }
        ]
@@ -11882,8 +11916,7 @@
          ],
          "tags": [
           "legendary_vintage",
-          "rare",
-          "drinking_now"
+          "rare"
          ]
         }
        ]

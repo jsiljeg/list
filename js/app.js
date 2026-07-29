@@ -391,7 +391,12 @@ function itemHay(item) {
 function renderContent() {
   const t = T();
   const q = expandQuery($("search").value.trim().toLowerCase());
-  const qf = fold(q);
+  /* Accent folding helps a foreign keyboard, but it must not erase a
+     distinction the guest just made: "proš" folds to "pros", which is
+     inside "prosecco" — and prošek is not prosecco. So a query that
+     carries diacritics is matched literally; only an unaccented one is
+     allowed to reach the folded copy of the text. */
+  const qf = fold(q) === q ? q : null;
   const box = $("content");
   let html = "";
 
@@ -404,7 +409,7 @@ function renderContent() {
         cat.groups.forEach((g, gi) => {
           g.items.forEach((item, ii) => {
             const hay = itemHay(item);
-            if ((hay.includes(q) || hay.includes(qf)) && (!picksOnly || item.recommended || item.new)) {
+            if ((hay.includes(q) || (qf && hay.includes(qf))) && (!picksOnly || item.recommended || item.new)) {
               if (found === 0) html += `<div class="cat">`;
               found++;
               const ref = [si, ci, gi, ii].join(".");
