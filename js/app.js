@@ -542,7 +542,6 @@ function dishesForWine(ins) {
 function openDetail(ref, back, scope) {
   detailScope = scope || null;
   if (!stepTimers.length) pendingRef = null;
-  $("modal").classList.add("detail-mode");
   const [si, ci, gi, ii] = ref.split(".").map(Number);
   const item = DATA.sections[si].categories[ci].groups[gi].items[ii];
   const ins = item.insight;
