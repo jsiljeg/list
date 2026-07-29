@@ -373,6 +373,7 @@ function renderContent() {
   if (q) {
     /* global search across all sections */
     let found = 0;
+    searchRefs = [];
     DATA.sections.forEach((sec, si) => {
       sec.categories.forEach((cat, ci) => {
         cat.groups.forEach((g, gi) => {
@@ -382,6 +383,7 @@ function renderContent() {
               if (found === 0) html += `<div class="cat">`;
               found++;
               const ref = [si, ci, gi, ii].join(".");
+              searchRefs.push(ref);
               const ctx = [t.sections[sec.id], t.categories[cat.id], g.country ? t.countries[g.country] : null]
                 .filter(Boolean).join(" · ");
               html += itemHtml(item, ref, ctx);
@@ -501,8 +503,11 @@ function renderContent() {
   box.classList.remove("content-fade");
   void box.offsetWidth;
   box.classList.add("content-fade");
+  /* Searching narrows the world: stepping stays among the hits, the same way
+     the sommelier's three picks stay three. */
+  const scope = q ? searchRefs.slice() : null;
   box.querySelectorAll(".item.clickable").forEach((b) =>
-    b.addEventListener("click", () => openDetail(b.dataset.ref))
+    b.addEventListener("click", () => openDetail(b.dataset.ref, null, scope))
   );
 }
 
@@ -533,6 +538,7 @@ function dishesForWine(ins) {
 /* ---------- detail modal ---------- */
 function openDetail(ref, back, scope) {
   detailScope = scope || null;
+  if (!stepTimers.length) pendingRef = null;
   const [si, ci, gi, ii] = ref.split(".").map(Number);
   const item = DATA.sections[si].categories[ci].groups[gi].items[ii];
   const ins = item.insight;
@@ -618,6 +624,7 @@ let detailNav = { prev: null, next: null, back: null };
    stepping stays inside that shortlist. Swiping off the end of three suggested
    wines into the whole cellar is not what the guest asked for. */
 let detailScope = null;
+let searchRefs = [];
 let FLAT_REFS = null, FLAT_POS = null;
 function flatRefs() {
   if (FLAT_REFS) return FLAT_REFS;
@@ -663,16 +670,21 @@ function clearDetailNav() {
    The sheet frame holds its height across the swap so the border does not
    jump between a short wine and a tall one. */
 let stepTimers = [];
+let pendingRef = null;      // where an in-flight step is heading
 function stepDetail(dir) {
-  const target = dir < 0 ? detailNav.prev : detailNav.next;
+  // Tap the arrow three times quickly and you should advance three wines, not
+  // restart the same one: each step aims from wherever the last one is going.
+  const from = pendingRef;
+  const target = from ? neighbourRef(from, dir) : (dir < 0 ? detailNav.prev : detailNav.next);
   if (!target) return false;
+  pendingRef = target;
   const body = $("modal-body"), sheet = $("modal-sheet");
   if (!body || !sheet) return false;
   stepTimers.forEach(clearTimeout); stepTimers = [];
 
   const span = Math.max(180, Math.round((sheet.clientWidth || 320) * 0.32));
   const out = dir > 0 ? -span : span;          // forward → the card exits left
-  sheet.style.minHeight = sheet.offsetHeight + "px";
+  const h0 = sheet.offsetHeight;               // height to grow or shrink from
   body.style.willChange = "transform, opacity";
   const outMs = 110;
   body.style.transition =
@@ -681,21 +693,37 @@ function stepDetail(dir) {
   body.style.opacity = "0";
 
   stepTimers.push(setTimeout(() => {
+    // Swap while the card is invisible, then measure what the sheet wants to
+    // be and glide to it. Snapping between a short wine and a tall one was the
+    // resize you could feel — the frame is centred, so both edges jump at once.
+    sheet.style.height = "auto";
+    sheet.style.transition = "none";
     openDetail(target, detailNav.back, detailScope);
     sheet.scrollTop = 0;
+    const cap = Math.round(window.innerHeight * 0.9);
+    const h1 = Math.min(sheet.offsetHeight, cap);
+    const growable = h0 > 0 && h1 > 0 && Math.abs(h1 - h0) > 2;
+    if (growable) sheet.style.height = h0 + "px";
+    else sheet.style.height = "";
     body.style.transition = "none";
     body.style.transform = `translateX(${-out}px)`;
     body.style.opacity = "0";
     void body.offsetWidth;
     requestAnimationFrame(() => {
+      if (growable) {
+        sheet.style.transition = "height .34s cubic-bezier(.17,.84,.44,1)";
+        sheet.style.height = h1 + "px";
+      }
       body.style.transition = "transform .3s cubic-bezier(.17,.84,.44,1), opacity .22s ease-out";
       body.style.transform = "";
       body.style.opacity = "1";
       stepTimers.push(setTimeout(() => {
-        sheet.style.minHeight = "";
+        sheet.style.height = "";
+        sheet.style.transition = "";
         body.style.willChange = "";
         body.style.transition = "";
-      }, 320));
+        pendingRef = null;
+      }, 360));
     });
   }, outMs));
   return true;

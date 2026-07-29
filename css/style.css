@@ -351,7 +351,8 @@ body {
   line-height: 1.15;
 }
 .detail-glass {
-  position: absolute; top: 1.95rem; right: 0;
+  /* clears the sticky ✕, which floats into this corner */
+  position: absolute; top: 3.1rem; right: 0;
   color: var(--gold); opacity: .8; line-height: 0;
 }
 .detail-glass svg {
