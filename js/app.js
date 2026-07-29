@@ -689,13 +689,31 @@ function showModal() {
   // is display:none the assignment is ignored and the browser restores the
   // previous offset, so the next wine would open mid-way down.
   if (ms) ms.scrollTop = 0;
-  document.body.style.overflow = "hidden";
-  if (!modalOpen) { modalOpen = true; history.pushState({ theaModal: true }, ""); }
+  /* Lock the page behind the sheet without losing your place. Plain
+     `overflow: hidden` lets mobile browsers forget the scroll offset, so
+     closing the sheet dumped you back at the top of the list — which read as
+     the whole app reloading. Pin the body instead and put the offset back. */
+  if (!modalOpen) {
+    scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollLockY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.overflow = "hidden";
+    modalOpen = true;
+    history.pushState({ theaModal: true }, "");
+  }
 }
+let scrollLockY = 0;
 function hideModal() {
   modalOpen = false;
   $("modal").classList.add("hidden");
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
   document.body.style.overflow = "";
+  window.scrollTo(0, scrollLockY);
 }
 function closeModal() {
   if (modalOpen && history.state && history.state.theaModal) history.back(); // → popstate → hideModal
@@ -1059,8 +1077,10 @@ function stepSection(dir) {
   if (modalOpen || $("search").value.trim() || picksOnly || ratedOnly || prideOnly) return false;
   const ids = navChipIds();
   const i = ids.indexOf(currentSection);
-  const j = i + dir;
-  if (i < 0 || j < 0 || j >= ids.length) return false;
+  if (i < 0 || ids.length < 2) return false;
+  // The tabs are a ring: past the last one comes the first. Stopping dead at
+  // either end reads as the gesture having failed.
+  const j = (i + dir + ids.length) % ids.length;
   currentSection = ids[j];
   renderNav();
   const c = $("content");

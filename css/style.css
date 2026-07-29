@@ -22,6 +22,11 @@ body {
   font-weight: 400;
   line-height: 1.5;
   min-height: 100vh;
+  /* The section-change animation slides the list 40px sideways. Without this
+     the page grows a horizontal scrollbar for the length of the animation and
+     the browser pans the whole screen along with the finger. */
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 .hidden { display: none !important; }
 
