@@ -2594,6 +2594,57 @@
          ]
         },
         {
+         "name": "Krug Grande Cuvée",
+         "producer": "Krug",
+         "price": 510,
+         "insight": {
+          "grape": "Pinot Noir 44%, Chardonnay 34%, Pinot Meunier 22%",
+          "region": "Champagne",
+          "country": "FR",
+          "style": "champagne_prestige",
+          "body": "full",
+          "aromas": [
+           "red_apple",
+           "honey",
+           "toast",
+           "hazelnut"
+          ],
+          "pairings": [
+           "caviar",
+           "poultry",
+           "solo"
+          ],
+          "temp": "9–12",
+          "alcohol": "12.5",
+          "dosage": "Brut"
+         },
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "97"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "94+"
+          }
+         ],
+         "notePlain": true,
+         "note": {
+          "hr": "Kupaža 150 vina iz 13 različitih godišta — najmlađe je iz 2017., a najstarije seže u 2001.",
+          "en": "A blend of 150 wines from 13 different years — the youngest from 2017, the oldest dating back to 2001.",
+          "it": "Un assemblaggio di 150 vini di 13 annate diverse — il più giovane del 2017, il più vecchio risale al 2001.",
+          "fr": "Un assemblage de 150 vins de 13 années différentes — le plus jeune de 2017, le plus ancien remontant à 2001.",
+          "de": "Eine Assemblage aus 150 Weinen aus 13 verschiedenen Jahrgängen — der jüngste von 2017, der älteste aus dem Jahr 2001.",
+          "zh": "由 13 个不同年份的 150 款葡萄酒调配而成——最年轻的来自 2017 年，最古老的可追溯至 2001 年。",
+          "sl": "Zvrst 150 vin iz 13 različnih letnikov — najmlajše je iz leta 2017, najstarejše sega v leto 2001.",
+          "es": "Un ensamblaje de 150 vinos de 13 añadas diferentes — el más joven de 2017 y el más antiguo se remonta a 2001."
+         }
+        },
+        {
          "name": "Krug 1996",
          "producer": "Krug",
          "price": 1780,
@@ -2648,57 +2699,6 @@
           "zh": "“我认为这很可能就是下一个 1928 年份。” —— Paul Krug II，以严谨客观著称",
           "sl": "»Mislim, da bi to lahko bil naslednji 1928.« – Paul Krug II., znan po svojih strogo objektivnih opažanjih",
           "es": "«Creo que este bien podría ser el próximo 1928.» – Paul Krug II, conocido por sus observaciones estrictamente objetivas"
-         }
-        },
-        {
-         "name": "Krug Grande Cuvée",
-         "producer": "Krug",
-         "price": 510,
-         "insight": {
-          "grape": "Pinot Noir 44%, Chardonnay 34%, Pinot Meunier 22%",
-          "region": "Champagne",
-          "country": "FR",
-          "style": "champagne_prestige",
-          "body": "full",
-          "aromas": [
-           "red_apple",
-           "honey",
-           "toast",
-           "hazelnut"
-          ],
-          "pairings": [
-           "caviar",
-           "poultry",
-           "solo"
-          ],
-          "temp": "9–12",
-          "alcohol": "12.5",
-          "dosage": "Brut"
-         },
-         "ratings": [
-          {
-           "critic": "James Suckling",
-           "score": "97"
-          },
-          {
-           "critic": "Wine Spectator",
-           "score": "96"
-          },
-          {
-           "critic": "Robert Parker",
-           "score": "94+"
-          }
-         ],
-         "notePlain": true,
-         "note": {
-          "hr": "Kupaža 150 vina iz 13 različitih godišta — najmlađe je iz 2017., a najstarije seže u 2001.",
-          "en": "A blend of 150 wines from 13 different years — the youngest from 2017, the oldest dating back to 2001.",
-          "it": "Un assemblaggio di 150 vini di 13 annate diverse — il più giovane del 2017, il più vecchio risale al 2001.",
-          "fr": "Un assemblage de 150 vins de 13 années différentes — le plus jeune de 2017, le plus ancien remontant à 2001.",
-          "de": "Eine Assemblage aus 150 Weinen aus 13 verschiedenen Jahrgängen — der jüngste von 2017, der älteste aus dem Jahr 2001.",
-          "zh": "由 13 个不同年份的 150 款葡萄酒调配而成——最年轻的来自 2017 年，最古老的可追溯至 2001 年。",
-          "sl": "Zvrst 150 vin iz 13 različnih letnikov — najmlajše je iz leta 2017, najstarejše sega v leto 2001.",
-          "es": "Un ensamblaje de 150 vinos de 13 añadas diferentes — el más joven de 2017 y el más antiguo se remonta a 2001."
          }
         },
         {
@@ -6152,6 +6152,34 @@
          "terroir": "Monte Calvario"
         },
         {
+         "name": "Ribolla 2020",
+         "producer": "Damijan Podversic",
+         "price": 77,
+         "insight": {
+          "grape": "Ribolla Gialla",
+          "region": "Gorizia, Friuli",
+          "country": "IT",
+          "style": "orange",
+          "body": "full",
+          "aromas": [
+           "orange_peel",
+           "dried_fruit",
+           "honey",
+           "spice",
+           "botrytis"
+          ],
+          "pairings": [
+           "cheese_hard",
+           "charcuterie",
+           "mushrooms"
+          ],
+          "temp": "12–14",
+          "alcohol": "14",
+          "sweetness": "dry"
+         },
+         "terroir": "Monte Calvario"
+        },
+        {
          "name": "Kaplja 2018",
          "producer": "Damijan Podversic",
          "price": 95,
@@ -6249,34 +6277,6 @@
           "sl": "Carricante z vulkana — limona, pepel in morska sol, vino, ki se spominja lave.",
           "es": "Carricante del volcán — limón, ceniza y sal marina, un vino que recuerda la lava."
          }
-        },
-        {
-         "name": "Ribolla 2020",
-         "producer": "Damijan Podversic",
-         "price": 77,
-         "insight": {
-          "grape": "Ribolla Gialla",
-          "region": "Gorizia, Friuli",
-          "country": "IT",
-          "style": "orange",
-          "body": "full",
-          "aromas": [
-           "orange_peel",
-           "dried_fruit",
-           "honey",
-           "spice",
-           "botrytis"
-          ],
-          "pairings": [
-           "cheese_hard",
-           "charcuterie",
-           "mushrooms"
-          ],
-          "temp": "12–14",
-          "alcohol": "14",
-          "sweetness": "dry"
-         },
-         "terroir": "Monte Calvario"
         },
         {
          "name": "Origine 2016",
@@ -10049,69 +10049,6 @@
          ]
         },
         {
-         "name": "Ornellaia 2020",
-         "producer": "Tenuta dell'Ornellaia",
-         "price": 750,
-         "insight": {
-          "grape": "Cabernet Sauvignon 50%, Merlot 32%, Cabernet Franc 13%, Petit Verdot 5%",
-          "region": "Bolgheri, Toscana",
-          "country": "IT",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "dark_cherry",
-           "blackberry",
-           "blackcurrant",
-           "cedar",
-           "anise",
-           "dark_chocolate",
-           "graphite",
-           "balsamic",
-           "saline",
-           "vanilla"
-          ],
-          "pairings": [
-           "steak",
-           "beef",
-           "solo"
-          ],
-          "temp": "16–18",
-          "alcohol": "14.5",
-          "sweetness": "dry"
-         },
-         "terroir": "",
-         "ratings": [
-          {
-           "critic": "James Suckling",
-           "score": "98"
-          },
-          {
-           "critic": "Robert Parker",
-           "score": "97"
-          },
-          {
-           "critic": "Decanter",
-           "score": "97"
-          },
-          {
-           "critic": "Vinous",
-           "score": "96"
-          },
-          {
-           "critic": "Wine Spectator",
-           "score": "96"
-          },
-          {
-           "critic": "Jancis Robinson",
-           "score": "18/20"
-          }
-         ],
-         "tags": [
-          "excellent_vintage",
-          "rare"
-         ]
-        },
-        {
          "name": "Sassicaia 2021",
          "producer": "Tenuta San Guido",
          "price": 850,
@@ -10171,6 +10108,69 @@
          ],
          "tags": [
           "legendary_vintage",
+          "rare"
+         ]
+        },
+        {
+         "name": "Ornellaia 2020",
+         "producer": "Tenuta dell'Ornellaia",
+         "price": 750,
+         "insight": {
+          "grape": "Cabernet Sauvignon 50%, Merlot 32%, Cabernet Franc 13%, Petit Verdot 5%",
+          "region": "Bolgheri, Toscana",
+          "country": "IT",
+          "style": "red_full",
+          "body": "full",
+          "aromas": [
+           "dark_cherry",
+           "blackberry",
+           "blackcurrant",
+           "cedar",
+           "anise",
+           "dark_chocolate",
+           "graphite",
+           "balsamic",
+           "saline",
+           "vanilla"
+          ],
+          "pairings": [
+           "steak",
+           "beef",
+           "solo"
+          ],
+          "temp": "16–18",
+          "alcohol": "14.5",
+          "sweetness": "dry"
+         },
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "James Suckling",
+           "score": "98"
+          },
+          {
+           "critic": "Robert Parker",
+           "score": "97"
+          },
+          {
+           "critic": "Decanter",
+           "score": "97"
+          },
+          {
+           "critic": "Vinous",
+           "score": "96"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "96"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "18/20"
+          }
+         ],
+         "tags": [
+          "excellent_vintage",
           "rare"
          ]
         },
