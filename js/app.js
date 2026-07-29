@@ -531,7 +531,8 @@ function dishesForWine(ins) {
 }
 
 /* ---------- detail modal ---------- */
-function openDetail(ref, back) {
+function openDetail(ref, back, scope) {
+  detailScope = scope || null;
   const [si, ci, gi, ii] = ref.split(".").map(Number);
   const item = DATA.sections[si].categories[ci].groups[gi].items[ii];
   const ins = item.insight;
@@ -613,6 +614,10 @@ function openDetail(ref, back) {
    The arrows hide only at the very first and very last wine, and hide rather
    than grey out: on a tablet a disabled control still invites a tap. */
 let detailNav = { prev: null, next: null, back: null };
+/* When the sheet was opened from a shortlist — the sommelier's three picks —
+   stepping stays inside that shortlist. Swiping off the end of three suggested
+   wines into the whole cellar is not what the guest asked for. */
+let detailScope = null;
 let FLAT_REFS = null, FLAT_POS = null;
 function flatRefs() {
   if (FLAT_REFS) return FLAT_REFS;
@@ -627,9 +632,9 @@ function flatRefs() {
   return FLAT_REFS;
 }
 function neighbourRef(ref, step) {
-  const all = flatRefs();
-  const p = FLAT_POS[ref];
-  if (p == null) return null;
+  const all = detailScope || flatRefs();
+  const p = detailScope ? detailScope.indexOf(ref) : FLAT_POS[ref];
+  if (p == null || p < 0) return null;
   const j = p + step;
   return j >= 0 && j < all.length ? all[j] : null;
 }
@@ -660,12 +665,12 @@ function stepDetail(dir) {
   if (body) {
     body.style.transition = "none";
     body.style.opacity = "0";
-    body.style.transform = `translateX(${dir > 0 ? 26 : -26}px)`;
+    body.style.transform = `translateX(${dir > 0 ? 40 : -40}px)`;
   }
-  openDetail(target, detailNav.back);
+  openDetail(target, detailNav.back, detailScope);
   if (sheet) sheet.scrollTop = 0;
   if (body) requestAnimationFrame(() => {
-    body.style.transition = "opacity .2s ease-out, transform .2s cubic-bezier(.22,.61,.36,1)";
+    body.style.transition = "opacity .28s ease-out, transform .34s cubic-bezier(.32,.72,0,1)";
     body.style.opacity = "1";
     body.style.transform = "";
   });
@@ -883,8 +888,10 @@ function renderHelperResults(budgetKey) {
     ? top.map((r) => itemHtml(r.item, r.ref, t.sections[r.sec.id], true)).join("")
     : `<p class="no-results">${t.ui.noResults}</p>`;
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
+  const scope = top.map((r) => r.ref);
   $("modal-body").querySelectorAll(".item.clickable").forEach((b) =>
-    b.addEventListener("click", () => openDetail(b.dataset.ref, () => renderHelperResults(budgetKey)))
+    b.addEventListener("click", () =>
+      openDetail(b.dataset.ref, () => renderHelperResults(budgetKey), scope))
   );
   $("modal-body").querySelector(".helper-budget").addEventListener("click", () => { helperState.step = 1; renderHelperStep(); });
   $("modal-body").querySelector(".helper-again").addEventListener("click", openHelper);
@@ -999,8 +1006,8 @@ document.addEventListener("keydown", (e) => {
     dragging = false;
     if (axis === "x") {
       const dir = dx > 0 ? -1 : 1;               // drag right → previous wine
-      if (!(Math.abs(dx) > 70 && stepDetail(dir))) {
-        sheet.style.transition = "transform .22s cubic-bezier(.22,.61,.36,1)";
+      if (!(Math.abs(dx) > 80 && stepDetail(dir))) {
+        sheet.style.transition = "transform .38s cubic-bezier(.32,.72,0,1)";
         sheet.style.transform = "";
       }
       return;
@@ -1012,18 +1019,18 @@ document.addEventListener("keydown", (e) => {
       const backdrop = $("modal-backdrop");
       const dir = dy > 0 ? 1 : -1;
       const dist = (sheet.getBoundingClientRect().height || window.innerHeight) + 60;
-      sheet.style.transition = "transform .28s cubic-bezier(.22,.61,.36,1)";
+      sheet.style.transition = "transform .42s cubic-bezier(.32,.72,0,1)";
       sheet.style.transform = `translateY(${dir * dist}px)`;
-      backdrop.style.transition = "opacity .28s ease-out";
+      backdrop.style.transition = "opacity .42s ease-out";
       backdrop.style.opacity = "0";
       setTimeout(() => {
         closeModal();
         sheet.style.transition = ""; sheet.style.transform = "";
         backdrop.style.transition = ""; backdrop.style.opacity = "";
-      }, 280);
+      }, 420);
     } else {
       $("modal-backdrop").style.opacity = "";
-      sheet.style.transition = "transform .25s cubic-bezier(.22,.61,.36,1)";
+      sheet.style.transition = "transform .38s cubic-bezier(.32,.72,0,1)";
       sheet.style.transform = "";
     }
   }
@@ -1040,6 +1047,66 @@ document.addEventListener("keydown", (e) => {
     const b = $("modal-backdrop");
     if (b) { b.style.transition = ""; b.style.opacity = ""; }
   }
+})();
+
+/* ---------- swipe between sections on the list itself ---------- */
+/* Same idiom as the wine sheet: sideways moves to the neighbouring tab, so
+   Bijela vina → Rosé vina without reaching for the chips. */
+function navChipIds() {
+  return Array.from($("nav").querySelectorAll("button")).map((b) => b.dataset.sec);
+}
+function stepSection(dir) {
+  if (modalOpen || $("search").value.trim() || picksOnly || ratedOnly || prideOnly) return false;
+  const ids = navChipIds();
+  const i = ids.indexOf(currentSection);
+  const j = i + dir;
+  if (i < 0 || j < 0 || j >= ids.length) return false;
+  currentSection = ids[j];
+  renderNav();
+  const c = $("content");
+  c.style.transition = "none";
+  c.style.opacity = "0";
+  c.style.transform = `translateX(${dir > 0 ? 40 : -40}px)`;
+  renderContent();
+  window.scrollTo({ top: 0 });
+  const chip = $("nav").querySelector(`button[data-sec="${CSS.escape(currentSection)}"]`);
+  if (chip && chip.scrollIntoView) chip.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+  requestAnimationFrame(() => {
+    c.style.transition = "opacity .28s ease-out, transform .34s cubic-bezier(.32,.72,0,1)";
+    c.style.opacity = "1";
+    c.style.transform = "";
+  });
+  return true;
+}
+(function () {
+  const area = $("content");
+  if (!area) return;
+  let sx = 0, sy = 0, dx = 0, dy = 0, axis = "", live = false;
+  const onScroller = (el) => {
+    for (let n = el; n && n !== area; n = n.parentElement) {
+      if (n.scrollWidth > n.clientWidth + 4) return true;
+    }
+    return false;
+  };
+  area.addEventListener("touchstart", (e) => {
+    live = e.touches.length === 1 && !modalOpen && !onScroller(e.target);
+    if (!live) return;
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY; dx = dy = 0; axis = "";
+  }, { passive: true });
+  area.addEventListener("touchmove", (e) => {
+    if (!live) return;
+    dx = e.touches[0].clientX - sx; dy = e.touches[0].clientY - sy;
+    if (!axis && (Math.abs(dx) > 14 || Math.abs(dy) > 14))
+      axis = Math.abs(dx) > Math.abs(dy) * 1.5 ? "x" : "y";
+    if (axis === "y") live = false;                 // it is a scroll, leave it alone
+  }, { passive: true });
+  function end() {
+    if (!live) return;
+    live = false;
+    if (axis === "x" && Math.abs(dx) > 80) stepSection(dx > 0 ? -1 : 1);
+  }
+  window.addEventListener("touchend", end);
+  window.addEventListener("touchcancel", end);
 })();
 $("home-logo").addEventListener("click", showStart);
 $("story-enter").addEventListener("click", showApp);
