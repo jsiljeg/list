@@ -294,7 +294,9 @@ body {
 .modal-sheet {
   position: relative;
   width: 100%; max-width: 700px;
-  max-height: 90vh; overflow-y: auto;
+  /* clip sideways so a card entering or leaving is cut at the sheet's rounded
+     edge instead of spilling across the backdrop */
+  max-height: 90vh; overflow-y: auto; overflow-x: clip;
   background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: 18px;

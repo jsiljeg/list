@@ -663,7 +663,7 @@ function clearDetailNav() {
    The sheet frame holds its height across the swap so the border does not
    jump between a short wine and a tall one. */
 let stepTimers = [];
-function stepDetail(dir, fromDx) {
+function stepDetail(dir) {
   const target = dir < 0 ? detailNav.prev : detailNav.next;
   if (!target) return false;
   const body = $("modal-body"), sheet = $("modal-sheet");
@@ -674,15 +674,7 @@ function stepDetail(dir, fromDx) {
   const out = dir > 0 ? -span : span;          // forward → the card exits left
   sheet.style.minHeight = sheet.offsetHeight + "px";
   body.style.willChange = "transform, opacity";
-  // Continue from wherever the finger left it, so there is no jump on release.
-  if (typeof fromDx === "number") {
-    body.style.transition = "none";
-    body.style.transform = `translateX(${fromDx}px)`;
-    void body.offsetWidth;                      // commit before transitioning
-  }
-  /* A dragged card is already half gone, so it needs longer to finish leaving.
-     A tapped arrow starts from rest and should not feel sluggish. */
-  const outMs = typeof fromDx === "number" ? 170 : 110;
+  const outMs = 110;
   body.style.transition =
     `transform ${outMs}ms cubic-bezier(.4,0,1,1), opacity ${outMs}ms linear`;
   body.style.transform = `translateX(${out}px)`;
@@ -1051,16 +1043,18 @@ document.addEventListener("keydown", (e) => {
       if (axis === "x" && !(detailNav.prev || detailNav.next)) { dragging = false; return; }
     }
     if (axis === "x") {
-      /* Drag the card, not the frame. The card is what leaves and what
-         arrives, so the finger and the animation move the same thing and the
-         gesture never has to snap back before the swap. */
+      /* A hint of give, not a drag. Following the finger 1:1 and fading the
+         card out under it looked like dragging a panel around; the arrows look
+         better precisely because the card only ever performs one clean
+         movement. So the gesture peeks — heavily damped, capped, fully opaque
+         — and the movement itself happens on release. */
       const body = $("modal-body");
       const wall = (dx > 0 && !detailNav.prev) || (dx < 0 && !detailNav.next);
-      const shift = wall ? dx / 4 : dx;
+      const damp = wall ? 0.06 : 0.18;
+      const shift = Math.max(-26, Math.min(26, dx * damp));
       body.style.transition = "none";
-      body.style.willChange = "transform, opacity";
+      body.style.willChange = "transform";
       body.style.transform = `translateX(${shift}px)`;
-      body.style.opacity = String(Math.max(.45, 1 - Math.abs(shift) / 520));
       return;
     }
     if (!allowed()) { dy = 0; sheet.style.transform = ""; $("modal-backdrop").style.opacity = ""; return; }
@@ -1073,7 +1067,8 @@ document.addEventListener("keydown", (e) => {
     if (axis === "x") {
       const dir = dx > 0 ? -1 : 1;               // drag right → previous wine
       const body = $("modal-body");
-      if (!(Math.abs(dx) > 80 && stepDetail(dir, dx))) {
+      // No fromDx: release runs exactly the animation an arrow tap runs.
+      if (!(Math.abs(dx) > 80 && stepDetail(dir))) {
         // Not far enough: settle the card back under the finger's last spot.
         body.style.transition = "transform .3s cubic-bezier(.17,.84,.44,1), opacity .2s ease-out";
         body.style.transform = "";
