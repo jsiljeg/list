@@ -684,7 +684,9 @@ function stepDetail(dir) {
 
   const span = Math.max(180, Math.round((sheet.clientWidth || 320) * 0.32));
   const out = dir > 0 ? -span : span;          // forward → the card exits left
-  const h0 = sheet.offsetHeight;               // height to grow or shrink from
+  // Painted height, not layout height: a step interrupted mid-glide starts
+  // from where the frame actually is, so heights never accumulate an error.
+  const h0 = Math.round(sheet.getBoundingClientRect().height);
   body.style.willChange = "transform, opacity";
   const outMs = 110;
   body.style.transition =
@@ -700,8 +702,12 @@ function stepDetail(dir) {
     sheet.style.transition = "none";
     openDetail(target, detailNav.back, detailScope);
     sheet.scrollTop = 0;
-    const cap = Math.round(window.innerHeight * 0.9);
-    const h1 = Math.min(sheet.offsetHeight, cap);
+    /* Let max-height do the capping. Computing our own cap from innerHeight
+       disagreed with the CSS 90vh whenever a mobile toolbar was showing, so
+       the frame glided to a height slightly under the real one and then
+       snapped back out when the inline height was cleared — the shrink and
+       re-grow that got worse the longer the sheet was used. */
+    const h1 = sheet.offsetHeight;
     const growable = h0 > 0 && h1 > 0 && Math.abs(h1 - h0) > 2;
     if (growable) sheet.style.height = h0 + "px";
     else sheet.style.height = "";
