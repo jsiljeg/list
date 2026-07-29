@@ -46,9 +46,11 @@ body {
 .story-screen::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 34%, rgba(22,21,19,0) 30%, rgba(22,21,19,.86) 78%),
+    radial-gradient(ellipse at 50% 34%, rgba(22,21,19,0) 18%, rgba(22,21,19,.92) 72%),
     url("../assets/atrium-face.svg") center 22% / cover no-repeat;
-  opacity: .5;
+  /* Faint on purpose: the face is a watermark behind the writing, not an
+     illustration competing with it. Turn this up, never past ~.25. */
+  opacity: .16;
 }
 .story-screen { position: relative; isolation: isolate; }
 
