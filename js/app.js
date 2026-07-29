@@ -170,7 +170,7 @@ function showApp() {
   $("picks-toggle").classList.toggle("active", picksOnly);
   $("rated-toggle").querySelector("span").textContent = t.ui.bestRated;
   $("rated-toggle").classList.toggle("active", ratedOnly);
-  $("pride-toggle").innerHTML = `${ICONS.chest}<span>${esc(t.ui.pride)}</span>`;
+  $("pride-toggle").innerHTML = `${ICONS.crown}<span>${esc(t.ui.pride)}</span>`;
   $("pride-toggle").classList.toggle("active", prideOnly);
   $("helper-open").querySelector("span").textContent = t.helper.title;
   renderLangSwitch();
@@ -436,7 +436,7 @@ function renderContent() {
     });
     pride.sort((a, b) => b.item.price - a.item.price);
     if (pride.length) {
-      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.chest}</span>${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">◆</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
+      html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.crown}</span>${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">◆</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
       html += pride.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
       html += `</section>`;
     } else {
