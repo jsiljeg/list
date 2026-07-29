@@ -305,9 +305,13 @@ body {
 }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
 .modal.detail-mode .modal-sheet { height: 87vh; max-height: none; }
-/* Laptops and desktops: a short wine in an 87vh frame is mostly empty. The
-   card keeps a comfortable reading height and lets the backdrop breathe. */
-@media (min-width: 1025px) { .modal.detail-mode .modal-sheet { height: min(74vh, 820px); } }
+/* Laptops and desktops: no fixed height at all. A pointer device has no
+   trouble with a card that ends where its text ends, and a fixed frame just
+   left dead space under the short wines. The cap keeps the tall ones
+   scrolling, and the top stays anchored so only the bottom edge moves. */
+@media (min-width: 1025px) {
+  .modal.detail-mode .modal-sheet { height: auto; max-height: min(74vh, 820px); }
+}
 @supports (height: 100dvh) {
   .modal.detail-mode .modal-sheet { height: 87dvh; }
 }
