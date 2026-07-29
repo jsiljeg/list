@@ -65,14 +65,14 @@
          "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
-          "hr": "Cabernet s hladnog zagorskog brijega, u ružičastom ključu — pjenušac koji ne glumi Champagne, nego govori svojim jezikom.",
-          "en": "Cabernet off a cold Zagorje hill, turned pink — a sparkling wine that doesn't impersonate Champagne, it speaks its own language.",
-          "it": "Cabernet da una collina fredda dello Zagorje, in chiave rosata — uno spumante che non imita lo Champagne, parla la propria lingua.",
-          "fr": "Du cabernet sur une colline froide du Zagorje, en rosé — un effervescent qui n'imite pas le champagne, il parle sa propre langue.",
-          "de": "Cabernet von einem kalten Hügel im Zagorje, rosé gekeltert — ein Schaumwein, der keinen Champagner spielt, sondern seine eigene Sprache spricht.",
-          "zh": "来自扎戈列寒冷山丘的赤霞珠，酿成桃红气泡——它不模仿香槟，只说自己的语言。",
-          "sl": "Cabernet s hladnega zagorskega hriba, v rosé različici — penina, ki se ne pretvarja, da je šampanjec, ampak govori svoj jezik.",
-          "es": "Cabernet de una colina fría del Zagorje, en clave rosada — un espumoso que no imita al Champagne, habla su propio idioma."
+          "hr": "Cabernet na zagorskom brijegu, ubran rano i pušten da radi u boci. Jagoda, ribiz i kora kruha — ne glumi Champagne jer ne mora.",
+          "en": "Cabernet on a Zagorje hill, picked early and left to work in the bottle. Strawberry, redcurrant and bread crust — it doesn't impersonate Champagne because it doesn't need to.",
+          "it": "Cabernet su una collina dello Zagorje, raccolto presto e lasciato lavorare in bottiglia. Fragola, ribes e crosta di pane — non imita lo Champagne perché non ne ha bisogno.",
+          "fr": "Du cabernet sur une colline du Zagorje, vendangé tôt et laissé travailler en bouteille. Fraise, groseille et croûte de pain — il n'imite pas le champagne parce qu'il n'en a pas besoin.",
+          "de": "Cabernet auf einem Hügel im Zagorje, früh gelesen und in der Flasche arbeiten gelassen. Erdbeere, Johannisbeere und Brotkruste — er spielt keinen Champagner, weil er es nicht muss.",
+          "zh": "扎戈列山丘上的赤霞珠，早采，然后交给瓶中去完成。草莓、红醋栗与面包皮——它不模仿香槟，因为不需要。",
+          "sl": "Cabernet na zagorskem hribu, obran zgodaj in prepuščen, da dela v steklenici. Jagoda, ribez in kruhova skorja — ne igra šampanjca, ker mu ni treba.",
+          "es": "Cabernet en una colina del Zagorje, vendimiado pronto y dejado trabajar en la botella. Fresa, grosella y corteza de pan — no imita al Champagne porque no lo necesita."
          }
         },
         {
@@ -102,14 +102,14 @@
          "terroir": "Višnjan, Motovun",
          "recommended": true,
          "note": {
-          "hr": "Istarski chardonnay u pjenušavom ključu — fini mjehurići i sol istarskog vjetra.",
-          "en": "Istrian Chardonnay in a sparkling key — fine bubbles and the salt of the Istrian wind.",
-          "it": "Chardonnay istriano in chiave spumante — bollicine fini e il sale del vento d'Istria.",
-          "fr": "Chardonnay istrien en clé effervescente — bulles fines et le sel du vent d'Istrie.",
-          "de": "Istrischer Chardonnay in schäumender Tonart — feine Perlage und das Salz des istrischen Windes.",
-          "zh": "起泡形态的伊斯特拉霞多丽——细腻的气泡，与伊斯特拉海风的咸意。",
-          "sl": "Istrski chardonnay v penečem ključu — drobni mehurčki in sol istrskega vetra.",
-          "es": "Chardonnay istriano en clave espumosa — burbujas finas y la sal del viento de Istria."
+          "hr": "Bale, chardonnay, klasična metoda. Fini mjehurić i sol koju donese vjetar s mora — pjenušac koji ne pokušava biti francuski.",
+          "en": "Bale, Chardonnay, traditional method. A fine bead and the salt the sea wind brings in — a sparkling wine with no ambition to sound French.",
+          "it": "Valle, chardonnay, metodo classico. Perlage fine e il sale che porta il vento di mare — uno spumante che non prova a sembrare francese.",
+          "fr": "Bale, chardonnay, méthode traditionnelle. Bulle fine et le sel que le vent de mer apporte — un effervescent qui ne cherche pas à sonner français.",
+          "de": "Bale, Chardonnay, klassische Flaschengärung. Feine Perlage und das Salz, das der Seewind hereinträgt — ein Schaumwein ohne Ehrgeiz, französisch zu klingen.",
+          "zh": "巴莱、霞多丽、传统法。细密的气泡，以及海风带来的盐——一款无意听起来像法国的气泡酒。",
+          "sl": "Bale, chardonnay, klasična metoda. Fin mehurček in sol, ki jo prinese morski veter — penina, ki se ne trudi zveneti francosko.",
+          "es": "Bale, chardonnay, método tradicional. Burbuja fina y la sal que trae el viento del mar — un espumoso sin ninguna intención de sonar francés."
          }
         }
        ]
@@ -190,14 +190,14 @@
          },
          "recommended": true,
          "note": {
-          "hr": "Aÿ i hrastova bačva — Champagne bez šećera i bez maske, samo duh mjesta.",
-          "en": "Aÿ and the oak cask — Champagne with no sugar and no mask, only the spirit of the place.",
-          "it": "Aÿ e la botte di rovere — Champagne senza zucchero e senza maschera, solo lo spirito del luogo.",
-          "fr": "Aÿ et le fût de chêne — un Champagne sans sucre ni masque, rien que l'esprit du lieu.",
-          "de": "Aÿ und das Eichenfass — Champagner ohne Zucker und ohne Maske, nur der Geist des Ortes.",
-          "zh": "阿伊村与橡木桶——不加糖、不戴面具的香槟，只余这片土地的灵魂。",
-          "sl": "Aÿ in hrastov sod — šampanjec brez sladkorja in brez maske, le duh kraja.",
-          "es": "Aÿ y la barrica de roble — un Champagne sin azúcar y sin máscara, solo el espíritu del lugar."
+          "hr": "Aÿ u hrastu iz argonske šume, bez dosladivanja. Champagne koji ne pjeni da bi te zabavio — stoji mirno i čeka da ga čuješ.",
+          "en": "Aÿ raised in oak from the Argonne forest, with nothing added back. A Champagne that doesn't fizz to entertain you — it stands still and waits to be heard.",
+          "it": "Aÿ in rovere della foresta d'Argonne, senza dosaggio. Uno Champagne che non spumeggia per intrattenerti — sta fermo e aspetta di essere ascoltato.",
+          "fr": "Aÿ élevé en chêne de la forêt d'Argonne, sans rien rajouter. Un champagne qui ne pétille pas pour te divertir — il se tient tranquille et attend qu'on l'écoute.",
+          "de": "Aÿ, ausgebaut in Eiche aus dem Argonner Wald, ohne Dosage. Ein Champagner, der nicht perlt, um zu unterhalten — er steht still und wartet, gehört zu werden.",
+          "zh": "来自 Aÿ，在阿尔贡森林的橡木中陈酿，不加补液。这款香槟不是为逗你开心而起泡——它静静站着，等你听见。",
+          "sl": "Aÿ v hrastu iz argonskega gozda, brez doslajevanja. Šampanjec, ki ne peni, da bi te zabaval — mirno stoji in čaka, da ga slišiš.",
+          "es": "Aÿ criado en roble del bosque de Argonne, sin añadir nada. Un Champagne que no burbujea para entretenerte — se queda quieto y espera a ser escuchado."
          },
          "ratings": [
           {
@@ -333,14 +333,14 @@
          },
          "terroir": "Pelješac",
          "note": {
-          "hr": "Rukatac iz pelješkog kamena — živac i mineralnost, bez šminke.",
-          "en": "Rukatac out of Pelješac stone — nerve and minerality, no make-up.",
-          "it": "Rukatac dalla pietra di Pelješac — nervo e mineralità, senza trucco.",
-          "fr": "Du rukatac né de la pierre de Pelješac — du nerf, du minéral, aucun fard.",
-          "de": "Rukatac aus dem Stein von Pelješac — Nerv und Mineralität, ungeschminkt.",
-          "zh": "长在佩列沙茨石灰岩上的鲁卡塔茨——筋骨与矿物感，不施粉黛。",
-          "sl": "Rukatac iz pelješkega kamna — živec in mineralnost, brez šminke.",
-          "es": "Rukatac de la piedra de Pelješac — nervio y mineralidad, sin maquillaje."
+          "hr": "Frano je posadio rukatac tamo gdje svi sade plavac, i onda ga pustio da stoji. Kamen, sol i živac — i ništa što bi se moglo nazvati šminkom.",
+          "en": "Frano planted Rukatac where everyone plants Plavac, and then left it alone. Stone, salt and nerve — and nothing you could call make-up.",
+          "it": "Frano ha piantato il rukatac dove tutti piantano il plavac, e poi l'ha lasciato in pace. Pietra, sale e nervo — e niente che si possa chiamare trucco.",
+          "fr": "Frano a planté du rukatac là où tout le monde plante du plavac, puis l'a laissé tranquille. Pierre, sel et nerf — et rien qu'on puisse appeler du fard.",
+          "de": "Frano hat Rukatac dort gepflanzt, wo alle Plavac pflanzen, und ihn dann in Ruhe gelassen. Stein, Salz und Nerv — und nichts, was man Schminke nennen könnte.",
+          "zh": "弗拉诺在人人都种普拉瓦茨的地方种了鲁卡塔茨，然后就不再打扰它。石头、盐与筋骨——没有任何可以称作妆的东西。",
+          "sl": "Frano je posadil rukatac tam, kjer vsi sadijo plavac, in ga potem pustil pri miru. Kamen, sol in živec — in nič, čemur bi lahko rekli šminka.",
+          "es": "Frano plantó rukatac donde todos plantan plavac, y luego lo dejó en paz. Piedra, sal y nervio — y nada que pueda llamarse maquillaje."
          },
          "recommended": true
         },
@@ -424,14 +424,14 @@
           "sweetness": "sweet"
          },
          "note": {
-          "hr": "Hladniji obronci Saara, napetija berba — rizling koji treba živac, i ima ga.",
-          "en": "The cooler slopes of the Saar, a tense vintage — a Riesling that needs nerve, and has it.",
-          "it": "I pendii più freschi della Saar, un'annata tesa — un Riesling che ha bisogno di nervo, e lo ha.",
-          "fr": "Les pentes fraîches de la Sarre, un millésime tendu — un riesling qui demande du nerf, et qui en a.",
-          "de": "Die kühleren Hänge der Saar, ein gespannter Jahrgang — ein Riesling, der Nerv braucht und ihn hat.",
-          "zh": "萨尔河凉爽的坡地、紧致的年份——一款需要张力的雷司令，而它正拥有。",
-          "sl": "Hladnejša pobočja Saara, napeta letina — rizling, ki potrebuje živec, in ga ima.",
-          "es": "Las laderas más frescas del Saar, una añada tensa — un Riesling que necesita nervio, y lo tiene."
+          "hr": "Saar je hladan, pa Kabinett ovdje nije lagana kategorija nego stav. Osam posto alkohola, kiselina kao žica — i piješ ga cijelu večer bez umora.",
+          "en": "The Saar is cold, so Kabinett here is not a light category but a position. Eight per cent alcohol, acidity like wire — and you can drink it all evening without tiring.",
+          "it": "La Saar è fredda, quindi qui il Kabinett non è una categoria leggera ma una posizione. Otto gradi, acidità come un filo d'acciaio — e lo bevi tutta la sera senza stancarti.",
+          "fr": "La Sarre est froide : ici, le kabinett n'est pas une catégorie légère mais une position. Huit degrés, une acidité comme un fil d'acier — et on le boit toute la soirée sans fatigue.",
+          "de": "Die Saar ist kalt, also ist Kabinett hier keine leichte Kategorie, sondern eine Haltung. Acht Prozent, Säure wie ein Draht — und man trinkt ihn den ganzen Abend, ohne zu ermüden.",
+          "zh": "萨尔很冷，所以这里的 Kabinett 不是一个轻盈的级别，而是一种态度。八度酒精，酸度像钢丝——整晚喝也不累。",
+          "sl": "Saar je hladen, zato Kabinett tu ni lahka kategorija, ampak drža. Osem odstotkov alkohola, kislina kot žica — in piješ ga ves večer brez utrujenosti.",
+          "es": "El Saar es frío, así que aquí el Kabinett no es una categoría ligera sino una postura. Ocho grados, acidez como un alambre — y se bebe toda la noche sin cansar."
          },
          "recommended": true,
          "terroir": "Saarburger Rausch"
@@ -489,14 +489,14 @@
          },
          "recommended": true,
          "note": {
-          "hr": "Carricante s vulkana — limun, pepeo i morska sol, vino koje pamti lavu.",
-          "en": "Carricante from the volcano — lemon, ash and sea salt, a wine that remembers the lava.",
-          "it": "Carricante dal vulcano — limone, cenere e sale marino, un vino che ricorda la lava.",
-          "fr": "Carricante du volcan — citron, cendre et sel marin, un vin qui se souvient de la lave.",
-          "de": "Carricante vom Vulkan — Zitrone, Asche und Meersalz, ein Wein, der sich an die Lava erinnert.",
-          "zh": "火山之上的卡里坎特——柠檬、灰烬与海盐，一款记得熔岩的酒。",
-          "sl": "Carricante z vulkana — limona, pepel in morska sol, vino, ki se spominja lave.",
-          "es": "Carricante del volcán — limón, ceniza y sal marina, un vino que recuerda la lava."
+          "hr": "Carricante na crnom pijesku Etne, bere se kad je drugdje berba davno gotova. Pepeo, limunova korica i sol — i kiselina koja stoji uspravno.",
+          "en": "Carricante on Etna's black sand, picked when everywhere else finished harvest weeks ago. Ash, lemon peel and salt — and an acidity that stands upright.",
+          "it": "Carricante sulla sabbia nera dell'Etna, raccolto quando altrove la vendemmia è finita da un pezzo. Cenere, scorza di limone e sale — e un'acidità che sta in piedi.",
+          "fr": "Du carricante sur le sable noir de l'Etna, cueilli quand ailleurs les vendanges sont finies depuis longtemps. Cendre, zeste de citron et sel — et une acidité qui se tient droite.",
+          "de": "Carricante auf dem schwarzen Sand des Ätna, gelesen, wenn anderswo die Ernte längst vorbei ist. Asche, Zitronenschale und Salz — und eine Säure, die aufrecht steht.",
+          "zh": "卡利坎特长在埃特纳的黑沙上，别处采收早已结束时它才开始。灰烬、柠檬皮与盐——还有一份笔直站立的酸度。",
+          "sl": "Carricante na črnem pesku Etne, obran, ko je drugod trgatev že zdavnaj končana. Pepel, limonina lupina in sol — ter kislina, ki stoji pokonci.",
+          "es": "Carricante sobre la arena negra del Etna, recogido cuando en otros sitios la vendimia terminó hace semanas. Ceniza, piel de limón y sal — y una acidez que se mantiene erguida."
          }
         },
         {
@@ -660,14 +660,14 @@
          "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
-          "hr": "Bordoške sorte na zagorskom brijegu — ozbiljan, taman i samouvjeren, bez kompleksa.",
-          "en": "Bordeaux varieties on a Zagorje hill — serious, dark and self-assured, without complexes.",
-          "it": "Vitigni bordolesi su una collina dello Zagorje — serio, scuro e sicuro di sé, senza complessi.",
-          "fr": "Cépages bordelais sur une colline du Zagorje — sérieux, sombre et sûr de lui, sans complexe.",
-          "de": "Bordeaux-Sorten auf einem Hügel im Zagorje — ernst, dunkel und selbstbewusst, ohne Komplexe.",
-          "zh": "扎戈列山丘上的波尔多品种——严肃、深沉而自信，毫无自卑。",
-          "sl": "Bordojske sorte na zagorskem griču — resno, temno in samozavestno, brez kompleksov.",
-          "es": "Variedades bordelesas en una colina de Zagorje — serio, oscuro y seguro de sí mismo, sin complejos."
+          "hr": "Bordoške sorte na Hršak Bregu, gdje ih nitko nije trebao posaditi. Taman, ozbiljan i bez kompleksa — Zagorje koje ne traži dopuštenje.",
+          "en": "Bordeaux varieties on Hršak Breg, where nobody was supposed to plant them. Dark, serious and without a chip on its shoulder — Zagorje asking nobody's permission.",
+          "it": "Vitigni bordolesi su Hršak Breg, dove nessuno avrebbe dovuto piantarli. Scuro, serio e senza complessi — lo Zagorje che non chiede permesso.",
+          "fr": "Des cépages bordelais sur Hršak Breg, là où personne n'aurait dû en planter. Sombre, sérieux et sans complexe — le Zagorje qui ne demande la permission à personne.",
+          "de": "Bordeaux-Sorten auf dem Hršak Breg, wo sie niemand hätte pflanzen sollen. Dunkel, ernst und ohne Komplexe — das Zagorje, das niemanden um Erlaubnis fragt.",
+          "zh": "波尔多品种种在 Hršak Breg，那本不该有人去种的地方。深沉、严肃、毫无自卑——一个不必请示的扎戈列。",
+          "sl": "Bordojske sorte na Hršak Bregu, kjer jih nihče ne bi smel posaditi. Temno, resno in brez kompleksov — Zagorje, ki ne prosi za dovoljenje.",
+          "es": "Variedades bordelesas en Hršak Breg, donde nadie debía plantarlas. Oscuro, serio y sin complejos — el Zagorje que no pide permiso a nadie."
          }
         },
         {
@@ -696,14 +696,14 @@
          },
          "recommended": true,
          "note": {
-          "hr": "Kontinentalni pinot lagane ruke — svila, višnja i preciznost koja iznenađuje.",
-          "en": "A continental Pinot of a light hand — silk, cherry and a precision that surprises.",
-          "it": "Un Pinot continentale dalla mano leggera — seta, ciliegia e una precisione che sorprende.",
-          "fr": "Un Pinot continental à la main légère — soie, cerise et une précision qui surprend.",
-          "de": "Ein kontinentaler Pinot mit leichter Hand — Seide, Kirsche und eine Präzision, die überrascht.",
-          "zh": "一款手法轻盈的大陆黑皮诺——丝绸、樱桃，与出人意料的精准。",
-          "sl": "Celinski pinot lahke roke — svila, češnja in natančnost, ki preseneti.",
-          "es": "Un Pinot continental de mano ligera — seda, cereza y una precisión que sorprende."
+          "hr": "Moslavina, ne Burgundija — i baš zato ga volim. Lagana ruka, višnja i svila, i cijena koja te ne tjera da razmišljaš.",
+          "en": "Moslavina, not Burgundy — and that is exactly why I like it. A light hand, sour cherry and silk, at a price that spares you the arithmetic.",
+          "it": "Moslavina, non Borgogna — ed è proprio per questo che mi piace. Mano leggera, amarena e seta, a un prezzo che ti risparmia i conti.",
+          "fr": "Moslavina, pas la Bourgogne — et c'est précisément pour cela que je l'aime. Une main légère, de la griotte et de la soie, à un prix qui t'épargne le calcul.",
+          "de": "Moslavina, nicht Burgund — und genau deshalb mag ich ihn. Leichte Hand, Sauerkirsche und Seide, zu einem Preis, der einem das Rechnen erspart.",
+          "zh": "莫斯拉维纳，不是勃艮第——我喜欢的正是这一点。轻巧的手法、酸樱桃与丝绸，价格让你不必盘算。",
+          "sl": "Moslavina, ne Burgundija — in prav zato ga imam rad. Lahka roka, višnja in svila, po ceni, ki ti prihrani računanje.",
+          "es": "Moslavina, no Borgoña — y por eso justamente me gusta. Mano ligera, guinda y seda, a un precio que te ahorra la cuenta."
          }
         },
         {
@@ -930,14 +930,14 @@
          "terroir": "Stancija Meneghetti, Bale",
          "recommended": true,
          "note": {
-          "hr": "Istarski odgovor Bordeauxu — gusto, elegantno i dozrelo pod mediteranskim suncem.",
-          "en": "Istria's answer to Bordeaux — dense, elegant and ripened under a Mediterranean sun.",
-          "it": "La risposta istriana a Bordeaux — denso, elegante e maturato sotto il sole mediterraneo.",
-          "fr": "La réponse istrienne à Bordeaux — dense, élégant et mûri sous un soleil méditerranéen.",
-          "de": "Istriens Antwort auf Bordeaux — dicht, elegant und unter mediterraner Sonne gereift.",
-          "zh": "伊斯特拉对波尔多的回答——紧致、优雅，在地中海的阳光下成熟。",
-          "sl": "Istrski odgovor Bordeauxu — gosto, elegantno in dozorelo pod sredozemskim soncem.",
-          "es": "La respuesta de Istria a Burdeos — denso, elegante y madurado bajo un sol mediterráneo."
+          "hr": "Merlot i cabernet na crvenoj istarskoj zemlji, dozreli pod suncem koje ne popušta. Gusto, ali pitko — i bolje svake godine.",
+          "en": "Merlot and Cabernet on Istria's red earth, ripened under a sun that doesn't let up. Dense but drinkable — and better every year.",
+          "it": "Merlot e cabernet sulla terra rossa istriana, maturati sotto un sole che non molla. Denso ma bevibile — e migliore ogni anno.",
+          "fr": "Merlot et cabernet sur la terre rouge d'Istrie, mûris sous un soleil qui ne lâche rien. Dense mais buvable — et meilleur chaque année.",
+          "de": "Merlot und Cabernet auf der roten Erde Istriens, gereift unter einer Sonne, die nicht nachlässt. Dicht, aber trinkbar — und jedes Jahr besser.",
+          "zh": "梅洛与赤霞珠长在伊斯特拉的红土上，在毫不退让的阳光下成熟。稠密却好喝——而且一年比一年好。",
+          "sl": "Merlot in cabernet na rdeči istrski zemlji, dozorela pod soncem, ki ne popusti. Gosto, a pitno — in vsako leto boljše.",
+          "es": "Merlot y cabernet sobre la tierra roja de Istria, madurados bajo un sol que no afloja. Denso pero bebible — y mejor cada año."
          }
         },
         {
@@ -1185,14 +1185,14 @@
          "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
-          "hr": "Cabernet s hladnog zagorskog brijega, u ružičastom ključu — pjenušac koji ne glumi Champagne, nego govori svojim jezikom.",
-          "en": "Cabernet off a cold Zagorje hill, turned pink — a sparkling wine that doesn't impersonate Champagne, it speaks its own language.",
-          "it": "Cabernet da una collina fredda dello Zagorje, in chiave rosata — uno spumante che non imita lo Champagne, parla la propria lingua.",
-          "fr": "Du cabernet sur une colline froide du Zagorje, en rosé — un effervescent qui n'imite pas le champagne, il parle sa propre langue.",
-          "de": "Cabernet von einem kalten Hügel im Zagorje, rosé gekeltert — ein Schaumwein, der keinen Champagner spielt, sondern seine eigene Sprache spricht.",
-          "zh": "来自扎戈列寒冷山丘的赤霞珠，酿成桃红气泡——它不模仿香槟，只说自己的语言。",
-          "sl": "Cabernet s hladnega zagorskega hriba, v rosé različici — penina, ki se ne pretvarja, da je šampanjec, ampak govori svoj jezik.",
-          "es": "Cabernet de una colina fría del Zagorje, en clave rosada — un espumoso que no imita al Champagne, habla su propio idioma."
+          "hr": "Cabernet na zagorskom brijegu, ubran rano i pušten da radi u boci. Jagoda, ribiz i kora kruha — ne glumi Champagne jer ne mora.",
+          "en": "Cabernet on a Zagorje hill, picked early and left to work in the bottle. Strawberry, redcurrant and bread crust — it doesn't impersonate Champagne because it doesn't need to.",
+          "it": "Cabernet su una collina dello Zagorje, raccolto presto e lasciato lavorare in bottiglia. Fragola, ribes e crosta di pane — non imita lo Champagne perché non ne ha bisogno.",
+          "fr": "Du cabernet sur une colline du Zagorje, vendangé tôt et laissé travailler en bouteille. Fraise, groseille et croûte de pain — il n'imite pas le champagne parce qu'il n'en a pas besoin.",
+          "de": "Cabernet auf einem Hügel im Zagorje, früh gelesen und in der Flasche arbeiten gelassen. Erdbeere, Johannisbeere und Brotkruste — er spielt keinen Champagner, weil er es nicht muss.",
+          "zh": "扎戈列山丘上的赤霞珠，早采，然后交给瓶中去完成。草莓、红醋栗与面包皮——它不模仿香槟，因为不需要。",
+          "sl": "Cabernet na zagorskem hribu, obran zgodaj in prepuščen, da dela v steklenici. Jagoda, ribez in kruhova skorja — ne igra šampanjca, ker mu ni treba.",
+          "es": "Cabernet en una colina del Zagorje, vendimiado pronto y dejado trabajar en la botella. Fresa, grosella y corteza de pan — no imita al Champagne porque no lo necesita."
          }
         },
         {
@@ -1624,14 +1624,14 @@
          "terroir": "Côte des Blancs",
          "recommended": true,
          "note": {
-          "hr": "Kreda Le Mesnila u jednoj berbi — blanc de blancs napet kao struna, čist kao izvor.",
-          "en": "The chalk of Le Mesnil in a single vintage — a blanc de blancs taut as a string, clear as a spring.",
-          "it": "Il gesso di Le Mesnil in una sola annata — un blanc de blancs teso come una corda, limpido come una sorgente.",
-          "fr": "La craie du Mesnil en un seul millésime — un blanc de blancs tendu comme une corde, clair comme une source.",
-          "de": "Der Kalk von Le Mesnil in einem einzigen Jahrgang — ein Blanc de Blancs, gespannt wie eine Saite, klar wie eine Quelle.",
-          "zh": "一个年份里的勒梅尼尔白垩——如弦般紧绷、如泉般清澈的白中白。",
-          "sl": "Kreda Le Mesnila v eni letini — blanc de blancs, napet kot struna, čist kot izvir.",
-          "es": "La creta de Le Mesnil en una sola añada — un blanc de blancs tenso como una cuerda, claro como un manantial."
+          "hr": "Le Mesnil daje kredu, a 2017. je dala živce. Blanc de blancs bez zaobilaženja — uspravan i duži nego što očekuješ od godine o kojoj nitko ne priča.",
+          "en": "Le Mesnil gives the chalk; 2017 gave the nerve. A blanc de blancs with no detours — upright, and longer than you expect from a year nobody talks about.",
+          "it": "Le Mesnil dà il gesso, il 2017 ha dato il nervo. Un blanc de blancs senza deviazioni — dritto e più lungo di quanto ti aspetti da un'annata di cui nessuno parla.",
+          "fr": "Le Mesnil donne la craie, 2017 a donné le nerf. Un blanc de blancs sans détour — droit, et plus long qu'on ne l'attend d'une année dont personne ne parle.",
+          "de": "Le Mesnil gibt die Kreide, 2017 gab den Nerv. Ein Blanc de Blancs ohne Umwege — aufrecht und länger, als man es von einem Jahrgang erwartet, über den niemand spricht.",
+          "zh": "Le Mesnil 给了白垩，2017 给了筋骨。一款毫不绕路的白中白——挺直，而且比这个无人谈论的年份该有的更长。",
+          "sl": "Le Mesnil da kredo, 2017 je dala živce. Blanc de blancs brez ovinkov — pokončen in daljši, kot bi pričakoval od letnika, o katerem nihče ne govori.",
+          "es": "Le Mesnil pone la creta; 2017 puso el nervio. Un blanc de blancs sin rodeos — erguido y más largo de lo que esperas de un año del que nadie habla."
          }
         },
         {
@@ -2125,14 +2125,14 @@
          },
          "recommended": true,
          "note": {
-          "hr": "Aÿ i hrastova bačva — Champagne bez šećera i bez maske, samo duh mjesta.",
-          "en": "Aÿ and the oak cask — Champagne with no sugar and no mask, only the spirit of the place.",
-          "it": "Aÿ e la botte di rovere — Champagne senza zucchero e senza maschera, solo lo spirito del luogo.",
-          "fr": "Aÿ et le fût de chêne — un Champagne sans sucre ni masque, rien que l'esprit du lieu.",
-          "de": "Aÿ und das Eichenfass — Champagner ohne Zucker und ohne Maske, nur der Geist des Ortes.",
-          "zh": "阿伊村与橡木桶——不加糖、不戴面具的香槟，只余这片土地的灵魂。",
-          "sl": "Aÿ in hrastov sod — šampanjec brez sladkorja in brez maske, le duh kraja.",
-          "es": "Aÿ y la barrica de roble — un Champagne sin azúcar y sin máscara, solo el espíritu del lugar."
+          "hr": "Aÿ u hrastu iz argonske šume, bez dosladivanja. Champagne koji ne pjeni da bi te zabavio — stoji mirno i čeka da ga čuješ.",
+          "en": "Aÿ raised in oak from the Argonne forest, with nothing added back. A Champagne that doesn't fizz to entertain you — it stands still and waits to be heard.",
+          "it": "Aÿ in rovere della foresta d'Argonne, senza dosaggio. Uno Champagne che non spumeggia per intrattenerti — sta fermo e aspetta di essere ascoltato.",
+          "fr": "Aÿ élevé en chêne de la forêt d'Argonne, sans rien rajouter. Un champagne qui ne pétille pas pour te divertir — il se tient tranquille et attend qu'on l'écoute.",
+          "de": "Aÿ, ausgebaut in Eiche aus dem Argonner Wald, ohne Dosage. Ein Champagner, der nicht perlt, um zu unterhalten — er steht still und wartet, gehört zu werden.",
+          "zh": "来自 Aÿ，在阿尔贡森林的橡木中陈酿，不加补液。这款香槟不是为逗你开心而起泡——它静静站着，等你听见。",
+          "sl": "Aÿ v hrastu iz argonskega gozda, brez doslajevanja. Šampanjec, ki ne peni, da bi te zabaval — mirno stoji in čaka, da ga slišiš.",
+          "es": "Aÿ criado en roble del bosque de Argonne, sin añadir nada. Un Champagne que no burbujea para entretenerte — se queda quieto y espera a ser escuchado."
          },
          "ratings": [
           {
@@ -2365,14 +2365,14 @@
           }
          ],
          "note": {
-          "hr": "Selosse ne radi ružičasto zbog boje — ovo je vino s tijelom, dubinom i vlastitim mišljenjem.",
-          "en": "Selosse doesn't make rosé for the colour — this is a wine with body, depth and a mind of its own.",
-          "it": "Selosse non fa il rosé per il colore — è un vino con corpo, profondità e un'idea propria.",
-          "fr": "Selosse ne fait pas le rosé pour la couleur — c'est un vin avec du corps, de la profondeur et une pensée propre.",
-          "de": "Selosse macht keinen Rosé wegen der Farbe — dies ist ein Wein mit Körper, Tiefe und eigenem Kopf.",
-          "zh": "塞洛斯做桃红从不为颜色——这是一款有酒体、有深度、有主见的酒。",
-          "sl": "Selosse rožnatega ne dela zaradi barve — to je vino s telesom, globino in lastnim značajem.",
-          "es": "Selosse no hace rosado por el color — es un vino con cuerpo, profundidad y criterio propio."
+          "hr": "Anselme je promijenio način na koji gledamo šampanjac, pa mu boja nikad nije bila argument. Tijelo, kruh i vlastito mišljenje — ne slaže se s tobom iz pristojnosti.",
+          "en": "Anselme changed the way we look at Champagne, so colour was never his argument. Body, bread and a mind of its own — it will not agree with you out of politeness.",
+          "it": "Anselme ha cambiato il nostro modo di guardare lo Champagne, quindi il colore non è mai stato il suo argomento. Corpo, pane e un'opinione propria — non ti darà ragione per educazione.",
+          "fr": "Anselme a changé notre façon de regarder le champagne ; la couleur n'a donc jamais été son argument. Du corps, du pain et une opinion à lui — il ne t'approuvera pas par politesse.",
+          "de": "Anselme hat verändert, wie wir Champagner ansehen, deshalb war Farbe nie sein Argument. Körper, Brot und eine eigene Meinung — es stimmt dir nicht aus Höflichkeit zu.",
+          "zh": "安塞尔姆改变了我们看待香槟的方式，颜色从来不是他的论据。酒体、面包，以及自己的主见——它不会出于礼貌附和你。",
+          "sl": "Anselme je spremenil, kako gledamo na šampanjec, zato barva nikoli ni bila njegov argument. Telo, kruh in lastno mnenje — ne bo se strinjal s teboj iz vljudnosti.",
+          "es": "Anselme cambió nuestra forma de mirar el Champagne, así que el color nunca fue su argumento. Cuerpo, pan y opinión propia — no te dará la razón por cortesía."
          }
         },
         {
@@ -3378,14 +3378,14 @@
          },
          "terroir": "Pelješac",
          "note": {
-          "hr": "Rukatac iz pelješkog kamena — živac i mineralnost, bez šminke.",
-          "en": "Rukatac out of Pelješac stone — nerve and minerality, no make-up.",
-          "it": "Rukatac dalla pietra di Pelješac — nervo e mineralità, senza trucco.",
-          "fr": "Du rukatac né de la pierre de Pelješac — du nerf, du minéral, aucun fard.",
-          "de": "Rukatac aus dem Stein von Pelješac — Nerv und Mineralität, ungeschminkt.",
-          "zh": "长在佩列沙茨石灰岩上的鲁卡塔茨——筋骨与矿物感，不施粉黛。",
-          "sl": "Rukatac iz pelješkega kamna — živec in mineralnost, brez šminke.",
-          "es": "Rukatac de la piedra de Pelješac — nervio y mineralidad, sin maquillaje."
+          "hr": "Frano je posadio rukatac tamo gdje svi sade plavac, i onda ga pustio da stoji. Kamen, sol i živac — i ništa što bi se moglo nazvati šminkom.",
+          "en": "Frano planted Rukatac where everyone plants Plavac, and then left it alone. Stone, salt and nerve — and nothing you could call make-up.",
+          "it": "Frano ha piantato il rukatac dove tutti piantano il plavac, e poi l'ha lasciato in pace. Pietra, sale e nervo — e niente che si possa chiamare trucco.",
+          "fr": "Frano a planté du rukatac là où tout le monde plante du plavac, puis l'a laissé tranquille. Pierre, sel et nerf — et rien qu'on puisse appeler du fard.",
+          "de": "Frano hat Rukatac dort gepflanzt, wo alle Plavac pflanzen, und ihn dann in Ruhe gelassen. Stein, Salz und Nerv — und nichts, was man Schminke nennen könnte.",
+          "zh": "弗拉诺在人人都种普拉瓦茨的地方种了鲁卡塔茨，然后就不再打扰它。石头、盐与筋骨——没有任何可以称作妆的东西。",
+          "sl": "Frano je posadil rukatac tam, kjer vsi sadijo plavac, in ga potem pustil pri miru. Kamen, sol in živec — in nič, čemur bi lahko rekli šminka.",
+          "es": "Frano plantó rukatac donde todos plantan plavac, y luego lo dejó en paz. Piedra, sal y nervio — y nada que pueda llamarse maquillaje."
          },
          "recommended": true
         },
@@ -3476,14 +3476,14 @@
          ],
          "recommended": true,
          "note": {
-          "hr": "Zaboravljene dalmatinske sorte, vraćene u život — bijelo vino sunca, kamena i tvrdoglave vjere.",
-          "en": "Forgotten Dalmatian varieties brought back to life — a white of sun, stone and stubborn faith.",
-          "it": "Antiche varietà dalmate riportate in vita — un bianco di sole, pietra e fede testarda.",
-          "fr": "Des cépages dalmates oubliés, ramenés à la vie — un blanc de soleil, de pierre et de foi têtue.",
-          "de": "Vergessene dalmatinische Sorten, zurück ins Leben geholt — ein Weisswein aus Sonne, Stein und sturem Glauben.",
-          "zh": "被遗忘又被唤醒的达尔马提亚本土品种——阳光、石头与固执信念酿成的白葡萄酒。",
-          "sl": "Pozabljene dalmatinske sorte, obujene v življenje — belo vino sonca, kamna in trmaste vere.",
-          "es": "Variedades dálmatas olvidadas devueltas a la vida — un blanco de sol, piedra y fe testaruda."
+          "hr": "Sorte koje su gotovo nestale, vraćene trs po trs jer je netko bio dovoljno tvrdoglav. Sunce, kamen i vjera — vino koje se nigdje drugdje ne može ponoviti.",
+          "en": "Varieties that had all but disappeared, brought back vine by vine because somebody was stubborn enough. Sun, stone and faith — a wine that cannot be repeated anywhere else.",
+          "it": "Varietà quasi scomparse, riportate vite per vite perché qualcuno è stato abbastanza testardo. Sole, pietra e fede — un vino che non si può ripetere altrove.",
+          "fr": "Des cépages presque disparus, ramenés cep par cep parce que quelqu'un était assez têtu. Soleil, pierre et foi — un vin qu'on ne peut répéter nulle part ailleurs.",
+          "de": "Sorten, die fast verschwunden waren, Rebstock für Rebstock zurückgeholt, weil jemand stur genug war. Sonne, Stein und Glaube — ein Wein, der sich nirgendwo sonst wiederholen lässt.",
+          "zh": "几近消失的品种，被一株一株找回来，只因有人够固执。阳光、石头与信念——一款在别处无法复制的酒。",
+          "sl": "Sorte, ki so skoraj izginile, vrnjene trto za trto, ker je bil nekdo dovolj trmast. Sonce, kamen in vera — vino, ki ga nikjer drugje ni mogoče ponoviti.",
+          "es": "Variedades casi desaparecidas, recuperadas cepa a cepa porque alguien fue lo bastante terco. Sol, piedra y fe — un vino que no puede repetirse en ningún otro sitio."
          }
         }
        ]
@@ -3636,14 +3636,14 @@
           }
          ],
          "note": {
-          "hr": "Hladniji obronci Saara, napetija berba — rizling koji treba živac, i ima ga.",
-          "en": "The cooler slopes of the Saar, a tense vintage — a Riesling that needs nerve, and has it.",
-          "it": "I pendii più freschi della Saar, un'annata tesa — un Riesling che ha bisogno di nervo, e lo ha.",
-          "fr": "Les pentes fraîches de la Sarre, un millésime tendu — un riesling qui demande du nerf, et qui en a.",
-          "de": "Die kühleren Hänge der Saar, ein gespannter Jahrgang — ein Riesling, der Nerv braucht und ihn hat.",
-          "zh": "萨尔河凉爽的坡地、紧致的年份——一款需要张力的雷司令，而它正拥有。",
-          "sl": "Hladnejša pobočja Saara, napeta letina — rizling, ki potrebuje živec, in ga ima.",
-          "es": "Las laderas más frescas del Saar, una añada tensa — un Riesling que necesita nervio, y lo tiene."
+          "hr": "Saar je hladan, pa Kabinett ovdje nije lagana kategorija nego stav. Osam posto alkohola, kiselina kao žica — i piješ ga cijelu večer bez umora.",
+          "en": "The Saar is cold, so Kabinett here is not a light category but a position. Eight per cent alcohol, acidity like wire — and you can drink it all evening without tiring.",
+          "it": "La Saar è fredda, quindi qui il Kabinett non è una categoria leggera ma una posizione. Otto gradi, acidità come un filo d'acciaio — e lo bevi tutta la sera senza stancarti.",
+          "fr": "La Sarre est froide : ici, le kabinett n'est pas une catégorie légère mais une position. Huit degrés, une acidité comme un fil d'acier — et on le boit toute la soirée sans fatigue.",
+          "de": "Die Saar ist kalt, also ist Kabinett hier keine leichte Kategorie, sondern eine Haltung. Acht Prozent, Säure wie ein Draht — und man trinkt ihn den ganzen Abend, ohne zu ermüden.",
+          "zh": "萨尔很冷，所以这里的 Kabinett 不是一个轻盈的级别，而是一种态度。八度酒精，酸度像钢丝——整晚喝也不累。",
+          "sl": "Saar je hladen, zato Kabinett tu ni lahka kategorija, ampak drža. Osem odstotkov alkohola, kislina kot žica — in piješ ga ves večer brez utrujenosti.",
+          "es": "El Saar es frío, así que aquí el Kabinett no es una categoría ligera sino una postura. Ocho grados, acidez como un alambre — y se bebe toda la noche sin cansar."
          },
          "recommended": true
         },
@@ -3873,14 +3873,14 @@
          ],
          "recommended": true,
          "note": {
-          "hr": "Vapnenac Westhofena, biodinamička preciznost — suhi rizling velike klase, bez ijedne suvišne riječi.",
-          "en": "The limestone of Westhofen, biodynamic precision — a dry Riesling of grand-cru class, without a single wasted word.",
-          "it": "Il calcare di Westhofen, precisione biodinamica — un Riesling secco di gran classe, senza una parola di troppo.",
-          "fr": "Le calcaire de Westhofen, précision biodynamique — un riesling sec de grande classe, sans un mot de trop.",
-          "de": "Der Kalk von Westhofen, biodynamische Präzision — ein trockener Riesling von Grosser-Gewächs-Klasse, ohne ein überflüssiges Wort.",
-          "zh": "韦斯特霍芬的石灰岩，生物动力的精准——一款大 Cru 级别的干型雷司令，没有一个多余的字。",
-          "sl": "Apnenec Westhofna, biodinamična natančnost — suh rizling velikega razreda, brez ene odvečne besede.",
-          "es": "La caliza de Westhofen, precisión biodinámica — un Riesling seco de categoría grand cru, sin una sola palabra de más."
+          "hr": "Kirchspiel je vapnenac pod glinom, i to se čuje. Suhi rizling koji ne diže glas — sol, kremen i ni jedna suvišna riječ.",
+          "en": "Kirchspiel is limestone under clay, and you can hear it. A dry Riesling that never raises its voice — salt, flint and not one wasted word.",
+          "it": "Kirchspiel è calcare sotto l'argilla, e si sente. Un Riesling secco che non alza mai la voce — sale, selce e nemmeno una parola di troppo.",
+          "fr": "Kirchspiel, c'est du calcaire sous l'argile, et cela s'entend. Un riesling sec qui n'élève jamais la voix — sel, silex et pas un mot de trop.",
+          "de": "Kirchspiel ist Kalkstein unter Ton, und man hört es. Ein trockener Riesling, der nie die Stimme hebt — Salz, Feuerstein und kein überflüssiges Wort.",
+          "zh": "Kirchspiel 是黏土之下的石灰岩，你听得见。一款从不提高嗓门的干型雷司令——盐、燧石，没有一个多余的字。",
+          "sl": "Kirchspiel je apnenec pod glino, in to se sliši. Suhi rizling, ki nikoli ne povzdigne glasu — sol, kremen in niti ene odvečne besede.",
+          "es": "Kirchspiel es caliza bajo arcilla, y se oye. Un Riesling seco que nunca levanta la voz — sal, pedernal y ni una palabra de más."
          },
          "tags": [
           "excellent_vintage"
@@ -4374,14 +4374,14 @@
          "terroir": "",
          "recommended": true,
          "note": {
-          "hr": "Chablis kakav je nekad bio — kimeridžijska školjka, napetost i ništa suvišno.",
-          "en": "Chablis as it once was — Kimmeridgian shell, tension and nothing superfluous.",
-          "it": "Lo Chablis come una volta — conchiglia kimmeridgiana, tensione e nulla di superfluo.",
-          "fr": "Le Chablis comme autrefois — coquille kimméridgienne, tension et rien de superflu.",
-          "de": "Chablis, wie er einmal war — kimmeridgische Muschel, Spannung und nichts Überflüssiges.",
-          "zh": "昔日模样的夏布利——启莫里阶的贝壳、张力，别无冗余。",
-          "sl": "Chablis, kakršen je bil nekoč — kimeridgijska lupina, napetost in nič odvečnega.",
-          "es": "El Chablis como era antaño — concha kimmeridgiense, tensión y nada superfluo."
+          "hr": "Sirovo, nefiltrirano, ponekad i neuredno — jazz truba bez prigušivača. Kod Thomasa terroir nije nacrtan, on ti se dogodi.",
+          "en": "Raw, unfiltered, sometimes untidy — a jazz trumpet with the mute taken out. At Thomas's, terroir isn't drawn for you; it happens to you.",
+          "it": "Crudo, non filtrato, a volte disordinato — una tromba jazz senza sordina. Da Thomas il terroir non te lo disegnano: ti accade.",
+          "fr": "Brut, non filtré, parfois désordonné — une trompette de jazz sans sourdine. Chez Thomas, le terroir n'est pas dessiné : il t'arrive.",
+          "de": "Roh, ungefiltert, manchmal unaufgeräumt — eine Jazztrompete ohne Dämpfer. Bei Thomas wird das Terroir nicht gezeichnet, es passiert dir.",
+          "zh": "粗粝、不过滤、有时并不整洁——像摘掉弱音器的爵士小号。在托马斯这里，风土不是画给你看的，而是发生在你身上。",
+          "sl": "Surovo, nefiltrirano, včasih neurejeno — jazzovska trobenta brez dušilca. Pri Thomasu terroir ni narisan, ampak se ti zgodi.",
+          "es": "Crudo, sin filtrar, a veces desordenado — una trompeta de jazz sin sordina. En casa de Thomas el terruño no se dibuja: te ocurre."
          },
          "tags": [
           "legendary_vintage"
@@ -4545,14 +4545,14 @@
          ],
          "recommended": true,
          "note": {
-          "hr": "Les Preuses — vrh chablisa: sol, kamen i dužina koja ne prestaje.",
-          "en": "Les Preuses — the summit of Chablis: salt, stone and a length that will not end.",
-          "it": "Les Preuses — la vetta dello Chablis: sale, pietra e una lunghezza che non finisce.",
-          "fr": "Les Preuses — le sommet du Chablis : sel, pierre et une longueur qui ne finit pas.",
-          "de": "Les Preuses — der Gipfel des Chablis: Salz, Stein und ein Nachhall, der nicht enden will.",
-          "zh": "普勒斯园——夏布利之巅：盐、石，以及不肯散去的余韵。",
-          "sl": "Les Preuses — vrh Chablisa: sol, kamen in dolžina, ki se ne konča.",
-          "es": "Les Preuses — la cima de Chablis: sal, piedra y una longitud que no termina."
+          "hr": "Piuze govori kao da čuje kamen dok priča. Preuses je rezan nožem, a ostaje kao sol nakon mora — vino koje ne priča viceve, nego te gleda.",
+          "en": "Piuze talks as though he can hear the stone while he speaks. Preuses is cut with a knife and stays like salt after the sea — a wine that tells no jokes, it looks at you.",
+          "it": "Piuze parla come se sentisse la pietra mentre parla. Preuses è tagliato col coltello e resta come il sale dopo il mare — un vino che non racconta barzellette, ti guarda.",
+          "fr": "Piuze parle comme s'il entendait la pierre en parlant. Preuses est taillé au couteau et reste comme le sel après la mer — un vin qui ne raconte pas de blagues, il te regarde.",
+          "de": "Piuze spricht, als hörte er dabei den Stein. Preuses ist mit dem Messer geschnitten und bleibt wie Salz nach dem Meer — ein Wein, der keine Witze erzählt, er sieht dich an.",
+          "zh": "皮乌兹说话时像在聆听石头。Preuses 如刀切般利落，留下海后的盐味——它不讲笑话，它注视着你。",
+          "sl": "Piuze govori, kot da med govorjenjem sliši kamen. Preuses je rezan z nožem in ostane kot sol po morju — vino, ki ne pripoveduje šal, ampak te gleda.",
+          "es": "Piuze habla como si oyera la piedra mientras habla. Preuses está cortado a cuchillo y queda como la sal después del mar — un vino que no cuenta chistes, te mira."
          },
          "tags": [
           "legendary_vintage"
@@ -5047,14 +5047,14 @@
           }
          ],
          "note": {
-          "hr": "Preciznost kirurga, osjećaj pjesnika — Saint-Aubin koji stoji uz bok velikim imenima Burgundije.",
-          "en": "A surgeon's precision, a poet's feeling — a Saint-Aubin that stands beside Burgundy's great names.",
-          "it": "La precisione di un chirurgo, la sensibilità di un poeta — un Saint-Aubin alla pari dei grandi nomi di Borgogna.",
-          "fr": "La précision d'un chirurgien, la sensibilité d'un poète — un saint-aubin à la hauteur des grands noms de Bourgogne.",
-          "de": "Die Präzision eines Chirurgen, das Gefühl eines Dichters — ein Saint-Aubin auf Augenhöhe mit Burgunds großen Namen.",
-          "zh": "外科医生的精准，诗人的情感——足以比肩勃艮第伟大名字的 Saint-Aubin。",
-          "sl": "Kirurgova natančnost, pesnikov občutek — Saint-Aubin ob boku velikih burgundskih imen.",
-          "es": "La precisión de un cirujano, la sensibilidad de un poeta — un Saint-Aubin a la altura de los grandes nombres de Borgoña."
+          "hr": "En Remilly gleda ravno u Montrachet, i zna to. Kreda, napetost i ni gram viška — Saint-Aubin koji ne traži dopuštenje.",
+          "en": "En Remilly looks straight across at Montrachet, and knows it. Chalk, tension and not a gram to spare — a Saint-Aubin that asks nobody's permission.",
+          "it": "En Remilly guarda dritto verso il Montrachet, e lo sa. Gesso, tensione e nemmeno un grammo di troppo — un Saint-Aubin che non chiede permesso.",
+          "fr": "En Remilly regarde droit vers le Montrachet, et le sait. Craie, tension et pas un gramme de trop — un saint-aubin qui ne demande la permission à personne.",
+          "de": "En Remilly blickt direkt auf den Montrachet, und weiß das. Kreide, Spannung und kein Gramm zu viel — ein Saint-Aubin, der niemanden um Erlaubnis fragt.",
+          "zh": "En Remilly 正对着蒙哈榭，而且它知道这一点。白垩、张力，没有一克多余——一款无需请示的圣欧班。",
+          "sl": "En Remilly gleda naravnost v Montrachet in se tega zaveda. Kreda, napetost in niti grama odveč — Saint-Aubin, ki ne prosi za dovoljenje.",
+          "es": "En Remilly mira de frente al Montrachet, y lo sabe. Creta, tensión y ni un gramo de más — un Saint-Aubin que no pide permiso."
          },
          "recommended": true
         },
@@ -5102,14 +5102,14 @@
          ],
          "recommended": true,
          "note": {
-          "hr": "Lamy radi burgundac s laserskom preciznošću — Les Frionnes: napetost, kreda i suzdržana raskoš.",
-          "en": "Lamy makes Burgundy with laser precision — Les Frionnes: tension, chalk and restrained opulence.",
-          "it": "Lamy fa Borgogna con precisione laser — Les Frionnes: tensione, gesso e opulenza trattenuta.",
-          "fr": "Lamy fait de la Bourgogne au laser — Les Frionnes : tension, craie et opulence retenue.",
-          "de": "Lamy macht Burgund mit Laserpräzision — Les Frionnes: Spannung, Kalk und zurückgehaltene Opulenz.",
-          "zh": "拉米以激光般的精准酿造勃艮第——Les Frionnes：张力、白垩，与克制的丰腴。",
-          "sl": "Lamy dela Burgundijo z lasersko natančnostjo — Les Frionnes: napetost, kreda in zadržana razkošnost.",
-          "es": "Lamy hace Borgoña con precisión láser — Les Frionnes: tensión, creta y opulencia contenida."
+          "hr": "Gusta sadnja, mali prinos, nula žurbe. Les Frionnes je linearan kao vektor — sve tanji, sve dublji, sve duži.",
+          "en": "Dense planting, small yields, no hurry at all. Les Frionnes runs like a vector — thinner, deeper, longer with every second.",
+          "it": "Impianto fitto, rese basse, zero fretta. Les Frionnes corre come un vettore — sempre più sottile, più profondo, più lungo.",
+          "fr": "Plantation dense, petits rendements, aucune hâte. Les Frionnes file comme un vecteur — toujours plus fin, plus profond, plus long.",
+          "de": "Dichte Pflanzung, kleine Erträge, keinerlei Eile. Les Frionnes läuft wie ein Vektor — immer schmaler, tiefer, länger.",
+          "zh": "高密度种植、低产量、绝不着急。Les Frionnes 像一支向量——越来越细，越来越深，越来越长。",
+          "sl": "Gosta zasaditev, majhen pridelek, nič naglice. Les Frionnes teče kot vektor — vse tanjši, vse globlji, vse daljši.",
+          "es": "Plantación densa, rendimientos bajos, ninguna prisa. Les Frionnes avanza como un vector — más fino, más hondo, más largo."
          }
         },
         {
@@ -5223,14 +5223,14 @@
          ],
          "recommended": true,
          "note": {
-          "hr": "Meursault bez pretjerivanja — lješnjak, maslac i mineralna kičma koja sve drži na mjestu.",
-          "en": "Meursault without excess — hazelnut, butter and a mineral spine holding it all in place.",
-          "it": "Meursault senza eccessi — nocciola, burro e una spina dorsale minerale che tiene tutto al suo posto.",
-          "fr": "Meursault sans excès — noisette, beurre et une colonne minérale qui tient tout en place.",
-          "de": "Meursault ohne Übertreibung — Haselnuss, Butter und ein mineralisches Rückgrat, das alles zusammenhält.",
-          "zh": "不事张扬的默尔索——榛子、黄油，与一条把一切稳住的矿物脊梁。",
-          "sl": "Meursault brez pretiravanja — lešnik, maslo in mineralna hrbtenica, ki vse drži skupaj.",
-          "es": "Meursault sin excesos — avellana, mantequilla y una columna mineral que lo mantiene todo en su sitio."
+          "hr": "Ljudi još misle da su Meursaulti teški i kremasti. Ovaj je mekan, delikatan i stalno se otvara — moraš razmišljati dok ga piješ.",
+          "en": "People still think Meursault means heavy and creamy. This one is soft, delicate and keeps opening — you have to think while you drink it.",
+          "it": "C'è ancora chi crede che il Meursault sia pesante e cremoso. Questo è morbido, delicato e continua ad aprirsi — devi pensare mentre lo bevi.",
+          "fr": "On croit encore que le meursault est lourd et crémeux. Celui-ci est souple, délicat, et s'ouvre sans cesse — il faut réfléchir en le buvant.",
+          "de": "Viele halten Meursault noch immer für schwer und cremig. Dieser ist weich, feingliedrig und öffnet sich immer weiter — man muss beim Trinken denken.",
+          "zh": "很多人仍以为默尔索意味着厚重与奶油感。这一款柔软、细腻，且不断打开——你得一边喝一边思考。",
+          "sl": "Ljudje še vedno mislijo, da so meursaulti težki in kremasti. Ta je mehak, občutljiv in se ves čas odpira — med pitjem moraš razmišljati.",
+          "es": "Todavía se cree que el Meursault es pesado y cremoso. Este es blando, delicado y no deja de abrirse — hay que pensar mientras se bebe."
          },
          "tags": [
           "legendary_vintage"
@@ -5342,14 +5342,14 @@
          ],
          "recommended": true,
          "note": {
-          "hr": "Mladi vinari, stari trsovi — Meursault svjež, precizan i pun tihe energije.",
-          "en": "Young vignerons, old vines — a Meursault fresh, precise and full of quiet energy.",
-          "it": "Giovani vignaioli, vecchie vigne — un Meursault fresco, preciso e pieno di quieta energia.",
-          "fr": "Jeunes vignerons, vieilles vignes — un Meursault frais, précis et plein d'une énergie tranquille.",
-          "de": "Junge Winzer, alte Reben — ein Meursault, frisch, präzise und voll stiller Energie.",
-          "zh": "年轻的酿酒人，年迈的老藤——一款清新、精准、蕴含静默能量的默尔索。",
-          "sl": "Mladi vinarji, stare trte — Meursault, svež, natančen in poln tihe energije.",
-          "es": "Jóvenes viticultores, viñas viejas — un Meursault fresco, preciso y lleno de energía serena."
+          "hr": "Stari trsovi u mladim rukama. Ništa se ne trudi biti veliko — a ostane u glavi duže od svega što je te večeri vikalo.",
+          "en": "Old vines in young hands. Nothing here tries to be big — and it stays in your head longer than anything that shouted that evening.",
+          "it": "Vigne vecchie in mani giovani. Qui niente cerca di essere grande — e resta in testa più a lungo di tutto ciò che quella sera ha gridato.",
+          "fr": "De vieilles vignes en jeunes mains. Rien n'essaie ici d'être grand — et cela reste en tête plus longtemps que tout ce qui a crié ce soir-là.",
+          "de": "Alte Reben in jungen Händen. Nichts versucht hier groß zu sein — und es bleibt länger im Kopf als alles, was an diesem Abend laut war.",
+          "zh": "老藤，年轻的手。这里没有任何东西试图显得伟大——它却比那晚所有喧哗的酒都留得更久。",
+          "sl": "Stare trte v mladih rokah. Nič se ne trudi biti veliko — pa ostane v glavi dlje kot vse, kar je tisti večer vpilo.",
+          "es": "Viñas viejas en manos jóvenes. Aquí nada intenta ser grande — y se queda en la cabeza más tiempo que todo lo que aquella noche gritó."
          }
         },
         {
@@ -6288,14 +6288,14 @@
          },
          "recommended": true,
          "note": {
-          "hr": "Carricante s vulkana — limun, pepeo i morska sol, vino koje pamti lavu.",
-          "en": "Carricante from the volcano — lemon, ash and sea salt, a wine that remembers the lava.",
-          "it": "Carricante dal vulcano — limone, cenere e sale marino, un vino che ricorda la lava.",
-          "fr": "Carricante du volcan — citron, cendre et sel marin, un vin qui se souvient de la lave.",
-          "de": "Carricante vom Vulkan — Zitrone, Asche und Meersalz, ein Wein, der sich an die Lava erinnert.",
-          "zh": "火山之上的卡里坎特——柠檬、灰烬与海盐，一款记得熔岩的酒。",
-          "sl": "Carricante z vulkana — limona, pepel in morska sol, vino, ki se spominja lave.",
-          "es": "Carricante del volcán — limón, ceniza y sal marina, un vino que recuerda la lava."
+          "hr": "Carricante na crnom pijesku Etne, bere se kad je drugdje berba davno gotova. Pepeo, limunova korica i sol — i kiselina koja stoji uspravno.",
+          "en": "Carricante on Etna's black sand, picked when everywhere else finished harvest weeks ago. Ash, lemon peel and salt — and an acidity that stands upright.",
+          "it": "Carricante sulla sabbia nera dell'Etna, raccolto quando altrove la vendemmia è finita da un pezzo. Cenere, scorza di limone e sale — e un'acidità che sta in piedi.",
+          "fr": "Du carricante sur le sable noir de l'Etna, cueilli quand ailleurs les vendanges sont finies depuis longtemps. Cendre, zeste de citron et sel — et une acidité qui se tient droite.",
+          "de": "Carricante auf dem schwarzen Sand des Ätna, gelesen, wenn anderswo die Ernte längst vorbei ist. Asche, Zitronenschale und Salz — und eine Säure, die aufrecht steht.",
+          "zh": "卡利坎特长在埃特纳的黑沙上，别处采收早已结束时它才开始。灰烬、柠檬皮与盐——还有一份笔直站立的酸度。",
+          "sl": "Carricante na črnem pesku Etne, obran, ko je drugod trgatev že zdavnaj končana. Pepel, limonina lupina in sol — ter kislina, ki stoji pokonci.",
+          "es": "Carricante sobre la arena negra del Etna, recogido cuando en otros sitios la vendimia terminó hace semanas. Ceniza, piel de limón y sal — y una acidez que se mantiene erguida."
          }
         },
         {
@@ -6686,14 +6686,14 @@
          "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
-          "hr": "Bordoške sorte na zagorskom brijegu — ozbiljan, taman i samouvjeren, bez kompleksa.",
-          "en": "Bordeaux varieties on a Zagorje hill — serious, dark and self-assured, without complexes.",
-          "it": "Vitigni bordolesi su una collina dello Zagorje — serio, scuro e sicuro di sé, senza complessi.",
-          "fr": "Cépages bordelais sur une colline du Zagorje — sérieux, sombre et sûr de lui, sans complexe.",
-          "de": "Bordeaux-Sorten auf einem Hügel im Zagorje — ernst, dunkel und selbstbewusst, ohne Komplexe.",
-          "zh": "扎戈列山丘上的波尔多品种——严肃、深沉而自信，毫无自卑。",
-          "sl": "Bordojske sorte na zagorskem griču — resno, temno in samozavestno, brez kompleksov.",
-          "es": "Variedades bordelesas en una colina de Zagorje — serio, oscuro y seguro de sí mismo, sin complejos."
+          "hr": "Bordoške sorte na Hršak Bregu, gdje ih nitko nije trebao posaditi. Taman, ozbiljan i bez kompleksa — Zagorje koje ne traži dopuštenje.",
+          "en": "Bordeaux varieties on Hršak Breg, where nobody was supposed to plant them. Dark, serious and without a chip on its shoulder — Zagorje asking nobody's permission.",
+          "it": "Vitigni bordolesi su Hršak Breg, dove nessuno avrebbe dovuto piantarli. Scuro, serio e senza complessi — lo Zagorje che non chiede permesso.",
+          "fr": "Des cépages bordelais sur Hršak Breg, là où personne n'aurait dû en planter. Sombre, sérieux et sans complexe — le Zagorje qui ne demande la permission à personne.",
+          "de": "Bordeaux-Sorten auf dem Hršak Breg, wo sie niemand hätte pflanzen sollen. Dunkel, ernst und ohne Komplexe — das Zagorje, das niemanden um Erlaubnis fragt.",
+          "zh": "波尔多品种种在 Hršak Breg，那本不该有人去种的地方。深沉、严肃、毫无自卑——一个不必请示的扎戈列。",
+          "sl": "Bordojske sorte na Hršak Bregu, kjer jih nihče ne bi smel posaditi. Temno, resno in brez kompleksov — Zagorje, ki ne prosi za dovoljenje.",
+          "es": "Variedades bordelesas en Hršak Breg, donde nadie debía plantarlas. Oscuro, serio y sin complejos — el Zagorje que no pide permiso a nadie."
          }
         },
         {
@@ -6722,14 +6722,14 @@
          },
          "recommended": true,
          "note": {
-          "hr": "Kontinentalni pinot lagane ruke — svila, višnja i preciznost koja iznenađuje.",
-          "en": "A continental Pinot of a light hand — silk, cherry and a precision that surprises.",
-          "it": "Un Pinot continentale dalla mano leggera — seta, ciliegia e una precisione che sorprende.",
-          "fr": "Un Pinot continental à la main légère — soie, cerise et une précision qui surprend.",
-          "de": "Ein kontinentaler Pinot mit leichter Hand — Seide, Kirsche und eine Präzision, die überrascht.",
-          "zh": "一款手法轻盈的大陆黑皮诺——丝绸、樱桃，与出人意料的精准。",
-          "sl": "Celinski pinot lahke roke — svila, češnja in natančnost, ki preseneti.",
-          "es": "Un Pinot continental de mano ligera — seda, cereza y una precisión que sorprende."
+          "hr": "Moslavina, ne Burgundija — i baš zato ga volim. Lagana ruka, višnja i svila, i cijena koja te ne tjera da razmišljaš.",
+          "en": "Moslavina, not Burgundy — and that is exactly why I like it. A light hand, sour cherry and silk, at a price that spares you the arithmetic.",
+          "it": "Moslavina, non Borgogna — ed è proprio per questo che mi piace. Mano leggera, amarena e seta, a un prezzo che ti risparmia i conti.",
+          "fr": "Moslavina, pas la Bourgogne — et c'est précisément pour cela que je l'aime. Une main légère, de la griotte et de la soie, à un prix qui t'épargne le calcul.",
+          "de": "Moslavina, nicht Burgund — und genau deshalb mag ich ihn. Leichte Hand, Sauerkirsche und Seide, zu einem Preis, der einem das Rechnen erspart.",
+          "zh": "莫斯拉维纳，不是勃艮第——我喜欢的正是这一点。轻巧的手法、酸樱桃与丝绸，价格让你不必盘算。",
+          "sl": "Moslavina, ne Burgundija — in prav zato ga imam rad. Lahka roka, višnja in svila, po ceni, ki ti prihrani računanje.",
+          "es": "Moslavina, no Borgoña — y por eso justamente me gusta. Mano ligera, guinda y seda, a un precio que te ahorra la cuenta."
          }
         },
         {
@@ -7284,14 +7284,14 @@
          "terroir": "Stancija Meneghetti, Bale",
          "recommended": true,
          "note": {
-          "hr": "Istarski odgovor Bordeauxu — gusto, elegantno i dozrelo pod mediteranskim suncem.",
-          "en": "Istria's answer to Bordeaux — dense, elegant and ripened under a Mediterranean sun.",
-          "it": "La risposta istriana a Bordeaux — denso, elegante e maturato sotto il sole mediterraneo.",
-          "fr": "La réponse istrienne à Bordeaux — dense, élégant et mûri sous un soleil méditerranéen.",
-          "de": "Istriens Antwort auf Bordeaux — dicht, elegant und unter mediterraner Sonne gereift.",
-          "zh": "伊斯特拉对波尔多的回答——紧致、优雅，在地中海的阳光下成熟。",
-          "sl": "Istrski odgovor Bordeauxu — gosto, elegantno in dozorelo pod sredozemskim soncem.",
-          "es": "La respuesta de Istria a Burdeos — denso, elegante y madurado bajo un sol mediterráneo."
+          "hr": "Merlot i cabernet na crvenoj istarskoj zemlji, dozreli pod suncem koje ne popušta. Gusto, ali pitko — i bolje svake godine.",
+          "en": "Merlot and Cabernet on Istria's red earth, ripened under a sun that doesn't let up. Dense but drinkable — and better every year.",
+          "it": "Merlot e cabernet sulla terra rossa istriana, maturati sotto un sole che non molla. Denso ma bevibile — e migliore ogni anno.",
+          "fr": "Merlot et cabernet sur la terre rouge d'Istrie, mûris sous un soleil qui ne lâche rien. Dense mais buvable — et meilleur chaque année.",
+          "de": "Merlot und Cabernet auf der roten Erde Istriens, gereift unter einer Sonne, die nicht nachlässt. Dicht, aber trinkbar — und jedes Jahr besser.",
+          "zh": "梅洛与赤霞珠长在伊斯特拉的红土上，在毫不退让的阳光下成熟。稠密却好喝——而且一年比一年好。",
+          "sl": "Merlot in cabernet na rdeči istrski zemlji, dozorela pod soncem, ki ne popusti. Gosto, a pitno — in vsako leto boljše.",
+          "es": "Merlot y cabernet sobre la tierra roja de Istria, madurados bajo un sol que no afloja. Denso pero bebible — y mejor cada año."
          }
         },
         {
@@ -7600,14 +7600,14 @@
          },
          "terroir": "",
          "note": {
-          "hr": "Mikroparcele, preciznost, kontinuitet — Vosne-Romanée kakav je Filho upoznao na svojim putovanjima.",
-          "en": "Micro-parcels, precision, continuity — Vosne-Romanée as Filho came to know it on his travels.",
-          "it": "Micro-parcelle, precisione, continuità — il Vosne-Romanée come Filho l'ha conosciuto nei suoi viaggi.",
-          "fr": "Micro-parcelles, précision, continuité — le vosne-romanée tel que Filho l'a découvert au fil de ses voyages.",
-          "de": "Mikroparzellen, Präzision, Kontinuität — Vosne-Romanée, wie Filho es auf seinen Reisen kennengelernt hat.",
-          "zh": "微型地块、精准与延续——Filho 旅途中所认识的 Vosne-Romanée。",
-          "sl": "Mikro parcele, natančnost, kontinuiteta — Vosne-Romanée, kakršno je Filho spoznal na svojih potovanjih.",
-          "es": "Micro-parcelas, precisión, continuidad — Vosne-Romanée tal como Filho la conoció en sus viajes."
+          "hr": "Vosne nikad ne viče. Začin u drugom planu, tanin gastronomski upleten u sve — vino koje nije na tanjuru, nego oko tanjura.",
+          "en": "Vosne never raises its voice. Spice in the second row, tannin woven right through the meal — a wine that isn't on the plate but around it.",
+          "it": "Vosne non alza mai la voce. Spezia in seconda fila, tannino intrecciato al pasto — un vino che non sta nel piatto, ma attorno.",
+          "fr": "Vosne n'élève jamais la voix. L'épice au second plan, le tanin tissé dans le repas — un vin qui n'est pas dans l'assiette mais autour.",
+          "de": "Vosne hebt nie die Stimme. Gewürz in der zweiten Reihe, Tannin durch das ganze Essen gewoben — ein Wein, der nicht auf dem Teller liegt, sondern darum herum.",
+          "zh": "沃恩从不提高嗓门。香料退居其次，单宁织进整顿饭里——这酒不在盘中，而在盘子四周。",
+          "sl": "Vosne nikoli ne povzdigne glasu. Začimba v drugem planu, tanin vtkan v celoten obrok — vino, ki ni na krožniku, ampak okoli njega.",
+          "es": "Vosne nunca levanta la voz. La especia en segundo plano, el tanino tejido en toda la comida — un vino que no está en el plato, sino alrededor."
          },
          "ratings": [
           {
@@ -7647,14 +7647,14 @@
          "terroir": "Les Barreaux",
          "recommended": true,
          "note": {
-          "hr": "Jedna od rijetkih sjevernih ekspozicija u Vosneu, na samom vrhu padine — susjedi su joj Richebourg, Aux Brûlées i Cros Parantoux. Nikad nije klasificirana, pa uz oznaku seoske klase dobivate susjedstvo grand crua: hladniji položaj, srednja punoća, više parfema nego snage.",
-          "en": "One of the few north-facing plots in Vosne, right at the top of the slope — its neighbours are Richebourg, Aux Brûlées and Cros Parantoux. It was never classified, so a village label buys you grand cru company: cooler exposure, mid-weight, perfume ahead of power.",
-          "it": "Una delle rare esposizioni a nord di Vosne, in cima al pendio — i vicini si chiamano Richebourg, Aux Brûlées e Cros Parantoux. Non è mai stata classificata: un'etichetta village che vi mette in compagnia dei grand cru — esposizione più fresca, corpo medio, più profumo che potenza.",
-          "fr": "L’un des rares coteaux exposés au nord à Vosne, tout en haut de la pente — ses voisins s’appellent Richebourg, Aux Brûlées et Cros Parantoux. Jamais classé : une étiquette village qui vous offre le voisinage des grands crus — exposition plus fraîche, corps moyen, plus de parfum que de puissance.",
-          "de": "Eine der wenigen nach Norden ausgerichteten Lagen in Vosne, ganz oben am Hang — die Nachbarn heißen Richebourg, Aux Brûlées und Cros Parantoux. Nie klassifiziert: ein Village-Etikett in Grand-Cru-Nachbarschaft — kühlere Exposition, mittleres Gewicht, mehr Duft als Kraft.",
-          "zh": "沃恩村坡顶少见的北向地块——邻居是 Richebourg、Aux Brûlées 与 Cros Parantoux。它从未被分级：村级的标签，特级园的邻里——朝向更凉，酒体中等，香气胜过力量。",
-          "sl": "Ena redkih severno obrnjenih leg v Vosnu, na samem vrhu pobočja — sosedje se imenujejo Richebourg, Aux Brûlées in Cros Parantoux. Nikoli ni bila klasificirana: vaška etiketa v družbi grand crujev — hladnejša lega, srednja polnost, več parfuma kot moči.",
-          "es": "Una de las pocas parcelas orientadas al norte de Vosne, en lo alto de la ladera — sus vecinos se llaman Richebourg, Aux Brûlées y Cros Parantoux. Nunca fue clasificada: una etiqueta village en compañía de grand crus — exposición más fresca, cuerpo medio, más perfume que potencia."
+          "hr": "Sjeverna ekspozicija na vrhu padine — susjed Richebourga, Aux Brûléesa i Cros Parantouxa. Nikad klasificirana, pa plaćaš zemlju umjesto slova: hladnije, više parfema nego snage, i strpljenja umjesto efekta.",
+          "en": "A north-facing slice at the top of the slope — neighbour to Richebourg, Aux Brûlées and Cros Parantoux. Never classified, so you pay for the ground rather than the letter: cooler, more perfume than power, patience instead of effect.",
+          "it": "Esposizione a nord in cima al pendio — confina con Richebourg, Aux Brûlées e Cros Parantoux. Mai classificata, così paghi la terra e non la sigla: più fresca, più profumo che potenza, pazienza invece di effetto.",
+          "fr": "Exposition nord en haut du coteau — voisine de Richebourg, Aux Brûlées et Cros Parantoux. Jamais classée : on paie la terre et non la lettre — plus frais, plus de parfum que de puissance, de la patience plutôt que de l'effet.",
+          "de": "Nordlage am oberen Hangrand — Nachbar von Richebourg, Aux Brûlées und Cros Parantoux. Nie klassifiziert, man zahlt also den Boden statt des Buchstabens: kühler, mehr Parfüm als Kraft, Geduld statt Effekt.",
+          "zh": "坡顶的一块北向地——与 Richebourg、Aux Brûlées 和 Cros Parantoux 为邻。从未被分级，所以你买的是土地而不是名号：更凉，香气多过力量，耐心多过效果。",
+          "sl": "Severna lega na vrhu pobočja — sosed Richebourga, Aux Brûléesa in Cros Parantouxa. Nikoli klasificirana, zato plačaš zemljo namesto črke: hladneje, več parfuma kot moči, potrpljenje namesto učinka.",
+          "es": "Exposición norte en lo alto de la ladera — vecina de Richebourg, Aux Brûlées y Cros Parantoux. Nunca clasificada: pagas la tierra y no la letra — más fresca, más perfume que potencia, paciencia en lugar de efecto."
          },
          "notePlain": true,
          "tags": [
@@ -7749,14 +7749,14 @@
          },
          "terroir": "Lavaux Saint-Jacques",
          "note": {
-          "hr": "Boca koja mijenja percepciju vina — dubina i širina burgundijskog stila u jednom gutljaju.",
-          "en": "A bottle that changes how you see wine — the depth and breadth of Burgundy in a single sip.",
-          "it": "Una bottiglia che cambia la percezione del vino — la profondità e l'ampiezza della Borgogna in un sorso.",
-          "fr": "Une bouteille qui change la perception du vin — la profondeur et l'ampleur de la Bourgogne en une gorgée.",
-          "de": "Eine Flasche, die die Wahrnehmung von Wein verändert — Tiefe und Weite Burgunds in einem Schluck.",
-          "zh": "一瓶改变你对葡萄酒认知的酒——一口之间，勃艮第的深度与广度。",
-          "sl": "Steklenica, ki spremeni pogled na vino — globina in širina Burgundije v enem samem požirku.",
-          "es": "Una botella que cambia tu manera de ver el vino — la profundidad y amplitud de Borgoña en un solo sorbo."
+          "hr": "Rousseau ne treba opis, on raspusti večeru. Lavaux ima kostur i krv, bez šminke — piješ polako, ne da bi štedio, nego jer nema potrebe žuriti.",
+          "en": "Rousseau needs no description; he dismisses the rest of the dinner. Lavaux has bone and blood, no make-up — you drink slowly, not to save it, but because there is no reason to hurry.",
+          "it": "Rousseau non ha bisogno di descrizioni: congeda la cena. Lavaux ha ossa e sangue, senza trucco — si beve piano, non per risparmiarlo, ma perché non c'è motivo di correre.",
+          "fr": "Rousseau n'a pas besoin qu'on le décrive : il congédie le dîner. Lavaux a des os et du sang, sans fard — on boit lentement, non pour l'économiser, mais parce que rien ne presse.",
+          "de": "Rousseau braucht keine Beschreibung, er entlässt das Abendessen. Lavaux hat Knochen und Blut, ungeschminkt — man trinkt langsam, nicht um zu sparen, sondern weil es keinen Grund zur Eile gibt.",
+          "zh": "卢梭无需描述，他会让整桌晚餐安静下来。Lavaux 有骨有血，不施粉黛——慢慢喝，不是为了省，而是没有理由着急。",
+          "sl": "Rousseau ne potrebuje opisa, on razpusti večerjo. Lavaux ima kosti in kri, brez šminke — piješ počasi, ne da bi varčeval, ampak ker se ni treba muditi.",
+          "es": "Rousseau no necesita descripción: despide la cena. Lavaux tiene hueso y sangre, sin maquillaje — se bebe despacio, no por ahorrarlo, sino porque no hay motivo para correr."
          },
          "recommended": true,
          "tags": [
@@ -7814,14 +7814,14 @@
          "terroir": "Les Santenots",
          "recommended": true,
          "note": {
-          "hr": "Volnay je nježnost s karakterom — crveni pinot, cvijeće i fina, svilena tanina.",
-          "en": "Volnay is tenderness with backbone — red Pinot fruit, flowers and fine, silken tannin.",
-          "it": "Volnay è tenerezza con carattere — frutto rosso di Pinot, fiori e tannino fine e setoso.",
-          "fr": "Volnay, c'est la tendresse avec du caractère — fruit rouge du Pinot, fleurs et tanin fin et soyeux.",
-          "de": "Volnay ist Zartheit mit Rückgrat — rote Pinot-Frucht, Blüten und feines, seidiges Tannin.",
-          "zh": "沃尔奈是有骨架的温柔——黑皮诺的红色果香、花香，与细腻如丝的单宁。",
-          "sl": "Volnay je nežnost s hrbtenico — rdeč pinotov sad, cvetje in fin, svilnat tanin.",
-          "es": "Volnay es ternura con carácter — fruta roja de Pinot, flores y un tanino fino y sedoso."
+          "hr": "Santenots leži u Meursaultu, a zove se Volnay — i u tome je cijela poanta. Puderasti tanin, višnja i mirnoća koja ne traži da je primijetiš.",
+          "en": "Santenots lies in Meursault and is called Volnay — and that is the whole point. Powdery tannin, sour cherry, and a calm that doesn't ask to be noticed.",
+          "it": "Santenots sta a Meursault e si chiama Volnay — e il punto è tutto lì. Tannino di cipria, amarena e una calma che non chiede di essere notata.",
+          "fr": "Santenots se trouve à Meursault et s'appelle volnay — et c'est tout le sujet. Tanin poudré, griotte, et un calme qui ne demande pas qu'on le remarque.",
+          "de": "Santenots liegt in Meursault und heißt Volnay — darin liegt der ganze Sinn. Pudriges Tannin, Sauerkirsche und eine Ruhe, die nicht bemerkt werden will.",
+          "zh": "Santenots 位于默尔索，却叫做沃尔奈——要点全在于此。粉质单宁、酸樱桃，以及一种不求被察觉的安静。",
+          "sl": "Santenots leži v Meursaultu, imenuje pa se Volnay — in v tem je vse bistvo. Pudrast tanin, višnja in mirnost, ki ne zahteva pozornosti.",
+          "es": "Santenots está en Meursault y se llama Volnay — y ahí está todo el asunto. Taninos de polvo, guinda y una calma que no pide ser notada."
          },
          "ratings": [
           {
@@ -8863,14 +8863,14 @@
          "terroir": "",
          "recommended": true,
          "note": {
-          "hr": "Vulkanska tla sjevernog Piemonta — nebbiolo koji spaja snagu i eleganciju, strpljiv i dubok.",
-          "en": "The volcanic soils of northern Piedmont — a Nebbiolo joining power and grace, patient and deep.",
-          "it": "I suoli vulcanici dell'Alto Piemonte — un Nebbiolo che unisce forza e grazia, paziente e profondo.",
-          "fr": "Les sols volcaniques du haut Piémont — un Nebbiolo qui unit puissance et grâce, patient et profond.",
-          "de": "Die vulkanischen Böden des Alto Piemonte — ein Nebbiolo, der Kraft und Anmut verbindet, geduldig und tief.",
-          "zh": "上皮埃蒙特的火山土壤——一款兼具力量与优雅、耐心而深邃的内比奥罗。",
-          "sl": "Vulkanska tla severnega Piemonta — nebbiolo, ki združuje moč in gracioznost, potrpežljiv in globok.",
-          "es": "Los suelos volcánicos del norte del Piamonte — un Nebbiolo que une potencia y gracia, paciente y profundo."
+          "hr": "Boca je bila mrtva apelacija dok je Christoph Künzli nije vratio trs po trs. Nebbiolo na vulkanskom porfiru — svjetliji od Barola, tvrdoglaviji od većine.",
+          "en": "Boca was a dead appellation until Christoph Künzli brought it back vine by vine. Nebbiolo on volcanic porphyry — lighter than Barolo, more stubborn than most.",
+          "it": "Boca era una denominazione morta finché Christoph Künzli non l'ha riportata in vita vite per vite. Nebbiolo su porfido vulcanico — più chiaro del Barolo, più testardo di quasi tutti.",
+          "fr": "Boca était une appellation morte jusqu'à ce que Christoph Künzli la relève cep par cep. Du nebbiolo sur porphyre volcanique — plus clair que le barolo, plus têtu que la plupart.",
+          "de": "Boca war eine tote Appellation, bis Christoph Künzli sie Rebstock für Rebstock zurückholte. Nebbiolo auf vulkanischem Porphyr — heller als Barolo, störrischer als die meisten.",
+          "zh": "在 Christoph Künzli 一株一株把它救回来之前，Boca 是一个死去的产区。火山斑岩上的内比奥罗——比巴罗洛更浅，也比多数酒更固执。",
+          "sl": "Boca je bila mrtva apelacija, dokler je Christoph Künzli ni vrnil trto za trto. Nebbiolo na vulkanskem porfirju — svetlejši od Barola, trmastejši od večine.",
+          "es": "Boca era una denominación muerta hasta que Christoph Künzli la recuperó cepa a cepa. Nebbiolo sobre pórfido volcánico — más claro que el Barolo, más terco que casi todos."
          },
          "ratings": [
           {
@@ -8983,14 +8983,14 @@
          "terroir": "",
          "recommended": true,
          "note": {
-          "hr": "Klasika Montalcina — sangiovese od trešnje, kože i zemlje, građen za desetljeća.",
-          "en": "A Montalcino classic — Sangiovese of cherry, leather and earth, built for decades.",
-          "it": "Un classico di Montalcino — Sangiovese di ciliegia, cuoio e terra, costruito per decenni.",
-          "fr": "Un classique de Montalcino — Sangiovese de cerise, cuir et terre, bâti pour des décennies.",
-          "de": "Ein Klassiker aus Montalcino — Sangiovese aus Kirsche, Leder und Erde, für Jahrzehnte gebaut.",
-          "zh": "蒙塔奇诺的经典——樱桃、皮革与泥土的桑娇维塞，为数十年而生。",
-          "sl": "Klasika Montalcina — sangiovese češnje, usnja in zemlje, zgrajen za desetletja.",
-          "es": "Un clásico de Montalcino — Sangiovese de cereza, cuero y tierra, construido para décadas."
+          "hr": "Costanti radi Brunello kao da je još 1970. Bez novog drva i bez šminke: višnja, koža i zemlja, i tanin koji te čeka deset godina bez ljutnje.",
+          "en": "Costanti makes Brunello as though it were still 1970. No new oak, no make-up: sour cherry, leather and earth, and a tannin that will wait ten years for you without resentment.",
+          "it": "Costanti fa il Brunello come se fosse ancora il 1970. Niente legno nuovo, niente trucco: amarena, cuoio e terra, e un tannino che ti aspetta dieci anni senza rancore.",
+          "fr": "Costanti fait son brunello comme si l'on était encore en 1970. Pas de bois neuf, pas de fard : griotte, cuir et terre, et un tanin qui t'attendra dix ans sans rancune.",
+          "de": "Costanti macht Brunello, als wäre es noch 1970. Kein neues Holz, keine Schminke: Sauerkirsche, Leder und Erde, und ein Tannin, das zehn Jahre ohne Groll auf dich wartet.",
+          "zh": "科斯坦蒂酿布鲁奈罗，仿佛还停在 1970 年。没有新桶，没有妆：酸樱桃、皮革与泥土，还有能毫无怨言等你十年的单宁。",
+          "sl": "Costanti dela Brunello, kot da je še vedno 1970. Brez novega lesa in brez šminke: višnja, usnje in zemlja, ter tanin, ki te deset let čaka brez zamere.",
+          "es": "Costanti hace el Brunello como si aún fuera 1970. Sin madera nueva y sin maquillaje: guinda, cuero y tierra, y un tanino que te espera diez años sin rencor."
          },
          "ratings": [
           {
@@ -9042,14 +9042,14 @@
          "terroir": "",
          "recommended": true,
          "note": {
-          "hr": "Maremma na suncu — sangiovese topao i otvoren, iskren kao stisak ruke.",
-          "en": "Sun-drenched Maremma — a Sangiovese warm and open, honest as a handshake.",
-          "it": "Maremma al sole — un Sangiovese caldo e aperto, sincero come una stretta di mano.",
-          "fr": "La Maremme au soleil — un Sangiovese chaleureux et ouvert, sincère comme une poignée de main.",
-          "de": "Sonnendurchflutete Maremma — ein Sangiovese, warm und offen, ehrlich wie ein Händedruck.",
-          "zh": "阳光浸透的马雷玛——温暖而开放的桑娇维塞，坦诚如一次握手。",
-          "sl": "S soncem obsijana Maremma — sangiovese, topel in odprt, iskren kot stisk roke.",
-          "es": "La Maremma bañada por el sol — un Sangiovese cálido y abierto, honesto como un apretón de manos."
+          "hr": "Maremma je Toskana bez kravate. Sangiovese s mora — topao, otvoren i iskren kao stisak ruke.",
+          "en": "The Maremma is Tuscany with its tie off. Sangiovese from the coast — warm, open and as honest as a handshake.",
+          "it": "La Maremma è la Toscana senza cravatta. Sangiovese di mare — caldo, aperto e sincero come una stretta di mano.",
+          "fr": "La Maremme, c'est la Toscane sans cravate. Un sangiovese de bord de mer — chaud, ouvert, franc comme une poignée de main.",
+          "de": "Die Maremma ist die Toskana ohne Krawatte. Sangiovese vom Meer — warm, offen und ehrlich wie ein Händedruck.",
+          "zh": "马雷玛是解开领带的托斯卡纳。海边的桑娇维塞——温暖、坦率，像一次握手那样诚实。",
+          "sl": "Maremma je Toskana brez kravate. Sangiovese z morja — topel, odprt in iskren kot stisk roke.",
+          "es": "La Maremma es la Toscana sin corbata. Sangiovese de costa — cálido, abierto y sincero como un apretón de manos."
          },
          "ratings": [
           {
@@ -9929,14 +9929,14 @@
          ],
          "recommended": true,
          "note": {
-          "hr": "Soldera — legenda bez kompromisa: sangiovese čist, eteričan i vječan.",
-          "en": "Soldera — a legend without compromise: Sangiovese pure, ethereal and timeless.",
-          "it": "Soldera — una leggenda senza compromessi: Sangiovese puro, etereo ed eterno.",
-          "fr": "Soldera — une légende sans compromis : Sangiovese pur, éthéré et intemporel.",
-          "de": "Soldera — eine Legende ohne Kompromiss: Sangiovese, rein, ätherisch und zeitlos.",
-          "zh": "索尔黛拉——毫不妥协的传奇：纯净、空灵而永恒的桑娇维塞。",
-          "sl": "Soldera — legenda brez kompromisa: sangiovese, čist, eteričen in brezčasen.",
-          "es": "Soldera — una leyenda sin concesiones: Sangiovese puro, etéreo y atemporal."
+          "hr": "Gianfranco je izašao iz konzorcija radije nego da popusti. Sangiovese bez novog drva, bez korekcija i bez isprike — eteričan, a pamti te godinama.",
+          "en": "Gianfranco walked out of the consorzio rather than give an inch. Sangiovese with no new oak, no corrections and no apology — ethereal, and it remembers you for years.",
+          "it": "Gianfranco è uscito dal consorzio piuttosto che cedere. Sangiovese senza legno nuovo, senza correzioni e senza scuse — etereo, e ti ricorda per anni.",
+          "fr": "Gianfranco a quitté le consortium plutôt que de céder d'un pouce. Un sangiovese sans bois neuf, sans correction et sans excuse — éthéré, et il se souvient de toi des années.",
+          "de": "Gianfranco trat lieber aus dem Konsortium aus, als nachzugeben. Sangiovese ohne neues Holz, ohne Korrekturen und ohne Entschuldigung — ätherisch, und es erinnert sich jahrelang an dich.",
+          "zh": "詹弗兰科宁可退出协会，也不肯让步。没有新桶、没有修饰、没有致歉的桑娇维塞——空灵，且会记住你很多年。",
+          "sl": "Gianfranco je raje izstopil iz konzorcija, kot da bi popustil. Sangiovese brez novega lesa, brez popravkov in brez opravičila — eteričen, in te pomni leta.",
+          "es": "Gianfranco se salió del consorcio antes que ceder. Sangiovese sin madera nueva, sin correcciones y sin disculpas — etéreo, y te recuerda durante años."
          },
          "ratings": [
           {
@@ -11630,14 +11630,14 @@
          ],
          "recommended": true,
          "note": {
-          "hr": "Saar u zlatnoj kapsuli — slatkoću drži kiselina poput žice: med, klementina i beskraj.",
-          "en": "The Saar under a gold capsule — sweetness held by acidity like a wire: honey, clementine and infinity.",
-          "it": "La Saar sotto capsula d'oro — dolcezza tenuta dall'acidità come un filo: miele, clementina e infinito.",
-          "fr": "La Sarre sous capsule d'or — une douceur tenue par l'acidité comme un fil : miel, clémentine et infini.",
-          "de": "Die Saar unter Goldkapsel — Süsse, von der Säure wie an einem Draht gehalten: Honig, Klementine und Unendlichkeit.",
-          "zh": "金帽之下的萨尔——被酸度如钢丝般拉住的甜：蜂蜜、克莱门丁，与无尽。",
-          "sl": "Saar pod zlato kapsulo — sladkoba, ki jo kislina drži kot žica: med, klementina in neskončnost.",
-          "es": "El Saar bajo cápsula dorada — dulzor sostenido por la acidez como un hilo: miel, clementina e infinito."
+          "hr": "Zlatna kapsula znači da je Hanno odvojio najbolje bačve i o tome šutio. Med i klementina, a ispod svega kiselina koja sve drži uspravno — sedamnaest godina i još se ne žuri.",
+          "en": "The gold capsule means Hanno set the best casks aside and said nothing about it. Honey and clementine, and underneath it all an acidity holding everything upright — seventeen years old and still in no hurry.",
+          "it": "La capsula d'oro significa che Hanno ha messo da parte le botti migliori senza dirlo a nessuno. Miele e clementina, e sotto tutto un'acidità che tiene in piedi ogni cosa — diciassette anni e nessuna fretta.",
+          "fr": "La capsule dorée veut dire que Hanno a mis les meilleurs fûts de côté sans rien en dire. Miel et clémentine, et sous tout cela une acidité qui tient tout debout — dix-sept ans, et toujours aucune hâte.",
+          "de": "Die Goldkapsel heißt, dass Hanno die besten Fässer beiseitegestellt und nichts davon gesagt hat. Honig und Klementine, darunter eine Säure, die alles aufrecht hält — siebzehn Jahre alt und noch immer ohne Eile.",
+          "zh": "金帽意味着 Hanno 把最好的桶留了下来，却什么也没说。蜂蜜与克莱门丁，之下是把一切撑直的酸度——十七年了，仍然不急。",
+          "sl": "Zlata kapsula pomeni, da je Hanno odbral najboljše sode in o tem molčal. Med in klementina, pod vsem tem pa kislina, ki vse drži pokonci — sedemnajst let in se še vedno ne mudi.",
+          "es": "La cápsula dorada significa que Hanno apartó las mejores barricas y no dijo nada. Miel y clementina, y debajo de todo una acidez que lo sostiene erguido — diecisiete años y todavía sin prisa."
          }
         }
        ]
