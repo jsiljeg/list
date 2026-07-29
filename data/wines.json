@@ -2642,7 +2642,8 @@
           "zh": "由 13 个不同年份的 150 款葡萄酒调配而成——最年轻的来自 2017 年，最古老的可追溯至 2001 年。",
           "sl": "Zvrst 150 vin iz 13 različnih letnikov — najmlajše je iz leta 2017, najstarejše sega v leto 2001.",
           "es": "Un ensamblaje de 150 vinos de 13 añadas diferentes — el más joven de 2017 y el más antiguo se remonta a 2001."
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Krug 1996",
@@ -2699,7 +2700,8 @@
           "zh": "“我认为这很可能就是下一个 1928 年份。” —— Paul Krug II，以严谨客观著称",
           "sl": "»Mislim, da bi to lahko bil naslednji 1928.« – Paul Krug II., znan po svojih strogo objektivnih opažanjih",
           "es": "«Creo que este bien podría ser el próximo 1928.» – Paul Krug II, conocido por sus observaciones estrictamente objetivas"
-         }
+         },
+         "terroir": ""
         },
         {
          "name": "Krug 2004",
@@ -2734,7 +2736,7 @@
          "tags": [
           "rare"
          ],
-         "terroir": "Clos du Mesnil, Clos d'Ambonnay",
+         "terroir": "",
          "music": "III. Presto from Sinfonia Concertante in E-Flat, K. 364, for Violin, Viola and Orchestra — Shlomo Mintz",
          "ratings": [
           {
