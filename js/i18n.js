@@ -1656,16 +1656,16 @@ const REGION_I18N = {
   "Lombardia": { hr: "Lombardija", en: "Lombardy", it: "Lombardia", fr: "Lombardie", de: "Lombardei", sl: "Lombardija", es: "Lombardía" },
   "Emilia-Romagna": { hr: "Emilia-Romagna", en: "Emilia-Romagna", it: "Emilia-Romagna", fr: "Émilie-Romagne", de: "Emilia-Romagna", sl: "Emilija - Romanja", es: "Emilia-Romaña" },
   "Romagna": { hr: "Romanja", en: "Romagna", it: "Romagna", fr: "Romagne", de: "Romagna", sl: "Romanja", es: "Romaña" },
-  "Friuli": { hr: "Furlanija", en: "Friuli", it: "Friuli", fr: "Frioul", de: "Friaul", sl: "Furlanija", es: "Friuli" },
+  "Friuli": { hr: "Friuli", en: "Friuli", it: "Friuli", fr: "Frioul", de: "Friaul", sl: "Furlanija", es: "Friuli" },
   "Friuli Isonzo": { hr: "Furlanija Isonzo", en: "Friuli Isonzo", it: "Friuli Isonzo", fr: "Frioul Isonzo", de: "Friaul Isonzo", sl: "Furlanija Soča", es: "Friuli Isonzo" },
-  "Alto Adige": { hr: "Južni Tirol", en: "Alto Adige", it: "Alto Adige", fr: "Haut-Adige", de: "Südtirol", sl: "Južna Tirolska", es: "Alto Adigio" },
-  "Alsace": { hr: "Alzas", en: "Alsace", it: "Alsazia", fr: "Alsace", de: "Elsass", sl: "Alzacija", es: "Alsacia" },
+  "Alto Adige": { hr: "Alto Adige", en: "Alto Adige", it: "Alto Adige", fr: "Haut-Adige", de: "Südtirol", sl: "Južna Tirolska", es: "Alto Adigio" },
+  "Alsace": { hr: "Alsace", en: "Alsace", it: "Alsazia", fr: "Alsace", de: "Elsass", sl: "Alzacija", es: "Alsacia" },
   "Loire": { hr: "Loire", en: "Loire", it: "Loira", fr: "Loire", de: "Loire", sl: "Loara", es: "Loira" },
   "Médoc": { hr: "Médoc", en: "Médoc", it: "Médoc", fr: "Médoc", de: "Médoc", sl: "Médoc", es: "Médoc" },
-  "Pfalz": { hr: "Falačka", en: "Palatinate", it: "Palatinato", fr: "Palatinat", de: "Pfalz", sl: "Pfalška", es: "Palatinado" },
-  "Rheinhessen": { hr: "Rajnska Hesija", en: "Rheinhessen", it: "Assia renana", fr: "Hesse rhénane", de: "Rheinhessen", sl: "Renska Hessija", es: "Hesse renana" },
+  "Pfalz": { hr: "Pfalz", en: "Palatinate", it: "Palatinato", fr: "Palatinat", de: "Pfalz", sl: "Pfalška", es: "Palatinado" },
+  "Rheinhessen": { hr: "Rheinhessen", en: "Rheinhessen", it: "Assia renana", fr: "Hesse rhénane", de: "Rheinhessen", sl: "Renska Hessija", es: "Hesse renana" },
   "Južna Štajerska": { hr: "Južna Štajerska", en: "South Styria", it: "Stiria meridionale", fr: "Styrie du Sud", de: "Südsteiermark", sl: "Južna Štajerska", es: "Estiria del Sur" },
-  "Castilla y León": { hr: "Kastilja i León", en: "Castile and León", it: "Castiglia e León", fr: "Castille-et-León", de: "Kastilien und León", sl: "Kastilja in León", es: "Castilla y León" },
+  "Castilla y León": { hr: "Castilla y León", en: "Castile and León", it: "Castiglia e León", fr: "Castille-et-León", de: "Kastilien und León", sl: "Kastilja in León", es: "Castilla y León" },
   "Murcia": { hr: "Murcija", en: "Murcia", it: "Murcia", fr: "Murcie", de: "Murcia", sl: "Murcija", es: "Murcia" },
   "California": { hr: "Kalifornija", en: "California", it: "California", fr: "Californie", de: "Kalifornien", sl: "Kalifornija", es: "California" },
   "Oregon": { hr: "Oregon", en: "Oregon", it: "Oregon", fr: "Oregon", de: "Oregon", sl: "Oregon", es: "Oregón" },
@@ -1675,6 +1675,30 @@ const REGION_I18N = {
   // legacy short forms (kept so any stray value still localizes)
   "Istra":                     { hr: "Istra", en: "Istria", it: "Istria", fr: "Istrie", de: "Istrien", sl: "Istra", es: "Istria" },
   "Dalmacija":                 { hr: "Dalmacija", en: "Dalmatia", it: "Dalmazia", fr: "Dalmatie", de: "Dalmatien", sl: "Dalmacija", es: "Dalmacia" }
+};
+
+/* Extra names a region answers to in search but is never displayed under.
+   Mostly exonyms the owner chose not to show — a Croatian guest may still type
+   Alzas or Falačka even though the card says Alsace and Pfalz. */
+const REGION_ALIAS = {
+  "Alsace":          ["Alzas", "Alzacija", "Elzas"],
+  "Pfalz":           ["Falačka", "Falacka", "Pfalška"],
+  "Rheinhessen":     ["Rajnska Hesija", "Renska Hessija", "Hesse rhenane"],
+  "Alto Adige":      ["Južni Tirol", "Juzni Tirol", "Sudtirol", "Südtirol", "Tirol"],
+  "Friuli":          ["Furlanija", "Friulija"],
+  "Castilla y León": ["Kastilja i León", "Kastilja i Leon", "Kastilija"],
+  "Toscana":         ["Toskana", "Tuscany", "Toscane"],
+  "Piemonte":        ["Pijemont", "Piedmont", "Piemont", "Piamonte"],
+  "Bourgogne":       ["Burgundija", "Burgundy", "Burgund", "Borgogna", "Borgoña"],
+  "Champagne":       ["Šampanja", "Sampanja", "Champagne", "Champaña"],
+  "Bordeaux":        ["Bordo", "Bordeaux"],
+  "Loire":           ["Loara", "Loira", "Dolina Loire"],
+  "Mosel":           ["Mozel", "Moselle"],
+  "Rioja":           ["Rioha"],
+  "Veneto":          ["Benečija", "Benecija", "Venetien", "Vénétie", "Venetie"],
+  "Sicilia":         ["Sicilija", "Sicily", "Sizilien", "Sicile"],
+  "California":      ["Kalifornija", "Kalifornien", "Californie"],
+  "Napa Valley":     ["Napa", "Dolina Napa"]
 };
 
 /* Free-text grape descriptors (phrases, not single varieties) that need a full

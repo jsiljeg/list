@@ -350,16 +350,40 @@ function expandQuery(q) {
   for (const [re, to] of SEARCH_QUERY_ALIAS) q = q.replace(re, to);
   return q;
 }
+/* "Kuća" and "Kuca" should both find the house. Latin-1 accents and the Slavic
+   carons are stripped so a guest on any keyboard reaches the same wines. */
+function fold(str) {
+  return str.normalize ? str.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D") : str;
+}
 function itemHay(item) {
   if (item._hay) return item._hay;
   const ins = item.insight || {};
-  const parts = [item.name, item.producer, ins.grape, ins.region];
+  const parts = [item.name, item.producer, ins.grape, ins.region, item.terroir];
   if (item.nameI18n) parts.push(...Object.values(item.nameI18n));
   if (ins.country) for (const l of LANGS) {
     const c = I18N[l.code] && I18N[l.code].countries && I18N[l.code].countries[ins.country];
     if (c) parts.push(c);
   }
-  let hay = parts.filter(Boolean).join(" ").toLowerCase();
+  /* Every name a region goes by. A Croatian guest types Pijemont, a German
+     Piemont, a Frenchman Piémont — all three are the same shelf. Region and
+     terroir tokens also contribute their Chinese. */
+  for (const field of [ins.region, item.terroir]) {
+    for (const raw of String(field || "").split(",")) {
+      const tok = raw.trim();
+      if (!tok) continue;
+      if (typeof REGION_I18N !== "undefined" && REGION_I18N[tok]) parts.push(...Object.values(REGION_I18N[tok]));
+      if (typeof REGION_ALIAS !== "undefined" && REGION_ALIAS[tok]) parts.push(...REGION_ALIAS[tok]);
+      if (typeof ZH_REGION !== "undefined" && ZH_REGION[tok]) parts.push(ZH_REGION[tok]);
+    }
+  }
+  if (typeof ZH_GRAPE !== "undefined") {
+    for (const raw of String(ins.grape || "").split(",")) {
+      const tok = raw.trim().replace(/\s*\d+(?:[.,]\d+)?\s*%$/, "");
+      if (ZH_GRAPE[tok]) parts.push(ZH_GRAPE[tok]);
+    }
+  }
+  const joined = parts.filter(Boolean).join(" ").toLowerCase();
+  let hay = joined + " " + fold(joined);
   for (const k in SEARCH_ALIAS) if (hay.indexOf(k) !== -1) hay += " " + SEARCH_ALIAS[k];
   return (item._hay = hay);
 }
@@ -367,6 +391,7 @@ function itemHay(item) {
 function renderContent() {
   const t = T();
   const q = expandQuery($("search").value.trim().toLowerCase());
+  const qf = fold(q);
   const box = $("content");
   let html = "";
 
@@ -379,7 +404,7 @@ function renderContent() {
         cat.groups.forEach((g, gi) => {
           g.items.forEach((item, ii) => {
             const hay = itemHay(item);
-            if (hay.includes(q) && (!picksOnly || item.recommended || item.new)) {
+            if ((hay.includes(q) || hay.includes(qf)) && (!picksOnly || item.recommended || item.new)) {
               if (found === 0) html += `<div class="cat">`;
               found++;
               const ref = [si, ci, gi, ii].join(".");
