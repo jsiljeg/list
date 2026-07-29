@@ -50,7 +50,7 @@ body {
     url("../assets/atrium-face.svg") center 22% / cover no-repeat;
   /* Faint on purpose: the face is a watermark behind the writing, not an
      illustration competing with it. Turn this up, never past ~.25. */
-  opacity: .16;
+  opacity: .1;
 }
 .story-screen { position: relative; isolation: isolate; }
 
