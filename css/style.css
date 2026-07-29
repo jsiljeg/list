@@ -297,9 +297,17 @@ body {
    inside. Nothing resizes between wines, so nothing to follow with your eye.
    The helper wizard is a dialogue, not a card — it stays centred and sized to
    its content, which is how it was before. */
-.modal.detail-mode { align-items: flex-start; padding: 9vh 1rem 4vh; }
+.modal.detail-mode { align-items: flex-start; padding: 9vh 1rem 3vh; }
+/* dvh where it exists: on phones vh counts the space behind the browser
+   chrome, so a vh-sized card runs under the toolbar. */
+@supports (height: 100dvh) {
+  .modal.detail-mode { padding: 9dvh 1rem 3dvh; }
+}
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
-.modal.detail-mode .modal-sheet { height: 78vh; max-height: none; }
+.modal.detail-mode .modal-sheet { height: 87vh; max-height: none; }
+@supports (height: 100dvh) {
+  .modal.detail-mode .modal-sheet { height: 87dvh; }
+}
 .modal-sheet::-webkit-scrollbar { width: 5px; }
 .modal-sheet::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
 .modal-sheet::-webkit-scrollbar-track { background: transparent; }
