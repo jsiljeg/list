@@ -65,14 +65,14 @@
          "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
-          "hr": "Pinot iz zagorskih brežuljaka — ružičasti pjenušac koji ne glumi Champagne, već govori svojim jezikom.",
-          "en": "Pinot from the hills of Zagorje — a rosé sparkling that never imitates Champagne, it speaks its own tongue.",
-          "it": "Pinot dalle colline dello Zagorje — uno spumante rosé che non imita lo Champagne, parla la propria lingua.",
-          "fr": "Du Pinot des collines du Zagorje — un rosé effervescent qui n'imite pas le Champagne, il parle sa propre langue.",
-          "de": "Pinot von den Hügeln des Zagorje — ein Rosé-Schaumwein, der den Champagner nicht nachahmt, sondern seine eigene Sprache spricht.",
-          "zh": "来自扎戈列丘陵的黑皮诺——一款不模仿香槟、只说自己语言的桃红起泡酒。",
-          "sl": "Pinot z zagorskih gričev — rožnati penečec, ki nikoli ne posnema šampanjca, ampak govori svoj jezik.",
-          "es": "Pinot de las colinas de Zagorje — un espumoso rosado que nunca imita al Champagne, habla su propia lengua."
+          "hr": "Cabernet s hladnog zagorskog brijega, u ružičastom ključu — pjenušac koji ne glumi Champagne, nego govori svojim jezikom.",
+          "en": "Cabernet off a cold Zagorje hill, turned pink — a sparkling wine that doesn't impersonate Champagne, it speaks its own language.",
+          "it": "Cabernet da una collina fredda dello Zagorje, in chiave rosata — uno spumante che non imita lo Champagne, parla la propria lingua.",
+          "fr": "Du cabernet sur une colline froide du Zagorje, en rosé — un effervescent qui n'imite pas le champagne, il parle sa propre langue.",
+          "de": "Cabernet von einem kalten Hügel im Zagorje, rosé gekeltert — ein Schaumwein, der keinen Champagner spielt, sondern seine eigene Sprache spricht.",
+          "zh": "来自扎戈列寒冷山丘的赤霞珠，酿成桃红气泡——它不模仿香槟，只说自己的语言。",
+          "sl": "Cabernet s hladnega zagorskega hriba, v rosé različici — penina, ki se ne pretvarja, da je šampanjec, ampak govori svoj jezik.",
+          "es": "Cabernet de una colina fría del Zagorje, en clave rosada — un espumoso que no imita al Champagne, habla su propio idioma."
          }
         },
         {
@@ -333,14 +333,14 @@
          },
          "terroir": "Pelješac",
          "note": {
-          "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
-          "en": "Pošip from the stone of Pelješac — nerve and minerality, nothing cosmetic.",
-          "it": "Pošip dalla pietra di Pelješac — nervo e mineralità, senza trucco.",
-          "fr": "Un pošip né de la pierre de Pelješac — du nerf et de la minéralité, sans fard.",
-          "de": "Pošip aus dem Stein von Pelješac — Nerv und Mineralität, ganz ohne Schminke.",
-          "zh": "来自佩列沙茨石灰岩的 Pošip——张力与矿物感，毫无粉饰。",
-          "sl": "Pošip s kamna Pelješca — živec in mineralnost, nič kozmetičnega.",
-          "es": "Pošip de la piedra de Pelješac — nervio y mineralidad, nada cosmético."
+          "hr": "Rukatac iz pelješkog kamena — živac i mineralnost, bez šminke.",
+          "en": "Rukatac out of Pelješac stone — nerve and minerality, no make-up.",
+          "it": "Rukatac dalla pietra di Pelješac — nervo e mineralità, senza trucco.",
+          "fr": "Du rukatac né de la pierre de Pelješac — du nerf, du minéral, aucun fard.",
+          "de": "Rukatac aus dem Stein von Pelješac — Nerv und Mineralität, ungeschminkt.",
+          "zh": "长在佩列沙茨石灰岩上的鲁卡塔茨——筋骨与矿物感，不施粉黛。",
+          "sl": "Rukatac iz pelješkega kamna — živec in mineralnost, brez šminke.",
+          "es": "Rukatac de la piedra de Pelješac — nervio y mineralidad, sin maquillaje."
          },
          "recommended": true
         },
@@ -789,7 +789,7 @@
          "terroir": "Komarna"
         },
         {
-         "name": "CL 98",
+         "name": "CL98 2020",
          "producer": "Casa Rojo",
          "price": 10,
          "insight": {
@@ -1179,14 +1179,14 @@
          "terroir": "Hršak Breg",
          "recommended": true,
          "note": {
-          "hr": "Pinot iz zagorskih brežuljaka — ružičasti pjenušac koji ne glumi Champagne, već govori svojim jezikom.",
-          "en": "Pinot from the hills of Zagorje — a rosé sparkling that never imitates Champagne, it speaks its own tongue.",
-          "it": "Pinot dalle colline dello Zagorje — uno spumante rosé che non imita lo Champagne, parla la propria lingua.",
-          "fr": "Du Pinot des collines du Zagorje — un rosé effervescent qui n'imite pas le Champagne, il parle sa propre langue.",
-          "de": "Pinot von den Hügeln des Zagorje — ein Rosé-Schaumwein, der den Champagner nicht nachahmt, sondern seine eigene Sprache spricht.",
-          "zh": "来自扎戈列丘陵的黑皮诺——一款不模仿香槟、只说自己语言的桃红起泡酒。",
-          "sl": "Pinot z zagorskih gričev — rožnati penečec, ki nikoli ne posnema šampanjca, ampak govori svoj jezik.",
-          "es": "Pinot de las colinas de Zagorje — un espumoso rosado que nunca imita al Champagne, habla su propia lengua."
+          "hr": "Cabernet s hladnog zagorskog brijega, u ružičastom ključu — pjenušac koji ne glumi Champagne, nego govori svojim jezikom.",
+          "en": "Cabernet off a cold Zagorje hill, turned pink — a sparkling wine that doesn't impersonate Champagne, it speaks its own language.",
+          "it": "Cabernet da una collina fredda dello Zagorje, in chiave rosata — uno spumante che non imita lo Champagne, parla la propria lingua.",
+          "fr": "Du cabernet sur une colline froide du Zagorje, en rosé — un effervescent qui n'imite pas le champagne, il parle sa propre langue.",
+          "de": "Cabernet von einem kalten Hügel im Zagorje, rosé gekeltert — ein Schaumwein, der keinen Champagner spielt, sondern seine eigene Sprache spricht.",
+          "zh": "来自扎戈列寒冷山丘的赤霞珠，酿成桃红气泡——它不模仿香槟，只说自己的语言。",
+          "sl": "Cabernet s hladnega zagorskega hriba, v rosé različici — penina, ki se ne pretvarja, da je šampanjec, ampak govori svoj jezik.",
+          "es": "Cabernet de una colina fría del Zagorje, en clave rosada — un espumoso que no imita al Champagne, habla su propio idioma."
          }
         },
         {
@@ -3022,7 +3022,8 @@
           "temp": "12–14",
           "alcohol": "13",
           "sweetness": "dry"
-         }
+         },
+         "terroir": "Laškovec"
         },
         {
          "name": "Sauvignon 2024",
@@ -3364,14 +3365,14 @@
          },
          "terroir": "Pelješac",
          "note": {
-          "hr": "Pošip iz kamena Pelješca — živac i mineralnost, bez šminke.",
-          "en": "Pošip from the stone of Pelješac — nerve and minerality, nothing cosmetic.",
-          "it": "Pošip dalla pietra di Pelješac — nervo e mineralità, senza trucco.",
-          "fr": "Un pošip né de la pierre de Pelješac — du nerf et de la minéralité, sans fard.",
-          "de": "Pošip aus dem Stein von Pelješac — Nerv und Mineralität, ganz ohne Schminke.",
-          "zh": "来自佩列沙茨石灰岩的 Pošip——张力与矿物感，毫无粉饰。",
-          "sl": "Pošip s kamna Pelješca — živec in mineralnost, nič kozmetičnega.",
-          "es": "Pošip de la piedra de Pelješac — nervio y mineralidad, nada cosmético."
+          "hr": "Rukatac iz pelješkog kamena — živac i mineralnost, bez šminke.",
+          "en": "Rukatac out of Pelješac stone — nerve and minerality, no make-up.",
+          "it": "Rukatac dalla pietra di Pelješac — nervo e mineralità, senza trucco.",
+          "fr": "Du rukatac né de la pierre de Pelješac — du nerf, du minéral, aucun fard.",
+          "de": "Rukatac aus dem Stein von Pelješac — Nerv und Mineralität, ungeschminkt.",
+          "zh": "长在佩列沙茨石灰岩上的鲁卡塔茨——筋骨与矿物感，不施粉黛。",
+          "sl": "Rukatac iz pelješkega kamna — živec in mineralnost, brez šminke.",
+          "es": "Rukatac de la piedra de Pelješac — nervio y mineralidad, sin maquillaje."
          },
          "recommended": true
         },

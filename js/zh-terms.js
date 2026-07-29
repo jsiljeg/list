@@ -375,6 +375,7 @@
     "Collio": "科利奥",
     "Korčula": "科尔丘拉",
     "Kras": "喀斯特",
+    "Laškovec": "拉什科韦茨",
     "Krasica": "克拉西察",
     "Königsbach": "柯尼希斯巴赫",
     "La Morra": "拉莫拉",
