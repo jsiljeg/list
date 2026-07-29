@@ -207,6 +207,10 @@ body {
 .nav button:not(.active):hover { border-color: var(--gold-soft); color: var(--text); }
 
 /* ---------- Content ---------- */
+/* The section change slides the list sideways. `clip` (not `hidden`) cuts the
+   overhang without turning the shell into a scroll container, so the sticky
+   header keeps working and the browser never gets a page to pan. */
+.app { overflow-x: clip; }
 .content { max-width: 900px; margin: 0 auto; padding: 1.4rem 1.2rem 3rem; }
 @keyframes content-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .content-fade { animation: content-fade .25s ease-out; }

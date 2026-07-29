@@ -708,6 +708,15 @@ let scrollLockY = 0;
 function hideModal() {
   modalOpen = false;
   $("modal").classList.add("hidden");
+  /* Undo any drag *after* the modal is out of sight. closeModal() goes through
+     history.back(), which fires popstate asynchronously — resetting the
+     transform before that landed snapped the sheet back to centre for a frame
+     or two, in full view, which is the flicker at the end of a swipe-away. */
+  const ms = $("modal-sheet"), bd = $("modal-backdrop");
+  if (ms) { ms.style.transition = ""; ms.style.transform = ""; }
+  if (bd) { bd.style.transition = ""; bd.style.opacity = ""; }
+  const mb = $("modal-body");
+  if (mb) { mb.style.transition = ""; mb.style.transform = ""; mb.style.opacity = ""; }
   document.body.style.position = "";
   document.body.style.top = "";
   document.body.style.left = "";
@@ -1041,11 +1050,8 @@ document.addEventListener("keydown", (e) => {
       sheet.style.transform = `translateY(${dir * dist}px)`;
       backdrop.style.transition = "opacity .42s ease-out";
       backdrop.style.opacity = "0";
-      setTimeout(() => {
-        closeModal();
-        sheet.style.transition = ""; sheet.style.transform = "";
-        backdrop.style.transition = ""; backdrop.style.opacity = "";
-      }, 420);
+      // hideModal puts the styles back, once the sheet is actually hidden.
+      setTimeout(closeModal, 420);
     } else {
       $("modal-backdrop").style.opacity = "";
       sheet.style.transition = "transform .38s cubic-bezier(.32,.72,0,1)";
