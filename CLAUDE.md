@@ -147,6 +147,26 @@ Open questions for the owner:
   Ca' La Bionda/Valpolicella, Geržinić/Malvazija, Tomaz/Malvazija, Niko
   Bura/Dingač) — reported, deliberately left alone.
 
+## Looking at the app (added 2026-07-30)
+
+`scripts/shot.py` boots a throwaway static server and a headless Chromium and
+screenshots the app, so **visual work no longer has to be done blind** — the
+jsdom harness proves structure but never paints, which is how a too-bright
+watermark and a motif that read as a CJK character both shipped.
+
+    python scripts/shot.py                    # 6 states x 3 viewports
+    python scripts/shot.py story --vp tablet  # one state, one viewport
+    python scripts/shot.py --out shots/before # a set to diff against
+
+States: `start story list detail ikone search`. Viewports: tablet 1024x768,
+laptop 1440x900, phone 390x844 (2x DPR, reduced motion). It also reports page
+and console errors per viewport. Then **Read the PNGs** — that is the point.
+Needs `python -m pip install playwright` and `python -m playwright install
+chromium` (~114 MB, already installed here).
+
+For taste calls, override CSS in-page with `page.add_style_tag` and montage the
+variants into one image rather than editing the stylesheet per attempt.
+
 ## Windows environment notes
 
 - Git Bash paths (`/c/...`) don't work inside `python -c` — pass `C:/...` style paths.

@@ -41,16 +41,17 @@ body {
     var(--bg);
 }
 /* The nail face from the atrium sits behind Filho's story — the one screen with
-   room for it. Monochrome, so the sculpture's cobalt never fights the gold, and
-   dimmed under a charcoal wash so the text keeps its contrast. */
+   room for it. Recoloured rather than redrawn (scripts/face-asset.py): the real
+   nails, with the cobalt wall turned charcoal and the metal turned gold, so
+   nothing in it fights the palette. */
 .story-screen::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(ellipse at 50% 34%, rgba(22,21,19,0) 18%, rgba(22,21,19,.92) 72%),
-    url("../assets/atrium-face.svg") center 22% / cover no-repeat;
-  /* Faint on purpose: the face is a watermark behind the writing, not an
-     illustration competing with it. Turn this up, never past ~.25. */
-  opacity: .1;
+  /* `contain`, so the whole sculpture is there. Scaling it up or cropping in
+     turns it into anonymous lace — the silhouette is what carries it. */
+  background: url("../assets/atrium-face.webp") center / contain no-repeat;
+  /* Faint on purpose: a watermark behind the writing, not an illustration
+     competing with it. The gold never gets close to the body text's contrast. */
+  opacity: .32;
 }
 .story-screen { position: relative; isolation: isolate; }
 
@@ -243,7 +244,7 @@ body {
   margin: .3rem 0 .9rem;
 }
 /* the house motif, traced from the nail sculpture in the atrium */
-.ornament svg { width: 16px; height: 16px; flex: none; opacity: .85; }
+.ornament svg { width: 20px; height: 20px; flex: none; opacity: .85; }
 .ornament::before, .ornament::after {
   content: ""; flex: 1; height: 1px;
 }
