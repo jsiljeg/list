@@ -542,6 +542,7 @@ function dishesForWine(ins) {
 function openDetail(ref, back, scope) {
   detailScope = scope || null;
   if (!stepTimers.length) pendingRef = null;
+  $("modal").classList.add("detail-mode");
   const [si, ci, gi, ii] = ref.split(".").map(Number);
   const item = DATA.sections[si].categories[ci].groups[gi].items[ii];
   const ins = item.insight;
@@ -614,6 +615,7 @@ function openDetail(ref, back, scope) {
   }
   showModal();
   if (back) { const bb = $("modal-body").querySelector(".detail-back"); if (bb) bb.addEventListener("click", back); }
+  $("modal").classList.add("detail-mode");   // after showModal, which clears it
   setDetailNav(ref, back);
 }
 
@@ -705,11 +707,8 @@ function stepDetail(dir) {
     sheet.style.transition = "none";
     openDetail(target, detailNav.back, detailScope);
     sheet.scrollTop = 0;
-    /* Let max-height do the capping. Computing our own cap from innerHeight
-       disagreed with the CSS 90vh whenever a mobile toolbar was showing, so
-       the frame glided to a height slightly under the real one and then
-       snapped back out when the inline height was cleared — the shrink and
-       re-grow that got worse the longer the sheet was used. */
+    /* In detail mode the frame is a fixed height, so there is normally nothing
+       to glide; this only ever fires if that rule is not in play. */
     const h1 = sheet.offsetHeight;
     const growable = h0 > 0 && h1 > 0 && Math.abs(h1 - h0) > 2;
     if (growable) sheet.style.height = h0 + "px";
@@ -743,7 +742,9 @@ function stepDetail(dir) {
 let modalOpen = false;
 function showModal() {
   const ms = $("modal-sheet");
-  clearDetailNav();   // the helper and other sheets have no neighbours; openDetail re-arms it
+  clearDetailNav();
+  // openDetail re-adds it; the helper and other sheets stay centred
+  $("modal").classList.remove("detail-mode");   // the helper and other sheets have no neighbours; openDetail re-arms it
   if (ms) { ms.style.transform = ""; ms.style.transition = ""; }
   $("modal").classList.remove("hidden");
   // Reset the scroll only *after* the sheet is visible again: while the modal

@@ -291,25 +291,25 @@ body {
 .no-results { color: var(--text-dim); text-align: center; padding: 3rem 0; font-size: 1.05rem; }
 
 /* ---------- Modal ---------- */
-/* Anchored to the top, not centred. Centring meant every height change moved
-   both edges, so the wine name shifted whenever you stepped to a card of a
-   different length — the stretching that is obvious between the two prošeks
-   on a laptop and invisible on a phone, where the sheet nearly fills the
-   screen anyway. Pinning the top keeps the name, producer and glass exactly
-   where they were; only the bottom edge moves, and min-height damps that. */
-.modal {
-  position: fixed; inset: 0; z-index: 50;
-  display: flex; align-items: flex-start; justify-content: center;
-  padding: 4vh 1rem 1rem;
-}
+.modal { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+/* A wine card is paged through, so its frame holds still: fixed height, top
+   anchored low enough to leave the logo showing behind, content scrolling
+   inside. Nothing resizes between wines, so nothing to follow with your eye.
+   The helper wizard is a dialogue, not a card — it stays centred and sized to
+   its content, which is how it was before. */
+.modal.detail-mode { align-items: flex-start; padding: 9vh 1rem 4vh; }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
+.modal.detail-mode .modal-sheet { height: 78vh; max-height: none; }
+.modal-sheet::-webkit-scrollbar { width: 5px; }
+.modal-sheet::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+.modal-sheet::-webkit-scrollbar-track { background: transparent; }
 .modal-sheet {
   position: relative;
   width: 100%; max-width: 700px;
   /* clip sideways so a card entering or leaving is cut at the sheet's rounded
      edge instead of spilling across the backdrop */
-  min-height: min(520px, 74vh);
   max-height: 90vh; overflow-y: auto; overflow-x: clip;
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
   background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -366,12 +366,14 @@ body {
   line-height: 1.15;
 }
 .detail-glass {
-  /* clears the sticky ✕, which floats into this corner */
-  position: absolute; top: 3.1rem; right: 0;
+  /* below the sticky ✕, which floats into this corner, and small enough that
+     clearing it no longer inflates the header — that inflation was the gap
+     that appeared under the producer name */
+  position: absolute; top: 2.4rem; right: 0;
   color: var(--gold); opacity: .8; line-height: 0;
 }
 .detail-glass svg {
-  height: 76px; width: auto;
+  height: 60px; width: auto;
   fill: none; stroke: currentColor; stroke-width: 1.4;
   stroke-linecap: round; stroke-linejoin: round;
 }
