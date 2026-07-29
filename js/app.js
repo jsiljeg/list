@@ -657,23 +657,55 @@ function clearDetailNav() {
 /* Swap the card with a short slide+fade so the change reads as movement rather
    than a flicker. Only the body moves; the sheet itself stays put, which keeps
    the ✕ and the arrows stable under the finger. */
-function stepDetail(dir) {
+/* The card leaves in the direction of travel, the next one arrives from the
+   far side. Carrying the finger's momentum through instead of snapping the
+   card back to centre first is what makes it read as one movement.
+   The sheet frame holds its height across the swap so the border does not
+   jump between a short wine and a tall one. */
+let stepTimers = [];
+function stepDetail(dir, fromDx) {
   const target = dir < 0 ? detailNav.prev : detailNav.next;
   if (!target) return false;
   const body = $("modal-body"), sheet = $("modal-sheet");
-  if (sheet) { sheet.style.transition = "none"; sheet.style.transform = ""; }
-  if (body) {
+  if (!body || !sheet) return false;
+  stepTimers.forEach(clearTimeout); stepTimers = [];
+
+  const span = Math.max(180, Math.round((sheet.clientWidth || 320) * 0.32));
+  const out = dir > 0 ? -span : span;          // forward → the card exits left
+  sheet.style.minHeight = sheet.offsetHeight + "px";
+  body.style.willChange = "transform, opacity";
+  // Continue from wherever the finger left it, so there is no jump on release.
+  if (typeof fromDx === "number") {
     body.style.transition = "none";
-    body.style.opacity = "0";
-    body.style.transform = `translateX(${dir > 0 ? 40 : -40}px)`;
+    body.style.transform = `translateX(${fromDx}px)`;
+    void body.offsetWidth;                      // commit before transitioning
   }
-  openDetail(target, detailNav.back, detailScope);
-  if (sheet) sheet.scrollTop = 0;
-  if (body) requestAnimationFrame(() => {
-    body.style.transition = "opacity .28s ease-out, transform .34s cubic-bezier(.32,.72,0,1)";
-    body.style.opacity = "1";
-    body.style.transform = "";
-  });
+  /* A dragged card is already half gone, so it needs longer to finish leaving.
+     A tapped arrow starts from rest and should not feel sluggish. */
+  const outMs = typeof fromDx === "number" ? 170 : 110;
+  body.style.transition =
+    `transform ${outMs}ms cubic-bezier(.4,0,1,1), opacity ${outMs}ms linear`;
+  body.style.transform = `translateX(${out}px)`;
+  body.style.opacity = "0";
+
+  stepTimers.push(setTimeout(() => {
+    openDetail(target, detailNav.back, detailScope);
+    sheet.scrollTop = 0;
+    body.style.transition = "none";
+    body.style.transform = `translateX(${-out}px)`;
+    body.style.opacity = "0";
+    void body.offsetWidth;
+    requestAnimationFrame(() => {
+      body.style.transition = "transform .3s cubic-bezier(.17,.84,.44,1), opacity .22s ease-out";
+      body.style.transform = "";
+      body.style.opacity = "1";
+      stepTimers.push(setTimeout(() => {
+        sheet.style.minHeight = "";
+        body.style.willChange = "";
+        body.style.transition = "";
+      }, 320));
+    });
+  }, outMs));
   return true;
 }
 
@@ -1019,9 +1051,16 @@ document.addEventListener("keydown", (e) => {
       if (axis === "x" && !(detailNav.prev || detailNav.next)) { dragging = false; return; }
     }
     if (axis === "x") {
-      // Rubber-band when there is no wine that way, so the edge is felt.
+      /* Drag the card, not the frame. The card is what leaves and what
+         arrives, so the finger and the animation move the same thing and the
+         gesture never has to snap back before the swap. */
+      const body = $("modal-body");
       const wall = (dx > 0 && !detailNav.prev) || (dx < 0 && !detailNav.next);
-      sheet.style.transform = `translateX(${wall ? dx / 4 : dx}px)`;
+      const shift = wall ? dx / 4 : dx;
+      body.style.transition = "none";
+      body.style.willChange = "transform, opacity";
+      body.style.transform = `translateX(${shift}px)`;
+      body.style.opacity = String(Math.max(.45, 1 - Math.abs(shift) / 520));
       return;
     }
     if (!allowed()) { dy = 0; sheet.style.transform = ""; $("modal-backdrop").style.opacity = ""; return; }
@@ -1033,9 +1072,13 @@ document.addEventListener("keydown", (e) => {
     dragging = false;
     if (axis === "x") {
       const dir = dx > 0 ? -1 : 1;               // drag right → previous wine
-      if (!(Math.abs(dx) > 80 && stepDetail(dir))) {
-        sheet.style.transition = "transform .38s cubic-bezier(.32,.72,0,1)";
-        sheet.style.transform = "";
+      const body = $("modal-body");
+      if (!(Math.abs(dx) > 80 && stepDetail(dir, dx))) {
+        // Not far enough: settle the card back under the finger's last spot.
+        body.style.transition = "transform .3s cubic-bezier(.17,.84,.44,1), opacity .2s ease-out";
+        body.style.transform = "";
+        body.style.opacity = "1";
+        setTimeout(() => { body.style.willChange = ""; body.style.transition = ""; }, 320);
       }
       return;
     }
