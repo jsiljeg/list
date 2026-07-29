@@ -612,9 +612,8 @@ function openDetail(ref, back, scope) {
       if (headerEl.offsetHeight < needed) headerEl.style.minHeight = needed + "px";
     }
   }
-  showModal();
+  showModal("detail");
   if (back) { const bb = $("modal-body").querySelector(".detail-back"); if (bb) bb.addEventListener("click", back); }
-  $("modal").classList.add("detail-mode");   // after showModal, which clears it
   setDetailNav(ref, back);
 }
 
@@ -739,11 +738,13 @@ function stepDetail(dir) {
 /* Modal open/close with a history entry so the phone/tablet back button
    (and Esc) just closes the modal instead of leaving the page. */
 let modalOpen = false;
-function showModal() {
+function showModal(kind) {
   const ms = $("modal-sheet");
   clearDetailNav();
-  // openDetail re-adds it; the helper and other sheets stay centred
-  $("modal").classList.remove("detail-mode");   // the helper and other sheets have no neighbours; openDetail re-arms it
+  /* Set before the sheet is ever shown. Adding it afterwards let the card
+     paint once at its natural height — often the full page — and then snap to
+     the fixed frame, which is the growing-then-cropping you could see. */
+  $("modal").classList.toggle("detail-mode", kind === "detail");
   if (ms) { ms.style.transform = ""; ms.style.transition = ""; }
   $("modal").classList.remove("hidden");
   // Reset the scroll only *after* the sheet is visible again: while the modal
@@ -1134,6 +1135,8 @@ document.addEventListener("keydown", (e) => {
       sheet.style.transform = `translateY(${dir * dist}px)`;
       backdrop.style.transition = "opacity .42s ease-out";
       backdrop.style.opacity = "0";
+      // The card is on its way out; its arrows should not hang in the air.
+      clearDetailNav();
       // hideModal puts the styles back, once the sheet is actually hidden.
       setTimeout(closeModal, 420);
     } else {
