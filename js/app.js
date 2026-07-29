@@ -811,7 +811,16 @@ function zhTokens(str, map) {
       const m = tok.match(/^(.*?)\s*(\d+(?:[.,]\d+)?\s*%)$/);
       const name = m ? m[1].trim() : tok;
       const pct = m ? " " + m[2].replace(/\s+/g, "") : "";
-      const zh = map[name];
+      let zh = map[name];
+      /* "Čara (Korčula)" is one token, so a map that knows both Čara and
+         Korčula still matched neither. Translate the parts it does know. */
+      if (!zh) {
+        const m = name.match(/^(.+?)\s*\((.+)\)$/);
+        if (m) {
+          const base = map[m[1].trim()], qual = map[m[2].trim()];
+          if (base) return `${base}（${m[1].trim()}${qual ? " · " + qual : ""}）${pct}`;
+        }
+      }
       if (!zh) return tok;
       if (typeof ZH_ONLY !== "undefined" && ZH_ONLY[name]) return zh + pct;
       return `${zh}（${name}）${pct}`;
@@ -1201,6 +1210,8 @@ function stepSection(dir) {
   window.addEventListener("touchcancel", end);
 })();
 $("home-logo").addEventListener("click", showStart);
+// the splash logo goes back too — it is the only way out of the story screen
+$("story-logo").addEventListener("click", showStart);
 $("story-enter").addEventListener("click", showApp);
 function bindToggle(id, get, set) {
   $(id).addEventListener("click", () => {
