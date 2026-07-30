@@ -855,12 +855,17 @@ const GLASS_ICONS = {
   /* The two Winewings, from Riedel's dimensioned drawings — both 250mm tall on a
      100mm foot, 117mm and 115mm across, so the millimetres alone would make them
      the same icon. What separates them is the wall, and the row scan is what
-     found it: the Cabernet's widens at a steady 2px per 6 rows from rim to base,
-     a straight cone, while the Pinot's races out at the shoulder and then holds
-     dead level for thirty rows before flaring again. The Pinot's bowl also ends
+     found it: the Cabernet's wall is an S — 0.21 units of run per unit of drop
+     at the shoulder, 0.10 through the middle, 0.25 again as it kicks out into
+     the plate. Averaging that into a straight line (tried, and it cut visibly
+     inside the real glass through the upper third) throws away both the flare
+     and the kick, which are the two things that say Winewings across a table,
+     so the S is drawn here a little past the measurement on purpose — it has to
+     survive a 60px icon. The Pinot's wall instead races out at the shoulder and
+     then holds dead level for thirty rows before flaring again. Its bowl ends
      higher (51% of the glass against 55%), so it sits rounder and squatter over
      a longer stem. Checked side by side at 60px: they read apart. */
-  winewingsBordeaux: '<svg viewBox="0 0 51 100" aria-hidden="true"><path d="M10.25,8.65 L6.6,29 C6,35 5.2,41.5 4.09,46.2 C4.15,49.8 6.2,52.5 8.84,53.6 C13.8,55.1 21.5,56.4 25.5,56.6 C29.5,56.4 37.2,55.1 42.16,53.6 C44.8,52.5 46.85,49.8 46.91,46.2 C45.8,41.5 45,35 44.4,29 L40.75,8.65"/><path d="M10.25,8.65 C10.25,6.3 40.75,6.3 40.75,8.65 C40.75,11 10.25,11 10.25,8.65 Z"/><path d="M25.5,56.6 V90"/><path d="M7.3,95.2 c6,-3.5 30.4,-3.5 36.4,0"/></svg>',
+  winewingsBordeaux: '<svg viewBox="0 0 51 100" aria-hidden="true"><path d="M10.9,6.32 C8.3,15.5 6.55,23 5.9,34.5 C5.75,38.5 4.3,41.6 4.09,46.2 C4.15,49.8 6.2,52.5 8.84,53.6 C13.8,55.1 21.5,56.4 25.5,56.6 C29.5,56.4 37.2,55.1 42.16,53.6 C44.8,52.5 46.85,49.8 46.91,46.2 C46.7,41.6 45.25,38.5 45.1,34.5 C44.45,23 42.7,15.5 40.1,6.32"/><path d="M10.9,6.32 C10.9,4 40.1,4 40.1,6.32 C40.1,8.64 10.9,8.64 10.9,6.32 Z"/><path d="M25.5,56.6 V90"/><path d="M7.3,95.2 c6,-3.5 30.4,-3.5 36.4,0"/></svg>',
   winewingsBurgundy: '<svg viewBox="0 0 50 100" aria-hidden="true"><path d="M10.53,6.43 C9,11.5 5.6,21.5 5.06,27.5 C5.03,30 5,32 4.95,34.5 C4.7,37.5 4.15,39.8 3.95,42.06 C4,46 7,49.4 10.12,50.6 C13.5,51.5 19.5,52.35 25,52.6 C30.5,52.35 36.5,51.5 39.88,50.6 C43,49.4 46,46 46.05,42.06 C45.85,39.8 45.3,37.5 45.05,34.5 C45,32 44.97,30 44.94,27.5 C44.4,21.5 41,11.5 39.47,6.43"/><path d="M10.53,6.43 C10.53,4.9 39.47,4.9 39.47,6.43 C39.47,7.96 10.53,7.96 10.53,6.43 Z"/><path d="M25,52.6 V90"/><path d="M6.8,95.2 c6,-3.5 30.4,-3.5 36.4,0"/></svg>',
   /* Traced off the owner's photo of the actual glass rather than guessed at:
      the bowl is as wide as it is tall, the rim is 64% of that width, the sides
