@@ -1,0 +1,17 @@
+{
+  "name": "theatrium-list",
+  "private": true,
+  "description": "Theatrium by Filho — digital wine list. The site itself is plain static files; everything here is test tooling and never ships.",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:tablet": "playwright test --project=tablet",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "check": "node --check js/app.js && node --check js/i18n.js && node --check js/maps.js && node --check js/zh-terms.js && node scripts/validate.mjs && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}

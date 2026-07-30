@@ -1,0 +1,52 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:          # so deploy.yml can require this before publishing
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Syntax-check every script the page loads
+        run: |
+          for f in js/*.js scripts/*.mjs; do node --check "$f"; done
+
+      - name: Validate the wine data
+        run: node scripts/validate.mjs
+
+      - run: npm ci
+
+      - name: Cache the browser
+        id: browser-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Regression suite
+        run: npx playwright test
+
+      # The report is where you look when something failed on a viewport you do
+      # not have to hand. Kept for a fortnight, which is longer than anyone waits
+      # to ask "what broke?".
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14

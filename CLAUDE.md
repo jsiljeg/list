@@ -157,6 +157,30 @@ Open questions for the owner:
   Ca' La Bionda/Valpolicella, Geržinić/Malvazija, Tomaz/Malvazija, Niko
   Bura/Dingač) — reported, deliberately left alone.
 
+## Tests (added 2026-07-30) — run them before you push
+
+`npm test` runs a Playwright regression suite across three viewports; `npm run
+check` is the whole gate (syntax + `scripts/validate.mjs` + tests) and is exactly
+what CI runs. **CI now blocks the Pages deploy on it** — `.github/workflows/
+deploy.yml` calls `test.yml` and the deploy job `needs: test`.
+
+Every spec names the commit it guards in its header comment. See `tests/README.md`
+for the table of what is covered. Three things worth knowing before adding one:
+
+- **Test the edges, not the middle.** The first swipe tests ran down the centre
+  of a phone, passed, and hid completely dead gutters on the tablet.
+- **Gestures need real input.** `swipe()` in `tests/helpers.mjs` goes through CDP
+  and therefore the browser's own touch pipeline. Synthetic `TouchEvent`s bypass
+  `touch-action` and will pass on a broken app.
+- **Measure ink, not boxes.** `.detail-name` is a full-width block whose text
+  stops well short of the glass icon; comparing `getBoundingClientRect()` reports
+  overlaps nobody can see. Use the `Range` pattern in `detail-sheet.spec.mjs`.
+
+Two things the suite already found while being written: `assets/glass-syrah.svg`
+was dead (removed), and `producers.json` is keyed by *short* forms which
+`producerInfo()` resolves by longest containing substring — so an exact-key check
+reports forty-seven false orphans.
+
 ## Looking at the app (added 2026-07-30)
 
 `scripts/shot.py` boots a throwaway static server and a headless Chromium and

@@ -1,0 +1,66 @@
+# Regression suite
+
+Every test here exists because something broke once. The header comment of each
+spec names the commit it guards, so when a test fails you can read what it was
+protecting before deciding it is wrong.
+
+## Running it
+
+```bash
+npm ci                              # once
+npx playwright install chromium     # once, ~120 MB
+
+npm test                            # all three viewports
+npm run test:tablet                 # just the tablet — fastest useful loop
+npx playwright test -g "swipe"      # by name
+npm run test:headed                 # watch it happen
+npm run report                      # open the last HTML report
+```
+
+`npm run check` is the whole gate in one command: syntax, data validation, tests.
+That is what CI runs, so if it passes locally the deploy will not be blocked.
+
+The static server (`tests/serve.mjs`) starts and stops itself; nothing needs to
+be running first. It is dependency-free on purpose — the site has no
+dependencies either.
+
+## What is covered, and why
+
+| Spec | Guards against |
+|---|---|
+| `smoke.spec.mjs` | the walk a guest takes: language screen → story → list → card, every language, every section, every mode button. Fails on any console error, because a JS error mid-render leaves a half-drawn list that looks like a data problem. |
+| `gestures.spec.mjs` | swipe dead zones (screen edges, the footer, the backdrop), the chip strip and mode buttons keeping their own gestures, the tab ring wrapping, the page never panning sideways, a new section starting at the top, and the card never being left displaced. |
+| `detail-sheet.spec.mjs` | the glass icon under the ✕ and anything overlapping the glass — that one came back three times, each on a viewport nobody checked. Also the card opening at the top, the frame not resizing between wines, and stepping staying inside a search result. |
+| `glasses.spec.mjs` | the whole dataset through `glassFor()`: Riedel's Pinot/Nebbiolo vs Cabernet/Merlot split, sweet wines keeping the dessert glass whatever else is tagged, the named owner exceptions, and the seven drawings staying seven distinct drawings inside their viewBoxes. |
+| `search.spec.mjs` | every spelling of a region returning the same wines, "burgun" not matching *spät*burgunder mid-word, "brunello" meaning Montalcino rather than all Sangiovese, "riesling" never returning Graševina, diacritics being optional, and Chinese queries still working. |
+| `layout.spec.mjs` | the footer at the foot of the screen on a short category, no sideways scroll, the sticky header, the flag actually decoding (it once failed silently and rendered 0×0), the face preloaded rather than fetched at the language tap, and nothing 404ing. |
+| `i18n.spec.mjs` | the style line in sentence case with the dosage keeping its capital, the subtitle staying Filho's English line, the Chinese view glossing every region token, exonyms following the language, the country appended once, and no raw i18n key reaching the screen. |
+| `data.spec.mjs` | the conventions in CLAUDE.md, checked instead of trusted: no country inside `insight.region`, blends name-first and descending, large-format twins identical, critic names from the agreed list, `wines.json` in canonical form. Runs without a browser, in about a second. |
+
+## Writing a new one
+
+Add it when you fix a bug, not later. Two rules learned the hard way:
+
+**Test the edges, not the middle.** The first version of the swipe tests ran down
+the centre of a phone and passed while the tablet gutters were completely dead.
+Start gestures at `width - 8`, not `width / 2`.
+
+**Use real input for gestures.** `swipe()` in `helpers.mjs` dispatches through
+CDP, which goes through the browser's own touch pipeline. Synthetic `TouchEvent`s
+bypass `touch-action` and scroll handling and will happily pass on a broken app.
+
+For layout assertions, measure the **ink** rather than the element box —
+`.detail-name` is a full-width block whose text stops well short of the glass
+icon, so comparing bounding boxes reports overlaps nobody can see. There is a
+`Range`-based helper pattern in `detail-sheet.spec.mjs`.
+
+## Viewports
+
+Three, because nearly every layout bug here has been one-viewport-only:
+
+- **tablet** 1024×768, touch — the device in the restaurant
+- **phone** 390×844, touch, 2× — the QR-code guest
+- **laptop** 1440×900, no touch — where the rating chips grew into the glass
+
+Touch-only tests skip themselves on laptop; the narrow-screen badge test skips
+above 420px.
