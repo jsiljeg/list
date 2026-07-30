@@ -224,8 +224,15 @@ and Ottocento Crni are Merlot on paper but Istrian blends in the wide glass).
 Prefer the override to widening the regex — a strict "all grapes Bordeaux" rule
 was tried and wrongly flipped Solaia, Tignanello, Ao Yun and Boca as well.
 
-Still drawn from the eye, so presumed wrong until photographed: **riesling,
-chardonnay, dessert**.
+A maker's dimensioned drawing beats a photo where one exists: both Riedel Veloce
+whites are 247mm tall, so their **92mm** and **113mm** bowls set the icons'
+viewBox widths (42 and 50) directly, and the real size difference survives into
+a 60px icon. Only **dessert** is still drawn from the eye.
+
+The wide Chardonnay glass is the oaked-white glass: `white_rich` only, which is
+the white Burgundy shelf plus the barrel-aged Viura, Savagnin and Alsace Pinot
+Gris beside it. Steely Chablis (`white_mineral`) and unoaked Chardonnay
+(`white_fresh`) take the Riesling glass.
 
 ## Descriptor capitalisation (settled 2026-07-30)
 

@@ -820,7 +820,7 @@ window.addEventListener("popstate", () => { if (modalOpen) hideModal(); });
 /* Glass silhouettes traced from the house stemware (product photos):
    Sophienwald Grand Cru Champagne wine glass (elongated vertical tulip on a
    filigree stem, with a faint crystal sheen), Veloce Riesling, Veloce Chardonnay (white
-   Burgundy), Winewings barrel bowl on the flat "wing" base — Pinot/Nebbiolo
+   Burgundy, only for the oaked/heavy whites), Winewings barrel bowl on the flat "wing" base — Pinot/Nebbiolo
    and Cabernet/Merlot reds, the wide straight-sided cone on a long stem for all
    other reds, small dessert tulip. */
 const GLASS_ICONS = {
@@ -833,8 +833,19 @@ const GLASS_ICONS = {
      drawn as the shallow ellipse it is when seen from above; the faint inner
      line is the crystal sheen, kept from the first drawing. */
   champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M9.8,4.7 C8.2,11.5 4.9,20.5 4.1,29.4 C4.0,40.3 19.4,50 20,66 C20.6,50 36,40.3 35.9,29.4 C35.1,20.5 31.8,11.5 30.2,4.7"/><path d="M9.8,4.7 C9.8,3 30.2,3 30.2,4.7 C30.2,6.4 9.8,6.4 9.8,4.7 Z"/><path d="M20,66 V92"/><path d="M4.3,95.2 c6,-3.4 25.4,-3.4 31.4,0"/><path d="M11.2,9.5 C9,17 7.6,24 7.3,30.5" style="stroke-width:.8;opacity:.45"/></svg>',
-  riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  /* Riedel Veloce Riesling, from the maker's dimensioned drawing: 247mm tall,
+     92mm at the widest, 92mm across the foot. Both Veloce glasses are 247mm, so
+     drawing every icon to one 60px height makes their viewBox widths carry the
+     real difference — 42 here against the Chardonnay's 50. The bowl holds its
+     widest across a long plateau (units 32-37) and only then folds in. */
+  riesling: '<svg viewBox="0 0 42 100" aria-hidden="true"><path d="M9.8,5.8 C8,12.5 4.4,24 4.2,31.8 C4.15,34 4.2,36 4.3,38.4 C6,43.2 10.8,46.6 12.3,48.2 C15.5,51.2 19.6,56 21,61 C22.4,56 26.5,51.2 29.7,48.2 C31.2,46.6 36,43.2 37.7,38.4 C37.8,36 37.85,34 37.8,31.8 C37.6,24 34,12.5 32.2,5.8"/><path d="M9.8,5.8 C9.8,3.9 32.2,3.9 32.2,5.8 C32.2,7.7 9.8,7.7 9.8,5.8 Z"/><path d="M21,61 V91.5"/><path d="M4.5,95.2 c6,-3.5 27,-3.5 33,0"/></svg>',
+  /* Riedel Veloce Chardonnay, the oaked-white glass: 247mm tall but 113mm at the
+     widest and 100mm across the foot, so it is a third wider than the Riesling
+     at the same height. Its belly sits high (a quarter of the way down) and the
+     wall then runs dead straight into the point at the stem — that straight run
+     plus the wide rim (77% of the widest, against the champagne flute's 64%) is
+     what keeps it from reading as the flute at icon size. */
+  chardonnay: '<svg viewBox="0 0 50 100" aria-hidden="true"><path d="M9.65,5.8 C8.3,10.5 5.2,17 5.03,22.9 C5.1,27 8.4,33 12.5,35.5 L21.85,44.9 C23.1,47.4 24.6,50.2 25,53 C25.4,50.2 26.9,47.4 28.15,44.9 L37.5,35.5 C41.6,33 44.9,27 44.97,22.9 C44.8,17 41.7,10.5 40.35,5.8"/><path d="M9.65,5.8 C9.65,3.9 40.35,3.9 40.35,5.8 C40.35,7.7 9.65,7.7 9.65,5.8 Z"/><path d="M25,53 V90"/><path d="M7.8,94.5 c6,-3.6 28.4,-3.6 34.4,0"/></svg>',
   pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   /* Traced off the owner's photo of the actual glass rather than guessed at:
      the bowl is as wide as it is tall, the rim is 64% of that width, the sides
@@ -950,6 +961,10 @@ function glassFor(style, grape, override) {
   /* Pinot Noir, Nebbiolo, Merlot and Cabernet take the Winewings barrel;
      every other red the wide cone. */
   if (style.startsWith("red")) return /pinot|nebbiolo|merlot|cabernet/i.test(grape || "") ? "pinot" : "burgundy";
+  /* The wide Chardonnay glass is for the oaked, heavy whites only — the whole
+     white Burgundy shelf, plus the barrel-aged Viura, Savagnin and Alsace Pinot
+     Gris that sit beside them. Everything else white, including the steely
+     Chablis and the fresh unoaked Chardonnay, takes the Riesling glass. */
   if (style === "white_rich") return "chardonnay";
   return "riesling";
 }
