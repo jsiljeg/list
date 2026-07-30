@@ -6808,7 +6808,8 @@
           ],
           "temp": "16–18",
           "alcohol": "13",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "burgundy"
          },
          "ratings": [
           {
@@ -6841,7 +6842,8 @@
           ],
           "temp": "16–18",
           "alcohol": "14.5",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "burgundy"
          },
          "terroir": "Krasica"
         },

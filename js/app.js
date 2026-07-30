@@ -592,7 +592,7 @@ function openDetail(ref, back, scope) {
   // Formal region name (localized) + country, always.
   const region = [esc(localizeRegion(ins.region)), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
 
-  const glass = glassFor(ins.style, ins.grape);
+  const glass = glassFor(ins.style, ins.grape, ins.glass);
   const noteText = item.note && (item.note[lang] || item.note.en || item.note.hr);
   $("modal-body").innerHTML = `
     ${back ? `<button class="detail-back" type="button">${esc(t.helper.backToWines)}</button>` : ""}
@@ -837,13 +837,15 @@ const GLASS_ICONS = {
   chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   /* Traced off the owner's photo of the actual glass rather than guessed at:
-     the bowl is as wide as it is tall, the rim is 62% of that width, the sides
-     run straight between the two, and only the last quarter rolls into the
-     base. The earlier balloon was a generic Burgundy sphere and read as one.
+     the bowl is as wide as it is tall, the rim is 64% of that width, the sides
+     run straight between the two, and the base is a shallow cone that tucks
+     sharply into the stem — the row scan puts the widest point 71% of the way
+     down the bowl, and the width then falls off a cliff. Drawn as a rounded cup
+     (which is what shipped first) it bulges well outside the real glass.
      Wider viewBox than its siblings because the glass genuinely is wider —
      they are all drawn to the same 60px height, so the box carries the
      proportion. */
-  burgundy: '<svg viewBox="0 0 46 100" aria-hidden="true"><path d="M10.6,5.5 L3.2,33 C2.4,39 6.4,45.6 14,48.1 C17.1,49 28.9,49 32,48.1 C39.6,45.6 43.6,39 42.8,33 L35.4,5.5 Z"/><path d="M23,48.8 V88.5"/><path d="M11.5,93.5 c4.4,-3.2 18.6,-3.2 23,0"/></svg>',
+  burgundy: '<svg viewBox="0 0 46 100" aria-hidden="true"><path d="M10.35,5.5 L3.2,36.15 C3.3,41 6.6,44.5 11.43,45.1 C15.8,45.9 21.6,47.9 23,49.6 C24.4,47.9 30.2,45.9 34.57,45.1 C39.4,44.5 42.7,41 42.8,36.15 L35.65,5.5 Z"/><path d="M23,49.6 V88.5"/><path d="M11.5,93.5 c4.4,-3.2 18.6,-3.2 23,0"/></svg>',
   dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
 /* Bilingual Chinese rendering for the free-text grape/region fields.
@@ -936,12 +938,17 @@ function wineZh(name) {
   for (const k in ZH_WINE) if (name.indexOf(k) !== -1) return ZH_WINE[k];
   return "";
 }
-function glassFor(style, grape) {
+function glassFor(style, grape, override) {
+  /* `insight.glass` in wines.json wins over everything below: which glass a
+     bottle gets is a sommelier's call, and a grape-name rule cannot make it.
+     Grimalda and Ottocento Crni are the cases in point — Merlot on paper, but
+     Istrian blends poured in the wide glass, not the Bordeaux barrel. */
+  if (override && GLASS_ICONS[override]) return override;
   if (!style) return null;
   if (style.startsWith("sparkling") || style.startsWith("champagne")) return "champagne";
   if (style === "sweet") return "dessert";
   /* Pinot Noir, Nebbiolo, Merlot and Cabernet take the Winewings barrel;
-     every other red the Sophienwald Grand Cru Burgundy balloon. */
+     every other red the wide cone. */
   if (style.startsWith("red")) return /pinot|nebbiolo|merlot|cabernet/i.test(grape || "") ? "pinot" : "burgundy";
   if (style === "white_rich") return "chardonnay";
   return "riesling";

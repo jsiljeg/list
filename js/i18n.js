@@ -94,7 +94,7 @@ hr: {
     sweet: "Desertno vino"
   },
   bodies: { light: "lagano", medium: "srednje puno", full: "puno" },
-  sweetness: { dry: "Suho", off_dry: "Polusuho", sweet: "Slatko" },
+  sweetness: { dry: "suho", off_dry: "polusuho", sweet: "slatko" },
   tags: { legendary_vintage: "Legendarna berba", excellent_vintage: "Izvrsna berba", rare: "Rijetka boca", drinking_now: "Za piti sada" },
   aromas: {
     ink: "tinta",
@@ -219,7 +219,7 @@ en: {
     sweet: "Dessert wine"
   },
   bodies: { light: "light", medium: "medium", full: "full" },
-  sweetness: { dry: "Dry", off_dry: "Off-dry", sweet: "Sweet" },
+  sweetness: { dry: "dry", off_dry: "off-dry", sweet: "sweet" },
   tags: { legendary_vintage: "Legendary vintage", excellent_vintage: "Excellent vintage", rare: "Rare bottle", drinking_now: "Drinking beautifully now" },
   aromas: {
     ink: "ink",
@@ -344,7 +344,7 @@ it: {
     sweet: "Vino da dessert"
   },
   bodies: { light: "leggero", medium: "medio", full: "corposo" },
-  sweetness: { dry: "Secco", off_dry: "Semisecco", sweet: "Dolce" },
+  sweetness: { dry: "secco", off_dry: "semisecco", sweet: "dolce" },
   tags: { legendary_vintage: "Annata leggendaria", excellent_vintage: "Annata eccellente", rare: "Bottiglia rara", drinking_now: "Da bere ora" },
   aromas: {
     ink: "inchiostro",
@@ -469,7 +469,7 @@ fr: {
     sweet: "Vin de dessert"
   },
   bodies: { light: "léger", medium: "moyen", full: "corsé" },
-  sweetness: { dry: "Sec", off_dry: "Demi-sec", sweet: "Doux" },
+  sweetness: { dry: "sec", off_dry: "demi-sec", sweet: "doux" },
   tags: { legendary_vintage: "Millésime légendaire", excellent_vintage: "Millésime excellent", rare: "Bouteille rare", drinking_now: "À boire maintenant" },
   aromas: {
     ink: "encre",
@@ -594,7 +594,7 @@ de: {
     sweet: "Dessertwein"
   },
   bodies: { light: "leicht", medium: "mittel", full: "vollmundig" },
-  sweetness: { dry: "Trocken", off_dry: "Halbtrocken", sweet: "Süß" },
+  sweetness: { dry: "trocken", off_dry: "halbtrocken", sweet: "süß" },
   tags: { legendary_vintage: "Legendärer Jahrgang", excellent_vintage: "Exzellenter Jahrgang", rare: "Rare Flasche", drinking_now: "Auf dem Höhepunkt" },
   aromas: {
     ink: "Tinte",
@@ -910,7 +910,7 @@ sl: {
     "medium": "srednje polno",
     "full": "polno"
   },
-  "sweetness": { "dry": "Suho", "off_dry": "Polsuho", "sweet": "Sladko" },
+  "sweetness": { "dry": "suho", "off_dry": "polsuho", "sweet": "sladko" },
   "tags": {
     "legendary_vintage": "Legendarna letina",
     "excellent_vintage": "Odlična letina",
@@ -1337,7 +1337,7 @@ es: {
     "medium": "medio",
     "full": "potente"
   },
-  "sweetness": { "dry": "Seco", "off_dry": "Semiseco", "sweet": "Dulce" },
+  "sweetness": { "dry": "seco", "off_dry": "semiseco", "sweet": "dulce" },
   "tags": {
     "legendary_vintage": "Añada legendaria",
     "excellent_vintage": "Añada excelente",

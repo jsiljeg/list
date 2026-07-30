@@ -218,8 +218,27 @@ a mismatched one and had to be redone. The icons are all drawn to a single 60px
 height, so a glass that is genuinely wider gets a wider viewBox (the red cone is
 46 against the others' 40) rather than different CSS.
 
+Which glass a bottle gets is finally a sommelier's call, not a grape rule:
+`insight.glass` in `wines.json` overrides `glassFor()` for a named wine (Grimalda
+and Ottocento Crni are Merlot on paper but Istrian blends in the wide glass).
+Prefer the override to widening the regex — a strict "all grapes Bordeaux" rule
+was tried and wrongly flipped Solaia, Tignanello, Ao Yun and Boca as well.
+
 Still drawn from the eye, so presumed wrong until photographed: **riesling,
 chardonnay, dessert**.
+
+## Descriptor capitalisation (settled 2026-07-30)
+
+The style line reads `Crno · srednje puno · suho`: **sentence case across the
+whole compound** — first segment capitalised, every later segment lowercase —
+because the segments are one descriptor, not a row of labels. This is what the
+`styles` strings already did (`Bijelo · svježe`); `sweetness` was the odd one out
+and is now lowercase in all eight languages. It is also the only rule that
+survives German, where the adjectives (`trocken`, `halbtrocken`) are lowercase
+anyway but `Champagner` must keep its capital — a blanket Title Case would break
+it and a blanket lowercase would break the nouns. Proper terms keep their own
+capitals wherever they fall: Champagne, Blanc de Blancs, and the dosage (`Brut`),
+which is a label term rather than a description.
 
 ## Windows environment notes
 
