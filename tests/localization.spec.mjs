@@ -110,10 +110,16 @@ test.describe("Croatian", () => {
   });
 
   test("every Croatian region is a vinogorje + podregija pair", async () => {
-    /* The convention settled off the official hierarchy. A single rung means the
-       vinogorje was never added; three means a regija crept in. */
+    /* The convention settled off the official hierarchy. Three rungs means a
+       regija crept in; one usually means the vinogorje was never added.
+
+       The exception is a wine blended across vinogorja — Jeka Dalmatia takes
+       fruit from Hvar, Vrgorac and Imotski — where naming one of them would be
+       picking a favourite. Those stop at the podregija and let the terroir line
+       list the plots. Owner's call, 2026-07-30. */
+    const BLENDED_ACROSS_VINOGORJA = new Set(["Jeka Dalmatia 2020"]);
     const bad = allItems()
-      .filter((i) => i.insight.country === "HR")
+      .filter((i) => i.insight.country === "HR" && !BLENDED_ACROSS_VINOGORJA.has(i.name))
       .map((i) => ({ name: i.name, parts: String(i.insight.region || "").split(",").map((s) => s.trim()).filter(Boolean) }))
       .filter((r) => r.parts.length !== 2)
       .map((r) => `${r.name}: ${r.parts.join(" | ")}`);
