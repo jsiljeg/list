@@ -227,8 +227,18 @@ body {
 /* The section change slides the list sideways. `clip` (not `hidden`) cuts the
    overhang without turning the shell into a scroll container, so the sticky
    header keeps working and the browser never gets a page to pan. */
-.app { overflow-x: clip; }
-.content { max-width: 900px; margin: 0 auto; padding: 1.4rem 1.2rem 3rem; }
+/* Column layout so the footer is pushed to the foot of the screen when a short
+   category cannot fill it. Rosé is the short one — nine wines — and on a tablet
+   held portrait it left 590px of nothing under the legal text while every long
+   category looked right, which is what made it read as "too high". `overflow-x:
+   clip` rather than `hidden` on purpose: clip does not create a scroll
+   container, so the sticky header keeps sticking. */
+.app {
+  overflow-x: clip;
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column;
+}
+.content { max-width: 900px; margin: 0 auto; padding: 1.4rem 1.2rem 3rem; flex: 1 0 auto; width: 100%; }
 @keyframes content-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .content-fade { animation: content-fade .25s ease-out; }
 .cat { margin-bottom: 2.4rem; }
