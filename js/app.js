@@ -821,14 +821,21 @@ window.addEventListener("popstate", () => { if (modalOpen) hideModal(); });
    Sophienwald Grand Cru Champagne wine glass (elongated vertical tulip on a
    filigree stem, with a faint crystal sheen), Veloce Riesling, Veloce Chardonnay (white
    Burgundy), Winewings barrel bowl on the flat "wing" base — Pinot/Nebbiolo
-   and Cabernet/Merlot reds, Sophienwald Grand Cru Burgundy balloon (big round
-   bowl, inward tulip rim) for all other reds, small dessert tulip. */
+   and Cabernet/Merlot reds, the wide straight-sided cone on a long stem for all
+   other reds, small dessert tulip. */
 const GLASS_ICONS = {
   champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M14.8,3 C13.4,10 12.2,16 11.4,22 C10.7,27 10.6,31 11.4,36 C12.6,44 15.8,49 20,52 C24.2,49 27.4,44 28.6,36 C29.4,31 29.3,27 28.6,22 C27.8,16 26.6,10 25.2,3 L14.8,3"/><path d="M20,52 V90"/><path d="M9.5,95 c4,-3.2 17,-3.2 21,0"/><path d="M14.6,11 C13.4,17 12.9,23 13.2,29" style="stroke-width:.8;opacity:.5"/></svg>',
   riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
-  burgundy: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M9,7 C4.5,9 2.8,15.5 2.8,25 C2.8,34.5 8,44.5 20,48.5 C32,44.5 37.2,34.5 37.2,25 C37.2,15.5 35.5,9 31,7 Z"/><path d="M20,48.5 V91"/><path d="M9.5,94 c4,-3 17,-3 21,0"/></svg>',
+  /* Traced off the owner's photo of the actual glass rather than guessed at:
+     the bowl is as wide as it is tall, the rim is 62% of that width, the sides
+     run straight between the two, and only the last quarter rolls into the
+     base. The earlier balloon was a generic Burgundy sphere and read as one.
+     Wider viewBox than its siblings because the glass genuinely is wider —
+     they are all drawn to the same 60px height, so the box carries the
+     proportion. */
+  burgundy: '<svg viewBox="0 0 46 100" aria-hidden="true"><path d="M10.6,5.5 L3.2,33 C2.4,39 6.4,45.6 14,48.1 C17.1,49 28.9,49 32,48.1 C39.6,45.6 43.6,39 42.8,33 L35.4,5.5 Z"/><path d="M23,48.8 V88.5"/><path d="M11.5,93.5 c4.4,-3.2 18.6,-3.2 23,0"/></svg>',
   dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
 };
 /* Bilingual Chinese rendering for the free-text grape/region fields.

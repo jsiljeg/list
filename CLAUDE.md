@@ -182,7 +182,7 @@ reads as an eye or a sun, and the side-on saucer that shipped read to the owner
 as a smiling mouth. Photographs, not glyphs.
 
 Sizing follows from that: recoloured lace needs room. The bowl closing mark is
-280px wide at .7 opacity (under ~180px the weave mats into a smudge), the face
+240px wide at .7 opacity (under ~180px the weave mats into a smudge), the face
 watermark is `contain` at .32. The **grape** section ornament stays a drawn SVG —
 it is an arrangement of nails, not a picture of a sculpture.
 
