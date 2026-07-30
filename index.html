@@ -10,6 +10,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<!-- The nail face is a background on .story-screen::before, which is display:none
+     until a language is picked — so the browser would only start fetching it at
+     the tap, and the story splash appeared bare for a beat (worst on phones).
+     Preloading fetches it while the guest is still reading the language screen. -->
+<link rel="preload" as="image" href="assets/atrium-face.webp">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/icon.svg">
