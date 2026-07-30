@@ -17,7 +17,7 @@
          "price": 8,
          "insight": {
           "grape": "Pušipel/Furmint",
-          "region": "Zagorje-Međimurje",
+          "region": "Međimurje, Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling",
           "body": "light",
@@ -43,7 +43,7 @@
          "price": 8,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Zagorje-Međimurje",
+          "region": "Krapina, Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling_rose",
           "body": "light",
@@ -81,7 +81,7 @@
          "price": 9,
          "insight": {
           "grape": "Chardonnay 60%, Pinot Blanc 40%",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "sparkling",
           "body": "medium",
@@ -227,7 +227,7 @@
          "price": 8,
          "insight": {
           "grape": "Malvazija istarska",
-          "region": "Hrvatska Istra",
+          "region": "Centralna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "white_fresh",
           "body": "medium",
@@ -259,7 +259,7 @@
          "price": 10,
          "insight": {
           "grape": "Chardonnay 60%, Pinot Blanc 40%",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "full",
@@ -286,7 +286,7 @@
          "price": 9,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Zagorje-Međimurje",
+          "region": "Međimurje, Zagorje-Međimurje",
           "country": "HR",
           "style": "white_aromatic",
           "body": "light",
@@ -312,7 +312,7 @@
          "price": 15,
          "insight": {
           "grape": "Rukatac",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -350,7 +350,7 @@
          "price": 9,
          "insight": {
           "grape": "Pošip",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Korčula, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_fresh",
           "body": "medium",
@@ -613,7 +613,7 @@
          "price": 8,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Zagorje-Međimurje",
+          "region": "Krapina, Zagorje-Međimurje",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -639,7 +639,7 @@
          "price": 10,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon, Cabernet Franc",
-          "region": "Zagorje-Međimurje",
+          "region": "Krapina, Zagorje-Međimurje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -677,7 +677,7 @@
          "price": 8,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Moslavina",
+          "region": "Voloder – Ivanić-Grad, Moslavina",
           "country": "HR",
           "style": "red_light",
           "body": "light",
@@ -713,7 +713,7 @@
          "price": 8,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -741,7 +741,7 @@
          "price": 8,
          "insight": {
           "grape": "Teran",
-          "region": "Hrvatska Istra",
+          "region": "Centralna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -768,7 +768,7 @@
          "price": 10,
          "insight": {
           "grape": "Tribidrag (Zinfandel)",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Neretva, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -881,7 +881,7 @@
          "price": 14,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -909,7 +909,7 @@
          "price": 15,
          "insight": {
           "grape": "Merlot 80%, Cabernet Sauvignon 15%, Cabernet Franc 5%",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -947,7 +947,7 @@
          "price": 15,
          "insight": {
           "grape": "Teran",
-          "region": "Hrvatska Istra",
+          "region": "Centralna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -1012,7 +1012,7 @@
          "price": 5,
          "insight": {
           "grape": "Muscat",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -1042,7 +1042,7 @@
          "price": 8,
          "insight": {
           "grape": "Rukatac",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "sweet",
           "body": "full",
@@ -1084,7 +1084,7 @@
          "price": 8,
          "insight": {
           "grape": "Riesling",
-          "region": "Zagorje-Međimurje",
+          "region": "Međimurje, Zagorje-Međimurje",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -1138,7 +1138,7 @@
          "price": 49,
          "insight": {
           "grape": "Pušipel/Furmint",
-          "region": "Zagorje-Međimurje",
+          "region": "Međimurje, Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling",
           "body": "light",
@@ -1164,7 +1164,7 @@
          "price": 48,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Zagorje-Međimurje",
+          "region": "Krapina, Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling_rose",
           "body": "light",
@@ -1202,7 +1202,7 @@
          "price": 58,
          "insight": {
           "grape": "Chardonnay 90%, Plavec žuti 10%",
-          "region": "Plešivica",
+          "region": "Plešivica – Okić, Plešivica",
           "country": "HR",
           "style": "sparkling",
           "body": "medium",
@@ -1237,7 +1237,7 @@
          "price": 55,
          "insight": {
           "grape": "Chardonnay 80%, Plavec žuti 20%",
-          "region": "Plešivica",
+          "region": "Plešivica – Okić, Plešivica",
           "country": "HR",
           "style": "sparkling",
           "body": "medium",
@@ -1272,7 +1272,7 @@
          "price": 67,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Plešivica",
+          "region": "Plešivica – Okić, Plešivica",
           "country": "HR",
           "style": "sparkling",
           "body": "medium",
@@ -1297,7 +1297,7 @@
          "price": 48,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Plešivica",
+          "region": "Plešivica – Okić, Plešivica",
           "country": "HR",
           "style": "sparkling_rose",
           "body": "light",
@@ -2902,7 +2902,7 @@
          "price": 39,
          "insight": {
           "grape": "Graševina",
-          "region": "Zagorje-Međimurje",
+          "region": "Krapina, Zagorje-Međimurje",
           "country": "HR",
           "style": "white_fresh",
           "body": "light",
@@ -2928,7 +2928,7 @@
          "price": 46,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Zagorje-Međimurje",
+          "region": "Krapina, Zagorje-Međimurje",
           "country": "HR",
           "style": "white_rich",
           "body": "medium",
@@ -2955,7 +2955,7 @@
          "price": 75,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Plešivica",
+          "region": "Plešivica – Okić, Plešivica",
           "country": "HR",
           "style": "white_aromatic",
           "body": "medium",
@@ -2990,7 +2990,7 @@
          "price": 54,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Plešivica",
+          "region": "Plešivica – Okić, Plešivica",
           "country": "HR",
           "style": "white_aromatic",
           "body": "medium",
@@ -3016,7 +3016,7 @@
          "price": 70,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Plešivica",
+          "region": "Plešivica – Okić, Plešivica",
           "country": "HR",
           "style": "white_rich",
           "body": "full",
@@ -3045,7 +3045,7 @@
          "price": 45,
          "insight": {
           "grape": "Sauvignon Blanc",
-          "region": "Zagorje-Međimurje",
+          "region": "Međimurje, Zagorje-Međimurje",
           "country": "HR",
           "style": "white_aromatic",
           "body": "light",
@@ -3071,7 +3071,7 @@
          "price": 45,
          "insight": {
           "grape": "Riesling",
-          "region": "Zagorje-Međimurje",
+          "region": "Međimurje, Zagorje-Međimurje",
           "country": "HR",
           "style": "white_aromatic",
           "body": "light",
@@ -3098,7 +3098,7 @@
          "price": 44,
          "insight": {
           "grape": "Malvazija istarska",
-          "region": "Hrvatska Istra",
+          "region": "Centralna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "white_fresh",
           "body": "medium",
@@ -3130,7 +3130,7 @@
          "price": 60,
          "insight": {
           "grape": "Malvazija, Chardonnay, Sauvignon Blanc",
-          "region": "Hrvatska Istra",
+          "region": "Centralna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "medium",
@@ -3159,7 +3159,7 @@
          "price": 60,
          "insight": {
           "grape": "Malvazija istarska",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "orange",
           "body": "full",
@@ -3195,7 +3195,7 @@
          "price": 62,
          "insight": {
           "grape": "Malvazija, Pinot Gris, Sauvignon Blanc",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "orange",
           "body": "full",
@@ -3222,7 +3222,7 @@
          "price": 87,
          "insight": {
           "grape": "Chardonnay 60%, Pinot Blanc 40%",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "full",
@@ -3251,7 +3251,7 @@
          "price": 140,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "white_rich",
           "body": "full",
@@ -3278,7 +3278,7 @@
          "price": 73,
          "insight": {
           "grape": "Pošip",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Korčula, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3305,7 +3305,7 @@
          "price": 49,
          "insight": {
           "grape": "Pošip",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Korčula, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_fresh",
           "body": "medium",
@@ -3332,7 +3332,7 @@
          "price": 63,
          "insight": {
           "grape": "Grk",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Korčula, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3359,7 +3359,7 @@
          "price": 120,
          "insight": {
           "grape": "Rukatac",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3397,7 +3397,7 @@
          "price": 90,
          "insight": {
           "grape": "Pošip",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Korčula, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3423,7 +3423,7 @@
          "price": 100,
          "insight": {
           "grape": "Grk",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Korčula, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -3450,7 +3450,7 @@
          "price": 130,
          "insight": {
           "grape": "Pošip 50%, Žilavka 35%, Kujundžuša 15%",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Korčula, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -6585,7 +6585,7 @@
          "price": 50,
          "insight": {
           "grape": "Plavina 65%, Babić 25%, Lasina 10%",
-          "region": "Sjeverna Dalmacija",
+          "region": "Skradin, Dalmatinska zagora",
           "country": "HR",
           "style": "rose",
           "body": "light",
@@ -6611,7 +6611,7 @@
          "price": 50,
          "insight": {
           "grape": "Merlot 70%, Cabernet Franc 30%",
-          "region": "Primorska Hrvatska",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "rose",
           "body": "light",
@@ -6652,7 +6652,7 @@
          "price": 50,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Zagorje-Međimurje",
+          "region": "Krapina, Zagorje-Međimurje",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -6678,7 +6678,7 @@
          "price": 75,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon, Cabernet Franc",
-          "region": "Zagorje-Međimurje",
+          "region": "Krapina, Zagorje-Međimurje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6716,7 +6716,7 @@
          "price": 54,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Moslavina",
+          "region": "Voloder – Ivanić-Grad, Moslavina",
           "country": "HR",
           "style": "red_light",
           "body": "light",
@@ -6752,7 +6752,7 @@
          "price": 70,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Plešivica",
+          "region": "Plešivica – Okić, Plešivica",
           "country": "HR",
           "style": "red_light",
           "body": "light",
@@ -6778,7 +6778,7 @@
          "price": 70,
          "insight": {
           "grape": "Pinot Noir",
-          "region": "Plešivica",
+          "region": "Plešivica – Okić, Plešivica",
           "country": "HR",
           "style": "red_light",
           "body": "light",
@@ -6803,7 +6803,7 @@
          "price": 66,
          "insight": {
           "grape": "Teran 50%, Merlot 50%",
-          "region": "Hrvatska Istra",
+          "region": "Centralna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -6839,7 +6839,7 @@
          "price": 66,
          "insight": {
           "grape": "Merlot, Refošk",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -6867,7 +6867,7 @@
          "price": 100,
          "insight": {
           "grape": "Refošk",
-          "region": "Hrvatska Istra",
+          "region": "Centralna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -6895,7 +6895,7 @@
          "price": 60,
          "insight": {
           "grape": "Teran",
-          "region": "Hrvatska Istra",
+          "region": "Centralna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -6923,7 +6923,7 @@
          "price": 90,
          "insight": {
           "grape": "Merlot 55%, Cabernet Sauvignon 45%",
-          "region": "Hrvatsko primorje",
+          "region": "Pag, Hrvatsko primorje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6950,7 +6950,7 @@
          "price": 49,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -6978,7 +6978,7 @@
          "price": 96,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7006,7 +7006,7 @@
          "price": 91,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7033,7 +7033,7 @@
          "price": 89,
          "insight": {
           "grape": "Tribidrag (Zinfandel)",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7060,7 +7060,7 @@
          "price": 70,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7087,7 +7087,7 @@
          "price": 75,
          "insight": {
           "grape": "Tribidrag (Zinfandel)",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Neretva, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7114,7 +7114,7 @@
          "price": 85,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Korčula, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7141,7 +7141,7 @@
          "price": 70,
          "insight": {
           "grape": "Tribidrag (Zinfandel)",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Neretva, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -7169,7 +7169,7 @@
          "price": 145,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_mature",
           "body": "full",
@@ -7210,7 +7210,7 @@
          "price": 250,
          "insight": {
           "grape": "Plavac mali 50%, Trnjak 25%, Vranac 25%",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Hvar, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7238,7 +7238,7 @@
          "price": 195,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7278,7 +7278,7 @@
          "price": 180,
          "insight": {
           "grape": "Merlot 80%, Cabernet Sauvignon 15%, Cabernet Franc 5%",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7316,7 +7316,7 @@
          "price": 145,
          "insight": {
           "grape": "Tribidrag (Zinfandel) 87%, Babić 13%",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Primošten, Sjeverna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7346,7 +7346,7 @@
          "price": 150,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7388,7 +7388,7 @@
          "price": 160,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7433,7 +7433,7 @@
          "price": 75,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -10705,34 +10705,6 @@
        "country": "US",
        "items": [
         {
-         "name": "Mae Estate 2019",
-         "producer": "Tyler",
-         "price": 120,
-         "insight": {
-          "grape": "Pinot Noir",
-          "region": "Sta. Rita Hills, Santa Barbara County, California",
-          "country": "US",
-          "style": "red_light",
-          "body": "medium",
-          "aromas": [
-           "cherry",
-           "raspberry",
-           "smoke",
-           "spice",
-           "earth"
-          ],
-          "pairings": [
-           "poultry",
-           "game",
-           "mushrooms"
-          ],
-          "temp": "14–16",
-          "alcohol": "13.3",
-          "sweetness": "dry"
-         },
-         "terroir": "Mae Estate"
-        },
-        {
          "name": "Resonance 2015",
          "producer": "Résonance Vineyard",
          "price": 100,
@@ -10787,6 +10759,81 @@
          ]
         },
         {
+         "name": "Cuvée Ruth Pinot Noir",
+         "producer": "Walter Scott",
+         "price": 90,
+         "insight": {
+          "grape": "Pinot Noir",
+          "region": "Eola-Amity Hills, Willamette Valley, Oregon",
+          "country": "US",
+          "style": "red_light",
+          "body": "medium",
+          "aromas": [
+           "cherry",
+           "strawberry",
+           "raspberry",
+           "blood_orange",
+           "lavender",
+           "clove",
+           "licorice",
+           "vanilla",
+           "earth",
+           "spice"
+          ],
+          "pairings": [
+           "poultry",
+           "game",
+           "mushrooms"
+          ],
+          "temp": "14–16",
+          "alcohol": "13.5",
+          "sweetness": "dry"
+         },
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Robert Parker",
+           "score": "94"
+          },
+          {
+           "critic": "Wine Enthusiast",
+           "score": "93"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "91"
+          }
+         ]
+        },
+        {
+         "name": "Mae Estate 2019",
+         "producer": "Tyler",
+         "price": 120,
+         "insight": {
+          "grape": "Pinot Noir",
+          "region": "Sta. Rita Hills, Santa Barbara County, California",
+          "country": "US",
+          "style": "red_light",
+          "body": "medium",
+          "aromas": [
+           "cherry",
+           "raspberry",
+           "smoke",
+           "spice",
+           "earth"
+          ],
+          "pairings": [
+           "poultry",
+           "game",
+           "mushrooms"
+          ],
+          "temp": "14–16",
+          "alcohol": "13.3",
+          "sweetness": "dry"
+         },
+         "terroir": "Mae Estate"
+        },
+        {
          "name": "Occidental 2018",
          "producer": "Occidental – Kistler Vineyards",
          "price": 140,
@@ -10815,6 +10862,45 @@
          "ratings": [
           {
            "critic": "Vinous",
+           "score": "94"
+          }
+         ],
+         "tags": [
+          "excellent_vintage"
+         ]
+        },
+        {
+         "name": "Merlot 2018",
+         "producer": "Duckhorn",
+         "price": 160,
+         "insight": {
+          "grape": "Merlot 82%, Cabernet Sauvignon 16%, Cabernet Franc 1.4%, Petit Verdot 0.4%, Malbec 0.2%",
+          "region": "Napa Valley, California",
+          "country": "US",
+          "style": "red_full",
+          "body": "full",
+          "aromas": [
+           "plum",
+           "blackberry",
+           "cherry",
+           "raspberry",
+           "toast",
+           "chocolate",
+           "vanilla"
+          ],
+          "pairings": [
+           "beef",
+           "pork",
+           "cheese_hard"
+          ],
+          "temp": "16–18",
+          "alcohol": "14.5",
+          "sweetness": "dry"
+         },
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Wine Spectator",
            "score": "94"
           }
          ],
@@ -10864,94 +10950,6 @@
          ],
          "tags": [
           "legendary_vintage"
-         ]
-        },
-        {
-         "name": "Merlot 2018",
-         "producer": "Duckhorn",
-         "price": 160,
-         "insight": {
-          "grape": "Merlot 82%, Cabernet Sauvignon 16%, Cabernet Franc 1.4%, Petit Verdot 0.4%, Malbec 0.2%",
-          "region": "Napa Valley, California",
-          "country": "US",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "plum",
-           "blackberry",
-           "cherry",
-           "raspberry",
-           "toast",
-           "chocolate",
-           "vanilla"
-          ],
-          "pairings": [
-           "beef",
-           "pork",
-           "cheese_hard"
-          ],
-          "temp": "16–18",
-          "alcohol": "14.5",
-          "sweetness": "dry"
-         },
-         "terroir": "",
-         "ratings": [
-          {
-           "critic": "Wine Spectator",
-           "score": "94"
-          }
-         ],
-         "tags": [
-          "excellent_vintage"
-         ]
-        },
-        {
-         "name": "Cabernet Sauvignon 2017",
-         "producer": "Domaine Eden",
-         "price": 170,
-         "insight": {
-          "grape": "Cabernet Sauvignon 82%, Merlot 11%, Cabernet Franc 4%, Petit Verdot 2%, Malbec 1%",
-          "region": "Santa Cruz Mountains, California",
-          "country": "US",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "blackcurrant",
-           "cedar",
-           "herbs",
-           "earth"
-          ],
-          "pairings": [
-           "steak",
-           "lamb",
-           "cheese_hard"
-          ],
-          "temp": "16–18",
-          "alcohol": "14",
-          "sweetness": "dry"
-         },
-         "terroir": "",
-         "ratings": [
-          {
-           "critic": "Vinous",
-           "score": "94"
-          },
-          {
-           "critic": "Wine Enthusiast",
-           "score": "93"
-          },
-          {
-           "critic": "Robert Parker",
-           "score": "91"
-          },
-          {
-           "critic": "Wine Spectator",
-           "score": "91"
-          },
-          {
-           "critic": "Jancis Robinson",
-           "score": "17.5/20"
-          }
          ]
         },
         {
@@ -11130,40 +11128,34 @@
          ]
         },
         {
-         "name": "Cuvée Ruth Pinot Noir",
-         "producer": "Walter Scott",
-         "price": 90,
+         "name": "Cabernet Sauvignon 2017",
+         "producer": "Domaine Eden",
+         "price": 170,
          "insight": {
-          "grape": "Pinot Noir",
-          "region": "Eola-Amity Hills, Willamette Valley, Oregon",
+          "grape": "Cabernet Sauvignon 82%, Merlot 11%, Cabernet Franc 4%, Petit Verdot 2%, Malbec 1%",
+          "region": "Santa Cruz Mountains, California",
           "country": "US",
-          "style": "red_light",
-          "body": "medium",
+          "style": "red_full",
+          "body": "full",
           "aromas": [
-           "cherry",
-           "strawberry",
-           "raspberry",
-           "blood_orange",
-           "lavender",
-           "clove",
-           "licorice",
-           "vanilla",
-           "earth",
-           "spice"
+           "blackcurrant",
+           "cedar",
+           "herbs",
+           "earth"
           ],
           "pairings": [
-           "poultry",
-           "game",
-           "mushrooms"
+           "steak",
+           "lamb",
+           "cheese_hard"
           ],
-          "temp": "14–16",
-          "alcohol": "13.5",
+          "temp": "16–18",
+          "alcohol": "14",
           "sweetness": "dry"
          },
          "terroir": "",
          "ratings": [
           {
-           "critic": "Robert Parker",
+           "critic": "Vinous",
            "score": "94"
           },
           {
@@ -11171,8 +11163,57 @@
            "score": "93"
           },
           {
-           "critic": "James Suckling",
+           "critic": "Robert Parker",
            "score": "91"
+          },
+          {
+           "critic": "Wine Spectator",
+           "score": "91"
+          },
+          {
+           "critic": "Jancis Robinson",
+           "score": "17.5/20"
+          }
+         ]
+        },
+        {
+         "name": "Cabernet Sauvignon 2018",
+         "producer": "Ridge",
+         "price": 170,
+         "insight": {
+          "grape": "Cabernet Sauvignon 78%, Merlot 21%, Petit Verdot 1%",
+          "region": "Santa Cruz Mountains, California",
+          "country": "US",
+          "style": "red_full",
+          "body": "full",
+          "aromas": [
+           "blackcurrant",
+           "cedar",
+           "herbs",
+           "chocolate"
+          ],
+          "pairings": [
+           "steak",
+           "beef",
+           "cheese_hard"
+          ],
+          "temp": "16–18",
+          "alcohol": "14",
+          "sweetness": "dry"
+         },
+         "terroir": "Monte Bello",
+         "ratings": [
+          {
+           "critic": "Wine Enthusiast",
+           "score": "94"
+          },
+          {
+           "critic": "James Suckling",
+           "score": "94"
+          },
+          {
+           "critic": "Vinous",
+           "score": "93"
           }
          ]
         },
@@ -11223,47 +11264,6 @@
          ],
          "tags": [
           "legendary_vintage"
-         ]
-        },
-        {
-         "name": "Cabernet Sauvignon 2018",
-         "producer": "Ridge",
-         "price": 170,
-         "insight": {
-          "grape": "Cabernet Sauvignon 78%, Merlot 21%, Petit Verdot 1%",
-          "region": "Santa Cruz Mountains, California",
-          "country": "US",
-          "style": "red_full",
-          "body": "full",
-          "aromas": [
-           "blackcurrant",
-           "cedar",
-           "herbs",
-           "chocolate"
-          ],
-          "pairings": [
-           "steak",
-           "beef",
-           "cheese_hard"
-          ],
-          "temp": "16–18",
-          "alcohol": "14",
-          "sweetness": "dry"
-         },
-         "terroir": "Monte Bello",
-         "ratings": [
-          {
-           "critic": "Wine Enthusiast",
-           "score": "94"
-          },
-          {
-           "critic": "James Suckling",
-           "score": "94"
-          },
-          {
-           "critic": "Vinous",
-           "score": "93"
-          }
          ]
         }
        ]
@@ -11342,7 +11342,7 @@
          "price": 31,
          "insight": {
           "grape": "Muscat",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -11372,7 +11372,7 @@
          "price": 45,
          "insight": {
           "grape": "Autohtone dalmatinske sorte (prošek)",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "sweet",
           "body": "full",
@@ -11402,7 +11402,7 @@
          "price": 58,
          "insight": {
           "grape": "Rukatac",
-          "region": "Srednja i Južna Dalmacija",
+          "region": "Pelješac, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "sweet",
           "body": "full",
@@ -11444,7 +11444,7 @@
          "price": 64,
          "insight": {
           "grape": "Muškat bijeli",
-          "region": "Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "sweet",
           "body": "medium",
@@ -11474,7 +11474,7 @@
          "price": 60,
          "insight": {
           "grape": "Riesling",
-          "region": "Zagorje-Međimurje",
+          "region": "Međimurje, Zagorje-Međimurje",
           "country": "HR",
           "style": "sweet",
           "body": "medium",

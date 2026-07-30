@@ -50,13 +50,18 @@ function hrCrown() {
       `<path d="M-1.35,-2.4 h1.5 l.7,-.3" stroke="${DKBR}" stroke-width=".34" fill="none" stroke-linecap="round"/>`
   ];
   const fields = [BLUE, DARK, BLUE, DARK, BLUE];
+  /* Tips on the shield's top edge, each fanned outward: rotating about the tip
+     keeps all five standing on that line, and the arc of their tops appears by
+     itself — the middle shield is upright, so it is the tallest. The fan is
+     shallow (9 degrees a step) and the tips sit closer together than a shield is
+     wide, so neighbours overlap rather than leaving wedges of flag between them.
+     Painted outside-in, so each shield tucks behind the one nearer the middle
+     and the crown reads as one piece. */
+  const order = [0, 4, 1, 3, 2];
   let out = "";
-  for (let i = 0; i < 5; i++) {
-    /* Tips on the shield's top edge, each fanned outward: rotating about the tip
-       keeps all five standing on that line, and the arc of their tops appears by
-       itself — the middle shield is upright, so it is the tallest. */
-    const deg = (i - 2) * 11;
-    const cx = 30 + (i - 2) * 4.22, cy = 14.2;
+  for (const i of order) {
+    const deg = (i - 2) * 9;
+    const cx = 30 + (i - 2) * 3.95, cy = 14.2;
     out += `<g transform="translate(${cx.toFixed(2)},${cy.toFixed(2)}) rotate(${deg})">` +
       `<path d="${SHIELD}" fill="${fields[i]}" stroke="${WHITE}" stroke-width=".34"/>${charges[i]()}</g>`;
   }
