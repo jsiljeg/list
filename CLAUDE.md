@@ -224,15 +224,30 @@ and Ottocento Crni are Merlot on paper but Istrian blends in the wide glass).
 Prefer the override to widening the regex — a strict "all grapes Bordeaux" rule
 was tried and wrongly flipped Solaia, Tignanello, Ao Yun and Boca as well.
 
+**The two Winewings reds** follow Riedel's varietal lists: Pinot Noir and
+Nebbiolo to the Burgundy bowl, Cabernet and Merlot to the Bordeaux cone. Both are
+250mm tall on a 100mm foot and 117/115mm across, so the millimetres alone would
+draw the same icon — the difference is in the wall, and only a row scan finds it:
+the Cabernet widens at a steady 2px per 6 rows the whole way down (a straight
+cone) while the Pinot races out at the shoulder then holds dead level for thirty
+rows. The Pinot's bowl also ends higher, 51% of the glass against 55%. The
+dominant grape decides, and blends led by a third grape fall through to the
+Bordeaux glass on their Cabernet/Merlot component — which is where Riedel puts
+Sangiovese anyway (Brunello is on its Bordeaux list).
+
+Only wines that were already on a Winewings were split; nothing moved off the
+cone. So Brunello, Beaujolais and the other Riedel-listed reds we pour stay on
+the cone until the owner says otherwise.
+
 **Riedel's own guide answers the Chablis question**: the Performance/Veloce
 Chardonnay is listed for "Burgundy (white), Chablis, Chardonnay (oaked),
 Corton-Charlemagne, Garnatxa Blanca, Meursault, Montrachet, Morillon (oaked),
 Pouilly-Fuissé" — so Riedel puts *all* Chablis in the wide glass, not only Grand
-Cru. Our list keeps Chablis on the Riesling glass by owner's choice; if that ever
-changes it is a style retag, not a code change. Riedel has **no Viura or white-
-Rioja shape at all**, so the barrel-aged Rioja blancos (Gravonia, Capellanía)
-sit in the wide glass on the same logic as any oaked white — an inference, not a
-Riedel listing.
+Cru. All eight Chablis now carry `insight.glass: "chardonnay"` — an override rather
+than a style retag, because they are `white_mineral` and steely is what they
+are; only the glass changes. Riedel has **no Viura or white-
+Rioja shape at all** — the guide has no entry — so Gravonia and Capellanía are
+on the Riesling glass by the owner's call, not by a Riedel listing.
 
 A maker's dimensioned drawing beats a photo where one exists: both Riedel Veloce
 whites are 247mm tall, so their **92mm** and **113mm** bowls set the icons'

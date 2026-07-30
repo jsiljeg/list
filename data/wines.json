@@ -526,7 +526,8 @@
           ],
           "temp": "10–12",
           "alcohol": "12.5",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "chardonnay"
          },
          "terroir": "La Grande Vallée",
          "ratings": [
@@ -3719,7 +3720,7 @@
          ]
         },
         {
-         "name": "Riesling GG Uhlen Blaufüßer Lay 2022",
+         "name": "Riesling Uhlen Blaufüßer Lay GG 2022",
          "producer": "Weingut Heymann-Löwenstein",
          "price": 145,
          "insight": {
@@ -4338,7 +4339,8 @@
           ],
           "temp": "10–12",
           "alcohol": "12.5",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "chardonnay"
          },
          "terroir": "La Grande Vallée",
          "ratings": [
@@ -4370,7 +4372,8 @@
           ],
           "temp": "10–12",
           "alcohol": "12.5",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "chardonnay"
          },
          "terroir": "",
          "recommended": true,
@@ -4411,7 +4414,8 @@
           ],
           "temp": "10–12",
           "alcohol": "13",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "chardonnay"
          },
          "terroir": "Butteaux",
          "tags": [
@@ -4441,7 +4445,8 @@
           ],
           "temp": "10–12",
           "alcohol": "13.5",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "chardonnay"
          },
          "terroir": "Vaillons",
          "tags": [
@@ -4494,7 +4499,8 @@
           ],
           "temp": "8–10",
           "alcohol": "12.5",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "chardonnay"
          },
          "terroir": "Les Clos",
          "ratings": [
@@ -4527,7 +4533,8 @@
           ],
           "temp": "10–12",
           "alcohol": "13",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "chardonnay"
          },
          "terroir": "Preuses",
          "ratings": [
@@ -4586,7 +4593,8 @@
           ],
           "temp": "10–12",
           "alcohol": "13",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "chardonnay"
          },
          "terroir": "Valmur",
          "tags": [
@@ -6423,7 +6431,8 @@
           ],
           "temp": "12–14",
           "alcohol": "14",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "riesling"
          },
          "ratings": [
           {
@@ -6482,7 +6491,8 @@
           ],
           "temp": "12–14",
           "alcohol": "12.5",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "riesling"
          },
          "ratings": [
           {
@@ -6821,7 +6831,7 @@
            "score": "90"
           }
          ],
-         "terroir": "Grimalda"
+         "terroir": "Brdo, Grimalda"
         },
         {
          "name": "Ottocento Crni 2022",

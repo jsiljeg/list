@@ -820,9 +820,10 @@ window.addEventListener("popstate", () => { if (modalOpen) hideModal(); });
 /* Glass silhouettes traced from the house stemware (product photos):
    Sophienwald Grand Cru Champagne wine glass (elongated vertical tulip on a
    filigree stem, with a faint crystal sheen), Veloce Riesling, Veloce Chardonnay (white
-   Burgundy, only for the oaked/heavy whites), Winewings barrel bowl on the flat "wing" base — Pinot/Nebbiolo
-   and Cabernet/Merlot reds, the wide straight-sided cone on a long stem for all
-   other reds, small dessert tulip. */
+   Burgundy, only for the oaked/heavy whites), the two Winewings bowls on the
+   flat "wing" base — Burgundy for Pinot/Nebbiolo, Bordeaux for Cabernet/Merlot
+   — the wide straight-sided cone on a long stem for all other reds, and the
+   narrow high-bellied sweet glass. */
 const GLASS_ICONS = {
   /* Measured off the owner's photo rather than judged by eye: a row-by-row scan
      of the silhouette (scripts/trace-outline.py) gives rim 160px, widest 249px,
@@ -846,7 +847,16 @@ const GLASS_ICONS = {
      plus the wide rim (77% of the widest, against the champagne flute's 64%) is
      what keeps it from reading as the flute at icon size. */
   chardonnay: '<svg viewBox="0 0 50 100" aria-hidden="true"><path d="M9.65,5.8 C8.3,10.5 5.2,17 5.03,22.9 C5.1,27 8.4,33 12.5,35.5 L21.85,44.9 C23.1,47.4 24.6,50.2 25,53 C25.4,50.2 26.9,47.4 28.15,44.9 L37.5,35.5 C41.6,33 44.9,27 44.97,22.9 C44.8,17 41.7,10.5 40.35,5.8"/><path d="M9.65,5.8 C9.65,3.9 40.35,3.9 40.35,5.8 C40.35,7.7 9.65,7.7 9.65,5.8 Z"/><path d="M25,53 V90"/><path d="M7.8,94.5 c6,-3.6 28.4,-3.6 34.4,0"/></svg>',
-  pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
+  /* The two Winewings, from Riedel's dimensioned drawings — both 250mm tall on a
+     100mm foot, 117mm and 115mm across, so the millimetres alone would make them
+     the same icon. What separates them is the wall, and the row scan is what
+     found it: the Cabernet's widens at a steady 2px per 6 rows from rim to base,
+     a straight cone, while the Pinot's races out at the shoulder and then holds
+     dead level for thirty rows before flaring again. The Pinot's bowl also ends
+     higher (51% of the glass against 55%), so it sits rounder and squatter over
+     a longer stem. Checked side by side at 60px: they read apart. */
+  winewingsBordeaux: '<svg viewBox="0 0 51 100" aria-hidden="true"><path d="M10.25,8.65 C9.2,14.5 7.5,22.5 6.82,28 C6.2,33.5 5.6,40.5 4.09,46.2 C4.1,49.6 6.3,52.4 8.84,53.5 C13.5,54.9 22,56.35 25.5,56.7 C29,56.35 37.5,54.9 42.16,53.5 C44.7,52.4 46.9,49.6 46.91,46.2 C45.4,40.5 44.8,33.5 44.18,28 C43.5,22.5 41.8,14.5 40.75,8.65"/><path d="M10.25,8.65 C10.25,6.3 40.75,6.3 40.75,8.65 C40.75,11 10.25,11 10.25,8.65 Z"/><path d="M25.5,56.7 V90"/><path d="M7.3,95.2 c6,-3.5 30.4,-3.5 36.4,0"/></svg>',
+  winewingsBurgundy: '<svg viewBox="0 0 50 100" aria-hidden="true"><path d="M10.53,6.43 C9,11.5 5.6,21.5 5.06,27.5 C5.03,30 5,32 4.95,34.5 C4.7,37.5 4.15,39.8 3.95,42.06 C4,46 7,49.4 10.12,50.6 C13.5,51.5 19.5,52.35 25,52.6 C30.5,52.35 36.5,51.5 39.88,50.6 C43,49.4 46,46 46.05,42.06 C45.85,39.8 45.3,37.5 45.05,34.5 C45,32 44.97,30 44.94,27.5 C44.4,21.5 41,11.5 39.47,6.43"/><path d="M10.53,6.43 C10.53,4.9 39.47,4.9 39.47,6.43 C39.47,7.96 10.53,7.96 10.53,6.43 Z"/><path d="M25,52.6 V90"/><path d="M6.8,95.2 c6,-3.5 30.4,-3.5 36.4,0"/></svg>',
   /* Traced off the owner's photo of the actual glass rather than guessed at:
      the bowl is as wide as it is tall, the rim is 64% of that width, the sides
      run straight between the two, and the base is a shallow cone that tucks
@@ -964,9 +974,23 @@ function glassFor(style, grape, override) {
   if (!style) return null;
   if (style.startsWith("sparkling") || style.startsWith("champagne")) return "champagne";
   if (style === "sweet") return "dessert";
-  /* Pinot Noir, Nebbiolo, Merlot and Cabernet take the Winewings barrel;
-     every other red the wide cone. */
-  if (style.startsWith("red")) return /pinot|nebbiolo|merlot|cabernet/i.test(grape || "") ? "pinot" : "burgundy";
+  /* Pinot Noir, Nebbiolo, Merlot and Cabernet take a Winewings; every other red
+     the wide cone. Which Winewings follows Riedel's own varietal lists: Pinot
+     Noir and Nebbiolo to the Burgundy bowl, Cabernet and Merlot to the Bordeaux
+     cone. The dominant grape decides, since our blends are written name-first in
+     descending share — so Grimalda's "Teran 50%, Merlot 50%" is not a Bordeaux
+     by accident of listing order. Blends led by a third grape fall through to
+     the Bordeaux glass on their Cabernet or Merlot component, which is where
+     Riedel puts Sangiovese too (Brunello is on its Bordeaux list, not the
+     Burgundy one) — that is Tignanello, and Quintarelli's two Veneto wines. */
+  if (style.startsWith("red")) {
+    const g = grape || "";
+    if (!/pinot|nebbiolo|merlot|cabernet/i.test(g)) return "burgundy";
+    const first = g.split(",")[0];
+    if (/pinot noir|nebbiolo/i.test(first)) return "winewingsBurgundy";
+    if (/merlot|cabernet/i.test(first)) return "winewingsBordeaux";
+    return "winewingsBordeaux";
+  }
   /* The wide Chardonnay glass is for the oaked, heavy whites only — the whole
      white Burgundy shelf, plus the barrel-aged Viura, Savagnin and Alsace Pinot
      Gris that sit beside them. Everything else white, including the steely
