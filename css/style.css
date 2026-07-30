@@ -385,17 +385,34 @@ body {
 }
 .modal-nav.prev { left: max(.5rem, calc(50% - 350px - 62px)); }
 .modal-nav.next { right: max(.5rem, calc(50% - 350px - 62px)); }
-.modal-nav:hover { color: var(--text); border-color: var(--gold); }
+/* Only where a pointer can actually hover. On a touch screen :hover latches
+   after a tap and the gold ring stayed lit long after the finger had gone. */
+@media (hover: hover) {
+  .modal-nav:hover { color: var(--text); border-color: var(--gold); }
+}
+/* A tap should not leave a focus ring behind either; a keyboard tab still gets
+   one, which is the whole point of :focus-visible. */
+.modal-nav:focus { outline: none; }
+.modal-nav:focus-visible { outline: none; color: var(--text); border-color: var(--gold); }
+.modal-nav:active { color: var(--text); }
 .modal-nav.hidden { display: none; }
-/* Narrow screens: no room beside the sheet, so the arrows sit on top of its
-   edges — translucent, out of the reading column, still a full touch target. */
+/* Narrow screens: no room beside the sheet, so the arrows sit over its edges.
+   No border there — a bright ring cut in half by the card's edge reads as
+   something broken rather than a control. A shadow gives the disc its edge
+   instead, and it works the same whichever side of the boundary it falls on. */
 @media (max-width: 860px) {
   .modal-nav {
     width: 40px; height: 40px; font-size: 1.4rem;
-    background: rgba(23,21,18,.82); backdrop-filter: blur(2px);
+    background: rgba(23,21,18,.9); backdrop-filter: blur(3px);
+    border-color: transparent;
+    box-shadow: 0 2px 10px rgba(0,0,0,.45);
   }
   .modal-nav.prev { left: .35rem; }
   .modal-nav.next { right: .35rem; }
+  @media (hover: hover) {
+    .modal-nav:hover { border-color: transparent; color: var(--text); }
+  }
+  .modal-nav:focus-visible { border-color: var(--gold); }
 }
 .sheet-grip { display: none; }   /* drag-to-close handle, shown on phones */
 .detail-header {
@@ -707,4 +724,24 @@ body {
   .story p { margin-bottom: .8rem; line-height: 1.55; }
   .story-legend { margin-top: 1rem; padding-top: .8rem; }
   .enter-btn { min-height: 52px; min-width: 220px; margin-bottom: 1rem; font-size: 1.05rem; flex: none; }
+}
+
+/* ---------- "press back again to leave" ---------- */
+/* Sits above everything, including an open wine card, because the back gesture
+   works there too. Pointer-events off: it is a message, never a target. */
+.exit-hint {
+  position: fixed; left: 50%; bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  transform: translate(-50%, 12px);
+  z-index: 200; pointer-events: none;
+  max-width: min(88vw, 30rem);
+  padding: .7rem 1.2rem;
+  background: rgba(36, 34, 32, .96);
+  border: 1px solid var(--gold-soft); border-radius: 999px;
+  color: var(--text); font-size: .95rem; text-align: center;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .5);
+  opacity: 0; transition: opacity .18s ease-out, transform .18s ease-out;
+}
+.exit-hint.show { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) {
+  .exit-hint { transition: none; }
 }

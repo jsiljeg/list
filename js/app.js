@@ -146,6 +146,7 @@ function showStory() {
 /* ---------- main app ---------- */
 let appEntered = false;
 function showApp() {
+  guardBack();
   appEntered = true;
   $("start").classList.add("hidden");
   $("story-screen").classList.add("hidden");
@@ -823,7 +824,46 @@ function closeModal() {
   if (modalOpen && history.state && history.state.theaModal) history.back(); // → popstate → hideModal
   else hideModal();
 }
-window.addEventListener("popstate", () => { if (modalOpen) hideModal(); });
+/* ---------- back button: one press to be asked, two to leave ---------- */
+/* A tablet on a restaurant table gets the back gesture by accident — a thumb on
+   the edge of the screen, a swipe that started too close to the bezel. Leaving
+   the list dumps the guest back to a blank tab, and they have to find the QR
+   code again. So the app keeps one spare history entry of its own: the first
+   back consumes it and says "press again", the second is let through.
+
+   Touch devices only. On a laptop the back button is deliberate, and a browser
+   refusing to go back the first time is worse than the problem. */
+const backGuard = { armed: false, timer: 0, on: false };
+function guardBack() {
+  if (backGuard.on) return;
+  if (!window.matchMedia || !window.matchMedia("(pointer: coarse)").matches) return;
+  backGuard.on = true;
+  history.pushState({ theaGuard: true }, "");
+}
+function showExitHint() {
+  let el = $("exit-hint");
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "exit-hint";
+    el.className = "exit-hint";
+    document.body.appendChild(el);
+  }
+  el.textContent = T().ui.exitHint;
+  el.classList.add("show");
+  clearTimeout(showExitHint._t);
+  showExitHint._t = setTimeout(() => el.classList.remove("show"), 2000);
+}
+window.addEventListener("popstate", () => {
+  if (modalOpen) { hideModal(); return; }
+  if (!backGuard.on) return;                 // desktop, or the app never opened
+  if (backGuard.armed) return;               // second press inside the window: let it go
+  /* First press. Put our entry back so the browser stays where it is, and ask. */
+  backGuard.armed = true;
+  history.pushState({ theaGuard: true }, "");
+  showExitHint();
+  clearTimeout(backGuard.timer);
+  backGuard.timer = setTimeout(() => { backGuard.armed = false; }, 2200);
+});
 
 /* ---------- "Help me choose" sommelier wizard ---------- */
 /* Glass silhouettes traced from the house stemware (product photos):

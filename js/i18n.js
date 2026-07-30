@@ -17,6 +17,7 @@ const I18N = {
 hr: {
   ui: {
     subtitle: "How to solve drinking problems",
+    exitHint: "Pritisnite natrag još jednom za izlaz",
     chooseLanguage: "Odaberite jezik",
     back: "Natrag",
     search: "Pretraži vina…",
@@ -142,6 +143,7 @@ hr: {
 en: {
   ui: {
     subtitle: "How to solve drinking problems",
+    exitHint: "Press back again to leave",
     chooseLanguage: "Choose your language",
     back: "Back",
     search: "Search wines…",
@@ -267,6 +269,7 @@ en: {
 it: {
   ui: {
     subtitle: "How to solve drinking problems",
+    exitHint: "Premi di nuovo indietro per uscire",
     chooseLanguage: "Scegli la lingua",
     back: "Indietro",
     search: "Cerca vini…",
@@ -392,6 +395,7 @@ it: {
 fr: {
   ui: {
     subtitle: "How to solve drinking problems",
+    exitHint: "Appuyez encore sur retour pour quitter",
     chooseLanguage: "Choisissez votre langue",
     back: "Retour",
     search: "Rechercher un vin…",
@@ -517,6 +521,7 @@ fr: {
 de: {
   ui: {
     subtitle: "How to solve drinking problems",
+    exitHint: "Zum Verlassen noch einmal Zurück drücken",
     chooseLanguage: "Sprache wählen",
     back: "Zurück",
     search: "Weine suchen…",
@@ -642,6 +647,7 @@ de: {
 zh: {
   ui: {
     subtitle: "How to solve drinking problems",
+    exitHint: "再次返回即可退出",
     chooseLanguage: "请选择语言",
     back: "返回",
     search: "搜索葡萄酒…",
@@ -767,6 +773,7 @@ zh: {
 sl: {
   "ui": {
     "subtitle": "How to solve drinking problems",
+    "exitHint": "Za izhod še enkrat pritisnite nazaj",
     "chooseLanguage": "Izberite jezik",
     "back": "Nazaj",
     "search": "Iščite vina…",
@@ -1194,6 +1201,7 @@ sl: {
 es: {
   "ui": {
     "subtitle": "How to solve drinking problems",
+    "exitHint": "Pulse atrás de nuevo para salir",
     "chooseLanguage": "Elija su idioma",
     "back": "Volver",
     "search": "Buscar vinos…",
