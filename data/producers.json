@@ -145,7 +145,7 @@
    }
   },
   "Giuseppe Quintarelli": {
-   "region": "Valpolicella Classica, Veneto",
+   "region": "Negrar",
    "blurb": {
     "hr": "Quintarelli je poezija Valpolicelle — beskompromisno sušenje grožđa i godine strpljenja u velikim bačvama. Njegov amarone se ne objašnjava, nego proživi; valpolicella i slatki recioto dolaze iz iste ruke i istog odbijanja žurbe.",
     "en": "Quintarelli is the poetry of Valpolicella — uncompromising grape-drying and years of patience in large casks. His Amarone is not to be explained but lived through; the Valpolicella and the sweet Recioto come from the same hand and the same refusal to hurry.",
@@ -223,7 +223,7 @@
    }
   },
   "Tomac": {
-   "region": "Plešivica",
+   "region": "",
    "blurb": {
     "hr": "Obitelj Tomac pionir je pjenušaca i amfora u Hrvatskoj — na plešivičkim padinama spaja klasičnu metodu s glinom i strpljenjem. Njihova vina imaju živac brežuljaka i karakter koji ne popunjava kategoriju, nego je stvara.",
     "en": "The Tomac family are Croatia's pioneers of sparkling wine and amphora — on Plešivica's slopes they marry the classic method with clay and patience. Their wines carry the nerve of the hills and a character that doesn't fill a category but creates one.",
@@ -249,7 +249,7 @@
    }
   },
   "Sauternes": {
-   "region": "Sauternes, Bordeaux",
+   "region": "",
    "blurb": {
     "hr": "Château d'Yquem je vrhunac Sauternesa — plemenita plijesan na sémillonu daje nektar raskoši i preciznosti. Bira se samo kad je struktura idealna, u trenutku vrhunske ravnoteže: ni premlado, ni preumorno.",
     "en": "Château d'Yquem is the summit of Sauternes — noble rot on sémillon yielding a nectar of opulence and precision. It is chosen only when the structure is ideal, at the moment of perfect balance: neither too young nor too tired.",
@@ -314,7 +314,7 @@
    }
   },
   "Benanti": {
-   "region": "Etna, Sicilia",
+   "region": "",
    "blurb": {
     "hr": "Kuća koja je pokrenula preporod Etne — vulkanski carricante i nerello koji nose pepeo, sol i sjećanje na lavu.",
     "en": "The house that sparked Etna's revival — volcanic Carricante and Nerello carrying ash, salt and the memory of lava.",
@@ -652,7 +652,7 @@
    }
   },
   "Lageder": {
-   "region": "Alto Adige",
+   "region": "",
    "blurb": {
     "hr": "Alpski pionir biodinamike — vina rođena iz planinske svjetlosti, čista i uspravna kao zrak na visini.",
     "en": "An Alpine pioneer of biodynamics — wines born of mountain light, clean and upright as high-altitude air.",
@@ -704,7 +704,7 @@
    }
   },
   "Vodopivec": {
-   "region": "Carso, Friuli",
+   "region": "Sgonico",
    "blurb": {
     "hr": "Vitovska na kraškom kamenu — vino vjetra i stijene, strogo, mineralno i beskompromisno.",
     "en": "Vitovska on karst stone — a wine of wind and rock, austere, mineral and uncompromising.",
@@ -730,7 +730,7 @@
    }
   },
   "López de Heredia": {
-   "region": "Haro, Rioja",
+   "region": "Haro",
    "blurb": {
     "hr": "Kuća u kojoj vrijeme stoji — Rioja koja odbija modu i pušta desetljeća da rade svoj posao prije nego što boca izađe.",
     "en": "A house where time stands still — a Rioja that refuses fashion and lets decades do their work before a bottle ever leaves.",
@@ -743,7 +743,7 @@
    }
   },
   "Murrieta": {
-   "region": "Rioja",
+   "region": "Finca Ygay",
    "blurb": {
     "hr": "Aristokratsko strpljenje Rioje — Castillo Ygay, vino građeno da nadživi naraštaje koji ga otvore, i Capellanía, bijelo odležano toliko dugo da uz njega većina bijelih djeluje ishitreno.",
     "en": "The aristocratic patience of Rioja — Castillo Ygay, built to outlive the generations that open it, and Capellanía, a white aged so long it makes most other whites look hasty.",
@@ -886,7 +886,7 @@
    }
   },
   "Korak": {
-   "region": "Plešivica",
+   "region": "",
    "blurb": {
     "hr": "Plešivička finoća — obiteljski podrum majstor pjenušaca, chardonnaya i pinot crnog, s napetošću koju daju hladni zeleni brežuljci.",
     "en": "Plešivica finesse — a family cellar masterful with sparkling wine, Chardonnay and Pinot Noir, with the tension its cool green hills provide.",
@@ -899,7 +899,7 @@
    }
   },
   "Saints Hills": {
-   "region": "Dingač / Istra",
+   "region": "",
    "blurb": {
     "hr": "Hrvatska ambicija s međunarodnim rukopisom — projekt koji spaja plavac i istarske sorte s preciznošću vrhunskog konzultanta.",
     "en": "Croatian ambition with an international hand — a project marrying Plavac and Istrian varieties to the precision of a top consultant.",
@@ -1055,7 +1055,7 @@
    }
   },
   "Vie di Romans": {
-   "region": "Friuli Isonzo",
+   "region": "",
    "blurb": {
     "hr": "Friulske bijele sa širinom i svjetlom — bogata, teksturirana vina ravnice Isonza, precizna unatoč raskoši.",
     "en": "Friulian whites with breadth and light — rich, textured wines from the Isonzo plain, precise despite their opulence.",
@@ -1159,7 +1159,7 @@
    }
   },
   "Muster": {
-   "region": "Štajerska, Austria",
+   "region": "Leutschach",
    "blurb": {
     "hr": "Žive jantarne kapljice štajerskih brežuljaka — biodinamička bijela vina s maceracijom, divlja, teksturirana i puna karaktera.",
     "en": "The living amber of the Styrian hills — biodynamic skin-contact whites, wild, textured and full of character.",
@@ -1172,7 +1172,7 @@
    }
   },
   "Dipoli": {
-   "region": "Alto Adige",
+   "region": "",
    "blurb": {
     "hr": "Alpski sauvignon reza i bistrine — Peter Dipoli radi bijela i crna vina sjeverne preciznosti, bez ijedne suvišne note.",
     "en": "Alpine Sauvignon of cut and clarity — Peter Dipoli makes whites and reds of northern precision, without a single note too many.",
@@ -1198,7 +1198,7 @@
    }
   },
   "Prinčić": {
-   "region": "Oslavia, Friuli",
+   "region": "",
    "blurb": {
     "hr": "Jantar Oslavije — Dario Prinčić macerira ribollu i vraća drevni friulski način, vina topline, kože i sunca.",
     "en": "The amber of Oslavia — Dario Prinčić macerates Ribolla and reclaims the ancient Friulian way, wines of warmth, leather and sun.",
@@ -1367,7 +1367,7 @@
    }
   },
   "Šember": {
-   "region": "Plešivica",
+   "region": "",
    "blurb": {
     "hr": "Plešivički mjehurići koji ne trebaju francusko ime — pjenušac klasične metode, napet, precizan i ponosno domaći.",
     "en": "Plešivica bubbles that need no French name — a classic-method sparkling, taut, precise and proudly homegrown.",
@@ -1380,7 +1380,7 @@
    }
   },
   "Erdoro": {
-   "region": "Plešivica",
+   "region": "",
    "blurb": {
     "hr": "Ambiciozna premium linija Plešivice — vina koja su domaću apelaciju iznijela na međunarodnu ocjenu i pobijedila.",
     "en": "The ambitious premium line of Plešivica — wines that carried a local appellation to international scoring and won.",
@@ -1406,7 +1406,7 @@
    }
   },
   "Contarini": {
-   "region": "Veneto",
+   "region": "",
    "blurb": {
     "hr": "Pošten Prosecco — venecijanska pjena bez pretenzija, svježa, cvjetna i lagana kao ljetno popodne.",
     "en": "Honest Prosecco — Venetian fizz without pretension, fresh, floral and light as a summer afternoon.",
@@ -1419,7 +1419,7 @@
    }
   },
   "Corte Aura": {
-   "region": "Franciacorta, Lombardia",
+   "region": "",
    "blurb": {
     "hr": "Talijanski odgovor Champagnu — Franciacorta klasične metode, kremasta, fina i pomno njegovana.",
     "en": "Italy's answer to Champagne — a classic-method Franciacorta, creamy, fine and carefully nurtured.",
@@ -1562,7 +1562,7 @@
    }
   },
   "Casa Rojo": {
-   "region": "España",
+   "region": "",
    "blurb": {
     "hr": "Španjolsko sunce razigrano — smjela, moderna vina koja se ne shvaćaju preozbiljno, ali čašu pune užitkom.",
     "en": "Spanish sun at play — bold, modern wines that don't take themselves too seriously, yet fill the glass with pleasure.",
