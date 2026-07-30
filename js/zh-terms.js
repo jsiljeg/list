@@ -372,6 +372,8 @@
     "Zaguine": "扎古伊内",
     "Viganj": "维加尼",
     "Sveti Roko": "圣罗科",
+    "Zabok": "扎博克",
+    "Železna Gora": "扎莱兹纳山",
     "Buzet": "布泽特",
     "Carso": "卡索",
     "Chavignol": "沙维尼奥尔",

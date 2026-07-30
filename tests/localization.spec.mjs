@@ -117,7 +117,7 @@ test.describe("Croatian", () => {
        fruit from Hvar, Vrgorac and Imotski — where naming one of them would be
        picking a favourite. Those stop at the podregija and let the terroir line
        list the plots. Owner's call, 2026-07-30. */
-    const BLENDED_ACROSS_VINOGORJA = new Set(["Jeka Dalmatia 2020"]);
+    const BLENDED_ACROSS_VINOGORJA = new Set(["Jeka Dalmatia 2020", "Jeka Blanc 2024"]);
     const bad = allItems()
       .filter((i) => i.insight.country === "HR" && !BLENDED_ACROSS_VINOGORJA.has(i.name))
       .map((i) => ({ name: i.name, parts: String(i.insight.region || "").split(",").map((s) => s.trim()).filter(Boolean) }))

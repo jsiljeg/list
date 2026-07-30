@@ -35,7 +35,7 @@
           "alcohol": "",
           "dosage": "Brut"
          },
-         "terroir": "Štrigova"
+         "terroir": "Železna Gora, Štrigova"
         },
         {
          "name": "Bregh Rose",
@@ -43,7 +43,7 @@
          "price": 8,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Krapina, Zagorje-Međimurje",
+          "region": "Zabok, Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling_rose",
           "body": "light",
@@ -306,7 +306,7 @@
           "alcohol": "13.3",
           "sweetness": "dry"
          },
-         "terroir": "Štrigova"
+         "terroir": "Železna Gora, Štrigova"
         },
         {
          "name": "Stalagmit 2022",
@@ -625,7 +625,7 @@
          "price": 8,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Krapina, Zagorje-Međimurje",
+          "region": "Zabok, Zagorje-Međimurje",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -651,7 +651,7 @@
          "price": 10,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon, Cabernet Franc",
-          "region": "Krapina, Zagorje-Međimurje",
+          "region": "Zabok, Zagorje-Međimurje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -1134,7 +1134,7 @@
            "score": "95"
           }
          ],
-         "terroir": "Štrigova",
+         "terroir": "Železna Gora, Štrigova",
          "tags": [
           "drinking_now"
          ]
@@ -1178,7 +1178,7 @@
           "alcohol": "",
           "dosage": "Brut"
          },
-         "terroir": "Štrigova"
+         "terroir": "Železna Gora, Štrigova"
         },
         {
          "name": "Bregh Rose",
@@ -1186,7 +1186,7 @@
          "price": 48,
          "insight": {
           "grape": "Cabernet Sauvignon",
-          "region": "Krapina, Zagorje-Međimurje",
+          "region": "Zabok, Zagorje-Međimurje",
           "country": "HR",
           "style": "sparkling_rose",
           "body": "light",
@@ -2924,7 +2924,7 @@
          "price": 39,
          "insight": {
           "grape": "Graševina",
-          "region": "Krapina, Zagorje-Međimurje",
+          "region": "Zabok, Zagorje-Međimurje",
           "country": "HR",
           "style": "white_fresh",
           "body": "light",
@@ -2950,7 +2950,7 @@
          "price": 46,
          "insight": {
           "grape": "Chardonnay",
-          "region": "Krapina, Zagorje-Međimurje",
+          "region": "Zabok, Zagorje-Međimurje",
           "country": "HR",
           "style": "white_rich",
           "body": "medium",
@@ -3086,7 +3086,7 @@
           "alcohol": "13.3",
           "sweetness": "dry"
          },
-         "terroir": "Štrigova"
+         "terroir": "Železna Gora, Štrigova"
         },
         {
          "name": "Riesling 2024",
@@ -3113,7 +3113,7 @@
           "alcohol": "",
           "sweetness": "dry"
          },
-         "terroir": "Štrigova"
+         "terroir": "Železna Gora, Štrigova"
         },
         {
          "name": "Malvazija 2025",
@@ -3474,7 +3474,7 @@
          "price": 130,
          "insight": {
           "grape": "Pošip 50%, Žilavka 35%, Kujundžuša 15%",
-          "region": "Korčula, Srednja i Južna Dalmacija",
+          "region": "Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "white_mineral",
           "body": "medium",
@@ -6676,7 +6676,7 @@
          "price": 50,
          "insight": {
           "grape": "Cabernet Sauvignon, Merlot",
-          "region": "Krapina, Zagorje-Međimurje",
+          "region": "Zabok, Zagorje-Međimurje",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -6702,7 +6702,7 @@
          "price": 75,
          "insight": {
           "grape": "Merlot, Cabernet Sauvignon, Cabernet Franc",
-          "region": "Krapina, Zagorje-Međimurje",
+          "region": "Zabok, Zagorje-Međimurje",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -11540,7 +11540,7 @@
            "score": "95"
           }
          ],
-         "terroir": "Štrigova",
+         "terroir": "Železna Gora, Štrigova",
          "tags": [
           "drinking_now"
          ]
