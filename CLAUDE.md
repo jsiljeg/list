@@ -182,7 +182,7 @@ reads as an eye or a sun, and the side-on saucer that shipped read to the owner
 as a smiling mouth. Photographs, not glyphs.
 
 Sizing follows from that: recoloured lace needs room. The bowl closing mark is
-190px wide at .7 opacity — the floor, and it only holds there because both
+160px wide at .7 opacity — the floor, and it only holds there because both
 assets are rendered at the source's own width with a **tight** saturation window
 (.34-.44, not .30-.52). A wide ramp feathers every nail edge; at 1:1 the face
 was visibly soft with it and resolves individual nails without it, and at the
@@ -195,6 +195,31 @@ The face is a background on `.story-screen::before`, which is `display:none`
 until a language is picked, so it must stay in the `<link rel="preload">` in
 `index.html` — without it the fetch only starts at the tap and the splash lands
 bare.
+
+## Glass icons: measure, never eyeball (settled 2026-07-30)
+
+`GLASS_ICONS` in `js/app.js` are traced from product photos of the house
+stemware. Both glasses the owner sent a photo of turned out **wrong in the same
+direction** when they had been drawn by eye — too narrow at the shoulder, and
+ending in a hard V where the real bowl tapers gradually into the stem. So:
+
+    python scripts/trace-outline.py photo.png --marks
+
+scans the silhouette row by row (leftmost/rightmost pixel beating that row's own
+background median) and reports the two numbers that get guessed wrong:
+**rim / widest** — .64 on both glasses measured so far, where every eyeballed
+attempt drew .75, which is a white-wine tulip — and **where the bowl merges into
+the stem**, 57-65% down rather than the ~45% a drawn V implies.
+
+Then map photo pixels into the viewBox with one uniform scale and **verify by
+overlaying the candidate path back on the photo at that exact offset and
+scale**. A stretched overlay flatters a wrong curve; one glass was approved off
+a mismatched one and had to be redone. The icons are all drawn to a single 60px
+height, so a glass that is genuinely wider gets a wider viewBox (the red cone is
+46 against the others' 40) rather than different CSS.
+
+Still drawn from the eye, so presumed wrong until photographed: **riesling,
+chardonnay, dessert**.
 
 ## Windows environment notes
 

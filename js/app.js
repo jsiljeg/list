@@ -824,13 +824,15 @@ window.addEventListener("popstate", () => { if (modalOpen) hideModal(); });
    and Cabernet/Merlot reds, the wide straight-sided cone on a long stem for all
    other reds, small dessert tulip. */
 const GLASS_ICONS = {
-  /* Also traced off the owner's photo, and it was narrower than the glass by
-     half: the old outline hugged the highlight down the middle rather than the
-     rim. The real one is a tall tulip — rim at three-quarters of the widest
-     width, the belly just under half-way down, then a long cone to a point
-     where the bowl meets the stem. The faint inner line is the crystal sheen,
-     kept from the old drawing. */
-  champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M8.1,4 C5.4,12 4.1,20 4.1,27.5 C4.1,34 8.4,43.5 20,53 C31.6,43.5 35.9,34 35.9,27.5 C35.9,20 34.6,12 31.9,4 Z"/><path d="M20,53 V90"/><path d="M9.5,94.5 c4,-3.2 21,-3.2 21,0"/><path d="M9.6,10 C7.6,17 6.8,23 6.9,29" style="stroke-width:.8;opacity:.5"/></svg>',
+  /* Measured off the owner's photo rather than judged by eye: a row-by-row scan
+     of the silhouette (scripts/trace-outline.py) gives rim 160px, widest 249px,
+     so the rim is .64 of the widest — every drawn-from-the-eye attempt made it
+     .75 and got a white-wine tulip. The other thing the scan settled is that
+     the bowl does not end in a V: it tapers continuously and merges into the
+     stem two-thirds of the way down, which is where the elegance lives. Rim
+     drawn as the shallow ellipse it is when seen from above; the faint inner
+     line is the crystal sheen, kept from the first drawing. */
+  champagne: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M9.8,4.7 C8.2,11.5 4.9,20.5 4.1,29.4 C4.0,40.3 19.4,50 20,66 C20.6,50 36,40.3 35.9,29.4 C35.1,20.5 31.8,11.5 30.2,4.7"/><path d="M9.8,4.7 C9.8,3 30.2,3 30.2,4.7 C30.2,6.4 9.8,6.4 9.8,4.7 Z"/><path d="M20,66 V92"/><path d="M4.3,95.2 c6,-3.4 25.4,-3.4 31.4,0"/><path d="M11.2,9.5 C9,17 7.6,24 7.3,30.5" style="stroke-width:.8;opacity:.45"/></svg>',
   riesling: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13.5,8 C12,16 11.2,26 11.2,32 L20,48 L28.8,32 C28.8,26 28,16 26.5,8 L13.5,8"/><path d="M20,48 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   chardonnay: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M11,10 C9.4,16 8.6,24 8.6,30 L20,46 L31.4,30 C31.4,24 30.6,16 29,10 L11,10"/><path d="M20,46 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
   pinot: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M13,6 C9.8,12 7.8,21 7.8,29 C7.8,37 8.4,41.5 9.5,43.5 C12,45.8 28,45.8 30.5,43.5 C31.6,41.5 32.2,37 32.2,29 C32.2,21 30.2,12 27,6 L13,6"/><path d="M20,45.8 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>',
