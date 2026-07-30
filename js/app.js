@@ -332,7 +332,12 @@ const SEARCH_ALIAS = {
   "sauvignon blanc": "长相思",
   "syrah": "shiraz 西拉",
   "nebbiolo": "内比奥罗",
-  "sangiovese": "brunello 桑娇维塞",
+  /* "brunello" is deliberately NOT here. It is a Montalcino synonym for
+     Sangiovese Grosso, so listing it as a grape alias made every Tuscan
+     Sangiovese answer to it — a guest typing "brunello" got eighteen wines,
+     four of them actually from Montalcino. The "montalcino" alias below already
+     carries it, which is the appellation the guest means. */
+  "sangiovese": "桑娇维塞",
   "malvazija": "malvasia malvasia istriana 马尔瓦齐娅",
   "plavac mali": "plavac 普拉瓦茨",
   "furmint": "福尔明特",
@@ -592,7 +597,7 @@ function openDetail(ref, back, scope) {
   // Formal region name (localized) + country, always.
   const region = [esc(localizeRegion(ins.region)), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
 
-  const glass = glassFor(ins.style, ins.grape, ins.glass);
+  const glass = glassFor(ins.style, ins.grape, ins.glass, ins.region);
   const noteText = item.note && (item.note[lang] || item.note.en || item.note.hr);
   $("modal-body").innerHTML = `
     ${back ? `<button class="detail-back" type="button">${esc(t.helper.backToWines)}</button>` : ""}
@@ -855,7 +860,7 @@ const GLASS_ICONS = {
      dead level for thirty rows before flaring again. The Pinot's bowl also ends
      higher (51% of the glass against 55%), so it sits rounder and squatter over
      a longer stem. Checked side by side at 60px: they read apart. */
-  winewingsBordeaux: '<svg viewBox="0 0 51 100" aria-hidden="true"><path d="M10.25,8.65 C9.2,14.5 7.5,22.5 6.82,28 C6.2,33.5 5.6,40.5 4.09,46.2 C4.1,49.6 6.3,52.4 8.84,53.5 C13.5,54.9 22,56.35 25.5,56.7 C29,56.35 37.5,54.9 42.16,53.5 C44.7,52.4 46.9,49.6 46.91,46.2 C45.4,40.5 44.8,33.5 44.18,28 C43.5,22.5 41.8,14.5 40.75,8.65"/><path d="M10.25,8.65 C10.25,6.3 40.75,6.3 40.75,8.65 C40.75,11 10.25,11 10.25,8.65 Z"/><path d="M25.5,56.7 V90"/><path d="M7.3,95.2 c6,-3.5 30.4,-3.5 36.4,0"/></svg>',
+  winewingsBordeaux: '<svg viewBox="0 0 51 100" aria-hidden="true"><path d="M10.25,8.65 L6.6,29 C6,35 5.2,41.5 4.09,46.2 C4.15,49.8 6.2,52.5 8.84,53.6 C13.8,55.1 21.5,56.4 25.5,56.6 C29.5,56.4 37.2,55.1 42.16,53.6 C44.8,52.5 46.85,49.8 46.91,46.2 C45.8,41.5 45,35 44.4,29 L40.75,8.65"/><path d="M10.25,8.65 C10.25,6.3 40.75,6.3 40.75,8.65 C40.75,11 10.25,11 10.25,8.65 Z"/><path d="M25.5,56.6 V90"/><path d="M7.3,95.2 c6,-3.5 30.4,-3.5 36.4,0"/></svg>',
   winewingsBurgundy: '<svg viewBox="0 0 50 100" aria-hidden="true"><path d="M10.53,6.43 C9,11.5 5.6,21.5 5.06,27.5 C5.03,30 5,32 4.95,34.5 C4.7,37.5 4.15,39.8 3.95,42.06 C4,46 7,49.4 10.12,50.6 C13.5,51.5 19.5,52.35 25,52.6 C30.5,52.35 36.5,51.5 39.88,50.6 C43,49.4 46,46 46.05,42.06 C45.85,39.8 45.3,37.5 45.05,34.5 C45,32 44.97,30 44.94,27.5 C44.4,21.5 41,11.5 39.47,6.43"/><path d="M10.53,6.43 C10.53,4.9 39.47,4.9 39.47,6.43 C39.47,7.96 10.53,7.96 10.53,6.43 Z"/><path d="M25,52.6 V90"/><path d="M6.8,95.2 c6,-3.5 30.4,-3.5 36.4,0"/></svg>',
   /* Traced off the owner's photo of the actual glass rather than guessed at:
      the bowl is as wide as it is tall, the rim is 64% of that width, the sides
@@ -965,7 +970,7 @@ function wineZh(name) {
   for (const k in ZH_WINE) if (name.indexOf(k) !== -1) return ZH_WINE[k];
   return "";
 }
-function glassFor(style, grape, override) {
+function glassFor(style, grape, override, region) {
   /* `insight.glass` in wines.json wins over everything below: which glass a
      bottle gets is a sommelier's call, and a grape-name rule cannot make it.
      Grimalda and Ottocento Crni are the cases in point — Merlot on paper, but
@@ -984,12 +989,21 @@ function glassFor(style, grape, override) {
      Riedel puts Sangiovese too (Brunello is on its Bordeaux list, not the
      Burgundy one) — that is Tignanello, and Quintarelli's two Veneto wines. */
   if (style.startsWith("red")) {
-    const g = grape || "";
-    if (!/pinot|nebbiolo|merlot|cabernet/i.test(g)) return "burgundy";
+    const g = grape || "", r = region || "";
     const first = g.split(",")[0];
     if (/pinot noir|nebbiolo/i.test(first)) return "winewingsBurgundy";
-    if (/merlot|cabernet/i.test(first)) return "winewingsBordeaux";
-    return "winewingsBordeaux";
+    /* Riedel's Bordeaux list, read literally: the Cabernet family and Merlot,
+       Zinfandel under every name it answers to — Kratošija in the Balkans,
+       Tribidrag on our Dalmatian labels, Primitivo in Puglia — and Brunello,
+       which is Sangiovese from Montalcino. Plavac mali is a different grape,
+       Tribidrag's offspring rather than Tribidrag, and stays on the cone. */
+    if (/merlot|cabernet|tribidrag|zinfandel|primitivo|kratošija/i.test(first)) return "winewingsBordeaux";
+    if (/sangiovese/i.test(first) && /montalcino/i.test(r)) return "winewingsBordeaux";
+    /* Blends led by a third grape still reach a Winewings on their Cabernet or
+       Merlot component: Tignanello, and Quintarelli's two Veneto wines. */
+    if (/merlot|cabernet/i.test(g)) return "winewingsBordeaux";
+    if (/pinot noir|nebbiolo/i.test(g)) return "winewingsBurgundy";
+    return "burgundy";
   }
   /* The wide Chardonnay glass is for the oaked, heavy whites only — the whole
      white Burgundy shelf, plus the barrel-aged Viura, Savagnin and Alsace Pinot

@@ -235,9 +235,12 @@ dominant grape decides, and blends led by a third grape fall through to the
 Bordeaux glass on their Cabernet/Merlot component — which is where Riedel puts
 Sangiovese anyway (Brunello is on its Bordeaux list).
 
-Only wines that were already on a Winewings were split; nothing moved off the
-cone. So Brunello, Beaujolais and the other Riedel-listed reds we pour stay on
-the cone until the owner says otherwise.
+Riedel's Bordeaux list is now read literally, so **Kratošija** brings Zinfandel,
+Tribidrag and Primitivo with it (Plavac mali is Tribidrag's *offspring*, a
+different grape, and stays on the cone), and **Brunello** is matched as
+Sangiovese from Montalcino — which also picks up Soldera's Case Basse,
+declassified in name but the same wine from the same hill. Beaujolais Cru is the
+one Riedel-listed red still on the cone.
 
 **Riedel's own guide answers the Chablis question**: the Performance/Veloce
 Chardonnay is listed for "Burgundy (white), Chablis, Chardonnay (oaked),
@@ -262,6 +265,15 @@ The wide Chardonnay glass is the oaked-white glass: `white_rich` only, which is
 the white Burgundy shelf plus the barrel-aged Viura, Savagnin and Alsace Pinot
 Gris beside it. Steely Chablis (`white_mineral`) and unoaked Chardonnay
 (`white_fresh`) take the Riesling glass.
+
+## Search aliases: appellations, not grape synonyms (2026-07-30)
+
+`SEARCH_ALIAS` widens the haystack, and a synonym that is *also* an appellation
+must not be filed under the grape. "brunello" sat on `sangiovese`, so a guest
+typing it got eighteen Tuscan reds of which four were from Montalcino. It now
+lives only on `montalcino`, which is the place the guest means — and that alias
+also reaches Case Basse, whose label never says Brunello. Same test for any
+future one: does the word name a grape everywhere, or a place?
 
 ## Descriptor capitalisation (settled 2026-07-30)
 
