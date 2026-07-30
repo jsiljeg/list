@@ -311,6 +311,24 @@ it and a blanket lowercase would break the nouns. Proper terms keep their own
 capitals wherever they fall: Champagne, Blanc de Blancs, and the dosage (`Brut`),
 which is a label term rather than a description.
 
+## The Croatian flag is the official artwork (2026-07-30)
+
+Nine flags are drawn by hand in `js/app.js`; Croatia is not. `assets/flag-hr.svg`
+carries the coat of arms verbatim from the public-domain `Flag_of_Croatia.svg`
+on Wikimedia Commons, re-framed from the source's 1:2 onto the 60x40 box the
+rest of the set uses — the arms keep their 62% of flag height and their
+off-centre vertical placement (44.9%), so the shield straddles the bands exactly
+as on the real flag. Two things to know if it is ever touched: the root `<svg>`
+**must** declare `xmlns:xlink`, because the artwork uses `<use xlink:href="#lion">`
+and without it the file silently fails to parse and every flag renders 0x0; and
+it is referenced as an `<img class="flag-img">` rather than inlined, because
+`hrFlag()` is called for the language button, the header switch and every
+Croatian country heading, and 67 kB of path data would be pasted into the DOM
+once per call. CSS sizes `.flag-img` alongside the sibling `svg` selectors.
+
+Emoji were the other option and do not work: flag emoji need a font glyph, and
+Windows ships none — Chrome on Windows renders 🇭🇷 as the letters "HR".
+
 ## Windows environment notes
 
 - Git Bash paths (`/c/...`) don't work inside `python -c` — pass `C:/...` style paths.

@@ -99,7 +99,7 @@ body {
 }
 .lang-btn:active { transform: scale(.97); }
 .lang-btn:hover, .lang-btn:focus-visible { border-color: var(--gold); outline: none; }
-.lang-btn svg { width: 42px; height: 28px; border-radius: 3px; flex: none; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
+.lang-btn svg, .lang-btn .flag-img { width: 42px; height: 28px; border-radius: 3px; flex: none; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
 
 /* ---------- Header ---------- */
 .header {
@@ -270,7 +270,7 @@ body {
   text-transform: uppercase;
 }
 .country-flag { line-height: 0; }
-.country-flag svg { width: 27px; height: 18px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
+.country-flag svg, .country-flag .flag-img { width: 27px; height: 18px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255,255,255,.12); }
 .country::after { content: ""; display: inline-block; width: 40px; height: 1px; background: var(--gold); margin-left: .8rem; vertical-align: middle; }
 
 .item {
@@ -313,7 +313,7 @@ body {
 }
 .item-chevron { color: var(--text-faint); font-size: 1.1rem; align-self: center; }
 .item-flag { margin-left: .55rem; line-height: 0; display: inline-block; vertical-align: -3px; }
-.item-flag svg { width: 19px; height: 13px; border-radius: 2px; opacity: .9; box-shadow: 0 0 0 1px rgba(255,255,255,.1); }
+.item-flag svg, .item-flag .flag-img { width: 19px; height: 13px; border-radius: 2px; opacity: .9; box-shadow: 0 0 0 1px rgba(255,255,255,.1); }
 .search-context { display: block; color: var(--text-faint); font-size: .8rem; margin-top: .15rem; }
 .no-results { color: var(--text-dim); text-align: center; padding: 3rem 0; font-size: 1.05rem; }
 
@@ -676,7 +676,7 @@ body {
   .start-sub { font-size: .7rem; max-width: 280px; line-height: 1.4; }
   .lang-buttons { gap: .45rem; }
   .lang-btn { min-width: 46%; min-height: 44px; padding: .4rem .7rem; font-size: .9rem; gap: .5rem; }
-  .lang-btn svg { width: 28px; height: 18px; }
+  .lang-btn svg, .lang-btn .flag-img { width: 28px; height: 18px; }
 
   /* main app header: keep it small so wine content shows immediately */
   .header { padding: .5rem .7rem 0; }
