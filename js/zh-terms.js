@@ -357,6 +357,7 @@
     "Brtonigla": "布尔托尼格拉",
     "Buje": "布伊耶",
     "Cupiga": "库皮加",
+    "Novalja": "诺瓦利亚",
     "Buzet": "布泽特",
     "Carso": "卡索",
     "Chavignol": "沙维尼奥尔",
