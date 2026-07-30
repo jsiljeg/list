@@ -9628,7 +9628,8 @@
           ],
           "temp": "16–18",
           "alcohol": "16.5",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "burgundy"
          },
          "terroir": "",
          "note": {
@@ -9681,7 +9682,8 @@
           ],
           "temp": "16–18",
           "alcohol": "15",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "burgundy"
          },
          "terroir": "",
          "tags": [
