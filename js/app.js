@@ -1170,21 +1170,29 @@ document.addEventListener("keydown", (e) => {
    swiping). Normal content scrolling is untouched in between. */
 (function () {
   const sheet = $("modal-sheet");
-  if (!sheet) return;
+  const modal = $("modal");
+  if (!sheet || !modal) return;
   let startY = 0, startX = 0, dy = 0, dx = 0, mode = "none", dragging = false, axis = "";
   /* A horizontal drag that starts on a scrollable row (chip strips) belongs to
      that row, not to us. */
   const onScroller = (el) => {
-    for (let n = el; n && n !== sheet; n = n.parentElement) {
+    for (let n = el; n && n !== modal; n = n.parentElement) {
       if (n.scrollWidth > n.clientWidth + 4) return true;
     }
     return false;
   };
-  sheet.addEventListener("touchstart", (e) => {
+  /* Bound to the modal rather than the card. On a tablet the card is 700px wide
+     inside a 1024px screen, so listening on the card alone left a 160px dead
+     strip down each side — which is exactly where a thumb starts. A sideways
+     drag from the backdrop now steps wines too; the drag-away stays a gesture
+     on the card itself, since dragging the backdrop downwards should not throw
+     the card off the screen. */
+  modal.addEventListener("touchstart", (e) => {
     if (e.touches.length !== 1) { dragging = false; return; }
+    const onCard = sheet.contains(e.target);
     const atTop = sheet.scrollTop <= 0;
     const atBottom = sheet.scrollTop + sheet.clientHeight >= sheet.scrollHeight - 1;
-    mode = atTop && atBottom ? "both" : atTop ? "down" : atBottom ? "up" : "none";
+    mode = !onCard ? "none" : atTop && atBottom ? "both" : atTop ? "down" : atBottom ? "up" : "none";
     const canStep = (detailNav.prev || detailNav.next) && !onScroller(e.target);
     if (mode === "none" && !canStep) { dragging = false; return; }
     startY = e.touches[0].clientY; startX = e.touches[0].clientX;
@@ -1192,7 +1200,7 @@ document.addEventListener("keydown", (e) => {
     sheet.style.transition = "none";
   }, { passive: true });
   const allowed = () => mode === "both" || (mode === "down" && dy > 0) || (mode === "up" && dy < 0);
-  sheet.addEventListener("touchmove", (e) => {
+  modal.addEventListener("touchmove", (e) => {
     if (!dragging) return;
     dy = e.touches[0].clientY - startY;
     dx = e.touches[0].clientX - startX;
@@ -1306,10 +1314,21 @@ function stepSection(dir) {
   return true;
 }
 (function () {
-  const area = $("content");
+  /* The whole app, not just #content. The list column is capped at 900px, so on
+     a 1024px tablet it left a 62px dead gutter down each edge — and the footer,
+     which a short category now parks at the bottom of the screen, was dead too.
+     Both are where a thumb naturally lands. The chip strip still wins its own
+     gestures: it is horizontally scrollable, so onScroller() bails on it. */
+  const area = $("app") || $("content");
   if (!area) return;
   let sx = 0, sy = 0, dx = 0, dy = 0, axis = "", live = false;
   const onScroller = (el) => {
+    /* The header owns its own gestures: the chip strip scrolls sideways, and a
+       swipe across the mode buttons or the search field is not a request for the
+       next section. Checking scrollWidth alone was not enough — at 1024px the
+       chips sometimes fit exactly, and then the strip is not a scroller and the
+       swipe was stolen from it. */
+    if (el && el.closest && el.closest(".header")) return true;
     for (let n = el; n && n !== area; n = n.parentElement) {
       if (n.scrollWidth > n.clientWidth + 4) return true;
     }

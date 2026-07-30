@@ -311,6 +311,27 @@ it and a blanket lowercase would break the nouns. Proper terms keep their own
 capitals wherever they fall: Champagne, Blanc de Blancs, and the dosage (`Brut`),
 which is a label term rather than a description.
 
+## Swipes are bound to the app, not the column (2026-07-30)
+
+The section swipe listens on `#app` and the sheet swipe on `#modal`, not on
+`#content` and `#modal-sheet`. Binding them to the inner element left dead
+strips exactly where a thumb starts: the list column is capped at 900px, so a
+1024px tablet has a 62px gutter down each edge, the sheet is 700px in the same
+1024px screen (160px each side), and the footer — which a short category now
+parks at the bottom of the screen — was outside `#content` altogether.
+
+Two guards go with it. The header is excluded by `closest(".header")` rather
+than by scrollWidth, because at 1024px the chip strip sometimes fits exactly and
+then it is not a scroller and the swipe gets stolen from it. And the sheet's
+drag-away still requires the touch to start **on the card** (`sheet.contains`) —
+only the sideways step is allowed from the backdrop, since dragging the backdrop
+down should not throw the card off the screen.
+
+Test it with real input, not synthetic TouchEvents: dispatch through CDP
+(`Input.dispatchTouchEvent`) at several viewports, and check the dead zones
+specifically — a swipe down the middle of a phone passes while a tablet edge
+fails.
+
 ## The Croatian flag is the official artwork (2026-07-30)
 
 Nine flags are drawn by hand in `js/app.js`; Croatia is not. `assets/flag-hr.svg`
