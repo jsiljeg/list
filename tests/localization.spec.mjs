@@ -95,6 +95,20 @@ test.describe("Croatian", () => {
     expect(bad, "Croatian wines with an empty region").toEqual([]);
   });
 
+  test("a terroir never repeats a rung of its own region", async () => {
+    /* Owner, 2026-07-30, after catching it five times. Before the vinogorje
+       rework "Dingač, Pelješac" was informative, because the region line only
+       said "Srednja i Južna Dalmacija". Once Pelješac became the vinogorje, the
+       second half of every such terroir was the line above it, said twice. */
+    const bad = [];
+    for (const it of allItems()) {
+      const reg = String(it.insight.region || "").split(",").map((s) => s.trim()).filter(Boolean);
+      const ter = String(it.terroir || "").split(",").map((s) => s.trim()).filter(Boolean);
+      for (const t of ter) if (reg.includes(t)) bad.push(`${it.name}: terroir "${it.terroir}" repeats "${t}"`);
+    }
+    expect([...new Set(bad)]).toEqual([]);
+  });
+
   test("every Croatian region is a vinogorje + podregija pair", async () => {
     /* The convention settled off the official hierarchy. A single rung means the
        vinogorje was never added; three means a regija crept in. */

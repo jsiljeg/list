@@ -333,7 +333,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Pelješac",
+         "terroir": "Ponikve",
          "note": {
           "hr": "Frano je posadio rukatac tamo gdje svi sade plavac, i onda ga pustio da stoji. Kamen, sol i živac — i ništa što bi se moglo nazvati šminkom.",
           "en": "Frano planted Rukatac where everyone plants Plavac, and then left it alone. Stone, salt and nerve — and nothing you could call make-up.",
@@ -371,7 +371,7 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Korčula"
+         "terroir": ""
         },
         {
          "name": "Riesling Butterfly 2024",
@@ -745,7 +745,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Pelješac"
+         "terroir": ""
         },
         {
          "name": "Teran Barbarossa 2020",
@@ -916,7 +916,7 @@
           "alcohol": "15",
           "sweetness": "dry"
          },
-         "terroir": "Dingač, Pelješac"
+         "terroir": "Dingač"
         },
         {
          "name": "Red 2020",
@@ -1078,7 +1078,7 @@
           "alcohol": "",
           "sweetness": "sweet"
          },
-         "terroir": "Pelješac",
+         "terroir": "",
          "note": {
           "hr": "Zlatno-jantarne boje, guste i uljaste teksture — prošek prepun suhog voća, naranče i oraha, s vrlo dugim završetkom.",
           "en": "Golden-amber and dense, almost oily in texture — a prošek layered with dried fruit, orange peel and walnut, finishing very long.",
@@ -3313,7 +3313,7 @@
           "alcohol": "13",
           "sweetness": "dry"
          },
-         "terroir": "Korčula"
+         "terroir": ""
         },
         {
          "name": "Pošip 2024",
@@ -3340,7 +3340,7 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Korčula"
+         "terroir": ""
         },
         {
          "name": "Grk 2024",
@@ -3367,7 +3367,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Lumbarda, Korčula"
+         "terroir": "Lumbarda"
         },
         {
          "name": "Stalagmit 2022",
@@ -3394,7 +3394,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Pelješac",
+         "terroir": "Ponikve",
          "note": {
           "hr": "Frano je posadio rukatac tamo gdje svi sade plavac, i onda ga pustio da stoji. Kamen, sol i živac — i ništa što bi se moglo nazvati šminkom.",
           "en": "Frano planted Rukatac where everyone plants Plavac, and then left it alone. Stone, salt and nerve — and nothing you could call make-up.",
@@ -3431,7 +3431,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Čara, Korčula"
+         "terroir": "Čara"
         },
         {
          "name": "Grk 2025",
@@ -3458,7 +3458,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Lumbarda, Korčula"
+         "terroir": "Lumbarda"
         },
         {
          "name": "Jeka Blanc 2024",
@@ -6987,7 +6987,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Pelješac"
+         "terroir": ""
         },
         {
          "name": "Postup Mare 2020",
@@ -7015,7 +7015,7 @@
           "alcohol": "15",
           "sweetness": "dry"
          },
-         "terroir": "Postup, Pelješac"
+         "terroir": "Postup"
         },
         {
          "name": "Dingač 2021",
@@ -7042,7 +7042,7 @@
           "alcohol": "15",
           "sweetness": "dry"
          },
-         "terroir": "Dingač, Pelješac"
+         "terroir": "Dingač"
         },
         {
          "name": "Zinfandel 2019",
@@ -7069,7 +7069,7 @@
           "alcohol": "15",
           "sweetness": "dry"
          },
-         "terroir": "Pelješac"
+         "terroir": ""
         },
         {
          "name": "Black 2022",
@@ -7097,7 +7097,7 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Dingač, Pelješac"
+         "terroir": "Dingač"
         },
         {
          "name": "Tribidrag 2022",
@@ -7151,7 +7151,7 @@
           "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": "Korčula"
+         "terroir": ""
         },
         {
          "name": "Pape 2023",
@@ -7207,7 +7207,7 @@
           "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": "Ponikve, Pelješac",
+         "terroir": "Ponikve",
          "note": {
           "hr": "Kamen, bura i strpljenje — plavac mali koji dokazuje da hrvatska vina stoje uz bok najboljima.",
           "en": "Stone, wind and patience — a Plavac Mali proving Croatian wine stands beside the very best.",
@@ -7278,7 +7278,7 @@
           "alcohol": "15",
           "sweetness": "dry"
          },
-         "terroir": "Dingač, Pelješac",
+         "terroir": "Dingač",
          "note": {
           "hr": "Stare loze Dingača — kompleksnost i zrelost tamo gdje vino trenutno pruža najviše.",
           "en": "Old vines of Dingač — complexity and maturity where the wine gives its most right now.",
@@ -7356,7 +7356,7 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Podgreben, Primošten"
+         "terroir": "Podgreben"
         },
         {
          "name": "Pepejuh 2019",
@@ -7387,7 +7387,7 @@
           "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": "Pelješac",
+         "terroir": "",
          "note": {
           "hr": "Jedan od najboljih Dingača koji ne može nositi to ime jer vino dozrijeva u zagrebačkom Markuševcu.",
           "en": "One of the finest Dingač wines that cannot carry the name, because it matures in Markuševec, Zagreb.",
@@ -7429,7 +7429,7 @@
           "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": "Pelješac",
+         "terroir": "",
          "note": {
           "hr": "Jedan od najboljih Dingača koji ne može nositi to ime jer vino dozrijeva u zagrebačkom Markuševcu.",
           "en": "One of the finest Dingač wines that cannot carry the name, because it matures in Markuševec, Zagreb.",
@@ -7471,7 +7471,7 @@
           "alcohol": "15",
           "sweetness": "dry"
          },
-         "terroir": "Dingač, Pelješac"
+         "terroir": "Dingač"
         }
        ]
       },
@@ -11411,7 +11411,7 @@
           "alcohol": "",
           "sweetness": "sweet"
          },
-         "terroir": "Pelješac",
+         "terroir": "",
          "tags": [
           "drinking_now"
          ]
@@ -11443,7 +11443,7 @@
           "alcohol": "",
           "sweetness": "sweet"
          },
-         "terroir": "Pelješac",
+         "terroir": "",
          "note": {
           "hr": "Zlatno-jantarne boje, guste i uljaste teksture — prošek prepun suhog voća, naranče i oraha, s vrlo dugim završetkom.",
           "en": "Golden-amber and dense, almost oily in texture — a prošek layered with dried fruit, orange peel and walnut, finishing very long.",
