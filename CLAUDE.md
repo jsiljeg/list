@@ -93,7 +93,10 @@ empty string deliberately suppresses the producer-region fallback in
   the same reason France stops above the country. All 79 Croatian wines were
   converted on 2026-07-30 (they carried the podregija alone before). Watch two
   traps: **Skradin is Dalmatinska zagora**, not Sjeverna Dalmacija, and
-  **Zelina is Prigorje-Bilogora** while Kutina is Moslavina. Vinogorje names
+  **Zelina is Prigorje-Bilogora** while Kutina is Moslavina. **Komarna is its own
+  rung** (owner's decision, 2026-07-30) — officially it sits under Neretva, but
+  no Komarna estate would put "Neretva" on a label, and the whole point of the
+  appellation is that it is not the delta. Vinogorje names
   keep the spaced en-dash the regulation uses — `Voloder – Ivanić-Grad`,
   `Plešivica – Okić`.
 - **China:** no appellation system exists, so the ladder is administrative —

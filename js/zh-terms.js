@@ -371,6 +371,7 @@
     "Kunovsko polje": "库诺夫斯科田",
     "Zaguine": "扎古伊内",
     "Viganj": "维加尼",
+    "Sveti Roko": "圣罗科",
     "Buzet": "布泽特",
     "Carso": "卡索",
     "Chavignol": "沙维尼奥尔",

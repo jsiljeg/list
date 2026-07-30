@@ -781,7 +781,7 @@
          "price": 10,
          "insight": {
           "grape": "Tribidrag (Zinfandel)",
-          "region": "Neretva, Srednja i Južna Dalmacija",
+          "region": "Komarna, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -800,7 +800,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Komarna"
+         "terroir": ""
         },
         {
          "name": "CL98 2020",
@@ -7080,7 +7080,7 @@
          "price": 70,
          "insight": {
           "grape": "Plavac mali",
-          "region": "Pelješac, Srednja i Južna Dalmacija",
+          "region": "Komarna, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7100,7 +7100,7 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Dingač"
+         "terroir": "Sveti Roko"
         },
         {
          "name": "Tribidrag 2022",
@@ -7108,7 +7108,7 @@
          "price": 75,
          "insight": {
           "grape": "Tribidrag (Zinfandel)",
-          "region": "Neretva, Srednja i Južna Dalmacija",
+          "region": "Komarna, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_full",
           "body": "full",
@@ -7127,7 +7127,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Komarna"
+         "terroir": ""
         },
         {
          "name": "Pagadebit 2018",
@@ -7162,7 +7162,7 @@
          "price": 70,
          "insight": {
           "grape": "Tribidrag (Zinfandel)",
-          "region": "Neretva, Srednja i Južna Dalmacija",
+          "region": "Komarna, Srednja i Južna Dalmacija",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -7182,7 +7182,7 @@
           "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": "Komarna"
+         "terroir": ""
         },
         {
          "name": "Stagnum 2016",
