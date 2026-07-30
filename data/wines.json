@@ -797,10 +797,16 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "13.5",
+          "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "CL98 2020",
@@ -7124,10 +7130,16 @@
            "stews"
           ],
           "temp": "16–18",
-          "alcohol": "13.5",
+          "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": ""
+         "terroir": "",
+         "ratings": [
+          {
+           "critic": "Falstaff",
+           "score": "92"
+          }
+         ]
         },
         {
          "name": "Pagadebit 2018",
