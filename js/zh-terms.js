@@ -347,6 +347,7 @@
     "Barbaresco & Barolo": "巴巴莱斯科与巴罗洛",
     "Beaujolais / Mâconnais": "博若莱 / 马孔内",
     "Boca": "博卡",
+    "Brdo": "布尔多",
     "Buzet": "布泽特",
     "Carso": "卡索",
     "Chavignol": "沙维尼奥尔",

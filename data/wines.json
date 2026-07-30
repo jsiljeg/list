@@ -3147,9 +3147,10 @@
           ],
           "temp": "10–12",
           "alcohol": "13",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "riesling"
          },
-         "terroir": "Grimalda"
+         "terroir": "Brdo, Grimalda"
         },
         {
          "name": "Malvazija Sv. Jakov 2021",
@@ -5705,7 +5706,8 @@
           ],
           "temp": "10–12",
           "alcohol": "14.5",
-          "sweetness": "off_dry"
+          "sweetness": "off_dry",
+          "glass": "riesling"
          },
          "terroir": "Hengst",
          "tags": [
@@ -5793,7 +5795,8 @@
           ],
           "temp": "12–14",
           "alcohol": "13.7",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "riesling"
          },
          "terroir": "",
          "tags": [
@@ -5825,7 +5828,8 @@
           ],
           "temp": "12–14",
           "alcohol": "15",
-          "sweetness": "dry"
+          "sweetness": "dry",
+          "glass": "riesling"
          },
          "terroir": "",
          "tags": [

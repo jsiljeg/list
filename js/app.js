@@ -857,7 +857,13 @@ const GLASS_ICONS = {
      they are all drawn to the same 60px height, so the box carries the
      proportion. */
   burgundy: '<svg viewBox="0 0 46 100" aria-hidden="true"><path d="M10.35,5.5 L3.2,36.15 C3.3,41 6.6,44.5 11.43,45.1 C15.8,45.9 21.6,47.9 23,49.6 C24.4,47.9 30.2,45.9 34.57,45.1 C39.4,44.5 42.7,41 42.8,36.15 L35.65,5.5 Z"/><path d="M23,49.6 V88.5"/><path d="M11.5,93.5 c4.4,-3.2 18.6,-3.2 23,0"/></svg>',
-  dessert: '<svg viewBox="0 0 40 100" aria-hidden="true"><path d="M15,22 C13.9,27 13.2,33 13.2,37 L20,50 L26.8,37 C26.8,33 26.1,27 25,22 L15,22"/><path d="M20,50 V88"/><path d="M10.5,93 c3.8,-3 15.2,-3 19,0"/></svg>'
+  /* The sweet-wine glass, traced from the owner's photo. Narrowest of the set —
+     the bowl is a quarter of the glass's width against the flute's third — with
+     the belly high, the bowl only 45% of the total height and a very long stem
+     under it. That is what separates it from the flute at icon size; the old
+     dessert glass relied on being drawn short, which stopped working once every
+     icon was normalised to one 60px height. The foot is wider than the bowl. */
+  dessert: '<svg viewBox="0 0 32 100" aria-hidden="true"><path d="M7.8,6 C6.6,10.6 5,17 4.88,21 C4.95,26 9.6,33.3 11.55,36.71 C13.3,39.7 15.4,44.6 16,47.5 C16.6,44.6 18.7,39.7 20.45,36.71 C22.4,33.3 27.05,26 27.12,21 C27,17 25.4,10.6 24.2,6"/><path d="M7.8,6 C7.8,3.9 24.2,3.9 24.2,6 C24.2,8.1 7.8,8.1 7.8,6 Z"/><path d="M16,47.5 V89.5"/><path d="M2.35,93.6 c5,-3.4 22.3,-3.4 27.3,0"/></svg>'
 };
 /* Bilingual Chinese rendering for the free-text grape/region fields.
  * Only transforms when lang === "zh": each comma-separated token is looked up

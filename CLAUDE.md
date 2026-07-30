@@ -224,10 +224,24 @@ and Ottocento Crni are Merlot on paper but Istrian blends in the wide glass).
 Prefer the override to widening the regex — a strict "all grapes Bordeaux" rule
 was tried and wrongly flipped Solaia, Tignanello, Ao Yun and Boca as well.
 
+**Riedel's own guide answers the Chablis question**: the Performance/Veloce
+Chardonnay is listed for "Burgundy (white), Chablis, Chardonnay (oaked),
+Corton-Charlemagne, Garnatxa Blanca, Meursault, Montrachet, Morillon (oaked),
+Pouilly-Fuissé" — so Riedel puts *all* Chablis in the wide glass, not only Grand
+Cru. Our list keeps Chablis on the Riesling glass by owner's choice; if that ever
+changes it is a style retag, not a code change. Riedel has **no Viura or white-
+Rioja shape at all**, so the barrel-aged Rioja blancos (Gravonia, Capellanía)
+sit in the wide glass on the same logic as any oaked white — an inference, not a
+Riedel listing.
+
 A maker's dimensioned drawing beats a photo where one exists: both Riedel Veloce
 whites are 247mm tall, so their **92mm** and **113mm** bowls set the icons'
 viewBox widths (42 and 50) directly, and the real size difference survives into
-a 60px icon. Only **dessert** is still drawn from the eye.
+a 60px icon. Every glass in the set is now traced from a reference; none is drawn from the
+eye. The sweet glass is the narrowest — a quarter of its height across the bowl
+against the flute's third, belly high, bowl only 45% of the total height over a
+very long stem. It no longer relies on being drawn *small* to read as the dessert
+glass, which stopped working once every icon was normalised to one 60px height.
 
 The wide Chardonnay glass is the oaked-white glass: `white_rich` only, which is
 the white Burgundy shelf plus the barrel-aged Viura, Savagnin and Alsace Pinot
