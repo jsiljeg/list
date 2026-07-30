@@ -1653,6 +1653,7 @@ const REGION_I18N = {
   "Alto Piemonte": { hr: "Gornji Pijemont", en: "Upper Piedmont", it: "Alto Piemonte", fr: "Haut-Piémont", de: "Oberpiemont", sl: "Zgornji Piemont", es: "Alto Piamonte" },
   "Veneto": { hr: "Veneto", en: "Veneto", it: "Veneto", fr: "Vénétie", de: "Venetien", sl: "Benečija", es: "Véneto" },
   "Kras":             { hr: "Kras", en: "Kras", it: "Carso", fr: "Carso", de: "Karst", sl: "Kras", es: "Carso" },
+  "Sveti Roko":       { hr: "Sveti Roko", en: "Saint Roko", it: "San Roko", fr: "Saint Roko", de: "Sankt Roko", sl: "Sveti Roko", es: "San Roko" },
   "Sicilia": { hr: "Sicilija", en: "Sicily", it: "Sicilia", fr: "Sicile", de: "Sizilien", sl: "Sicilija", es: "Sicilia" },
   "Lombardia": { hr: "Lombardija", en: "Lombardy", it: "Lombardia", fr: "Lombardie", de: "Lombardei", sl: "Lombardija", es: "Lombardía" },
   "Emilia-Romagna": { hr: "Emilia-Romagna", en: "Emilia-Romagna", it: "Emilia-Romagna", fr: "Émilie-Romagne", de: "Emilia-Romagna", sl: "Emilija - Romanja", es: "Emilia-Romaña" },
