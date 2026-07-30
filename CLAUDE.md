@@ -50,6 +50,16 @@ Tablet-first digital wine/drinks list for **Theatrium by Filho** (Teslina 7, Zag
 
 ## Wine-data conventions (settled 2026-07-27 — follow these, don't re-litigate)
 
+**terroir means the vineyard, and must be evidenced as one.** The recurring
+mistake (2026-07-30, caught by the owner four times in a day) is filling it with
+the *estate address* — where the cellar is — because that is what a winery's
+contact page gives you. Kutina is where Igor Ivanić works, not where his fruit
+grows. A source that says "the winery is located in X" is not evidence for X as
+a terroir; a source that says "položaj vinograda: X", "they farm ten hectares in
+X", or "the vineyard spans X" is. If only the address is known, the producer
+record can carry it — that field means the estate — and the wine's terroir stays
+`""`.
+
 **region / terroir.** `insight.region` is the appellation ladder, most specific
 first; the app appends the localized country, so never put the country in it
 (a bare `"France"` produced "France, Francuska"). `terroir` is the named
