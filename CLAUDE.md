@@ -160,9 +160,17 @@ Open questions for the owner:
 ## Tests (added 2026-07-30) — run them before you push
 
 `npm test` runs a Playwright regression suite across three viewports; `npm run
-check` is the whole gate (syntax + `scripts/validate.mjs` + tests) and is exactly
-what CI runs. **CI now blocks the Pages deploy on it** — `.github/workflows/
-deploy.yml` calls `test.yml` and the deploy job `needs: test`.
+check` adds the syntax and data checks. **It does not gate the deploy** — owner's
+call, 2026-07-30: a data edit should be live in a minute, not after a browser
+run. Run it when something looks wrong, or against an older commit to find where
+a regression came in:
+
+    npm test                                  # this working tree
+    gh workflow run test.yml --ref main       # on GitHub, on demand
+    git checkout <sha> && npm ci && npm test  # a past commit
+
+The deploy keeps the cheap guards: `node --check` on every script and
+`scripts/validate.mjs`.
 
 **Standing rule (owner, 2026-07-30): every bug we hit from now on gets a test in
 the same commit as the fix.** Not later. The test goes in the spec that owns that

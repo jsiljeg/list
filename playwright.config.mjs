@@ -10,7 +10,10 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : undefined,
+  /* Three, not "as many as there are cores". Eight headless Chromiums make the
+     laptop unusable while the suite runs, and the contention was itself causing
+     swipes to be dropped and tests to fail for no reason. */
+  workers: process.env.CI ? 2 : 3,
   reporter: process.env.CI ? [["github"], ["html", { open: "never" }], ["list"]] : [["list"], ["html", { open: "never" }]],
   timeout: 30_000,
   expect: { timeout: 7_000 },

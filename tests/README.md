@@ -17,8 +17,21 @@ npm run test:headed                 # watch it happen
 npm run report                      # open the last HTML report
 ```
 
-`npm run check` is the whole gate in one command: syntax, data validation, tests.
-That is what CI runs, so if it passes locally the deploy will not be blocked.
+`npm run check` is everything in one command: syntax, data validation, tests.
+
+**The suite does not run on every push, by design.** A data edit should reach the
+restaurant in a minute rather than after a browser run. Use it as a regression
+check when something looks wrong, or before a change you are unsure of:
+
+```bash
+npm test                                  # this working tree
+gh workflow run test.yml --ref main       # on GitHub, on demand
+git checkout <sha> && npm ci && npm test  # against a past commit
+git checkout -                            # and back
+```
+
+The deploy still runs the cheap checks — `node --check` on every script and
+`scripts/validate.mjs` — so a broken edit cannot reach the tablet.
 
 The static server (`tests/serve.mjs`) starts and stops itself; nothing needs to
 be running first. It is dependency-free on purpose — the site has no

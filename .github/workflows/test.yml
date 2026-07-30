@@ -1,16 +1,21 @@
 name: Tests
 
+# On demand only. The owner runs this as a regression check against a commit of
+# their choosing, not on every push:
+#
+#   gh workflow run test.yml --ref <branch-or-tag>
+#
+# or from the Actions tab. For an arbitrary commit, run it locally instead:
+#
+#   git checkout <sha> && npm ci && npm test
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
-  workflow_call:          # so deploy.yml can require this before publishing
+  workflow_call:          # so it can still be required from another workflow
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
 
@@ -29,7 +34,6 @@ jobs:
       - run: npm ci
 
       - name: Cache the browser
-        id: browser-cache
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
@@ -41,9 +45,6 @@ jobs:
       - name: Regression suite
         run: npx playwright test
 
-      # The report is where you look when something failed on a viewport you do
-      # not have to hand. Kept for a fortnight, which is longer than anyone waits
-      # to ask "what broke?".
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:

@@ -963,10 +963,10 @@
            "cheese_hard"
           ],
           "temp": "16–18",
-          "alcohol": "",
+          "alcohol": "15.4",
           "sweetness": "dry"
          },
-         "terroir": "Motovun"
+         "terroir": "Santa Elisabetta, Motovun"
         },
         {
          "name": "Syrah Le Fales 2024",
@@ -6603,7 +6603,7 @@
           "alcohol": "12.5",
           "sweetness": "dry"
          },
-         "terroir": "Skradin"
+         "terroir": ""
         },
         {
          "name": "Rose",
@@ -6629,7 +6629,7 @@
           "alcohol": "12",
           "sweetness": "dry"
          },
-         "terroir": "Zapadna Istra"
+         "terroir": "Cupiga, Buje"
         }
        ]
       }
@@ -6867,7 +6867,7 @@
          "price": 100,
          "insight": {
           "grape": "Refošk",
-          "region": "Centralna Istra, Hrvatska Istra",
+          "region": "Zapadna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "red_medium",
           "body": "medium",
@@ -6884,10 +6884,10 @@
            "cheese_hard"
           ],
           "temp": "14–16",
-          "alcohol": "13",
+          "alcohol": "14.5",
           "sweetness": "dry"
          },
-         "terroir": "Buzet"
+         "terroir": "Buje, Brtonigla"
         },
         {
          "name": "Teran 2022",

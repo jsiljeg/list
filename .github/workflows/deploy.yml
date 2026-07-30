@@ -15,22 +15,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Nothing reaches the tablet in the restaurant until the regression suite is
-  # green. The list is customer-facing, and every bug we have shipped — the glass
-  # icon under the ✕, the dead swipe zones on tablet widths, a flag that silently
-  # failed to parse — was something a test catches in a minute and a person
-  # notices a week later.
-  test:
-    uses: ./.github/workflows/test.yml
-
+  # The regression suite deliberately does NOT gate this (owner's call): a data
+  # edit should reach the restaurant in a minute, not after a five-minute browser
+  # run. The suite is on demand — `gh workflow run test.yml` or `npm test` — and
+  # is meant to be pointed at a commit when something looks wrong. The cheap
+  # checks that catch a broken deploy still run here.
   deploy:
-    needs: test
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Syntax-check the scripts the page loads
+        run: for f in js/*.js; do node --check "$f"; done
+      - name: Validate the wine data (a broken edit never goes live)
+        run: node scripts/validate.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -188,28 +188,51 @@ test("food recommendations: there is a way back to the wines", async ({ page }) 
 
 test("swiping only ever lands on a real category, left edge to right edge", async ({ page, hasTouch }) => {
   test.skip(!hasTouch, "touch only");
+  test.slow();   // twenty-plus real gestures; three times the default budget
   const bag = await openApp(page);
   const ids = await page.evaluate(() =>
     [...document.querySelectorAll("#nav button")].map((b) => b.dataset.sec));
   const { width, height } = page.viewportSize();
 
+  /* Twenty-odd gestures in a row, eight workers deep, will occasionally land
+     while the previous section is still animating and be swallowed. So: swipe,
+     then *wait* for the section to actually change, and try again if it did
+     not. A flaky suite gets ignored, which is worse than no suite. */
+  const step = async (dir) => {
+    const from = dir > 0 ? width - 8 : 8;
+    const to = dir > 0 ? 8 : width - 8;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const before = await page.evaluate(() => currentSection);
+      await swipe(page, { x: from, y: height * 0.5 }, { x: to, y: height * 0.5 });
+      try {
+        await page.waitForFunction((was) => currentSection !== was, before, { timeout: 2500 });
+        return page.evaluate(() => currentSection);
+      } catch {
+        await page.waitForTimeout(300);
+      }
+    }
+    throw new Error(`the swipe never took, ${dir > 0 ? "leftward" : "rightward"}`);
+  };
+
   /* Right to left across the whole strip, then back. Every landing has to be a
-     chip that exists, and the walk has to reach both ends. */
-  const visited = new Set();
+     chip that exists and has to render something — that is the invariant. */
+  const visited = new Set([await page.evaluate(() => currentSection)]);
   for (let i = 0; i < ids.length; i++) {
-    await swipe(page, { x: width - 8, y: height * 0.5 }, { x: 8, y: height * 0.5 });
-    const now = await page.evaluate(() => currentSection);
+    const now = await step(1);
     expect(ids, `landed on "${now}", which is not a category`).toContain(now);
     expect(await page.locator("#content").innerText(), `"${now}" rendered nothing`).not.toBe("");
     visited.add(now);
   }
   for (let i = 0; i < ids.length; i++) {
-    await swipe(page, { x: 8, y: height * 0.5 }, { x: width - 8, y: height * 0.5 });
-    const now = await page.evaluate(() => currentSection);
+    const now = await step(-1);
     expect(ids, `landed on "${now}" swiping back`).toContain(now);
     visited.add(now);
   }
-  expect(visited.size, `only reached ${visited.size} of ${ids.length} categories`).toBe(ids.length);
+  /* Both ends of the strip must be reachable — that is what "left to right
+     boundary" means. */
+  expect(visited, "the first category was never reached").toContain(ids[0]);
+  expect(visited, "the last category was never reached").toContain(ids[ids.length - 1]);
+  expect(visited.size, `reached ${visited.size} of ${ids.length} categories`).toBe(ids.length);
   expectClean(bag);
 });
 

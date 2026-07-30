@@ -35,6 +35,7 @@ test("the dosage keeps its capital", async ({ page }) => {
 
 test("the subtitle is Filho's own line in every language", async ({ page }) => {
   /* He runs it in English on his Croatian nav too, so it is not translated. */
+  test.slow();   // eight full reloads in one test
   for (const lang of I18N_LANGS) {
     await openApp(page, { lang });
     expect(await page.locator("#subtitle").innerText(), `${lang} translated the tagline`)
@@ -90,13 +91,19 @@ test("the country is appended once, not twice", async ({ page }) => {
 });
 
 test("nothing renders a raw i18n key", async ({ page }) => {
-  /* A missing key shows as the key itself — "drinking_now" instead of
-     "Za piti sada" — which is easy to miss in a language you do not read. */
+  /* A missing key shows as the key itself — "drinking_now" instead of "Za piti
+     sada" — which is easy to miss in a language you do not read.
+
+     Waits for the list to settle before reading. Scanning mid-render caught the
+     app between innerHTML assignments once in about forty runs and reported a
+     key that was never on screen for a human to see. */
+  test.slow();
   for (const lang of I18N_LANGS) {
     await openApp(page, { lang });
+    await expect(page.locator("#content .item").first()).toBeVisible();
+    await page.waitForTimeout(250);
     const text = await page.locator("#app").innerText();
-    const raw = text.match(/\b[a-z]+_[a-z_]+\b/g) || [];
-    const suspicious = raw.filter((k) => !/^(www|e_mail)/.test(k));
-    expect(suspicious, `${lang} shows raw keys`).toEqual([]);
+    const suspicious = (text.match(/[a-z]+_[a-z_]+/g) || []).filter((k) => !/^(www|e_mail)/.test(k));
+    expect([...new Set(suspicious)], `${lang} shows raw keys`).toEqual([]);
   }
 });
