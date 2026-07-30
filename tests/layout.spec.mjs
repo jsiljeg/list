@@ -9,7 +9,7 @@ import { test, expect } from "@playwright/test";
 import { readdirSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { openApp, expectClean, pickSection, box } from "./helpers.mjs";
+import { openApp, expectClean, pickSection, openWine, box } from "./helpers.mjs";
 
 /* import.meta.dirname needs Node 20.11; this works everywhere. */
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -152,4 +152,62 @@ test("no asset in assets/ has been left behind unreferenced", () => {
   const KEEP = new Set(["qr.png", "qr.svg"]);
   const orphans = readdirSync(resolve(ROOT, "assets")).filter((f) => !KEEP.has(f) && !sources.includes(f));
   expect(orphans, "unreferenced files in assets/").toEqual([]);
+});
+
+test("the face is already loaded by the time the story splash appears", async ({ page }) => {
+  /* Owner-reported: the face used to arrive a beat late and read as a glitch.
+     The preload link is only half the fix — what matters is that the fetch has
+     *finished* before the splash is on screen, so this compares timestamps
+     rather than trusting the link tag. */
+  await page.goto("/index.html", { waitUntil: "load" });
+  await page.evaluate(() => localStorage.removeItem("theatrium-lang"));
+  await page.reload({ waitUntil: "load" });
+  await page.locator("#lang-buttons button").first().click();
+  await expect(page.locator("#story-screen")).toBeVisible();
+  const shownAt = await page.evaluate(() => performance.now());
+  const face = await page.evaluate(() =>
+    performance.getEntriesByType("resource").find((r) => r.name.includes("atrium-face")));
+  expect(face, "the face was never requested").toBeTruthy();
+  expect(face.responseEnd, "the face was still downloading when the splash appeared")
+    .toBeLessThan(shownAt);
+  /* And it is actually the background of the splash, not just a warm cache. */
+  const bg = await page.evaluate(() =>
+    getComputedStyle(document.getElementById("story-screen"), "::before").backgroundImage);
+  expect(bg, "the splash has no face behind it").toContain("atrium-face");
+});
+
+test("the footer sits at the bottom in every section, not part-way up", async ({ page }) => {
+  /* Rosé was the one that showed it, but the rule is for all of them: the footer
+     is either flush with the bottom of the screen or below the fold. Never
+     floating with background underneath. */
+  await openApp(page);
+  const chips = page.locator("#nav button");
+  const n = await chips.count();
+  const floating = [];
+  for (let i = 0; i < n; i++) {
+    const label = (await chips.nth(i).innerText()).trim();
+    await chips.nth(i).click();
+    await page.waitForTimeout(280);
+    const gap = await page.evaluate(() =>
+      Math.round(window.innerHeight - document.querySelector(".footer").getBoundingClientRect().bottom));
+    if (gap > 8) floating.push(`${label}: ${gap}px of background below the footer`);
+  }
+  expect(floating).toEqual([]);
+});
+
+test("the logo stays visible and put when a wine card opens", async ({ page }) => {
+  /* Owner: "logo should be visible as is now when we open details". Opening the
+     card locks the body, and a lock that changes the scroll position moves the
+     header — which is what made the card appear to jump on open. */
+  await openApp(page);
+  const before = await box(page, ".header-logo");
+  await openWine(page, "Barolo");
+  await expect(page.locator(".header-logo")).toBeVisible();
+  const during = await box(page, ".header-logo");
+  expect(Math.abs(during.y - before.y), "the logo moved when the card opened").toBeLessThan(2);
+  expect(Math.abs(during.x - before.x), "the logo moved sideways").toBeLessThan(2);
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(300);
+  const after = await box(page, ".header-logo");
+  expect(Math.abs(after.y - before.y), "the logo did not come back to where it was").toBeLessThan(2);
 });

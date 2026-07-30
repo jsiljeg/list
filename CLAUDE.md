@@ -164,6 +164,10 @@ check` is the whole gate (syntax + `scripts/validate.mjs` + tests) and is exactl
 what CI runs. **CI now blocks the Pages deploy on it** — `.github/workflows/
 deploy.yml` calls `test.yml` and the deploy job `needs: test`.
 
+**Standing rule (owner, 2026-07-30): every bug we hit from now on gets a test in
+the same commit as the fix.** Not later. The test goes in the spec that owns that
+area, with a comment naming what it caught.
+
 Every spec names the commit it guards in its header comment. See `tests/README.md`
 for the table of what is covered. Three things worth knowing before adding one:
 
