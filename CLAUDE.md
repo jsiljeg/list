@@ -182,8 +182,13 @@ reads as an eye or a sun, and the side-on saucer that shipped read to the owner
 as a smiling mouth. Photographs, not glyphs.
 
 Sizing follows from that: recoloured lace needs room. The bowl closing mark is
-240px wide at .7 opacity (under ~180px the weave mats into a smudge), the face
-watermark is `contain` at .32. The **grape** section ornament stays a drawn SVG —
+190px wide at .7 opacity — the floor, and it only holds there because both
+assets are rendered at the source's own width with a **tight** saturation window
+(.34-.44, not .30-.52). A wide ramp feathers every nail edge; at 1:1 the face
+was visibly soft with it and resolves individual nails without it, and at the
+.32 watermark opacity the outer scatter survives either way. Unsharp masking on
+top only speckles the shadows. Never upscale past the source: the face asset was
+1200px from a 1084px photo, which cost sharpness for nothing. The **grape** section ornament stays a drawn SVG —
 it is an arrangement of nails, not a picture of a sculpture.
 
 The face is a background on `.story-screen::before`, which is `display:none`

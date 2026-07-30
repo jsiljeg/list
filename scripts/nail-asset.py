@@ -34,16 +34,25 @@ GOLD = (201, 169, 97)         # --gold
 SUBJECTS = {
     # src, out, width, saturation window (all metal below S_FULL, all wall
     # above S_NONE), brightness range the gold is modulated across, alpha out
+    # 1084 is the source's own width: the asset was 1200, i.e. upscaled, which
+    # cost sharpness for nothing. The saturation window is tight (.34-.44
+    # rather than .30-.52) because a wide ramp feathers every nail edge — at
+    # 1:1 the wide one is visibly soft and the tight one resolves individual
+    # nails, while at the .32 watermark opacity the outer scatter survives
+    # either way. Unsharp masking was tried on top and speckles the shadows.
     "face": dict(src="data/source/atrium-face-source.jpg",
                  out="assets/atrium-face.webp",
-                 wide=1200, s_full=0.30, s_none=0.52,
+                 wide=1084, s_full=0.34, s_none=0.44,
                  lum=(60, 200), alpha=False),
     # The bowl is an inline ornament, so it wants transparency rather than a
     # baked charcoal ground: the closing mark sits on the list background and
     # must not paint a rectangle over it.
+    # Same tight window, and the source's own 583px rather than 440: the mark
+    # displays at 190px, so every source pixel spent before the downscale is
+    # one the weave keeps.
     "bowl": dict(src="data/source/atrium-bowl-source.png",
                  out="assets/atrium-bowl.webp",
-                 wide=440, s_full=0.30, s_none=0.52,
+                 wide=583, s_full=0.34, s_none=0.44,
                  lum=(60, 200), alpha=True),
 }
 
