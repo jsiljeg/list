@@ -8,30 +8,78 @@ const LS_KEY = "theatrium-lang";
    browser resolve the clip against a hidden copy and the šahovnica
    disappears, leaving what looks like the Dutch tricolour. */
 let flagUid = 0;
+function star6(cx, cy, r) {
+  let a = "", b = "";
+  for (let i = 0; i < 3; i++) {
+    const t1 = -Math.PI / 2 + (i * 2 * Math.PI) / 3, t2 = Math.PI / 2 + (i * 2 * Math.PI) / 3;
+    a += (i ? "L" : "M") + (cx + r * Math.cos(t1)).toFixed(2) + "," + (cy + r * Math.sin(t1)).toFixed(2);
+    b += (i ? "L" : "M") + (cx + r * Math.cos(t2)).toFixed(2) + "," + (cy + r * Math.sin(t2)).toFixed(2);
+  }
+  return a + "Z" + b + "Z";
+}
+/* The crown of five historical shields. Each is drawn with its bottom tip at the
+   origin and then rotated onto an arc, which is what makes it read as a crown
+   rather than a row of badges. Left to right: the oldest known Croatian arms,
+   Dubrovnik, Dalmatia, Istria, Slavonia. */
+function hrCrown() {
+  const BLUE = "#1e5aa8", DARK = "#123a80", GOLD = "#f5c518", RED = "#e8112d", WHITE = "#fff", DKBR = "#3d2415";
+  const W = 4.4, H = 5.2, hw = W / 2;
+  const SHIELD = `M${-hw},${-H} H${hw} V-2.3 C${hw},-1.05 ${hw * 0.45},0 0,0 C${-hw * 0.45},0 ${-hw},-1.05 ${-hw},-2.3 Z`;
+  const charges = [
+    /* oldest arms: gold six-pointed star over a silver crescent */
+    () => `<path d="${star6(0, -3.85, 0.9)}" fill="${GOLD}"/>` +
+      `<path d="M-0.95,-1.95 A0.95,0.95 0 1 0 0.95,-1.95 A0.72,0.72 0 1 1 -0.95,-1.95 Z" fill="${WHITE}"/>`,
+    /* Dubrovnik: two red bars */
+    () => `<rect x="${-hw}" y="-4.15" width="${W}" height=".62" fill="${RED}"/>` +
+      `<rect x="${-hw}" y="-3.05" width="${W}" height=".62" fill="${RED}"/>`,
+    /* Dalmatia: three crowned gold leopard heads, two over one */
+    () => [[-1.02, -3.75], [1.02, -3.75], [0, -1.95]].map(([x, y]) =>
+      `<circle cx="${x}" cy="${y}" r=".62" fill="${GOLD}"/>` +
+      `<path d="M${x - 0.55},${y - 0.72} h1.1 v.34 h-1.1 Z" fill="${GOLD}"/>`).join(""),
+    /* Istria: a gold goat with red horns and hooves */
+    () => `<path d="M-1.5,-2.95 h2.1 v.95 h-2.1 Z" fill="${GOLD}"/>` +
+      `<path d="M0.6,-3.15 l1,-.42 v.95 l-1,.35 Z" fill="${GOLD}"/>` +
+      `<path d="M1.45,-3.62 l.62,-.62" stroke="${RED}" stroke-width=".34" stroke-linecap="round" fill="none"/>` +
+      `<path d="M-1.15,-2 v.62 M0.25,-2 v.62" stroke="${RED}" stroke-width=".34" stroke-linecap="round"/>`,
+    /* Slavonia: the Drava and the Sava in silver, a marten running between them,
+       a gold star above */
+    () => `<path d="${star6(0, -4.3, 0.68)}" fill="${GOLD}"/>` +
+      `<rect x="${-hw}" y="-3.35" width="${W}" height=".4" fill="${WHITE}"/>` +
+      `<rect x="${-hw}" y="-2.95" width="${W}" height=".78" fill="${RED}"/>` +
+      `<rect x="${-hw}" y="-2.17" width="${W}" height=".4" fill="${WHITE}"/>` +
+      `<path d="M-1.35,-2.4 h1.5 l.7,-.3" stroke="${DKBR}" stroke-width=".34" fill="none" stroke-linecap="round"/>`
+  ];
+  const fields = [BLUE, DARK, BLUE, DARK, BLUE];
+  let out = "";
+  for (let i = 0; i < 5; i++) {
+    /* Tips on the shield's top edge, each fanned outward: rotating about the tip
+       keeps all five standing on that line, and the arc of their tops appears by
+       itself — the middle shield is upright, so it is the tallest. */
+    const deg = (i - 2) * 11;
+    const cx = 30 + (i - 2) * 4.22, cy = 14.2;
+    out += `<g transform="translate(${cx.toFixed(2)},${cy.toFixed(2)}) rotate(${deg})">` +
+      `<path d="${SHIELD}" fill="${fields[i]}" stroke="${WHITE}" stroke-width=".34"/>${charges[i]()}</g>`;
+  }
+  return out;
+}
+
 function hrFlag() {
   const id = "hrsh" + (flagUid++);
-  /* 5×5 šahovnica — red square in the top-left corner (13 red, 12 white) */
+  /* 5x5 šahovnica, red square in the top-left corner: 13 red, 12 white */
   let checks = "";
   for (let r = 0; r < 5; r++)
     for (let c = 0; c < 5; c++)
       if ((r + c) % 2 === 0)
-        checks += `<rect x="${20 + c * 4}" y="${(11 + r * 4.6).toFixed(2)}" width="4" height="4.6" fill="#e8112d"/>`;
-  /* crown: five little shields arcing across the top (middle highest),
-     each with a gold emblem hint, as on the real coat of arms */
-  const crown = [0, 1, 2, 3, 4].map((i) => {
-    const x = 20.6 + i * 3.72, y = +(8.6 - Math.sin((i / 4) * Math.PI) * 1.5).toFixed(2);
-    return `<path d="M${x},${y} h3.9 v1.9 L${(x + 1.95).toFixed(2)},${(y + 3.4).toFixed(2)} L${x},${(y + 1.9).toFixed(2)} z" fill="#2350a6" stroke="#fff" stroke-width="0.4"/>` +
-      `<circle cx="${(x + 1.95).toFixed(2)}" cy="${(y + 1.5).toFixed(2)}" r="0.5" fill="#d4af37"/>`;
-  }).join("");
-  const shield = "M20,11 H40 V25 C40,29.5 36,32.5 30,34 C24,32.5 20,29.5 20,25 Z";
+        checks += `<rect x="${20 + c * 4}" y="${(14 + r * 4.5).toFixed(2)}" width="4" height="4.5" fill="#e8112d"/>`;
+  const shield = "M20,14 H40 V27.5 C40,32.3 35.9,35.2 30,36.8 C24.1,35.2 20,32.3 20,27.5 Z";
   return `<svg viewBox="0 0 60 40" aria-hidden="true">
     <rect width="60" height="40" fill="#fff"/>
     <rect width="60" height="13.333" fill="#e8112d"/>
     <rect y="26.667" width="60" height="13.333" fill="#171796"/>
-    ${crown}
     <defs><clipPath id="${id}"><path d="${shield}"/></clipPath></defs>
-    <g clip-path="url(#${id})"><rect x="20" y="11" width="20" height="24" fill="#fff"/>${checks}</g>
+    <g clip-path="url(#${id})"><rect x="20" y="14" width="20" height="23" fill="#fff"/>${checks}</g>
     <path d="${shield}" fill="none" stroke="#fff" stroke-width="1"/>
+    ${hrCrown()}
   </svg>`;
 }
 

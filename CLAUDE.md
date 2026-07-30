@@ -86,6 +86,16 @@ empty string deliberately suppresses the producer-region fallback in
   must not be used. Sub-areas use the trade names (Mittelmosel,
   Terrassenmosel, Saar, Ruwertal) rather than the official Bereich names
   (Bernkastel, Burg Cochem), which nobody outside the paperwork says.
+- **Croatia:** the official ladder is `vinogorje, podregija, regija`
+  (hr.wikipedia.org/wiki/Vinogradarska_područja_Republike_Hrvatske). The data
+  currently records the **podregija only** — Moslavina, Plešivica,
+  Hrvatska Istra, Zagorje-Međimurje, Srednja i Južna Dalmacija — which is
+  consistent but one rung short of every other country here, and one entry
+  ("Primorska Hrvatska") is a *regija* rather than a podregija. Adding the
+  vinogorje needs per-wine research and has not been done. When it is: Zelina is
+  a vinogorje of **Prigorje-Bilogora**, and Kutina is Moslavina — those two are
+  not interchangeable, and conflating them is exactly how Igor Ivanić's Pinot
+  ended up filed under Zelina while its region said Moslavina.
 - **China:** no appellation system exists, so the ladder is administrative —
   `<county>, <prefecture>, <province>`: `Deqin, Diqing, Yunnan`. Terroir = the
   named villages the fruit comes from (`Adong, Xidang, Sinong, Shuori`).
