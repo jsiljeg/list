@@ -264,9 +264,11 @@
           "style": "white_rich",
           "body": "full",
           "aromas": [
-           "peach",
+           "pineapple",
+           "citrus",
+           "melon",
            "butter",
-           "toast",
+           "hazelnut",
            "vanilla"
           ],
           "pairings": [
@@ -275,10 +277,10 @@
            "white_meat"
           ],
           "temp": "10–12",
-          "alcohol": "13",
+          "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Bale"
+         "terroir": "Stancija Meneghetti, Bale"
         },
         {
          "name": "Sauvignon 2024",
@@ -434,7 +436,17 @@
           "es": "El Saar es frío, así que aquí el Kabinett no es una categoría ligera sino una postura. Ocho grados, acidez como un alambre — y se bebe toda la noche sin cansar."
          },
          "recommended": true,
-         "terroir": "Saarburger Rausch"
+         "terroir": "Saarburger Rausch",
+         "ratings": [
+          {
+           "critic": "Lobenberg",
+           "score": "95"
+          },
+          {
+           "critic": "Stuart Pigott",
+           "score": "95"
+          }
+         ]
         },
         {
          "name": "Friulano 2023",
@@ -828,7 +840,10 @@
           "sl": "Clon 98 oziroma CL98 je klon tempranilla, ki je mutiral, da se je prilagodil ekstremnemu podnebju Ribere del Duero.",
           "es": "El Clon 98, o CL98, es el clon de Tempranillo que mutó para adaptarse al clima extremo de la Ribera del Duero."
          },
-         "notePlain": true
+         "notePlain": true,
+         "tags": [
+          "excellent_vintage"
+         ]
         },
         {
          "name": "Cifra 2021 (Demeter biodinamika)",
@@ -1031,8 +1046,8 @@
            "cheese_blue"
           ],
           "temp": "8–10",
-          "alcohol": "11",
-          "sweetness": "off_dry"
+          "alcohol": "12.5",
+          "sweetness": "semi_sweet"
          },
          "terroir": "Vižinada"
         },
@@ -3187,7 +3202,8 @@
           "zh": "展现风土身份的玛尔维萨——毫不妥协的伊斯特拉，一款诚实的酒。",
           "sl": "Malvazija, ki kaže identiteto svojega kraja — Istra brez kompromisa, vino, ki govori resnico.",
           "es": "Una Malvasía que muestra la identidad de su tierra — Istria sin concesiones, un vino que dice la verdad."
-         }
+         },
+         "terroir": "Krasica, Buje"
         },
         {
          "name": "Ottocento bijeli 2022",
@@ -3214,7 +3230,7 @@
           "alcohol": "14",
           "sweetness": "dry"
          },
-         "terroir": "Krasica"
+         "terroir": "Krasica, Buje"
         },
         {
          "name": "Meneghetti white 2023",
@@ -3243,7 +3259,7 @@
           "alcohol": "13.5",
           "sweetness": "dry"
          },
-         "terroir": "Stancija Meneghetti"
+         "terroir": "Stancija Meneghetti, Bale"
         },
         {
          "name": "Le Chiffre 2023",
@@ -6835,7 +6851,7 @@
         },
         {
          "name": "Ottocento Crni 2022",
-         "producer": "Giorgio Clai",
+         "producer": "Clai",
          "price": 66,
          "insight": {
           "grape": "Merlot, Refošk",
@@ -6859,7 +6875,7 @@
           "sweetness": "dry",
           "glass": "burgundy"
          },
-         "terroir": "Krasica"
+         "terroir": "Krasica, Buje"
         },
         {
          "name": "Refošk Omo 2020",
@@ -11363,8 +11379,8 @@
            "cheese_blue"
           ],
           "temp": "8–10",
-          "alcohol": "11",
-          "sweetness": "off_dry"
+          "alcohol": "12.5",
+          "sweetness": "semi_sweet"
          },
          "terroir": "Vižinada"
         },
@@ -11442,7 +11458,7 @@
         },
         {
          "name": "Tasel – 0,375 l",
-         "producer": "Giorgio Clai",
+         "producer": "Clai",
          "price": 64,
          "insight": {
           "grape": "Muškat bijeli",
@@ -11465,7 +11481,7 @@
           "alcohol": "12.5",
           "sweetness": "sweet"
          },
-         "terroir": "Krasica",
+         "terroir": "Krasica, Buje",
          "tags": [
           "drinking_now"
          ]

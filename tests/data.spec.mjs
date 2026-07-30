@@ -73,6 +73,40 @@ test("large-format twins carry identical insight, ratings and tags", () => {
   expect(mismatched).toEqual([]);
 });
 
+test("a wine listed by the glass and by the bottle carries identical data", () => {
+  /* Owner, 2026-07-30. The same wine appears twice — once on the by-the-glass
+     list, once by the bottle — and only the price and the pour differ. Every
+     research batch so far edited one listing and left the other seeded from the
+     first import, so Meneghetti White had two different aroma sets, Rausch
+     Kabinett had its critic scores on one side only, and CL98 wore its vintage
+     badge on the bottle but not the glass.
+
+     `price` is the only field allowed to differ. */
+  const groups = new Map();
+  for (const it of items) {
+    const key = `${String(it.name || "").trim().toLowerCase()}|${String(it.producer || "").trim().toLowerCase()}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(it);
+  }
+  const WINE_FIELDS = ["terroir", "ratings", "tags", "note", "noteSig", "notePlain", "recommended", "new"];
+  const bad = [];
+  for (const [key, list] of groups) {
+    if (list.length < 2) continue;
+    const [first, ...rest] = list;
+    for (const other of rest) {
+      for (const k of new Set([...Object.keys(first.insight), ...Object.keys(other.insight)])) {
+        if (JSON.stringify(first.insight[k]) !== JSON.stringify(other.insight[k]))
+          bad.push(`${first.name}: insight.${k} differs between listings (${JSON.stringify(first.insight[k])} vs ${JSON.stringify(other.insight[k])})`);
+      }
+      for (const k of WINE_FIELDS) {
+        if (JSON.stringify(first[k]) !== JSON.stringify(other[k]))
+          bad.push(`${first.name}: ${k} differs between listings`);
+      }
+    }
+  }
+  expect(bad).toEqual([]);
+});
+
 test("critic names come from the agreed list", () => {
   /* "Wine Advocate" instead of "Robert Parker" is the one that keeps recurring. */
   const KNOWN = new Set(["Robert Parker", "James Suckling", "Wine Spectator", "Wine Enthusiast", "Vinous",
