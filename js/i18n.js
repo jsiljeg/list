@@ -16,7 +16,7 @@ const LANGS = [
 const I18N = {
 hr: {
   ui: {
-    subtitle: "Vinska karta i pića",
+    subtitle: "How to solve drinking problems",
     chooseLanguage: "Odaberite jezik",
     back: "Natrag",
     search: "Pretraži vina…",
@@ -141,7 +141,7 @@ hr: {
 },
 en: {
   ui: {
-    subtitle: "Wine & drinks list",
+    subtitle: "How to solve drinking problems",
     chooseLanguage: "Choose your language",
     back: "Back",
     search: "Search wines…",
@@ -266,7 +266,7 @@ en: {
 },
 it: {
   ui: {
-    subtitle: "Carta dei vini e delle bevande",
+    subtitle: "How to solve drinking problems",
     chooseLanguage: "Scegli la lingua",
     back: "Indietro",
     search: "Cerca vini…",
@@ -391,7 +391,7 @@ it: {
 },
 fr: {
   ui: {
-    subtitle: "Carte des vins et boissons",
+    subtitle: "How to solve drinking problems",
     chooseLanguage: "Choisissez votre langue",
     back: "Retour",
     search: "Rechercher un vin…",
@@ -516,7 +516,7 @@ fr: {
 },
 de: {
   ui: {
-    subtitle: "Wein- & Getränkekarte",
+    subtitle: "How to solve drinking problems",
     chooseLanguage: "Sprache wählen",
     back: "Zurück",
     search: "Weine suchen…",
@@ -641,7 +641,7 @@ de: {
 },
 zh: {
   ui: {
-    subtitle: "葡萄酒与饮品单",
+    subtitle: "How to solve drinking problems",
     chooseLanguage: "请选择语言",
     back: "返回",
     search: "搜索葡萄酒…",
@@ -766,7 +766,7 @@ zh: {
 },
 sl: {
   "ui": {
-    "subtitle": "Vinska in pijačna karta",
+    "subtitle": "How to solve drinking problems",
     "chooseLanguage": "Izberite jezik",
     "back": "Nazaj",
     "search": "Iščite vina…",
@@ -1193,7 +1193,7 @@ sl: {
 },
 es: {
   "ui": {
-    "subtitle": "Carta de vinos y bebidas",
+    "subtitle": "How to solve drinking problems",
     "chooseLanguage": "Elija su idioma",
     "back": "Volver",
     "search": "Buscar vinos…",

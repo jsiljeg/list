@@ -366,6 +366,23 @@ function expandQuery(q) {
 function fold(str) {
   return str.normalize ? str.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D") : str;
 }
+/* A query matches where a word starts, not anywhere inside one. Plain substring
+   matching turned "burgun" into 94 hits: SEARCH_ALIAS feeds every Pinot its
+   German names, so spätburgunder, grauburgunder, weissburgunder and
+   blauburgunder all contain the query, and a guest looking for Burgundy got the
+   whole Pinot family instead of the 51 Burgundies. Typing any of those names in
+   full still finds them — they start words of their own. Chinese has no word
+   boundaries to anchor to, so a CJK query falls back to a substring search. */
+const CJK = /[㐀-鿿豈-﫿]/;
+const WORDCHAR = /[a-z0-9À-ɏ]/;
+function hayMatch(hay, q) {
+  if (!q) return true;
+  if (CJK.test(q)) return hay.indexOf(q) !== -1;
+  for (let i = hay.indexOf(q); i !== -1; i = hay.indexOf(q, i + 1)) {
+    if (i === 0 || !WORDCHAR.test(hay[i - 1])) return true;
+  }
+  return false;
+}
 function itemHay(item) {
   if (item._hay) return item._hay;
   const ins = item.insight || {};
@@ -420,7 +437,7 @@ function renderContent() {
         cat.groups.forEach((g, gi) => {
           g.items.forEach((item, ii) => {
             const hay = itemHay(item);
-            if ((hay.includes(q) || (qf && hay.includes(qf))) && (!picksOnly || item.recommended || item.new)) {
+            if ((hayMatch(hay, q) || (qf && hayMatch(hay, qf))) && (!picksOnly || item.recommended || item.new)) {
               if (found === 0) html += `<div class="cat">`;
               found++;
               const ref = [si, ci, gi, ii].join(".");
@@ -540,9 +557,6 @@ function renderContent() {
     });
   }
 
-  /* The second sculpture closes the page: a mark for the end, not a divider.
-     Only where something was actually listed — nothing to close under "no results". */
-  if (html.includes('class="item')) html += `<div class="closing-mark" aria-hidden="true"><img src="assets/atrium-bowl.webp" alt="" width="583" height="282" loading="lazy"></div>`;
   box.innerHTML = html;
   box.classList.remove("content-fade");
   void box.offsetWidth;

@@ -181,8 +181,11 @@ silhouette that survives abstraction — a closed oval with marks radiating off 
 reads as an eye or a sun, and the side-on saucer that shipped read to the owner
 as a smiling mouth. Photographs, not glyphs.
 
-Sizing follows from that: recoloured lace needs room. The bowl closing mark is
-160px wide at .7 opacity — the floor, and it only holds there because both
+The bowl mark is **gone** (2026-07-30, owner's call) — `assets/atrium-bowl.webp`
+deleted, source photo and the `bowl` recipe in nail-asset.py kept so it can come
+back with one command. What follows was true of it and stays true of the face.
+Recoloured lace needs room: the mark held together down to 160px at .7 opacity,
+the floor, and it only holds there because both
 assets are rendered at the source's own width with a **tight** saturation window
 (.34-.44, not .30-.52). A wide ramp feathers every nail edge; at 1:1 the face
 was visibly soft with it and resolves individual nails without it, and at the
@@ -265,6 +268,16 @@ The wide Chardonnay glass is the oaked-white glass: `white_rich` only, which is
 the white Burgundy shelf plus the barrel-aged Viura, Savagnin and Alsace Pinot
 Gris beside it. Steely Chablis (`white_mineral`) and unoaked Chardonnay
 (`white_fresh`) take the Riesling glass.
+
+## Search matches word starts (2026-07-30)
+
+`hayMatch()` requires the query to land at the start of a word, not anywhere
+inside one. Plain substring matching turned "burgun" into 94 hits, because
+SEARCH_ALIAS feeds every Pinot its German names and *spät*burgunder,
+*grau*burgunder, *weiss*burgunder and *blau*burgunder all contain it — a guest
+after Burgundy got the whole Pinot family instead of the 51 Burgundies. Typing
+those names in full still finds them. CJK queries have no word boundary to
+anchor to and fall back to substring.
 
 ## Search aliases: appellations, not grape synonyms (2026-07-30)
 
