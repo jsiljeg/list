@@ -167,6 +167,30 @@ chromium` (~114 MB, already installed here).
 For taste calls, override CSS in-page with `page.add_style_tag` and montage the
 variants into one image rather than editing the stylesheet per attempt.
 
+## The two nail sculptures (settled 2026-07-30)
+
+Both are used **recoloured, never redrawn** — `scripts/nail-asset.py face|bowl`
+turns the coloured wall (cobalt behind the face, red behind the bowl) charcoal
+and the metal gold, with each pixel's brightness deciding its gold, so the
+modelling survives. Sources in `data/source/atrium-{face,bowl}-source.*`.
+
+Redrawing them as SVG strokes was tried twice and failed both times, for
+different reasons worth remembering: the **face** is legible only through how
+nails *cluster*, which independent strokes cannot make; the **bowl** has no
+silhouette that survives abstraction — a closed oval with marks radiating off it
+reads as an eye or a sun, and the side-on saucer that shipped read to the owner
+as a smiling mouth. Photographs, not glyphs.
+
+Sizing follows from that: recoloured lace needs room. The bowl closing mark is
+280px wide at .7 opacity (under ~180px the weave mats into a smudge), the face
+watermark is `contain` at .32. The **grape** section ornament stays a drawn SVG —
+it is an arrangement of nails, not a picture of a sculpture.
+
+The face is a background on `.story-screen::before`, which is `display:none`
+until a language is picked, so it must stay in the `<link rel="preload">` in
+`index.html` — without it the fetch only starts at the tap and the splash lands
+bare.
+
 ## Windows environment notes
 
 - Git Bash paths (`/c/...`) don't work inside `python -c` — pass `C:/...` style paths.

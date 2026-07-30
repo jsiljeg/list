@@ -41,7 +41,7 @@ SUBJECTS = {
     # The bowl is an inline ornament, so it wants transparency rather than a
     # baked charcoal ground: the closing mark sits on the list background and
     # must not paint a rectangle over it.
-    "bowl": dict(src="data/source/atrium-bowl-source.jpg",
+    "bowl": dict(src="data/source/atrium-bowl-source.png",
                  out="assets/atrium-bowl.webp",
                  wide=440, s_full=0.30, s_none=0.52,
                  lum=(60, 200), alpha=True),

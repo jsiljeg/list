@@ -250,9 +250,14 @@ body {
 }
 .ornament::before { background: linear-gradient(to right, transparent, rgba(179,150,85,.5)); }
 .ornament::after { background: linear-gradient(to left, transparent, rgba(179,150,85,.5)); }
-/* The nail bowl closes the page — a full stop, quieter than the headings' motif. */
-.closing-mark { display: flex; justify-content: center; margin: 2.6rem 0 .5rem; color: var(--gold-soft); }
-.closing-mark svg { height: 26px; width: auto; opacity: .5; }
+/* The nail bowl closes the page — a full stop, quieter than the headings' motif.
+   The real sculpture, recoloured rather than redrawn (scripts/nail-asset.py):
+   drawn as strokes it read as a smiling mouth side-on and as an eye from above,
+   which is what the atrium's other sculpture already is. It needs room — under
+   about 180px the woven nails mat into a smudge — so it is wider than a glyph
+   and carried by opacity instead of size. */
+.closing-mark { display: flex; justify-content: center; margin: 2.8rem 0 .6rem; }
+.closing-mark img { width: min(280px, 78%); height: auto; opacity: .7; }
 .cat-serving { color: var(--text-faint); font-size: .9rem; margin-bottom: .6rem; }
 .price-note { color: var(--text-faint); font-style: italic; font-size: .92rem; margin: .3rem 0 .8rem; }
 .country {
