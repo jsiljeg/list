@@ -1,11 +1,4 @@
 {
  "_": "Vina koja se trenutno NE prikazuju gostima. Uređuje se preko /admin.html ili ručno.",
- "hidden": [
-  {
-   "producer": "Henri Giraud",
-   "name": "Esprit Nature",
-   "where": "glass",
-   "since": "2026-07-31"
-  }
- ]
+ "hidden": []
 }
