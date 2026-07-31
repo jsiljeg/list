@@ -76,12 +76,12 @@
          }
         },
         {
-         "name": "Blanc de blanc",
+         "name": "Blanc de Blancs",
          "producer": "Meneghetti",
          "price": 9,
          "insight": {
           "grape": "Chardonnay 60%, Pinot Blanc 40%",
-          "region": "Zapadna Istra, Hrvatska Istra",
+          "region": "Centralna Istra, Hrvatska Istra",
           "country": "HR",
           "style": "sparkling",
           "body": "medium",
@@ -102,14 +102,14 @@
          "terroir": "Višnjan, Motovun",
          "recommended": true,
          "note": {
-          "hr": "Bale, chardonnay, klasična metoda. Fini mjehurić i sol koju donese vjetar s mora — pjenušac koji ne pokušava biti francuski.",
-          "en": "Bale, Chardonnay, traditional method. A fine bead and the salt the sea wind brings in — a sparkling wine with no ambition to sound French.",
-          "it": "Valle, chardonnay, metodo classico. Perlage fine e il sale che porta il vento di mare — uno spumante che non prova a sembrare francese.",
-          "fr": "Bale, chardonnay, méthode traditionnelle. Bulle fine et le sel que le vent de mer apporte — un effervescent qui ne cherche pas à sonner français.",
-          "de": "Bale, Chardonnay, klassische Flaschengärung. Feine Perlage und das Salz, das der Seewind hereinträgt — ein Schaumwein ohne Ehrgeiz, französisch zu klingen.",
-          "zh": "巴莱、霞多丽、传统法。细密的气泡，以及海风带来的盐——一款无意听起来像法国的气泡酒。",
-          "sl": "Bale, chardonnay, klasična metoda. Fin mehurček in sol, ki jo prinese morski veter — penina, ki se ne trudi zveneti francosko.",
-          "es": "Bale, chardonnay, método tradicional. Burbuja fina y la sal que trae el viento del mar — un espumoso sin ninguna intención de sonar francés."
+          "hr": "Višnjan i Motovun, chardonnay, klasična metoda. Fini mjehurić i kiselina koju drže brežuljci u zaleđu — pjenušac koji ne pokušava biti francuski.",
+          "en": "Višnjan and Motovun, Chardonnay, traditional method. A fine bead and the acidity the inland hills hold on to — a sparkling wine with no ambition to sound French.",
+          "it": "Višnjan e Motovun, chardonnay, metodo classico. Perlage fine e l'acidità che trattengono le colline dell'interno — uno spumante che non prova a sembrare francese.",
+          "fr": "Višnjan et Motovun, chardonnay, méthode traditionnelle. Bulle fine et l'acidité que retiennent les collines de l'intérieur — un effervescent qui ne cherche pas à sonner français.",
+          "de": "Višnjan und Motovun, Chardonnay, klassische Flaschengärung. Feine Perlage und die Säure, die das Hinterland festhält — ein Schaumwein ohne Ehrgeiz, französisch zu klingen.",
+          "zh": "维什尼安与莫托文，霞多丽，传统法。细密的气泡，以及内陆丘陵留住的酸度——一款无意听起来像法国的气泡酒。",
+          "sl": "Višnjan in Motovun, chardonnay, klasična metoda. Fin mehurček in kislina, ki jo zadržijo griči v zaledju — penina, ki se ne trudi zveneti francosko.",
+          "es": "Višnjan y Motovun, chardonnay, método tradicional. Burbuja fina y la acidez que retienen las colinas del interior — un espumoso sin ninguna intención de sonar francés."
          }
         }
        ]
