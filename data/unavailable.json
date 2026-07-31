@@ -1,5 +1,11 @@
 {
- "_": "Vina koja se trenutno NE prikazuju gostima. Ništa se ne briše iz wines.json — kad vino opet dođe, obriši njegov redak odavde. Upute: UREDIVANJE.md, poglavlje 'Privremeno sakriti vino'.",
+ "_": "Vina koja se trenutno NE prikazuju gostima. Uređuje se preko /admin.html ili ručno.",
  "hidden": [
+  {
+   "producer": "Deutz",
+   "name": "Brut Classic",
+   "where": "glass",
+   "since": "2026-07-31"
+  }
  ]
 }
