@@ -82,6 +82,31 @@ test("Riedel's split holds: Pinot and Nebbiolo to Burgundy, Cabernet and Merlot 
   expect(wrong).toEqual([]);
 });
 
+test("orange wines take the wide Chardonnay bowl, not the Riesling", async ({ page }) => {
+  /* They fell through to the Riesling glass — the narrowest white shape we
+     draw — until the owner asked. No maker publishes an orange shape (Riedel's
+     guide 404s on the style), so the call rests on Riedel's Winewings
+     Chardonnay varietal list, which names Friulano, Ribolla Gialla, Pinot Gris
+     and Sauvignon Blanc: seven of these twelve. Whole style or none — a split
+     would be arbitrary dressed as evidence. */
+  await openApp(page);
+  const wrong = await page.evaluate(() => {
+    const out = [];
+    const walk = (o, f) => { if (o && typeof o === "object") { if (o.insight) f(o); for (const k in o) walk(o[k], f); } };
+    walk(DATA, (it) => {
+      if (it.insight.style !== "orange") return;
+      const g = glassFor(it.insight.style, it.insight.grape, it.insight.glass, it.insight.region);
+      if (g !== "chardonnay") out.push(`${it.name} -> ${g}`);
+    });
+    return out;
+  });
+  expect(wrong).toEqual([]);
+  /* And the rule must not have dragged the steely whites along with it. */
+  const stillRiesling = await page.evaluate(() =>
+    glassFor("white_mineral", "Malvazija istarska", undefined, "Zapadna Istra"));
+  expect(stillRiesling).toBe("riesling");
+});
+
 test("the named exceptions are still where the owner put them", async ({ page }) => {
   /* Each of these was a decision, not a rule, so a rule change must not quietly
      undo it. */

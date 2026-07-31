@@ -1130,10 +1130,24 @@ function glassFor(style, grape, override, region) {
     if (/pinot noir|nebbiolo/i.test(g)) return "winewingsBurgundy";
     return "burgundy";
   }
-  /* The wide Chardonnay glass is for the oaked, heavy whites only — the whole
-     white Burgundy shelf, plus the barrel-aged Viura, Savagnin and Alsace Pinot
-     Gris that sit beside them. Everything else white, including the steely
-     Chablis and the fresh unoaked Chardonnay, takes the Riesling glass. */
+  /* Orange goes in the wide Chardonnay bowl, not the narrow Riesling one it
+     used to get. No glassmaker publishes an orange-wine shape — Riedel's guide
+     has no entry for the style, and indexes Ribolla Gialla and Friulano as the
+     light unoaked whites they are when nobody macerates them — so the call is
+     made on the grapes we actually pour. Riedel's Winewings Chardonnay list
+     names Friulano, Ribolla Gialla, Pinot Gris and Sauvignon Blanc, which is
+     seven of our twelve; the rest (Malvazija, Vitovska, Godello) Riedel either
+     doesn't list at all or lists elsewhere, and splitting the style down that
+     line would dress an arbitrary cut up as evidence. The wide bowl is also
+     simply what months on the skins need: these have phenolic grip and want
+     air. Not the red Burgundy cone — the grip is tannic but the aromatics are
+     a white's, and on the list it would file orange in with the reds. */
+  if (style === "orange") return "chardonnay";
+  /* The wide Chardonnay glass is otherwise for the oaked, heavy whites only —
+     the whole white Burgundy shelf, plus the barrel-aged Viura, Savagnin and
+     Alsace Pinot Gris that sit beside them. Everything else white, including
+     the steely Chablis and the fresh unoaked Chardonnay, takes the Riesling
+     glass. */
   if (style === "white_rich") return "chardonnay";
   return "riesling";
 }
