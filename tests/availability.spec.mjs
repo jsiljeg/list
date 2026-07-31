@@ -98,3 +98,100 @@ test("a broken or missing unavailable.json does not take the list down", async (
   expect(bag.errors, "uncaught page errors").toEqual([]);
   expect(bag.console.filter((c) => !/404/.test(c))).toEqual([]);
 });
+
+/* ---------- polling: the change has to reach a tablet already in use ---------- */
+
+test("a wine hidden mid-session disappears without a reload", async ({ page }) => {
+  /* The gap this closes: the app read the 86 list once, at load. A tablet on
+     the charger picked a change up on the 3-minute idle reload, but one a guest
+     was actually reading never reloaded, so a wine 86'd at the start of a long
+     browse could still be ordered at the end of it. */
+  let rules = [];
+  await page.route("**/data/unavailable.json*", (route) =>
+    route.fulfill({ contentType: "application/json", body: JSON.stringify({ hidden: rules }) }));
+  const bag = await openApp(page);
+  expect((await names(page)).join(" | ")).toContain("Blanc de Blancs");
+
+  rules = [{ producer: "Meneghetti", name: "Blanc de Blancs" }];
+  await page.evaluate(() => pollHidden());          /* the 30s tick, without the wait */
+  await page.waitForTimeout(250);
+
+  expect((await names(page)).join(" | ")).not.toContain("Blanc de Blancs");
+  expectClean(bag);
+});
+
+test("a wine that comes back reappears without a reload", async ({ page }) => {
+  /* dropHidden() runs against FULL, the untouched merged list, precisely so
+     that deleting the line puts the wine back. Filtering DATA in place would
+     be one-way. */
+  let rules = [{ producer: "Meneghetti", name: "Blanc de Blancs" }];
+  await page.route("**/data/unavailable.json*", (route) =>
+    route.fulfill({ contentType: "application/json", body: JSON.stringify({ hidden: rules }) }));
+  const bag = await openApp(page);
+  expect((await names(page)).join(" | ")).not.toContain("Blanc de Blancs");
+
+  rules = [];
+  await page.evaluate(() => pollHidden());
+  await page.waitForTimeout(250);
+
+  expect((await names(page)).join(" | ")).toContain("Blanc de Blancs");
+  expectClean(bag);
+});
+
+test("an open detail sheet is never rebuilt underneath the guest", async ({ page }) => {
+  /* Sheets are addressed by an si/ci/gi/ii path into DATA. Re-filtering while
+     one is open would leave the ‹ › arrows stepping onto the wrong wines — and
+     snatching a card away from someone mid-read is worse than the wait. */
+  let rules = [];
+  await page.route("**/data/unavailable.json*", (route) =>
+    route.fulfill({ contentType: "application/json", body: JSON.stringify({ hidden: rules }) }));
+  const bag = await openApp(page);
+
+  await page.locator("#content .item").filter({ hasText: "Terbotz" }).first().click();
+  await expect(page.locator(".detail-name")).toContainText("Terbotz");
+
+  rules = [{ name: "Bregh Rose" }];
+  await page.evaluate(() => pollHidden());
+  await page.waitForTimeout(250);
+
+  /* Still the wine they opened, and the list behind it untouched for now. */
+  await expect(page.locator(".detail-name")).toContainText("Terbotz");
+  expect(await page.evaluate(() => hidePending !== null), "should be queued, not applied").toBe(true);
+
+  await page.locator("#modal .detail-close, #modal-backdrop").first().click();
+  await page.waitForTimeout(350);
+  expect((await names(page)).join(" | ")).not.toContain("Bregh Rose");
+  expect(await page.evaluate(() => hidePending)).toBe(null);
+  expectClean(bag);
+});
+
+test("polling keeps the guest's place: section, search and scroll", async ({ page }) => {
+  let rules = [];
+  await page.route("**/data/unavailable.json*", (route) =>
+    route.fulfill({ contentType: "application/json", body: JSON.stringify({ hidden: rules }) }));
+  const bag = await openApp(page);
+
+  if (!(await page.locator("#search-bar.open").count())) await page.locator("#search-toggle").click();
+  await page.fill("#search", "Meneghetti");
+  await page.waitForTimeout(350);
+  const before = await page.locator("#content .item").count();
+
+  rules = [{ name: "Stolichnaya" }];                /* nothing to do with the query */
+  await page.evaluate(() => pollHidden());
+  await page.waitForTimeout(250);
+
+  expect(await page.inputValue("#search"), "the query survived the re-render").toBe("Meneghetti");
+  expect(await page.locator("#content .item").count()).toBe(before);
+  expectClean(bag);
+});
+
+test("an unreachable 86 list leaves the tablet showing what it has", async ({ page }) => {
+  /* Restaurant wi-fi drops. The poll must fail quietly, not blank the list. */
+  const bag = await openApp(page);
+  const before = (await names(page)).length;
+  await page.route("**/data/unavailable.json*", (route) => route.abort());
+  await page.evaluate(() => pollHidden());
+  await page.waitForTimeout(250);
+  expect((await names(page)).length).toBe(before);
+  expect(bag.errors, "uncaught page errors").toEqual([]);
+});

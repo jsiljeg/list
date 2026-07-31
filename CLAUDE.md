@@ -401,6 +401,23 @@ owner believes a wine is hidden while the guest is still being offered it.
 the same wine is often in both. Owner docs: UREDIVANJE.md, "Privremeno sakriti
 vino".
 
+**Polling (2026-07-31).** The app read the list once at load, so the feature
+only worked on an idle tablet: one a guest was *reading* never reloaded, and a
+wine 86'd at the start of a long browse could still be ordered at the end of it.
+`pollHidden()` now re-reads **only `unavailable.json`** every 30 s (220 bytes,
+~90 kB across an evening) plus once on `visibilitychange`. Prices and new wines
+still ride the 3-minute idle reload — making those live would mean re-merging
+the library mid-session for a change nobody is waiting on.
+
+Three things hold it together. `FULL` keeps the merged list with nothing
+hidden, and every poll re-derives `DATA` from it — filtering `DATA` in place
+would make unhiding impossible without a reload. A change arriving while a
+detail sheet is open is **queued in `hidePending` and flushed by `hideModal()`**,
+never applied under the sheet: sheets are si/ci/gi/ii paths into `DATA`, and the
+‹ › arrows would start stepping onto the wrong wines. And `applyHidden()`
+restores `window.scrollY` after the re-render, because `renderContent()` rebuilds
+the column and would otherwise throw a reading guest back to the top.
+
 ## Search matches word starts (2026-07-30)
 
 `hayMatch()` requires the query to land at the start of a word, not anywhere

@@ -173,9 +173,11 @@ function init() {
     fetch("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] })),
     fetch("data/producers.json").then((r) => r.json()).catch(() => ({ producers: {} })),
     fetch("data/regions.json").then((r) => r.json()).catch(() => ({ regions: [] })),
-    fetch("data/unavailable.json").then((r) => r.json()).catch(() => ({ hidden: [] }))
-  ]).then(([lib, list, m, pr, rg, un]) => {
-      const d = dropHidden(mergeList(lib, list), un && un.hidden);
+    fetch("data/unavailable.json").then((r) => r.text()).catch(() => "")
+  ]).then(([lib, list, m, pr, rg, unText]) => {
+      FULL = mergeList(lib, list);
+      hiddenRaw = unText;
+      const d = dropHidden(FULL, parseHidden(unText));
       DATA = d;
       MENU = m;
       PRODUCERS = pr.producers || {};
@@ -184,7 +186,83 @@ function init() {
       const idleReset = sessionStorage.getItem("idle-reset");
       sessionStorage.removeItem("idle-reset");
       if (lang && I18N[lang] && !idleReset) showApp(); else showStart();
+      startHiddenPolling();
   });
+}
+
+/* ---------- staying current while the tablet is in a guest's hands ----------
+   The app used to read the data once, at load. A tablet on the charger picked
+   up a change within about four minutes — deploy, then the three-minute idle
+   reload — but a tablet somebody was actually *reading* never reloaded at all,
+   so a wine 86'd at the start of a long browse could still be ordered at the
+   end of it. That is the whole point of the feature, missed.
+
+   So the 86 list, and only the 86 list, is re-read every 30 seconds. It is 220
+   bytes: an evening of polling costs a tablet about 90 kB. Prices and new
+   wines still arrive on the idle reload, which is soon enough for them and
+   would mean re-merging the library mid-session. */
+const HIDE_POLL_MS = 30000;
+let FULL = null;         /* the merged list with nothing hidden — the baseline
+                            every new rule set is applied to, so unhiding a wine
+                            brings it back without a reload */
+let hiddenRaw = "";      /* the last body applied, so an unchanged file is free */
+let hidePending = null;  /* rules waiting for the detail sheet to be closed */
+
+function parseHidden(text) {
+  try { return JSON.parse(text).hidden || []; } catch (e) { return []; }
+}
+
+function applyHidden(rules) {
+  DATA = dropHidden(FULL, rules);
+  /* The guest may be standing in a category that just emptied. */
+  if (!DATA.sections.some((s) => s.id === currentSection)) currentSection = DATA.sections[0].id;
+  if (appEntered && !$("app").classList.contains("hidden")) {
+    /* renderContent() re-reads the search box and every toggle, so the view
+       comes back as the guest left it. Only the scroll needs holding: the
+       column is rebuilt from scratch and the browser would send them to the
+       top of it mid-read. */
+    const y = window.scrollY;
+    renderNav();
+    renderContent();
+    window.scrollTo(0, y);
+  }
+}
+
+function pollHidden() {
+  /* no-cache, not no-store: a conditional request, so an unchanged file costs
+     a 304 and no body. */
+  fetch("data/unavailable.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
+    .then((text) => {
+      if (text === hiddenRaw) return;
+      hiddenRaw = text;
+      const rules = parseHidden(text);
+      /* Never rebuild DATA under an open detail sheet. Every sheet is addressed
+         by an si/ci/gi/ii path into DATA, so re-filtering beneath it would
+         leave the arrows stepping onto the wrong wines — and yanking a card out
+         from under someone reading it is worse than the thirty seconds saved.
+         It lands when they close it. */
+      if (modalOpen) { hidePending = rules; return; }
+      applyHidden(rules);
+    })
+    .catch(() => { /* offline, or a deploy mid-flight: keep what we have */ });
+}
+
+function startHiddenPolling() {
+  setInterval(pollHidden, HIDE_POLL_MS);
+  /* A tablet that was asleep in an apron pocket should not wait out the rest of
+     its interval when it comes back. */
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") pollHidden();
+  });
+}
+
+/* Called by hideModal(): the deferred rules land the moment the sheet is gone. */
+function flushHidden() {
+  if (!hidePending) return;
+  const rules = hidePending;
+  hidePending = null;
+  applyHidden(rules);
 }
 
 /* ---------- start screen ---------- */
@@ -895,6 +973,8 @@ function hideModal() {
   document.body.style.right = "";
   document.body.style.overflow = "";
   window.scrollTo(0, scrollLockY);
+  /* An 86 that arrived while this sheet was open has been waiting for it. */
+  flushHidden();
 }
 function closeModal() {
   if (modalOpen && history.state && history.state.theaModal) history.back(); // → popstate → hideModal

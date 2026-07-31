@@ -1,8 +1,23 @@
 # Kako urediti vinsku kartu (upute za vlasnika)
 
 Svaka spremljena promjena automatski se objavljuje na
-**https://theatrium.list.devinos.hr** za otprilike jednu minutu. Tableti
-sami povuku novu verziju čim budu 3 minute bez korištenja.
+**https://theatrium.list.devinos.hr** za otprilike pola minute.
+
+Koliko treba da promjena stigne do tableta u ruci gosta:
+
+| Promjena | Do gosta |
+|---|---|
+| **Sakriveno / vraćeno vino** (`unavailable.json`) | **do minute** — i dok gost čita, bez ijednog dodira |
+| Cijena, novo vino, opis | 3–4 min (tablet se sam osvježi nakon 3 min mirovanja) |
+
+Vino kojeg nema provjerava se svakih 30 sekundi, jer je to jedino što
+mora nestati **odmah** — gost ne smije naručiti nešto što ste maloprije
+skinuli. Ostalo pričeka prvo mirovanje tableta.
+
+Dvije iznimke, da ne bude iznenađenja: tablet **bez interneta** prikazuje
+zadnje što je vidio (namjerno — karta radi i kad padne Wi-Fi), a ako gost
+baš u tom trenutku ima **otvorene detalje vina**, promjena čeka da ih
+zatvori (ne otimamo mu karticu ispod prsta).
 
 ## Tri datoteke i što je u kojoj
 
