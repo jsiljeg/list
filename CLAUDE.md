@@ -170,13 +170,19 @@ Open questions for the owner:
   Ca' La Bionda/Valpolicella, Geržinić/Malvazija, Tomaz/Malvazija, Niko
   Bura/Dingač) — reported, deliberately left alone.
 
-## Tests (added 2026-07-30) — run them before you push
+## Tests (added 2026-07-30) — write them, but don't run them unasked
+
+**Standing rule (owner, 2026-07-31): do not run the suite unless the owner asks
+for it.** It takes ~8 minutes across three viewports and blocks the session for
+all of it; the owner would rather ship the change and decide when a regression
+run is worth the wait. Still *add* a test with every fix (see below) — say in
+the commit and the reply that it was added and not run, and offer the command.
 
 `npm test` runs a Playwright regression suite across three viewports; `npm run
 check` adds the syntax and data checks. **It does not gate the deploy** — owner's
 call, 2026-07-30: a data edit should be live in a minute, not after a browser
-run. Run it when something looks wrong, or against an older commit to find where
-a regression came in:
+run. When asked, run it against the working tree, or against an older commit to
+find where a regression came in:
 
     npm test                                  # this working tree
     gh workflow run test.yml --ref main       # on GitHub, on demand
