@@ -310,6 +310,20 @@ Sangiovese from Montalcino — which also picks up Soldera's Case Basse,
 declassified in name but the same wine from the same hill. Beaujolais Cru is the
 one Riedel-listed red still on the cone.
 
+**Orange takes the wide Chardonnay bowl** (owner's question, 2026-07-31), as a
+`style === "orange"` rule rather than twelve overrides, because the whole style
+moves. Nobody publishes an orange shape — `riedel.com/en-int/wine-glass-guide/
+orange-wine` is a 404, and their Ribolla Gialla and Friulano pages describe
+light unoaked whites, i.e. the grape as it reads when nobody macerates it, so
+those entries are not a ruling on ours. The evidence used instead is the
+Winewings Chardonnay varietal list — "…Friulano, Fumé Blanc, … Pinot (Blanc,
+Grigio, Gris), … Ribolla Gialla, … Sauvignon Blanc (oaked)…" — which covers
+seven of our twelve. The other five (Malvazija ×3, Vitovska ×2, Godello) Riedel
+lists elsewhere or not at all (Vitovska 404s too); splitting the style there
+would be an arbitrary cut dressed as evidence. Not the red `burgundy` cone: the
+grip is tannic but the aromatics are a white's, and it would file orange in with
+the reds visually. Serving temps were already 12–14 °C and needed no change.
+
 **Riedel's own guide answers the Chablis question**: the Performance/Veloce
 Chardonnay is listed for "Burgundy (white), Chablis, Chardonnay (oaked),
 Corton-Charlemagne, Garnatxa Blanca, Meursault, Montrachet, Morillon (oaked),
