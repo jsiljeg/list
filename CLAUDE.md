@@ -382,6 +382,47 @@ priced and on the shelf, and it silently doesn't render. An **orphan** — a
 library wine no list pours — is only a `note`, because that is the normal state
 once a second venue exists.
 
+## The 86 board — admin.html (2026-07-31)
+
+`admin.html` + `js/admin.js`: a switch per wine, writing `data/unavailable.json`
+through the GitHub contents API. Staff-facing, deliberately not sharing
+`css/style.css` with the guest app.
+
+**Security, stated once so nobody assumes more.** The repo is public and this
+page ships with it. The **PIN (`const PIN` in js/admin.js) is a screen lock**,
+nothing more. The **token is the only credential** — fine-grained, `jsiljeg/list`
+only, Contents: Read and write, held in that tablet's localStorage. Worst case
+if a tablet walks: someone hides and unhides wines on our own list, and
+revoking takes a minute. Don't "improve" this with a hashed PIN; it would only
+look like security.
+
+**The receipt is the feature**, not the switch. A switch you don't trust is
+worse than editing JSON, because typing JSON at least feels like it did
+something. Three stages: saved → published → on the tablets. Stage 2 is
+**verified by re-fetching the deployed file until it matches**, never assumed;
+stage 3 counts out the 30 s poll window.
+
+**Writes go through a queue, and nothing is ever locked.** The first build
+disabled every switch until the whole receipt had run — ~40 s per wine, so you
+could not 86 three things at once, which is exactly what happens mid-service.
+Now a flip lands in `rules` optimistically, queues a message, and one worker
+drains it, always sending *current* `rules` rather than a snapshot. Both
+`waitForPublish()` and `countdown()` **abort the moment `queue.length` goes
+non-zero** — the countdown is a progress bar, not a lock, and it was making
+un-hides wait 30 s, the one thing that must never be slow.
+
+**A 409 does not retry over the top.** Another tablet wrote since we read:
+re-read, re-render, and say so. Losing the flip just made costs one tap;
+silently erasing someone else's change does not announce itself.
+
+Wines listed by the glass *and* by the bottle get two extra buttons writing
+`where`, because an open bottle running out is not the wine running out.
+
+Testing it needs no token: `tests/admin.spec.mjs` intercepts `api.github.com`
+with an in-memory file. Scope that route by **origin** — `**/data/unavailable.json*`
+also matches the GitHub contents URL, which silently feeds the page the wrong
+shape.
+
 ## Out of stock tonight, back tomorrow (2026-07-31)
 
 `data/unavailable.json` is the 86 list: `{"hidden": [{"producer", "name",

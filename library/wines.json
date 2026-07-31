@@ -5801,7 +5801,18 @@
     "temp": "10–12",
     "alcohol": "13",
     "sweetness": "dry"
-   }
+   },
+   "note": {
+    "hr": "Jedna sorta, pet imena. Do 2007. zvala se Tocai, dok Europski sud nije presudio da ime pripada Tokaju; Furlanija ju je prekrstila u Friulano, Slovenija je 2013. uzela Jakot — Tokaj unatrag. Simčič drži ampelografsko ime, Sauvignon Vert, koje sa Sauvignon Blancom nije ni u rodu. Isto grožđe kao Prinčičev Jakot, s druge strane granice.",
+    "en": "One grape, five names. It was Tocai until 2007, when the European Court ruled the name belonged to Tokaj; Friuli renamed it Friulano, Slovenia settled in 2013 on Jakot — Tokaj backwards. Simčič keeps the ampelographer's name, Sauvignon Vert, which is no relation to Sauvignon Blanc. The same grape as Prinčič's Jakot, from the other side of the border.",
+    "it": "Un vitigno, cinque nomi. Fino al 2007 era Tocai, poi la Corte europea stabilì che il nome spettava a Tokaj; il Friuli lo ribattezzò Friulano, la Slovenia scelse nel 2013 Jakot — Tokaj al contrario. Simčič tiene il nome ampelografico, Sauvignon Vert, che con il Sauvignon Blanc non ha parentela. La stessa uva del Jakot di Prinčič, dall'altra parte del confine.",
+    "fr": "Un cépage, cinq noms. C'était le tocai jusqu'en 2007, quand la Cour européenne a jugé que le nom appartenait à Tokaj ; le Frioul l'a rebaptisé friulano, la Slovénie a choisi en 2013 jakot — tokaj à l'envers. Simčič garde le nom des ampélographes, sauvignon vert, qui n'a aucun lien avec le sauvignon blanc. Le même raisin que le Jakot de Prinčič, de l'autre côté de la frontière.",
+    "de": "Eine Rebsorte, fünf Namen. Bis 2007 hieß sie Tocai, dann entschied der Europäische Gerichtshof, der Name gehöre Tokaj; das Friaul taufte sie Friulano, Slowenien nahm 2013 Jakot — Tokaj rückwärts. Simčič bleibt beim ampelographischen Namen, Sauvignon Vert, der mit Sauvignon Blanc nicht verwandt ist. Dieselbe Traube wie in Prinčičs Jakot, von der anderen Seite der Grenze.",
+    "zh": "一个品种，五个名字。2007 年之前它叫 Tocai，直到欧洲法院裁定这个名字属于托卡伊；弗留利改称 Friulano，斯洛文尼亚在 2013 年选了 Jakot——Tokaj 倒过来写。Simčič 沿用品种学上的名字 Sauvignon Vert，它与长相思毫无亲缘。与 Prinčič 的 Jakot 是同一种葡萄，只是在国境的另一边。",
+    "sl": "Ena sorta, pet imen. Do leta 2007 se je imenovala tokaj, dokler Evropsko sodišče ni razsodilo, da ime pripada Tokaju; Furlanija jo je prekrstila v friulano, Slovenija je leta 2013 izbrala jakot — tokaj nazaj. Simčič ostaja pri ampelografskem imenu, sauvignon vert, ki s sauvignonom ni v sorodu. Isto grozdje kot Prinčičev Jakot, z druge strani meje.",
+    "es": "Una variedad, cinco nombres. Fue Tocai hasta 2007, cuando el Tribunal europeo dictaminó que el nombre pertenecía a Tokaj; Friuli la rebautizó Friulano y Eslovenia adoptó en 2013 Jakot — Tokaj al revés. Simčič conserva el nombre ampelográfico, Sauvignon Vert, que no tiene parentesco con el Sauvignon Blanc. La misma uva que el Jakot de Prinčič, al otro lado de la frontera."
+   },
+   "notePlain": true
   },
   "baraka--malena-2022": {
    "name": "Malena 2022",

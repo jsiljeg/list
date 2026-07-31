@@ -125,9 +125,13 @@ uredite `data/menu.json` (ista pravila kao za vina: `pairings` i
 ```json
 "ratings": [
  { "critic": "James Suckling", "score": "97" },
- { "critic": "Wine Advocate", "score": "96" }
+ { "critic": "Robert Parker", "score": "96" }
 ],
 ```
+Ime kritičara pišite točno ovako: **Robert Parker** (ne „Wine Advocate"),
+James Suckling, Wine Spectator, Wine Enthusiast, Vinous, Decanter,
+Falstaff, Jancis Robinson (uvijek `NN/20`). Provjera prije objave odbija
+ime izvan tog popisa.
 
 ### Dodati novo vino → **dvije datoteke**
 Novo vino se prvo opiše u knjižnici, pa se stavi na kartu.
@@ -165,7 +169,53 @@ javlja grešku i stara karta ostaje online.
 a u kartu dvaput — u „Vina na čašu" i u odgovarajuću kategoriju boca, s
 različitim cijenama i istim `ref`-om. Tako se opis ne može razići.
 
-### Privremeno sakriti vino (nema ga danas, ima ga sutra)
+### Privremeno sakriti vino — **najlakši način: /admin**
+
+Otvorite **https://theatrium.list.devinos.hr/admin.html** na tabletu iza
+šanka. Upišete PIN, i dobijete popis svih vina s prekidačem uz svako.
+Kliknete prekidač — vino nestaje s karte. Kliknete opet — vraća se.
+Nema tipkanja, nema JSON-a.
+
+**Trakica na dnu vam govori dokle je stiglo**, jer prekidač kojem ne
+vjerujete gori je od tipkanja:
+
+1. **spremljeno** — zapisano na GitHub (par sekundi)
+2. **objavljeno** — stranica je ponovno objavljena (~30 s). Ovo se
+   **provjerava**, ne pretpostavlja: stranica sama pročita objavljenu
+   datoteku dok ne vidi vašu promjenu.
+3. **na tabletima** — odbrojava 30 s, koliko najviše treba da i zadnji
+   tablet povuče promjenu.
+
+Gore piše i koliko je vina trenutno skriveno, a gumb **Samo skriveno**
+pokaže samo njih — to je vaša evidencija na jednom ekranu.
+
+Vino koje ide **i na čašu i na bocu** ima još dva mala gumba: *nema na
+čašu* i *nema na bocu*. Prekidač skriva vino svugdje; gumbi skrivaju samo
+jednu ponudu (otvorena boca je gotova, a zatvorenih još ima).
+
+Možete mirno kliknuti tri vina zaredom — ne treba čekati da prvo završi.
+
+#### Ključ (jednom, na jednom tabletu)
+Prvi put stranica traži GitHub token. Napravite ga ovako:
+
+1. github.com → **Settings** → Developer settings → **Personal access
+   tokens** → **Fine-grained tokens** → *Generate new token*
+2. **Repository access:** Only select repositories → **jsiljeg/list**
+3. **Permissions** → Repository permissions → **Contents: Read and write**
+   (ništa drugo)
+4. Kopirajte token i zalijepite ga u stranicu. Ostaje spremljen na tom
+   tabletu.
+
+**Što ako tablet nestane?** Taj ključ ne može ništa osim skrivati i
+vraćati vina na *našoj* karti. Javite Juri, ili sami obrišite token na
+github.com/settings/tokens — vrijedi odmah. Gumb **Odjava** briše ključ s
+tableta.
+
+**PIN nije zaštita**, nego brava na ekranu da gost slučajno ne otvori
+stranicu. Prava zaštita je token. PIN se mijenja u `js/admin.js`
+(`const PIN`).
+
+### Privremeno sakriti vino — ručno (bez tableta sa ključem)
 **Ne dirajte `wines.json`.** Sve se radi u maloj datoteci
 `data/unavailable.json`, koja je popis onoga što gosti trenutno **ne**
 vide. Vino ostaje zapisano sa svime što smo o njemu napisali — samo se ne
