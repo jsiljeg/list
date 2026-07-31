@@ -50,7 +50,8 @@
     "Pinot Meunier": "莫尼耶皮诺",
     "Pinot Nero": "黑皮诺",
     "Pinot Noir": "黑皮诺",
-    "Pušipel/Furmint": "普希佩尔／福尔明特",
+    "Pušipel": "普希佩尔",
+    "Pušipel (Furmint)": "普希佩尔（Pušipel / Furmint）",
     "Ribolla Gialla": "丽波拉",
     "Riesling": "雷司令",
     "Rondinella": "罗蒂内拉",
@@ -473,7 +474,11 @@
     "Autohtone dalmatinske sorte (prošek)": 1,
     "Dalmatinske autohtone sorte": 1,
     "Španjolske sorte": 1,
-    "Tribidrag (Zinfandel)": 1
+    /* Already carry both Latin names inside the Chinese string; without this
+       the renderer would append the Latin token again and print the synonym
+       twice. */
+    "Tribidrag (Zinfandel)": 1,
+    "Pušipel (Furmint)": 1
   };
 
   /* Icon producers & cuvées — ONLY genuine, market-established Chinese names
