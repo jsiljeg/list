@@ -108,17 +108,34 @@ test("a wine listed by the glass and by the bottle carries identical data", () =
   expect(bad).toEqual([]);
 });
 
-test("critic names come from the agreed list", () => {
-  /* "Wine Advocate" instead of "Robert Parker" is the one that keeps recurring. */
+test("every critic name resolves to one from the agreed list", () => {
+  /* "Wine Advocate" for "Robert Parker" is the one that keeps recurring, and
+     the owner would rather paste what the merchant wrote than remember the
+     house spelling — so CRITIC_ALIAS in app.js normalises it on the way to the
+     screen. This test therefore checks what a *guest* ends up reading, not
+     what is typed: an alias is fine, an unknown name is not, because it would
+     reach the screen unchanged. */
+  const ALIAS = {};
+  for (const m of readFileSync(resolve(ROOT, "js/app.js"), "utf8")
+    .split("const CRITIC_ALIAS = {")[1].split("};")[0]
+    .matchAll(/"([^"]+)":\s*"([^"]+)"/g)) ALIAS[m[1]] = m[2];
+
   const KNOWN = new Set(["Robert Parker", "James Suckling", "Wine Spectator", "Wine Enthusiast", "Vinous",
     "Decanter", "Falstaff", "Jasper Morris", "Tim Atkin", "Jancis Robinson", "Lobenberg", "Jeff Leve",
     "Jeb Dunnuck", "Jeannie Cho Lee", "Stuart Pigott"]);
+  const canonical = (c) => ALIAS[String(c || "").trim().toLowerCase()] || c;
+
   const bad = [];
   for (const it of items) for (const r of it.ratings || []) {
-    if (!KNOWN.has(r.critic)) bad.push(`${it.name}: "${r.critic}"`);
-    if (r.critic === "Jancis Robinson" && !/\/20/.test(String(r.score))) bad.push(`${it.name}: Jancis Robinson not out of 20 (${r.score})`);
+    const c = canonical(r.critic);
+    if (!KNOWN.has(c)) bad.push(`${it.name}: "${r.critic}" resolves to "${c}", which is not on the list`);
+    if (c === "Jancis Robinson" && !/\/20/.test(String(r.score))) bad.push(`${it.name}: Jancis Robinson not out of 20 (${r.score})`);
   }
   expect(bad).toEqual([]);
+
+  /* Every alias must land on a name we actually allow, or the map quietly
+     rewrites one unknown critic into another. */
+  expect(Object.values(ALIAS).filter((v) => !KNOWN.has(v))).toEqual([]);
 });
 
 test("sweetness and body descriptors are lowercase in every language", () => {
@@ -242,6 +259,17 @@ test("green pepper and tomato leaf only go on wines with Cabernet in them", () =
   const bad = items
     .filter((i) => (i.insight.aromas || []).some((a) => a === "capsicum" || a === "tomato_leaf"))
     .filter((i) => !/cabernet|carménère|carmenere/i.test(i.insight.grape || ""))
+    .map((i) => `${i.producer} — ${i.name}: ${i.insight.grape}`);
+  expect(bad).toEqual([]);
+});
+
+test("no wine stores a bare Malvasia or Malvazija", () => {
+  /* Caroline Gilby MW, April 2026: ~290 varieties share the name Malvasia and
+     most are unrelated to one another — Croatia alone grows three. The bare
+     word identifies nothing, so it must always carry its qualifier. */
+  const bad = items
+    .filter((i) => String(i.insight.grape || "").split(",")
+      .some((t) => /^\s*malvas(ia|ija)\s*$|^\s*malvazija\s*$/i.test(t)))
     .map((i) => `${i.producer} — ${i.name}: ${i.insight.grape}`);
   expect(bad).toEqual([]);
 });

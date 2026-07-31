@@ -116,6 +116,35 @@ empty string deliberately suppresses the producer-region fallback in
   geography and marketing, not places the wine is from (Ao Yun's vineyards sit
   in Deqin County, a different county from Shangri-La City).
 
+**One grape, one stored name** (settled 2026-07-31, from Caroline Gilby MW,
+"Malvasia – the first generic wine brand?", jancisrobinson.com 2026-04-14;
+copy at `data/source/malvasia-gilby-2026.pdf`). A variety is stored **once**
+under one canonical name; each language view renders it under the name that
+language's drinkers use, via `LANG_GRAPE` in js/app.js. **The guest's language
+wins over the bottle's origin** — a Croatian guest reads "Rebula" whether the
+wine is from Brda or Oslavia — because the field says what they are drinking,
+and the label is already on the table. The wine's own *name* is never touched
+(Damijan's "Malvasia 2018", Simčič's "Sauvignon Vert" are labels).
+
+- **Never a bare `Malvasia` / `Malvazija`.** ~290 varieties share the name and
+  most are unrelated; Croatia grows three (Istriana, Dubrovačka, and Maraština/
+  Rukatac = Malvasia Bianca Lunga). Canonical here is `Malvazija istarska` →
+  `Malvasia Istriana` in en/it/fr/de, `Malvasía istriana` in es, `伊斯特拉马尔瓦齐娅`
+  in zh, unchanged in hr/sl. Guarded by a test.
+- Don't invent a local form. French/German trade use the Italian name; the
+  French-looking "Malvoisie" is one of the ambiguous variants the article warns
+  about, so it would be actively wrong.
+- **Rukatac** stays Rukatac — it is the Dalmatian label name for a genuinely
+  different variety, not a bare Malvasia.
+- Open: `Muscat` is stored bare on Geržinić Muškat 2020, and bare Muscat is
+  ambiguous too (blanc à petits grains / Ottonel / Alexandria). Needs the label.
+
+**Critic aliases** (2026-07-31): `CRITIC_ALIAS` in js/app.js normalises on the
+way to the screen — "Wine Advocate", "RP", "JS" and friends resolve to the
+canonical name. The owner pastes what the merchant wrote; the list still says
+Robert Parker. The data-spec invariant is therefore *resolves to* a known
+critic, not *is* one, and every alias value must itself be on the list.
+
 **Blends:** `Variety NN%, Variety NN%`, name first, descending share. Never
 percent-first — `zhTokens`/`langTokens` strip a *trailing* percentage per token.
 

@@ -34,7 +34,6 @@
     "Godello": "歌德约",
     "Graciano": "格拉西亚诺",
     "Grüner Veltliner": "绿维特利纳",
-    "Malvasia": "玛尔维萨",
     "Mazuelo": "马苏埃洛",
     "Merlot": "美乐",
     "Molinara": "莫利纳拉",
@@ -82,7 +81,9 @@
     "Babić": "巴比奇",
     "Graševina": "格拉舍维纳",
     "Grk": "格尔克",
-    "Malvazija": "马尔瓦齐娅",
+    /* No bare "Malvasia"/"Malvazija" key on purpose: ~290 unrelated
+       varieties share that name, so it identifies nothing. Store the
+       full variety name — see LANG_GRAPE in app.js. */
     "Malvazija istarska": "伊斯特拉马尔瓦齐娅",
     "Muškat momjanski": "蒙扬麝香",
     "Plavac mali": "普拉瓦茨·马利",

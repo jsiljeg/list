@@ -774,7 +774,7 @@ function openDetail(ref, back, scope) {
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
     ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
     ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
-    ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(r.critic)}</span>`).join("")}</div>` : ""}
+    ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(criticName(r.critic))}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
     <div class="detail-style">${esc(t.styles[ins.style] || "")}${ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : ""}${ins.sweetness && t.sweetness ? " · " + esc(t.sweetness[ins.sweetness] || ins.sweetness) : ""}</div>
     ${noteText ? (item.notePlain
@@ -1126,13 +1126,34 @@ function zhTokens(str, map) {
     })
     .join("、");
 }
-/* Per-language grape name overrides: the canonical stored name is the French/
-   international or source-label form (e.g. "Pinot Noir", "Ribolla Gialla");
-   in some language views a single grape shows under its local name instead.
-   Other languages keep the canonical name. */
+/* Per-language grape name overrides.
+ *
+ * The policy, settled 2026-07-31 (see CLAUDE.md "One grape, one stored name"):
+ * a variety is stored **once**, under one canonical name, and each language
+ * view renders it under the name that language's drinkers actually use. The
+ * guest's language wins over the bottle's origin — a Croatian guest reads
+ * "Rebula" whether the wine is from Brda or Oslavia — because the field is
+ * there to tell them what they are drinking, not to transcribe the label. The
+ * label is already on the table, and the wine's own *name* is never touched.
+ *
+ * Malvazija istarska is the case that forced the rule. It was stored three
+ * ways — "Malvasia", "Malvazija", "Malvazija istarska" — for one grape, and
+ * the bare forms are worse than untidy: Caroline Gilby MW counts ~290
+ * varieties sharing the name Malvasia, most of them unrelated to each other,
+ * so "Malvasia" on its own identifies nothing. Croatia alone grows three
+ * different ones. Never store a bare Malvasia/Malvazija again. */
 const LANG_GRAPE = {
-  it: { "Pinot Noir": "Pinot Nero" },
-  hr: { "Pinot Bianco": "Pinot Blanc", "Ribolla Gialla": "Rebula" }
+  it: { "Pinot Noir": "Pinot Nero", "Malvazija istarska": "Malvasia Istriana" },
+  hr: { "Pinot Bianco": "Pinot Blanc", "Ribolla Gialla": "Rebula" },
+  /* Malvasia Istriana is the name the international literature uses — it is
+     the variety name in Gilby's table, with Malvazija Istarska as the synonym.
+     French and German trade both take the Italian form; "Malvoisie" would be
+     actively wrong, being one of the ambiguous variants the article warns
+     about. Spanish accents its own spelling of the word. */
+  en: { "Malvazija istarska": "Malvasia Istriana" },
+  fr: { "Malvazija istarska": "Malvasia Istriana" },
+  de: { "Malvazija istarska": "Malvasia Istriana" },
+  es: { "Malvazija istarska": "Malvasía istriana" }
 };
 function langTokens(str, map) {
   return str
@@ -1186,6 +1207,33 @@ function wineZh(name) {
   for (const k in ZH_WINE) if (name.indexOf(k) !== -1) return ZH_WINE[k];
   return "";
 }
+/* ---------- critic names ----------
+   The house rule is "Robert Parker", never "Wine Advocate" — the publication
+   is real, but a guest scanning a wine list reads the name. Rather than make
+   that a rule the owner has to remember while pasting scores off a merchant's
+   page, the alias is normalised on the way to the screen. Whatever is typed,
+   the list says the same thing.
+
+   Add the form you keep meeting on the left; the canonical spelling from
+   CLAUDE.md goes on the right. */
+const CRITIC_ALIAS = {
+  "wine advocate": "Robert Parker",
+  "the wine advocate": "Robert Parker",
+  "robert parker wine advocate": "Robert Parker",
+  "parker": "Robert Parker",
+  "rp": "Robert Parker",
+  "ws": "Wine Spectator",
+  "js": "James Suckling",
+  "we": "Wine Enthusiast",
+  "jr": "Jancis Robinson",
+  "jancis": "Jancis Robinson",
+  "vinous - antonio galloni": "Vinous",
+  "antonio galloni": "Vinous"
+};
+function criticName(name) {
+  return CRITIC_ALIAS[String(name == null ? "" : name).trim().toLowerCase()] || name;
+}
+
 function glassFor(style, grape, override, region) {
   /* `insight.glass` in wines.json wins over everything below: which glass a
      bottle gets is a sommelier's call, and a grape-name rule cannot make it.

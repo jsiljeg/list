@@ -166,8 +166,9 @@ async function loadRules() {
 
 /* ---------- state of one wine ---------- */
 /* Returns "on" (available), "off" (hidden everywhere), "glass", or "bottle". */
-function stateOf(w) {
-  const mine = rules.filter((r) => r && norm(r.name) === norm(w.name) &&
+function stateOf(w) { return stateIn(rules, w); }
+function stateIn(rs, w) {
+  const mine = rs.filter((r) => r && norm(r.name) === norm(w.name) &&
     (!r.producer || norm(r.producer) === norm(w.producer)));
   if (!mine.length) return "on";
   if (mine.some((r) => !r.where)) return "off";
@@ -231,17 +232,35 @@ function toggle(key, where) {
 
   let next;
   if (where) {
-    /* the scoped buttons toggle just their half */
-    next = st === where ? without
-      : without.concat([{ producer: w.producer, name: w.name, where, since: today() }]);
+    /* Each scoped button toggles *its own* half and leaves the other alone.
+       Concatenating a fresh rule instead used to wipe the other scope: with the
+       glass pour already 86'd, clicking "nema na bocu" quietly put the glass
+       back on the list — the opposite of what the second click means. */
+    const out = st === "off" ? new Set(["glass", "bottle"])
+      : st === "on" ? new Set() : new Set([st]);
+    out.has(where) ? out.delete(where) : out.add(where);
+    next = out.size === 2
+      ? without.concat([{ producer: w.producer, name: w.name, since: today() }])
+      : out.size === 1
+        ? without.concat([{ producer: w.producer, name: w.name, where: [...out][0], since: today() }])
+        : without;
   } else {
     next = st === "on"
       ? without.concat([{ producer: w.producer, name: w.name, since: today() }])
       : without;   /* any hidden state → fully back on the list */
   }
-  const message = (st === "on" && !where)
-    ? `Nema ${w.producer} ${w.name}`
-    : `Vraćeno na kartu: ${w.producer} ${w.name}`;
+  /* The message described the *button*, so every scoped click read "Vraćeno na
+     kartu" even when it was hiding something — and the GitHub history, which is
+     the record of what ran out and when, said the opposite of what happened.
+     Describe the resulting state instead: it is right for all nine transitions,
+     including glass→bottle, which is neither a hide nor an un-hide. */
+  const who = `${w.producer} ${w.name}`;
+  const message = {
+    off: `Nema: ${who}`,
+    glass: `Nema na čašu: ${who}`,
+    bottle: `Nema na bocu: ${who}`,
+    on: `Vraćeno na kartu: ${who}`
+  }[stateIn(next, w)];
 
   /* Optimistic: the switch moves now, the write catches up. */
   rules = next;

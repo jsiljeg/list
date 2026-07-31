@@ -37,8 +37,7 @@
     "aromas": [
      "strawberry",
      "red_currant",
-     "brioche",
-     "capsicum"
+     "brioche"
     ],
     "pairings": [
      "aperitif",
@@ -421,7 +420,18 @@
     "temp": "10–12",
     "alcohol": "",
     "sweetness": "dry"
-   }
+   },
+   "note": {
+    "hr": "Ime koje je Furlanija na kraju prihvatila, na vinu zbog kojeg je i vrijedilo se boriti. Isonzo, šljunak i noćna svježina s mora: bademova gorčina na kraju gutljaja je potpis sorte, ne mana.",
+    "en": "The name Friuli settled on, on the wine that made the argument worth having. The Isonzo gravels and cool nights off the sea: that almond bitterness at the end of the sip is the variety's signature, not a flaw.",
+    "it": "Il nome che il Friuli ha finito per accettare, sul vino per cui valeva la pena discutere. Le ghiaie dell'Isonzo e le notti fresche dal mare: l'amaro di mandorla in chiusura è la firma del vitigno, non un difetto.",
+    "fr": "Le nom que le Frioul a fini par adopter, sur le vin qui justifiait la bataille. Les graves de l'Isonzo et les nuits fraîches venues de la mer : l'amertume d'amande en fin de bouche est la signature du cépage, pas un défaut.",
+    "de": "Der Name, auf den sich das Friaul geeinigt hat, am Wein, für den der Streit sich gelohnt hat. Der Schotter des Isonzo und kühle Nächte vom Meer: die Mandelbitterkeit im Abgang ist die Handschrift der Sorte, kein Fehler.",
+    "zh": "弗留利最终接受的那个名字，落在值得为之争论的那款酒上。伊松佐的砾石与来自海上的凉夜：收尾处的杏仁苦味是品种的签名，不是缺点。",
+    "sl": "Ime, ki ga je Furlanija na koncu sprejela, na vinu, zaradi katerega se je bilo vredno prepirati. Prod Soče in hladne noči z morja: mandljeva grenkoba v zaključku je podpis sorte, ne napaka.",
+    "es": "El nombre que Friuli acabó aceptando, en el vino por el que valía la pena discutir. Las gravas del Isonzo y las noches frescas del mar: el amargor de almendra al final del trago es la firma de la variedad, no un defecto."
+   },
+   "notePlain": true
   },
   "benanti--etna-bianco-2023": {
    "name": "Etna Bianco 2023",
@@ -2760,7 +2770,7 @@
    "name": "Grimalda bijela 2022",
    "producer": "Matošević",
    "insight": {
-    "grape": "Malvazija, Chardonnay, Sauvignon Blanc",
+    "grape": "Malvazija istarska, Chardonnay, Sauvignon Blanc",
     "region": "Centralna Istra, Hrvatska Istra",
     "country": "HR",
     "style": "white_rich",
@@ -2824,7 +2834,7 @@
    "name": "Ottocento bijeli 2022",
    "producer": "Clai",
    "insight": {
-    "grape": "Malvazija, Pinot Gris, Sauvignon Blanc",
+    "grape": "Malvazija istarska, Pinot Gris, Sauvignon Blanc",
     "region": "Zapadna Istra, Hrvatska Istra",
     "country": "HR",
     "style": "orange",
@@ -5496,7 +5506,7 @@
    "name": "Kaplja 2018",
    "producer": "Damijan Podversic",
    "insight": {
-    "grape": "Chardonnay, Malvazija, Friulano",
+    "grape": "Chardonnay, Malvazija istarska, Friulano",
     "region": "Gorizia, Friuli",
     "country": "IT",
     "style": "orange",
@@ -5523,7 +5533,7 @@
    "name": "Malvasia 2018",
    "producer": "Damijan Podversic",
    "insight": {
-    "grape": "Malvasia",
+    "grape": "Malvazija istarska",
     "region": "Gorizia, Friuli",
     "country": "IT",
     "style": "orange",
@@ -5631,14 +5641,14 @@
    },
    "notePlain": true,
    "note": {
-    "hr": "Jakot = Tokaj. Unatrag.",
-    "en": "Jakot = Tokaj. Backwards.",
-    "it": "Jakot = Tokaj. Al contrario.",
-    "fr": "Jakot = Tokaj. À l'envers.",
-    "de": "Jakot = Tokaj. Rückwärts.",
-    "zh": "Jakot = Tokaj，倒着写。",
-    "sl": "Jakot = Tokaj. Nazaj.",
-    "es": "Jakot = Tokaj. Al revés."
+    "hr": "Kad je 2007. ime Tocai palo, Furlanija je poslušala i prekrstila sortu u Friulano. Prinčič je slova okrenuo naopako i nastavio. Jakot: tri tjedna na kožici, amfora, ništa bistro ni pitomo — vino koje se ne ispričava, kao ni ime.",
+    "en": "When the name Tocai fell in 2007, Friuli complied and renamed the grape Friulano. Prinčič turned the letters round and carried on. Jakot: three weeks on the skins, amphora, nothing clear or tame about it — a wine that doesn't apologise, and neither does its name.",
+    "it": "Quando nel 2007 il nome Tocai cadde, il Friuli obbedì e ribattezzò il vitigno Friulano. Prinčič girò le lettere e andò avanti. Jakot: tre settimane sulle bucce, anfora, niente di limpido né di docile — un vino che non si scusa, come il suo nome.",
+    "fr": "Quand le nom tocai est tombé en 2007, le Frioul s'est plié et a rebaptisé le cépage friulano. Prinčič a retourné les lettres et a continué. Jakot : trois semaines de macération, amphore, rien de limpide ni de sage — un vin qui ne s'excuse pas, son nom non plus.",
+    "de": "Als der Name Tocai 2007 fiel, fügte sich das Friaul und taufte die Rebe Friulano. Prinčič drehte die Buchstaben um und machte weiter. Jakot: drei Wochen auf der Maische, Amphore, nichts Klares und nichts Zahmes — ein Wein, der sich nicht entschuldigt, und sein Name auch nicht.",
+    "zh": "2007 年 Tocai 这个名字被判出局，弗留利照办，把品种改称 Friulano。Prinčič 把字母倒过来写，继续酿他的酒。Jakot：带皮浸渍三周，陶罐，既不清澈也不温顺——一款不道歉的酒，名字也一样。",
+    "sl": "Ko je leta 2007 ime tokaj padlo, se je Furlanija uklonila in sorto prekrstila v friulano. Prinčič je črke obrnil in nadaljeval. Jakot: tri tedne na kožici, amfora, nič bistrega in nič krotkega — vino, ki se ne opravičuje, in ime tudi ne.",
+    "es": "Cuando en 2007 cayó el nombre Tocai, Friuli obedeció y rebautizó la variedad como Friulano. Prinčič dio la vuelta a las letras y siguió adelante. Jakot: tres semanas de maceración, ánfora, nada limpio ni manso — un vino que no se disculpa, y su nombre tampoco."
    }
   },
   "marques-de-murrieta--capellania-2019": {

@@ -133,3 +133,37 @@ test("the receipt reports publication, it does not assume it", async ({ page }) 
   expect(await page.locator("#s2").getAttribute("class"), "must stay pending, not go green").toBe("now");
   expect(state.puts.length).toBe(1);
 });
+
+test("the commit message says what actually happened", async ({ page }) => {
+  /* It described the *button*, so every scoped click read "Vraćeno na kartu"
+     even while hiding something — and the GitHub history is the record of what
+     ran out and when. It now describes the resulting state, which is right for
+     every transition including glass→both, which is neither a hide nor an
+     un-hide. */
+  const state = await board(page);
+  await page.fill("#q", "Red 2020");
+  await page.waitForTimeout(200);
+  const row = page.locator(".row").filter({ hasText: "Meneghetti" });
+
+  await row.locator(".scope button").first().click();
+  await expect.poll(() => state.puts.at(-1)).toMatch(/^Nema na čašu:/);
+  expect(state.file.hidden.map((r) => r.where)).toEqual(["glass"]);
+});
+
+test("hiding the bottle does not put the glass pour back", async ({ page }) => {
+  /* The scoped branch rebuilt the rule from scratch, so a second click wiped
+     the first: with the glass 86'd, "nema na bocu" quietly re-listed the glass. */
+  const state = await board(page);
+  await page.fill("#q", "Red 2020");
+  await page.waitForTimeout(200);
+  const scope = page.locator(".row").filter({ hasText: "Meneghetti" }).locator(".scope button");
+
+  await scope.first().click();
+  await expect.poll(() => state.file.hidden.length).toBe(1);
+  await scope.nth(1).click();
+  await expect.poll(() => JSON.stringify(state.file.hidden.map((r) => r.where || "all"))).toBe('["all"]');
+
+  /* and turning one back on leaves the other off */
+  await scope.first().click();
+  await expect.poll(() => JSON.stringify(state.file.hidden.map((r) => r.where || "all"))).toBe('["bottle"]');
+});
