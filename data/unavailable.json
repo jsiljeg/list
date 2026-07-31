@@ -1,10 +1,4 @@
 {
  "_": "Vina koja se trenutno NE prikazuju gostima. Uređuje se preko /admin.html ili ručno.",
- "hidden": [
-  {
-   "producer": "Deutz",
-   "name": "Brut Classic",
-   "since": "2026-07-31"
-  }
- ]
+ "hidden": []
 }
