@@ -475,6 +475,10 @@ const SEARCH_ALIAS = {
   "cabernet sauvignon": "赤霞珠",
   "merlot": "美乐",
   "sauvignon blanc": "长相思",
+  /* Pure grape synonyms, so they belong on the grape (unlike "brunello",
+     which names a place). Dropping "Sauvignonasse" from Simčič's grape
+     field would otherwise have made the word findable nowhere. */
+  "friulano": "sauvignonasse sauvignon vert tocai tocai friulano 弗留拉诺",
   "syrah": "shiraz 西拉",
   "nebbiolo": "内比奥罗",
   /* "brunello" is deliberately NOT here. It is a Montalcino synonym for

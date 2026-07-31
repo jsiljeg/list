@@ -92,7 +92,6 @@
     "Žilavka": "日拉夫卡",
     "Plavec žuti": "普拉韦茨·茹蒂",
     "Refošk": "雷福什克",
-    "Sauvignonasse (Friulano)": "弗留拉诺",
     "Teran": "特兰",
     "Tribidrag": "特里比德拉格",
     "Tribidrag (Crljenak)": "特里比德拉格",
