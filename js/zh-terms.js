@@ -51,7 +51,7 @@
     "Pinot Nero": "黑皮诺",
     "Pinot Noir": "黑皮诺",
     "Pušipel": "普希佩尔",
-    "Pušipel (Furmint)": "普希佩尔（Pušipel / Furmint）",
+    "Pušipel (Furmint)": "普希佩尔",
     "Ribolla Gialla": "丽波拉",
     "Riesling": "雷司令",
     "Rondinella": "罗蒂内拉",
@@ -73,7 +73,7 @@
     "Lasina": "拉西纳",
     "Plavina": "普拉维娜",
     "Muškat bijeli": "白麝香",
-    "Tribidrag (Zinfandel)": "特里比德拉格（Tribidrag / Zinfandel）",
+    "Tribidrag (Zinfandel)": "特里比德拉格",
     "Zinfandel": "仙粉黛",
     "Cabernet": "赤霞珠",
     "Nebbiolo": "内比奥罗",
@@ -228,6 +228,7 @@
     "Auxey-Duresses": "欧克塞-迪雷斯",
     "Saint-Romain": "圣罗曼",
     "Valdeorras": "瓦尔德奥拉斯",
+    "Galicia": "加利西亚",
     "Charmes-Chambertin": "夏姆-香贝丹",
     "Lavaux Saint-Jacques": "拉沃-圣雅克",
     "Les Santenots": "桑特诺",
@@ -473,12 +474,7 @@
     "Autohtone dalmatinske sorte": 1,
     "Autohtone dalmatinske sorte (prošek)": 1,
     "Dalmatinske autohtone sorte": 1,
-    "Španjolske sorte": 1,
-    /* Already carry both Latin names inside the Chinese string; without this
-       the renderer would append the Latin token again and print the synonym
-       twice. */
-    "Tribidrag (Zinfandel)": 1,
-    "Pušipel (Furmint)": 1
+    "Španjolske sorte": 1
   };
 
   /* Icon producers & cuvées — ONLY genuine, market-established Chinese names

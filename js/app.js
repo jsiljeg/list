@@ -1031,7 +1031,14 @@ function zhTokens(str, map) {
       }
       if (!zh) return tok;
       if (typeof ZH_ONLY !== "undefined" && ZH_ONLY[name]) return zh + pct;
-      return `${zh}（${name}）${pct}`;
+      /* A name that carries its own synonym — "Zibibbo (Muscat of Alexandria)"
+         — must not land inside the Chinese brackets as-is, or it renders with
+         nested brackets: 亚历山大麝香（Zibibbo (Muscat of Alexandria)）. The
+         synonym becomes a slash instead, which is what the two entries that
+         looked right were doing by hand, with the Latin baked into their
+         Chinese string and a ZH_ONLY flag to stop it being appended twice.
+         Doing it here means one mechanism, and the next such grape just works. */
+      return `${zh}（${name.replace(/\s*\((.+)\)\s*$/, " / $1")}）${pct}`;
     })
     .join("、");
 }

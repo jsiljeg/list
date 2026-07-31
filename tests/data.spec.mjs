@@ -232,3 +232,16 @@ test("every listing points at a wine in the library", () => {
      a listing lost its wine. */
   expect(orphans, "library wines no list references").toEqual([]);
 });
+
+test("green pepper and tomato leaf only go on wines with Cabernet in them", () => {
+  /* Pyrazines are a Cabernet Franc and cool-Cabernet marker. Added by hand to
+     six wines on 2026-07-31; the risk is a later bulk edit spraying them across
+     the Cabernet shelf, including the ripe warm ones — Sassicaia, Ornellaia,
+     Solaia, Ao Yun — where they would simply be wrong, and a guest would taste
+     that we were wrong. */
+  const bad = items
+    .filter((i) => (i.insight.aromas || []).some((a) => a === "capsicum" || a === "tomato_leaf"))
+    .filter((i) => !/cabernet|carménère|carmenere/i.test(i.insight.grape || ""))
+    .map((i) => `${i.producer} — ${i.name}: ${i.insight.grape}`);
+  expect(bad).toEqual([]);
+});

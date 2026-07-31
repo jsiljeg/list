@@ -564,7 +564,8 @@
     "aromas": [
      "cherry",
      "plum",
-     "spice"
+     "spice",
+     "capsicum"
     ],
     "pairings": [
      "pasta",
@@ -5606,7 +5607,7 @@
   },
   "dario-princic--jakot-2019": {
    "name": "Jakot 2019",
-   "producer": "Dario Prinčić",
+   "producer": "Dario Prinčič",
    "insight": {
     "grape": "Friulano",
     "region": "Oslavia, Friuli",
@@ -5741,24 +5742,38 @@
    "producer": "Casa Rojo",
    "insight": {
     "grape": "Godello",
-    "region": "Valdeorras",
+    "region": "Petín, Valdeorras, Galicia",
     "country": "ES",
-    "style": "orange",
+    "style": "white_mineral",
     "body": "medium",
     "aromas": [
-     "orange_peel",
+     "green_apple",
      "apricot",
-     "herbs"
+     "quince",
+     "mint",
+     "eucalyptus"
     ],
     "pairings": [
-     "charcuterie",
-     "cheese_hard",
-     "asian"
+     "seafood",
+     "grilled_fish",
+     "white_meat"
     ],
-    "temp": "8–10",
+    "temp": "10–12",
     "alcohol": "13",
     "sweetness": "dry"
-   }
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Naranče u imenu su prave — tisuće stabala okružuju pet hektara starih trsova kraj Petína. U čaši od njih nema ništa i maceracije nema: godello, bijelo i bistro, metvica i dunja.",
+    "en": "The oranges in the name are real ones — thousands of trees ring the five hectares of old vines outside Petín. None of them reach the glass, and neither does any skin contact: Godello, white and clear, mint and quince.",
+    "it": "Le arance del nome sono vere — migliaia di alberi circondano i cinque ettari di vecchie vigne fuori Petín. Nel bicchiere non ne arriva nulla, e nemmeno un giorno di macerazione: godello, bianco e limpido, menta e mela cotogna.",
+    "fr": "Les oranges du nom sont bien réelles — des milliers d'arbres entourent les cinq hectares de vieilles vignes aux portes de Petín. Rien n'en arrive dans le verre, pas plus qu'un jour de macération : du godello, blanc et net, menthe et coing.",
+    "de": "Die Orangen im Namen sind echte — Tausende Bäume umgeben die fünf Hektar alter Reben vor Petín. In das Glas kommt nichts davon, und Maischestandzeit auch nicht: Godello, weiß und klar, Minze und Quitte.",
+    "zh": "名字里的橙子是真的——数千棵橙树环绕着佩廷村外那五公顷老藤。它们一点也没进到杯子里，浸皮也没有：歌德约，清澈的白，薄荷与榅桲。",
+    "sl": "Pomaranče v imenu so prave — tisoči dreves obkrožajo pet hektarov starih trt pri Petínu. V kozarec od njih ne pride nič, prav tako ne maceracija: godello, belo in bistro, meta in kutina.",
+    "es": "Las naranjas del nombre son de verdad — miles de árboles rodean las cinco hectáreas de viñas viejas a las afueras de Petín. Ninguna llega a la copa, y tampoco un día de maceración: godello, blanco y limpio, menta y membrillo."
+   },
+   "notePlain": true
   },
   "marjan-simcic--sauvignon-vert": {
    "name": "Sauvignon Vert",
@@ -7137,7 +7152,9 @@
      "blackcurrant",
      "cedar",
      "tobacco",
-     "spice"
+     "spice",
+     "capsicum",
+     "tomato_leaf"
     ],
     "pairings": [
      "steak",
@@ -7969,7 +7986,8 @@
      "blackberry",
      "plum",
      "cedar",
-     "spice"
+     "spice",
+     "capsicum"
     ],
     "pairings": [
      "steak",
@@ -8696,14 +8714,14 @@
     "aromas": [
      "plum",
      "blackcurrant",
-     "blackberry",
      "cigar_box",
      "leather",
      "clove",
      "pepper",
      "cardamom",
      "dark_chocolate",
-     "violet"
+     "violet",
+     "capsicum"
     ],
     "pairings": [
      "beef",
@@ -9914,7 +9932,8 @@
      "blackcurrant",
      "cedar",
      "herbs",
-     "earth"
+     "earth",
+     "capsicum"
     ],
     "pairings": [
      "steak",
@@ -9962,7 +9981,8 @@
      "blackcurrant",
      "cedar",
      "herbs",
-     "chocolate"
+     "chocolate",
+     "capsicum"
     ],
     "pairings": [
      "steak",

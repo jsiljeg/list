@@ -27,6 +27,31 @@ test("the style line is sentence case, not Title Case", async ({ page }) => {
   }
 });
 
+test("a grape carrying its own synonym renders without nested brackets", async ({ page }) => {
+  /* "Zibibbo (Muscat of Alexandria)" was landing whole inside the Chinese
+     brackets — 亚历山大麝香（Zibibbo (Muscat of Alexandria)） — while Tribidrag
+     and Pušipel looked right only because someone had baked the Latin into
+     their Chinese string by hand and flagged them ZH_ONLY. Two mechanisms, so
+     the third entry was bound to be wrong. One now: the synonym becomes a
+     slash. */
+  await openApp(page, { lang: "zh" });
+  const bad = await page.evaluate(() => {
+    const out = [];
+    const seen = new Set();
+    const walk = (o, f) => { if (o && typeof o === "object") { if (o.insight) f(o); for (const k in o) walk(o[k], f); } };
+    walk(DATA, (it) => {
+      const g = it.insight.grape;
+      if (!g || seen.has(g)) return;
+      seen.add(g);
+      const rendered = localizeGrape(g);
+      /* A Latin "(" inside the Chinese brackets is the nesting bug. */
+      if (/（[^）]*\(/.test(rendered)) out.push(`${g} -> ${rendered}`);
+    });
+    return out;
+  });
+  expect(bad).toEqual([]);
+});
+
 test("the dosage keeps its capital", async ({ page }) => {
   await openApp(page);
   await openWine(page, "Dom Pérignon 2015");
