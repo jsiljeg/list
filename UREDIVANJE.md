@@ -7,12 +7,14 @@ Koliko treba da promjena stigne do tableta u ruci gosta:
 
 | Promjena | Do gosta |
 |---|---|
-| **Sakriveno / vraćeno vino** (`unavailable.json`) | **do minute** — i dok gost čita, bez ijednog dodira |
-| Cijena, novo vino, opis | 3–4 min (tablet se sam osvježi nakon 3 min mirovanja) |
+| **Sakriveno / vraćeno vino** | **do minute** — i dok gost čita, bez ijednog dodira |
+| **Cijena, novo vino, opis, citat** | **do minute** — isto tako |
+| Izgled aplikacije, prijevodi sučelja, pretraga | 3–4 min (tablet se sam osvježi nakon 3 min mirovanja) |
 
-Vino kojeg nema provjerava se svakih 30 sekundi, jer je to jedino što
-mora nestati **odmah** — gost ne smije naručiti nešto što ste maloprije
-skinuli. Ostalo pričeka prvo mirovanje tableta.
+Tablet svakih 30 sekundi provjeri je li se karta promijenila i, ako jest,
+sam se osvježi — gost to ne primijeti, ostaje na istom mjestu u popisu.
+Samo promjene u samom *programu* (ne u podacima o vinima) čekaju da tablet
+odmori 3 minute.
 
 Dvije iznimke, da ne bude iznenađenja: tablet **bez interneta** prikazuje
 zadnje što je vidio (namjerno — karta radi i kad padne Wi-Fi), a ako gost

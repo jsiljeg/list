@@ -471,20 +471,36 @@ owner believes a wine is hidden while the guest is still being offered it.
 the same wine is often in both. Owner docs: UREDIVANJE.md, "Privremeno sakriti
 vino".
 
-**Polling (2026-07-31).** The app read the list once at load, so the feature
-only worked on an idle tablet: one a guest was *reading* never reloaded, and a
-wine 86'd at the start of a long browse could still be ordered at the end of it.
-`pollHidden()` now re-reads **only `unavailable.json`** every 30 s (220 bytes,
-~90 kB across an evening) plus once on `visibilitychange`. Prices and new wines
-still ride the 3-minute idle reload — making those live would mean re-merging
-the library mid-session for a change nobody is waiting on.
+**Polling (2026-07-31).** The app read its data once at load, so nothing was
+live: a tablet a guest was *reading* never reloaded, and a wine 86'd at the
+start of a long browse could still be ordered at the end of it. `pollData()`
+now re-reads `unavailable.json` **and library+list** every 30 s, plus once on
+`visibilitychange`. A corrected note or price is live within the minute.
+
+Two traps here, both paid for:
+
+- **`cache: "no-cache"` on every data fetch** (`fresh()`), not just inside the
+  service worker. GitHub Pages serves everything `max-age=600`; the SW rewrites
+  requests the same way, but it is only in charge once it has installed and
+  claimed the page — not on a first visit, and not straight after its own
+  update. An uncontrolled page read a **ten-minute-old** file out of the browser
+  cache without asking, which is exactly what "my edit didn't go live" looked
+  like on the owner's laptop.
+- **Change detection compares bodies, not ETags.** ETag was the first attempt
+  and looked right against Pages, which sends one — but `tests/serve.mjs` does
+  not, so the check silently did nothing for ever. A 304 is answered from the
+  browser cache, so `text()` is a local read: comparing 300 kB of string costs
+  nothing on the wire.
+
+**Code still needs a reload.** app.js, i18n.js and SEARCH_ALIAS cannot be hot
+swapped into a running page; they ride the 3-minute idle reload.
 
 Three things hold it together. `FULL` keeps the merged list with nothing
 hidden, and every poll re-derives `DATA` from it — filtering `DATA` in place
 would make unhiding impossible without a reload. A change arriving while a
-detail sheet is open is **queued in `hidePending` and flushed by `hideModal()`**,
+detail sheet is open is **queued in `pending` and flushed by `hideModal()`**,
 never applied under the sheet: sheets are si/ci/gi/ii paths into `DATA`, and the
-‹ › arrows would start stepping onto the wrong wines. And `applyHidden()`
+‹ › arrows would start stepping onto the wrong wines. And `applyUpdate()`
 restores `window.scrollY` after the re-render, because `renderContent()` rebuilds
 the column and would otherwise throw a reading guest back to the top.
 

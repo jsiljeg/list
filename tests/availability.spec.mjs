@@ -156,12 +156,12 @@ test("an open detail sheet is never rebuilt underneath the guest", async ({ page
 
   /* Still the wine they opened, and the list behind it untouched for now. */
   await expect(page.locator(".detail-name")).toContainText("Terbotz");
-  expect(await page.evaluate(() => hidePending !== null), "should be queued, not applied").toBe(true);
+  expect(await page.evaluate(() => pending !== null), "should be queued, not applied").toBe(true);
 
   await page.locator("#modal .detail-close, #modal-backdrop").first().click();
   await page.waitForTimeout(350);
   expect((await names(page)).join(" | ")).not.toContain("Bregh Rose");
-  expect(await page.evaluate(() => hidePending)).toBe(null);
+  expect(await page.evaluate(() => pending)).toBe(null);
   expectClean(bag);
 });
 
@@ -194,4 +194,75 @@ test("an unreachable 86 list leaves the tablet showing what it has", async ({ pa
   await page.waitForTimeout(250);
   expect((await names(page)).length).toBe(before);
   expect(bag.errors, "uncaught page errors").toEqual([]);
+});
+
+/* ---------- the same tick keeps the *content* fresh, not just the 86 list ---- */
+
+test("a corrected tasting note lands without a reload", async ({ page }) => {
+  /* The owner edited a note, waited a minute, closed and reopened the tab, and
+     still saw the old text. Two causes, both fixed: GitHub Pages serves
+     everything `max-age=600`, so an uncontrolled page read a ten-minute-old
+     file straight out of the browser cache; and the poll only ever looked at
+     unavailable.json. */
+  let note = "PRIJE";
+  await page.route("**/library/wines.json*", async (route) => {
+    const res = await route.fetch();
+    const doc = JSON.parse(await res.text());
+    doc.wines["vie-di-romans--friulano-2023"].note.hr = note;
+    route.fulfill({ contentType: "application/json", body: JSON.stringify(doc) });
+  });
+  const bag = await openApp(page);
+  const noteOf = () => page.evaluate(() => {
+    let r = null;
+    const walk = (o, f) => { if (o && typeof o === "object") { if (o.insight) f(o); for (const k in o) walk(o[k], f); } };
+    walk(DATA, (it) => { if (it.name === "Friulano 2023") r = it.note.hr; });
+    return r;
+  });
+  await page.evaluate(() => pollData());          /* prime the baseline */
+  await page.waitForTimeout(200);
+  expect(await noteOf()).toBe("PRIJE");
+
+  note = "POSLIJE";
+  await page.evaluate(() => pollData());
+  await page.waitForTimeout(400);
+  expect(await noteOf()).toBe("POSLIJE");
+  expectClean(bag);
+});
+
+test("a content change is queued while a detail sheet is open", async ({ page }) => {
+  let note = "PRIJE";
+  await page.route("**/library/wines.json*", async (route) => {
+    const res = await route.fetch();
+    const doc = JSON.parse(await res.text());
+    doc.wines["vie-di-romans--friulano-2023"].note.hr = note;
+    route.fulfill({ contentType: "application/json", body: JSON.stringify(doc) });
+  });
+  const bag = await openApp(page);
+  await page.evaluate(() => pollData());
+  await page.waitForTimeout(200);
+
+  await page.locator("#content .item").first().click();
+  await expect(page.locator(".detail-name")).toBeVisible();
+  note = "POSLIJE";
+  await page.evaluate(() => pollData());
+  await page.waitForTimeout(400);
+  expect(await page.evaluate(() => pending !== null), "queued, not applied").toBe(true);
+
+  await page.locator("#modal .detail-close, #modal-backdrop").first().click();
+  await page.waitForTimeout(400);
+  expect(await page.evaluate(() => pending)).toBe(null);
+  expectClean(bag);
+});
+
+test("every data fetch revalidates instead of trusting a 10-minute cache", async ({ page }) => {
+  /* The service worker rewrites these the same way, but it is not in charge on
+     a first visit or right after its own update — which is when the stale read
+     actually happens. */
+  const modes = [];
+  page.on("request", (r) => {
+    if (/\/(library|lists|data)\/[^/]+\.json/.test(r.url())) modes.push(`${r.url().split("/").pop()}:${r.headers()["cache-control"] || ""}`);
+  });
+  await openApp(page);
+  const missing = modes.filter((m) => !/no-cache/.test(m));
+  expect(missing, "a data file was fetched without revalidating").toEqual([]);
 });

@@ -166,14 +166,25 @@ function dropHidden(data, rules) {
   return sections.length ? { ...data, sections } : data;
 }
 
+/* `cache: "no-cache"` on every data fetch — not because the service worker
+   forgets to (it rewrites these the same way) but because it is only in charge
+   once it has installed and claimed the page, which it has not on a first visit
+   or straight after its own update. GitHub Pages serves everything with
+   `max-age=600`, so an uncontrolled page reads a **ten-minute-old** list out of
+   the browser's own cache without ever asking the server. That is exactly what
+   an edit that "didn't go live" looks like on a laptop. no-cache still lets the
+   browser keep the bytes; it just has to ask first, and an unchanged file comes
+   back as a bodyless 304. */
+const fresh = (url) => fetch(url, { cache: "no-cache" });
+
 function init() {
   Promise.all([
-    fetch("library/wines.json").then((r) => r.json()),
-    fetch("lists/theatrium.json").then((r) => r.json()),
-    fetch("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] })),
-    fetch("data/producers.json").then((r) => r.json()).catch(() => ({ producers: {} })),
-    fetch("data/regions.json").then((r) => r.json()).catch(() => ({ regions: [] })),
-    fetch("data/unavailable.json").then((r) => r.text()).catch(() => "")
+    fresh("library/wines.json").then((r) => r.json()),
+    fresh("lists/theatrium.json").then((r) => r.json()),
+    fresh("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] })),
+    fresh("data/producers.json").then((r) => r.json()).catch(() => ({ producers: {} })),
+    fresh("data/regions.json").then((r) => r.json()).catch(() => ({ regions: [] })),
+    fresh("data/unavailable.json").then((r) => r.text()).catch(() => "")
   ]).then(([lib, list, m, pr, rg, unText]) => {
       FULL = mergeList(lib, list);
       hiddenRaw = unText;
@@ -186,41 +197,49 @@ function init() {
       const idleReset = sessionStorage.getItem("idle-reset");
       sessionStorage.removeItem("idle-reset");
       if (lang && I18N[lang] && !idleReset) showApp(); else showStart();
-      startHiddenPolling();
+      startPolling();
   });
 }
 
 /* ---------- staying current while the tablet is in a guest's hands ----------
-   The app used to read the data once, at load. A tablet on the charger picked
-   up a change within about four minutes — deploy, then the three-minute idle
-   reload — but a tablet somebody was actually *reading* never reloaded at all,
-   so a wine 86'd at the start of a long browse could still be ordered at the
-   end of it. That is the whole point of the feature, missed.
+   The app used to read its data once, at load. A tablet on the charger picked a
+   change up within about four minutes — deploy, then the three-minute idle
+   reload — but a tablet somebody was actually *reading* never reloaded at all.
+   A wine 86'd at the start of a long browse could still be ordered at the end
+   of it, which is the whole point of that feature, missed.
 
-   So the 86 list, and only the 86 list, is re-read every 30 seconds. It is 220
-   bytes: an evening of polling costs a tablet about 90 kB. Prices and new
-   wines still arrive on the idle reload, which is soon enough for them and
-   would mean re-merging the library mid-session. */
-const HIDE_POLL_MS = 30000;
+   Every 30 seconds the app now re-reads the 86 list **and the list itself**, as
+   conditional requests: an unchanged file answers 304 with no body, so the
+   steady state is three tiny round trips a minute even though the library is
+   270 kB. A corrected tasting note or a new price is live within the minute,
+   the same as an 86.
+
+   What still needs a reload is *code*. A change to app.js, i18n.js or a search
+   alias cannot be swapped into a running page, and rides the idle reload. */
+const POLL_MS = 30000;
 let FULL = null;         /* the merged list with nothing hidden — the baseline
-                            every new rule set is applied to, so unhiding a wine
+                            every update is re-derived from, so unhiding a wine
                             brings it back without a reload */
-let hiddenRaw = "";      /* the last body applied, so an unchanged file is free */
-let hidePending = null;  /* rules waiting for the detail sheet to be closed */
+let hiddenRaw = "";      /* the last 86 list applied, so no-op polls are free */
+let dataRaw = "";        /* library+list as last seen, to spot a real change */
+let pending = null;      /* an update waiting for the detail sheet to be closed */
 
 function parseHidden(text) {
   try { return JSON.parse(text).hidden || []; } catch (e) { return []; }
 }
 
-function applyHidden(rules) {
-  DATA = dropHidden(FULL, rules);
+/* One path for both kinds of change. `lib`/`list` are present only when the
+   content itself moved; otherwise the merged baseline is left alone. */
+function applyUpdate(u) {
+  if (u.lib && u.list) FULL = mergeList(u.lib, u.list);
+  DATA = dropHidden(FULL, u.rules);
   /* The guest may be standing in a category that just emptied. */
   if (!DATA.sections.some((s) => s.id === currentSection)) currentSection = DATA.sections[0].id;
   if (appEntered && !$("app").classList.contains("hidden")) {
     /* renderContent() re-reads the search box and every toggle, so the view
        comes back as the guest left it. Only the scroll needs holding: the
-       column is rebuilt from scratch and the browser would send them to the
-       top of it mid-read. */
+       column is rebuilt from scratch and the browser would send them to the top
+       of it mid-read. */
     const y = window.scrollY;
     renderNav();
     renderContent();
@@ -228,41 +247,63 @@ function applyHidden(rules) {
   }
 }
 
-function pollHidden() {
-  /* no-cache, not no-store: a conditional request, so an unchanged file costs
-     a 304 and no body. */
-  fetch("data/unavailable.json", { cache: "no-cache" })
-    .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
-    .then((text) => {
-      if (text === hiddenRaw) return;
-      hiddenRaw = text;
-      const rules = parseHidden(text);
-      /* Never rebuild DATA under an open detail sheet. Every sheet is addressed
-         by an si/ci/gi/ii path into DATA, so re-filtering beneath it would
-         leave the arrows stepping onto the wrong wines — and yanking a card out
-         from under someone reading it is worse than the thirty seconds saved.
-         It lands when they close it. */
-      if (modalOpen) { hidePending = rules; return; }
-      applyHidden(rules);
-    })
-    .catch(() => { /* offline, or a deploy mid-flight: keep what we have */ });
-}
+function pollData() {
+  return Promise.all([
+    fresh("library/wines.json").then((r) => (r.ok ? r.text() : null)),
+    fresh("lists/theatrium.json").then((r) => (r.ok ? r.text() : null)),
+    fresh("data/unavailable.json").then((r) => (r.ok ? r.text() : null))
+  ]).then(([libText, listText, unText]) => {
+    if (libText == null || listText == null || unText == null) return;
+    /* Compared as text rather than by ETag. ETag was the first attempt and it
+       *looked* right against GitHub Pages, which sends one — but any server
+       that does not (our own test server, for one) made this silently do
+       nothing for ever, which is the worst way for a freshness check to fail.
+       The bytes cost nothing to compare: a 304 is answered from the browser
+       cache, so `text()` is a local read, not a download. */
+    const contentMoved = !!dataRaw && (libText + "\u0000" + listText) !== dataRaw;
+    const hiddenMoved = unText !== hiddenRaw;
+    dataRaw = libText + "\u0000" + listText;
+    if (!contentMoved && !hiddenMoved) return;
+    hiddenRaw = unText;
 
-function startHiddenPolling() {
-  setInterval(pollHidden, HIDE_POLL_MS);
+    const update = { rules: parseHidden(unText) };
+    if (contentMoved) {
+      try {
+        update.lib = JSON.parse(libText);
+        update.list = JSON.parse(listText);
+      } catch (e) {
+        /* Half-published deploy: keep the list we have and try again in 30s. */
+        return;
+      }
+    }
+
+    /* Never rebuild DATA under an open detail sheet. Every sheet is addressed by
+       an si/ci/gi/ii path into DATA, so re-deriving it beneath one would leave
+       the arrows stepping onto the wrong wines — and yanking a card out from
+       under someone reading it is worse than the half-minute saved. It lands
+       when they close it. */
+    if (modalOpen) { pending = update; return; }
+    applyUpdate(update);
+  }).catch(() => { /* offline, or a deploy mid-flight: keep what we have */ });
+}
+/* The name the availability tests drive the tick by. */
+function pollHidden() { return pollData(); }
+
+function startPolling() {
+  setInterval(pollData, POLL_MS);
   /* A tablet that was asleep in an apron pocket should not wait out the rest of
      its interval when it comes back. */
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") pollHidden();
+    if (document.visibilityState === "visible") pollData();
   });
 }
 
-/* Called by hideModal(): the deferred rules land the moment the sheet is gone. */
+/* Called by hideModal(): the deferred update lands the moment the sheet is gone. */
 function flushHidden() {
-  if (!hidePending) return;
-  const rules = hidePending;
-  hidePending = null;
-  applyHidden(rules);
+  if (!pending) return;
+  const u = pending;
+  pending = null;
+  applyUpdate(u);
 }
 
 /* ---------- start screen ---------- */
