@@ -94,12 +94,50 @@ let MENU = null;
 let PRODUCERS = {};
 let REGIONS = [];
 
+/* ---------- library + list ----------
+   `library/wines.json` holds what a wine *is* — grape, terroir, alcohol,
+   aromas, critic scores, Filho's note in eight languages — keyed by a ref like
+   "meneghetti--blanc-de-blancs". `lists/theatrium.json` holds what this venue
+   does with it: the section tree, the price, ★, NOVO. A second venue reuses the
+   first file and writes only the second.
+
+   The join happens here, in the browser, on ~365 wines: no build step, no
+   generated file, the site stays the plain static files it has always been.
+   A wine poured by the glass *and* sold by the bottle is now one library entry
+   referenced twice at two prices — which is why the two copies can no longer
+   drift apart, the way "Meneghetti White"/"white 2023" quietly had. */
+function mergeList(lib, list) {
+  const wines = (lib && lib.wines) || {};
+  const missing = [];
+  const sections = list.sections.map((sec) => ({
+    ...sec,
+    categories: sec.categories.map((cat) => ({
+      ...cat,
+      groups: cat.groups.map((g) => ({
+        ...g,
+        items: g.items.map((entry) => {
+          const facts = wines[entry.ref];
+          if (!facts) { missing.push(entry.ref); return null; }
+          const venue = { ...entry };
+          delete venue.ref;
+          return { ...facts, ...venue };   /* the venue's price/★/NOVO win */
+        }).filter(Boolean)
+      }))
+    }))
+  }));
+  /* validate.mjs fails the deploy on an unresolved ref, so this should be
+     unreachable — but a silently shorter list is the one failure a guest
+     would never notice, so say it out loud. */
+  if (missing.length) console.error("wine refs not in the library:", missing.join(", "));
+  return { ...list, sections };
+}
+
 /* ---------- temporarily unavailable wines ----------
    data/unavailable.json names what is out of stock tonight. Those items are
    dropped from DATA the moment it lands, before anything indexes into it, so
    the lists, the search, the badge counts, Filho's selection and the detail
    sheet's si/ci/gi/ii path all agree without a single call site knowing the
-   feature exists. Nothing is removed from wines.json: putting the wine back
+   feature exists. Nothing is removed from the library: putting the wine back
    is deleting one line from the small file. */
 const hideNorm = (s) => String(s == null ? "" : s).trim().toLowerCase();
 
@@ -130,13 +168,14 @@ function dropHidden(data, rules) {
 
 function init() {
   Promise.all([
-    fetch("data/wines.json").then((r) => r.json()),
+    fetch("library/wines.json").then((r) => r.json()),
+    fetch("lists/theatrium.json").then((r) => r.json()),
     fetch("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] })),
     fetch("data/producers.json").then((r) => r.json()).catch(() => ({ producers: {} })),
     fetch("data/regions.json").then((r) => r.json()).catch(() => ({ regions: [] })),
     fetch("data/unavailable.json").then((r) => r.json()).catch(() => ({ hidden: [] }))
-  ]).then(([d0, m, pr, rg, un]) => {
-      const d = dropHidden(d0, un && un.hidden);
+  ]).then(([lib, list, m, pr, rg, un]) => {
+      const d = dropHidden(mergeList(lib, list), un && un.hidden);
       DATA = d;
       MENU = m;
       PRODUCERS = pr.producers || {};

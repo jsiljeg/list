@@ -5,6 +5,8 @@ Nothing is written. Prints what would change against today's tags.
 """
 import io, json, re
 
+import winedata
+
 NOW = 2026
 
 def years(name, region, style, grape):
@@ -42,7 +44,7 @@ def years(name, region, style, grape):
     if re.search(r"Goriška|Primorska|Štajerska", r):       return 4 if red else 3
     return 6 if red else 3
 
-d = json.load(io.open("data/wines.json", encoding="utf-8"))
+d = winedata.load_list()   # library + venue list, joined
 seen, rows = set(), []
 def walk(n):
     if isinstance(n, list):

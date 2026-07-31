@@ -1,16 +1,40 @@
 # Kako urediti vinsku kartu (upute za vlasnika)
 
-Karta se uređuje u **jednoj datoteci**: `data/wines.json`. Svaka spremljena
-promjena automatski se objavljuje na **https://theatrium.list.devinos.hr**
-za otprilike jednu minutu. Tableti sami povuku novu verziju čim budu
-3 minute bez korištenja.
+Svaka spremljena promjena automatski se objavljuje na
+**https://theatrium.list.devinos.hr** za otprilike jednu minutu. Tableti
+sami povuku novu verziju čim budu 3 minute bez korištenja.
+
+## Tri datoteke i što je u kojoj
+
+| Datoteka | Što je unutra | Kad je dirate |
+|---|---|---|
+| `lists/theatrium.json` | **Karta**: koje je vino gdje, cijena, ★, NOVO, redoslijed | Najčešće — cijene i ponuda |
+| `library/wines.json` | **Vina**: sorta, položaj, alkohol, arome, ocjene, Filhov citat | Kad ispravljate podatak o vinu |
+| `data/unavailable.json` | **Čega trenutno nema** | Kad vino nestane / se vrati |
+
+Zašto podijeljeno: ono *što vino jest* isto je u svakom restoranu, a
+*cijena i mjesto na karti* nisu. Tako se za drugu kartu vina ne prepisuju
+ponovno, nego se samo posloži nova `lists/…` datoteka. Usput je nestala i
+jedna tiha greška: vino koje se toči i na čašu i na bocu bilo je upisano
+**dvaput**, pa su se dva zapisa znala razići (jedan je pisao „Meneghetti
+White", drugi „Meneghetti white"). Sada je vino jedno, s dvije cijene.
 
 ## Kako doći do datoteke
 
 1. Otvorite **github.com/jsiljeg/list** i prijavite se (potreban je GitHub
    račun s pravom uređivanja — Jure vas dodaje kao suradnika).
-2. Kliknite `data` → `wines.json` → ikonu **olovke** (Edit) gore desno.
+2. Kliknite mapu iz tablice gore → datoteku → ikonu **olovke** (Edit)
+   gore desno.
 3. Napravite promjenu, kliknite **Commit changes** (zeleni gumb), gotovo.
+
+Vino u karti (`lists/theatrium.json`) izgleda ovako — `ref` je „šifra"
+vina u knjižnici, ostalo je vaše:
+```json
+{ "ref": "meneghetti--blanc-de-blancs", "price": 9, "recommended": true },
+```
+`ref` ne mijenjajte. Ako se upiše `ref` kojeg nema u knjižnici, provjera
+prije objave to odbija — jer bi vino inače nestalo s karte, a da nitko ne
+primijeti.
 
 **Sigurnosna mreža:** prije objave sustav automatski provjerava datoteku.
 Ako se negdje potkrade greška (npr. obrisan zarez), stara karta ostaje
@@ -19,10 +43,13 @@ vidite pod karticom **Actions** (crveni X, s opisom što je krivo).
 
 ## Najčešći zadaci
 
-### Promijeniti cijenu
+> **Gdje?** Cijena, ★ i NOVO su u `lists/theatrium.json`. Sve ostalo
+> (sorta, arome, citat, ocjene, oznake) je u `library/wines.json`.
+
+### Promijeniti cijenu → `lists/theatrium.json`
 Nađite vino (Ctrl+F / ⌘+F) i promijenite broj — **bez navodnika i bez €**:
 ```json
-"price": 49,
+{ "ref": "kunjas--posip-2024", "price": 49 },
 ```
 
 ### Označiti / maknuti "Filho preporučuje" ★
@@ -87,14 +114,15 @@ uredite `data/menu.json` (ista pravila kao za vina: `pairings` i
 ],
 ```
 
-### Dodati novo vino
-Kopirajte postojeće vino iz iste kategorije (od `{` do `},`) i promijenite
-podatke. Primjer:
+### Dodati novo vino → **dvije datoteke**
+Novo vino se prvo opiše u knjižnici, pa se stavi na kartu.
+
+**1) `library/wines.json`** — dodajte zapis. „Šifra" (`ref`) je
+`vinar--ime-vina`, malim slovima, bez kvačica, razmaci u crticu:
 ```json
-{
+"kunjas--posip-2024": {
  "name": "Pošip 2024",
  "producer": "Kunjas",
- "price": 52,
  "insight": {
   "grape": "Pošip",
   "region": "Dalmacija",
@@ -107,7 +135,20 @@ podatke. Primjer:
  }
 },
 ```
-Pazite na **zarez** iza `},` — svako vino osim zadnjeg u popisu ima zarez.
+
+**2) `lists/theatrium.json`** — stavite ga na kartu, u željenu kategoriju
+i na željeno mjesto u redoslijedu:
+```json
+{ "ref": "kunjas--posip-2024", "price": 52, "new": true },
+```
+
+Pazite na **zarez** iza `},` — svaki zapis osim zadnjeg u popisu ima
+zarez. Ako se `ref` u dvije datoteke ne poklapa, provjera prije objave
+javlja grešku i stara karta ostaje online.
+
+**Vino koje se toči i na čašu i na bocu** upisuje se u knjižnicu **jednom**,
+a u kartu dvaput — u „Vina na čašu" i u odgovarajuću kategoriju boca, s
+različitim cijenama i istim `ref`-om. Tako se opis ne može razići.
 
 ### Privremeno sakriti vino (nema ga danas, ima ga sutra)
 **Ne dirajte `wines.json`.** Sve se radi u maloj datoteci
@@ -144,11 +185,15 @@ iz izbornika i vraća se kad vino vratite.
 datoteci. Povijest tko je što i kada sakrio i vratio stoji pod **History**
 te datoteke na GitHubu.
 
-### Obrisati vino
-Za trajno brisanje (vino više nikad ne uzimamo) obrišite cijeli blok od
-`{` do `},` (uključivo) u `wines.json`. Ako je bilo zadnje u popisu,
-prethodnom vinu obrišite zarez iza `}`. Ako vino samo trenutno nemate,
-koristite postupak iznad.
+### Obrisati vino s karte
+Obrišite mu redak (`{ "ref": …, "price": … },`) iz `lists/theatrium.json`.
+Ako je bio zadnji u popisu, prethodnom obrišite zarez iza `}`.
+
+**Zapis u knjižnici namjerno ostaje** — sav trud oko opisa, aroma i ocjena
+čeka spreman ako vino jednom vratite ili ga stavite na neku drugu kartu.
+Ne zauzima ništa i gost ga ne vidi.
+
+Ako vino samo trenutno nemate, ne brišite ga — koristite postupak iznad.
 
 ### Urediti opis vina (sorta, arome, sljubljivanje…)
 - `grape`, `region`, `temp` — slobodan tekst, upišite što želite.

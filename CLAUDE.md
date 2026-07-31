@@ -334,6 +334,40 @@ the white Burgundy shelf plus the barrel-aged Viura, Savagnin and Alsace Pinot
 Gris beside it. Steely Chablis (`white_mineral`) and unoaked Chardonnay
 (`white_fresh`) take the Riesling glass.
 
+## The library split (2026-07-31) — where the data lives now
+
+`data/wines.json` is **gone**. In its place:
+
+- **`library/wines.json`** — `{"wines": {"<ref>": {...facts}}}`. What a wine
+  *is*: name, producer, insight, terroir, note, ratings, tags, music, nameI18n.
+  Venue-independent, and the only place research goes.
+- **`lists/theatrium.json`** — the section/category/group tree, with items as
+  `{"ref", "price", "recommended"?, "new"?}`. Those three fields are the
+  complete list of what a venue decides (`VENUE_FIELDS` in split-library.py).
+- Joined in the browser by `mergeList()` in `js/app.js`, and for tooling by
+  `scripts/lib/list.mjs` (JS) / `scripts/winedata.py` (Python). **No build
+  step** — 365 wines merge in under a millisecond and the site stays plain
+  static files. The two merge implementations are duplicated on purpose; ten
+  lines of spread syntax is cheaper to keep in step than a build would be.
+
+`ref` is `slug(producer)--slug(name)`, diacritics folded (`đ`→`d` needs the
+explicit map; it has no NFKD decomposition). A wine poured by the glass *and*
+sold by the bottle is now **one entry referenced twice** — 24 such duplicates
+collapsed, and with them the whole drift bug class the large-format-twin rule
+exists for. The migration found one already live: `Meneghetti White 2023` vs
+`Meneghetti white 2023`.
+
+**The warrant:** `python scripts/split-library.py --check` rebuilds the old file
+from the two halves and diffs it against `data/source/wines-presplit.json`
+(frozen at 4893df1). It printed *identical* at migration time. It will stop
+matching the day the list legitimately changes — that is expected; the snapshot
+has done its job by then. Don't "fix" it by regenerating the snapshot.
+
+An **unresolved ref fails the deploy** (validate.mjs). It has to: the wine is
+priced and on the shelf, and it silently doesn't render. An **orphan** — a
+library wine no list pours — is only a `note`, because that is the normal state
+once a second venue exists.
+
 ## Out of stock tonight, back tomorrow (2026-07-31)
 
 `data/unavailable.json` is the 86 list: `{"hidden": [{"producer", "name",

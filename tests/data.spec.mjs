@@ -11,6 +11,7 @@ import { readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { allItems, producers } from "./helpers.mjs";
+import { joinList as joinRaw } from "../scripts/lib/list.mjs";
 
 /* import.meta.dirname needs Node 20.11; this works everywhere. */
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -210,11 +211,24 @@ test("prices are numbers and plausible", () => {
   expect(bad).toEqual([]);
 });
 
-test("wines.json round-trips byte for byte", () => {
-  /* CLAUDE.md: both data files must survive json.dumps(indent=1) + CRLF, so a
-     structural edit never rewrites the whole file. A diff of 5000 lines hides
-     the one line that mattered. */
-  const raw = readFileSync(resolve(ROOT, "data/wines.json"), "utf8");
-  const round = JSON.stringify(JSON.parse(raw), null, 1) + "\n";
-  expect(raw.replace(/\r\n/g, "\n"), "file is not in canonical form").toBe(round);
+for (const f of ["library/wines.json", "lists/theatrium.json", "data/producers.json"])
+  test(`${f} round-trips byte for byte`, () => {
+    /* CLAUDE.md: the data files must survive json.dumps(indent=1) + CRLF, so a
+       structural edit never rewrites the whole file. A diff of 5000 lines hides
+       the one line that mattered. */
+    const raw = readFileSync(resolve(ROOT, f), "utf8");
+    const round = JSON.stringify(JSON.parse(raw), null, 1) + "\n";
+    expect(raw.replace(/\r\n/g, "\n"), "file is not in canonical form").toBe(round);
+  });
+
+test("every listing points at a wine in the library", () => {
+  /* The silent failure the split introduces: a bad ref drops the wine off the
+     list entirely — priced, on the shelf, invisible. validate.mjs blocks the
+     deploy on it; this says so in the suite too. */
+  const { missing, orphans } = joinRaw();
+  expect(missing, "listings whose ref is not in library/wines.json").toEqual([]);
+  /* Orphans are legal once a second venue exists — a wine this list stopped
+     pouring stays in the library. Today there is one list, so an orphan means
+     a listing lost its wine. */
+  expect(orphans, "library wines no list references").toEqual([]);
 });

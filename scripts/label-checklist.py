@@ -17,11 +17,13 @@ import re
 import sys
 import io
 
+import winedata
+
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="backslashreplace")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
-d = json.load(open("data/wines.json", encoding="utf-8"))
+d = winedata.load_list()   # library + venue list, joined
 i18n = open("js/i18n.js", encoding="utf-8").read()
 
 def hr_block(name):

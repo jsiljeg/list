@@ -1,0 +1,1998 @@
+{
+ "currency": "EUR",
+ "sections": [
+  {
+   "id": "glass",
+   "categories": [
+    {
+     "id": "sparkling",
+     "serving": "0,1 l",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "jakopic--terbotz",
+         "price": 8
+        },
+        {
+         "ref": "petrac--bregh-rose",
+         "price": 8,
+         "recommended": true
+        },
+        {
+         "ref": "meneghetti--blanc-de-blancs",
+         "price": 9,
+         "recommended": true
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "champagne",
+     "serving": "0,1 l",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "deutz--brut-classic",
+         "price": 16
+        },
+        {
+         "ref": "henri-giraud--esprit-nature",
+         "price": 16,
+         "recommended": true
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "white",
+     "serving": "0,1 l",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "benvenuti--malvazija-2025",
+         "price": 8
+        },
+        {
+         "ref": "meneghetti--meneghetti-white-2023",
+         "price": 10
+        },
+        {
+         "ref": "jakopic--sauvignon-2024",
+         "price": 9
+        },
+        {
+         "ref": "milos--stalagmit-2022",
+         "price": 15,
+         "recommended": true
+        },
+        {
+         "ref": "kunjas--posip-2024",
+         "price": 9
+        },
+        {
+         "ref": "zilliken--riesling-butterfly-2024",
+         "price": 8
+        },
+        {
+         "ref": "zilliken--rausch-kabinett-2025",
+         "price": 13,
+         "recommended": true
+        },
+        {
+         "ref": "vie-di-romans--friulano-2023",
+         "price": 12
+        },
+        {
+         "ref": "benanti--etna-bianco-2023",
+         "price": 12,
+         "recommended": true
+        },
+        {
+         "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
+         "price": 12
+        },
+        {
+         "ref": "philippe-chavy--bourgogne-chardonnay-2023",
+         "price": 14
+        },
+        {
+         "ref": "vie-di-romans--pinot-grigio-2023",
+         "price": 11
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "red",
+     "serving": "0,1 l",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "petrac--karizma-cuvee-2022",
+         "price": 8
+        },
+        {
+         "ref": "petrac--enigma-2019",
+         "price": 10,
+         "recommended": true
+        },
+        {
+         "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021",
+         "price": 8,
+         "recommended": true
+        },
+        {
+         "ref": "ivan-violic--sagul-plavac-mali-2022",
+         "price": 8
+        },
+        {
+         "ref": "tomaz--teran-barbarossa-2020",
+         "price": 8
+        },
+        {
+         "ref": "rizman--tribidrag-2022",
+         "price": 10
+        },
+        {
+         "ref": "casa-rojo--cl98-2020",
+         "price": 10
+        },
+        {
+         "ref": "azienda-duemani--cifra-2021-demeter-biodinamika",
+         "price": 11
+        },
+        {
+         "ref": "skaramuca--dingac-elegance-2020",
+         "price": 14
+        },
+        {
+         "ref": "meneghetti--red-2020",
+         "price": 15,
+         "recommended": true
+        },
+        {
+         "ref": "benvenuti--santa-elizabeta-2021",
+         "price": 15
+        },
+        {
+         "ref": "moret-nomine--syrah-le-fales-2024",
+         "price": 12
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "dessert",
+     "serving": "0,05 l",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "gerzinic--muskat-2020",
+         "price": 5
+        },
+        {
+         "ref": "niko-bura--prosek-ruza-dalmatinska",
+         "price": 8
+        },
+        {
+         "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
+         "price": 8
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-sparkling",
+   "categories": [
+    {
+     "id": "sparkling",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "jakopic--terbotz",
+         "price": 49
+        },
+        {
+         "ref": "petrac--bregh-rose",
+         "price": 48,
+         "recommended": true
+        },
+        {
+         "ref": "sember--pavel",
+         "price": 58
+        },
+        {
+         "ref": "tomac--diplomat",
+         "price": 55
+        },
+        {
+         "ref": "tomac--blanc-de-noirs",
+         "price": 67
+        },
+        {
+         "ref": "tomac--rose",
+         "price": 48
+        },
+        {
+         "ref": "contarini--prosecco-millesimato-2023",
+         "price": 40
+        },
+        {
+         "ref": "corte-aura--franciacorta-brut",
+         "price": 67
+        },
+        {
+         "ref": "corte-aura--franciacorta-saten",
+         "price": 84
+        },
+        {
+         "ref": "movia--puro-rose",
+         "price": 70
+        },
+        {
+         "ref": "movia--puro-brut",
+         "price": 70
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "champagne",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "de-sousa--chemins-des-terroirs",
+         "price": 100
+        },
+        {
+         "ref": "de-sousa--cuvee-3a-grand-cru",
+         "price": 170
+        },
+        {
+         "ref": "de-sousa--mycorhize-grand-cru",
+         "price": 167
+        },
+        {
+         "ref": "pertois-moriset--l-assemblage-brut",
+         "price": 100
+        },
+        {
+         "ref": "pertois-moriset--l-annee-millesime-grand-cru-blanc-de-blancs-2017",
+         "price": 190,
+         "recommended": true
+        },
+        {
+         "ref": "pertois-moriset--la-collection-rose-blanc-grand-cru",
+         "price": 127
+        },
+        {
+         "ref": "l-hoste-pere-fils--l-hoste-rose",
+         "price": 97
+        },
+        {
+         "ref": "delamotte--blanc-de-blancs-2018",
+         "price": 240
+        },
+        {
+         "ref": "deutz--brut-classic",
+         "price": 115
+        },
+        {
+         "ref": "egly-ouriet--grand-cru-brut-tradition",
+         "price": 170
+        },
+        {
+         "ref": "louis-roederer--cristal-2015",
+         "price": 540
+        },
+        {
+         "ref": "vouette-sorbee--textures-brut-nature",
+         "price": 170
+        },
+        {
+         "ref": "ruppert-leroy--martin-fontaine-2019",
+         "price": 160
+        },
+        {
+         "ref": "ruppert-leroy--papillon",
+         "price": 170
+        },
+        {
+         "ref": "billecart-salmon--le-reserve",
+         "price": 135
+        },
+        {
+         "ref": "billecart-salmon--blanc-de-blancs-grand-cru",
+         "price": 210
+        },
+        {
+         "ref": "billecart-salmon--le-rose",
+         "price": 185
+        },
+        {
+         "ref": "henri-giraud--esprit-nature",
+         "price": 120,
+         "recommended": true
+        },
+        {
+         "ref": "henri-giraud--hommage-au-pinot-noir",
+         "price": 135
+        },
+        {
+         "ref": "jacques-selosse--initial-brut",
+         "price": 560
+        },
+        {
+         "ref": "jacques-selosse--version-originale",
+         "price": 650
+        },
+        {
+         "ref": "jacques-selosse--les-carelles",
+         "price": 850
+        },
+        {
+         "ref": "jacques-selosse--rose-brut",
+         "price": 790,
+         "recommended": true
+        },
+        {
+         "ref": "moet-chandon--dom-perignon-2015",
+         "price": 480
+        },
+        {
+         "ref": "moet-chandon--dom-perignon-p2-2004",
+         "price": 1450
+        },
+        {
+         "ref": "moet-chandon--dom-perignon-p3-1993",
+         "price": 4850
+        },
+        {
+         "ref": "salon--salon-blanc-de-blancs-2013",
+         "price": 1650
+        },
+        {
+         "ref": "krug--krug-grande-cuvee",
+         "price": 510
+        },
+        {
+         "ref": "krug--krug-1996",
+         "price": 1780
+        },
+        {
+         "ref": "krug--krug-2004",
+         "price": 890
+        },
+        {
+         "ref": "krug--clos-du-mesnil-2008",
+         "price": 2780
+        },
+        {
+         "ref": "krug--clos-d-ambonnay-1996",
+         "price": 4890
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-white",
+   "categories": [
+    {
+     "id": "white",
+     "groups": [
+      {
+       "country": "HR",
+       "items": [
+        {
+         "ref": "petrac--grasevina-2024",
+         "price": 39
+        },
+        {
+         "ref": "petrac--chardonnay-2023",
+         "price": 46
+        },
+        {
+         "ref": "erdoro--sauvignon-classy-2022",
+         "price": 75
+        },
+        {
+         "ref": "korak--sauvignon-2024",
+         "price": 54
+        },
+        {
+         "ref": "korak--chardonnay-sur-lie-2024",
+         "price": 70
+        },
+        {
+         "ref": "jakopic--sauvignon-2024",
+         "price": 45
+        },
+        {
+         "ref": "jakopic--riesling-2024",
+         "price": 45
+        },
+        {
+         "ref": "benvenuti--malvazija-2025",
+         "price": 44
+        },
+        {
+         "ref": "matosevic--grimalda-bijela-2022",
+         "price": 60
+        },
+        {
+         "ref": "clai--malvazija-sv-jakov-2021",
+         "price": 60
+        },
+        {
+         "ref": "clai--ottocento-bijeli-2022",
+         "price": 62
+        },
+        {
+         "ref": "meneghetti--meneghetti-white-2023",
+         "price": 87
+        },
+        {
+         "ref": "saints-hills--le-chiffre-2023",
+         "price": 140
+        },
+        {
+         "ref": "krajancic--posip-intrada-2025",
+         "price": 73
+        },
+        {
+         "ref": "kunjas--posip-2024",
+         "price": 49
+        },
+        {
+         "ref": "kunjas--grk-2024",
+         "price": 63
+        },
+        {
+         "ref": "milos--stalagmit-2022",
+         "price": 120,
+         "recommended": true
+        },
+        {
+         "ref": "markus--dan-po-dan-2022",
+         "price": 90
+        },
+        {
+         "ref": "bire--grk-2025",
+         "price": 100
+        },
+        {
+         "ref": "cecavac--jeka-blanc-2024",
+         "price": 130,
+         "recommended": true
+        }
+       ]
+      },
+      {
+       "country": "DE",
+       "items": [
+        {
+         "ref": "a-clusserath--vom-schiefer-2020",
+         "price": 45
+        },
+        {
+         "ref": "a-clusserath--trittenheimer-apotheke-kabinett-2024",
+         "price": 80
+        },
+        {
+         "ref": "zilliken--riesling-butterfly-2024",
+         "price": 55
+        },
+        {
+         "ref": "zilliken--rausch-kabinett-2025",
+         "price": 91,
+         "recommended": true
+        },
+        {
+         "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023",
+         "price": 89
+        },
+        {
+         "ref": "weingut-heymann-lowenstein--riesling-stolzenberg-2017",
+         "price": 97
+        },
+        {
+         "ref": "weingut-heymann-lowenstein--riesling-uhlen-blaufusser-lay-gg-2022",
+         "price": 145
+        },
+        {
+         "ref": "weingut-wittmann--riesling-westhofener-2021",
+         "price": 87
+        },
+        {
+         "ref": "weingut-wittmann--riesling-aulerde-gg-2020",
+         "price": 136
+        },
+        {
+         "ref": "weingut-wittmann--riesling-kirchspiel-gg-2020",
+         "price": 180,
+         "recommended": true
+        },
+        {
+         "ref": "weingut-knebel--riesling-rottgen-gg-2023",
+         "price": 110
+        },
+        {
+         "ref": "dr-burklin-wolf--riesling-gaisbohl-gg-2017",
+         "price": 140
+        },
+        {
+         "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-kabinett-2023",
+         "price": 110
+        },
+        {
+         "ref": "weingut-a-christmann--riesling-aus-den-lagen-2021",
+         "price": 52
+        },
+        {
+         "ref": "weingut-a-christmann--idig-riesling-gg-2021",
+         "price": 189
+        },
+        {
+         "ref": "egon-muller-scharzhof--riesling-scharzhof-2023",
+         "price": 170
+        }
+       ]
+      },
+      {
+       "country": "AT",
+       "items": [
+        {
+         "ref": "bernhard-ott--fass-4-gruner-veltliner-2023",
+         "price": 57
+        },
+        {
+         "ref": "weingut-prager--gruner-veltliner-federspiel-ried-hinter-der-burg-2024",
+         "price": 110
+        },
+        {
+         "ref": "weingut-prager--riesling-smaragd-ried-klaus-2024",
+         "price": 150
+        },
+        {
+         "ref": "maria-sepp-muster--sauvignon-vom-opok-2021",
+         "price": 67
+        },
+        {
+         "ref": "maria-sepp-muster--graf-2020",
+         "price": 87
+        }
+       ]
+      },
+      {
+       "country": "FR",
+       "items": [
+        {
+         "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
+         "price": 90
+        },
+        {
+         "ref": "pattes-loup--chablis-2022",
+         "price": 87,
+         "recommended": true
+        },
+        {
+         "ref": "pattes-loup--chablis-1er-cru-butteaux-2019",
+         "price": 178
+        },
+        {
+         "ref": "rene-vincent-dauvissat--chablis-1er-cru-vaillons-2018",
+         "price": 750
+        },
+        {
+         "ref": "patrick-piuze--chablis-grand-cru-les-clos-2023",
+         "price": 250
+        },
+        {
+         "ref": "patrick-piuze--chablis-grand-cru-preuses-2022",
+         "price": 250,
+         "recommended": true
+        },
+        {
+         "ref": "domaine-francois-raveneau--chablis-grand-cru-valmur-2020",
+         "price": 1450
+        },
+        {
+         "ref": "remi-jobard--bourgogne-cote-d-or-blanc-2022",
+         "price": 75
+        },
+        {
+         "ref": "philippe-chavy--bourgogne-chardonnay-2023",
+         "price": 89
+        },
+        {
+         "ref": "francois-mikulski--bourgogne-2023",
+         "price": 110
+        },
+        {
+         "ref": "domaine-jean-chartron--rully-montmorin-2023",
+         "price": 88
+        },
+        {
+         "ref": "david-moret--rully-2023",
+         "price": 97
+        },
+        {
+         "ref": "david-moret--saint-romain-2023",
+         "price": 115
+        },
+        {
+         "ref": "david-moret--auxey-duresses-2023",
+         "price": 107
+        },
+        {
+         "ref": "david-moret--meursault-2020",
+         "price": 210
+        },
+        {
+         "ref": "teo-dancer--bourgogne-aligote-2023",
+         "price": 135
+        },
+        {
+         "ref": "hubert-lignier--aligote-2021",
+         "price": 65
+        },
+        {
+         "ref": "domaine-jean-chartron--chassagne-montrachet-les-benoites-2022",
+         "price": 146
+        },
+        {
+         "ref": "jean-chartron--puligny-montrachet-1er-cru-clos-de-la-pucelle-monopole-2021",
+         "price": 245
+        },
+        {
+         "ref": "philippe-chavy--st-aubin-1er-cru-les-murgers-des-dents-de-chien-2021",
+         "price": 127
+        },
+        {
+         "ref": "hubert-lamy--saint-aubin-1er-cru-en-remilly-2023",
+         "price": 400,
+         "recommended": true
+        },
+        {
+         "ref": "hubert-lamy--saint-aubin-1er-cru-les-frionnes-2023",
+         "price": 295,
+         "recommended": true
+        },
+        {
+         "ref": "hubert-lamy--saint-aubin-la-princee-2023",
+         "price": 270
+        },
+        {
+         "ref": "philippe-chavy--meursault-1er-cru-les-charmes-2021",
+         "price": 268
+        },
+        {
+         "ref": "remi-jobard--meursault-sous-la-velle-2022",
+         "price": 190,
+         "recommended": true
+        },
+        {
+         "ref": "remi-jobard--meursault-1er-cru-le-poruzot-dessus-2022",
+         "price": 284
+        },
+        {
+         "ref": "bernard-bonin--meursault-les-tillets-2023",
+         "price": 920
+        },
+        {
+         "ref": "bernard-bonin--meursault-la-rencontre-2023",
+         "price": 790,
+         "recommended": true
+        },
+        {
+         "ref": "bernard-bonin--meursault-clos-du-cromin-le-pre-manche-2023",
+         "price": 790
+        },
+        {
+         "ref": "bernard-bonin--meursault-les-narvaux-dessus-2023",
+         "price": 970
+        },
+        {
+         "ref": "bernard-bonin--meursault-villages-le-limozin-2023",
+         "price": 970
+        },
+        {
+         "ref": "jean-chartron--corton-charlemagne-grand-cru-2022",
+         "price": 560
+        },
+        {
+         "ref": "francois-crochet--sancerre-blanc-2023",
+         "price": 87
+        },
+        {
+         "ref": "pascal-cotat--sancerre-blanc-les-monts-damnes-2020",
+         "price": 127
+        },
+        {
+         "ref": "domaine-albert-mann--riesling-2022",
+         "price": 81
+        },
+        {
+         "ref": "domaine-albert-mann--riesling-grand-cru-schlossberg-2020",
+         "price": 155
+        },
+        {
+         "ref": "domaine-albert-mann--riesling-grand-cru-furstentum-2020",
+         "price": 155
+        },
+        {
+         "ref": "domaine-albert-mann--pinot-gris-grand-cru-hengst-2020",
+         "price": 87
+        },
+        {
+         "ref": "domaine-de-l-ecu--matris-2018",
+         "price": 65
+        },
+        {
+         "ref": "domaine-bourdy--savagnin-2018",
+         "price": 53
+        },
+        {
+         "ref": "domaine-bourdy--vin-jaune-2014",
+         "price": 64
+        },
+        {
+         "ref": "domaine-bourdy--chateau-chalon-2014",
+         "price": 135
+        },
+        {
+         "ref": "jules-desjourneys--macon-prisse-en-chailloux-blanc-2021",
+         "price": 90,
+         "new": true
+        },
+        {
+         "ref": "jules-desjourneys--macon-verze-blanc-2021",
+         "price": 90,
+         "new": true
+        },
+        {
+         "ref": "jules-desjourneys--pouilly-fuisse-blanc-2021",
+         "price": 120,
+         "new": true
+        },
+        {
+         "ref": "jules-desjourneys--pouilly-vinzelles-les-longeays-blanc-2021",
+         "price": 139,
+         "new": true
+        },
+        {
+         "ref": "jules-desjourneys--saint-veran-blanc-2021",
+         "price": 129,
+         "new": true
+        }
+       ]
+      },
+      {
+       "country": "IT",
+       "items": [
+        {
+         "ref": "alois-lageder--chardonnay-2024",
+         "price": 47
+        },
+        {
+         "ref": "alois-lageder--pinot-bianco-versalto-2023",
+         "price": 47
+        },
+        {
+         "ref": "alois-lageder--pinot-grigio-porer-2023",
+         "price": 55
+        },
+        {
+         "ref": "peter-dipoli--sauvignon-voglar-2019",
+         "price": 50
+        },
+        {
+         "ref": "damijan-podversic--ribolla-2015",
+         "price": 95
+        },
+        {
+         "ref": "damijan-podversic--ribolla-2020",
+         "price": 77
+        },
+        {
+         "ref": "damijan-podversic--kaplja-2018",
+         "price": 95
+        },
+        {
+         "ref": "damijan-podversic--malvasia-2018",
+         "price": 93
+        },
+        {
+         "ref": "benanti--etna-bianco-2023",
+         "price": 95,
+         "recommended": true
+        },
+        {
+         "ref": "vodopivec--origine-2016",
+         "price": 96
+        },
+        {
+         "ref": "vodopivec--solo-2018",
+         "price": 109
+        },
+        {
+         "ref": "dario-princic--jakot-2019",
+         "price": 75
+        }
+       ]
+      },
+      {
+       "country": "ES",
+       "items": [
+        {
+         "ref": "marques-de-murrieta--capellania-2019",
+         "price": 180
+        },
+        {
+         "ref": "lopez-de-heredia--gravonia-crianza-2015",
+         "price": 90
+        },
+        {
+         "ref": "casa-rojo--orange-republic-2021",
+         "price": 68
+        }
+       ]
+      },
+      {
+       "country": "SI",
+       "items": [
+        {
+         "ref": "marjan-simcic--sauvignon-vert",
+         "price": 100
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-rose",
+   "categories": [
+    {
+     "id": "rose",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "baraka--malena-2022",
+         "price": 50
+        },
+        {
+         "ref": "bastian--rose",
+         "price": 50
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-red",
+   "categories": [
+    {
+     "id": "red",
+     "groups": [
+      {
+       "country": "HR",
+       "items": [
+        {
+         "ref": "petrac--karizma-cuvee-2022",
+         "price": 50
+        },
+        {
+         "ref": "petrac--enigma-2019",
+         "price": 75,
+         "recommended": true
+        },
+        {
+         "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021",
+         "price": 54,
+         "recommended": true
+        },
+        {
+         "ref": "erdoro--pinot-noir-2021",
+         "price": 70
+        },
+        {
+         "ref": "korak--pinot-crni-2023",
+         "price": 70
+        },
+        {
+         "ref": "matosevic--grimalda-2021",
+         "price": 66
+        },
+        {
+         "ref": "clai--ottocento-crni-2022",
+         "price": 66
+        },
+        {
+         "ref": "budinski--refosk-omo-2020",
+         "price": 100
+        },
+        {
+         "ref": "tomaz--teran-2022",
+         "price": 60
+        },
+        {
+         "ref": "boskinac--cuvee-boskinac-crni-2018",
+         "price": 90
+        },
+        {
+         "ref": "ivan-violic--sagul-plavac-mali-2022",
+         "price": 49
+        },
+        {
+         "ref": "mrgudic--postup-mare-2020",
+         "price": 96
+        },
+        {
+         "ref": "benmosche-family--dingac-2021",
+         "price": 91
+        },
+        {
+         "ref": "benmosche-family--zinfandel-2019",
+         "price": 89
+        },
+        {
+         "ref": "saints-hills--black-2022",
+         "price": 70
+        },
+        {
+         "ref": "rizman--tribidrag-2022",
+         "price": 75
+        },
+        {
+         "ref": "kunjas--pagadebit-2018",
+         "price": 85
+        },
+        {
+         "ref": "saints-hills--pape-2023",
+         "price": 70
+        },
+        {
+         "ref": "milos--stagnum-2016",
+         "price": 145
+        },
+        {
+         "ref": "cecavac-gaspar--jeka-dalmatia-2020",
+         "price": 250
+        },
+        {
+         "ref": "mrgudic--bura-2021",
+         "price": 195
+        },
+        {
+         "ref": "meneghetti--red-2020",
+         "price": 180,
+         "recommended": true
+        },
+        {
+         "ref": "markus--fetivi-2020",
+         "price": 145
+        },
+        {
+         "ref": "markus--pepejuh-2019",
+         "price": 150
+        },
+        {
+         "ref": "markus--pepejuh-2017",
+         "price": 160
+        },
+        {
+         "ref": "skaramuca--dingac-elegance-2020",
+         "price": 75
+        }
+       ]
+      },
+      {
+       "country": "FR",
+       "items": [
+        {
+         "ref": "hubert-lignier--bourgogne-2023",
+         "price": 106
+        },
+        {
+         "ref": "hubert-lignier--pommard-1er-cru-les-arvelets-2019",
+         "price": 186
+        },
+        {
+         "ref": "hubert-lignier--charmes-chambertin-grand-cru-2021",
+         "price": 650
+        },
+        {
+         "ref": "hubert-lignier--morey-saint-denis-2019",
+         "price": 178
+        },
+        {
+         "ref": "machard-de-gramont-bertrand--vosne-romanee-2022",
+         "price": 178
+        },
+        {
+         "ref": "machard-de-gramont-bertrand--vosne-romanee-les-barreaux-2022",
+         "price": 210,
+         "recommended": true
+        },
+        {
+         "ref": "machard-de-gramont-bertrand--nuits-saint-georges-les-hauts-pruliers-2016",
+         "price": 127
+        },
+        {
+         "ref": "hubert-lignier--nuits-saint-georges-les-didiers-1er-cru-2013",
+         "price": 340
+        },
+        {
+         "ref": "domaine-armand-rousseau-pere-fils--gevrey-chambertin-1er-cru-lavaux-2018",
+         "price": 1400,
+         "recommended": true
+        },
+        {
+         "ref": "remi-jobard--volnay-1er-cru-les-santenots-2022",
+         "price": 235,
+         "recommended": true
+        },
+        {
+         "ref": "hubert-lamy--chassagne-montrachet-la-goujonne-vieilles-vignes-rouge-2023",
+         "price": 280
+        },
+        {
+         "ref": "hubert-lamy--santenay-1er-cru-clos-des-gravieres-vieilles-vignes-rouge-2023",
+         "price": 290
+        },
+        {
+         "ref": "saint-estephe--chateau-de-pez-2022",
+         "price": 155
+        },
+        {
+         "ref": "saint-emilion-grand-cru--chateau-troplong-mondot-2020",
+         "price": 478
+        },
+        {
+         "ref": "pomerol--chateau-gazin-2020",
+         "price": 390
+        },
+        {
+         "ref": "chateau-la-pointe-pomerol--la-pointe-rouge-2022",
+         "price": 220
+        },
+        {
+         "ref": "saint-emilion-grand-cru--chateau-canon-2020",
+         "price": 390
+        },
+        {
+         "ref": "saint-julien--chateau-leoville-barton-2021",
+         "price": 390
+        },
+        {
+         "ref": "moret-nomine--syrah-le-fales-2024",
+         "price": 80
+        },
+        {
+         "ref": "jules-desjourneys--beaujolais-patacaisse-rouge-2022",
+         "price": 80,
+         "new": true
+        },
+        {
+         "ref": "jules-desjourneys--rouge-2023",
+         "price": 80,
+         "new": true
+        }
+       ]
+      },
+      {
+       "country": "IT",
+       "items": [
+        {
+         "ref": "alois-lageder--pinot-nero-krafuss-2019",
+         "price": 110
+        },
+        {
+         "ref": "alois-lageder--cabernet-lowengang-2013",
+         "price": 110
+        },
+        {
+         "ref": "az-agr-e-pira-figli-chiara-boschis--barbera-d-alba-superiore-2021",
+         "price": 63
+        },
+        {
+         "ref": "az-agr-e-pira-figli-chiara-boschis--barolo-2018",
+         "price": 210
+        },
+        {
+         "ref": "roagna--barolo-pira-2018",
+         "price": 380
+        },
+        {
+         "ref": "roagna--barbaresco-albesani-2019",
+         "price": 580
+        },
+        {
+         "ref": "roagna--barbaresco-asili-vecchie-viti-2019",
+         "price": 550
+        },
+        {
+         "ref": "roagna--barbaresco-paje-2019",
+         "price": 410
+        },
+        {
+         "ref": "crissante-alessandria--barolo-la-morra-docg-2021",
+         "price": 290
+        },
+        {
+         "ref": "lalu--langhe-nebbiolo-2023",
+         "price": 95
+        },
+        {
+         "ref": "isole-e-olena--cabernet-sauvignon-collezione-de-marchi-2013",
+         "price": 210
+        },
+        {
+         "ref": "isole-e-olena--cepparello-2019",
+         "price": 210
+        },
+        {
+         "ref": "le-piane--boca-2019",
+         "price": 120,
+         "recommended": true
+        },
+        {
+         "ref": "le-piane--plinius-2017",
+         "price": 200
+        },
+        {
+         "ref": "le-piane--piane-2019",
+         "price": 90
+        },
+        {
+         "ref": "conti-costanti--brunello-di-montalcino-2018",
+         "price": 190,
+         "recommended": true
+        },
+        {
+         "ref": "fattoria-di-magliano--heba-2021",
+         "price": 52,
+         "recommended": true
+        },
+        {
+         "ref": "fattoria-di-magliano--poggio-bestiale-2020",
+         "price": 93
+        },
+        {
+         "ref": "podere-poggio-scalette--il-carbonaione-2019",
+         "price": 100
+        },
+        {
+         "ref": "podere-poggio-scalette--piantonaia-2019",
+         "price": 250
+        },
+        {
+         "ref": "chiara-condello--predappio-sangiovese-2023",
+         "price": 145
+        },
+        {
+         "ref": "chiara-condello--predappio-sangiovese-2023-1-5-l",
+         "price": 290
+        },
+        {
+         "ref": "chiara-condello--riserva-le-lucciole-2022",
+         "price": 160
+        },
+        {
+         "ref": "chiara-condello--riserva-le-lucciole-2022-1-5-l",
+         "price": 340
+        },
+        {
+         "ref": "antinori--tignanello-2019",
+         "price": 284
+        },
+        {
+         "ref": "antinori--tignanello-2020",
+         "price": 250
+        },
+        {
+         "ref": "dal-forno-romano--valpolicella-d-o-c-superiore-2015",
+         "price": 260
+        },
+        {
+         "ref": "dal-forno-romano--amarone-della-valpolicella-d-o-c-2015",
+         "price": 689
+        },
+        {
+         "ref": "ca-la-bionda--amarone-classico-vigna-ravazzol-2016",
+         "price": 130
+        },
+        {
+         "ref": "giuseppe-quintarelli--amarone-classico-2015",
+         "price": 757
+        },
+        {
+         "ref": "giuseppe-quintarelli--valpolicella-superiore-2015",
+         "price": 260
+        },
+        {
+         "ref": "montevertine--le-pergole-torte-2020",
+         "price": 410
+        },
+        {
+         "ref": "montevertine--montevertine-2019",
+         "price": 150
+        },
+        {
+         "ref": "azienda-duemani--cifra-2021",
+         "price": 88
+        },
+        {
+         "ref": "azienda-duemani--duemani-2018",
+         "price": 350
+        },
+        {
+         "ref": "radikon--pignoli-2010-0-5-l",
+         "price": 94
+        },
+        {
+         "ref": "soldera--case-basse-2020",
+         "price": 1540,
+         "recommended": true
+        },
+        {
+         "ref": "angelo-gaja--barbaresco-2020",
+         "price": 745
+        },
+        {
+         "ref": "tenuta-san-guido--sassicaia-2020",
+         "price": 750
+        },
+        {
+         "ref": "tenuta-san-guido--sassicaia-2021",
+         "price": 850
+        },
+        {
+         "ref": "tenuta-dell-ornellaia--ornellaia-2020",
+         "price": 750
+        },
+        {
+         "ref": "antinori--solaia-2020",
+         "price": 945
+        },
+        {
+         "ref": "poggio-di-sotto--brunello-di-montalcino-2019",
+         "price": 495
+        },
+        {
+         "ref": "poggio-di-sotto--brunello-di-montalcino-2020",
+         "price": 495
+        }
+       ]
+      },
+      {
+       "country": "SI",
+       "items": [
+        {
+         "ref": "edi-simcic--duet-lex-2022",
+         "price": 130
+        },
+        {
+         "ref": "marjan-simcic--merlot-opoka-2017",
+         "price": 125
+        },
+        {
+         "ref": "marjan-simcic--pinot-noir-opoka-2021",
+         "price": 125
+        }
+       ]
+      },
+      {
+       "country": "ES",
+       "items": [
+        {
+         "ref": "marques-de-murrieta--castillo-ygay-2012",
+         "price": 350
+        },
+        {
+         "ref": "casa-rojo--cl98-2020",
+         "price": 68
+        },
+        {
+         "ref": "casa-rojo--tokyo-gomez-rojo-2021",
+         "price": 180
+        },
+        {
+         "ref": "lopez-de-heredia--bosconia-tinto-reserva-2013",
+         "price": 75
+        }
+       ]
+      },
+      {
+       "country": "US",
+       "items": [
+        {
+         "ref": "resonance-vineyard--resonance-2015",
+         "price": 100
+        },
+        {
+         "ref": "walter-scott--cuvee-ruth-pinot-noir",
+         "price": 90
+        },
+        {
+         "ref": "tyler--mae-estate-2019",
+         "price": 120
+        },
+        {
+         "ref": "occidental-kistler-vineyards--occidental-2018",
+         "price": 140
+        },
+        {
+         "ref": "duckhorn--merlot-2018",
+         "price": 160
+        },
+        {
+         "ref": "cakebread-cellars--cabernet-sauvignon-2018",
+         "price": 170
+        },
+        {
+         "ref": "heitz-cellar--cabernet-sauvignon-2016",
+         "price": 225
+        },
+        {
+         "ref": "mayacamas--cabernet-sauvignon-2019",
+         "price": 270
+        },
+        {
+         "ref": "tanbark-hill-philip-togni--cabernet-sauvignon-2018",
+         "price": 150
+        },
+        {
+         "ref": "philip-togni--cabernet-sauvignon-2019",
+         "price": 280
+        },
+        {
+         "ref": "domaine-eden--cabernet-sauvignon-2017",
+         "price": 170
+        },
+        {
+         "ref": "ridge--cabernet-sauvignon-2018",
+         "price": 170
+        },
+        {
+         "ref": "ridge--geyserville-2021",
+         "price": 140
+        }
+       ]
+      },
+      {
+       "country": "CN",
+       "items": [
+        {
+         "ref": "lvmh-shangri-la--ao-yun-2018",
+         "price": 525
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-dessert",
+   "categories": [
+    {
+     "id": "dessert",
+     "groups": [
+      {
+       "country": "HR",
+       "items": [
+        {
+         "ref": "gerzinic--muskat-2020-0-5-l",
+         "price": 31
+        },
+        {
+         "ref": "mrgudic--prosek-moskar-0-375-l",
+         "price": 45
+        },
+        {
+         "ref": "niko-bura--prosek-ruza-dalmatinska-0-375-l",
+         "price": 58
+        },
+        {
+         "ref": "clai--tasel-0-375-l",
+         "price": 64
+        },
+        {
+         "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
+         "price": 60
+        }
+       ]
+      },
+      {
+       "country": "DE",
+       "items": [
+        {
+         "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-auslese-2023-0-375-l",
+         "price": 70
+        },
+        {
+         "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017-0-375-l",
+         "price": 115
+        },
+        {
+         "ref": "weingut-wittmann--riesling-aulerde-auslese-2015-0-5-l",
+         "price": 94
+        },
+        {
+         "ref": "zilliken--riesling-auslese-goldkapsel-2009-0-375l",
+         "price": 390,
+         "recommended": true
+        }
+       ]
+      },
+      {
+       "country": "IT",
+       "items": [
+        {
+         "ref": "giuseppe-quintarelli--recioto-classico-2011-0-5-l",
+         "price": 250
+        },
+        {
+         "ref": "ca-la-bionda--recioto-classico-2015",
+         "price": 145
+        },
+        {
+         "ref": "donnafugata--ben-rye-2019-0-75-l",
+         "price": 100
+        },
+        {
+         "ref": "giuseppe-quintarelli--amabile-del-cere-2017-0-375l",
+         "price": 495
+        }
+       ]
+      },
+      {
+       "country": "FR",
+       "items": [
+        {
+         "ref": "sauternes--chateau-d-yquem-1er-cru-superieur-2020",
+         "price": 880
+        },
+        {
+         "ref": "sauternes--chateau-d-yquem-1er-cru-superieur-2015",
+         "price": 940
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "spirits",
+   "categories": [
+    {
+     "id": "vodka",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "elit--stolichnaya",
+         "price": 5
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "gin",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "gibson-s--london-dry-gin",
+         "price": 5
+        },
+        {
+         "ref": "aura--karbun",
+         "price": 5
+        },
+        {
+         "ref": "brick-gin--straight-organic-distilled-dry-gin",
+         "price": 5
+        },
+        {
+         "ref": "aviation--american-gin",
+         "price": 5
+        },
+        {
+         "ref": "monkey-47--schwarzwald-dry-gin",
+         "price": 7
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "vermouth",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "mulassano--vermouth-bianco",
+         "price": 5
+        },
+        {
+         "ref": "mulassano--vermouth-rosso",
+         "price": 5
+        },
+        {
+         "ref": "mulassano--vermouth-extra-dry",
+         "price": 5
+        },
+        {
+         "ref": "mulassano--bitter",
+         "price": 5
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "tequila-mezcal",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "cimarron--blanco-tequila",
+         "price": 4
+        },
+        {
+         "ref": "del-maguey--vida",
+         "price": 7
+        },
+        {
+         "ref": "bruxo--bruxo",
+         "price": 7
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "whisky",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "kilchoman-scotland--machir-bay",
+         "price": 6
+        },
+        {
+         "ref": "scotland--glen-rothes-9y-artist-collective-2015",
+         "price": 19
+        },
+        {
+         "ref": "scotland--sponge-ed-jura-1994",
+         "price": 73
+        },
+        {
+         "ref": "scotland--bladnoch-19y",
+         "price": 36
+        },
+        {
+         "ref": "scotland--glenmorangie-signet",
+         "price": 36
+        },
+        {
+         "ref": "kavalan-taiwan--distillery-select",
+         "price": 8
+        },
+        {
+         "ref": "kavalan-taiwan--ex-sherry-oak",
+         "price": 11
+        },
+        {
+         "ref": "kavalan-taiwan--solist",
+         "price": 25
+        },
+        {
+         "ref": "mars-japan--maltage-cosmo",
+         "price": 9
+        },
+        {
+         "ref": "mars-japan--tsunuki-edition-2023",
+         "price": 16
+        },
+        {
+         "ref": "mars-japan--komagatake-limited-edition-2018",
+         "price": 36
+        },
+        {
+         "ref": "usa--westward",
+         "price": 18
+        },
+        {
+         "ref": "usa--redemption",
+         "price": 6
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "rum",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "veritas--white-blended-rum",
+         "price": 5
+        },
+        {
+         "ref": "clairin--sajous",
+         "price": 6
+        },
+        {
+         "ref": "clairin--casimir",
+         "price": 6
+        },
+        {
+         "ref": "clairin--vaval",
+         "price": 6
+        },
+        {
+         "ref": "hampden-estate--hlcf-classic-4y",
+         "price": 7
+        },
+        {
+         "ref": "hampden-estate--pure-single-jamaican-rum-8y",
+         "price": 10
+        },
+        {
+         "ref": "velier--papalim-7y",
+         "price": 10
+        },
+        {
+         "ref": "long-pond--cambridge-2005",
+         "price": 27
+        },
+        {
+         "ref": "mount-gay--last-ward-2007-barbados",
+         "price": 30
+        },
+        {
+         "ref": "chelo-saint-michael--vieux-sajous-2018",
+         "price": 13
+        },
+        {
+         "ref": "lmdw--australia-2014",
+         "price": 10
+        },
+        {
+         "ref": "japanese-rhum--nine-leaves-2016",
+         "price": 20
+        },
+        {
+         "ref": "hampden-estate--pagos-sherry-cask",
+         "price": 12
+        },
+        {
+         "ref": "hampden-estate--great-house-2024",
+         "price": 13
+        },
+        {
+         "ref": "foursquare--raconteur",
+         "price": 35
+        },
+        {
+         "ref": "habitation-velier--renegade-2020",
+         "price": 14
+        },
+        {
+         "ref": "foursquare--absolutio-15y",
+         "price": 27
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "cognac",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "through-the-grapevine--chateau-de-beaulon-1988-fins-bois",
+         "price": 25
+        },
+        {
+         "ref": "through-the-grapevine--michel-forgeron-1992-grande-champagne",
+         "price": 25
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "shochu",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "ohishi--premium-mizunara",
+         "price": 16
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rakija-beer",
+   "categories": [
+    {
+     "id": "rakija",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "wise-grus--sljivovica",
+         "price": 5
+        },
+        {
+         "ref": "wise-grus--viljamovka",
+         "price": 5
+        },
+        {
+         "ref": "wise-grus--travarica",
+         "price": 5
+        },
+        {
+         "ref": "wise-grus--loza",
+         "price": 5
+        },
+        {
+         "ref": "wise-grus--orahovac",
+         "price": 5
+        },
+        {
+         "ref": "wise-grus--visnjevac",
+         "price": 5
+        },
+        {
+         "ref": "wise-grus--medica",
+         "price": 5
+        },
+        {
+         "ref": "wise-grus--teranino",
+         "price": 5
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "grappa",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "lorenzo-inga--grappa-bianca",
+         "price": 5
+        },
+        {
+         "ref": "lorenzo-inga--grappa-barrique",
+         "price": 5
+        },
+        {
+         "ref": "lorenzo-inga--grappa-riserva-18-mesi",
+         "price": 6
+        },
+        {
+         "ref": "amarone-grappa",
+         "price": 8
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "liqueur",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "umeshu-genshu",
+         "price": 6
+        },
+        {
+         "ref": "appenzeller",
+         "price": 6
+        },
+        {
+         "ref": "wise-grus--ginko-pelinkovac",
+         "price": 4
+        },
+        {
+         "ref": "jagermeister-manifest",
+         "price": 9
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "beer",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "zmajska-pivovara--pils-0-5-l",
+         "price": 6
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "other",
+   "categories": [
+    {
+     "id": "water",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "jana-0-25-l",
+         "price": 4
+        },
+        {
+         "ref": "jana-0-75-l",
+         "price": 5
+        },
+        {
+         "ref": "jamnica-0-33-l",
+         "price": 4
+        },
+        {
+         "ref": "jamnica-0-75-l",
+         "price": 5
+        },
+        {
+         "ref": "jamnica-sensation-0-25-l",
+         "price": 3
+        },
+        {
+         "ref": "romerquelle-0-75-l",
+         "price": 5
+        },
+        {
+         "ref": "romerquelle-gazirana-0-75-l",
+         "price": 5
+        },
+        {
+         "ref": "romerquelle-limunska-trava-0-35-l",
+         "price": 3.7
+        },
+        {
+         "ref": "saint-geron",
+         "price": 9
+        },
+        {
+         "ref": "saint-geron-gazirana",
+         "price": 9
+        },
+        {
+         "ref": "artesian",
+         "price": 9
+        },
+        {
+         "ref": "artesian-gazirana",
+         "price": 9
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "tonic",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "schweppes-indian-tonic-water-0-25-l",
+         "price": 4
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "juice",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "svjeze-cijedeni-sok-0-3-l",
+         "price": 5
+        },
+        {
+         "ref": "coca-cola",
+         "price": 4
+        },
+        {
+         "ref": "coca-cola-zero",
+         "price": 4
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "coffee",
+     "groups": [
+      {
+       "country": null,
+       "items": [
+        {
+         "ref": "espresso",
+         "price": 4
+        },
+        {
+         "ref": "macchiato",
+         "price": 4
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

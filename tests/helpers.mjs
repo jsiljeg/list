@@ -3,14 +3,20 @@ import { readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect } from "@playwright/test";
+import { joinList, library as readLibrary } from "../scripts/lib/list.mjs";
 
 /* import.meta.dirname needs Node 20.11; this works everywhere. */
 const HERE = dirname(fileURLToPath(import.meta.url));
 
 const ROOT = resolve(HERE, "..");
 
-/* ---------- data, read straight off disk ---------- */
-export const wines = JSON.parse(readFileSync(resolve(ROOT, "data/wines.json"), "utf8"));
+/* ---------- data, read straight off disk ----------
+   `wines` is the library joined to the Theatrium list, i.e. exactly the shape
+   the old data/wines.json had — so every spec written before the split still
+   reads the same tree, and the invariants in data.spec.mjs still apply to what
+   a guest actually sees rather than to the library in the abstract. */
+export const wines = joinList().list;
+export const library = readLibrary();
 export const producers = JSON.parse(readFileSync(resolve(ROOT, "data/producers.json"), "utf8")).producers;
 
 /** Every item that carries an `insight`, flattened out of the section tree. */

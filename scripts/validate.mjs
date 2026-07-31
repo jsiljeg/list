@@ -1,8 +1,15 @@
-/* Validates data/wines.json against js/i18n.js before deploy.
+/* Validates the wine data against js/i18n.js before deploy.
    Run: node scripts/validate.mjs (from repo root). Exits 1 on any problem
-   so a broken edit never replaces the live list. */
+   so a broken edit never replaces the live list.
+
+   Since the library split there are three ways to break the data instead of
+   one, and the two new ones are silent — a listing pointing at a ref that
+   isn't in the library, and a hide rule matching no wine, both end with a
+   guest being offered something that isn't there, or not offered something
+   that is. Neither is allowed past this script. */
 import fs from "node:fs";
 import vm from "node:vm";
+import { joinList } from "./lib/list.mjs";
 
 const ctx = {};
 vm.createContext(ctx);
@@ -12,16 +19,21 @@ vm.runInContext(
 );
 const { I18N, LANGS } = ctx;
 
-let data;
+let data, missing = [], orphans = [];
 try {
-  data = JSON.parse(fs.readFileSync("data/wines.json", "utf8"));
+  ({ list: data, missing, orphans } = joinList());
 } catch (e) {
-  console.error("data/wines.json is not valid JSON:\n" + e.message);
+  console.error("library/wines.json or lists/theatrium.json is not valid JSON:\n" + e.message);
   console.error("Tip: a missing comma or quote is the usual cause. Undo the last edit and retry.");
   process.exit(1);
 }
 
 const errors = [];
+
+/* A listing whose ref isn't in the library would just vanish off the list —
+   the wine is on the shelf, priced, and no guest ever sees it. */
+for (const ref of new Set(missing))
+  errors.push(`lists/theatrium.json: "${ref}" is not in library/wines.json — check the ref`);
 const langs = LANGS.map((l) => l.code);
 
 for (const sec of data.sections) {
@@ -94,7 +106,13 @@ if (errors.length) {
   console.error("Validation failed:\n" + [...new Set(errors)].join("\n"));
   process.exit(1);
 }
-console.log("wines.json OK — all keys resolve in", langs.join(", "));
+const listed = all.length;
+console.log(`list OK — ${listed} listings, all keys resolve in ${langs.join(", ")}`);
 console.log(hidden.length
   ? `unavailable.json OK — ${hidden.length} wine(s) hidden from guests`
   : "unavailable.json OK — nothing hidden");
+/* Not an error: a wine this venue stopped pouring stays in the library on
+   purpose, ready for the next list. Worth saying, so a ref typo that both
+   drops a listing and strands its wine reads as the one mistake it is. */
+if (orphans.length)
+  console.log(`note — ${orphans.length} library wine(s) this list doesn't pour: ${orphans.slice(0, 5).join(", ")}${orphans.length > 5 ? ", …" : ""}`);
