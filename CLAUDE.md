@@ -328,6 +328,25 @@ the white Burgundy shelf plus the barrel-aged Viura, Savagnin and Alsace Pinot
 Gris beside it. Steely Chablis (`white_mineral`) and unoaked Chardonnay
 (`white_fresh`) take the Riesling glass.
 
+## Out of stock tonight, back tomorrow (2026-07-31)
+
+`data/unavailable.json` is the 86 list: `{"hidden": [{"producer", "name",
+"where"?, "since"?, "reason"?}]}`. `dropHidden()` in `js/app.js` rebuilds `DATA`
+from it **at load, before anything indexes into it** — that is the whole design.
+Every detail sheet opens by an `si/ci/gi/ii` path into `DATA`, so filtering in
+the renderer instead would open the wrong wine off the card below a hidden one.
+Groups, categories and sections left empty are dropped with it; hiding
+*everything* is treated as a mistake and falls back to the unfiltered list.
+
+Two deliberate choices: it is a **separate small file**, because the owner needs
+to see the current state of the gaps at a glance and re-pour a wine by deleting
+one line, not by hunting through 12k lines of `wines.json`; and `scripts/validate.mjs`
+**fails the deploy on a rule that matches nothing**, because a typo means the
+owner believes a wine is hidden while the guest is still being offered it.
+`where` is `"glass"` | `"bottle"` (a bottle-* section), omitted = everywhere —
+the same wine is often in both. Owner docs: UREDIVANJE.md, "Privremeno sakriti
+vino".
+
 ## Search matches word starts (2026-07-30)
 
 `hayMatch()` requires the query to land at the start of a word, not anywhere

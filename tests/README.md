@@ -48,6 +48,7 @@ dependencies either.
 | `search.spec.mjs` | every spelling of a region returning the same wines, "burgun" not matching *spät*burgunder mid-word, "brunello" meaning Montalcino rather than all Sangiovese, "riesling" never returning Graševina, diacritics being optional, and Chinese queries still working. |
 | `layout.spec.mjs` | the footer at the foot of the screen on a short category, no sideways scroll, the sticky header, the flag actually decoding (it once failed silently and rendered 0×0), the face preloaded rather than fetched at the language tap, and nothing 404ing. |
 | `i18n.spec.mjs` | the style line in sentence case with the dosage keeping its capital, the subtitle staying Filho's English line, the Chinese view glossing every region token, exonyms following the language, the country appended once, and no raw i18n key reaching the screen. |
+| `availability.spec.mjs` | the temporarily-out-of-stock list: a hidden wine leaving the DOM *and* `DATA` (so the si/ci/gi/ii detail path can't drift onto the wrong wine), `where` scoping glass vs bottle, an emptied category leaving the nav, and neither a 404 nor an over-eager hide-everything taking the list down. |
 | `data.spec.mjs` | the conventions in CLAUDE.md, checked instead of trusted: no country inside `insight.region`, blends name-first and descending, large-format twins identical, critic names from the agreed list, `wines.json` in canonical form. Runs without a browser, in about a second. |
 
 ## Writing a new one

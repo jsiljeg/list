@@ -109,9 +109,46 @@ podatke. Primjer:
 ```
 Pazite na **zarez** iza `},` — svako vino osim zadnjeg u popisu ima zarez.
 
+### Privremeno sakriti vino (nema ga danas, ima ga sutra)
+**Ne dirajte `wines.json`.** Sve se radi u maloj datoteci
+`data/unavailable.json`, koja je popis onoga što gosti trenutno **ne**
+vide. Vino ostaje zapisano sa svime što smo o njemu napisali — samo se ne
+prikazuje.
+
+Otvorite `data` → `unavailable.json` → olovka, i unutar `"hidden": [ ]`
+dodajte redak po vinu:
+```json
+{
+ "hidden": [
+  { "producer": "Meneghetti", "name": "Blanc de Blancs", "since": "2026-08-01", "reason": "rasprodano" }
+ ]
+}
+```
+- `name` — **točno** kako piše u karti, s godištem (`"Red 2020"`).
+- `producer` — vinar; može se izostaviti ako samo jedan ima vino tog imena.
+- `since` i `reason` — samo za vas i vašu evidenciju; gost ih ne vidi.
+- `where` — dodajte `"where": "glass"` ako vino nestaje samo iz ponude na
+  čaše, a i dalje se prodaje na boce (ili `"bottle"` za obrnuto). Bez tog
+  retka vino nestaje odasvud.
+
+**Vraćanje vina u kartu:** obrišite njegov redak. Ništa više.
+
+Ako se potkrade tipfeler u imenu, provjera prije objave to **odbija** i
+javlja koje ime ne postoji — da se ne dogodi da mislite kako je vino
+skriveno, a gost ga i dalje vidi na karti.
+
+Kategorija koja ostane prazna (npr. sakrijete jedini rosé) sama nestaje
+iz izbornika i vraća se kad vino vratite.
+
+**Evidencija:** trenutno stanje uvijek vidite na jednom mjestu — u toj
+datoteci. Povijest tko je što i kada sakrio i vratio stoji pod **History**
+te datoteke na GitHubu.
+
 ### Obrisati vino
-Obrišite cijeli blok od `{` do `},` (uključivo). Ako je bilo zadnje u
-popisu, prethodnom vinu obrišite zarez iza `}`.
+Za trajno brisanje (vino više nikad ne uzimamo) obrišite cijeli blok od
+`{` do `},` (uključivo) u `wines.json`. Ako je bilo zadnje u popisu,
+prethodnom vinu obrišite zarez iza `}`. Ako vino samo trenutno nemate,
+koristite postupak iznad.
 
 ### Urediti opis vina (sorta, arome, sljubljivanje…)
 - `grape`, `region`, `temp` — slobodan tekst, upišite što želite.

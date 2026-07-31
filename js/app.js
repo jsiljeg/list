@@ -93,13 +93,50 @@ const T = () => I18N[lang] || I18N.en;
 let MENU = null;
 let PRODUCERS = {};
 let REGIONS = [];
+
+/* ---------- temporarily unavailable wines ----------
+   data/unavailable.json names what is out of stock tonight. Those items are
+   dropped from DATA the moment it lands, before anything indexes into it, so
+   the lists, the search, the badge counts, Filho's selection and the detail
+   sheet's si/ci/gi/ii path all agree without a single call site knowing the
+   feature exists. Nothing is removed from wines.json: putting the wine back
+   is deleting one line from the small file. */
+const hideNorm = (s) => String(s == null ? "" : s).trim().toLowerCase();
+
+function hiddenTest(rules) {
+  const rs = (Array.isArray(rules) ? rules : []).filter((r) => r && r.name);
+  return (item, secId) => rs.some((r) =>
+    hideNorm(r.name) === hideNorm(item.name) &&
+    (!r.producer || hideNorm(r.producer) === hideNorm(item.producer)) &&
+    (!r.where || (r.where === "glass" ? secId === "glass" : secId.startsWith("bottle"))));
+}
+
+/* A group, category or section left with nothing in it disappears too — an
+   empty "Rosé" chip that opens onto blank space reads as a broken app. */
+function dropHidden(data, rules) {
+  const hit = hiddenTest(rules);
+  const sections = data.sections.map((sec) => ({
+    ...sec,
+    categories: sec.categories.map((cat) => ({
+      ...cat,
+      groups: cat.groups
+        .map((g) => ({ ...g, items: g.items.filter((i) => !hit(i, sec.id)) }))
+        .filter((g) => g.items.length)
+    })).filter((c) => c.groups.length)
+  })).filter((s) => s.categories.length);
+  /* Hiding the entire list is always a mistake, never an intention. */
+  return sections.length ? { ...data, sections } : data;
+}
+
 function init() {
   Promise.all([
     fetch("data/wines.json").then((r) => r.json()),
     fetch("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] })),
     fetch("data/producers.json").then((r) => r.json()).catch(() => ({ producers: {} })),
-    fetch("data/regions.json").then((r) => r.json()).catch(() => ({ regions: [] }))
-  ]).then(([d, m, pr, rg]) => {
+    fetch("data/regions.json").then((r) => r.json()).catch(() => ({ regions: [] })),
+    fetch("data/unavailable.json").then((r) => r.json()).catch(() => ({ hidden: [] }))
+  ]).then(([d0, m, pr, rg, un]) => {
+      const d = dropHidden(d0, un && un.hidden);
       DATA = d;
       MENU = m;
       PRODUCERS = pr.producers || {};
