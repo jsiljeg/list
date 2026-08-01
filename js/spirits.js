@@ -22,11 +22,12 @@
    rest are not. Know which is which before you touch them.
 
    MEASURED (2026-08-01, from the owner's photos): `nosing` is the Glencairn,
-   `snifter` the 41 cl Napoleon balloon. Both were drawn to the landmarks and
+   `snifter` the 41 cl Napoleon balloon, `tulip` the grappa/rakija glass and
+   `copa` the gin balloon. Both were drawn to the landmarks and
    then verified by overlaying the candidate path back on the photo — see the
    comments on each.
 
-   NOT MEASURED: tumbler, highball, tulip, goblet are still standard vessel
+   NOT MEASURED: tumbler, highball and goblet are still standard vessel
    geometries drawn to plausible millimetres, because no photograph of the house
    versions exists. That is defensible where eyeballing a wine glass is not — a
    rocks glass is a cylinder and there is nothing in it to get wrong — but if
@@ -49,9 +50,10 @@
 
      rocks/tumbler   90 x 85   → viewBox 92    (nearly square, and it should be)
      highball       150 x 65   → viewBox 46
+     copa de balón  (measured)  → viewBox 48
      Glencairn      115 x 67   → viewBox 56   (measured; published mm)
      snifter        (see below) → viewBox 68   (measured off the photo)
-     grappa tulip   180 x 55   → viewBox 32    (the narrowest thing on the list)
+     grappa tulip   (measured)  → viewBox 36    (the narrowest thing on the list)
      goblet         150 x 75   → viewBox 48
 
    Each glass is then drawn across the full 6-to-93 band of the box, so the
@@ -86,10 +88,25 @@ const SPIRIT_VESSELS = {
      .48 of the widest; measured it is .68, and that difference is most of why
      the old drawing read as a brandy cartoon. */
   snifter: '<svg viewBox="0 0 68 100" aria-hidden="true"><path d="M12.7,6 C10.2,13 4.2,27 2.75,41.1 C3.4,55 13.5,64.5 29.83,67.8 L38.17,67.8 C54.5,64.5 64.6,55 65.25,41.1 C63.8,27 57.8,13 55.3,6"/><path d="M12.7,6 C12.7,3.9 55.3,3.9 55.3,6 C55.3,8.1 12.7,8.1 12.7,6 Z"/><path d="M34,67.8 V85.3"/><path d="M8.3,93 C14,88.5 54,88.5 59.7,93"/></svg>',
-  /* The grappa / rakija tulip: a small high-bellied bowl over a very long stem.
-     Drawn narrow rather than small, because every icon is normalised to one
-     height and "small" stopped reading the moment that rule came in. */
-  tulip: '<svg viewBox="0 0 32 100" aria-hidden="true"><path d="M9,13 C5.5,18 3,25 3,32 C3,41 8,49 16,52 C24,49 29,41 29,32 C29,25 26.5,18 23,13"/><path d="M9,13 C9,11.2 23,11.2 23,13 C23,14.8 9,14.8 9,13 Z"/><path d="M16,52 V88"/><path d="M4.6,92.5 c5,-3.2 17.8,-3.2 22.8,0"/></svg>',
+  /* The grappa and rakija glass, measured off the owner's photo. Its rim is the
+     thing every eyeballed version gets wrong: it *flares*, and it flares wide —
+     202 px against a 250 px belly, so .81, where the drawn one had .54. That
+     outward lip is functional, not decoration; it throws the alcohol vapour
+     clear of the nose, which is the whole reason a 45% spirit is served in this
+     shape and not a shrunken wine glass. Two more measured facts the old
+     drawing missed: there is a slight waist just under the rim before the belly
+     swells, and the foot is *wider than the bowl* (310 px against 250), which
+     is what makes it look planted rather than tippy at 60 px. The narrowest
+     vessel on the shelf — a quarter as wide as it is tall. */
+  tulip: '<svg viewBox="0 0 36 100" aria-hidden="true"><path d="M7.66,6 C8.4,9.5 8.48,11.8 8.48,13.7 C8,18.5 7.25,21.5 7.25,23.9 C6.3,28.5 5.31,31.5 5.31,34.1 C5.22,36.2 5.21,38 5.21,39.3 C5.4,43 8,46.5 15.2,47.4 L20.8,47.4 C28,46.5 30.6,43 30.79,39.3 C30.79,38 30.78,36.2 30.69,34.1 C30.7,31.5 29.7,28.5 28.75,23.9 C28.75,21.5 28,18.5 27.52,13.7 C27.52,11.8 27.6,9.5 28.34,6"/><path d="M7.66,6 C7.66,4.2 28.34,4.2 28.34,6 C28.34,7.8 7.66,7.8 7.66,6 Z"/><path d="M18,47.4 V86.3"/><path d="M2.14,93 C7,88 29,88 33.86,93"/></svg>',
+  /* The copa de balón, measured off the owner's photo — the balloon a gin and
+     tonic is actually served in here. Half as wide as it is tall, belly high
+     (28% down) and a rim that stays wide, .80 of the widest: the bowl holds the
+     ice and the volume, and the open top lets the botanicals off a long drink
+     instead of trapping them the way a nosing glass would. It replaces the
+     highball for both gins — a G&T in this house comes in a balloon, and the
+     icon should say so. */
+  copa: '<svg viewBox="0 0 48 100" aria-hidden="true"><path d="M6.6,6 C4.6,12 2.25,21 2.25,30 C2.3,40 9.5,48.5 20,50.8 L28,50.8 C38.5,48.5 45.7,40 45.75,30 C45.75,21 43.4,12 41.4,6"/><path d="M6.6,6 C6.6,4.2 41.4,4.2 41.4,6 C41.4,7.8 6.6,7.8 6.6,6 Z"/><path d="M24,50.8 V85.2"/><path d="M7.77,93 C13,88.5 35,88.5 40.23,93"/></svg>',
   /* Highball, for the gins: tall, straight, no stem. Between the tumbler and
      this one the aspect ratio does all the work — same silhouette, half the
      width. */
@@ -105,7 +122,7 @@ const SPIRIT_VESSELS = {
    glass from the rest of its category. */
 const VESSEL_BY_CLASS = {
   vodka: "tulip",
-  gin_london_dry: "highball", gin_contemporary: "highball",
+  gin_london_dry: "copa", gin_contemporary: "copa",
   vermouth_bianco: "goblet", vermouth_rosso: "goblet", vermouth_dry: "goblet",
   bitter_aperitivo: "tumbler",
   tequila_blanco: "tulip", mezcal_joven: "tulip",
@@ -113,9 +130,13 @@ const VESSEL_BY_CLASS = {
   malt_highland: "nosing", malt_island: "nosing", malt_taiwan: "nosing",
   malt_japan: "nosing", blended_malt_japan: "nosing", malt_american: "nosing",
   rye_american: "tumbler",
-  rum_jamaican: "nosing", rum_barbados: "nosing", rum_white_blend: "highball",
-  clairin: "tulip", rum_cane_juice: "nosing", rum_japanese: "nosing",
-  rum_australian: "nosing",
+  /* Owner, 2026-08-01: every rum goes in the cognac glass. That includes the
+     clairin, which is Haitian rum however unaged it is, and the white blend,
+     which the balloon flatters less than a highball would but which is poured
+     from the same shelf by the same hand. One shelf, one glass. */
+  rum_jamaican: "snifter", rum_barbados: "snifter", rum_white_blend: "snifter",
+  clairin: "snifter", rum_cane_juice: "snifter", rum_japanese: "snifter",
+  rum_australian: "snifter",
   cognac_grande_champagne: "snifter", cognac_fins_bois: "snifter",
   shochu_rice: "tumbler",
   rakija_fruit: "tulip", rakija_grape: "tulip", rakija_herbal: "tulip",
