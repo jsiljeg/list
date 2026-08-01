@@ -101,13 +101,16 @@ const SPIRIT_VESSELS = {
      highball for both gins — a G&T in this house comes in a balloon, and the
      icon should say so. */
   copa: '<svg viewBox="0 0 48 100" aria-hidden="true"><path d="M6.6,6 C4.6,12 2.25,21 2.25,30 C2.3,40 9.5,48.5 20,50.8 L28,50.8 C38.5,48.5 45.7,40 45.75,30 C45.75,21 43.4,12 41.4,6"/><path d="M6.6,6 C6.6,4.2 41.4,4.2 41.4,6 C41.4,7.8 6.6,7.8 6.6,6 Z"/><path d="M24,50.8 V85.2"/><path d="M7.77,93 C13,88.5 35,88.5 40.23,93"/></svg>',
-  /* The house beer glass, traced off the owner's photo: the Belgian-style
-     stemmed tulip Zmajska brands. Wide-bellied and .75 at the rim — much more
-     open than the grappa tulip it superficially resembles, because a beer has
-     foam to hold and a Pils has aromatics that want out. Bowl 48% down, and
-     the foot is narrow for its bowl, which is what makes it look like a beer
-     glass rather than a small brandy balloon. */
-  beer: '<svg viewBox="0 0 62 100" aria-hidden="true"><path d="M9.77,6 C7,14 2.55,30 2.55,47.4 C2.7,55 12,60 27.07,61.2 L34.93,61.2 C50,60 59.3,55 59.45,47.4 C59.45,30 55,14 52.23,6"/><path d="M9.77,6 C9.77,3.9 52.23,3.9 52.23,6 C52.23,8.1 9.77,8.1 9.77,6 Z"/><path d="M31,61.2 V81.3"/><path d="M15.93,93 C21,88.5 41,88.5 46.07,93"/></svg>',
+  /* The house beer glass, fitted through *every* measured row rather than four
+     landmarks. Two hand-drawn cubics could not hold it — the upper wall bulged
+     and the lower bowl cut inside the real glass — because one segment between
+     two landmarks averages away everything in between. The outline is now a
+     Catmull-Rom spline through seventeen sampled rows, which passes through
+     each one instead of near it, and the shoulder the owner asked about
+     survives: the half-width grows only 1 px over the first step below the rim
+     before the wall bows out. Rim .75 of the belly, belly 37% down, foot narrow
+     for its bowl. One uniform scale, 87 units over 425 px. */
+  beer: '<svg viewBox="0 0 62 100" aria-hidden="true"><path d="M10.43,8.44 C10.36,9.04 10.19,10.86 10.02,12.09 C9.85,13.32 9.71,14.40 9.40,15.83 C9.10,17.27 8.62,19.06 8.18,20.70 C7.73,22.34 7.24,24.02 6.74,25.66 C6.25,27.30 5.67,28.90 5.21,30.53 C4.75,32.17 4.23,34.26 3.98,35.49 C3.72,36.73 3.65,36.90 3.67,37.93 C3.69,38.96 3.89,40.44 4.08,41.67 C4.27,42.90 4.42,43.90 4.80,45.32 C5.17,46.74 5.60,48.56 6.33,50.20 C7.07,51.83 8.21,53.72 9.20,55.15 C10.19,56.59 11.30,57.79 12.27,58.81 C13.24,59.82 13.87,60.43 15.03,61.24 C16.19,62.06 17.57,62.88 19.23,63.68 C20.88,64.48 23.80,65.35 24.96,66.03 C26.12,66.71 25.98,67.48 26.19,67.77 L35.81,67.77 C36.02,67.48 35.88,66.71 37.04,66.03 C38.20,65.35 41.12,64.48 42.77,63.68 C44.43,62.88 45.81,62.06 46.97,61.24 C48.13,60.43 48.76,59.82 49.73,58.81 C50.70,57.79 51.81,56.59 52.80,55.15 C53.79,53.72 54.93,51.83 55.67,50.20 C56.40,48.56 56.83,46.74 57.20,45.32 C57.58,43.90 57.73,42.90 57.92,41.67 C58.11,40.44 58.31,38.96 58.33,37.93 C58.35,36.90 58.28,36.73 58.02,35.49 C57.77,34.26 57.25,32.17 56.79,30.53 C56.33,28.90 55.75,27.30 55.26,25.66 C54.76,24.02 54.27,22.34 53.82,20.70 C53.38,19.06 52.90,17.27 52.60,15.83 C52.29,14.40 52.15,13.32 51.98,12.09 C51.81,10.86 51.64,9.04 51.57,8.44"/><path d="M10.43,8.44 C10.43,6.34 51.57,6.34 51.57,8.44 C51.57,10.54 10.43,10.54 10.43,8.44 Z"/><path d="M31.00,67.77 V84.73"/><path d="M16.47,93 C21.47,88.4 40.53,88.4 45.53,93"/></svg>',
 };
 
 /* Which vessel a bottle gets. `insight.vessel` in library/wines.json wins, the

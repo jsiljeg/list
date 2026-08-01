@@ -428,14 +428,16 @@ const ICONS = {
      length: the grape's marks float too, but they float in rows, and a single
      stray stroke beside a wall reads as a mistake rather than as texture. */
   alembic: '<svg viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M4.6 9.1L7.0 10.1"/><path d="M7.0 10.1L9.4 9.1"/><path d="M3.0 12.9L5.4 11.9"/><path d="M5.4 11.9L7.8 12.9"/><path d="M7.8 12.9L10.2 11.9"/><path d="M2.2 14.7L5.0 15.7"/><path d="M5.0 15.7L7.8 14.7"/><path d="M7.8 14.7L10.6 15.7"/><path d="M2.7 18.5L5.3 17.5"/><path d="M5.3 17.5L7.9 18.5"/><path d="M7.9 18.5L10.5 17.5"/><path d="M4.4 20.1L7.0 21.1"/><path d="M7.0 21.1L9.6 20.1"/><path d="M6.4 7.6L6.8 5.6"/><path d="M8.4 7.6L8.0 5.6"/><path d="M7.3 4.7L8.9 3.7"/><path d="M9.7 3.2L11.6 3.0"/><path d="M12.6 2.9L14.4 3.0"/><path d="M15.4 3.2L17.2 3.5"/><path d="M18.1 3.9L19.8 4.8"/><path d="M20.7 5.2L22.3 6.1"/><path d="M23.1 6.7L24.7 7.6"/><path d="M25.7 8.0L27.4 8.6"/><path d="M26.7 10.2L28.9 10.2"/><path d="M29.9 10.2L32.1 10.2"/><path d="M26.7 10.7L26.3 12.7"/><path d="M26.1 13.6L25.7 15.6"/><path d="M25.5 16.5L25.1 18.5"/><path d="M25.7 19.0L27.5 20.1"/><path d="M32.1 10.7L32.5 12.7"/><path d="M32.7 13.6L33.1 15.6"/><path d="M33.3 16.5L33.7 18.5"/><path d="M33.1 19.0L31.3 20.1"/><path d="M26.6 22.8L28.9 22.8"/><path d="M29.8 22.8L32.2 22.8"/></svg>',
-  /* Water, as rings spreading from where a drop landed — the drop itself still
-     falling above them. A single drop was tried first and read as a small ring
-     or an eye at 24px; three falling drops turned to a squiggle and rising
-     bubbles to scattered specks. The rings win because they give the mark a
-     silhouette — wide at the bottom, narrowing to a point — where the others
-     were all one small blob, and a silhouette is the only thing that survives
-     this size. Same lesson the alembic taught, arrived at from the other side. */
-  water: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M11.2 2.6L12.4 5.0"/><path d="M12.4 5.0L11.6 7.4"/><path d="M10.4 11.6L12.0 10.8"/><path d="M12.0 10.8L13.6 11.6"/><path d="M8.0 14.6L10.4 13.4"/><path d="M10.4 13.4L13.6 13.4"/><path d="M13.6 13.4L16.0 14.6"/><path d="M5.2 17.8L8.2 16.2"/><path d="M8.2 16.2L12.0 15.8"/><path d="M12.0 15.8L15.8 16.2"/><path d="M15.8 16.2L18.8 17.8"/><path d="M3.0 21.0L6.6 19.0"/><path d="M6.6 19.0L12.0 18.4"/><path d="M12.0 18.4L17.4 19.0"/><path d="M17.4 19.0L21.0 21.0"/></svg>',
+  /* Water as a breaking wave — the swell running in from the left, the crest
+     curling over on the right. Four earlier attempts are worth recording so
+     nobody walks back into them: a single drop read as a small ring or an eye;
+     three drops turned to a squiggle; rising bubbles to scattered specks; and
+     concentric ripples, drawn as stacked chevrons, lined up into a ziggurat —
+     the owner called it the towers of Hanoi and he was right, because every row
+     was a straight V and they stacked like steps. The wave works because it has
+     a *direction* rather than a stack, and because it is wide (32x24, like the
+     alembic) rather than squeezed into a square. */
+  water: '<svg viewBox="0 0 32 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M2.8 18.2L7.2 17.0"/><path d="M8.6 16.6L12.8 15.4"/><path d="M14.2 15.0L18.4 13.8"/><path d="M19.8 13.4L23.2 12.4"/><path d="M24.8 12.5L27.6 14.2"/><path d="M28.2 15.8L27.0 17.8"/><path d="M25.6 18.6L22.8 18.2"/><path d="M21.4 17.4L19.8 15.8"/><path d="M19.0 15.0L17.6 14.6"/><path d="M2.4 21.2L6.6 20.4"/><path d="M8.0 20.4L12.6 21.0"/><path d="M14.0 21.2L18.6 20.5"/><path d="M20.0 20.5L24.4 21.1"/><path d="M25.8 21.3L29.6 20.6"/></svg>',
   /* The atrium's nails, arranged as a bunch of grapes: the restaurant's own
      material, the list's own subject. Fifteen short marks laid out 3-4-3-2-1
      under a stem — no two parallel, none of them touching. The bunch comes
