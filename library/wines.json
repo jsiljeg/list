@@ -12166,27 +12166,28 @@
    "producer": "Velier",
    "insight": {
     "kind": "spirit",
-    "class": "clairin",
+    "class": "rum_jamaican",
     "region": "",
-    "country": "HT",
+    "country": "JM",
     "base": [
-     "cane_juice"
+     "molasses"
     ],
     "still": [
      "pot"
     ],
     "cask": [
-     "refill"
+     "ex_bourbon",
+     "ex_sherry_oloroso"
     ],
     "age": "7",
     "alcohol": "",
     "aromas": [
-     "grass",
-     "honey",
-     "olive",
+     "banana",
+     "overripe_banana",
+     "varnish",
+     "burnt_sugar",
      "dried_fruit",
-     "oak",
-     "white_pepper"
+     "oak"
     ],
     "serve": [
      "neat"
@@ -12198,14 +12199,14 @@
     ]
    },
    "note": {
-    "hr": "Papalin je Velierova kupaža haićanskih clairina koji su odležali sedam godina — u tropima, gdje bačva radi tri do četiri puta brže nego u Škotskoj i gdje anđeli popiju i do desetine godišnje. Ono što ostane nakon sedam takvih godina više nije mlado i divlje, ali još uvijek zna odakle je došlo.",
-    "en": "Papalin is Velier's blend of Haitian clairins given seven years — in the tropics, where a cask works three or four times faster than in Scotland and the angels take up to a tenth a year. What is left after seven of those years is no longer young and wild, but it still knows where it came from.",
-    "it": "Papalin è il blend Velier di clairin haitiani lasciati sette anni — ai tropici, dove una botte lavora tre o quattro volte più in fretta che in Scozia e gli angeli si prendono fino a un decimo all'anno. Ciò che resta dopo sette anni così non è più giovane e selvatico, ma sa ancora da dove viene.",
-    "fr": "Papalin est l'assemblage Velier de clairins haïtiens vieillis sept ans — sous les tropiques, où un fût travaille trois à quatre fois plus vite qu'en Écosse et où les anges prennent jusqu'à un dixième par an. Ce qui reste après sept années pareilles n'est plus jeune ni sauvage, mais sait encore d'où il vient.",
-    "de": "Papalin ist Veliers Verschnitt haitianischer Clairins nach sieben Jahren — in den Tropen, wo ein Fass drei- bis viermal schneller arbeitet als in Schottland und die Engel bis zu einem Zehntel im Jahr nehmen. Was nach sieben solchen Jahren bleibt, ist nicht mehr jung und wild, weiß aber noch, woher es kommt.",
-    "zh": "Papalin 是 Velier 把海地克莱汉陈放七年后的调和——在热带，一只桶的工作速度是苏格兰的三到四倍，天使每年要拿走多达十分之一。经过这样的七年，剩下的东西不再年轻狂野，却仍记得自己从哪里来。",
-    "sl": "Papalin je Velierova zvrst haitijskih clairinov, ki so dobili sedem let — v tropih, kjer sod dela trikrat do štirikrat hitreje kot na Škotskem in kjer angeli vzamejo do desetino na leto. Kar ostane po sedmih takih letih, ni več mlado in divje, a še vedno ve, od kod je prišlo.",
-    "es": "Papalin es la mezcla de Velier de clairins haitianos con siete años — en el trópico, donde una barrica trabaja tres o cuatro veces más rápido que en Escocia y los ángeles se llevan hasta un décimo al año. Lo que queda tras siete años así ya no es joven ni salvaje, pero sigue sabiendo de dónde viene."
+    "hr": "Velier vata dvije jamajčanske pot-still destilerije u jednu bocu: Worthy Park daje tijelo i zrelu bananu, Hampden onaj lak i ljepilo koje na Jamajci zovu funk i po kojem se otok prepoznaje slijepo. Sedam godina, sve odležano u tropima — gdje bačva radi tri do četiri puta brže nego u Škotskoj i anđeli popiju do desetine godišnje.",
+    "en": "Velier vats two Jamaican pot-still distilleries into one bottle: Worthy Park brings the body and the ripe banana, Hampden the varnish and glue the island calls funk and is recognised by blind. Seven years, every one of them tropical — where a cask works three or four times faster than in Scotland and the angels take up to a tenth a year.",
+    "it": "Velier unisce due distillerie giamaicane a pot still in una bottiglia: Worthy Park porta il corpo e la banana matura, Hampden la vernice e la colla che l'isola chiama funk e da cui la si riconosce alla cieca. Sette anni, tutti ai tropici — dove una botte lavora tre o quattro volte più in fretta che in Scozia e gli angeli si prendono fino a un decimo all'anno.",
+    "fr": "Velier assemble deux distilleries jamaïcaines à alambic pot still dans une seule bouteille : Worthy Park apporte le corps et la banane mûre, Hampden le vernis et la colle que l'île appelle funk et à quoi on la reconnaît à l'aveugle. Sept ans, tous sous les tropiques — où un fût travaille trois à quatre fois plus vite qu'en Écosse et où les anges prennent jusqu'à un dixième par an.",
+    "de": "Velier vermählt zwei jamaikanische Pot-Still-Brennereien in einer Flasche: Worthy Park bringt Körper und reife Banane, Hampden den Lack und Klebstoff, den die Insel Funk nennt und an dem man sie blind erkennt. Sieben Jahre, allesamt tropisch — wo ein Fass drei- bis viermal schneller arbeitet als in Schottland und die Engel bis zu einem Zehntel im Jahr nehmen.",
+    "zh": "Velier 把牙买加两家壶式蒸馏厂并进同一瓶：Worthy Park 给出酒体与熟香蕉，Hampden 给出那股清漆与胶水味——岛上称之为 funk，盲品也认得出来。七年，全在热带陈放：那里的桶比在苏格兰快上三四倍，天使一年要取走十分之一。",
+    "sl": "Velier združi dve jamajški pot-still destilarni v eno steklenico: Worthy Park prinese telo in zrelo banano, Hampden lak in lepilo, ki mu na otoku pravijo funk in po katerem ga prepoznaš na slepo. Sedem let, vsa v tropih — kjer sod dela tri- do štirikrat hitreje kot na Škotskem in angeli vzamejo do desetine na leto.",
+    "es": "Velier reúne dos destilerías jamaicanas de alambique pot still en una sola botella: Worthy Park aporta el cuerpo y el plátano maduro, Hampden el barniz y la cola que la isla llama funk y por la que se la reconoce a ciegas. Siete años, todos tropicales — donde una barrica trabaja tres o cuatro veces más rápido que en Escocia y los ángeles se llevan hasta un décimo al año."
    },
    "notePlain": true
   },

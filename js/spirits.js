@@ -18,19 +18,25 @@
 "use strict";
 
 /* ---------- the glasses ----------
-   A caveat worth stating, because the house rule for the wine glasses is
-   "measure, never eyeball" (CLAUDE.md): these are NOT traced from the
-   restaurant's own glassware, because there is no photograph of it. They are
-   the standard vessel geometries — a rocks glass, a copita, a snifter, a
-   grappa tulip, a highball, a vermouth goblet — drawn to the same 60px height
-   as the wine glasses so the two card types look like one family.
+   Two of these are now measured from the restaurant's own glassware, and the
+   rest are not. Know which is which before you touch them.
 
-   That is defensible where drawing a wine glass by eye is not: the wine shapes
-   encode a sommelier's claim about a grape (rim over widest is .64, and every
-   guessed attempt drew .75), whereas a rocks glass is a cylinder and there is
-   nothing in it to get wrong. If the owner sends photos of the house tumbler
-   and nosing glass, run scripts/trace-outline.py over them and replace those
-   two paths — nothing else needs to change.
+   MEASURED (2026-08-01, from the owner's photos): `nosing` is the Glencairn,
+   `snifter` the 41 cl Napoleon balloon. Both were drawn to the landmarks and
+   then verified by overlaying the candidate path back on the photo — see the
+   comments on each.
+
+   NOT MEASURED: tumbler, highball, tulip, goblet are still standard vessel
+   geometries drawn to plausible millimetres, because no photograph of the house
+   versions exists. That is defensible where eyeballing a wine glass is not — a
+   rocks glass is a cylinder and there is nothing in it to get wrong — but if
+   photos arrive, run scripts/trace-outline.py over them and replace the paths.
+
+   The measuring found the eyeballed pair wrong in the way the house rule
+   predicts. Both drew the rim at roughly half the widest; the Glencairn's real
+   rim is .69 of its belly (46 mm over 67 mm, published, and 455 px over 654 px
+   off the photo — agreeing to 1%) and the snifter's is .68. A rim drawn at .50
+   is not a nosing glass, it is a decanter.
 
    The one rule that is NOT eyeballed, because the first attempt got it wrong
    in every icon: **the viewBox aspect is the vessel's real aspect.** Every
@@ -43,8 +49,8 @@
 
      rocks/tumbler   90 x 85   → viewBox 92    (nearly square, and it should be)
      highball       150 x 65   → viewBox 46
-     copita/nosing  115 x 70   → viewBox 62
-     snifter        130 x 95   → viewBox 72
+     Glencairn      115 x 67   → viewBox 56   (measured; published mm)
+     snifter        (see below) → viewBox 68   (measured off the photo)
      grappa tulip   180 x 55   → viewBox 32    (the narrowest thing on the list)
      goblet         150 x 75   → viewBox 48
 
@@ -54,14 +60,32 @@ const SPIRIT_VESSELS = {
   /* Old-fashioned / rocks: heavy base, walls tapering slightly inwards towards
      it. As wide as it is tall — the single most recognisable thing about it. */
   tumbler: '<svg viewBox="0 0 92 100" aria-hidden="true"><path d="M7,11 L11.5,89 C11.5,92.5 80.5,92.5 80.5,89 L85,11"/><path d="M7,11 C7,6.5 85,6.5 85,11 C85,15.5 7,15.5 7,11 Z"/><path d="M12,77 c14,4.4 47,4.4 61,0" style="stroke-width:.8;opacity:.45"/></svg>',
-  /* Copita / nosing glass: a tulip bowl that closes at the rim to hold the
-     aromatics, on a short stem. The rim is deliberately far narrower than the
-     belly — that inward turn is the whole point of the shape, and it is what
-     separates it from the wine glasses in the sheet above. */
-  nosing: '<svg viewBox="0 0 62 100" aria-hidden="true"><path d="M18,14 C10,21 5,30 5,40 C5,52 13,61 31,64.5 C49,61 57,52 57,40 C57,30 52,21 44,14"/><path d="M18,14 C18,11.6 44,11.6 44,14 C44,16.4 18,16.4 18,14 Z"/><path d="M31,64.5 V86"/><path d="M12,91.5 c8,-4.5 30,-4.5 38,0"/></svg>',
-  /* Snifter: the wide balloon on a stub of a stem, for the two cognacs. Its
-     bowl is nearly three quarters as wide as the glass is tall. */
-  snifter: '<svg viewBox="0 0 72 100" aria-hidden="true"><path d="M21,20 C11,27 4.5,39 4.5,52 C4.5,68 17,78 36.25,78 C55.5,78 68,68 68,52 C68,39 61.5,27 51.5,20"/><path d="M21,20 C21,17.6 51.5,17.6 51.5,20 C51.5,22.4 21,22.4 21,20 Z"/><path d="M36.25,78 V86"/><path d="M18,91 c9,-4.6 27.5,-4.6 36.5,0"/></svg>',
+  /* The Glencairn, measured. Published dimensions carry the box — 115 mm tall,
+     67 mm across the bulb, 46 mm at the rim and 46 mm across the foot — and the
+     owner's photo supplies the vertical landmarks the maker does not publish:
+     the belly sits 66.5% of the way down and the bowl meets the base at 78.5%.
+     Photo and spec agree on the one ratio that matters (rim/widest .696 measured
+     against .687 published), which is why both are trusted here.
+
+     Two things the eyeballed version had wrong. The rim was drawn at half the
+     belly rather than .69, which turned a nosing glass into a decanter. And it
+     was given a stem and a foot: a Glencairn has neither. It stands on a solid
+     squat pedestal, and that pedestal is most of what identifies it across a
+     room. The photo is a lifestyle shot taken from slightly above, so the glass
+     reads 1.89 tall for 1 wide against the published 1.72 — the box takes the
+     published proportion and the photo is used only for the landmarks and the
+     curve, which is the only thing it can honestly settle. */
+  nosing: '<svg viewBox="0 0 56 100" aria-hidden="true"><path d="M10.1,6 C9.4,19 5.1,47 2.66,63.9 C3.5,70.2 9.4,73.3 16.57,74.3 L39.43,74.3 C46.6,73.3 52.5,70.2 53.34,63.9 C50.9,47 46.6,19 45.9,6"/><path d="M10.1,6 C10.1,3.9 45.9,3.9 45.9,6 C45.9,8.1 10.1,8.1 10.1,6 Z"/><path d="M16.57,74.3 C16,80 12.2,87 10.95,93 L45.05,93 C43.8,87 40,80 39.43,74.3"/></svg>',
+  /* The 41 cl Napoleon balloon, traced off the owner's photo. Its aspect is its
+     signature: 855 px across the belly for 1190 px of height, so the bowl is
+     .72 as wide as the whole glass is tall, and the viewBox carries that
+     exactly — the overlay check came out at the same scale on both axes, which
+     is the sign the proportion is right rather than merely close. The belly
+     sits high (40% down), the bowl folds into the stem at 71%, and the foot is
+     a wide shallow cone, .82 of the belly. The eyeballed version had the rim at
+     .48 of the widest; measured it is .68, and that difference is most of why
+     the old drawing read as a brandy cartoon. */
+  snifter: '<svg viewBox="0 0 68 100" aria-hidden="true"><path d="M12.7,6 C10.2,13 4.2,27 2.75,41.1 C3.4,55 13.5,64.5 29.83,67.8 L38.17,67.8 C54.5,64.5 64.6,55 65.25,41.1 C63.8,27 57.8,13 55.3,6"/><path d="M12.7,6 C12.7,3.9 55.3,3.9 55.3,6 C55.3,8.1 12.7,8.1 12.7,6 Z"/><path d="M34,67.8 V85.3"/><path d="M8.3,93 C14,88.5 54,88.5 59.7,93"/></svg>',
   /* The grappa / rakija tulip: a small high-bellied bowl over a very long stem.
      Drawn narrow rather than small, because every icon is normalised to one
      height and "small" stopped reading the moment that rule came in. */
