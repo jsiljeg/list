@@ -254,7 +254,9 @@ body {
   margin: .3rem 0 .9rem;
 }
 /* the house motif, traced from the nail sculpture in the atrium */
-.ornament svg { width: 20px; height: 20px; flex: none; opacity: .85; }
+/* Height-driven, width free: the grape is square but the alembic is 36x24,
+   and forcing it into a square box would squash the pipe out of it. */
+.ornament svg { height: 24px; width: auto; flex: none; opacity: .85; }
 .ornament::before, .ornament::after {
   content: ""; flex: 1; height: 1px;
 }

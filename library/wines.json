@@ -210,34 +210,6 @@
    },
    "terroir": "Kaldir, Šubijent, Brkač"
   },
-  "meneghetti--meneghetti-white-2023": {
-   "name": "Meneghetti White 2023",
-   "producer": "Meneghetti",
-   "insight": {
-    "grape": "Chardonnay 60%, Pinot Blanc 40%",
-    "region": "Zapadna Istra, Hrvatska Istra",
-    "country": "HR",
-    "style": "white_rich",
-    "body": "full",
-    "aromas": [
-     "pineapple",
-     "citrus",
-     "melon",
-     "butter",
-     "hazelnut",
-     "vanilla"
-    ],
-    "pairings": [
-     "white_fish",
-     "risotto",
-     "white_meat"
-    ],
-    "temp": "10–12",
-    "alcohol": "13.5",
-    "sweetness": "dry"
-   },
-   "terroir": "Stancija Meneghetti, Bale"
-  },
   "jakopic--sauvignon-2024": {
    "name": "Sauvignon 2024",
    "producer": "Jakopić",
@@ -11833,7 +11805,7 @@
     "kind": "spirit",
     "class": "rum_white_blend",
     "region": "",
-    "country": "",
+    "country": "BB",
     "base": [
      "molasses"
     ],
@@ -13757,6 +13729,34 @@
     "es": "El vodka se hace quitando, no añadiendo, y elit quita con frío: el destilado baja a −18 °C, temperatura a la que los compuestos ásperos se ligan y se quedan en el filtro. Trigo y centeno, destilado y embotellado en Latvijas Balzams de Riga — una planta de 1900 que lleva más de setenta años llenando Stolichnaya. Del congelador, espeso como la seda."
    },
    "notePlain": true
+  },
+  "meneghetti--white-2023": {
+   "name": "White 2023",
+   "producer": "Meneghetti",
+   "insight": {
+    "grape": "Chardonnay 60%, Pinot Blanc 40%",
+    "region": "Zapadna Istra, Hrvatska Istra",
+    "country": "HR",
+    "style": "white_rich",
+    "body": "full",
+    "aromas": [
+     "pineapple",
+     "citrus",
+     "melon",
+     "butter",
+     "hazelnut",
+     "vanilla"
+    ],
+    "pairings": [
+     "white_fish",
+     "risotto",
+     "white_meat"
+    ],
+    "temp": "10–12",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "Stancija Meneghetti, Bale"
   }
  }
 }
