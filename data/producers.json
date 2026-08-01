@@ -1746,14 +1746,14 @@
   "Wise Grus": {
    "region": "",
    "blurb": {
-    "hr": "Mudri ždral iz Daruvara, s idejom da rakija ne mora biti nešto što se trpi — pedesetak medalja iz San Francisca, Londona i Varšave u dvije godine to su i potvrdile.",
-    "en": "The wise crane, from Daruvar, working on the idea that rakija need not be something you endure — some fifty medals from San Francisco, London and Warsaw in two years say it worked.",
-    "it": "La gru saggia, da Daruvar, con l'idea che la rakija non debba essere qualcosa da sopportare — una cinquantina di medaglie da San Francisco, Londra e Varsavia in due anni lo confermano.",
-    "fr": "La grue sage, de Daruvar, avec l'idée que la rakija n'a pas à être quelque chose qu'on endure — une cinquantaine de médailles de San Francisco, Londres et Varsovie en deux ans le confirment.",
-    "de": "Der weise Kranich aus Daruvar, mit dem Gedanken, dass Rakija nichts sein muss, das man erträgt — rund fünfzig Medaillen aus San Francisco, London und Warschau in zwei Jahren bestätigen es.",
-    "zh": "来自达鲁瓦尔的「智慧之鹤」，出发点是拉基亚不该是要硬扛的东西——两年内来自旧金山、伦敦与华沙的约五十枚奖牌证明了这一点。",
-    "sl": "Modri žerjav iz Daruvarja, z zamislijo, da žganje ni nekaj, kar je treba pretrpeti — kakih petdeset medalj iz San Francisca, Londona in Varšave v dveh letih to potrjuje.",
-    "es": "La grulla sabia, de Daruvar, con la idea de que la rakija no tiene por qué ser algo que se soporta — medio centenar de medallas de San Francisco, Londres y Varsovia en dos años lo confirman."
+    "hr": "Wise Grus iz Daruvara — ždral u imenu, a ideja da rakija ne mora biti nešto što se trpi. Pedesetak medalja iz San Francisca, Londona i Varšave u dvije godine kaže da je ideja bila dobra.",
+    "en": "Wise Grus, from Daruvar — a crane in the name, and the idea that rakija need not be something you endure. Some fifty medals from San Francisco, London and Warsaw in two years say the idea was right.",
+    "it": "Wise Grus, da Daruvar — una gru nel nome e l'idea che la rakija non debba essere qualcosa da sopportare. Una cinquantina di medaglie da San Francisco, Londra e Varsavia in due anni dicono che l'idea era giusta.",
+    "fr": "Wise Grus, de Daruvar — une grue dans le nom, et l'idée que la rakija n'a pas à être quelque chose qu'on endure. Une cinquantaine de médailles de San Francisco, Londres et Varsovie en deux ans disent que l'idée était bonne.",
+    "de": "Wise Grus aus Daruvar — ein Kranich im Namen und der Gedanke, dass Rakija nichts sein muss, das man erträgt. Rund fünfzig Medaillen aus San Francisco, London und Warschau in zwei Jahren sagen, der Gedanke stimmte.",
+    "zh": "来自达鲁瓦尔的 Wise Grus——名字里有一只鹤，想法是拉基亚不该是要硬扛的东西。两年内来自旧金山、伦敦与华沙的约五十枚奖牌说明这个想法是对的。",
+    "sl": "Wise Grus iz Daruvarja — žerjav v imenu in zamisel, da žganje ni nekaj, kar je treba pretrpeti. Kakih petdeset medalj iz San Francisca, Londona in Varšave v dveh letih pravi, da je bila zamisel prava.",
+    "es": "Wise Grus, de Daruvar — una grulla en el nombre y la idea de que la rakija no tiene por qué ser algo que se soporta. Medio centenar de medallas de San Francisco, Londres y Varsovia en dos años dicen que la idea era buena."
    }
   },
   "Clairin": {
@@ -1832,6 +1832,422 @@
     "zh": "巴巴多斯，圣菲利普。Richard Seale 几乎凭一己之力，逼着朗姆行业公布瓶中之物：不加糖、不加色、不找借口——并以桶给出的强度装瓶。",
     "sl": "Barbados, St Philip. Richard Seale je skoraj sam izsilil, da rum pove, kaj je v steklenici: brez dodanega sladkorja, brez barvil, brez izgovorov — in polnitve v jakosti, kakršno je dal sod.",
     "es": "Barbados, St Philip. Richard Seale forzó casi en solitario al ron a declarar qué hay en la botella: sin azúcar añadido, sin colorante, sin excusas — y embotellados al grado que dio la barrica."
+   }
+  },
+  "Bladnoch": {
+   "region": "",
+   "blurb": {
+    "hr": "Najjužnija destilerija Škotske, uz rijeku u Wigtownshireu od 1817. Zatvarana i otvarana toliko puta da je čudo što još stoji — posljednji put oživljena 2015., i danas radi tiho, daleko od svih.",
+    "en": "Scotland's most southerly distillery, on the river in Wigtownshire since 1817. Shut and reopened so many times it is a wonder it still stands — revived once more in 2015, and working quietly now, far from everyone.",
+    "it": "La distilleria più meridionale di Scozia, sul fiume nel Wigtownshire dal 1817. Chiusa e riaperta tante volte che è un miracolo sia ancora in piedi — risvegliata di nuovo nel 2015, e oggi lavora in silenzio, lontano da tutti.",
+    "fr": "La distillerie la plus méridionale d'Écosse, au bord de la rivière dans le Wigtownshire depuis 1817. Fermée et rouverte tant de fois qu'on s'étonne qu'elle tienne encore — relancée en 2015, elle travaille aujourd'hui en silence, loin de tout.",
+    "de": "Die südlichste Brennerei Schottlands, seit 1817 am Fluss in Wigtownshire. So oft geschlossen und wieder eröffnet, dass es ein Wunder ist, dass sie noch steht — 2015 erneut erweckt, arbeitet sie heute still, fern von allem.",
+    "zh": "苏格兰最南端的酒厂，1817 年起坐落在威格敦郡的河边。关停与重开的次数多到它还在就是奇迹——2015 年再度复活，如今安静地运转，远离所有人。",
+    "sl": "Najjužnejša destilarna Škotske, ob reki v Wigtownshiru od leta 1817. Zaprta in znova odprta tolikokrat, da je čudež, da še stoji — nazadnje obujena leta 2015 in danes dela tiho, daleč od vseh.",
+    "es": "La destilería más meridional de Escocia, junto al río en Wigtownshire desde 1817. Cerrada y reabierta tantas veces que es un milagro que siga en pie — revivida de nuevo en 2015, hoy trabaja en silencio, lejos de todos."
+   }
+  },
+  "Glenmorangie": {
+   "region": "",
+   "blurb": {
+    "hr": "U Tainu stoje najviši kotlovi u Škotskoj — visoki koliko i odrasla žirafa. Samo najlakše pare stignu do vrha, i zato je ovaj viski uvijek bio više cvijet nego dim.",
+    "en": "At Tain stand the tallest stills in Scotland — as tall as a full-grown giraffe. Only the lightest vapours ever reach the top, which is why this whisky has always been more flower than smoke.",
+    "it": "A Tain si trovano gli alambicchi più alti di Scozia — alti quanto una giraffa adulta. Solo i vapori più leggeri arrivano in cima, ed è per questo che questo whisky è sempre stato più fiore che fumo.",
+    "fr": "À Tain se dressent les alambics les plus hauts d'Écosse — de la taille d'une girafe adulte. Seules les vapeurs les plus légères atteignent le sommet, et c'est pourquoi ce whisky a toujours été plus fleur que fumée.",
+    "de": "In Tain stehen die höchsten Brennblasen Schottlands — so hoch wie eine ausgewachsene Giraffe. Nur die leichtesten Dämpfe kommen oben an, und darum war dieser Whisky immer mehr Blüte als Rauch.",
+    "zh": "泰恩镇立着全苏格兰最高的蒸馏器——高度相当于一头成年长颈鹿。只有最轻的酒气能抵达顶端，所以这款威士忌向来更像花，而不是烟。",
+    "sl": "V Tainu stojijo najvišji kotli na Škotskem — visoki kot odrasla žirafa. Do vrha pridejo le najlažje pare, in prav zato je ta viski vedno bolj cvet kot dim.",
+    "es": "En Tain se alzan los alambiques más altos de Escocia — tan altos como una jirafa adulta. Solo los vapores más ligeros llegan arriba, y por eso este whisky siempre ha sido más flor que humo."
+   }
+  },
+  "Glenrothes": {
+   "region": "",
+   "blurb": {
+    "hr": "Speyside kuća koja je stoljeće radila za tuđe kupaže i tek onda pustila svoje ime na bocu. Broji berbe, ne godine — svaka boca kaže kad je destilirana, kao vino.",
+    "en": "A Speyside house that spent a century filling other people's blends before it let its own name onto a bottle. It counts vintages, not years — every bottle says when it was distilled, like a wine.",
+    "it": "Una casa dello Speyside che ha passato un secolo a riempire i blend altrui prima di mettere il proprio nome in bottiglia. Conta le annate, non gli anni — ogni bottiglia dice quando è stata distillata, come un vino.",
+    "fr": "Une maison du Speyside qui a passé un siècle à remplir les assemblages des autres avant de laisser son nom sur une bouteille. Elle compte les millésimes, pas les années — chaque bouteille dit quand elle a été distillée, comme un vin.",
+    "de": "Ein Speyside-Haus, das ein Jahrhundert lang fremde Blends füllte, bevor es den eigenen Namen auf eine Flasche ließ. Es zählt Jahrgänge, nicht Jahre — jede Flasche sagt, wann sie gebrannt wurde, wie ein Wein.",
+    "zh": "斯佩塞的一家酒厂，为别人的调和威士忌供酒近一个世纪，之后才把自己的名字放上酒标。它数的是年份，不是酒龄——每瓶都写明何时蒸馏，像葡萄酒一样。",
+    "sl": "Speysidska hiša, ki je stoletje polnila tuje kupaže, preden je svoje ime spustila na steklenico. Šteje letnike, ne let — vsaka steklenica pove, kdaj je bila destilirana, kot vino.",
+    "es": "Una casa de Speyside que pasó un siglo llenando las mezclas de otros antes de dejar su propio nombre en una botella. Cuenta añadas, no años — cada botella dice cuándo se destiló, como un vino."
+   }
+  },
+  "Isle of Jura": {
+   "region": "",
+   "blurb": {
+    "hr": "Otok s jednom cestom, jednom destilerijom, dvjestotinjak ljudi i nekoliko tisuća jelena. Orwell je baš tu, u kući bez struje na sjevernom kraju, dovršio 1984. — mjesto na koje se dolazi da te nitko ne nađe.",
+    "en": "An island with one road, one distillery, some two hundred people and several thousand deer. Orwell finished 1984 here, in a house without electricity at the northern end — this is a place you come to so that nobody finds you.",
+    "it": "Un'isola con una strada, una distilleria, un paio di centinaia di persone e qualche migliaio di cervi. Qui Orwell finì 1984, in una casa senza elettricità all'estremità nord — è un posto dove si va per non essere trovati.",
+    "fr": "Une île avec une route, une distillerie, environ deux cents habitants et plusieurs milliers de cerfs. Orwell y a terminé 1984, dans une maison sans électricité à la pointe nord — on vient ici pour que personne ne vous trouve.",
+    "de": "Eine Insel mit einer Straße, einer Brennerei, gut zweihundert Menschen und einigen tausend Hirschen. Orwell beendete hier 1984, in einem Haus ohne Strom am Nordende — ein Ort, an den man fährt, damit einen niemand findet.",
+    "zh": "一条路、一家酒厂、两百来人和几千头鹿的岛。奥威尔就在这里的北端、一栋没有电的房子里写完了《1984》——人来这里，是为了不被找到。",
+    "sl": "Otok z eno cesto, eno destilarno, kakima dvesto ljudmi in nekaj tisoč jeleni. Orwell je prav tu, v hiši brez elektrike na severnem koncu, dokončal 1984 — kraj, kamor prideš, da te nihče ne najde.",
+    "es": "Una isla con una carretera, una destilería, unas doscientas personas y varios miles de ciervos. Orwell terminó aquí 1984, en una casa sin electricidad en el extremo norte — es un sitio al que se va para que nadie te encuentre."
+   }
+  },
+  "Kilchoman": {
+   "region": "",
+   "blurb": {
+    "hr": "Prva nova destilerija na Islayu nakon 124 godine, otvorena 2005. na farmi koja i danas sije vlastiti ječam, sama ga slaguje na podu i sve radi unutar istog dvorišta. Farma koja peče viski, ne tvornica koja glumi farmu.",
+    "en": "The first new distillery on Islay in 124 years, opened in 2005 on a farm that still sows its own barley, malts it on its own floor and does everything inside one yard. A farm that distils, not a factory playing at being a farm.",
+    "it": "La prima nuova distilleria a Islay dopo 124 anni, aperta nel 2005 in una fattoria che semina ancora il proprio orzo, lo malta sul proprio pavimento e fa tutto dentro lo stesso cortile. Una fattoria che distilla, non una fabbrica che finge.",
+    "fr": "La première nouvelle distillerie d'Islay depuis 124 ans, ouverte en 2005 dans une ferme qui sème encore son orge, le malte sur son propre sol et fait tout dans la même cour. Une ferme qui distille, pas une usine qui joue à la ferme.",
+    "de": "Die erste neue Brennerei auf Islay seit 124 Jahren, 2005 auf einem Hof eröffnet, der seine Gerste noch selbst sät, auf eigener Tenne mälzt und alles im selben Hof erledigt. Ein Hof, der brennt, keine Fabrik, die Hof spielt.",
+    "zh": "124 年来艾雷岛上第一家新酒厂，2005 年开在一座农场里——至今自种大麦、自铺地板发麦，一切都在同一个院子里完成。是会蒸馏的农场，不是假扮农场的工厂。",
+    "sl": "Prva nova destilarna na Islayu po 124 letih, odprta leta 2005 na kmetiji, ki še vedno seje svoj ječmen, ga sama slaja na tleh in vse opravi znotraj istega dvorišča. Kmetija, ki žga, ne tovarna, ki se dela kmetijo.",
+    "es": "La primera destilería nueva en Islay en 124 años, abierta en 2005 en una granja que todavía siembra su cebada, la maltea en su propio suelo y lo hace todo dentro del mismo patio. Una granja que destila, no una fábrica que juega a ser granja."
+   }
+  },
+  "Mars Shinshu": {
+   "region": "",
+   "blurb": {
+    "hr": "Najviše smještena destilerija viskija u Japanu, na oko 800 metara u Japanskim Alpama. Zrak je rijedak, ljeta kratka, zima duga — bačva ovdje radi sporo, i to se u čaši čuje.",
+    "en": "The highest whisky distillery in Japan, at around 800 metres in the Japanese Alps. Thin air, short summers, long winters — a cask works slowly up here, and you can hear it in the glass.",
+    "it": "La distilleria di whisky più alta del Giappone, a circa 800 metri nelle Alpi giapponesi. Aria rarefatta, estati corte, inverni lunghi — quassù una botte lavora piano, e nel bicchiere si sente.",
+    "fr": "La distillerie de whisky la plus haute du Japon, à quelque 800 mètres dans les Alpes japonaises. Air raréfié, étés courts, hivers longs — un fût travaille lentement ici, et cela s'entend dans le verre.",
+    "de": "Die höchstgelegene Whiskybrennerei Japans, auf rund 800 Metern in den japanischen Alpen. Dünne Luft, kurze Sommer, lange Winter — ein Fass arbeitet hier oben langsam, und man hört es im Glas.",
+    "zh": "日本海拔最高的威士忌酒厂，位于日本阿尔卑斯山约八百米处。空气稀薄，夏短冬长——桶在这里走得慢，杯中听得出来。",
+    "sl": "Najvišje ležeča destilarna viskija na Japonskem, na približno 800 metrih v Japonskih Alpah. Zrak je redek, poletja kratka, zime dolge — sod tu zgoraj dela počasi, in to se v kozarcu sliši.",
+    "es": "La destilería de whisky más alta de Japón, a unos 800 metros en los Alpes japoneses. Aire fino, veranos cortos, inviernos largos — aquí arriba una barrica trabaja despacio, y se nota en la copa."
+   }
+  },
+  "Mars Tsunuki": {
+   "region": "",
+   "blurb": {
+    "hr": "Najjužnija destilerija viskija u Japanu, u Kagoshimi gdje ista kuća već stoljeće peče shochu. Vruće i vlažno — bačva radi brzo, suprotno od njihove planinske sestre na sjeveru.",
+    "en": "Japan's southernmost whisky distillery, in Kagoshima where the same house has been making shochu for a century. Hot and humid — the cask works fast here, the opposite of their mountain sister up north.",
+    "it": "La distilleria di whisky più meridionale del Giappone, a Kagoshima, dove la stessa casa distilla shochu da un secolo. Caldo e umido — qui la botte lavora in fretta, l'opposto della sorella di montagna al nord.",
+    "fr": "La distillerie de whisky la plus méridionale du Japon, à Kagoshima, où la même maison distille du shochu depuis un siècle. Chaud et humide — le fût travaille vite ici, à l'inverse de sa sœur de montagne au nord.",
+    "de": "Japans südlichste Whiskybrennerei, in Kagoshima, wo dasselbe Haus seit einem Jahrhundert Shochu brennt. Heiß und feucht — das Fass arbeitet hier schnell, das Gegenteil der Bergschwester im Norden.",
+    "zh": "日本最南端的威士忌酒厂，位于鹿儿岛——同一家酒造在此酿烧酎已逾百年。湿热之地，桶走得快，与它北方那座山中的姊妹厂正好相反。",
+    "sl": "Najjužnejša destilarna viskija na Japonskem, v Kagošimi, kjer ista hiša že stoletje žge šoču. Vroče in vlažno — sod tu dela hitro, nasprotno od njihove gorske sestre na severu.",
+    "es": "La destilería de whisky más meridional de Japón, en Kagoshima, donde la misma casa lleva un siglo haciendo shochu. Calor y humedad — aquí la barrica trabaja rápido, lo contrario que su hermana de montaña en el norte."
+   }
+  },
+  "Ohishi": {
+   "region": "",
+   "blurb": {
+    "hr": "Kuća s rijeke Kume u Kumamotu koja tri stoljeća peče shochu od riže, a onda ga je počela ostavljati u bačvama od vina, sherryja i mizunare. Nije viski i ne pravi se da jest — riža koja je odležala.",
+    "en": "A house on the Kuma river in Kumamoto that has distilled rice shochu for three centuries, then started leaving it in wine, sherry and mizunara casks. It is not whisky and does not pretend to be — it is rice that has been aged.",
+    "it": "Una casa sul fiume Kuma, a Kumamoto, che distilla shochu di riso da tre secoli e poi ha iniziato a lasciarlo in botti di vino, sherry e mizunara. Non è whisky e non finge di esserlo — è riso invecchiato.",
+    "fr": "Une maison sur la rivière Kuma, à Kumamoto, qui distille du shochu de riz depuis trois siècles, puis s'est mise à le laisser en fûts de vin, de xérès et de mizunara. Ce n'est pas du whisky et cela ne prétend pas l'être — c'est du riz qui a vieilli.",
+    "de": "Ein Haus am Kuma-Fluss in Kumamoto, das seit drei Jahrhunderten Reis-Shochu brennt und ihn dann in Wein-, Sherry- und Mizunara-Fässern liegen ließ. Es ist kein Whisky und gibt auch nicht vor, einer zu sein — es ist gereifter Reis.",
+    "zh": "熊本球磨川畔的一家酒造，酿米烧酎已三百年，后来开始把它放进葡萄酒桶、雪莉桶和水楢桶。它不是威士忌，也不假装是——它是陈放过的米。",
+    "sl": "Hiša ob reki Kumi v Kumamotu, ki tri stoletja žge riževi šoču, potem pa ga je začela puščati v sodih od vina, sherryja in mizunare. Ni viski in se ne pretvarja — je riž, ki je odležal.",
+    "es": "Una casa junto al río Kuma, en Kumamoto, que lleva tres siglos destilando shochu de arroz y luego empezó a dejarlo en barricas de vino, jerez y mizunara. No es whisky ni pretende serlo — es arroz que ha envejecido."
+   }
+  },
+  "Westward": {
+   "region": "",
+   "blurb": {
+    "hr": "Portland, Oregon: viski koji počinje kao pivo. Vare ga s pivskim kvascem kao ale, puste ga da fermentira danima, pa tek onda destiliraju — otud kruh, breskva i voće kojih u škotskom maltu nema.",
+    "en": "Portland, Oregon: a whiskey that begins as beer. They brew it with ale yeast, ferment it for days like a pale ale, and only then distil — hence the bread, the peach and the fruit you will not find in a Scottish malt.",
+    "it": "Portland, Oregon: un whiskey che comincia come birra. Lo fanno con lievito da ale, lo lasciano fermentare per giorni come una pale ale, e solo dopo distillano — da lì il pane, la pesca e la frutta che in un malto scozzese non trovi.",
+    "fr": "Portland, Oregon : un whiskey qui commence en bière. Brassé avec une levure d'ale, fermenté plusieurs jours comme une pale ale, et distillé seulement ensuite — d'où le pain, la pêche et le fruit qu'on ne trouve pas dans un malt écossais.",
+    "de": "Portland, Oregon: ein Whiskey, der als Bier beginnt. Mit Ale-Hefe gebraut, tagelang vergoren wie ein Pale Ale, und erst dann gebrannt — daher Brot, Pfirsich und Frucht, die man in einem schottischen Malt nicht findet.",
+    "zh": "俄勒冈州波特兰：一款从啤酒开始的威士忌。用艾尔酵母发酵数日，像酿一款淡色艾尔，然后才蒸馏——所以有面包、桃子和水果，苏格兰麦芽威士忌里找不到的东西。",
+    "sl": "Portland, Oregon: viski, ki se začne kot pivo. Skuhajo ga s pivskim kvasom kot ale, pustijo vreti več dni in šele nato destilirajo — od tod kruh, breskev in sadje, ki jih v škotskem maltu ni.",
+    "es": "Portland, Oregón: un whiskey que empieza como cerveza. Lo elaboran con levadura de ale, lo fermentan días como una pale ale y solo entonces destilan — de ahí el pan, el melocotón y la fruta que no hallarás en un malta escocés."
+   }
+  },
+  "Redemption": {
+   "region": "",
+   "blurb": {
+    "hr": "Ime na boci nije ime destilerije: raž dolazi iz Indiane, iz pogona koji tiho puni pola američkog tržišta, a Redemption bira bačve i drži postotak raži visoko. Iskren posrednik u kategoriji punoj njih.",
+    "en": "The name on the bottle is not the name of a distillery: the rye comes from Indiana, from a plant that quietly fills half the American market, and Redemption picks the casks and keeps the rye content high. An honest middleman in a category full of them.",
+    "it": "Il nome in etichetta non è quello di una distilleria: la segale viene dall'Indiana, da uno stabilimento che rifornisce in silenzio mezzo mercato americano, e Redemption sceglie le botti e tiene alta la percentuale di segale. Un intermediario onesto in una categoria che ne è piena.",
+    "fr": "Le nom sur la bouteille n'est pas celui d'une distillerie : le seigle vient de l'Indiana, d'une usine qui approvisionne discrètement la moitié du marché américain, et Redemption choisit les fûts et garde une forte proportion de seigle. Un intermédiaire honnête dans une catégorie qui en regorge.",
+    "de": "Der Name auf der Flasche ist kein Brennereiname: der Roggen kommt aus Indiana, aus einem Werk, das still den halben US-Markt beliefert, und Redemption wählt die Fässer und hält den Roggenanteil hoch. Ein ehrlicher Zwischenhändler in einer Kategorie voller solcher.",
+    "zh": "酒标上的名字不是酒厂的名字：黑麦来自印第安纳州一家默默供应半个美国市场的工厂，Redemption 负责选桶，并把黑麦比例保持得很高。在一个中间商遍地的品类里，这是个诚实的中间商。",
+    "sl": "Ime na steklenici ni ime destilarne: rž prihaja iz Indiane, iz obrata, ki tiho polni pol ameriškega trga, Redemption pa izbira sode in drži delež rži visoko. Pošten posrednik v kategoriji, ki jih je polna.",
+    "es": "El nombre de la botella no es el de una destilería: el centeno viene de Indiana, de una planta que abastece en silencio a medio mercado americano, y Redemption elige las barricas y mantiene alta la proporción de centeno. Un intermediario honesto en una categoría llena de ellos."
+   }
+  },
+  "Nine Leaves": {
+   "region": "",
+   "blurb": {
+    "hr": "Jedan čovjek, jedan kotao, kraj jezera Biwa. Yoshiharu Takeuchi sam kuha, destilira, puni i lijepi etikete — vjerojatno najmanja destilerija ruma na svijetu, i jedna od rijetkih japanskih uopće.",
+    "en": "One man, one still, by Lake Biwa. Yoshiharu Takeuchi ferments, distils, bottles and labels it all himself — probably the smallest rum distillery in the world, and one of very few in Japan at all.",
+    "it": "Un uomo, un alambicco, vicino al lago Biwa. Yoshiharu Takeuchi fermenta, distilla, imbottiglia ed etichetta tutto da solo — probabilmente la più piccola distilleria di rum al mondo, e una delle pochissime in Giappone.",
+    "fr": "Un homme, un alambic, au bord du lac Biwa. Yoshiharu Takeuchi fermente, distille, embouteille et étiquette tout lui-même — sans doute la plus petite distillerie de rhum au monde, et l'une des très rares du Japon.",
+    "de": "Ein Mann, eine Blase, am Biwa-See. Yoshiharu Takeuchi vergärt, brennt, füllt ab und etikettiert alles selbst — vermutlich die kleinste Rumbrennerei der Welt und eine der ganz wenigen in Japan.",
+    "zh": "一个人，一台蒸馏器，在琵琶湖畔。竹内嘉秀独自发酵、蒸馏、装瓶、贴标——大概是世界上最小的朗姆酒厂，也是日本极少数之一。",
+    "sl": "En človek, en kotel, ob jezeru Biva. Jošiharu Takeuči sam vre, destilira, polni in lepi etikete — najbrž najmanjša destilarna ruma na svetu in ena redkih japonskih sploh.",
+    "es": "Un hombre, un alambique, junto al lago Biwa. Yoshiharu Takeuchi fermenta, destila, embotella y etiqueta todo él mismo — probablemente la destilería de ron más pequeña del mundo, y una de las poquísimas de Japón."
+   }
+  },
+  "Velier": {
+   "region": "",
+   "blurb": {
+    "hr": "Genova, ne Karibi: Velier ništa ne destilira. Luca Gargano bira bačve po otocima i puni ih bez šećera, bez boje i bez razrjeđivanja — i time je sam promijenio ono što svijet misli da rum jest.",
+    "en": "Genoa, not the Caribbean: Velier distils nothing. Luca Gargano picks casks across the islands and bottles them with no sugar, no colour and no dilution — and in doing so changed, more or less single-handed, what the world thinks rum is.",
+    "it": "Genova, non i Caraibi: Velier non distilla nulla. Luca Gargano sceglie le botti nelle isole e le imbottiglia senza zucchero, senza colore e senza diluizione — e così ha cambiato, quasi da solo, l'idea che il mondo ha del rum.",
+    "fr": "Gênes, pas les Caraïbes : Velier ne distille rien. Luca Gargano choisit des fûts dans les îles et les embouteille sans sucre, sans colorant et sans dilution — et il a changé, presque seul, l'idée que le monde se fait du rhum.",
+    "de": "Genua, nicht die Karibik: Velier brennt nichts. Luca Gargano wählt Fässer auf den Inseln und füllt sie ohne Zucker, ohne Farbe und ohne Verdünnung ab — und hat damit fast im Alleingang verändert, was die Welt für Rum hält.",
+    "zh": "热那亚，不是加勒比：Velier 自己不蒸馏。Luca Gargano 在各岛挑桶，不加糖、不调色、不稀释地装瓶——几乎凭一己之力，改变了世人对朗姆酒的理解。",
+    "sl": "Genova, ne Karibi: Velier ne destilira ničesar. Luca Gargano izbira sode po otokih in jih polni brez sladkorja, barve in razredčevanja — in je s tem skorajda sam spremenil, kaj svet misli, da rum je.",
+    "es": "Génova, no el Caribe: Velier no destila nada. Luca Gargano elige barricas por las islas y las embotella sin azúcar, sin color y sin dilución — y con ello cambió, casi él solo, lo que el mundo cree que es el ron."
+   }
+  },
+  "Long Pond": {
+   "region": "",
+   "blurb": {
+    "hr": "Trelawny, Jamajka — župa poznata po rumovima s najviše estera na svijetu. Long Pond ih mjeri i označava slovima; što je oznaka viša, to je više onog laka i prezrelog voća koje se ne da zaboraviti.",
+    "en": "Trelawny, Jamaica — the parish behind the highest-ester rums on earth. Long Pond measures them and files them under letter marks; the higher the mark, the more of that varnish and overripe fruit nobody forgets.",
+    "it": "Trelawny, Giamaica — la parrocchia dei rum con più esteri al mondo. Long Pond li misura e li cataloga con sigle; più alta la sigla, più vernice e frutta stramatura che non si dimenticano.",
+    "fr": "Trelawny, Jamaïque — la paroisse des rhums les plus riches en esters au monde. Long Pond les mesure et les classe par marques ; plus la marque est haute, plus il y a de ce vernis et de ce fruit trop mûr qu'on n'oublie pas.",
+    "de": "Trelawny, Jamaika — das Kirchspiel hinter den esterreichsten Rums der Welt. Long Pond misst sie und führt sie unter Buchstabenmarken; je höher die Marke, desto mehr von diesem Lack und überreifen Obst, das niemand vergisst.",
+    "zh": "牙买加特里劳尼——全世界酯类含量最高的朗姆酒出自这个教区。Long Pond 逐一测量并以字母标记归档；标记越高，那股令人难忘的清漆与熟透果香就越重。",
+    "sl": "Trelawny, Jamajka — župnija za rumi z največ estri na svetu. Long Pond jih meri in razvršča po črkovnih oznakah; višja ko je oznaka, več je tistega laka in prezrelega sadja, ki se ne pozabi.",
+    "es": "Trelawny, Jamaica — la parroquia de los rones con más ésteres del mundo. Long Pond los mide y los archiva con marcas de letras; cuanto más alta la marca, más de ese barniz y esa fruta pasada que no se olvidan."
+   }
+  },
+  "Mount Gay": {
+   "region": "",
+   "blurb": {
+    "hr": "Barbados, i papir iz 1703. koji ovu kuću čini najstarijom rumarskom markom koja još radi. Koraljni otok filtrira vlastitu vodu — to i melasa su cijeli recept, i traje već preko tri stoljeća.",
+    "en": "Barbados, and a deed from 1703 that makes this the oldest rum brand still working. A coral island filters its own water — that and molasses is the whole recipe, and it has held for three centuries.",
+    "it": "Barbados, e un atto del 1703 che ne fa il più antico marchio di rum ancora in attività. Un'isola di corallo filtra la propria acqua — quella e la melassa sono tutta la ricetta, e regge da tre secoli.",
+    "fr": "La Barbade, et un acte de 1703 qui en fait la plus ancienne marque de rhum encore en activité. Une île de corail filtre sa propre eau — cela et la mélasse, c'est toute la recette, et elle tient depuis trois siècles.",
+    "de": "Barbados und eine Urkunde von 1703, die dies zur ältesten noch arbeitenden Rummarke macht. Eine Koralleninsel filtert ihr eigenes Wasser — das und Melasse sind das ganze Rezept, und es trägt seit drei Jahrhunderten.",
+    "zh": "巴巴多斯，以及一份 1703 年的地契——它让这里成为仍在运转的最古老朗姆品牌。珊瑚岛自行过滤水源，水加糖蜜就是全部配方，已经延续三个世纪。",
+    "sl": "Barbados in listina iz leta 1703, ki to hišo dela za najstarejšo še delujočo znamko ruma. Koralni otok filtrira lastno vodo — to in melasa sta ves recept, in drži že tri stoletja.",
+    "es": "Barbados, y una escritura de 1703 que la convierte en la marca de ron más antigua aún en activo. Una isla de coral filtra su propia agua — eso y la melaza son toda la receta, y aguanta desde hace tres siglos."
+   }
+  },
+  "Chelo": {
+   "region": "",
+   "blurb": {
+    "hr": "Haiti, gdje se rum još pravi kako se pravio prije nego što je itko izmislio industriju: trska iz susjedstva, divlja fermentacija, mali kotao na drva. Ništa se ne standardizira, pa svaka šarža zvuči malo drugačije.",
+    "en": "Haiti, where rum is still made the way it was before anyone invented industry: cane from next door, wild fermentation, a small wood-fired still. Nothing is standardised, so every batch sounds a little different.",
+    "it": "Haiti, dove il rum si fa ancora come prima che qualcuno inventasse l'industria: canna del vicinato, fermentazione spontanea, un piccolo alambicco a legna. Nulla è standardizzato, così ogni partita suona un po' diversa.",
+    "fr": "Haïti, où le rhum se fait encore comme avant que quiconque invente l'industrie : canne du voisinage, fermentation sauvage, un petit alambic chauffé au bois. Rien n'est standardisé, chaque lot sonne donc un peu autrement.",
+    "de": "Haiti, wo Rum noch so entsteht wie vor der Erfindung der Industrie: Zuckerrohr von nebenan, wilde Gärung, eine kleine holzbefeuerte Blase. Nichts ist standardisiert, also klingt jede Charge ein wenig anders.",
+    "zh": "海地——朗姆酒还按工业出现之前的方式酿造：邻地的甘蔗、野生发酵、柴火加热的小蒸馏器。没有任何标准化，所以每一批的声音都略有不同。",
+    "sl": "Haiti, kjer rum še vedno delajo tako, kot so ga, preden je kdo iznašel industrijo: trs od sosedov, divja fermentacija, majhen kotel na drva. Nič ni standardizirano, zato vsaka serija zveni malo drugače.",
+    "es": "Haití, donde el ron aún se hace como antes de que alguien inventara la industria: caña de al lado, fermentación salvaje, un alambique pequeño a leña. Nada se estandariza, así que cada lote suena algo distinto."
+   }
+  },
+  "Renegade": {
+   "region": "",
+   "blurb": {
+    "hr": "Mark Reynier je prije ovoga oživio Bruichladdich, pa Waterford, i oba puta tvrdio isto: važno je odakle je sirovina. Na Grenadi je zato zasadio trsku po parcelama i svaku destilira odvojeno — rum kao vino s položaja.",
+    "en": "Mark Reynier revived Bruichladdich, then Waterford, arguing the same thing both times: where the raw material grew is what matters. So on Grenada he planted cane plot by plot and distils each one apart — rum treated like a single-vineyard wine.",
+    "it": "Mark Reynier ha fatto rinascere Bruichladdich, poi Waterford, sostenendo ogni volta la stessa cosa: conta da dove viene la materia prima. A Grenada ha quindi piantato la canna parcella per parcella e distilla ognuna a parte — rum trattato come un vino di cru.",
+    "fr": "Mark Reynier a relancé Bruichladdich, puis Waterford, en défendant chaque fois la même idée : ce qui compte, c'est d'où vient la matière première. À la Grenade, il a donc planté la canne parcelle par parcelle et distille chacune à part — du rhum traité comme un vin de lieu-dit.",
+    "de": "Mark Reynier erweckte Bruichladdich, dann Waterford, und behauptete beide Male dasselbe: Es zählt, wo der Rohstoff wuchs. Auf Grenada pflanzte er das Zuckerrohr also parzellenweise und brennt jede für sich — Rum wie ein Lagenwein behandelt.",
+    "zh": "Mark Reynier 先后复活了布赫拉迪与 Waterford，两次都在讲同一件事：原料长在哪里才是关键。于是他在格林纳达按地块种甘蔗，每块分开蒸馏——把朗姆当作单一园的葡萄酒来做。",
+    "sl": "Mark Reynier je oživil Bruichladdich, nato Waterford, in obakrat trdil isto: pomembno je, od kod je surovina. Na Grenadi je zato trs zasadil po parcelah in vsako destilira posebej — rum kot vino z lege.",
+    "es": "Mark Reynier revivió Bruichladdich y luego Waterford, defendiendo las dos veces lo mismo: importa dónde creció la materia prima. Por eso en Granada plantó la caña parcela a parcela y destila cada una aparte — ron tratado como un vino de pago."
+   }
+  },
+  "Veritas": {
+   "region": "",
+   "blurb": {
+    "hr": "Dvije kuće koje se inače nadmeću — Foursquare s Barbadosa i Hampden s Jamajke — spojile su svoje destilate u jednu bijelu bocu. Bez šećera i bez boje: bijeli rum kakav je bio prije nego što je postao baza za koktel bez okusa.",
+    "en": "Two houses that usually compete — Foursquare of Barbados and Hampden of Jamaica — put their spirits into one white bottle. No sugar, no colour: white rum as it was before it became a flavourless cocktail base.",
+    "it": "Due case che di solito competono — Foursquare di Barbados e Hampden della Giamaica — hanno unito i loro distillati in un'unica bottiglia bianca. Senza zucchero né colore: rum bianco com'era prima di diventare una base insapore da cocktail.",
+    "fr": "Deux maisons qui d'ordinaire se concurrencent — Foursquare à la Barbade et Hampden en Jamaïque — ont réuni leurs eaux-de-vie dans une seule bouteille blanche. Sans sucre ni colorant : le rhum blanc tel qu'il était avant de devenir une base à cocktail sans goût.",
+    "de": "Zwei Häuser, die sonst konkurrieren — Foursquare auf Barbados und Hampden auf Jamaika — haben ihre Destillate in eine weiße Flasche gefüllt. Ohne Zucker, ohne Farbe: weißer Rum, wie er war, bevor er zur geschmacklosen Cocktailbasis wurde.",
+    "zh": "两家平日互为对手的酒厂——巴巴多斯的 Foursquare 与牙买加的 Hampden——把各自的酒并进同一只白色瓶子。不加糖、不调色：这是白朗姆在沦为无味调酒基酒之前的样子。",
+    "sl": "Dve hiši, ki si sicer konkurirata — Foursquare z Barbadosa in Hampden z Jamajke — sta svoja destilata združili v eno belo steklenico. Brez sladkorja in barve: beli rum, kakršen je bil, preden je postal brezokusna osnova za koktajl.",
+    "es": "Dos casas que suelen competir — Foursquare de Barbados y Hampden de Jamaica — juntaron sus destilados en una sola botella blanca. Sin azúcar ni color: ron blanco como era antes de volverse una base de cóctel sin sabor."
+   }
+  },
+  "Beenleigh": {
+   "region": "",
+   "blurb": {
+    "hr": "Najstarija registrirana destilerija u Australiji, u Queenslandu gdje trska raste bolje nego na Karibima. Gotovo ništa od nje ne izađe iz zemlje — Australci svoj rum popiju sami.",
+    "en": "Australia's oldest registered distillery, in Queensland where the cane grows better than in the Caribbean. Almost none of it leaves the country — Australians drink their own rum themselves.",
+    "it": "La più antica distilleria registrata d'Australia, nel Queensland dove la canna cresce meglio che ai Caraibi. Quasi nulla esce dal paese — gli australiani il loro rum se lo bevono da soli.",
+    "fr": "La plus ancienne distillerie enregistrée d'Australie, dans le Queensland où la canne pousse mieux qu'aux Caraïbes. Presque rien n'en sort du pays — les Australiens boivent leur rhum eux-mêmes.",
+    "de": "Australiens älteste registrierte Brennerei, in Queensland, wo das Zuckerrohr besser wächst als in der Karibik. Fast nichts davon verlässt das Land — die Australier trinken ihren Rum selbst.",
+    "zh": "澳大利亚最古老的注册酒厂，位于昆士兰——那里的甘蔗长得比加勒比还好。几乎没有酒离开这个国家，澳洲人的朗姆自己喝掉了。",
+    "sl": "Najstarejša registrirana destilarna v Avstraliji, v Queenslandu, kjer trs raste bolje kot na Karibih. Skoraj nič od tega ne zapusti države — Avstralci svoj rum popijejo sami.",
+    "es": "La destilería registrada más antigua de Australia, en Queensland, donde la caña crece mejor que en el Caribe. Casi nada sale del país — los australianos se beben su propio ron."
+   }
+  },
+  "Château de Beaulon": {
+   "region": "",
+   "blurb": {
+    "hr": "Dvorac iz 15. stoljeća u Fins Boisu, s plavom glinom pod vinogradom i vrtovima koji su spomenik. Ovdje se ne žuri: bačve leže u vlažnom podrumu desetljećima, i cognac izlazi mekan umjesto oštar.",
+    "en": "A fifteenth-century château in Fins Bois, blue clay under the vines and gardens that are a listed monument. Nobody hurries here: casks lie in a damp cellar for decades, and the cognac comes out soft instead of sharp.",
+    "it": "Un castello del Quattrocento nei Fins Bois, argilla blu sotto le vigne e giardini vincolati come monumento. Qui non si corre: le botti riposano decenni in una cantina umida, e il cognac esce morbido anziché tagliente.",
+    "fr": "Un château du XVe siècle en Fins Bois, argile bleue sous les vignes et jardins classés. Ici on ne se presse pas : les fûts reposent des décennies dans un chai humide, et le cognac en sort tendre plutôt que tranchant.",
+    "de": "Ein Schloss aus dem 15. Jahrhundert in den Fins Bois, blauer Ton unter den Reben und denkmalgeschützte Gärten. Hier hat niemand Eile: Fässer liegen jahrzehntelang im feuchten Keller, und der Cognac kommt weich heraus statt scharf.",
+    "zh": "位于 Fins Bois 的一座十五世纪城堡，葡萄园下是蓝黏土，花园本身是受保护的古迹。这里不赶时间：桶在潮湿的酒窖里一躺数十年，干邑出来是柔的，不是利的。",
+    "sl": "Grad iz 15. stoletja v Fins Boisu, modra glina pod vinogradom in vrtovi, ki so spomenik. Tu se nihče ne mudi: sodi ležijo v vlažni kleti desetletja, in konjak pride ven mehak namesto oster.",
+    "es": "Un castillo del siglo XV en Fins Bois, arcilla azul bajo las viñas y jardines declarados monumento. Aquí nadie corre: las barricas reposan décadas en una bodega húmeda, y el coñac sale suave en vez de afilado."
+   }
+  },
+  "Michel Forgeron": {
+   "region": "",
+   "blurb": {
+    "hr": "Obiteljski vinogradari iz Segonzaca, u samom srcu Grande Champagne. Sami uzgajaju, sami destiliraju, sami čekaju — u kraju u kojem velike kuće otkupljuju tuđe, oni ne prodaju nikome.",
+    "en": "A family of growers in Segonzac, the very heart of Grande Champagne. They grow it, distil it and wait for it themselves — in a region where the big houses buy from others, they sell to nobody.",
+    "it": "Una famiglia di viticoltori a Segonzac, nel cuore stesso della Grande Champagne. Coltivano, distillano e aspettano da soli — in una zona dove le grandi maison comprano dagli altri, loro non vendono a nessuno.",
+    "fr": "Une famille de viticulteurs à Segonzac, au cœur même de la Grande Champagne. Ils cultivent, distillent et attendent eux-mêmes — dans une région où les grandes maisons achètent aux autres, eux ne vendent à personne.",
+    "de": "Eine Winzerfamilie in Segonzac, im Herzen der Grande Champagne. Sie bauen an, brennen und warten selbst — in einer Gegend, in der die großen Häuser zukaufen, verkaufen sie an niemanden.",
+    "zh": "塞贡扎克的一个种植者家族，就在大香槟区的正中心。他们自己种、自己蒸馏、自己等待——在一个大酒商向别人收购的地方，他们不卖给任何人。",
+    "sl": "Družina vinogradnikov iz Segonzaca, v samem srcu Grande Champagne. Sami gojijo, sami destilirajo, sami čakajo — v pokrajini, kjer velike hiše odkupujejo od drugih, oni ne prodajo nikomur.",
+    "es": "Una familia de viticultores en Segonzac, en pleno corazón de la Grande Champagne. Cultivan, destilan y esperan ellos mismos — en una región donde las grandes casas compran a terceros, ellos no venden a nadie."
+   }
+  },
+  "Monkey 47": {
+   "region": "",
+   "blurb": {
+    "hr": "Schwarzwald, 47 biljaka, 47 posto — i brusnica koju nitko drugi ne stavlja u gin. Recept je iz bilježnice britanskog časnika koji je poslije rata ostao u Njemačkoj i otvorio gostionicu; majmun u imenu bio je njegov.",
+    "en": "The Black Forest, 47 botanicals, 47 per cent — and lingonberry, which nobody else puts in gin. The recipe came from the notebook of a British officer who stayed in Germany after the war and opened a guesthouse; the monkey in the name was his.",
+    "it": "La Foresta Nera, 47 botaniche, 47 per cento — e il mirtillo rosso, che nessun altro mette nel gin. La ricetta viene dal taccuino di un ufficiale britannico rimasto in Germania dopo la guerra, che aprì una locanda; la scimmia nel nome era sua.",
+    "fr": "La Forêt-Noire, 47 plantes, 47 pour cent — et l'airelle rouge, que personne d'autre ne met dans un gin. La recette vient du carnet d'un officier britannique resté en Allemagne après la guerre, qui ouvrit une auberge ; le singe du nom était le sien.",
+    "de": "Der Schwarzwald, 47 Botanicals, 47 Prozent — und Preiselbeere, die sonst niemand in Gin gibt. Das Rezept stammt aus dem Notizbuch eines britischen Offiziers, der nach dem Krieg in Deutschland blieb und einen Gasthof eröffnete; der Affe im Namen war seiner.",
+    "zh": "黑森林、47 种植物、47 度——还有越橘，别家不会放进金酒。配方出自一位战后留在德国、开了家旅馆的英国军官的笔记本；名字里的那只猴子，是他的。",
+    "sl": "Schwarzwald, 47 rastlin, 47 odstotkov — in brusnica, ki je nihče drug ne da v gin. Recept je iz beležnice britanskega častnika, ki je po vojni ostal v Nemčiji in odprl gostilno; opica v imenu je bila njegova.",
+    "es": "La Selva Negra, 47 botánicos, 47 por ciento — y arándano rojo, que nadie más pone en la ginebra. La receta salió del cuaderno de un oficial británico que se quedó en Alemania tras la guerra y abrió una posada; el mono del nombre era suyo."
+   }
+  },
+  "Aviation": {
+   "region": "",
+   "blurb": {
+    "hr": "Portland, Oregon, i gin koji je namjerno spustio borovicu s prvog mjesta. Umjesto oštrog londonskog uboda dolaze lavanda, kardamom i sarsaparila — Amerikanci to zovu New Western, i ovaj je gin tu školu i otvorio.",
+    "en": "Portland, Oregon, and a gin that deliberately took juniper off the front. In place of the sharp London jab come lavender, cardamom and sarsaparilla — Americans call the style New Western, and this gin more or less started the school.",
+    "it": "Portland, Oregon, e un gin che ha tolto di proposito il ginepro dal primo posto. Al posto della stoccata londinese arrivano lavanda, cardamomo e salsapariglia — gli americani lo chiamano New Western, e questo gin ha praticamente fondato la scuola.",
+    "fr": "Portland, Oregon, et un gin qui a délibérément retiré le genièvre du premier plan. À la place du coup sec londonien viennent lavande, cardamome et salsepareille — les Américains appellent cela le New Western, et ce gin a plus ou moins ouvert l'école.",
+    "de": "Portland, Oregon, und ein Gin, der den Wacholder bewusst aus der ersten Reihe genommen hat. Statt des scharfen Londoner Stichs kommen Lavendel, Kardamom und Sarsaparille — die Amerikaner nennen den Stil New Western, und dieser Gin hat die Schule eröffnet.",
+    "zh": "俄勒冈州波特兰，一款刻意把杜松子从第一位拿下来的金酒。取代伦敦式锐利刺击的是薰衣草、豆蔻与菝葜——美国人称这种风格为 New Western，而这瓶差不多就是开山之作。",
+    "sl": "Portland, Oregon, in gin, ki je brinje namenoma umaknil iz prve vrste. Namesto ostrega londonskega vboda pridejo sivka, kardamom in sarsaparila — Američani slogu pravijo New Western, in ta gin je šolo tudi odprl.",
+    "es": "Portland, Oregón, y una ginebra que quitó el enebro del primer plano a propósito. En lugar del pinchazo seco londinense llegan lavanda, cardamomo y zarzaparrilla — los americanos llaman a este estilo New Western, y esta ginebra abrió la escuela."
+   }
+  },
+  "Gibson's": {
+   "region": "",
+   "blurb": {
+    "hr": "London Dry starog kroja, danas u francuskim rukama: borovica sprijeda, korijandar iza nje, i ništa što bi odvlačilo pažnju. Gin za one koji od gin-tonica traže gin, a ne buket.",
+    "en": "An old-cut London Dry, French-owned these days: juniper in front, coriander behind it, and nothing to distract. A gin for people who want gin in their gin and tonic, not a bouquet.",
+    "it": "Un London Dry di taglio antico, oggi in mani francesi: ginepro davanti, coriandolo dietro, e niente che distragga. Un gin per chi nel gin tonic cerca il gin, non un mazzo di fiori.",
+    "fr": "Un London Dry de coupe ancienne, aujourd'hui en mains françaises : genièvre devant, coriandre derrière, et rien pour distraire. Un gin pour ceux qui cherchent du gin dans leur gin tonic, pas un bouquet.",
+    "de": "Ein London Dry alten Schnitts, heute in französischer Hand: Wacholder vorn, Koriander dahinter, und nichts, was ablenkt. Ein Gin für alle, die im Gin Tonic Gin wollen und kein Blumenbukett.",
+    "zh": "老派的伦敦干型金酒，如今归法国人所有：杜松子在前，芫荽在后，没有多余的干扰。给那些在金汤力里想喝到金酒、而不是一束花的人。",
+    "sl": "London Dry starega kroja, danes v francoskih rokah: brinje spredaj, koriander za njim, in nič, kar bi motilo. Gin za tiste, ki v gin toniku iščejo gin, ne šopka.",
+    "es": "Un London Dry de corte antiguo, hoy en manos francesas: enebro delante, cilantro detrás, y nada que distraiga. Una ginebra para quien busca ginebra en su gin tonic, no un ramo."
+   }
+  },
+  "Brick Gin": {
+   "region": "",
+   "blurb": {
+    "hr": "Njemački gin iz certificirano ekološkog uzgoja, destiliran u malim šaržama. Ime nosi po opeci — bez priče, bez marketinške legende, samo čist destilat i botanika koja se da prepoznati.",
+    "en": "A German gin from certified organic growing, distilled in small batches. Named after the brick — no story, no invented legend, just a clean spirit and botanicals you can actually name.",
+    "it": "Un gin tedesco da agricoltura biologica certificata, distillato in piccole partite. Prende il nome dal mattone — nessuna storia, nessuna leggenda inventata, solo un distillato pulito e botaniche riconoscibili.",
+    "fr": "Un gin allemand issu d'une agriculture biologique certifiée, distillé en petits lots. Il tire son nom de la brique — pas d'histoire, pas de légende inventée, juste un distillat net et des plantes qu'on peut nommer.",
+    "de": "Ein deutscher Gin aus zertifiziert biologischem Anbau, in kleinen Chargen gebrannt. Benannt nach dem Ziegel — keine Geschichte, keine erfundene Legende, nur ein sauberes Destillat und Botanicals, die man benennen kann.",
+    "zh": "来自认证有机种植的德国金酒，小批量蒸馏。名字取自砖块——没有故事，没有编造的传说，只有干净的酒体和叫得出名字的植物。",
+    "sl": "Nemški gin iz certificirano ekološke pridelave, destiliran v majhnih serijah. Ime nosi po opeki — brez zgodbe, brez izmišljene legende, le čist destilat in botanika, ki jo znaš poimenovati.",
+    "es": "Una ginebra alemana de cultivo ecológico certificado, destilada en pequeños lotes. Lleva el nombre del ladrillo — sin historia, sin leyenda inventada, solo un destilado limpio y botánicos que sabes nombrar."
+   }
+  },
+  "Aura": {
+   "region": "",
+   "blurb": {
+    "hr": "Buzet, Istra — kuća koja je krenula od rakije i onda istu pažnju prenijela na gin. Botanika je s domaćih brda, i to se osjeti: mediteransko bilje umjesto engleske borovice u prvom planu.",
+    "en": "Buzet, Istria — a house that started with rakija and then carried the same care over to gin. The botanicals come off the hills around it, and you can taste that: Mediterranean herbs where an English gin would put juniper.",
+    "it": "Pinguente, in Istria — una casa nata dalla rakija che ha poi portato la stessa cura nel gin. Le botaniche vengono dalle colline intorno, e si sente: erbe mediterranee dove un gin inglese metterebbe il ginepro.",
+    "fr": "Buzet, en Istrie — une maison venue de la rakija qui a transposé le même soin au gin. Les plantes viennent des collines alentour, et cela se sent : des herbes méditerranéennes là où un gin anglais mettrait du genièvre.",
+    "de": "Buzet in Istrien — ein Haus, das mit Rakija begann und dieselbe Sorgfalt auf Gin übertrug. Die Botanicals stammen von den Hügeln ringsum, und das schmeckt man: mediterrane Kräuter, wo ein englischer Gin Wacholder setzen würde.",
+    "zh": "伊斯特拉的布泽特——一家从拉基亚起家、又把同样的用心带进金酒的酒厂。植物取自周边山丘，喝得出来：英国金酒放杜松子的位置，这里放的是地中海香草。",
+    "sl": "Buzet, Istra — hiša, ki je začela z žganjem in isto skrbnost prenesla na gin. Botanika je z okoliških gričev, in to se okusi: sredozemska zelišča tam, kjer bi angleški gin postavil brinje.",
+    "es": "Buzet, Istria — una casa que empezó con la rakija y trasladó el mismo cuidado a la ginebra. Los botánicos vienen de los cerros de alrededor, y se nota: hierbas mediterráneas donde una ginebra inglesa pondría enebro."
+   }
+  },
+  "Del Maguey": {
+   "region": "",
+   "blurb": {
+    "hr": "Ron Cooper, američki umjetnik, počeo je osamdesetih puniti mezcal selo po selo i potpisivati odakle je — prije njega se izvozio kao anonimna roba s crvom. Danas svaka boca nosi ime sela i palenquera koji ju je pekao.",
+    "en": "Ron Cooper, an American artist, began bottling mezcal village by village in the eighties and signing where it came from — before him it left Mexico as anonymous goods with a worm in it. Every bottle now carries the name of the village and of the man who distilled it.",
+    "it": "Ron Cooper, artista americano, negli anni Ottanta cominciò a imbottigliare mezcal villaggio per villaggio firmando la provenienza — prima di lui usciva dal Messico come merce anonima col verme. Oggi ogni bottiglia porta il nome del villaggio e del palenquero che l'ha distillata.",
+    "fr": "Ron Cooper, artiste américain, s'est mis dans les années quatre-vingt à embouteiller le mezcal village par village en signant sa provenance — avant lui, il quittait le Mexique comme une marchandise anonyme avec un ver dedans. Chaque bouteille porte aujourd'hui le nom du village et de celui qui l'a distillée.",
+    "de": "Ron Cooper, ein amerikanischer Künstler, begann in den Achtzigern, Mezcal Dorf für Dorf abzufüllen und die Herkunft zu nennen — vor ihm verließ er Mexiko als anonyme Ware mit einem Wurm darin. Heute trägt jede Flasche den Namen des Dorfes und des Brenners.",
+    "zh": "美国艺术家 Ron Cooper 在八十年代开始逐村装瓶梅斯卡尔，并署明产地——在他之前，这种酒是带着虫子、匿名出口的商品。如今每一瓶都写着村庄的名字，和亲手蒸馏它的人。",
+    "sl": "Ron Cooper, ameriški umetnik, je v osemdesetih začel polniti mezcal vas za vasjo in podpisovati, od kod je — pred njim je iz Mehike odhajal kot anonimno blago s črvom. Danes vsaka steklenica nosi ime vasi in tistega, ki jo je žgal.",
+    "es": "Ron Cooper, artista estadounidense, empezó en los ochenta a embotellar mezcal pueblo por pueblo firmando su procedencia — antes de él salía de México como mercancía anónima con un gusano. Hoy cada botella lleva el nombre del pueblo y del palenquero que lo destiló."
+   }
+  },
+  "Bruxo": {
+   "region": "",
+   "blurb": {
+    "hr": "Oaxaca, agava pečena u zemljanoj peći na drva pa mljevena kamenim kolom koje vuče konj. Ime znači vračar — dim u čaši nije aroma koja se dodaje, nego trag vatre u zemlji.",
+    "en": "Oaxaca, agave roasted in an earth pit over wood and then crushed under a stone wheel pulled by a horse. The name means sorcerer — the smoke in the glass is not an added flavour, it is the trace of a fire in the ground.",
+    "it": "Oaxaca, agave arrostita in una fossa di terra a legna e poi schiacciata sotto una ruota di pietra trainata da un cavallo. Il nome significa stregone — il fumo nel bicchiere non è un aroma aggiunto, è la traccia di un fuoco nel terreno.",
+    "fr": "Oaxaca, agave rôtie dans une fosse de terre au feu de bois puis écrasée sous une meule de pierre tirée par un cheval. Le nom veut dire sorcier — la fumée dans le verre n'est pas un arôme ajouté, c'est la trace d'un feu dans le sol.",
+    "de": "Oaxaca, Agave in einer Erdgrube über Holz geröstet und dann unter einem pferdegezogenen Steinrad zermahlen. Der Name heißt Hexer — der Rauch im Glas ist kein zugesetztes Aroma, sondern die Spur eines Feuers im Boden.",
+    "zh": "瓦哈卡：龙舌兰在土坑里以柴火烘烤，再由马拉着石轮碾碎。名字的意思是巫师——杯中的烟不是外加的香气，而是地下那把火留下的痕迹。",
+    "sl": "Oaxaca, agava pečena v zemeljski jami na drva in nato zmleta pod kamnitim kolesom, ki ga vleče konj. Ime pomeni čarovnik — dim v kozarcu ni dodana aroma, ampak sled ognja v zemlji.",
+    "es": "Oaxaca, agave asado en un horno de tierra con leña y luego molido bajo una rueda de piedra tirada por un caballo. El nombre significa brujo — el humo de la copa no es un aroma añadido, es el rastro de un fuego en el suelo."
+   }
+  },
+  "Cimarrón": {
+   "region": "",
+   "blurb": {
+    "hr": "Los Altos u Jalisci, gdje agava raste na visini i dolazi slađa. Kuća koja desetljećima uzgaja agavu za tuđe marke, pa je odlučila napraviti i svoju — bez aditiva, bez šminke, tequila kakvu piju oni koji je i uzgajaju.",
+    "en": "Los Altos in Jalisco, where the agave grows at altitude and comes in sweeter. A house that spent decades growing agave for other people's brands and then decided to make its own — no additives, no make-up, the tequila the growers drink themselves.",
+    "it": "Los Altos, in Jalisco, dove l'agave cresce in quota e arriva più dolce. Una casa che per decenni ha coltivato agave per i marchi altrui e poi ha deciso di farsi il proprio — senza additivi, senza trucco, la tequila che bevono quelli che la coltivano.",
+    "fr": "Los Altos, au Jalisco, où l'agave pousse en altitude et arrive plus sucrée. Une maison qui a cultivé pendant des décennies pour les marques des autres avant de faire la sienne — sans additifs, sans maquillage, la tequila que boivent ceux qui la cultivent.",
+    "de": "Los Altos in Jalisco, wo die Agave in der Höhe wächst und süßer hereinkommt. Ein Haus, das jahrzehntelang Agaven für fremde Marken zog und dann die eigene machte — ohne Zusätze, ohne Schminke, der Tequila, den die Bauern selbst trinken.",
+    "zh": "哈利斯科的洛斯阿尔托斯高地，龙舌兰长在高处，糖分更高。这家人为别人的品牌种了几十年龙舌兰，后来决定做自己的——不加添加剂、不施粉黛，是种植者自己喝的那种特其拉。",
+    "sl": "Los Altos v Jalisci, kjer agava raste na višini in pride slajša. Hiša, ki je desetletja gojila agavo za tuje znamke, nato pa se odločila narediti svojo — brez dodatkov, brez šminke, tekila, kakršno pijejo tisti, ki jo gojijo.",
+    "es": "Los Altos, en Jalisco, donde el agave crece en altura y llega más dulce. Una casa que pasó décadas cultivando agave para marcas ajenas y decidió hacer la suya — sin aditivos, sin maquillaje, el tequila que beben los que lo cultivan."
+   }
+  },
+  "Appenzeller Alpenbitter": {
+   "region": "",
+   "blurb": {
+    "hr": "Appenzell, Švicarska: 42 biljke iz alpskih livada po receptu koji obitelj čuva od 1902. i koji, koliko se zna, nikad nije zapisan cijeli na jednom mjestu. Gorko koje se pije poslije jela jer stvarno pomaže.",
+    "en": "Appenzell, Switzerland: 42 herbs off the alpine meadows, to a recipe the family has kept since 1902 and which, as far as anyone knows, has never been written down whole in one place. A bitter you drink after dinner because it genuinely helps.",
+    "it": "Appenzello, Svizzera: 42 erbe dei prati alpini, su una ricetta che la famiglia custodisce dal 1902 e che, per quanto se ne sappia, non è mai stata scritta per intero in un solo posto. Un amaro che si beve dopo cena perché funziona davvero.",
+    "fr": "Appenzell, Suisse : 42 plantes des prairies alpines, selon une recette que la famille garde depuis 1902 et qui, autant qu'on sache, n'a jamais été écrite en entier au même endroit. Un amer qu'on boit après le repas parce qu'il aide vraiment.",
+    "de": "Appenzell, Schweiz: 42 Kräuter von den Alpwiesen, nach einem Rezept, das die Familie seit 1902 hütet und das, soweit bekannt, nie vollständig an einem Ort niedergeschrieben wurde. Ein Bitter, den man nach dem Essen trinkt, weil er wirklich hilft.",
+    "zh": "瑞士阿彭策尔：42 种高山草甸植物，配方自 1902 年由家族守着，而且据说从未被完整地写在同一个地方。饭后喝的苦酒——因为它是真的管用。",
+    "sl": "Appenzell, Švica: 42 rastlin z alpskih travnikov po receptu, ki ga družina hrani od leta 1902 in ki, kolikor je znano, nikoli ni bil v celoti zapisan na enem mestu. Grenko, ki se pije po jedi, ker res pomaga.",
+    "es": "Appenzell, Suiza: 42 hierbas de los prados alpinos, con una receta que la familia guarda desde 1902 y que, hasta donde se sabe, nunca se ha escrito entera en un solo sitio. Un amargo que se bebe tras la comida porque de verdad ayuda."
+   }
+  },
+  "Jägermeister": {
+   "region": "",
+   "blurb": {
+    "hr": "Wolfenbüttel, 56 biljaka, i godinu dana u hrastovim bačvama prije punjenja — što je više nego što odležava većina likera koji se drže ozbiljnima. Ime znači lovac; jelen na etiketi je legenda o svetom Hubertu.",
+    "en": "Wolfenbüttel, 56 botanicals, and a year in oak vats before bottling — longer than most liqueurs that take themselves seriously. The name means master hunter; the stag on the label is the legend of Saint Hubert.",
+    "it": "Wolfenbüttel, 56 botaniche e un anno in tini di rovere prima dell'imbottigliamento — più di quanto riposino molti liquori che si prendono sul serio. Il nome significa maestro di caccia; il cervo in etichetta è la leggenda di sant'Uberto.",
+    "fr": "Wolfenbüttel, 56 plantes et un an en foudres de chêne avant la mise en bouteille — plus longtemps que bien des liqueurs qui se prennent au sérieux. Le nom signifie maître-chasseur ; le cerf de l'étiquette, c'est la légende de saint Hubert.",
+    "de": "Wolfenbüttel, 56 Botanicals und ein Jahr im Eichenfass vor der Abfüllung — länger als die meisten Liköre, die sich ernst nehmen. Der Name heißt Jagdmeister; der Hirsch auf dem Etikett ist die Legende des heiligen Hubertus.",
+    "zh": "沃尔芬比特尔，56 种植物，装瓶前在橡木桶中放一年——比多数自认严肃的利口酒都久。名字意为狩猎长官；酒标上的鹿，出自圣胡伯特的传说。",
+    "sl": "Wolfenbüttel, 56 rastlin in leto dni v hrastovih kadeh pred polnjenjem — dlje, kot počiva večina likerjev, ki se imajo za resne. Ime pomeni lovski mojster; jelen na etiketi je legenda o svetem Hubertu.",
+    "es": "Wolfenbüttel, 56 botánicos y un año en tinas de roble antes de embotellar — más de lo que reposan la mayoría de los licores que se toman en serio. El nombre significa montero mayor; el ciervo de la etiqueta es la leyenda de San Huberto."
+   }
+  },
+  "Latvijas Balzams": {
+   "region": "",
+   "blurb": {
+    "hr": "Riga, pogon iz 1900. koji je preživio dva svjetska rata, jedno carstvo i jednu državu — i u kojem se Stolichnaya puni već preko sedamdeset godina. Katedrala votke na Baltiku, doslovno tako izgleda.",
+    "en": "Riga, a plant from 1900 that has outlived two world wars, an empire and a country — and has been filling Stolichnaya for over seventy years. A cathedral to vodka on the Baltic, and it looks the part.",
+    "it": "Riga, uno stabilimento del 1900 che è sopravvissuto a due guerre mondiali, a un impero e a uno Stato — e che imbottiglia Stolichnaya da oltre settant'anni. Una cattedrale della vodka sul Baltico, e ne ha proprio l'aspetto.",
+    "fr": "Riga, une usine de 1900 qui a survécu à deux guerres mondiales, à un empire et à un État — et qui remplit du Stolichnaya depuis plus de soixante-dix ans. Une cathédrale de la vodka sur la Baltique, et elle en a l'allure.",
+    "de": "Riga, ein Werk von 1900, das zwei Weltkriege, ein Imperium und einen Staat überlebt hat — und seit über siebzig Jahren Stolichnaya abfüllt. Eine Kathedrale des Wodkas an der Ostsee, und sie sieht auch so aus.",
+    "zh": "里加，一座 1900 年的酒厂，熬过了两次世界大战、一个帝国和一个国家——并为 Stolichnaya 灌装逾七十年。波罗的海边的伏特加大教堂，外形也确实如此。",
+    "sl": "Riga, obrat iz leta 1900, ki je preživel dve svetovni vojni, en imperij in eno državo — in ki Stolichnayo polni že več kot sedemdeset let. Katedrala vodke na Baltiku, in tako tudi izgleda.",
+    "es": "Riga, una planta de 1900 que ha sobrevivido a dos guerras mundiales, a un imperio y a un país — y que lleva más de setenta años llenando Stolichnaya. Una catedral del vodka en el Báltico, y lo parece."
+   }
+  },
+  "Zmajska pivovara": {
+   "region": "",
+   "blurb": {
+    "hr": "Zagrebačka pivovara koja je 2014. otvorila vrata i uz put naučila pola grada da pivo ima okus. Pils koji ovdje toče nije ustupak — to je stil koji je najteže dobro napraviti jer se u njemu ništa ne može sakriti.",
+    "en": "A Zagreb brewery that opened in 2014 and taught half the city, along the way, that beer has a flavour. The Pils they pour here is not a concession — it is the hardest style to get right, because there is nowhere in it to hide.",
+    "it": "Un birrificio di Zagabria aperto nel 2014 che, strada facendo, ha insegnato a mezza città che la birra ha un sapore. La Pils che versano qui non è una concessione — è lo stile più difficile da fare bene, perché non offre alcun posto dove nascondersi.",
+    "fr": "Une brasserie de Zagreb ouverte en 2014, qui a appris en chemin à la moitié de la ville que la bière a du goût. La Pils qu'on sert ici n'est pas une concession — c'est le style le plus difficile à réussir, car rien ne s'y cache.",
+    "de": "Eine Zagreber Brauerei, die 2014 öffnete und der halben Stadt nebenbei beibrachte, dass Bier Geschmack hat. Das Pils, das hier ausgeschenkt wird, ist kein Zugeständnis — es ist der schwerste Stil, denn darin lässt sich nichts verstecken.",
+    "zh": "2014 年开门的萨格勒布精酿厂，一路教会了半座城市：啤酒是有味道的。这里倒的皮尔森不是妥协——它是最难做好的风格，因为里面无处藏拙。",
+    "sl": "Zagrebška pivovarna, ki je odprla vrata leta 2014 in spotoma naučila pol mesta, da ima pivo okus. Pils, ki ga tu točijo, ni popuščanje — je najtežji slog, saj se v njem ni kam skriti.",
+    "es": "Una cervecería de Zagreb que abrió en 2014 y, de paso, enseñó a media ciudad que la cerveza tiene sabor. La Pils que sirven aquí no es una concesión — es el estilo más difícil de clavar, porque en él no hay dónde esconderse."
    }
   }
  }
