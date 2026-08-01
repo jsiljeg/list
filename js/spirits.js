@@ -27,7 +27,7 @@
    then verified by overlaying the candidate path back on the photo — see the
    comments on each.
 
-   NOT MEASURED: tumbler, highball and goblet are still standard vessel
+   NOT MEASURED: tumbler and highball are still standard vessel
    geometries drawn to plausible millimetres, because no photograph of the house
    versions exists. That is defensible where eyeballing a wine glass is not — a
    rocks glass is a cylinder and there is nothing in it to get wrong — but if
@@ -54,7 +54,6 @@
      Glencairn      115 x 67   → viewBox 56   (measured; published mm)
      snifter        (see below) → viewBox 68   (measured off the photo)
      grappa tulip   (measured)  → viewBox 36    (the narrowest thing on the list)
-     goblet         150 x 75   → viewBox 48
 
    Each glass is then drawn across the full 6-to-93 band of the box, so the
    width actually reaches the edges and the ratio survives to the screen. */
@@ -111,9 +110,6 @@ const SPIRIT_VESSELS = {
      this one the aspect ratio does all the work — same silhouette, half the
      width. */
   highball: '<svg viewBox="0 0 46 100" aria-hidden="true"><path d="M4.3,8 L6.5,90 C6.5,93 38.5,93 38.5,90 L40.7,8"/><path d="M4.3,8 C4.3,5.4 40.7,5.4 40.7,8 C40.7,10.6 4.3,10.6 4.3,8 Z"/><path d="M6.9,52 c7,2.4 22,2.4 29,0" style="stroke-width:.8;opacity:.45"/></svg>',
-  /* Vermouth in Turin goes into a small stemmed wine glass over ice, not a
-     cocktail coupe — so this is a short, straight-sided goblet. */
-  goblet: '<svg viewBox="0 0 48 100" aria-hidden="true"><path d="M4,14 L11,50 C13,55.5 20,58.5 24,59 C28,58.5 35,55.5 37,50 L44,14"/><path d="M4,14 C4,11.2 44,11.2 44,14 C44,16.8 4,16.8 4,14 Z"/><path d="M24,59 V87"/><path d="M9,92 c7,-4 23,-4 30,0"/></svg>'
 };
 
 /* Which vessel a bottle gets. `insight.vessel` in library/wines.json wins, the
@@ -123,13 +119,14 @@ const SPIRIT_VESSELS = {
 const VESSEL_BY_CLASS = {
   vodka: "tulip",
   gin_london_dry: "copa", gin_contemporary: "copa",
-  vermouth_bianco: "goblet", vermouth_rosso: "goblet", vermouth_dry: "goblet",
+  /* Owner, 2026-08-01: the vermouths go in the rakija glass, not a goblet. */
+  vermouth_bianco: "tulip", vermouth_rosso: "tulip", vermouth_dry: "tulip",
   bitter_aperitivo: "tumbler",
   tequila_blanco: "tulip", mezcal_joven: "tulip",
   malt_islay: "nosing", malt_speyside: "nosing", malt_lowland: "nosing",
   malt_highland: "nosing", malt_island: "nosing", malt_taiwan: "nosing",
   malt_japan: "nosing", blended_malt_japan: "nosing", malt_american: "nosing",
-  rye_american: "tumbler",
+  rye_american: "nosing",     /* the rye sits with the whiskies, not on the rocks */
   /* Owner, 2026-08-01: every rum goes in the cognac glass. That includes the
      clairin, which is Haitian rum however unaged it is, and the white blend,
      which the balloon flatters less than a highball would but which is poured
@@ -142,8 +139,8 @@ const VESSEL_BY_CLASS = {
   rakija_fruit: "tulip", rakija_grape: "tulip", rakija_herbal: "tulip",
   rakija_honey: "tulip",
   grappa_young: "tulip", grappa_aged: "tulip",
-  liqueur_fruit: "tumbler", liqueur_bitter: "tulip", liqueur_wormwood: "tulip",
-  grappa: "tulip", liqueur_walnut: "tumbler", liqueur_cherry: "tulip",
+  liqueur_fruit: "tulip", liqueur_bitter: "tulip", liqueur_wormwood: "tulip",
+  grappa: "tulip", liqueur_walnut: "tulip", liqueur_cherry: "tulip",
   liqueur_teranino: "tulip",
   pils: "highball"
 };

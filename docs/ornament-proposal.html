@@ -66,17 +66,26 @@ obrubljuju, a vrat je jedan potez.</p>
 <div class="sizes" id="row-d"></div>
 <div class="inline" id="ctx-d"></div>
 
+<h2>E · kotao i čaša, spojeni cijevi</h2>
+<p>Vaš smjer: kotao ostaje mrlja od čavala kao grozd, s druge strane je
+<b>Glencairn</b> — ista čaša koju smo izmjerili s vaše fotografije — a cijev
+između njih ide duže. Širi okvir, pa ima mjesta. Prikazan na 24 px jer je širi
+nego viši.</p>
+<div class="sizes" id="row-e"></div>
+<div class="inline" id="ctx-e"></div>
+
 <div class="verdict">
-<p><b>Moje mišljenje, bez uljepšavanja:</b> ni jedan na 20 px ne kaže
-„alambik". Obris od čavala je premalen da bi se pročitao — ista stvar zbog
-koje je nekad propala zdjela od čavala.</p>
-<p><b>D</b> je jedini koji dobro stoji <i>uz</i> grozd: ista tekstura, ista
-gustoća, čita se kao brat od istog kipara. Ali je mrlja, ne aparat.</p>
-<p><b>C</b> je jedini koji stvarno postane alambik — ali tek od ~28 px naviše.
-Ako vam je važno da se prepozna <i>što</i> je, znak treba povećati; ako vam je
-važnije da se ne razlikuje od grozda, D je odgovor.</p>
-<p>Moja preporuka: <b>C, i znak na 26 px</b> za sve sekcije (i grozd time samo
-dobiva). Ako ne želite dirati veličinu — <b>D</b>.</p>
+<p><b>Moje mišljenje, bez uljepšavanja:</b> A, B i C na 20 px ne kažu
+„alambik" — obris od čavala je premalen da bi se pročitao, ista stvar zbog koje
+je nekad propala zdjela od čavala.</p>
+<p><b>E je odgovor</b>, i to vaš: kotao ostaje mrlja u istom jeziku kao grozd
+(zato stoji uz njega), a čaša s druge strane kaže <i>što</i> je — dvije mase i
+luk između njih čitaju se i na 20 px, jer se ne oslanjaju na detalj nego na
+raspored. Čaša nije izmišljena: to je Glencairn izmjeren s vaše fotografije,
+sveden na čavle.</p>
+<p>Jedina odluka koja ostaje: znak je <b>širi nego viši</b> (40×24 umjesto
+24×24), pa mu u zaglavlju treba malo više mjesta — predlažem visinu 24 px
+umjesto 20. Grozd ostaje kakav jest.</p>
 </div>
 </div>
 
@@ -101,15 +110,16 @@ const V = {
     "M12.3 17.1L12.1 14.9","M11.4 13.3L10.0 12.3","M6.4 12.3L5.1 13.4","M7.6 11.5L7.8 8.9",
     "M9.0 11.5L8.8 8.9","M8.1 7.9L10.0 6.7","M11.3 6.4L13.4 6.6","M14.5 7.3L15.6 8.8",
     "M14.6 11.0L18.4 11.0","M15.0 13.4L18.8 13.4","M14.6 15.8L18.4 15.8","M15.4 18.2L18.0 18.2"],
+  e: ["M4.6 9.1L7.0 10.1","M7.0 10.1L9.4 9.1","M3.0 12.9L5.4 11.9","M5.4 11.9L7.8 12.9","M7.8 12.9L10.2 11.9","M2.2 14.7L5.0 15.7","M5.0 15.7L7.8 14.7","M7.8 14.7L10.6 15.7","M2.7 18.5L5.3 17.5","M5.3 17.5L7.9 18.5","M7.9 18.5L10.5 17.5","M4.4 20.1L7.0 21.1","M7.0 21.1L9.6 20.1","M6.4 7.6L6.8 5.6","M8.4 7.6L8.0 5.6","M7.2 4.6L10.0 3.4","M11.4 3.0L14.6 3.0","M16.0 3.3L18.6 4.4","M19.8 5.2L22.2 6.6","M23.4 7.4L25.4 8.9","M30.5 9.4L35.9 9.4","M30.3 10.2L29.4 16.0","M36.1 10.2L37.0 16.0","M28.9 16.7L28.9 18.5","M37.6 16.7L37.6 18.5","M29.0 18.8L31.1 20.0","M37.5 18.8L35.3 20.0","M31.4 20.3L30.4 22.8","M35.0 20.3L36.0 22.8","M30.4 22.8L36.0 22.8"],
   d: ["M9.6 6.2L12.6 5.4","M13.9 5.6L16.1 7.2","M16.8 8.6L17.1 11.0","M9.8 8.8L9.6 6.4",
     "M6.6 10.4L9.2 11.4","M9.9 11.6L12.3 10.3",
     "M5.6 13.4L8.2 14.5","M8.9 14.6L11.3 13.3","M11.9 13.5L14.0 14.6",
     "M6.4 16.6L9.0 17.7","M9.7 17.7L12.1 16.4","M12.7 16.6L14.6 17.6",
     "M8.0 19.8L10.6 20.8","M11.3 20.6L13.4 19.4"]
 };
-const svg = (nails, px) =>
-  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
-        stroke-linecap="round" style="width:${px}px;height:${px}px">` +
+const svg = (nails, px, wide) =>
+  `<svg viewBox="0 0 ${wide ? 40 : 24} 24" fill="none" stroke="currentColor" stroke-width="1.3"
+        stroke-linecap="round" style="width:${(wide ? 40 / 24 : 1) * px}px;height:${px}px">` +
   nails.map((d) => `<path d="${d}"/>`).join("") + `</svg>`;
 
 for (const [key, nails] of Object.entries(V)) {
@@ -117,11 +127,11 @@ for (const [key, nails] of Object.entries(V)) {
   if (row) {
     row.innerHTML = [[20, "20 px · stvarno"], [28, "28"], [44, "44"], [96, "96"]]
       .map(([px, label]) =>
-        `<figure><div class="${px === 20 ? "real" : ""}">${svg(nails, px)}</div>
+        `<figure><div class="${px === 20 ? "real" : ""}">${svg(nails, px, key === "e")}</div>
          <figcaption>${label}</figcaption></figure>`).join("");
   }
   const ctx = document.getElementById("ctx-" + (key === "grape" ? "grape" : key));
-  if (ctx) ctx.innerHTML = svg(nails, 20);
+  if (ctx) ctx.innerHTML = svg(nails, key === "e" ? 24 : 20, key === "e");
 }
 </script>
 </body>

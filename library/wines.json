@@ -10658,51 +10658,6 @@
     "rare"
    ]
   },
-  "elit--stolichnaya": {
-   "name": "elit",
-   "producer": "Stolichnaya",
-   "insight": {
-    "region": "Riga",
-    "country": "LV",
-    "base": [
-     "grain_wheat_rye"
-    ],
-    "still": [
-     "column"
-    ],
-    "cask": [
-     "unaged"
-    ],
-    "alcohol": "40",
-    "aromas": [
-     "bread",
-     "citrus",
-     "white_pepper",
-     "creamy"
-    ],
-    "serve": [
-     "freezer",
-     "in_cocktails"
-    ],
-    "pairings": [
-     "caviar",
-     "oysters"
-    ],
-    "kind": "spirit",
-    "class": "vodka"
-   },
-   "note": {
-    "hr": "Votka se ne pravi dodavanjem nego oduzimanjem, a elit oduzima hladnoćom: destilat se spusti na −18 °C, na kojima se ono što smeta veže i ostane na filtru. Ozima pšenica i raž s crnice Tambova, destilirano i punjeno u Rigi. Iz zamrzivača, gusto kao svila.",
-    "en": "Vodka is made by taking away, not adding, and elit takes away with cold: the spirit is dropped to −18 °C, at which the harsh compounds bind and stay on the filter. Winter wheat and rye off the Tambov black earth, distilled and bottled in Riga. From the freezer it pours like silk.",
-    "it": "La vodka si fa togliendo, non aggiungendo, ed elit toglie con il freddo: il distillato scende a −18 °C, temperatura alla quale le asperità si legano e restano sul filtro. Grano invernale e segale della terra nera di Tambov, distillata e imbottigliata a Riga. Dal congelatore scende come seta.",
-    "fr": "Une vodka se fait en retirant, non en ajoutant, et elit retire par le froid : le distillat descend à −18 °C, température à laquelle les composés durs se fixent et restent sur le filtre. Blé d'hiver et seigle des terres noires de Tambov, distillée et embouteillée à Riga. Sortie du congélateur, elle coule comme de la soie.",
-    "de": "Wodka entsteht durch Weglassen, nicht durch Hinzufügen, und elit lässt mit Kälte weg: das Destillat geht auf −18 °C hinunter, wo sich das Raue bindet und im Filter bleibt. Winterweizen und Roggen von der Schwarzerde um Tambow, destilliert und abgefüllt in Riga. Aus dem Gefrierfach fließt er wie Seide.",
-    "zh": "伏特加靠减法而非加法成就，elit 用的是冷：酒液降到 −18 °C，粗糙的成分在这个温度上凝结，留在滤材里。原料是坦波夫黑土上的冬小麦与黑麦，在里加蒸馏装瓶。从冷冻室倒出来，稠得像丝。",
-    "sl": "Vodka nastane z odvzemanjem, ne z dodajanjem, elit pa odvzema s hladom: destilat spustijo na −18 °C, pri katerih se ostrine vežejo in ostanejo na filtru. Ozimna pšenica in rž s črnice Tambova, destilirano in polnjeno v Rigi. Iz zamrzovalnika teče kot svila.",
-    "es": "El vodka se hace quitando, no añadiendo, y elit quita con frío: el destilado baja a −18 °C, temperatura a la que lo áspero se fija y se queda en el filtro. Trigo de invierno y centeno de la tierra negra de Tambov, destilado y embotellado en Riga. Del congelador cae como seda."
-   },
-   "notePlain": true
-  },
   "gibson-s--london-dry-gin": {
    "name": "London Dry Gin",
    "producer": "Gibson's",
@@ -13755,6 +13710,52 @@
     "zh": "Beenleigh 是澳大利亚最古老的注册酒厂，产的酒几乎都留在昆士兰。这一瓶出来了，而且出来两次：先在本地桶中两年，再越过赤道，在欧洲又待两年。这条产品线正是以这趟航行命名——同一桶酒，换一种气候，喝得出来。",
     "sl": "Beenleigh je najstarejša registrirana destilarna v Avstraliji in skoraj nič od nje ne zapusti Queenslanda. Ta steklenica ga je, in to dvakrat: dve leti v sodu doma, nato čez ekvator še dve v Evropi. Po tem potovanju je linija dobila ime — isti rum v istem sodu, a drugo podnebje, in to se sliši.",
     "es": "Beenleigh es la destilería registrada más antigua de Australia y casi nada de lo que hace sale de Queensland. Esta botella sí lo hizo, dos veces: dos años en barrica en casa y luego cruzando el ecuador para otros dos en Europa. De esa travesía toma su nombre la línea — el mismo ron en la misma barrica, otro clima, y se nota."
+   },
+   "notePlain": true
+  },
+  "latvijas-balzams--elit": {
+   "name": "elit",
+   "producer": "Latvijas Balzams",
+   "insight": {
+    "region": "Riga",
+    "country": "LV",
+    "base": [
+     "grain_wheat_rye"
+    ],
+    "still": [
+     "column"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "bread",
+     "citrus",
+     "white_pepper",
+     "creamy"
+    ],
+    "serve": [
+     "freezer",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "caviar",
+     "oysters"
+    ],
+    "kind": "spirit",
+    "class": "vodka",
+    "bottler": "elit by Stolichnaya"
+   },
+   "note": {
+    "hr": "Votka se ne pravi dodavanjem nego oduzimanjem, a elit oduzima hladnoćom: destilat se spusti na −18 °C, na kojima se ono što smeta veže i ostane na filtru. Pšenica i raž, destilirano i punjeno u Latvijas Balzamsu u Rigi — pogonu iz 1900. u kojem se Stolichnaya puni više od sedamdeset godina. Iz zamrzivača, gusto kao svila.",
+    "en": "Vodka is made by taking away, not adding, and elit takes away with cold: the spirit is dropped to −18 °C, at which the harsh compounds bind and stay on the filter. Wheat and rye, distilled and bottled at Latvijas Balzams in Riga — a plant from 1900 that has been filling Stolichnaya for over seventy years. Straight from the freezer, thick as silk.",
+    "it": "La vodka si fa togliendo, non aggiungendo, ed elit toglie con il freddo: il distillato scende a −18 °C, temperatura alla quale i composti duri si legano e restano sul filtro. Frumento e segale, distillata e imbottigliata alla Latvijas Balzams di Riga — uno stabilimento del 1900 che imbottiglia Stolichnaya da oltre settant'anni. Dal congelatore, densa come seta.",
+    "fr": "La vodka se fait en retranchant, pas en ajoutant, et elit retranche par le froid : le distillat descend à −18 °C, température à laquelle les composés durs se lient et restent sur le filtre. Blé et seigle, distillée et embouteillée chez Latvijas Balzams à Riga — une usine de 1900 qui remplit du Stolichnaya depuis plus de soixante-dix ans. Sortie du congélateur, épaisse comme de la soie.",
+    "de": "Wodka entsteht durch Weglassen, nicht durch Hinzufügen, und elit lässt mit Kälte weg: das Destillat geht auf −18 °C herunter, wo sich die harten Verbindungen binden und im Filter bleiben. Weizen und Roggen, destilliert und abgefüllt bei Latvijas Balzams in Riga — einem Werk von 1900, das seit über siebzig Jahren Stolichnaya abfüllt. Aus dem Tiefkühler, dicht wie Seide.",
+    "zh": "伏特加靠减法而非加法，elit 用低温做减法：酒液降到 −18 °C，粗糙的化合物在这个温度凝结，留在滤层上。小麦与黑麦，在里加的 Latvijas Balzams 蒸馏装瓶——这座 1900 年的酒厂为 Stolichnaya 灌装已逾七十年。从冷冻室取出，稠得像丝。",
+    "sl": "Vodka nastaja z odvzemanjem, ne dodajanjem, in elit odvzema s hladom: destilat spustijo na −18 °C, pri katerih se ostre spojine vežejo in ostanejo na filtru. Pšenica in rž, destilirano in polnjeno v Latvijas Balzamsu v Rigi — obratu iz leta 1900, ki Stolichnayo polni že več kot sedemdeset let. Iz zamrzovalnika, gosto kot svila.",
+    "es": "El vodka se hace quitando, no añadiendo, y elit quita con frío: el destilado baja a −18 °C, temperatura a la que los compuestos ásperos se ligan y se quedan en el filtro. Trigo y centeno, destilado y embotellado en Latvijas Balzams de Riga — una planta de 1900 que lleva más de setenta años llenando Stolichnaya. Del congelador, espeso como la seda."
    },
    "notePlain": true
   }
