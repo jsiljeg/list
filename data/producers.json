@@ -691,7 +691,7 @@
    }
   },
   "Radikon": {
-   "region": "Oslavia, Friuli",
+   "region": "Oslavia, Collio, Friuli",
    "blurb": {
     "hr": "Pionir maceriranih bijelih vina koji je ponovno otvorio drevna vrata — jantarna vina koja traže vrijeme i hrabrost.",
     "en": "A pioneer of skin-macerated whites who reopened an ancient door — amber wines that ask for time and courage.",
@@ -717,7 +717,7 @@
    }
   },
   "Damijan": {
-   "region": "Friuli",
+   "region": "Gorizia, Friuli",
    "blurb": {
     "hr": "Duge maceracije koje hvataju sunce u čaši — jantarna bijela vina dubine, kože i sušenog voća.",
     "en": "Long macerations that trap the sun in the glass — amber whites of depth, leather and dried fruit.",
@@ -847,7 +847,7 @@
    }
   },
   "Marjan Simčič": {
-   "region": "Goriška Brda, Slovenia",
+   "region": "Goriška brda",
    "blurb": {
     "hr": "Brda koja ne mare za granicu — raskošna, ali precizna bijela i crna vina s brežuljaka koji spajaju Sloveniju i Italiju.",
     "en": "The hills that ignore the border — opulent yet precise whites and reds from slopes that join Slovenia and Italy.",

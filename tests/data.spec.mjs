@@ -273,3 +273,52 @@ test("no wine stores a bare Malvasia or Malvazija", () => {
     .map((i) => `${i.producer} — ${i.name}: ${i.insight.grape}`);
   expect(bad).toEqual([]);
 });
+
+test("guest-facing text spells the lost name Tokaj, never Tocai", () => {
+  /* Owner, 2026-08-01. The notes told the Friulano story with the Friulian
+     spelling "Tocai" and then said Jakot was "Tokaj backwards" — two spellings
+     of one name in the same paragraph, and the anagram, which is the whole
+     point of Prinčič's label, did not land. One spelling now: Tokaj. "Tocai"
+     survives only in SEARCH_ALIAS, where no guest reads it. */
+  const bad = [];
+  for (const it of items) {
+    for (const [lc, text] of Object.entries(it.note || {}))
+      if (/tocai/i.test(text)) bad.push(`${it.producer} — ${it.name} (${lc})`);
+  }
+  for (const [name, rec] of Object.entries(producers))
+    for (const [lc, text] of Object.entries((rec && rec.blurb) || {}))
+      if (/tocai/i.test(text)) bad.push(`producer ${name} (${lc})`);
+  expect(bad, 'guest text still says "Tocai"').toEqual([]);
+});
+
+test("the Jakot note spells the reversal out", () => {
+  /* The relation is the reason the wine is called that, so it must be readable
+     without knowing the story already: every language has to name both JAKOT
+     and TOKAJ. */
+  const jakot = items.find((i) => /jakot/i.test(i.name));
+  expect(jakot, "Prinčič Jakot is on the list").toBeTruthy();
+  const missing = Object.entries(jakot.note || {})
+    .filter(([, text]) => !(/jakot/i.test(text) && /tokaj/i.test(text)))
+    .map(([lc]) => lc);
+  expect(missing, "a language that does not connect Jakot to Tokaj").toEqual([]);
+});
+
+test("every Friuli wine carries the same region ladder", () => {
+  /* Owner, 2026-08-01: "friuli, furlanija" were used inconsistently. The stored
+     ladder ends in the one token "Friuli" — never a bare appellation, never an
+     exonym — and js/i18n.js renders Furlanija / Frioul / Friaul per language.
+     A Croatian card used to read "Friuli" in the region line and "Furlanija"
+     in the note two lines above it. */
+  const bad = [];
+  for (const it of items) {
+    const region = String(it.insight.region || "");
+    if (!/friuli|furlanij|frioul|friaul/i.test(region) && !/friulano/i.test(it.insight.grape || "")) continue;
+    if (it.insight.country !== "IT") continue;
+    const rungs = region.split(",").map((s) => s.trim());
+    if (rungs[rungs.length - 1] !== "Friuli")
+      bad.push(`${it.producer} — ${it.name}: "${region}" does not end in Friuli`);
+    if (/furlanij|frioul|friaul/i.test(region))
+      bad.push(`${it.producer} — ${it.name}: "${region}" stores an exonym`);
+  }
+  expect(bad).toEqual([]);
+});

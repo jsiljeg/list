@@ -1666,8 +1666,13 @@ const REGION_I18N = {
   "Lombardia": { hr: "Lombardija", en: "Lombardy", it: "Lombardia", fr: "Lombardie", de: "Lombardei", sl: "Lombardija", es: "Lombardía" },
   "Emilia-Romagna": { hr: "Emilia-Romagna", en: "Emilia-Romagna", it: "Emilia-Romagna", fr: "Émilie-Romagne", de: "Emilia-Romagna", sl: "Emilija - Romanja", es: "Emilia-Romaña" },
   "Romagna": { hr: "Romanja", en: "Romagna", it: "Romagna", fr: "Romagne", de: "Romagna", sl: "Romanja", es: "Romaña" },
-  "Friuli": { hr: "Friuli", en: "Friuli", it: "Friuli", fr: "Frioul", de: "Friaul", sl: "Furlanija", es: "Friuli" },
-  "Friuli Isonzo": { hr: "Furlanija Isonzo", en: "Friuli Isonzo", it: "Friuli Isonzo", fr: "Frioul Isonzo", de: "Friaul Isonzo", sl: "Furlanija Soča", es: "Friuli Isonzo" },
+  /* Croatian says Furlanija, the same word the Croatian notes and blurbs use.
+     It said "Friuli" here until 2026-08-01, so one Croatian card read "Friuli"
+     in the region line and "Furlanija" in the note two lines above it.
+     "Friuli Isonzo" is deliberately NOT here: it is a DOC, and appellations
+     are shown as the label spells them (see the comment above). Its exonyms
+     live in REGION_ALIAS so search still finds them. */
+  "Friuli": { hr: "Furlanija", en: "Friuli", it: "Friuli", fr: "Frioul", de: "Friaul", sl: "Furlanija", es: "Friuli" },
   "Alto Adige": { hr: "Alto Adige", en: "Alto Adige", it: "Alto Adige", fr: "Haut-Adige", de: "Südtirol", sl: "Južna Tirolska", es: "Alto Adigio" },
   "Alsace": { hr: "Alsace", en: "Alsace", it: "Alsazia", fr: "Alsace", de: "Elsass", sl: "Alzacija", es: "Alsacia" },
   "Loire": { hr: "Loire", en: "Loire", it: "Loira", fr: "Loire", de: "Loire", sl: "Loara", es: "Loira" },
@@ -1696,6 +1701,8 @@ const REGION_ALIAS = {
   "Rheinhessen":     ["Rajnska Hesija", "Renska Hessija", "Hesse rhenane"],
   "Alto Adige":      ["Južni Tirol", "Juzni Tirol", "Sudtirol", "Südtirol", "Tirol"],
   "Friuli":          ["Furlanija", "Friulija"],
+  "Friuli Isonzo":   ["Furlanija Isonzo", "Frioul Isonzo", "Friaul Isonzo", "Soča", "Isonzo"],
+  "Collio":          ["Brda", "Goriško Collio", "Collio Goriziano"],
   "Castilla y León": ["Kastilja i León", "Kastilja i Leon", "Kastilija"],
   "Toscana":         ["Toskana", "Tuscany", "Toscane"],
   "Piemonte":        ["Pijemont", "Piedmont", "Piemont", "Piamonte"],

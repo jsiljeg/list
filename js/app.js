@@ -518,8 +518,12 @@ const SEARCH_ALIAS = {
   "sauvignon blanc": "长相思",
   /* Pure grape synonyms, so they belong on the grape (unlike "brunello",
      which names a place). Dropping "Sauvignonasse" from Simčič's grape
-     field would otherwise have made the word findable nowhere. */
-  "friulano": "sauvignonasse sauvignon vert tocai tocai friulano 弗留拉诺",
+     field would otherwise have made the word findable nowhere.
+     "Tocai" and "Tokaj" are both here on purpose: no guest-facing text spells
+     the grape Tocai any more (the notes tell the story as Tokaj, so that
+     JAKOT reads as its reversal), but both spellings are on older labels and
+     merchants' lists, and a guest who types either must land on the wine. */
+  "friulano": "sauvignonasse sauvignon vert tocai tocai friulano tokaj tokaji jakot zeleni sauvignon 弗留拉诺",
   "syrah": "shiraz 西拉",
   "nebbiolo": "内比奥罗",
   /* "brunello" is deliberately NOT here. It is a Montalcino synonym for
@@ -1194,7 +1198,13 @@ const LANG_GRAPE = {
   en: { "Malvazija istarska": "Malvasia Istriana" },
   fr: { "Malvazija istarska": "Malvasia Istriana" },
   de: { "Malvazija istarska": "Malvasia Istriana" },
-  es: { "Malvazija istarska": "Malvasía istriana" }
+  es: { "Malvazija istarska": "Malvasía istriana" },
+  /* Slovenia's own name for the grape everyone else calls Friulano. It was
+     Sauvignonasse / Zeleni sauvignon after the 2007 ban and officially became
+     Jakot in 2013 — so a Slovenian guest reading Prinčič's "Jakot 2019" or
+     Simčič's "Sauvignon Vert" sees the variety under the name they use, which
+     is the settled rule. The wine's own name is never touched. */
+  sl: { "Friulano": "Jakot" }
 };
 function langTokens(str, map) {
   return str
