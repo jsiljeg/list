@@ -10689,7 +10689,7 @@
     "cask": [
      "unaged"
     ],
-    "alcohol": "",
+    "alcohol": "39.17",
     "aromas": [
      "juniper",
      "pine_needles",
@@ -10734,7 +10734,7 @@
     "cask": [
      "unaged"
     ],
-    "alcohol": "",
+    "alcohol": "40",
     "aromas": [
      "juniper",
      "cubeb_pepper",
@@ -11140,7 +11140,7 @@
     "cask": [
      "unaged"
     ],
-    "alcohol": "",
+    "alcohol": "46",
     "aromas": [
      "roasted_agave",
      "campfire_smoke",
@@ -11669,7 +11669,7 @@
      "ex_bourbon",
      "ex_sherry_oloroso"
     ],
-    "alcohol": "",
+    "alcohol": "48",
     "aromas": [
      "pear",
      "honey",
@@ -12154,7 +12154,7 @@
     "cask": [
      "ex_bourbon"
     ],
-    "alcohol": "",
+    "alcohol": "60",
     "aromas": [
      "overripe_banana",
      "tar",
@@ -12252,7 +12252,7 @@
     "cask": [
      "refill"
     ],
-    "alcohol": "",
+    "alcohol": "57.5",
     "aromas": [
      "grass",
      "honey",
@@ -12597,7 +12597,7 @@
     "cask": [
      "french_oak"
     ],
-    "alcohol": "",
+    "alcohol": "55.2",
     "bottler": "Through the Grapevine",
     "aromas": [
      "dried_fruit",
@@ -12646,7 +12646,7 @@
     "cask": [
      "french_oak"
     ],
-    "alcohol": "",
+    "alcohol": "47",
     "bottler": "Through the Grapevine",
     "aromas": [
      "candied_orange",
@@ -12791,7 +12791,7 @@
     "cask": [
      "unaged"
     ],
-    "alcohol": "",
+    "alcohol": "40",
     "aromas": [
      "pear",
      "white_flowers",
@@ -13126,7 +13126,7 @@
     "cask": [
      "unaged"
     ],
-    "alcohol": "",
+    "alcohol": "40",
     "aromas": [
      "grass",
      "white_flowers",
@@ -13172,7 +13172,7 @@
     "cask": [
      "french_oak"
     ],
-    "alcohol": "",
+    "alcohol": "43",
     "aromas": [
      "vanilla",
      "toffee",
@@ -13221,7 +13221,7 @@
      "french_oak"
     ],
     "age": "1.5",
-    "alcohol": "",
+    "alcohol": "43",
     "aromas": [
      "dried_fruit",
      "walnut",
@@ -13412,7 +13412,7 @@
     "cask": [
      "unaged"
     ],
-    "alcohol": "",
+    "alcohol": "35",
     "aromas": [
      "wormwood",
      "gentian",
@@ -13502,7 +13502,7 @@
     "base": [
      "barley_hops"
     ],
-    "alcohol": "",
+    "alcohol": "4.8",
     "aromas": [
      "hops",
      "bread",
