@@ -518,8 +518,12 @@ const SEARCH_ALIAS = {
   "sauvignon blanc": "长相思",
   /* Pure grape synonyms, so they belong on the grape (unlike "brunello",
      which names a place). Dropping "Sauvignonasse" from Simčič's grape
-     field would otherwise have made the word findable nowhere. */
-  "friulano": "sauvignonasse sauvignon vert tocai tocai friulano 弗留拉诺",
+     field would otherwise have made the word findable nowhere.
+     "Tocai" and "Tokaj" are both here on purpose: no guest-facing text spells
+     the grape Tocai any more (the notes tell the story as Tokaj, so that
+     JAKOT reads as its reversal), but both spellings are on older labels and
+     merchants' lists, and a guest who types either must land on the wine. */
+  "friulano": "sauvignonasse sauvignon vert tocai tocai friulano tokaj tokaji jakot zeleni sauvignon 弗留拉诺",
   "syrah": "shiraz 西拉",
   "nebbiolo": "内比奥罗",
   /* "brunello" is deliberately NOT here. It is a Montalcino synonym for
@@ -598,6 +602,20 @@ function itemHay(item) {
     for (const raw of String(ins.grape || "").split(",")) {
       const tok = raw.trim().replace(/\s*\d+(?:[.,]\d+)?\s*%$/, "");
       if (ZH_GRAPE[tok]) parts.push(ZH_GRAPE[tok]);
+    }
+  }
+  /* A spirit has no grape, so without this a guest typing "rum", "mezcal",
+     "Islay" or "mizunara" found nothing — the words only exist as keys until
+     something renders them. Every language's rendering goes in, the same way
+     the country names above do, because the search box is one box for eight
+     languages. */
+  if (ins.kind === "spirit" && typeof SPIRIT_I18N !== "undefined") {
+    for (const l of LANGS) {
+      const s = SPIRIT_I18N[l.code];
+      if (!s) continue;
+      if (s.classes[ins.class]) parts.push(s.classes[ins.class]);
+      for (const [dict, keys] of [["bases", ins.base], ["stills", ins.still], ["casks", ins.cask]])
+        for (const k of keys || []) if (s[dict][k]) parts.push(s[dict][k]);
     }
   }
   const joined = parts.filter(Boolean).join(" ").toLowerCase();
@@ -786,6 +804,26 @@ function dishesForWine(ins) {
   return scored.slice(0, 2).map((x) => x.dish);
 }
 
+/* ---------- spirits ----------
+   A spirit card answers different questions from a wine card — what it was
+   made from, what still, what wood, how long — so its vocabulary lives in
+   js/spirits.js rather than doubling js/i18n.js. Everything the two have in
+   common (aromas, pairings, countries, the note) still comes from i18n.js;
+   these two helpers just look in the spirit dictionary first.
+
+   Both tolerate js/spirits.js being absent. It is loaded before app.js in
+   index.html, but a spirit-free venue list should not need the file at all. */
+function sT() {
+  if (typeof SPIRIT_I18N === "undefined") return null;
+  return SPIRIT_I18N[lang] || SPIRIT_I18N.en || null;
+}
+function spiritTerm(dict, key, fallback) {
+  const s = sT();
+  if (s && s[dict] && s[dict][key]) return s[dict][key];
+  if (fallback && fallback[key]) return fallback[key];
+  return key;
+}
+
 /* ---------- detail modal ---------- */
 function openDetail(ref, back, scope) {
   detailScope = scope || null;
@@ -801,7 +839,18 @@ function openDetail(ref, back, scope) {
   // Formal region name (localized) + country, always.
   const region = [esc(localizeRegion(ins.region)), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
 
-  const glass = glassFor(ins.style, ins.grape, ins.glass, ins.region);
+  /* A bottle is either a wine or a spirit, and the two share the frame but not
+     the fields. `kind` is the only switch: no `kind` means wine, which is what
+     every one of the 365 wines already says by saying nothing. */
+  const spirit = ins.kind === "spirit";
+  const su = (sT() || {}).ui || {};
+  const slist = (keys, dict) => (keys || []).map((k) => spiritTerm(dict, k)).join(", ");
+  const glass = spirit
+    ? (typeof vesselFor === "function" ? vesselFor(ins.class, ins.vessel) : null)
+    : glassFor(ins.style, ins.grape, ins.glass, ins.region);
+  const glassSvg = spirit
+    ? (glass && typeof SPIRIT_VESSELS !== "undefined" ? SPIRIT_VESSELS[glass] : "")
+    : (glass ? GLASS_ICONS[glass] : "");
   const noteText = item.note && (item.note[lang] || item.note.en || item.note.hr);
   $("modal-body").innerHTML = `
     ${back ? `<button class="detail-back" type="button">${esc(t.helper.backToWines)}</button>` : ""}
@@ -810,18 +859,35 @@ function openDetail(ref, back, scope) {
         <div class="detail-name">${esc(itemName(item))}${wineZh(itemName(item)) ? ` <span class="zh-gloss">（${wineZh(itemName(item))}）</span>` : ""}</div>
         ${item.producer ? `<div class="detail-producer">${esc(item.producer)}${producerZh(item.producer) ? ` <span class="zh-gloss">（${producerZh(item.producer)}）</span>` : ""}</div>` : ""}
       </div>
-      ${glass ? `<div class="detail-glass">${GLASS_ICONS[glass]}</div>` : ""}
+      ${glassSvg ? `<div class="detail-glass">${glassSvg}</div>` : ""}
     </div>
     ${item.recommended ? `<div class="detail-rec">★ ${esc(t.ui.recommended)}</div>` : ""}
     ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
     ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(criticName(r.critic))}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
-    <div class="detail-style">${esc(t.styles[ins.style] || "")}${ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : ""}${ins.sweetness && t.sweetness ? " · " + esc(t.sweetness[ins.sweetness] || ins.sweetness) : ""}</div>
+    <div class="detail-style">${spirit
+      ? esc(spiritTerm("classes", ins.class))
+      : esc(t.styles[ins.style] || "") + (ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : "") + (ins.sweetness && t.sweetness ? " · " + esc(t.sweetness[ins.sweetness] || ins.sweetness) : "")}</div>
     ${noteText ? (item.notePlain
       ? `<div class="detail-note">${esc(noteText)}</div>`
       : `<div class="detail-note">„${esc(noteText)}“ <span class="detail-note-sig">— ${esc(item.noteSig || "Filho")}</span></div>`) : ""}
     <div class="detail-grid">
+      ${spirit ? `
+      ${field(su.base, esc(slist(ins.base, "bases")))}
+      ${field(t.ui.region, region)}
+      ${field(su.still, esc(slist(ins.still, "stills")))}
+      ${field(su.cask, esc(slist(ins.cask, "casks")))}
+      ${field(su.age, ins.age ? esc(ins.age) + " " + esc(su.years || "") : (ins.age === 0 ? esc(su.noAge || "") : ""))}
+      ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + " % vol." : "")}
+      ${/* Independent bottlings are half this shelf — the distillery made it,
+            somebody else chose the cask and put their name on it. A company
+            name is not translated, so this one is a plain string. */
+        field(su.bottler, ins.bottler ? esc(ins.bottler) : "")}
+      ${field(t.ui.aromas, esc((ins.aromas || []).map((k) => spiritTerm("aromas", k, t.aromas)).join(", ")), true)}
+      ${field(su.serve, esc(slist(ins.serve, "serves")), true)}
+      ${field(t.ui.pairings, esc((ins.pairings || []).map((k) => spiritTerm("pairings", k, t.pairings)).join(", ")), true)}
+      ` : `
       ${field(t.ui.grape, esc(localizeGrape(ins.grape)))}
       ${field(t.ui.region, region)}
       ${field(t.ui.body, esc(t.bodies[ins.body] || ins.body))}
@@ -829,6 +895,7 @@ function openDetail(ref, back, scope) {
       ${field(t.ui.temp, ins.temp ? esc(ins.temp) + " °C" : "")}
       ${field(t.ui.aromas, esc(list(ins.aromas, t.aromas)), true)}
       ${field(t.ui.pairings, esc(list(ins.pairings, t.pairings)), true)}
+      `}
       ${field(t.ui.musicPairing, item.music ? esc(item.music) : "", true)}
     </div>
     ${(() => {
@@ -840,9 +907,15 @@ function openDetail(ref, back, scope) {
       // for wines that don't come from where the domaine is based.
       const terroir = item.terroir !== undefined ? item.terroir : info.region;
       const ter = terroir ? `<div class="detail-terroir"><span class="detail-label">${esc(t.ui.terroir)}</span> ${esc(localizeRegion(terroir))}</div>` : "";
-      return `<div class="detail-winemaker"><div class="detail-label">${esc(t.ui.winemaker)}${item.producer ? " · " + esc(item.producer) : ""}</div><p>${esc(blurb)}</p>${ter}</div>`;
+      /* "O vinaru" on a rum reads as a mistake, so the same block is labelled
+         "the distillery" when the bottle is a spirit. Terroir is suppressed
+         there outright: a distillery's address is not a vineyard, and printing
+         one under that heading is the exact error CLAUDE.md warns about. */
+      const label = spirit ? (su.distillery || t.ui.winemaker) : t.ui.winemaker;
+      return `<div class="detail-winemaker"><div class="detail-label">${esc(label)}${item.producer ? " · " + esc(item.producer) : ""}</div><p>${esc(blurb)}</p>${spirit ? "" : ter}</div>`;
     })()}
     ${(() => {
+      if (spirit) return "";
       const dishes = dishesForWine(ins);
       if (!dishes.length) return "";
       return `<div class="detail-dishes"><span class="detail-label">${esc(t.ui.pairsWith)}</span>${dishes.map((dn) => `<span class="dish-chip">${esc(dn.name[lang] || dn.name.en || dn.name.hr)}</span>`).join("")}</div>`;
@@ -1194,7 +1267,13 @@ const LANG_GRAPE = {
   en: { "Malvazija istarska": "Malvasia Istriana" },
   fr: { "Malvazija istarska": "Malvasia Istriana" },
   de: { "Malvazija istarska": "Malvasia Istriana" },
-  es: { "Malvazija istarska": "Malvasía istriana" }
+  es: { "Malvazija istarska": "Malvasía istriana" },
+  /* Slovenia's own name for the grape everyone else calls Friulano. It was
+     Sauvignonasse / Zeleni sauvignon after the 2007 ban and officially became
+     Jakot in 2013 — so a Slovenian guest reading Prinčič's "Jakot 2019" or
+     Simčič's "Sauvignon Vert" sees the variety under the name they use, which
+     is the settled rule. The wine's own name is never touched. */
+  sl: { "Friulano": "Jakot" }
 };
 function langTokens(str, map) {
   return str

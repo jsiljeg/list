@@ -82,7 +82,7 @@ hr: {
     liqueur: "Likeri", beer: "Pivo", water: "Mineralna voda", tonic: "Tonik",
     juice: "Sokovi i bezalkoholna pića", coffee: "Kava"
   },
-  countries: { HR: "Hrvatska", DE: "Njemačka", AT: "Austrija", FR: "Francuska", IT: "Italija", ES: "Španjolska", SI: "Slovenija", US: "SAD", CN: "Kina" },
+  countries: { HR: "Hrvatska", DE: "Njemačka", AT: "Austrija", FR: "Francuska", IT: "Italija", ES: "Španjolska", SI: "Slovenija", US: "SAD", CN: "Kina", SCT: "Škotska", IE: "Irska", JP: "Japan", TW: "Tajvan", MX: "Meksiko", JM: "Jamajka", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australija", CH: "Švicarska", LV: "Latvija" },
   styles: {
     sparkling: "Pjenušavo vino", sparkling_rose: "Pjenušavi rosé",
     champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs", champagne_bdn: "Champagne · Blanc de Noirs",
@@ -208,7 +208,7 @@ en: {
     liqueur: "Liqueurs", beer: "Beer", water: "Mineral water", tonic: "Tonic water",
     juice: "Juices & soft drinks", coffee: "Coffee"
   },
-  countries: { HR: "Croatia", DE: "Germany", AT: "Austria", FR: "France", IT: "Italy", ES: "Spain", SI: "Slovenia", US: "USA", CN: "China" },
+  countries: { HR: "Croatia", DE: "Germany", AT: "Austria", FR: "France", IT: "Italy", ES: "Spain", SI: "Slovenia", US: "USA", CN: "China", SCT: "Scotland", IE: "Ireland", JP: "Japan", TW: "Taiwan", MX: "Mexico", JM: "Jamaica", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australia", CH: "Switzerland", LV: "Latvia" },
   styles: {
     sparkling: "Sparkling wine", sparkling_rose: "Sparkling rosé",
     champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs", champagne_bdn: "Champagne · Blanc de Noirs",
@@ -334,7 +334,7 @@ it: {
     liqueur: "Liquori", beer: "Birra", water: "Acqua minerale", tonic: "Acqua tonica",
     juice: "Succhi e bibite", coffee: "Caffè"
   },
-  countries: { HR: "Croazia", DE: "Germania", AT: "Austria", FR: "Francia", IT: "Italia", ES: "Spagna", SI: "Slovenia", US: "Stati Uniti", CN: "Cina" },
+  countries: { HR: "Croazia", DE: "Germania", AT: "Austria", FR: "Francia", IT: "Italia", ES: "Spagna", SI: "Slovenia", US: "Stati Uniti", CN: "Cina", SCT: "Scozia", IE: "Irlanda", JP: "Giappone", TW: "Taiwan", MX: "Messico", JM: "Giamaica", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australia", CH: "Svizzera", LV: "Lettonia" },
   styles: {
     sparkling: "Spumante", sparkling_rose: "Spumante rosato",
     champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs", champagne_bdn: "Champagne · Blanc de Noirs",
@@ -460,7 +460,7 @@ fr: {
     liqueur: "Liqueurs", beer: "Bière", water: "Eau minérale", tonic: "Tonic",
     juice: "Jus et boissons sans alcool", coffee: "Café"
   },
-  countries: { HR: "Croatie", DE: "Allemagne", AT: "Autriche", FR: "France", IT: "Italie", ES: "Espagne", SI: "Slovénie", US: "États-Unis", CN: "Chine" },
+  countries: { HR: "Croatie", DE: "Allemagne", AT: "Autriche", FR: "France", IT: "Italie", ES: "Espagne", SI: "Slovénie", US: "États-Unis", CN: "Chine", SCT: "Écosse", IE: "Irlande", JP: "Japon", TW: "Taïwan", MX: "Mexique", JM: "Jamaïque", HT: "Haïti", BB: "Barbade", GD: "Grenade", AU: "Australie", CH: "Suisse", LV: "Lettonie" },
   styles: {
     sparkling: "Vin effervescent", sparkling_rose: "Effervescent rosé",
     champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs", champagne_bdn: "Champagne · Blanc de Noirs",
@@ -586,7 +586,7 @@ de: {
     liqueur: "Liköre", beer: "Bier", water: "Mineralwasser", tonic: "Tonic Water",
     juice: "Säfte & Softdrinks", coffee: "Kaffee"
   },
-  countries: { HR: "Kroatien", DE: "Deutschland", AT: "Österreich", FR: "Frankreich", IT: "Italien", ES: "Spanien", SI: "Slowenien", US: "USA", CN: "China" },
+  countries: { HR: "Kroatien", DE: "Deutschland", AT: "Österreich", FR: "Frankreich", IT: "Italien", ES: "Spanien", SI: "Slowenien", US: "USA", CN: "China", SCT: "Schottland", IE: "Irland", JP: "Japan", TW: "Taiwan", MX: "Mexiko", JM: "Jamaika", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australien", CH: "Schweiz", LV: "Lettland" },
   styles: {
     sparkling: "Schaumwein", sparkling_rose: "Rosé-Schaumwein",
     champagne: "Champagner", champagne_bdb: "Champagner · Blanc de Blancs", champagne_bdn: "Champagner · Blanc de Noirs",
@@ -712,7 +712,7 @@ zh: {
     liqueur: "利口酒", beer: "啤酒", water: "矿泉水", tonic: "汤力水",
     juice: "果汁与软饮", coffee: "咖啡"
   },
-  countries: { HR: "克罗地亚", DE: "德国", AT: "奥地利", FR: "法国", IT: "意大利", ES: "西班牙", SI: "斯洛文尼亚", US: "美国", CN: "中国" },
+  countries: { HR: "克罗地亚", DE: "德国", AT: "奥地利", FR: "法国", IT: "意大利", ES: "西班牙", SI: "斯洛文尼亚", US: "美国", CN: "中国", SCT: "苏格兰", IE: "爱尔兰", JP: "日本", TW: "台湾", MX: "墨西哥", JM: "牙买加", HT: "海地", BB: "巴巴多斯", GD: "格林纳达", AU: "澳大利亚", CH: "瑞士", LV: "拉脱维亚" },
   styles: {
     sparkling: "起泡酒", sparkling_rose: "桃红起泡酒",
     champagne: "香槟", champagne_bdb: "香槟 · 白中白", champagne_bdn: "香槟 · 黑中白",
@@ -890,7 +890,19 @@ sl: {
     "ES": "Španija",
     "SI": "Slovenija",
     "US": "ZDA",
-    "CN": "Kitajska"
+    "CN": "Kitajska",
+    "SCT": "Škotska",
+    "IE": "Irska",
+    "JP": "Japonska",
+    "TW": "Tajvan",
+    "MX": "Mehika",
+    "JM": "Jamajka",
+    "HT": "Haiti",
+    "BB": "Barbados",
+    "GD": "Grenada",
+    "AU": "Avstralija",
+    "CH": "Švica",
+    "LV": "Latvija"
   },
   "styles": {
     "sparkling": "Peneče vino",
@@ -1318,7 +1330,19 @@ es: {
     "ES": "España",
     "SI": "Eslovenia",
     "US": "EE. UU.",
-    "CN": "China"
+    "CN": "China",
+    "SCT": "Escocia",
+    "IE": "Irlanda",
+    "JP": "Japón",
+    "TW": "Taiwán",
+    "MX": "México",
+    "JM": "Jamaica",
+    "HT": "Haití",
+    "BB": "Barbados",
+    "GD": "Granada",
+    "AU": "Australia",
+    "CH": "Suiza",
+    "LV": "Letonia"
   },
   "styles": {
     "sparkling": "Espumoso",
@@ -1666,8 +1690,13 @@ const REGION_I18N = {
   "Lombardia": { hr: "Lombardija", en: "Lombardy", it: "Lombardia", fr: "Lombardie", de: "Lombardei", sl: "Lombardija", es: "Lombardía" },
   "Emilia-Romagna": { hr: "Emilia-Romagna", en: "Emilia-Romagna", it: "Emilia-Romagna", fr: "Émilie-Romagne", de: "Emilia-Romagna", sl: "Emilija - Romanja", es: "Emilia-Romaña" },
   "Romagna": { hr: "Romanja", en: "Romagna", it: "Romagna", fr: "Romagne", de: "Romagna", sl: "Romanja", es: "Romaña" },
-  "Friuli": { hr: "Friuli", en: "Friuli", it: "Friuli", fr: "Frioul", de: "Friaul", sl: "Furlanija", es: "Friuli" },
-  "Friuli Isonzo": { hr: "Furlanija Isonzo", en: "Friuli Isonzo", it: "Friuli Isonzo", fr: "Frioul Isonzo", de: "Friaul Isonzo", sl: "Furlanija Soča", es: "Friuli Isonzo" },
+  /* Croatian says Furlanija, the same word the Croatian notes and blurbs use.
+     It said "Friuli" here until 2026-08-01, so one Croatian card read "Friuli"
+     in the region line and "Furlanija" in the note two lines above it.
+     "Friuli Isonzo" is deliberately NOT here: it is a DOC, and appellations
+     are shown as the label spells them (see the comment above). Its exonyms
+     live in REGION_ALIAS so search still finds them. */
+  "Friuli": { hr: "Furlanija", en: "Friuli", it: "Friuli", fr: "Frioul", de: "Friaul", sl: "Furlanija", es: "Friuli" },
   "Alto Adige": { hr: "Alto Adige", en: "Alto Adige", it: "Alto Adige", fr: "Haut-Adige", de: "Südtirol", sl: "Južna Tirolska", es: "Alto Adigio" },
   "Alsace": { hr: "Alsace", en: "Alsace", it: "Alsazia", fr: "Alsace", de: "Elsass", sl: "Alzacija", es: "Alsacia" },
   "Loire": { hr: "Loire", en: "Loire", it: "Loira", fr: "Loire", de: "Loire", sl: "Loara", es: "Loira" },
@@ -1696,6 +1725,8 @@ const REGION_ALIAS = {
   "Rheinhessen":     ["Rajnska Hesija", "Renska Hessija", "Hesse rhenane"],
   "Alto Adige":      ["Južni Tirol", "Juzni Tirol", "Sudtirol", "Südtirol", "Tirol"],
   "Friuli":          ["Furlanija", "Friulija"],
+  "Friuli Isonzo":   ["Furlanija Isonzo", "Frioul Isonzo", "Friaul Isonzo", "Soča", "Isonzo"],
+  "Collio":          ["Brda", "Goriško Collio", "Collio Goriziano"],
   "Castilla y León": ["Kastilja i León", "Kastilja i Leon", "Kastilija"],
   "Toscana":         ["Toskana", "Tuscany", "Toscane"],
   "Piemonte":        ["Pijemont", "Piedmont", "Piemont", "Piamonte"],

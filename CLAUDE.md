@@ -139,6 +139,29 @@ and the label is already on the table. The wine's own *name* is never touched
 - Open: `Muscat` is stored bare on Geržinić Muškat 2020, and bare Muscat is
   ambiguous too (blanc à petits grains / Ottonel / Alexandria). Needs the label.
 
+**One name for the name that was lost** (owner, 2026-08-01). The Friulano story
+is told with **Tokaj** everywhere in guest text — never *Tocai*. The notes used
+to mix the two, saying the grape was called "Tocai" and then that Jakot is
+"Tokaj backwards", which makes the anagram — the entire reason Prinčič's bottle
+is called that — unreadable. Prinčič's note now spells the reversal out in all
+eight languages, and a test requires every language of it to name both JAKOT and
+TOKAJ. *Tocai* survives only in `SEARCH_ALIAS`, next to tokaj/tokaji/jakot, so
+either spelling on a merchant's list still finds the wine. Slovenian renders the
+variety as **Jakot** (`LANG_GRAPE.sl`), its official Slovenian name since 2013.
+Dates worth keeping: the ban took effect 31 March 2007, out of a 1993 EU–Hungary
+agreement; the name Jakot was coined in Collio, and Slovenia adopted it later.
+
+**Friuli is one token, and Croatian says Furlanija.** `REGION_I18N["Friuli"]`
+said "Friuli" in Croatian while every Croatian note two lines above said
+"Furlanija" — the exonym now follows the language, as it does everywhere else.
+`Friuli Isonzo` was **removed** from REGION_I18N: it is a DOC, and appellations
+are shown as the label spells them; its exonyms moved to `REGION_ALIAS` so
+search still reaches them. The ladders were made unanimous — Vie di Romans
+`Mariano del Friuli, Friuli Isonzo, Friuli`, Prinčič `Oslavia, Collio, Friuli`
+(matching Radikon, who already had all three rungs). Damijan deliberately stays
+at two, `Gorizia, Friuli`: he withdrew from the Collio DOC after a tasting panel
+judged a wine too dark, and Monte Calvario is his own hill.
+
 **Critic aliases** (2026-07-31): `CRITIC_ALIAS` in js/app.js normalises on the
 way to the screen — "Wine Advocate", "RP", "JS" and friends resolve to the
 canonical name. The owner pastes what the merchant wrote; the list still says
@@ -376,6 +399,66 @@ The wide Chardonnay glass is the oaked-white glass: `white_rich` only, which is
 the white Burgundy shelf plus the barrel-aged Viura, Savagnin and Alsace Pinot
 Gris beside it. Steely Chablis (`white_mineral`) and unoaked Chardonnay
 (`white_fresh`) take the Riesling glass.
+
+## Spirits get cards too (2026-08-01)
+
+The whole spirits shelf — 63 bottles across `spirits` and `rakija-beer` — was
+name-and-price only. It now carries insight cards like the wines, driven by
+`insight.kind === "spirit"`, the single switch in `openDetail()`; no `kind`
+means wine, which is what all 365 wines already say by saying nothing.
+
+**The vocabulary lives in `js/spirits.js`, not `js/i18n.js.`** A spirit answers
+different questions: `base`, `still`, `cask`, `age`, `serve`, and a `class` that
+replaces the wine style line. Those are eighty-odd keys × 8 languages, and
+folding them into i18n.js would have doubled a file that serves ten times as
+many bottles. What the two share — aromas, pairings, countries, the note — still
+comes from i18n.js, and `SPIRIT_I18N[lang].aromas` is read *before* `t.aromas`,
+so peat and koji can be added without touching the wine dictionaries.
+`validate.mjs` fails the deploy on an unknown key, same as for wines.
+
+- **Countries were added to i18n.js**, not to the spirit file: SCT, IE, JP, TW,
+  MX, JM, HT, BB, GD, AU, CH, LV. That keeps the region line, the search
+  haystack and validation branch-free. No flags are drawn for them —
+  `COUNTRY_FLAGS` misses gracefully, and Barbados' trident is not worth hand-drawing.
+- **`country` may be `""`** for a spirit, unlike a wine: Veritas is a
+  Barbados-and-Jamaica blend and belongs to neither.
+- **Terroir is suppressed on a spirit card outright.** A distillery's address is
+  not a vineyard, and printing one under that heading is the exact error the
+  terroir rule exists to prevent.
+- **Search needed teaching.** A spirit has no grape, so "rum", "mezcal",
+  "Islay" and "mizunara" matched nothing until `itemHay()` started pushing every
+  language's rendering of class/base/still/cask into the haystack.
+
+**The vessels are drawn, not traced — with one measured rule.** There is no
+photo of the house tumbler, so unlike the wine glasses these are the standard
+geometries. That is defensible where a wine glass is not: a wine shape encodes a
+claim about a grape, a rocks glass is a cylinder. But **the viewBox aspect must
+be the vessel's real aspect**, because every icon is normalised to one 60px
+height and the width is the only thing left to carry the shape. Drawn without
+that rule the highball came out 4:1 and read as a test tube and the tumbler 2:1
+as a short vase; at the real 150×65 and 90×85 they are unmistakable. The wine
+glasses already obey it (Veloce: 247×92mm, viewBox 42×100). Millimetres and
+viewBoxes are in the file header. `scripts/shot.py` has a `spirit` state, and
+`PW_CHROMIUM` points it at a Chromium whose build the installed playwright
+package doesn't match.
+
+**A house story goes in producers.json, never in the note.** Six of them were
+first pasted onto every bottle their house makes, so a guest tapping three
+Mulassanos read the same paragraph three times. Distillery blurbs now exist for
+Wise Grus, Clairin, Hampden, Lorenzo Inga, Kavalan, Mulassano and Foursquare;
+the note is what distinguishes *that* bottle. Guarded by a test. Adding the
+Clairin record also fixed a live bug: `producerInfo()` matches by longest
+containing substring, and "Clairin" contains "Clai", so all three Haitian rums
+were showing Giorgio Clai's **winery** blurb.
+
+**Alcohol follows the wine rule** — printed on the bottle or a producer sheet,
+otherwise blank. Left blank on purpose: Kavalan Solist and the Whisky Sponge
+Jura (single casks, per-cask strength), Hampden Great House 2024, the three
+clairins, Bruxo, Redemption (the list doesn't say rye or bourbon), and most of
+the Wise Grus range. Open questions for the owner: whether "Papalin 7Y" is the
+Haiti or the Jamaica blend (recorded as Haiti), and what "LMDW Australia 2014"
+was distilled at — the label was not to hand, so the record names only the
+bottler.
 
 ## The library split (2026-07-31) — where the data lives now
 

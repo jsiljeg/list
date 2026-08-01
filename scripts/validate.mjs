@@ -19,6 +19,19 @@ vm.runInContext(
 );
 const { I18N, LANGS } = ctx;
 
+/* The spirits vocabulary lives in its own file for the reasons written at the
+   top of js/spirits.js. It gets the same treatment as the wine vocabulary: an
+   unknown key fails the deploy, because a card that renders "ex_bourbon" at a
+   guest is worse than no card. */
+const sctx = {};
+vm.createContext(sctx);
+vm.runInContext(
+  fs.readFileSync("js/spirits.js", "utf8") +
+    "\nthis.SPIRIT_I18N = SPIRIT_I18N; this.SPIRIT_VESSELS = SPIRIT_VESSELS; this.VESSEL_BY_CLASS = VESSEL_BY_CLASS;",
+  sctx
+);
+const { SPIRIT_I18N, SPIRIT_VESSELS, VESSEL_BY_CLASS } = sctx;
+
 let data, missing = [], orphans = [];
 try {
   ({ list: data, missing, orphans } = joinList());
@@ -55,6 +68,28 @@ for (const sec of data.sections) {
         }
         const ins = item.insight;
         if (!ins) continue;
+        if (ins.kind === "spirit") {
+          if (ins.vessel && !SPIRIT_VESSELS[ins.vessel]) errors.push(`${where}: unknown vessel "${ins.vessel}"`);
+          if (!VESSEL_BY_CLASS[ins.class]) errors.push(`${where}: class "${ins.class}" has no glass in VESSEL_BY_CLASS`);
+          for (const lc of langs) {
+            const s = SPIRIT_I18N[lc], t = I18N[lc];
+            if (!s) { errors.push(`js/spirits.js has no "${lc}"`); continue; }
+            /* Unlike a wine, a spirit may legitimately have no country: a blend
+               of Barbados and Jamaica belongs to neither, and an independent
+               bottling sometimes will not say. An empty string is that answer;
+               a wrong code still fails. */
+            if (ins.country && !t.countries[ins.country]) errors.push(`${lc}: unknown country "${ins.country}" (${where})`);
+            if (!s.classes[ins.class]) errors.push(`${lc}: unknown spirit class "${ins.class}" (${where})`);
+            for (const [dict, keys] of [["bases", ins.base], ["stills", ins.still], ["casks", ins.cask], ["serves", ins.serve]])
+              for (const k of keys || []) if (!s[dict][k]) errors.push(`${lc}: unknown ${dict} key "${k}" (${where})`);
+            /* Aromas and pairings may come from either dictionary: the spirits
+               file adds what wine never needed (peat, koji, cubeb pepper) and
+               everything else is shared with the wine cards. */
+            for (const a of ins.aromas || []) if (!s.aromas[a] && !t.aromas[a]) errors.push(`${lc}: unknown aroma "${a}" (${where})`);
+            for (const p of ins.pairings || []) if (!s.pairings[p] && !t.pairings[p]) errors.push(`${lc}: unknown pairing "${p}" (${where})`);
+          }
+          continue;
+        }
         for (const lc of langs) {
           const t = I18N[lc];
           if (!t.styles[ins.style]) errors.push(`${lc}: unknown style "${ins.style}" (${where})`);

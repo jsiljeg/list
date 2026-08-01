@@ -271,6 +271,49 @@ Ako vino samo trenutno nemate, ne brišite ga — koristite postupak iznad.
   `seafood`, `pasta`, `cheese_hard`… Ako upišete nepostojeću ključnu
   riječ, provjera će vas upozoriti i ništa se neće objaviti.
 
+### Kartica za žestoko piće (rum, viski, gin, rakija…)
+
+Žestoka pića imaju svoju karticu, kao i vina, samo s drugim poljima — sirovina,
+destilacija, odležavanje, starost, kako se pije. Zapis u `library/wines.json`
+izgleda ovako:
+
+```json
+"hampden-estate--hlcf-classic-4y": {
+ "name": "HLCF Classic 4Y",
+ "producer": "Hampden Estate",
+ "insight": {
+  "kind": "spirit",          <-- OBAVEZNO, inače se prikazuje kao vino
+  "class": "rum_jamaican",   <-- redak stila ispod cijene
+  "region": "Trelawny",
+  "country": "JM",
+  "base": ["molasses"],      <-- sirovina
+  "still": ["double_retort_pot"],
+  "cask": ["ex_bourbon"],    <-- odležavanje
+  "age": "4",
+  "alcohol": "60",
+  "bottler": "Velier",       <-- neobavezno, za nezavisna punjenja
+  "aromas": ["overripe_banana", "varnish"],
+  "serve": ["neat", "drop_of_water"],
+  "pairings": ["cigars", "spicy"]
+ },
+ "note": { "hr": "…", "en": "…" },
+ "notePlain": true
+}
+```
+
+**Sve vrijednosti u `class`, `base`, `still`, `cask` i `serve` moraju postojati
+u `js/spirits.js`, i to na svih osam jezika.** Ondje su i posebne arome koje
+vino nema (treset, koji, kubeba papar). Ako dodajete novu vrijednost, dodajte
+je u svih osam jezičnih blokova — `node scripts/validate.mjs` neće pustiti
+objavu ako nedostaje ijedan.
+
+Čašu bira `class` sam (VESSEL_BY_CLASS u `js/spirits.js`); ako neko piće treba
+drugu čašu, dodajte mu `"vessel": "tumbler"` u `insight`.
+
+Priču o destileriji **ne pišite u svako piće** — ide u `data/producers.json`,
+isto kao tekst o vinaru, i prikazuje se ispod svih pića te kuće. `note` je za
+ono što razlikuje baš tu bocu.
+
 ## Ostalo što se može urediti
 
 - **Priča na naslovnici i svi prijevodi**: `js/i18n.js` (sekcija `story`

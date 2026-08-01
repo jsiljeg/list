@@ -400,6 +400,7 @@
     "Riparbella": "里帕尔贝拉",
     "Illasi": "伊拉西",
     "Marano di Valpolicella": "马拉诺",
+    "Mariano del Friuli": "马里亚诺-德尔弗留利",
     "Negrar": "内格拉尔",
     "Collio": "科利奥",
     "Korčula": "科尔丘拉",
