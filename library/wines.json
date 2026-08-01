@@ -10659,256 +10659,2998 @@
    ]
   },
   "elit--stolichnaya": {
-   "name": "Stolichnaya",
-   "producer": "Elit"
+   "name": "elit",
+   "producer": "Stolichnaya",
+   "insight": {
+    "region": "Riga",
+    "country": "LV",
+    "base": [
+     "grain_wheat_rye"
+    ],
+    "still": [
+     "column"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "bread",
+     "citrus",
+     "white_pepper",
+     "creamy"
+    ],
+    "serve": [
+     "freezer",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "caviar",
+     "oysters"
+    ],
+    "kind": "spirit",
+    "class": "vodka"
+   },
+   "note": {
+    "hr": "Votka se ne pravi dodavanjem nego oduzimanjem, a elit oduzima hladnoćom: destilat se spusti na −18 °C, na kojima se ono što smeta veže i ostane na filtru. Ozima pšenica i raž s crnice Tambova, destilirano i punjeno u Rigi. Iz zamrzivača, gusto kao svila.",
+    "en": "Vodka is made by taking away, not adding, and elit takes away with cold: the spirit is dropped to −18 °C, at which the harsh compounds bind and stay on the filter. Winter wheat and rye off the Tambov black earth, distilled and bottled in Riga. From the freezer it pours like silk.",
+    "it": "La vodka si fa togliendo, non aggiungendo, ed elit toglie con il freddo: il distillato scende a −18 °C, temperatura alla quale le asperità si legano e restano sul filtro. Grano invernale e segale della terra nera di Tambov, distillata e imbottigliata a Riga. Dal congelatore scende come seta.",
+    "fr": "Une vodka se fait en retirant, non en ajoutant, et elit retire par le froid : le distillat descend à −18 °C, température à laquelle les composés durs se fixent et restent sur le filtre. Blé d'hiver et seigle des terres noires de Tambov, distillée et embouteillée à Riga. Sortie du congélateur, elle coule comme de la soie.",
+    "de": "Wodka entsteht durch Weglassen, nicht durch Hinzufügen, und elit lässt mit Kälte weg: das Destillat geht auf −18 °C hinunter, wo sich das Raue bindet und im Filter bleibt. Winterweizen und Roggen von der Schwarzerde um Tambow, destilliert und abgefüllt in Riga. Aus dem Gefrierfach fließt er wie Seide.",
+    "zh": "伏特加靠减法而非加法成就，elit 用的是冷：酒液降到 −18 °C，粗糙的成分在这个温度上凝结，留在滤材里。原料是坦波夫黑土上的冬小麦与黑麦，在里加蒸馏装瓶。从冷冻室倒出来，稠得像丝。",
+    "sl": "Vodka nastane z odvzemanjem, ne z dodajanjem, elit pa odvzema s hladom: destilat spustijo na −18 °C, pri katerih se ostrine vežejo in ostanejo na filtru. Ozimna pšenica in rž s črnice Tambova, destilirano in polnjeno v Rigi. Iz zamrzovalnika teče kot svila.",
+    "es": "El vodka se hace quitando, no añadiendo, y elit quita con frío: el destilado baja a −18 °C, temperatura a la que lo áspero se fija y se queda en el filtro. Trigo de invierno y centeno de la tierra negra de Tambov, destilado y embotellado en Riga. Del congelador cae como seda."
+   },
+   "notePlain": true
   },
   "gibson-s--london-dry-gin": {
    "name": "London Dry Gin",
-   "producer": "Gibson's"
+   "producer": "Gibson's",
+   "insight": {
+    "region": "",
+    "country": "FR",
+    "base": [
+     "juniper_botanicals"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "37.5",
+    "aromas": [
+     "juniper",
+     "coriander_seed",
+     "angelica",
+     "citrus"
+    ],
+    "serve": [
+     "with_tonic",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "gin_london_dry"
+   },
+   "note": {
+    "hr": "London Dry nije mjesto nego pravilo: sve arome moraju proći kroz kotao zajedno s alkoholom, poslije destilacije ne smije se dodati ni šećer ni boja. Gibson's se drži tog pravila u Francuskoj — suh, borovica naprijed, napravljen da nestane u toniku i ostavi trag.",
+    "en": "London Dry is a rule, not a place: every aroma has to go through the still with the spirit, and nothing — no sugar, no colour — may be added afterwards. Gibson's keeps that rule in France: dry, juniper first, built to disappear into tonic and still leave a mark.",
+    "it": "London Dry è una regola, non un luogo: ogni aroma deve passare dall'alambicco insieme all'alcol e dopo la distillazione non si può aggiungere né zucchero né colore. Gibson's rispetta quella regola in Francia: secco, ginepro in testa, fatto per sparire nella tonica e lasciare comunque il segno.",
+    "fr": "London Dry est une règle, pas un lieu : tous les arômes doivent passer par l'alambic avec l'alcool, et rien — ni sucre ni colorant — ne peut être ajouté ensuite. Gibson's applique cette règle en France : sec, genièvre en tête, fait pour disparaître dans le tonic et y laisser tout de même sa marque.",
+    "de": "London Dry ist eine Vorschrift, kein Ort: alle Aromen müssen mit dem Alkohol durch die Blase, und danach darf nichts mehr dazu — kein Zucker, keine Farbe. Gibson's hält sich in Frankreich daran: trocken, Wacholder voran, gebaut, um im Tonic zu verschwinden und trotzdem eine Spur zu hinterlassen.",
+    "zh": "London Dry 是一条规矩，不是一个地方：所有香气都必须随酒液一同过蒸馏器，蒸馏之后不得再加糖、加色。Gibson's 在法国守着这条规矩：干、杜松子当先，天生就该消失在汤力水里，却仍留下痕迹。",
+    "sl": "London Dry ni kraj, ampak pravilo: vse arome morajo skozi kotel skupaj z alkoholom, po destilaciji se ne sme dodati ne sladkorja ne barve. Gibson's se tega pravila drži v Franciji: suh, brin spredaj, narejen tako, da izgine v toniku in vseeno pusti sled.",
+    "es": "London Dry es una regla, no un lugar: todos los aromas han de pasar por el alambique con el alcohol y después no puede añadirse nada, ni azúcar ni color. Gibson's cumple esa regla en Francia: seco, el enebro por delante, hecho para desaparecer en la tónica y aun así dejar huella."
+   },
+   "notePlain": true
   },
   "aura--karbun": {
    "name": "Karbun",
-   "producer": "Aura"
+   "producer": "Aura",
+   "insight": {
+    "region": "Buzet, Istra",
+    "country": "HR",
+    "base": [
+     "juniper_botanicals"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "juniper",
+     "pine_needles",
+     "herbs",
+     "white_pepper",
+     "citrus"
+    ],
+    "serve": [
+     "with_tonic",
+     "rocks"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "gin_contemporary"
+   },
+   "note": {
+    "hr": "Karbun je istarski za ugljen — komad ugljena se u rakiju stavljao da na sebe veže ono što ne valja, i Aura je od te navike napravila ime. Žitni destilat, borovina i dvadesetak začina, pa filtracija kroz aktivni ugljen. Zlato na World Spirits Awardsu 2021., iz podruma u Buzetu.",
+    "en": "Karbun is Istrian for coal — a lump of it went into the still-house spirit to bind whatever shouldn't be there, and Aura made a name out of the habit. Grain spirit, pine and some twenty botanicals, then filtration through activated charcoal. Gold at the World Spirits Awards 2021, out of a cellar in Buzet.",
+    "it": "Karbun è la parola istriana per carbone — se ne metteva un pezzo nell'acquavite perché legasse ciò che non andava, e Aura ne ha fatto un nome. Alcol di cereali, pino e una ventina di spezie, poi filtrazione su carbone attivo. Oro ai World Spirits Awards 2021, da una cantina di Buzet.",
+    "fr": "Karbun, c'est « charbon » en istrien — on en glissait un morceau dans l'eau-de-vie pour qu'il fixe ce qui ne devait pas y être, et Aura en a fait un nom. Alcool de grain, pin et une vingtaine d'aromates, puis filtration sur charbon actif. Or aux World Spirits Awards 2021, depuis une cave de Buzet.",
+    "de": "Karbun ist istrisch für Kohle — ein Stück davon kam in den Brand, damit es bindet, was nicht hineingehört, und Aura hat aus der Gewohnheit einen Namen gemacht. Getreidedestillat, Kiefer und rund zwanzig Gewürze, dann Filtration über Aktivkohle. Gold bei den World Spirits Awards 2021, aus einem Keller in Buzet.",
+    "zh": "Karbun 是伊斯特拉方言里的「炭」——过去人们往烈酒里放一块炭，让它把不该留下的东西吸走，Aura 把这个习惯变成了名字。谷物酒精、松与二十来种香料，再经活性炭过滤。2021 年世界烈酒大赛金奖，出自布泽特的一间酒窖。",
+    "sl": "Karbun je istrsko za oglje — kos so ga vrgli v žganje, da nase veže tisto, kar ne sodi vanj, in Aura je iz te navade naredila ime. Žitni destilat, bor in kakih dvajset začimb, nato filtracija skozi aktivno oglje. Zlato na World Spirits Awards 2021, iz kleti v Buzetu.",
+    "es": "Karbun es «carbón» en istriano — se echaba un trozo al aguardiente para que fijara lo que no debía estar ahí, y Aura hizo un nombre de esa costumbre. Alcohol de cereal, pino y una veintena de especias, luego filtración con carbón activo. Oro en los World Spirits Awards 2021, desde una bodega de Buzet."
+   },
+   "notePlain": true
   },
   "brick-gin--straight-organic-distilled-dry-gin": {
    "name": "Straight Organic Distilled Dry Gin",
-   "producer": "Brick Gin"
+   "producer": "Brick Gin",
+   "insight": {
+    "region": "Erfurt, Thüringen",
+    "country": "DE",
+    "base": [
+     "juniper_botanicals"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "juniper",
+     "cubeb_pepper",
+     "lemon_zest",
+     "citrus"
+    ],
+    "serve": [
+     "with_tonic",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "gin_contemporary"
+   },
+   "note": {
+    "hr": "Tri sastojka. Ne trideset, ne četrdeset sedam — tri: ekološka borovica, kubeba papar i svježi limun. Zlatna boja nije bojilo nego maceracija kubebe. Iz Erfurta, i dokaz da gin ne mora biti popis da bi imao karakter.",
+    "en": "Three botanicals. Not thirty, not forty-seven — three: organic juniper, cubeb pepper and fresh lemon. The golden colour is no additive, it is the cubeb maceration. From Erfurt, and proof that a gin needn't be a list to have a character.",
+    "it": "Tre botaniche. Non trenta, non quarantasette — tre: ginepro biologico, pepe cubebe e limone fresco. Il colore dorato non è un colorante ma la macerazione del cubebe. Da Erfurt, e la prova che un gin non deve essere un elenco per avere carattere.",
+    "fr": "Trois plantes. Pas trente, pas quarante-sept — trois : genièvre bio, poivre cubèbe et citron frais. La couleur dorée n'est pas un colorant mais la macération du cubèbe. D'Erfurt, et la preuve qu'un gin n'a pas besoin d'être une liste pour avoir du caractère.",
+    "de": "Drei Botanicals. Nicht dreißig, nicht siebenundvierzig — drei: Bio-Wacholder, Kubebenpfeffer und frische Zitrone. Die goldene Farbe ist kein Zusatz, sondern die Mazeration des Kubeben. Aus Erfurt, und der Beweis, dass ein Gin keine Liste sein muss, um Charakter zu haben.",
+    "zh": "三味植物。不是三十种，也不是四十七种——三种：有机杜松子、荜澄茄与新鲜柠檬。金色不是色素，是荜澄茄浸渍出来的。来自埃尔福特，证明金酒不必是一张清单才有性格。",
+    "sl": "Tri sestavine. Ne trideset, ne sedeminštirideset — tri: ekološki brin, kubebin poper in svež limona. Zlata barva ni barvilo, ampak maceracija kubebe. Iz Erfurta, in dokaz, da ginu ni treba biti seznam, da ima značaj.",
+    "es": "Tres botánicos. No treinta, no cuarenta y siete — tres: enebro ecológico, pimienta cubeba y limón fresco. El color dorado no es un colorante, es la maceración de la cubeba. De Erfurt, y la prueba de que una ginebra no necesita ser una lista para tener carácter."
+   },
+   "notePlain": true
   },
   "aviation--american-gin": {
    "name": "American Gin",
-   "producer": "Aviation"
+   "producer": "Aviation",
+   "insight": {
+    "region": "Portland, Oregon",
+    "country": "US",
+    "base": [
+     "juniper_botanicals"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "42",
+    "aromas": [
+     "lavender",
+     "cardamom",
+     "coriander_seed",
+     "orange_peel",
+     "anise",
+     "juniper"
+    ],
+    "serve": [
+     "in_cocktails",
+     "with_tonic"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "gin_contemporary"
+   },
+   "note": {
+    "hr": "Američki stil znači da borovica pjeva u zboru, a ne solo. Lavanda, kardamom, anis i suha kora naranče stoje uz nju kao ravnopravni glasovi — zbog toga Aviation ne siječe koktel nego ga veže. Portland, Oregon.",
+    "en": "The American style means juniper sings in the choir rather than solo. Lavender, cardamom, anise and dried orange peel stand beside it as equals — which is why Aviation doesn't cut through a cocktail so much as hold it together. Portland, Oregon.",
+    "it": "Lo stile americano vuole che il ginepro canti nel coro, non da solista. Lavanda, cardamomo, anice e scorza d'arancia essiccata gli stanno accanto da pari — per questo Aviation non taglia il cocktail, lo tiene insieme. Portland, Oregon.",
+    "fr": "Le style américain veut que le genièvre chante dans le chœur, pas en soliste. Lavande, cardamome, anis et écorce d'orange séchée l'accompagnent à égalité — c'est pourquoi Aviation ne tranche pas un cocktail, il le lie. Portland, Oregon.",
+    "de": "Der amerikanische Stil lässt den Wacholder im Chor singen statt solo. Lavendel, Kardamom, Anis und getrocknete Orangenschale stehen als Gleiche daneben — deshalb schneidet Aviation nicht durch einen Cocktail, sondern hält ihn zusammen. Portland, Oregon.",
+    "zh": "美式风格意味着杜松子在合唱里，而不是独唱。薰衣草、豆蔻、茴芹与干橙皮与它平起平坐——所以 Aviation 不是把鸡尾酒切开，而是把它系住。俄勒冈州波特兰。",
+    "sl": "Ameriški slog pomeni, da brin poje v zboru in ne solo. Sivka, kardamom, janež in suha pomarančna lupina stojijo ob njem kot enakovredni glasovi — zato Aviation koktajla ne reže, ampak ga poveže. Portland, Oregon.",
+    "es": "El estilo americano quiere que el enebro cante en el coro, no en solitario. Lavanda, cardamomo, anís y piel de naranja seca lo acompañan de igual a igual — por eso Aviation no corta un cóctel, lo sostiene. Portland, Oregón."
+   },
+   "notePlain": true
   },
   "monkey-47--schwarzwald-dry-gin": {
    "name": "Schwarzwald Dry Gin",
-   "producer": "Monkey 47"
+   "producer": "Monkey 47",
+   "insight": {
+    "region": "Schwarzwald",
+    "country": "DE",
+    "base": [
+     "juniper_botanicals"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "47",
+    "aromas": [
+     "juniper",
+     "lingonberry",
+     "pine_needles",
+     "citrus",
+     "pepper",
+     "herbs"
+    ],
+    "serve": [
+     "with_tonic",
+     "neat"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "gin_contemporary"
+   },
+   "note": {
+    "hr": "Četrdeset sedam sastojaka, četrdeset sedam posto — ali broj nije poanta. Poanta je brusnica iz Schwarzwalda, koju nema nitko drugi i koja ovom ginu daje kiselu, šumsku crtu ispod borovice. Recept vuče korijene iz poslijeratnog Berlina, a destilira se u crnošumskoj kući.",
+    "en": "Forty-seven botanicals, forty-seven percent — but the number isn't the point. The point is the Black Forest lingonberry nobody else has, which puts a tart, forest-floor line under the juniper. The recipe traces back to post-war Berlin; the still stands in a Black Forest farmhouse.",
+    "it": "Quarantasette botaniche, quarantasette per cento — ma il numero non è il punto. Il punto è il mirtillo rosso della Foresta Nera che nessun altro ha, e che mette sotto il ginepro una linea acidula di sottobosco. La ricetta risale alla Berlino del dopoguerra; l'alambicco sta in una casa colonica della Foresta Nera.",
+    "fr": "Quarante-sept plantes, quarante-sept degrés — mais le chiffre n'est pas l'essentiel. L'essentiel, c'est l'airelle rouge de la Forêt-Noire que personne d'autre n'a, et qui glisse sous le genièvre une ligne acidulée de sous-bois. La recette remonte au Berlin de l'après-guerre ; l'alambic est dans une ferme de la Forêt-Noire.",
+    "de": "Siebenundvierzig Botanicals, siebenundvierzig Prozent — aber die Zahl ist nicht der Punkt. Der Punkt ist die Schwarzwälder Preiselbeere, die sonst niemand hat und die unter den Wacholder eine säuerliche Waldbodenlinie legt. Das Rezept reicht ins Nachkriegsberlin zurück; die Brennblase steht auf einem Schwarzwaldhof.",
+    "zh": "四十七种植物，四十七度——但重点不在数字。重点是别人没有的黑森林越橘，它在杜松子底下垫了一条酸而带林地气息的线。配方可追溯到战后柏林；蒸馏器就在黑森林的一座农舍里。",
+    "sl": "Sedeminštirideset sestavin, sedeminštirideset odstotkov — a številka ni bistvo. Bistvo je brusnica iz Schwarzwalda, ki je nima nihče drug in ki pod brin položi kislo, gozdno črto. Recept sega v povojni Berlin; kotel stoji na črnogozdni kmetiji.",
+    "es": "Cuarenta y siete botánicos, cuarenta y siete grados — pero el número no es lo importante. Lo importante es el arándano rojo de la Selva Negra que nadie más tiene, y que pone bajo el enebro una línea ácida de suelo de bosque. La receta viene del Berlín de posguerra; el alambique está en una granja de la Selva Negra."
+   },
+   "notePlain": true
   },
   "mulassano--vermouth-bianco": {
    "name": "Vermouth Bianco",
-   "producer": "Mulassano"
+   "producer": "Mulassano",
+   "insight": {
+    "region": "Torino, Piemonte",
+    "country": "IT",
+    "base": [
+     "grapes_wine"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "stainless_steel"
+    ],
+    "alcohol": "18",
+    "aromas": [
+     "vanilla",
+     "chamomile",
+     "elderflower",
+     "herbs",
+     "citrus"
+    ],
+    "serve": [
+     "with_ice_and_orange",
+     "before_dinner"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "vermouth_bianco"
+   },
+   "note": {
+    "hr": "Bianco je vermut u kojem vanilija i kamilica stoje ispred pelina — sladak taman toliko da ostane aperitiv, a ne desert. S ledom i kriškom naranče, ili s tonikom kad je vani vruće; u Torinu se pije prije jela i uz ništa.",
+    "en": "The bianco is the vermouth in which vanilla and chamomile stand in front of the wormwood — sweet just enough to remain an aperitif rather than a dessert. Over ice with orange, or with tonic when it is hot; in Turin it is drunk before dinner and with nothing at all.",
+    "it": "Il bianco è il vermouth in cui vaniglia e camomilla stanno davanti all'assenzio — dolce quel tanto che basta per restare aperitivo e non dessert. Con ghiaccio e arancia, o con tonica quando fa caldo; a Torino si beve prima di cena e senza nulla.",
+    "fr": "Le bianco est le vermouth où la vanille et la camomille passent devant l'absinthe — sucré juste assez pour rester un apéritif et non un dessert. Sur glace avec une orange, ou avec du tonic quand il fait chaud ; à Turin on le boit avant le repas et avec rien.",
+    "de": "Der Bianco ist der Wermut, in dem Vanille und Kamille vor dem Wermutkraut stehen — süß gerade so weit, dass er Aperitif bleibt und kein Dessert wird. Auf Eis mit Orange, oder mit Tonic, wenn es heiß ist; in Turin trinkt man ihn vor dem Essen und zu gar nichts.",
+    "zh": "Bianco 是那种香草与洋甘菊站在苦艾前面的味美思——甜得恰到好处，仍是餐前酒而非甜点。加冰配香橙，或者天热时兑汤力水；在都灵，人们餐前喝它，什么都不配。",
+    "sl": "Bianco je vermut, v katerem sta vanilija in kamilica pred pelinom — sladek ravno toliko, da ostane aperitiv in ne postane sladica. Z ledom in rezino pomaranče ali s tonikom, ko je vroče; v Torinu ga pijejo pred jedjo in brez vsega.",
+    "es": "El bianco es el vermut en el que la vainilla y la manzanilla se ponen delante del ajenjo — dulce lo justo para seguir siendo aperitivo y no postre. Con hielo y naranja, o con tónica cuando aprieta el calor; en Turín se bebe antes de comer y sin nada."
+   },
+   "notePlain": true
   },
   "mulassano--vermouth-rosso": {
    "name": "Vermouth Rosso",
-   "producer": "Mulassano"
+   "producer": "Mulassano",
+   "insight": {
+    "region": "Torino, Piemonte",
+    "country": "IT",
+    "base": [
+     "grapes_wine"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "stainless_steel"
+    ],
+    "alcohol": "18",
+    "aromas": [
+     "wormwood",
+     "bitter_orange",
+     "vanilla",
+     "brown_spices",
+     "rhubarb"
+    ],
+    "serve": [
+     "with_ice_and_orange",
+     "before_dinner"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "vermouth_rosso"
+   },
+   "note": {
+    "hr": "Rosso je vermut kakav je vermut i izmišljen — u Torinu, krajem 18. stoljeća, kao način da se gorko bilje popije. Sto osamdeset grama šećera na litru drži pelin u ravnoteži, ne skriva ga. Ovo je treći glas u Negroniju i cijela poanta Americana.",
+    "en": "The rosso is vermouth as vermouth was invented — in Turin, at the end of the 18th century, as a way of getting bitter herbs down. A hundred and eighty grams of sugar a litre holds the wormwood in balance rather than hiding it. This is the third voice in a Negroni and the whole point of an Americano.",
+    "it": "Il rosso è il vermouth come il vermouth fu inventato — a Torino, a fine Settecento, come modo per bere le erbe amare. Centottanta grammi di zucchero al litro tengono l'assenzio in equilibrio, non lo nascondono. È la terza voce del Negroni e tutto il senso dell'Americano.",
+    "fr": "Le rosso, c'est le vermouth tel qu'il fut inventé — à Turin, à la fin du XVIIIe siècle, pour faire passer les plantes amères. Cent quatre-vingts grammes de sucre au litre tiennent l'absinthe en équilibre sans la cacher. C'est la troisième voix du Negroni et tout l'intérêt de l'Americano.",
+    "de": "Der Rosso ist der Wermut, wie der Wermut erfunden wurde — in Turin, Ende des 18. Jahrhunderts, um bittere Kräuter trinkbar zu machen. Hundertachtzig Gramm Zucker je Liter halten das Wermutkraut in der Balance, statt es zu verstecken. Das ist die dritte Stimme im Negroni und der ganze Sinn eines Americano.",
+    "zh": "Rosso 就是味美思被发明时的样子——18 世纪末的都灵，为了让苦草药能喝下去。每升一百八十克糖，是把苦艾托在平衡里，而不是藏起来。它是尼格罗尼里的第三个声部，也是 Americano 的全部意义。",
+    "sl": "Rosso je vermut, kakršen je bil vermut izumljen — v Torinu, konec 18. stoletja, kot način, da se grenka zelišča spijejo. Sto osemdeset gramov sladkorja na liter drži pelin v ravnovesju, ne skriva ga. To je tretji glas v negroniju in ves smisel americana.",
+    "es": "El rosso es el vermut tal como se inventó — en Turín, a finales del siglo XVIII, como manera de beberse las hierbas amargas. Ciento ochenta gramos de azúcar por litro mantienen el ajenjo en equilibrio en vez de esconderlo. Es la tercera voz de un Negroni y todo el sentido de un Americano."
+   },
+   "notePlain": true
   },
   "mulassano--vermouth-extra-dry": {
    "name": "Vermouth Extra Dry",
-   "producer": "Mulassano"
+   "producer": "Mulassano",
+   "insight": {
+    "region": "Torino, Piemonte",
+    "country": "IT",
+    "base": [
+     "grapes_wine"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "stainless_steel"
+    ],
+    "alcohol": "18",
+    "aromas": [
+     "wormwood",
+     "herbs",
+     "citrus",
+     "white_pepper"
+    ],
+    "serve": [
+     "with_ice_and_orange",
+     "before_dinner"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "vermouth_dry"
+   },
+   "note": {
+    "hr": "Trideset sedam grama šećera na litru — peterostruko manje nego u rossu, i zato jedini od trojice koji ide u Martini. Bez šećera koji bi ga nosio, ostaje vino, pelin i kora citrusa, i ništa se nema iza čega sakriti. Otvorena boca stoji u hladnjaku i pije se unutar mjesec dana.",
+    "en": "Thirty-seven grams of sugar a litre — a fifth of the rosso, and the reason this is the only one of the three that belongs in a Martini. With no sugar to carry it, what is left is wine, wormwood and citrus peel, and nothing to hide behind. Once open it lives in the fridge and should be drunk within the month.",
+    "it": "Trentasette grammi di zucchero al litro — un quinto del rosso, ed è il motivo per cui è l'unico dei tre che va nel Martini. Senza zucchero a sostenerlo restano vino, assenzio e scorza di agrumi, e nulla dietro cui nascondersi. Una volta aperta la bottiglia sta in frigo e si beve entro il mese.",
+    "fr": "Trente-sept grammes de sucre au litre — un cinquième du rosso, et la raison pour laquelle c'est le seul des trois qui a sa place dans un Martini. Sans sucre pour le porter, il reste le vin, l'absinthe et le zeste d'agrume, et rien derrière quoi se cacher. Une fois ouverte, la bouteille vit au frigo et se boit dans le mois.",
+    "de": "Siebenunddreißig Gramm Zucker je Liter — ein Fünftel des Rosso, und der Grund, warum dies als einziger der drei in einen Martini gehört. Ohne Zucker, der ihn trüge, bleiben Wein, Wermutkraut und Zitrusschale, und nichts zum Verstecken. Einmal geöffnet gehört die Flasche in den Kühlschrank und sollte binnen eines Monats getrunken werden.",
+    "zh": "每升三十七克糖——只有 rosso 的五分之一，这也是三支里唯一该进马天尼的一支。没有糖去托着，剩下的就是酒、苦艾与柑橘皮，无处藏身。开瓶后放冰箱，一个月内喝完。",
+    "sl": "Sedemintrideset gramov sladkorja na liter — petina rossa, in prav zato je edini od treh, ki sodi v martini. Brez sladkorja, ki bi ga nosil, ostanejo vino, pelin in citrusna lupina, in nič, za kar bi se skril. Odprta steklenica živi v hladilniku in naj se spije v mesecu dni.",
+    "es": "Treinta y siete gramos de azúcar por litro — la quinta parte del rosso, y la razón de que sea el único de los tres que va en un Martini. Sin azúcar que lo sostenga quedan el vino, el ajenjo y la piel de cítrico, y nada tras lo que esconderse. Una vez abierta, la botella vive en la nevera y se bebe dentro del mes."
+   },
+   "notePlain": true
   },
   "mulassano--bitter": {
    "name": "Bitter",
-   "producer": "Mulassano"
+   "producer": "Mulassano",
+   "insight": {
+    "region": "Torino, Piemonte",
+    "country": "IT",
+    "base": [
+     "grape_spirit"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "stainless_steel"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "bitter_orange",
+     "gentian",
+     "rhubarb",
+     "wormwood"
+    ],
+    "serve": [
+     "with_ice_and_orange",
+     "before_dinner"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "bitter_aperitivo"
+   },
+   "note": {
+    "hr": "Gorčina je u Torinu posao, ne mana. Gorka naranča, srčanik i rabarbara na bazi rakije od grožđa — bez sintetske boje, zbog čega je crvena ovdje tamnija i mutnija nego što ste navikli. Uz led i krišku naranče, ili kao treći glas u Negroniju.",
+    "en": "In Turin bitterness is a trade, not a fault. Bitter orange, gentian and rhubarb on a grape-spirit base — no synthetic colouring, which is why the red here is darker and cloudier than the one you know. Over ice with orange, or as the third voice in a Negroni.",
+    "it": "A Torino l'amaro è un mestiere, non un difetto. Arancia amara, genziana e rabarbaro su base di acquavite d'uva — senza coloranti di sintesi, ed è per questo che qui il rosso è più cupo e più torbido di quello che conoscete. Con ghiaccio e arancia, o come terza voce in un Negroni.",
+    "fr": "À Turin, l'amertume est un métier, pas un défaut. Orange amère, gentiane et rhubarbe sur une base d'eau-de-vie de raisin — sans colorant de synthèse, d'où un rouge plus sombre et plus trouble que celui que vous connaissez. Sur glace avec une orange, ou en troisième voix dans un Negroni.",
+    "de": "In Turin ist Bitterkeit ein Handwerk, kein Fehler. Bitterorange, Enzian und Rhabarber auf Traubenbrand — ohne synthetische Farbe, weshalb das Rot hier dunkler und trüber ist als das gewohnte. Auf Eis mit Orange, oder als dritte Stimme im Negroni.",
+    "zh": "在都灵，苦是一门手艺，不是缺点。苦橙、龙胆与大黄，底子是葡萄蒸馏酒——不加合成色素，所以这里的红比你熟悉的更深、更浊。加冰配香橙，或者做尼格罗尼里的第三个声部。",
+    "sl": "V Torinu je grenkoba poklic, ne napaka. Grenka pomaranča, svišč in rabarbara na osnovi grozdnega žganja — brez sintetičnih barvil, zato je rdeča tu temnejša in bolj motna od tiste, ki jo poznate. Z ledom in rezino pomaranče ali kot tretji glas v negroniju.",
+    "es": "En Turín el amargor es un oficio, no un defecto. Naranja amarga, genciana y ruibarbo sobre base de aguardiente de uva — sin colorante sintético, por eso aquí el rojo es más oscuro y más turbio que el que conoce. Con hielo y naranja, o como tercera voz en un Negroni."
+   },
+   "notePlain": true
   },
   "cimarron--blanco-tequila": {
    "name": "Blanco Tequila",
-   "producer": "Cimarrón"
+   "producer": "Cimarrón",
+   "insight": {
+    "region": "Los Altos, Jalisco",
+    "country": "MX",
+    "base": [
+     "agave_blue"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "roasted_agave",
+     "green_chilli",
+     "white_pepper",
+     "citrus",
+     "herbs"
+    ],
+    "serve": [
+     "neat",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "spicy",
+     "seafood"
+    ],
+    "kind": "spirit",
+    "class": "tequila_blanco"
+   },
+   "note": {
+    "hr": "Sto posto plava agava iz Los Altosa, visoravni čija crvena zemlja daje agavi više cvijeta i manje zemlje. Bez bačve, bez karamela, bez ičega što bi sakrilo sirovinu — tequila napravljena da se kuša, a ne da se iskapi.",
+    "en": "One hundred percent blue agave from Los Altos, the highlands whose red soil gives the plant more flower and less earth. No barrel, no caramel, nothing to hide behind — a tequila built to be tasted rather than thrown back.",
+    "it": "Cento per cento agave blu di Los Altos, l'altopiano la cui terra rossa dà alla pianta più fiore e meno terra. Niente botte, niente caramello, niente dietro cui nascondersi — una tequila fatta per essere assaggiata, non buttata giù.",
+    "fr": "Cent pour cent agave bleue de Los Altos, ces hauteurs dont la terre rouge donne à la plante plus de fleur et moins de terre. Pas de fût, pas de caramel, rien derrière quoi se cacher — une tequila faite pour être goûtée, pas avalée d'un trait.",
+    "de": "Hundert Prozent blaue Agave aus Los Altos, dem Hochland, dessen rote Erde der Pflanze mehr Blüte und weniger Erde gibt. Kein Fass, kein Karamell, nichts, wohinter man sich verstecken könnte — ein Tequila zum Verkosten, nicht zum Kippen.",
+    "zh": "百分之百来自洛斯阿尔托斯高地的蓝色龙舌兰，那里的红土让植株多了花香、少了土气。不过桶、不加焦糖、没有可藏身之处——这是一款用来品的龙舌兰，不是用来一口闷的。",
+    "sl": "Sto odstotkov modre agave iz Los Altosa, planote, katere rdeča zemlja rastlini da več cveta in manj prsti. Brez soda, brez karamele, brez česar koli, za kar bi se skrila — tekila, narejena za pokušino, ne za na dušek.",
+    "es": "Cien por cien agave azul de Los Altos, la altiplanicie cuya tierra roja da a la planta más flor y menos tierra. Sin barrica, sin caramelo, sin nada tras lo que esconderse — un tequila hecho para catarse, no para tumbarse de un trago."
+   },
+   "notePlain": true
   },
   "del-maguey--vida": {
    "name": "Vida",
-   "producer": "Del Maguey"
+   "producer": "Del Maguey",
+   "insight": {
+    "region": "San Luis del Río, Oaxaca",
+    "country": "MX",
+    "base": [
+     "agave_espadin"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "42",
+    "aromas": [
+     "campfire_smoke",
+     "roasted_agave",
+     "green_chilli",
+     "citrus",
+     "honey"
+    ],
+    "serve": [
+     "neat",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "spicy",
+     "cigars"
+    ],
+    "kind": "spirit",
+    "class": "mezcal_joven"
+   },
+   "note": {
+    "hr": "Dim u mezcalu nije aroma koju je netko dodao — to je način kuhanja. Srca agave peku se danima u jami u zemlji, na užarenom kamenju i drvu, i tek onda idu u mlin i u kotao. Vida je napravljena da preživi miješanje i da i dalje ima okus po selu iz kojeg dolazi.",
+    "en": "The smoke in mezcal is not a flavouring somebody added — it is how the plant is cooked. The agave hearts roast for days in a pit in the ground, over hot rocks and wood, and only then go to the mill and the still. Vida was built to survive being mixed and still taste of the village it comes from.",
+    "it": "Il fumo nel mezcal non è un aroma aggiunto — è il modo in cui si cuoce la pianta. I cuori d'agave arrostiscono per giorni in una fossa nel terreno, su pietre roventi e legna, e solo dopo passano al mulino e all'alambicco. Vida è fatta per reggere il cocktail e sapere ancora del villaggio da cui viene.",
+    "fr": "La fumée du mezcal n'est pas un arôme ajouté — c'est la cuisson elle-même. Les cœurs d'agave rôtissent plusieurs jours dans une fosse creusée en terre, sur pierres brûlantes et bois, et ne passent qu'ensuite au moulin et à l'alambic. Vida est faite pour tenir dans un cocktail et garder le goût de son village.",
+    "de": "Der Rauch im Mezcal ist kein zugesetztes Aroma — er ist die Garmethode. Die Agavenherzen rösten tagelang in einer Erdgrube über glühenden Steinen und Holz und gehen erst danach in die Mühle und die Brennblase. Vida ist gebaut, um im Cocktail zu bestehen und trotzdem nach ihrem Dorf zu schmecken.",
+    "zh": "梅斯卡尔里的烟不是谁加进去的香精——那是烹熟的方式。龙舌兰的芯在地下坑里、在烧红的石头与木柴上烤上好几天，之后才去碾磨、蒸馏。Vida 生来就能在鸡尾酒里立住，仍带着它所属村庄的味道。",
+    "sl": "Dim v mezcalu ni aroma, ki bi jo kdo dodal — tako se rastlina skuha. Srca agave se po več dni pečejo v jami v tleh, na razbeljenem kamenju in drvih, in šele nato gredo v mlin in kotel. Vida je narejena tako, da preživi mešanje in še vedno okusi po vasi, iz katere prihaja.",
+    "es": "El humo del mezcal no es un aroma que alguien añadió — es la cocción misma. Los corazones de agave se asan durante días en un horno de pozo, sobre piedras al rojo y leña, y solo después van al molino y al alambique. Vida está hecha para aguantar la coctelera y seguir sabiendo al pueblo del que viene."
+   },
+   "notePlain": true
   },
   "bruxo--bruxo": {
    "name": "Bruxo",
-   "producer": "Bruxo"
+   "producer": "Bruxo",
+   "insight": {
+    "region": "Oaxaca",
+    "country": "MX",
+    "base": [
+     "agave_espadin"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "roasted_agave",
+     "campfire_smoke",
+     "herbs",
+     "brine",
+     "green_chilli"
+    ],
+    "serve": [
+     "neat"
+    ],
+    "pairings": [
+     "spicy",
+     "cigars"
+    ],
+    "kind": "spirit",
+    "class": "mezcal_joven"
+   },
+   "note": {
+    "hr": "Bruxo znači vračar. Mezcal se u oaxaqueñskim selima i danas radi u količinama koje stanu u jedan dan rada: agava iz jame, divlji kvasci, bakreni kotao, ništa dodano. Pije se polako i bez leda — svaka je serija malo drukčija i to je poanta.",
+    "en": "Bruxo means sorcerer. In the villages of Oaxaca mezcal is still made in quantities that fit inside a day's work: agave from the pit, wild yeasts, a copper still, nothing added. Drink it slowly and without ice — every batch differs a little, and that is the point.",
+    "it": "Bruxo vuol dire stregone. Nei villaggi di Oaxaca il mezcal si fa ancora in quantità che stanno in una giornata di lavoro: agave dalla fossa, lieviti selvaggi, alambicco di rame, niente di aggiunto. Si beve lentamente e senza ghiaccio — ogni lotto è un po' diverso, ed è proprio questo il punto.",
+    "fr": "Bruxo veut dire sorcier. Dans les villages d'Oaxaca, le mezcal se fait encore en quantités qui tiennent dans une journée de travail : agave sortie de la fosse, levures sauvages, alambic de cuivre, rien d'ajouté. À boire lentement et sans glace — chaque lot diffère un peu, et c'est tout l'intérêt.",
+    "de": "Bruxo heißt Zauberer. In den Dörfern Oaxacas entsteht Mezcal noch in Mengen, die in einen Arbeitstag passen: Agave aus der Grube, wilde Hefen, eine Kupferblase, nichts zugesetzt. Langsam trinken und ohne Eis — jede Charge ist ein wenig anders, und genau darum geht es.",
+    "zh": "Bruxo 是「巫师」的意思。在瓦哈卡的村子里，梅斯卡尔至今仍以一天的工作量为单位酿造：从地坑取出的龙舌兰、野生酵母、铜壶蒸馏器，不加任何东西。慢慢喝，不要加冰——每一批都略有不同，而这正是重点。",
+    "sl": "Bruxo pomeni čarovnik. V oaxaških vaseh mezcal še vedno nastaja v količinah, ki gredo v en delovni dan: agava iz jame, divji kvasovke, bakren kotel, nič dodanega. Pije se počasi in brez ledu — vsaka serija je nekoliko drugačna, in prav v tem je bistvo.",
+    "es": "Bruxo significa brujo. En los pueblos de Oaxaca el mezcal se sigue haciendo en cantidades que caben en una jornada: agave del horno de pozo, levaduras salvajes, alambique de cobre, nada añadido. Se bebe despacio y sin hielo — cada lote es algo distinto, y ese es justamente el punto."
+   },
+   "notePlain": true
   },
   "kilchoman-scotland--machir-bay": {
    "name": "Machir Bay",
-   "producer": "Kilchoman, Scotland"
+   "producer": "Kilchoman",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_islay",
+    "region": "Islay",
+    "country": "SCT",
+    "base": [
+     "barley_malt_peated"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "46",
+    "aromas": [
+     "peat",
+     "brine",
+     "citrus",
+     "vanilla",
+     "campfire_smoke",
+     "toffee"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "oysters",
+     "smoked_fish",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Kilchoman uzgaja vlastiti ječam, sam ga slaže na podu, destilira, puni bačve i puni boce — sve na jednoj farmi na Islayu, što u Škotskoj ne radi gotovo nitko. Machir Bay je plaža nekoliko stotina metara dalje: dim, sol i limun, mlado i drsko.",
+    "en": "Kilchoman grows its own barley, floor-malts it, distils, fills the casks and bottles — all on one Islay farm, which almost nobody in Scotland still does. Machir Bay is the beach a few hundred metres away: smoke, salt and lemon, young and unashamed.",
+    "it": "Kilchoman coltiva il proprio orzo, lo malta a pavimento, distilla, riempie le botti e imbottiglia — tutto in una sola fattoria di Islay, cosa che in Scozia non fa quasi più nessuno. Machir Bay è la spiaggia a poche centinaia di metri: fumo, sale e limone, giovane e sfacciato.",
+    "fr": "Kilchoman cultive son orge, la malte sur aire, distille, remplit les fûts et embouteille — tout cela dans une seule ferme d'Islay, ce que presque plus personne ne fait en Écosse. Machir Bay, c'est la plage à quelques centaines de mètres : fumée, sel et citron, jeune et sans complexe.",
+    "de": "Kilchoman baut seine eigene Gerste an, mälzt sie auf der Tenne, brennt, füllt die Fässer und flaschiert — alles auf einem einzigen Hof auf Islay, was in Schottland fast niemand mehr tut. Machir Bay ist der Strand ein paar hundert Meter weiter: Rauch, Salz und Zitrone, jung und ungeniert.",
+    "zh": "Kilchoman 自种大麦、自行地板发麦、蒸馏、入桶、装瓶——全在艾雷岛的同一座农场里完成，这在苏格兰几乎没人还做得到。Machir Bay 是几百米外的那片海滩：烟、盐与柠檬，年轻而不加掩饰。",
+    "sl": "Kilchoman prideluje svoj ječmen, ga slado na tleh, destilira, polni sode in steklenice — vse na eni sami kmetiji na Islayu, česar na Škotskem ne počne skoraj nihče več. Machir Bay je plaža nekaj sto metrov stran: dim, sol in limona, mlado in predrzno.",
+    "es": "Kilchoman cultiva su propia cebada, la maltea en era, destila, llena las barricas y embotella — todo en una sola granja de Islay, algo que casi nadie hace ya en Escocia. Machir Bay es la playa que está a unos cientos de metros: humo, sal y limón, joven y sin disculparse."
+   },
+   "notePlain": true
   },
   "scotland--glen-rothes-9y-artist-collective-2015": {
-   "name": "Glen Rothes 9y Artist Collective, 2015",
-   "producer": "Scotland"
+   "name": "9Y Artist Collective 2015",
+   "producer": "Glenrothes",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_speyside",
+    "region": "Speyside",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "refill"
+    ],
+    "age": "9",
+    "alcohol": "",
+    "bottler": "Artist Collective — La Maison du Whisky",
+    "aromas": [
+     "red_apple",
+     "vanilla",
+     "malt",
+     "honey",
+     "pear"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Nezavisno punjenje: destilerija je napravila viski, netko drugi je odabrao bačvu i stavio svoje ime na etiketu. Glenrothes je klasičan Speyside — jabuka, med, slad, bez dima — a devet godina je dovoljno da drvo dođe do riječi, a premalo da preglasi destilat.",
+    "en": "An independent bottling: the distillery made the whisky, somebody else picked the cask and put their name on the label. Glenrothes is classic Speyside — apple, honey, malt, no smoke — and nine years is enough for the wood to speak and too little for it to shout down the spirit.",
+    "it": "Un imbottigliamento indipendente: la distilleria ha fatto il whisky, qualcun altro ha scelto la botte e messo il proprio nome in etichetta. Glenrothes è Speyside classico — mela, miele, malto, niente fumo — e nove anni bastano perché il legno parli e non bastano perché copra il distillato.",
+    "fr": "Un embouteillage indépendant : la distillerie a fait le whisky, quelqu'un d'autre a choisi le fût et mis son nom sur l'étiquette. Glenrothes, c'est le Speyside classique — pomme, miel, malt, sans tourbe — et neuf ans suffisent au bois pour parler, pas pour couvrir le distillat.",
+    "de": "Eine unabhängige Abfüllung: die Brennerei hat den Whisky gemacht, jemand anderes das Fass gewählt und seinen Namen aufs Etikett gesetzt. Glenrothes ist klassische Speyside — Apfel, Honig, Malz, kein Rauch — und neun Jahre reichen, damit das Holz spricht, und nicht, damit es das Destillat übertönt.",
+    "zh": "独立装瓶：酒厂做了这支威士忌，另一个人挑了桶、把自己的名字印上酒标。Glenrothes 是典型的斯佩塞——苹果、蜂蜜、麦芽，没有烟熏——九年足够让木桶开口，又不足以盖过酒本身。",
+    "sl": "Neodvisna polnitev: destilarna je naredila viski, nekdo drug je izbral sod in dal svoje ime na etiketo. Glenrothes je klasičen Speyside — jabolko, med, slad, brez dima — devet let pa je dovolj, da les spregovori, in premalo, da bi preglasil destilat.",
+    "es": "Un embotellado independiente: la destilería hizo el whisky, otro eligió la barrica y puso su nombre en la etiqueta. Glenrothes es Speyside clásico — manzana, miel, malta, sin humo — y nueve años bastan para que la madera hable y no para que tape al destilado."
+   },
+   "notePlain": true
   },
   "scotland--sponge-ed-jura-1994": {
-   "name": "Sponge Ed - Jura 1994",
-   "producer": "Scotland"
+   "name": "1994 – Whisky Sponge",
+   "producer": "Isle of Jura",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_island",
+    "region": "Isle of Jura",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "refill"
+    ],
+    "age": "",
+    "alcohol": "",
+    "bottler": "Whisky Sponge — Decadent Drinks",
+    "aromas": [
+     "beeswax",
+     "dried_apricot",
+     "brine",
+     "oak",
+     "honey",
+     "dried_herbs"
+    ],
+    "serve": [
+     "neat"
+    ],
+    "pairings": [
+     "solo",
+     "cigars"
+    ]
+   },
+   "note": {
+    "hr": "Jura ima dvjesto stanovnika, jednu cestu i jednu destileriju. Ovo je bačva iz 1994., odabrana i punjena od Whisky Spongea, kuće koja bira po tome što je bačva postala, a ne po tome kako se destilerija zove. Vosak, sol i suho voće koje samo vrijeme donosi.",
+    "en": "Jura has two hundred people, one road and one distillery. This is a 1994 cask, chosen and bottled by Whisky Sponge, a house that picks by what the cask has become rather than by whose name is over the door. Wax, salt and dried fruit that only time puts there.",
+    "it": "Jura ha duecento abitanti, una strada e una distilleria. Questa è una botte del 1994, scelta e imbottigliata da Whisky Sponge, casa che sceglie per ciò che la botte è diventata e non per il nome sopra la porta. Cera, sale e frutta secca che solo il tempo sa mettere.",
+    "fr": "Jura compte deux cents habitants, une route et une distillerie. Voici un fût de 1994, choisi et embouteillé par Whisky Sponge, une maison qui choisit pour ce que le fût est devenu, non pour le nom au-dessus de la porte. Cire, sel et fruits secs que seul le temps dépose.",
+    "de": "Jura hat zweihundert Einwohner, eine Straße und eine Brennerei. Dies ist ein Fass von 1994, ausgewählt und abgefüllt von Whisky Sponge, einem Haus, das nach dem auswählt, was aus dem Fass geworden ist, und nicht nach dem Namen über der Tür. Wachs, Salz und Trockenfrüchte, die nur die Zeit hineinlegt.",
+    "zh": "朱拉岛上有两百个居民、一条路和一间酒厂。这是一桶 1994 年的酒，由 Whisky Sponge 挑选装瓶——这家人选酒看的是桶里最终成了什么，而不是门上挂着谁的名字。蜡质、咸味与果干，只有时间放得进去。",
+    "sl": "Jura ima dvesto prebivalcev, eno cesto in eno destilarno. To je sod iz leta 1994, ki ga je izbrala in polnila hiša Whisky Sponge — izbira po tem, kaj je sod postal, ne po imenu nad vrati. Vosek, sol in suho sadje, ki ju vanj položi samo čas.",
+    "es": "Jura tiene doscientos habitantes, una carretera y una destilería. Esta es una barrica de 1994, elegida y embotellada por Whisky Sponge, una casa que escoge por lo que la barrica ha llegado a ser y no por el nombre que hay sobre la puerta. Cera, sal y fruta seca que solo el tiempo deposita."
+   },
+   "notePlain": true
   },
   "scotland--bladnoch-19y": {
-   "name": "Bladnoch 19Y",
-   "producer": "Scotland"
+   "name": "19Y",
+   "producer": "Bladnoch",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_lowland",
+    "region": "Wigtownshire, Lowlands",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_sherry_px"
+    ],
+    "age": "19",
+    "alcohol": "46.7",
+    "aromas": [
+     "dried_apricot",
+     "licorice",
+     "nutmeg",
+     "dates",
+     "dark_chocolate",
+     "raisin"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "cheese_hard",
+     "cigars"
+    ]
+   },
+   "note": {
+    "hr": "Najjužnija destilerija Škotske, osnovana 1817., dvaput zatvorena i dvaput vraćena u život. Lowland stil je nježan i cvjetni — a devetnaest godina u bačvama Pedra Ximéneza tom nježnom destilatu daje datulje, sladić i muškatni oraščić bez da ga uguši. Nefiltrirano, bez bojila.",
+    "en": "Scotland's southernmost distillery, founded in 1817, closed twice and brought back twice. The Lowland style is gentle and floral — and nineteen years in Pedro Ximénez butts give that gentle spirit dates, liquorice and nutmeg without smothering it. Unchill-filtered, no colouring.",
+    "it": "La distilleria più meridionale di Scozia, fondata nel 1817, chiusa due volte e due volte riportata in vita. Lo stile Lowland è delicato e floreale — e diciannove anni in botti di Pedro Ximénez danno a quel distillato delicato datteri, liquirizia e noce moscata senza soffocarlo. Non filtrato a freddo, senza coloranti.",
+    "fr": "La distillerie la plus méridionale d'Écosse, fondée en 1817, fermée deux fois et deux fois ressuscitée. Le style Lowland est doux et floral — et dix-neuf ans en fûts de Pedro Ximénez donnent à ce distillat délicat des dattes, de la réglisse et de la muscade sans l'étouffer. Non filtré à froid, sans colorant.",
+    "de": "Schottlands südlichste Brennerei, 1817 gegründet, zweimal geschlossen und zweimal zurückgeholt. Der Lowland-Stil ist zart und blumig — und neunzehn Jahre in Pedro-Ximénez-Fässern geben diesem zarten Destillat Datteln, Lakritze und Muskat, ohne es zu ersticken. Nicht kühlfiltriert, ohne Farbstoff.",
+    "zh": "苏格兰最南端的酒厂，1817 年创立，两度关停、两度复活。低地风格轻柔而带花香——十九年的 PX 雪莉桶给了这份轻柔以椰枣、甘草与肉豆蔻，却没有把它压死。非冷凝过滤，不加色素。",
+    "sl": "Najjužnejša škotska destilarna, ustanovljena leta 1817, dvakrat zaprta in dvakrat obujena. Lowland slog je nežen in cvetličen — devetnajst let v sodih po Pedru Ximénezu pa temu nežnemu destilatu da datlje, sladki koren in muškatni orešček, ne da bi ga zadušilo. Brez hladne filtracije, brez barvil.",
+    "es": "La destilería más al sur de Escocia, fundada en 1817, cerrada dos veces y dos veces devuelta a la vida. El estilo Lowland es suave y floral — y diecinueve años en botas de Pedro Ximénez le dan a ese destilado delicado dátiles, regaliz y nuez moscada sin ahogarlo. Sin filtrado en frío, sin colorante."
+   },
+   "notePlain": true
   },
   "scotland--glenmorangie-signet": {
-   "name": "Glenmorangie Signet",
-   "producer": "Scotland"
+   "name": "Signet",
+   "producer": "Glenmorangie",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_highland",
+    "region": "Tain, Highlands",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "virgin_american_oak",
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "46",
+    "aromas": [
+     "espresso",
+     "dark_chocolate",
+     "orange_peel",
+     "brown_spices",
+     "toffee",
+     "cocoa"
+    ],
+    "serve": [
+     "neat"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "desserts",
+     "cigars"
+    ]
+   },
+   "note": {
+    "hr": "Signet je napravljen od ječma prženog kao zrno kave — chocolate malt, koji se koristi u pivarstvu, a u viskiju gotovo nikad. Odatle espresso i kakao kojih u destilatu inače nema. Glenmorangie ima najviše kotlove u Škotskoj; ovo je kuća koja se voli poigrati, i ovdje joj je uspjelo.",
+    "en": "Signet is made with barley roasted like coffee beans — chocolate malt, a brewer's ingredient almost never used in whisky. That is where the espresso and cocoa come from; no ordinary spirit has them. Glenmorangie has the tallest stills in Scotland and likes to experiment. Here it worked.",
+    "it": "Signet nasce da orzo tostato come chicchi di caffè — chocolate malt, ingrediente da birrai quasi mai usato nel whisky. Da lì vengono l'espresso e il cacao, che in un distillato normale non ci sono. Glenmorangie ha gli alambicchi più alti di Scozia e ama sperimentare: qui ha funzionato.",
+    "fr": "Signet est fait d'orge torréfiée comme du café — du chocolate malt, un ingrédient de brasseur presque jamais employé en whisky. De là viennent l'espresso et le cacao, absents d'un distillat ordinaire. Glenmorangie possède les alambics les plus hauts d'Écosse et aime expérimenter : ici, c'est réussi.",
+    "de": "Signet entsteht aus Gerste, die wie Kaffeebohnen geröstet wird — Chocolate Malt, eine Brauerzutat, die im Whisky fast nie vorkommt. Daher der Espresso und der Kakao, die ein gewöhnliches Destillat nicht hat. Glenmorangie hat die höchsten Brennblasen Schottlands und experimentiert gern. Hier ist es aufgegangen.",
+    "zh": "Signet 用的是像咖啡豆一样烘焙过的大麦——巧克力麦芽，酿啤酒的原料，威士忌里几乎从不使用。浓缩咖啡与可可就是从这儿来的，普通酒液里没有。Glenmorangie 拥有苏格兰最高的蒸馏器，也爱做实验。这一次成了。",
+    "sl": "Signet je narejen iz ječmena, praženega kot kavna zrna — chocolate malt, pivovarska sestavina, ki je v viskiju skoraj nikoli ne srečate. Od tod espresso in kakav, ki jih v običajnem destilatu ni. Glenmorangie ima najvišje kotle na Škotskem in rad eksperimentira. Tokrat se je izšlo.",
+    "es": "Signet se hace con cebada tostada como granos de café — chocolate malt, un ingrediente de cervecero que en whisky casi no se usa. De ahí vienen el espresso y el cacao, que un destilado corriente no tiene. Glenmorangie tiene los alambiques más altos de Escocia y le gusta experimentar. Aquí salió bien."
+   },
+   "notePlain": true
   },
   "kavalan-taiwan--distillery-select": {
    "name": "Distillery Select",
-   "producer": "Kavalan, Taiwan"
+   "producer": "Kavalan",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_taiwan",
+    "region": "Yilan",
+    "country": "TW",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "ex_wine"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "tropical",
+     "vanilla",
+     "coconut",
+     "pear",
+     "honey"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "light_starters",
+     "cheese_fresh"
+    ]
+   },
+   "note": {
+    "hr": "Ulaz u kuću, i namjerno lagan: bačve od bourbona i vinske bačve, 40 posto, mango i kokos koje tropska klima donese sama od sebe. Ovo je viski koji ne traži ništa od vas — pije se i s ledom, i to nije uvreda.",
+    "en": "The way into the house, and deliberately easy: ex-bourbon and wine casks, 40 percent, the mango and coconut the tropical climate brings on its own. This is a whisky that asks nothing of you — it takes ice, and that is not an insult.",
+    "it": "L'ingresso alla casa, e volutamente facile: botti ex bourbon e botti da vino, 40 gradi, il mango e il cocco che il clima tropicale porta da sé. È un whisky che non vi chiede nulla — regge il ghiaccio, e non è un'offesa.",
+    "fr": "L'entrée dans la maison, et volontairement facile : fûts ex-bourbon et fûts de vin, 40 degrés, la mangue et la noix de coco que le climat tropical apporte tout seul. Un whisky qui ne vous demande rien — il accepte la glace, et ce n'est pas une insulte.",
+    "de": "Der Einstieg ins Haus, und bewusst leicht: Ex-Bourbon- und Weinfässer, 40 Prozent, die Mango und die Kokosnuss, die das tropische Klima von selbst mitbringt. Ein Whisky, der nichts von Ihnen verlangt — er verträgt Eis, und das ist keine Beleidigung.",
+    "zh": "进入这座酒厂的入口，而且是刻意轻松的：波本桶与葡萄酒桶，40 度，热带气候自带的芒果与椰子。这是一支不对你提要求的威士忌——它可以加冰，这不是冒犯。",
+    "sl": "Vstop v hišo, in namenoma lahek: sodi po bourbonu in vinski sodi, 40 odstotkov, mango in kokos, ki ju tropsko podnebje prinese samo od sebe. Viski, ki od vas ne zahteva ničesar — prenese led, in to ni žalitev.",
+    "es": "La entrada a la casa, y deliberadamente fácil: barricas de bourbon y de vino, 40 grados, el mango y el coco que el clima tropical trae por sí solo. Es un whisky que no le pide nada — admite hielo, y eso no es un insulto."
+   },
+   "notePlain": true
   },
   "kavalan-taiwan--ex-sherry-oak": {
    "name": "Ex-Sherry Oak",
-   "producer": "Kavalan, Taiwan"
+   "producer": "Kavalan",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_taiwan",
+    "region": "Yilan",
+    "country": "TW",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "46",
+    "aromas": [
+     "raisin",
+     "dried_fruit",
+     "walnut",
+     "dark_chocolate",
+     "brown_spices",
+     "fig"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "cheese_hard",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "U Yilanu bačva radi tri do četiri puta brže nego u Škotskoj, a anđeli uzmu i do desetine godišnje. Kad je ta bačva bila puna oloroso sherryja, rezultat je koncentracija koju u Europi ne biste dobili ni za dvadeset godina: grožđice, orah, tamna čokolada.",
+    "en": "In Yilan a cask works three or four times faster than in Scotland, and the angels take up to a tenth a year. When that cask was full of oloroso sherry, the result is a concentration Europe would not reach in twenty years: raisin, walnut, dark chocolate.",
+    "it": "A Yilan una botte lavora tre o quattro volte più in fretta che in Scozia, e gli angeli si prendono fino a un decimo l'anno. Quando quella botte era piena di sherry oloroso, il risultato è una concentrazione che in Europa non si otterrebbe in vent'anni: uvetta, noce, cioccolato fondente.",
+    "fr": "À Yilan, un fût travaille trois à quatre fois plus vite qu'en Écosse, et les anges prennent jusqu'à un dixième par an. Quand ce fût était plein de xérès oloroso, on obtient une concentration que l'Europe n'atteindrait pas en vingt ans : raisin sec, noix, chocolat noir.",
+    "de": "In Yilan arbeitet ein Fass drei- bis viermal schneller als in Schottland, und die Engel nehmen bis zu einem Zehntel im Jahr. War dieses Fass voll Oloroso-Sherry, ergibt das eine Konzentration, die Europa in zwanzig Jahren nicht erreichte: Rosine, Walnuss, dunkle Schokolade.",
+    "zh": "在宜兰，一只桶的工作速度是苏格兰的三到四倍，天使每年要拿走多达十分之一。当这只桶原本装的是 oloroso 雪莉，结果就是欧洲二十年也达不到的浓度：葡萄干、核桃、黑巧克力。",
+    "sl": "V Yilanu sod dela trikrat do štirikrat hitreje kot na Škotskem, angeli pa vzamejo do desetino na leto. Ko je bil ta sod poln šerija oloroso, je rezultat koncentracija, ki je Evropa ne bi dosegla v dvajsetih letih: rozine, oreh, temna čokolada.",
+    "es": "En Yilan una barrica trabaja tres o cuatro veces más rápido que en Escocia, y los ángeles se llevan hasta un décimo al año. Cuando esa barrica estuvo llena de jerez oloroso, el resultado es una concentración que Europa no alcanzaría en veinte años: pasa, nuez, chocolate negro."
+   },
+   "notePlain": true
   },
   "kavalan-taiwan--solist": {
    "name": "Solist",
-   "producer": "Kavalan, Taiwan"
+   "producer": "Kavalan",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_taiwan",
+    "region": "Yilan",
+    "country": "TW",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "dried_fruit",
+     "dark_cherry",
+     "brown_spices",
+     "toffee",
+     "oak",
+     "dates"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "solo",
+     "dark_chocolate",
+     "cigars"
+    ]
+   },
+   "note": {
+    "hr": "Solist znači jedna bačva, punjena u punoj jačini, bez vode i bez filtracije — što god je ta bačva postala, to je u boci. Zato se dvije Solist boce nikad ne poklapaju. Kap vode ovdje nije grijeh nego alat: otvara je.",
+    "en": "Solist means one cask, bottled at full strength, no water and no filtration — whatever that barrel became is what is in the bottle. No two Solists are ever the same. A drop of water here is not a sin but a tool: it opens the whisky up.",
+    "it": "Solist significa una sola botte, imbottigliata a pieno grado, senz'acqua e senza filtrazione — ciò che quella botte è diventata è ciò che c'è nella bottiglia. Due Solist non coincidono mai. Una goccia d'acqua qui non è un peccato ma uno strumento: lo apre.",
+    "fr": "Solist veut dire un seul fût, embouteillé à son degré naturel, sans eau ni filtration — ce que ce fût est devenu est ce qu'il y a dans la bouteille. Deux Solist ne se ressemblent jamais. Une goutte d'eau n'est pas ici un péché mais un outil : elle l'ouvre.",
+    "de": "Solist heißt ein Fass, in Fassstärke abgefüllt, ohne Wasser und ohne Filtration — was aus diesem Fass geworden ist, steht in der Flasche. Zwei Solist gleichen sich nie. Ein Tropfen Wasser ist hier keine Sünde, sondern ein Werkzeug: er öffnet ihn.",
+    "zh": "Solist 意味着单一桶、原桶强度装瓶，不加水、不过滤——那只桶变成了什么，瓶里就是什么。两瓶 Solist 从不相同。在这里加一滴水不是罪过，而是工具：它把酒打开。",
+    "sl": "Solist pomeni en sam sod, polnjen v polni jakosti, brez vode in brez filtracije — kar je ta sod postal, je v steklenici. Dva Solista nista nikoli enaka. Kapljica vode tu ni greh, ampak orodje: odpre ga.",
+    "es": "Solist significa una sola barrica, embotellada a grado natural, sin agua ni filtrado — lo que esa barrica llegó a ser es lo que hay en la botella. Dos Solist nunca coinciden. Una gota de agua aquí no es pecado sino herramienta: lo abre."
+   },
+   "notePlain": true
   },
   "mars-japan--maltage-cosmo": {
    "name": "Maltage Cosmo",
-   "producer": "Mars, Japan"
+   "producer": "Mars Shinshu",
+   "insight": {
+    "kind": "spirit",
+    "class": "blended_malt_japan",
+    "region": "Miyada, Nagano",
+    "country": "JP",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "43",
+    "aromas": [
+     "red_apple",
+     "honey",
+     "malt",
+     "vanilla",
+     "dried_herbs",
+     "smoke"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "sushi_sashimi",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Blended malt znači: samo sladni viski, iz više destilerija, bez žitnog. Cosmo miješa škotske malteve s onim iz Nagana, na 798 metara nadmorske visine — najviša destilerija u Japanu, gdje je zrak hladan i zrenje sporo. Japan koji ne krije da je učio u Škotskoj.",
+    "en": "A blended malt means malt whisky only, from more than one distillery, with no grain in it. Cosmo marries Scottish malts with Mars's own from Nagano, 798 metres up — the highest distillery in Japan, where the air is cold and maturation slow. A Japan that does not hide having studied in Scotland.",
+    "it": "Blended malt vuol dire solo whisky di malto, da più distillerie, senza grain. Cosmo unisce malti scozzesi a quello di Nagano, a 798 metri — la distilleria più alta del Giappone, dove l'aria è fredda e la maturazione lenta. Un Giappone che non nasconde di aver studiato in Scozia.",
+    "fr": "Un blended malt, c'est du whisky de malt seulement, de plusieurs distilleries, sans grain. Cosmo marie des malts écossais à celui de Nagano, à 798 mètres — la distillerie la plus haute du Japon, où l'air est froid et le vieillissement lent. Un Japon qui ne cache pas avoir étudié en Écosse.",
+    "de": "Blended Malt heißt: nur Malt Whisky, aus mehreren Brennereien, kein Grain. Cosmo verheiratet schottische Malts mit dem aus Nagano, auf 798 Metern — die höchste Brennerei Japans, wo die Luft kalt und die Reifung langsam ist. Ein Japan, das nicht verschweigt, in Schottland gelernt zu haben.",
+    "zh": "调和麦芽的意思是：只用麦芽威士忌，来自不止一家酒厂，不掺谷物威士忌。Cosmo 把苏格兰麦芽与长野的自家酒液结合，海拔 798 米——日本最高的酒厂，空气清冷，熟成缓慢。一个不掩饰自己师从苏格兰的日本。",
+    "sl": "Blended malt pomeni: samo sladni viski, iz več destilarn, brez žitnega. Cosmo poroči škotske slade s tistim iz Nagana, na 798 metrih — najvišja destilarna na Japonskem, kjer je zrak hladen in zorenje počasno. Japonska, ki ne skriva, da se je učila na Škotskem.",
+    "es": "Un blended malt es solo whisky de malta, de más de una destilería, sin grano. Cosmo casa maltas escocesas con la propia de Nagano, a 798 metros — la destilería más alta de Japón, donde el aire es frío y la maduración lenta. Un Japón que no esconde haber estudiado en Escocia."
+   },
+   "notePlain": true
   },
   "mars-japan--tsunuki-edition-2023": {
    "name": "Tsunuki Edition 2023",
-   "producer": "Mars, Japan"
+   "producer": "Mars Tsunuki",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_japan",
+    "region": "Minamisatsuma, Kagoshima",
+    "country": "JP",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "orange_peel",
+     "brown_spices",
+     "toffee",
+     "dried_fruit",
+     "oak",
+     "smoke"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "dark_chocolate"
+    ]
+   },
+   "note": {
+    "hr": "Tsunuki je najjužnija destilerija Japana, u Kagoshimi, gdje je klima suptropska — sasvim suprotno od planinskog Shinshua koji ista kuća drži na sjeveru. Ista firma, dva podneblja, dva potpuno različita viskija. Ovo je toplija, začinjenija strana.",
+    "en": "Tsunuki is Japan's southernmost distillery, in Kagoshima, where the climate is subtropical — the opposite of the mountain Shinshu the same house runs up north. One company, two climates, two entirely different whiskies. This is the warmer, spicier side of it.",
+    "it": "Tsunuki è la distilleria più meridionale del Giappone, a Kagoshima, dove il clima è subtropicale — l'opposto dello Shinshu di montagna che la stessa casa tiene a nord. Una sola azienda, due climi, due whisky del tutto diversi. Questo è il lato più caldo e speziato.",
+    "fr": "Tsunuki est la distillerie la plus méridionale du Japon, à Kagoshima, sous un climat subtropical — l'inverse du Shinshu de montagne que la même maison tient au nord. Une entreprise, deux climats, deux whiskies entièrement différents. Voici le versant chaud et épicé.",
+    "de": "Tsunuki ist Japans südlichste Brennerei, in Kagoshima, wo das Klima subtropisch ist — das Gegenteil des Berg-Shinshu, das dasselbe Haus im Norden betreibt. Eine Firma, zwei Klimata, zwei völlig verschiedene Whiskys. Dies ist die wärmere, würzigere Seite.",
+    "zh": "Tsunuki 是日本最南端的酒厂，位于鹿儿岛，气候亚热带——与同一家公司在北方经营的高山信州正好相反。一家公司，两种气候，两种截然不同的威士忌。这一支是更暖、更辛香的那一面。",
+    "sl": "Tsunuki je najjužnejša japonska destilarna, v Kagošimi, kjer je podnebje subtropsko — nasprotje gorskega Shinshuja, ki ga ista hiša vodi na severu. Eno podjetje, dve podnebji, dva povsem različna viskija. To je toplejša, bolj začinjena stran.",
+    "es": "Tsunuki es la destilería más al sur de Japón, en Kagoshima, de clima subtropical — lo contrario del Shinshu de montaña que la misma casa tiene en el norte. Una empresa, dos climas, dos whiskies completamente distintos. Este es el lado más cálido y especiado."
+   },
+   "notePlain": true
   },
   "mars-japan--komagatake-limited-edition-2018": {
    "name": "Komagatake Limited Edition 2018",
-   "producer": "Mars, Japan"
+   "producer": "Mars Shinshu",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_japan",
+    "region": "Miyada, Nagano",
+    "country": "JP",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "pear",
+     "honey",
+     "malt",
+     "vanilla",
+     "white_peach",
+     "oak"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "sushi_sashimi",
+     "white_fish",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Komagatake je planina iznad destilerije, 2956 metara, i po njoj se zove viski koji nastaje u njezinoj hladovini. Na 798 metara zrenje je sporo i čisto — ovo je precizna, voćna strana japanskog malta, bez dima i bez ukrasa.",
+    "en": "Komagatake is the 2,956-metre mountain above the distillery, and the whisky made in its shadow takes its name. At 798 metres the maturation is slow and clean — this is the precise, orchard-fruited side of Japanese malt, no smoke and no ornament.",
+    "it": "Komagatake è la montagna di 2.956 metri sopra la distilleria, e il whisky che nasce alla sua ombra ne porta il nome. A 798 metri la maturazione è lenta e pulita — questo è il lato preciso e fruttato del malto giapponese, senza fumo e senza fronzoli.",
+    "fr": "Komagatake est la montagne de 2 956 mètres qui domine la distillerie, et le whisky né à son ombre en porte le nom. À 798 mètres, le vieillissement est lent et net — voici le versant précis et fruité du malt japonais, sans fumée ni ornement.",
+    "de": "Komagatake ist der 2.956 Meter hohe Berg über der Brennerei, und der Whisky, der in seinem Schatten entsteht, trägt seinen Namen. Auf 798 Metern reift er langsam und klar — das ist die präzise, obstige Seite des japanischen Malts, ohne Rauch und ohne Zierrat.",
+    "zh": "驹岳是酒厂之上那座 2956 米的山，在它的阴影里酿出的威士忌便以它为名。海拔 798 米，熟成缓慢而干净——这是日本麦芽精准、果园气息的一面，没有烟熏，也没有多余装饰。",
+    "sl": "Komagatake je 2956 metrov visoka gora nad destilarno, in viski, ki nastaja v njeni senci, nosi njeno ime. Na 798 metrih je zorenje počasno in čisto — to je natančna, sadna stran japonskega slada, brez dima in brez okraskov.",
+    "es": "Komagatake es la montaña de 2.956 metros sobre la destilería, y el whisky nacido a su sombra toma su nombre. A 798 metros la maduración es lenta y limpia — este es el lado preciso y afrutado de la malta japonesa, sin humo y sin adornos."
+   },
+   "notePlain": true
   },
   "usa--westward": {
-   "name": "Westward",
-   "producer": "USA"
+   "name": "American Single Malt",
+   "producer": "Westward",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_american",
+    "region": "Portland, Oregon",
+    "country": "US",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "virgin_american_oak"
+    ],
+    "alcohol": "45",
+    "aromas": [
+     "malt",
+     "toffee",
+     "red_apple",
+     "vanilla",
+     "hazelnut",
+     "brown_spices"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "bbq",
+     "cheese_hard",
+     "pork"
+    ]
+   },
+   "note": {
+    "hr": "Westward radi ono što nijedan Škot ne bi: pivo za viski vari s pivskim kvascem iz Portlanda, iz grada koji je pivo pretvorio u religiju, pa ga destilira i stavi u potpuno nove američke hrastove bačve. Odatle slad koji ima okus po kruhu i vanilija koja ne dolazi iz Škotske.",
+    "en": "Westward does what no Scot would: it brews its wash with Portland ale yeast, in a city that made a religion of beer, then distils it and puts it into brand-new American oak. Hence a malt that tastes of bread, and a vanilla that comes from nowhere in Scotland.",
+    "it": "Westward fa ciò che nessuno scozzese farebbe: fermenta il mosto con lieviti da birra di Portland, città che della birra ha fatto una religione, poi distilla e mette tutto in rovere americano nuovo. Da qui un malto che sa di pane e una vaniglia che in Scozia non esiste.",
+    "fr": "Westward fait ce qu'aucun Écossais ne ferait : il fermente son moût avec des levures de bière de Portland, ville qui a fait de la bière une religion, puis distille et loge le tout en chêne américain neuf. D'où un malt au goût de pain et une vanille qu'on ne trouve nulle part en Écosse.",
+    "de": "Westward macht, was kein Schotte täte: es vergärt seine Maische mit Ale-Hefen aus Portland, einer Stadt, die aus Bier eine Religion gemacht hat, brennt sie dann und legt alles in fabrikneue amerikanische Eiche. Daher ein Malz, das nach Brot schmeckt, und eine Vanille, die es in Schottland nirgends gibt.",
+    "zh": "Westward 做的是苏格兰人不会做的事：用波特兰的艾尔啤酒酵母发酵酒醪——这座城市把啤酒当宗教——再蒸馏，然后装进全新的美国橡木桶。于是有了带面包味的麦芽，和一种苏格兰根本没有的香草。",
+    "sl": "Westward počne tisto, česar noben Škot ne bi: drozgo vre s pivskimi kvasovkami iz Portlanda, mesta, ki je iz piva naredilo religijo, jo nato destilira in vloži v čisto nov ameriški hrast. Od tod slad z okusom kruha in vanilja, ki je na Škotskem ni nikjer.",
+    "es": "Westward hace lo que ningún escocés haría: fermenta su mosto con levaduras cerveceras de Portland, una ciudad que convirtió la cerveza en religión, luego destila y lo mete en roble americano nuevo. De ahí una malta con sabor a pan y una vainilla que en Escocia no existe."
+   },
+   "notePlain": true
   },
   "usa--redemption": {
-   "name": "Redemption",
-   "producer": "USA"
+   "name": "Rye",
+   "producer": "Redemption",
+   "insight": {
+    "kind": "spirit",
+    "class": "rye_american",
+    "region": "Indiana",
+    "country": "US",
+    "base": [
+     "rye_grain",
+     "corn_grain"
+    ],
+    "still": [
+     "column"
+    ],
+    "cask": [
+     "virgin_american_oak"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "pepper",
+     "dried_mint",
+     "clove",
+     "caramel",
+     "orange_peel",
+     "oak"
+    ],
+    "serve": [
+     "neat",
+     "rocks",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "bbq",
+     "pork",
+     "charcuterie"
+    ]
+   },
+   "note": {
+    "hr": "Raž je bila američki viski prije nego što je bourbon to postao — prohibicija ju je ubila, a Redemption je jedno od imena koja su je vratila. Papreno, suho, s notom mente; ovo je žito zbog kojeg Manhattan i Sazerac uopće imaju smisla.",
+    "en": "Rye was the American whiskey before bourbon was — Prohibition killed it, and Redemption is one of the names that brought it back. Peppery, dry, with a mint edge; this is the grain that makes a Manhattan or a Sazerac make sense in the first place.",
+    "it": "La segale era il whiskey americano prima che lo fosse il bourbon — il proibizionismo la uccise, e Redemption è uno dei nomi che l'hanno riportata. Pepata, secca, con un filo di menta; è il cereale che dà senso a un Manhattan o a un Sazerac.",
+    "fr": "Le seigle était le whiskey américain avant le bourbon — la Prohibition l'a tué, et Redemption est l'un des noms qui l'ont ramené. Poivré, sec, avec une pointe de menthe ; c'est la céréale qui donne tout son sens à un Manhattan ou à un Sazerac.",
+    "de": "Roggen war der amerikanische Whiskey, bevor es der Bourbon war — die Prohibition hat ihn getötet, und Redemption ist einer der Namen, die ihn zurückgeholt haben. Pfeffrig, trocken, mit einer Minzkante; dieses Getreide ist der Grund, warum ein Manhattan oder ein Sazerac überhaupt Sinn ergibt.",
+    "zh": "在波本之前，黑麦才是美国威士忌——禁酒令杀死了它，Redemption 是把它带回来的名字之一。辛辣、干、带一丝薄荷；正是这种谷物，才让曼哈顿与萨泽拉克讲得通。",
+    "sl": "Rž je bila ameriški viski, preden je to postal bourbon — prohibicija jo je ubila, Redemption pa je eno od imen, ki so jo vrnila. Popreno, suho, z robom mete; to je žito, zaradi katerega Manhattan in Sazerac sploh imata smisel.",
+    "es": "El centeno era el whiskey americano antes que el bourbon — la Ley Seca lo mató, y Redemption es uno de los nombres que lo devolvieron. Picante, seco, con un filo de menta; es el cereal que hace que un Manhattan o un Sazerac tengan sentido."
+   },
+   "notePlain": true
   },
   "veritas--white-blended-rum": {
    "name": "White Blended Rum",
-   "producer": "Veritas"
+   "producer": "Veritas",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_white_blend",
+    "region": "",
+    "country": "",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "double_retort_pot",
+     "column"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "alcohol": "47",
+    "aromas": [
+     "overripe_banana",
+     "varnish",
+     "brine",
+     "vanilla",
+     "pineapple",
+     "toffee"
+    ],
+    "serve": [
+     "in_cocktails",
+     "rocks"
+    ],
+    "pairings": [
+     "seafood",
+     "spicy"
+    ]
+   },
+   "note": {
+    "hr": "Bijeli rum koji je zapravo odležan: Foursquare s Barbadosa i Hampden s Jamajke stare svaki za sebe, pa se spoje i filtriraju do bistrog. Boja ode, drvo i esteri ostanu. Zato ovaj Daiquiri ima okus koji obični bijeli rum nema.",
+    "en": "A white rum that has in fact been aged: Foursquare from Barbados and Hampden from Jamaica mature separately, are then married and filtered clear. The colour goes, the wood and the esters stay. Which is why this makes a Daiquiri an ordinary white rum cannot.",
+    "it": "Un rum bianco che in realtà è invecchiato: Foursquare di Barbados e Hampden di Giamaica maturano separati, poi si uniscono e si filtrano fino a tornare limpidi. Il colore se ne va, il legno e gli esteri restano. Per questo fa un Daiquiri che un bianco qualunque non sa fare.",
+    "fr": "Un rhum blanc qui a pourtant vieilli : Foursquare de la Barbade et Hampden de Jamaïque mûrissent séparément, puis sont assemblés et filtrés jusqu'à redevenir limpides. La couleur s'en va, le bois et les esters restent. D'où un Daiquiri qu'un blanc ordinaire ne sait pas faire.",
+    "de": "Ein weißer Rum, der in Wahrheit gereift ist: Foursquare aus Barbados und Hampden aus Jamaika reifen getrennt, werden dann vermählt und klar filtriert. Die Farbe geht, das Holz und die Ester bleiben. Deshalb gelingt damit ein Daiquiri, den ein gewöhnlicher weißer Rum nicht hinbekommt.",
+    "zh": "一款其实陈过桶的白朗姆：巴巴多斯的 Foursquare 与牙买加的 Hampden 各自陈年，再调和、过滤至清澈。颜色没了，木桶与酯类留下。所以它能做出普通白朗姆做不出的 Daiquiri。",
+    "sl": "Beli rum, ki je v resnici zorel: Foursquare z Barbadosa in Hampden z Jamajke zorita ločeno, nato ju zvrstijo in filtrirajo do bistrega. Barva odide, les in estri ostanejo. Zato iz njega nastane daiquiri, kakršnega navaden beli rum ne zmore.",
+    "es": "Un ron blanco que en realidad ha envejecido: Foursquare de Barbados y Hampden de Jamaica maduran por separado, luego se casan y se filtran hasta quedar limpios. El color se va, la madera y los ésteres se quedan. Por eso da un Daiquiri que un blanco corriente no sabe dar."
+   },
+   "notePlain": true
   },
   "clairin--sajous": {
    "name": "Sajous",
-   "producer": "Clairin"
+   "producer": "Clairin",
+   "insight": {
+    "kind": "spirit",
+    "class": "clairin",
+    "region": "Saint-Michel-de-l'Attalaye, Artibonite",
+    "country": "HT",
+    "base": [
+     "cane_juice"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "grass",
+     "olive",
+     "brine",
+     "green_chilli",
+     "white_pepper",
+     "herbs"
+    ],
+    "serve": [
+     "neat",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "seafood",
+     "spicy",
+     "charcuterie"
+    ]
+   },
+   "note": {
+    "hr": "Michel Sajous radi u Saint-Michel-de-l'Attalayeu, na 400 metara, od sorte trske zvane Madame Meuze koju gotovo nitko drugi ne sadi. Prvi clairin koji je izašao iz Haitija i još uvijek onaj koji najjasnije govori: maslina, salamura, zelena paprika. Slan, a nikad nije vidio more.",
+    "en": "Michel Sajous works at Saint-Michel-de-l'Attalaye, 400 metres up, from a cane called Madame Meuze that almost nobody else plants. The first clairin to leave Haiti and still the one that speaks most clearly: olive, brine, green chilli. Salty, and it has never seen the sea.",
+    "it": "Michel Sajous lavora a Saint-Michel-de-l'Attalaye, a 400 metri, da una canna chiamata Madame Meuze che quasi nessun altro pianta. Il primo clairin uscito da Haiti e ancora quello che parla più chiaro: oliva, salamoia, peperoncino verde. Salato, e non ha mai visto il mare.",
+    "fr": "Michel Sajous travaille à Saint-Michel-de-l'Attalaye, à 400 mètres, à partir d'une canne appelée Madame Meuze que presque personne d'autre ne plante. Le premier clairin sorti d'Haïti, et toujours celui qui parle le plus clairement : olive, saumure, piment vert. Salé, et il n'a jamais vu la mer.",
+    "de": "Michel Sajous arbeitet in Saint-Michel-de-l'Attalaye, auf 400 Metern, mit einer Rohrsorte namens Madame Meuze, die sonst kaum jemand pflanzt. Der erste Clairin, der Haiti verließ, und noch immer der, der am klarsten spricht: Olive, Salzlake, grüne Chili. Salzig, und er hat das Meer nie gesehen.",
+    "zh": "Michel Sajous 在海拔 400 米的 Saint-Michel-de-l'Attalaye 工作，用的是一种几乎没人再种的甘蔗品种 Madame Meuze。这是第一支走出海地的克莱汉，至今仍是话说得最清楚的一支：橄榄、盐卤、青辣椒。咸，却从未见过海。",
+    "sl": "Michel Sajous dela v Saint-Michel-de-l'Attalayu, na 400 metrih, iz sorte trsa, imenovane Madame Meuze, ki je skoraj nihče drug ne sadi. Prvi clairin, ki je zapustil Haiti, in še vedno tisti, ki govori najbolj jasno: oljka, slanica, zeleni čili. Slan, morja pa ni nikoli videl.",
+    "es": "Michel Sajous trabaja en Saint-Michel-de-l'Attalaye, a 400 metros, con una caña llamada Madame Meuze que casi nadie más planta. El primer clairin que salió de Haití y aún el que habla más claro: aceituna, salmuera, chile verde. Salado, y nunca ha visto el mar."
+   },
+   "notePlain": true
   },
   "clairin--casimir": {
    "name": "Casimir",
-   "producer": "Clairin"
+   "producer": "Clairin",
+   "insight": {
+    "kind": "spirit",
+    "class": "clairin",
+    "region": "Barradères, Nippes",
+    "country": "HT",
+    "base": [
+     "cane_juice"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "ginger",
+     "cinnamon",
+     "clove",
+     "grass",
+     "brine",
+     "herbs"
+    ],
+    "serve": [
+     "neat",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "spicy",
+     "asian",
+     "charcuterie"
+    ]
+   },
+   "note": {
+    "hr": "Faubert Casimir u Barradèresu radi ono što nijedna druga destilerija ne radi: u fermentaciju dodaje kuhani odvar aromatičnog bilja — đumbir, cimet, korijenje — pa kvasci rade zajedno s njima. Zato ovaj clairin miriše na začine, a nitko mu ih nije dodao poslije.",
+    "en": "Faubert Casimir at Barradères does what no other distillery does: he adds a boiled infusion of aromatic plants — ginger, cinnamon, roots — to the fermentation, so the yeasts work alongside them. Which is why this clairin smells of spice that nobody put in afterwards.",
+    "it": "Faubert Casimir, a Barradères, fa ciò che nessun'altra distilleria fa: aggiunge alla fermentazione un decotto di piante aromatiche — zenzero, cannella, radici — così i lieviti lavorano insieme a loro. Per questo questo clairin profuma di spezie che nessuno vi ha messo dopo.",
+    "fr": "Faubert Casimir, à Barradères, fait ce qu'aucune autre distillerie ne fait : il ajoute à la fermentation une décoction de plantes aromatiques — gingembre, cannelle, racines — de sorte que les levures travaillent avec elles. D'où un clairin qui sent l'épice que personne n'y a mise après coup.",
+    "de": "Faubert Casimir in Barradères tut, was keine andere Brennerei tut: er gibt der Gärung einen gekochten Auszug aromatischer Pflanzen bei — Ingwer, Zimt, Wurzeln — sodass die Hefen mit ihnen zusammenarbeiten. Deshalb riecht dieser Clairin nach Gewürz, das niemand nachträglich hineingetan hat.",
+    "zh": "Barradères 的 Faubert Casimir 做着别家酒厂都不做的事：他往发酵里加入煮过的芳香植物汁液——姜、肉桂、根茎——让酵母与它们一同工作。所以这支克莱汉的香料气息，没有一分是事后加进去的。",
+    "sl": "Faubert Casimir v Barradèresu počne tisto, česar ne počne nobena druga destilarna: v fermentacijo doda kuhan izvleček aromatičnih rastlin — ingver, cimet, korenine — tako da kvasovke delajo skupaj z njimi. Zato ta clairin diši po začimbah, ki jih vanj ni nihče dodal pozneje.",
+    "es": "Faubert Casimir, en Barradères, hace lo que ninguna otra destilería hace: añade a la fermentación una decocción de plantas aromáticas — jengibre, canela, raíces — de modo que las levaduras trabajan con ellas. Por eso este clairin huele a especia que nadie le puso después."
+   },
+   "notePlain": true
   },
   "clairin--vaval": {
    "name": "Vaval",
-   "producer": "Clairin"
+   "producer": "Clairin",
+   "insight": {
+    "kind": "spirit",
+    "class": "clairin",
+    "region": "Cavaillon, Sud",
+    "country": "HT",
+    "base": [
+     "cane_juice"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "grass",
+     "earth",
+     "olive",
+     "saline",
+     "white_pepper",
+     "tropical"
+    ],
+    "serve": [
+     "neat",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "seafood",
+     "spicy",
+     "charcuterie"
+    ]
+   },
+   "note": {
+    "hr": "Fritz Vaval radi u Cavaillonu na jugu, blizu mora, od sorte cristalline. Od tri clairina ovaj je najzemljaniji i najmineralniji — manje voća, više tla i soli. Ako je Sajous oštar, a Casimir začinjen, Vaval je onaj koji ima okus po mjestu.",
+    "en": "Fritz Vaval works at Cavaillon in the south, near the sea, from the cristalline cane. Of the three clairins this is the earthiest and most mineral — less fruit, more soil and salt. If Sajous is sharp and Casimir spiced, Vaval is the one that tastes of the place.",
+    "it": "Fritz Vaval lavora a Cavaillon, al sud, vicino al mare, con la canna cristalline. Dei tre clairin questo è il più terroso e minerale — meno frutta, più terra e sale. Se Sajous è tagliente e Casimir speziato, Vaval è quello che sa del luogo.",
+    "fr": "Fritz Vaval travaille à Cavaillon, au sud, près de la mer, avec la canne cristalline. Des trois clairins, c'est le plus terreux et le plus minéral — moins de fruit, plus de sol et de sel. Si Sajous est tranchant et Casimir épicé, Vaval est celui qui a le goût du lieu.",
+    "de": "Fritz Vaval arbeitet in Cavaillon im Süden, nahe am Meer, mit der Sorte Cristalline. Von den dreien ist dieser der erdigste und mineralischste — weniger Frucht, mehr Boden und Salz. Ist Sajous scharf und Casimir würzig, so ist Vaval der, der nach dem Ort schmeckt.",
+    "zh": "Fritz Vaval 在南部靠海的 Cavaillon 工作，用的是 cristalline 甘蔗。三支克莱汉里，这一支土壤感与矿物感最重——果味更少，泥土与咸味更多。如果说 Sajous 锋利、Casimir 辛香，那么 Vaval 是尝得到地方的那一支。",
+    "sl": "Fritz Vaval dela v Cavaillonu na jugu, blizu morja, iz sorte cristalline. Med tremi clairini je ta najbolj zemeljski in mineralen — manj sadja, več prsti in soli. Če je Sajous oster in Casimir začinjen, je Vaval tisti, ki ima okus po kraju.",
+    "es": "Fritz Vaval trabaja en Cavaillon, al sur, cerca del mar, con la caña cristalline. De los tres clairins este es el más terroso y mineral — menos fruta, más suelo y sal. Si Sajous es afilado y Casimir especiado, Vaval es el que sabe al lugar."
+   },
+   "notePlain": true
   },
   "hampden-estate--hlcf-classic-4y": {
    "name": "HLCF Classic 4Y",
-   "producer": "Hampden Estate"
+   "producer": "Hampden Estate",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_jamaican",
+    "region": "Trelawny",
+    "country": "JM",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "double_retort_pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "age": "4",
+    "alcohol": "60",
+    "aromas": [
+     "overripe_banana",
+     "varnish",
+     "acetone",
+     "pineapple",
+     "olive",
+     "brine"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cigars",
+     "spicy",
+     "charcuterie"
+    ]
+   },
+   "note": {
+    "hr": "HLCF su četiri slova s inventara: Hampden Light Continental Flavoured, jedna od marki koje kuća destilira i koja označava točan raspon estera — 400 do 600 grama na hektolitru čistog alkohola. Četiri tropske godine u bačvi i punih 60 posto — ovo je Hampden bez ijednog koraka unatrag. Kap vode ovdje nije slabost.",
+    "en": "HLCF is four letters off the inventory: Hampden Light Continental Flavoured, one of the marks the estate distils, denoting an exact ester range — 400 to 600 grams per hectolitre of pure alcohol. Four tropical years in cask and a full 60 percent — this is Hampden without a single step backwards. A drop of water here is not weakness.",
+    "it": "HLCF sono quattro lettere d'inventario: Hampden Light Continental Flavoured, una delle marche che la tenuta distilla, che indica un preciso intervallo di esteri — da 400 a 600 grammi per ettolitro di alcol puro. Quattro anni tropicali in botte e 60 gradi pieni — è Hampden senza un solo passo indietro. Una goccia d'acqua, qui, non è debolezza.",
+    "fr": "HLCF, ce sont quatre lettres d'inventaire : Hampden Light Continental Flavoured, l'une des marques que le domaine distille, désignant une plage d'esters précise — 400 à 600 grammes par hectolitre d'alcool pur. Quatre années tropicales en fût et 60 degrés pleins — c'est Hampden sans un pas en arrière. Une goutte d'eau ici n'est pas une faiblesse.",
+    "de": "HLCF sind vier Buchstaben aus dem Inventar: Hampden Light Continental Flavoured, eine der Marken, die das Gut brennt, und Kennzeichen eines exakten Esterbereichs — 400 bis 600 Gramm je Hektoliter reinen Alkohols. Vier tropische Jahre im Fass und volle 60 Prozent — das ist Hampden ohne einen einzigen Schritt zurück. Ein Tropfen Wasser ist hier keine Schwäche.",
+    "zh": "HLCF 是账册上的四个字母：Hampden Light Continental Flavoured，酒厂所蒸馏的 marque 之一，标示一个确切的酯含量区间——每百升纯酒精 400 至 600 克。热带四年桶陈，足 60 度——这是一步不退的 Hampden。在这里加一滴水，不算示弱。",
+    "sl": "HLCF so štiri črke iz inventarja: Hampden Light Continental Flavoured, ena od znamk, ki jih posestvo destilira, in oznaka za natančen razpon estrov — 400 do 600 gramov na hektoliter čistega alkohola. Štiri tropska leta v sodu in polnih 60 odstotkov — to je Hampden brez enega samega koraka nazaj. Kapljica vode tu ni šibkost.",
+    "es": "HLCF son cuatro letras del inventario: Hampden Light Continental Flavoured, una de las marcas que la finca destila, que indica un rango exacto de ésteres — de 400 a 600 gramos por hectolitro de alcohol puro. Cuatro años tropicales en barrica y 60 grados completos — es Hampden sin un solo paso atrás. Una gota de agua aquí no es debilidad."
+   },
+   "notePlain": true
   },
   "hampden-estate--pure-single-jamaican-rum-8y": {
    "name": "Pure Single Jamaican Rum 8Y",
-   "producer": "Hampden Estate"
+   "producer": "Hampden Estate",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_jamaican",
+    "region": "Trelawny",
+    "country": "JM",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "double_retort_pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "age": "8",
+    "alcohol": "46",
+    "aromas": [
+     "overripe_banana",
+     "tropical",
+     "oak",
+     "toffee",
+     "clove",
+     "brine"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Pure single znači: jedna destilerija, samo kotao, ništa dodano — najstroža oznaka koja u rumu postoji, i Hampden ju je pomogao definirati. Osam tropskih godina i 46 posto čine ovo najpristupačnijim ulazom u kuću: banana i tropsko voće su tu, ali drvo ih je naučilo redu.",
+    "en": "Pure single means one distillery, pot still only, nothing added — the strictest designation rum has, and Hampden helped define it. Eight tropical years at 46 percent make this the gentlest way into the house: the banana and the tropical fruit are all there, but the wood has taught them manners.",
+    "it": "Pure single vuol dire una sola distilleria, solo alambicco discontinuo, niente di aggiunto — la designazione più severa che il rum abbia, e Hampden ha contribuito a definirla. Otto anni tropicali a 46 gradi ne fanno la porta d'ingresso più gentile alla casa: banana e frutta tropicale ci sono tutte, ma il legno ha insegnato loro le buone maniere.",
+    "fr": "Pure single veut dire une seule distillerie, alambic à repasse uniquement, rien d'ajouté — la mention la plus stricte du rhum, et Hampden a aidé à la définir. Huit années tropicales à 46 degrés en font l'entrée la plus douce dans la maison : la banane et les fruits tropicaux sont là, mais le bois leur a appris les bonnes manières.",
+    "de": "Pure Single heißt: eine Brennerei, nur Pot Still, nichts zugesetzt — die strengste Bezeichnung, die der Rum kennt, und Hampden hat sie mitdefiniert. Acht tropische Jahre bei 46 Prozent machen dies zum sanftesten Einstieg ins Haus: Banane und Tropenfrucht sind alle da, aber das Holz hat ihnen Manieren beigebracht.",
+    "zh": "Pure single 的意思是：单一酒厂、只用壶式蒸馏、不加任何东西——朗姆世界里最严格的标示，而 Hampden 参与了它的定义。热带八年、46 度，让这一支成为进入这座酒厂最温和的入口：香蕉与热带水果一样不少，只是木桶教会了它们规矩。",
+    "sl": "Pure single pomeni: ena destilarna, samo kotel, nič dodanega — najstrožja oznaka, kar jih rum pozna, in Hampden jo je pomagal opredeliti. Osem tropskih let pri 46 odstotkih naredi iz tega najbolj prijazen vstop v hišo: banana in tropsko sadje so tu, le da jih je les naučil reda.",
+    "es": "Pure single significa una sola destilería, solo alambique de repaso, nada añadido — la designación más estricta que tiene el ron, y Hampden ayudó a definirla. Ocho años tropicales a 46 grados lo convierten en la entrada más amable a la casa: el plátano y la fruta tropical están todos ahí, pero la madera les ha enseñado modales."
+   },
+   "notePlain": true
   },
   "velier--papalim-7y": {
-   "name": "Papalim 7Y",
-   "producer": "Velier"
+   "name": "Papalin 7Y",
+   "producer": "Velier",
+   "insight": {
+    "kind": "spirit",
+    "class": "clairin",
+    "region": "",
+    "country": "HT",
+    "base": [
+     "cane_juice"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "refill"
+    ],
+    "age": "7",
+    "alcohol": "",
+    "aromas": [
+     "grass",
+     "honey",
+     "olive",
+     "dried_fruit",
+     "oak",
+     "white_pepper"
+    ],
+    "serve": [
+     "neat"
+    ],
+    "pairings": [
+     "cigars",
+     "charcuterie",
+     "solo"
+    ]
+   },
+   "note": {
+    "hr": "Papalin je Velierova kupaža haićanskih clairina koji su odležali sedam godina — u tropima, gdje bačva radi tri do četiri puta brže nego u Škotskoj i gdje anđeli popiju i do desetine godišnje. Ono što ostane nakon sedam takvih godina više nije mlado i divlje, ali još uvijek zna odakle je došlo.",
+    "en": "Papalin is Velier's blend of Haitian clairins given seven years — in the tropics, where a cask works three or four times faster than in Scotland and the angels take up to a tenth a year. What is left after seven of those years is no longer young and wild, but it still knows where it came from.",
+    "it": "Papalin è il blend Velier di clairin haitiani lasciati sette anni — ai tropici, dove una botte lavora tre o quattro volte più in fretta che in Scozia e gli angeli si prendono fino a un decimo all'anno. Ciò che resta dopo sette anni così non è più giovane e selvatico, ma sa ancora da dove viene.",
+    "fr": "Papalin est l'assemblage Velier de clairins haïtiens vieillis sept ans — sous les tropiques, où un fût travaille trois à quatre fois plus vite qu'en Écosse et où les anges prennent jusqu'à un dixième par an. Ce qui reste après sept années pareilles n'est plus jeune ni sauvage, mais sait encore d'où il vient.",
+    "de": "Papalin ist Veliers Verschnitt haitianischer Clairins nach sieben Jahren — in den Tropen, wo ein Fass drei- bis viermal schneller arbeitet als in Schottland und die Engel bis zu einem Zehntel im Jahr nehmen. Was nach sieben solchen Jahren bleibt, ist nicht mehr jung und wild, weiß aber noch, woher es kommt.",
+    "zh": "Papalin 是 Velier 把海地克莱汉陈放七年后的调和——在热带，一只桶的工作速度是苏格兰的三到四倍，天使每年要拿走多达十分之一。经过这样的七年，剩下的东西不再年轻狂野，却仍记得自己从哪里来。",
+    "sl": "Papalin je Velierova zvrst haitijskih clairinov, ki so dobili sedem let — v tropih, kjer sod dela trikrat do štirikrat hitreje kot na Škotskem in kjer angeli vzamejo do desetino na leto. Kar ostane po sedmih takih letih, ni več mlado in divje, a še vedno ve, od kod je prišlo.",
+    "es": "Papalin es la mezcla de Velier de clairins haitianos con siete años — en el trópico, donde una barrica trabaja tres o cuatro veces más rápido que en Escocia y los ángeles se llevan hasta un décimo al año. Lo que queda tras siete años así ya no es joven ni salvaje, pero sigue sabiendo de dónde viene."
+   },
+   "notePlain": true
   },
   "long-pond--cambridge-2005": {
    "name": "Cambridge 2005",
-   "producer": "Long Pond"
+   "producer": "Long Pond",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_jamaican",
+    "region": "Trelawny",
+    "country": "JM",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "double_retort_pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "overripe_banana",
+     "tar",
+     "leather",
+     "tobacco",
+     "varnish",
+     "dates"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "solo"
+    ]
+   },
+   "note": {
+    "hr": "Na Jamajci se rumovi ne zovu po godinama nego po markama — kraticama koje označavaju razinu estera i recepturu fermentacije. Cambridge je jedna od Long Pondovih, naslijeđena od istoimene destilerije koje odavno nema. Berba 2005.: katran, koža i duhan, ono što od visokih estera napravi vrijeme.",
+    "en": "In Jamaica rums are named not by age but by mark — abbreviations that record the ester level and the fermentation recipe. Cambridge is one of Long Pond's, inherited from a distillery of that name long since gone. A 2005: tar, leather and tobacco, which is what time makes of high esters.",
+    "it": "In Giamaica i rum non si chiamano per età ma per marca — sigle che registrano il livello di esteri e la ricetta di fermentazione. Cambridge è una di Long Pond, ereditata da una distilleria omonima scomparsa da tempo. Millesimo 2005: catrame, cuoio e tabacco, ciò che il tempo fa degli alti esteri.",
+    "fr": "En Jamaïque, les rhums ne portent pas un âge mais une marque — des sigles qui consignent le taux d'esters et la recette de fermentation. Cambridge est l'une de celles de Long Pond, héritée d'une distillerie du même nom disparue depuis longtemps. Millésime 2005 : goudron, cuir et tabac, ce que le temps fait des hauts esters.",
+    "de": "In Jamaika heißen Rums nicht nach dem Alter, sondern nach der Mark — Kürzeln, die Estergehalt und Gärrezept festhalten. Cambridge ist eine von Long Pond, geerbt von einer längst verschwundenen Brennerei dieses Namens. Jahrgang 2005: Teer, Leder und Tabak, das, was die Zeit aus hohen Estern macht.",
+    "zh": "在牙买加，朗姆不按年份命名，而按「marque」——记录酯含量与发酵配方的缩写。Cambridge 是 Long Pond 的一个 marque，承自一家早已消失的同名酒厂。2005 年份：焦油、皮革与烟草，这是时间对高酯的加工。",
+    "sl": "Na Jamajki se rumi ne imenujejo po letih, ampak po znamkah — kraticah, ki zapišejo raven estrov in recept fermentacije. Cambridge je ena od Long Pondovih, podedovana po istoimenski destilarni, ki je davno ni več. Letnik 2005: katran, usnje in tobak, kar iz visokih estrov naredi čas.",
+    "es": "En Jamaica los rones no se nombran por edad sino por marca — siglas que registran el nivel de ésteres y la receta de fermentación. Cambridge es una de Long Pond, heredada de una destilería homónima desaparecida hace mucho. Añada 2005: alquitrán, cuero y tabaco, que es lo que el tiempo hace con los ésteres altos."
+   },
+   "notePlain": true
   },
   "mount-gay--last-ward-2007-barbados": {
-   "name": "Last Ward 2007, Barbados",
-   "producer": "Mount Gay"
+   "name": "The Last Ward 2007",
+   "producer": "Mount Gay",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_barbados",
+    "region": "St Lucy",
+    "country": "BB",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "age": "16",
+    "alcohol": "60",
+    "bottler": "Velier",
+    "aromas": [
+     "banana",
+     "toffee",
+     "coconut",
+     "orange_peel",
+     "oak",
+     "brown_spices"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "solo"
+    ]
+   },
+   "note": {
+    "hr": "Mount Gay je najstarija destilerija na svijetu koja još radi — 1703. Obitelj Ward vodila ju je od 1918., a ovo je trinaest bačava iz 2007. koje su pripadale Franku Wardu: posljednji Ward, otud ime. Šesnaest godina u tropima, samo kotao, 3275 boca.",
+    "en": "Mount Gay is the oldest distillery in the world still running — 1703. The Ward family ran it from 1918, and this is thirteen casks from 2007 that were Frank Ward's: the last Ward, hence the name. Sixteen tropical years, pot still only, 3,275 bottles.",
+    "it": "Mount Gay è la distilleria più antica al mondo ancora in attività — 1703. La famiglia Ward la guidò dal 1918, e queste sono tredici botti del 2007 che appartenevano a Frank Ward: l'ultimo Ward, di qui il nome. Sedici anni ai tropici, solo alambicco discontinuo, 3.275 bottiglie.",
+    "fr": "Mount Gay est la plus ancienne distillerie au monde encore en activité — 1703. La famille Ward l'a dirigée depuis 1918, et voici treize fûts de 2007 qui appartenaient à Frank Ward : le dernier Ward, d'où le nom. Seize ans sous les tropiques, alambic à repasse uniquement, 3 275 bouteilles.",
+    "de": "Mount Gay ist die älteste noch arbeitende Brennerei der Welt — 1703. Die Familie Ward führte sie ab 1918, und dies sind dreizehn Fässer von 2007, die Frank Ward gehörten: der letzte Ward, daher der Name. Sechzehn tropische Jahre, nur Pot Still, 3.275 Flaschen.",
+    "zh": "Mount Gay 是全世界仍在运转的最古老酒厂——1703 年。沃德家族自 1918 年经营，这是 2007 年属于 Frank Ward 的十三只桶：最后一位沃德，名字由此而来。热带十六年，纯壶式蒸馏，3275 瓶。",
+    "sl": "Mount Gay je najstarejša še delujoča destilarna na svetu — 1703. Družina Ward jo je vodila od leta 1918, to pa je trinajst sodov iz leta 2007, ki so pripadali Franku Wardu: zadnji Ward, od tod ime. Šestnajst tropskih let, samo kotel, 3275 steklenic.",
+    "es": "Mount Gay es la destilería más antigua del mundo aún en funcionamiento — 1703. La familia Ward la dirigió desde 1918, y estas son trece barricas de 2007 que fueron de Frank Ward: el último Ward, de ahí el nombre. Dieciséis años tropicales, solo alambique de repaso, 3.275 botellas."
+   },
+   "notePlain": true
   },
   "chelo-saint-michael--vieux-sajous-2018": {
    "name": "Vieux Sajous 2018",
-   "producer": "Chelo Saint Michael"
+   "producer": "Chelo",
+   "insight": {
+    "kind": "spirit",
+    "class": "clairin",
+    "region": "Saint-Michel-de-l'Attalaye, Artibonite",
+    "country": "HT",
+    "base": [
+     "cane_juice"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "refill"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "grass",
+     "honey",
+     "vanilla",
+     "olive",
+     "dried_apricot",
+     "oak"
+    ],
+    "serve": [
+     "neat"
+    ],
+    "pairings": [
+     "cigars",
+     "charcuterie",
+     "solo"
+    ]
+   },
+   "note": {
+    "hr": "Isti clairin, ista trska, isti Michel Sajous — samo što je ovaj otišao u bačvu. Vieux Sajous pokazuje što se dogodi kad divlji, travnati haićanski destilat dobije drvo: trava ostane, ali oko nje izraste med i marelica. Rijetkost — malo tko na Haitiju ima vremena i novca za odležavanje.",
+    "en": "The same clairin, the same cane, the same Michel Sajous — only this one went into a cask. Vieux Sajous shows what happens when a wild, grassy Haitian spirit is given wood: the grass stays, and honey and apricot grow around it. Rare — few in Haiti have the time or the money to age anything.",
+    "it": "Lo stesso clairin, la stessa canna, lo stesso Michel Sajous — solo che questo è andato in botte. Vieux Sajous mostra cosa succede quando a un distillato haitiano selvatico ed erbaceo si dà il legno: l'erba resta e attorno crescono miele e albicocca. Raro — pochi ad Haiti hanno tempo e denaro per invecchiare.",
+    "fr": "Le même clairin, la même canne, le même Michel Sajous — sauf que celui-ci est passé en fût. Vieux Sajous montre ce qui arrive quand on donne du bois à un distillat haïtien sauvage et herbacé : l'herbe reste, et autour poussent le miel et l'abricot. Rare — peu de gens en Haïti ont le temps et l'argent de vieillir quoi que ce soit.",
+    "de": "Derselbe Clairin, dasselbe Zuckerrohr, derselbe Michel Sajous — nur ist dieser ins Fass gegangen. Vieux Sajous zeigt, was geschieht, wenn ein wildes, grasiges haitianisches Destillat Holz bekommt: das Gras bleibt, und darum herum wachsen Honig und Aprikose. Selten — kaum jemand auf Haiti hat Zeit und Geld zum Reifen.",
+    "zh": "同样的克莱汉、同样的甘蔗、同样的 Michel Sajous——只是这一支进了桶。Vieux Sajous 展示了当狂野、青草味的海地酒液遇上木桶会发生什么：草香留着，蜂蜜与杏子在它周围长出来。稀有——海地少有人有时间和钱去陈年。",
+    "sl": "Isti clairin, isti trs, isti Michel Sajous — le da je ta šel v sod. Vieux Sajous pokaže, kaj se zgodi, ko divji, travnati haitijski destilat dobi les: trava ostane, okrog nje pa zrasteta med in marelica. Redkost — malokdo na Haitiju ima čas in denar za zorenje.",
+    "es": "El mismo clairin, la misma caña, el mismo Michel Sajous — solo que este pasó por barrica. Vieux Sajous muestra qué ocurre cuando a un destilado haitiano salvaje y herbáceo se le da madera: la hierba se queda y a su alrededor crecen la miel y el albaricoque. Raro — pocos en Haití tienen tiempo y dinero para envejecer nada."
+   },
+   "notePlain": true
   },
   "lmdw--australia-2014": {
    "name": "Australia 2014",
-   "producer": "LMDW"
+   "producer": "La Maison du Whisky",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_australian",
+    "region": "",
+    "country": "AU",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "alcohol": "",
+    "bottler": "La Maison du Whisky",
+    "aromas": [
+     "banana",
+     "caramel",
+     "eucalyptus",
+     "oak",
+     "brown_spices",
+     "toffee"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "dark_chocolate"
+    ]
+   },
+   "note": {
+    "hr": "Australija rum radi od 1860-ih, u Queenslandu gdje trska raste bolje nego na Karibima, ali izvan zemlje se gotovo ne pije. Ovakva punjenja — jedna bačva, jedna godina, francuska kuća koja je izabrala — jedini su način da se do njega uopće dođe.",
+    "en": "Australia has made rum since the 1860s, in Queensland where the cane grows better than in the Caribbean, and almost none of it leaves the country. Bottlings like this one — one cask, one year, chosen by a French house — are the only way to meet it at all.",
+    "it": "L'Australia fa rum dagli anni Sessanta dell'Ottocento, nel Queensland dove la canna cresce meglio che ai Caraibi, e quasi nulla esce dal paese. Imbottigliamenti come questo — una botte, un'annata, scelta da una casa francese — sono l'unico modo per incontrarlo.",
+    "fr": "L'Australie fait du rhum depuis les années 1860, dans le Queensland où la canne pousse mieux qu'aux Caraïbes, et presque rien ne quitte le pays. Des embouteillages comme celui-ci — un fût, une année, choisis par une maison française — sont le seul moyen de le rencontrer.",
+    "de": "Australien macht seit den 1860er Jahren Rum, in Queensland, wo das Zuckerrohr besser wächst als in der Karibik, und fast nichts davon verlässt das Land. Abfüllungen wie diese — ein Fass, ein Jahrgang, von einem französischen Haus ausgewählt — sind die einzige Gelegenheit, ihm zu begegnen.",
+    "zh": "澳大利亚自 1860 年代就在酿朗姆，产地昆士兰的甘蔗长得比加勒比还好，但几乎没有一滴出口。像这样的装瓶——单桶、单一年份，由一家法国酒商挑选——是唯一能遇见它的途径。",
+    "sl": "Avstralija dela rum od šestdesetih let 19. stoletja, v Queenslandu, kjer trs raste bolje kot na Karibih, a skoraj nič od tega ne zapusti države. Polnitve, kot je ta — en sod, en letnik, izbrala francoska hiša — so edina priložnost, da ga sploh srečate.",
+    "es": "Australia hace ron desde la década de 1860, en Queensland, donde la caña crece mejor que en el Caribe, y casi nada sale del país. Embotellados como este — una barrica, una añada, elegidos por una casa francesa — son la única forma de encontrarlo."
+   },
+   "notePlain": true
   },
   "japanese-rhum--nine-leaves-2016": {
-   "name": "Nine Leaves 2016",
-   "producer": "Japanese Rhum"
+   "name": "2016",
+   "producer": "Nine Leaves",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_japanese",
+    "region": "Ōtsu, Shiga",
+    "country": "JP",
+    "base": [
+     "cane_syrup"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "french_oak",
+     "virgin_american_oak"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "honey",
+     "pear",
+     "vanilla",
+     "brown_spices",
+     "toffee",
+     "white_pepper"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "japanese",
+     "cheese_hard",
+     "desserts"
+    ]
+   },
+   "note": {
+    "hr": "Nine Leaves je jedan čovjek. Yuichi Takahashi otvorio je destileriju 2013. kraj jezera Biwa, sam kupuje šećer s Okinawe, sam vodi kotao, sam puni boce — bez zaposlenih. Japanski rum koji ne oponaša ni Karibe ni Martinique, nego radi po sobi u kojoj stoji.",
+    "en": "Nine Leaves is one man. Yuichi Takahashi opened the distillery in 2013 by Lake Biwa, buys the Okinawan cane sugar himself, runs the still himself, bottles it himself — no staff. A Japanese rum that copies neither the Caribbean nor Martinique, but works to the room it stands in.",
+    "it": "Nine Leaves è un uomo solo. Yuichi Takahashi ha aperto la distilleria nel 2013 sul lago Biwa, compra lui lo zucchero di canna di Okinawa, conduce lui l'alambicco, imbottiglia lui — nessun dipendente. Un rum giapponese che non imita né i Caraibi né la Martinica, ma lavora sulla stanza in cui si trova.",
+    "fr": "Nine Leaves, c'est un homme. Yuichi Takahashi a ouvert la distillerie en 2013 au bord du lac Biwa, achète lui-même le sucre de canne d'Okinawa, conduit lui-même l'alambic, embouteille lui-même — aucun employé. Un rhum japonais qui n'imite ni les Caraïbes ni la Martinique, mais travaille la pièce où il se tient.",
+    "de": "Nine Leaves ist ein Mann. Yuichi Takahashi eröffnete die Brennerei 2013 am Biwa-See, kauft den Rohrzucker aus Okinawa selbst, führt die Brennblase selbst, füllt selbst ab — kein Personal. Ein japanischer Rum, der weder die Karibik noch Martinique kopiert, sondern für den Raum arbeitet, in dem er steht.",
+    "zh": "Nine Leaves 只有一个人。高桥雄一 2013 年在琵琶湖畔开了这间酒厂，自己去买冲绳的蔗糖，自己看着蒸馏器，自己装瓶——没有员工。一款既不模仿加勒比也不模仿马提尼克的日本朗姆，只对着自己所在的那间屋子做酒。",
+    "sl": "Nine Leaves je en sam človek. Yuichi Takahashi je destilarno odprl leta 2013 ob jezeru Biva, sam kupuje okinavski trsni sladkor, sam vodi kotel, sam polni steklenice — brez zaposlenih. Japonski rum, ki ne posnema ne Karibov ne Martinika, ampak dela za sobo, v kateri stoji.",
+    "es": "Nine Leaves es un solo hombre. Yuichi Takahashi abrió la destilería en 2013 junto al lago Biwa, compra él mismo el azúcar de caña de Okinawa, maneja él el alambique, embotella él — sin empleados. Un ron japonés que no imita ni al Caribe ni a Martinica, sino que trabaja para la sala en la que está."
+   },
+   "notePlain": true
   },
   "hampden-estate--pagos-sherry-cask": {
-   "name": "Pagos - Sherry Cask",
-   "producer": "Hampden Estate"
+   "name": "Pagos – Sherry Cask",
+   "producer": "Hampden Estate",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_jamaican",
+    "region": "Trelawny",
+    "country": "JM",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "double_retort_pot"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "52",
+    "aromas": [
+     "overripe_banana",
+     "walnut",
+     "dried_fruit",
+     "varnish",
+     "dates",
+     "brine"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Sherry na Hampdenu je hrabar potez: bačva puna oksidiranog, orašastog vina protiv destilata koji nikoga ne sluša. Umjesto da jedno pobijedi drugo, orah i datulje sjednu ispod banane i laka. Pagos znači vinograd u Jerezu — odatle ime.",
+    "en": "Sherry on a Hampden is a nerve-testing move: a cask full of oxidative, nutty wine against a spirit that listens to nobody. Instead of one beating the other, the walnut and dates settle underneath the banana and the varnish. Pagos is the Jerez word for a vineyard — hence the name.",
+    "it": "Lo sherry su un Hampden è una mossa coraggiosa: una botte piena di vino ossidativo e di noce contro un distillato che non ascolta nessuno. Invece di prevalere l'uno sull'altro, noce e datteri si siedono sotto la banana e la vernice. Pagos, a Jerez, vuol dire vigna — di lì il nome.",
+    "fr": "Le xérès sur un Hampden est un pari : un fût plein de vin oxydatif et de noix contre un distillat qui n'écoute personne. Plutôt que l'un l'emporte sur l'autre, la noix et la datte se glissent sous la banane et le vernis. Pagos, à Jerez, désigne un vignoble — d'où le nom.",
+    "de": "Sherry auf einem Hampden ist ein mutiger Zug: ein Fass voll oxidativem, nussigem Wein gegen ein Destillat, das auf niemanden hört. Statt dass eines das andere schlägt, setzen sich Walnuss und Datteln unter Banane und Lack. Pagos heißt in Jerez Weinberg — daher der Name.",
+    "zh": "让雪莉桶去碰 Hampden 是一步险棋：一只装满氧化、坚果调葡萄酒的桶，对上一款谁的话都不听的酒液。结果不是谁压倒谁，而是核桃与椰枣安坐在香蕉和清漆之下。Pagos 在赫雷斯是「葡萄园」的意思——名字由此而来。",
+    "sl": "Šeri na Hampdnu je pogumna poteza: sod, poln oksidativnega, orehovega vina, proti destilatu, ki ne uboga nikogar. Namesto da bi eno premagalo drugo, se oreh in datlji usedeta pod banano in lak. Pagos v Jerezu pomeni vinograd — od tod ime.",
+    "es": "El jerez sobre un Hampden es una jugada valiente: una bota llena de vino oxidativo y de nuez contra un destilado que no obedece a nadie. En vez de vencer uno al otro, la nuez y el dátil se sientan bajo el plátano y el barniz. Pagos, en Jerez, quiere decir pago de viña — de ahí el nombre."
+   },
+   "notePlain": true
   },
   "hampden-estate--great-house-2024": {
    "name": "Great House 2024",
-   "producer": "Hampden Estate"
+   "producer": "Hampden Estate",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_jamaican",
+    "region": "Trelawny",
+    "country": "JM",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "double_retort_pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "overripe_banana",
+     "tropical",
+     "varnish",
+     "toffee",
+     "clove",
+     "oak"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "solo"
+    ]
+   },
+   "note": {
+    "hr": "Great House je kuća na imanju i jedanput godišnje ime kupaže koju blender složi od bačava koje te godine najbolje govore. Nema recepta koji se ponavlja: svaka je godina drukčija, i to je cijela ideja. Tko je pio 2020., nije pio ovo.",
+    "en": "The Great House is the house on the estate, and once a year it is also the name of a blend the distiller assembles from whichever casks speak best that year. There is no repeating recipe: each release differs, and that is the whole idea. Whoever drank the 2020 has not drunk this.",
+    "it": "La Great House è la casa padronale della tenuta e, una volta l'anno, anche il nome di un blend composto con le botti che quell'anno parlano meglio. Non c'è una ricetta che si ripete: ogni edizione è diversa, ed è tutto il senso. Chi ha bevuto la 2020 non ha bevuto questa.",
+    "fr": "La Great House est la maison du domaine et, une fois l'an, le nom d'un assemblage composé à partir des fûts qui s'expriment le mieux cette année-là. Aucune recette ne se répète : chaque édition diffère, et c'est tout l'intérêt. Qui a bu la 2020 n'a pas bu celle-ci.",
+    "de": "Das Great House ist das Herrenhaus des Anwesens und einmal im Jahr auch der Name eines Blends aus den Fässern, die in jenem Jahr am besten sprechen. Es gibt kein wiederkehrendes Rezept: jede Auflage ist anders, und genau darum geht es. Wer die 2020 getrunken hat, hat diese nicht getrunken.",
+    "zh": "Great House 是庄园里的宅邸，也是每年一次的调和之名——由酒厂从当年表达最好的那些桶里配出来。没有可重复的配方：每一版都不同，这正是全部用意。喝过 2020 的人，并没有喝过这一支。",
+    "sl": "Great House je hiša na posestvu in enkrat na leto tudi ime zvrsti, ki jo blender sestavi iz sodov, ki tisto leto govorijo najbolje. Recepta, ki bi se ponavljal, ni: vsaka izdaja je drugačna, in v tem je vsa ideja. Kdor je pil 2020, tega ni pil.",
+    "es": "La Great House es la casa señorial de la finca y, una vez al año, también el nombre de una mezcla que el destilador compone con las barricas que mejor hablan ese año. No hay receta que se repita: cada edición es distinta, y ese es todo el sentido. Quien bebió la 2020 no ha bebido esta."
+   },
+   "notePlain": true
   },
   "foursquare--raconteur": {
    "name": "Raconteur",
-   "producer": "Foursquare"
+   "producer": "Foursquare",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_barbados",
+    "region": "St Philip",
+    "country": "BB",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "pot_and_column"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "age": "17",
+    "alcohol": "61",
+    "bottler": "Velier",
+    "aromas": [
+     "toffee",
+     "coconut",
+     "banana",
+     "orange_peel",
+     "oak",
+     "brown_spices",
+     "cocoa"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "solo"
+    ]
+   },
+   "note": {
+    "hr": "Foursquare je rum bez šećera, bez boje i bez izgovora: Richard Seale je gotovo sam izborio da se na Barbadosu piše što je u boci. Sedamnaest godina u tropima na 61 posto — jačina koja ovdje nije poza nego jedini način da se ne razvodni ono što je bačva napravila.",
+    "en": "Foursquare is rum with no added sugar, no colouring and no excuses: Richard Seale all but single-handedly forced Barbados to say what is in the bottle. Seventeen tropical years at 61 percent — a strength that here is not a pose but the only way not to dilute what the cask did.",
+    "it": "Foursquare è rum senza zucchero aggiunto, senza colore e senza scuse: Richard Seale ha praticamente da solo imposto a Barbados di dichiarare cosa c'è nella bottiglia. Diciassette anni ai tropici a 61 gradi — un grado che qui non è posa ma l'unico modo per non diluire ciò che la botte ha fatto.",
+    "fr": "Foursquare, c'est du rhum sans sucre ajouté, sans colorant et sans excuse : Richard Seale a presque à lui seul imposé à la Barbade de dire ce qu'il y a dans la bouteille. Dix-sept ans sous les tropiques à 61 degrés — un degré qui n'est pas ici une pose, mais le seul moyen de ne pas diluer ce que le fût a fait.",
+    "de": "Foursquare ist Rum ohne Zuckerzusatz, ohne Farbe und ohne Ausreden: Richard Seale hat Barbados fast im Alleingang dazu gebracht zu sagen, was in der Flasche ist. Siebzehn tropische Jahre bei 61 Prozent — eine Stärke, die hier keine Pose ist, sondern die einzige Möglichkeit, nicht zu verdünnen, was das Fass getan hat.",
+    "zh": "Foursquare 的朗姆不加糖、不加色、不找借口：Richard Seale 几乎凭一己之力，逼着巴巴多斯把瓶里的东西说清楚。热带十七年，61 度——这里的高度数不是姿态，而是不稀释掉桶所成就之物的唯一办法。",
+    "sl": "Foursquare je rum brez dodanega sladkorja, brez barvil in brez izgovorov: Richard Seale je skoraj sam izsilil, da Barbados pove, kaj je v steklenici. Sedemnajst tropskih let pri 61 odstotkih — jakost, ki tu ni poza, ampak edini način, da se ne razredči tega, kar je naredil sod.",
+    "es": "Foursquare es ron sin azúcar añadido, sin colorante y sin excusas: Richard Seale forzó casi en solitario a Barbados a decir qué hay en la botella. Diecisiete años tropicales a 61 grados — una graduación que aquí no es pose sino la única manera de no diluir lo que hizo la barrica."
+   },
+   "notePlain": true
   },
   "habitation-velier--renegade-2020": {
    "name": "Renegade 2020",
-   "producer": "Habitation Velier"
+   "producer": "Renegade",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_cane_juice",
+    "region": "",
+    "country": "GD",
+    "base": [
+     "cane_juice"
+    ],
+    "still": [
+     "pot_and_column"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "bottler": "Habitation Velier",
+    "aromas": [
+     "grass",
+     "green_chilli",
+     "white_pepper",
+     "olive",
+     "tropical",
+     "saline"
+    ],
+    "serve": [
+     "neat",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "seafood",
+     "spicy",
+     "light_starters"
+    ]
+   },
+   "note": {
+    "hr": "Mark Reynier je čovjek koji je oživio Bruichladdich, pa Waterford, i onda otišao na Grenadu s idejom koju rum nikad nije uzeo ozbiljno: da je važno s koje njive dolazi trska. Renegade destilira svaku parcelu odvojeno, a ova punjenja su nedozrijevana — bez bačve nema se iza čega sakriti.",
+    "en": "Mark Reynier revived Bruichladdich, then Waterford, and then went to Grenada with an idea rum had never taken seriously: that which field the cane came from matters. Renegade distils every plot separately, and these releases are unaged — with no cask, there is nowhere to hide.",
+    "it": "Mark Reynier ha fatto rinascere Bruichladdich, poi Waterford, poi è andato a Grenada con un'idea che il rum non aveva mai preso sul serio: che conta da quale campo viene la canna. Renegade distilla ogni parcella separatamente, e queste uscite non hanno legno — senza botte non c'è dove nascondersi.",
+    "fr": "Mark Reynier a ressuscité Bruichladdich, puis Waterford, puis est parti à la Grenade avec une idée que le rhum n'avait jamais prise au sérieux : la parcelle d'où vient la canne compte. Renegade distille chaque parcelle séparément, et ces sorties sont sans bois — sans fût, on ne peut se cacher nulle part.",
+    "de": "Mark Reynier hat Bruichladdich wiederbelebt, dann Waterford, und ist dann nach Grenada gegangen — mit einer Idee, die der Rum nie ernst genommen hat: dass es zählt, von welchem Feld das Zuckerrohr kommt. Renegade brennt jede Parzelle einzeln, und diese Abfüllungen sind ungereift — ohne Fass gibt es kein Versteck.",
+    "zh": "Mark Reynier 复活了 Bruichladdich，又复活了 Waterford，然后带着一个朗姆从未认真对待的想法去了格林纳达：甘蔗来自哪一块地是要紧的。Renegade 把每一地块分开蒸馏，而这些酒未过桶——没有木桶，就无处可藏。",
+    "sl": "Mark Reynier je obudil Bruichladdich, nato Waterford, potem pa odšel na Grenado z zamislijo, ki je rum ni nikoli vzel resno: da je pomembno, s katere njive prihaja trs. Renegade vsako parcelo destilira posebej, te polnitve pa so brez lesa — brez soda se ni kam skriti.",
+    "es": "Mark Reynier resucitó Bruichladdich, luego Waterford, y después se fue a Granada con una idea que el ron nunca se había tomado en serio: que importa de qué parcela viene la caña. Renegade destila cada parcela por separado, y estas salidas no tienen madera — sin barrica no hay dónde esconderse."
+   },
+   "notePlain": true
   },
   "foursquare--absolutio-15y": {
-   "name": "Absolutio 15y",
-   "producer": "Foursquare"
+   "name": "Absolutio 15Y",
+   "producer": "Foursquare",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_barbados",
+    "region": "St Philip",
+    "country": "BB",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "pot_and_column"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "ex_port"
+    ],
+    "age": "15",
+    "alcohol": "62",
+    "bottler": "Velier",
+    "aromas": [
+     "dried_fruit",
+     "toffee",
+     "dark_cherry",
+     "cocoa",
+     "oak",
+     "brown_spices",
+     "orange_peel"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "solo"
+    ]
+   },
+   "note": {
+    "hr": "Dvije kupaže spojene u jednu: petnaest godina u bourbonskim bačvama, i deset godina u bourbonu pa još pet u bačvama od porta. Punjeno na Barbadosu u veljači 2024., 4800 boca, 62 posto. Port se ne osjeti kao slatkoća nego kao tamna trešnja ispod karamele.",
+    "en": "Two blends married into one: fifteen years in ex-bourbon, and ten in bourbon followed by five in port pipes. Bottled in Barbados in February 2024, 4,800 bottles, 62 percent. The port does not read as sweetness but as a dark cherry sitting under the toffee.",
+    "it": "Due blend uniti in uno: quindici anni in ex bourbon, e dieci in bourbon più cinque in botti da porto. Imbottigliato a Barbados nel febbraio 2024, 4.800 bottiglie, 62 gradi. Il porto non si legge come dolcezza ma come una ciliegia scura sotto il toffee.",
+    "fr": "Deux assemblages mariés en un : quinze ans en ex-bourbon, et dix en bourbon puis cinq en fûts de porto. Embouteillé à la Barbade en février 2024, 4 800 bouteilles, 62 degrés. Le porto ne se lit pas comme du sucre mais comme une cerise noire sous le caramel.",
+    "de": "Zwei Blends zu einem vermählt: fünfzehn Jahre in Ex-Bourbon, und zehn in Bourbon plus fünf in Portfässern. Abgefüllt auf Barbados im Februar 2024, 4.800 Flaschen, 62 Prozent. Der Port liest sich nicht als Süße, sondern als dunkle Kirsche unter dem Toffee.",
+    "zh": "两批调和合而为一：十五年波本旧桶，以及十年波本之后再加五年波特桶。2024 年 2 月于巴巴多斯装瓶，4800 瓶，62 度。波特不是以甜度出现，而是太妃糖底下的一颗黑樱桃。",
+    "sl": "Dve zvrsti, poročeni v eno: petnajst let v sodih po bourbonu ter deset v bourbonu in nato še pet v sodih po portovcu. Polnjeno na Barbadosu februarja 2024, 4800 steklenic, 62 odstotkov. Portovec se ne bere kot sladkoba, ampak kot temna češnja pod toffeejem.",
+    "es": "Dos mezclas casadas en una: quince años en ex-bourbon, y diez en bourbon más cinco en botas de oporto. Embotellado en Barbados en febrero de 2024, 4.800 botellas, 62 grados. El oporto no se lee como dulzor sino como una cereza oscura bajo el toffee."
+   },
+   "notePlain": true
   },
   "through-the-grapevine--chateau-de-beaulon-1988-fins-bois": {
-   "name": "Chateau de Beaulon 1988 fins bois",
-   "producer": "Through the Grapevine"
+   "name": "1988 Fins Bois",
+   "producer": "Château de Beaulon",
+   "insight": {
+    "kind": "spirit",
+    "class": "cognac_fins_bois",
+    "region": "Fins Bois, Cognac",
+    "country": "FR",
+    "base": [
+     "grapes_wine"
+    ],
+    "still": [
+     "alembic_charentais"
+    ],
+    "cask": [
+     "french_oak"
+    ],
+    "alcohol": "",
+    "bottler": "Through the Grapevine",
+    "aromas": [
+     "dried_fruit",
+     "walnut",
+     "candied_orange",
+     "vanilla",
+     "toffee",
+     "fig"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "desserts",
+     "cigars",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Fins Bois je najveći od šest krugova Cognaca i onaj koji sazrijeva najbrže — okrugao, voćni, spreman prije nego Grande Champagne. Berba 1988. znači da je ovo destilat jedne godine, ne kupaža: rijetkost u kraju koji živi od miješanja.",
+    "en": "Fins Bois is the largest of Cognac's six crus and the one that matures fastest — round, fruited, ready before Grande Champagne is. A 1988 vintage means this is one year's spirit, not a blend: a rarity in a region that lives by blending.",
+    "it": "Fins Bois è il più esteso dei sei cru di Cognac e quello che matura più in fretta — rotondo, fruttato, pronto prima della Grande Champagne. Il millesimo 1988 significa che questo è il distillato di una sola annata, non un assemblaggio: una rarità in una regione che vive di assemblaggi.",
+    "fr": "Les Fins Bois sont le plus vaste des six crus de Cognac et celui qui vieillit le plus vite — rond, fruité, prêt avant la Grande Champagne. Un millésime 1988 signifie une seule année, non un assemblage : une rareté dans une région qui vit de l'assemblage.",
+    "de": "Fins Bois ist das größte der sechs Cognac-Crus und das am schnellsten reifende — rund, fruchtig, fertig, bevor es die Grande Champagne ist. Ein Jahrgang 1988 heißt: das Destillat eines einzigen Jahres, kein Verschnitt — eine Seltenheit in einer Region, die vom Verschneiden lebt.",
+    "zh": "Fins Bois 是干邑六大产区中面积最大、也是熟成最快的一个——圆润、果味，比大香槟区更早成熟。1988 这个年份意味着这是单一年份的酒液，不是调和：在一个靠调和为生的产区里，这很少见。",
+    "sl": "Fins Bois je največji med šestimi konjaškimi krogi in tisti, ki dozori najhitreje — okrogel, saden, pripravljen prej kot Grande Champagne. Letnik 1988 pomeni, da je to destilat enega samega leta, ne zvrst: redkost v pokrajini, ki živi od zvrščanja.",
+    "es": "Fins Bois es el mayor de los seis crus de Cognac y el que madura más rápido — redondo, afrutado, listo antes que la Grande Champagne. Una añada 1988 significa que este es el destilado de un solo año, no una mezcla: una rareza en una región que vive de mezclar."
+   },
+   "notePlain": true
   },
   "through-the-grapevine--michel-forgeron-1992-grande-champagne": {
-   "name": "Michel Forgeron 1992 Grande Champagne",
-   "producer": "Through the Grapevine"
+   "name": "1992 Grande Champagne",
+   "producer": "Michel Forgeron",
+   "insight": {
+    "kind": "spirit",
+    "class": "cognac_grande_champagne",
+    "region": "Segonzac, Grande Champagne",
+    "country": "FR",
+    "base": [
+     "grapes_wine"
+    ],
+    "still": [
+     "alembic_charentais"
+    ],
+    "cask": [
+     "french_oak"
+    ],
+    "alcohol": "",
+    "bottler": "Through the Grapevine",
+    "aromas": [
+     "candied_orange",
+     "walnut",
+     "dried_apricot",
+     "cedar",
+     "brown_spices",
+     "beeswax"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Grande Champagne sa šampanjcem nema veze osim imena: to je krug Cognaca s najviše vapnenca, gdje destilat sazrijeva najsporije i najdulje živi. Forgeron je obiteljsko imanje u Segonzacu koje puni vlastite berbe — trideset godina u francuskom hrastu, i to se vidi u orahu i cedru.",
+    "en": "Grande Champagne has nothing to do with Champagne but the word: it is the chalkiest of the crus, where the spirit matures slowest and lives longest. Forgeron is a family estate in Segonzac that bottles its own vintages — thirty years in French oak, and you can read them in the walnut and the cedar.",
+    "it": "La Grande Champagne non ha nulla a che vedere con lo Champagne se non il nome: è il cru più calcareo, dove il distillato matura più lentamente e vive più a lungo. Forgeron è una tenuta di famiglia a Segonzac che imbottiglia le proprie annate — trent'anni in rovere francese, leggibili nella noce e nel cedro.",
+    "fr": "La Grande Champagne n'a de la Champagne que le mot : c'est le cru le plus crayeux, où l'eau-de-vie vieillit le plus lentement et vit le plus longtemps. Forgeron est un domaine familial de Segonzac qui embouteille ses propres millésimes — trente ans de chêne français, lisibles dans la noix et le cèdre.",
+    "de": "Grande Champagne hat mit der Champagne nur das Wort gemein: es ist das kalkreichste Cru, wo das Destillat am langsamsten reift und am längsten lebt. Forgeron ist ein Familiengut in Segonzac, das eigene Jahrgänge abfüllt — dreißig Jahre französische Eiche, ablesbar an Walnuss und Zeder.",
+    "zh": "大香槟区与香槟毫无关系，只是同一个词：它是六个产区中石灰质最重的，酒液在此熟成最慢、寿命最长。Forgeron 是塞贡扎克的一处家族庄园，装瓶自家年份——三十年的法国橡木，都写在核桃与雪松里。",
+    "sl": "Grande Champagne s Champagno nima nič skupnega razen besede: to je najbolj apnenčast krog, kjer destilat zori najpočasneje in živi najdlje. Forgeron je družinsko posestvo v Segonzacu, ki polni lastne letnike — trideset let v francoskem hrastu, kar se bere v orehu in cedri.",
+    "es": "La Grande Champagne no tiene nada que ver con la Champaña salvo la palabra: es el cru más calcáreo, donde el destilado madura más despacio y vive más tiempo. Forgeron es una finca familiar de Segonzac que embotella sus propias añadas — treinta años en roble francés, legibles en la nuez y el cedro."
+   },
+   "notePlain": true
   },
   "ohishi--premium-mizunara": {
    "name": "Premium Mizunara",
-   "producer": "Ohishi"
+   "producer": "Ohishi",
+   "insight": {
+    "kind": "spirit",
+    "class": "shochu_rice",
+    "region": "Kuma, Kumamoto",
+    "country": "JP",
+    "base": [
+     "rice"
+    ],
+    "still": [
+     "vacuum_pot"
+    ],
+    "cask": [
+     "mizunara"
+    ],
+    "alcohol": "41",
+    "aromas": [
+     "steamed_rice",
+     "koji",
+     "sandalwood",
+     "incense",
+     "white_peach",
+     "honey"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "sushi_sashimi",
+     "japanese",
+     "white_fish"
+    ]
+   },
+   "note": {
+    "hr": "Shochu nije sake i nije viski — riža se fermentira s plijesni koji, pa destilira. Ohishi je najuzvodnija destilerija na rijeci Kumi, s vlastitim rižinim poljima, a ovaj se odležava u mizunari, japanskom hrastu koji daje tamjan i sandalovinu i koji je toliko porozan da bačve od njega prokišnjavaju. Zato ga gotovo nitko ne koristi.",
+    "en": "Shochu is neither sake nor whisky — the rice is fermented with koji mould, then distilled. Ohishi is the highest distillery on the Kuma river, farming its own paddies, and this one rests in mizunara, the Japanese oak that gives incense and sandalwood and is so porous that casks made of it leak. Which is why almost nobody uses it.",
+    "it": "Lo shochu non è sake e non è whisky — il riso fermenta con la muffa koji e poi si distilla. Ohishi è la distilleria più a monte del fiume Kuma, con risaie proprie, e questo riposa in mizunara, il rovere giapponese che dà incenso e sandalo ed è così poroso che le botti perdono. Per questo quasi nessuno lo usa.",
+    "fr": "Le shochu n'est ni saké ni whisky — le riz fermente avec le koji, puis on distille. Ohishi est la distillerie la plus en amont de la rivière Kuma, avec ses propres rizières, et celui-ci repose en mizunara, ce chêne japonais qui donne l'encens et le santal et qui est si poreux que les fûts fuient. C'est pourquoi presque personne ne s'en sert.",
+    "de": "Shochu ist weder Sake noch Whisky — der Reis wird mit Koji-Schimmel vergoren und dann gebrannt. Ohishi ist die oberste Brennerei am Kuma-Fluss, mit eigenen Reisfeldern, und dieser ruht in Mizunara, der japanischen Eiche, die Weihrauch und Sandelholz gibt und so porös ist, dass Fässer aus ihr lecken. Deshalb benutzt sie fast niemand.",
+    "zh": "烧酎既不是清酒也不是威士忌——米以曲霉发酵，再行蒸馏。大石是球磨川上游最靠近源头的酒厂，有自己的稻田；这一支陈放于水楢桶中——这种日本橡木带来香与檀，却因太过多孔，做成的桶会渗漏。所以几乎没人用它。",
+    "sl": "Shochu ni sake in ni viski — riž fermentira s plesnijo koji, nato ga destilirajo. Ohishi je najvišje ležeča destilarna ob reki Kumi, z lastnimi riževimi polji, ta pa počiva v mizunari, japonskem hrastu, ki da kadilo in sandalovino in je tako porozen, da sodi iz njega puščajo. Zato ga skoraj nihče ne uporablja.",
+    "es": "El shochu no es sake ni whisky — el arroz fermenta con el hongo koji y después se destila. Ohishi es la destilería más aguas arriba del río Kuma, con sus propios arrozales, y este reposa en mizunara, el roble japonés que da incienso y sándalo y que es tan poroso que las barricas hechas con él gotean. Por eso casi nadie lo usa."
+   },
+   "notePlain": true
   },
   "wise-grus--sljivovica": {
    "name": "Šljivovica",
-   "producer": "Wise Grus"
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "rakija_fruit",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "plums"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "slavonian_oak"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "prune",
+     "cinnamon",
+     "biscuit",
+     "bitter_almond",
+     "dried_fruit",
+     "vanilla"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "charcuterie",
+     "cheese_hard",
+     "desserts"
+    ]
+   },
+   "note": {
+    "hr": "Za litru rakije treba desetak kilograma šljiva, i zato je šljivovica u Slavoniji uvijek bila mjera dobre godine. Ova odležava u slavonskom hrastu — otud zlatna boja, suha šljiva i cimet, a gorki badem iz koštice drži je da ne sklizne u slatko.",
+    "en": "A litre of rakija takes some ten kilos of plums, which is why in Slavonia šljivovica was always the measure of a good year. This one rests in Slavonian oak — hence the gold, the prune and the cinnamon, while the bitter almond from the stones keeps it from sliding into sweetness.",
+    "it": "Per un litro di acquavite servono una decina di chili di prugne, ed è per questo che in Slavonia la šljivovica è sempre stata la misura di una buona annata. Questa riposa in rovere di Slavonia — di qui l'oro, la prugna secca e la cannella, mentre la mandorla amara dei noccioli le impedisce di scivolare nel dolce.",
+    "fr": "Il faut une dizaine de kilos de prunes pour un litre d'eau-de-vie, et c'est pourquoi en Slavonie la šljivovica a toujours été la mesure d'une bonne année. Celle-ci repose en chêne de Slavonie — d'où l'or, le pruneau et la cannelle, tandis que l'amande amère des noyaux l'empêche de glisser vers le sucre.",
+    "de": "Für einen Liter Brand braucht es rund zehn Kilo Zwetschgen, weshalb Šljivovica in Slawonien immer das Maß eines guten Jahres war. Diese ruht in slawonischer Eiche — daher das Gold, die Dörrzwetschge und der Zimt, während die Bittermandel aus den Kernen sie davor bewahrt, ins Süße abzurutschen.",
+    "zh": "一升酒要用上十来公斤李子，所以在斯拉沃尼亚，šljivovica 一直是丰年的尺度。这一支在斯拉沃尼亚橡木中陈放——金色、西梅与肉桂由此而来，而果核带来的苦杏仁让它不至于滑向甜。",
+    "sl": "Za liter žganja je treba kakih deset kilogramov sliv, in prav zato je bila šljivovica v Slavoniji vedno mera dobre letine. Ta zori v slavonskem hrastu — od tod zlato, suha sliva in cimet, grenki mandelj iz koščic pa jo drži, da ne zdrsne v sladko.",
+    "es": "Un litro de aguardiente pide unos diez kilos de ciruelas, y por eso en Eslavonia la šljivovica fue siempre la medida de un buen año. Esta reposa en roble de Eslavonia — de ahí el oro, la ciruela pasa y la canela, mientras la almendra amarga de los huesos evita que resbale hacia el dulce."
+   },
+   "notePlain": true
   },
   "wise-grus--viljamovka": {
    "name": "Viljamovka",
-   "producer": "Wise Grus"
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "rakija_fruit",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "pears"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "pear",
+     "white_flowers",
+     "honey",
+     "citrus",
+     "marzipan"
+    ],
+    "serve": [
+     "chilled",
+     "after_dinner"
+    ],
+    "pairings": [
+     "fruit_desserts",
+     "cheese_fresh"
+    ]
+   },
+   "note": {
+    "hr": "Kruška williams je jedina koja u rakiji ostane prepoznatljiva kao kruška — sve druge sorte nestanu u alkoholu. Zato viljamovka nema drva ni bačve: sve što bi joj se dodalo, oduzelo bi joj ono zbog čega postoji. Poslužuje se rashlađena, nikad hladna kao led.",
+    "en": "The Williams is the one pear that survives distillation still recognisably a pear — every other variety disappears into the alcohol. So a viljamovka gets no wood and no cask: anything added would take away the very thing it exists for. Serve it cool, never ice-cold.",
+    "it": "La Williams è l'unica pera che sopravvive alla distillazione restando riconoscibilmente pera — ogni altra varietà sparisce nell'alcol. Per questo la viljamovka non vede legno né botte: qualunque aggiunta le toglierebbe proprio ciò per cui esiste. Va servita fresca, mai ghiacciata.",
+    "fr": "La Williams est la seule poire qui survive à la distillation en restant reconnaissable — toutes les autres variétés disparaissent dans l'alcool. La viljamovka ne voit donc ni bois ni fût : tout ajout lui enlèverait précisément ce pour quoi elle existe. À servir frais, jamais glacé.",
+    "de": "Die Williams ist die einzige Birne, die das Brennen als erkennbare Birne übersteht — jede andere Sorte verschwindet im Alkohol. Deshalb bekommt eine Viljamovka kein Holz und kein Fass: alles Zugefügte nähme ihr genau das, wofür sie da ist. Kühl servieren, nie eiskalt.",
+    "zh": "威廉姆斯是唯一一种蒸馏之后仍然能被认出是梨的梨——其他品种都消失在酒精里。所以 viljamovka 不进木、不进桶：任何添加都会拿走它存在的理由。冰凉即可，不要冻透。",
+    "sl": "Viljamovka je edina hruška, ki destilacijo preživi še vedno prepoznavna kot hruška — vse druge sorte izginejo v alkoholu. Zato ne vidi ne lesa ne soda: karkoli bi ji dodali, bi ji vzelo prav tisto, zaradi česar obstaja. Postreže se ohlajena, nikoli ledeno mrzla.",
+    "es": "La Williams es la única pera que sobrevive a la destilación siendo aún reconociblemente pera — cualquier otra variedad desaparece en el alcohol. Por eso una viljamovka no ve madera ni barrica: todo lo que se le añada le quitaría justo aquello por lo que existe. Servir fresca, nunca helada."
+   },
+   "notePlain": true
   },
   "wise-grus--travarica": {
    "name": "Travarica",
-   "producer": "Wise Grus"
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "rakija_herbal",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "grape_spirit"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "38",
+    "aromas": [
+     "mediterranean_herbs",
+     "sage",
+     "rosemary",
+     "anise",
+     "mint",
+     "honey"
+    ],
+    "serve": [
+     "chilled",
+     "after_dinner"
+    ],
+    "pairings": [
+     "prosciutto",
+     "cheese_hard",
+     "charcuterie"
+    ]
+   },
+   "note": {
+    "hr": "Travarica je jedina rakija koja se ne destilira nego se čeka: gotova loza stoji na biljkama tjednima dok ne uzme boju sijena i miris kadulje. Recept je nekad bio kućni i nikad isti — svaka je obitelj na obali imala svoj, i svaka ga je smatrala lijekom.",
+    "en": "Travarica is the one rakija that is not distilled but waited on: finished grape spirit sits on the herbs for weeks until it takes the colour of hay and the smell of sage. The recipe used to be a household matter and never the same twice — every family on the coast had its own, and every family called it medicine.",
+    "it": "La travarica è l'unica acquavite che non si distilla ma si aspetta: l'acquavite d'uva già pronta riposa sulle erbe per settimane finché non prende il colore del fieno e il profumo della salvia. La ricetta era cosa di casa e mai uguale — ogni famiglia della costa aveva la sua, e ognuna la considerava una medicina.",
+    "fr": "La travarica est la seule eau-de-vie qu'on ne distille pas mais qu'on attend : l'eau-de-vie de raisin déjà faite repose sur les plantes des semaines durant, jusqu'à prendre la couleur du foin et l'odeur de la sauge. La recette était affaire de maison et jamais la même — chaque famille de la côte avait la sienne, et chacune y voyait un remède.",
+    "de": "Travarica ist der einzige Brand, den man nicht brennt, sondern abwartet: fertiger Traubenbrand liegt wochenlang auf den Kräutern, bis er die Farbe von Heu und den Duft von Salbei annimmt. Das Rezept war Haussache und nie dasselbe — jede Familie an der Küste hatte ihres, und jede hielt es für Medizin.",
+    "zh": "Travarica 是唯一一种不靠蒸馏、而靠等待的烈酒：做好的葡萄蒸馏酒在草药上泡上数周，直到染上干草的颜色与鼠尾草的气味。配方从前是各家自己的事，从不重样——海岸边每户人家都有一版，每户都把它当药。",
+    "sl": "Travarica je edino žganje, ki se ne destilira, ampak počaka: že narejeno grozdno žganje tedne stoji na zeliščih, dokler ne prevzame barve sena in vonja žajblja. Recept je bil nekoč hišna stvar in nikoli isti — vsaka družina na obali je imela svojega in vsaka ga je imela za zdravilo.",
+    "es": "La travarica es el único aguardiente que no se destila sino que se espera: el aguardiente de uva ya hecho reposa sobre las hierbas durante semanas hasta tomar el color del heno y el olor de la salvia. La receta era cosa de casa y nunca la misma — cada familia de la costa tenía la suya, y todas la tenían por medicina."
+   },
+   "notePlain": true
   },
   "wise-grus--loza": {
    "name": "Loza",
-   "producer": "Wise Grus"
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "rakija_grape",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "grape_pomace"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "grass",
+     "white_flowers",
+     "raisin",
+     "white_pepper",
+     "citrus"
+    ],
+    "serve": [
+     "chilled",
+     "after_dinner"
+    ],
+    "pairings": [
+     "prosciutto",
+     "charcuterie",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Loza je rakija od grožđa i najbliža rođakinja grappe i marca — ono što ostane kad se od vina uzme vino. Bez bačve, bez boje: čista, travnata, s onom paprenom oštrinom po kojoj se prepoznaje mlada rakija koja se ne stidi svoje mladosti.",
+    "en": "Loza is grape rakija, first cousin to grappa and marc — what is left when the wine has been taken out of the wine. No cask, no colour: clear, grassy, with the peppery edge by which you recognise a young spirit that is not ashamed of being young.",
+    "it": "La loza è l'acquavite d'uva, cugina prima della grappa e del marc — ciò che resta quando dal vino si è tolto il vino. Niente botte, niente colore: limpida, erbacea, con quel taglio pepato da cui si riconosce un distillato giovane che della giovinezza non si vergogna.",
+    "fr": "La loza est l'eau-de-vie de raisin, cousine germaine de la grappa et du marc — ce qui reste quand on a retiré le vin du vin. Pas de fût, pas de couleur : limpide, herbacée, avec ce mordant poivré auquel on reconnaît un distillat jeune qui n'a pas honte de l'être.",
+    "de": "Loza ist Traubenbrand, Cousine ersten Grades von Grappa und Marc — das, was bleibt, wenn man dem Wein den Wein genommen hat. Kein Fass, keine Farbe: klar, grasig, mit jener pfeffrigen Kante, an der man ein junges Destillat erkennt, das sich seiner Jugend nicht schämt.",
+    "zh": "Loza 是葡萄蒸馏酒，格拉帕与 marc 的嫡亲表姐妹——把酒从酒里取走之后剩下的东西。不过桶、不加色：清澈、青草味，带着那股辛辣的锋利，那是年轻而不为年轻感到羞耻的酒的标志。",
+    "sl": "Loza je grozdno žganje, prva sestrična grappe in marca — tisto, kar ostane, ko se vinu vzame vino. Brez soda, brez barve: bistra, travnata, s tisto poprovo ostrino, po kateri prepoznaš mlad destilat, ki ga mladost ne sramoti.",
+    "es": "La loza es aguardiente de uva, prima hermana de la grappa y del marc — lo que queda cuando al vino se le ha quitado el vino. Sin barrica, sin color: limpia, herbácea, con ese filo picante por el que se reconoce un destilado joven que no se avergüenza de serlo."
+   },
+   "notePlain": true
   },
   "wise-grus--orahovac": {
    "name": "Orahovac",
-   "producer": "Wise Grus"
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "liqueur_walnut",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "walnuts",
+     "grape_spirit"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "green_walnut",
+     "clove",
+     "cocoa",
+     "cinnamon",
+     "dried_fruit",
+     "licorice"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "desserts",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Zeleni orasi beru se oko Ivanja, kad je ljuska još mekana i nož prolazi kroz plod. Maceriraju se u rakiji mjesecima i daju boju tinte i gorčinu koja stoji ispod slatkoće — orahovac nije liker koji se pije rashlađen i zaboravljen, nego onaj koji se pije poslije jela i pamti.",
+    "en": "Green walnuts are picked around midsummer, while the shell is still soft enough for a knife to pass through the whole fruit. Months of maceration in rakija give the ink colour and the bitterness that sits under the sweetness — orahovac is not a liqueur to be drunk chilled and forgotten, but one drunk after dinner and remembered.",
+    "it": "Le noci verdi si raccolgono verso San Giovanni, quando il mallo è ancora tenero e il coltello passa da parte a parte. Mesi di macerazione in acquavite danno il colore dell'inchiostro e l'amaro che sta sotto la dolcezza — l'orahovac non è un liquore da bere freddo e dimenticare, ma da bere a fine pasto e ricordare.",
+    "fr": "On cueille les noix vertes vers la Saint-Jean, quand la coque est encore assez tendre pour que le couteau traverse le fruit entier. Des mois de macération dans l'eau-de-vie donnent la couleur d'encre et l'amertume qui se tient sous le sucre — l'orahovac n'est pas une liqueur qu'on boit glacée et qu'on oublie, mais qu'on boit après le repas et dont on se souvient.",
+    "de": "Grüne Walnüsse werden um Johanni gepflückt, solange die Schale noch weich genug ist, dass das Messer durch die ganze Frucht geht. Monate der Mazeration im Brand geben die Tintenfarbe und die Bitterkeit unter der Süße — Orahovac ist kein Likör, den man gekühlt trinkt und vergisst, sondern einer, den man nach dem Essen trinkt und behält.",
+    "zh": "青核桃在仲夏前后采摘，那时外壳还软，刀能一整颗地切过去。在烈酒里浸渍数月，得到墨一样的颜色，以及甜味之下的那股苦——orahovac 不是那种冰镇下肚随即忘掉的利口酒，而是餐后喝、会记住的那种。",
+    "sl": "Zeleni orehi se obirajo okoli kresa, ko je lupina še mehka in nož gre skozi cel plod. Meseci maceracije v žganju dajo črnilno barvo in grenkobo, ki stoji pod sladkobo — orahovac ni liker, ki bi ga spili ohlajenega in pozabili, ampak tisti, ki se pije po jedi in se ga zapomni.",
+    "es": "Las nueces verdes se recogen hacia San Juan, cuando la cáscara aún es blanda y el cuchillo atraviesa el fruto entero. Meses de maceración en aguardiente dan el color de la tinta y el amargor que se sitúa bajo el dulzor — el orahovac no es un licor que se bebe frío y se olvida, sino uno que se bebe de sobremesa y se recuerda."
+   },
+   "notePlain": true
   },
   "wise-grus--visnjevac": {
    "name": "Višnjevac",
-   "producer": "Wise Grus"
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "liqueur_cherry",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "sour_cherries",
+     "grape_spirit"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "sour_cherry",
+     "cherry_stone",
+     "bitter_almond",
+     "dark_cherry",
+     "marzipan"
+    ],
+    "serve": [
+     "chilled",
+     "after_dinner"
+    ],
+    "pairings": [
+     "black_forest_cake",
+     "dark_chocolate",
+     "desserts"
+    ]
+   },
+   "note": {
+    "hr": "Višnja je slavonsko voće s kiselinom koja preživi i šećer i alkohol — zato od nje nastaje liker koji se ne razlije u sirup. Koštica daje gorki badem, i to je razlika između domaćeg višnjevca i onoga što se prodaje kao 'cherry'.",
+    "en": "The sour cherry is a Slavonian fruit with an acidity that survives both sugar and alcohol — which is why it makes a liqueur that never collapses into syrup. The stones give bitter almond, and that is the difference between a real višnjevac and whatever is sold as \"cherry\".",
+    "it": "L'amarena è un frutto slavone con un'acidità che sopravvive sia allo zucchero sia all'alcol — per questo ne nasce un liquore che non collassa in sciroppo. I noccioli danno mandorla amara, ed è la differenza tra un višnjevac vero e ciò che si vende come «cherry».",
+    "fr": "La griotte est un fruit de Slavonie dont l'acidité survit au sucre comme à l'alcool — d'où une liqueur qui ne s'effondre jamais en sirop. Les noyaux donnent l'amande amère, et c'est là toute la différence entre un vrai višnjevac et ce qu'on vend sous le nom de « cherry ».",
+    "de": "Die Sauerkirsche ist eine slawonische Frucht, deren Säure Zucker wie Alkohol übersteht — deshalb entsteht daraus ein Likör, der nie in Sirup kippt. Die Kerne geben Bittermandel, und das ist der Unterschied zwischen einem echten Višnjevac und dem, was als „Cherry“ verkauft wird.",
+    "zh": "酸樱桃是斯拉沃尼亚的果子，它的酸能同时扛住糖和酒精——所以做出来的利口酒不会塌成糖浆。果核带来苦杏仁，而这正是真正的 višnjevac 与那些标着「cherry」的东西之间的区别。",
+    "sl": "Višnja je slavonsko sadje s kislino, ki preživi tako sladkor kot alkohol — zato iz nje nastane liker, ki se nikoli ne sesede v sirup. Koščice dajo grenki mandelj, in prav to loči pravi višnjevac od tistega, kar se prodaja kot »cherry«.",
+    "es": "La guinda es una fruta eslavona con una acidez que sobrevive al azúcar y al alcohol — por eso da un licor que nunca se derrumba en jarabe. Los huesos aportan almendra amarga, y esa es la diferencia entre un višnjevac de verdad y lo que se vende como «cherry»."
+   },
+   "notePlain": true
   },
   "wise-grus--medica": {
    "name": "Medica",
-   "producer": "Wise Grus"
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "rakija_honey",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "honey",
+     "grape_spirit"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "blossom_honey",
+     "beeswax",
+     "meadow_herbs",
+     "chamomile",
+     "dried_fruit"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "desserts",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Medica nije rakija zaslađena medom nego rakija u kojoj je med sirovina — a to je razlika koja se osjeti odmah, jer med koji je prošao kroz alkohol prestane biti sladak i postane cvjetan. Livadne trave, pčelinji vosak, kamilica. Piće za kraj večeri.",
+    "en": "Medica is not a rakija sweetened with honey but a rakija in which honey is the raw material — a difference you taste at once, because honey that has been through alcohol stops being sweet and turns floral. Meadow herbs, beeswax, chamomile. A drink for the end of an evening.",
+    "it": "La medica non è un'acquavite dolcificata col miele ma un'acquavite in cui il miele è materia prima — differenza che si sente subito, perché il miele passato per l'alcol smette di essere dolce e diventa floreale. Erbe di prato, cera d'api, camomilla. Da fine serata.",
+    "fr": "La medica n'est pas une eau-de-vie sucrée au miel mais une eau-de-vie dont le miel est la matière première — différence qu'on sent aussitôt, car un miel passé par l'alcool cesse d'être sucré et devient floral. Herbes de prairie, cire d'abeille, camomille. Une fin de soirée.",
+    "de": "Medica ist kein mit Honig gesüßter Brand, sondern ein Brand, in dem Honig der Ausgangsstoff ist — ein Unterschied, den man sofort schmeckt, denn Honig, der durch den Alkohol gegangen ist, hört auf süß zu sein und wird blumig. Wiesenkräuter, Bienenwachs, Kamille. Ein Getränk fürs Ende des Abends.",
+    "zh": "Medica 不是用蜂蜜加甜的烈酒，而是以蜂蜜为原料的烈酒——这个区别一入口就尝得到，因为经过酒精的蜂蜜不再甜，而变得花香。草地花草、蜂蜡、洋甘菊。一杯用来收尾的酒。",
+    "sl": "Medica ni žganje, sladkano z medom, ampak žganje, v katerem je med surovina — razlika, ki se okusi takoj, kajti med, ki je šel skozi alkohol, neha biti sladek in postane cvetličen. Travniška zelišča, čebelji vosek, kamilica. Pijača za konec večera.",
+    "es": "La medica no es un aguardiente endulzado con miel sino un aguardiente en el que la miel es materia prima — una diferencia que se nota enseguida, porque la miel que ha pasado por el alcohol deja de ser dulce y se vuelve floral. Hierbas de prado, cera de abeja, manzanilla. Una copa para el final de la noche."
+   },
+   "notePlain": true
   },
   "wise-grus--teranino": {
    "name": "Teranino",
-   "producer": "Wise Grus"
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "liqueur_teranino",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "teran_wine",
+     "honey"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "blackberry",
+     "clove",
+     "cinnamon",
+     "violet",
+     "honey",
+     "dark_cherry"
+    ],
+    "serve": [
+     "chilled",
+     "after_dinner"
+    ],
+    "pairings": [
+     "desserts",
+     "dark_chocolate",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Teranino je istarsko piće koje je dijelom liker, dijelom kuhano vino, dijelom lijek za zimu: teran, med i začini, tamno i gusto. Ne pije se hladno kao voda nego rashlađeno kao desert — i pošteno je reći da je s njim lakše nego s teranom samim.",
+    "en": "Teranino is an Istrian drink that is part liqueur, part mulled wine, part winter remedy: Teran, honey and spices, dark and thick. Not chilled like water but cool like a dessert — and it is fair to say it is an easier way in than Teran itself.",
+    "it": "Il teranino è una bevanda istriana per un terzo liquore, per un terzo vino speziato, per un terzo rimedio invernale: Teran, miele e spezie, scuro e denso. Non freddo come l'acqua, ma fresco come un dessert — ed è onesto dire che è una via d'accesso più facile del Teran stesso.",
+    "fr": "Le teranino est une boisson istrienne à la fois liqueur, vin chaud et remède d'hiver : Teran, miel et épices, sombre et épais. Pas glacé comme de l'eau, mais frais comme un dessert — et il faut le dire, c'est une porte d'entrée plus facile que le Teran lui-même.",
+    "de": "Teranino ist ein istrisches Getränk, teils Likör, teils Glühwein, teils Wintermedizin: Teran, Honig und Gewürze, dunkel und dicht. Nicht kalt wie Wasser, sondern kühl wie ein Dessert — und ehrlich gesagt ein leichterer Einstieg als der Teran selbst.",
+    "zh": "Teranino 是伊斯特拉的一种饮品，一部分是利口酒、一部分是热红酒、一部分是过冬的偏方：Teran 葡萄酒、蜂蜜与香料，深而稠。不要像水那样冰镇，而要像甜点那样微凉——老实说，它比 Teran 本身更容易入门。",
+    "sl": "Teranino je istrska pijača, deloma liker, deloma kuhano vino, deloma zimsko zdravilo: teran, med in začimbe, temno in gosto. Ne mrzlo kot voda, ampak ohlajeno kot sladica — in pošteno je reči, da je lažji uvod kot teran sam.",
+    "es": "El teranino es una bebida istriana en parte licor, en parte vino especiado, en parte remedio de invierno: Teran, miel y especias, oscuro y denso. No frío como el agua, sino fresco como un postre — y hay que decirlo, es una puerta de entrada más fácil que el propio Teran."
+   },
+   "notePlain": true
   },
   "lorenzo-inga--grappa-bianca": {
    "name": "Grappa Bianca",
-   "producer": "Lorenzo Inga"
+   "producer": "Lorenzo Inga",
+   "insight": {
+    "kind": "spirit",
+    "class": "grappa_young",
+    "region": "Piemonte",
+    "country": "IT",
+    "base": [
+     "grape_pomace"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "grass",
+     "white_flowers",
+     "pear",
+     "white_pepper",
+     "raisin"
+    ],
+    "serve": [
+     "chilled",
+     "after_dinner"
+    ],
+    "pairings": [
+     "desserts",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Bez drva, bez boje, bez ičega između vas i komine. Bianca je grappa u kojoj se čuje sorta i godina — travnato, cvjetno, papreno na kraju. Ako mislite da ne volite grappu, gotovo sigurno niste probali ovakvu, nego neku staru i tešku.",
+    "en": "No wood, no colour, nothing between you and the pomace. A bianca is the grappa in which the grape and the year can still be heard — grassy, floral, peppery at the finish. If you think you don't like grappa, the odds are you have met an old heavy one, not this.",
+    "it": "Niente legno, niente colore, nulla tra voi e le vinacce. La bianca è la grappa in cui si sentono ancora il vitigno e l'annata — erbacea, floreale, pepata in chiusura. Se pensate di non amare la grappa, con ogni probabilità ne avete incontrata una vecchia e pesante, non questa.",
+    "fr": "Pas de bois, pas de couleur, rien entre vous et le marc. Une bianca, c'est la grappa où l'on entend encore le cépage et le millésime — herbacée, florale, poivrée en finale. Si vous croyez ne pas aimer la grappa, vous en avez sans doute croisé une vieille et lourde, pas celle-ci.",
+    "de": "Kein Holz, keine Farbe, nichts zwischen Ihnen und dem Trester. Eine Bianca ist die Grappa, in der Sorte und Jahrgang noch zu hören sind — grasig, blumig, pfeffrig im Abgang. Wer glaubt, Grappa nicht zu mögen, ist mit hoher Wahrscheinlichkeit einer alten, schweren begegnet und nicht dieser.",
+    "zh": "不进木、不着色，你与皮渣之间没有任何东西。Bianca 是那种还能听见品种与年份的格拉帕——青草、花香，收尾带辛。如果你觉得自己不喜欢格拉帕，多半是遇上了一支陈旧沉重的，而不是这一支。",
+    "sl": "Brez lesa, brez barve, brez česar koli med vami in tropinami. Bianca je grappa, v kateri se še slišita sorta in letnik — travnata, cvetlična, poprova v zaključku. Če mislite, da grappe ne marate, ste najbrž srečali staro in težko, ne te.",
+    "es": "Sin madera, sin color, nada entre usted y el orujo. Una bianca es la grappa en la que aún se oyen la variedad y la añada — herbácea, floral, picante en el final. Si cree que no le gusta la grappa, lo más probable es que se haya cruzado con una vieja y pesada, no con esta."
+   },
+   "notePlain": true
   },
   "lorenzo-inga--grappa-barrique": {
    "name": "Grappa Barrique",
-   "producer": "Lorenzo Inga"
+   "producer": "Lorenzo Inga",
+   "insight": {
+    "kind": "spirit",
+    "class": "grappa_aged",
+    "region": "Piemonte",
+    "country": "IT",
+    "base": [
+     "grape_pomace"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "french_oak"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "vanilla",
+     "toffee",
+     "hazelnut",
+     "dried_fruit",
+     "oak",
+     "brown_spices"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "cigars",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Barrique je mala francuska bačva i najagresivnija posuda koja postoji — na 225 litara drvo dodiruje gotovo sve. Grappi to daje vaniliju i lješnjak, ali samo ako je destilat dovoljno jak da uzvrati. Ovdje jest, i zato drvo ne pobjeđuje.",
+    "en": "A barrique is the small French cask and the most aggressive vessel there is — at 225 litres the wood touches almost everything in it. On grappa that gives vanilla and hazelnut, but only if the spirit is strong enough to answer back. Here it is, which is why the wood does not win.",
+    "it": "La barrique è la piccola botte francese e il recipiente più aggressivo che esista — a 225 litri il legno tocca quasi tutto. Sulla grappa dà vaniglia e nocciola, ma solo se il distillato è abbastanza forte da rispondere. Qui lo è, ed è per questo che il legno non vince.",
+    "fr": "La barrique est le petit fût français, le contenant le plus agressif qui soit — à 225 litres, le bois touche presque tout. Sur une grappa, cela donne vanille et noisette, mais seulement si le distillat est assez fort pour répondre. Ici il l'est, et c'est pourquoi le bois ne l'emporte pas.",
+    "de": "Die Barrique ist das kleine französische Fass und das aggressivste Gefäß überhaupt — bei 225 Litern berührt das Holz fast alles darin. Bei Grappa ergibt das Vanille und Haselnuss, aber nur, wenn das Destillat stark genug ist zu antworten. Hier ist es das, und deshalb gewinnt das Holz nicht.",
+    "zh": "Barrique 是那种法国小桶，也是所有容器里最强势的——225 升的容量里，木头几乎碰得到一切。用在格拉帕上会给出香草与榛子，但前提是酒液够强、顶得回去。这一支够强，所以木桶没有赢。",
+    "sl": "Barrique je majhen francoski sod in najbolj agresivna posoda, kar jih je — pri 225 litrih se les dotakne skoraj vsega. Grappi to da vanilijo in lešnik, a le, če je destilat dovolj močan, da odgovori. Tu je, in zato les ne zmaga.",
+    "es": "La barrica bordelesa es el tonel francés pequeño y el recipiente más agresivo que existe — con 225 litros la madera toca casi todo lo que hay dentro. En una grappa eso da vainilla y avellana, pero solo si el destilado tiene fuerza para replicar. Aquí la tiene, y por eso la madera no gana."
+   },
+   "notePlain": true
   },
   "lorenzo-inga--grappa-riserva-18-mesi": {
    "name": "Grappa Riserva 18 Mesi",
-   "producer": "Lorenzo Inga"
+   "producer": "Lorenzo Inga",
+   "insight": {
+    "kind": "spirit",
+    "class": "grappa_aged",
+    "region": "Piemonte",
+    "country": "IT",
+    "base": [
+     "grape_pomace"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "french_oak"
+    ],
+    "age": "1.5",
+    "alcohol": "",
+    "aromas": [
+     "dried_fruit",
+     "walnut",
+     "vanilla",
+     "tobacco",
+     "oak",
+     "candied_orange"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Osamnaest mjeseci nije puno za viski, ali za grappu je granica iza koje destilat prestaje biti oštar i počne se otvarati prema orahu i duhanu. Zakon traži dvanaest za oznaku riserva; ovih šest više je razlika između pravila i namjere.",
+    "en": "Eighteen months is nothing for a whisky, but for grappa it is the line past which the spirit stops being sharp and starts opening towards walnut and tobacco. The law asks twelve to call it riserva; these extra six are the difference between a rule and an intention.",
+    "it": "Diciotto mesi non sono nulla per un whisky, ma per la grappa sono la soglia oltre la quale il distillato smette di essere tagliente e comincia ad aprirsi verso noce e tabacco. La legge ne chiede dodici per la dicitura riserva; questi sei in più sono la differenza tra una regola e un'intenzione.",
+    "fr": "Dix-huit mois, ce n'est rien pour un whisky, mais pour une grappa c'est la limite au-delà de laquelle le distillat cesse d'être tranchant et commence à s'ouvrir vers la noix et le tabac. La loi en demande douze pour la mention riserva ; ces six de plus font la différence entre une règle et une intention.",
+    "de": "Achtzehn Monate sind für einen Whisky nichts, für Grappa aber die Grenze, hinter der das Destillat aufhört, scharf zu sein, und sich zu Walnuss und Tabak hin öffnet. Das Gesetz verlangt zwölf für die Bezeichnung Riserva; diese zusätzlichen sechs sind der Unterschied zwischen einer Regel und einer Absicht.",
+    "zh": "十八个月对威士忌算不上什么，但对格拉帕而言，这是一条线：越过它，酒液不再锋利，开始朝核桃与烟草打开。法律只要求十二个月才能标 riserva；多出来的这六个月，就是规定与意图之间的差别。",
+    "sl": "Osemnajst mesecev za viski ni nič, za grappo pa je meja, za katero destilat neha biti oster in se začne odpirati proti orehu in tobaku. Zakon za oznako riserva zahteva dvanajst; teh šest več je razlika med pravilom in namenom.",
+    "es": "Dieciocho meses no son nada para un whisky, pero para una grappa son la línea tras la cual el destilado deja de estar afilado y empieza a abrirse hacia la nuez y el tabaco. La ley pide doce para llamarla riserva; esos seis de más son la diferencia entre una regla y una intención."
+   },
+   "notePlain": true
   },
   "amarone-grappa": {
    "name": "Amarone Grappa",
-   "producer": ""
+   "producer": "",
+   "insight": {
+    "kind": "spirit",
+    "class": "grappa",
+    "region": "Veneto",
+    "country": "IT",
+    "base": [
+     "grape_pomace"
+    ],
+    "still": [
+     "pot"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "dark_cherry",
+     "raisin",
+     "prune",
+     "brown_spices",
+     "cocoa",
+     "dried_fruit"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "cigars",
+     "desserts"
+    ]
+   },
+   "note": {
+    "hr": "Amarone se radi od grožđa sušenog mjesecima na rešetkama, pa je i komina koja ostane suha, koncentrirana i još puna šećera — nešto što destilateru drugdje ne dolazi u ruke. Odatle grappa koja miriše na suho voće i višnju, bliža vinu od kojeg je nastala nego bilo koja druga.",
+    "en": "Amarone is made from grapes dried for months on racks, so even the pomace that is left is dry, concentrated and still full of sugar — something no distiller elsewhere ever gets to work with. Hence a grappa of dried fruit and cherry, closer to the wine it came from than any other.",
+    "it": "L'Amarone si fa con uve appassite per mesi sui graticci, così anche le vinacce che restano sono asciutte, concentrate e ancora ricche di zucchero — materia che altrove nessun distillatore riceve. Da qui una grappa di frutta secca e ciliegia, più vicina al vino da cui nasce di qualsiasi altra.",
+    "fr": "L'Amarone se fait de raisins séchés des mois sur claies, si bien que le marc qui reste est sec, concentré et encore chargé de sucre — une matière qu'aucun distillateur n'a ailleurs. D'où une grappa de fruits secs et de cerise, plus proche du vin dont elle vient que n'importe quelle autre.",
+    "de": "Amarone entsteht aus Trauben, die monatelang auf Horden trocknen, also ist auch der übrige Trester trocken, konzentriert und noch voller Zucker — Material, das ein Brenner sonst nirgends bekommt. Daher eine Grappa aus Trockenfrüchten und Kirsche, die dem Wein, aus dem sie stammt, näher ist als jede andere.",
+    "zh": "阿玛罗尼用的是在架上风干数月的葡萄，所以剩下的皮渣也是干的、浓缩的，仍然满是糖分——别处的蒸馏师根本拿不到这样的原料。于是有了这款果干与樱桃气息的格拉帕，比任何一款都更接近它所来自的那款酒。",
+    "sl": "Amarone nastaja iz grozdja, sušenega po več mesecev na policah, zato so tudi tropine, ki ostanejo, suhe, koncentrirane in še vedno polne sladkorja — snov, ki je destilater drugje ne dobi v roke. Od tod grappa suhega sadja in češnje, bližja vinu, iz katerega je nastala, kot katera koli druga.",
+    "es": "El Amarone se hace con uvas secadas durante meses en cañizos, así que hasta el orujo que queda es seco, concentrado y todavía lleno de azúcar — una materia que ningún destilador recibe en otra parte. De ahí una grappa de fruta seca y cereza, más cercana al vino del que nace que ninguna otra."
+   },
+   "notePlain": true
   },
   "umeshu-genshu": {
    "name": "Umeshu Genshu",
-   "producer": ""
+   "producer": "",
+   "insight": {
+    "kind": "spirit",
+    "class": "liqueur_fruit",
+    "region": "",
+    "country": "JP",
+    "base": [
+     "ume"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "umeboshi",
+     "apricot",
+     "marzipan",
+     "honey",
+     "bitter_almond",
+     "green_apple"
+    ],
+    "serve": [
+     "rocks",
+     "chilled",
+     "before_dinner"
+    ],
+    "pairings": [
+     "japanese",
+     "desserts",
+     "cheese_fresh"
+    ]
+   },
+   "note": {
+    "hr": "Ume nije šljiva nego rod marelice, i bere se dok je još tvrd i zelen — sirov je nejestiv. Umeshu nastaje potapanjem u alkohol sa šećerom; genshu znači da nije razrijeđen vodom, pa je gušći i kiseliji nego umeshu koji poznajete. U Japanu ga rade i doma, u staklenkama, svake godine.",
+    "en": "Ume is not a plum but a relative of the apricot, picked while still hard and green — raw, it is inedible. Umeshu is made by steeping it in spirit with sugar; genshu means it has not been cut with water, so it is thicker and sharper than the umeshu you know. In Japan it is still made at home, in jars, every year.",
+    "it": "L'ume non è una prugna ma un parente dell'albicocca, raccolto ancora duro e verde — crudo è immangiabile. L'umeshu nasce mettendolo in alcol con zucchero; genshu significa non diluito con acqua, quindi più denso e più acido dell'umeshu che conoscete. In Giappone lo si fa ancora in casa, nei vasi, ogni anno.",
+    "fr": "L'ume n'est pas une prune mais un cousin de l'abricot, cueilli encore dur et vert — cru, il est immangeable. L'umeshu se fait en le laissant macérer dans l'alcool avec du sucre ; genshu veut dire non coupé à l'eau, donc plus dense et plus acide que l'umeshu que vous connaissez. Au Japon, on en fait encore à la maison, en bocaux, chaque année.",
+    "de": "Ume ist keine Pflaume, sondern eine Verwandte der Aprikose, gepflückt, solange sie hart und grün ist — roh ist sie ungenießbar. Umeshu entsteht durch Einlegen in Alkohol mit Zucker; Genshu heißt unverdünnt, also dichter und säuerlicher als der Umeshu, den Sie kennen. In Japan wird er noch jedes Jahr zu Hause in Gläsern angesetzt.",
+    "zh": "梅不是李子，而是杏的近亲，趁着还硬还青时采下——生的不能吃。梅酒的做法是把它浸在酒与糖里；「原酒」意味着没有兑水，因此比你熟悉的梅酒更稠、更酸。在日本，人们至今每年还在家里用玻璃罐自己做。",
+    "sl": "Ume ni sliva, ampak sorodnica marelice, obrana, dokler je še trda in zelena — surova je neužitna. Umeshu nastane z namakanjem v alkoholu s sladkorjem; genshu pomeni, da ni razredčen z vodo, zato je gostejši in bolj kisel od umeshuja, ki ga poznate. Na Japonskem ga še vedno delajo doma, v kozarcih, vsako leto.",
+    "es": "El ume no es una ciruela sino un pariente del albaricoque, recogido aún duro y verde — crudo es incomible. El umeshu se hace macerándolo en alcohol con azúcar; genshu significa que no se ha rebajado con agua, así que es más denso y más ácido que el umeshu que conoce. En Japón se sigue haciendo en casa, en tarros, cada año."
+   },
+   "notePlain": true
   },
   "appenzeller": {
-   "name": "Appenzeller",
-   "producer": ""
+   "name": "Alpenbitter",
+   "producer": "Appenzeller Alpenbitter",
+   "insight": {
+    "kind": "spirit",
+    "class": "liqueur_bitter",
+    "region": "Appenzell",
+    "country": "CH",
+    "base": [
+     "grain_neutral"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "29",
+    "aromas": [
+     "gentian",
+     "meadow_herbs",
+     "anise",
+     "bitter_orange",
+     "mint",
+     "licorice"
+    ],
+    "serve": [
+     "chilled",
+     "after_dinner",
+     "before_dinner"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "charcuterie",
+     "desserts"
+    ]
+   },
+   "note": {
+    "hr": "Četrdeset dvije alpske trave i korijena, po recepturi koju obitelj Ebneter čuva od 1902. i koju, kažu, zna troje ljudi. U Appenzellu se pije i prije i poslije jela, i to je poanta biljnog bittera: nije desert nego probava.",
+    "en": "Forty-two alpine herbs and roots, to a recipe the Ebneter family has kept since 1902 and which, they say, three people know. In Appenzell it is drunk both before and after a meal, and that is the point of a herbal bitter: it is not a dessert, it is digestion.",
+    "it": "Quarantadue erbe e radici alpine, secondo una ricetta che la famiglia Ebneter custodisce dal 1902 e che, dicono, conoscono in tre. Ad Appenzell si beve prima e dopo il pasto, ed è proprio il senso di un amaro alle erbe: non è un dessert, è digestione.",
+    "fr": "Quarante-deux herbes et racines alpines, selon une recette que la famille Ebneter garde depuis 1902 et que, dit-on, trois personnes connaissent. À Appenzell, on le boit avant et après le repas, et c'est tout le sens d'un amer aux plantes : ce n'est pas un dessert, c'est de la digestion.",
+    "de": "Zweiundvierzig Alpenkräuter und -wurzeln, nach einem Rezept, das die Familie Ebneter seit 1902 hütet und das, wie es heißt, drei Menschen kennen. In Appenzell trinkt man ihn vor und nach dem Essen, und genau darum geht es beim Kräuterbitter: er ist kein Dessert, er ist Verdauung.",
+    "zh": "四十二种阿尔卑斯草药与根，配方自 1902 年起由 Ebneter 家族守着，据说只有三个人知道。在阿彭策尔，人们餐前餐后都喝——这正是草本苦酒的意义：它不是甜点，是消化。",
+    "sl": "Dvainštirideset alpskih zelišč in korenin, po receptu, ki ga družina Ebneter hrani od leta 1902 in ga, pravijo, poznajo trije ljudje. V Appenzellu ga pijejo pred jedjo in po njej, in prav v tem je smisel zeliščnega grenčeca: ni sladica, je prebava.",
+    "es": "Cuarenta y dos hierbas y raíces alpinas, según una receta que la familia Ebneter guarda desde 1902 y que, dicen, conocen tres personas. En Appenzell se bebe antes y después de comer, y ese es justamente el sentido de un amargo de hierbas: no es un postre, es digestión."
+   },
+   "notePlain": true
   },
   "wise-grus--ginko-pelinkovac": {
    "name": "Ginko Pelinkovac",
-   "producer": "Wise Grus"
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "liqueur_wormwood",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "grain_neutral"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "wormwood",
+     "gentian",
+     "bitter_orange",
+     "mint",
+     "licorice",
+     "herbs"
+    ],
+    "serve": [
+     "chilled",
+     "after_dinner"
+    ],
+    "pairings": [
+     "desserts",
+     "dark_chocolate",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Pelin je gorak jer mora biti — riječ 'pelinkovac' u Hrvatskoj znači piće koje se ne pravi da je nešto drugo. Ginko dodaje listu bilja koji u klasičnoj recepturi ne postoji; ostatak je ono što se očekuje: gorčina koja se otvori tek kad prođe prvi gutljaj.",
+    "en": "Wormwood is bitter because it has to be — in Croatia the word pelinkovac means a drink that does not pretend to be anything else. The ginkgo adds a leaf the classic recipe never had; the rest is what you expect: a bitterness that only opens after the first sip has gone.",
+    "it": "L'assenzio è amaro perché deve esserlo — in Croazia la parola pelinkovac indica una bevanda che non finge di essere altro. Il ginkgo aggiunge una foglia che la ricetta classica non ha mai avuto; il resto è ciò che ci si aspetta: un amaro che si apre solo dopo il primo sorso.",
+    "fr": "L'absinthe est amère parce qu'elle doit l'être — en Croatie, le mot pelinkovac désigne une boisson qui ne prétend pas être autre chose. Le ginkgo ajoute une feuille que la recette classique n'a jamais eue ; le reste est ce qu'on attend : une amertume qui ne s'ouvre qu'après la première gorgée.",
+    "de": "Wermut ist bitter, weil er es sein muss — in Kroatien meint das Wort Pelinkovac ein Getränk, das nicht vorgibt, etwas anderes zu sein. Der Ginkgo fügt ein Blatt hinzu, das die klassische Rezeptur nie hatte; der Rest ist, was man erwartet: eine Bitterkeit, die sich erst nach dem ersten Schluck öffnet.",
+    "zh": "苦艾之所以苦，是因为它必须苦——在克罗地亚，pelinkovac 这个词指的就是一种不假装自己是别的东西的酒。银杏加进了经典配方里从未有过的一片叶子；其余的正如你所料：那股苦要等第一口过去才打开。",
+    "sl": "Pelin je grenak, ker mora biti — beseda pelinkovec na Hrvaškem pomeni pijačo, ki se ne dela, da je kaj drugega. Ginko doda list, ki ga klasični recept ni imel; ostalo je tisto, kar pričakujete: grenkoba, ki se odpre šele, ko mine prvi požirek.",
+    "es": "El ajenjo es amargo porque tiene que serlo — en Croacia la palabra pelinkovac designa una bebida que no finge ser otra cosa. El ginkgo añade una hoja que la receta clásica nunca tuvo; el resto es lo que se espera: un amargor que solo se abre cuando ha pasado el primer trago."
+   },
+   "notePlain": true
   },
   "jagermeister-manifest": {
-   "name": "Jägermeister Manifest",
-   "producer": ""
+   "name": "Manifest",
+   "producer": "Jägermeister",
+   "insight": {
+    "kind": "spirit",
+    "class": "liqueur_bitter",
+    "region": "Wolfenbüttel, Niedersachsen",
+    "country": "DE",
+    "base": [
+     "grain_neutral"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "cask": [
+     "ex_wine"
+    ],
+    "alcohol": "38",
+    "aromas": [
+     "bitter_orange",
+     "brown_spices",
+     "licorice",
+     "cocoa",
+     "dried_herbs",
+     "anise"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "cigars",
+     "desserts"
+    ]
+   },
+   "note": {
+    "hr": "Manifest je Jägermeister koji se ne pije iz zamrzivača. Pedeset šest sastojaka umjesto pedeset šest, ali s više gorkih korijena, i odležavanje u drvu — namijenjen je da se pije na sobnoj temperaturi, iz čaše, polako. Isti Wolfenbüttel, drukčija namjera.",
+    "en": "Manifest is the Jägermeister that is not drunk out of the freezer. The same fifty-six botanicals, weighted towards the bitter roots, plus time in wood — it is meant to be drunk at room temperature, from a glass, slowly. Same Wolfenbüttel, a different intention.",
+    "it": "Manifest è il Jägermeister che non si beve dal congelatore. Le stesse cinquantasei botaniche, spostate verso le radici amare, più tempo nel legno — va bevuto a temperatura ambiente, in un bicchiere, lentamente. Stessa Wolfenbüttel, altra intenzione.",
+    "fr": "Manifest, c'est le Jägermeister qu'on ne boit pas sorti du congélateur. Les mêmes cinquante-six plantes, orientées vers les racines amères, plus du temps en bois — il se boit à température ambiante, dans un verre, lentement. Même Wolfenbüttel, autre intention.",
+    "de": "Manifest ist der Jägermeister, den man nicht aus dem Gefrierfach trinkt. Dieselben sechsundfünfzig Botanicals, stärker auf die bitteren Wurzeln gewichtet, dazu Zeit im Holz — er ist für Zimmertemperatur gedacht, aus dem Glas, langsam. Dasselbe Wolfenbüttel, eine andere Absicht.",
+    "zh": "Manifest 是那种不从冷冻室里倒出来喝的野格。同样的五十六种植物，只是更偏向苦根，再加上木桶时间——它该在室温下、用杯子、慢慢喝。还是同一个沃尔芬比特尔，意图却不同。",
+    "sl": "Manifest je jägermeister, ki se ne pije iz zamrzovalnika. Istih šestinpetdeset sestavin, le bolj nagnjenih h grenkim koreninam, in čas v lesu — namenjen je pitju pri sobni temperaturi, iz kozarca, počasi. Isti Wolfenbüttel, drugačen namen.",
+    "es": "Manifest es el Jägermeister que no se bebe del congelador. Los mismos cincuenta y seis botánicos, cargados hacia las raíces amargas, más tiempo en madera — está pensado para beberse a temperatura ambiente, en copa, despacio. El mismo Wolfenbüttel, otra intención."
+   },
+   "notePlain": true
   },
   "zmajska-pivovara--pils-0-5-l": {
    "name": "Pils 0,5 l",
-   "producer": "Zmajska pivovara"
+   "producer": "Zmajska pivovara",
+   "insight": {
+    "kind": "spirit",
+    "class": "pils",
+    "region": "Zagreb",
+    "country": "HR",
+    "base": [
+     "barley_hops"
+    ],
+    "alcohol": "",
+    "aromas": [
+     "hops",
+     "bread",
+     "malt",
+     "hay",
+     "citrus",
+     "white_flowers"
+    ],
+    "serve": [
+     "chilled"
+    ],
+    "pairings": [
+     "light_starters",
+     "seafood",
+     "charcuterie"
+    ]
+   },
+   "note": {
+    "hr": "Zmajska je 2014. bila među prvima koje su u Zagrebu vratile pivo u ruke pivara umjesto marketinga. Pils je najnemilosrdniji stil koji postoji — svijetao, čist, bez ijedne arome iza koje bi se sakrila greška. Zato ga male pivovare rijetko rade, i zato je ovo ispit koji su položili.",
+    "en": "Zmajska was among the first, in 2014, to put Zagreb's beer back in brewers' hands rather than marketing's. Pils is the most unforgiving style there is — pale, clean, with no flavour behind which a mistake could hide. Which is why small breweries rarely attempt it, and why this one is an exam passed.",
+    "it": "Zmajska è stata tra le prime, nel 2014, a rimettere la birra di Zagabria nelle mani dei birrai invece che del marketing. La pils è lo stile più spietato che esista — chiara, pulita, senza un solo aroma dietro cui nascondere un errore. Per questo i piccoli birrifici la evitano, e per questo qui è un esame superato.",
+    "fr": "Zmajska fut, en 2014, parmi les premières à remettre la bière de Zagreb entre les mains des brasseurs plutôt que du marketing. La pils est le style le plus impitoyable qui soit — pâle, nette, sans un arôme derrière lequel cacher une faute. C'est pourquoi les petites brasseries s'y risquent rarement, et pourquoi celle-ci est un examen réussi.",
+    "de": "Zmajska war 2014 unter den Ersten, die Zagrebs Bier wieder in die Hände der Brauer statt des Marketings legten. Pils ist der gnadenloseste Stil überhaupt — hell, klar, ohne ein Aroma, hinter dem sich ein Fehler verstecken ließe. Deshalb wagen sich kleine Brauereien selten daran, und deshalb ist dieses eine bestandene Prüfung.",
+    "zh": "2014 年，Zmajska 是最早把萨格勒布的啤酒交还到酿酒师而非市场部手里的酒厂之一。皮尔森是最不留情面的风格——淡色、干净，没有任何香气可以让错误藏身。所以小酒厂很少去碰它，也所以这一支是一场通过了的考试。",
+    "sl": "Zmajska je bila leta 2014 med prvimi, ki so zagrebško pivo vrnile v roke pivovarjev namesto marketinga. Pils je najbolj neusmiljen slog, kar jih je — svetel, čist, brez ene same arome, za katero bi se skrila napaka. Zato se ga male pivovarne redko lotijo in zato je ta izpit, ki so ga opravili.",
+    "es": "Zmajska fue, en 2014, de las primeras en devolver la cerveza de Zagreb a manos de los cerveceros en lugar del marketing. La pils es el estilo más implacable que existe — pálida, limpia, sin un solo aroma tras el que esconder un error. Por eso las cervecerías pequeñas rara vez la intentan, y por eso esta es un examen aprobado."
+   },
+   "notePlain": true
   },
   "jana-0-25-l": {
    "name": "Jana 0,25 l",

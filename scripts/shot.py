@@ -108,6 +108,20 @@ def ikone(page, base):
 
 
 @state
+def spirit(page, base):
+    """A spirit card — a different set of fields and a different glass from a
+    wine, so it needs looking at on its own."""
+    enter(page, base)
+    to_list(page)
+    page.click("#search-toggle")
+    page.fill("#search", "hampden")
+    page.wait_for_timeout(400)
+    page.click(".item.clickable")
+    page.wait_for_selector("#modal:not(.hidden)")
+    page.wait_for_timeout(500)
+
+
+@state
 def search(page, base):
     enter(page, base)
     to_list(page)
@@ -136,7 +150,11 @@ def main():
     base = serve()
     written = []
     with sync_playwright() as p:
-        browser = p.chromium.launch()
+        # PW_CHROMIUM lets a machine whose Chromium build doesn't match the
+        # installed playwright package point at the browser it does have,
+        # instead of downloading a second ~120 MB copy.
+        exe = os.environ.get("PW_CHROMIUM")
+        browser = p.chromium.launch(executable_path=exe) if exe else p.chromium.launch()
         for vp in vps:
             cfg = dict(VIEWPORTS[vp])
             mobile = cfg.pop("is_mobile")

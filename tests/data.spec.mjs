@@ -8,6 +8,7 @@
    (a producer's region contradicting the wine's). */
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
+import vm from "node:vm";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { allItems, producers } from "./helpers.mjs";
@@ -19,6 +20,15 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "..");
 const items = allItems();
 const i18n = readFileSync(resolve(ROOT, "js/i18n.js"), "utf8");
+
+/* js/i18n.js is a classic script, so it is evaluated rather than imported —
+   the same way scripts/validate.mjs reads it. */
+const I18N = (() => {
+  const ctx = {};
+  vm.createContext(ctx);
+  vm.runInContext(i18n + "\nthis.I = I18N;", ctx);
+  return ctx.I;
+})();
 
 test("the list is not empty and every wine has a name", () => {
   expect(items.length).toBeGreaterThan(300);
@@ -320,5 +330,134 @@ test("every Friuli wine carries the same region ladder", () => {
     if (/furlanij|frioul|friaul/i.test(region))
       bad.push(`${it.producer} — ${it.name}: "${region}" stores an exonym`);
   }
+  expect(bad).toEqual([]);
+});
+
+/* ---------------------------------------------------------------- spirits
+   The spirits shelf got insight cards on 2026-08-01. Its vocabulary lives in
+   js/spirits.js rather than js/i18n.js, so none of the invariants above see
+   it; these are the equivalent guards. */
+
+const spiritCtx = (() => {
+  const ctx = {};
+  vm.createContext(ctx);
+  vm.runInContext(
+    readFileSync(resolve(ROOT, "js/spirits.js"), "utf8") +
+      "\nthis.S = SPIRIT_I18N; this.V = SPIRIT_VESSELS; this.BY = VESSEL_BY_CLASS;",
+    ctx
+  );
+  return ctx;
+})();
+const spirits = items.filter((i) => i.insight.kind === "spirit");
+
+test("every language in js/spirits.js has the same keys", () => {
+  /* The failure this catches is silent and per-language: a key added to `en`
+     and forgotten in `sl` renders the raw key — "ex_bourbon" — to a Slovenian
+     guest, and only to them. */
+  const { S } = spiritCtx;
+  const DICTS = ["ui", "classes", "bases", "stills", "casks", "serves", "aromas", "pairings"];
+  const bad = [];
+  for (const lc of Object.keys(S)) {
+    for (const d of DICTS) {
+      const ref = Object.keys(S.en[d]), got = Object.keys(S[lc][d]);
+      for (const k of ref) if (!got.includes(k)) bad.push(`${lc}.${d}: missing "${k}"`);
+      for (const k of got) if (!ref.includes(k)) bad.push(`${lc}.${d}: has "${k}", en does not`);
+    }
+  }
+  expect(bad).toEqual([]);
+  expect(Object.keys(S).sort()).toEqual(["de", "en", "es", "fr", "hr", "it", "sl", "zh"]);
+});
+
+test("every spirit key resolves in every language", () => {
+  const { S } = spiritCtx;
+  const bad = [];
+  for (const it of spirits) {
+    const ins = it.insight, at = `${it.producer} — ${it.name}`;
+    for (const lc of Object.keys(S)) {
+      const s = S[lc], t = I18N[lc];
+      if (!s.classes[ins.class]) bad.push(`${at}: class "${ins.class}" (${lc})`);
+      for (const [d, keys] of [["bases", ins.base], ["stills", ins.still], ["casks", ins.cask], ["serves", ins.serve]])
+        for (const k of keys || []) if (!s[d][k]) bad.push(`${at}: ${d} "${k}" (${lc})`);
+      /* Aromas and pairings may live in either dictionary. */
+      for (const a of ins.aromas || []) if (!s.aromas[a] && !t.aromas[a]) bad.push(`${at}: aroma "${a}" (${lc})`);
+      for (const p of ins.pairings || []) if (!s.pairings[p] && !t.pairings[p]) bad.push(`${at}: pairing "${p}" (${lc})`);
+      if (ins.country && !t.countries[ins.country]) bad.push(`${at}: country "${ins.country}" (${lc})`);
+    }
+  }
+  expect(bad).toEqual([]);
+});
+
+test("every spirit class has a glass, and every glass exists", () => {
+  const { S, V, BY } = spiritCtx;
+  expect(Object.keys(S.en.classes).filter((c) => !BY[c]), "class with no vessel").toEqual([]);
+  expect(Object.values(BY).filter((v) => !V[v]), "vessel that is not drawn").toEqual([]);
+  expect(spirits.filter((i) => i.insight.vessel && !V[i.insight.vessel]).map((i) => i.name)).toEqual([]);
+});
+
+test("a spirit does not carry wine-only fields", () => {
+  /* `grape`, `style` and `body` are never read on the spirit branch of
+     openDetail(), so anything stored in them is invisible — and a style would
+     additionally send it through glassFor() if the branch were ever removed. */
+  const bad = spirits
+    .filter((i) => i.insight.grape || i.insight.style || i.insight.body || i.insight.glass)
+    .map((i) => `${i.producer} — ${i.name}`);
+  expect(bad).toEqual([]);
+});
+
+test("no two bottles share a note", () => {
+  /* Six house stories were originally pasted onto every bottle the house made,
+     so a guest tapping three Mulassanos read the same paragraph three times.
+     The house story belongs in producers.json; the note is per bottle.
+     Vintages of one wine and large-format twins are the legitimate exceptions. */
+  const byNote = new Map();
+  for (const it of items) {
+    const en = it.note && it.note.en;
+    if (!en) continue;
+    if (!byNote.has(en)) byNote.set(en, []);
+    byNote.get(en).push(it);
+  }
+  const bad = [];
+  for (const [, group] of byNote) {
+    if (group.length < 2) continue;
+    /* Same producer + same name (a twin or a second listing) is fine, and so
+       are two vintages of one wine — strip a trailing year and compare. */
+    const stem = (i) => `${i.producer}|${String(i.name).replace(/\s*(–\s*\d+([.,]\d+)?\s*l|\b(19|20)\d{2}\b)\s*/gi, "").trim()}`;
+    if (new Set(group.map(stem)).size > 1)
+      bad.push(group.map((i) => `${i.producer} — ${i.name}`).join(" / "));
+  }
+  expect(bad, "different bottles sharing one note").toEqual([]);
+});
+
+test("guest text in a Latin-script language contains no Cyrillic", () => {
+  /* Two Croatian notes shipped with "ком" inside a Latin word — invisible when
+     you read it, and a search for the word would never match. */
+  const CYR = /[Ѐ-ӿ]/;
+  const bad = [];
+  for (const it of items)
+    for (const [lc, text] of Object.entries(it.note || {}))
+      if (lc !== "zh" && CYR.test(text)) bad.push(`${it.producer} — ${it.name} (${lc})`);
+  for (const [name, rec] of Object.entries(producers))
+    for (const [lc, text] of Object.entries((rec && rec.blurb) || {}))
+      if (lc !== "zh" && CYR.test(text)) bad.push(`producer ${name} (${lc})`);
+  expect(bad).toEqual([]);
+});
+
+test("a spirit does not inherit a winery's blurb", () => {
+  /* producerInfo() matches by longest containing substring, so "Clairin"
+     picked up Giorgio Clai's winery blurb until a Clairin record was added.
+     Any spirit whose blurb comes from a record shorter than its own producer
+     name is suspect; the assertion here is the narrow one that broke. */
+  const keys = Object.keys(producers).filter((k) => k.charAt(0) !== "_");
+  const resolve_ = (n) => {
+    const p = String(n || "").toLowerCase();
+    let best = null;
+    for (const k of keys) if (p.includes(k.toLowerCase()) && (!best || k.length > best.length)) best = k;
+    return best;
+  };
+  expect(resolve_("Clairin")).toBe("Clairin");
+  const bad = spirits
+    .map((i) => [i.producer, resolve_(i.producer)])
+    .filter(([p, k]) => k && !String(p).toLowerCase().startsWith(k.toLowerCase()))
+    .map(([p, k]) => `${p} resolves to "${k}"`);
   expect(bad).toEqual([]);
 });

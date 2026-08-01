@@ -1742,6 +1742,97 @@
     "sl": "Mlada burgundska roka — svež aligoté in chardonnay živahne kisline, brez bremen in poln energije.",
     "es": "Una joven mano borgoñona — Aligoté y Chardonnay frescos de acidez vivaz, sin lastres y llenos de energía."
    }
+  },
+  "Wise Grus": {
+   "region": "",
+   "blurb": {
+    "hr": "Mudri ždral iz Daruvara, s idejom da rakija ne mora biti nešto što se trpi — pedesetak medalja iz San Francisca, Londona i Varšave u dvije godine to su i potvrdile.",
+    "en": "The wise crane, from Daruvar, working on the idea that rakija need not be something you endure — some fifty medals from San Francisco, London and Warsaw in two years say it worked.",
+    "it": "La gru saggia, da Daruvar, con l'idea che la rakija non debba essere qualcosa da sopportare — una cinquantina di medaglie da San Francisco, Londra e Varsavia in due anni lo confermano.",
+    "fr": "La grue sage, de Daruvar, avec l'idée que la rakija n'a pas à être quelque chose qu'on endure — une cinquantaine de médailles de San Francisco, Londres et Varsovie en deux ans le confirment.",
+    "de": "Der weise Kranich aus Daruvar, mit dem Gedanken, dass Rakija nichts sein muss, das man erträgt — rund fünfzig Medaillen aus San Francisco, London und Warschau in zwei Jahren bestätigen es.",
+    "zh": "来自达鲁瓦尔的「智慧之鹤」，出发点是拉基亚不该是要硬扛的东西——两年内来自旧金山、伦敦与华沙的约五十枚奖牌证明了这一点。",
+    "sl": "Modri žerjav iz Daruvarja, z zamislijo, da žganje ni nekaj, kar je treba pretrpeti — kakih petdeset medalj iz San Francisca, Londona in Varšave v dveh letih to potrjuje.",
+    "es": "La grulla sabia, de Daruvar, con la idea de que la rakija no tiene por qué ser algo que se soporta — medio centenar de medallas de San Francisco, Londres y Varsovia en dos años lo confirman."
+   }
+  },
+  "Clairin": {
+   "region": "",
+   "blurb": {
+    "hr": "Rum kakav je bio prije industrije: trska rezana rukom, mljevena isti dan, vrenje s divljim kvascima s polja, jedna destilacija, ništa dodano. Haiti ima nekoliko stotina takvih malih destilerija; Velier je svijetu pokazao prve tri.",
+    "en": "Rum as it was before industry: cane cut by hand, milled the same day, fermented with the wild yeasts off the field, distilled once, nothing added. Haiti has several hundred such small distilleries; Velier showed the world the first three.",
+    "it": "Il rum com'era prima dell'industria: canna tagliata a mano, macinata lo stesso giorno, fermentata con i lieviti selvaggi del campo, una sola distillazione, niente di aggiunto. Ad Haiti ci sono centinaia di queste piccole distillerie; Velier ne ha mostrate al mondo le prime tre.",
+    "fr": "Le rhum tel qu'il était avant l'industrie : canne coupée à la main, broyée le jour même, fermentée aux levures sauvages du champ, une seule distillation, rien d'ajouté. Haïti compte des centaines de ces petites distilleries ; Velier en a montré les trois premières au monde.",
+    "de": "Rum, wie er vor der Industrie war: von Hand geschnittenes Rohr, am selben Tag gemahlen, mit den wilden Hefen vom Feld vergoren, einmal gebrannt, nichts zugesetzt. Haiti hat mehrere hundert solcher kleinen Brennereien; Velier hat der Welt die ersten drei gezeigt.",
+    "zh": "工业化之前的朗姆：手工砍蔗，当天压榨，用田间野生酵母发酵，只蒸馏一次，不加任何东西。海地有几百家这样的小酒厂；Velier 把最早的三家带给了世界。",
+    "sl": "Rum, kakršen je bil pred industrijo: trs, požet ročno, zmlet isti dan, vrel z divjimi kvasovkami s polja, ena destilacija, nič dodanega. Haiti ima nekaj sto takih majhnih destilarn; Velier je svetu pokazal prve tri.",
+    "es": "El ron tal como era antes de la industria: caña cortada a mano, molida el mismo día, fermentada con levaduras salvajes del campo, una sola destilación, nada añadido. Haití tiene cientos de estas pequeñas destilerías; Velier enseñó al mundo las tres primeras."
+   }
+  },
+  "Hampden": {
+   "region": "",
+   "blurb": {
+    "hr": "Trelawny, od 1753., i nikad ni koraka prema lakšem ukusu: fermentacija tjednima, hranjena muckom iz vlastite jame, i kotlovi s dvije retorte iz kojih izlazi destilat s najviše estera na svijetu.",
+    "en": "Trelawny, since 1753, and never a step towards an easier taste: fermentations that run for weeks, fed with muck from its own pit, and double-retort pot stills that throw off the most ester-rich spirit on earth.",
+    "it": "Trelawny, dal 1753, e mai un passo verso un gusto più facile: fermentazioni di settimane, nutrite con il muck della fossa aziendale, e alambicchi a doppia retorta che danno il distillato più ricco di esteri al mondo.",
+    "fr": "Trelawny, depuis 1753, et jamais un pas vers un goût plus facile : des fermentations de plusieurs semaines, nourries au muck de sa propre fosse, et des alambics à double retorte qui donnent le distillat le plus riche en esters du monde.",
+    "de": "Trelawny, seit 1753, und nie ein Schritt hin zu einem leichteren Geschmack: wochenlange Gärungen, gefüttert mit Muck aus der eigenen Grube, und Pot Stills mit zwei Retorten, die das esterreichste Destillat der Welt liefern.",
+    "zh": "特里劳尼，自 1753 年起，从未向更好入口的口味让过一步：持续数周的发酵，喂以自家坑池的 muck，以及产出全世界酯含量最高酒液的双蒸馏罐壶式蒸馏器。",
+    "sl": "Trelawny, od leta 1753, in nikoli koraka proti lažjemu okusu: fermentacije, ki tečejo tedne, hranjene z muckom iz lastne jame, in kotli z dvema retortama, ki dajo najbolj estrski destilat na svetu.",
+    "es": "Trelawny, desde 1753, y jamás un paso hacia un sabor más fácil: fermentaciones de semanas, alimentadas con el muck de su propio pozo, y alambiques de doble retorta que dan el destilado más rico en ésteres del mundo."
+   }
+  },
+  "Lorenzo Inga": {
+   "region": "",
+   "blurb": {
+    "hr": "Pijemontska destilerija koja komine bere svježe i destilira odmah — stara i oksidirana komina upravo je ono po čemu grappa ima loš glas, i upravo ono što ovdje nikad ne uđe u kotao.",
+    "en": "A Piedmontese distillery that collects its pomace fresh and distils it at once — old, oxidised pomace is exactly what gave grappa its bad name, and exactly what never reaches this still.",
+    "it": "Una distilleria piemontese che raccoglie le vinacce fresche e le distilla subito — vinacce vecchie e ossidate sono proprio ciò che ha dato alla grappa la sua cattiva fama, e proprio ciò che qui non entra mai nell'alambicco.",
+    "fr": "Une distillerie piémontaise qui ramasse son marc frais et le distille aussitôt — le marc vieux et oxydé est précisément ce qui a fait la mauvaise réputation de la grappa, et précisément ce qui n'entre jamais dans cet alambic.",
+    "de": "Eine piemontesische Brennerei, die ihren Trester frisch holt und sofort brennt — alter, oxidierter Trester ist genau das, was der Grappa ihren schlechten Ruf eingebracht hat, und genau das, was hier nie in die Blase kommt.",
+    "zh": "一家皮埃蒙特酒厂，皮渣趁新鲜收来、立刻蒸馏——陈旧氧化的皮渣正是格拉帕坏名声的由来，也正是这里的蒸馏器从不接受的东西。",
+    "sl": "Piemontska destilarna, ki tropine pobira sveže in jih takoj destilira — stare, oksidirane tropine so prav tisto, kar je grappi prineslo slab glas, in prav tisto, kar tu nikoli ne pride v kotel.",
+    "es": "Una destilería piamontesa que recoge su orujo fresco y lo destila enseguida — el orujo viejo y oxidado es justamente lo que dio a la grappa su mala fama, y justamente lo que aquí nunca llega al alambique."
+   }
+  },
+  "Kavalan": {
+   "region": "",
+   "blurb": {
+    "hr": "Tajvan je za viski krivo mjesto — vruće, vlažno, bez tresetišta i bez tradicije. Kavalan je 2005. svejedno počeo i pokazao da u Yilanu bačva u tri godine napravi ono za što na Speysideu treba deset.",
+    "en": "Taiwan is the wrong place for whisky — hot, humid, no peat bogs, no tradition. Kavalan started anyway in 2005 and showed that in Yilan a cask does in three years what takes ten in Speyside.",
+    "it": "Taiwan è il posto sbagliato per il whisky — caldo, umido, senza torbiere e senza tradizione. Kavalan ha cominciato lo stesso nel 2005 e ha dimostrato che a Yilan una botte fa in tre anni ciò che nello Speyside ne richiede dieci.",
+    "fr": "Taïwan est le mauvais endroit pour du whisky — chaud, humide, sans tourbières ni tradition. Kavalan s'est lancé quand même en 2005 et a montré qu'à Yilan un fût fait en trois ans ce qui en demande dix dans le Speyside.",
+    "de": "Taiwan ist der falsche Ort für Whisky — heiß, feucht, keine Torfmoore, keine Tradition. Kavalan hat 2005 trotzdem angefangen und gezeigt, dass ein Fass in Yilan in drei Jahren schafft, wofür es in der Speyside zehn braucht.",
+    "zh": "台湾本不适合做威士忌——湿热、没有泥煤沼、没有传统。Kavalan 还是在 2005 年开工，并证明在宜兰，一只桶三年做到的事，斯佩塞要十年。",
+    "sl": "Tajvan je za viski napačen kraj — vroče, vlažno, brez šotišč in brez tradicije. Kavalan je leta 2005 vseeno začel in pokazal, da sod v Yilanu v treh letih naredi tisto, za kar je na Speysidu potrebnih deset.",
+    "es": "Taiwán es el lugar equivocado para el whisky — caluroso, húmedo, sin turberas y sin tradición. Kavalan empezó igualmente en 2005 y demostró que en Yilan una barrica hace en tres años lo que en Speyside pide diez."
+   }
+  },
+  "Mulassano": {
+   "region": "",
+   "blurb": {
+    "hr": "Caffè Mulassano otvoren je 1907. na Piazzi Castello i ondje je izmišljen tramezzino. Vermuti koji nose to ime rade se u Piemontu po povijesnim recepturama, na bazi pijemontskog bijelog vina — ne neutralnog alkohola.",
+    "en": "Caffè Mulassano opened on Piazza Castello in 1907 and invented the tramezzino there. The vermouths that carry the name are made in Piedmont to the historic recipes, on a base of Piedmontese white wine — not neutral spirit.",
+    "it": "Il Caffè Mulassano aprì in Piazza Castello nel 1907 e lì nacque il tramezzino. I vermouth che ne portano il nome si producono in Piemonte secondo le ricette storiche, su base di vino bianco piemontese — non di alcol neutro.",
+    "fr": "Le Caffè Mulassano a ouvert Piazza Castello en 1907 et y a inventé le tramezzino. Les vermouths qui en portent le nom se font en Piémont d'après les recettes historiques, sur une base de vin blanc piémontais — non d'alcool neutre.",
+    "de": "Das Caffè Mulassano eröffnete 1907 an der Piazza Castello und erfand dort das Tramezzino. Die Wermuts, die den Namen tragen, entstehen im Piemont nach den historischen Rezepturen, auf der Basis piemontesischen Weißweins — nicht von Neutralalkohol.",
+    "zh": "Caffè Mulassano 于 1907 年开在城堡广场，tramezzino 三明治在那里诞生。沿用其名的味美思按历史配方在皮埃蒙特酿造，基酒是皮埃蒙特白葡萄酒——而非中性酒精。",
+    "sl": "Caffè Mulassano se je leta 1907 odprl na Piazzi Castello in tam je nastal tramezzino. Vermuti, ki nosijo to ime, nastajajo v Piemontu po zgodovinskih receptih, na osnovi piemontskega belega vina — ne nevtralnega alkohola.",
+    "es": "El Caffè Mulassano abrió en Piazza Castello en 1907 y allí nació el tramezzino. Los vermuts que llevan ese nombre se elaboran en el Piamonte según las recetas históricas, sobre una base de vino blanco piamontés — no de alcohol neutro."
+   }
+  },
+  "Foursquare": {
+   "region": "",
+   "blurb": {
+    "hr": "Barbados, St Philip. Richard Seale je gotovo sam izborio da se u rumu piše što je u boci: bez dodanog šećera, bez boje, bez izgovora — i punjenja u jačini u kojoj su izašla iz bačve.",
+    "en": "Barbados, St Philip. Richard Seale all but single-handedly forced rum to declare what is in the bottle: no added sugar, no colouring, no excuses — and bottlings at the strength the cask gave them.",
+    "it": "Barbados, St Philip. Richard Seale ha quasi da solo imposto al rum di dichiarare cosa c'è nella bottiglia: senza zucchero aggiunto, senza colore, senza scuse — e imbottigliamenti al grado che la botte ha dato.",
+    "fr": "Barbade, St Philip. Richard Seale a presque à lui seul obligé le rhum à déclarer ce qu'il y a dans la bouteille : sans sucre ajouté, sans colorant, sans excuse — et des embouteillages au degré que le fût a donné.",
+    "de": "Barbados, St Philip. Richard Seale hat den Rum fast im Alleingang dazu gebracht zu erklären, was in der Flasche ist: ohne Zuckerzusatz, ohne Farbe, ohne Ausreden — und Abfüllungen in der Stärke, die das Fass hergab.",
+    "zh": "巴巴多斯，圣菲利普。Richard Seale 几乎凭一己之力，逼着朗姆行业公布瓶中之物：不加糖、不加色、不找借口——并以桶给出的强度装瓶。",
+    "sl": "Barbados, St Philip. Richard Seale je skoraj sam izsilil, da rum pove, kaj je v steklenici: brez dodanega sladkorja, brez barvil, brez izgovorov — in polnitve v jakosti, kakršno je dal sod.",
+    "es": "Barbados, St Philip. Richard Seale forzó casi en solitario al ron a declarar qué hay en la botella: sin azúcar añadido, sin colorante, sin excusas — y embotellados al grado que dio la barrica."
+   }
   }
  }
 }
