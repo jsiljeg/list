@@ -27,7 +27,7 @@
    then verified by overlaying the candidate path back on the photo — see the
    comments on each.
 
-   NOT MEASURED: tumbler and highball are still standard vessel
+   NOT MEASURED: only the highball is still a standard vessel
    geometries drawn to plausible millimetres, because no photograph of the house
    versions exists. That is defensible where eyeballing a wine glass is not — a
    rocks glass is a cylinder and there is nothing in it to get wrong — but if
@@ -48,8 +48,6 @@
    out 4:1 and read as a test tube, the rocks glass came out 2:1 and read as a
    short vase. The numbers used here, height x width in millimetres:
 
-     rocks/tumbler   90 x 85   → viewBox 92    (nearly square, and it should be)
-     highball       150 x 65   → viewBox 46
      copa de balón  (measured)  → viewBox 48
      Glencairn      115 x 67   → viewBox 56   (measured; published mm)
      snifter        (see below) → viewBox 68   (measured off the photo)
@@ -58,9 +56,6 @@
    Each glass is then drawn across the full 6-to-93 band of the box, so the
    width actually reaches the edges and the ratio survives to the screen. */
 const SPIRIT_VESSELS = {
-  /* Old-fashioned / rocks: heavy base, walls tapering slightly inwards towards
-     it. As wide as it is tall — the single most recognisable thing about it. */
-  tumbler: '<svg viewBox="0 0 92 100" aria-hidden="true"><path d="M7,11 L11.5,89 C11.5,92.5 80.5,92.5 80.5,89 L85,11"/><path d="M7,11 C7,6.5 85,6.5 85,11 C85,15.5 7,15.5 7,11 Z"/><path d="M12,77 c14,4.4 47,4.4 61,0" style="stroke-width:.8;opacity:.45"/></svg>',
   /* The Glencairn, measured. Published dimensions carry the box — 115 mm tall,
      67 mm across the bulb, 46 mm at the rim and 46 mm across the foot — and the
      owner's photo supplies the vertical landmarks the maker does not publish:
@@ -106,10 +101,13 @@ const SPIRIT_VESSELS = {
      highball for both gins — a G&T in this house comes in a balloon, and the
      icon should say so. */
   copa: '<svg viewBox="0 0 48 100" aria-hidden="true"><path d="M6.6,6 C4.6,12 2.25,21 2.25,30 C2.3,40 9.5,48.5 20,50.8 L28,50.8 C38.5,48.5 45.7,40 45.75,30 C45.75,21 43.4,12 41.4,6"/><path d="M6.6,6 C6.6,4.2 41.4,4.2 41.4,6 C41.4,7.8 6.6,7.8 6.6,6 Z"/><path d="M24,50.8 V85.2"/><path d="M7.77,93 C13,88.5 35,88.5 40.23,93"/></svg>',
-  /* Highball, for the gins: tall, straight, no stem. Between the tumbler and
-     this one the aspect ratio does all the work — same silhouette, half the
-     width. */
-  highball: '<svg viewBox="0 0 46 100" aria-hidden="true"><path d="M4.3,8 L6.5,90 C6.5,93 38.5,93 38.5,90 L40.7,8"/><path d="M4.3,8 C4.3,5.4 40.7,5.4 40.7,8 C40.7,10.6 4.3,10.6 4.3,8 Z"/><path d="M6.9,52 c7,2.4 22,2.4 29,0" style="stroke-width:.8;opacity:.45"/></svg>',
+  /* The house beer glass, traced off the owner's photo: the Belgian-style
+     stemmed tulip Zmajska brands. Wide-bellied and .75 at the rim — much more
+     open than the grappa tulip it superficially resembles, because a beer has
+     foam to hold and a Pils has aromatics that want out. Bowl 48% down, and
+     the foot is narrow for its bowl, which is what makes it look like a beer
+     glass rather than a small brandy balloon. */
+  beer: '<svg viewBox="0 0 62 100" aria-hidden="true"><path d="M9.77,6 C7,14 2.55,30 2.55,47.4 C2.7,55 12,60 27.07,61.2 L34.93,61.2 C50,60 59.3,55 59.45,47.4 C59.45,30 55,14 52.23,6"/><path d="M9.77,6 C9.77,3.9 52.23,3.9 52.23,6 C52.23,8.1 9.77,8.1 9.77,6 Z"/><path d="M31,61.2 V81.3"/><path d="M15.93,93 C21,88.5 41,88.5 46.07,93"/></svg>',
 };
 
 /* Which vessel a bottle gets. `insight.vessel` in library/wines.json wins, the
@@ -121,7 +119,7 @@ const VESSEL_BY_CLASS = {
   gin_london_dry: "copa", gin_contemporary: "copa",
   /* Owner, 2026-08-01: the vermouths go in the rakija glass, not a goblet. */
   vermouth_bianco: "tulip", vermouth_rosso: "tulip", vermouth_dry: "tulip",
-  bitter_aperitivo: "tumbler",
+  bitter_aperitivo: "tulip",   /* owner: the aperitivo bitter goes where the vermouths go */
   tequila_blanco: "tulip", mezcal_joven: "tulip",
   malt_islay: "nosing", malt_speyside: "nosing", malt_lowland: "nosing",
   malt_highland: "nosing", malt_island: "nosing", malt_taiwan: "nosing",
@@ -135,14 +133,14 @@ const VESSEL_BY_CLASS = {
   clairin: "snifter", rum_cane_juice: "snifter", rum_japanese: "snifter",
   rum_australian: "snifter",
   cognac_grande_champagne: "snifter", cognac_fins_bois: "snifter",
-  shochu_rice: "tumbler",
+  shochu_rice: "nosing",   /* owner, 2026-08-01: the shochu is nosed, not rocked */
   rakija_fruit: "tulip", rakija_grape: "tulip", rakija_herbal: "tulip",
   rakija_honey: "tulip",
   grappa_young: "tulip", grappa_aged: "tulip",
   liqueur_fruit: "tulip", liqueur_bitter: "tulip", liqueur_wormwood: "tulip",
   grappa: "tulip", liqueur_walnut: "tulip", liqueur_cherry: "tulip",
   liqueur_teranino: "tulip",
-  pils: "highball"
+  pils: "beer"
 };
 function vesselFor(cls, override) {
   if (override && SPIRIT_VESSELS[override]) return override;
