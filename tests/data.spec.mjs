@@ -637,3 +637,22 @@ test("the ranking table covers every food actually used", () => {
   }
   expect([...missing], "foods with no place in their style's order").toEqual([]);
 });
+
+test("a fried dish does not ask for a rich, sweet-edged white", () => {
+  /* Added 2026-08-02 (owner: "what was the reasoning for PG Albert Mann with
+     residual sugar for wiener schnitzel?"). There wasn't a good one. The dish
+     listed `white_rich` among its target styles, so Albert Mann's Hengst —
+     off-dry, 14.5%, honey and pineapple — scored three points for being
+     exactly what the dish asked for. Breaded and fried wants acidity to cut
+     the crumb, which is why Austria drinks Grüner and dry Riesling with it.
+
+     The wine's own `white_meat` tag is fine and stays: an Alsace Grand Cru
+     Pinot Gris with roast pork or guinea fowl is classic. It was the dish that
+     was wrong. */
+  const fried = menu.dishes.filter((d) => /Schnitzel|tempura|Fritto/i.test(d.name.en));
+  expect(fried.length, "no fried dishes found — did the menu change?").toBeGreaterThan(1);
+  const bad = fried
+    .filter((d) => (d.styles || []).includes("white_rich"))
+    .map((d) => d.name.en);
+  expect(bad, "a fried dish asking for a rich white").toEqual([]);
+});

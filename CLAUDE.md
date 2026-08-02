@@ -798,6 +798,32 @@ bottle rows already advertised inline, topping back up from the skipped ones
 only if that would leave fewer than three: showing the same wines again is not
 three more options.
 
+**Twenty of the 120 combinations cannot fill three suggestions, and the reason
+is almost always the shelf.** Thirteen are the Ikone band: 36 trophy bottles,
+nothing tagged for a pea soup or an artichoke, and the ones that do exist
+(Yquem for every dessert) are right. The other seven are real thinness — the
+dessert shelf between 60 and 120 EUR is two wines; `foie_gras` is on eight
+bottles and one is under 60 EUR; `veal` is on nine of 308 wines, which is why
+**Wiener Schnitzel under 60 EUR offers exactly one bottle.** Run
+`node scratch/underfilled.mjs` for the current list with reasons. The cure is
+tags, not code: no scoring change adds a wine that is not on the shelf.
+
+**A fried dish must not ask for a rich white.** The schnitzel listed
+`white_rich`, which is how Albert Mann's Pinot Gris Grand Cru Hengst — off-dry,
+14.5%, honey and pineapple — came to be suggested for breaded veal: it scored
+three points for being exactly the style the dish asked for. Breaded and fried
+wants acidity to cut the crumb, which is why Austria drinks Grüner and dry
+Riesling with it. The dish now asks `white_fresh, white_mineral, red_light,
+sparkling` and returns exactly those. The *wine's* `white_meat` tag was fine
+and stays — an Alsace Grand Cru Pinot Gris with roast pork or guinea fowl is
+classic; it is only the fried cutlet it has no business near. Guarded by a test,
+and it is the only off-dry wine on the list carrying a savoury pairing at all,
+so no blanket rule was needed.
+
+**Whites for a risotto are correct** (owner, 2026-08-02) — acidity is what
+balances the fat and the cream, so the beef risotto returning Chardonnay and
+Pinot Bianco is the right answer, not a bug. Noted because it looked like one.
+
 **Pairings are stored best-food-first, and both directions read the same
 array** (owner, 2026-08-02: "rank the best pairing for each wine and match them
 accordingly"). `scripts/lib/pairing-rank.mjs` holds the order: each style's own
