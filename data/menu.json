@@ -24,10 +24,10 @@
     "vegetables"
    ],
    "styles": [
-    "white_fresh",
     "white_aromatic",
-    "rose",
-    "orange"
+    "white_mineral",
+    "white_fresh",
+    "rose"
    ]
   },
   {
@@ -48,9 +48,9 @@
     "salads"
    ],
    "styles": [
+    "white_aromatic",
     "white_fresh",
     "sparkling",
-    "white_aromatic",
     "rose"
    ]
   },
@@ -98,7 +98,8 @@
    "styles": [
     "red_light",
     "red_medium",
-    "champagne"
+    "champagne",
+    "white_mineral"
    ]
   },
   {
@@ -143,10 +144,11 @@
     "cheese_hard"
    ],
    "styles": [
+    "sparkling",
+    "sparkling_rose",
     "orange",
     "red_light",
-    "red_medium",
-    "sparkling_rose"
+    "rose"
    ]
   },
   {
@@ -167,7 +169,8 @@
    "styles": [
     "sweet",
     "white_rich",
-    "champagne_prestige"
+    "champagne_prestige",
+    "champagne_bdb"
    ]
   },
   {
@@ -214,7 +217,7 @@
    "styles": [
     "white_fresh",
     "white_aromatic",
-    "orange"
+    "sparkling"
    ]
   },
   {
@@ -237,6 +240,7 @@
    "styles": [
     "white_aromatic",
     "sweet",
+    "white_fresh",
     "sparkling"
    ]
   },
@@ -280,7 +284,9 @@
    ],
    "styles": [
     "red_medium",
-    "red_full"
+    "white_rich",
+    "white_fresh",
+    "red_light"
    ]
   },
   {
@@ -530,7 +536,7 @@
    "styles": [
     "red_light",
     "rose",
-    "white_rich",
+    "white_aromatic",
     "white_mineral"
    ]
   },
@@ -576,7 +582,8 @@
    ],
    "styles": [
     "red_full",
-    "red_mature"
+    "red_mature",
+    "red_medium"
    ]
   },
   {

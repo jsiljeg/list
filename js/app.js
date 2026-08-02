@@ -1886,7 +1886,23 @@ function renderHelperResults(budgetKey) {
   }
   const rows = helperState.picks[byGlass ? "glasses" : "bottles"];
   const gp = glassPrices();
-  const forDish = helperState.dish ? `<div class="helper-fordish">${esc(dishName(helperState.dish))}</div>` : "";
+  /* Under the dish, the foods the suggestions actually share with it — "uz
+     janjetinu i tvrde sireve". This is the answer to the owner's question about
+     printing the kitchen's ingredient list here (2026-08-02): the ingredients
+     would be 30 dishes x 8 languages of text that goes stale the day the
+     kitchen changes, and they tell the guest something they already know —
+     they ordered the dish. What they cannot know is *why* these three wines.
+     This line says it, in words already translated, from data already there. */
+  const why = rows.length
+    ? [...new Set(rows.flatMap((r) => (r.item.insight.pairings || [])
+        .filter((f) => (dish.pairings || []).includes(f))))]
+        .slice(0, 3).map((f) => t.pairings[f] || f)
+    : [];
+  const forDish = helperState.dish
+    ? `<div class="helper-fordish">${esc(dishName(helperState.dish))}` +
+      (why.length ? `<span class="helper-why">${esc(t.ui.pairings.toLowerCase())}: ${esc(why.join(", "))}</span>` : "") +
+      `</div>`
+    : "";
   const list = rows.length
     ? rows.map((r) => {
         const also = !byGlass && gp.get(`${r.item.producer}|${r.item.name}`);

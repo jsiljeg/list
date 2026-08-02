@@ -798,6 +798,36 @@ bottle rows already advertised inline, topping back up from the skipped ones
 only if that would leave fewer than three: showing the same wines again is not
 three more options.
 
+**The pairings were researched against published sources, dish by dish and
+grape by grape** (2026-08-02). The findings, with what each one changed, are in
+`scratch/pairing-research.md` — read that before re-litigating any of it.
+`scripts/lib/grape-foods.mjs` holds the grape->food reference it produced;
+`scratch/grape-audit.mjs` reports what a wine's grape suggests that the wine
+does not claim, and the reverse.
+
+Three things worth carrying forward:
+
+  - **A style bucket can be coarser than the advice.** World of Fine Wine likes
+    Grüner and Chablis with Schnitzel and explicitly dislikes dry Riesling —
+    but all three are `white_mineral` here, so the dish cannot ask for one
+    without the other. Worth splitting one day; not worth faking.
+  - **A missing tag reads as a missing wine.** `veal` was on 9 of 308 bottles,
+    so Wiener Schnitzel under 60 EUR offered one. Burgundy in both colours and
+    Grüner are textbook veal wines: +47 tags, and the dish now fills at every
+    band. Same story for `pasticada`, which the sources put squarely on Plavac
+    mali and which was on two continental bottles.
+  - **Five tags per wine, hard cap.** The enrichment respects it and skips
+    rather than overflowing. A card is a suggestion, not an inventory — twenty
+    one-off tags were removed earlier for exactly that reason.
+
+**The kitchen's ingredient list is deliberately not printed in the sommelier**
+(owner asked, 2026-08-02). It would be 30 dishes x 8 languages of text that goes
+stale the day the menu changes, and it tells a guest what they already know:
+they ordered the dish. What they cannot know is why *these three wines* — so the
+line under the dish name names the foods the suggestions share with it ("uz
+jela: janjetina, tvrdi i zreli sirevi"), from vocabulary already translated and
+data already there.
+
 **Twenty of the 120 combinations cannot fill three suggestions, and the reason
 is almost always the shelf.** Thirteen are the Ikone band: 36 trophy bottles,
 nothing tagged for a pea soup or an artichoke, and the ones that do exist

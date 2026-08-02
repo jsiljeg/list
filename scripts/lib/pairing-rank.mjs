@@ -38,11 +38,12 @@ export const STYLE_ORDER = {
   champagne_prestige: ["caviar", "oysters", "shellfish", "white_fish", "poultry", "veal",
     "white_meat", "cheese_fresh", "charcuterie", "cheese_hard", "solo"],
   white_fresh: ["white_fish", "seafood", "shellfish", "oysters", "salads", "vegetables",
-    "light_starters", "sushi", "grilled_fish", "risotto", "pasta", "cheese_fresh", "poultry", "asian"],
+    "light_starters", "sushi", "grilled_fish", "risotto", "pasta", "cheese_fresh", "poultry",
+    "veal", "asian"],
   white_aromatic: ["asian", "spicy", "asparagus", "salads", "cheese_fresh", "vegetables",
     "sushi", "white_fish", "seafood", "light_starters", "poultry"],
   white_mineral: ["oysters", "shellfish", "white_fish", "seafood", "grilled_fish", "caviar",
-    "sushi", "light_starters", "salads", "vegetables", "asian", "spicy", "cheese_fresh",
+    "sushi", "light_starters", "salads", "asparagus", "vegetables", "asian", "spicy", "cheese_fresh",
     "poultry", "white_meat", "risotto", "pasta", "veal", "pork", "mushrooms", "prosciutto",
     "cheese_hard", "solo"],
   white_rich: ["poultry", "white_fish", "truffles", "risotto", "mushrooms", "shellfish", "veal",
@@ -61,7 +62,7 @@ export const STYLE_ORDER = {
   red_full: ["steak", "beef", "lamb", "game", "bbq", "stews", "pasticada", "cheese_hard",
     "truffles", "pizza", "pasta", "charcuterie", "pork", "solo"],
   red_mature: ["game", "truffles", "cheese_hard", "lamb", "beef", "steak", "mushrooms",
-    "stews", "charcuterie", "solo"],
+    "stews", "pasticada", "charcuterie", "solo"],
   sweet: ["foie_gras", "cheese_blue", "desserts", "fruit_desserts", "dark_chocolate", "nuts"]
 };
 
@@ -73,7 +74,13 @@ export const GRAPE_FIRST = [
   [/sangiovese/i, ["pasta", "pizza", "cheese_hard"]],
   [/cabernet|merlot|carménère|carmenere/i, ["beef", "steak", "lamb"]],
   [/syrah|shiraz/i, ["bbq", "game", "beef"]],
-  [/plavac|tribidrag|zinfandel|primitivo|kratošija/i, ["bbq", "lamb", "stews"]],
+  /* The sources are unanimous that lamb — peka lamb — is the Plavac dish,
+     and pašticada the Dalmatian braise it was made for. */
+  [/plavac mali/i, ["lamb", "bbq", "pasticada", "stews"]],
+  [/tribidrag|zinfandel|primitivo|kratošija/i, ["bbq", "lamb", "stews"]],
+  [/malvazija istarska/i, ["white_fish", "seafood", "truffles", "risotto"]],
+  [/pošip|grk|rukatac|maraština/i, ["oysters", "white_fish", "seafood", "grilled_fish"]],
+  [/teran|refošk/i, ["beef", "stews", "truffles", "charcuterie"]],
   [/riesling|rizling/i, ["asian", "spicy", "pork"]],
   [/grüner|gruner|veltliner/i, ["asparagus", "vegetables", "veal"]],
   /* Anchored to the start of a token so "Cabernet Sauvignon" does not get

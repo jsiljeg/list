@@ -652,6 +652,12 @@ body {
 .helper-flip:hover, .helper-flip:focus-visible {
   border-color: var(--gold-soft); color: var(--text); outline: none;
 }
+/* Why these three: the foods the suggestions share with the dish. */
+.helper-why {
+  display: block; margin-top: .2rem;
+  font-family: var(--sans); font-style: normal;
+  font-size: .8rem; color: var(--text-faint); letter-spacing: .01em;
+}
 .helper .item { border-radius: 12px; background: var(--bg-card); margin-bottom: .6rem; border: 1px solid var(--line); }
 .helper .item + .item { border-top: 1px solid var(--line); }
 

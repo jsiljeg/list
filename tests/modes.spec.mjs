@@ -532,3 +532,25 @@ test("a suggested wine names the food on its own card", async ({ page }) => {
   }
   expect(bad, "suggested on style alone, with none of the dish's foods on the card").toEqual([]);
 });
+
+test("the suggestions say which foods they share with the dish", async ({ page }) => {
+  /* Added 2026-08-02, in place of printing the kitchen's ingredient list here.
+     The ingredients are 30 dishes x 8 languages that go stale the day the
+     kitchen changes, and they tell a guest what they already know — they
+     ordered the dish. What they cannot know is why *these* wines. */
+  await openApp(page);
+  await page.locator("#helper-open").click();
+  await page.locator(".helper-opt[data-dish]").nth(3).click();
+  await page.locator(".helper-opt[data-k='b2']").click();
+  await page.waitForTimeout(400);
+  const why = await page.locator(".helper-why").innerText();
+  expect(why.length, "no explanation under the dish").toBeGreaterThan(6);
+  /* Every word in it must be a food the dish actually asked for. */
+  const ok = await page.evaluate((text) => {
+    const d = MENU.dishes.find((x) => x.name[lang] === document.querySelector(".helper-fordish").firstChild.textContent.trim());
+    const names = (d.pairings || []).map((p) => (I18N[lang].pairings[p] || p).toLowerCase());
+    return text.split(":")[1].split(",").map((s) => s.trim().toLowerCase())
+      .every((s) => names.some((n) => n.includes(s) || s.includes(n)));
+  }, why);
+  expect(ok, `"${why}" names a food the dish did not ask for`).toBe(true);
+});

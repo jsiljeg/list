@@ -197,9 +197,9 @@
     ],
     "pairings": [
      "white_fish",
+     "risotto",
      "shellfish",
      "sushi",
-     "risotto",
      "pasta",
      "poultry"
     ],
@@ -462,7 +462,8 @@
     "pairings": [
      "white_fish",
      "oysters",
-     "shellfish"
+     "shellfish",
+     "risotto"
     ],
     "temp": "10–12",
     "alcohol": "12.5",
@@ -495,6 +496,7 @@
     "pairings": [
      "poultry",
      "white_fish",
+     "veal",
      "cheese_hard"
     ],
     "temp": "10–12",
@@ -614,6 +616,7 @@
     "pairings": [
      "poultry",
      "mushrooms",
+     "veal",
      "charcuterie"
     ],
     "temp": "14–16",
@@ -649,8 +652,9 @@
      "pepper"
     ],
     "pairings": [
-     "bbq",
      "lamb",
+     "bbq",
+     "pasticada",
      "stews"
     ],
     "temp": "16–18",
@@ -675,8 +679,8 @@
      "pepper"
     ],
     "pairings": [
-     "pasta",
      "stews",
+     "pasta",
      "prosciutto"
     ],
     "temp": "14–16",
@@ -822,6 +826,7 @@
     ],
     "pairings": [
      "lamb",
+     "pasticada",
      "beef",
      "cheese_hard"
     ],
@@ -2617,6 +2622,7 @@
     "pairings": [
      "poultry",
      "risotto",
+     "veal",
      "cheese_hard"
     ],
     "temp": "10–12",
@@ -2644,6 +2650,7 @@
      "saline"
     ],
     "pairings": [
+     "asparagus",
      "salads",
      "cheese_fresh",
      "vegetables",
@@ -2677,6 +2684,7 @@
      "wet_stone"
     ],
     "pairings": [
+     "asparagus",
      "salads",
      "cheese_fresh",
      "vegetables",
@@ -2707,7 +2715,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "risotto"
+     "risotto",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -2761,7 +2770,8 @@
     "pairings": [
      "white_fish",
      "truffles",
-     "risotto"
+     "risotto",
+     "veal"
     ],
     "temp": "10–12",
     "alcohol": "13",
@@ -2850,7 +2860,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "truffles"
+     "truffles",
+     "veal"
     ],
     "temp": "10–12",
     "alcohol": "13",
@@ -2925,9 +2936,9 @@
      "saline"
     ],
     "pairings": [
-     "shellfish",
      "seafood",
-     "grilled_fish"
+     "grilled_fish",
+     "shellfish"
     ],
     "temp": "10–12",
     "alcohol": "13.5",
@@ -2977,9 +2988,9 @@
      "almond"
     ],
     "pairings": [
-     "shellfish",
      "seafood",
-     "grilled_fish"
+     "grilled_fish",
+     "shellfish"
     ],
     "temp": "12–14",
     "alcohol": "13.5",
@@ -3565,6 +3576,7 @@
     ],
     "pairings": [
      "vegetables",
+     "veal",
      "white_fish",
      "salads",
      "asian"
@@ -3600,6 +3612,7 @@
      "wet_stone"
     ],
     "pairings": [
+     "asparagus",
      "vegetables",
      "veal",
      "white_fish",
@@ -3739,7 +3752,8 @@
     "pairings": [
      "white_fish",
      "oysters",
-     "seafood"
+     "seafood",
+     "risotto"
     ],
     "temp": "10–12",
     "alcohol": "12.5",
@@ -3779,7 +3793,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "oysters"
+     "oysters",
+     "risotto"
     ],
     "temp": "10–12",
     "alcohol": "13",
@@ -3809,6 +3824,7 @@
     "pairings": [
      "white_fish",
      "oysters",
+     "risotto",
      "solo"
     ],
     "temp": "10–12",
@@ -3862,7 +3878,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "shellfish"
+     "shellfish",
+     "risotto"
     ],
     "temp": "8–10",
     "alcohol": "12.5",
@@ -3895,7 +3912,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "shellfish"
+     "shellfish",
+     "risotto"
     ],
     "temp": "10–12",
     "alcohol": "13",
@@ -3953,6 +3971,7 @@
     "pairings": [
      "white_fish",
      "shellfish",
+     "risotto",
      "solo"
     ],
     "temp": "10–12",
@@ -3997,6 +4016,7 @@
     "pairings": [
      "poultry",
      "white_fish",
+     "veal",
      "cheese_hard"
     ],
     "temp": "10–12",
@@ -4032,7 +4052,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "risotto"
+     "risotto",
+     "veal"
     ],
     "temp": "10–12",
     "alcohol": "12.5",
@@ -4060,6 +4081,7 @@
     "pairings": [
      "poultry",
      "white_fish",
+     "veal",
      "cheese_fresh"
     ],
     "temp": "13–15",
@@ -4087,7 +4109,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "risotto"
+     "risotto",
+     "veal"
     ],
     "temp": "10–12",
     "alcohol": "13",
@@ -4115,6 +4138,7 @@
     "pairings": [
      "poultry",
      "white_fish",
+     "veal",
      "cheese_hard"
     ],
     "temp": "10–12",
@@ -4141,7 +4165,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "risotto"
+     "risotto",
+     "veal"
     ],
     "temp": "10–12",
     "alcohol": "13",
@@ -4167,7 +4192,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "truffles"
+     "truffles",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -4260,7 +4286,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "truffles"
+     "truffles",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -4289,7 +4316,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "shellfish"
+     "shellfish",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13.5",
@@ -4325,7 +4353,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "shellfish"
+     "shellfish",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -4361,6 +4390,7 @@
     "pairings": [
      "white_fish",
      "shellfish",
+     "veal",
      "solo"
     ],
     "temp": "12–14",
@@ -4405,7 +4435,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "shellfish"
+     "shellfish",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -4458,7 +4489,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "risotto"
+     "risotto",
+     "veal"
     ],
     "temp": "10–12",
     "alcohol": "13",
@@ -4497,7 +4529,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "truffles"
+     "truffles",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "14",
@@ -4530,7 +4563,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "risotto"
+     "risotto",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -4579,7 +4613,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "truffles"
+     "truffles",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13.5",
@@ -4618,7 +4653,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "truffles"
+     "truffles",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -4648,7 +4684,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "truffles"
+     "truffles",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -4688,7 +4725,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "risotto"
+     "risotto",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -4720,7 +4758,8 @@
     "pairings": [
      "poultry",
      "white_fish",
-     "truffles"
+     "truffles",
+     "veal"
     ],
     "temp": "12–14",
     "alcohol": "13",
@@ -4750,6 +4789,7 @@
     "pairings": [
      "poultry",
      "white_fish",
+     "veal",
      "cheese_hard"
     ],
     "temp": "12–14",
@@ -4782,6 +4822,7 @@
     "pairings": [
      "poultry",
      "white_fish",
+     "veal",
      "solo"
     ],
     "temp": "12–14",
@@ -4821,6 +4862,7 @@
     "pairings": [
      "white_fish",
      "salads",
+     "asparagus",
      "vegetables",
      "cheese_fresh"
     ],
@@ -4855,6 +4897,7 @@
     "pairings": [
      "shellfish",
      "white_fish",
+     "asparagus",
      "cheese_fresh"
     ],
     "temp": "10–12",
@@ -5157,6 +5200,7 @@
     ],
     "pairings": [
      "poultry",
+     "veal",
      "cheese_hard",
      "seafood"
     ],
@@ -5188,6 +5232,7 @@
     "pairings": [
      "poultry",
      "white_fish",
+     "veal",
      "seafood"
     ],
     "temp": "10–12",
@@ -5218,6 +5263,7 @@
     "pairings": [
      "poultry",
      "white_fish",
+     "veal",
      "cheese_hard"
     ],
     "temp": "11–13",
@@ -5277,6 +5323,7 @@
     ],
     "pairings": [
      "poultry",
+     "veal",
      "seafood",
      "salads",
      "vegetables"
@@ -5309,7 +5356,8 @@
      "poultry",
      "white_fish",
      "salads",
-     "vegetables"
+     "vegetables",
+     "risotto"
     ],
     "temp": "8–10",
     "alcohol": "12",
@@ -5907,7 +5955,8 @@
     "pairings": [
      "poultry",
      "mushrooms",
-     "game"
+     "game",
+     "veal"
     ],
     "temp": "14–16",
     "alcohol": "13.5",
@@ -5933,9 +5982,9 @@
      "blueberry"
     ],
     "pairings": [
+     "truffles",
      "pasta",
-     "white_meat",
-     "truffles"
+     "white_meat"
     ],
     "temp": "16–18",
     "alcohol": "13",
@@ -5966,9 +6015,9 @@
      "balsamic"
     ],
     "pairings": [
+     "stews",
      "charcuterie",
-     "cheese_hard",
-     "stews"
+     "cheese_hard"
     ],
     "temp": "16–18",
     "alcohol": "14.5",
@@ -5994,9 +6043,9 @@
      "herbs"
     ],
     "pairings": [
+     "stews",
      "cheese_hard",
-     "game",
-     "stews"
+     "game"
     ],
     "temp": "14–16",
     "alcohol": "14.5",
@@ -6021,8 +6070,8 @@
      "raspberry"
     ],
     "pairings": [
-     "pasta",
      "stews",
+     "pasta",
      "prosciutto"
     ],
     "temp": "16–18",
@@ -6075,6 +6124,7 @@
     ],
     "pairings": [
      "lamb",
+     "pasticada",
      "beef",
      "game"
     ],
@@ -6101,6 +6151,7 @@
     ],
     "pairings": [
      "lamb",
+     "pasticada",
      "beef",
      "cheese_hard"
     ],
@@ -6154,6 +6205,7 @@
     ],
     "pairings": [
      "bbq",
+     "pasticada",
      "beef",
      "cheese_hard"
     ],
@@ -6179,6 +6231,7 @@
      "prune"
     ],
     "pairings": [
+     "pasticada",
      "stews",
      "pasta",
      "charcuterie"
@@ -6237,6 +6290,7 @@
     ],
     "pairings": [
      "lamb",
+     "pasticada",
      "game",
      "cheese_hard"
     ],
@@ -6276,6 +6330,7 @@
      "prune"
     ],
     "pairings": [
+     "pasticada",
      "beef",
      "game",
      "cheese_hard"
@@ -6306,6 +6361,7 @@
     ],
     "pairings": [
      "lamb",
+     "pasticada",
      "beef",
      "game"
     ],
@@ -6372,10 +6428,10 @@
      "chocolate"
     ],
     "pairings": [
+     "pasticada",
      "stews",
      "beef",
      "game",
-     "pasticada",
      "cheese_hard"
     ],
     "temp": "16–18",
@@ -6413,10 +6469,10 @@
      "chocolate"
     ],
     "pairings": [
+     "pasticada",
      "stews",
      "beef",
      "game",
-     "pasticada",
      "cheese_hard"
     ],
     "temp": "16–18",
@@ -6487,7 +6543,9 @@
      "spice"
     ],
     "pairings": [
+     "mushrooms",
      "game",
+     "veal",
      "cheese_hard",
      "beef"
     ],
@@ -6516,7 +6574,9 @@
      "spice"
     ],
     "pairings": [
+     "mushrooms",
      "game",
+     "veal",
      "beef",
      "truffles"
     ],
@@ -6553,7 +6613,8 @@
     "pairings": [
      "poultry",
      "mushrooms",
-     "game"
+     "game",
+     "veal"
     ],
     "temp": "16–18",
     "alcohol": "",
@@ -6581,7 +6642,9 @@
     ],
     "pairings": [
      "poultry",
+     "mushrooms",
      "game",
+     "veal",
      "truffles"
     ],
     "temp": "16–18",
@@ -6625,7 +6688,9 @@
      "spice"
     ],
     "pairings": [
+     "mushrooms",
      "game",
+     "veal",
      "beef",
      "truffles"
     ],
@@ -6665,7 +6730,9 @@
      "leather"
     ],
     "pairings": [
+     "mushrooms",
      "game",
+     "veal",
      "cheese_hard",
      "beef"
     ],
@@ -6695,6 +6762,7 @@
      "spice"
     ],
     "pairings": [
+     "mushrooms",
      "game",
      "truffles",
      "beef"
@@ -6724,7 +6792,9 @@
      "spice"
     ],
     "pairings": [
+     "mushrooms",
      "game",
+     "veal",
      "truffles",
      "solo"
     ],
@@ -6787,6 +6857,7 @@
     ],
     "pairings": [
      "poultry",
+     "mushrooms",
      "game",
      "veal"
     ],
@@ -6832,6 +6903,7 @@
     ],
     "pairings": [
      "poultry",
+     "mushrooms",
      "veal",
      "cheese_hard"
     ],
@@ -6873,6 +6945,7 @@
     "pairings": [
      "poultry",
      "mushrooms",
+     "veal",
      "beef"
     ],
     "temp": "16–18",
@@ -9365,7 +9438,8 @@
     "pairings": [
      "poultry",
      "mushrooms",
-     "game"
+     "game",
+     "veal"
     ],
     "temp": "14–16",
     "alcohol": "14",
@@ -9538,6 +9612,7 @@
     ],
     "pairings": [
      "poultry",
+     "mushrooms",
      "game",
      "veal"
     ],
@@ -9592,7 +9667,8 @@
     "pairings": [
      "poultry",
      "mushrooms",
-     "game"
+     "game",
+     "veal"
     ],
     "temp": "14–16",
     "alcohol": "13.5",
@@ -9633,7 +9709,8 @@
     "pairings": [
      "poultry",
      "mushrooms",
-     "game"
+     "game",
+     "veal"
     ],
     "temp": "14–16",
     "alcohol": "13.3",
@@ -9659,7 +9736,8 @@
     "pairings": [
      "poultry",
      "mushrooms",
-     "game"
+     "game",
+     "veal"
     ],
     "temp": "14–16",
     "alcohol": "13.4",
@@ -13763,6 +13841,7 @@
     "pairings": [
      "white_fish",
      "risotto",
+     "veal",
      "white_meat"
     ],
     "temp": "10–12",
