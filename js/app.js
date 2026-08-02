@@ -1717,12 +1717,12 @@ function glassFor(style, grape, override, region) {
    not a band here — a glass price is not a bottle budget — it is the flip
    under the results. */
 const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [PRIDE_MIN, Infinity] };
-const helperState = { step: 0, dish: null, budgetKey: "any", mode: "bottle" };
+const helperState = { step: 0, dish: null, budgetKey: "any", mode: "bottle", picks: null };
 
 function openHelper() {
   helperState.step = 0; helperState.dish = null; helperState.mode = "bottle";
+  helperState.picks = null;
   renderHelperStep();
-  showModal();
 }
 
 function dishName(dish) {
@@ -1749,6 +1749,7 @@ function renderHelperStep() {
       Object.keys(h.budget).map((k) => `<button class="helper-opt" data-k="${k}">${esc(h.budget[k])}</button>`).join("") + `</div>`;
   }
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(h.title)}</div>${inner}</div>`;
+  showModal();
   $("modal-body").querySelectorAll(".helper-opt").forEach((b) =>
     b.addEventListener("click", () => {
       if (helperState.step === 0) {
@@ -1800,26 +1801,42 @@ function renderHelperResults(budgetKey) {
   });
   scored.sort((a, b) => b.score - a.score);
   glasses.sort((a, b) => b.score - a.score);
+  const byGlass = helperState.mode === "glass";
 
   /* One list at a time, never two (owner, 2026-08-02: "super confusing... it
      mentions bottle many times but still offers glass"). The budget question
-     is back to the four bands it always was, and the answer is three bottles.
+     is the four bands it always was, and the answer is three bottles.
 
      The glass is offered two ways instead, both quiet:
 
        - **on the row**, when the suggested bottle is also poured by the glass.
-         24 of the 32 pours are, so this fires about three times in four, and
-         it upsells the wine the guest is already reading rather than a
-         different one. A guest who won't commit to a €75 bottle will very
-         often take a €14 glass of it.
+         24 of the 32 pours are, so at least one of the three carries the line
+         in 57% of dish x band combinations — and it upsells the wine the guest
+         is already reading, which is the only upsell that does not feel like
+         one. A guest who won't commit to a €75 bottle will often take a €14
+         glass of it.
        - **one link underneath**, for the guest who only ever wanted a glass.
-         `mode` flips the whole answer over to four pours and back.
 
-     What this replaces: a five-option step that said "boca" three times, and
-     a results screen that showed three bottles and then, under a second
-     heading, one glass that was the same wine every time. */
-  const byGlass = helperState.mode === "glass";
-  const rows = byGlass ? glasses.slice(0, 4) : scored.slice(0, 3);
+     Both answers are **three rows**, so the flip never resizes the sheet, and
+     both are **frozen for as long as the dish and the budget hold**. The
+     scoring carries a random tie-break, so recomputing on every flip reshuffled
+     the bottles behind the guest's back; picking once and remembering makes the
+     link a toggle rather than a reroll.
+
+     And the glass list deliberately **skips whatever the bottle view already
+     advertised inline** (owner, 2026-08-02): showing the same three wines
+     twice is not three more options. If that leaves fewer than three it tops
+     back up from the ones it skipped — a short list is worse than a repeat. */
+  const key = `${dishName(dish)}|${budgetKey}`;
+  if (!helperState.picks || helperState.picks.key !== key) {
+    const bottles = scored.slice(0, 3);
+    const twins = new Set(bottles.map((r) => `${r.item.producer}|${r.item.name}`)
+                                 .filter((k) => glassPrices().has(k)));
+    const fresh = glasses.filter((r) => !twins.has(`${r.item.producer}|${r.item.name}`));
+    const rest = glasses.filter((r) => twins.has(`${r.item.producer}|${r.item.name}`));
+    helperState.picks = { key, bottles, glasses: fresh.concat(rest).slice(0, 3) };
+  }
+  const rows = helperState.picks[byGlass ? "glasses" : "bottles"];
   const gp = glassPrices();
   const forDish = helperState.dish ? `<div class="helper-fordish">${esc(dishName(helperState.dish))}</div>` : "";
   const list = rows.length
@@ -1831,6 +1848,7 @@ function renderHelperResults(budgetKey) {
     : `<p class="no-results">${t.ui.noResults}</p>`;
   const flip = `<button class="helper-flip" type="button">🍷 ${esc(byGlass ? t.ui.ratherBottle : t.ui.ratherGlass)}</button>`;
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}${flip}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
+  showModal();
   $("modal-body").querySelector(".helper-flip").addEventListener("click", () => {
     helperState.mode = byGlass ? "bottle" : "glass";
     renderHelperResults(budgetKey);

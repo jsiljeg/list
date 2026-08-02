@@ -789,6 +789,23 @@ whenever DATA is rebuilt** (both the initial load and every poll), because a
 wine can be 86'd off one shelf and not the other - and an advertised glass that
 is not being poured is worse than no offer.
 
+**Three rows either way, frozen, and the two lists do not overlap.** Three so
+the flip never resizes the sheet under the guest. Frozen — `helperState.picks`,
+keyed by dish|budget — because the scoring carries a random tie-break, so
+recomputing on every flip reshuffled the bottles behind the guest's back; the
+link has to be a toggle, not a reroll. And the glass list skips whatever the
+bottle rows already advertised inline, topping back up from the skipped ones
+only if that would leave fewer than three: showing the same wines again is not
+three more options.
+
+**Both helper screens go through `showModal()`.** A wine card puts the modal in
+`detail-mode` (top-aligned, 87vh) and turns the ‹ › arrows on. The back path
+re-rendered `#modal-body` alone, so the suggestions came back inside the card's
+frame — taller, off-centre, with live stepping arrows that opened wines from
+behind the list. `showModal()` is the one place that knows how to restore the
+frame and it is safe to call while already open; call it from anything that
+replaces the modal body.
+
 "Bez ogranicenja" stays, wording and behaviour both: it means spare no expense
 and shows the 500 EUR+ Ikone. It was renamed to "Ikone (500 EUR+)" for exactly
 one round on the grounds that the label did not describe the filter; the owner

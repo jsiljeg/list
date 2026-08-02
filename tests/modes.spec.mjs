@@ -334,3 +334,90 @@ test("every dish gets an answer at every budget", async ({ page }) => {
   expect(empties, "dishes with fewer than three possible wines").toEqual([]);
   expectClean(bag);
 });
+
+test("coming back from a wine restores the sommelier's own frame", async ({ page }) => {
+  /* Guards 2026-08-02 (owner, on a laptop): after opening a suggestion and
+     tapping "Natrag na prijedloge", the sheet came back taller and no longer
+     centred, and the ‹ › stepping arrows were still on screen — tapping one
+     opened a wine from behind the suggestions.
+
+     One cause for both. A wine card puts the modal in `detail-mode`, which is
+     top-aligned and 87vh, and turns the arrows on; the back path re-rendered
+     only `#modal-body` and left the frame as the card had set it. Both helper
+     screens now go through `showModal()`, which is the one place that knows
+     how to put the frame back. */
+  const bag = await openApp(page);
+  const frame = () => page.evaluate(() => {
+    const r = document.getElementById("modal-sheet").getBoundingClientRect();
+    return {
+      detail: document.getElementById("modal").classList.contains("detail-mode"),
+      top: Math.round(r.top), height: Math.round(r.height),
+      centred: Math.abs(Math.round(r.top) - Math.round(window.innerHeight - r.bottom)) <= 3,
+      arrows: [...document.querySelectorAll(".modal-nav")].filter((b) => !b.classList.contains("hidden")).length
+    };
+  });
+
+  await page.locator("#helper-open").click();
+  await page.locator(".helper-opt[data-dish]").nth(3).click();
+  await page.locator(".helper-opt[data-k='b2']").click();
+  await page.waitForTimeout(400);
+  const before = await frame();
+  expect(before.detail, "the suggestions are not a wine card").toBe(false);
+  expect(before.centred, "the suggestions should be centred").toBe(true);
+  expect(before.arrows, "no stepping arrows over the suggestions").toBe(0);
+
+  await page.locator(".helper .item.clickable").first().click();
+  await page.waitForTimeout(500);
+  expect((await frame()).detail, "a wine card should be in detail mode").toBe(true);
+
+  await page.locator(".detail-back").click();
+  await page.waitForTimeout(500);
+  const after = await frame();
+  expect(after.detail, "detail-mode survived the way back").toBe(false);
+  expect(after.arrows, "stepping arrows survived the way back").toBe(0);
+  expect(after.centred, "the sheet came back off-centre").toBe(true);
+  expect(Math.abs(after.height - before.height), "the sheet came back a different height").toBeLessThan(6);
+  expect(Math.abs(after.top - before.top), "the sheet came back at a different height on screen").toBeLessThan(6);
+  expectClean(bag);
+});
+
+test("the flip is a toggle, not a reroll, and offers different wines", async ({ page }) => {
+  /* Guards 2026-08-02 (owner). Three rows either way, so the sheet never
+     resizes under the guest; the same three bottles come back when you flip
+     back, because the scoring's random tie-break otherwise reshuffled them;
+     and the glass list skips whatever the bottle rows already advertised
+     inline, so "Radije na čašu?" is three *more* options rather than the same
+     wines again. */
+  await openApp(page);
+  const shown = () => page.evaluate(() =>
+    [...document.querySelectorAll(".helper .item")].map((e) => ({
+      id: (e.querySelector(".item-producer")?.childNodes[0].textContent.trim() || "") + "|" +
+          e.querySelector(".item-name").textContent.trim(),
+      aside: !!e.querySelector(".item-aside")
+    })));
+
+  for (const dish of [1, 3, 11]) {
+    await page.locator("#helper-open").click();
+    await page.locator(".helper-opt[data-dish]").nth(dish).click();
+    await page.locator(".helper-opt[data-k='b1']").click();
+    await page.waitForTimeout(350);
+    const bottles = await shown();
+    expect(bottles.length, "a bottle answer should be three rows").toBe(3);
+
+    await page.locator(".helper-flip").click();
+    await page.waitForTimeout(350);
+    const glasses = await shown();
+    expect(glasses.length, "a glass answer should be three rows too").toBe(3);
+    const advertised = new Set(bottles.filter((b) => b.aside).map((b) => b.id));
+    const repeats = glasses.filter((g) => advertised.has(g.id)).map((g) => g.id);
+    expect(repeats, "the glass list repeats a wine already offered inline").toEqual([]);
+    expect(glasses.every((g) => !g.aside), "a glass row should not advertise a glass").toBe(true);
+
+    await page.locator(".helper-flip").click();
+    await page.waitForTimeout(350);
+    expect((await shown()).map((b) => b.id), "flipping back rerolled the bottles")
+      .toEqual(bottles.map((b) => b.id));
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(150);
+  }
+});
