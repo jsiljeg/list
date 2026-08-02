@@ -399,6 +399,7 @@ test("the flip is a toggle, not a reroll, and offers different wines", async ({ 
   for (const dish of [1, 3, 11]) {
     await page.locator("#helper-open").click();
     await page.locator(".helper-opt[data-dish]").nth(dish).click();
+    await page.evaluate((i) => { document.body.dataset.dishIdx = String(i); }, dish);
     await page.locator(".helper-opt[data-k='b1']").click();
     await page.waitForTimeout(350);
     const bottles = await shown();
@@ -410,7 +411,22 @@ test("the flip is a toggle, not a reroll, and offers different wines", async ({ 
     expect(glasses.length, "a glass answer should be three rows too").toBe(3);
     const advertised = new Set(bottles.filter((b) => b.aside).map((b) => b.id));
     const repeats = glasses.filter((g) => advertised.has(g.id)).map((g) => g.id);
-    expect(repeats, "the glass list repeats a wine already offered inline").toEqual([]);
+    /* A repeat is allowed only where dropping it would leave a short list —
+       three rows beats three *different* rows when the shelf cannot supply
+       both. So it is a failure only when there were enough others to use. */
+    const spare = await page.evaluate((adv) => {
+      const d = MENU.dishes[Number(document.body.dataset.dishIdx)];
+      const sec = DATA.sections.find((s) => s.id === "glass");
+      let n = 0;
+      for (const c of sec.categories) for (const g of c.groups) for (const it of g.items) {
+        if (!it.insight) continue;
+        const shares = (it.insight.pairings || []).some((p) => (d.pairings || []).includes(p));
+        if (shares && !adv.includes(`${it.producer}|${it.name}`)) n++;
+      }
+      return n;
+    }, [...advertised]);
+    if (spare >= 3)
+      expect(repeats, `the glass list repeats a wine already offered inline (${spare} others were free)`).toEqual([]);
     expect(glasses.every((g) => !g.aside), "a glass row should not advertise a glass").toBe(true);
 
     await page.locator(".helper-flip").click();
@@ -473,4 +489,46 @@ test("the same dish does not always get the same three bottles", async ({ page }
     await page.waitForTimeout(80);
   }
   expect(seen.size, `only ${seen.size} different wines over ten openings`).toBeGreaterThanOrEqual(5);
+});
+
+test("a suggested wine names the food on its own card", async ({ page }) => {
+  /* Guards 2026-08-02 (owner): "I don't want to have some wine recommendation
+     for some food, but not to have that food in wine description". The score
+     is three points per shared pairing *plus* three for the style, so a wine
+     could be proposed on style alone — and 15.7% of all suggestions were. The
+     guest tapped a wine recommended for their pea soup and read "beef, game,
+     aged cheese".
+
+     The fallback is deliberate and narrow: where *no* wine in the band shares
+     a food, style-only beats an empty answer. That is four of 120
+     combinations, all in the Ikone band where the shelf is tiny by design —
+     so this checks the two bands with deep shelves, across every course. */
+  test.setTimeout(90_000);
+  await openApp(page);
+  const dishes = await page.evaluate(() =>
+    ["starters", "soups", "mains", "desserts"].flatMap((c) =>
+      MENU.dishes.filter((d) => d.course === c).slice(0, 2).map((d) => d.name.hr)));
+  const bad = [];
+  for (const dish of dishes) {
+    for (const k of ["b1", "b2"]) {
+      await page.locator("#helper-open").click();
+      await page.locator(".helper-opt[data-dish]", { hasText: dish }).first().click();
+      await page.locator(`.helper-opt[data-k='${k}']`).click();
+      await page.waitForTimeout(120);
+      const rows = await page.evaluate((name) => {
+        const d = MENU.dishes.find((x) => x.name.hr === name);
+        return [...document.querySelectorAll(".helper .item[data-ref]")].map((el) => {
+          const [si, ci, gi, ii] = el.dataset.ref.split(".").map(Number);
+          const it = DATA.sections[si].categories[ci].groups[gi].items[ii];
+          return { n: `${it.producer} — ${it.name}`,
+                   shared: (it.insight.pairings || []).filter((p) => (d.pairings || []).includes(p)).length };
+        });
+      }, dish);
+      expect(rows.length, `${dish} @ ${k} suggested nothing`).toBeGreaterThan(0);
+      for (const r of rows) if (!r.shared) bad.push(`${dish} @ ${k}: ${r.n}`);
+      await page.locator("#modal-close").click();
+      await page.waitForTimeout(120);
+    }
+  }
+  expect(bad, "suggested on style alone, with none of the dish's foods on the card").toEqual([]);
 });

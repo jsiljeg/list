@@ -798,6 +798,29 @@ bottle rows already advertised inline, topping back up from the skipped ones
 only if that would leave fewer than three: showing the same wines again is not
 three more options.
 
+**A suggestion must name the food on its own card** (owner, 2026-08-02: "I
+don't want to have some wine recommendation for some food, but not to have that
+food in wine description"). The score is three points per shared pairing *plus*
+three for the style, so a wine could be proposed on style alone — and 15.7% of
+all suggestions were. A guest tapping a wine recommended for their pea soup read
+"beef, game, aged cheese", which makes the whole feature look like it is
+guessing.
+
+`foodFirst()` therefore uses the wines that share a pairing **on their own**
+whenever there are any, and never mixes a style-only wine in beside them to pad
+the list to three. Two wines that genuinely suit the dish beat three where one
+is filling a slot: 103 of 120 combinations still show three, ten show two,
+seven show one. The style-only fallback survives for the four combinations that
+would otherwise answer with nothing — all in the Ikone band, where a 500 EUR+
+shelf simply has nothing tagged for a pea soup. Mismatch fell from 15.7% to
+3.6%, and all of the remainder is that fallback.
+
+This also explains a thing that looked like a bug and was not: **Duemani Cifra
+was the standing by-the-glass suggestion for Wiener Schnitzel** because `veal`
+is on *none* of the 32 pours and `white_meat` on three, one of which is Cifra.
+The rule surfaces thin tagging rather than causing it, so `validate.mjs` now
+prints which dishes have fewer than three by-the-glass matches.
+
 **The tie-break is one scoring step wide, and that is a deliberate number.**
 It was 0.4, which only ever shuffled *exact* ties — so 25 of the 120 dish x
 budget combinations returned the same three wines for ever and 80 of 276

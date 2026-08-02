@@ -1837,13 +1837,33 @@ function renderHelperResults(budgetKey) {
      advertised inline** (owner, 2026-08-02): showing the same three wines
      twice is not three more options. If that leaves fewer than three it tops
      back up from the ones it skipped — a short list is worse than a repeat. */
+  /* **A suggestion has to name the food on its own card** (owner, 2026-08-02:
+     "I don't want to have some wine recommendation for some food, but not to
+     have that food in wine description"). The score is three points per shared
+     pairing *plus* three for the style, so a wine could be proposed on style
+     alone — and 15.7% of all suggestions were: the guest tapped a wine
+     recommended for their pea soup and read "beef, game, aged cheese".
+
+     So the food matches are used on their own whenever there are any, and the
+     style-only ones are never mixed in beside them to pad the list to three.
+     Showing two wines that genuinely suit the dish beats three where one is
+     there to fill a slot. The fallback exists only for the handful of
+     combinations — four of 120, all in the Ikone band, where the shelf is
+     tiny by design — that would otherwise answer with nothing at all. */
+  const sharesFood = (r) =>
+    (r.item.insight.pairings || []).some((p) => (dish.pairings || []).includes(p));
+  const foodFirst = (rows) => {
+    const yes = rows.filter(sharesFood);
+    return yes.length ? yes : rows;
+  };
   const key = `${dishName(dish)}|${budgetKey}`;
   if (!helperState.picks || helperState.picks.key !== key) {
-    const bottles = scored.slice(0, 3);
+    const bottles = foodFirst(scored).slice(0, 3);
     const twins = new Set(bottles.map((r) => `${r.item.producer}|${r.item.name}`)
                                  .filter((k) => glassPrices().has(k)));
-    const fresh = glasses.filter((r) => !twins.has(`${r.item.producer}|${r.item.name}`));
-    const rest = glasses.filter((r) => twins.has(`${r.item.producer}|${r.item.name}`));
+    const pool = foodFirst(glasses);
+    const fresh = pool.filter((r) => !twins.has(`${r.item.producer}|${r.item.name}`));
+    const rest = pool.filter((r) => twins.has(`${r.item.producer}|${r.item.name}`));
     helperState.picks = { key, bottles, glasses: fresh.concat(rest).slice(0, 3) };
   }
   const rows = helperState.picks[byGlass ? "glasses" : "bottles"];

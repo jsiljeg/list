@@ -197,5 +197,19 @@ console.log(`menu OK — ${(menu.dishes || []).length} dishes, every pairing and
 /* Also not an error, but worth saying out loud: a dish asking for a pairing
    almost no wine carries falls back to matching on style alone, and the
    suggestions get vaguer without anything looking broken. */
+/* The sommelier only suggests a wine whose own card names the food, so a dish
+   with almost no by-the-glass matches gets a thin, repetitive glass answer —
+   which is how one Cabernet Franc came to be the standing suggestion for
+   Wiener Schnitzel: `veal` is on none of the 32 pours and `white_meat` on
+   three. Not an error; the shelf is the shelf. Worth saying where it is seen. */
+const byGlass = all.filter((x) => x.secId === "glass").map((x) => x.it);
+const glassThin = [];
+for (const dish of menu.dishes || []) {
+  const n = byGlass.filter((w) => ((w.insight || {}).pairings || [])
+    .some((p) => (dish.pairings || []).includes(p))).length;
+  if (n < 3) glassThin.push(`${dish.name.hr || dish.name.en} (${n})`);
+}
+if (glassThin.length)
+  console.log(`note — dishes with under three by-the-glass matches: ${glassThin.join(", ")}`);
 if (thin.length)
   console.log(`note — thin pairings the menu leans on: ${[...new Set(thin)].sort().join(", ")}`);
