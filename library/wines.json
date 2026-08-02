@@ -1459,7 +1459,7 @@
     "pairings": [
      "aperitif",
      "seafood",
-     "desserts"
+     "light_starters"
     ],
     "temp": "8–10",
     "alcohol": "12",
@@ -1873,8 +1873,7 @@
     "pairings": [
      "poultry",
      "white_meat",
-     "cheese_hard",
-     "dark_chocolate"
+     "cheese_hard"
     ],
     "temp": "10–12",
     "alcohol": "12.5",
@@ -2047,8 +2046,8 @@
     ],
     "pairings": [
      "poultry",
-     "game",
-     "solo"
+     "solo",
+     "charcuterie"
     ],
     "temp": "10–12",
     "alcohol": "12.5",
@@ -2156,8 +2155,8 @@
      "caviar",
      "shellfish",
      "veal",
-     "game",
-     "solo"
+     "solo",
+     "poultry"
     ],
     "temp": "10–12",
     "alcohol": "12.5",

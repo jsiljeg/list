@@ -1,0 +1,208 @@
+
+=== sparkling  (10 wines)
+     7  aperitif           
+     5  light_starters     
+     4  seafood            
+     3  oysters            
+     2  salads             Jakopić Terbotz / Jakopić Terbotz
+     2  vegetables         Jakopić Terbotz / Jakopić Terbotz
+     2  white_fish         Šember Pavel / Corte Aura Franciacorta Satèn
+     2  cheese_hard        Tomac Diplomat / Tomac Blanc de Noirs
+     2  risotto            Corte Aura Franciacorta Brut / Corte Aura Franciacorta Satèn
+     1  poultry            Tomac Blanc de Noirs
+     1  prosciutto         Contarini Prosecco Millesimato 2023
+     1  cheese_fresh       Corte Aura Franciacorta Satèn
+
+=== sparkling_rose  (4 wines)
+     4  aperitif           
+     3  prosciutto         
+     2  light_starters     Petrač Bregh Rose / Petrač Bregh Rose
+     1  salads             Tomac Rose
+     1  vegetables         Tomac Rose
+     1  seafood            Movia Puro Rose
+     1  charcuterie        Movia Puro Rose
+
+=== champagne  (11 wines)
+     7  aperitif           
+     7  seafood            
+     5  poultry            
+     4  white_fish         
+     3  light_starters     
+     2  cheese_hard        De Sousa Cuvée 3A Grand Cru / Egly-Ouriet Grand Cru Brut Tradition
+     2  sushi              Vouette & Sorbée Textures Brut Nature / Billecart-Salmon Le Réserve
+     1  white_meat         Egly-Ouriet Grand Cru Brut Tradition
+     1  oysters            Vouette & Sorbée Textures Brut Nature
+     1  charcuterie        Ruppert-Leroy Papillon
+
+=== champagne_bdb  (5 wines)
+     5  white_fish         
+     3  oysters            
+     3  caviar             
+     1  shellfish          De Sousa Mycorhize Grand Cru
+     1  poultry            De Sousa Mycorhize Grand Cru
+     1  cheese_hard        De Sousa Mycorhize Grand Cru
+     1  japanese           De Sousa Mycorhize Grand Cru
+     1  seafood            Ruppert-Leroy Martin Fontaine 2019
+     1  cheese_fresh       Ruppert-Leroy Martin Fontaine 2019
+
+=== champagne_bdn  (1 wines)
+     1  poultry            Henri Giraud Hommage au Pinot Noir
+     1  white_meat         Henri Giraud Hommage au Pinot Noir
+     1  cheese_hard        Henri Giraud Hommage au Pinot Noir
+
+=== champagne_rose  (3 wines)
+     3  aperitif           
+     2  seafood            Pertois-Moriset La Collection Rosé & Blanc Grand Cru / Billecart-Salmon Le Rosé
+     2  fruit_desserts     L'Hoste Père & Fils L'Hoste Rosé / Billecart-Salmon Le Rosé
+     1  light_starters     Pertois-Moriset La Collection Rosé & Blanc Grand Cru
+     1  prosciutto         L'Hoste Père & Fils L'Hoste Rosé
+
+=== champagne_prestige  (14 wines)
+    14  solo               
+    12  caviar             
+     4  white_fish         
+     4  poultry            
+     2  oysters            Louis Roederer Cristal 2015 / Salon Salon Blanc de Blancs 2013
+     2  shellfish          Moët & Chandon Dom Pérignon P2 2004 / Krug Krug 1996
+     1  charcuterie        Jacques Selosse Rosé Brut
+     1  veal               Moët & Chandon Dom Pérignon P2 2004
+     1  cheese_fresh       Krug Krug 1996
+
+=== white_fresh  (10 wines)
+     8  white_fish         
+     5  risotto            
+     5  salads             
+     5  vegetables         
+     4  seafood            
+     3  poultry            
+     2  shellfish          Benvenuti Malvazija 2025 / Benvenuti Malvazija 2025
+     2  pasta              Benvenuti Malvazija 2025 / Benvenuti Malvazija 2025
+     2  sushi              Benvenuti Malvazija 2025 / Benvenuti Malvazija 2025
+     2  grilled_fish       Kunjas Pošip 2024 / Kunjas Pošip 2024
+     1  light_starters     Petrač Graševina 2024
+     1  asian              Bernhard Ott Fass 4 Grüner Veltliner 2023
+     1  cheese_fresh       Alois Lageder Pinot Bianco Versalto 2023
+
+=== white_aromatic  (11 wines)
+     6  asian              
+     6  white_fish         
+     5  salads             
+     5  cheese_fresh       
+     5  vegetables         
+     4  spicy              
+     3  asparagus          
+     3  sushi              
+     1  seafood            Erdoro Sauvignon Classy 2022
+
+=== white_mineral  (44 wines)
+    34  white_fish         
+    14  oysters            
+    14  shellfish          
+    12  asian              
+    10  seafood            
+    10  poultry            
+     9  grilled_fish       
+     6  white_meat         
+     5  salads             
+     5  vegetables         
+     3  cheese_hard        
+     3  cheese_fresh       
+     2  spicy              Zilliken Rausch Kabinett 2025 / Zilliken Rausch Kabinett 2025
+     2  prosciutto         Vie di Romans Friulano 2023 / Marjan Simčič Sauvignon Vert
+     2  pork               Weingut Heymann-Löwenstein Riesling Stolzenberg 2017 / Weingut Knebel Riesling Röttgen GG 2023
+     2  solo               René & Vincent Dauvissat Chablis 1er Cru Vaillons 2018 / Domaine François Raveneau Chablis Grand Cru Valmur 2020
+     1  sushi              A. Clüsserath Vom Schiefer 2020
+     1  veal               Weingut Prager Grüner Veltliner Federspiel Ried Hinter der Burg 2024
+     1  light_starters     Hubert Lignier Aligoté 2021
+     1  mushrooms          Domaine Bourdy Savagnin 2018
+
+=== white_rich  (40 wines)
+    34  white_fish         
+    34  poultry            
+    13  cheese_hard        
+    11  risotto            
+    10  truffles           
+     4  shellfish          
+     3  white_meat         
+     3  seafood            
+     2  solo               Hubert Lamy Saint-Aubin 1er Cru En Remilly 2023 / Jean Chartron Corton-Charlemagne Grand Cru 2022
+     2  mushrooms          Domaine Albert Mann Pinot Gris Grand Cru Hengst 2020 / Domaine Bourdy Vin Jaune 2014
+     1  cheese_fresh       Domaine Jean Chartron Rully Montmorin 2023
+     1  foie_gras          Domaine Albert Mann Pinot Gris Grand Cru Hengst 2020
+     1  veal               Jules Desjourneys Pouilly-Vinzelles Les Longeays Blanc 2021
+     1  salads             Jules Desjourneys Saint-Véran Blanc 2021
+     1  vegetables         Jules Desjourneys Saint-Véran Blanc 2021
+
+=== orange  (11 wines)
+    11  cheese_hard        
+     8  charcuterie        
+     6  mushrooms          
+     6  white_meat         
+     1  vegetables         Maria & Sepp Muster Sauvignon vom Opok 2021
+     1  game               Vodopivec Solo 2018
+
+=== rose  (2 wines)
+     2  seafood            Baraka Malena 2022 / Bastian Rose
+     2  salads             Baraka Malena 2022 / Bastian Rose
+     2  vegetables         Baraka Malena 2022 / Bastian Rose
+     1  prosciutto         Baraka Malena 2022
+     1  light_starters     Bastian Rose
+
+=== red_light  (12 wines)
+    12  poultry            
+    10  mushrooms          
+     6  game               
+     4  veal               
+     3  charcuterie        
+     1  pork               Jules Desjourneys Rouge 2023
+
+=== red_medium  (33 wines)
+    15  pasta              
+    13  charcuterie        
+    11  cheese_hard        
+    10  game               
+     8  stews              
+     8  beef               
+     8  poultry            
+     7  white_meat         
+     5  truffles           
+     3  bbq                
+     2  prosciutto         Tomaz Teran Barbarossa 2020 / Tomaz Teran 2022
+     2  pork               Casa Rojo CL98 2020 / Casa Rojo CL98 2020
+     2  mushrooms          Hubert Lignier Morey-Saint-Denis 2019 / Hubert Lamy Santenay 1er Cru Clos des Gravières Vieilles Vignes Rouge 2023
+     2  veal               Rémi Jobard Volnay 1er Cru Les Santenots 2022 / Hubert Lamy Chassagne-Montrachet La Goujonne Vieilles Vignes Rouge 2023
+     2  pizza              Az. Agr. E. Pira & Figli – Chiara Boschis Barbera d'Alba Superiore 2021 / Fattoria di Magliano Heba 2021
+     1  solo               Domaine Armand Rousseau Père & Fils Gevrey-Chambertin 1er Cru Lavaux 2018
+
+=== red_full  (72 wines)
+    57  beef               
+    46  cheese_hard        
+    40  game               
+    22  steak              
+    15  lamb               
+    13  truffles           
+    11  stews              
+    10  bbq                
+     6  solo               
+     3  pasta              
+     2  pasticada          Markus Pepejuh 2019 / Markus Pepejuh 2017
+     2  pizza              Isole e Olena Cepparello 2019 / Le Piane Plinius 2017
+     1  charcuterie        Kunjas Pagadebit 2018
+     1  pork               Duckhorn Merlot 2018
+
+=== red_mature  (7 wines)
+     7  game               
+     6  cheese_hard        
+     3  lamb               
+     2  beef               Hubert Lignier Nuits-Saint-Georges “Les Didiers” 1er Cru 2013 / Alois Lageder Cabernet Löwengang 2013
+     1  truffles           Hubert Lignier Nuits-Saint-Georges “Les Didiers” 1er Cru 2013
+     1  steak              Isole e Olena Cabernet Sauvignon Collezione de Marchi 2013
+     1  charcuterie        Radikon Pignoli 2010 – 0,5 l
+
+=== sweet  (18 wines)
+    17  cheese_blue        
+    12  desserts           
+    11  fruit_desserts     
+     8  foie_gras          
+     4  dark_chocolate     
+     1  nuts               Mrgudić Prošek Moskar – 0,375 l

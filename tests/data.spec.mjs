@@ -558,3 +558,46 @@ test("every dish pairing and style can actually be poured", () => {
   }
   expect(bad, "menu asking for something no wine carries").toEqual([]);
 });
+
+test("no wine claims a food it clashes with", () => {
+  /* Added 2026-08-02 (owner: "I don't want non-compatible wine-food
+     pairings... quality before quantity"). All 964 pairing tags were read
+     against five rules; four wines failed and were corrected:
+
+       Pertois-Moriset rosé      `desserts`       → light_starters
+       Henri Giraud Hommage      `dark_chocolate` → removed
+       Dom Pérignon P2           `game`           → poultry
+       Jacques Selosse Rosé      `game`           → charcuterie
+
+     The last two were an error I made merging the vocabulary: Moët's own note
+     says *pigeon*, and `pigeon` → `game` turned a game bird into venison on
+     the card.
+
+     These are genuine clashes, not house style. Anything a sommelier would
+     defend is left alone — the same rules run in validate.mjs so a bad tag
+     fails the deploy rather than reaching a guest. */
+  const DESSERT = ["desserts", "fruit_desserts", "dark_chocolate"];
+  const RED_MEAT = ["beef", "steak", "lamb", "game", "bbq", "stews", "pasticada"];
+  const DELICATE = ["oysters", "caviar", "sushi", "white_fish", "grilled_fish", "shellfish"];
+  const bad = [];
+  for (const it of items) {
+    const ins = it.insight || {};
+    if (ins.kind === "spirit" || !ins.style) continue;
+    const bubbles = /^(sparkling|champagne)/.test(ins.style);
+    for (const p of ins.pairings || []) {
+      const at = `${it.producer} — ${it.name} (${ins.style}): ${p}`;
+      const sweetish = ins.sweetness === "sweet" || ins.sweetness === "semi_sweet";
+      /* A Brut rosé sparkling with a red-fruit dessert is the one allowed
+         crossing, and a real pairing — the kitchen's strawberry dish asks for
+         champagne_rose itself. */
+      const roseBerries = bubbles && /rose$/.test(ins.style) && p === "fruit_desserts";
+      if (!sweetish && DESSERT.includes(p) && !roseBerries) bad.push(`${at} — dry wine, sweet dish`);
+      if (ins.style === "sweet" && [...RED_MEAT, ...DELICATE, "poultry", "veal", "pork",
+          "white_meat", "pasta", "risotto", "pizza"].includes(p)) bad.push(`${at} — sweet wine, savoury main`);
+      if (/^(red_full|red_mature)$/.test(ins.style) && DELICATE.includes(p)) bad.push(`${at} — tannin and iodine`);
+      if ((bubbles || /^white/.test(ins.style)) && RED_MEAT.includes(p)) bad.push(`${at} — no weight for red meat`);
+      if (bubbles && p === "dark_chocolate") bad.push(`${at} — chocolate strips a dry sparkler`);
+    }
+  }
+  expect(bad, "incompatible wine and food").toEqual([]);
+});

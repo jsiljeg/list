@@ -798,6 +798,43 @@ bottle rows already advertised inline, topping back up from the skipped ones
 only if that would leave fewer than three: showing the same wines again is not
 three more options.
 
+**Every pairing is compatible, and the rules that say so are in the code**
+(owner, 2026-08-02: "I don't want non-compatible wine-food pairings... quality
+before quantity"). All 964 tags on the 308 wines were read against five clash
+rules — the full style x food matrix is in `scratch/pairing-matrix.txt` — and
+four wines failed:
+
+    Pertois-Moriset rosé   `desserts`        -> light_starters
+    Henri Giraud Hommage   `dark_chocolate`  -> removed
+    Dom Pérignon P2        `game`            -> poultry
+    Jacques Selosse Rosé   `game`            -> charcuterie
+
+The last two were **my error**, made merging the vocabulary: Moët's own note
+says *pigeon*, and mapping `pigeon` -> `game` turned a game bird into venison on
+the card. Worth remembering whenever a key is merged — a coarser bucket can
+turn a true statement into a false one.
+
+The five rules, each with the reason a sommelier would give, live in
+`validate.mjs` and in data.spec.mjs, so a bad tag fails the deploy:
+
+  1. a dry wine with a sweet dish — sugar in the food must never outrun sugar
+     in the glass;
+  2. a sweet wine with a savoury main — a clash of purpose;
+  3. a big red with oysters, caviar or raw fish — tannin plus iodine reads
+     metallic;
+  4. a white or a sparkling with red meat or game — no weight;
+  5. dark chocolate on a dry sparkling — it strips the wine bare.
+
+**One documented exception, and it is a real pairing rather than a loophole:**
+a Brut *rosé* sparkling may carry `fruit_desserts`. The acidity matches the
+fruit's and the wine's own red-berry character echoes it — which is why the
+kitchen's strawberry dish lists `champagne_rose` itself. Generic `desserts` and
+`dark_chocolate` stay forbidden even there.
+
+These are a floor, not a house style: anything a reasonable sommelier would
+defend is left alone. Champagne with aged cheese, orange wine with game,
+Riesling with pork — all stay.
+
 **A suggestion must name the food on its own card** (owner, 2026-08-02: "I
 don't want to have some wine recommendation for some food, but not to have that
 food in wine description"). The score is three points per shared pairing *plus*

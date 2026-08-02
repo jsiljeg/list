@@ -122,6 +122,48 @@ for (const sec of data.sections)
   for (const cat of sec.categories)
     for (const g of cat.groups) for (const it of g.items) all.push({ it, secId: sec.id });
 
+/* ---- wine and food have to be compatible, not merely both present ----
+   Owner, 2026-08-02: "I don't want non-compatible wine-food pairings... quality
+   before quantity". Every one of the 964 tags was read against these five
+   rules; four wines failed and were corrected. The rules stay so the next edit
+   is checked rather than trusted, and each carries the reason a sommelier
+   would give, because "explain it" was half the request.
+
+   These describe genuine clashes, not merely unusual choices. Anything a
+   reasonable sommelier would defend is left alone — this is a floor, not a
+   house style. */
+const DESSERT_FOOD = ["desserts", "fruit_desserts", "dark_chocolate"];
+const RED_MEAT_FOOD = ["beef", "steak", "lamb", "game", "bbq", "stews", "pasticada"];
+const DELICATE_FOOD = ["oysters", "caviar", "sushi", "white_fish", "grilled_fish", "shellfish"];
+const PAIRING_RULES = [
+  ["a dry wine with a sweet dish tastes thin and sour — the sugar in the food must never outrun the sugar in the glass",
+    (ins, p) => ins.sweetness !== "sweet" && ins.sweetness !== "semi_sweet" && DESSERT_FOOD.includes(p)
+      /* One exception, and it is a real pairing rather than a loophole: a Brut
+         rosé sparkling with a red-fruit dessert. The acidity matches the fruit's
+         and the wine's own red-berry character echoes it — which is why the
+         kitchen's strawberry dessert lists champagne_rose itself. Generic
+         `desserts` and `dark_chocolate` stay forbidden even here. */
+      && !(/rose$/.test(ins.style) && /^(sparkling|champagne)/.test(ins.style) && p === "fruit_desserts")],
+  ["a sweet wine with a savoury main is a clash of purpose — blue cheese, foie gras and pudding are what it is for",
+    (ins, p) => ins.style === "sweet" &&
+      [...RED_MEAT_FOOD, ...DELICATE_FOOD, "seafood", "light_starters", "aperitif",
+       "poultry", "veal", "pork", "white_meat", "pasta", "risotto", "pizza"].includes(p)],
+  ["tannin plus iodine reads metallic: a big red ruins oysters, caviar and raw fish, and they ruin it back",
+    (ins, p) => /^(red_full|red_mature)$/.test(ins.style) && DELICATE_FOOD.includes(p)],
+  ["a white or a sparkling has no weight for red meat or game",
+    (ins, p) => /^(white|sparkling|champagne)/.test(ins.style) && RED_MEAT_FOOD.includes(p)],
+  ["dark chocolate needs residual sugar and body; it strips a dry sparkling wine bare",
+    (ins, p) => /^(sparkling|champagne)/.test(ins.style) && p === "dark_chocolate"]
+];
+for (const { it } of all) {
+  const ins = it.insight;
+  if (!ins || ins.kind === "spirit") continue;
+  for (const p of ins.pairings || [])
+    for (const [why, clash] of PAIRING_RULES)
+      if (clash(ins, p))
+        errors.push(`${it.producer} — ${it.name}: "${p}" does not go with a ${ins.style} — ${why}`);
+}
+
 for (const r of hidden) {
   const at = `unavailable.json: "${(r && r.name) || "?"}"`;
   if (!r || !r.name) { errors.push(`${at}: every entry needs a "name"`); continue; }
