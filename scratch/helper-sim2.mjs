@@ -23,7 +23,7 @@ function suggest(dish, bk) {
   const [lo, hi] = BUDGET[bk];
   const pick = (pool, filter) => pool.map((w) => ({ w, s: score(dish, w) }))
     .filter((r) => r.s > 0 && (!filter || (r.w.price != null && r.w.price >= lo && r.w.price <= hi)))
-    .map((r) => ({ ...r, s: r.s + Math.random() * 0.4 }))
+    .map((r) => ({ ...r, s: r.s + Math.random() * 3 }))
     .sort((a, b) => b.s - a.s);
   const gl = pick(glassPours, false).slice(0, 2);
   const on = new Set(gl.map((r) => key(r.w)));

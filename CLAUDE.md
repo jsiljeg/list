@@ -798,6 +798,30 @@ bottle rows already advertised inline, topping back up from the skipped ones
 only if that would leave fewer than three: showing the same wines again is not
 three more options.
 
+**The tie-break is one scoring step wide, and that is a deliberate number.**
+It was 0.4, which only ever shuffled *exact* ties — so 25 of the 120 dish x
+budget combinations returned the same three wines for ever and 80 of 276
+bottles could never be suggested for anything. The owner asked whether some
+bottles were being preferred all the time; they were. It is 3 now, which is one
+shared pairing or the style match: comparable wines take turns, and a wine four
+or more points behind still cannot displace the leader. Measured over 200 runs
+per combination:
+
+    jitter   distinct/combo   locked combos   bottles ever proposed
+    0.4               6.3          25/120           196/276
+    3.0               9.8           9/120           251/276
+
+The average suggestion moved from 1.03 to 1.12 points below the best match,
+which is the whole price paid. Do not raise it further: at 4.0 the worst
+suggestion drops from 6 to 9 points below the best, which is a genuinely worse
+pairing rather than a comparable one.
+
+The freeze is per *interaction*, not per device: `openHelper()` clears
+`picks`, so the same tablet re-rolls every time a guest starts again. And
+"Promijeni budžet" resets `mode` to bottle — it is a bottle question, and
+answering it with the same glass list (glasses are not budget-filtered) reads
+as the app ignoring you.
+
 **Both helper screens go through `showModal()`.** A wine card puts the modal in
 `detail-mode` (top-aligned, 87vh) and turns the ‹ › arrows on. The back path
 re-rendered `#modal-body` alone, so the suggestions came back inside the card's

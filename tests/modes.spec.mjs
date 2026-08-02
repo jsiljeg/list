@@ -421,3 +421,56 @@ test("the flip is a toggle, not a reroll, and offers different wines", async ({ 
     await page.waitForTimeout(150);
   }
 });
+
+test("changing the budget answers with bottles, even from the glass view", async ({ page }) => {
+  /* Guards 2026-08-02 (owner): flipping to glasses and then tapping
+     "Promijeni budžet" asked a bottle question and came back with the same
+     glass list — because a glass is not budget-filtered, so picking a new band
+     changed nothing on screen. It reads as the app ignoring you. */
+  const bag = await openApp(page);
+  const sections = () => page.evaluate(() =>
+    [...document.querySelectorAll(".helper .item[data-ref]")].map((el) =>
+      DATA.sections[Number(el.dataset.ref.split(".")[0])].id));
+
+  await page.locator("#helper-open").click();
+  await page.locator(".helper-opt[data-dish]").nth(3).click();
+  await page.locator(".helper-opt[data-k='b2']").click();
+  await page.waitForTimeout(350);
+  await page.locator(".helper-flip").click();
+  await page.waitForTimeout(350);
+  expect((await sections()).every((s) => s === "glass"), "should be showing glasses").toBe(true);
+
+  await page.locator(".helper-budget").click();
+  await page.locator(".helper-opt[data-k='b1']").click();
+  await page.waitForTimeout(400);
+  const after = await sections();
+  expect(after.length, "a new budget returned nothing").toBeGreaterThan(0);
+  expect(after.every((s) => s.startsWith("bottle-")), `still on glasses after changing the budget: ${after}`).toBe(true);
+  await expect(page.locator(".helper-flip")).toContainText("čašu");
+  expectClean(bag);
+});
+
+test("the same dish does not always get the same three bottles", async ({ page }) => {
+  /* Guards 2026-08-02 (owner: "does that mean some bottles would be preferred
+     against the others all the time?"). It did: the tie-break was 0.4, which
+     only shuffled *exact* ties, so 25 of 120 dish x budget combinations were
+     locked to one trio for ever and 80 bottles could never be suggested for
+     anything. Widening it to one scoring step (3) lets comparable wines take
+     turns without letting a materially worse match through — measured, the
+     number of bottles the sommelier can ever propose went from 196 to 251.
+
+     Sirloin steak at 60-120 € has a wide pool; ten openings showed at least
+     seven different wines in every trial, so five is a safe floor. */
+  await openApp(page);
+  const seen = new Set();
+  for (let i = 0; i < 10; i++) {
+    await page.locator("#helper-open").click();
+    await page.locator(".helper-opt[data-dish]", { hasText: "Sirloin steak" }).click();
+    await page.locator(".helper-opt[data-k='b2']").click();
+    await page.waitForTimeout(120);
+    for (const n of await page.locator(".helper .item-name").allTextContents()) seen.add(n.trim());
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(80);
+  }
+  expect(seen.size, `only ${seen.size} different wines over ten openings`).toBeGreaterThanOrEqual(5);
+});
