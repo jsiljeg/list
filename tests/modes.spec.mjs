@@ -251,15 +251,14 @@ test("the active chip always matches the section on screen", async ({ page, hasT
   }
 });
 
-test("the sommelier answers by the glass or by the bottle, not both at once", async ({ page }) => {
-  /* Guards 2026-08-02 (owner, twice). First: it searched `bottle-*` only, so it
-     could offer nothing but a whole bottle — useless to the guest most likely
-     to ask, and it ignored the shelf the owner curates hardest (28% of the
-     by-the-glass pours are picks against 9% of the bottles). Then: showing two
-     glasses under every price band repeated the same two wines four times,
-     because a bottle budget says nothing about a glass. Now the second question
-     is "a glass or a bottle?" — glass gives four pours and no bottles, a price
-     band gives three bottles and one glass as a nudge. */
+test("the sommelier answers in one list, and offers the glass quietly", async ({ page }) => {
+  /* Guards 2026-08-02, third attempt at this and the one the owner kept. The
+     helper could only ever answer with a whole bottle; then it showed two
+     glasses under every price band, which repeated the same wines four times
+     and read as an error. Now: the budget question is the four bands it always
+     was, the answer is three bottles and nothing else, and the glass is
+     offered two quiet ways — a second price on the row when the same wine is
+     poured by the glass, and one link to flip the whole answer over. */
   const bag = await openApp(page);
   const sectionOf = () => page.evaluate(() =>
     [...document.querySelectorAll(".helper .item[data-ref]")].map((el) =>
@@ -267,38 +266,52 @@ test("the sommelier answers by the glass or by the bottle, not both at once", as
 
   await page.locator("#helper-open").click();
   await page.locator(".helper-opt[data-dish]").first().waitFor();
-  const opts = await page.locator(".helper-opt[data-k]").count().catch(() => 0);
   await page.locator(".helper-opt[data-dish]").nth(3).click();
   const keys = await page.locator(".helper-opt[data-k]").evaluateAll((els) => els.map((e) => e.dataset.k));
-  expect(keys[0], "the glass option must come first").toBe("glass");
-  expect(keys, "the five ways to answer").toEqual(["glass", "b1", "b2", "b3", "any"]);
+  expect(keys, "back to the four price bands the owner asked for").toEqual(["b1", "b2", "b3", "any"]);
 
-  await page.locator(".helper-opt[data-k='glass']").click();
-  await page.waitForTimeout(400);
-  const onlyGlass = await sectionOf();
-  expect(onlyGlass.length, "no glass pours offered").toBeGreaterThan(1);
-  expect(onlyGlass.every((s) => s === "glass"), `bottles leaked in: ${onlyGlass}`).toBe(true);
-  expect(await page.locator(".helper-group").count(), "one pool needs no headings").toBe(0);
-
-  await page.locator(".helper-budget").click();
   await page.locator(".helper-opt[data-k='b2']").click();
   await page.waitForTimeout(400);
-  const mixed = await sectionOf();
-  expect(mixed.filter((s) => s.startsWith("bottle-")).length, "no bottles").toBeGreaterThan(0);
-  expect(mixed.filter((s) => s === "glass").length, "the glass nudge should be exactly one").toBe(1);
-  /* Bottles first — that is what was asked for; the glass is the afterthought. */
-  expect(mixed[mixed.length - 1], "the glass should be last").toBe("glass");
-  expect(await page.locator(".helper-group").count(), "two pools need two headings").toBe(2);
+  const bottles = await sectionOf();
+  expect(bottles.length, "no suggestions at all").toBeGreaterThan(0);
+  expect(bottles.every((s) => s.startsWith("bottle-")), `a glass leaked into the bottle answer: ${bottles}`).toBe(true);
+  expect(await page.locator(".helper-group").count(), "one list needs no headings").toBe(0);
 
-  /* And the same wine never appears in both halves. */
-  const names = await page.evaluate(() =>
-    [...document.querySelectorAll(".helper .item[data-ref]")].map((el) => {
-      const [si, ci, gi, ii] = el.dataset.ref.split(".").map(Number);
-      const it = DATA.sections[si].categories[ci].groups[gi].items[ii];
-      return `${it.producer}|${it.name}`;
-    }));
-  expect(new Set(names).size, "the same wine suggested twice").toBe(names.length);
+  /* The flip turns the whole answer into glasses, and back. */
+  await page.locator(".helper-flip").click();
+  await page.waitForTimeout(400);
+  const glasses = await sectionOf();
+  expect(glasses.length, "the flip returned nothing").toBeGreaterThan(1);
+  expect(glasses.every((s) => s === "glass"), `a bottle leaked into the glass answer: ${glasses}`).toBe(true);
+  await page.locator(".helper-flip").click();
+  await page.waitForTimeout(400);
+  expect((await sectionOf()).every((s) => s.startsWith("bottle-")), "the flip does not flip back").toBe(true);
   expectClean(bag);
+});
+
+test("the glass price on a suggestion is the real one, and only where it exists", async ({ page }) => {
+  /* The inline offer is only honest if the wine really is poured by the glass
+     at that price — it is read from the `glass` section of the same list, so a
+     wine 86'd off one shelf and not the other must not keep advertising. */
+  await openApp(page);
+  const bad = await page.evaluate(() => {
+    const truth = new Map();
+    const sec = DATA.sections.find((s) => s.id === "glass");
+    for (const c of sec.categories) for (const g of c.groups) for (const it of g.items)
+      truth.set(`${it.producer}|${it.name}`, it.price);
+    const out = [];
+    /* Every bottle that also has a glass twin must price the glass below it. */
+    for (const s of DATA.sections) {
+      if (!s.id.startsWith("bottle-")) continue;
+      for (const c of s.categories) for (const g of c.groups) for (const it of g.items) {
+        const p = truth.get(`${it.producer}|${it.name}`);
+        if (p != null && !(p > 0 && p < it.price))
+          out.push(`${it.producer} — ${it.name}: glass ${p}, bottle ${it.price}`);
+      }
+    }
+    return out;
+  });
+  expect(bad, "a by-the-glass price that is not below its bottle price").toEqual([]);
 });
 
 test("every dish gets an answer at every budget", async ({ page }) => {

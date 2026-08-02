@@ -190,6 +190,7 @@ function init() {
       hiddenRaw = unText;
       const d = dropHidden(FULL, parseHidden(unText));
       DATA = d;
+      GLASS_PRICE = null;
       MENU = m;
       PRODUCERS = pr.producers || {};
       REGIONS = rg.regions || [];
@@ -233,6 +234,7 @@ function parseHidden(text) {
 function applyUpdate(u) {
   if (u.lib && u.list) FULL = mergeList(u.lib, u.list);
   DATA = dropHidden(FULL, u.rules);
+  GLASS_PRICE = null;   /* a wine can be 86'd off one shelf and not the other */
   /* The guest may be standing in a category that just emptied. */
   if (!DATA.sections.some((s) => s.id === currentSection)) currentSection = DATA.sections[0].id;
   if (appEntered && !$("app").classList.contains("hidden")) {
@@ -514,7 +516,7 @@ function itemFlag(item) {
   return c && COUNTRY_FLAGS[c] ? ` <span class="item-flag" title="${esc(T().countries[c] || c)}">${COUNTRY_FLAGS[c]()}</span>` : "";
 }
 
-function itemHtml(item, ref, context, showFlag) {
+function itemHtml(item, ref, context, showFlag, aside) {
   const clickable = !!item.insight;
   return `<${clickable ? `button class="item clickable" data-ref="${ref}"` : 'div class="item"'}>
     <span class="item-row">
@@ -523,9 +525,23 @@ function itemHtml(item, ref, context, showFlag) {
       ${priceHtml(item)}
       ${clickable ? '<span class="item-chevron">›</span>' : ""}
     </span>
-    ${item.producer || showFlag ? `<span class="item-producer">${esc(item.producer || "")}${producerZh(item.producer) ? `<span class="zh-gloss">（${producerZh(item.producer)}）</span>` : ""}${showFlag ? itemFlag(item) : ""}</span>` : ""}
+    ${item.producer || showFlag || aside ? `<span class="item-producer">${esc(item.producer || "")}${producerZh(item.producer) ? `<span class="zh-gloss">（${producerZh(item.producer)}）</span>` : ""}${showFlag ? itemFlag(item) : ""}${aside ? `<span class="item-aside">${aside}</span>` : ""}</span>` : ""}
     ${context ? `<span class="search-context">${esc(context)}</span>` : ""}
   </${clickable ? "button" : "div"}>`;
+}
+
+/* Producer|name → the by-the-glass price, for the wines sold both ways. 24 of
+   the 32 pours are, which is what makes the sommelier's glass offer work as a
+   line on a bottle rather than as a second list. Rebuilt whenever DATA is,
+   since a wine can be 86'd off one shelf and not the other. */
+let GLASS_PRICE = null;
+function glassPrices() {
+  if (GLASS_PRICE) return GLASS_PRICE;
+  GLASS_PRICE = new Map();
+  const sec = DATA.sections.find((s) => s.id === "glass");
+  if (sec) for (const cat of sec.categories) for (const g of cat.groups) for (const it of g.items)
+    if (it && typeof it.price === "number") GLASS_PRICE.set(`${it.producer}|${it.name}`, it.price);
+  return GLASS_PRICE;
 }
 
 /* Cross-language search aliases: canonical region/grape token (as stored, lower-
@@ -883,18 +899,24 @@ function renderContent() {
     });
     const identity = blocks[0].concat(blocks[1]);
     const flavour = blocks[2].concat(blocks[3]);
+    /* Both halves are labelled, and both carry their count. Labelling only the
+       second left the first with no explanation of what it was (owner,
+       2026-08-02) — and a count answers that better than any noun would, while
+       dodging Slavic plural agreement entirely: "Rezultati · 12" needs no
+       concord, "12 vina/vino/vina" needs three rules and gets one of them
+       wrong on 21. */
     const render = (rows, label) => {
       if (!rows.length) return;
       if (found === 0) html += `<div class="cat">`;
-      if (label) html += `<div class="search-group">${esc(label)}</div>`;
+      html += `<div class="search-group">${esc(label)} <span class="search-count">${rows.length}</span></div>`;
       for (const r of rows) {
         found++;
         searchRefs.push(r.ref);
         html += itemHtml(r.item, r.ref, r.ctx);
       }
     };
-    render(identity, "");
-    render(flavour, identity.length ? t.ui.byFlavour : "");
+    render(identity, t.ui.searchResults);
+    render(flavour, t.ui.byFlavour);
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (currentSection === "__regions" && !picksOnly && !ratedOnly && !prideOnly) {
     html = REGIONS.map((rg) => {
@@ -1689,16 +1711,16 @@ function glassFor(style, grape, override, region) {
   return "riesling";
 }
 
-/* `glass` has no band because a glass price is not a bottle budget — it takes
-   the by-the-glass shelf whole. `any` is the Ikone shelf: 500 €+ only, which
-   is what it always did, but it was labelled "Bez ograničenja" / "No limit",
-   the opposite of a filter. It now says Ikone (500 €+), which is both what it
-   does and the name that shelf already has everywhere else in the app. */
-const HELPER_BUDGET = { glass: null, b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [PRIDE_MIN, Infinity] };
-const helperState = { step: 0, dish: null, budgetKey: "b2" };
+/* "Bez ograničenja" (any) = spare no expense → only the Filhov ponos 500 €+
+   bottles that suit the dish. The owner asked for both that wording and that
+   behaviour, and asked for them back after a round of renaming. The glass is
+   not a band here — a glass price is not a bottle budget — it is the flip
+   under the results. */
+const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [PRIDE_MIN, Infinity] };
+const helperState = { step: 0, dish: null, budgetKey: "any", mode: "bottle" };
 
 function openHelper() {
-  helperState.step = 0; helperState.dish = null;
+  helperState.step = 0; helperState.dish = null; helperState.mode = "bottle";
   renderHelperStep();
   showModal();
 }
@@ -1779,39 +1801,41 @@ function renderHelperResults(budgetKey) {
   scored.sort((a, b) => b.score - a.score);
   glasses.sort((a, b) => b.score - a.score);
 
-  /* The second question is now "a glass or a bottle?", not "budget for a
-     bottle?" — which presumed a bottle before the guest had said they wanted
-     one, and made the by-the-glass suggestions repeat identically under all
-     four price bands, since a band says nothing about a glass (owner,
-     2026-08-02). So:
+  /* One list at a time, never two (owner, 2026-08-02: "super confusing... it
+     mentions bottle many times but still offers glass"). The budget question
+     is back to the four bands it always was, and the answer is three bottles.
 
-       "Na čašu"     → four glass pours, and no bottles at all
-       a price band  → three bottles, and *one* glass underneath
+     The glass is offered two ways instead, both quiet:
 
-     The single glass under a bottle answer is a nudge, not a competing list:
-     it costs one line, it keeps the cheapest way to say yes in front of every
-     guest, and it no longer looks like the app failed to understand the
-     question. Below the bottles because that is what was asked for. */
-  const byGlass = budgetKey === "glass";
-  const glassCount = byGlass ? 4 : 1;
-  /* Half the by-the-glass pours are also sold as bottles, and the best match
-     is often the same wine on both shelves — which spent one of only three
-     bottle slots repeating a suggestion already on screen. */
-  const onGlass = new Set(glasses.slice(0, glassCount).map((r) => `${r.item.producer}|${r.item.name}`));
-  const bottles = byGlass ? [] : scored.filter((r) => !onGlass.has(`${r.item.producer}|${r.item.name}`)).slice(0, 3);
-  const pours = glasses.slice(0, glassCount);
-  const top = bottles.concat(pours);
+       - **on the row**, when the suggested bottle is also poured by the glass.
+         24 of the 32 pours are, so this fires about three times in four, and
+         it upsells the wine the guest is already reading rather than a
+         different one. A guest who won't commit to a €75 bottle will very
+         often take a €14 glass of it.
+       - **one link underneath**, for the guest who only ever wanted a glass.
+         `mode` flips the whole answer over to four pours and back.
+
+     What this replaces: a five-option step that said "boca" three times, and
+     a results screen that showed three bottles and then, under a second
+     heading, one glass that was the same wine every time. */
+  const byGlass = helperState.mode === "glass";
+  const rows = byGlass ? glasses.slice(0, 4) : scored.slice(0, 3);
+  const gp = glassPrices();
   const forDish = helperState.dish ? `<div class="helper-fordish">${esc(dishName(helperState.dish))}</div>` : "";
-  const block = (rows, label) => rows.length
-    ? (label ? `<div class="helper-group">${esc(label)}</div>` : "") +
-      rows.map((r) => itemHtml(r.item, r.ref, "", true)).join("")
-    : "";
-  const list = top.length
-    ? block(bottles, bottles.length && pours.length ? t.helper.byBottle : "") +
-      block(pours, bottles.length ? t.sections.glass : "")
+  const list = rows.length
+    ? rows.map((r) => {
+        const also = !byGlass && gp.get(`${r.item.producer}|${r.item.name}`);
+        const aside = also ? `🍷 ${esc(t.ui.alsoByGlass)} ${esc(fmtPrice(also))} €` : "";
+        return itemHtml(r.item, r.ref, "", true, aside);
+      }).join("")
     : `<p class="no-results">${t.ui.noResults}</p>`;
-  $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
-  const scope = top.map((r) => r.ref);
+  const flip = `<button class="helper-flip" type="button">🍷 ${esc(byGlass ? t.ui.ratherBottle : t.ui.ratherGlass)}</button>`;
+  $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}${flip}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
+  $("modal-body").querySelector(".helper-flip").addEventListener("click", () => {
+    helperState.mode = byGlass ? "bottle" : "glass";
+    renderHelperResults(budgetKey);
+  });
+  const scope = rows.map((r) => r.ref);
   $("modal-body").querySelectorAll(".item.clickable").forEach((b) =>
     b.addEventListener("click", () =>
       openDetail(b.dataset.ref, () => renderHelperResults(budgetKey), scope))

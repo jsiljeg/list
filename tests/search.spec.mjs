@@ -257,24 +257,30 @@ test("a grape found under the name the guest knows", async ({ page }) => {
   }
 });
 
-test("the flavour half of the results is labelled", async ({ page }) => {
-  /* Guards 2026-08-02 (owner: "do we really want to search aromas?"). The
-     results were never wrong, but a guest who typed "orange" and got 45 rows
-     had no way to know the first twelve were the answer and the rest merely
-     smell of it. The heading is the whole fix — and it appears only when both
-     halves have content, so the common single-sense query stays clean. */
+test("both halves of the results are labelled and counted", async ({ page }) => {
+  /* Guards 2026-08-02 (owner, twice). First: aromas and pairings joined the
+     haystack and a guest typing "orange" got 45 rows with no way to know the
+     first twelve were the answer. A heading on the second half fixed that and
+     created the next problem — the owner asked what the *first* group was,
+     since only the second said anything. Both are labelled now, and both carry
+     their count, which explains the group better than a noun would and dodges
+     Slavic plural agreement completely. */
   await openApp(page);
   await page.locator("#search-toggle").click();
 
   await page.fill("#search", "orange");
   await page.waitForTimeout(400);
-  expect(await page.locator(".search-group").count(), '"orange" needs its divider').toBe(1);
-  const label = await page.locator(".search-group").innerText();
-  expect(label.length, "the divider has no text").toBeGreaterThan(3);
+  const heads = await page.locator(".search-group").allTextContents();
+  expect(heads.length, '"orange" should have both halves').toBe(2);
+  const counts = await page.locator(".search-count").allTextContents();
+  expect(counts.map(Number).every((n) => n > 0), `counts read ${counts}`).toBe(true);
+  const total = await page.locator(".item[data-ref]").count();
+  expect(counts.map(Number).reduce((a, b) => a + b, 0), "counts must add up to the rows shown").toBe(total);
+
   /* Everything above the divider is an identity match, everything below is not. */
   const split = await page.evaluate(() => {
     const rows = [...document.querySelectorAll(".cat > *")];
-    const at = rows.findIndex((el) => el.classList.contains("search-group"));
+    const at = rows.map((e, i) => [e, i]).filter(([e]) => e.classList.contains("search-group"))[1][1];
     const core = (el) => {
       const [si, ci, gi, ii] = el.dataset.ref.split(".").map(Number);
       return hayMatch(itemCore(DATA.sections[si].categories[ci].groups[gi].items[ii]), "orange");
@@ -287,10 +293,10 @@ test("the flavour half of the results is labelled", async ({ page }) => {
   expect(split.above, "a flavour-only match above the divider").toBe(true);
   expect(split.below, "an identity match below the divider").toBe(true);
 
-  /* A query with only one sense gets no heading at all. */
+  /* A query with only one sense gets one heading, not two. */
   for (const q of ["barolo", "tartufi", "selosse"]) {
     await page.fill("#search", q);
     await page.waitForTimeout(300);
-    expect(await page.locator(".search-group").count(), `"${q}" should need no divider`).toBe(0);
+    expect(await page.locator(".search-group").count(), `"${q}" should have one heading`).toBe(1);
   }
 });

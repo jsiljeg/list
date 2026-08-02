@@ -261,17 +261,35 @@ test("every listing points at a wine in the library", () => {
   expect(orphans, "library wines no list references").toEqual([]);
 });
 
-test("green pepper and tomato leaf only go on wines with Cabernet in them", () => {
+test("green pepper only goes on wines with Cabernet in them", () => {
   /* Pyrazines are a Cabernet Franc and cool-Cabernet marker. Added by hand to
      six wines on 2026-07-31; the risk is a later bulk edit spraying them across
      the Cabernet shelf, including the ripe warm ones — Sassicaia, Ornellaia,
      Solaia, Ao Yun — where they would simply be wrong, and a guest would taste
-     that we were wrong. */
+     that we were wrong.
+
+     Corrected 2026-08-02: this covered `tomato_leaf` too and had been failing
+     ever since, on four Sangiovese — Conti Costanti's Brunello, both Chiara
+     Condellos and Montevertine. The data was right and the test was wrong.
+     Tomato leaf is a textbook Sangiovese descriptor, not a pyrazine claim; it
+     is *capsicum*, green pepper, that belongs to the Cabernet family alone.
+     A test that fails on correct data teaches everyone to ignore the suite. */
   const bad = items
-    .filter((i) => (i.insight.aromas || []).some((a) => a === "capsicum" || a === "tomato_leaf"))
+    .filter((i) => (i.insight.aromas || []).includes("capsicum"))
     .filter((i) => !/cabernet|carménère|carmenere/i.test(i.insight.grape || ""))
     .map((i) => `${i.producer} — ${i.name}: ${i.insight.grape}`);
-  expect(bad).toEqual([]);
+  expect(bad, "green pepper on a wine with no Cabernet in it").toEqual([]);
+});
+
+test("tomato leaf stays on Cabernet and Sangiovese", () => {
+  /* The other half of the rule above. Tomato leaf is honest on both families
+     and on very little else, so it is still worth guarding — just not as a
+     pyrazine. */
+  const bad = items
+    .filter((i) => (i.insight.aromas || []).includes("tomato_leaf"))
+    .filter((i) => !/cabernet|carménère|carmenere|sangiovese/i.test(i.insight.grape || ""))
+    .map((i) => `${i.producer} — ${i.name}: ${i.insight.grape}`);
+  expect(bad, "tomato leaf somewhere it does not belong").toEqual([]);
 });
 
 test("no wine stores a bare Malvasia or Malvazija", () => {

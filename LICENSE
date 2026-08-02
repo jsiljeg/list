@@ -1,26 +1,87 @@
-Copyright © 2026 Apelacija d.o.o. (Restoran Theatrium, Teslina 7, Zagreb).
-All rights reserved.
+Copyright © 2026 Apelacija d.o.o., Teslina 7, 10000 Zagreb, Croatia
+(Restoran Theatrium — theatrium.hr). All rights reserved.
+Sva prava pridržana.
 
-This repository is published so that GitHub Pages can serve the site at
-https://theatrium.list.devinos.hr — publication is not a grant of any licence.
+NO LICENCE IS GRANTED
+─────────────────────
+This repository and the site it serves at https://theatrium.list.devinos.hr
+are published for one purpose only: so that guests of Restoran Theatrium can
+read the drinks list on a tablet or through the QR code on the table.
 
-No permission is given to copy, reproduce, adapt, translate, republish or
-distribute any part of this work, in whole or in part, by any means, including:
+Publication is not publication under any open-source or open-data licence, and
+nothing here may be treated as public domain. No right to use, copy, reproduce,
+adapt, translate, modify, publish, transmit, distribute, sublicense, sell, host
+or create derivative works from any part of it is granted, by implication,
+estoppel or otherwise.
 
-  - the wine, spirits and producer data in library/, lists/ and data/
-    (tasting notes, producer texts, region texts, food-pairing and aroma
-    vocabularies, and their translations into Croatian, English, Italian,
-    French, German, Slovenian, Spanish and Chinese);
-  - the application source in js/, css/ and the HTML pages;
-  - the drawn artwork — region maps, glassware and vessel icons, section
-    ornaments, flags — and the photographic assets in assets/.
+WHAT IS PROTECTED
+─────────────────
+1. THE DATABASE. `library/wines.json`, `lists/theatrium.json`, `data/*.json`
+   and the vocabularies in `js/i18n.js`, `js/spirits.js` and `js/zh-terms.js`
+   are a database within the meaning of Directive 96/9/EC and the Croatian Act
+   on Copyright and Related Rights. Apelacija d.o.o. asserts the sui generis
+   database right in it: the substantial investment in obtaining, verifying and
+   presenting its contents is the work of professional sommeliers and
+   translators over many months.
 
-The Theatrium name, the Theatrium logo and the atrium sculptures are the
-property of Apelacija d.o.o. and are not covered by any permission granted
-here or elsewhere.
+   Extraction or re-utilisation of the whole or of any substantial part of that
+   database is prohibited. So is the repeated and systematic extraction or
+   re-utilisation of insubstantial parts.
 
-The typefaces (Markazi Text, Raleway) are used under the SIL Open Font License
-and remain the property of their authors. The Croatian coat of arms in
-assets/flag-hr.svg is derived from a public-domain file on Wikimedia Commons.
+2. THE TEXTS. Every tasting note, producer profile, region description,
+   distillery note and food-pairing text, and every one of their translations
+   into Croatian, English, Italian, French, German, Slovenian, Spanish and
+   Chinese, is an original literary work. They are written in an identifiable
+   individual voice, which makes copies straightforward to recognise.
 
-For permission to use any of this, write to the address above.
+3. THE ARTWORK. The region maps, glassware and vessel icons, section ornaments,
+   drawn flags and every other graphic asset in `assets/`, `js/maps.js` and
+   `js/app.js`, including the photographic assets derived from the sculptures
+   in the restaurant's atrium.
+
+4. THE SOFTWARE. All source in `js/`, `css/`, `scripts/`, `tests/` and the HTML
+   pages, together with its structure, sequence and organisation.
+
+5. THE MARKS. "Theatrium", "Theatrium by Filho", the Theatrium logo and the
+   atrium sculptures are the property of Apelacija d.o.o. Nothing here grants
+   any trademark, trade-dress or publicity right, and no permission is given to
+   present any derivative work in a way that suggests association with,
+   endorsement by, or origin from Restoran Theatrium.
+
+TEXT AND DATA MINING — RIGHTS EXPRESSLY RESERVED
+────────────────────────────────────────────────
+Apelacija d.o.o. expressly reserves all rights of text and data mining under
+Article 4(3) of Directive (EU) 2019/790. No part of this work may be used for
+text or data mining, nor for the training, fine-tuning, evaluation, grounding
+or retrieval-augmentation of any machine-learning or artificial-intelligence
+system, whether commercial or not.
+
+This reservation is made in machine-readable form in `robots.txt`,
+`/.well-known/tdmrep.json` and the `tdm-reservation` meta element of every page,
+and applies whether or not any given crawler chooses to read them.
+
+ALSO PROHIBITED
+───────────────
+  - mirroring, republishing or framing the site, in whole or in part;
+  - automated crawling, scraping or bulk downloading of the data files;
+  - using the data, the vocabularies or the structure to build, populate or
+    seed another wine list, menu, catalogue, application or service, whether
+    the wines are changed or not;
+  - removing, obscuring or altering this notice or the copyright line in the
+    footer of the site.
+
+THIRD-PARTY MATERIAL
+────────────────────
+The typefaces Markazi Text and Raleway are used under the SIL Open Font
+License 1.1 and remain the property of their authors. The coat of arms in
+`assets/flag-hr.svg` derives from a public-domain file on Wikimedia Commons.
+Producers' own names, appellations and vintages are facts and are not claimed;
+the selection, verification, arrangement and description of them is.
+
+PERMISSION
+──────────
+Written permission is required for any use. Requests to:
+Apelacija d.o.o., Teslina 7, 10000 Zagreb, Croatia.
+
+Nothing in this notice limits any right that cannot be excluded under the
+applicable law of the Republic of Croatia and of the European Union.

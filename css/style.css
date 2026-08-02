@@ -633,6 +633,25 @@ body {
   margin: 1.1rem 0 .5rem;
 }
 .helper-group:first-of-type { margin-top: .2rem; }
+/* The sommelier offers a glass two quiet ways rather than as a second list:
+   on the row, when the suggested bottle is also poured by the glass (24 of
+   the 32 pours are), and as one link underneath for a guest who only ever
+   wanted a glass. Neither shouts. */
+.item-aside {
+  margin-left: .7rem; color: var(--gold-soft); font-size: .92em;
+  white-space: nowrap;
+  /* the producer line is uppercase; this is a sentence, not a name */
+  text-transform: none; letter-spacing: normal;
+}
+.helper-flip {
+  display: block; margin: .9rem auto .2rem; padding: .5rem 1.1rem;
+  background: none; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--gold-soft); font-family: var(--sans); font-size: .9rem;
+  cursor: pointer; transition: border-color .15s, color .15s;
+}
+.helper-flip:hover, .helper-flip:focus-visible {
+  border-color: var(--gold-soft); color: var(--text); outline: none;
+}
 .helper .item { border-radius: 12px; background: var(--bg-card); margin-bottom: .6rem; border: 1px solid var(--line); }
 .helper .item + .item { border-top: 1px solid var(--line); }
 
@@ -645,6 +664,11 @@ body {
   font-family: var(--sans); color: var(--text-faint);
   font-size: .74rem; letter-spacing: .14em; text-transform: uppercase;
   margin: 1.4rem 0 .7rem;
+}
+.search-count {
+  font-variant-numeric: tabular-nums; color: var(--gold-soft);
+  border: 1px solid var(--line); border-radius: 999px; padding: .05rem .45rem;
+  font-size: .92em; letter-spacing: .02em;
 }
 .search-group::after {
   content: ""; flex: 1; height: 1px; background: var(--line);

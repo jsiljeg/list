@@ -714,12 +714,19 @@ Three alias tables, each for a different failure:
   at a word start, so "jela s tartufima" answers "tartufi" by luck of Croatian
   morphology while "truffle dishes" does not answer "truffles".
 
-**The flavour half is labelled on screen.** The owner asked whether aromas
-belong in search at all, and the honest answer is that they do - but a guest
-who typed "orange" and got 45 rows had no way to know the first twelve were the
-answer and the rest merely smell of it. A divider (`ui.byFlavour`) between the
-two halves is the whole fix, and it only appears when both halves have content,
-so the common single-sense query stays clean.
+**Both halves are labelled, and both carry a count.** The owner asked whether
+aromas belong in search at all; they do, but a guest who typed "orange" and got
+45 rows had no way to know the first twelve were the answer and the rest merely
+smell of it. Labelling only the second half fixed that and created the next
+question - what is the *first* group, then? So now:
+
+    REZULTATI                  12
+    PO AROMI I SLJUBLJIVANJU   33
+
+A count explains a group better than a noun does, and it dodges Slavic plural
+agreement completely: "Rezultati · 12" needs no concord, while "12 vina / 1
+vino / 21 vino" needs three rules and gets one of them wrong. Headings are
+always on, so the layout is something a guest learns once.
 
 The test for whether a field belongs in search at all: **does the word narrow
 the list?** Body fails it (three values across 308 wines, so "puno" returns
@@ -751,25 +758,41 @@ which is a label term rather than a description.
 for the style, one for being one of Filho's picks. That has not changed. Two
 things around it did.
 
-**The second question is "a glass or a bottle?"** It used to be "budget for a
-bottle?", which presumed a bottle before the guest had said they wanted one,
-and it searched `bottle-*` only - so the helper could offer nothing else. That
-made it useless to the guest most likely to ask (one person, one dish) and
-ignored the shelf the owner curates hardest: 28% of the by-the-glass pours are
-picks against 9% of the bottles. The first fix showed two glasses under every
-band, which the owner rightly called out: a bottle budget says nothing about a
-glass, so the same two wines repeated four times. Now:
+**One list at a time, and the glass offered quietly.** This took three goes and
+the first two are worth remembering as things not to do again.
 
-    "Na casu"    -> four glass pours, no bottles
-    a price band -> three bottles, then *one* glass underneath
+  1. It searched `bottle-*` only, so it could answer nothing but a whole
+     bottle - useless to the guest most likely to ask (one person, one dish),
+     and it ignored the shelf the owner curates hardest: 28% of the
+     by-the-glass pours are picks against 9% of the bottles.
+  2. So it showed two glasses *and* three bottles under two headings. The owner
+     called it "super confusing": the step said "boca" three times, then the
+     answer showed bottles and then a glass, and the glass was the same wine
+     under every price band - because a bottle budget says nothing about a
+     glass. It read as an error.
 
-The single glass under a bottle answer is a nudge, not a competing list. It
-costs one line, keeps the cheapest way to say yes in front of every guest, and
-comes last because a bottle is what was asked for. A wine offered by the glass
-is dropped from the bottle list rather than repeating itself into one of three
-slots. `any` was labelled "Bez ogranicenja" / "No limit" while filtering to
-500 EUR and up - the opposite of what it did; it now says Ikone (500 EUR+),
-which is both true and the name that shelf already has.
+What stuck: **the budget question is the four bands it always was, and the
+answer is three bottles and nothing else.** The glass appears two ways, neither
+of them a second list:
+
+  - **on the row**, when the suggested bottle is also poured by the glass -
+    `🍷 i na cašu 8 €` under the producer. 24 of the 32 pours are sold both
+    ways, and at least one of the three suggestions carries the line in 57% of
+    dish x band combinations. It upsells the wine the guest is already reading,
+    which is the only upsell that does not feel like one.
+  - **one link underneath** - "Radije na cašu?" - which flips the whole answer
+    to four pours, and back. `helperState.mode`, reset to bottle whenever the
+    helper opens.
+
+`GLASS_PRICE` memoises producer|name -> glass price and **must be cleared
+whenever DATA is rebuilt** (both the initial load and every poll), because a
+wine can be 86'd off one shelf and not the other - and an advertised glass that
+is not being poured is worse than no offer.
+
+"Bez ogranicenja" stays, wording and behaviour both: it means spare no expense
+and shows the 500 EUR+ Ikone. It was renamed to "Ikone (500 EUR+)" for exactly
+one round on the grounds that the label did not describe the filter; the owner
+had asked for both explicitly and asked for them back. Do not rename it again.
 
 **The menu is validated.** `data/menu.json` speaks the pairing vocabulary and
 was never checked, and it showed: the Tiramisu asked for a pairing called
@@ -798,7 +821,7 @@ the fritto misto asked for `grilled_fish` when it is deep-fried. Re-read the
 menu page when the kitchen changes it - the pairings are only as good as the
 ingredient list they were written from.
 
-## Regions: eleven cards, localized to the last map label (2026-08-02)
+## Regions: twelve cards, localized to the last map label (2026-08-02)
 
 Six cards covered 157 of 308 wines. Bordeaux had a card for 8 wines while
 **Istria (21) and the German Riesling shelf (22) had none.** Five were added -
@@ -907,18 +930,31 @@ data file is one request away: wines.json 458 kB, producers.json 258 kB,
 i18n.js 118 kB. A complete copy takes about a second. There is no technical fix
 for that; anything a browser renders, a scraper takes.
 
-So the answer is a notice, not a wall. `LICENSE` is all-rights-reserved and
-names what it covers (the data and its eight translations, the source, the
-drawn artwork, the sculptures), and `ui.copyright` puts one line under the
-footer in every language. Neither stops a copy; both turn "found it online"
-into a documented one.
+So the answer is a notice, in every place a notice is read:
 
-Worth being clear about what is and isn't the asset. The wine list itself
-copies badly - a competitor gets wines they don't stock at prices they don't
-charge against a menu they don't cook. What is genuinely reusable is the
-*engine*: 226 aroma keys and 65 pairing keys in eight languages, the region
-ladders, the glass research, the whole structure. That is what a licence is
-for.
+  - `LICENSE` - all rights reserved, and specific about *what*. The clause that
+    does the real work is the **sui generis database right** (Directive
+    96/9/EC): it protects the substantial investment in obtaining, verifying
+    and presenting the contents, independently of copyright in the texts, and
+    it forbids repeated extraction of insubstantial parts as well as one big
+    grab. Croatia is in the EU, so this is the strongest instrument available.
+  - **Text and data mining reserved** under Art. 4(3) of Directive (EU)
+    2019/790, which only works if the reservation is *machine-readable*. Hence
+    all three of `robots.txt`, `/.well-known/tdmrep.json` and the
+    `tdm-reservation` meta element - and the crawler list in robots.txt names
+    GPTBot, ClaudeBot, CCBot, Google-Extended and the rest by name while
+    leaving ordinary search engines allowed, because guests still need to find
+    the restaurant.
+  - `ui.copyright` - one line under the footer, in all eight languages.
+
+None of it stops a copy. All of it turns "found it online" into a documented
+one, which is the difference between having a case and not.
+
+Worth being clear about what the asset is. The wine list copies badly - a
+competitor gets wines they do not stock at prices they do not charge against a
+menu they do not cook. What is genuinely reusable is the *engine*: 226 aroma
+keys and 65 pairing keys in eight languages, the region ladders, the glass
+research, the structure. That is what the database right is for.
 
 Do not "improve" this with obfuscation or a bundler. It buys minutes against a
 copier and costs the no-build design that makes a price edit live in a minute.

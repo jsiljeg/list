@@ -295,3 +295,30 @@ test("the region maps keep their labels inside the frame", async ({ page }) => {
     expect(bad, `${lang}: map labels off-canvas or colliding`).toEqual([]);
   }
 });
+
+test("the machine-readable rights notices are served", async ({ request, page }) => {
+  /* Added 2026-08-02. The site is public and the whole dataset is one fetch
+     away, so the reservation has to exist where a crawler looks: robots.txt,
+     /.well-known/tdmrep.json, and a meta element on the page itself. A notice
+     nobody can read is not a notice. */
+  const robots = await request.get("/robots.txt");
+  expect(robots.status(), "robots.txt is missing").toBe(200);
+  const body = await robots.text();
+  expect(body, "no TDM reservation in robots.txt").toMatch(/TDM-Reservation:\s*1/i);
+  for (const bot of ["GPTBot", "ClaudeBot", "CCBot", "Google-Extended"])
+    expect(body, `${bot} is not named`).toContain(bot);
+  expect(body, "the admin board should not be indexed").toContain("Disallow: /admin.html");
+
+  const tdm = await request.get("/.well-known/tdmrep.json");
+  expect(tdm.status(), "tdmrep.json is missing").toBe(200);
+  expect((await tdm.json())[0]["tdm-reservation"]).toBe(1);
+
+  const lic = await request.get("/LICENSE");
+  expect(lic.status(), "LICENSE is not served").toBe(200);
+
+  await openApp(page);
+  const meta = await page.evaluate(() =>
+    Object.fromEntries([...document.querySelectorAll("meta[name]")].map((m) => [m.name, m.content])));
+  expect(meta["tdm-reservation"], "no tdm-reservation meta").toBe("1");
+  expect(meta.copyright, "no copyright meta").toContain("Apelacija");
+});
