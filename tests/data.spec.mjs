@@ -461,3 +461,41 @@ test("a spirit does not inherit a winery's blurb", () => {
     .map(([p, k]) => `${p} resolves to "${k}"`);
   expect(bad).toEqual([]);
 });
+
+test("the Saints Hills blurb tells the Rolland story in every language", () => {
+  /* Added 2026-08-02 at the owner's request: the blurb said "a top consultant"
+     and never named him. Michel Rolland consulted here from 2006 — his only
+     Croatian project — and the family called him a friend and a teacher before
+     an oenologist. Every language has to carry the name and the Frenchie label
+     it is told through, or a guest reading in that language gets the old,
+     anonymous version of the sentence. */
+  const rec = producers["Saints Hills"];
+  expect(rec, "Saints Hills has a producer record").toBeTruthy();
+  const missing = Object.entries(rec.blurb)
+    /* Chinese writes him 米歇尔·罗兰, so the name is matched in either script. */
+    .filter(([, text]) => !((/rolland/i.test(text) || /罗兰/.test(text)) && /frenchie/i.test(text) && /2006/.test(text)))
+    .map(([lc]) => lc);
+  expect(missing, "languages missing the Rolland story").toEqual([]);
+});
+
+test("no nail ornament converges on a single point", () => {
+  /* Added 2026-08-02: the water/juice ornament's citrus was drawn as spokes
+     radiating from one shared centre, which reads as a starburst rather than
+     as segments — the owner could not tell it was fruit. The whole set is
+     built of nails that never touch, so three strokes meeting at one point is
+     the tell, whichever ornament it happens in. */
+  const src = readFileSync(resolve(HERE, "../js/app.js"), "utf8");
+  const icons = /const ICONS = \{([\s\S]*?)\n\};/.exec(src);
+  expect(icons, "ICONS block not found").toBeTruthy();
+  const bad = [];
+  for (const m of icons[1].matchAll(/^\s*(\w+): '(<svg[^']*)'/gm)) {
+    const [, name, svg] = m;
+    if (!/stroke-linecap/.test(svg)) continue;           // the nail motifs only
+    const seen = new Map();
+    for (const d of svg.matchAll(/M([\d.]+) ([\d.]+)L([\d.]+) ([\d.]+)/g))
+      for (const pt of [`${d[1]},${d[2]}`, `${d[3]},${d[4]}`])
+        seen.set(pt, (seen.get(pt) || 0) + 1);
+    for (const [pt, n] of seen) if (n > 2) bad.push(`${name}: ${n} strokes meet at ${pt}`);
+  }
+  expect(bad, "an ornament radiates from a point").toEqual([]);
+});

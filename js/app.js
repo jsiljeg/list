@@ -441,10 +441,23 @@ const ICONS = {
 
      So: mass, not contour, and two objects rather than one — which is also the
      alembic's structure. The glass is five rows narrowing downward under a flat
-     rim; the citrus is nails radiating from a centre, which is the one subject
-     where the nails *are* the thing, since a slice is segments. Between them
-     they cover the shelf: water, juice, and something cold with a slice in it. */
-  water: '<svg viewBox="0 0 34 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5.6 7.0L9.0 7.0"/><path d="M9.0 7.0L12.4 7.0"/><path d="M5.9 10.2L9.0 11.0"/><path d="M9.0 11.0L12.1 10.2"/><path d="M6.3 13.4L9.0 14.2"/><path d="M9.0 14.2L11.7 13.4"/><path d="M6.8 16.6L9.0 17.4"/><path d="M9.0 17.4L11.2 16.6"/><path d="M7.4 19.8L9.0 20.5"/><path d="M9.0 20.5L10.6 19.8"/><path d="M23.0 14.0L23.0 9.4"/><path d="M23.0 14.0L19.8 11.2"/><path d="M23.0 14.0L18.6 13.0"/><path d="M23.0 14.0L26.2 11.2"/><path d="M23.0 14.0L27.4 13.0"/><path d="M23.0 14.0L19.6 16.8"/><path d="M23.0 14.0L26.4 16.8"/><path d="M18.0 14.8L18.4 11.6"/><path d="M19.2 10.2L21.4 8.6"/><path d="M22.6 8.0L25.0 8.6"/><path d="M26.4 9.8L27.7 12.2"/><path d="M27.9 14.2L26.8 16.6"/><path d="M25.6 17.8L23.2 18.8"/><path d="M21.6 18.8L19.4 17.4"/></svg>',
+     rim; the citrus is a slice, which is the one subject where the nails *are*
+     the thing, since a slice is segments. Between them they cover the shelf:
+     water, juice, and something cold with a slice in it.
+
+     The fruit is a **half** slice, not a whole one (owner, 2026-08-02: the
+     glass read fine, the fruit did not read as fruit). The first version was a
+     full round — spokes radiating from one shared centre inside a ring of
+     dashes — and it had two faults that between them made a starburst. Every
+     spoke met at a single point, which is a sunburst or an asterisk, not
+     segments; and a *round* thing with marks inside it is the failure the nail
+     bowl died of, an eye or a sun. Cutting it in half fixes both at once: the
+     flat cut edge across the top breaks the radial symmetry that reads as a
+     sun, and the segments now fan down from *along* that edge, stopping short
+     of it, so nothing converges. It was checked against four other drawings
+     (whole disc, denser disc, wedge) at 18/24/32/48/130px — the wedge read as
+     an arrow, both discs as a flower, and this one as fruit at every size. */
+  water: '<svg viewBox="0 0 34 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5.6 7.0L9.0 7.0"/><path d="M9.0 7.0L12.4 7.0"/><path d="M5.9 10.2L9.0 11.0"/><path d="M9.0 11.0L12.1 10.2"/><path d="M6.3 13.4L9.0 14.2"/><path d="M9.0 14.2L11.7 13.4"/><path d="M6.8 16.6L9.0 17.4"/><path d="M9.0 17.4L11.2 16.6"/><path d="M7.4 19.8L9.0 20.5"/><path d="M9.0 20.5L10.6 19.8"/><path d="M16.6 11.4L20.3 11.4"/><path d="M21.3 11.4L25.1 11.4"/><path d="M26.1 11.4L29.8 11.4"/><path d="M29.8 12.0L29.4 13.7"/><path d="M28.9 14.8L27.7 16.2"/><path d="M26.8 16.9L25.2 17.7"/><path d="M24.1 17.9L22.3 17.9"/><path d="M21.2 17.7L19.6 16.9"/><path d="M18.7 16.2L17.5 14.8"/><path d="M17.0 13.7L16.6 12.0"/><path d="M25.5 12.1L28.1 13.0"/><path d="M24.6 13.3L26.3 15.6"/><path d="M23.2 13.8L23.2 16.6"/><path d="M21.8 13.3L20.1 15.6"/><path d="M20.9 12.1L18.3 13.0"/></svg>',
   /* The atrium's nails, arranged as a bunch of grapes: the restaurant's own
      material, the list's own subject. Fifteen short marks laid out 3-4-3-2-1
      under a stem — no two parallel, none of them touching. The bunch comes
@@ -576,6 +589,29 @@ const SEARCH_ALIAS = {
   "graševina": "grasevina 格拉舍维纳"
 };
 
+/* Words for a *style* rather than a grape or a place. The style strings
+   themselves are already in the haystack (itemHay), but they are written to be
+   read on a card, not typed into a box: the Croatian one says "Macerirano
+   bijelo · odležano na kožici", which no guest types, and none of the eight
+   says "amber". These are the words people actually use for the shelf.
+   The stems matter as much as the words — hayMatch anchors at a word start, so
+   "maceration" answers "macerat" and "macerirano" answers "macerir", but
+   neither answers the other. Both spellings of the Croatian go in, because the
+   search folds accents only when the query carries none. */
+const STYLE_ALIAS = {
+  "orange": "orange wine amber wine ambrato macerirano macerirana maceracija " +
+    "narančasto vino narancasto vino maceration macerated skin contact " +
+    "macerato vino arancione vin orange macération oranje orangewein maischevergoren " +
+    "oranžno vino oranzno vino vino naranja ámbar 橙酒 橘酒",
+  "sweet": "dessert wine desertno vino slatko vino süßwein susswein vin doux " +
+    "vino dolce vino dulce sladko vino 甜酒",
+  "champagne": "šampanjac sampanjac",
+  "champagne_bdb": "šampanjac sampanjac blanc de blancs",
+  "champagne_bdn": "šampanjac sampanjac blanc de noirs",
+  "champagne_rose": "šampanjac sampanjac",
+  "champagne_prestige": "šampanjac sampanjac prestige cuvée prestige cuvee"
+};
+
 /* Synonyms that must NOT go into the haystack, because they contain another
    variety's name as a substring. "Riesling italico" is Graševina, which is not
    a Riesling at all — pasting it into the haystack would make a search for
@@ -651,6 +687,21 @@ function itemHay(item) {
         for (const k of keys || []) if (s[dict][k]) parts.push(s[dict][k]);
     }
   }
+  /* A wine's style is the same kind of fact, and it was missing: "orange",
+     "macerirano" and "narančasto" all returned nothing, while "macerat" found
+     thirteen spirits and not one of the twelve orange wines — the spirit
+     vocabulary above was in the haystack and the wine vocabulary was not.
+     Style, body and sweetness go in, in every language, so a guest can search
+     the shelf the way they'd ask for it: pjenušavo, trocken, dolce, orange. */
+  if (ins.kind !== "spirit") {
+    for (const l of LANGS) {
+      const d = I18N[l.code];
+      if (!d) continue;
+      for (const [dict, key] of [["styles", ins.style], ["bodies", ins.body], ["sweetness", ins.sweetness]])
+        if (key && d[dict] && d[dict][key]) parts.push(d[dict][key]);
+    }
+    if (STYLE_ALIAS[ins.style]) parts.push(STYLE_ALIAS[ins.style]);
+  }
   const joined = parts.filter(Boolean).join(" ").toLowerCase();
   let hay = joined + " " + fold(joined);
   for (const k in SEARCH_ALIAS) if (hay.indexOf(k) !== -1) hay += " " + SEARCH_ALIAS[k];
@@ -680,27 +731,40 @@ function renderContent() {
   let html = "";
 
   if (q) {
-    /* global search across all sections */
+    /* Global search across all sections. Results come out in two blocks —
+       wines first, then everything distilled, poured or brewed — because the
+       list is a wine list: a guest typing "orange" or "macerat" means the
+       shelf, and the gins and vermouths that macerate botanicals are the
+       footnote, not the answer. Within each block the order is the list's own,
+       so a wine still turns up under the section it is poured from. */
     let found = 0;
     searchRefs = [];
+    const wines = [], rest = [];
     DATA.sections.forEach((sec, si) => {
       sec.categories.forEach((cat, ci) => {
         cat.groups.forEach((g, gi) => {
           g.items.forEach((item, ii) => {
             const hay = itemHay(item);
             if ((hayMatch(hay, q) || (qf && hayMatch(hay, qf))) && (!picksOnly || item.recommended || item.new)) {
-              if (found === 0) html += `<div class="cat">`;
-              found++;
               const ref = [si, ci, gi, ii].join(".");
-              searchRefs.push(ref);
               const ctx = [t.sections[sec.id], t.categories[cat.id], g.country ? t.countries[g.country] : null]
                 .filter(Boolean).join(" · ");
-              html += itemHtml(item, ref, ctx);
+              /* A wine is an item with insight and no `kind` — the same single
+                 switch openDetail() reads. Water and the soft drinks have no
+                 insight at all and belong in the second block with the spirits. */
+              const isWine = !!(item.insight && !item.insight.kind);
+              (isWine ? wines : rest).push({ item, ref, ctx });
             }
           });
         });
       });
     });
+    for (const r of wines.concat(rest)) {
+      if (found === 0) html += `<div class="cat">`;
+      found++;
+      searchRefs.push(r.ref);
+      html += itemHtml(r.item, r.ref, r.ctx);
+    }
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (currentSection === "__regions" && !picksOnly && !ratedOnly && !prideOnly) {
     html = REGIONS.map((rg) => {

@@ -151,9 +151,13 @@ variety as **Jakot** (`LANG_GRAPE.sl`), its official Slovenian name since 2013.
 Dates worth keeping: the ban took effect 31 March 2007, out of a 1993 EU–Hungary
 agreement; the name Jakot was coined in Collio, and Slovenia adopted it later.
 
-**Friuli is one token, and Croatian says Furlanija.** `REGION_I18N["Friuli"]`
-said "Friuli" in Croatian while every Croatian note two lines above said
-"Furlanija" — the exonym now follows the language, as it does everywhere else.
+**Friuli is one token, and Croatian says Friuli** (owner, 2026-08-02). The
+exonym was tried the other way on 2026-07-31 — "Furlanija" in Croatian, to match
+Croatian notes said to use it — and that premise turned out to be false: no
+Croatian note or blurb says Furlanija (a grep for the stem finds only Slovenian
+text, where it is correct). So Croatian shows **Friuli** and Slovenian keeps
+**Furlanija**; "Furlanija" stays in `REGION_ALIAS`, so a guest who types it
+still lands on the wines. Guarded by a test.
 `Friuli Isonzo` was **removed** from REGION_I18N: it is a DOC, and appellations
 are shown as the label spells them; its exonyms moved to `REGION_ALIAS` so
 search still reaches them. The ladders were made unanimous — Vie di Romans
@@ -284,6 +288,27 @@ chromium` (~114 MB, already installed here).
 For taste calls, override CSS in-page with `page.add_style_tag` and montage the
 variants into one image rather than editing the stylesheet per attempt.
 
+## The first paint is not the font you designed in (2026-08-02)
+
+Markazi Text and Raleway load from Google with `display=swap`, so **every first
+visit paints in a local fallback** and swaps a beat later. Georgia sets the same
+string **34% wider** than Markazi at the same font-size, so the language screen's
+"Odaberite jezik · Choose your language" landed oversized — often not fitting —
+and then visibly snapped smaller. The owner saw it on a laptop and expected it on
+the tablet too; it was on every device and every cold load.
+
+The fix is metric-override fallback faces in css/style.css — `local("Georgia")`
+and `local("Times New Roman")` squeezed to Markazi's advance width and its
+ascent/descent, so the swap changes the letterforms and nothing else. Measured
+413px against the real font's 416px, from 539px before. `scripts/font-metrics.py`
+prints the numbers; re-run it if a font in either stack changes. Raleway needs no
+such face — its fallbacks are within 3%.
+
+Two things worth keeping: the drift is only visible with the network in the
+picture, so the test blocks `fonts.gstatic.com` and compares the two paints
+rather than trusting the stylesheet; and `font-display: optional` is *not* the
+alternative — it would leave a first-time guest in Georgia for the whole visit.
+
 ## The two nail sculptures (settled 2026-07-30)
 
 Both are used **recoloured, never redrawn** — `scripts/nail-asset.py face|bowl`
@@ -315,6 +340,22 @@ The face is a background on `.story-screen::before`, which is `display:none`
 until a language is picked, so it must stay in the `<link rel="preload">` in
 `index.html` — without it the fetch only starts at the tap and the splash lands
 bare.
+
+**The citrus in the water ornament is a *half* slice** (owner, 2026-08-02: the
+glass read fine, "the fruit is not a bit clear it's fruit"). The first version
+was a whole round — spokes radiating from one shared centre inside a ring of
+dashes — and it failed twice over. Every spoke met at a single point, which is
+a sunburst or an asterisk and not segments; and a round thing with marks inside
+it is exactly what killed the nail bowl, an eye or a sun. Cutting it in half
+answers both at once: the flat cut edge across the top breaks the radial
+symmetry, and the segments fan down from *along* that edge, stopping short of
+it, so nothing converges. Five drawings were rendered side by side at
+18/24/32/48/130px and looked at — the wedge read as an arrow, a denser disc and
+a rosette both read as a flower, the half slice read as fruit at every size.
+A test now fails any ornament where three strokes share a point. The lesson
+generalises: **in this set, radial symmetry is the enemy of legibility** —
+the grape works because its rows are irregular, the alembic because it is two
+unequal masses joined by an arc.
 
 ## Glass icons: measure, never eyeball (settled 2026-07-30)
 
@@ -363,15 +404,19 @@ declassified in name but the same wine from the same hill. Beaujolais Cru is the
 one Riedel-listed red still on the cone.
 
 **Orange takes the wide Chardonnay bowl** (owner's question, 2026-07-31), as a
-`style === "orange"` rule rather than twelve overrides, because the whole style
+`style === "orange"` rule rather than eleven overrides, because the whole style
 moves. Nobody publishes an orange shape — `riedel.com/en-int/wine-glass-guide/
 orange-wine` is a 404, and their Ribolla Gialla and Friulano pages describe
 light unoaked whites, i.e. the grape as it reads when nobody macerates it, so
 those entries are not a ruling on ours. The evidence used instead is the
 Winewings Chardonnay varietal list — "…Friulano, Fumé Blanc, … Pinot (Blanc,
 Grigio, Gris), … Ribolla Gialla, … Sauvignon Blanc (oaked)…" — which covers
-seven of our twelve. The other five (Malvazija ×3, Vitovska ×2, Godello) Riedel
-lists elsewhere or not at all (Vitovska 404s too); splitting the style there
+seven of our eleven. The other four (Malvazija ×2, Ottocento's Istrian blend,
+Vitovska ×2) Riedel lists elsewhere or not at all (Vitovska 404s too); the
+count said twelve until 2026-08-02, when Casa Rojo's "Orange Republic" turned
+out to be a *name*, not a style — its own tech sheet describes classic white
+vinification on lees, and the record correctly says `white_mineral`. Splitting
+the style at the four Riedel does not list
 would be an arbitrary cut dressed as evidence. Not the red `burgundy` cone: the
 grip is tannic but the aromatics are a white's, and it would file orange in with
 the reds visually. Serving temps were already 12–14 °C and needed no change.
@@ -605,6 +650,30 @@ typing it got eighteen Tuscan reds of which four were from Montalcino. It now
 lives only on `montalcino`, which is the place the guest means — and that alias
 also reaches Case Basse, whose label never says Brunello. Same test for any
 future one: does the word name a grape everywhere, or a place?
+
+## A wine's style is searchable, and wines outrank spirits (2026-08-02)
+
+The haystack knew what a spirit *is* — class, base, still, cask, in all eight
+languages — and nothing about what a wine is beyond its name, producer, grape
+and region. So "orange", "narančasto" and "macerirano" returned **nothing**,
+while "macerat" returned thirteen gins, vermouths and liqueurs and not one of
+the eleven orange wines. `itemHay()` now pushes `styles`/`bodies`/`sweetness`
+through every language, the mirror image of what it already did for spirits.
+
+`STYLE_ALIAS` sits beside `SEARCH_ALIAS` for the words the style strings don't
+contain. They are written to be *read on a card*, not typed: the Croatian
+orange style reads "Macerirano bijelo · odležano na kožici", and not one of the
+eight says "amber". Two things decide what belongs in it — **stems**, because
+`hayMatch` anchors at a word start, so "maceration" answers a query of
+"macerat" and "macerirano" answers "macerir" but neither answers the other; and
+**both spellings** of anything accented, since the fold only applies to a query
+that carries no diacritics of its own.
+
+**Search results come out in two blocks: wines, then everything else.** It was
+incidentally true before, from section order alone; it is now explicit, because
+that is the answer a wine list owes the question. A wine is `insight && !kind` —
+the same single switch `openDetail()` reads — so water and the soft drinks,
+which have no insight at all, sit in the second block with the spirits.
 
 ## Descriptor capitalisation (settled 2026-07-30)
 

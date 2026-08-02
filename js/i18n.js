@@ -1690,13 +1690,16 @@ const REGION_I18N = {
   "Lombardia": { hr: "Lombardija", en: "Lombardy", it: "Lombardia", fr: "Lombardie", de: "Lombardei", sl: "Lombardija", es: "Lombardía" },
   "Emilia-Romagna": { hr: "Emilia-Romagna", en: "Emilia-Romagna", it: "Emilia-Romagna", fr: "Émilie-Romagne", de: "Emilia-Romagna", sl: "Emilija - Romanja", es: "Emilia-Romaña" },
   "Romagna": { hr: "Romanja", en: "Romagna", it: "Romagna", fr: "Romagne", de: "Romagna", sl: "Romanja", es: "Romaña" },
-  /* Croatian says Furlanija, the same word the Croatian notes and blurbs use.
-     It said "Friuli" here until 2026-08-01, so one Croatian card read "Friuli"
-     in the region line and "Furlanija" in the note two lines above it.
+  /* Croatian shows **Friuli**, not the exonym (owner, 2026-08-02). It was
+     switched to "Furlanija" on 2026-08-01 to match Croatian prose that no
+     longer says it — every Croatian note now writes Friuli, so the exonym was
+     the odd one out rather than the agreement. Slovenian keeps Furlanija: it is
+     what the Slovenian notes say and what a Slovenian guest reads. "Furlanija"
+     stays in REGION_ALIAS, so typing it still finds the wines.
      "Friuli Isonzo" is deliberately NOT here: it is a DOC, and appellations
      are shown as the label spells them (see the comment above). Its exonyms
      live in REGION_ALIAS so search still finds them. */
-  "Friuli": { hr: "Furlanija", en: "Friuli", it: "Friuli", fr: "Frioul", de: "Friaul", sl: "Furlanija", es: "Friuli" },
+  "Friuli": { hr: "Friuli", en: "Friuli", it: "Friuli", fr: "Frioul", de: "Friaul", sl: "Furlanija", es: "Friuli" },
   "Alto Adige": { hr: "Alto Adige", en: "Alto Adige", it: "Alto Adige", fr: "Haut-Adige", de: "Südtirol", sl: "Južna Tirolska", es: "Alto Adigio" },
   "Alsace": { hr: "Alsace", en: "Alsace", it: "Alsazia", fr: "Alsace", de: "Elsass", sl: "Alzacija", es: "Alsacia" },
   "Loire": { hr: "Loire", en: "Loire", it: "Loira", fr: "Loire", de: "Loire", sl: "Loara", es: "Loira" },

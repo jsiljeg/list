@@ -1,4 +1,33 @@
 /* Theatrium by Filho — tablet-first digital wine list */
+
+/* Markazi Text arrives from Google Fonts with display=swap, so the first paint
+   is always the local fallback. Georgia sets the same string **34% wider** than
+   Markazi at the same font-size, which is why "Odaberite jezik · Choose your
+   language" landed too big — often not fitting the line — and then visibly
+   snapped smaller a beat later, on every device and every first load.
+   This is the standard fix: fallback families that borrow Georgia's (then Times')
+   outlines but are squeezed to Markazi's metrics, so the swap changes the
+   letterforms and nothing else. Numbers from scripts/font-metrics.py; re-run it
+   if the heading font ever changes. If neither local font exists the face fails
+   to load and the stack falls through to the plain Georgia/serif entries below.
+   The body font needs no such face: Raleway's fallbacks are within 3%. */
+@font-face {
+  font-family: "Markazi Fallback";
+  src: local("Georgia");
+  size-adjust: 74.6%;            /* Markazi width / Georgia width */
+  ascent-override: 112.5%;       /* Markazi .839em, rescaled by size-adjust */
+  descent-override: 48.4%;       /* Markazi .361em, likewise */
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Markazi Fallback 2";
+  src: local("Times New Roman");
+  size-adjust: 79.8%;
+  ascent-override: 105.2%;
+  descent-override: 45.3%;
+  line-gap-override: 0%;
+}
+
 :root {
   --bg: #161513;
   --bg-raised: #1f1d1a;
@@ -9,7 +38,7 @@
   --text: #efe9dd;
   --text-dim: #a89f8f;
   --text-faint: #7c7466;
-  --serif: "Markazi Text", Georgia, serif;
+  --serif: "Markazi Text", "Markazi Fallback", "Markazi Fallback 2", Georgia, serif;
   --sans: "Raleway", "Open Sans", system-ui, sans-serif;
 }
 

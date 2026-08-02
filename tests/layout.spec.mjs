@@ -211,3 +211,39 @@ test("the logo stays visible and put when a wine card opens", async ({ page }) =
   const after = await box(page, ".header-logo");
   expect(Math.abs(after.y - before.y), "the logo did not come back to where it was").toBeLessThan(2);
 });
+
+test("the language screen does not resize when the webfont lands", async ({ page }) => {
+  /* Guards 2026-08-02 (owner: "it looks like this gets shrinked quickly, it's
+     not fitting from the start"). Markazi Text loads from Google with
+     display=swap, so the first paint is always a local font — and Georgia sets
+     the title 34% wider than Markazi, so it landed oversized and then visibly
+     snapped smaller. css/style.css now carries fallback faces squeezed to
+     Markazi's metrics; this measures the swap by blocking fonts.gstatic.com and
+     comparing against the real thing. */
+  const ink = async (blocked) => {
+    const pg = await page.context().newPage();
+    if (blocked) await pg.route("https://fonts.gstatic.com/**", (r) => r.abort());
+    await pg.goto("/index.html", { waitUntil: "load" });
+    await pg.waitForSelector("#start:not(.hidden)");
+    await pg.waitForTimeout(600);
+    const m = await pg.evaluate(() => {
+      const el = document.getElementById("start-title");
+      const r = document.createRange();
+      r.selectNodeContents(el);
+      const b = el.getBoundingClientRect();
+      const lh = parseFloat(getComputedStyle(el).lineHeight) || b.height;
+      return { w: r.getBoundingClientRect().width, h: b.height, lines: Math.round(b.height / lh) };
+    });
+    await pg.close();
+    return m;
+  };
+  const fallback = await ink(true);
+  const real = await ink(false);
+  const drift = Math.abs(fallback.w - real.w) / real.w;
+  expect(drift, `title moves ${(drift * 100).toFixed(1)}% when the font swaps`).toBeLessThan(0.05);
+  expect(Math.abs(fallback.h - real.h), "the line box changes height on swap").toBeLessThan(2);
+  /* And it sits on one line either way — the visible half of the complaint was
+     a title that did not fit before the swap and did after. */
+  expect(fallback.lines, "the fallback title wraps").toBe(1);
+  expect(real.lines, "the title wraps even with the real font").toBe(1);
+});

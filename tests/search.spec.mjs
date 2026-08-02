@@ -136,3 +136,49 @@ test("a query that matches nothing says so", async ({ page }) => {
   await page.waitForTimeout(400);
   await expect(page.locator(".no-results")).toBeVisible();
 });
+
+test("the style of a wine is searchable, and wines come before spirits", async ({ page }) => {
+  /* Guards 2026-08-02: the wine vocabulary was missing from the haystack while
+     the spirit vocabulary was in it, so "orange" and "narančasto" found nothing
+     and "macerat" found thirteen gins, vermouths and liqueurs and not one of
+     the eleven orange wines. */
+  await openApp(page);
+  const orange = await find(page, "orange");
+  expect(orange.length, '"orange" found nothing').toBeGreaterThanOrEqual(11);
+  for (const q of ["macerirano", "narančasto", "macerato", "skin contact", "amber"]) {
+    const hits = await find(page, q);
+    expect(hits.length, `"${q}" found nothing`).toBeGreaterThanOrEqual(11);
+  }
+  /* Other styles answer to their own words too, in more than one language. */
+  for (const q of ["pjenušavo", "trocken", "dolce", "desertno"]) {
+    expect((await find(page, q)).length, `"${q}" found nothing`).toBeGreaterThan(0);
+  }
+
+  /* And the order on screen: a wine list answers "macerat" with wines first.
+     The gins that macerate botanicals are the footnote, not the answer. */
+  await page.locator("#search-toggle").click();
+  await page.fill("#search", "macerat");
+  await page.waitForTimeout(400);
+  const kinds = await page.evaluate(() =>
+    [...document.querySelectorAll(".item[data-ref]")].map((el) => {
+      const [si, ci, gi, ii] = el.dataset.ref.split(".").map(Number);
+      const it = DATA.sections[si].categories[ci].groups[gi].items[ii];
+      return it.insight && !it.insight.kind ? "wine" : "other";
+    }));
+  expect(kinds.filter((k) => k === "wine").length, "no wines in the results").toBeGreaterThanOrEqual(11);
+  expect(kinds.filter((k) => k === "other").length, "no spirits in the results").toBeGreaterThan(0);
+  expect(kinds.indexOf("other"), "a spirit came before a wine")
+    .toBe(kinds.lastIndexOf("wine") + 1);
+});
+
+test("Croatian shows Friuli, and Furlanija still finds it", async ({ page }) => {
+  /* Guards 2026-08-02 (owner): the Croatian region line said "Furlanija" while
+     every Croatian note said Friuli. The exonym stays searchable. */
+  await openApp(page);
+  expect(await page.evaluate(() => REGION_I18N["Friuli"].hr)).toBe("Friuli");
+  expect(await page.evaluate(() => REGION_I18N["Friuli"].sl)).toBe("Furlanija");
+  const friuli = await find(page, "friuli");
+  expect(friuli.length, "no Friuli wines").toBeGreaterThan(5);
+  expect((await find(page, "furlanija")).length, "the exonym stopped finding them")
+    .toBeGreaterThanOrEqual(friuli.length);
+});
