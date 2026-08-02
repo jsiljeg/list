@@ -13,6 +13,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { allItems, producers } from "./helpers.mjs";
 import { joinList as joinRaw } from "../scripts/lib/list.mjs";
+import { rankPairings, STYLE_ORDER } from "../scripts/lib/pairing-rank.mjs";
 
 /* import.meta.dirname needs Node 20.11; this works everywhere. */
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -600,4 +601,39 @@ test("no wine claims a food it clashes with", () => {
     }
   }
   expect(bad, "incompatible wine and food").toEqual([]);
+});
+
+test("pairings are stored best food first", () => {
+  /* Added 2026-08-02 (owner: "rank the best pairing for each wine and match
+     them accordingly"). The order is not decoration: the card prints it as
+     stored, and `dishScore()` weights the wine's first food at 4 points, its
+     second at 3, its third at 2 and the rest at 1. So an order that drifts —
+     a new tag appended at the end, say — quietly changes both what a guest
+     reads and which wine the sommelier reaches for.
+
+     The table is scripts/lib/pairing-rank.mjs: the style's own order, with a
+     short list of grapes whose classic dish outranks it (Nebbiolo takes
+     truffles before steak, Riesling takes the spice, Pinot Noir the bird). */
+  const bad = [];
+  for (const it of items) {
+    const ins = it.insight || {};
+    if (ins.kind === "spirit" || !ins.pairings) continue;
+    const want = rankPairings(ins).join(",");
+    const have = ins.pairings.join(",");
+    if (want !== have) bad.push(`${it.producer} — ${it.name}: ${have} should be ${want}`);
+  }
+  expect(bad, "pairings not in ranked order").toEqual([]);
+});
+
+test("the ranking table covers every food actually used", () => {
+  /* A tag missing from its style's order sorts to the end regardless of how
+     good the pairing is — silently. Better to notice. */
+  const missing = new Set();
+  for (const it of items) {
+    const ins = it.insight || {};
+    if (ins.kind === "spirit" || !ins.pairings) continue;
+    const order = STYLE_ORDER[ins.style] || [];
+    for (const p of ins.pairings) if (!order.includes(p)) missing.add(`${ins.style}: ${p}`);
+  }
+  expect([...missing], "foods with no place in their style's order").toEqual([]);
 });

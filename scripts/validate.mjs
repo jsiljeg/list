@@ -10,6 +10,7 @@
 import fs from "node:fs";
 import vm from "node:vm";
 import { joinList } from "./lib/list.mjs";
+import { rankPairings } from "./lib/pairing-rank.mjs";
 
 const ctx = {};
 vm.createContext(ctx);
@@ -251,6 +252,24 @@ for (const dish of menu.dishes || []) {
     .some((p) => (dish.pairings || []).includes(p))).length;
   if (n < 3) glassThin.push(`${dish.name.hr || dish.name.en} (${n})`);
 }
+/* The pairings are stored best-food-first, which is both what the card prints
+   and what dishScore() weights — so an order that has drifted quietly changes
+   the suggestions. A note rather than an error: the owner is allowed to know
+   better than the table for a given wine. */
+const misordered = [];
+for (const { it } of all) {
+  const ins = it.insight;
+  if (!ins || ins.kind === "spirit" || !ins.pairings) continue;
+  const want = rankPairings(ins);
+  if (want.join(",") !== ins.pairings.join(","))
+    misordered.push(`${it.producer} — ${it.name} (${ins.pairings.join(",")} → ${want.join(",")})`);
+}
+if (misordered.length) {
+  const shown = misordered.slice(0, 6).map((x) => `\n       ${x}`).join("");
+  console.log(`note — ${misordered.length} wine(s) whose pairings are not in ranked order:` +
+    shown + (misordered.length > 6 ? "\n       …" : ""));
+}
+
 if (glassThin.length)
   console.log(`note — dishes with under three by-the-glass matches: ${glassThin.join(", ")}`);
 if (thin.length)

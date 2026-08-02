@@ -798,6 +798,37 @@ bottle rows already advertised inline, topping back up from the skipped ones
 only if that would leave fewer than three: showing the same wines again is not
 three more options.
 
+**Pairings are stored best-food-first, and both directions read the same
+array** (owner, 2026-08-02: "rank the best pairing for each wine and match them
+accordingly"). `scripts/lib/pairing-rank.mjs` holds the order: each style's own
+ranking, plus a short list of grapes whose classic dish outranks it — Nebbiolo
+takes truffles before steak, Riesling takes the spice, Pinot Noir the bird and
+the mushroom. 207 of the 308 wines were reordered by it.
+
+That one array now drives both things the owner asked to agree:
+
+  - the **card** prints it as stored, so the first food a guest reads is the
+    wine's best;
+  - `dishScore()` weights the wine's first food at **4** points, its second at
+    3, its third at 2 and the rest at 1 — so a Dingač that exists for lamb
+    outranks a Bordeaux that lists lamb third.
+
+They cannot disagree, because there is only one list.
+
+The tie-break moved 3 -> 4 with it: ranked weights make the score steps finer
+(4/3/2/1 rather than a flat 3), so the same jitter bought less variety. At 4:
+252 of 276 bottles reachable, 8.4 different wines per combination, and the
+suggested wine still lists the dish's food as, on average, its first. The 29
+combinations still locked are locked by the food-first filter, not the jitter.
+
+**The style weight was left at 3, deliberately.** Raising it to 4 or 5 sounded
+right — the kitchen names the styles, so they should outweigh a generic food
+match — but measured it moves suggestions-in-a-target-style only 77.1% -> 78.5%
+-> 79.1% while costing reachability (252 -> 248 -> 247). The cases that look
+wrong (a Chardonnay for the beef risotto under 60 EUR) are thin shelves, not
+scoring: not one sub-60 EUR red on the list carries `beef`. Fix that in the
+tags, not in the weights.
+
 **Every pairing is compatible, and the rules that say so are in the code**
 (owner, 2026-08-02: "I don't want non-compatible wine-food pairings... quality
 before quantity"). All 964 tags on the 308 wines were read against five clash

@@ -1763,12 +1763,26 @@ function renderHelperStep() {
   );
 }
 
-/* How well a wine suits the chosen dish. Three points per pairing the two have
-   in common, three for the style, one for being one of Filho's own. */
+/* How well a wine suits the chosen dish.
+
+   A shared food is worth **more when it is near the front of the wine's own
+   list**, because since 2026-08-02 that list is stored best-first
+   (scripts/lib/pairing-rank.mjs). Lamb is what a Dingač is *for*; a Bordeaux
+   that lists lamb third is a good answer but not the same answer, and the
+   score now says so — 4 points for the wine's first food, 3 for its second, 2
+   for its third, 1 after that. The style is worth 3 and one of Filho's picks
+   1, both unchanged.
+
+   That is the same ranking the card shows, read from the same array, so the
+   two directions the owner asked about cannot disagree: whatever puts a wine
+   at the top of a dish's list is also what is printed first under "K jelima". */
 function dishScore(dish, item) {
   const ins = item.insight;
   if (!ins) return 0;
-  let score = (ins.pairings || []).filter((p) => (dish.pairings || []).includes(p)).length * 3;
+  let score = 0;
+  (ins.pairings || []).forEach((p, i) => {
+    if ((dish.pairings || []).includes(p)) score += Math.max(1, 4 - i);
+  });
   if ((dish.styles || []).includes(ins.style)) score += 3;
   if (item.recommended) score += 1;
   return score;
@@ -1799,11 +1813,15 @@ function renderHelperResults(budgetKey) {
              suggested for anything. 3.0 is one scoring step: a wine can
              leapfrog at most one shared pairing or the style match, so wines
              that are genuinely comparable take turns and a wine four points
-             behind still cannot displace the leader. Measured over 200 runs
-             per combination: bottles ever proposed 196 -> 251 of 276, locked
-             combinations 25 -> 9, and the average suggestion sits 1.12 points
-             below the best match instead of 1.03. */
-          const row = { score: score + Math.random() * 3, ref: [si, ci, gi, ii].join("."), item, sec, country: g.country };
+             behind still cannot displace the leader. It went from 0.4 to 3 when
+             the score stepped by 3, and to 4 when ranked pairings made the
+             steps finer (4/3/2/1 rather than 3 each): measured over 200 runs
+             per combination, 4 keeps 252 of 276 bottles reachable and 8.4
+             different wines per combination, while the wine that gets
+             suggested still lists the dish's food as, on average, its first.
+             Higher buys little — the remaining 29 locked combinations are
+             locked by the food-first filter, not by the tie-break. */
+          const row = { score: score + Math.random() * 4, ref: [si, ci, gi, ii].join("."), item, sec, country: g.country };
           (byGlass ? glasses : scored).push(row);
         });
       });
