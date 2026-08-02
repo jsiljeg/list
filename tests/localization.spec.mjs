@@ -211,3 +211,52 @@ test.describe("Chinese", () => {
     expect(body, "no bilingual gloss on the card").toMatch(/[㐀-鿿]+（[^）]*[A-Za-z][^）]*）/);
   });
 });
+
+test("the Regions screen is localized down to the map labels", async ({ page }) => {
+  /* Guards 2026-08-02 (owner): "when I select chinese I still see english region
+     names like Barolo, Barbaresco, La Morra, Alba, Langhe". Those were the
+     appellation chips, which were printed raw; the labels drawn inside the maps
+     had the same problem one layer down. */
+  await openApp(page, { lang: "zh" });
+  await page.locator('#nav button[data-sec="__regions"]').click();
+  await page.waitForSelector(".region-card");
+
+  const chips = await page.locator(".region-app").allTextContents();
+  expect(chips.length, "no appellation chips").toBeGreaterThan(20);
+  const LATIN_ONLY = /^[^\u4e00-\u9fff]+$/;
+  const rawChips = chips.filter((c) => LATIN_ONLY.test(c));
+  expect(rawChips, "appellation chips with no Chinese in them").toEqual([]);
+
+  /* Inside a map the Chinese stands alone — the 兰斯山（Montagne de Reims）
+     form the chips use is right where there is room and ran off the picture
+     where there is not. */
+  const labels = await page.locator(".rmap text").allTextContents();
+  expect(labels.length, "no map labels").toBeGreaterThan(30);
+  const rawLabels = labels.filter((t) => LATIN_ONLY.test(t.trim()));
+  expect(rawLabels, "map labels still in Latin script").toEqual([]);
+  for (const t of labels)
+    expect(t, `map label "${t}" carries the Latin name too — no room for it`).not.toMatch(/[（(]/);
+});
+
+test("a region card localizes into every language", async ({ page }) => {
+  /* Croatian says Toskana and Burgundija, German Toskana and Burgund — the
+     region name, the tagline and the blurb all have to move, and every card
+     needs all eight. */
+  for (const lang of ["hr", "de", "it"]) {
+    await openApp(page, { lang });
+    await page.locator('#nav button[data-sec="__regions"]').click();
+    await page.waitForSelector(".region-card");
+    const cards = await page.evaluate(() =>
+      [...document.querySelectorAll(".region-card")].map((c) => ({
+        name: c.querySelector(".region-name").textContent.trim(),
+        sub: c.querySelector(".region-sub").textContent.trim(),
+        blurb: c.querySelector(".region-blurb").textContent.trim()
+      })));
+    expect(cards.length, `${lang}: no region cards`).toBeGreaterThan(8);
+    for (const c of cards) {
+      expect(c.name.length, `${lang}: a card with no name`).toBeGreaterThan(1);
+      expect(c.sub.length, `${lang}: "${c.name}" has no tagline`).toBeGreaterThan(3);
+      expect(c.blurb.length, `${lang}: "${c.name}" has no blurb`).toBeGreaterThan(60);
+    }
+  }
+});

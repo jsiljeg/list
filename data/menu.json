@@ -184,7 +184,7 @@
    },
    "pairings": [
     "seafood",
-    "grilled_fish",
+    "white_fish",
     "light_starters"
    ],
    "styles": [
@@ -297,7 +297,7 @@
    "pairings": [
     "pasta",
     "vegetables",
-    "risotto"
+    "asparagus"
    ],
    "styles": [
     "white_fresh",
@@ -410,7 +410,7 @@
    "pairings": [
     "veal",
     "white_meat",
-    "mushrooms"
+    "stews"
    ],
    "styles": [
     "red_light",
@@ -432,7 +432,8 @@
    },
    "pairings": [
     "steak",
-    "beef"
+    "beef",
+    "mushrooms"
    ],
    "styles": [
     "red_full",
@@ -477,7 +478,7 @@
    "pairings": [
     "beef",
     "stews",
-    "game"
+    "pasticada"
    ],
    "styles": [
     "red_full",
@@ -546,7 +547,7 @@
    "pairings": [
     "white_fish",
     "grilled_fish",
-    "seafood"
+    "asparagus"
    ],
    "styles": [
     "white_mineral",
@@ -611,8 +612,7 @@
    },
    "pairings": [
     "desserts",
-    "chocolate",
-    "coffee"
+    "dark_chocolate"
    ],
    "styles": [
     "sweet"
@@ -653,7 +653,7 @@
     "zh": "巧克力汤（法芙娜 Valrhona）"
    },
    "pairings": [
-    "chocolate",
+    "dark_chocolate",
     "desserts"
    ],
    "styles": [

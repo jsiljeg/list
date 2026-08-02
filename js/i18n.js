@@ -53,6 +53,7 @@ hr: {
         style: { fresh: "Svježe i lagano", rich: "Bogato i snažno", bold: "Nešto posebno i drugačije" },
     budget: { b1: "do 60 €", b2: "60–120 €", b3: "iznad 120 €", any: "Bez ograničenja" },
     results: "Naše preporuke",
+    byBottle: "Na bocu",
     again: "Odaberi drugo jelo",
     backToWines: "← Natrag na prijedloge",
     changeBudget: "Promijeni budžet"
@@ -179,6 +180,7 @@ en: {
         style: { fresh: "Fresh & light", rich: "Rich & powerful", bold: "Something special & different" },
     budget: { b1: "under 60 €", b2: "60–120 €", b3: "over 120 €", any: "No limit" },
     results: "Our suggestions",
+    byBottle: "By the bottle",
     again: "Choose another dish",
     backToWines: "← Back to the suggestions",
     changeBudget: "Change budget"
@@ -305,6 +307,7 @@ it: {
         style: { fresh: "Fresco e leggero", rich: "Ricco e potente", bold: "Qualcosa di speciale e diverso" },
     budget: { b1: "fino a 60 €", b2: "60–120 €", b3: "oltre 120 €", any: "Senza limite" },
     results: "I nostri consigli",
+    byBottle: "In bottiglia",
     again: "Scegli un altro piatto",
     backToWines: "← Torna ai suggerimenti",
     changeBudget: "Cambia budget"
@@ -431,6 +434,7 @@ fr: {
         style: { fresh: "Frais et léger", rich: "Riche et puissant", bold: "Quelque chose de spécial" },
     budget: { b1: "moins de 60 €", b2: "60–120 €", b3: "plus de 120 €", any: "Sans limite" },
     results: "Nos suggestions",
+    byBottle: "À la bouteille",
     again: "Choisir un autre plat",
     backToWines: "← Retour aux suggestions",
     changeBudget: "Changer de budget"
@@ -557,6 +561,7 @@ de: {
         style: { fresh: "Frisch & leicht", rich: "Reich & kraftvoll", bold: "Etwas Besonderes" },
     budget: { b1: "bis 60 €", b2: "60–120 €", b3: "über 120 €", any: "Ohne Limit" },
     results: "Unsere Empfehlungen",
+    byBottle: "Ganze Flasche",
     again: "Anderes Gericht wählen",
     backToWines: "← Zurück zu den Vorschlägen",
     changeBudget: "Budget ändern"
@@ -683,6 +688,7 @@ zh: {
         style: { fresh: "清新轻盈", rich: "浓郁强劲", bold: "特别与独特" },
     budget: { b1: "60 € 以内", b2: "60–120 €", b3: "120 € 以上", any: "不限" },
     results: "我们的推荐",
+    byBottle: "整瓶",
     again: "选择其他菜肴",
     backToWines: "← 返回推荐",
     changeBudget: "更改预算"
@@ -832,6 +838,7 @@ sl: {
       "any": "Brez omejitev"
     },
     "results": "Naša priporočila",
+    "byBottle": "Na steklenico",
     "again": "Izberi drugo jed",
     "backToWines": "← Nazaj na predloge",
     "changeBudget": "Spremeni proračun"
@@ -1272,6 +1279,7 @@ es: {
       "any": "Sin límite"
     },
     "results": "Nuestras recomendaciones",
+    "byBottle": "Por botella",
     "again": "Elegir otro plato",
     "backToWines": "← Volver a las sugerencias",
     "changeBudget": "Cambiar presupuesto"
@@ -1684,7 +1692,13 @@ const REGION_I18N = {
   "Piemonte": { hr: "Pijemont", en: "Piedmont", it: "Piemonte", fr: "Piémont", de: "Piemont", sl: "Piemont", es: "Piamonte" },
   "Alto Piemonte": { hr: "Gornji Pijemont", en: "Upper Piedmont", it: "Alto Piemonte", fr: "Haut-Piémont", de: "Oberpiemont", sl: "Zgornji Piemont", es: "Alto Piamonte" },
   "Veneto": { hr: "Veneto", en: "Veneto", it: "Veneto", fr: "Vénétie", de: "Venetien", sl: "Benečija", es: "Véneto" },
-  "Kras":             { hr: "Kras", en: "Kras", it: "Carso", fr: "Carso", de: "Karst", sl: "Kras", es: "Carso" },
+  /* The karst plateau behind Trieste, and a bilingual DOC — the paperwork
+     itself says "Carso – Kras". Stored under the Slovene form because the
+     plateau runs across the border, rendered per language: English wine trade
+     says Carso for the Italian side, which is the only side we pour
+     (Vodopivec, in Sgonico). Both spellings reach it in search. */
+  "Kras":             { hr: "Kras", en: "Carso", it: "Carso", fr: "Carso", de: "Karst", sl: "Kras", es: "Carso" },
+  "Sgonico":          { hr: "Sgonico", en: "Sgonico", it: "Sgonico", fr: "Sgonico", de: "Sgonico", sl: "Zgonik", es: "Sgonico" },
   "Sveti Roko":       { hr: "Sveti Roko", en: "Saint Roko", it: "San Roko", fr: "Saint Roko", de: "Sankt Roko", sl: "Sveti Roko", es: "San Roko" },
   "Sicilia": { hr: "Sicilija", en: "Sicily", it: "Sicilia", fr: "Sicile", de: "Sizilien", sl: "Sicilija", es: "Sicilia" },
   "Lombardia": { hr: "Lombardija", en: "Lombardy", it: "Lombardia", fr: "Lombardie", de: "Lombardei", sl: "Lombardija", es: "Lombardía" },
@@ -1730,6 +1744,8 @@ const REGION_ALIAS = {
   "Friuli":          ["Furlanija", "Friulija"],
   "Friuli Isonzo":   ["Furlanija Isonzo", "Frioul Isonzo", "Friaul Isonzo", "Soča", "Isonzo"],
   "Collio":          ["Brda", "Goriško Collio", "Collio Goriziano"],
+  "Kras":            ["Carso", "Karst", "Carso Kras", "Kras Carso"],
+  "Sgonico":         ["Zgonik", "Trieste", "Trst"],
   "Castilla y León": ["Kastilja i León", "Kastilja i Leon", "Kastilija"],
   "Toscana":         ["Toskana", "Tuscany", "Toscane"],
   "Piemonte":        ["Pijemont", "Piedmont", "Piemont", "Piamonte"],

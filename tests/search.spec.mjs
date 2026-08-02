@@ -182,3 +182,77 @@ test("Croatian shows Friuli, and Furlanija still finds it", async ({ page }) => 
   expect((await find(page, "furlanija")).length, "the exonym stopped finding them")
     .toBeGreaterThanOrEqual(friuli.length);
 });
+
+test("a wine is searchable by what it goes with and what it smells of", async ({ page }) => {
+  /* Guards 2026-08-02: for a restaurant list, the food words were the odd gap —
+     twenty of twenty-two a guest might type ("janjetina", "tartufi",
+     "kamenice", "pršut", "biftek") returned nothing, though every one is
+     already translated into eight languages in i18n.js. */
+  await openApp(page);
+  for (const q of ["janjetina", "tartufi", "truffles", "kamenice", "pršut", "biftek",
+                   "gljive", "kavijar", "riba", "sir", "cheese", "oysters", "lamb"]) {
+    expect((await find(page, q)).length, `"${q}" found nothing`).toBeGreaterThan(0);
+  }
+  /* Aromas too — a guest browsing by flavour rather than by grape. */
+  for (const q of ["vanilija", "borovnica", "papar", "čokolada", "petrolej", "vanilla", "pepper"]) {
+    expect((await find(page, q)).length, `"${q}" found nothing`).toBeGreaterThan(0);
+  }
+});
+
+test("what a wine is outranks what it tastes of", async ({ page }) => {
+  /* Guards 2026-08-02: once aromas became searchable, "orange" matched both the
+     eleven orange wines and every wine with orange peel in its aromas, and the
+     weaker sense buried the stronger one. Results are blocked: wines before
+     spirits, and within each, identity before flavour. */
+  await openApp(page);
+  await page.locator("#search-toggle").click();
+  for (const q of ["orange", "rose"]) {
+    await page.fill("#search", q);
+    await page.waitForTimeout(400);
+    const tiers = await page.evaluate((query) =>
+      [...document.querySelectorAll(".item[data-ref]")].map((el) => {
+        const [si, ci, gi, ii] = el.dataset.ref.split(".").map(Number);
+        const it = DATA.sections[si].categories[ci].groups[gi].items[ii];
+        const wine = it.insight && !it.insight.kind ? 0 : 1;
+        const core = hayMatch(itemCore(it), query) ? 0 : 1;
+        return wine * 2 + core;
+      }), q);
+    expect(tiers.length, `"${q}" found nothing`).toBeGreaterThan(3);
+    /* The block index must never decrease going down the list. */
+    for (let i = 1; i < tiers.length; i++)
+      expect(tiers[i], `"${q}" ranked block ${tiers[i]} after block ${tiers[i - 1]}`)
+        .toBeGreaterThanOrEqual(tiers[i - 1]);
+    expect(tiers[0], `"${q}" does not start with a wine matched on identity`).toBe(0);
+  }
+});
+
+test("body words stay out of the haystack", async ({ page }) => {
+  /* Guards 2026-08-02: body was added with style and sweetness and had to come
+     back out. "Srednje puno" contains "puno", so a query of "puno" matched 276
+     of 308 wines; English "medium" starts with "med", so a Croatian looking for
+     honey got every wine that merely has a body. Correct, and useless. */
+  await openApp(page);
+  const all = await find(page, "");
+  expect((await find(page, "puno")).length, '"puno" matches almost everything')
+    .toBeLessThan(all.length / 3);
+  const med = await find(page, "med");
+  expect(med.length, '"med" is swallowed by "medium"').toBeLessThan(all.length / 2);
+  expect(med.length, '"med" should still find the honeyed wines').toBeGreaterThan(10);
+  /* The useful half survives through the style string. */
+  expect((await find(page, "lagano")).length, '"lagano" found nothing').toBeGreaterThan(0);
+});
+
+test("a grape found under the name the guest knows", async ({ page }) => {
+  /* Guards 2026-08-02: each of these was typed at the real app and returned
+     nothing while the wine was on the shelf under another name. */
+  await openApp(page);
+  for (const [q, expected] of [["rebula", "ribolla"], ["maraština", "rukatac"], ["grenache", "garnacha"]]) {
+    const hits = await find(page, q);
+    expect(hits.length, `"${q}" found nothing, but we pour ${expected}`).toBeGreaterThan(0);
+  }
+  /* Colour and bubbles the way they are actually said, not as the card's
+     adjective agreeing with *vino*. */
+  for (const q of ["pjenušac", "bijela", "crna vina", "magnum", "parker"]) {
+    expect((await find(page, q)).length, `"${q}" found nothing`).toBeGreaterThan(0);
+  }
+});

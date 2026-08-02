@@ -17,7 +17,8 @@
     "pairings": [
      "aperitif",
      "light_starters",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "6–8",
     "alcohol": "",
@@ -195,14 +196,12 @@
      "mediterranean_herbs"
     ],
     "pairings": [
-     "fish",
-     "shrimp_risotto",
-     "scallops",
-     "pasta_white_seafood",
-     "chicken_rice",
-     "sushi_sashimi",
-     "istrian_fuzi",
-     "turkey"
+     "white_fish",
+     "risotto",
+     "shellfish",
+     "pasta",
+     "poultry",
+     "sushi"
     ],
     "temp": "10–12",
     "alcohol": "13",
@@ -227,7 +226,8 @@
     "pairings": [
      "salads",
      "cheese_fresh",
-     "asparagus"
+     "asparagus",
+     "vegetables"
     ],
     "temp": "10–12",
     "alcohol": "13.3",
@@ -527,7 +527,8 @@
     "pairings": [
      "seafood",
      "white_fish",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "10–12",
     "alcohol": "",
@@ -966,7 +967,7 @@
     ],
     "pairings": [
      "desserts",
-     "chocolate",
+     "dark_chocolate",
      "cheese_blue"
     ],
     "temp": "14",
@@ -1135,7 +1136,8 @@
     "pairings": [
      "aperitif",
      "prosciutto",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "6–8",
     "alcohol": "12.5",
@@ -1872,7 +1874,7 @@
      "poultry",
      "white_meat",
      "cheese_hard",
-     "chocolate"
+     "dark_chocolate"
     ],
     "temp": "10–12",
     "alcohol": "12.5",
@@ -2152,10 +2154,9 @@
     ],
     "pairings": [
      "caviar",
-     "lobster",
+     "shellfish",
      "veal",
-     "pigeon",
-     "green_tomato_sorbet",
+     "game",
      "solo"
     ],
     "temp": "10–12",
@@ -2369,9 +2370,9 @@
     "pairings": [
      "solo",
      "caviar",
-     "salmon_zucchini_tart",
-     "goat_cheese_veg_tiramisu",
-     "scallops_basil_mustard"
+     "white_fish",
+     "cheese_fresh",
+     "shellfish"
     ],
     "temp": "9–12",
     "alcohol": "12",
@@ -2590,7 +2591,8 @@
     "pairings": [
      "salads",
      "light_starters",
-     "white_fish"
+     "white_fish",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "12.5",
@@ -2645,7 +2647,8 @@
     "pairings": [
      "seafood",
      "salads",
-     "cheese_fresh"
+     "cheese_fresh",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "14",
@@ -2677,7 +2680,8 @@
     "pairings": [
      "white_fish",
      "salads",
-     "cheese_fresh"
+     "cheese_fresh",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "13",
@@ -2730,7 +2734,8 @@
     "pairings": [
      "asian",
      "white_fish",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "10–12",
     "alcohol": "",
@@ -3017,7 +3022,8 @@
     "pairings": [
      "white_fish",
      "sushi",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "11",
@@ -3447,7 +3453,8 @@
     "pairings": [
      "white_fish",
      "salads",
-     "asian"
+     "asian",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "12",
@@ -3559,7 +3566,8 @@
     "pairings": [
      "salads",
      "white_fish",
-     "asian"
+     "asian",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "12.5",
@@ -3594,7 +3602,8 @@
     "pairings": [
      "white_fish",
      "veal",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "12.5",
@@ -4186,7 +4195,8 @@
     "pairings": [
      "oysters",
      "seafood",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "12.5",
@@ -4811,7 +4821,8 @@
     "pairings": [
      "cheese_fresh",
      "white_fish",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "13",
@@ -5267,7 +5278,8 @@
     "pairings": [
      "seafood",
      "poultry",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "10–12",
     "alcohol": "13",
@@ -5296,7 +5308,8 @@
     "pairings": [
      "white_fish",
      "salads",
-     "poultry"
+     "poultry",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "12",
@@ -5361,7 +5374,8 @@
     "pairings": [
      "seafood",
      "white_fish",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "10–12",
     "alcohol": "11.5",
@@ -5539,7 +5553,7 @@
    "producer": "Vodopivec",
    "insight": {
     "grape": "Vitovska",
-    "region": "Kras",
+    "region": "Sgonico, Kras, Friuli",
     "country": "IT",
     "style": "orange",
     "body": "medium",
@@ -5560,14 +5574,15 @@
    },
    "tags": [
     "drinking_now"
-   ]
+   ],
+   "terroir": "Colludrozza"
   },
   "vodopivec--solo-2018": {
    "name": "Solo 2018",
    "producer": "Vodopivec",
    "insight": {
     "grape": "Vitovska",
-    "region": "Kras",
+    "region": "Sgonico, Kras, Friuli",
     "country": "IT",
     "style": "orange",
     "body": "full",
@@ -5585,7 +5600,8 @@
     "temp": "12–14",
     "alcohol": "12.5",
     "sweetness": "dry"
-   }
+   },
+   "terroir": "Colludrozza"
   },
   "dario-princic--jakot-2019": {
    "name": "Jakot 2019",
@@ -5814,7 +5830,8 @@
     "pairings": [
      "seafood",
      "salads",
-     "prosciutto"
+     "prosciutto",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "12.5",
@@ -5839,7 +5856,8 @@
     "pairings": [
      "seafood",
      "light_starters",
-     "salads"
+     "salads",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "12",
@@ -6357,7 +6375,7 @@
      "game",
      "beef",
      "cheese_hard",
-     "boeuf_bourguignon",
+     "stews",
      "pasticada"
     ],
     "temp": "16–18",
@@ -6398,7 +6416,7 @@
      "game",
      "beef",
      "cheese_hard",
-     "boeuf_bourguignon",
+     "stews",
      "pasticada"
     ],
     "temp": "16–18",
@@ -7708,8 +7726,6 @@
      "beef",
      "game",
      "cheese_hard",
-     "game_birds",
-     "red_meat",
      "bbq",
      "pizza",
      "pasta"
@@ -7806,7 +7822,6 @@
      "game",
      "beef",
      "truffles",
-     "dark_meat",
      "bbq",
      "cheese_hard",
      "pizza",
@@ -8799,7 +8814,7 @@
     ],
     "pairings": [
      "game",
-     "dark_meat",
+     "beef",
      "truffles",
      "solo"
     ],
@@ -10177,7 +10192,7 @@
     ],
     "pairings": [
      "desserts",
-     "chocolate",
+     "dark_chocolate",
      "cheese_blue"
     ],
     "temp": "14",
@@ -10383,7 +10398,7 @@
      "spice"
     ],
     "pairings": [
-     "chocolate",
+     "dark_chocolate",
      "desserts",
      "cheese_blue"
     ],
@@ -10426,9 +10441,8 @@
      "dried_cherry"
     ],
     "pairings": [
-     "black_forest_cake",
-     "dark_chocolate",
-     "gingerbread"
+     "desserts",
+     "dark_chocolate"
     ],
     "temp": "14–16",
     "alcohol": "14",
@@ -11587,7 +11601,7 @@
      "rocks"
     ],
     "pairings": [
-     "sushi_sashimi",
+     "sushi",
      "cheese_hard"
     ]
    },
@@ -11683,7 +11697,7 @@
      "drop_of_water"
     ],
     "pairings": [
-     "sushi_sashimi",
+     "sushi",
      "white_fish",
      "cheese_hard"
     ]
@@ -12709,7 +12723,7 @@
      "rocks"
     ],
     "pairings": [
-     "sushi_sashimi",
+     "sushi",
      "japanese",
      "white_fish"
     ]
@@ -12995,9 +13009,8 @@
      "after_dinner"
     ],
     "pairings": [
-     "black_forest_cake",
-     "dark_chocolate",
-     "desserts"
+     "desserts",
+     "dark_chocolate"
     ]
    },
    "note": {

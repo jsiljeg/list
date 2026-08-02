@@ -137,6 +137,48 @@ for (const r of hidden) {
     errors.push(`${at}: more than one producer makes a wine by that name — add "producer" so it hides the right one`);
 }
 
+/* data/menu.json — the kitchen's dishes, and the only other file that speaks
+   the pairing vocabulary. It was never checked, and it showed: the Tiramisu
+   asked for a pairing called `coffee`, which is in no dictionary and on no
+   wine, so it silently scored zero and nobody could see that it had. A dish
+   key that no wine carries is the same kind of quiet failure as an unresolved
+   ref — the helper still answers, just worse, and never says why. */
+let menu = { dishes: [] };
+try {
+  menu = JSON.parse(fs.readFileSync("data/menu.json", "utf8"));
+} catch (e) {
+  if (e.code !== "ENOENT") {
+    console.error("data/menu.json is not valid JSON:\n" + e.message);
+    process.exit(1);
+  }
+}
+const winePairings = new Set();
+const wineStyles = new Set();
+for (const { it } of all) {
+  const ins = it.insight || {};
+  for (const p of ins.pairings || []) winePairings.add(p);
+  if (ins.style) wineStyles.add(ins.style);
+}
+const thin = [];
+for (const dish of menu.dishes || []) {
+  const at = `menu.json: "${(dish.name && dish.name.en) || "?"}"`;
+  if (!dish.name || !dish.name.en) { errors.push(`${at}: every dish needs a name in all languages`); continue; }
+  for (const l of langs) if (!dish.name[l]) errors.push(`${at}: missing the ${l} name`);
+  if (!(menu.courses || []).includes(dish.course)) errors.push(`${at}: course "${dish.course}" is not in menu.courses`);
+  for (const p of dish.pairings || []) {
+    if (!I18N.hr.pairings[p]) errors.push(`${at}: pairing "${p}" is in no language — add it to js/i18n.js or use an existing key`);
+    else if (!winePairings.has(p)) errors.push(`${at}: pairing "${p}" is on no wine we pour, so it can never score — tag some wines or drop it`);
+    else {
+      const n = all.filter((x) => ((x.it.insight || {}).pairings || []).includes(p)).length;
+      if (n < 5) thin.push(`${p} (${n} wine${n === 1 ? "" : "s"})`);
+    }
+  }
+  for (const s of dish.styles || []) {
+    if (!I18N.hr.styles[s]) errors.push(`${at}: style "${s}" is not a wine style`);
+    else if (!wineStyles.has(s)) errors.push(`${at}: style "${s}" is on no wine we pour`);
+  }
+}
+
 if (errors.length) {
   console.error("Validation failed:\n" + [...new Set(errors)].join("\n"));
   process.exit(1);
@@ -151,3 +193,9 @@ console.log(hidden.length
    drops a listing and strands its wine reads as the one mistake it is. */
 if (orphans.length)
   console.log(`note — ${orphans.length} library wine(s) this list doesn't pour: ${orphans.slice(0, 5).join(", ")}${orphans.length > 5 ? ", …" : ""}`);
+console.log(`menu OK — ${(menu.dishes || []).length} dishes, every pairing and style reachable`);
+/* Also not an error, but worth saying out loud: a dish asking for a pairing
+   almost no wine carries falls back to matching on style alone, and the
+   suggestions get vaguer without anything looking broken. */
+if (thin.length)
+  console.log(`note — thin pairings the menu leans on: ${[...new Set(thin)].sort().join(", ")}`);

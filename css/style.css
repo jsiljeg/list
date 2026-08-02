@@ -624,6 +624,15 @@ body {
   font-family: var(--serif); font-style: italic; color: var(--gold);
   font-size: 1.15rem; margin-bottom: 1rem;
 }
+/* "Vina na čašu" / "Na bocu" over the two halves of a suggestion. Quieter than
+   .helper-course, which titles the dish picker — here it separates two answers
+   to one question rather than naming a section. */
+.helper-group {
+  font-family: var(--sans); color: var(--text-faint);
+  font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+  margin: 1.1rem 0 .5rem;
+}
+.helper-group:first-of-type { margin-top: .2rem; }
 .helper .item { border-radius: 12px; background: var(--bg-card); margin-bottom: .6rem; border: 1px solid var(--line); }
 .helper .item + .item { border-top: 1px solid var(--line); }
 

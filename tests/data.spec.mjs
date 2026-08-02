@@ -18,6 +18,7 @@ import { joinList as joinRaw } from "../scripts/lib/list.mjs";
 const HERE = dirname(fileURLToPath(import.meta.url));
 
 const ROOT = resolve(HERE, "..");
+const menu = JSON.parse(readFileSync(resolve(HERE, "../data/menu.json"), "utf8"));
 const items = allItems();
 const i18n = readFileSync(resolve(ROOT, "js/i18n.js"), "utf8");
 
@@ -498,4 +499,44 @@ test("no nail ornament converges on a single point", () => {
     for (const [pt, n] of seen) if (n > 2) bad.push(`${name}: ${n} strokes meet at ${pt}`);
   }
   expect(bad, "an ornament radiates from a point").toEqual([]);
+});
+
+test("the pairing vocabulary is shared, not one wine's private list", () => {
+  /* Added 2026-08-02: three bottles carried pairings pasted verbatim from their
+     producer's own notes — `salmon_zucchini_tart`, `goat_cheese_veg_tiramisu`,
+     `scallops_basil_mustard`, `istrian_fuzi`, `green_tomato_sorbet` and a dozen
+     more, each on exactly one wine. On the card they read as a shopping list;
+     in the sommelier they matched nothing, because no dish speaks a vocabulary
+     invented for one bottle. A pairing has to be a food, not a recipe. */
+  const count = new Map();
+  for (const it of items)
+    for (const p of (it.insight || {}).pairings || []) count.set(p, (count.get(p) || 0) + 1);
+  const singletons = [...count].filter(([, n]) => n === 1).map(([p]) => p);
+  /* Two exemptions, both foods rather than recipes. `pasticada` is on the
+     kitchen's menu, which is the whole point of a specific key. `smoked_fish`
+     is on one peated Islay because peat and smoked salmon is the pairing —
+     rare here only because we pour one Islay. */
+  const menuKeys = new Set(menu.dishes.flatMap((d) => d.pairings || []));
+  const allowed = new Set([...menuKeys, "smoked_fish"]);
+  const orphaned = singletons.filter((p) => !allowed.has(p));
+  expect(orphaned, "pairings on exactly one wine and no dish").toEqual([]);
+
+  /* And no two keys for one food. */
+  for (const [a, b] of [["chocolate", "dark_chocolate"], ["sushi_sashimi", "sushi"],
+                        ["fish", "white_fish"], ["red_meat", "beef"], ["game_birds", "game"]])
+    expect(count.has(a), `"${a}" is a second name for "${b}"`).toBe(false);
+});
+
+test("every dish pairing and style can actually be poured", () => {
+  /* The Tiramisu asked for `coffee`, which was in no dictionary and on no
+     wine, so it scored zero silently. validate.mjs now fails the deploy on
+     that; this says the same thing where a developer will read it. */
+  const winePairings = new Set(items.flatMap((i) => (i.insight || {}).pairings || []));
+  const wineStyles = new Set(items.map((i) => (i.insight || {}).style).filter(Boolean));
+  const bad = [];
+  for (const d of menu.dishes) {
+    for (const p of d.pairings || []) if (!winePairings.has(p)) bad.push(`${d.name.en}: pairing ${p}`);
+    for (const s of d.styles || []) if (!wineStyles.has(s)) bad.push(`${d.name.en}: style ${s}`);
+  }
+  expect(bad, "menu asking for something no wine carries").toEqual([]);
 });

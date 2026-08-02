@@ -586,7 +586,21 @@ const SEARCH_ALIAS = {
   "tribidrag": "zinfandel primitivo pribidrag crljenak crljenak kaštelanski " +
     "crljenak kastelanski kaštelanski crljenak kastelanski crljenak " +
     "kratošija kratosija 特里比德拉格 仙粉黛",
-  "graševina": "grasevina 格拉舍维纳"
+  "graševina": "grasevina 格拉舍维纳",
+  /* Grapes a guest names by a synonym we don't store. Each was found by typing
+     what a guest would type and getting nothing back (2026-08-02):
+     - Garnacha is on one label (López de Heredia's Bosconia); the rest of the
+       world says Grenache.
+     - Ribolla Gialla is Rebula to every Slovenian and most Croatians — the same
+       grape on the other side of one border, the same case as Friulano/Jakot.
+     - Rukatac is Maraština on half of Dalmatia's labels. Both stay out of the
+       Malvasia bucket on purpose (see the one-grape-one-name rule): the variety
+       *is* Malvasia Bianca Lunga, but folding it in would make a search for
+       "malvasia" mix it with Malvazija istarska, which is what that rule exists
+       to prevent. */
+  "garnacha": "grenache",
+  "ribolla": "rebula ribolla gialla",
+  "rukatac": "maraština marastina"
 };
 
 /* Words for a *style* rather than a grape or a place. The style strings
@@ -597,19 +611,53 @@ const SEARCH_ALIAS = {
    The stems matter as much as the words — hayMatch anchors at a word start, so
    "maceration" answers "macerat" and "macerirano" answers "macerir", but
    neither answers the other. Both spellings of the Croatian go in, because the
-   search folds accents only when the query carries none. */
+   search folds accents only when the query carries none.
+
+   The colour words are here for the same reason. The style strings are
+   adjectives agreeing with *vino* — "Bijelo · svježe", "Crno · puno" — so
+   "bijelo" found 116 wines and "bijela", the form in the section title the
+   guest is looking at, found one. Whatever the app puts on screen has to be
+   typeable. */
+const BUBBLES = "pjenušac pjenušci pjenusac pjenusci pjenušavo vino sparkling wine spumante";
+const CHAMPAGNE = "šampanjac sampanjac " + BUBBLES;
+const WHITE = "bijela vina bijelo vino white wine vino bianco vin blanc weisswein";
+const RED = "crna vina crno vino red wine vino rosso vin rouge rotwein";
 const STYLE_ALIAS = {
   "orange": "orange wine amber wine ambrato macerirano macerirana maceracija " +
     "narančasto vino narancasto vino maceration macerated skin contact " +
     "macerato vino arancione vin orange macération oranje orangewein maischevergoren " +
-    "oranžno vino oranzno vino vino naranja ámbar 橙酒 橘酒",
+    "oranžno vino oranzno vino vino naranja ámbar 橙酒 橘酒 " + WHITE,
   "sweet": "dessert wine desertno vino slatko vino süßwein susswein vin doux " +
     "vino dolce vino dulce sladko vino 甜酒",
-  "champagne": "šampanjac sampanjac",
-  "champagne_bdb": "šampanjac sampanjac blanc de blancs",
-  "champagne_bdn": "šampanjac sampanjac blanc de noirs",
-  "champagne_rose": "šampanjac sampanjac",
-  "champagne_prestige": "šampanjac sampanjac prestige cuvée prestige cuvee"
+  "sparkling": BUBBLES,
+  "sparkling_rose": BUBBLES + " rosé vina roze",
+  "champagne": CHAMPAGNE,
+  "champagne_bdb": CHAMPAGNE + " blanc de blancs",
+  "champagne_bdn": CHAMPAGNE + " blanc de noirs",
+  "champagne_rose": CHAMPAGNE + " rosé vina roze",
+  "champagne_prestige": CHAMPAGNE + " prestige cuvée prestige cuvee",
+  "rose": "rosé vina roze rosato rosado",
+  "white_fresh": WHITE,
+  "white_aromatic": WHITE,
+  "white_mineral": WHITE,
+  "white_rich": WHITE,
+  "red_light": RED,
+  "red_medium": RED,
+  "red_full": RED,
+  "red_mature": RED
+};
+
+/* Food words whose stored phrasing doesn't contain the word a guest types.
+   `hayMatch` anchors at a word start, so "jela s tartufima" answers "tartufi"
+   by luck of Croatian morphology while "truffle dishes" does not answer
+   "truffles" — the plural is not a prefix of the singular. Keyed by pairing
+   key; add a line whenever a guest types something reasonable and gets zero. */
+const PAIRING_ALIAS = {
+  "truffles": "truffles tartufi tartuf tartufo trüffel truffe",
+  /* Biftek is what a Croatian says, and what this kitchen writes on two of its
+     own dishes — "Tartar od bifteka", "Rižoto od bifteka". */
+  "beef": "biftek",
+  "steak": "biftek biftec"
 };
 
 /* Synonyms that must NOT go into the haystack, because they contain another
@@ -691,21 +739,78 @@ function itemHay(item) {
      "macerirano" and "narančasto" all returned nothing, while "macerat" found
      thirteen spirits and not one of the twelve orange wines — the spirit
      vocabulary above was in the haystack and the wine vocabulary was not.
-     Style, body and sweetness go in, in every language, so a guest can search
-     the shelf the way they'd ask for it: pjenušavo, trocken, dolce, orange. */
+     Style and sweetness go in, in every language, so a guest can search the
+     shelf the way they'd ask for it: pjenušavo, trocken, dolce, orange.
+
+     **Body deliberately does not.** It was in here for a day and earned its
+     way out by measurement: the word cannot discriminate, because "srednje
+     puno" contains "puno", so a query of "puno" returned 276 of 308 wines —
+     and English "medium" begins with "med", so a Croatian guest searching for
+     honey got 130 wines that merely have a body. Every one of those matches
+     was correct and useless. "Lagano" still finds the light reds through the
+     style string, which is where the useful half of it lived anyway. */
   if (ins.kind !== "spirit") {
     for (const l of LANGS) {
       const d = I18N[l.code];
       if (!d) continue;
-      for (const [dict, key] of [["styles", ins.style], ["bodies", ins.body], ["sweetness", ins.sweetness]])
+      for (const [dict, key] of [["styles", ins.style], ["sweetness", ins.sweetness]])
         if (key && d[dict] && d[dict][key]) parts.push(d[dict][key]);
     }
     if (STYLE_ALIAS[ins.style]) parts.push(STYLE_ALIAS[ins.style]);
   }
-  const joined = parts.filter(Boolean).join(" ").toLowerCase();
-  let hay = joined + " " + fold(joined);
-  for (const k in SEARCH_ALIAS) if (hay.indexOf(k) !== -1) hay += " " + SEARCH_ALIAS[k];
-  return (item._hay = hay);
+  /* Badges and critics: both are printed on the card, so both are typeable.
+     Four tag keys and fifteen critic names — cheap, and "rijetka boca" or
+     "parker" is a real way to ask. `criticName()` resolves the merchant's
+     spelling first, so a rating stored as "RP" is still found as Parker. */
+  for (const l of LANGS) {
+    const d = I18N[l.code];
+    for (const tg of item.tags || []) if (d && d.tags && d.tags[tg]) parts.push(d.tags[tg]);
+  }
+  for (const r of item.ratings || []) parts.push(criticName(r.critic), r.score);
+  /* A large format has no separate name, only "– 1,5 l" appended. Magnum is
+     what a guest calls it. */
+  if (/1,5\s*l/.test(item.name || "")) parts.push("magnum");
+
+  /* ---- the second haystack: what it tastes like and what it goes with ----
+     Aromas and pairings were searchable nowhere, which for a *restaurant* list
+     is the odd gap: twenty of twenty-two food words a guest might type —
+     "janjetina", "tartufi", "kamenice", "pršut" — returned nothing, though
+     every one of them is already translated into eight languages two files
+     away. They go in a separate string rather than the main one because they
+     are a weaker kind of match: a wine *named* Orange and a wine that merely
+     smells of orange should not rank together, and `renderContent()` uses
+     `itemCore()` to keep the first above the second. */
+  const flavour = [];
+  const sd = typeof SPIRIT_I18N !== "undefined" ? SPIRIT_I18N : null;
+  for (const l of LANGS) {
+    const d = I18N[l.code];
+    if (!d) continue;
+    /* SPIRIT_I18N.aromas is read before I18N.aromas, the same precedence
+       `spiritTerm()` applies on the card, so peat and koji are searchable. */
+    const sa = sd && sd[l.code] && sd[l.code].aromas;
+    for (const k of ins.aromas || []) {
+      if (sa && sa[k]) flavour.push(sa[k]);
+      else if (d.aromas && d.aromas[k]) flavour.push(d.aromas[k]);
+    }
+    for (const k of ins.pairings || []) if (d.pairings && d.pairings[k]) flavour.push(d.pairings[k]);
+  }
+  for (const k of ins.pairings || []) if (PAIRING_ALIAS[k]) flavour.push(PAIRING_ALIAS[k]);
+
+  const finish = (arr) => {
+    const joined = arr.filter(Boolean).join(" ").toLowerCase();
+    return joined + " " + fold(joined);
+  };
+  let core = finish(parts);
+  /* SEARCH_ALIAS is about grapes and places, so it widens the core only. */
+  for (const k in SEARCH_ALIAS) if (core.indexOf(k) !== -1) core += " " + SEARCH_ALIAS[k];
+  item._core = core;
+  return (item._hay = core + " " + finish(flavour));
+}
+
+/** What the wine *is* — everything but the aromas and pairings. */
+function itemCore(item) {
+  itemHay(item);
+  return item._core;
 }
 
 /* Wine sections keep the grape; anything distilled gets the still; water and
@@ -731,15 +836,25 @@ function renderContent() {
   let html = "";
 
   if (q) {
-    /* Global search across all sections. Results come out in two blocks —
-       wines first, then everything distilled, poured or brewed — because the
-       list is a wine list: a guest typing "orange" or "macerat" means the
-       shelf, and the gins and vermouths that macerate botanicals are the
-       footnote, not the answer. Within each block the order is the list's own,
-       so a wine still turns up under the section it is poured from. */
+    /* Global search across all sections, ordered in four blocks:
+
+         wines matched on what they are      (name, grape, region, style…)
+         wines matched on how they taste     (aroma, food pairing)
+         everything else matched on what it is
+         everything else matched on taste
+
+       Two rules, stacked. **Wines first**, because the list is a wine list: a
+       guest typing "orange" or "macerat" means the shelf, and the gins and
+       vermouths that macerate botanicals are the footnote. **Identity before
+       flavour**, because once aromas and pairings became searchable, a query
+       like "orange" or "rose" matched two quite different things — the eleven
+       orange wines and every wine with orange peel in its aromas — and the
+       weaker sense was burying the stronger one. Within each block the order
+       is the list's own, so a wine still turns up under the section it is
+       poured from. */
     let found = 0;
     searchRefs = [];
-    const wines = [], rest = [];
+    const blocks = [[], [], [], []];
     DATA.sections.forEach((sec, si) => {
       sec.categories.forEach((cat, ci) => {
         cat.groups.forEach((g, gi) => {
@@ -752,14 +867,16 @@ function renderContent() {
               /* A wine is an item with insight and no `kind` — the same single
                  switch openDetail() reads. Water and the soft drinks have no
                  insight at all and belong in the second block with the spirits. */
-              const isWine = !!(item.insight && !item.insight.kind);
-              (isWine ? wines : rest).push({ item, ref, ctx });
+              const isWine = item.insight && !item.insight.kind ? 0 : 1;
+              const core = itemCore(item);
+              const isCore = hayMatch(core, q) || (qf && hayMatch(core, qf)) ? 0 : 1;
+              blocks[isWine * 2 + isCore].push({ item, ref, ctx });
             }
           });
         });
       });
     });
-    for (const r of wines.concat(rest)) {
+    for (const r of [].concat(...blocks)) {
       if (found === 0) html += `<div class="cat">`;
       found++;
       searchRefs.push(r.ref);
@@ -768,8 +885,15 @@ function renderContent() {
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (currentSection === "__regions" && !picksOnly && !ratedOnly && !prideOnly) {
     html = REGIONS.map((rg) => {
-      const map = (typeof REGION_MAPS !== "undefined" && REGION_MAPS[rg.id]) || "";
-      const apps = (rg.appellations || []).map((a) => `<span class="region-app">${esc(a)}</span>`).join("");
+      const map = localizeMap((typeof REGION_MAPS !== "undefined" && REGION_MAPS[rg.id]) || "");
+      /* The appellation chips go through the same localiser as the region line
+         on a wine card (owner, 2026-08-02: the Chinese view still read "Barolo,
+         Barbaresco, La Morra, Alba, Langhe"). In the Latin-script languages
+         almost all of them pass straight through, which is correct — an
+         appellation is shown as the label spells it — and only the names with
+         an established exonym move. Chinese is where it shows, because there
+         every one of them has one. */
+      const apps = (rg.appellations || []).map((a) => `<span class="region-app">${esc(localizeRegion(a))}</span>`).join("");
       return `<section class="region-card">
         <div class="region-map">${map}</div>
         <div class="region-text">
@@ -1403,6 +1527,40 @@ function localizeGrape(str) {
   if (LANG_GRAPE[lang]) return langTokens(str, LANG_GRAPE[lang]);
   return str;
 }
+/* The place names drawn *inside* a region map, translated the same way as the
+   chips beside it and the region line on a wine card. The maps are hand-drawn
+   SVG with the labels written into them, so the text is rewritten on the way
+   out rather than assembled from data — the alternative was a coordinate table
+   per language, which is a lot of machinery for six pictures.
+
+   Only the three label classes are touched, never a path or a viewBox. A label
+   may carry two names joined by " · " ("Dingač · Postup"), which are split and
+   localized apart. Rivers and seas come from MAP_FEATURES: they are places on
+   a map but not places wine comes from, so they have no business in
+   ZH_REGION.
+
+   Chinese gets the Chinese name **alone**, not the 兰斯山（Montagne de Reims）
+   form the cards and the chips use. That form is right where it has room — it
+   lets a guest tie the name back to the label — but a map label is placed at a
+   hand-picked x/y, and tripling its width made "阿维兹（Avize）" run through
+   "Côte des Blancs" and pushed Le Mesnil clean off the picture. The chips
+   beside the map carry both forms, so nothing is lost by the map being a map. */
+function localizeMap(svg) {
+  if (!svg) return svg;
+  const zh = lang === "zh" && typeof ZH_REGION !== "undefined";
+  return svg.replace(/(class="t-(?:town|dot|zone)"[^>]*>)([^<]+)(<)/g, (m, open, text, close) => {
+    const out = text.split("·").map((part) => {
+      const tok = part.trim();
+      if (!tok) return tok;
+      const feat = typeof MAP_FEATURES !== "undefined" && MAP_FEATURES[tok];
+      if (feat && feat[lang]) return feat[lang];
+      if (zh) return ZH_REGION[tok] || tok;
+      return localizeRegion(tok);
+    }).join(" · ");
+    return open + esc(out) + close;
+  });
+}
+
 function localizeRegion(str) {
   if (!str) return str;
   if (lang === "zh" && typeof ZH_REGION !== "undefined") return zhTokens(str, ZH_REGION);
@@ -1566,34 +1724,63 @@ function renderHelperStep() {
   );
 }
 
+/* How well a wine suits the chosen dish. Three points per pairing the two have
+   in common, three for the style, one for being one of Filho's own. */
+function dishScore(dish, item) {
+  const ins = item.insight;
+  if (!ins) return 0;
+  let score = (ins.pairings || []).filter((p) => (dish.pairings || []).includes(p)).length * 3;
+  if ((dish.styles || []).includes(ins.style)) score += 3;
+  if (item.recommended) score += 1;
+  return score;
+}
+
 function renderHelperResults(budgetKey) {
   const t = T();
   helperState.budgetKey = budgetKey;
   const dish = helperState.dish || { pairings: [], styles: [] };
   const [lo, hi] = HELPER_BUDGET[budgetKey] || [0, Infinity];
-  const scored = [];
+  const scored = [], glasses = [];
   DATA.sections.forEach((sec, si) => {
-    if (!sec.id.startsWith("bottle-")) return;
+    const byGlass = sec.id === "glass";
+    if (!byGlass && !sec.id.startsWith("bottle-")) return;
     sec.categories.forEach((cat, ci) => {
       cat.groups.forEach((g, gi) => {
         g.items.forEach((item, ii) => {
-          const ins = item.insight;
-          if (!ins || item.price == null || item.price < lo || item.price > hi) return;
-          let score = 0;
-          score += (ins.pairings || []).filter((p) => (dish.pairings || []).includes(p)).length * 3;
-          if ((dish.styles || []).includes(ins.style)) score += 3;
-          if (item.recommended) score += 1;
+          if (!item.insight) return;
+          /* The budget bands are bottle prices, so they say nothing about a
+             glass — a guest on a €60 bottle budget is not on a €60 glass. The
+             by-the-glass pours are scored on the dish alone. */
+          if (!byGlass && (item.price == null || item.price < lo || item.price > hi)) return;
+          const score = dishScore(dish, item);
           if (score <= 0) return;
-          scored.push({ score: score + Math.random() * 0.4, ref: [si, ci, gi, ii].join("."), item, sec, country: g.country });
+          const row = { score: score + Math.random() * 0.4, ref: [si, ci, gi, ii].join("."), item, sec, country: g.country };
+          (byGlass ? glasses : scored).push(row);
         });
       });
     });
   });
   scored.sort((a, b) => b.score - a.score);
-  const top = scored.slice(0, 3);
+  glasses.sort((a, b) => b.score - a.score);
+  /* Half the by-the-glass pours are also sold as bottles, and the best match
+     for a dish is often the same wine on both shelves — which spent one of
+     only three bottle slots repeating a suggestion already on screen. The
+     glass entry stays (it is the smaller ask) and the bottle list moves on. */
+  const onGlass = new Set(glasses.slice(0, 2).map((r) => `${r.item.producer}|${r.item.name}`));
+  const bottles = scored.filter((r) => !onGlass.has(`${r.item.producer}|${r.item.name}`));
+  /* Two glasses and three bottles. The helper answered only in whole bottles
+     until 2026-08-02, which made it useless to the guest most likely to ask —
+     one person, one dish, one glass — and quietly wasted the shelf the owner
+     curates hardest (28% of the by-the-glass pours are Filho's picks, against
+     9% of the bottles). The glass block comes first because it is the smaller
+     commitment; the bottles are still the main answer. */
+  const top = glasses.slice(0, 2).concat(scored.slice(0, 3));
   const forDish = helperState.dish ? `<div class="helper-fordish">${esc(dishName(helperState.dish))}</div>` : "";
+  const block = (rows, label) => rows.length
+    ? `<div class="helper-group">${esc(label)}</div>` + rows.map((r) => itemHtml(r.item, r.ref, "", true)).join("")
+    : "";
   const list = top.length
-    ? top.map((r) => itemHtml(r.item, r.ref, t.sections[r.sec.id], true)).join("")
+    ? block(glasses.slice(0, 2), t.sections.glass) + block(scored.slice(0, 3), t.helper.byBottle)
     : `<p class="no-results">${t.ui.noResults}</p>`;
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
   const scope = top.map((r) => r.ref);

@@ -250,3 +250,59 @@ test("the active chip always matches the section on screen", async ({ page, hasT
     expect(chip, "the highlighted chip is not the section being shown").toBe(section);
   }
 });
+
+test("the sommelier suggests a glass as well as a bottle", async ({ page }) => {
+  /* Guards 2026-08-02 (owner's question): the helper searched `bottle-*` only,
+     so it could answer nothing but a whole bottle — useless to the guest most
+     likely to ask, and it ignored the shelf the owner curates hardest (28% of
+     the by-the-glass pours are Filho's picks against 9% of the bottles). */
+  const bag = await openApp(page);
+  await page.locator("#helper-open").click();
+  await page.locator(".helper-opt").first().waitFor();
+  await page.locator(".helper-opt[data-dish]").nth(3).click();   // a main, not a salad
+  await page.locator(".helper-opt[data-k='b2']").click();
+  await page.waitForTimeout(400);
+
+  const groups = await page.locator(".helper-group").allTextContents();
+  expect(groups.length, "no by-the-glass / by-the-bottle split").toBe(2);
+
+  const sections = await page.evaluate(() =>
+    [...document.querySelectorAll(".helper .item[data-ref]")].map((el) =>
+      DATA.sections[Number(el.dataset.ref.split(".")[0])].id));
+  expect(sections.filter((s) => s === "glass").length, "no glass pour suggested").toBeGreaterThan(0);
+  expect(sections.filter((s) => s.startsWith("bottle-")).length, "no bottle suggested").toBeGreaterThan(0);
+  /* The glass block comes first, and every glass entry precedes every bottle. */
+  expect(sections.lastIndexOf("glass")).toBeLessThan(sections.findIndex((s) => s.startsWith("bottle-")));
+
+  /* And a wine offered by the glass does not spend one of the three bottle
+     slots repeating itself. */
+  const names = await page.evaluate(() =>
+    [...document.querySelectorAll(".helper .item[data-ref]")].map((el) => {
+      const [si, ci, gi, ii] = el.dataset.ref.split(".").map(Number);
+      const it = DATA.sections[si].categories[ci].groups[gi].items[ii];
+      return `${it.producer}|${it.name}`;
+    }));
+  expect(new Set(names).size, "the same wine suggested twice").toBe(names.length);
+  expectClean(bag);
+});
+
+test("every dish gets an answer at every budget", async ({ page }) => {
+  /* A dish that returns "no results" reads as a broken app, not as a thin
+     shelf. `coffee` on the Tiramisu — a pairing key on no wine and in no
+     dictionary — was how that nearly happened. */
+  const bag = await openApp(page);
+  const dishes = await page.evaluate(() => MENU.dishes.length);
+  expect(dishes).toBeGreaterThan(20);
+  const empties = await page.evaluate(() => {
+    const out = [];
+    for (const d of MENU.dishes) {
+      let n = 0;
+      const walk = (o) => { if (o && typeof o === "object") { if (o.insight) { if (dishScore(d, o) > 0) n++; } for (const k in o) walk(o[k]); } };
+      walk(DATA);
+      if (n < 3) out.push(`${d.name.en} (${n})`);
+    }
+    return out;
+  });
+  expect(empties, "dishes with fewer than three possible wines").toEqual([]);
+  expectClean(bag);
+});
