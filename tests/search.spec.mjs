@@ -256,3 +256,41 @@ test("a grape found under the name the guest knows", async ({ page }) => {
     expect((await find(page, q)).length, `"${q}" found nothing`).toBeGreaterThan(0);
   }
 });
+
+test("the flavour half of the results is labelled", async ({ page }) => {
+  /* Guards 2026-08-02 (owner: "do we really want to search aromas?"). The
+     results were never wrong, but a guest who typed "orange" and got 45 rows
+     had no way to know the first twelve were the answer and the rest merely
+     smell of it. The heading is the whole fix — and it appears only when both
+     halves have content, so the common single-sense query stays clean. */
+  await openApp(page);
+  await page.locator("#search-toggle").click();
+
+  await page.fill("#search", "orange");
+  await page.waitForTimeout(400);
+  expect(await page.locator(".search-group").count(), '"orange" needs its divider').toBe(1);
+  const label = await page.locator(".search-group").innerText();
+  expect(label.length, "the divider has no text").toBeGreaterThan(3);
+  /* Everything above the divider is an identity match, everything below is not. */
+  const split = await page.evaluate(() => {
+    const rows = [...document.querySelectorAll(".cat > *")];
+    const at = rows.findIndex((el) => el.classList.contains("search-group"));
+    const core = (el) => {
+      const [si, ci, gi, ii] = el.dataset.ref.split(".").map(Number);
+      return hayMatch(itemCore(DATA.sections[si].categories[ci].groups[gi].items[ii]), "orange");
+    };
+    return {
+      above: rows.slice(0, at).filter((e) => e.dataset.ref).every(core),
+      below: rows.slice(at + 1).filter((e) => e.dataset.ref).every((e) => !core(e))
+    };
+  });
+  expect(split.above, "a flavour-only match above the divider").toBe(true);
+  expect(split.below, "an identity match below the divider").toBe(true);
+
+  /* A query with only one sense gets no heading at all. */
+  for (const q of ["barolo", "tartufi", "selosse"]) {
+    await page.fill("#search", q);
+    await page.waitForTimeout(300);
+    expect(await page.locator(".search-group").count(), `"${q}" should need no divider`).toBe(0);
+  }
+});

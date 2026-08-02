@@ -22,6 +22,7 @@ hr: {
     back: "Natrag",
     search: "Pretraži vina…",
     noResults: "Nema rezultata",
+    byFlavour: "Po aromi i sljubljivanju",
     priceNote: "Cijene ovog dijela ponude zatražite od osoblja.",
     grape: "Sorta", region: "Regija", country: "Zemlja", style: "Stil",
     body: "Tijelo", aromas: "Arome i okusi", pairings: "Uz jela",
@@ -29,6 +30,7 @@ hr: {
     alcohol: "Alkohol",
     legal: "Cijene su izražene u eurima, PDV i porezi uračunati su u cijenu. Zabranjeno je usluživanje alkoholnih pića maloljetnim osobama. Za informacije o alergenima obratite se našem osoblju.",
     company: "Restoran Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    copyright: "© 2026 Apelacija d.o.o. · Sva prava pridržana. Sadržaj i dizajn ove vinske karte ne smiju se umnožavati ni preuzimati.",
     prevWine: "Prethodno vino", nextWine: "Sljedeće vino",
     recommended: "Filho preporučuje",
     storyNav: "Priča",
@@ -49,14 +51,14 @@ hr: {
     pickDish: "Odaberite jelo iz našeg menija",
     courses: { starters: "Predjela", soups: "Juhe", mains: "Glavna jela", desserts: "Deserti" },
     qStyle: "Kakav stil volite?",
-    qBudget: "Budžet za bocu?",
+    qBudget: "Čašu ili bocu?",
         style: { fresh: "Svježe i lagano", rich: "Bogato i snažno", bold: "Nešto posebno i drugačije" },
-    budget: { b1: "do 60 €", b2: "60–120 €", b3: "iznad 120 €", any: "Bez ograničenja" },
+    budget: { glass: "Na čašu", b1: "Boca do 60 €", b2: "Boca 60–120 €", b3: "Boca iznad 120 €", any: "Ikone (500 €+)" },
     results: "Naše preporuke",
     byBottle: "Na bocu",
     again: "Odaberi drugo jelo",
     backToWines: "← Natrag na prijedloge",
-    changeBudget: "Promijeni budžet"
+    changeBudget: "Promijeni izbor"
   },
   story: {
     title: "Theatrium vinski program — Filhov način",
@@ -149,6 +151,7 @@ en: {
     back: "Back",
     search: "Search wines…",
     noResults: "No results",
+    byFlavour: "By aroma and pairing",
     priceNote: "Please ask our staff for prices in this section.",
     grape: "Grape variety", region: "Region", country: "Country", style: "Style",
     body: "Body", aromas: "Tasting notes", pairings: "Food pairing",
@@ -156,6 +159,7 @@ en: {
     alcohol: "Alcohol",
     legal: "Prices are in euros, VAT and taxes included. Serving alcoholic beverages to minors is prohibited. For allergen information, please ask our staff.",
     company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    copyright: "© 2026 Apelacija d.o.o. · All rights reserved. The content and design of this wine list may not be copied or reused.",
     prevWine: "Previous wine", nextWine: "Next wine",
     recommended: "Filho recommends",
     storyNav: "The story",
@@ -176,14 +180,14 @@ en: {
     pickDish: "Choose a dish from our menu",
     courses: { starters: "Starters", soups: "Soups", mains: "Main courses", desserts: "Desserts" },
     qStyle: "Which style do you prefer?",
-    qBudget: "Bottle budget?",
+    qBudget: "A glass or a bottle?",
         style: { fresh: "Fresh & light", rich: "Rich & powerful", bold: "Something special & different" },
-    budget: { b1: "under 60 €", b2: "60–120 €", b3: "over 120 €", any: "No limit" },
+    budget: { glass: "By the glass", b1: "Bottle up to €60", b2: "Bottle €60–120", b3: "Bottle over €120", any: "Icons (€500+)" },
     results: "Our suggestions",
     byBottle: "By the bottle",
     again: "Choose another dish",
     backToWines: "← Back to the suggestions",
-    changeBudget: "Change budget"
+    changeBudget: "Change selection"
   },
   story: {
     title: "Theatrium Wine Program — Filho Edition",
@@ -276,6 +280,7 @@ it: {
     back: "Indietro",
     search: "Cerca vini…",
     noResults: "Nessun risultato",
+    byFlavour: "Per aroma e abbinamento",
     priceNote: "Per i prezzi di questa sezione rivolgetevi al nostro personale.",
     grape: "Vitigno", region: "Regione", country: "Paese", style: "Stile",
     body: "Corpo", aromas: "Note di degustazione", pairings: "Abbinamenti",
@@ -283,6 +288,7 @@ it: {
     alcohol: "Alcol",
     legal: "I prezzi sono espressi in euro, IVA e tasse incluse. È vietato servire bevande alcoliche ai minori. Per informazioni sugli allergeni rivolgetevi al nostro personale.",
     company: "Ristorante Theatrium · Apelacija d.o.o. · Teslina 7, Zagabria",
+    copyright: "© 2026 Apelacija d.o.o. · Tutti i diritti riservati. Il contenuto e il design di questa carta dei vini non possono essere copiati né riutilizzati.",
     prevWine: "Vino precedente", nextWine: "Vino successivo",
     recommended: "Filho consiglia",
     storyNav: "La storia",
@@ -303,14 +309,14 @@ it: {
     pickDish: "Scegliete un piatto dal nostro menù",
     courses: { starters: "Antipasti", soups: "Zuppe", mains: "Secondi", desserts: "Dolci" },
     qStyle: "Che stile preferite?",
-    qBudget: "Budget per la bottiglia?",
+    qBudget: "Al calice o in bottiglia?",
         style: { fresh: "Fresco e leggero", rich: "Ricco e potente", bold: "Qualcosa di speciale e diverso" },
-    budget: { b1: "fino a 60 €", b2: "60–120 €", b3: "oltre 120 €", any: "Senza limite" },
+    budget: { glass: "Al calice", b1: "Bottiglia fino a 60 €", b2: "Bottiglia 60–120 €", b3: "Bottiglia oltre 120 €", any: "Icone (500 €+)" },
     results: "I nostri consigli",
     byBottle: "In bottiglia",
     again: "Scegli un altro piatto",
     backToWines: "← Torna ai suggerimenti",
-    changeBudget: "Cambia budget"
+    changeBudget: "Cambia scelta"
   },
   story: {
     title: "Programma vini Theatrium — Edizione Filho",
@@ -403,6 +409,7 @@ fr: {
     back: "Retour",
     search: "Rechercher un vin…",
     noResults: "Aucun résultat",
+    byFlavour: "Par arôme et accord",
     priceNote: "Pour les prix de cette section, adressez-vous à notre personnel.",
     grape: "Cépage", region: "Région", country: "Pays", style: "Style",
     body: "Corps", aromas: "Notes de dégustation", pairings: "Accords mets-vins",
@@ -410,6 +417,7 @@ fr: {
     alcohol: "Alcool",
     legal: "Les prix sont exprimés en euros, TVA et taxes comprises. Il est interdit de servir des boissons alcoolisées aux mineurs. Pour toute information sur les allergènes, adressez-vous à notre personnel.",
     company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    copyright: "© 2026 Apelacija d.o.o. · Tous droits réservés. Le contenu et le design de cette carte des vins ne peuvent être copiés ni réutilisés.",
     prevWine: "Vin précédent", nextWine: "Vin suivant",
     recommended: "Filho recommande",
     storyNav: "L'histoire",
@@ -430,14 +438,14 @@ fr: {
     pickDish: "Choisissez un plat de notre menu",
     courses: { starters: "Entrées", soups: "Soupes", mains: "Plats", desserts: "Desserts" },
     qStyle: "Quel style préférez-vous ?",
-    qBudget: "Budget pour la bouteille ?",
+    qBudget: "Au verre ou à la bouteille ?",
         style: { fresh: "Frais et léger", rich: "Riche et puissant", bold: "Quelque chose de spécial" },
-    budget: { b1: "moins de 60 €", b2: "60–120 €", b3: "plus de 120 €", any: "Sans limite" },
+    budget: { glass: "Au verre", b1: "Bouteille jusqu'à 60 €", b2: "Bouteille 60–120 €", b3: "Bouteille au-delà de 120 €", any: "Icônes (500 €+)" },
     results: "Nos suggestions",
     byBottle: "À la bouteille",
     again: "Choisir un autre plat",
     backToWines: "← Retour aux suggestions",
-    changeBudget: "Changer de budget"
+    changeBudget: "Modifier le choix"
   },
   story: {
     title: "Programme des vins Theatrium — Édition Filho",
@@ -530,6 +538,7 @@ de: {
     back: "Zurück",
     search: "Weine suchen…",
     noResults: "Keine Ergebnisse",
+    byFlavour: "Nach Aroma und Begleitung",
     priceNote: "Die Preise dieser Rubrik erfragen Sie bitte bei unserem Personal.",
     grape: "Rebsorte", region: "Region", country: "Land", style: "Stil",
     body: "Körper", aromas: "Aromen", pairings: "Speiseempfehlung",
@@ -537,6 +546,7 @@ de: {
     alcohol: "Alkohol",
     legal: "Die Preise sind in Euro angegeben, inklusive Mehrwertsteuer und Abgaben. Der Ausschank alkoholischer Getränke an Minderjährige ist verboten. Informationen zu Allergenen erhalten Sie bei unserem Personal.",
     company: "Restaurant Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    copyright: "© 2026 Apelacija d.o.o. · Alle Rechte vorbehalten. Inhalt und Gestaltung dieser Weinkarte dürfen nicht kopiert oder weiterverwendet werden.",
     prevWine: "Vorheriger Wein", nextWine: "Nächster Wein",
     recommended: "Filho empfiehlt",
     storyNav: "Die Geschichte",
@@ -557,14 +567,14 @@ de: {
     pickDish: "Wählen Sie ein Gericht aus unserer Karte",
     courses: { starters: "Vorspeisen", soups: "Suppen", mains: "Hauptgerichte", desserts: "Desserts" },
     qStyle: "Welchen Stil bevorzugen Sie?",
-    qBudget: "Budget für die Flasche?",
+    qBudget: "Glas oder Flasche?",
         style: { fresh: "Frisch & leicht", rich: "Reich & kraftvoll", bold: "Etwas Besonderes" },
-    budget: { b1: "bis 60 €", b2: "60–120 €", b3: "über 120 €", any: "Ohne Limit" },
+    budget: { glass: "Offener Wein", b1: "Flasche bis 60 €", b2: "Flasche 60–120 €", b3: "Flasche über 120 €", any: "Ikonen (500 €+)" },
     results: "Unsere Empfehlungen",
     byBottle: "Ganze Flasche",
     again: "Anderes Gericht wählen",
     backToWines: "← Zurück zu den Vorschlägen",
-    changeBudget: "Budget ändern"
+    changeBudget: "Auswahl ändern"
   },
   story: {
     title: "Theatrium Weinprogramm — Filho Edition",
@@ -657,6 +667,7 @@ zh: {
     back: "返回",
     search: "搜索葡萄酒…",
     noResults: "无结果",
+    byFlavour: "按香气与搭配",
     priceNote: "本部分价格请询问服务人员。",
     grape: "葡萄品种", region: "产区", country: "国家", style: "风格",
     body: "酒体", aromas: "品鉴笔记", pairings: "餐酒搭配",
@@ -664,6 +675,7 @@ zh: {
     alcohol: "酒精度",
     legal: "价格以欧元计，已含增值税及各项税费。禁止向未成年人提供酒精饮品。如需过敏原信息，请咨询我们的服务人员。",
     company: "Theatrium 餐厅 · Apelacija d.o.o. · Teslina 7, 萨格勒布",
+    copyright: "© 2026 Apelacija d.o.o. · 版权所有。本酒单的内容与设计不得复制或再利用。",
     prevWine: "上一款酒", nextWine: "下一款酒",
     recommended: "Filho 推荐",
     storyNav: "故事",
@@ -684,14 +696,14 @@ zh: {
     pickDish: "从我们的菜单中选择一道菜",
     courses: { starters: "前菜", soups: "汤品", mains: "主菜", desserts: "甜点" },
     qStyle: "您喜欢什么风格？",
-    qBudget: "整瓶预算？",
+    qBudget: "单杯还是整瓶？",
         style: { fresh: "清新轻盈", rich: "浓郁强劲", bold: "特别与独特" },
-    budget: { b1: "60 € 以内", b2: "60–120 €", b3: "120 € 以上", any: "不限" },
+    budget: { glass: "单杯", b1: "整瓶 60 € 以内", b2: "整瓶 60–120 €", b3: "整瓶 120 € 以上", any: "传奇酒款（500 € 以上）" },
     results: "我们的推荐",
     byBottle: "整瓶",
     again: "选择其他菜肴",
     backToWines: "← 返回推荐",
-    changeBudget: "更改预算"
+    changeBudget: "更改选择"
   },
   story: {
     title: "Theatrium 葡萄酒单 — Filho 臻选版",
@@ -784,6 +796,7 @@ sl: {
     "back": "Nazaj",
     "search": "Iščite vina…",
     "noResults": "Ni rezultatov",
+    "byFlavour": "Po aromi in ujemanju",
     "priceNote": "Za cene tega dela ponudbe vprašajte osebje.",
     "grape": "Sorta",
     "region": "Regija",
@@ -796,6 +809,7 @@ sl: {
     "alcohol": "Alkohol",
     "legal": "Cene so izražene v evrih, DDV in davki so vključeni. Točenje alkoholnih pijač mladoletnikom je prepovedano. Za informacije o alergenih se obrnite na naše osebje.",
     "company": "Restavracija Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    "copyright": "© 2026 Apelacija d.o.o. · Vse pravice pridržane. Vsebine in oblikovanja te vinske karte ni dovoljeno kopirati ali ponovno uporabljati.",
     "prevWine": "Prejšnje vino",
     "nextWine": "Naslednje vino",
     "recommended": "Filho priporoča",
@@ -825,23 +839,18 @@ sl: {
       "desserts": "Sladice"
     },
     "qStyle": "Kakšen slog imate radi?",
-    "qBudget": "Proračun za steklenico?",
+    "qBudget": "Kozarec ali steklenica?",
     "style": {
       "fresh": "Sveže in lahko",
       "rich": "Bogato in močno",
       "bold": "Nekaj posebnega in drugačnega"
     },
-    "budget": {
-      "b1": "do 60 €",
-      "b2": "60–120 €",
-      "b3": "nad 120 €",
-      "any": "Brez omejitev"
-    },
+    "budget": { "glass": "Na kozarec", "b1": "Steklenica do 60 €", "b2": "Steklenica 60–120 €", "b3": "Steklenica nad 120 €", "any": "Ikone (500 €+)" },
     "results": "Naša priporočila",
     "byBottle": "Na steklenico",
     "again": "Izberi drugo jed",
     "backToWines": "← Nazaj na predloge",
-    "changeBudget": "Spremeni proračun"
+    "changeBudget": "Spremeni izbiro"
   },
   "story": {
     "title": "Theatrium vinski program — izdaja Filho",
@@ -1225,6 +1234,7 @@ es: {
     "back": "Volver",
     "search": "Buscar vinos…",
     "noResults": "Sin resultados",
+    "byFlavour": "Por aroma y maridaje",
     "priceNote": "Consulte los precios de esta sección a nuestro personal.",
     "grape": "Variedad",
     "region": "Región",
@@ -1237,6 +1247,7 @@ es: {
     "alcohol": "Alcohol",
     "legal": "Los precios están expresados en euros, IVA e impuestos incluidos. Prohibida la venta de alcohol a menores. Para información sobre alérgenos, consulte a nuestro personal.",
     "company": "Restaurante Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
+    "copyright": "© 2026 Apelacija d.o.o. · Todos los derechos reservados. El contenido y el diseño de esta carta de vinos no pueden copiarse ni reutilizarse.",
     "prevWine": "Vino anterior",
     "nextWine": "Vino siguiente",
     "recommended": "Filho recomienda",
@@ -1266,23 +1277,18 @@ es: {
       "desserts": "Postres"
     },
     "qStyle": "¿Qué estilo prefiere?",
-    "qBudget": "¿Presupuesto por botella?",
+    "qBudget": "¿Por copa o botella?",
     "style": {
       "fresh": "Fresco y ligero",
       "rich": "Rico y potente",
       "bold": "Algo especial y diferente"
     },
-    "budget": {
-      "b1": "hasta 60 €",
-      "b2": "60–120 €",
-      "b3": "más de 120 €",
-      "any": "Sin límite"
-    },
+    "budget": { "glass": "Por copa", "b1": "Botella hasta 60 €", "b2": "Botella 60–120 €", "b3": "Botella más de 120 €", "any": "Iconos (500 €+)" },
     "results": "Nuestras recomendaciones",
     "byBottle": "Por botella",
     "again": "Elegir otro plato",
     "backToWines": "← Volver a las sugerencias",
-    "changeBudget": "Cambiar presupuesto"
+    "changeBudget": "Cambiar selección"
   },
   "story": {
     "title": "Programa de vinos Theatrium — Edición Filho",

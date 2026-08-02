@@ -352,6 +352,7 @@ function showApp() {
   $("search").placeholder = t.ui.search;
   $("legal").textContent = t.ui.legal;
   $("company").textContent = t.ui.company;
+  $("copyright").textContent = t.ui.copyright;
   $("picks-toggle").querySelector("span").textContent = t.ui.picks;
   $("picks-toggle").classList.toggle("active", picksOnly);
   $("rated-toggle").querySelector("span").textContent = t.ui.bestRated;
@@ -836,22 +837,26 @@ function renderContent() {
   let html = "";
 
   if (q) {
-    /* Global search across all sections, ordered in four blocks:
+    /* Global search across all sections, in two halves:
 
-         wines matched on what they are      (name, grape, region, style…)
-         wines matched on how they taste     (aroma, food pairing)
-         everything else matched on what it is
-         everything else matched on taste
+         what it IS       — name, producer, grape, region, style, tags, critics
+         what it TASTES   — aroma and food pairing
 
-       Two rules, stacked. **Wines first**, because the list is a wine list: a
-       guest typing "orange" or "macerat" means the shelf, and the gins and
-       vermouths that macerate botanicals are the footnote. **Identity before
-       flavour**, because once aromas and pairings became searchable, a query
-       like "orange" or "rose" matched two quite different things — the eleven
-       orange wines and every wine with orange peel in its aromas — and the
-       weaker sense was burying the stronger one. Within each block the order
-       is the list's own, so a wine still turns up under the section it is
-       poured from. */
+       and wines before spirits inside each. Identity has to come first because
+       the moment aromas became searchable, "orange" matched two quite different
+       things: the eleven orange wines and every wine with orange peel in its
+       nose. Wines before spirits because the list is a wine list — a guest
+       typing "macerat" means the shelf, and the gins that macerate botanicals
+       are the footnote.
+
+       **The second half is labelled** (owner asked, 2026-08-02: "do we really
+       want to search aromas?"). The results were never wrong, but a guest who
+       typed "orange" and got 45 rows had no way to know that the first twelve
+       were the answer and the rest merely smell of it. A heading is the whole
+       fix: it keeps the two browse modes that only search can offer — by
+       flavour, and by "what goes with lamb" — and stops the weaker one looking
+       like padding. No headings at all when everything landed in one half,
+       which is the common case. */
     let found = 0;
     searchRefs = [];
     const blocks = [[], [], [], []];
@@ -870,18 +875,26 @@ function renderContent() {
               const isWine = item.insight && !item.insight.kind ? 0 : 1;
               const core = itemCore(item);
               const isCore = hayMatch(core, q) || (qf && hayMatch(core, qf)) ? 0 : 1;
-              blocks[isWine * 2 + isCore].push({ item, ref, ctx });
+              blocks[isCore * 2 + isWine].push({ item, ref, ctx });
             }
           });
         });
       });
     });
-    for (const r of [].concat(...blocks)) {
+    const identity = blocks[0].concat(blocks[1]);
+    const flavour = blocks[2].concat(blocks[3]);
+    const render = (rows, label) => {
+      if (!rows.length) return;
       if (found === 0) html += `<div class="cat">`;
-      found++;
-      searchRefs.push(r.ref);
-      html += itemHtml(r.item, r.ref, r.ctx);
-    }
+      if (label) html += `<div class="search-group">${esc(label)}</div>`;
+      for (const r of rows) {
+        found++;
+        searchRefs.push(r.ref);
+        html += itemHtml(r.item, r.ref, r.ctx);
+      }
+    };
+    render(identity, "");
+    render(flavour, identity.length ? t.ui.byFlavour : "");
     html += found ? "</div>" : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (currentSection === "__regions" && !picksOnly && !ratedOnly && !prideOnly) {
     html = REGIONS.map((rg) => {
@@ -1676,10 +1689,13 @@ function glassFor(style, grape, override, region) {
   return "riesling";
 }
 
-/* "Bez ograničenja" (any) = spare no expense → only the Filhov ponos
-   500 €+ bottles that suit the dish. */
-const HELPER_BUDGET = { b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [PRIDE_MIN, Infinity] };
-const helperState = { step: 0, dish: null, budgetKey: "any" };
+/* `glass` has no band because a glass price is not a bottle budget — it takes
+   the by-the-glass shelf whole. `any` is the Ikone shelf: 500 €+ only, which
+   is what it always did, but it was labelled "Bez ograničenja" / "No limit",
+   the opposite of a filter. It now says Ikone (500 €+), which is both what it
+   does and the name that shelf already has everywhere else in the app. */
+const HELPER_BUDGET = { glass: null, b1: [0, 60], b2: [60, 120], b3: [120, Infinity], any: [PRIDE_MIN, Infinity] };
+const helperState = { step: 0, dish: null, budgetKey: "b2" };
 
 function openHelper() {
   helperState.step = 0; helperState.dish = null;
@@ -1762,25 +1778,37 @@ function renderHelperResults(budgetKey) {
   });
   scored.sort((a, b) => b.score - a.score);
   glasses.sort((a, b) => b.score - a.score);
+
+  /* The second question is now "a glass or a bottle?", not "budget for a
+     bottle?" — which presumed a bottle before the guest had said they wanted
+     one, and made the by-the-glass suggestions repeat identically under all
+     four price bands, since a band says nothing about a glass (owner,
+     2026-08-02). So:
+
+       "Na čašu"     → four glass pours, and no bottles at all
+       a price band  → three bottles, and *one* glass underneath
+
+     The single glass under a bottle answer is a nudge, not a competing list:
+     it costs one line, it keeps the cheapest way to say yes in front of every
+     guest, and it no longer looks like the app failed to understand the
+     question. Below the bottles because that is what was asked for. */
+  const byGlass = budgetKey === "glass";
+  const glassCount = byGlass ? 4 : 1;
   /* Half the by-the-glass pours are also sold as bottles, and the best match
-     for a dish is often the same wine on both shelves — which spent one of
-     only three bottle slots repeating a suggestion already on screen. The
-     glass entry stays (it is the smaller ask) and the bottle list moves on. */
-  const onGlass = new Set(glasses.slice(0, 2).map((r) => `${r.item.producer}|${r.item.name}`));
-  const bottles = scored.filter((r) => !onGlass.has(`${r.item.producer}|${r.item.name}`));
-  /* Two glasses and three bottles. The helper answered only in whole bottles
-     until 2026-08-02, which made it useless to the guest most likely to ask —
-     one person, one dish, one glass — and quietly wasted the shelf the owner
-     curates hardest (28% of the by-the-glass pours are Filho's picks, against
-     9% of the bottles). The glass block comes first because it is the smaller
-     commitment; the bottles are still the main answer. */
-  const top = glasses.slice(0, 2).concat(scored.slice(0, 3));
+     is often the same wine on both shelves — which spent one of only three
+     bottle slots repeating a suggestion already on screen. */
+  const onGlass = new Set(glasses.slice(0, glassCount).map((r) => `${r.item.producer}|${r.item.name}`));
+  const bottles = byGlass ? [] : scored.filter((r) => !onGlass.has(`${r.item.producer}|${r.item.name}`)).slice(0, 3);
+  const pours = glasses.slice(0, glassCount);
+  const top = bottles.concat(pours);
   const forDish = helperState.dish ? `<div class="helper-fordish">${esc(dishName(helperState.dish))}</div>` : "";
   const block = (rows, label) => rows.length
-    ? `<div class="helper-group">${esc(label)}</div>` + rows.map((r) => itemHtml(r.item, r.ref, "", true)).join("")
+    ? (label ? `<div class="helper-group">${esc(label)}</div>` : "") +
+      rows.map((r) => itemHtml(r.item, r.ref, "", true)).join("")
     : "";
   const list = top.length
-    ? block(glasses.slice(0, 2), t.sections.glass) + block(scored.slice(0, 3), t.helper.byBottle)
+    ? block(bottles, bottles.length && pours.length ? t.helper.byBottle : "") +
+      block(pours, bottles.length ? t.sections.glass : "")
     : `<p class="no-results">${t.ui.noResults}</p>`;
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
   const scope = top.map((r) => r.ref);

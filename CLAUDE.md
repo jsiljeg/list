@@ -714,6 +714,18 @@ Three alias tables, each for a different failure:
   at a word start, so "jela s tartufima" answers "tartufi" by luck of Croatian
   morphology while "truffle dishes" does not answer "truffles".
 
+**The flavour half is labelled on screen.** The owner asked whether aromas
+belong in search at all, and the honest answer is that they do - but a guest
+who typed "orange" and got 45 rows had no way to know the first twelve were the
+answer and the rest merely smell of it. A divider (`ui.byFlavour`) between the
+two halves is the whole fix, and it only appears when both halves have content,
+so the common single-sense query stays clean.
+
+The test for whether a field belongs in search at all: **does the word narrow
+the list?** Body fails it (three values across 308 wines, so "puno" returns
+276). Aroma passes (10-85 wines). Food passes, and it is the question a
+restaurant guest actually has.
+
 **How to find the next gap: type what a guest would type and count.** That is
 how all of the above was found - a battery of ~250 queries across grapes,
 regions, colours, countries, foods, aromas, badges, producers and formats, with
@@ -739,13 +751,25 @@ which is a label term rather than a description.
 for the style, one for being one of Filho's picks. That has not changed. Two
 things around it did.
 
-**It answers with a glass as well as a bottle.** It searched `bottle-*` only,
-so it could offer nothing but a whole bottle - useless to the guest most likely
-to ask (one person, one dish) and it ignored the shelf the owner curates
-hardest: 28% of the by-the-glass pours are picks, against 9% of the bottles.
-Two glasses then three bottles. The budget bands are bottle prices and are not
-applied to the glasses. A wine offered by the glass is dropped from the bottle
-list rather than repeating itself into one of three slots.
+**The second question is "a glass or a bottle?"** It used to be "budget for a
+bottle?", which presumed a bottle before the guest had said they wanted one,
+and it searched `bottle-*` only - so the helper could offer nothing else. That
+made it useless to the guest most likely to ask (one person, one dish) and
+ignored the shelf the owner curates hardest: 28% of the by-the-glass pours are
+picks against 9% of the bottles. The first fix showed two glasses under every
+band, which the owner rightly called out: a bottle budget says nothing about a
+glass, so the same two wines repeated four times. Now:
+
+    "Na casu"    -> four glass pours, no bottles
+    a price band -> three bottles, then *one* glass underneath
+
+The single glass under a bottle answer is a nudge, not a competing list. It
+costs one line, keeps the cheapest way to say yes in front of every guest, and
+comes last because a bottle is what was asked for. A wine offered by the glass
+is dropped from the bottle list rather than repeating itself into one of three
+slots. `any` was labelled "Bez ogranicenja" / "No limit" while filtering to
+500 EUR and up - the opposite of what it did; it now says Ikone (500 EUR+),
+which is both true and the name that shelf already has.
 
 **The menu is validated.** `data/menu.json` speaks the pairing vocabulary and
 was never checked, and it showed: the Tiramisu asked for a pairing called
@@ -780,6 +804,23 @@ Six cards covered 157 of 308 wines. Bordeaux had a card for 8 wines while
 **Istria (21) and the German Riesling shelf (22) had none.** Five were added -
 Istria, Germany, Veneto, Friuli, Northern Croatia - taking coverage to ~240.
 The next two by size are the rest of Italy (14) and California (11).
+
+**Twelve cards, Croatia first.** California and Oregon joined (13 wines), and
+the order is no longer arbitrary: Croatia leads - which is what the wine list
+itself does inside every category, so the Regions screen should not invent a
+different convention - then by how many wines we pour. Dalmatia, Northern
+Croatia, Istria, Burgundy, Champagne, Bordeaux, Tuscany, Piedmont, Friuli,
+Veneto, Germany, California.
+
+**The maps are schematic and not to scale, on purpose** - a to-scale Burgundy
+beside Bordeaux is an invisible sliver. What they must get right is relative
+position and neighbours, and all twelve were checked against that: the communes
+run in order down the Cote d'Or, the two banks are on the right sides of the
+Gironde, the Adige separates the Valpolicella rather than crossing it, the
+Carso sits east of the Isonzo, Sonoma is west of Napa with the Mayacamas
+between them. Label geometry is now a test rather than an eyeball, in Croatian,
+German and Chinese - localizing changes every label's width, so what fits in
+one language can hang off the frame in another.
 
 **Everything on the screen is localized, including inside the maps.** The
 appellation chips were printed raw, so the Chinese view read "Barolo,
@@ -858,6 +899,29 @@ once per call. CSS sizes `.flag-img` alongside the sibling `svg` selectors.
 
 Emoji were the other option and do not work: flag emoji need a font glyph, and
 Windows ships none — Chrome on Windows renders 🇭🇷 as the letters "HR".
+
+## Copyright, and what is actually protectable (2026-08-02)
+
+The repo is **public** - GitHub Pages on the free plan requires it - and every
+data file is one request away: wines.json 458 kB, producers.json 258 kB,
+i18n.js 118 kB. A complete copy takes about a second. There is no technical fix
+for that; anything a browser renders, a scraper takes.
+
+So the answer is a notice, not a wall. `LICENSE` is all-rights-reserved and
+names what it covers (the data and its eight translations, the source, the
+drawn artwork, the sculptures), and `ui.copyright` puts one line under the
+footer in every language. Neither stops a copy; both turn "found it online"
+into a documented one.
+
+Worth being clear about what is and isn't the asset. The wine list itself
+copies badly - a competitor gets wines they don't stock at prices they don't
+charge against a menu they don't cook. What is genuinely reusable is the
+*engine*: 226 aroma keys and 65 pairing keys in eight languages, the region
+ladders, the glass research, the whole structure. That is what a licence is
+for.
+
+Do not "improve" this with obfuscation or a bundler. It buys minutes against a
+copier and costs the no-build design that makes a price edit live in a minute.
 
 ## Windows environment notes
 

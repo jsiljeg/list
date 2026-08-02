@@ -168,12 +168,31 @@ friuli: `<svg viewBox="0 0 320 240" class="rmap">
   <text x="212" y="28" class="t-zone">Međimurje</text>
   <text x="206" y="212" class="t-zone">Moslavina</text>
   <text x="130" y="184" class="t-dot">Sava</text>
+</svg>`,
+
+california: `<svg viewBox="0 0 320 240" class="rmap">
+  <path d="M62 10 C74 42 84 74 96 104 C108 132 118 154 126 172 C136 194 148 214 160 232" class="coast"/>
+  <path d="M96 26 C122 18 146 28 148 44 C150 62 128 72 108 66 C90 60 86 34 96 26 Z" class="zone"/>
+  <path d="M98 92 C120 84 140 94 140 110 C140 128 118 136 102 128 C88 120 88 98 98 92 Z" class="zone"/>
+  <path d="M150 74 C172 66 196 76 198 94 C200 112 178 122 158 114 C142 106 140 80 150 74 Z" class="zone"/>
+  <path d="M138 150 C158 142 178 152 178 166 C178 182 158 190 142 182 C128 174 128 156 138 150 Z" class="zone"/>
+  <path d="M166 204 C186 196 206 206 206 220 C206 234 186 240 172 232 C160 224 158 210 166 204 Z" class="zone"/>
+  <circle cx="122" cy="46" r="2.6" class="dot"/><text x="152" y="40" class="t-dot">Willamette Valley</text>
+  <circle cx="116" cy="110" r="2.6" class="dot"/><text x="60" y="113" class="t-dot">Sonoma</text>
+  <circle cx="172" cy="94" r="2.6" class="dot"/><text x="204" y="92" class="t-dot">Napa Valley</text>
+  <circle cx="126" cy="150" r="3" class="town"/><text x="60" y="158" class="t-town">San Francisco</text>
+  <circle cx="156" cy="166" r="2.6" class="dot"/><text x="186" y="170" class="t-dot">Santa Cruz Mountains</text>
+  <circle cx="184" cy="220" r="2.6" class="dot"/><text x="212" y="224" class="t-dot">Sta. Rita Hills</text>
+  <text x="14" y="30" class="t-zone">Oregon</text>
+  <text x="12" y="100" class="t-zone">California</text>
+  <text x="6" y="196" class="t-dot">Pacifik</text>
 </svg>`
 };
 
 /* Map furniture: the river, the two seas. Not appellations, so they are not in
    ZH_REGION — but they are still text on a map a guest is reading. */
 const MAP_FEATURES = {
+  "Pacifik": { hr: "Pacifik", en: "Pacific", it: "Pacifico", fr: "Pacifique", de: "Pazifik", sl: "Pacifik", es: "Pacífico", zh: "太平洋" },
   "Garda":   { hr: "Garda", en: "Lake Garda", it: "Lago di Garda", fr: "Lac de Garde", de: "Gardasee", sl: "Gardsko jezero", es: "Lago de Garda", zh: "加尔达湖" },
   "Adige":   { hr: "Adige", en: "Adige", it: "Adige", fr: "Adige", de: "Etsch", sl: "Adiža", es: "Adigio", zh: "阿迪杰河" },
   "Sava":    { hr: "Sava", en: "Sava", it: "Sava", fr: "Save", de: "Save", sl: "Sava", es: "Sava", zh: "萨瓦河" },  "Tanaro":  { zh: "塔纳罗河" },

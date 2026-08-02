@@ -247,3 +247,51 @@ test("the language screen does not resize when the webfont lands", async ({ page
   expect(fallback.lines, "the fallback title wraps").toBe(1);
   expect(real.lines, "the title wraps even with the real font").toBe(1);
 });
+
+test("the copyright line is on every page in every language", async ({ page }) => {
+  /* Added 2026-08-02. The repo is public and the whole dataset is one fetch
+     away, so a notice is the only thing standing between "found it online" and
+     a documented copy. It has to actually render, in whatever language the
+     guest is reading. */
+  for (const lang of ["hr", "en", "zh"]) {
+    await openApp(page, { lang });
+    const text = await page.locator("#copyright").innerText();
+    expect(text, `${lang}: no copyright line`).toContain("©");
+    expect(text, `${lang}: no rights holder`).toContain("Apelacija");
+    expect(text.length, `${lang}: the notice says nothing`).toBeGreaterThan(30);
+  }
+});
+
+test("the region maps keep their labels inside the frame", async ({ page }) => {
+  /* Added 2026-08-02 with five new maps and again with the twelfth. A label is
+     placed at a hand-picked x/y, so it is one careless coordinate away from
+     hanging off the picture — and localizing changes every label's width, so
+     what fits in Croatian may not in German. Measured as ink, per language. */
+  for (const lang of ["hr", "de", "zh"]) {
+    await openApp(page, { lang });
+    await page.locator('#nav button[data-sec="__regions"]').click();
+    await page.waitForSelector(".region-card");
+    const bad = await page.evaluate(() => {
+      const out = [];
+      document.querySelectorAll(".rmap").forEach((svg) => {
+        const vb = svg.viewBox.baseVal;
+        const boxes = [];
+        svg.querySelectorAll("text").forEach((t) => {
+          const b = t.getBBox();
+          if (b.x < -1 || b.y - b.height < -2 || b.x + b.width > vb.width + 1 || b.y > vb.height + 1)
+            out.push(`off-canvas: "${t.textContent}"`);
+          boxes.push({ t: t.textContent, x: b.x, y: b.y - b.height, w: b.width, h: b.height });
+        });
+        for (let i = 0; i < boxes.length; i++)
+          for (let j = i + 1; j < boxes.length; j++) {
+            const a = boxes[i], c = boxes[j];
+            if (Math.min(a.x + a.w, c.x + c.w) - Math.max(a.x, c.x) > 1 &&
+                Math.min(a.y + a.h, c.y + c.h) - Math.max(a.y, c.y) > 1)
+              out.push(`overlap: "${a.t}" / "${c.t}"`);
+          }
+      });
+      return out;
+    });
+    expect(bad, `${lang}: map labels off-canvas or colliding`).toEqual([]);
+  }
+});

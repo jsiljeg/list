@@ -1,0 +1,26 @@
+Copyright © 2026 Apelacija d.o.o. (Restoran Theatrium, Teslina 7, Zagreb).
+All rights reserved.
+
+This repository is published so that GitHub Pages can serve the site at
+https://theatrium.list.devinos.hr — publication is not a grant of any licence.
+
+No permission is given to copy, reproduce, adapt, translate, republish or
+distribute any part of this work, in whole or in part, by any means, including:
+
+  - the wine, spirits and producer data in library/, lists/ and data/
+    (tasting notes, producer texts, region texts, food-pairing and aroma
+    vocabularies, and their translations into Croatian, English, Italian,
+    French, German, Slovenian, Spanish and Chinese);
+  - the application source in js/, css/ and the HTML pages;
+  - the drawn artwork — region maps, glassware and vessel icons, section
+    ornaments, flags — and the photographic assets in assets/.
+
+The Theatrium name, the Theatrium logo and the atrium sculptures are the
+property of Apelacija d.o.o. and are not covered by any permission granted
+here or elsewhere.
+
+The typefaces (Markazi Text, Raleway) are used under the SIL Open Font License
+and remain the property of their authors. The Croatian coat of arms in
+assets/flag-hr.svg is derived from a public-domain file on Wikimedia Commons.
+
+For permission to use any of this, write to the address above.

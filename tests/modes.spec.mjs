@@ -251,31 +251,46 @@ test("the active chip always matches the section on screen", async ({ page, hasT
   }
 });
 
-test("the sommelier suggests a glass as well as a bottle", async ({ page }) => {
-  /* Guards 2026-08-02 (owner's question): the helper searched `bottle-*` only,
-     so it could answer nothing but a whole bottle — useless to the guest most
-     likely to ask, and it ignored the shelf the owner curates hardest (28% of
-     the by-the-glass pours are Filho's picks against 9% of the bottles). */
+test("the sommelier answers by the glass or by the bottle, not both at once", async ({ page }) => {
+  /* Guards 2026-08-02 (owner, twice). First: it searched `bottle-*` only, so it
+     could offer nothing but a whole bottle — useless to the guest most likely
+     to ask, and it ignored the shelf the owner curates hardest (28% of the
+     by-the-glass pours are picks against 9% of the bottles). Then: showing two
+     glasses under every price band repeated the same two wines four times,
+     because a bottle budget says nothing about a glass. Now the second question
+     is "a glass or a bottle?" — glass gives four pours and no bottles, a price
+     band gives three bottles and one glass as a nudge. */
   const bag = await openApp(page);
-  await page.locator("#helper-open").click();
-  await page.locator(".helper-opt").first().waitFor();
-  await page.locator(".helper-opt[data-dish]").nth(3).click();   // a main, not a salad
-  await page.locator(".helper-opt[data-k='b2']").click();
-  await page.waitForTimeout(400);
-
-  const groups = await page.locator(".helper-group").allTextContents();
-  expect(groups.length, "no by-the-glass / by-the-bottle split").toBe(2);
-
-  const sections = await page.evaluate(() =>
+  const sectionOf = () => page.evaluate(() =>
     [...document.querySelectorAll(".helper .item[data-ref]")].map((el) =>
       DATA.sections[Number(el.dataset.ref.split(".")[0])].id));
-  expect(sections.filter((s) => s === "glass").length, "no glass pour suggested").toBeGreaterThan(0);
-  expect(sections.filter((s) => s.startsWith("bottle-")).length, "no bottle suggested").toBeGreaterThan(0);
-  /* The glass block comes first, and every glass entry precedes every bottle. */
-  expect(sections.lastIndexOf("glass")).toBeLessThan(sections.findIndex((s) => s.startsWith("bottle-")));
 
-  /* And a wine offered by the glass does not spend one of the three bottle
-     slots repeating itself. */
+  await page.locator("#helper-open").click();
+  await page.locator(".helper-opt[data-dish]").first().waitFor();
+  const opts = await page.locator(".helper-opt[data-k]").count().catch(() => 0);
+  await page.locator(".helper-opt[data-dish]").nth(3).click();
+  const keys = await page.locator(".helper-opt[data-k]").evaluateAll((els) => els.map((e) => e.dataset.k));
+  expect(keys[0], "the glass option must come first").toBe("glass");
+  expect(keys, "the five ways to answer").toEqual(["glass", "b1", "b2", "b3", "any"]);
+
+  await page.locator(".helper-opt[data-k='glass']").click();
+  await page.waitForTimeout(400);
+  const onlyGlass = await sectionOf();
+  expect(onlyGlass.length, "no glass pours offered").toBeGreaterThan(1);
+  expect(onlyGlass.every((s) => s === "glass"), `bottles leaked in: ${onlyGlass}`).toBe(true);
+  expect(await page.locator(".helper-group").count(), "one pool needs no headings").toBe(0);
+
+  await page.locator(".helper-budget").click();
+  await page.locator(".helper-opt[data-k='b2']").click();
+  await page.waitForTimeout(400);
+  const mixed = await sectionOf();
+  expect(mixed.filter((s) => s.startsWith("bottle-")).length, "no bottles").toBeGreaterThan(0);
+  expect(mixed.filter((s) => s === "glass").length, "the glass nudge should be exactly one").toBe(1);
+  /* Bottles first — that is what was asked for; the glass is the afterthought. */
+  expect(mixed[mixed.length - 1], "the glass should be last").toBe("glass");
+  expect(await page.locator(".helper-group").count(), "two pools need two headings").toBe(2);
+
+  /* And the same wine never appears in both halves. */
   const names = await page.evaluate(() =>
     [...document.querySelectorAll(".helper .item[data-ref]")].map((el) => {
       const [si, ci, gi, ii] = el.dataset.ref.split(".").map(Number);

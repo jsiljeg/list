@@ -2,46 +2,127 @@
  "_comment": "Wine regions shown in the Regions view. Each has a schematic map (drawn in js/app.js REGION_MAPS by id) and a Filho-voice terroir blurb in all 8 languages.",
  "regions": [
   {
-   "id": "champagne",
-   "country": "FR",
+   "id": "dalmatia",
+   "country": "HR",
    "name": {
-    "hr": "Champagne",
-    "en": "Champagne",
-    "it": "Champagne",
-    "fr": "Champagne",
-    "de": "Champagne",
-    "zh": "香槟",
-    "sl": "Champagne",
-    "es": "Champagne"
+    "hr": "Dalmacija",
+    "en": "Dalmatia",
+    "it": "Dalmazia",
+    "fr": "Dalmatie",
+    "de": "Dalmatien",
+    "zh": "达尔马提亚",
+    "sl": "Dalmacija",
+    "es": "Dalmacia"
    },
    "sub": {
-    "hr": "Kreda, hladnoća i strpljenje",
-    "en": "Chalk, cold and patience",
-    "it": "Creta, freddo e pazienza",
-    "fr": "Craie, froid et patience",
-    "de": "Kalk, Kälte und Geduld",
-    "zh": "白垩、寒冷与耐心",
-    "sl": "Kreda, hlad in potrpljenje",
-    "es": "Creta, frío y paciencia"
+    "hr": "Kamen, sunce i more",
+    "en": "Stone, sun and sea",
+    "it": "Pietra, sole e mare",
+    "fr": "Pierre, soleil et mer",
+    "de": "Stein, Sonne und Meer",
+    "zh": "岩石、阳光与海",
+    "sl": "Kamen, sonce in morje",
+    "es": "Piedra, sol y mar"
    },
    "appellations": [
-    "Montagne de Reims",
-    "Vallée de la Marne",
-    "Côte des Blancs",
-    "Avize",
-    "Aÿ",
-    "Ambonnay",
-    "Le Mesnil-sur-Oger"
+    "Pelješac",
+    "Dingač",
+    "Postup",
+    "Korčula",
+    "Komarna",
+    "Hvar"
    ],
    "blurb": {
-    "hr": "Najsjevernija velika francuska regija: hladna klima i duboka kreda daju napetost i finoću mjehurića. Montagne de Reims nosi Pinot Noir, Côte des Blancs čisti Chardonnay, a Vallée de la Marne Pinot Meunier — Champagne kao elegancija, a ne pozlata.",
-    "en": "France's northernmost great region: a cold climate and deep chalk give the bubbles their tension and finesse. The Montagne de Reims carries Pinot Noir, the Côte des Blancs pure Chardonnay, the Vallée de la Marne Pinot Meunier — Champagne as elegance, not gilding.",
-    "it": "La regione grande più a nord della Francia: clima freddo e creta profonda danno alle bollicine tensione e finezza. La Montagne de Reims porta il Pinot Noir, la Côte des Blancs lo Chardonnay puro, la Vallée de la Marne il Pinot Meunier — lo Champagne come eleganza, non doratura.",
-    "fr": "La région septentrionale par excellence : climat froid et craie profonde donnent aux bulles leur tension et leur finesse. La Montagne de Reims porte le pinot noir, la Côte des Blancs le chardonnay pur, la Vallée de la Marne le pinot meunier — le champagne comme élégance, non comme dorure.",
-    "de": "Frankreichs nördlichste große Region: kühles Klima und tiefer Kalk geben den Perlen Spannung und Finesse. Die Montagne de Reims trägt Pinot Noir, die Côte des Blancs reinen Chardonnay, das Marnetal Pinot Meunier — Champagner als Eleganz, nicht als Vergoldung.",
-    "zh": "法国最北端的伟大产区：寒冷气候与深厚白垩土赋予气泡张力与细腻。兰斯山出黑皮诺，白丘产纯霞多丽，马恩河谷孕育莫尼耶皮诺——香槟意味着优雅，而非镀金。",
-    "sl": "Najsevernejša velika francoska regija: hladno podnebje in globoka kreda dajeta mehurčkom napetost in finoto. Montagne de Reims nosi pinot noir, Côte des Blancs čisti chardonnay, Vallée de la Marne pinot meunier — šampanjec kot eleganca, ne pozlata.",
-    "es": "La región grande más septentrional de Francia: un clima frío y una creta profunda dan a las burbujas su tensión y finura. La Montagne de Reims lleva Pinot Noir, la Côte des Blancs Chardonnay puro, la Vallée de la Marne Pinot Meunier — el Champagne como elegancia, no como dorado."
+    "hr": "Strme, kamenite padine Pelješca spuštaju se prema moru — na Dingaču i Postupu Plavac mali sazrijeva pod trostrukim suncem: s neba, od mora i od bijelog kamena. Otoci Korčula i Hvar daju bijele Pošip i Grk, žive i mineralne.",
+    "en": "The steep, stony slopes of Pelješac drop toward the sea — on Dingač and Postup, Plavac Mali ripens under a triple sun: from the sky, from the sea, and from the white stone. The islands of Korčula and Hvar give the white Pošip and Grk, alive and mineral.",
+    "it": "I ripidi pendii pietrosi di Pelješac scendono verso il mare — a Dingač e Postup il Plavac Mali matura sotto un triplo sole: dal cielo, dal mare e dalla pietra bianca. Le isole di Korčula e Hvar danno i bianchi Pošip e Grk, vivi e minerali.",
+    "fr": "Les pentes escarpées et pierreuses de Pelješac plongent vers la mer — à Dingač et Postup, le plavac mali mûrit sous un triple soleil : du ciel, de la mer et de la pierre blanche. Les îles de Korčula et Hvar donnent les blancs pošip et grk, vivants et minéraux.",
+    "de": "Die steilen, steinigen Hänge von Pelješac fallen zum Meer ab — auf Dingač und Postup reift Plavac Mali unter dreifacher Sonne: vom Himmel, vom Meer und vom weißen Stein. Die Inseln Korčula und Hvar geben die weißen Pošip und Grk, lebendig und mineralisch.",
+    "zh": "佩列沙茨陡峭多石的坡地向海倾泻——在 Dingač 与 Postup，Plavac Mali 在三重阳光下成熟：来自天空、海洋与白石。科尔丘拉与赫瓦尔岛出产白葡萄 Pošip 与 Grk，鲜活而富矿物感。",
+    "sl": "Strma, kamnita pobočja Pelješca se spuščajo proti morju — na Dingaču in Postupu plavac mali zori pod trojnim soncem: z neba, od morja in od belega kamna. Otoka Korčula in Hvar dajeta bela pošip in grk, živa in mineralna.",
+    "es": "Las escarpadas laderas pedregosas de Pelješac descienden hacia el mar — en Dingač y Postup, el Plavac Mali madura bajo un sol triple: del cielo, del mar y de la piedra blanca. Las islas de Korčula y Hvar dan los blancos Pošip y Grk, vivos y minerales."
+   }
+  },
+  {
+   "id": "north-croatia",
+   "country": "HR",
+   "name": {
+    "hr": "Sjeverna Hrvatska",
+    "en": "Northern Croatia",
+    "it": "Croazia settentrionale",
+    "fr": "Croatie du Nord",
+    "de": "Nordkroatien",
+    "sl": "Severna Hrvaška",
+    "es": "Croacia septentrional",
+    "zh": "克罗地亚北部"
+   },
+   "sub": {
+    "hr": "Brežuljci, hladne noći, mjehurići",
+    "en": "Hills, cold nights, bubbles",
+    "it": "Colline, notti fredde, bollicine",
+    "fr": "Collines, nuits froides, bulles",
+    "de": "Hügel, kalte Nächte, Perlen",
+    "sl": "Griči, hladne noči, mehurčki",
+    "es": "Colinas, noches frías, burbujas",
+    "zh": "丘陵、寒夜与气泡"
+   },
+   "appellations": [
+    "Plešivica – Okić",
+    "Zagorje-Međimurje",
+    "Zabok",
+    "Međimurje",
+    "Moslavina",
+    "Voloder – Ivanić-Grad"
+   ],
+   "blurb": {
+    "hr": "Kontinentalni sjever radi ono što jug ne može: hladne noći drže kiselinu, a kiselina drži pjenušac. Plešivica je postala hrvatska adresa za klasičnu metodu i pét-nat, Zagorje i Međimurje daju precizne rizlinge i Sauvignone, a Moslavina čuva Škrlet — sortu koja raste gotovo nigdje drugdje.",
+    "en": "The continental north does what the south cannot: cold nights hold the acidity, and acidity holds the bubble. Plešivica has become Croatia's address for méthode traditionnelle and pét-nat, Zagorje and Međimurje give precise Rieslings and Sauvignons, and Moslavina keeps Škrlet — a variety that grows almost nowhere else.",
+    "it": "Il nord continentale fa ciò che il sud non può: le notti fredde tengono l'acidità, e l'acidità tiene la bolla. Plešivica è diventata l'indirizzo croato per il metodo classico e il pét-nat, lo Zagorje e il Međimurje danno Riesling e Sauvignon precisi, e la Moslavina custodisce lo Škrlet — una varietà che cresce quasi in nessun altro luogo.",
+    "fr": "Le nord continental fait ce que le sud ne peut pas : les nuits froides tiennent l'acidité, et l'acidité tient la bulle. Plešivica est devenue l'adresse croate de la méthode traditionnelle et du pét-nat, le Zagorje et le Međimurje donnent des rieslings et des sauvignons précis, et la Moslavina garde le škrlet — un cépage qui ne pousse presque nulle part ailleurs.",
+    "de": "Der kontinentale Norden kann, was der Süden nicht kann: kalte Nächte halten die Säure, und die Säure hält die Perle. Plešivica ist Kroatiens Adresse für die klassische Flaschengärung und Pét-Nat geworden, Zagorje und Međimurje geben präzise Rieslinge und Sauvignons, und die Moslavina bewahrt den Škrlet — eine Sorte, die fast nirgendwo sonst wächst.",
+    "sl": "Celinski sever zmore, česar jug ne: hladne noči držijo kislino, kislina pa mehurček. Plešivica je postala hrvaški naslov za klasično metodo in pet-nat, Zagorje in Medžimurje dajeta natančne rizlinge in sauvignone, Moslavina pa hrani škrlet — sorto, ki raste tako rekoč nikjer drugje.",
+    "es": "El norte continental hace lo que el sur no puede: las noches frías sostienen la acidez, y la acidez sostiene la burbuja. Plešivica se ha convertido en la dirección croata del método tradicional y el pét-nat, Zagorje y Međimurje dan rieslings y sauvignons precisos, y Moslavina guarda el škrlet — una variedad que no crece casi en ningún otro sitio.",
+    "zh": "大陆性的北部能做南部做不到的事：寒夜守住酸度，酸度守住气泡。普莱希维察已成为克罗地亚传统法起泡与 pét-nat 的地址，扎戈列与梅吉穆列出产精准的雷司令与长相思，而莫斯拉维纳守护着什克尔莱特——一个几乎别无他处生长的品种。"
+   }
+  },
+  {
+   "id": "istria",
+   "country": "HR",
+   "name": {
+    "hr": "Istra",
+    "en": "Istria",
+    "it": "Istria",
+    "fr": "Istrie",
+    "de": "Istrien",
+    "sl": "Istra",
+    "es": "Istria",
+    "zh": "伊斯特拉"
+   },
+   "sub": {
+    "hr": "Crvena zemlja, bijelo vino",
+    "en": "Red earth, white wine",
+    "it": "Terra rossa, vino bianco",
+    "fr": "Terre rouge, vin blanc",
+    "de": "Rote Erde, weißer Wein",
+    "sl": "Rdeča zemlja, belo vino",
+    "es": "Tierra roja, vino blanco",
+    "zh": "红土，白葡萄酒"
+   },
+   "appellations": [
+    "Zapadna Istra",
+    "Centralna Istra",
+    "Istočna Istra",
+    "Hrvatska Istra"
+   ],
+   "blurb": {
+    "hr": "Poluotok koji je od Malvazije istarske napravio ozbiljno vino: zapadna, primorska Istra na crvenoj zemlji daje široka i slana vina, središnja na bijeloj i sivoj ilovači napetija i mineralnija. Teran ostaje istarski tvrdoglavac — visoka kiselina, željezo i divlja višnja.",
+    "en": "The peninsula that turned Malvasia Istriana into a serious wine: coastal western Istria, on red earth, gives broad and saline whites; the central hills, on white and grey marl, something tighter and more mineral. Teran remains Istria's stubborn one — high acid, iron and sour cherry.",
+    "it": "La penisola che ha reso la Malvasia Istriana un vino serio: l'Istria occidentale costiera, sulla terra rossa, dà bianchi ampi e salini; le colline centrali, su marne bianche e grigie, qualcosa di più teso e minerale. Il Terrano resta il testardo dell'Istria — acidità alta, ferro e amarena.",
+    "fr": "La péninsule qui a fait de la Malvasia Istriana un vin sérieux : l'Istrie occidentale, côtière, sur terre rouge, donne des blancs amples et salins ; les collines centrales, sur marnes blanches et grises, quelque chose de plus tendu et minéral. Le teran reste l'entêté de l'Istrie — acidité haute, fer et griotte.",
+    "de": "Die Halbinsel, die aus der Malvasia Istriana einen ernsten Wein gemacht hat: das küstennahe Westistrien auf roter Erde gibt breite, salzige Weiße; die zentralen Hügel auf weißem und grauem Mergel etwas Straffere, Mineralischere. Teran bleibt der Sturkopf Istriens — hohe Säure, Eisen und Sauerkirsche.",
+    "sl": "Polotok, ki je iz istrske malvazije naredil resno vino: obalna zahodna Istra na rdeči zemlji daje široka in slana vina, osrednja na beli in sivi ilovici bolj napeta in mineralna. Teran ostaja istrski trmoglavec — visoka kislina, železo in višnja.",
+    "es": "La península que convirtió la Malvasía istriana en un vino serio: la Istria occidental costera, sobre tierra roja, da blancos amplios y salinos; las colinas centrales, sobre margas blancas y grises, algo más tenso y mineral. El teran sigue siendo el testarudo de Istria — acidez alta, hierro y guinda.",
+    "zh": "这座半岛让伊斯特拉马尔瓦齐娅成为一款严肃的酒：西部沿海的红土产出宽厚而带咸感的白葡萄酒，中部丘陵的白灰泥灰岩则更紧致、更矿物。特兰依旧是伊斯特拉的倔强者——高酸、铁质与酸樱桃。"
    }
   },
   {
@@ -91,6 +172,49 @@
    }
   },
   {
+   "id": "champagne",
+   "country": "FR",
+   "name": {
+    "hr": "Champagne",
+    "en": "Champagne",
+    "it": "Champagne",
+    "fr": "Champagne",
+    "de": "Champagne",
+    "zh": "香槟",
+    "sl": "Champagne",
+    "es": "Champagne"
+   },
+   "sub": {
+    "hr": "Kreda, hladnoća i strpljenje",
+    "en": "Chalk, cold and patience",
+    "it": "Creta, freddo e pazienza",
+    "fr": "Craie, froid et patience",
+    "de": "Kalk, Kälte und Geduld",
+    "zh": "白垩、寒冷与耐心",
+    "sl": "Kreda, hlad in potrpljenje",
+    "es": "Creta, frío y paciencia"
+   },
+   "appellations": [
+    "Montagne de Reims",
+    "Vallée de la Marne",
+    "Côte des Blancs",
+    "Avize",
+    "Aÿ",
+    "Ambonnay",
+    "Le Mesnil-sur-Oger"
+   ],
+   "blurb": {
+    "hr": "Najsjevernija velika francuska regija: hladna klima i duboka kreda daju napetost i finoću mjehurića. Montagne de Reims nosi Pinot Noir, Côte des Blancs čisti Chardonnay, a Vallée de la Marne Pinot Meunier — Champagne kao elegancija, a ne pozlata.",
+    "en": "France's northernmost great region: a cold climate and deep chalk give the bubbles their tension and finesse. The Montagne de Reims carries Pinot Noir, the Côte des Blancs pure Chardonnay, the Vallée de la Marne Pinot Meunier — Champagne as elegance, not gilding.",
+    "it": "La regione grande più a nord della Francia: clima freddo e creta profonda danno alle bollicine tensione e finezza. La Montagne de Reims porta il Pinot Noir, la Côte des Blancs lo Chardonnay puro, la Vallée de la Marne il Pinot Meunier — lo Champagne come eleganza, non doratura.",
+    "fr": "La région septentrionale par excellence : climat froid et craie profonde donnent aux bulles leur tension et leur finesse. La Montagne de Reims porte le pinot noir, la Côte des Blancs le chardonnay pur, la Vallée de la Marne le pinot meunier — le champagne comme élégance, non comme dorure.",
+    "de": "Frankreichs nördlichste große Region: kühles Klima und tiefer Kalk geben den Perlen Spannung und Finesse. Die Montagne de Reims trägt Pinot Noir, die Côte des Blancs reinen Chardonnay, das Marnetal Pinot Meunier — Champagner als Eleganz, nicht als Vergoldung.",
+    "zh": "法国最北端的伟大产区：寒冷气候与深厚白垩土赋予气泡张力与细腻。兰斯山出黑皮诺，白丘产纯霞多丽，马恩河谷孕育莫尼耶皮诺——香槟意味着优雅，而非镀金。",
+    "sl": "Najsevernejša velika francoska regija: hladno podnebje in globoka kreda dajeta mehurčkom napetost in finoto. Montagne de Reims nosi pinot noir, Côte des Blancs čisti chardonnay, Vallée de la Marne pinot meunier — šampanjec kot eleganca, ne pozlata.",
+    "es": "La región grande más septentrional de Francia: un clima frío y una creta profunda dan a las burbujas su tensión y finura. La Montagne de Reims lleva Pinot Noir, la Côte des Blancs Chardonnay puro, la Vallée de la Marne Pinot Meunier — el Champagne como elegancia, no como dorado."
+   }
+  },
+  {
    "id": "bordeaux",
    "country": "FR",
    "name": {
@@ -136,6 +260,46 @@
    }
   },
   {
+   "id": "tuscany",
+   "country": "IT",
+   "name": {
+    "hr": "Toskana",
+    "en": "Tuscany",
+    "it": "Toscana",
+    "fr": "Toscane",
+    "de": "Toskana",
+    "zh": "托斯卡纳",
+    "sl": "Toskana",
+    "es": "Toscana"
+   },
+   "sub": {
+    "hr": "Sangiovese i obala",
+    "en": "Sangiovese and the coast",
+    "it": "Sangiovese e la costa",
+    "fr": "Sangiovese et la côte",
+    "de": "Sangiovese und die Küste",
+    "zh": "桑娇维塞与海岸",
+    "sl": "Sangiovese in obala",
+    "es": "Sangiovese y la costa"
+   },
+   "appellations": [
+    "Chianti Classico",
+    "Montalcino",
+    "Bolgheri",
+    "Maremma"
+   ],
+   "blurb": {
+    "hr": "Unutrašnja brda daju Sangiovese — Chianti Classico i moćni Brunello iz Montalcina. Uz obalu, u Bolgheriju, morski povjetarac i šljunak rađaju bordoške sorte i legendu supertoskanaca.",
+    "en": "The inland hills give Sangiovese — Chianti Classico and the powerful Brunello of Montalcino. On the coast, in Bolgheri, sea breeze and gravel raise Bordeaux varieties and the legend of the Super Tuscans.",
+    "it": "Le colline interne danno il Sangiovese — il Chianti Classico e il potente Brunello di Montalcino. Sulla costa, a Bolgheri, la brezza marina e la ghiaia allevano le varietà bordolesi e la leggenda dei Super Tuscan.",
+    "fr": "Les collines intérieures donnent le sangiovese — le Chianti Classico et le puissant Brunello de Montalcino. Sur la côte, à Bolgheri, la brise marine et les graves élèvent les cépages bordelais et la légende des Super Toscans.",
+    "de": "Die Hügel im Landesinneren geben Sangiovese — Chianti Classico und den kraftvollen Brunello di Montalcino. An der Küste, in Bolgheri, ziehen Meeresbrise und Kies die Bordeaux-Sorten und die Legende der Super Tuscans groß.",
+    "zh": "内陆丘陵孕育桑娇维塞——基安蒂经典与蒙塔奇诺强劲的布鲁奈罗。海岸的博格利，海风与砾石培育波尔多品种，成就超级托斯卡纳的传奇。",
+    "sl": "Celinski griči dajejo sangiovese — Chianti Classico in mogočni Brunello iz Montalcina. Ob obali, v Bolgheriju, morski vetrič in prod vzgajata bordojske sorte in legendo supertoskancev.",
+    "es": "Las colinas del interior dan Sangiovese — Chianti Classico y el poderoso Brunello de Montalcino. En la costa, en Bolgheri, la brisa marina y la grava crían las variedades bordelesas y la leyenda de los Súper Toscanos."
+   }
+  },
+  {
    "id": "piedmont",
    "country": "IT",
    "name": {
@@ -177,125 +341,88 @@
    }
   },
   {
-   "id": "tuscany",
+   "id": "friuli",
    "country": "IT",
    "name": {
-    "hr": "Toskana",
-    "en": "Tuscany",
-    "it": "Toscana",
-    "fr": "Toscane",
-    "de": "Toskana",
-    "zh": "托斯卡纳",
-    "sl": "Toskana",
-    "es": "Toscana"
+    "hr": "Friuli — Collio i Kras",
+    "en": "Friuli — Collio and Carso",
+    "it": "Friuli — Collio e Carso",
+    "fr": "Frioul — Collio et Carso",
+    "de": "Friaul — Collio und Karst",
+    "sl": "Furlanija — Brda in Kras",
+    "es": "Friuli — Collio y Carso",
+    "zh": "弗留利 — 科利奥与喀斯特"
    },
    "sub": {
-    "hr": "Sangiovese i obala",
-    "en": "Sangiovese and the coast",
-    "it": "Sangiovese e la costa",
-    "fr": "Sangiovese et la côte",
-    "de": "Sangiovese und die Küste",
-    "zh": "桑娇维塞与海岸",
-    "sl": "Sangiovese in obala",
-    "es": "Sangiovese y la costa"
+    "hr": "Ondje gdje su bijela vina postala narančasta",
+    "en": "Where white wine turned orange",
+    "it": "Dove il vino bianco è diventato arancione",
+    "fr": "Là où le vin blanc est devenu orange",
+    "de": "Wo Weißwein orange wurde",
+    "sl": "Kjer je belo vino postalo oranžno",
+    "es": "Donde el vino blanco se volvió naranja",
+    "zh": "白葡萄酒变成橙色的地方"
    },
    "appellations": [
-    "Chianti Classico",
-    "Montalcino",
-    "Bolgheri",
-    "Maremma"
+    "Collio",
+    "Oslavia",
+    "Friuli Isonzo",
+    "Kras",
+    "Gorizia",
+    "Venezia Giulia"
    ],
    "blurb": {
-    "hr": "Unutrašnja brda daju Sangiovese — Chianti Classico i moćni Brunello iz Montalcina. Uz obalu, u Bolgheriju, morski povjetarac i šljunak rađaju bordoške sorte i legendu supertoskanaca.",
-    "en": "The inland hills give Sangiovese — Chianti Classico and the powerful Brunello of Montalcino. On the coast, in Bolgheri, sea breeze and gravel raise Bordeaux varieties and the legend of the Super Tuscans.",
-    "it": "Le colline interne danno il Sangiovese — il Chianti Classico e il potente Brunello di Montalcino. Sulla costa, a Bolgheri, la brezza marina e la ghiaia allevano le varietà bordolesi e la leggenda dei Super Tuscan.",
-    "fr": "Les collines intérieures donnent le sangiovese — le Chianti Classico et le puissant Brunello de Montalcino. Sur la côte, à Bolgheri, la brise marine et les graves élèvent les cépages bordelais et la légende des Super Toscans.",
-    "de": "Die Hügel im Landesinneren geben Sangiovese — Chianti Classico und den kraftvollen Brunello di Montalcino. An der Küste, in Bolgheri, ziehen Meeresbrise und Kies die Bordeaux-Sorten und die Legende der Super Tuscans groß.",
-    "zh": "内陆丘陵孕育桑娇维塞——基安蒂经典与蒙塔奇诺强劲的布鲁奈罗。海岸的博格利，海风与砾石培育波尔多品种，成就超级托斯卡纳的传奇。",
-    "sl": "Celinski griči dajejo sangiovese — Chianti Classico in mogočni Brunello iz Montalcina. Ob obali, v Bolgheriju, morski vetrič in prod vzgajata bordojske sorte in legendo supertoskancev.",
-    "es": "Las colinas del interior dan Sangiovese — Chianti Classico y el poderoso Brunello de Montalcino. En la costa, en Bolgheri, la brisa marina y la grava crían las variedades bordelesas y la leyenda de los Súper Toscanos."
+    "hr": "Uski pojas uz slovensku granicu gdje je krajem devedesetih šačica vinara vratila bijelo grožđe na kožicu — tjednima, ponekad mjesecima, u drvu ili amfori. Oslavia i Collio dali su Ribollu kakvu nitko nije očekivao, a Kras iznad Trsta Vitovsku s vjetrom i vapnencem u sebi.",
+    "en": "A narrow belt along the Slovenian border where, in the late nineties, a handful of growers put white grapes back on their skins — for weeks, sometimes months, in wood or in amphora. Oslavia and the Collio gave a Ribolla nobody expected; the Carso above Trieste gives Vitovska with wind and limestone in it.",
+    "it": "Una fascia stretta lungo il confine sloveno dove, a fine anni Novanta, una manciata di vignaioli rimise le uve bianche sulle bucce — per settimane, a volte mesi, in legno o in anfora. Oslavia e il Collio hanno dato una Ribolla che nessuno si aspettava; il Carso sopra Trieste dà una Vitovska con dentro il vento e il calcare.",
+    "fr": "Une bande étroite le long de la frontière slovène où, à la fin des années 1990, une poignée de vignerons a remis les raisins blancs sur leurs peaux — des semaines, parfois des mois, en bois ou en amphore. Oslavia et le Collio ont donné une ribolla que personne n'attendait ; le Carso au-dessus de Trieste donne une vitovska qui a le vent et le calcaire dedans.",
+    "de": "Ein schmaler Streifen entlang der slowenischen Grenze, wo Ende der Neunziger eine Handvoll Winzer weiße Trauben zurück auf die Schalen legte — wochenlang, manchmal monatelang, in Holz oder Amphore. Oslavia und das Collio gaben eine Ribolla, die niemand erwartet hatte; der Karst über Triest gibt Vitovska mit Wind und Kalk darin.",
+    "sl": "Ozek pas ob slovenski meji, kjer je konec devetdesetih peščica vinarjev belo grozdje vrnila na kožico — za tedne, včasih mesece, v les ali amforo. Oslavje in Brda so dala rebulo, kakršne ni pričakoval nihče; Kras nad Trstom pa vitovsko z vetrom in apnencem v sebi.",
+    "es": "Una franja estrecha junto a la frontera eslovena donde, a finales de los noventa, un puñado de viticultores devolvió la uva blanca a sus pieles — semanas, a veces meses, en madera o en ánfora. Oslavia y el Collio dieron una ribolla que nadie esperaba; el Carso sobre Trieste da una vitovska con viento y caliza dentro.",
+    "zh": "沿斯洛文尼亚边境的一条窄带。九十年代末，几位酒农把白葡萄重新放回果皮上浸渍——数周，有时数月，在木桶或陶罐里。奥斯拉维亚与科利奥酿出了无人预料的丽波拉；的里雅斯特之上的喀斯特，则给出带着风与石灰岩的维托夫斯卡。"
    }
   },
   {
-   "id": "dalmatia",
-   "country": "HR",
+   "id": "veneto",
+   "country": "IT",
    "name": {
-    "hr": "Dalmacija",
-    "en": "Dalmatia",
-    "it": "Dalmazia",
-    "fr": "Dalmatie",
-    "de": "Dalmatien",
-    "zh": "达尔马提亚",
-    "sl": "Dalmacija",
-    "es": "Dalmacia"
+    "hr": "Veneto — Valpolicella",
+    "en": "Veneto — Valpolicella",
+    "it": "Veneto — Valpolicella",
+    "fr": "Vénétie — Valpolicella",
+    "de": "Venetien — Valpolicella",
+    "sl": "Benečija — Valpolicella",
+    "es": "Véneto — Valpolicella",
+    "zh": "威尼托 — 瓦坡里切拉"
    },
    "sub": {
-    "hr": "Kamen, sunce i more",
-    "en": "Stone, sun and sea",
-    "it": "Pietra, sole e mare",
-    "fr": "Pierre, soleil et mer",
-    "de": "Stein, Sonne und Meer",
-    "zh": "岩石、阳光与海",
-    "sl": "Kamen, sonce in morje",
-    "es": "Piedra, sol y mar"
+    "hr": "Grožđe koje čeka",
+    "en": "Grapes that wait",
+    "it": "Uve che aspettano",
+    "fr": "Des raisins qui attendent",
+    "de": "Trauben, die warten",
+    "sl": "Grozdje, ki čaka",
+    "es": "Uvas que esperan",
+    "zh": "等待的葡萄"
    },
    "appellations": [
-    "Pelješac",
-    "Dingač",
-    "Postup",
-    "Korčula",
-    "Komarna",
-    "Hvar"
+    "Valpolicella Classica",
+    "Valpolicella",
+    "Negrar",
+    "Marano di Valpolicella",
+    "Illasi",
+    "Amarone",
+    "Recioto"
    ],
    "blurb": {
-    "hr": "Strme, kamenite padine Pelješca spuštaju se prema moru — na Dingaču i Postupu Plavac mali sazrijeva pod trostrukim suncem: s neba, od mora i od bijelog kamena. Otoci Korčula i Hvar daju bijele Pošip i Grk, žive i mineralne.",
-    "en": "The steep, stony slopes of Pelješac drop toward the sea — on Dingač and Postup, Plavac Mali ripens under a triple sun: from the sky, from the sea, and from the white stone. The islands of Korčula and Hvar give the white Pošip and Grk, alive and mineral.",
-    "it": "I ripidi pendii pietrosi di Pelješac scendono verso il mare — a Dingač e Postup il Plavac Mali matura sotto un triplo sole: dal cielo, dal mare e dalla pietra bianca. Le isole di Korčula e Hvar danno i bianchi Pošip e Grk, vivi e minerali.",
-    "fr": "Les pentes escarpées et pierreuses de Pelješac plongent vers la mer — à Dingač et Postup, le plavac mali mûrit sous un triple soleil : du ciel, de la mer et de la pierre blanche. Les îles de Korčula et Hvar donnent les blancs pošip et grk, vivants et minéraux.",
-    "de": "Die steilen, steinigen Hänge von Pelješac fallen zum Meer ab — auf Dingač und Postup reift Plavac Mali unter dreifacher Sonne: vom Himmel, vom Meer und vom weißen Stein. Die Inseln Korčula und Hvar geben die weißen Pošip und Grk, lebendig und mineralisch.",
-    "zh": "佩列沙茨陡峭多石的坡地向海倾泻——在 Dingač 与 Postup，Plavac Mali 在三重阳光下成熟：来自天空、海洋与白石。科尔丘拉与赫瓦尔岛出产白葡萄 Pošip 与 Grk，鲜活而富矿物感。",
-    "sl": "Strma, kamnita pobočja Pelješca se spuščajo proti morju — na Dingaču in Postupu plavac mali zori pod trojnim soncem: z neba, od morja in od belega kamna. Otoka Korčula in Hvar dajeta bela pošip in grk, živa in mineralna.",
-    "es": "Las escarpadas laderas pedregosas de Pelješac descienden hacia el mar — en Dingač y Postup, el Plavac Mali madura bajo un sol triple: del cielo, del mar y de la piedra blanca. Las islas de Korčula y Hvar dan los blancos Pošip y Grk, vivos y minerales."
-   }
-  },
-  {
-   "id": "istria",
-   "country": "HR",
-   "name": {
-    "hr": "Istra",
-    "en": "Istria",
-    "it": "Istria",
-    "fr": "Istrie",
-    "de": "Istrien",
-    "sl": "Istra",
-    "es": "Istria",
-    "zh": "伊斯特拉"
-   },
-   "sub": {
-    "hr": "Crvena zemlja, bijelo vino",
-    "en": "Red earth, white wine",
-    "it": "Terra rossa, vino bianco",
-    "fr": "Terre rouge, vin blanc",
-    "de": "Rote Erde, weißer Wein",
-    "sl": "Rdeča zemlja, belo vino",
-    "es": "Tierra roja, vino blanco",
-    "zh": "红土，白葡萄酒"
-   },
-   "appellations": [
-    "Zapadna Istra",
-    "Centralna Istra",
-    "Istočna Istra",
-    "Hrvatska Istra"
-   ],
-   "blurb": {
-    "hr": "Poluotok koji je od Malvazije istarske napravio ozbiljno vino: zapadna, primorska Istra na crvenoj zemlji daje široka i slana vina, središnja na bijeloj i sivoj ilovači napetija i mineralnija. Teran ostaje istarski tvrdoglavac — visoka kiselina, željezo i divlja višnja.",
-    "en": "The peninsula that turned Malvasia Istriana into a serious wine: coastal western Istria, on red earth, gives broad and saline whites; the central hills, on white and grey marl, something tighter and more mineral. Teran remains Istria's stubborn one — high acid, iron and sour cherry.",
-    "it": "La penisola che ha reso la Malvasia Istriana un vino serio: l'Istria occidentale costiera, sulla terra rossa, dà bianchi ampi e salini; le colline centrali, su marne bianche e grigie, qualcosa di più teso e minerale. Il Terrano resta il testardo dell'Istria — acidità alta, ferro e amarena.",
-    "fr": "La péninsule qui a fait de la Malvasia Istriana un vin sérieux : l'Istrie occidentale, côtière, sur terre rouge, donne des blancs amples et salins ; les collines centrales, sur marnes blanches et grises, quelque chose de plus tendu et minéral. Le teran reste l'entêté de l'Istrie — acidité haute, fer et griotte.",
-    "de": "Die Halbinsel, die aus der Malvasia Istriana einen ernsten Wein gemacht hat: das küstennahe Westistrien auf roter Erde gibt breite, salzige Weiße; die zentralen Hügel auf weißem und grauem Mergel etwas Straffere, Mineralischere. Teran bleibt der Sturkopf Istriens — hohe Säure, Eisen und Sauerkirsche.",
-    "sl": "Polotok, ki je iz istrske malvazije naredil resno vino: obalna zahodna Istra na rdeči zemlji daje široka in slana vina, osrednja na beli in sivi ilovici bolj napeta in mineralna. Teran ostaja istrski trmoglavec — visoka kislina, železo in višnja.",
-    "es": "La península que convirtió la Malvasía istriana en un vino serio: la Istria occidental costera, sobre tierra roja, da blancos amplios y salinos; las colinas centrales, sobre margas blancas y grises, algo más tenso y mineral. El teran sigue siendo el testarudo de Istria — acidez alta, hierro y guinda.",
-    "zh": "这座半岛让伊斯特拉马尔瓦齐娅成为一款严肃的酒：西部沿海的红土产出宽厚而带咸感的白葡萄酒，中部丘陵的白灰泥灰岩则更紧致、更矿物。特兰依旧是伊斯特拉的倔强者——高酸、铁质与酸樱桃。"
+    "hr": "Sjeverno od Verone, Corvina i njezine sestre ne idu ravno u bačvu — suše se mjesecima na letvama dok ne izgube pola vode. Iz toga nastaje Amarone, suh i golem, i Recioto, sladak i taman; Valpolicella Classica, srce regije, radi to na najstrmijim terasama.",
+    "en": "North of Verona, Corvina and her sisters do not go straight into the vat — they dry on racks for months until half the water is gone. Out of that comes Amarone, dry and enormous, and Recioto, sweet and dark; Valpolicella Classica, the region's heart, does it on the steepest terraces.",
+    "it": "A nord di Verona, la Corvina e le sue sorelle non vanno dritte in tino — appassiscono sui graticci per mesi finché metà dell'acqua se n'è andata. Ne nascono l'Amarone, secco ed enorme, e il Recioto, dolce e scuro; la Valpolicella Classica, cuore della zona, lo fa sulle terrazze più ripide.",
+    "fr": "Au nord de Vérone, la corvina et ses sœurs ne vont pas droit en cuve — elles sèchent sur claies des mois durant, jusqu'à perdre la moitié de leur eau. Il en naît l'amarone, sec et énorme, et le recioto, doux et sombre ; la Valpolicella Classica, cœur de la zone, le fait sur les terrasses les plus raides.",
+    "de": "Nördlich von Verona gehen Corvina und ihre Schwestern nicht direkt in den Bottich — sie trocknen monatelang auf Lattenrosten, bis das halbe Wasser weg ist. Daraus entsteht Amarone, trocken und gewaltig, und Recioto, süß und dunkel; die Valpolicella Classica, das Herz der Zone, macht es auf den steilsten Terrassen.",
+    "sl": "Severno od Verone corvina in njene sestre ne gredo naravnost v kad — mesece se sušijo na letvah, dokler ne izgubijo polovice vode. Iz tega nastane amarone, suh in ogromen, in recioto, sladek in temen; Valpolicella Classica, srce območja, to počne na najstrmejših terasah.",
+    "es": "Al norte de Verona, la corvina y sus hermanas no van directas a la cuba — se secan en cañizos durante meses hasta perder la mitad del agua. De ahí salen el Amarone, seco y enorme, y el Recioto, dulce y oscuro; la Valpolicella Classica, corazón de la zona, lo hace en las terrazas más empinadas.",
+    "zh": "在维罗纳以北，科维纳与她的姐妹们不会直接入槽——她们在架上风干数月，直到失去一半水分。由此诞生了干型而宏大的阿玛罗尼，以及甜美深沉的雷乔托；产区核心经典瓦坡里切拉，把这件事做在最陡的梯田上。"
    }
   },
   {
@@ -343,130 +470,48 @@
    }
   },
   {
-   "id": "veneto",
-   "country": "IT",
+   "id": "california",
+   "country": "US",
    "name": {
-    "hr": "Veneto — Valpolicella",
-    "en": "Veneto — Valpolicella",
-    "it": "Veneto — Valpolicella",
-    "fr": "Vénétie — Valpolicella",
-    "de": "Venetien — Valpolicella",
-    "sl": "Benečija — Valpolicella",
-    "es": "Véneto — Valpolicella",
-    "zh": "威尼托 — 瓦坡里切拉"
+    "hr": "Kalifornija i Oregon",
+    "en": "California and Oregon",
+    "it": "California e Oregon",
+    "fr": "Californie et Oregon",
+    "de": "Kalifornien und Oregon",
+    "sl": "Kalifornija in Oregon",
+    "es": "California y Oregón",
+    "zh": "加利福尼亚与俄勒冈"
    },
    "sub": {
-    "hr": "Grožđe koje čeka",
-    "en": "Grapes that wait",
-    "it": "Uve che aspettano",
-    "fr": "Des raisins qui attendent",
-    "de": "Trauben, die warten",
-    "sl": "Grozdje, ki čaka",
-    "es": "Uvas que esperan",
-    "zh": "等待的葡萄"
+    "hr": "Magla s Pacifika",
+    "en": "Fog off the Pacific",
+    "it": "Nebbia dal Pacifico",
+    "fr": "Le brouillard du Pacifique",
+    "de": "Nebel vom Pazifik",
+    "sl": "Megla s Pacifika",
+    "es": "Niebla del Pacífico",
+    "zh": "来自太平洋的雾"
    },
    "appellations": [
-    "Valpolicella Classica",
-    "Valpolicella",
-    "Negrar",
-    "Marano di Valpolicella",
-    "Illasi",
-    "Amarone",
-    "Recioto"
+    "Napa Valley",
+    "Spring Mountain District",
+    "Mount Veeder",
+    "Sonoma County",
+    "Alexander Valley",
+    "Sonoma Coast",
+    "Santa Cruz Mountains",
+    "Sta. Rita Hills",
+    "Willamette Valley"
    ],
    "blurb": {
-    "hr": "Sjeverno od Verone, Corvina i njezine sestre ne idu ravno u bačvu — suše se mjesecima na letvama dok ne izgube pola vode. Iz toga nastaje Amarone, suh i golem, i Recioto, sladak i taman; Valpolicella Classica, srce regije, radi to na najstrmijim terasama.",
-    "en": "North of Verona, Corvina and her sisters do not go straight into the vat — they dry on racks for months until half the water is gone. Out of that comes Amarone, dry and enormous, and Recioto, sweet and dark; Valpolicella Classica, the region's heart, does it on the steepest terraces.",
-    "it": "A nord di Verona, la Corvina e le sue sorelle non vanno dritte in tino — appassiscono sui graticci per mesi finché metà dell'acqua se n'è andata. Ne nascono l'Amarone, secco ed enorme, e il Recioto, dolce e scuro; la Valpolicella Classica, cuore della zona, lo fa sulle terrazze più ripide.",
-    "fr": "Au nord de Vérone, la corvina et ses sœurs ne vont pas droit en cuve — elles sèchent sur claies des mois durant, jusqu'à perdre la moitié de leur eau. Il en naît l'amarone, sec et énorme, et le recioto, doux et sombre ; la Valpolicella Classica, cœur de la zone, le fait sur les terrasses les plus raides.",
-    "de": "Nördlich von Verona gehen Corvina und ihre Schwestern nicht direkt in den Bottich — sie trocknen monatelang auf Lattenrosten, bis das halbe Wasser weg ist. Daraus entsteht Amarone, trocken und gewaltig, und Recioto, süß und dunkel; die Valpolicella Classica, das Herz der Zone, macht es auf den steilsten Terrassen.",
-    "sl": "Severno od Verone corvina in njene sestre ne gredo naravnost v kad — mesece se sušijo na letvah, dokler ne izgubijo polovice vode. Iz tega nastane amarone, suh in ogromen, in recioto, sladek in temen; Valpolicella Classica, srce območja, to počne na najstrmejših terasah.",
-    "es": "Al norte de Verona, la corvina y sus hermanas no van directas a la cuba — se secan en cañizos durante meses hasta perder la mitad del agua. De ahí salen el Amarone, seco y enorme, y el Recioto, dulce y oscuro; la Valpolicella Classica, corazón de la zona, lo hace en las terrazas más empinadas.",
-    "zh": "在维罗纳以北，科维纳与她的姐妹们不会直接入槽——她们在架上风干数月，直到失去一半水分。由此诞生了干型而宏大的阿玛罗尼，以及甜美深沉的雷乔托；产区核心经典瓦坡里切拉，把这件事做在最陡的梯田上。"
-   }
-  },
-  {
-   "id": "friuli",
-   "country": "IT",
-   "name": {
-    "hr": "Friuli — Collio i Kras",
-    "en": "Friuli — Collio and Carso",
-    "it": "Friuli — Collio e Carso",
-    "fr": "Frioul — Collio et Carso",
-    "de": "Friaul — Collio und Karst",
-    "sl": "Furlanija — Brda in Kras",
-    "es": "Friuli — Collio y Carso",
-    "zh": "弗留利 — 科利奥与喀斯特"
-   },
-   "sub": {
-    "hr": "Ondje gdje su bijela vina postala narančasta",
-    "en": "Where white wine turned orange",
-    "it": "Dove il vino bianco è diventato arancione",
-    "fr": "Là où le vin blanc est devenu orange",
-    "de": "Wo Weißwein orange wurde",
-    "sl": "Kjer je belo vino postalo oranžno",
-    "es": "Donde el vino blanco se volvió naranja",
-    "zh": "白葡萄酒变成橙色的地方"
-   },
-   "appellations": [
-    "Collio",
-    "Oslavia",
-    "Friuli Isonzo",
-    "Kras",
-    "Gorizia",
-    "Venezia Giulia"
-   ],
-   "blurb": {
-    "hr": "Uski pojas uz slovensku granicu gdje je krajem devedesetih šačica vinara vratila bijelo grožđe na kožicu — tjednima, ponekad mjesecima, u drvu ili amfori. Oslavia i Collio dali su Ribollu kakvu nitko nije očekivao, a Kras iznad Trsta Vitovsku s vjetrom i vapnencem u sebi.",
-    "en": "A narrow belt along the Slovenian border where, in the late nineties, a handful of growers put white grapes back on their skins — for weeks, sometimes months, in wood or in amphora. Oslavia and the Collio gave a Ribolla nobody expected; the Carso above Trieste gives Vitovska with wind and limestone in it.",
-    "it": "Una fascia stretta lungo il confine sloveno dove, a fine anni Novanta, una manciata di vignaioli rimise le uve bianche sulle bucce — per settimane, a volte mesi, in legno o in anfora. Oslavia e il Collio hanno dato una Ribolla che nessuno si aspettava; il Carso sopra Trieste dà una Vitovska con dentro il vento e il calcare.",
-    "fr": "Une bande étroite le long de la frontière slovène où, à la fin des années 1990, une poignée de vignerons a remis les raisins blancs sur leurs peaux — des semaines, parfois des mois, en bois ou en amphore. Oslavia et le Collio ont donné une ribolla que personne n'attendait ; le Carso au-dessus de Trieste donne une vitovska qui a le vent et le calcaire dedans.",
-    "de": "Ein schmaler Streifen entlang der slowenischen Grenze, wo Ende der Neunziger eine Handvoll Winzer weiße Trauben zurück auf die Schalen legte — wochenlang, manchmal monatelang, in Holz oder Amphore. Oslavia und das Collio gaben eine Ribolla, die niemand erwartet hatte; der Karst über Triest gibt Vitovska mit Wind und Kalk darin.",
-    "sl": "Ozek pas ob slovenski meji, kjer je konec devetdesetih peščica vinarjev belo grozdje vrnila na kožico — za tedne, včasih mesece, v les ali amforo. Oslavje in Brda so dala rebulo, kakršne ni pričakoval nihče; Kras nad Trstom pa vitovsko z vetrom in apnencem v sebi.",
-    "es": "Una franja estrecha junto a la frontera eslovena donde, a finales de los noventa, un puñado de viticultores devolvió la uva blanca a sus pieles — semanas, a veces meses, en madera o en ánfora. Oslavia y el Collio dieron una ribolla que nadie esperaba; el Carso sobre Trieste da una vitovska con viento y caliza dentro.",
-    "zh": "沿斯洛文尼亚边境的一条窄带。九十年代末，几位酒农把白葡萄重新放回果皮上浸渍——数周，有时数月，在木桶或陶罐里。奥斯拉维亚与科利奥酿出了无人预料的丽波拉；的里雅斯特之上的喀斯特，则给出带着风与石灰岩的维托夫斯卡。"
-   }
-  },
-  {
-   "id": "north-croatia",
-   "country": "HR",
-   "name": {
-    "hr": "Sjeverna Hrvatska",
-    "en": "Northern Croatia",
-    "it": "Croazia settentrionale",
-    "fr": "Croatie du Nord",
-    "de": "Nordkroatien",
-    "sl": "Severna Hrvaška",
-    "es": "Croacia septentrional",
-    "zh": "克罗地亚北部"
-   },
-   "sub": {
-    "hr": "Brežuljci, hladne noći, mjehurići",
-    "en": "Hills, cold nights, bubbles",
-    "it": "Colline, notti fredde, bollicine",
-    "fr": "Collines, nuits froides, bulles",
-    "de": "Hügel, kalte Nächte, Perlen",
-    "sl": "Griči, hladne noči, mehurčki",
-    "es": "Colinas, noches frías, burbujas",
-    "zh": "丘陵、寒夜与气泡"
-   },
-   "appellations": [
-    "Plešivica – Okić",
-    "Zagorje-Međimurje",
-    "Zabok",
-    "Međimurje",
-    "Moslavina",
-    "Voloder – Ivanić-Grad"
-   ],
-   "blurb": {
-    "hr": "Kontinentalni sjever radi ono što jug ne može: hladne noći drže kiselinu, a kiselina drži pjenušac. Plešivica je postala hrvatska adresa za klasičnu metodu i pét-nat, Zagorje i Međimurje daju precizne rizlinge i Sauvignone, a Moslavina čuva Škrlet — sortu koja raste gotovo nigdje drugdje.",
-    "en": "The continental north does what the south cannot: cold nights hold the acidity, and acidity holds the bubble. Plešivica has become Croatia's address for méthode traditionnelle and pét-nat, Zagorje and Međimurje give precise Rieslings and Sauvignons, and Moslavina keeps Škrlet — a variety that grows almost nowhere else.",
-    "it": "Il nord continentale fa ciò che il sud non può: le notti fredde tengono l'acidità, e l'acidità tiene la bolla. Plešivica è diventata l'indirizzo croato per il metodo classico e il pét-nat, lo Zagorje e il Međimurje danno Riesling e Sauvignon precisi, e la Moslavina custodisce lo Škrlet — una varietà che cresce quasi in nessun altro luogo.",
-    "fr": "Le nord continental fait ce que le sud ne peut pas : les nuits froides tiennent l'acidité, et l'acidité tient la bulle. Plešivica est devenue l'adresse croate de la méthode traditionnelle et du pét-nat, le Zagorje et le Međimurje donnent des rieslings et des sauvignons précis, et la Moslavina garde le škrlet — un cépage qui ne pousse presque nulle part ailleurs.",
-    "de": "Der kontinentale Norden kann, was der Süden nicht kann: kalte Nächte halten die Säure, und die Säure hält die Perle. Plešivica ist Kroatiens Adresse für die klassische Flaschengärung und Pét-Nat geworden, Zagorje und Međimurje geben präzise Rieslinge und Sauvignons, und die Moslavina bewahrt den Škrlet — eine Sorte, die fast nirgendwo sonst wächst.",
-    "sl": "Celinski sever zmore, česar jug ne: hladne noči držijo kislino, kislina pa mehurček. Plešivica je postala hrvaški naslov za klasično metodo in pet-nat, Zagorje in Medžimurje dajeta natančne rizlinge in sauvignone, Moslavina pa hrani škrlet — sorto, ki raste tako rekoč nikjer drugje.",
-    "es": "El norte continental hace lo que el sur no puede: las noches frías sostienen la acidez, y la acidez sostiene la burbuja. Plešivica se ha convertido en la dirección croata del método tradicional y el pét-nat, Zagorje y Međimurje dan rieslings y sauvignons precisos, y Moslavina guarda el škrlet — una variedad que no crece casi en ningún otro sitio.",
-    "zh": "大陆性的北部能做南部做不到的事：寒夜守住酸度，酸度守住气泡。普莱希维察已成为克罗地亚传统法起泡与 pét-nat 的地址，扎戈列与梅吉穆列出产精准的雷司令与长相思，而莫斯拉维纳守护着什克尔莱特——一个几乎别无他处生长的品种。"
+    "hr": "Ono što ovu obalu drži u ravnoteži nije sunce nego hladno more: magla koja svaku večer ulazi kroz zaljev i vraća kiselinu koju bi dan bio pojeo. Napa i njezine planinske pozicije daju stroge, dugovječne Caberneta, Santa Cruz Mountains vino koje je 1976. u Parizu promijenilo mišljenje svijeta, a Willamette na sjeveru Pinot Noir bliži Burgundiji nego Kaliforniji.",
+    "en": "What keeps this coast in balance is not the sun but the cold sea: the fog that comes through the gate every evening and gives back the acidity the day had eaten. Napa and its mountain sites give strict, long-lived Cabernet, the Santa Cruz Mountains the wine that changed the world's mind in Paris in 1976, and the Willamette to the north a Pinot Noir closer to Burgundy than to California.",
+    "it": "Ciò che tiene in equilibrio questa costa non è il sole ma il mare freddo: la nebbia che ogni sera entra dalla baia e restituisce l'acidità che il giorno aveva mangiato. Napa e i suoi vigneti di montagna danno Cabernet severi e longevi, i Santa Cruz Mountains il vino che nel 1976 a Parigi cambiò l'idea del mondo, e la Willamette a nord un Pinot Nero più vicino alla Borgogna che alla California.",
+    "fr": "Ce qui tient cette côte en équilibre, ce n'est pas le soleil mais la mer froide : le brouillard qui entre chaque soir par la baie et rend l'acidité que le jour avait mangée. Napa et ses coteaux de montagne donnent des cabernets stricts et de longue garde, les Santa Cruz Mountains le vin qui a changé l'avis du monde à Paris en 1976, et la Willamette au nord un pinot noir plus proche de la Bourgogne que de la Californie.",
+    "de": "Was diese Küste im Gleichgewicht hält, ist nicht die Sonne, sondern das kalte Meer: der Nebel, der jeden Abend durch die Bucht kommt und die Säure zurückgibt, die der Tag gefressen hatte. Napa und seine Berglagen geben strenge, langlebige Cabernets, die Santa Cruz Mountains den Wein, der 1976 in Paris die Meinung der Welt änderte, und das Willamette im Norden einen Pinot Noir, der Burgund näher ist als Kalifornien.",
+    "sl": "Kar to obalo drži v ravnovesju, ni sonce, ampak hladno morje: megla, ki vsak večer pride skozi zaliv in vrne kislino, ki jo je dan pojedel. Napa in njene gorske lege dajejo stroge, dolgožive cabernete, Santa Cruz Mountains vino, ki je leta 1976 v Parizu spremenilo mnenje sveta, Willamette na severu pa pinot noir, bližji Burgundiji kot Kaliforniji.",
+    "es": "Lo que mantiene esta costa en equilibrio no es el sol sino el mar frío: la niebla que entra cada tarde por la bahía y devuelve la acidez que el día se había comido. Napa y sus laderas de montaña dan cabernets severos y longevos, las Santa Cruz Mountains el vino que en 1976 cambió la opinión del mundo en París, y el Willamette al norte un pinot noir más cercano a Borgoña que a California.",
+    "zh": "让这条海岸保持平衡的不是阳光，而是冰冷的海：每晚穿过海湾而来的雾，把白日吃掉的酸度还了回来。纳帕与它的山地园出产严谨而长寿的赤霞珠；圣克鲁兹山献出了 1976 年在巴黎改变世界看法的那款酒；北面的威拉米特谷，则给出更近勃艮第而非加州的黑皮诺。"
    }
   }
  ]

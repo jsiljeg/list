@@ -636,6 +636,20 @@ body {
 .helper .item { border-radius: 12px; background: var(--bg-card); margin-bottom: .6rem; border: 1px solid var(--line); }
 .helper .item + .item { border-top: 1px solid var(--line); }
 
+/* The divider between "wines that ARE this" and "wines that taste of it".
+   Search results never needed a heading until aromas and pairings joined the
+   haystack; now a guest typing "orange" sees twelve orange wines and then,
+   under a line, the thirty-three that merely smell of it. */
+.search-group {
+  display: flex; align-items: center; gap: .8rem;
+  font-family: var(--sans); color: var(--text-faint);
+  font-size: .74rem; letter-spacing: .14em; text-transform: uppercase;
+  margin: 1.4rem 0 .7rem;
+}
+.search-group::after {
+  content: ""; flex: 1; height: 1px; background: var(--line);
+}
+
 /* ---------- Regions view ---------- */
 .nav button.region-chip:not(.active) { color: var(--gold-soft); border-color: var(--gold-soft); }
 .region-card {
@@ -667,6 +681,7 @@ body {
   max-width: 900px; margin: 0 auto;
   padding: 1.4rem 1.2rem 2.6rem; text-align: center;
 }
+.footer-copyright { margin-top: .5rem; font-size: .74rem; color: var(--text-faint); opacity: .8; }
 .footer p + p { margin-top: .4rem; }
 
 /* desktop: editorial header — a centred pill search on its own row, and the
