@@ -13,6 +13,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { allItems, producers, library } from "./helpers.mjs";
 import { joinList as joinRaw } from "../scripts/lib/list.mjs";
+import { parseRs } from "../scripts/lib/rs.mjs";
 import { rankPairings, STYLE_ORDER } from "../scripts/lib/pairing-rank.mjs";
 
 /* import.meta.dirname needs Node 20.11; this works everywhere. */
@@ -693,7 +694,7 @@ test("the same wine is one library entry, not two that differ only by name", () 
   expect(bad, "duplicate library entries").toEqual([]);
 });
 
-test("residual sugar is a plain number, and only on wines that have any", () => {
+test("residual sugar is g/l without the unit, and only on wines that have any", () => {
   /* Added 2026-08-03 (owner asked for RS on the 23 non-dry still wines). It
      sits under the same rule as alcohol: the producer's own sheet, or a
      listing quoting the analysis for that exact wine and vintage. A
@@ -701,18 +702,24 @@ test("residual sugar is a plain number, and only on wines that have any", () => 
      48.6 g/l in 2023 and 60 in 2019, so borrowing across years invents a
      number.
 
-     Populated on three wines, because three is how many I could source. See
+     Stored as a string so a producer who publishes a range keeps it: widened
+     2026-08-03 for Ca' La Bionda's Recioto, which is 120-140 g/l on their own
+     page and nothing narrower. See scripts/lib/rs.mjs.
+
+     Populated on nine wines, because nine is how many I could source. See
      CLAUDE.md before spending another day on it: RS is far less published than
      alcohol, and most of the German Prädikat producers publish nothing. */
   const bad = [];
   for (const it of items) {
     const ins = it.insight || {};
     if (ins.rs == null) continue;
-    if (typeof ins.rs !== "number") bad.push(`${it.name}: rs is ${JSON.stringify(ins.rs)}, want a number of g/l`);
-    else if (!(ins.rs > 0 && ins.rs < 600)) bad.push(`${it.name}: rs ${ins.rs} g/l is out of range`);
+    const rs = parseRs(ins.rs);
+    if (!rs) { bad.push(`${it.name}: rs is ${JSON.stringify(ins.rs)}, want g/l with no unit`); continue; }
     if (ins.sweetness === "dry") bad.push(`${it.name}: tagged dry but carries a residual-sugar figure`);
-    /* A number this size is a dessert wine, whatever the sweetness field says. */
-    if (ins.rs > 45 && ins.sweetness !== "sweet") bad.push(`${it.name}: ${ins.rs} g/l is sweet by any definition, but tagged ${ins.sweetness}`);
+    /* A number this size is a dessert wine, whatever the sweetness field says.
+       Judged on the bottom of a range: if even that is over the line, so is the
+       wine. */
+    if (rs.lo > 45 && ins.sweetness !== "sweet") bad.push(`${it.name}: ${ins.rs} g/l is sweet by any definition, but tagged ${ins.sweetness}`);
   }
   expect(bad, "residual-sugar problems").toEqual([]);
   expect(items.filter((i) => (i.insight || {}).rs != null).length,

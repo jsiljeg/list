@@ -185,11 +185,26 @@ Jeff Leve, Jeb Dunnuck, Jeannie Cho Lee, Stuart Pigott. `+` and ranges kept
 listing **for that exact wine and vintage**. A neighbouring vintage is not a
 source. Conflicting sources ⇒ leave blank and ask the owner to read the label.
 
-**Residual sugar** (`insight.rs`, grams per litre, a bare number) follows the
-alcohol rule exactly: the producer's own sheet, or a listing quoting the
-analysis for that exact wine **and vintage**. A neighbouring vintage is not a
-source, and this is the field that proves why — Zilliken's Rausch Kabinett
-measured 48.6 g/l in 2023, 60 in 2019 and 56.5 in 2012.
+**Residual sugar** (`insight.rs`, grams per litre) follows the alcohol rule
+exactly: the producer's own sheet, or a listing quoting the analysis for that
+exact wine **and vintage**. A neighbouring vintage is not a source, and this is
+the field that proves why — Zilliken's Rausch Kabinett measured 48.6 g/l in
+2023, 60 in 2019 and 56.5 in 2012.
+
+It is a **string, like `alcohol`**, not a number: `"144"`, `"129.33"`, or a
+range `"120–140"` where the producer publishes only one (Ca' La Bionda's
+Recioto). Storing a midpoint would print a measurement nobody took. En dash,
+matching the serving temperatures — `scripts/lib/rs.mjs` rejects a hyphen, a
+unit, a bare number and a reversed range, and both validate.mjs and
+data.spec.mjs go through it.
+
+Two sources worth knowing before spending a day searching. **vinmonopolet.no**
+analyses everything it sells and prints sugar per listing — it produced the two
+Prüms that Prüm themselves refuse to publish. And the **EU nutrition
+declaration**, mandatory on wine since December 2023, is producer analysis in
+disguise: `4.5 g/100 ml` is 45 g/l, good to ±0.5. Both beat a merchant retyping
+a tech sheet — one merchant sheet quoted an alcohol 2% off and a *feinherb*
+label against a sugar three times the feinherb ceiling, and was discarded whole.
 
 It is on three wines, which is how many were sourceable out of the 23 non-dry
 still wines: both Yquems and Ben Ryé. **Do not spend another day hunting the

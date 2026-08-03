@@ -205,33 +205,59 @@ Still not usable from there, for the vintage reason:
   - E. Pira & Figli bottle no plain "Barolo" at all — only Via Nuova, Mosconi
     and Cannubi. Our "Barolo 2018" is one of those three and **there is no way
     to tell which from the data we hold**, so its alcohol stays blank.
-  - Ca' La Bionda's own site gives the Recioto blend as 70% Corvina, 10%
+  - ~~Ca' La Bionda's own site gives the Recioto blend as 70% Corvina, 10%
     Corvinone, 20% Rondinella; we store Corvina 70%, Rondinella 25%, Molinara
-    5%. Neither source is pinned to 2015, so this is flagged rather than
-    changed.
+    5%.~~ **Settled 2026-08-03** — owner took the estate's figures. Stored
+    descending, so `Corvina 70%, Rondinella 20%, Corvinone 10%`; Molinara is
+    out of this wine entirely (it stays in their Amarone).
 
-### The 19 still unconfirmed (2026-08-03)
+### Five closed by the owner, 2026-08-03
 
-Confirmed: Ben Ryé 2019 (194), Yquem 2015 (144), Yquem 2020 (135), Quintarelli
-Amabile del Cerè 2017 (129.33). The rest, and why:
+The owner went and found what the searching had not. All five are
+vintage-specific for our exact bottle, so they clear the standing rule. Four
+went in; one was held, and the reason matters more than the number.
 
-**Germany — 9.** The Prädikat row, and the frustrating one, because these are
-exactly the wines where a number would explain the label.
+    Joh. Jos. Prüm  Wehlener Sonnenuhr Auslese 2023   85.7 g/l   vinmonopolet.no
+    Joh. Jos. Prüm  Wehlener Sonnenuhr Kabinett 2023  39.8 g/l   vinmonopolet.no
+    Zilliken        Rausch Kabinett 2025              ~45 g/l    gute-weine.de
+    Zilliken        Butterfly feinherb 2024           17.0 g/l   nurgutes.de +
+                                                                 genussland.de
+
+**Vinmonopolet is the best RS source we have found.** The Norwegian state
+monopoly analyses what it sells and prints sugar on every listing, which is why
+it has the two Prüms that Prüm themselves will not publish. Both pages also give
+an alcohol matching ours exactly (8% and 8.5%) — the corroboration that made
+them safe to take. Check it first next time.
+
+**The Zilliken Rausch figure is derived, not stated.** Its source is the EU
+nutrition declaration (4.5 g sugar / 100 ml), mandatory on wine since December
+2023 and computed from the producer's own analysis — a good source, but rounded
+to two figures, so the truth is 44.5–45.5. Stored as "45". Zilliken's own
+per-vintage page still 404s for 2025. It also lands next to the 48.6 g/l they
+measured in 2023, which is the sanity check.
+
+**Egon Müller Scharzhof 2023 was held.** vinothek-der-saar.de gives 32,5 g/l,
+and it is the only source for it — on a data block that also says *10,5% vol*
+where three other merchants and our own record say 8–8.5%, and labels the wine
+*feinherb* while quoting a sugar three times the legal feinherb ceiling. A sheet
+that contradicts itself and the trade on the same wine is not evidence, and 32.5
+is precisely the figure that would move the wine's sweetness descriptor. The
+back label settles it in five seconds; nothing else will.
+
+### The 14 still unconfirmed (2026-08-03)
+
+Confirmed, nine: Ben Ryé 2019 (194), Yquem 2015 (144), Yquem 2020 (135),
+Quintarelli Amabile del Cerè 2017 (129.33), Ca' La Bionda Recioto (120–140),
+Prüm Auslese 2023 (85.7), Zilliken Rausch Kabinett 2025 (45), Prüm Kabinett 2023
+(39.8), Zilliken Butterfly 2024 (17). The rest, and why:
+
+**Germany — 5.** Still the Prädikat row, still the frustrating one.
 
     A. Clüsserath        Trittenheimer Apotheke Kabinett 2024   7.5%
-    Egon Müller          Scharzhof Riesling 2023                8.5%
+    Egon Müller          Scharzhof Riesling 2023                8.5%   (held, above)
     Heymann-Löwenstein   Schieferterrassen Beerenauslese 2017   —
-    Joh. Jos. Prüm       Wehlener Sonnenuhr Auslese 2023        8%
-    Joh. Jos. Prüm       Wehlener Sonnenuhr Kabinett 2023       8.5%
     Wittmann             Aulerde Auslese 2015                   8%
     Zilliken             Auslese Goldkapsel 2009                —
-    Zilliken             Rausch Kabinett 2025                   8%
-    Zilliken             Butterfly 2024                         11%
-
-Prüm publish no analytics at all, as a matter of house policy. Zilliken publish
-a page per vintage — zilliken-vdp.de/weine/YYYY/<wine>.html, which is worth
-knowing — but not yet for the 2025, and the 2023 and 2024 pages are the wrong
-vintage for our bottle.
 
 **Croatia — 7.** No Croatian producer on this list publishes an analysis sheet;
 the two Prošeks and Mrgudić do not publish alcohol either.
@@ -242,15 +268,29 @@ the two Prošeks and Mrgudić do not publish alcohol either.
     Mrgudić              Prošek Moskar                          —
     Niko Bura            Prošek Ruža Dalmatinska (both formats) —
 
-**Italy — 2**, both blocked by vintage rather than by silence.
+**Italy — 1**, blocked by vintage rather than by silence.
 
-    Ca' La Bionda        Recioto Classico 2015    estate gives only "120–140 g/l"
     Quintarelli          Recioto Classico 2011    superiore.de has the 2015 at
                                                   72,55 g/l and says the 2011 is
                                                   higher, which is not a number
 
 **France — 1.** Albert Mann Pinot Gris GC Hengst 2020, 14.5%, off-dry. Alsace
 growers rarely publish RS even though it is the one figure an Alsace buyer wants.
+
+### What the numbers said back about our own tags
+
+Worth recording, because two of the four either confirmed or questioned a
+descriptor a guest reads:
+
+  - **Butterfly's `off_dry` is now provably right.** 17.0 g/l looks like
+    medium-sweet until you apply the actual EU rule: halbtrocken allows up to
+    18 g/l when RS ≤ acidity + 10, and its acidity is 8.4. So 17.0 is legally
+    off-dry, which is also what *feinherb* on the label claims. Left alone.
+  - **Prüm's Kabinett at 39.8 g/l is EU "medium", and we call it `sweet`.**
+    Left alone deliberately: at 8.5% alcohol and Prüm's acidity it reads sweet
+    in the glass, that is how the category is sold, and the number now sits on
+    the card immediately below the word — which was the whole argument for
+    adding the field. Flagged rather than changed.
 
 **The cheapest way to close most of this** is not more searching: it is the back
 label or the shelf-talker in the cellar. German Prädikat bottles print the

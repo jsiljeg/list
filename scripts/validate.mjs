@@ -11,6 +11,7 @@ import fs from "node:fs";
 import vm from "node:vm";
 import { joinList } from "./lib/list.mjs";
 import { rankPairings } from "./lib/pairing-rank.mjs";
+import { parseRs } from "./lib/rs.mjs";
 
 const ctx = {};
 vm.createContext(ctx);
@@ -60,13 +61,13 @@ for (const sec of data.sections) {
         const where = `${sec.id}/${cat.id}: "${item.name || "?"}"`;
         if (!item.name) errors.push(`item without name in ${sec.id}/${cat.id}`);
         if (item.price != null && typeof item.price !== "number") errors.push(`${where}: price must be a number (no quotes, no €)`);
-        /* Residual sugar is grams per litre, a bare number — "144", not "144 g/l"
-           and not a string. It is only present where a producer published it
-           for that exact vintage, so a wrong type here is a paste error. */
+        /* Residual sugar is grams per litre without the unit — "144" or the
+           range "120–140", never "144 g/l". It is only present where a producer
+           published it for that exact vintage, so a shape we can't read here is
+           a paste error. See scripts/lib/rs.mjs for why it is a string. */
         if (item.insight && item.insight.rs != null) {
-          const rs = item.insight.rs;
-          if (typeof rs !== "number" || !(rs >= 0 && rs < 600))
-            errors.push(`${where}: insight.rs must be a plain number of g/l (got ${JSON.stringify(rs)})`);
+          if (!parseRs(item.insight.rs))
+            errors.push(`${where}: insight.rs must be g/l with no unit — "144" or "120–140" (got ${JSON.stringify(item.insight.rs)})`);
           if (item.insight.sweetness === "dry")
             errors.push(`${where}: a wine tagged dry should not carry a residual-sugar figure`);
         }
