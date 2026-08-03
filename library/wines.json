@@ -855,7 +855,18 @@
     "alcohol": "15.4",
     "sweetness": "dry"
    },
-   "terroir": "Santa Elisabetta, Motovun"
+   "terroir": "Santa Elisabetta, Motovun",
+   "note": {
+    "hr": "Santa Elisabetta je položaj, ne svetica s etikete — najbolji vinograd kuće na 330 metara, lapor i vapnenac, cijeli dan na suncu i previsoko da ga dohvati motovunska magla. Selekcija je nemilosrdna: u proljeće, krajem srpnja i još jednom pred berbu otpada više od pola roda. Pa dvije i pol godine u slavonskom i francuskom drvu — i tek onda odluka koje bačve smiju nositi ime.",
+    "en": "Santa Elisabetta is a site, not a saint on the label — the estate's best vineyard at 330 metres, marl and limestone, in sun all day and too high for the Motovun fog to reach. The selection is merciless: in spring, at the end of July and once more before harvest, over half the crop is dropped. Then two and a half years in Slavonian and French oak — and only then the decision as to which barrels may carry the name.",
+    "it": "Santa Elisabetta è un cru, non una santa in etichetta — la vigna migliore della casa a 330 metri, marna e calcare, sole tutto il giorno e troppo in alto perché la nebbia di Montona la raggiunga. La selezione è spietata: in primavera, a fine luglio e ancora prima della vendemmia cade più di metà del raccolto. Poi due anni e mezzo tra rovere di Slavonia e francese — e solo allora si decide quali botti possano portare il nome.",
+    "fr": "Santa Elisabetta est un lieu-dit, pas une sainte sur l'étiquette — la meilleure vigne du domaine à 330 mètres, marne et calcaire, au soleil toute la journée et trop haut pour que le brouillard de Motovun l'atteigne. La sélection est impitoyable : au printemps, fin juillet et encore avant les vendanges, plus de la moitié de la récolte tombe. Puis deux ans et demi en chêne de Slavonie et de France — et alors seulement on décide quels fûts peuvent porter le nom.",
+    "de": "Santa Elisabetta ist eine Lage, keine Heilige auf dem Etikett — der beste Weinberg des Guts auf 330 Metern, Mergel und Kalk, den ganzen Tag in der Sonne und zu hoch, als dass der Nebel von Motovun ihn erreichte. Die Selektion ist gnadenlos: im Frühjahr, Ende Juli und noch einmal vor der Lese fällt mehr als die Hälfte des Ertrags. Dann zweieinhalb Jahre in slawonischer und französischer Eiche — und erst dann die Entscheidung, welche Fässer den Namen tragen dürfen.",
+    "zh": "圣伊丽莎白是一块园地，不是酒标上的圣人——酒庄海拔 330 米的最佳葡萄园，泥灰岩与石灰岩，整日向阳，高得连莫托文的雾也够不着。筛选毫不留情：春天一次、七月底一次、采收前再一次，超过一半的果实被剪落。而后在斯拉沃尼亚与法国橡木中陈放两年半——到那时才决定哪些桶配得上这个名字。",
+    "sl": "Santa Elisabetta je lega, ne svetnica z etikete — najboljši vinograd hiše na 330 metrih, lapor in apnenec, ves dan na soncu in previsoko, da bi ga dosegla motovunska megla. Selekcija je neusmiljena: spomladi, konec julija in še enkrat tik pred trgatvijo odpade več kot polovica pridelka. Nato dve leti in pol v slavonskem in francoskem lesu — in šele takrat odločitev, kateri sodi smejo nositi ime.",
+    "es": "Santa Elisabetta es un pago, no una santa en la etiqueta — el mejor viñedo de la casa a 330 metros, marga y caliza, al sol todo el día y demasiado alto para que llegue la niebla de Motovun. La selección es implacable: en primavera, a finales de julio y otra vez antes de la vendimia cae más de la mitad de la cosecha. Después dos años y medio en roble eslavón y francés — y sólo entonces se decide qué barricas pueden llevar el nombre."
+   },
+   "notePlain": true
   },
   "moret-nomine--syrah-le-fales-2024": {
    "name": "Syrah Le Fales 2024",

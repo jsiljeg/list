@@ -499,6 +499,61 @@ test("the Saints Hills blurb tells the Rolland story in every language", () => {
   expect(missing, "languages missing the Rolland story").toEqual([]);
 });
 
+test("the rewritten Croatian house stories survive in every language", () => {
+  /* Added 2026-08-03 at the owner's request: five blurbs were one flat line
+     each ("shallow and pathetic", in their words) and were rewritten around
+     the fact that actually makes each house worth reading about. The risk is a
+     later tidy-up or a re-translation quietly flattening them back, in one
+     language only — which nobody would notice, because the Croatian would
+     still read fine.
+
+     Each entry names the load-bearing facts, matched as proper nouns so they
+     survive translation. Chinese transliterates them, so every pattern carries
+     its Chinese form as an alternative.
+
+     Match the **stem**, never the nominative: Croatian and Slovenian decline
+     proper nouns like everything else, so the first draft of this test failed
+     on six true sentences — "iz Nape", "na kamenitu Deforu", "enologiju
+     Agrolagune" — and Slovenian spells the grape plavec. */
+  const STORIES = {
+    /* Zinfandel is Tribidrag: he carried the grape home from Napa, and
+       without both names the sentence is just an American buying vines. */
+    "Benmosche Family": [/\bnap[ae]\b|纳帕/i, /tribidrag|特里比德拉格/i],
+    /* Three generations by name — grandfather's plot, father's second job,
+       and the range that now carries the father's name. */
+    "Benvenuti": [/pietro|彼得罗/i, /livio|利维奥/i],
+    /* Grk has functionally female flowers and cannot set fruit without a
+       Plavac planted to pollinate it — which DNA then shows is its own
+       relative, through Tribidrag. Defora is the site Frano Milina replanted
+       after phylloxera. Lose any of the three and it is a boring grape. */
+    "Bire": [/plav[ae]c|普拉瓦茨/i, /tribidrag|特里比德拉格/i, /defor|德福拉/i],
+    /* He saved Gegić from extinction; the Michelin star came after. */
+    "Boškinac": [/gegi|格吉奇/i, /michelin|米其林/i],
+    /* Twelve years making Agrolaguna's wine before his own label, OMO. */
+    "Budinski": [/agrolagun|阿格罗拉古纳/i, /\bomo\b/i],
+  };
+  const bad = [];
+  for (const [name, patterns] of Object.entries(STORIES)) {
+    const rec = producers[name];
+    if (!rec || !rec.blurb) { bad.push(`${name}: no producer record`); continue; }
+    for (const lc of ["hr", "en", "it", "fr", "de", "zh", "sl", "es"]) {
+      const text = rec.blurb[lc];
+      if (!text) { bad.push(`${name}/${lc}: missing`); continue; }
+      const lost = patterns.filter((p) => !p.test(text)).map(String);
+      if (lost.length) bad.push(`${name}/${lc}: lost ${lost.join(" ")}`);
+    }
+  }
+  /* The Santa Elisabetta note is the same request in the wine's own record:
+     the guest asked what the cuvée actually is, and 330 m is the fact the
+     whole selection story hangs off. A bare number travels through every
+     language, including Chinese. */
+  const se = library.wines["benvenuti--santa-elizabeta-2021"];
+  if (!se || !se.note) bad.push("Santa Elizabeta 2021: no note");
+  else for (const lc of ["hr", "en", "it", "fr", "de", "zh", "sl", "es"])
+    if (!/330/.test(se.note[lc] || "")) bad.push(`Santa Elizabeta/${lc}: note lost the 330 m site`);
+  expect(bad, "house stories that lost their point").toEqual([]);
+});
+
 test("no nail ornament converges on a single point", () => {
   /* Added 2026-08-02: the water/juice ornament's citrus was drawn as spokes
      radiating from one shared centre, which reads as a starburst rather than
