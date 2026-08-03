@@ -598,6 +598,19 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Crissante Alessandria": [/1958/, /teres|特蕾莎/i],
     "Lalù": [/2015/, /pollenz|波伦佐/i],
     "Le Piane": [/1988/, /cerri|切里/i],
+    /* Tuscany, 2026-08-03. French calls the city Lucques, so the stem has to
+       allow both spellings — the same declension trap in a different guise. */
+    "Antinori": [/1385/, /tignanello|天娜/i],
+    "Tenuta San Guido": [/1948/, /tachis|塔基斯/i],
+    "Ornellaia": [/1981/, /antinori|安蒂诺里/i],
+    "Isole e Olena": [/1956/, /cepparello|切帕雷洛/i],
+    "Montevertine": [/1971/, /trebbiano|特雷比亚诺/i],
+    "Soldera": [/2012/, /sangiovese|桑娇维塞/i],
+    "Conti Costanti": [/1555/, /matrichese/i],
+    "Poggio di Sotto": [/1989/, /gambelli|甘贝利/i],
+    "Poggio Scalette": [/1991/, /carbonaione/i],
+    "Chiara Condello": [/2015/, /spungone/i],
+    "Magliano": [/1996/, /luc[cq]|卢卡/i],
   };
   const bad = [];
   for (const [name, patterns] of Object.entries(STORIES)) {
@@ -635,6 +648,13 @@ test("the rewritten Croatian house stories survive in every language", () => {
      sentence comic in the one language most guests read it in. */
   if (/\boprasi\b/i.test(producers["Bire"].blurb.hr))
     bad.push('Bire/hr: "oprasi" (farrows) — it is "opraši"');
+
+  /* Reinhard Löwenstein announced the sale of the estate in November 2025 and
+     his daughter Sarah did not take it on; the blurb said she ran it, which
+     was true when it was written and stopped being true two months later.
+     A living fact needs a guard, because nothing else will notice. */
+  for (const [lc, text] of Object.entries(producers["Heymann-Löwenstein"].blurb))
+    if (/sarah/i.test(text)) bad.push(`Heymann-Löwenstein/${lc}: still says Sarah runs it`);
   expect(bad, "house stories that lost their point").toEqual([]);
 });
 
