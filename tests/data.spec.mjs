@@ -584,6 +584,20 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Wittmann": [/1663/, /2004/],
     "Bürklin-Wolf": [/1597/, /biodyvin/i],
     "Christmann": [/\bvdp\b/i, /sophie|索菲/i],
+    /* German spirits and Italy, first round (Piedmont), 2026-08-03. Note the
+       stems again: Italian calls the saint Uberto, and Croatian declines
+       Teresa to "Teresom". */
+    "Jägermeister": [/hubert|uberto|休伯特/i, /1934/],
+    "Monkey 47": [/collins|柯林斯/i, /1951/],
+    "Brick Gin": [/weimar|魏玛/i],
+    "Roagna": [/1961/, /asili|阿西利/i],
+    "Boschis": [/1981/, /1990/],
+    /* Darmagi is the whole anecdote: what Angelo's father muttered every time
+       he walked past the Nebbiolo his son had replaced with Cabernet. */
+    "Gaja": [/1859/, /darmagi/i],
+    "Crissante Alessandria": [/1958/, /teres|特蕾莎/i],
+    "Lalù": [/2015/, /pollenz|波伦佐/i],
+    "Le Piane": [/1988/, /cerri|切里/i],
   };
   const bad = [];
   for (const [name, patterns] of Object.entries(STORIES)) {
