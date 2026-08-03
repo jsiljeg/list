@@ -549,6 +549,17 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Boškinac": [/gegi|格吉奇/i, /michelin|米其林/i],
     /* Twelve years making Agrolaguna's wine before his own label, OMO. */
     "Budinski": [/agrolagun|阿格罗拉古纳/i, /\bomo\b/i],
+    /* Third batch, 2026-08-03. */
+    "Markus": [/fetivi/i],
+    "Matošević": [/grimald|格里马尔达/i, /vinistr/i],
+    "Meneghetti": [/2001/, /relais/i],
+    "Miloš": [/ponik|波尼克韦/i, /garmaz|加尔马兹/i],
+    "Mrgudić": [/moskar/i, /postup/i],
+    "Niko Bura": [/1410/, /ruža dalmatinska|ruza dalmatinska/i],
+    "Rizman": [/komarn|科马尔纳/i, /vianna|维亚纳/i],
+    "Skaramuča": [/1992/, /dingač|dingac|丁加奇/i],
+    "Šember": [/pavlovčani|pavlovcani|帕夫洛夫恰尼/i, /plavec|普拉韦茨/i],
+    "Tomaz": [/barbarossa|巴巴罗萨/i, /1918/],
   };
   const bad = [];
   for (const [name, patterns] of Object.entries(STORIES)) {
@@ -569,6 +580,17 @@ test("the rewritten Croatian house stories survive in every language", () => {
   if (!se || !se.note) bad.push("Santa Elizabeta 2021: no note");
   else for (const lc of ["hr", "en", "it", "fr", "de", "zh", "sl", "es"])
     if (!/330/.test(se.note[lc] || "")) bad.push(`Santa Elizabeta/${lc}: note lost the 330 m site`);
+
+  /* The error the owner caught twice: a blurb selling a wine we do not pour.
+     Ivanić's advertised his Škrlet "Pukli kamen" when we list only his Pinot,
+     and Niko Bura's opened on Dingač when the only Bura on the list is the
+     prošek. Both are fixed; this pins the second, because the family really
+     has farmed Dingač since 1410 and it is the tempting thing to lead with.
+     A guest who reads Dingač here and cannot order it has been sold a wine
+     twice — once by the card and once by the waiter saying no. */
+  for (const [lc, text] of Object.entries(producers["Niko Bura"].blurb))
+    if (/dingač|dingac|丁加奇/i.test(text))
+      bad.push(`Niko Bura/${lc}: names Dingač, which we do not pour from them`);
   expect(bad, "house stories that lost their point").toEqual([]);
 });
 
