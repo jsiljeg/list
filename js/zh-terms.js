@@ -308,7 +308,7 @@
     "Clos des Gravières": "砾石园",
     "Sous la Velle": "苏拉维尔",
     "Montmorin": "蒙莫兰",
-    "Best of 17 Grands Crus + Hautvillers (Premier Cru)": "十七特级园精选与欧维莱",
+    "Best of 17 Grands Crus + Hautvillers Premier Cru": "十七特级园精选与欧维莱一级园",
     "Albesani": "阿尔贝萨尼",
     "Asili": "阿西利",
     "Pajé": "帕耶",

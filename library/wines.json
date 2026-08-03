@@ -728,8 +728,8 @@
     "grape": "Tempranillo",
     "region": "Castrillo de la Vega, Ribera del Duero, Castilla y León",
     "country": "ES",
-    "style": "red_medium",
-    "body": "medium",
+    "style": "red_full",
+    "body": "full",
     "aromas": [
      "cherry",
      "cranberry",
@@ -740,8 +740,9 @@
      "spice"
     ],
     "pairings": [
-     "charcuterie",
+     "lamb",
      "cheese_hard",
+     "charcuterie",
      "pork"
     ],
     "temp": "16–18",
@@ -2063,7 +2064,7 @@
     "alcohol": "12.5",
     "dosage": "Brut"
    },
-   "terroir": "Best of 17 Grands Crus + Hautvillers (Premier Cru)",
+   "terroir": "Best of 17 Grands Crus + Hautvillers Premier Cru",
    "ratings": [
     {
      "critic": "James Suckling",
@@ -2128,7 +2129,7 @@
     "rare",
     "drinking_now"
    ],
-   "terroir": "Best of 17 Grands Crus + Hautvillers (Premier Cru)",
+   "terroir": "Best of 17 Grands Crus + Hautvillers Premier Cru",
    "ratings": [
     {
      "critic": "James Suckling",
@@ -2187,7 +2188,7 @@
     "rare",
     "drinking_now"
    ],
-   "terroir": "Best of 17 Grands Crus + Hautvillers (Premier Cru)",
+   "terroir": "Best of 17 Grands Crus + Hautvillers Premier Cru",
    "ratings": [
     {
      "critic": "Robert Parker",
