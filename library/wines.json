@@ -2863,7 +2863,18 @@
     "alcohol": "13",
     "sweetness": "dry"
    },
-   "terroir": "Čara"
+   "terroir": "Čara",
+   "note": {
+    "hr": "Pošip je korčulanski i po rodu: DNK ga vodi na križanje zlatarice blatske i bratkovine, a obje su na otoku oduvijek. Dugo se držalo da je furmint — nije, i to je razriješila tek analiza. Korčula je apelaciju za pošip dobila 1967., prije nego što je većina Hrvatske uopće razmišljala o položajima.",
+    "en": "Pošip belongs to Korčula by descent as well: DNA makes it a crossing of Zlatarica Blatska and Bratkovina, both of which have always grown on the island. It was long held to be Furmint — it is not, and only analysis settled that. Korčula won its appellation for Pošip in 1967, before most of Croatia had begun to think about sites at all.",
+    "it": "Il Pošip è di Korčula anche per nascita: il DNA lo dà come incrocio di Zlatarica Blatska e Bratkovina, entrambe da sempre sull'isola. A lungo lo si è creduto Furmint — non lo è, e a chiarirlo è stata solo l'analisi. Korčula ottenne la denominazione per il Pošip nel 1967, prima che gran parte della Croazia cominciasse a ragionare di cru.",
+    "fr": "Le Pošip est de Korčula par la naissance aussi : l'ADN en fait un croisement de Zlatarica Blatska et de Bratkovina, toutes deux présentes de tout temps sur l'île. On l'a longtemps cru Furmint — il ne l'est pas, et seule l'analyse l'a tranché. Korčula a obtenu son appellation pour le Pošip en 1967, avant que la majeure partie de la Croatie ne songe aux lieux-dits.",
+    "de": "Pošip gehört auch der Abstammung nach zu Korčula: Die DNA macht ihn zur Kreuzung aus Zlatarica Blatska und Bratkovina, beide seit jeher auf der Insel. Lange hielt man ihn für Furmint — ist er nicht, und geklärt hat das erst die Analyse. Korčula erhielt seine Appellation für Pošip 1967, ehe der größte Teil Kroatiens überhaupt an Lagen dachte.",
+    "zh": "波希普论血统也是科尔丘拉的：DNA 显示它是 Zlatarica Blatska 与 Bratkovina 的杂交，而这两个品种自古便长在岛上。人们长期以为它就是富尔民特——并不是，这一点直到基因分析才有定论。科尔丘拉早在 1967 年就为波希普争得了法定产区，那时克罗地亚大部分地方还没开始琢磨「园地」这回事。",
+    "sl": "Pošip je korčulanski tudi po rodu: DNK ga kaže kot križanje zlatarice blatske in bratkovine, obe pa sta na otoku od nekdaj. Dolgo so mislili, da je furmint — ni, in to je razčistila šele analiza. Korčula je apelacijo za pošip dobila leta 1967, še preden je večina Hrvaške sploh razmišljala o legah.",
+    "es": "El Pošip es de Korčula también por linaje: el ADN lo señala como cruce de Zlatarica Blatska y Bratkovina, ambas presentes en la isla desde siempre. Durante mucho tiempo se lo tuvo por Furmint — no lo es, y sólo el análisis lo resolvió. Korčula obtuvo su denominación para el Pošip en 1967, antes de que la mayor parte de Croacia empezara siquiera a pensar en pagos."
+   },
+   "notePlain": true
   },
   "kunjas--grk-2024": {
    "name": "Grk 2024",
