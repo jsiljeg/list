@@ -16,10 +16,15 @@ cru, Zweigelt, old-vine Cinsault.
 ("too assertively acidic").
 → Dish styles were `white_rich, red_light, sparkling`; `white_rich` is exactly
 how our *off-dry* Albert Mann Hengst was scoring for a fried cutlet. Now
-`white_fresh, white_mineral, red_light, sparkling`. Note the article's caveat
-about dry Riesling: `white_mineral` is where both Chablis/Grüner *and* our
-Rieslings live, so the bucket is coarser than the advice. Worth splitting one
-day.
+`white_fresh, white_mineral, red_light, sparkling`.
+
+I first read the article's dislike of dry Riesling as evidence that
+`white_mineral` was too coarse a bucket, since Chablis, Grüner and Riesling all
+sit in it. **Withdrawn 2026-08-03**, the owner was right: all three genuinely
+*are* mineral, the classification is correct, and the discrimination happens one
+level down in the food tags — Riesling carries `pork` and `asian`, Chablis
+`oysters` and `risotto`. Austria drinks Riesling with Schnitzel too. One
+author's "too assertively acidic" is a preference, not a clash.
 
 **Beef tartare** — tartare.org, winedeals, texasrealfood
 "When in doubt with any tartare, quality Champagne rarely fails." Then Pinot
