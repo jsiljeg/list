@@ -270,6 +270,18 @@ if (misordered.length) {
     shown + (misordered.length > 6 ? "\n       …" : ""));
 }
 
+/* `red_mature` is the one style that describes *age* rather than weight, which
+   makes it easy to forget: a dish lists red_full and the aged Cabernets
+   silently drop out of its suggestions. Every mature red on this list is a
+   serious red of full or medium body, and age only makes it a better match for
+   a rich dish — so a dish asking for red_full almost certainly wants
+   red_mature too. A note, because "almost certainly" is not "always". */
+const forgotMature = (menu.dishes || [])
+  .filter((d) => (d.styles || []).includes("red_full") && !(d.styles || []).includes("red_mature"))
+  .map((d) => d.name.hr || d.name.en);
+if (forgotMature.length)
+  console.log(`note — dishes asking for red_full but not red_mature: ${forgotMature.join(", ")}`);
+
 if (glassThin.length)
   console.log(`note — dishes with under three by-the-glass matches: ${glassThin.join(", ")}`);
 if (thin.length)
