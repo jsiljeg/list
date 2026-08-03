@@ -9,3 +9,5 @@ blob-report/
 playwright/.cache/
 shots/
 __pycache__/
+scratch/producers.html
+scratch/producers-export.json
