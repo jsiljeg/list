@@ -305,6 +305,24 @@ test("no wine stores a bare Malvasia or Malvazija", () => {
   expect(bad).toEqual([]);
 });
 
+test("no wine stores a bare Muscat", () => {
+  /* Same argument as the Malvasia test above, and the same gap CLAUDE.md had
+     left open: "Muscat" alone is blanc à petits grains, Ottonel or Alexandria,
+     three different grapes. Geržinić's was bare until the owner settled it as
+     Moscato Giallo on 2026-08-03, off the estate's own "Muškat žuti".
+
+     The other half of this — that a German guest reads Goldmuskateller and a
+     Slovenian Rumeni muškat — needs the running app, so it lives in
+     localization.spec.mjs. */
+  const bare = items
+    .filter((i) => String(i.insight.grape || "").split(",")
+      .some((t) => /^\s*mus[ck]at\s*$|^\s*muškat\s*$/i.test(t)))
+    .map((i) => `${i.producer} — ${i.name}: ${i.insight.grape}`);
+  expect(bare, "wines storing an unqualified Muscat").toEqual([]);
+  expect(items.filter((i) => (i.insight.grape || "").includes("Moscato Giallo")).length,
+    "no wine carries Moscato Giallo any more — was it renamed?").toBeGreaterThan(0);
+});
+
 test("guest-facing text spells the lost name Tokaj, never Tocai", () => {
   /* Owner, 2026-08-01. The notes told the Friulano story with the Friulian
      spelling "Tocai" and then said Jakot was "Tokaj backwards" — two spellings

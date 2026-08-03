@@ -260,3 +260,32 @@ test("a region card localizes into every language", async ({ page }) => {
     }
   }
 });
+
+test("Moscato Giallo reads in the guest's own language", async ({ page }) => {
+  /* Added 2026-08-03. Geržinić's Muškat was stored as a bare "Muscat" — as
+     useless an identifier as a bare Malvasia — until the owner settled it as
+     Moscato Giallo off the estate's own "Muškat žuti".
+
+     The storage half is guarded in data.spec.mjs. This is the half that needs
+     the running app: the settled rule is that the guest's language wins over
+     the bottle's origin, so German must say Goldmuskateller and Slovenian
+     Rumeni muškat. Only those two have their own name; the rest take the
+     Italian, exactly as they do for Malvasia Istriana, and their real
+     assertion is that the bracketed Croatian never leaks through to them. */
+  const CANON = "Žuti muškat (Moscato Giallo)";
+  const want = {
+    hr: CANON, en: "Moscato Giallo", it: "Moscato Giallo", fr: "Moscato Giallo",
+    es: "Moscato Giallo", de: "Goldmuskateller", sl: "Rumeni muškat",
+  };
+  for (const [lang, expected] of Object.entries(want)) {
+    await openApp(page, { lang });
+    const got = await page.evaluate((c) => localizeGrape(c), CANON);
+    expect(got, `${lang}: Moscato Giallo renders wrong`).toBe(expected);
+  }
+  /* Chinese prints 中文（Latin）, so assert the Chinese is there rather than
+     pinning the whole bracketed string. */
+  await openApp(page, { lang: "zh" });
+  const zh = await page.evaluate((c) => localizeGrape(c), CANON);
+  expect(zh, "Chinese rendering of Moscato Giallo").toContain("黄麝香");
+  expect(zh, "Chinese must not fall back to bare Latin").toMatch(CJK);
+});

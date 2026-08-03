@@ -1529,24 +1529,39 @@ function zhTokens(str, map) {
  * varieties sharing the name Malvasia, most of them unrelated to each other,
  * so "Malvasia" on its own identifies nothing. Croatia alone grows three
  * different ones. Never store a bare Malvasia/Malvazija again. */
+/* Geržinić's Muškat was stored as a bare "Muscat", which CLAUDE.md flagged as
+   ambiguous for the same reason a bare Malvasia is: blanc à petits grains,
+   Ottonel and Alexandria are all "Muscat" and all different. The estate's own
+   page says Muškat žuti, and the owner settled it as Moscato Giallo (2026-08-03)
+   — a genuinely distinct variety, not a yellow-berried Muscat Blanc. Croatian
+   keeps the international name in brackets because that is what a Croatian
+   guest is likelier to have met on a wine list; every other language reads its
+   own name for it, and only German and Slovenian have one. French, English and
+   Spanish trade use the Italian name, exactly as they do for Malvasia. */
+const MOSCATO_GIALLO = "Žuti muškat (Moscato Giallo)";
 const LANG_GRAPE = {
-  it: { "Pinot Noir": "Pinot Nero", "Malvazija istarska": "Malvasia Istriana" },
+  it: {
+    "Pinot Noir": "Pinot Nero", "Malvazija istarska": "Malvasia Istriana",
+    [MOSCATO_GIALLO]: "Moscato Giallo",
+  },
   hr: { "Pinot Bianco": "Pinot Blanc", "Ribolla Gialla": "Rebula" },
   /* Malvasia Istriana is the name the international literature uses — it is
      the variety name in Gilby's table, with Malvazija Istarska as the synonym.
      French and German trade both take the Italian form; "Malvoisie" would be
      actively wrong, being one of the ambiguous variants the article warns
      about. Spanish accents its own spelling of the word. */
-  en: { "Malvazija istarska": "Malvasia Istriana" },
-  fr: { "Malvazija istarska": "Malvasia Istriana" },
-  de: { "Malvazija istarska": "Malvasia Istriana" },
-  es: { "Malvazija istarska": "Malvasía istriana" },
+  en: { "Malvazija istarska": "Malvasia Istriana", [MOSCATO_GIALLO]: "Moscato Giallo" },
+  fr: { "Malvazija istarska": "Malvasia Istriana", [MOSCATO_GIALLO]: "Moscato Giallo" },
+  /* Goldmuskateller is the established German name — South Tyrol grows it under
+     that name beside the Italian one. */
+  de: { "Malvazija istarska": "Malvasia Istriana", [MOSCATO_GIALLO]: "Goldmuskateller" },
+  es: { "Malvazija istarska": "Malvasía istriana", [MOSCATO_GIALLO]: "Moscato Giallo" },
   /* Slovenia's own name for the grape everyone else calls Friulano. It was
      Sauvignonasse / Zeleni sauvignon after the 2007 ban and officially became
      Jakot in 2013 — so a Slovenian guest reading Prinčič's "Jakot 2019" or
      Simčič's "Sauvignon Vert" sees the variety under the name they use, which
      is the settled rule. The wine's own name is never touched. */
-  sl: { "Friulano": "Jakot" }
+  sl: { "Friulano": "Jakot", [MOSCATO_GIALLO]: "Rumeni muškat" }
 };
 function langTokens(str, map) {
   return str

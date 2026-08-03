@@ -72,6 +72,11 @@
     "Lasina": "拉西纳",
     "Plavina": "普拉维娜",
     "Muškat bijeli": "白麝香",
+    /* Moscato Giallo, on Geržinić's Muškat — 黄 (yellow) beside the 白 (white)
+       above, both of them Muscats and different varieties. Both the bare and
+       the bracketed form are listed, as for Pušipel. */
+    "Žuti muškat": "黄麝香",
+    "Žuti muškat (Moscato Giallo)": "黄麝香",
     "Tribidrag (Zinfandel)": "特里比德拉格",
     "Zinfandel": "仙粉黛",
     "Cabernet": "赤霞珠",
