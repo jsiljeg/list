@@ -11,7 +11,7 @@ import { readFileSync } from "node:fs";
 import vm from "node:vm";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { allItems, producers } from "./helpers.mjs";
+import { allItems, producers, library } from "./helpers.mjs";
 import { joinList as joinRaw } from "../scripts/lib/list.mjs";
 import { rankPairings, STYLE_ORDER } from "../scripts/lib/pairing-rank.mjs";
 
@@ -655,4 +655,40 @@ test("a fried dish does not ask for a rich, sweet-edged white", () => {
     .filter((d) => (d.styles || []).includes("white_rich"))
     .map((d) => d.name.en);
   expect(bad, "a fried dish asking for a rich white").toEqual([]);
+});
+
+test("the same wine is one library entry, not two that differ only by name", () => {
+  /* Added 2026-08-03 (owner spotted it): "Cifra 2021 (Demeter biodinamika)" was
+     the by-the-glass listing and "Cifra 2021" the bottle — two library entries,
+     byte-identical apart from the parenthetical. The library split collapsed 24
+     such duplicates in July by matching on name; this one slipped through
+     because the names were not the same.
+
+     A duplicate is not cosmetic. The two drift apart the first time anyone
+     edits one of them, and the guest reads different tasting notes for the same
+     wine depending on whether they tapped the glass list or the bottle list. */
+  const norm = (s) => String(s).toLowerCase().replace(/[()]/g, "").replace(/\s+/g, " ").trim();
+  const bad = [];
+  const byProducer = new Map();
+  for (const [ref, w] of Object.entries(library)) {
+    /* Only things with an insight: Coca-Cola and Coca-Cola Zero are two
+       products that share a producer and carry no facts to compare. */
+    if (!w.insight) continue;
+    if (!byProducer.has(w.producer)) byProducer.set(w.producer, []);
+    byProducer.get(w.producer).push({ ref, w });
+  }
+  for (const [, group] of byProducer) {
+    for (let i = 0; i < group.length; i++)
+      for (let j = i + 1; j < group.length; j++) {
+        const a = group[i], b = group[j];
+        const na = norm(a.w.name), nb = norm(b.w.name);
+        /* Large formats are a deliberate second entry (the "– 1,5 l" twins). */
+        if (/\d\s*l$/.test(na) || /\d\s*l$/.test(nb)) continue;
+        if (na !== nb && !na.startsWith(nb) && !nb.startsWith(na)) continue;
+        const strip = (x) => JSON.stringify({ ...x.w, name: undefined });
+        if (strip(a) === strip(b))
+          bad.push(`${a.ref} and ${b.ref} are the same wine under two names`);
+      }
+  }
+  expect(bad, "duplicate library entries").toEqual([]);
 });
