@@ -177,3 +177,35 @@ three numbers: the reason a guest is surprised by an 8% Kabinett labelled
 Sweetness alone can never explain that; sweetness *against acidity* would, and
 acidity is no better published than sugar. If this comes up again, the honest
 instrument is a sentence in that wine's own `note`, not another number field.
+
+### superiore.de (owner's tip, 2026-08-03)
+
+The owner pointed at superiore.de for Italian analytics and was right — their
+product pages carry a full table per vintage: alcohol, residual sugar, total
+acidity, extract, pH, sulfites. It closed one more RS gap and one alcohol gap:
+
+    Quintarelli "Amabile del Cerè" 2017    129.33 g/l   (also 14,00 % vol,
+                                                         100% Garganega, 0,375 l
+                                                         — all three match what
+                                                         we already stored)
+    Vie di Romans "Dolée" Friulano 2023    14,00 % vol  (RS 1,31 g/l, so dry)
+
+Still not usable from there, for the vintage reason:
+
+    Quintarelli Recioto          they list the 2015 (72,55 g/l); ours is the 2011
+    Ca' La Bionda Recioto        not stocked; the estate's own page gives only
+                                 "120–140 g/l" for the wine in general
+
+**Two naming problems the search turned up, which only the label can settle:**
+
+  - Vie di Romans bottles no plain "Friulano" or "Pinot Grigio" — their wines
+    are *Dolée* Friulano and *Dessimis* Pinot Grigio. Our two entries are named
+    without the cuvée. Near-certain which they are (one of each exists), but the
+    names on our cards are incomplete.
+  - E. Pira & Figli bottle no plain "Barolo" at all — only Via Nuova, Mosconi
+    and Cannubi. Our "Barolo 2018" is one of those three and **there is no way
+    to tell which from the data we hold**, so its alcohol stays blank.
+  - Ca' La Bionda's own site gives the Recioto blend as 70% Corvina, 10%
+    Corvinone, 20% Rondinella; we store Corvina 70%, Rondinella 25%, Molinara
+    5%. Neither source is pinned to 2015, so this is flagged rather than
+    changed.

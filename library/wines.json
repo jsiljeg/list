@@ -390,7 +390,7 @@
      "prosciutto"
     ],
     "temp": "10–12",
-    "alcohol": "",
+    "alcohol": "14",
     "sweetness": "dry"
    },
    "note": {
@@ -10543,7 +10543,8 @@
     ],
     "temp": "14–16",
     "alcohol": "14",
-    "sweetness": "sweet"
+    "sweetness": "sweet",
+    "rs": 129.33
    },
    "ratings": [
     {
