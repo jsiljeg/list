@@ -22,6 +22,16 @@
      the tap, and the story splash appeared bare for a beat (worst on phones).
      Preloading fetches it while the guest is still reading the language screen. -->
 <link rel="preload" as="image" href="assets/atrium-face.webp">
+<!-- Nine of the ten flags are drawn inline in js/app.js and paint the instant
+     the language buttons render. Croatia is the exception: its coat of arms is
+     the official artwork, 196 paths and 69 kB, so it is an <img> rather than
+     67 kB of path data pasted into the DOM on every call. That made it the
+     only flag fetched over the wire — and the request could not even start
+     until app.js had run and rendered the buttons, so it began at 260 ms with
+     a megabyte of JSON already ahead of it in the queue. Croatia is first in
+     the list, so its flag was reliably the last to appear (owner, 2026-08-03).
+     Preloading starts it with the HTML instead. -->
+<link rel="preload" as="image" href="assets/flag-hr.svg">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/icon.svg">

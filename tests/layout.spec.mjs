@@ -280,6 +280,35 @@ test("the logo reserves its box before the file arrives", async ({ page }) => {
   expect(Math.abs(after.h - before.h), "the logo changes height when it loads").toBeLessThan(2);
 });
 
+test("the Croatian flag is fetched with the page, not after it", async ({ page }) => {
+  /* Owner, 2026-08-03: "it seems like croatian flag is loading slow/last."
+
+     Nine of the ten flags are inline SVG in js/app.js and paint the moment the
+     buttons render. Croatia is the official coat of arms — 196 paths, 69 kB —
+     so it is an <img>, and therefore the only flag that crosses the network.
+     Worse, the request could not start until app.js had run: measured at
+     260 ms, behind a megabyte of JSON, which is why the first flag in the list
+     was reliably the last to appear. The preload in index.html moves it into
+     the first batch.
+
+     Asserted against the data files rather than a fixed millisecond budget,
+     because the absolute numbers depend on the machine; what must stay true is
+     the *order*. */
+  await page.goto("/", { waitUntil: "load" });
+  await page.waitForTimeout(600);
+  const t = await page.evaluate(() => {
+    const at = (suffix) => {
+      const e = performance.getEntriesByType("resource").find((r) => r.name.endsWith(suffix));
+      return e ? e.startTime : null;
+    };
+    return { flag: at("flag-hr.svg"), wines: at("wines.json"), producers: at("producers.json") };
+  });
+  expect(t.flag, "the flag was never fetched").not.toBeNull();
+  expect(t.wines, "wines.json was never fetched").not.toBeNull();
+  expect(t.flag, "the flag queues behind the wine data").toBeLessThan(t.wines);
+  expect(t.flag, "the flag queues behind the producer data").toBeLessThan(t.producers);
+});
+
 test("the copyright line is on every page in every language", async ({ page }) => {
   /* Added 2026-08-02. The repo is public and the whole dataset is one fetch
      away, so a notice is the only thing standing between "found it online" and
