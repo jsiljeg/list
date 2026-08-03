@@ -155,7 +155,7 @@ const SPIRIT_I18N = {
 hr: {
   ui: {
     base: "Sirovina", still: "Destilacija", cask: "Odležavanje", age: "Starost",
-    serve: "Kako se pije", distillery: "O destileriji", bottler: "Punjenje",
+    serve: "Kako se pije", distillery: "O destileriji", brewery: "O pivovari", bottler: "Punjenje",
     years: "godina", noAge: "bez odležavanja"
   },
   classes: {
@@ -259,7 +259,7 @@ hr: {
 en: {
   ui: {
     base: "Made from", still: "Distillation", cask: "Maturation", age: "Age",
-    serve: "How to drink it", distillery: "The distillery", bottler: "Bottling",
+    serve: "How to drink it", distillery: "The distillery", brewery: "The brewery", bottler: "Bottling",
     years: "years", noAge: "no cask time"
   },
   classes: {
@@ -363,7 +363,7 @@ en: {
 it: {
   ui: {
     base: "Materia prima", still: "Distillazione", cask: "Affinamento", age: "Età",
-    serve: "Come si beve", distillery: "La distilleria", bottler: "Imbottigliamento",
+    serve: "Come si beve", distillery: "La distilleria", brewery: "Il birrificio", bottler: "Imbottigliamento",
     years: "anni", noAge: "senza legno"
   },
   classes: {
@@ -467,7 +467,7 @@ it: {
 fr: {
   ui: {
     base: "Matière première", still: "Distillation", cask: "Vieillissement", age: "Âge",
-    serve: "Comment le boire", distillery: "La distillerie", bottler: "Embouteillage",
+    serve: "Comment le boire", distillery: "La distillerie", brewery: "La brasserie", bottler: "Embouteillage",
     years: "ans", noAge: "sans bois"
   },
   classes: {
@@ -571,7 +571,7 @@ fr: {
 de: {
   ui: {
     base: "Ausgangsstoff", still: "Destillation", cask: "Reifung", age: "Alter",
-    serve: "Wie man ihn trinkt", distillery: "Die Brennerei", bottler: "Abfüllung",
+    serve: "Wie man ihn trinkt", distillery: "Die Brennerei", brewery: "Die Brauerei", bottler: "Abfüllung",
     years: "Jahre", noAge: "ohne Holz"
   },
   classes: {
@@ -675,7 +675,7 @@ de: {
 zh: {
   ui: {
     base: "原料", still: "蒸馏", cask: "陈年", age: "酒龄",
-    serve: "怎么喝", distillery: "关于酒厂", bottler: "装瓶",
+    serve: "怎么喝", distillery: "关于酒厂", brewery: "关于啤酒厂", bottler: "装瓶",
     years: "年", noAge: "未过桶"
   },
   classes: {
@@ -779,7 +779,7 @@ zh: {
 sl: {
   ui: {
     base: "Surovina", still: "Destilacija", cask: "Zorenje", age: "Starost",
-    serve: "Kako se pije", distillery: "O destilarni", bottler: "Polnjenje",
+    serve: "Kako se pije", distillery: "O destilarni", brewery: "O pivovarni", bottler: "Polnjenje",
     years: "let", noAge: "brez lesa"
   },
   classes: {
@@ -883,7 +883,7 @@ sl: {
 es: {
   ui: {
     base: "Materia prima", still: "Destilación", cask: "Crianza", age: "Edad",
-    serve: "Cómo se bebe", distillery: "La destilería", bottler: "Embotellado",
+    serve: "Cómo se bebe", distillery: "La destilería", brewery: "La cervecería", bottler: "Embotellado",
     years: "años", noAge: "sin madera"
   },
   classes: {

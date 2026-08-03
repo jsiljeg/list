@@ -570,6 +570,20 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Corte Aura": [/2009/],
     "Wise Grus": [/daruvar|达鲁瓦尔/i],
     "Zmajska pivovara": [/2013/],
+    "Aura": [/karbun/i, /2006/],
+    /* The German shelf, 2026-08-03. Dates carry through every language and
+       are the spine of each of these stories. */
+    "Egon Müller": [/1797/, /scharzhof|沙尔茨霍夫/i],
+    "Prüm": [/1842/, /jodocus|约多库斯/i],
+    "Zilliken": [/1742/, /geltz|盖尔茨/i],
+    /* Eva Clüsserath is married to Philipp Wittmann, which is why two German
+       estates on this list are one family — the point of the blurb. */
+    "Clüsserath": [/1670/, /wittmann|维特曼/i],
+    "Heymann-Löwenstein": [/terrassenmosel|阶地摩泽尔/i, /1980/],
+    "Knebel": [/1642/, /2008/],
+    "Wittmann": [/1663/, /2004/],
+    "Bürklin-Wolf": [/1597/, /biodyvin/i],
+    "Christmann": [/\bvdp\b/i, /sophie|索菲/i],
   };
   const bad = [];
   for (const [name, patterns] of Object.entries(STORIES)) {

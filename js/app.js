@@ -1194,8 +1194,21 @@ function openDetail(ref, back, scope) {
       /* "O vinaru" on a rum reads as a mistake, so the same block is labelled
          "the distillery" when the bottle is a spirit. Terroir is suppressed
          there outright: a distillery's address is not a vineyard, and printing
-         one under that heading is the exact error CLAUDE.md warns about. */
-      const label = spirit ? (su.distillery || t.ui.winemaker) : t.ui.winemaker;
+         one under that heading is the exact error CLAUDE.md warns about.
+
+         A brewery is not a distillery either (owner, 2026-08-03): Zmajska's
+         card read "O destileriji" over a Pils, which nobody who brews would
+         let pass. The beer shelf shares this branch because it shares the
+         spirits vocabulary, so the label — and only the label — splits.
+
+         "Is it a beer" is read off VESSEL_BY_CLASS rather than a list kept
+         here, because that table already has to name every class and would
+         otherwise drift: a stout added to spirits.js gets the right heading
+         by being given the beer glass, which nobody would forget to do. */
+      const isBeer = typeof VESSEL_BY_CLASS !== "undefined" && VESSEL_BY_CLASS[ins.class] === "beer";
+      const label = spirit
+        ? (isBeer && su.brewery ? su.brewery : su.distillery) || t.ui.winemaker
+        : t.ui.winemaker;
       return `<div class="detail-winemaker"><div class="detail-label">${esc(label)}${item.producer ? " · " + esc(item.producer) : ""}</div><p>${esc(blurb)}</p>${spirit ? "" : ter}</div>`;
     })()}
     ${(() => {
