@@ -60,6 +60,16 @@ for (const sec of data.sections) {
         const where = `${sec.id}/${cat.id}: "${item.name || "?"}"`;
         if (!item.name) errors.push(`item without name in ${sec.id}/${cat.id}`);
         if (item.price != null && typeof item.price !== "number") errors.push(`${where}: price must be a number (no quotes, no €)`);
+        /* Residual sugar is grams per litre, a bare number — "144", not "144 g/l"
+           and not a string. It is only present where a producer published it
+           for that exact vintage, so a wrong type here is a paste error. */
+        if (item.insight && item.insight.rs != null) {
+          const rs = item.insight.rs;
+          if (typeof rs !== "number" || !(rs >= 0 && rs < 600))
+            errors.push(`${where}: insight.rs must be a plain number of g/l (got ${JSON.stringify(rs)})`);
+          if (item.insight.sweetness === "dry")
+            errors.push(`${where}: a wine tagged dry should not carry a residual-sugar figure`);
+        }
         if (item.ratings) for (const r of item.ratings) {
           if (!r.critic || !r.score) errors.push(`${where}: each rating needs "critic" and "score"`);
         }

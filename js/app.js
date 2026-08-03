@@ -1158,6 +1158,13 @@ function openDetail(ref, back, scope) {
       ${field(t.ui.region, region)}
       ${field(t.ui.body, esc(t.bodies[ins.body] || ins.body))}
       ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + " % vol." : "")}
+      ${/* Residual sugar, only where a producer publishes it for that exact
+            vintage — the same rule as alcohol. It answers the question the
+            sweetness word cannot: "slatko" covers everything from 46 g/l to
+            194, and a guest deciding between a Kabinett and an Yquem is asking
+            about that gap. Blank on most wines because most producers do not
+            publish it; see the note in CLAUDE.md before spending a day on it. */
+        field(t.ui.rs, ins.rs != null ? esc(String(ins.rs)) + " g/l" : "")}
       ${field(t.ui.temp, ins.temp ? esc(ins.temp) + " °C" : "")}
       ${field(t.ui.aromas, esc(list(ins.aromas, t.aromas)), true)}
       ${field(t.ui.pairings, esc(list(ins.pairings, t.pairings)), true)}

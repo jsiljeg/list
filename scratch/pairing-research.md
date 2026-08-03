@@ -128,3 +128,47 @@ both colours and Grüner Veltliner are textbook veal wines.
     `veal` on the list                          9     ->  56 wines
     `pasticada`                                 2     ->  11
     by the glass: veal 0 -> 3, pasticada 0 -> 2, risotto 3 -> 4
+
+## Residual sugar, 2026-08-03 — what was findable and what was not
+
+The owner asked for RS on all 23 non-dry still wines. Researched under the same
+rule as alcohol: producer sheet, or a listing quoting the analysis for that exact
+wine *and vintage*. Result — **3 of 23**.
+
+Found and stored:
+
+    Château d'Yquem 2015          144 g/l    (source also gives 13.9% and pH 3.65,
+                                              and the 13.9% matches what we already
+                                              had — good corroboration)
+    Château d'Yquem 2020          135 g/l    (pH 3.79, 75% Sémillon / 25% Sauvignon)
+    Donnafugata Ben Ryé 2019      194 g/l    (donnafugata.it, the producer's own
+                                              2019 product page)
+
+Found but **not usable**, because the figure was for a different vintage of the
+same wine — and the spread proves why that matters:
+
+    Zilliken Rausch Kabinett      48.6 g/l in 2023 (zilliken-vdp.de, exact page)
+                                  ~50 in 2024, 50 in 2020, 56.5 in 2012,
+                                  59 in 2021, 60 in 2019.
+                                  Ours is the 2025; no page published yet.
+    Quintarelli Recioto           "2015 has 70 g/l, much lower than the 2011" —
+                                  ours *is* the 2011, so this says only "more
+                                  than 70".
+    Ca' La Bionda Recioto         120–140 g/l quoted for the wine in general,
+                                  not for 2015.
+
+Searched and genuinely not published anywhere reachable: Joh. Jos. Prüm
+(Kabinett and Auslese — Prüm famously publishes no analytics), Wittmann Aulerde
+Auslese 2015, Heymann-Löwenstein Beerenauslese 2017, Zilliken Auslese Goldkapsel
+2009, Zilliken Butterfly 2024, A. Clüsserath Trittenheimer Apotheke Kabinett
+2024, Egon Müller Scharzhof 2023, Albert Mann Pinot Gris GC Hengst 2020, and all
+five Croatian sweet wines (Clai Tasel, Jakopić izborna berba, Mrgudić Prošek,
+both Niko Bura Prošek, Geržinić Muškat).
+
+**The thing the research actually established**, which is worth more than the
+three numbers: the reason a guest is surprised by an 8% Kabinett labelled
+*slatko* is not a missing figure. At ~50 g/l it **is** sweet — over the EU's
+45 g/l line — and it tastes off-dry only because it carries 8–9 g/l of acid.
+Sweetness alone can never explain that; sweetness *against acidity* would, and
+acidity is no better published than sugar. If this comes up again, the honest
+instrument is a sentence in that wine's own `note`, not another number field.

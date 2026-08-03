@@ -10510,7 +10510,8 @@
     ],
     "temp": "10–12",
     "alcohol": "14.2",
-    "sweetness": "sweet"
+    "sweetness": "sweet",
+    "rs": 194
    },
    "terroir": "Pantelleria",
    "ratings": [
@@ -10580,7 +10581,8 @@
     ],
     "temp": "10–12",
     "alcohol": "14",
-    "sweetness": "sweet"
+    "sweetness": "sweet",
+    "rs": 135
    },
    "ratings": [
     {
@@ -10638,7 +10640,8 @@
     ],
     "temp": "10–12",
     "alcohol": "13.9",
-    "sweetness": "sweet"
+    "sweetness": "sweet",
+    "rs": 144
    },
    "ratings": [
     {

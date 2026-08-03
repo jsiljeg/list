@@ -185,6 +185,25 @@ Jeff Leve, Jeb Dunnuck, Jeannie Cho Lee, Stuart Pigott. `+` and ranges kept
 listing **for that exact wine and vintage**. A neighbouring vintage is not a
 source. Conflicting sources ⇒ leave blank and ask the owner to read the label.
 
+**Residual sugar** (`insight.rs`, grams per litre, a bare number) follows the
+alcohol rule exactly: the producer's own sheet, or a listing quoting the
+analysis for that exact wine **and vintage**. A neighbouring vintage is not a
+source, and this is the field that proves why — Zilliken's Rausch Kabinett
+measured 48.6 g/l in 2023, 60 in 2019 and 56.5 in 2012.
+
+It is on three wines, which is how many were sourceable out of the 23 non-dry
+still wines: both Yquems and Ben Ryé. **Do not spend another day hunting the
+rest** — the full record of what was searched and what does not exist publicly
+is in `scratch/pairing-research.md`. Prüm publishes no analytics at all, and
+neither do any of the five Croatian sweet wines.
+
+And the thing that search established, which matters more than the numbers: a
+guest is surprised by an 8% Kabinett labelled *slatko* not because a figure is
+missing but because at ~50 g/l it genuinely **is** sweet — past the EU's 45 g/l
+line — and tastes off-dry only against 8–9 g/l of acid. Sweetness alone cannot
+carry that, and acidity is no better published than sugar. The honest instrument
+there is a sentence in that wine's `note`, not another field.
+
 **Notes:** `note` + `noteSig` renders as a signed quote (defaults to "Filho");
 `notePlain: true` renders unsigned prose. Large-format twins (`– 1,5 l`,
 `– 0,375 l`) are the same wine and must carry identical insight/notes/ratings/tags.
