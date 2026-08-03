@@ -611,6 +611,12 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Poggio Scalette": [/1991/, /carbonaione/i],
     "Chiara Condello": [/2015/, /spungone/i],
     "Magliano": [/1996/, /luc[cq]|卢卡/i],
+    /* Italy round three, the Northeast, 2026-08-03. */
+    "Radikon": [/1995/, /kante|坎特/i],
+    "Vodopivec": [/2004/, /gravner|格拉夫纳/i],
+    "Damijan": [/1998/, /gravner|格拉夫纳/i],
+    "Prinčič": [/1988/, /oslavi|奥斯拉维亚/i],
+    "Vie di Romans": [/1978/, /gianfranco|詹弗兰科/i],
   };
   const bad = [];
   for (const [name, patterns] of Object.entries(STORIES)) {
