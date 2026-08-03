@@ -807,10 +807,15 @@ does not claim, and the reverse.
 
 Three things worth carrying forward:
 
-  - **A style bucket can be coarser than the advice.** World of Fine Wine likes
-    Grüner and Chablis with Schnitzel and explicitly dislikes dry Riesling —
-    but all three are `white_mineral` here, so the dish cannot ask for one
-    without the other. Worth splitting one day; not worth faking.
+  - **A publication's taste is not a clash rule.** I wrote that `white_mineral`
+    was too coarse because World of Fine Wine likes Chablis with Schnitzel and
+    dislikes dry Riesling, and both live in that bucket. The owner pushed back
+    and was right: both wines genuinely *are* mineral, so the classification is
+    correct, and the discrimination that matters happens through the food tags,
+    which is where the finer instrument belongs — Riesling carries `pork` and
+    `asian`, Chablis carries `oysters` and `risotto`. Austria drinks Riesling
+    with Schnitzel too; one author's "too assertively acidic" is a preference.
+    **Do not split a style because one source dislikes one wine in it.**
   - **A missing tag reads as a missing wine.** `veal` was on 9 of 308 bottles,
     so Wiener Schnitzel under 60 EUR offered one. Burgundy in both colours and
     Grüner are textbook veal wines: +47 tags, and the dish now fills at every
@@ -819,6 +824,16 @@ Three things worth carrying forward:
   - **Five tags per wine, hard cap.** The enrichment respects it and skips
     rather than overflowing. A card is a suggestion, not an inventory — twenty
     one-off tags were removed earlier for exactly that reason.
+
+**The by-the-glass list is ordered lightest to fullest, then cheapest first**
+(owner asked, 2026-08-03: by body or by country?). By body. A glass list is
+short, read top to bottom once, while deciding a single drink — and the question
+in the guest's head is "how big", not "which country". The category headings
+already do the coarse work, and 32 wines split across eight countries would be
+twenty tiny groups; the flag on every row keeps the country visible for the
+guest who wants Croatian. `body` is the sort key, price the tiebreak, both from
+the data — so a wine added later lands in the right place by being sorted, not
+by being placed.
 
 **The kitchen's ingredient list is deliberately not printed in the sommelier**
 (owner asked, 2026-08-02). It would be 30 dishes x 8 languages of text that goes

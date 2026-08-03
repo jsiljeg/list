@@ -12,13 +12,13 @@
        "country": null,
        "items": [
         {
-         "ref": "jakopic--terbotz",
-         "price": 8
-        },
-        {
          "ref": "petrac--bregh-rose",
          "price": 8,
          "recommended": true
+        },
+        {
+         "ref": "jakopic--terbotz",
+         "price": 8
         },
         {
          "ref": "meneghetti--blanc-de-blancs",
@@ -57,29 +57,12 @@
        "country": null,
        "items": [
         {
-         "ref": "benvenuti--malvazija-2025",
+         "ref": "zilliken--riesling-butterfly-2024",
          "price": 8
-        },
-        {
-         "ref": "meneghetti--white-2023",
-         "price": 10
         },
         {
          "ref": "jakopic--sauvignon-2024",
          "price": 9
-        },
-        {
-         "ref": "milos--stalagmit-2022",
-         "price": 15,
-         "recommended": true
-        },
-        {
-         "ref": "kunjas--posip-2024",
-         "price": 9
-        },
-        {
-         "ref": "zilliken--riesling-butterfly-2024",
-         "price": 8
         },
         {
          "ref": "zilliken--rausch-kabinett-2025",
@@ -87,7 +70,19 @@
          "recommended": true
         },
         {
-         "ref": "vie-di-romans--friulano-2023",
+         "ref": "benvenuti--malvazija-2025",
+         "price": 8
+        },
+        {
+         "ref": "kunjas--posip-2024",
+         "price": 9
+        },
+        {
+         "ref": "vie-di-romans--pinot-grigio-2023",
+         "price": 11
+        },
+        {
+         "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
          "price": 12
         },
         {
@@ -96,7 +91,7 @@
          "recommended": true
         },
         {
-         "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
+         "ref": "vie-di-romans--friulano-2023",
          "price": 12
         },
         {
@@ -104,8 +99,13 @@
          "price": 14
         },
         {
-         "ref": "vie-di-romans--pinot-grigio-2023",
-         "price": 11
+         "ref": "milos--stalagmit-2022",
+         "price": 15,
+         "recommended": true
+        },
+        {
+         "ref": "meneghetti--white-2023",
+         "price": 10
         }
        ]
       }
@@ -119,30 +119,17 @@
        "country": null,
        "items": [
         {
-         "ref": "petrac--karizma-cuvee-2022",
-         "price": 8
-        },
-        {
-         "ref": "petrac--enigma-2019",
-         "price": 10,
-         "recommended": true
-        },
-        {
          "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021",
          "price": 8,
          "recommended": true
         },
         {
-         "ref": "ivan-violic--sagul-plavac-mali-2022",
+         "ref": "petrac--karizma-cuvee-2022",
          "price": 8
         },
         {
          "ref": "tomaz--teran-barbarossa-2020",
          "price": 8
-        },
-        {
-         "ref": "rizman--tribidrag-2022",
-         "price": 10
         },
         {
          "ref": "casa-rojo--cl98-2020",
@@ -151,6 +138,23 @@
         {
          "ref": "azienda-duemani--cifra-2021",
          "price": 11
+        },
+        {
+         "ref": "moret-nomine--syrah-le-fales-2024",
+         "price": 12
+        },
+        {
+         "ref": "ivan-violic--sagul-plavac-mali-2022",
+         "price": 8
+        },
+        {
+         "ref": "petrac--enigma-2019",
+         "price": 10,
+         "recommended": true
+        },
+        {
+         "ref": "rizman--tribidrag-2022",
+         "price": 10
         },
         {
          "ref": "skaramuca--dingac-elegance-2020",
@@ -164,10 +168,6 @@
         {
          "ref": "benvenuti--santa-elizabeta-2021",
          "price": 15
-        },
-        {
-         "ref": "moret-nomine--syrah-le-fales-2024",
-         "price": 12
         }
        ]
       }
@@ -185,11 +185,11 @@
          "price": 5
         },
         {
-         "ref": "niko-bura--prosek-ruza-dalmatinska",
+         "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
          "price": 8
         },
         {
-         "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
+         "ref": "niko-bura--prosek-ruza-dalmatinska",
          "price": 8
         }
        ]
