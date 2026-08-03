@@ -560,6 +560,16 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Skaramuča": [/1992/, /dingač|dingac|丁加奇/i],
     "Šember": [/pavlovčani|pavlovcani|帕夫洛夫恰尼/i, /plavec|普拉韦茨/i],
     "Tomaz": [/barbarossa|巴巴罗萨/i, /1918/],
+    /* Fourth batch and the owner's corrections, 2026-08-03. Krajančić must
+       credit both authors of Wine Grapes by name, and Budinski's DipWSET is
+       the qualification behind everything else the blurb claims. */
+    "Krajančić": [/jancis|简希斯/i, /vouillamoz|武亚莫兹/i],
+    "Budinski": [/agrolagun|阿格罗拉古纳/i, /\bomo\b/i, /dipwset/i],
+    "Clai": [/trst|trieste|triest|的里雅斯特/i, /gravner|格拉夫纳/i],
+    "Tomac": [/seloss|塞洛斯/i, /decanter/i],
+    "Corte Aura": [/2009/],
+    "Wise Grus": [/daruvar|达鲁瓦尔/i],
+    "Zmajska pivovara": [/2013/],
   };
   const bad = [];
   for (const [name, patterns] of Object.entries(STORIES)) {
@@ -591,6 +601,12 @@ test("the rewritten Croatian house stories survive in every language", () => {
   for (const [lc, text] of Object.entries(producers["Niko Bura"].blurb))
     if (/dingač|dingac|丁加奇/i.test(text))
       bad.push(`Niko Bura/${lc}: names Dingač, which we do not pour from them`);
+
+  /* One caron, the whole meaning: "opraši" is pollinates, "oprasi" is farrows.
+     The Grk blurb turns on Plavac pollinating it, so this typo made the
+     sentence comic in the one language most guests read it in. */
+  if (/\boprasi\b/i.test(producers["Bire"].blurb.hr))
+    bad.push('Bire/hr: "oprasi" (farrows) — it is "opraši"');
   expect(bad, "house stories that lost their point").toEqual([]);
 });
 
