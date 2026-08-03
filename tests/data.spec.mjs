@@ -617,6 +617,15 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Damijan": [/1998/, /gravner|格拉夫纳/i],
     "Prinčič": [/1988/, /oslavi|奥斯拉维亚/i],
     "Vie di Romans": [/1978/, /gianfranco|詹弗兰科/i],
+    /* Veneto, Alto Adige, Sicily and the coast, 2026-08-03. */
+    "Giuseppe Quintarelli": [/1950/],
+    "Dal Forno": [/1983/, /quintarelli|昆塔雷利/i],
+    "Ca' La Bionda": [/1902/, /castellani|卡斯泰拉尼/i],
+    "Benanti": [/1988/, /pietramarina/i],
+    "Donnafugata": [/1983/, /ben ry|风之子/i],
+    "Lageder": [/1823/, /löwengang/i],
+    "Dipoli": [/1987/, /voglar/i],
+    "Duemani": [/2000/, /demet/i],
   };
   const bad = [];
   for (const [name, patterns] of Object.entries(STORIES)) {

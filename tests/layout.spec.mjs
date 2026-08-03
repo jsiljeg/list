@@ -248,6 +248,38 @@ test("the language screen does not resize when the webfont lands", async ({ page
   expect(real.lines, "the title wraps even with the real font").toBe(1);
 });
 
+test("the logo reserves its box before the file arrives", async ({ page }) => {
+  /* Owner, 2026-08-03: "seems like logo or something shrinks/resizes when I
+     turn on the page. I saw it on mobile."
+
+     Same shape as the font swap above, and found the same way — by measuring
+     rather than looking. `height: auto` on an <img> is 0 until the browser
+     knows the intrinsic size, so the start screen laid out with a 0 px logo
+     and then jumped: +46 px on a phone, +95 px on the tablet, which pushes the
+     language prompt and the flags down and re-centres the column. Fixed with
+     aspect-ratio: 316/88, the SVG's own dimensions.
+
+     The request is held rather than aborted, so this measures the real gap
+     between first layout and the image landing — an aborted request would
+     never resolve and the "after" would be meaningless. */
+  const held = [];
+  await page.route("**/theatrium-logo.svg", (r) => held.push(r));
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const box = () => page.evaluate(() => {
+    const e = document.querySelector(".start-logo");
+    const r = e.getBoundingClientRect();
+    return { w: Math.round(r.width), h: Math.round(r.height) };
+  });
+  await page.waitForTimeout(300);
+  const before = await box();
+  expect(before.h, "the logo box is empty before the SVG loads").toBeGreaterThan(10);
+  for (const r of held) await r.continue();
+  await page.waitForSelector(".start-logo");
+  await page.waitForTimeout(500);
+  const after = await box();
+  expect(Math.abs(after.h - before.h), "the logo changes height when it loads").toBeLessThan(2);
+});
+
 test("the copyright line is on every page in every language", async ({ page }) => {
   /* Added 2026-08-02. The repo is public and the whole dataset is one fetch
      away, so a notice is the only thing standing between "found it online" and

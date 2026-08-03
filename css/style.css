@@ -91,6 +91,17 @@ body {
   height: 100vh; height: 100dvh;
   overflow: hidden; overscroll-behavior: none;
 }
+/* The logo's box must exist before the file does. `height: auto` on an <img>
+   is 0 until the browser knows the intrinsic size, so on a cold load the
+   start screen laid out with a 0 px logo and then jumped — measured +46 px on
+   a phone, +95 px on the tablet — pushing the language prompt and the flags
+   down and re-centring the whole column under the guest's eyes. The owner saw
+   it on mobile (2026-08-03); it happened on every device and every first load,
+   exactly like the font swap did.
+
+   316 x 88 is the SVG's own width/height, so the reserved box is the real one
+   at every width the media queries set. */
+.start-logo, .header-logo { aspect-ratio: 316 / 88; }
 .start-logo { width: min(340px, 70vw); height: auto; animation: logo-breathe 7s ease-in-out infinite; }
 .clickable-logo { cursor: pointer; }
 .clickable-logo:active { transform: scale(.98); }
@@ -637,11 +648,11 @@ body {
    on the row, when the suggested bottle is also poured by the glass (24 of
    the 32 pours are), and as one link underneath for a guest who only ever
    wanted a glass. Neither shouts. */
-.item-aside {
-  margin-left: .7rem; color: var(--gold-soft); font-size: .92em;
+.item-aside {
+  margin-left: .7rem; color: var(--gold-soft); font-size: .92em;
   white-space: nowrap;
   /* the producer line is uppercase; this is a sentence, not a name */
-  text-transform: none; letter-spacing: normal;
+  text-transform: none; letter-spacing: normal;
 }
 .helper-flip {
   display: block; margin: .9rem auto .2rem; padding: .5rem 1.1rem;
