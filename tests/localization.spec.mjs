@@ -267,15 +267,21 @@ test("Moscato Giallo reads in the guest's own language", async ({ page }) => {
      Moscato Giallo off the estate's own "Muškat žuti".
 
      The storage half is guarded in data.spec.mjs. This is the half that needs
-     the running app: the settled rule is that the guest's language wins over
-     the bottle's origin, so German must say Goldmuskateller and Slovenian
-     Rumeni muškat. Only those two have their own name; the rest take the
-     Italian, exactly as they do for Malvasia Istriana, and their real
-     assertion is that the bracketed Croatian never leaks through to them. */
+     the running app.
+
+     German is the ONLY translation, and this test exists because the first
+     version of it asserted a second one. Slovenian shipped as "Rumeni muškat"
+     and the owner caught it against Wine Grapes: Goldmuskateller is in the
+     synonym list, Rumeni muškat is not, and Slovenia's rumeni muškat is
+     Muscat Blanc à Petits Grains — a different grape. Inventing a plausible
+     local form is the Malvoisie error, and it is easy to make twice. Every
+     language below that says "Moscato Giallo" is asserting two things: that
+     the Croatian bracket does not leak through, and that nobody has invented
+     a name for it again. */
   const CANON = "Žuti muškat (Moscato Giallo)";
   const want = {
     hr: CANON, en: "Moscato Giallo", it: "Moscato Giallo", fr: "Moscato Giallo",
-    es: "Moscato Giallo", de: "Goldmuskateller", sl: "Rumeni muškat",
+    es: "Moscato Giallo", sl: "Moscato Giallo", de: "Goldmuskateller",
   };
   for (const [lang, expected] of Object.entries(want)) {
     await openApp(page, { lang });

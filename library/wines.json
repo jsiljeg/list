@@ -921,7 +921,18 @@
     "alcohol": "12.5",
     "sweetness": "semi_sweet"
    },
-   "terroir": "Vižinada"
+   "terroir": "Vižinada",
+   "note": {
+    "hr": "Ime mu je dugo govorilo da dolazi iz Sirije — zvali su ga moscato dalla Siria, moscato sirio. DNK je tu priču srušio: moscato giallo u izravnom je srodstvu s muškatom bijelim i rodio se na sjeveru Italije, ne na Bliskom istoku. U Bolzanu ga po boji zrele bobice zovu Goldmuskateller. Sorta koja gotovo posvuda završi slatka — kao i ovdje.",
+    "en": "Its name long said it came from Syria — it was called moscato dalla Siria, moscato sirio. DNA demolished that: Moscato Giallo is directly related to Muscat Blanc and was born in northern Italy, not the Middle East. In Bolzano they name it Goldmuskateller, after the colour of the ripe berry. A variety that ends up sweet almost everywhere — as it does here.",
+    "it": "Il nome ha a lungo detto che venisse dalla Siria — lo chiamavano moscato dalla Siria, moscato sirio. Il DNA ha demolito la storia: il Moscato Giallo è in rapporto diretto di parentela col Moscato Bianco ed è nato nel nord Italia, non in Medio Oriente. A Bolzano lo chiamano Goldmuskateller, dal colore dell'acino maturo. Un vitigno che quasi ovunque finisce dolce — come qui.",
+    "fr": "Son nom a longtemps dit qu'il venait de Syrie — on l'appelait moscato dalla Siria, moscato sirio. L'ADN a démoli l'histoire : le Moscato Giallo est directement apparenté au Muscat Blanc et il est né dans le nord de l'Italie, pas au Proche-Orient. À Bolzano on le nomme Goldmuskateller, d'après la couleur du grain mûr. Un cépage qui finit sucré presque partout — ici aussi.",
+    "de": "Sein Name behauptete lange, er stamme aus Syrien — man nannte ihn moscato dalla Siria, moscato sirio. Die DNA hat die Geschichte erledigt: Moscato Giallo ist direkt mit dem Weißen Muskateller verwandt und in Norditalien entstanden, nicht im Nahen Osten. In Bozen heißt er nach der Farbe der reifen Beere Goldmuskateller. Eine Sorte, die fast überall süß endet — hier auch.",
+    "zh": "它的名字长期宣称自己来自叙利亚——人们叫它 moscato dalla Siria、moscato sirio。DNA 推翻了这个说法：黄麝香与白麝香有直接亲缘关系，出生地在意大利北部，而非中东。在博尔扎诺，人们按成熟果粒的颜色称它为 Goldmuskateller。这是一个几乎在哪里都酿成甜酒的品种——这一款也是。",
+    "sl": "Ime je dolgo trdilo, da prihaja iz Sirije — klicali so ga moscato dalla Siria, moscato sirio. DNK je zgodbo podrl: moscato giallo je v neposrednem sorodstvu z belim muškatom in se je rodil na severu Italije, ne na Bližnjem vzhodu. V Bolzanu ga po barvi zrele jagode imenujejo Goldmuskateller. Sorta, ki skoraj povsod konča sladka — tudi tu.",
+    "es": "Su nombre dijo durante mucho tiempo que venía de Siria — lo llamaban moscato dalla Siria, moscato sirio. El ADN derribó la historia: el Moscato Giallo está emparentado directamente con el Moscatel de grano menudo y nació en el norte de Italia, no en Oriente Medio. En Bolzano lo llaman Goldmuskateller, por el color del grano maduro. Una variedad que acaba dulce casi en todas partes — aquí también."
+   },
+   "notePlain": true
   },
   "niko-bura--prosek-ruza-dalmatinska": {
    "name": "Prošek Ruža Dalmatinska",
@@ -10202,7 +10213,18 @@
     "alcohol": "12.5",
     "sweetness": "semi_sweet"
    },
-   "terroir": "Vižinada"
+   "terroir": "Vižinada",
+   "note": {
+    "hr": "Ime mu je dugo govorilo da dolazi iz Sirije — zvali su ga moscato dalla Siria, moscato sirio. DNK je tu priču srušio: moscato giallo u izravnom je srodstvu s muškatom bijelim i rodio se na sjeveru Italije, ne na Bliskom istoku. U Bolzanu ga po boji zrele bobice zovu Goldmuskateller. Sorta koja gotovo posvuda završi slatka — kao i ovdje.",
+    "en": "Its name long said it came from Syria — it was called moscato dalla Siria, moscato sirio. DNA demolished that: Moscato Giallo is directly related to Muscat Blanc and was born in northern Italy, not the Middle East. In Bolzano they name it Goldmuskateller, after the colour of the ripe berry. A variety that ends up sweet almost everywhere — as it does here.",
+    "it": "Il nome ha a lungo detto che venisse dalla Siria — lo chiamavano moscato dalla Siria, moscato sirio. Il DNA ha demolito la storia: il Moscato Giallo è in rapporto diretto di parentela col Moscato Bianco ed è nato nel nord Italia, non in Medio Oriente. A Bolzano lo chiamano Goldmuskateller, dal colore dell'acino maturo. Un vitigno che quasi ovunque finisce dolce — come qui.",
+    "fr": "Son nom a longtemps dit qu'il venait de Syrie — on l'appelait moscato dalla Siria, moscato sirio. L'ADN a démoli l'histoire : le Moscato Giallo est directement apparenté au Muscat Blanc et il est né dans le nord de l'Italie, pas au Proche-Orient. À Bolzano on le nomme Goldmuskateller, d'après la couleur du grain mûr. Un cépage qui finit sucré presque partout — ici aussi.",
+    "de": "Sein Name behauptete lange, er stamme aus Syrien — man nannte ihn moscato dalla Siria, moscato sirio. Die DNA hat die Geschichte erledigt: Moscato Giallo ist direkt mit dem Weißen Muskateller verwandt und in Norditalien entstanden, nicht im Nahen Osten. In Bozen heißt er nach der Farbe der reifen Beere Goldmuskateller. Eine Sorte, die fast überall süß endet — hier auch.",
+    "zh": "它的名字长期宣称自己来自叙利亚——人们叫它 moscato dalla Siria、moscato sirio。DNA 推翻了这个说法：黄麝香与白麝香有直接亲缘关系，出生地在意大利北部，而非中东。在博尔扎诺，人们按成熟果粒的颜色称它为 Goldmuskateller。这是一个几乎在哪里都酿成甜酒的品种——这一款也是。",
+    "sl": "Ime je dolgo trdilo, da prihaja iz Sirije — klicali so ga moscato dalla Siria, moscato sirio. DNK je zgodbo podrl: moscato giallo je v neposrednem sorodstvu z belim muškatom in se je rodil na severu Italije, ne na Bližnjem vzhodu. V Bolzanu ga po barvi zrele jagode imenujejo Goldmuskateller. Sorta, ki skoraj povsod konča sladka — tudi tu.",
+    "es": "Su nombre dijo durante mucho tiempo que venía de Siria — lo llamaban moscato dalla Siria, moscato sirio. El ADN derribó la historia: el Moscato Giallo está emparentado directamente con el Moscatel de grano menudo y nació en el norte de Italia, no en Oriente Medio. En Bolzano lo llaman Goldmuskateller, por el color del grano maduro. Una variedad que acaba dulce casi en todas partes — aquí también."
+   },
+   "notePlain": true
   },
   "mrgudic--prosek-moskar-0-375-l": {
    "name": "Prošek Moskar – 0,375 l",

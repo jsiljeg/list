@@ -604,6 +604,17 @@ const SEARCH_ALIAS = {
     "crljenak kastelanski kaštelanski crljenak kastelanski crljenak " +
     "kratošija kratosija 特里比德拉格 仙粉黛",
   "graševina": "grasevina 格拉舍维纳",
+  /* Moscato Giallo travels under more names than almost anything else we pour,
+     and none of them is on our label. Wine Grapes lists Fior d'Arancio,
+     Goldmuskateller, Moscato Sirio / dalla Siria, Muscat du Pays, Muscat Vert
+     and Muscatedda; the Croatian and Slovenian forms are here because a guest
+     will type those even though the second one is, strictly, another grape.
+     Plain "muškat" reaches it too — a guest who wants a Muscat should find the
+     one Muscat on the list. */
+  "moscato giallo": "muškat žuti muskat zuti žuti muškat zuti muskat muškat " +
+    "muskat rumeni muškat rumeni muskat goldmuskateller goldenmuskateller " +
+    "gelber muskateller fior d'arancio fior darancio moscato sirio " +
+    "moscato dalla siria muscat du pays muscat vert muscatedda 黄麝香 麝香",
   /* Grapes a guest names by a synonym we don't store. Each was found by typing
      what a guest would type and getting nothing back (2026-08-02):
      - Garnacha is on one label (López de Heredia's Bosconia); the rest of the
@@ -1533,11 +1544,20 @@ function zhTokens(str, map) {
    ambiguous for the same reason a bare Malvasia is: blanc à petits grains,
    Ottonel and Alexandria are all "Muscat" and all different. The estate's own
    page says Muškat žuti, and the owner settled it as Moscato Giallo (2026-08-03)
-   — a genuinely distinct variety, not a yellow-berried Muscat Blanc. Croatian
-   keeps the international name in brackets because that is what a Croatian
-   guest is likelier to have met on a wine list; every other language reads its
-   own name for it, and only German and Slovenian have one. French, English and
-   Spanish trade use the Italian name, exactly as they do for Malvasia. */
+   — a genuinely distinct variety, not a yellow-berried Muscat Blanc.
+
+   **Only Goldmuskateller is a real translation.** It is in Wine Grapes' synonym
+   list (Bolzano); the rest of the list is Italian, Swiss and Sicilian — Fior
+   d'Arancio, Moscato Sirio, Muscat du Pays, Muscat Vert, Muscatedda — and there
+   is no Slavic entry at all. Slovenian shipped as "Rumeni muškat" for one
+   commit and the owner caught it: Slovenia's rumeni muškat is Muscat Blanc à
+   Petits Grains, so the override named a *different grape*. That is precisely
+   the Malvoisie error the Malvasia rule was written about, made again. English,
+   Italian, French, Spanish and Slovenian therefore all take the Italian name.
+
+   Croatian keeps the bracket, and the bracket is load-bearing rather than
+   decorative: "Muškat žuti" on its own is open to the same confusion Slovenian
+   just proved, and "(Moscato Giallo)" closes it. */
 const MOSCATO_GIALLO = "Žuti muškat (Moscato Giallo)";
 const LANG_GRAPE = {
   it: {
@@ -1561,7 +1581,7 @@ const LANG_GRAPE = {
      Jakot in 2013 — so a Slovenian guest reading Prinčič's "Jakot 2019" or
      Simčič's "Sauvignon Vert" sees the variety under the name they use, which
      is the settled rule. The wine's own name is never touched. */
-  sl: { "Friulano": "Jakot", [MOSCATO_GIALLO]: "Rumeni muškat" }
+  sl: { "Friulano": "Jakot", [MOSCATO_GIALLO]: "Moscato Giallo" }
 };
 function langTokens(str, map) {
   return str
