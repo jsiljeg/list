@@ -32,7 +32,7 @@ hr: {
     body: "Tijelo", aromas: "Arome i okusi", pairings: "Uz jela",
     temp: "Temperatura posluživanja",
     alcohol: "Alkohol",
-    rs: "Rezidualni šećer",
+    rs: "Ostatak šećera",
     legal: "Cijene su izražene u eurima, PDV i porezi uračunati su u cijenu. Zabranjeno je usluživanje alkoholnih pića maloljetnim osobama. Za informacije o alergenima obratite se našem osoblju.",
     company: "Restoran Theatrium · Apelacija d.o.o. · Teslina 7, Zagreb",
     copyright: "© 2026 Apelacija d.o.o. · Sva prava pridržana. Sadržaj i dizajn ove vinske karte ne smiju se umnožavati ni preuzimati.",

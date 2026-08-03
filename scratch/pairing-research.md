@@ -209,3 +209,50 @@ Still not usable from there, for the vintage reason:
     Corvinone, 20% Rondinella; we store Corvina 70%, Rondinella 25%, Molinara
     5%. Neither source is pinned to 2015, so this is flagged rather than
     changed.
+
+### The 19 still unconfirmed (2026-08-03)
+
+Confirmed: Ben Ryé 2019 (194), Yquem 2015 (144), Yquem 2020 (135), Quintarelli
+Amabile del Cerè 2017 (129.33). The rest, and why:
+
+**Germany — 9.** The Prädikat row, and the frustrating one, because these are
+exactly the wines where a number would explain the label.
+
+    A. Clüsserath        Trittenheimer Apotheke Kabinett 2024   7.5%
+    Egon Müller          Scharzhof Riesling 2023                8.5%
+    Heymann-Löwenstein   Schieferterrassen Beerenauslese 2017   —
+    Joh. Jos. Prüm       Wehlener Sonnenuhr Auslese 2023        8%
+    Joh. Jos. Prüm       Wehlener Sonnenuhr Kabinett 2023       8.5%
+    Wittmann             Aulerde Auslese 2015                   8%
+    Zilliken             Auslese Goldkapsel 2009                —
+    Zilliken             Rausch Kabinett 2025                   8%
+    Zilliken             Butterfly 2024                         11%
+
+Prüm publish no analytics at all, as a matter of house policy. Zilliken publish
+a page per vintage — zilliken-vdp.de/weine/YYYY/<wine>.html, which is worth
+knowing — but not yet for the 2025, and the 2023 and 2024 pages are the wrong
+vintage for our bottle.
+
+**Croatia — 7.** No Croatian producer on this list publishes an analysis sheet;
+the two Prošeks and Mrgudić do not publish alcohol either.
+
+    Clai                 Tasel                                  12.5%
+    Geržinić             Muškat 2020 (both formats)             12.5%
+    Jakopić              Rajnski rizling izborna berba 2019     11%
+    Mrgudić              Prošek Moskar                          —
+    Niko Bura            Prošek Ruža Dalmatinska (both formats) —
+
+**Italy — 2**, both blocked by vintage rather than by silence.
+
+    Ca' La Bionda        Recioto Classico 2015    estate gives only "120–140 g/l"
+    Quintarelli          Recioto Classico 2011    superiore.de has the 2015 at
+                                                  72,55 g/l and says the 2011 is
+                                                  higher, which is not a number
+
+**France — 1.** Albert Mann Pinot Gris GC Hengst 2020, 14.5%, off-dry. Alsace
+growers rarely publish RS even though it is the one figure an Alsace buyer wants.
+
+**The cheapest way to close most of this** is not more searching: it is the back
+label or the shelf-talker in the cellar. German Prädikat bottles print the
+analysis on the back label often enough, and Zilliken, Prüm and Clüsserath all
+answer email. If the owner reads eight back labels the German column is done.
