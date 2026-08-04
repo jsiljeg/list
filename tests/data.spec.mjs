@@ -582,7 +582,7 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Heymann-Löwenstein": [/terrassenmosel|阶地摩泽尔/i, /1980/],
     "Knebel": [/1642/, /2008/, /molitor|莫利托/i, /lubentiushof/i],
     "Wittmann": [/1663/, /2004/, /cl[üu]sserath|克吕塞拉特/i],
-    "Bürklin-Wolf": [/1597/, /biodyvin/i],
+    "Bürklin-Wolf": [/1597/, /biodyvin/i, /1828/, /1994/],
     "Christmann": [/\bvdp\b/i, /sophie|索菲/i],
     /* German spirits and Italy, first round (Piedmont), 2026-08-03. Note the
        stems again: Italian calls the saint Uberto, and Croatian declines
@@ -632,7 +632,7 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Muster": [/2000/, /opok/i, /tscheppe|切佩/i],
     /* The American shelf, 2026-08-04. */
     "Ridge": [/1976/, /1966/, /18/],
-    "Heitz": [/1965/, /1966/, /tchelistcheff|切利斯切夫/i],
+    "Heitz": [/1965/, /1966/, /tchelistcheff|切利斯切夫/i, /montelena|蒙特兰那/i, /1973/],
     "Mayacamas": [/1889/, /fisher|费舍尔/i],
     "Cakebread": [/1972/, /adams|亚当斯/i, /2\.500|2 500|\$2,500/],
     "Togni": [/1956/, /peynaud|佩诺/i, /lascombes|拉斯康/i],
