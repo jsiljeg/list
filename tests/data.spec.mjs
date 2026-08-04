@@ -626,6 +626,10 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Lageder": [/1823/, /löwengang/i],
     "Dipoli": [/1987/, /voglar/i],
     "Duemani": [/2000/, /demet/i],
+    /* Austria, 2026-08-04. */
+    "Bernhard Ott": [/1889/, /1989/],
+    "Prager": [/1302/, /1715/, /25/],
+    "Muster": [/2000/, /opok/i, /tscheppe|切佩/i],
     /* The American shelf, 2026-08-04. */
     "Ridge": [/1976/, /1966/, /18/],
     "Heitz": [/1965/, /1966/, /tchelistcheff|切利斯切夫/i],
