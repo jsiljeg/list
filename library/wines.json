@@ -2904,8 +2904,8 @@
     ],
     "pairings": [
      "oysters",
-     "shellfish",
-     "white_fish"
+     "white_fish",
+     "shellfish"
     ],
     "temp": "10–12",
     "alcohol": "13.5",
@@ -2955,8 +2955,8 @@
     ],
     "pairings": [
      "oysters",
-     "shellfish",
-     "grilled_fish"
+     "grilled_fish",
+     "shellfish"
     ],
     "temp": "10–12",
     "alcohol": "13.5",
@@ -4853,11 +4853,11 @@
      "grass"
     ],
     "pairings": [
-     "white_fish",
-     "salads",
      "asparagus",
-     "vegetables",
-     "cheese_fresh"
+     "salads",
+     "cheese_fresh",
+     "white_fish",
+     "vegetables"
     ],
     "temp": "8–10",
     "alcohol": "13",
@@ -4888,10 +4888,10 @@
      "grapefruit"
     ],
     "pairings": [
-     "shellfish",
-     "white_fish",
      "asparagus",
-     "cheese_fresh"
+     "cheese_fresh",
+     "shellfish",
+     "white_fish"
     ],
     "temp": "10–12",
     "alcohol": "13",

@@ -79,13 +79,13 @@ export const GRAPE_FIRST = [
   [/plavac mali/i, ["lamb", "bbq", "pasticada", "stews"]],
   [/tribidrag|zinfandel|primitivo|kratošija/i, ["bbq", "lamb", "stews"]],
   [/malvazija istarska/i, ["white_fish", "seafood", "truffles", "risotto"]],
-  [/pošip|grk|rukatac|maraština/i, ["oysters", "white_fish", "seafood", "grilled_fish"]],
+  [/pošip|grk\b|rukatac|maraština/i, ["oysters", "white_fish", "seafood", "grilled_fish"]],
   [/teran|refošk/i, ["beef", "stews", "truffles", "charcuterie"]],
   [/riesling|rizling/i, ["asian", "spicy", "pork"]],
   [/grüner|gruner|veltliner/i, ["asparagus", "vegetables", "veal"]],
   /* Anchored to the start of a token so "Cabernet Sauvignon" does not get
      asparagus promoted onto a Bordeaux blend. */
-  [/(^|,\s*)sauvignon/i, ["asparagus", "salads", "cheese_fresh"]],
+  [/(^|,\s*)sauvignon\b/i, ["asparagus", "salads", "cheese_fresh"]],
   [/chardonnay/i, ["poultry", "white_fish", "truffles"]],
   [/gewürz|gewurz|muškat|muskat|muscat|moscato/i, ["asian", "spicy"]],
   [/furmint|savagnin/i, ["cheese_hard", "mushrooms"]],

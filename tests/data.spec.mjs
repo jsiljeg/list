@@ -7,7 +7,7 @@
    notation (name first, descending share), the critic-name list, and 87dffea
    (a producer's region contradicting the wine's). */
 import { test, expect } from "@playwright/test";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import vm from "node:vm";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -615,7 +615,7 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Radikon": [/1995/, /kante|坎特/i],
     "Vodopivec": [/2004/, /gravner|格拉夫纳/i],
     "Damijan": [/1998/, /gravner|格拉夫纳/i],
-    "Prinčič": [/1988/, /oslavi|奥斯拉维亚/i],
+    "Prinčič": [/1988/, /oslav|奥斯拉维亚/i],
     "Vie di Romans": [/1978/, /gianfranco|詹弗兰科/i],
     /* Veneto, Alto Adige, Sicily and the coast, 2026-08-03. */
     "Giuseppe Quintarelli": [/1950/],
@@ -628,7 +628,7 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Duemani": [/2000/, /demet/i],
     /* Austria, 2026-08-04. */
     "Bernhard Ott": [/1889/, /1989/],
-    "Prager": [/1302/, /1715/, /25/],
+    "Prager": [/1302/, /1715/, /\b25\b/],
     "Muster": [/2000/, /opok/i, /tscheppe|切佩/i],
     /* The American shelf, 2026-08-04. */
     "Ridge": [/1976/, /1966/, /18/],
@@ -655,6 +655,30 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Antinori": [/1385/, /albiera|阿尔比耶拉/i, /alessia|阿莱西娅/i],
     "Poggio di Sotto": [/1989/, /gambelli|甘贝利/i, /decanter/i],
     "Tenuta San Guido": [/1948/, /tachis|塔基斯/i, /sass/i],
+    /* Champagne, 2026-08-04. Four of these carry a cross-reference to another
+       card, and a cross-reference is exactly what a lazy translation drops. */
+    "Roederer": [/1876/, /1881/, /1945/, /aleksand|alexand|alessandro|alejandro|亚历山大/i, /pez/i],
+    "Krug": [/1843/, /1971/, /1698/, /1[.,]84/, /clos du mesnil/i],
+    /* Without Delamotte the point of declaring fewer than 45 vintages is lost:
+       the fruit does not disappear, it becomes the sister house's wine. */
+    "Salon": [/1921/, /\b45\b/, /delamotte/i],
+    "Delamotte": [/salon/i, /mesnil|勒梅尼/i],
+    /* The solera came from López de Heredia and Jerez, and Heredia is on this
+       list. Croatian and Slovenian decline the surname — match the stem. */
+    "Jacques Selosse": [/1974/, /1986/, /heredi/i, /solera|索莱拉/i],
+    "Moët": [/pérignon|perignon|培里侬/i, /hautviller|奥维莱/i, /p2/i],
+    "Billecart-Salmon": [/1818/, /elisabeth|伊丽莎白/i],
+    "Deutz": [/1838/, /geldermann|热尔德曼/i, /aÿ|艾伊/i],
+    "Henri Giraud": [/argon|阿尔贡/i, /\b12\b/],
+    "Egly-Ouriet": [/1946/, /1947/, /ambonnay|昂博内/i],
+    "De Sousa": [/1986/, /1999/, /portugal|portogall|葡萄牙/i],
+    /* Gautherot trained at Selosse, and the horse is the line a guest repeats.
+       Every language declines or compounds it: konj- / cheva- / cavall- /
+       caball- / Pferd / horse / 马. */
+    "Vouette": [/seloss|塞洛斯/i, /1998/, /konj|horse|cheva|cavall|pferd|caball|马/i],
+    "Ruppert-Leroy": [/essoyes|埃索瓦/i, /demet/i, /2010/],
+    "Pertois-Moriset": [/1951/, /cécile|cecile|塞西尔/i],
+    "L'Hoste": [/1970/, /bassuet|巴叙埃/i, /vitry|维特里/i],
   };
   const bad = [];
   for (const [name, patterns] of Object.entries(STORIES)) {
@@ -938,4 +962,40 @@ test("residual sugar is g/l without the unit, and only on wines that have any", 
   expect(bad, "residual-sugar problems").toEqual([]);
   expect(items.filter((i) => (i.insight || {}).rs != null).length,
     "no wine carries a residual-sugar figure any more — was the data lost?").toBeGreaterThan(0);
+});
+test("no source file contains a stray control character", () => {
+  /* 2026-08-04, and this one was invisible for weeks. Writing a regex through
+     a shell heredoc collapsed the escape, so `\b` reached the file as a raw
+     0x08 byte: `/grk\b/` became `/grk<BS>/`, which is a valid regex that can
+     never match, because no text contains a backspace. Three regexes died
+     silently that way — the Grk and the Sauvignon rules in pairing-rank.mjs,
+     which left both Grks and both Sancerres out of the grape ranking and put
+     the wrong food first on four cards, and the leaked-key detector in
+     i18n.spec.mjs, which had been matching nothing at all.
+
+     Nothing else caught it: the files parse, the tests pass, and a diff shows
+     the byte as an invisible column. So the guard is at the byte level. Tab,
+     newline and carriage return are the only control characters this repo has
+     any business containing. */
+  const ALLOWED = new Set([9, 10, 13]);
+  const roots = ["js", "css", "scripts", "tests", "data", "library", "lists"];
+  const bad = [];
+  const walk = (dir) => {
+    for (const e of readdirSync(resolve(ROOT, dir), { withFileTypes: true })) {
+      const rel = `${dir}/${e.name}`;
+      if (e.isDirectory()) { if (e.name !== "node_modules") walk(rel); continue; }
+      if (!/\.(mjs|js|json|css|html)$/.test(e.name)) continue;
+      const buf = readFileSync(resolve(ROOT, rel));
+      for (let i = 0; i < buf.length; i++) {
+        const c = buf[i];
+        if (c < 32 && !ALLOWED.has(c)) {
+          const line = buf.subarray(0, i).filter((b) => b === 10).length + 1;
+          bad.push(`${rel}:${line}: control byte 0x${c.toString(16).padStart(2, "0")}`);
+          break;   /* one report per file is enough to send someone looking */
+        }
+      }
+    }
+  };
+  roots.forEach(walk);
+  expect(bad, "stray control bytes — almost certainly a mangled regex escape").toEqual([]);
 });

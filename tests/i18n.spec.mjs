@@ -128,7 +128,7 @@ test("nothing renders a raw i18n key", async ({ page }) => {
     await expect(page.locator("#content .item").first()).toBeVisible();
     await page.waitForTimeout(250);
     const text = await page.locator("#app").innerText();
-    const suspicious = (text.match(/[a-z]+_[a-z_]+/g) || []).filter((k) => !/^(www|e_mail)/.test(k));
+    const suspicious = (text.match(/\b[a-z]+_[a-z_]+\b/g) || []).filter((k) => !/^(www|e_mail)/.test(k));
     expect([...new Set(suspicious)], `${lang} shows raw keys`).toEqual([]);
   }
 });
