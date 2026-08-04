@@ -626,6 +626,18 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Lageder": [/1823/, /löwengang/i],
     "Dipoli": [/1987/, /voglar/i],
     "Duemani": [/2000/, /demet/i],
+    /* The American shelf, 2026-08-04. */
+    "Ridge": [/1976/, /1966/, /18/],
+    "Heitz": [/1965/, /1966/, /tchelistcheff|切利斯切夫/i],
+    "Mayacamas": [/1889/, /fisher|费舍尔/i],
+    "Cakebread": [/1972/, /adams|亚当斯/i, /2\.500|2 500|\$2,500/],
+    "Togni": [/1956/, /peynaud|佩诺/i, /lascombes|拉斯康/i],
+    "Occidental": [/2011/, /2017/],
+    "Résonance": [/1859/, /2013/, /1981/],
+    "Walter Scott": [/2008/, /twa|环球航空/i],
+    "Tyler": [/2005/, /2015/],
+    "Duckhorn": [/1976/, /1978/],
+    "Domaine Eden": [/1945/, /1983/, /2007/],
     /* Owner's flesh pass, 2026-08-04. Each of these is the fact the blurb was
        rewritten around; losing it puts the card back where it started. */
     "Boschis": [/1981/, /1990/, /altare|阿尔塔雷/i],
