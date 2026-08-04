@@ -176,6 +176,41 @@ test("the face is already loaded by the time the story splash appears", async ({
   expect(bg, "the splash has no face behind it").toContain("atrium-face");
 });
 
+test("the face is decoded before the language is picked, not at the tap", async ({ page }) => {
+  /* Round two on this asset (owner, 2026-08-04 — reported twice).
+
+     The test above guards the *download*: the bytes are preloaded and land
+     around 200 ms. That was the round-one fix, and it is not enough. The face
+     is a background on `.story-screen::before`, which is display:none until a
+     language is picked, so the browser has no reason to rasterise the
+     1084x811 bitmap until that moment — and on a phone's CPU the decode is
+     long enough to watch. Preloading bytes never implied a decoded image.
+
+     app.js therefore calls primeFace() from showStart(). Both halves are
+     asserted: that the decode was kicked off while the guest was still on the
+     language screen, and that a fresh decode of the same URL then resolves
+     immediately, which it only can if the raster is already cached. */
+  await page.goto("/index.html", { waitUntil: "load" });
+  await page.evaluate(() => localStorage.removeItem("theatrium-lang"));
+  await page.reload({ waitUntil: "load" });
+  await expect(page.locator("#lang-buttons button").first()).toBeVisible();
+
+  const primed = await page.evaluate(() => typeof facePrimed !== "undefined" && facePrimed);
+  expect(primed, "nothing decoded the face while the language screen was up").toBe(true);
+
+  /* Behavioural half: with the raster cached this is near-instant. The bound
+     is deliberately loose — it is catching "decodes from scratch at the tap",
+     which costs hundreds of milliseconds, not a few. */
+  const ms = await page.evaluate(async () => {
+    const img = new Image();
+    img.src = "assets/atrium-face.webp";
+    const t0 = performance.now();
+    try { await img.decode(); } catch (e) { /* ignore */ }
+    return performance.now() - t0;
+  });
+  expect(ms, "the face still had to be decoded from scratch").toBeLessThan(200);
+});
+
 test("the footer sits at the bottom in every section, not part-way up", async ({ page }) => {
   /* Rosé was the one that showed it, but the rule is for all of them: the footer
      is either flush with the bottom of the screen or below the fold. Never

@@ -315,11 +315,36 @@ function flushHidden() {
   applyUpdate(u);
 }
 
+/* The nail face, decoded before it is needed.
+
+   Round two on this asset. The <link rel="preload"> in index.html got the
+   *bytes* here early — measured, they land around 200 ms. But the face is a
+   background on `.story-screen::before`, which is display:none until a
+   language is picked, so the browser has no reason to decode the 1084x811
+   bitmap until that moment. The fetch was never the problem; the decode was,
+   and on a phone's CPU it is long enough to see (owner, twice).
+
+   Decoding it here, while the guest is still choosing a language, puts the
+   raster in the image cache so the splash paints complete. Failures are
+   swallowed on purpose: this is an optimisation, and a browser without
+   Image.decode() simply behaves as it did before. */
+let facePrimed = false;
+function primeFace() {
+  if (facePrimed) return;
+  facePrimed = true;
+  try {
+    const img = new Image();
+    img.src = "assets/atrium-face.webp";
+    if (img.decode) img.decode().catch(() => {});
+  } catch (e) { /* nothing to do — the splash just paints a beat later */ }
+}
+
 /* ---------- start screen ---------- */
 function showStart() {
   $("app").classList.add("hidden");
   $("story-screen").classList.add("hidden");
   $("start").classList.remove("hidden");
+  primeFace();
   const box = $("lang-buttons");
   box.innerHTML = LANGS.map((l) =>
     `<button class="lang-btn" data-lang="${l.code}">${flagHTML(l.code)}<span>${l.name}</span></button>`
