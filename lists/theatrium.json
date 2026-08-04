@@ -1072,27 +1072,27 @@
          "price": 290
         },
         {
-         "ref": "saint-estephe--chateau-de-pez-2022",
+         "ref": "chateau-de-pez--saint-estephe-2022",
          "price": 155
         },
         {
-         "ref": "saint-emilion-grand-cru--chateau-troplong-mondot-2020",
+         "ref": "chateau-troplong-mondot--saint-emilion-grand-cru-2020",
          "price": 478
         },
         {
-         "ref": "pomerol--chateau-gazin-2020",
+         "ref": "chateau-gazin--pomerol-2020",
          "price": 390
         },
         {
-         "ref": "chateau-la-pointe-pomerol--la-pointe-rouge-2022",
+         "ref": "chateau-la-pointe--la-pointe-rouge-2022",
          "price": 220
         },
         {
-         "ref": "saint-emilion-grand-cru--chateau-canon-2020",
+         "ref": "chateau-canon--saint-emilion-grand-cru-2020",
          "price": 390
         },
         {
-         "ref": "saint-julien--chateau-leoville-barton-2021",
+         "ref": "chateau-leoville-barton--saint-julien-2021",
          "price": 390
         },
         {
@@ -1482,11 +1482,11 @@
        "country": "FR",
        "items": [
         {
-         "ref": "sauternes--chateau-d-yquem-1er-cru-superieur-2020",
+         "ref": "chateau-d-yquem--sauternes-1er-cru-superieur-2020",
          "price": 880
         },
         {
-         "ref": "sauternes--chateau-d-yquem-1er-cru-superieur-2015",
+         "ref": "chateau-d-yquem--sauternes-1er-cru-superieur-2015",
          "price": 940
         }
        ]

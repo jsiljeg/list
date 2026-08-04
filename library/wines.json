@@ -6958,9 +6958,9 @@
     }
    ]
   },
-  "saint-estephe--chateau-de-pez-2022": {
-   "name": "Château de Pez 2022",
-   "producer": "Saint-Estèphe",
+  "chateau-de-pez--saint-estephe-2022": {
+   "name": "Saint-Estèphe 2022",
+   "producer": "Château de Pez",
    "insight": {
     "grape": "Merlot 59%, Cabernet Sauvignon 38%, Cabernet Franc 2%, Petit Verdot 1%",
     "region": "Saint-Estèphe, Médoc, Bordeaux",
@@ -7009,9 +7009,9 @@
     "legendary_vintage"
    ]
   },
-  "saint-emilion-grand-cru--chateau-troplong-mondot-2020": {
-   "name": "Château Troplong Mondot 2020",
-   "producer": "Saint-Émilion Grand Cru",
+  "chateau-troplong-mondot--saint-emilion-grand-cru-2020": {
+   "name": "Saint-Émilion Grand Cru 2020",
+   "producer": "Château Troplong Mondot",
    "insight": {
     "grape": "Merlot 85%, Cabernet Sauvignon 13%, Cabernet Franc 2%",
     "region": "Saint-Émilion, Libournais, Bordeaux",
@@ -7068,9 +7068,9 @@
     "excellent_vintage"
    ]
   },
-  "pomerol--chateau-gazin-2020": {
-   "name": "Château Gazin 2020",
-   "producer": "Pomerol",
+  "chateau-gazin--pomerol-2020": {
+   "name": "Pomerol 2020",
+   "producer": "Château Gazin",
    "insight": {
     "grape": "Merlot 91.6%, Cabernet Sauvignon 8.4%",
     "region": "Pomerol, Libournais, Bordeaux",
@@ -7127,9 +7127,9 @@
     "excellent_vintage"
    ]
   },
-  "chateau-la-pointe-pomerol--la-pointe-rouge-2022": {
+  "chateau-la-pointe--la-pointe-rouge-2022": {
    "name": "La Pointe Rouge 2022",
-   "producer": "Château La Pointe, Pomerol",
+   "producer": "Château La Pointe",
    "insight": {
     "grape": "Merlot 84%, Cabernet Franc 16%",
     "region": "Pomerol, Libournais, Bordeaux",
@@ -7174,9 +7174,9 @@
     "legendary_vintage"
    ]
   },
-  "saint-emilion-grand-cru--chateau-canon-2020": {
-   "name": "Château Canon 2020",
-   "producer": "Saint-Émilion Grand Cru",
+  "chateau-canon--saint-emilion-grand-cru-2020": {
+   "name": "Saint-Émilion Grand Cru 2020",
+   "producer": "Château Canon",
    "insight": {
     "grape": "Merlot 68%, Cabernet Franc 32%",
     "region": "Saint-Émilion, Libournais, Bordeaux",
@@ -7218,9 +7218,9 @@
     "excellent_vintage"
    ]
   },
-  "saint-julien--chateau-leoville-barton-2021": {
-   "name": "Château Léoville Barton 2021",
-   "producer": "Saint-Julien",
+  "chateau-leoville-barton--saint-julien-2021": {
+   "name": "Saint-Julien 2021",
+   "producer": "Château Léoville Barton",
    "insight": {
     "grape": "Cabernet Sauvignon 84%, Merlot 11%, Cabernet Franc 5%",
     "region": "Saint-Julien, Médoc, Bordeaux",
@@ -10610,9 +10610,9 @@
     "drinking_now"
    ]
   },
-  "sauternes--chateau-d-yquem-1er-cru-superieur-2020": {
-   "name": "Château d'Yquem, 1er Cru Supérieur 2020",
-   "producer": "Sauternes",
+  "chateau-d-yquem--sauternes-1er-cru-superieur-2020": {
+   "name": "Sauternes 1er Cru Supérieur 2020",
+   "producer": "Château d'Yquem",
    "insight": {
     "grape": "Sémillon 75%, Sauvignon Blanc 25%",
     "region": "Sauternes, Bordeaux",
@@ -10669,9 +10669,9 @@
     "rare"
    ]
   },
-  "sauternes--chateau-d-yquem-1er-cru-superieur-2015": {
-   "name": "Château d'Yquem, 1er Cru Supérieur 2015",
-   "producer": "Sauternes",
+  "chateau-d-yquem--sauternes-1er-cru-superieur-2015": {
+   "name": "Sauternes 1er Cru Supérieur 2015",
+   "producer": "Château d'Yquem",
    "insight": {
     "grape": "Sémillon 75%, Sauvignon Blanc 25%",
     "region": "Sauternes, Bordeaux",

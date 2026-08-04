@@ -693,6 +693,17 @@ test("the rewritten Croatian house stories survive in every language", () => {
   if (/\boprasi\b/i.test(producers["Bire"].blurb.hr))
     bad.push('Bire/hr: "oprasi" (farrows) — it is "opraši"');
 
+  /* A Bordeaux producer must be a château, never an appellation. Five of them
+     were appellations until 2026-08-04, so the "about the winemaker" block
+     could only ever describe a place — and one key, "Saint-Émilion Grand Cru",
+     was doing duty for two different châteaux at once, which no single blurb
+     can do honestly. */
+  const APPELLATION = /^(Saint-Est[eè]phe|Saint-[EÉ]milion.*|Pomerol|Saint-Julien|Sauternes|Margaux|Pauillac|Graves)$/i;
+  for (const it of items) {
+    if (it.insight.country === "FR" && APPELLATION.test(String(it.producer || "").trim()))
+      bad.push(`${it.name}: producer "${it.producer}" is an appellation, not a house`);
+  }
+
   /* Reinhard Löwenstein announced the sale of the estate in November 2025 and
      his daughter Sarah did not take it on; the blurb said she ran it, which
      was true when it was written and stopped being true two months later.

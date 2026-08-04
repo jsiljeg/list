@@ -248,19 +248,6 @@
     "es": "Durante 25 años llevó con Vesna el restaurante familiar en Trieste, y en 2002 la salud lo devolvió a Krasica y empezó a hacer vino. Lo que hizo, Istria no lo tenía: blanco sobre pieles, de diez a 90 días de maceración según la variedad, y ninguna intervención. Gravner fue su referencia, y Ottocento el nombre por el que hoy lo conoce toda la región."
    }
   },
-  "Sauternes": {
-   "region": "",
-   "blurb": {
-    "hr": "Château d'Yquem je vrhunac Sauternesa — plemenita plijesan na sémillonu daje nektar raskoši i preciznosti. Bira se samo kad je struktura idealna, u trenutku vrhunske ravnoteže: ni premlado, ni preumorno.",
-    "en": "Château d'Yquem is the summit of Sauternes — noble rot on sémillon yielding a nectar of opulence and precision. It is chosen only when the structure is ideal, at the moment of perfect balance: neither too young nor too tired.",
-    "it": "Château d'Yquem è la vetta del Sauternes — muffa nobile sul sémillon per un nettare di opulenza e precisione. Si sceglie solo quando la struttura è ideale, nel momento del perfetto equilibrio: né troppo giovane né troppo stanco.",
-    "fr": "Château d'Yquem est le sommet du Sauternes — la pourriture noble sur le sémillon donne un nectar d'opulence et de précision. On ne le choisit que lorsque la structure est idéale, au moment de l'équilibre parfait : ni trop jeune, ni trop fatigué.",
-    "de": "Château d'Yquem ist der Gipfel des Sauternes — Edelfäule auf Sémillon ergibt einen Nektar aus Opulenz und Präzision. Er wird nur gewählt, wenn die Struktur ideal ist, im Moment perfekter Balance: weder zu jung noch zu müde.",
-    "zh": "Château d'Yquem 是苏玳的巅峰——赛美蓉上的贵腐霉成就丰盈而精准的琼浆。唯有结构理想、平衡臻于完美时方才入选：既不太年轻，也不太疲惫。",
-    "sl": "Château d'Yquem je vrh Sauternesa — žlahtna plesen na sémillonu daje nektar razkošja in natančnosti. Izberejo ga le, kadar je struktura idealna, v trenutku popolnega ravnovesja: niti premlad niti preveč utrujen.",
-    "es": "Château d'Yquem es la cima de Sauternes — la podredumbre noble sobre sémillon da un néctar de opulencia y precisión. Solo se elige cuando la estructura es ideal, en el momento del equilibrio perfecto: ni demasiado joven ni demasiado cansado."
-   }
-  },
   "Petrač": {
    "region": "Hršak Breg, Zagorje – Međimurje",
    "blurb": {
@@ -1496,45 +1483,6 @@
     "es": "En el nombre hay dos hombres, y ninguno de los dos hacía vino. Walter era el abuelo de Ken Pahlow e ingeniero de vuelo en TWA; Scott era el sobrino de Ken, que murió joven y les recordó lo breve que puede ser la vida. La casa la abrieron en 2008, en plena recesión, Ken y su mujer Erica Landon — él desde la bodega, ella sumiller. Cuvée Ruth lleva el nombre de Ruth Kantor, madre de su socia: las barricas para él se eligen una a una, en las Eola-Amity Hills."
    }
   },
-  "Pomerol": {
-   "region": "Pomerol, Bordeaux",
-   "blurb": {
-    "hr": "Baršun na glini i željezu — merlot desne obale najplemenitijeg izdanja, gust, topao i duboko elegantan.",
-    "en": "Velvet on clay and iron — right-bank Merlot at its most noble, dense, warm and deeply elegant.",
-    "it": "Velluto su argilla e ferro — Merlot della riva destra nella sua veste più nobile, denso, caldo e profondamente elegante.",
-    "fr": "Velours sur argile et fer — le merlot de la rive droite dans sa forme la plus noble, dense, chaud et profondément élégant.",
-    "de": "Samt auf Lehm und Eisen — Merlot vom rechten Ufer in edelster Form, dicht, warm und tief elegant.",
-    "zh": "黏土与铁质上的天鹅绒——右岸梅洛最高贵的姿态，浓郁、温暖、深具优雅。",
-    "sl": "Žamet na glini in železu — merlot desnega brega v najplemenitejši obliki, gost, topel in globoko eleganten.",
-    "es": "Terciopelo sobre arcilla y hierro — el Merlot de la margen derecha en su forma más noble, denso, cálido y profundamente elegante."
-   }
-  },
-  "Saint-Julien": {
-   "region": "Saint-Julien, Bordeaux",
-   "blurb": {
-    "hr": "Najskladniji Médoc — cabernet ravnoteže i uglađenosti, ni pretjerano moćan ni suzdržan, savršena sredina.",
-    "en": "The most harmonious Médoc — Cabernet of balance and polish, neither overpowering nor restrained, the perfect middle.",
-    "it": "Il Médoc più armonioso — Cabernet di equilibrio e finezza, né troppo potente né trattenuto, il giusto mezzo.",
-    "fr": "Le Médoc le plus harmonieux — un cabernet d'équilibre et de poli, ni trop puissant ni retenu, le juste milieu.",
-    "de": "Der harmonischste Médoc — Cabernet aus Gleichgewicht und Schliff, weder übermächtig noch zurückhaltend, die perfekte Mitte.",
-    "zh": "最和谐的梅多克——均衡而圆润的赤霞珠，不过分强劲也不拘谨，恰到好处的中庸。",
-    "sl": "Najbolj usklajen Médoc — cabernet ravnovesja in uglajenosti, niti premočen niti zadržan, popolna sredina.",
-    "es": "El Médoc más armonioso — un Cabernet de equilibrio y pulido, ni avasallador ni contenido, el justo medio."
-   }
-  },
-  "Saint-Émilion": {
-   "region": "Saint-Émilion, Bordeaux",
-   "blurb": {
-    "hr": "Vapnenačka visoravan desne obale — merlot i cabernet franc pune, baršunaste teksture i tople dubine.",
-    "en": "The limestone plateau of the right bank — Merlot and Cabernet Franc of plush, velvety texture and warm depth.",
-    "it": "L'altopiano calcareo della riva destra — Merlot e Cabernet Franc di texture morbida e vellutata e calda profondità.",
-    "fr": "Le plateau calcaire de la rive droite — merlot et cabernet franc à la texture pulpeuse et veloutée, d'une profondeur chaleureuse.",
-    "de": "Das Kalkplateau des rechten Ufers — Merlot und Cabernet Franc von üppiger, samtiger Textur und warmer Tiefe.",
-    "zh": "右岸的石灰岩高地——梅洛与品丽珠，质地丰腴天鹅绒般，深沉而温暖。",
-    "sl": "Apnenčasta planota desnega brega — merlot in cabernet franc bujne, žametne teksture in tople globine.",
-    "es": "La meseta calcárea de la margen derecha — Merlot y Cabernet Franc de textura mullida y aterciopelada y cálida profundidad."
-   }
-  },
   "Bastian": {
    "region": "Buje, Istra",
    "blurb": {
@@ -1702,19 +1650,6 @@
     "zh": "路易亚都酒商 1859 年创立于勃艮第，此后 154 年从未在勃艮第之外买过葡萄园——直到 2013 年买下了这一块。园子位于亚姆希尔-卡尔顿，藤蔓种于 1981 年，未经嫁接、以自根生长，这在俄勒冈也属罕见。主持它的是雅克·拉尔迪耶——他做了 42 年亚都的酿酒师，退休仅两个月便重新出山，就为了这件事。",
     "sl": "Hiša Louis Jadot je bila leta 1859 ustanovljena v Burgundiji in 154 let ni kupila vinograda zunaj nje — potem pa je leta 2013 kupila tega. Vinograd je v Yamhill-Carltonu, s trtami, zasajenimi leta 1981 na lastnih koreninah, necepljenimi, kar je tudi v Oregonu redkost. Vodil ga je Jacques Lardière, 42 let Jadotov enolog, ki se je po dveh mesecih vrnil iz pokoja, da bi to naredil.",
     "es": "La casa Louis Jadot se fundó en Borgoña en 1859 y durante 154 años no compró viñedo alguno fuera de ella — hasta que en 2013 compró éste. La viña está en Yamhill-Carlton, con cepas plantadas en 1981 sobre su propio pie, sin injertar, algo raro incluso en Oregón. La llevó Jacques Lardière, enólogo de Jadot durante 42 años, que salió de la jubilación a los dos meses para hacerlo."
-   }
-  },
-  "Saint-Estèphe": {
-   "region": "Saint-Estèphe, Bordeaux",
-   "blurb": {
-    "hr": "Čvrsti sjeverni Médoc — cabernet snažne strukture i tamnog voća, ozbiljan i građen za dugu stazu.",
-    "en": "The firm northern Médoc — Cabernet of sturdy structure and dark fruit, serious and built for the long haul.",
-    "it": "Il Médoc settentrionale e saldo — Cabernet di struttura robusta e frutto scuro, serio e costruito per durare.",
-    "fr": "Le Médoc septentrional et ferme — un cabernet de structure robuste et de fruits noirs, sérieux et bâti pour durer.",
-    "de": "Der feste nördliche Médoc — Cabernet von robuster Struktur und dunkler Frucht, ernst und für die lange Strecke gebaut.",
-    "zh": "坚实的北梅多克——结构强健、黑色果实的赤霞珠，严肃而为长久而生。",
-    "sl": "Trdni severni Médoc — cabernet čvrste strukture in temnega sadja, resen in zgrajen za dolgo pot.",
-    "es": "El firme Médoc septentrional — Cabernet de estructura robusta y fruta oscura, serio y construido para el largo plazo."
    }
   },
   "Tyler": {
@@ -2261,6 +2196,97 @@
     "zh": "加什帕尔兄弟的葡萄园海拔仅十八米，位于比奥科沃山下的耶泽罗平原，冬天会被水淹没——多达八成的葡萄藤在水下过冬。当地人不称之为洪水，而叫 pojara；一年里有好几次，去葡萄园得划船，而不是开拖拉机。水带走多余的碳酸盐，留下山上冲刷下来的矿物；这里的夜晚比南方别处更凉，因此酒能达到十五度酒精，同时保有六克酸度——这是达尔马提亚红酒几乎做不到的。2015 年，达里奥和博里斯不再把葡萄卖给别人。",
     "sl": "Vinograd bratov Gašpar leži 18 metrov nad morjem, na polju Jezero pod Biokovom, pozimi pa ga voda vzame — do 80 odstotkov trt prespi pod vodo. Tu tega nihče ne imenuje poplava, ampak pojara, in nekajkrat na leto se v vinograd pride s čolnom, ne s traktorjem. Voda odnese odvečne karbonate in pusti mineral s hribov; noči so hladnejše kot drugod na jugu, zato vino doseže 15 odstotkov alkohola in obdrži šest gramov kisline, kar dalmatinskemu rdečemu skoraj nikoli ne uspe. Leta 2015 sta Dario in Boris nehala prodajati grozdje drugim.",
     "es": "El viñedo de los hermanos Gašpar está a 18 metros sobre el mar, en el campo de Jezero bajo el Biokovo, y en invierno el agua se lo lleva — hasta un 80 por ciento de las cepas duerme sumergido. Aquí nadie lo llama inundación: lo llaman pojara, y varias veces al año se llega al viñedo en barca y no en tractor. El agua arrastra el exceso de carbonatos y deja minerales de los cerros; las noches son más frescas que en el resto del sur, así que el vino alcanza quince grados y conserva seis gramos de acidez, algo que un tinto dálmata casi nunca logra. En 2015 Dario y Boris dejaron de vender su uva a otros."
+   }
+  },
+  "Château de Pez": {
+   "region": "Saint-Estèphe, Bordeaux",
+   "blurb": {
+    "hr": "Imanje je nastalo 1452. i uz Calon-Ségur je najstarije u Saint-Estèpheu. Dva stoljeća pripadalo je obitelji Pontac — istoj koja je držala Haut-Brion i time praktički izmislila ideju da vino nosi ime svoje zemlje. Godine 1995. kupio ga je Louis Roederer, šampanjska kuća koja je i na ovoj karti. 48 hektara sjevernog Médoca: cabernet čvrste građe i tamnog voća, vino koje se ne otvara prerano.",
+    "en": "The estate was created in 1452 and, with Calon-Ségur, is the oldest in Saint-Estèphe. For two centuries it belonged to the Pontac family — the same family that held Haut-Brion and so all but invented the idea that a wine carries the name of its land. In 1995 it was bought by Louis Roederer, the Champagne house that is also on this list. 48 hectares of the northern Médoc: Cabernet of firm build and dark fruit, a wine not to be opened early.",
+    "it": "La tenuta nacque nel 1452 e, con Calon-Ségur, è la più antica di Saint-Estèphe. Per due secoli appartenne alla famiglia Pontac — la stessa che teneva Haut-Brion e che di fatto inventò l'idea che un vino porti il nome della propria terra. Nel 1995 l'ha comprata Louis Roederer, la maison di Champagne che è anch'essa su questa carta. 48 ettari di Médoc settentrionale: cabernet di struttura salda e frutto scuro, un vino da non aprire presto.",
+    "fr": "Le domaine est né en 1452 et, avec Calon-Ségur, c'est le plus ancien de Saint-Estèphe. Pendant deux siècles il appartint à la famille Pontac — celle-là même qui tenait Haut-Brion et qui a pour ainsi dire inventé l'idée qu'un vin porte le nom de sa terre. En 1995, il a été racheté par Louis Roederer, la maison de Champagne qui figure aussi sur cette carte. 48 hectares de Médoc nord : un cabernet de charpente ferme et de fruit sombre, un vin qu'on n'ouvre pas tôt.",
+    "de": "Das Gut entstand 1452 und ist mit Calon-Ségur das älteste in Saint-Estèphe. Zwei Jahrhunderte lang gehörte es der Familie Pontac — derselben, die Haut-Brion hielt und damit die Idee, dass ein Wein den Namen seines Bodens trägt, praktisch erfunden hat. 1995 kaufte es Louis Roederer, das Champagnerhaus, das ebenfalls auf dieser Karte steht. 48 Hektar nördlicher Médoc: Cabernet von fester Statur und dunkler Frucht, ein Wein, den man nicht früh öffnet.",
+    "zh": "这座庄园始建于 1452 年，与卡龙-塞居并列为圣埃斯泰夫最古老的产业。它曾有两个世纪属于蓬塔克家族——正是持有侯伯王的那一家，也几乎是「以土地之名命名葡萄酒」这一观念的发明者。1995 年，它被路易王妃收购——那家香槟酒庄也在这份酒单上。48 公顷北梅多克：结构紧实、果味深沉的赤霞珠，一款不宜过早开瓶的酒。",
+    "sl": "Posestvo je nastalo leta 1452 in je skupaj s Calon-Ségurjem najstarejše v Saint-Estèphu. Dve stoletji je pripadalo družini Pontac — isti, ki je držala Haut-Brion in s tem tako rekoč iznašla misel, da vino nosi ime svoje zemlje. Leta 1995 ga je kupil Louis Roederer, šampanjska hiša, ki je prav tako na tej karti. 48 hektarov severnega Médoca: cabernet trdne gradnje in temnega sadja, vino, ki se ne odpira prezgodaj.",
+    "es": "La finca nació en 1452 y, con Calon-Ségur, es la más antigua de Saint-Estèphe. Durante dos siglos perteneció a la familia Pontac — la misma que tenía Haut-Brion y que prácticamente inventó la idea de que un vino lleve el nombre de su tierra. En 1995 la compró Louis Roederer, la casa de Champaña que está también en esta carta. 48 hectáreas del Médoc norte: Cabernet de armazón firme y fruta oscura, un vino que no se abre pronto."
+   }
+  },
+  "Château Gazin": {
+   "region": "Pomerol, Bordeaux",
+   "blurb": {
+    "hr": "Gazin je Pétrusov susjed, i to doslovno: 1969., pritisnuti poreznim dugom, prodali su Pétrusu 5 hektara svojih najboljih parcela. Onaj Pétrus koji danas znate dijelom je zemlja koja je do tada bila Gazin. Obitelj de Bailliencourt dit Courcol drži imanje od 1918. i danas je peta generacija; nadimak Courcol nose od 1214., kad je kralj pohvalio jednog pretka u bitci kod Bouvinesa. Merlot s gline i željeza, gust i topao.",
+    "en": "Gazin is Pétrus's neighbour, and literally so: in 1969, pressed by a tax debt, they sold Pétrus 5 hectares of their best parcels. The Pétrus you know today is partly ground that used to be Gazin. The de Bailliencourt dit Courcol family has held the estate since 1918 and is now in its fifth generation; they have carried the nickname Courcol since 1214, when the king commended an ancestor at the battle of Bouvines. Merlot off clay and iron, dense and warm.",
+    "it": "Gazin è il vicino di Pétrus, e alla lettera: nel 1969, stretti da un debito fiscale, vendettero a Pétrus 5 ettari delle loro parcelle migliori. Il Pétrus che conoscete oggi è in parte terra che era Gazin. La famiglia de Bailliencourt dit Courcol tiene la tenuta dal 1918 ed è alla quinta generazione; il soprannome Courcol lo portano dal 1214, quando il re elogiò un antenato nella battaglia di Bouvines. Merlot da argilla e ferro, fitto e caldo.",
+    "fr": "Gazin est le voisin de Pétrus, et littéralement : en 1969, pressés par une dette fiscale, ils ont vendu à Pétrus 5 hectares de leurs meilleures parcelles. Le Pétrus que vous connaissez aujourd'hui est en partie une terre qui fut Gazin. La famille de Bailliencourt dit Courcol tient le domaine depuis 1918 et en est à la cinquième génération ; elle porte le surnom de Courcol depuis 1214, quand le roi félicita un ancêtre à la bataille de Bouvines. Merlot sur argile et fer, dense et chaleureux.",
+    "de": "Gazin ist der Nachbar von Pétrus, und das wörtlich: 1969 verkauften sie, von einer Steuerschuld gedrängt, 5 Hektar ihrer besten Parzellen an Pétrus. Der Pétrus, den Sie heute kennen, ist zum Teil Boden, der einmal Gazin war. Die Familie de Bailliencourt dit Courcol hält das Gut seit 1918 und steht in der fünften Generation; den Beinamen Courcol tragen sie seit 1214, als der König einen Vorfahren in der Schlacht von Bouvines lobte. Merlot auf Ton und Eisen, dicht und warm.",
+    "zh": "加赞是柏图斯的邻居，而且是字面意义上的：1969 年，迫于税务债务，他们把自家最好的 5 公顷地块卖给了柏图斯。你今天所知的柏图斯，有一部分土地曾经就是加赞。德·巴伊扬库尔·迪·库尔科尔家族自 1918 年持有这座庄园，如今已是第五代；「库尔科尔」这个别名可追溯到 1214 年——那年国王在布汶战役中嘉奖了他们的一位先祖。生于黏土与铁质之上的梅洛，稠密而温厚。",
+    "sl": "Gazin je Pétrusov sosed, in to dobesedno: leta 1969 so pod pritiskom davčnega dolga Pétrusu prodali 5 hektarov svojih najboljših parcel. Pétrus, ki ga danes poznate, je deloma zemlja, ki je bila nekoč Gazin. Družina de Bailliencourt dit Courcol ima posestvo od leta 1918 in je zdaj v petem rodu; vzdevek Courcol nosijo od leta 1214, ko je kralj pohvalil prednika v bitki pri Bouvinesu. Merlot z gline in železa, gost in topel.",
+    "es": "Gazin es el vecino de Pétrus, y literalmente: en 1969, apremiados por una deuda fiscal, le vendieron a Pétrus 5 hectáreas de sus mejores parcelas. El Pétrus que hoy conoce es en parte tierra que fue Gazin. La familia de Bailliencourt dit Courcol tiene la finca desde 1918 y va por la quinta generación; llevan el apodo Courcol desde 1214, cuando el rey elogió a un antepasado en la batalla de Bouvines. Merlot sobre arcilla y hierro, denso y cálido."
+   }
+  },
+  "Château Canon": {
+   "region": "Saint-Émilion, Bordeaux",
+   "blurb": {
+    "hr": "Podrum je stara kamenolomska jama: vino ovdje leži u hodnicima iz kojih je vađen vapnenac kojim je sagrađen Saint-Émilion, ispod samog vinograda. Kad su braća Wertheimer, vlasnici Chanela, kupili imanje 1996., ti su hodnici bili toliko oslabljeni da im je prijetilo urušavanje; obnova je trajala do 2015. Vinograde je iznova posadio John Kolasa, koji je prije toga vodio Latour. Merlot i cabernet franc s vapnenca, svilenkasti i uspravni.",
+    "en": "The cellar is an old quarry: the wine lies in the galleries that the limestone of Saint-Émilion was cut from, directly beneath the vineyard. When the Wertheimer brothers, the owners of Chanel, bought the estate in 1996, those galleries were so weakened they were in danger of collapse; the work went on until 2015. The vineyards were replanted by John Kolasa, who had run Latour before. Merlot and Cabernet Franc off limestone, silken and upright.",
+    "it": "La cantina è una vecchia cava: il vino riposa nelle gallerie da cui fu estratto il calcare con cui è costruita Saint-Émilion, proprio sotto la vigna. Quando i fratelli Wertheimer, proprietari di Chanel, comprarono la tenuta nel 1996, quelle gallerie erano così indebolite da rischiare il crollo; i lavori sono durati fino al 2015. Le vigne le ha reimpiantate John Kolasa, che prima aveva diretto Latour. Merlot e cabernet franc dal calcare, setosi e dritti.",
+    "fr": "Le chai est une ancienne carrière : le vin repose dans les galeries d'où fut tiré le calcaire dont Saint-Émilion est bâtie, juste sous la vigne. Quand les frères Wertheimer, propriétaires de Chanel, ont acheté le domaine en 1996, ces galeries étaient si fragilisées qu'elles menaçaient de s'effondrer ; les travaux ont duré jusqu'en 2015. Les vignes ont été replantées par John Kolasa, qui avait dirigé Latour auparavant. Merlot et cabernet franc sur calcaire, soyeux et droits.",
+    "de": "Der Keller ist ein alter Steinbruch: Der Wein liegt in den Stollen, aus denen der Kalkstein gebrochen wurde, aus dem Saint-Émilion gebaut ist — direkt unter dem Weinberg. Als die Brüder Wertheimer, die Eigentümer von Chanel, das Gut 1996 kauften, waren diese Stollen so geschwächt, dass Einsturzgefahr bestand; die Arbeiten dauerten bis 2015. Die Weinberge pflanzte John Kolasa neu, der zuvor Latour geführt hatte. Merlot und Cabernet Franc auf Kalk, seidig und aufrecht.",
+    "zh": "酒窖就是一座旧采石场：酒安放在当年开采石灰岩的巷道里——圣埃美隆这座城正是用这些石头砌成的，而巷道就在葡萄园正下方。1996 年，香奈儿的持有者韦特海默兄弟买下庄园时，这些巷道已脆弱到有坍塌之虞；加固工程一直做到 2015 年。葡萄园由此前执掌拉图的约翰·科拉萨重新种植。生于石灰岩之上的梅洛与品丽珠，丝滑而挺拔。",
+    "sl": "Klet je star kamnolom: vino leži v rovih, iz katerih so lomili apnenec, iz katerega je zgrajen Saint-Émilion, tik pod vinogradom. Ko so brata Wertheimer, lastnika Chanela, leta 1996 kupila posestvo, so bili ti rovi tako oslabljeni, da jim je grozil zrušek; dela so trajala do leta 2015. Vinograde je znova zasadil John Kolasa, ki je pred tem vodil Latour. Merlot in cabernet franc z apnenca, svilnata in pokončna.",
+    "es": "La bodega es una vieja cantera: el vino reposa en las galerías de donde se extrajo la caliza con que está construida Saint-Émilion, justo bajo el viñedo. Cuando los hermanos Wertheimer, dueños de Chanel, compraron la finca en 1996, esas galerías estaban tan debilitadas que amenazaban ruina; los trabajos duraron hasta 2015. Las viñas las replantó John Kolasa, que antes había dirigido Latour. Merlot y Cabernet Franc sobre caliza, sedosos y erguidos."
+   }
+  },
+  "Château Léoville Barton": {
+   "region": "Saint-Julien, Bordeaux",
+   "blurb": {
+    "hr": "Thomas Barton došao je iz Irske u Bordeaux 1722.; njegov unuk Hugh kupio je 1826. dio velikog imanja Léoville, i obitelj ga drži bez prekida otkad — gotovo 200 godina, što je u Bordeauxu rijetkost. Dvorca ovdje zapravo nema: zgrada s etikete je Langoa Barton, susjedno imanje koje je Hugh kupio ranije, i oba se vina do danas rade ondje. Kuća je poznata i po tome što cijenu nikad nije tjerala koliko je tržište davalo.",
+    "en": "Thomas Barton came from Ireland to Bordeaux in 1722; his grandson Hugh bought part of the great Léoville estate in 1826, and the family has held it unbroken ever since — nearly 200 years, which in Bordeaux is rare. There is in fact no château here: the building on the label is Langoa Barton, the neighbouring estate Hugh had bought earlier, and both wines are still made there. The house is known too for never having pushed its price as far as the market would have allowed.",
+    "it": "Thomas Barton arrivò dall'Irlanda a Bordeaux nel 1722; suo nipote Hugh comprò nel 1826 una parte della grande tenuta Léoville, e la famiglia la tiene ininterrottamente da allora — quasi 200 anni, cosa rara a Bordeaux. Un castello qui in realtà non c'è: l'edificio in etichetta è Langoa Barton, la tenuta accanto che Hugh aveva comprato prima, e lì si fanno tuttora entrambi i vini. La casa è nota anche per non aver mai spinto il prezzo fin dove il mercato glielo avrebbe concesso.",
+    "fr": "Thomas Barton est venu d'Irlande à Bordeaux en 1722 ; son petit-fils Hugh a acheté en 1826 une part du grand domaine de Léoville, et la famille le tient sans interruption depuis — près de 200 ans, ce qui est rare à Bordeaux. Il n'y a en fait pas de château ici : le bâtiment de l'étiquette est Langoa Barton, le domaine voisin que Hugh avait acheté plus tôt, et les deux vins s'y font encore. La maison est connue aussi pour n'avoir jamais poussé son prix aussi loin que le marché l'aurait permis.",
+    "de": "Thomas Barton kam 1722 aus Irland nach Bordeaux; sein Enkel Hugh kaufte 1826 einen Teil des großen Guts Léoville, und die Familie hält es seither ununterbrochen — fast 200 Jahre, was in Bordeaux selten ist. Ein Schloss gibt es hier eigentlich nicht: Das Gebäude auf dem Etikett ist Langoa Barton, das Nachbargut, das Hugh früher gekauft hatte, und dort werden bis heute beide Weine gemacht. Das Haus ist auch dafür bekannt, den Preis nie so weit getrieben zu haben, wie der Markt es zugelassen hätte.",
+    "zh": "托马斯·巴顿于 1722 年自爱尔兰来到波尔多；他的孙子休在 1826 年买下大庄园雷奥维尔的一部分，此后家族从未中断地持有它——将近 200 年，这在波尔多实属罕见。这里其实并没有城堡：酒标上的建筑是朗高·巴顿，休更早买下的邻产，两款酒至今都在那里酿造。这个家族还以另一件事闻名：他们从未把价格抬到市场原本允许的高度。",
+    "sl": "Thomas Barton je prišel iz Irske v Bordeaux leta 1722; njegov vnuk Hugh je leta 1826 kupil del velikega posestva Léoville, in družina ga od tedaj drži brez prekinitve — skoraj 200 let, kar je v Bordeauxu redkost. Gradu tu pravzaprav ni: stavba z etikete je Langoa Barton, sosednje posestvo, ki ga je Hugh kupil prej, in tam še danes delajo obe vini. Hiša je znana tudi po tem, da cene nikoli ni pognala tako visoko, kot bi ji trg dovolil.",
+    "es": "Thomas Barton llegó de Irlanda a Burdeos en 1722; su nieto Hugh compró en 1826 una parte de la gran finca de Léoville, y la familia la conserva sin interrupción desde entonces — casi 200 años, cosa rara en Burdeos. Aquí en realidad no hay château: el edificio de la etiqueta es Langoa Barton, la finca vecina que Hugh había comprado antes, y allí se siguen haciendo ambos vinos. La casa es conocida además por no haber llevado nunca su precio tan lejos como el mercado se lo habría permitido."
+   }
+  },
+  "Château Troplong Mondot": {
+   "region": "Saint-Émilion, Bordeaux",
+   "blurb": {
+    "hr": "Imanje je osnovano 1700. i leži na najvišoj točki Saint-Émiliona — 110 m, što u ovom kraju znači svježije noći i berbu koja nikad ne izgori. Premier Grand Cru Classé B. Uz podrum ide i restoran s Michelinovom zvjezdicom, Les Belles Perdrix, pa je ovo jedna od rijetkih bordoških adresa na kojoj se vino i jede, ne samo kuša.",
+    "en": "The estate was founded in 1700 and sits on the highest point of Saint-Émilion — 110 m, which here means cooler nights and a harvest that never burns. Premier Grand Cru Classé B. Beside the cellar there is a Michelin-starred restaurant, Les Belles Perdrix, which makes this one of the few Bordeaux addresses where the wine is eaten with rather than only tasted.",
+    "it": "La tenuta è stata fondata nel 1700 e sta sul punto più alto di Saint-Émilion — 110 m, che qui significa notti più fresche e una vendemmia che non brucia mai. Premier Grand Cru Classé B. Accanto alla cantina c'è un ristorante stellato Michelin, Les Belles Perdrix, il che ne fa uno dei pochi indirizzi bordolesi dove il vino si mangia, non solo si assaggia.",
+    "fr": "Le domaine a été fondé en 1700 et se tient sur le point le plus haut de Saint-Émilion — 110 m, ce qui signifie ici des nuits plus fraîches et une vendange qui ne brûle jamais. Premier Grand Cru Classé B. À côté du chai, un restaurant étoilé Michelin, Les Belles Perdrix, ce qui en fait l'une des rares adresses bordelaises où le vin se mange autant qu'il se goûte.",
+    "de": "Das Gut wurde 1700 gegründet und liegt auf dem höchsten Punkt von Saint-Émilion — 110 m, was hier kühlere Nächte bedeutet und eine Lese, die nie verbrennt. Premier Grand Cru Classé B. Neben dem Keller steht ein Michelin-besterntes Restaurant, Les Belles Perdrix, was dies zu einer der wenigen Bordeaux-Adressen macht, an denen der Wein gegessen und nicht nur verkostet wird.",
+    "zh": "庄园创立于 1700 年，坐落在圣埃美隆的最高点——海拔 110 米；在这一带，这意味着更凉的夜晚，以及一场永远不会被晒过头的采收。列级为一级特等 B 级。酒窖旁还有一家米其林星级餐厅 Les Belles Perdrix，这让它成为波尔多少数几个「酒是用来配着吃、而不只是拿来品」的地址之一。",
+    "sl": "Posestvo je bilo ustanovljeno leta 1700 in leži na najvišji točki Saint-Émiliona — 110 m, kar tu pomeni hladnejše noči in trgatev, ki nikoli ne zgori. Premier Grand Cru Classé B. Ob kleti stoji restavracija z Michelinovo zvezdico, Les Belles Perdrix, zaradi česar je to eden redkih bordojskih naslovov, kjer se vino je in ne le pokuša.",
+    "es": "La finca se fundó en 1700 y ocupa el punto más alto de Saint-Émilion — 110 m, lo que aquí significa noches más frescas y una vendimia que nunca se quema. Premier Grand Cru Classé B. Junto a la bodega hay un restaurante con estrella Michelin, Les Belles Perdrix, lo que la convierte en una de las pocas direcciones bordelesas donde el vino se come además de catarse."
+   }
+  },
+  "Château La Pointe": {
+   "region": "Pomerol, Bordeaux",
+   "blurb": {
+    "hr": "Ime dolazi od oblika: uz sam ulaz u imanje leži oštro zašiljena, trokutasta parcela — la pointe, vrh. Godine 1868. bilo je jedno od prva dva imanja u Pomerolu kojima je uopće dopušteno da se nazovu châteauom. 23 hektara loze i 2 hektara uređenog vrta; merlot s cabernet francom, na šljunku i glini.",
+    "en": "The name comes from a shape: right by the entrance to the estate lies a sharply angled, triangular parcel — la pointe, the point. In 1868 it was one of the first two estates in Pomerol allowed to call itself a château at all. 23 hectares of vines and 2 hectares of formal garden; Merlot with Cabernet Franc, on gravel and clay.",
+    "it": "Il nome viene da una forma: proprio all'ingresso della tenuta sta una parcella triangolare, acuta — la pointe, la punta. Nel 1868 fu una delle prime due tenute di Pomerol cui fu permesso di chiamarsi château. 23 ettari di vigna e 2 ettari di giardino all'italiana; merlot con cabernet franc, su ghiaia e argilla.",
+    "fr": "Le nom vient d'une forme : juste à l'entrée du domaine se trouve une parcelle triangulaire, en angle aigu — la pointe. En 1868, ce fut l'un des deux premiers domaines de Pomerol autorisés à se dire château. 23 hectares de vignes et 2 hectares de jardin à la française ; merlot avec cabernet franc, sur graves et argile.",
+    "de": "Der Name kommt von einer Form: gleich am Eingang des Guts liegt eine spitzwinklige, dreieckige Parzelle — la pointe, die Spitze. 1868 war es eines der ersten beiden Güter in Pomerol, die sich überhaupt Château nennen durften. 23 Hektar Reben und 2 Hektar Ziergarten; Merlot mit Cabernet Franc, auf Kies und Ton.",
+    "zh": "名字来自一个形状：就在庄园入口处，有一块尖角三角形的地块——la pointe，即「尖端」。1868 年，它是波美侯最早获准自称「château」的两座庄园之一。23 公顷葡萄园，外加 2 公顷规整花园；梅洛配品丽珠，生于砾石与黏土之上。",
+    "sl": "Ime prihaja iz oblike: tik ob vhodu na posestvo leži ostro zašiljena, trikotna parcela — la pointe, konica. Leta 1868 je bilo eno prvih dveh posestev v Pomerolu, ki so se sploh smela imenovati château. 23 hektarov trte in 2 hektara urejenega vrta; merlot s cabernet francom, na produ in glini.",
+    "es": "El nombre viene de una forma: justo a la entrada de la finca hay una parcela triangular, en ángulo agudo — la pointe, la punta. En 1868 fue una de las dos primeras fincas de Pomerol autorizadas a llamarse château. 23 hectáreas de viña y 2 hectáreas de jardín formal; Merlot con Cabernet Franc, sobre grava y arcilla."
+   }
+  },
+  "Château d'Yquem": {
+   "region": "Sauternes, Bordeaux",
+   "blurb": {
+    "hr": "Berači kroz vinograd prolaze iznova i iznova, katkad i 13 puta, i svaki put uzimaju samo bobice koje je plemenita plijesan pogodila točno koliko treba. Jedan trs u prosjeku da jednu čašu vina — drugdje da bocu. A kad godina ne ispadne, ime se jednostavno ne stavlja: u 20. stoljeću to se dogodilo devet puta, posljednji put 1992., pa opet 2012. Vino koje ima pravo ne postojati.",
+    "en": "The pickers go through the vineyard again and again, sometimes 13 times, and each time take only the berries the noble rot has caught exactly as much as it should. One vine gives, on average, one glass of wine — elsewhere it gives a bottle. And when a year does not come off, the name is simply not used: in the 20th century that happened nine times, most recently in 1992, and again in 2012. A wine with the right not to exist.",
+    "it": "I vendemmiatori passano nella vigna più e più volte, a volte 13, e ogni volta prendono solo gli acini che la muffa nobile ha toccato esattamente quanto serve. Una vite dà in media un bicchiere di vino — altrove ne dà una bottiglia. E quando l'annata non riesce, il nome semplicemente non si mette: nel Novecento è successo nove volte, l'ultima nel 1992, e poi ancora nel 2012. Un vino che ha il diritto di non esistere.",
+    "fr": "Les vendangeurs passent dans la vigne encore et encore, parfois 13 fois, et ne prennent chaque fois que les grains que la pourriture noble a touchés exactement comme il faut. Un cep donne en moyenne un verre de vin — ailleurs il en donne une bouteille. Et quand l'année ne se fait pas, le nom n'est simplement pas mis : au XXe siècle cela est arrivé neuf fois, la dernière en 1992, puis encore en 2012. Un vin qui a le droit de ne pas exister.",
+    "de": "Die Leser gehen wieder und wieder durch den Weinberg, manchmal 13 Mal, und nehmen jedes Mal nur die Beeren, die die Edelfäule genau richtig erwischt hat. Ein Stock gibt im Schnitt ein Glas Wein — anderswo gibt er eine Flasche. Und wenn ein Jahr nicht gelingt, wird der Name schlicht nicht vergeben: im 20. Jahrhundert geschah das neunmal, zuletzt 1992, und dann wieder 2012. Ein Wein mit dem Recht, nicht zu existieren.",
+    "zh": "采摘工一遍又一遍地穿过葡萄园，有时多达 13 次，每一次只摘下那些被贵腐侵染得恰到好处的果粒。平均而言，一株葡萄藤只产一杯酒——在别处它能产一整瓶。而当某个年份不尽如人意时，这个名字就干脆不用：20 世纪里这样的事发生过九次，最近一次是 1992 年，之后 2012 年又来了一次。一款有权不存在的酒。",
+    "sl": "Trgači gredo skozi vinograd znova in znova, včasih tudi 13-krat, in vsakič vzamejo le jagode, ki jih je plemenita plesen zadela natanko toliko, kolikor je treba. Ena trta da v povprečju en kozarec vina — drugod da steklenico. In kadar letnik ne uspe, se ime preprosto ne da: v 20. stoletju se je to zgodilo devetkrat, nazadnje leta 1992, nato spet leta 2012. Vino, ki ima pravico ne obstajati.",
+    "es": "Los vendimiadores recorren la viña una y otra vez, a veces 13 veces, y cada vez toman sólo los granos que la podredumbre noble ha tocado exactamente lo necesario. Una cepa da de media una copa de vino — en otros sitios da una botella. Y cuando el año no sale, el nombre sencillamente no se pone: en el siglo XX ocurrió nueve veces, la última en 1992, y de nuevo en 2012. Un vino con derecho a no existir."
    }
   }
  }
