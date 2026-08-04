@@ -88,6 +88,13 @@ const $ = (id) => document.getElementById(id);
 const bestScore = (item) => (item.ratings || []).reduce((m, r) => Math.max(m, parseFloat(r.score) || 0), 0);
 const esc = (s) => String(s == null ? "" : s)
   .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+/* Producer blurbs quote foreign words a guest is meant to hear as foreign —
+   viticoltura eroica, pojara, pagadebit — and those want italics. The blurbs
+   are plain text and must stay escaped, so the convention is *asterisks* in
+   the JSON, converted here **after** esc() has run: by that point every < and
+   & is already an entity, so nothing an author writes can become markup.
+   Deliberately only <em>; a blurb has no business emitting anything else. */
+const emph = (escaped) => escaped.replace(/\*([^*\n]+)\*/g, "<em>$1</em>");
 const T = () => I18N[lang] || I18N.en;
 
 let MENU = null;
@@ -1209,7 +1216,7 @@ function openDetail(ref, back, scope) {
       const label = spirit
         ? (isBeer && su.brewery ? su.brewery : su.distillery) || t.ui.winemaker
         : t.ui.winemaker;
-      return `<div class="detail-winemaker"><div class="detail-label">${esc(label)}${item.producer ? " · " + esc(item.producer) : ""}</div><p>${esc(blurb)}</p>${spirit ? "" : ter}</div>`;
+      return `<div class="detail-winemaker"><div class="detail-label">${esc(label)}${item.producer ? " · " + esc(item.producer) : ""}</div><p>${emph(esc(blurb))}</p>${spirit ? "" : ter}</div>`;
     })()}
     ${(() => {
       if (spirit) return "";

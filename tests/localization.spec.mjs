@@ -295,3 +295,34 @@ test("Moscato Giallo reads in the guest's own language", async ({ page }) => {
   expect(zh, "Chinese rendering of Moscato Giallo").toContain("黄麝香");
   expect(zh, "Chinese must not fall back to bare Latin").toMatch(CJK);
 });
+
+test("blurb asterisks become italics, and nothing else becomes markup", async ({ page }) => {
+  /* Owner, 2026-08-04, asking for viticoltura eroica in italic. Blurbs are
+     plain text and must stay escaped, so the convention is *asterisks* in the
+     JSON, converted to <em> after esc() has run — by which point every < and &
+     is already an entity, so no author can inject markup.
+
+     Two things must hold: the emphasis appears, and no asterisk ever reaches a
+     guest's eye. The second is the one that would rot quietly, if somebody
+     wrote a lone asterisk or opened one and forgot to close it. */
+  await openApp(page, { lang: "hr" });
+  const leaked = await page.evaluate(() => {
+    const out = [];
+    const walk = (o, f) => { if (o && typeof o === "object") { if (o.insight) f(o); for (const k in o) walk(o[k], f); } };
+    /* PRODUCERS is what the card reads from, so check every blurb in it. */
+    for (const [name, rec] of Object.entries(PRODUCERS || {})) {
+      for (const [lc, text] of Object.entries((rec && rec.blurb) || {})) {
+        const stars = (String(text).match(/\*/g) || []).length;
+        if (stars % 2) out.push(`${name}/${lc}: odd number of asterisks`);
+      }
+    }
+    return out;
+  });
+  expect(leaked, "unbalanced emphasis markers").toEqual([]);
+
+  await openWine(page, "Prosecco Millesimato 2023");
+  const em = await page.locator(".detail-winemaker p em").count();
+  expect(em, "Contarini's viticoltura eroica is not italicised").toBeGreaterThan(0);
+  const shown = await page.locator(".detail-winemaker p").first().innerText();
+  expect(shown, "a literal asterisk reached the card").not.toContain("*");
+});
