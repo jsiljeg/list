@@ -626,6 +626,19 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Lageder": [/1823/, /löwengang/i],
     "Dipoli": [/1987/, /voglar/i],
     "Duemani": [/2000/, /demet/i],
+    /* Owner's flesh pass, 2026-08-04. Each of these is the fact the blurb was
+       rewritten around; losing it puts the card back where it started. */
+    "Boschis": [/1981/, /1990/, /altare|阿尔塔雷/i],
+    "Montevertine": [/1971/, /manfredi|曼弗雷迪/i],
+    "Soldera": [/2012/, /graziella|格拉齐耶拉/i],
+    "Giuseppe Quintarelli": [/1950/, /rosso del bepi/i],
+    /* Darmagi is not our bottle; the Barbaresco is. The story is the 17 years
+       when this was the only wine of theirs allowed to carry the name. */
+    "Gaja": [/1859/, /1996/, /2013/],
+    "Ornellaia": [/1981/, /2009/, /abramovi|阿布拉莫维奇/i],
+    "Antinori": [/1385/, /albiera|阿尔比耶拉/i, /alessia|阿莱西娅/i],
+    "Poggio di Sotto": [/1989/, /gambelli|甘贝利/i, /decanter/i],
+    "Tenuta San Guido": [/1948/, /tachis|塔基斯/i, /sass/i],
   };
   const bad = [];
   for (const [name, patterns] of Object.entries(STORIES)) {

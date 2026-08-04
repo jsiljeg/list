@@ -237,6 +237,29 @@ house. Keep the Filho voice: vivid, honest, punchy — never a neutral list of
 grapes. Croatian keeps grape names as on the label (**Cabernet/Caberneta**, not
 "kabernet"); "rizling" was left as-is (accepted Croatian) — owner may revisit.
 
+**Figures, not words** (owner, 2026-08-04). Write `25 godina`, `62.000 litara`,
+`12.000 €`, `8 godina u bačvi`, `26 naraštaja` — never "dvadeset i pet godina".
+The reason is length: a card is scanned standing up, and a numeral is one glyph
+where the word is eleven. It applies to quantities, years, prices, areas,
+altitudes, counts and durations, in every language. Ordinals stay words where a
+figure would read oddly (`prva berba`, `četvrti Egon`), and a number that is
+part of a name or an idiom is left alone.
+
+Applied to the ~30 blurbs rewritten on and after 2026-08-04. The older ones
+still spell some numbers out; a sweep is worth doing but has to be per
+language, because each spells them differently — don't try to regex it across
+all eight at once.
+
+**Cross-references earn their place.** Several houses on this list are
+connected, and a guest who spots it remembers both cards: Eva Clüsserath runs
+Weingut Wittmann with her husband; Dal Forno went to Quintarelli for advice;
+Gambelli made the wine at both Montevertine and Poggio di Sotto; Piero Antinori
+talked his neighbour into selling Sassicaia and his brother founded Ornellaia;
+Budinski's own OMO sits a few cards from the Erdoro he makes; Soldera and
+Poggio di Sotto are the two Montalcino "first growths"; Alessandro Castellani
+trained at Isole e Olena. Name the *other estate*, not just the person — "Eva"
+told nobody anything until it said Clüsserath.
+
 ## Session state 2026-07-27 — resume here
 
 Done today: Croatian + French + Italian **red** passes (alcohol, blends, critic
