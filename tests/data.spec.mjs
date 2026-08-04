@@ -655,6 +655,32 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Antinori": [/1385/, /albiera|阿尔比耶拉/i, /alessia|阿莱西娅/i],
     "Poggio di Sotto": [/1989/, /gambelli|甘贝利/i, /decanter/i],
     "Tenuta San Guido": [/1948/, /tachis|塔基斯/i, /sass/i],
+    /* France, 2026-08-04. The Chablis pair must keep pointing at each other:
+       Raveneau married a Dauvissat, and losing that in one language loses the
+       reason both cards exist. */
+    "Domaine Armand Rousseau": [/1902/, /1959/, /baudoin|博杜安/i],
+    "Raveneau": [/1948/, /dauvissat|多维萨/i],
+    "Dauvissat": [/1948/, /raveneau|拉沃诺/i],
+    "Hubert Lamy": [/1995/, /30[ .,]000/],
+    "Jules Desjourneys": [/2007/, /chauvet|肖韦/i],
+    "Lignier": [/2004/, /romain|罗曼/i],
+    "Pattes Loup": [/2004/, /2006/, /2009/],
+    "Piuze": [/2008/, /qu[eé]bec|魁北克/i],
+    "Bernard-Bonin": [/1998/, /michelot|米什洛/i],
+    "Philippe Chavy": [/1990/, /1932/],
+    "Rémi Jobard": [/2011/, /stockinger|施托金格/i],
+    /* "Beaune" declines to "Beauna" in Slovenian, so match the stem. */
+    "David Moret": [/1998/, /beaun|博讷/i],
+    "Moret-Nominé": [/2000/, /moret|莫雷/i],
+    "Machard de Gramont": [/1983/, /axelle|阿克塞尔/i],
+    "Chartron": [/1859/, /dupard|迪帕尔/i],
+    "Mikulski": [/1939/, /boillot|布瓦洛/i],
+    "Téo Dancer": [/1996/, /2020/],
+    "Albert Mann": [/1654/, /1997/],
+    "Bourdy": [/1475/, /1865/],
+    "Pascal Cotat": [/damn/i, /fran[cç]ois|弗朗索瓦/i],
+    "Crochet": [/1998/, /caillottes/i],
+    "l'Écu": [/1972/, /bossard|博萨尔/i],
     /* Champagne, 2026-08-04. Four of these carry a cross-reference to another
        card, and a cross-reference is exactly what a lazy translation drops. */
     "Roederer": [/1876/, /1881/, /1945/, /aleksand|alexand|alessandro|alejandro|亚历山大/i, /pez/i],
