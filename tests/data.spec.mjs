@@ -614,7 +614,9 @@ test("the rewritten Croatian house stories survive in every language", () => {
     /* Italy round three, the Northeast, 2026-08-03. */
     "Radikon": [/1995/, /kante|坎特/i],
     "Vodopivec": [/2004/, /gravner|格拉夫纳/i],
-    "Damijan": [/1998/, /gravner|格拉夫纳/i],
+    /* 1998 dropped 2026-08-05 when the card was reordered to open on the line
+       that matters: he did not change the wine, he changed the appellation. */
+    "Damijan": [/gravner|格拉夫纳/i, /collio/i, /calvario/i],
     "Prinčič": [/1988/, /oslav|奥斯拉维亚/i],
     "Vie di Romans": [/1978/, /gianfranco|詹弗兰科/i],
     /* Veneto, Alto Adige, Sicily and the coast, 2026-08-03. */
