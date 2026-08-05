@@ -627,7 +627,9 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Duemani": [/2000/, /demet/i],
     /* Austria, 2026-08-04. */
     "Bernhard Ott": [/1889/, /1989/],
-    "Prager": [/1302/, /1715/, /\b25\b/],
+    /* 1715 dropped 2026-08-05: the card opened on two founding dates and
+       buried the 25 clones and the Smaragd lizard behind them. */
+    "Prager": [/1302/, /\b25\b/, /smaragd/i, /federspiel/i],
     "Muster": [/2000/, /opok/i, /tscheppe|切佩/i],
     /* The American shelf, 2026-08-04. */
     "Ridge": [/1976/, /1966/, /18/],
