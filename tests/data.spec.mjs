@@ -572,7 +572,7 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Aura": [/karbun/i, /2006/],
     /* The German shelf, 2026-08-03. Dates carry through every language and
        are the spine of each of these stories. */
-    "Egon Müller": [/1797/, /scharzhof|沙尔茨霍夫/i, /molitor|莫利托/i, /lubentiushof/i],
+    "Egon Müller": [/1797/, /scharzhof|沙兹/i, /molitor|莫利托/i, /lubentiushof/i],
     "Prüm": [/1842/, /jodocus|约多库斯/i],
     "Zilliken": [/1944/, /geltz|盖尔茨/i, /fud/i],
     /* Eva Clüsserath is married to Philipp Wittmann, which is why two German
