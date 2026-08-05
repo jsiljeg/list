@@ -297,3 +297,28 @@ if (glassThin.length)
   console.log(`note — dishes with under three by-the-glass matches: ${glassThin.join(", ")}`);
 if (thin.length)
   console.log(`note — thin pairings the menu leans on: ${[...new Set(thin)].sort().join(", ")}`);
+/* Blurb density (2026-08-05). The owner asked whether there is a character
+   limit for producer blurbs. There is not, and the numbers say why: the blurb
+   he loved most is 577 characters and the one he called tiring was 813. What
+   separated them was distinct years — one against six — because a card that
+   lists a founding, a marriage, a takeover and two certifications is a CV, and
+   a CV is tiring at any length.
+
+   So this is a note, not an error, and it never gates the deploy: a long card
+   that tells one story is fine, and the owner overrides this whenever the
+   story earns it. It is here to catch the ones that drifted back into being a
+   CV without anybody rereading them. See CLAUDE.md, "One story per card". */
+const producers = JSON.parse(fs.readFileSync("data/producers.json", "utf8")).producers || {};
+const YEARS = /\b1[4-9]\d\d|\b20[0-2]\d/g;
+const wordy = [], listy = [];
+for (const [name, rec] of Object.entries(producers)) {
+  const hr = ((rec || {}).blurb || {}).hr;
+  if (!hr) continue;
+  if (hr.length > 600) wordy.push(`${name} (${hr.length})`);
+  const years = new Set(hr.match(YEARS) || []);
+  if (years.size >= 4) listy.push(`${name} (${years.size} years)`);
+}
+if (wordy.length)
+  console.log(`note — blurbs over 600 characters, check they are one story: ${wordy.join(", ")}`);
+if (listy.length)
+  console.log(`note — blurbs reading like a CV, 4+ distinct years: ${listy.join(", ")}`);

@@ -250,6 +250,51 @@ still spell some numbers out; a sweep is worth doing but has to be per
 language, because each spells them differently — don't try to regex it across
 all eight at once.
 
+**One story per card, not a CV** (settled 2026-08-05, from the owner asking
+whether there is a character limit). There isn't one, and the measurement is
+why. The blurb the owner loved most — Quintarelli — is **577** characters. The
+one he called *tiring to read* — the old Bürklin-Wolf — was **813**. Vouette
+works at 421 and Salon at 408. Length is not the variable.
+
+**Distinct years are.** Quintarelli names one (1950) and spends the rest on one
+man: waits 8 years, refuses the Dutch queen over a car with no air
+conditioning, draws his labels by hand. Old Wolf named six — founded 1597,
+married 1875, took over 1990, certified 2005, classified 1994, tax map 1828 —
+and not one of them led to the next. That is a CV, and a CV is tiring at any
+length. Cut to two years it reads fine at 543.
+
+So the rule is **one story, one date**. A second date is allowed only when it
+is the *payoff* of the first (Wolf: the 1828 survey → the 1994 classification;
+Knebel: the father dies in 2004 → the son returns in 2008). Obey it and the
+length lands at 350–550 Croatian by itself. Past ~600 almost always means two
+stories were merged: cut one, don't trim adjectives. French runs ×1.18 and
+German ×1.14 against Croatian, so a 550 hr blurb is ~650 fr.
+
+`scripts/validate.mjs` prints a **note** — never an error — for a blurb over
+600 hr characters or with 4+ distinct years. It is a smell, not a rule a
+deploy should enforce; the owner overrides it whenever the story earns it.
+
+**The blurb owes the guest no facts at all.** Measured on the real card: the
+winery section starts **711 px down a 906 px card** on the 1024×768 tablet, and
+831 px down on the phone — the guest sees the heading and nothing else without
+scrolling. Everything they *need* (grape, region, body, alcohol, serving
+temperature, aromas, food, price, Filho's note) is already above it. Nobody
+reaches the blurb by accident, which means it must never repeat the grid and
+has exactly one job: make the bottle feel worth the money.
+
+**The test for what goes in: would a guest say this out loud to the person
+across the table?** "Osnovano 1597." — nobody has ever said that to anyone.
+"Odbio je prodati boce kraljici jer je auto bio bez klime" — everybody says
+that. This is not a balance between erudite and trivial; it is a filter.
+Erudition earns its place only as the **setup for a payoff**: the 1828 tax
+survey is textbook alone and lands only because it pays off in "the taxmen had
+missed very little". Research everything, print the payoff.
+
+The shape the three best cards share: **a person, a decision that cost them
+something, and a line that lands.** Never founded → generations → hectares →
+certifications. And an award is a badge, not a story — VINUM's Mosel winemaker
+of the year came off Knebel's card for flattening it.
+
 **Cross-references earn their place.** Several houses on this list are
 connected, and a guest who spots it remembers both cards: Eva Clüsserath runs
 Weingut Wittmann with her husband; Dal Forno went to Quintarelli for advice;

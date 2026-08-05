@@ -580,7 +580,11 @@ test("the rewritten Croatian house stories survive in every language", () => {
        estates on this list are one family — the point of the blurb. */
     "Clüsserath": [/1670/, /wittmann|维特曼/i, /rheinhess|莱茵黑森/i],
     "Heymann-Löwenstein": [/terrassenmosel|阶地摩泽尔/i, /1980/],
-    "Knebel": [/1642/, /2008/, /molitor|莫利托/i, /lubentiushof/i],
+    /* Trimmed 2026-08-05: the owner found the association politics killed the
+       mood between the father's death and the Röttgen. Molitor and Lubentiushof
+       now appear only on Egon Müller's card, where the walkout is the story
+       rather than a detour — the guard there still requires both names. */
+    "Knebel": [/2004/, /2008/, /m[üu]ller|穆勒/i, /röttgen/i],
     "Wittmann": [/1663/, /2004/, /cl[üu]sserath|克吕塞拉特/i],
     /* Shortened 2026-08-05 at the owner's request — the founding date and the
        Biodyvin line went with it, so the guard now names what the card is
