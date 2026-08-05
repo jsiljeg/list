@@ -303,5 +303,5 @@ main { max-width: 78rem; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
 })();
 </script>`;
 
-fs.writeFileSync("scratch/vinarije.html", html, "utf8");
-console.log("wrote scratch/vinarije.html —", data.length, "producers,", Math.round(html.length / 1024), "kB");
+fs.writeFileSync("scratch/vinarije-vina.html", html, "utf8");
+console.log("wrote scratch/vinarije-vina.html —", data.length, "producers,", Math.round(html.length / 1024), "kB");
