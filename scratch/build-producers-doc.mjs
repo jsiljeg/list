@@ -66,7 +66,13 @@ for (const [code, list] of ordered) {
 const nav = ordered.map(([c, l]) =>
   `<a href="#c-${esc(c || "x")}">${esc(COUNTRY[c] || c)}<span>${l.length}</span></a>`).join("");
 
-const html = `<title>Theatrium — tekstovi o vinarijama</title>
+const html = `<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Theatrium — tekstovi o vinarijama</title>
 <style>
 :root {
   color-scheme: light dark;
@@ -228,6 +234,8 @@ main { max-width: 78rem; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
 .empty { color: var(--muted); font-family: var(--serif); padding: 2rem 0; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
+</head>
+<body>
 
 <header class="top">
   <div class="top-in">
@@ -303,5 +311,8 @@ main { max-width: 78rem; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
 })();
 </script>`;
 
-fs.writeFileSync("scratch/vinarije-vina.html", html, "utf8");
+fs.writeFileSync("scratch/vinarije-vina.html", html + `
+</body>
+</html>
+`, "utf8");
 console.log("wrote scratch/vinarije-vina.html —", data.length, "producers,", Math.round(html.length / 1024), "kB");
