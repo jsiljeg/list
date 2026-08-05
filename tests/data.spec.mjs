@@ -640,11 +640,14 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Cakebread": [/1972/, /adams|亚当斯/i, /2\.500|2 500|\$2,500/],
     "Togni": [/1956/, /peynaud|佩诺/i, /lascombes|拉斯康/i],
     "Occidental": [/2011/, /2017/],
-    "Résonance": [/1859/, /2013/, /1981/],
+    /* 2026-08-05: the card opened with four numbers stacked up. 1859 and 2013
+       became "154 years, and then this one — in Oregon", which is the same
+       fact told as a surprise instead of as a pair of dates. */
+    "Résonance": [/154/, /1981/, /lardi[eè]re|拉尔迪耶/i],
     "Walter Scott": [/2008/, /twa|环球航空/i],
-    "Tyler": [/2005/, /2015/],
+    "Tyler": [/2005/, /sanford/i, /mae estate/i],
     "Duckhorn": [/1976/, /1978/],
-    "Domaine Eden": [/1945/, /1983/, /2007/],
+    "Domaine Eden": [/1945/, /martin ray|马丁·雷/i, /mudd|马德/i],
     /* Owner's flesh pass, 2026-08-04. Each of these is the fact the blurb was
        rewritten around; losing it puts the card back where it started. */
     "Boschis": [/1981/, /1990/, /altare|阿尔塔雷/i],
