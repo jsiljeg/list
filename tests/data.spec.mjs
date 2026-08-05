@@ -582,7 +582,10 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Heymann-Löwenstein": [/terrassenmosel|阶地摩泽尔/i, /1980/],
     "Knebel": [/1642/, /2008/, /molitor|莫利托/i, /lubentiushof/i],
     "Wittmann": [/1663/, /2004/, /cl[üu]sserath|克吕塞拉特/i],
-    "Bürklin-Wolf": [/1597/, /biodyvin/i, /1828/, /1994/],
+    /* Shortened 2026-08-05 at the owner's request — the founding date and the
+       Biodyvin line went with it, so the guard now names what the card is
+       actually about: the 1828 tax survey and the 1994 self-classification. */
+    "Bürklin-Wolf": [/1828/, /1994/, /gaisböhl|盖斯波尔/i],
     "Christmann": [/\bvdp\b/i, /sophie|索菲/i],
     /* German spirits and Italy, first round (Piedmont), 2026-08-03. Note the
        stems again: Italian calls the saint Uberto, and Croatian declines
@@ -1024,4 +1027,32 @@ test("no source file contains a stray control character", () => {
   };
   roots.forEach(walk);
   expect(bad, "stray control bytes — almost certainly a mangled regex escape").toEqual([]);
+});
+test("VDP is explained on every card that uses it", () => {
+  /* Owner, 2026-08-05: "not sure if people understand what VDP means. we have
+     explanation in christmann, but we use it in other places as well." It was
+     on four cards and glossed on exactly one. A guest reads one card, not
+     four, so the gloss has to travel with the term — the same reason a house
+     story lives in producers.json rather than on one bottle's note.
+
+     Checked per language, because a gloss is precisely the clause that
+     survives translation into six languages and quietly vanishes in the other
+     two. */
+  const GLOSS = {
+    hr: /udru/i, en: /association/i, it: /associazione/i, fr: /association/i,
+    de: /verband/i, zh: /联合会|协会/, sl: /združenj/i, es: /asociaci/i,
+  };
+  const bad = [];
+  let mentions = 0;
+  for (const [name, rec] of Object.entries(producers)) {
+    if (!rec || !rec.blurb) continue;
+    for (const [lc, text] of Object.entries(rec.blurb)) {
+      if (!/VDP/.test(text) || !GLOSS[lc]) continue;
+      mentions++;
+      if (!GLOSS[lc].test(text)) bad.push(`${name}/${lc}: says VDP without saying what it is`);
+    }
+  }
+  expect(bad, "VDP used with no explanation of what it is").toEqual([]);
+  /* Otherwise dropping the term everywhere would make this pass vacuously. */
+  expect(mentions, "no card mentions the VDP any more — was the guard left behind?").toBeGreaterThan(8);
 });
