@@ -675,7 +675,7 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Machard de Gramont": [/1983/, /axelle|阿克塞尔/i],
     "Chartron": [/1859/, /dupard|迪帕尔/i],
     "Mikulski": [/1939/, /boillot|布瓦洛/i],
-    "Téo Dancer": [/1996/, /2020/],
+    "Théo Dancer": [/1996/, /2020/],
     "Albert Mann": [/1654/, /1997/],
     "Bourdy": [/1475/, /1865/],
     "Pascal Cotat": [/damn/i, /fran[cç]ois|弗朗索瓦/i],

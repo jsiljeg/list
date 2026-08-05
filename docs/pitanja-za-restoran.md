@@ -71,7 +71,7 @@ Ako se broj slaže, dovoljno je označiti ✓. Ako ne, upišite točan.
 | Philippe Chavy — Bourgogne Chardonnay 2023 | 13 % | ______ |
 | François Mikulski — Bourgogne 2023 | 12,5 % | ______ |
 | David Moret — Meursault 2020 | 13 % | ______ |
-| Téo Dancer — Bourgogne Aligoté 2023 | 12,5 % | ______ |
+| Théo Dancer — Bourgogne Aligoté 2023 | 12,5 % | ______ |
 | Hubert Lignier — Aligoté 2021 | 12,5 % | ______ |
 | Jean Chartron — Chassagne-Montrachet Les Benoites 2022 | 13 % | ______ |
 | Bernard-Bonin — Meursault Les Narvaux Dessus 2023 | 13 % | ______ |
