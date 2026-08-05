@@ -563,7 +563,9 @@ test("the rewritten Croatian house stories survive in every language", () => {
        credit both authors of Wine Grapes by name, and Budinski's DipWSET is
        the qualification behind everything else the blurb claims. */
     "Krajančić": [/jancis|简希斯/i, /vouillamoz|武亚莫兹/i],
-    "Budinski": [/agrolagun|阿格罗拉古纳/i, /\bomo\b/i, /dipwset/i],
+    /* The Erdoro cross-reference runs both ways as of 2026-08-05; Erdoro's
+       card had named Budinski all along, and his named nothing back. */
+    "Budinski": [/agrolagun|阿格罗拉古纳/i, /\bomo\b/i, /dipwset/i, /erdoro/i],
     "Clai": [/trst|trieste|triest|的里雅斯特/i, /gravner|格拉夫纳/i],
     "Tomac": [/seloss|塞洛斯/i, /decanter/i],
     "Corte Aura": [/2009/],
