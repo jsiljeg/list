@@ -548,7 +548,6 @@ test("the rewritten Croatian house stories survive in every language", () => {
     /* He saved Gegić from extinction; the Michelin star came after. */
     "Boškinac": [/gegi|格吉奇/i, /michelin|米其林/i],
     /* Twelve years making Agrolaguna's wine before his own label, OMO. */
-    "Budinski": [/agrolagun|阿格罗拉古纳/i, /\bomo\b/i],
     /* Third batch, 2026-08-03. */
     "Markus": [/fetivi/i],
     "Matošević": [/grimald|格里马尔达/i, /vinistr/i],
@@ -575,11 +574,11 @@ test("the rewritten Croatian house stories survive in every language", () => {
        are the spine of each of these stories. */
     "Egon Müller": [/1797/, /scharzhof|沙尔茨霍夫/i, /molitor|莫利托/i, /lubentiushof/i],
     "Prüm": [/1842/, /jodocus|约多库斯/i],
-    "Zilliken": [/1742/, /geltz|盖尔茨/i],
+    "Zilliken": [/1944/, /geltz|盖尔茨/i, /fud/i],
     /* Eva Clüsserath is married to Philipp Wittmann, which is why two German
        estates on this list are one family — the point of the blurb. */
     "Clüsserath": [/1670/, /wittmann|维特曼/i, /rheinhess|莱茵黑森/i],
-    "Heymann-Löwenstein": [/terrassenmosel|阶地摩泽尔/i, /1980/],
+    "Heymann-Löwenstein": [/terrassenmosel/i, /1992/, /2026/],
     /* Trimmed 2026-08-05: the owner found the association politics killed the
        mood between the father's death and the Röttgen. Molitor and Lubentiushof
        now appear only on Egon Müller's card, where the walkout is the story
@@ -598,23 +597,15 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Monkey 47": [/collins|柯林斯/i, /1951/],
     "Brick Gin": [/weimar|魏玛/i],
     "Roagna": [/1961/, /asili|阿西利/i],
-    "Boschis": [/1981/, /1990/],
     /* Darmagi is the whole anecdote: what Angelo's father muttered every time
        he walked past the Nebbiolo his son had replaced with Cabernet. */
-    "Gaja": [/1859/, /darmagi/i],
     "Crissante Alessandria": [/1958/, /teres|特蕾莎/i],
     "Lalù": [/2015/, /pollenz|波伦佐/i],
     "Le Piane": [/1988/, /cerri|切里/i],
     /* Tuscany, 2026-08-03. French calls the city Lucques, so the stem has to
        allow both spellings — the same declension trap in a different guise. */
-    "Antinori": [/1385/, /tignanello|天娜/i],
-    "Tenuta San Guido": [/1948/, /tachis|塔基斯/i],
-    "Ornellaia": [/1981/, /antinori|安蒂诺里/i],
     "Isole e Olena": [/1956/, /cepparello|切帕雷洛/i],
-    "Montevertine": [/1971/, /trebbiano|特雷比亚诺/i],
-    "Soldera": [/2012/, /sangiovese|桑娇维塞/i],
     "Conti Costanti": [/1555/, /matrichese/i],
-    "Poggio di Sotto": [/1989/, /gambelli|甘贝利/i],
     "Poggio Scalette": [/1991/, /carbonaione/i],
     "Chiara Condello": [/2015/, /spungone/i],
     "Magliano": [/1996/, /luc[cq]|卢卡/i],
@@ -625,11 +616,10 @@ test("the rewritten Croatian house stories survive in every language", () => {
     "Prinčič": [/1988/, /oslav|奥斯拉维亚/i],
     "Vie di Romans": [/1978/, /gianfranco|詹弗兰科/i],
     /* Veneto, Alto Adige, Sicily and the coast, 2026-08-03. */
-    "Giuseppe Quintarelli": [/1950/],
     "Dal Forno": [/1983/, /quintarelli|昆塔雷利/i],
     "Ca' La Bionda": [/1902/, /castellani|卡斯泰拉尼/i],
     "Benanti": [/1988/, /pietramarina/i],
-    "Donnafugata": [/1983/, /ben ry|风之子/i],
+    "Donnafugata": [/1806/, /ben ry|风之子/i],
     "Lageder": [/1823/, /löwengang/i],
     "Dipoli": [/1987/, /voglar/i],
     "Duemani": [/2000/, /demet/i],
@@ -652,14 +642,14 @@ test("the rewritten Croatian house stories survive in every language", () => {
     /* Owner's flesh pass, 2026-08-04. Each of these is the fact the blurb was
        rewritten around; losing it puts the card back where it started. */
     "Boschis": [/1981/, /1990/, /altare|阿尔塔雷/i],
-    "Montevertine": [/1971/, /manfredi|曼弗雷迪/i],
-    "Soldera": [/2012/, /graziella|格拉齐耶拉/i],
+    "Montevertine": [/1971/, /trebbiano|特雷比亚诺/i, /manfredi|曼弗雷迪/i],
+    "Soldera": [/2012/, /sangiovese|桑娇维塞/i, /graziella|格拉齐耶拉/i],
     "Giuseppe Quintarelli": [/1950/, /rosso del bepi/i],
     /* Darmagi is not our bottle; the Barbaresco is. The story is the 17 years
        when this was the only wine of theirs allowed to carry the name. */
-    "Gaja": [/1859/, /1996/, /2013/],
-    "Ornellaia": [/1981/, /2009/, /abramovi|阿布拉莫维奇/i],
-    "Antinori": [/1385/, /albiera|阿尔比耶拉/i, /alessia|阿莱西娅/i],
+    "Gaja": [/1967/, /1996/, /2013/],
+    "Ornellaia": [/1981/, /antinori|安蒂诺里/i, /2009/, /abramovi|阿布拉莫维奇/i],
+    "Antinori": [/1385/, /tignanello|天娜/i, /albiera|阿尔比耶拉/i, /alessia|阿莱西娅/i],
     "Poggio di Sotto": [/1989/, /gambelli|甘贝利/i, /decanter/i],
     "Tenuta San Guido": [/1948/, /tachis|塔基斯/i, /sass/i],
     /* France, 2026-08-04. The Chablis pair must keep pointing at each other:
@@ -1059,4 +1049,25 @@ test("VDP is explained on every card that uses it", () => {
   expect(bad, "VDP used with no explanation of what it is").toEqual([]);
   /* Otherwise dropping the term everywhere would make this pass vacuously. */
   expect(mentions, "no card mentions the VDP any more — was the guard left behind?").toBeGreaterThan(8);
+});
+test("no story guard is silently overridden by a duplicate key", () => {
+  /* 2026-08-05. STORIES is a JS object literal, so a key written twice is not
+     an error — the later entry simply wins and the earlier one never runs.
+     Nine keys had drifted into being written twice, and four of them tested
+     something the winner did not: Ornellaia's cross-reference to Antinori,
+     Montevertine's trebbiano, Soldera's sangiovese, Antinori's Tignanello.
+     All four passed once merged, so nothing was actually broken — which is
+     exactly why nobody noticed for weeks.
+
+     It has to be checked in the source text; by the time the object exists,
+     the duplicate is gone. Same reason as the stray-control-byte guard. */
+  const src = readFileSync(resolve(HERE, "data.spec.mjs"), "utf8");
+  const s = src.indexOf("const STORIES = {");
+  const e = src.indexOf("\n  };", s);
+  expect(s, "STORIES block not found — did it get renamed?").toBeGreaterThan(-1);
+  const keys = [...src.slice(s, e).matchAll(/^    "([^"]+)":/gm)].map((m) => m[1]);
+  const seen = new Set(), dup = [];
+  for (const k of keys) { if (seen.has(k)) dup.push(k); seen.add(k); }
+  expect(dup, "keys written twice — the earlier guard never runs").toEqual([]);
+  expect(keys.length, "STORIES looks empty — did the regex stop matching?").toBeGreaterThan(50);
 });
