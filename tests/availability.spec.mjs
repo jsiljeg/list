@@ -266,3 +266,35 @@ test("every data fetch revalidates instead of trusting a 10-minute cache", async
   const missing = modes.filter((m) => !/no-cache/.test(m));
   expect(missing, "a data file was fetched without revalidating").toEqual([]);
 });
+
+test("a rewritten blurb reaches an open page without a reload", async ({ page }) => {
+  /* Guards 2026-08-12. producers.json was fetched once at load and never
+     again, so every winery and distillery blurb we corrected was live on the
+     server and invisible on a tablet that already had the page open — the
+     owner asked whether the work had been done at all, and it had. menu.json
+     and regions.json had the same problem.
+
+     The second half of the bug is why the first fix did not work: init() read
+     these files with .json(), so the poll had no baseline text to compare
+     against, treated the first tick as "record the baseline" and swallowed the
+     very change it was meant to catch. They are read as text now.
+
+     Driven by intercepting the file rather than by editing it on disk, so the
+     test never touches the repo. */
+  await openApp(page);
+  const before = await page.evaluate(() => PRODUCERS["Mount Gay"].blurb.hr);
+  expect(before.length, "no Mount Gay blurb to start from").toBeGreaterThan(50);
+
+  await page.route("**/data/producers.json*", async (route) => {
+    const res = await route.fetch();
+    const body = JSON.parse(await res.text());
+    body.producers["Mount Gay"].blurb.hr = "IZMIJENJENO — " + body.producers["Mount Gay"].blurb.hr;
+    await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
+  });
+
+  await page.evaluate(() => pollData());
+  await expect
+    .poll(() => page.evaluate(() => PRODUCERS["Mount Gay"].blurb.hr.startsWith("IZMIJENJENO")),
+      { message: "the blurb never arrived on the open page" })
+    .toBe(true);
+});

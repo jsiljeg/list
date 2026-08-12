@@ -217,9 +217,13 @@ function init() {
   DATA_READY = Promise.all([
     fresh("library/wines.json").then((r) => r.json()),
     fresh("lists/theatrium.json").then((r) => r.json()),
-    fresh("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] })),
-    fresh("data/producers.json").then((r) => r.json()).catch(() => ({ producers: {} })),
-    fresh("data/regions.json").then((r) => r.json()).catch(() => ({ regions: [] })),
+    /* As text, so the poll has a baseline to compare against. Read as JSON,
+       the first tick had nothing to diff and quietly swallowed the first
+       change — which is the bug that made blurb edits invisible until a
+       reload, twice over. */
+    fresh("data/menu.json").then((r) => r.text()).catch(() => ""),
+    fresh("data/producers.json").then((r) => r.text()).catch(() => ""),
+    fresh("data/regions.json").then((r) => r.text()).catch(() => ""),
     fresh("data/unavailable.json").then((r) => r.text()).catch(() => "")
   ]).then(([lib, list, m, pr, rg, unText]) => {
       FULL = mergeList(lib, list);
@@ -227,9 +231,11 @@ function init() {
       const d = dropHidden(FULL, parseHidden(unText));
       DATA = d;
       GLASS_PRICE = null;
-      MENU = m;
-      PRODUCERS = pr.producers || {};
-      REGIONS = rg.regions || [];
+      menuRaw = m; prodRaw = pr; regionsRaw = rg;
+      const parse = (t, fallback) => { try { return JSON.parse(t); } catch (e) { return fallback; } };
+      MENU = parse(m, { courses: [], dishes: [] });
+      PRODUCERS = parse(pr, { producers: {} }).producers || {};
+      REGIONS = parse(rg, { regions: [] }).regions || [];
       currentSection = d.sections[0].id;
       /* A guest who reached the splash while the list was still arriving is
          waiting on the Enter button; let them in the moment it lands. */
@@ -266,6 +272,7 @@ let FULL = null;         /* the merged list with nothing hidden — the baseline
                             brings it back without a reload */
 let hiddenRaw = "";      /* the last 86 list applied, so no-op polls are free */
 let dataRaw = "";        /* library+list as last seen, to spot a real change */
+let prodRaw = "", menuRaw = "", regionsRaw = "";   /* the reference files, likewise */
 let pending = null;      /* an update waiting for the detail sheet to be closed */
 
 function parseHidden(text) {
@@ -275,6 +282,16 @@ function parseHidden(text) {
 /* One path for both kinds of change. `lib`/`list` are present only when the
    content itself moved; otherwise the merged baseline is left alone. */
 function applyUpdate(u) {
+  /* Reference files carry no si/ci/gi/ii paths — nothing indexes into them —
+     so they are simply swapped in. A blurb corrected upstairs reaches the
+     tablet within the minute, like a price. */
+  if (u.ref) {
+    try {
+      if (u.ref.prodText != null) PRODUCERS = JSON.parse(u.ref.prodText).producers || PRODUCERS;
+      if (u.ref.menuText != null) MENU = JSON.parse(u.ref.menuText);
+      if (u.ref.regText != null) REGIONS = JSON.parse(u.ref.regText).regions || REGIONS;
+    } catch (e) { /* half-published deploy: keep what we have, retry in 30s */ }
+  }
   if (u.lib && u.list) FULL = mergeList(u.lib, u.list);
   DATA = dropHidden(FULL, u.rules);
   GLASS_PRICE = null;   /* a wine can be 86'd off one shelf and not the other */
@@ -296,8 +313,18 @@ function pollData() {
   return Promise.all([
     fresh("library/wines.json").then((r) => (r.ok ? r.text() : null)),
     fresh("lists/theatrium.json").then((r) => (r.ok ? r.text() : null)),
-    fresh("data/unavailable.json").then((r) => (r.ok ? r.text() : null))
-  ]).then(([libText, listText, unText]) => {
+    fresh("data/unavailable.json").then((r) => (r.ok ? r.text() : null)),
+    /* The reference files. producers.json was read once at load and never
+       again, so a rewritten winery blurb only showed up after a full reload —
+       which is how an evening of edits could be live on the server and
+       invisible on the tablet in the room (owner, 2026-08-12: "I don't see you
+       did it, right?"). The kitchen menu and the region cards had the same
+       problem. Unchanged files answer 304 with no body, so this costs three
+       more conditional requests a minute and nothing else. */
+    fresh("data/producers.json").then((r) => (r.ok ? r.text() : null)),
+    fresh("data/menu.json").then((r) => (r.ok ? r.text() : null)),
+    fresh("data/regions.json").then((r) => (r.ok ? r.text() : null))
+  ]).then(([libText, listText, unText, prodText, menuText, regText]) => {
     if (libText == null || listText == null || unText == null) return;
     /* Compared as text rather than by ETag. ETag was the first attempt and it
        *looked* right against GitHub Pages, which sends one — but any server
@@ -308,10 +335,19 @@ function pollData() {
     const contentMoved = !!dataRaw && (libText + "\u0000" + listText) !== dataRaw;
     const hiddenMoved = unText !== hiddenRaw;
     dataRaw = libText + "\u0000" + listText;
-    if (!contentMoved && !hiddenMoved) return;
+    /* Same guard as dataRaw: a cold start records the baseline and is not a
+       change. */
+    const refMoved = (!!prodRaw && prodText !== prodRaw) ||
+                     (!!menuRaw && menuText !== menuRaw) ||
+                     (!!regionsRaw && regText !== regionsRaw);
+    if (prodText != null) prodRaw = prodText;
+    if (menuText != null) menuRaw = menuText;
+    if (regText != null) regionsRaw = regText;
+    if (!contentMoved && !hiddenMoved && !refMoved) return;
     hiddenRaw = unText;
 
     const update = { rules: parseHidden(unText) };
+    if (refMoved) update.ref = { prodText, menuText, regText };
     if (contentMoved) {
       try {
         update.lib = JSON.parse(libText);
