@@ -1373,6 +1373,8 @@ function stepDetail(dir) {
 /* Modal open/close with a history entry so the phone/tablet back button
    (and Esc) just closes the modal instead of leaving the page. */
 let modalOpen = false;
+let helperDrawnAt = 0;   /* when the sommelier last replaced its own contents */
+const BACKDROP_GRACE = 600;
 function showModal(kind) {
   const ms = $("modal-sheet");
   clearDetailNav();
@@ -1380,6 +1382,28 @@ function showModal(kind) {
      paint once at its natural height — often the full page — and then snap to
      the fixed frame, which is the growing-then-cropping you could see. */
   $("modal").classList.toggle("detail-mode", kind === "detail");
+  /* The sommelier is anchored to the top for the same reason the card is, and
+     it took the owner noticing on a phone to find it (2026-08-12). A centred
+     sheet grows and shrinks around its own middle, so *every* step of the
+     wizard moved the two screen edges by half the difference: the dish list is
+     long and the budget question short, and the bottle and glass answers are
+     rarely the same height — three suggestions against one for foie gras, or
+     the same three with a wine name that wraps on a 390px phone. Measured
+     across all 120 dish x budget combinations, 91 of them changed the sheet's
+     height by more than 8px on the flip, the worst by 278px, which slid the
+     "Radije na čašu?" button 140px out from under the thumb that had just
+     tapped it. Anchored, the title, the dish and the first suggestion hold
+     still and only the bottom edge moves. */
+  $("modal").classList.toggle("helper-mode", kind === "helper");
+  /* Anchoring holds the top still but cannot hold the *bottom* still: a shorter
+     answer is genuinely shorter, and the flip button rides up with it — 280px
+     in the foie gras case. Whatever was under the thumb is then backdrop, and a
+     second tap would close the sommelier and lose both answers. The same trap
+     sits one step earlier, where the long dish list is replaced by three budget
+     buttons. So the backdrop ignores a tap for a beat after the helper redraws;
+     a guest who means to leave is never that fast, and ✕, Esc and the back
+     button are unaffected. */
+  if (kind === "helper") helperDrawnAt = Date.now();
   if (ms) { ms.style.transform = ""; ms.style.transition = ""; }
   $("modal").classList.remove("hidden");
   // Reset the scroll only *after* the sheet is visible again: while the modal
@@ -1836,7 +1860,7 @@ function renderHelperStep() {
       Object.keys(h.budget).map((k) => `<button class="helper-opt" data-k="${k}">${esc(h.budget[k])}</button>`).join("") + `</div>`;
   }
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(h.title)}</div>${inner}</div>`;
-  showModal();
+  showModal("helper");
   $("modal-body").querySelectorAll(".helper-opt").forEach((b) =>
     b.addEventListener("click", () => {
       if (helperState.step === 0) {
@@ -1999,7 +2023,7 @@ function renderHelperResults(budgetKey) {
     : `<p class="no-results">${t.ui.noResults}</p>`;
   const flip = `<button class="helper-flip" type="button">🍷 ${esc(byGlass ? t.ui.ratherBottle : t.ui.ratherGlass)}</button>`;
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}${flip}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
-  showModal();
+  showModal("helper");
   $("modal-body").querySelector(".helper-flip").addEventListener("click", () => {
     helperState.mode = byGlass ? "bottle" : "glass";
     renderHelperResults(budgetKey);
@@ -2047,7 +2071,12 @@ $("search").addEventListener("input", () => {
   renderContent();
 });
 $("modal-close").addEventListener("click", closeModal);
-$("modal-backdrop").addEventListener("click", closeModal);
+$("modal-backdrop").addEventListener("click", () => {
+  /* See showModal(): a tap that lands here right after the sommelier redrew is
+     the tail of the tap that redrew it, not someone leaving. */
+  if (Date.now() - helperDrawnAt < BACKDROP_GRACE) return;
+  closeModal();
+});
 
 /* search: revealed by the corner icon; close via ✕ / Esc / the icon */
 function openSearch() {

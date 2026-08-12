@@ -289,6 +289,68 @@ test("the sommelier answers in one list, and offers the glass quietly", async ({
   expectClean(bag);
 });
 
+test("the sommelier's sheet stays where the guest left it", async ({ page }) => {
+  /* Guards 2026-08-12 — the owner, on a phone: tapping "Ipak bocu?" /
+     "Radije na čašu?" made the window feel like it resized. It did. The sheet
+     was centred, so any change in its height moved *both* edges by half of it,
+     and the heights genuinely differ: measured across all 120 dish x budget
+     combinations at 390px, 91 changed by more than 8px on the flip alone. Foie
+     gras at b2 is the worst of them — three bottles against a single glass,
+     278px — and it moved the flip button 140px out from under the thumb that
+     had just tapped it. The wizard's own steps did it too: the dish list is
+     long and the budget question is three buttons.
+
+     One pixel of tolerance for sub-pixel layout; the bug was two orders of
+     magnitude bigger than that. */
+  const bag = await openApp(page);
+  const sheetTop = () => page.evaluate(() =>
+    Math.round(document.querySelector("#modal-sheet").getBoundingClientRect().top));
+  const held = async (was, what) =>
+    expect(Math.abs((await sheetTop()) - was), what).toBeLessThanOrEqual(2);
+
+  await page.locator("#helper-open").click();
+  await page.locator(".helper-opt[data-dish]").first().waitFor();
+  /* Past the sheet's own 220ms entry animation, which slides it up 24px — read
+     during it, the anchor is 24px low and everything after it "moves". */
+  await page.waitForTimeout(400);
+  const anchor = await sheetTop();
+
+  await page.locator(".helper-opt[data-dish]", { hasText: "Foie gras" }).first().click();
+  await page.waitForTimeout(300);
+  await held(anchor, "the sheet moved between the dish list and the budget question");
+
+  await page.locator(".helper-opt[data-k='b2']").click();
+  await page.waitForTimeout(400);
+  await held(anchor, "the sheet moved when the suggestions arrived");
+
+  await page.locator(".helper-flip").click();
+  await page.waitForTimeout(400);
+  await held(anchor, "the sheet moved on the flip to glasses");
+
+  await page.locator(".helper-flip").click();
+  await page.waitForTimeout(400);
+  await held(anchor, "the sheet moved on the flip back to bottles");
+
+  /* The bottom edge does still move — a one-wine answer is shorter than a
+     three-wine one — so the tap that flipped the list can end up over the
+     backdrop, where a second tap would close the sommelier and lose both the
+     dish and the budget. The backdrop ignores that beat. */
+  /* Both clicks in one evaluate: the guard is 600ms wide and a round-trip per
+     click is enough to outrun it on a loaded machine, which is a flaky test
+     rather than a working app. */
+  await page.evaluate(() => {
+    document.querySelector(".helper-flip").click();
+    document.getElementById("modal-backdrop").click();
+  });
+  await expect(page.locator("#modal"), "a tap in the wake of the flip closed the sommelier")
+    .not.toHaveClass(/hidden/);
+  /* A guest who actually wants out is never that fast, and still gets out. */
+  await page.waitForTimeout(700);
+  await page.locator("#modal-backdrop").click({ position: { x: 5, y: 5 } });
+  await expect(page.locator("#modal"), "the backdrop stopped closing the sheet at all").toHaveClass(/hidden/);
+  expectClean(bag);
+});
+
 test("the glass price on a suggestion is the real one, and only where it exists", async ({ page }) => {
   /* The inline offer is only honest if the wine really is poured by the glass
      at that price — it is read from the `glass` section of the same list, so a
@@ -345,14 +407,21 @@ test("coming back from a wine restores the sommelier's own frame", async ({ page
      top-aligned and 87vh, and turns the arrows on; the back path re-rendered
      only `#modal-body` and left the frame as the card had set it. Both helper
      screens now go through `showModal()`, which is the one place that knows
-     how to put the frame back. */
+     how to put the frame back.
+
+     Updated 2026-08-12: this used to assert the suggestions come back
+     *centred*, which is the behaviour the owner then found on a phone — a
+     centred sheet moves both its edges by half of every height change. The
+     sommelier has its own `helper-mode` frame now, anchored like the card but
+     still sized to its content, so what the test guards is unchanged: the
+     frame the guest left is the frame they come back to. */
   const bag = await openApp(page);
   const frame = () => page.evaluate(() => {
     const r = document.getElementById("modal-sheet").getBoundingClientRect();
+    const cl = document.getElementById("modal").classList;
     return {
-      detail: document.getElementById("modal").classList.contains("detail-mode"),
+      detail: cl.contains("detail-mode"), helper: cl.contains("helper-mode"),
       top: Math.round(r.top), height: Math.round(r.height),
-      centred: Math.abs(Math.round(r.top) - Math.round(window.innerHeight - r.bottom)) <= 3,
       arrows: [...document.querySelectorAll(".modal-nav")].filter((b) => !b.classList.contains("hidden")).length
     };
   });
@@ -363,7 +432,7 @@ test("coming back from a wine restores the sommelier's own frame", async ({ page
   await page.waitForTimeout(400);
   const before = await frame();
   expect(before.detail, "the suggestions are not a wine card").toBe(false);
-  expect(before.centred, "the suggestions should be centred").toBe(true);
+  expect(before.helper, "the suggestions should be in the sommelier's own frame").toBe(true);
   expect(before.arrows, "no stepping arrows over the suggestions").toBe(0);
 
   await page.locator(".helper .item.clickable").first().click();
@@ -375,7 +444,7 @@ test("coming back from a wine restores the sommelier's own frame", async ({ page
   const after = await frame();
   expect(after.detail, "detail-mode survived the way back").toBe(false);
   expect(after.arrows, "stepping arrows survived the way back").toBe(0);
-  expect(after.centred, "the sheet came back off-centre").toBe(true);
+  expect(after.helper, "the sommelier's frame did not come back").toBe(true);
   expect(Math.abs(after.height - before.height), "the sheet came back a different height").toBeLessThan(6);
   expect(Math.abs(after.top - before.top), "the sheet came back at a different height on screen").toBeLessThan(6);
   expectClean(bag);

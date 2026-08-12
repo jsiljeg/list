@@ -337,7 +337,15 @@ body {
 .marker { width: .82em; height: .82em; display: inline-block; color: var(--gold); line-height: 0; }
 .marker svg { width: 100%; height: 100%; display: block; }
 .item.clickable { cursor: pointer; transition: background .15s; }
-.item.clickable:hover, .item.clickable:focus-visible { background: var(--bg-raised); outline: none; }
+/* Only where a pointer can actually hover — the same trap the ‹ › arrows fell
+   into, and the owner found it here on a phone (2026-08-12): a touch screen
+   latches :hover on the element you tapped and holds it until you tap
+   something else, so the wine you had just read stayed lit in the list after
+   the card was closed and looked greyed out beside its neighbours. */
+@media (hover: hover) {
+  .item.clickable:hover { background: var(--bg-raised); }
+}
+.item.clickable:focus-visible { background: var(--bg-raised); outline: none; }
 .item-name {
   font-family: var(--serif);
   font-size: 1.3rem; font-weight: 500; color: var(--text);
@@ -371,6 +379,15 @@ body {
    chrome, so a vh-sized card runs under the toolbar. */
 @supports (height: 100dvh) {
   .modal.detail-mode { padding: 9dvh 1rem 3dvh; }
+}
+/* The sommelier is a dialogue and still sizes itself to its content — but it is
+   anchored at the top, not centred, so what it already showed does not move
+   when the content below it changes. Centred, every step re-centred: the dish
+   list is long, the budget question short, and the two answers differ whenever
+   the glass shelf has fewer matches or a wine name wraps on a narrow phone. */
+.modal.helper-mode { align-items: flex-start; padding: 6vh 1rem 3vh; }
+@supports (height: 100dvh) {
+  .modal.helper-mode { padding: 6dvh 1rem 3dvh; }
 }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
 .modal.detail-mode .modal-sheet { height: 87vh; max-height: none; }

@@ -418,3 +418,37 @@ test("the machine-readable rights notices are served", async ({ request, page })
   expect(meta["tdm-reservation"], "no tdm-reservation meta").toBe("1");
   expect(meta.copyright, "no copyright meta").toContain("Apelacija");
 });
+
+test("a wine row does not stay lit after it has been tapped", async ({ page }) => {
+  /* Guards 2026-08-12 (owner, on a phone): a wine read and closed stayed
+     visibly greyed next to its neighbours in the list. A touch screen has no
+     way to un-hover, so it latches :hover on whatever was last tapped and
+     holds it until something else is tapped — the same trap the ‹ › arrows
+     fell into, and the reason their rule already sits behind (hover: hover).
+
+     Checked against the stylesheet rather than by tapping, because whether a
+     headless browser latches hover at all is a property of the harness, not of
+     the app — this asserts the rule that makes latching impossible.
+
+     Scoped to the list rows on purpose. A latched .helper-opt or .modal-close
+     is invisible: those elements are gone by the next paint. A row stays on
+     screen behind the card. */
+  await openApp(page);
+  const ungated = await page.evaluate(() => {
+    const out = [];
+    const walk = (rules, gated) => {
+      for (const r of rules) {
+        const cond = r.conditionText || (r.media && r.media.mediaText) || "";
+        if (r.cssRules) walk(r.cssRules, gated || /hover\s*:\s*hover/.test(cond));
+        else if (r.selectorText && r.selectorText.includes(":hover") && !gated) out.push(r.selectorText);
+      }
+    };
+    for (const s of document.styleSheets) {
+      /* Google's font stylesheet is cross-origin and cannot be read. */
+      try { walk(s.cssRules, false); } catch (e) { /* not ours */ }
+    }
+    return out;
+  });
+  const rows = ungated.filter((s) => /(^|[\s,>])\.item\b/.test(s));
+  expect(rows, "a list-row :hover rule that a touch screen will latch").toEqual([]);
+});
