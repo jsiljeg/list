@@ -1359,8 +1359,16 @@ function showWaiterCard(ref, back, scope) {
      "BOCA" on a card for something poured by the measure (owner, 2026-08-12).
      Nothing is printed there now — the price alone is the whole of what the
      waiter needs, and a wrong word is worse than no word. */
-  const shelved = sec.id === "glass" || sec.id.startsWith("bottle-");
-  const key = sec.id === "glass" ? "perGlass" : "perBottle";
+  /* A rum and a rakija are poured by the measure, so they take the glass word
+     like a wine by the glass does. Beer and the water/soft-drink shelf take
+     none: "Pils 0,5 l" and "Jana 0,25 l" already carry the format in the name,
+     and repeating it under the price would be the second time the waiter reads
+     the same thing. */
+  const catId = (sec.categories[ci] || {}).id || "";
+  const poured = sec.id === "spirits" || (sec.id === "rakija-beer" && catId !== "beer");
+  const byGlass = sec.id === "glass" || poured;
+  const shelved = byGlass || sec.id.startsWith("bottle-");
+  const key = byGlass ? "perGlass" : "perBottle";
   const shelf = shelved ? I18N.hr.ui[key] : "";
   const shelfGuest = shelved && lang !== "hr" ? t.ui[key] : "";
   $("modal-body").innerHTML = `
