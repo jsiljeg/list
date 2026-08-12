@@ -1201,8 +1201,16 @@ function openDetail(ref, back, scope) {
   const field = (label, value, wide) =>
     value ? `<div class="detail-field${wide ? " wide" : ""}"><div class="detail-label">${label}</div><div class="detail-value">${value}</div></div>` : "";
   const list = (keys, dict) => (keys || []).map((k) => dict[k] || k).join(", ");
-  // Formal region name (localized) + country, always.
-  const region = [esc(localizeRegion(ins.region)), t.countries[ins.country] || ins.country].filter(Boolean).join(", ");
+  /* Formal region name (localized) + country, always — but the *label* follows
+     what is actually printed. Six spirits have no region (Gibson's among them,
+     which is distilled in England and nowhere more specific we can source), and
+     for those the line read "Regija: Engleska", which says England is a region
+     of England (owner, 2026-08-12). With nothing above the country, the field
+     is simply the country. */
+  const regionName = esc(localizeRegion(ins.region));
+  const countryName = t.countries[ins.country] || ins.country;
+  const region = [regionName, countryName].filter(Boolean).join(", ");
+  const regionLabel = regionName ? t.ui.region : t.ui.country;
 
   /* A bottle is either a wine or a spirit, and the two share the frame but not
      the fields. `kind` is the only switch: no `kind` means wine, which is what
@@ -1247,7 +1255,7 @@ function openDetail(ref, back, scope) {
     <div class="detail-grid">
       ${spirit ? `
       ${field(su.base, esc(slist(ins.base, "bases")))}
-      ${field(t.ui.region, region)}
+      ${field(regionLabel, region)}
       ${field(su.still, esc(slist(ins.still, "stills")))}
       ${field(su.cask, esc(slist(ins.cask, "casks")))}
       ${field(su.age, ins.age ? esc(ins.age) + " " + esc(su.years || "") : (ins.age === 0 ? esc(su.noAge || "") : ""))}
@@ -1261,7 +1269,7 @@ function openDetail(ref, back, scope) {
       ${field(t.ui.pairings, esc((ins.pairings || []).map((k) => spiritTerm("pairings", k, t.pairings)).join(", ")), true)}
       ` : `
       ${field(t.ui.grape, esc(localizeGrape(ins.grape)))}
-      ${field(t.ui.region, region)}
+      ${field(regionLabel, region)}
       ${field(t.ui.body, esc(t.bodies[ins.body] || ins.body))}
       ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + " % vol." : "")}
       ${/* Residual sugar, only where a producer publishes it for that exact
