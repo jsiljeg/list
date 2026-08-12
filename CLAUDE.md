@@ -295,6 +295,23 @@ something, and a line that lands.** Never founded → generations → hectares �
 certifications. And an award is a badge, not a story — VINUM's Mosel winemaker
 of the year came off Knebel's card for flattening it.
 
+**The first line is the whole job** (owner, 2026-08-12, after correcting it in
+four separate passes — Croatian, French, spirits twice). A blurb **opens with
+its most appealing line**, and the research follows. Never a founding date, an
+address, a hectare count, or a roll-call of who does what: the guest reads the
+first line standing up and decides there whether to read the second.
+
+What kept happening is that the payoff sat in sentence three — Bladnoch's
+Australian who made his money in organic yoghurt, Kilchoman's "a farm that
+makes whisky, not a factory playing at being a farm", the Frenchie label
+mocking "rollandizaciji, globalizaciji, parkerizaciji". Write the card, then
+find the line a guest would repeat across the table and move it to the front.
+Applies to every country and to spirits as much as to wine.
+
+**Percentages are one glyph**: `20%`, `15%`, `37,5% vol.` — never a space, in
+any language, including the narrow and non-breaking spaces French and German
+typography would insert. `tests/data.spec.mjs` fails the suite on one.
+
 **Cross-references earn their place.** Several houses on this list are
 connected, and a guest who spots it remembers both cards: Eva Clüsserath runs
 Weingut Wittmann with her husband; Dal Forno went to Quintarelli for advice;

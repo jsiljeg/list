@@ -1080,3 +1080,25 @@ test("no story guard is silently overridden by a duplicate key", () => {
   expect(dup, "keys written twice — the earlier guard never runs").toEqual([]);
   expect(keys.length, "STORIES looks empty — did the regex stop matching?").toBeGreaterThan(50);
 });
+
+test("a percentage is never separated from its number", async () => {
+  /* Guards 2026-08-12 (owner: "15 %" should be "15%", "check all and put it
+     always together — without blanks"). The house rule is one glyph, on every
+     card and in every language, which also means the narrow and non-breaking
+     spaces French and German typography would otherwise insert.
+
+     Covers the blurbs, the library (notes and insight strings), the UI
+     dictionaries and the spirits vocabulary — the alcohol line is built in
+     app.js as `${alcohol}% vol.`, so a stray space there would appear on 300
+     cards at once. */
+  const files = ["js/app.js", "js/i18n.js", "js/spirits.js",
+                 "data/producers.json", "library/wines.json", "data/menu.json"];
+  const spaced = /(\d)[\s\u00a0\u202f]+%/g;
+  const bad = [];
+  for (const f of files) {
+    const text = readFileSync(resolve(HERE, "..", f), "utf8");
+    for (const m of text.matchAll(spaced))
+      bad.push(`${f}: …${text.slice(Math.max(0, m.index - 30), m.index + 6)}…`);
+  }
+  expect(bad, "a space between a number and its % sign").toEqual([]);
+});

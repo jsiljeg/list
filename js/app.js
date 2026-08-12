@@ -1259,7 +1259,7 @@ function openDetail(ref, back, scope) {
       ${field(su.still, esc(slist(ins.still, "stills")))}
       ${field(su.cask, esc(slist(ins.cask, "casks")))}
       ${field(su.age, ins.age ? esc(ins.age) + " " + esc(su.years || "") : (ins.age === 0 ? esc(su.noAge || "") : ""))}
-      ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + " % vol." : "")}
+      ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + "% vol." : "")}
       ${/* Independent bottlings are half this shelf — the distillery made it,
             somebody else chose the cask and put their name on it. A company
             name is not translated, so this one is a plain string. */
@@ -1271,7 +1271,7 @@ function openDetail(ref, back, scope) {
       ${field(t.ui.grape, esc(localizeGrape(ins.grape)))}
       ${field(regionLabel, region)}
       ${field(t.ui.body, esc(t.bodies[ins.body] || ins.body))}
-      ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + " % vol." : "")}
+      ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + "% vol." : "")}
       ${/* Residual sugar, only where a producer publishes it for that exact
             vintage — the same rule as alcohol. It answers the question the
             sweetness word cannot: "slatko" covers everything from 46 g/l to
