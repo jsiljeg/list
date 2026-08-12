@@ -95,7 +95,7 @@ hr: {
     liqueur: "Likeri", beer: "Pivo", water: "Mineralna voda", tonic: "Tonik",
     juice: "Sokovi i bezalkoholna pića", coffee: "Kava"
   },
-  countries: { HR: "Hrvatska", DE: "Njemačka", AT: "Austrija", FR: "Francuska", IT: "Italija", ES: "Španjolska", SI: "Slovenija", US: "SAD", CN: "Kina", SCT: "Škotska", IE: "Irska", JP: "Japan", TW: "Tajvan", MX: "Meksiko", JM: "Jamajka", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australija", CH: "Švicarska", LV: "Latvija" },
+  countries: { HR: "Hrvatska", DE: "Njemačka", AT: "Austrija", FR: "Francuska", IT: "Italija", ES: "Španjolska", SI: "Slovenija", US: "SAD", CN: "Kina", SCT: "Škotska", ENG: "Engleska", IE: "Irska", JP: "Japan", TW: "Tajvan", MX: "Meksiko", JM: "Jamajka", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australija", CH: "Švicarska", LV: "Latvija" },
   styles: {
     sparkling: "Pjenušavo vino", sparkling_rose: "Pjenušavi rosé",
     champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs", champagne_bdn: "Champagne · Blanc de Noirs",
@@ -234,7 +234,7 @@ en: {
     liqueur: "Liqueurs", beer: "Beer", water: "Mineral water", tonic: "Tonic water",
     juice: "Juices & soft drinks", coffee: "Coffee"
   },
-  countries: { HR: "Croatia", DE: "Germany", AT: "Austria", FR: "France", IT: "Italy", ES: "Spain", SI: "Slovenia", US: "USA", CN: "China", SCT: "Scotland", IE: "Ireland", JP: "Japan", TW: "Taiwan", MX: "Mexico", JM: "Jamaica", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australia", CH: "Switzerland", LV: "Latvia" },
+  countries: { HR: "Croatia", DE: "Germany", AT: "Austria", FR: "France", IT: "Italy", ES: "Spain", SI: "Slovenia", US: "USA", CN: "China", SCT: "Scotland", ENG: "England", IE: "Ireland", JP: "Japan", TW: "Taiwan", MX: "Mexico", JM: "Jamaica", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australia", CH: "Switzerland", LV: "Latvia" },
   styles: {
     sparkling: "Sparkling wine", sparkling_rose: "Sparkling rosé",
     champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs", champagne_bdn: "Champagne · Blanc de Noirs",
@@ -373,7 +373,7 @@ it: {
     liqueur: "Liquori", beer: "Birra", water: "Acqua minerale", tonic: "Acqua tonica",
     juice: "Succhi e bibite", coffee: "Caffè"
   },
-  countries: { HR: "Croazia", DE: "Germania", AT: "Austria", FR: "Francia", IT: "Italia", ES: "Spagna", SI: "Slovenia", US: "Stati Uniti", CN: "Cina", SCT: "Scozia", IE: "Irlanda", JP: "Giappone", TW: "Taiwan", MX: "Messico", JM: "Giamaica", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australia", CH: "Svizzera", LV: "Lettonia" },
+  countries: { HR: "Croazia", DE: "Germania", AT: "Austria", FR: "Francia", IT: "Italia", ES: "Spagna", SI: "Slovenia", US: "Stati Uniti", CN: "Cina", SCT: "Scozia", ENG: "Inghilterra", IE: "Irlanda", JP: "Giappone", TW: "Taiwan", MX: "Messico", JM: "Giamaica", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australia", CH: "Svizzera", LV: "Lettonia" },
   styles: {
     sparkling: "Spumante", sparkling_rose: "Spumante rosato",
     champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs", champagne_bdn: "Champagne · Blanc de Noirs",
@@ -512,7 +512,7 @@ fr: {
     liqueur: "Liqueurs", beer: "Bière", water: "Eau minérale", tonic: "Tonic",
     juice: "Jus et boissons sans alcool", coffee: "Café"
   },
-  countries: { HR: "Croatie", DE: "Allemagne", AT: "Autriche", FR: "France", IT: "Italie", ES: "Espagne", SI: "Slovénie", US: "États-Unis", CN: "Chine", SCT: "Écosse", IE: "Irlande", JP: "Japon", TW: "Taïwan", MX: "Mexique", JM: "Jamaïque", HT: "Haïti", BB: "Barbade", GD: "Grenade", AU: "Australie", CH: "Suisse", LV: "Lettonie" },
+  countries: { HR: "Croatie", DE: "Allemagne", AT: "Autriche", FR: "France", IT: "Italie", ES: "Espagne", SI: "Slovénie", US: "États-Unis", CN: "Chine", SCT: "Écosse", ENG: "Angleterre", IE: "Irlande", JP: "Japon", TW: "Taïwan", MX: "Mexique", JM: "Jamaïque", HT: "Haïti", BB: "Barbade", GD: "Grenade", AU: "Australie", CH: "Suisse", LV: "Lettonie" },
   styles: {
     sparkling: "Vin effervescent", sparkling_rose: "Effervescent rosé",
     champagne: "Champagne", champagne_bdb: "Champagne · Blanc de Blancs", champagne_bdn: "Champagne · Blanc de Noirs",
@@ -651,7 +651,7 @@ de: {
     liqueur: "Liköre", beer: "Bier", water: "Mineralwasser", tonic: "Tonic Water",
     juice: "Säfte & Softdrinks", coffee: "Kaffee"
   },
-  countries: { HR: "Kroatien", DE: "Deutschland", AT: "Österreich", FR: "Frankreich", IT: "Italien", ES: "Spanien", SI: "Slowenien", US: "USA", CN: "China", SCT: "Schottland", IE: "Irland", JP: "Japan", TW: "Taiwan", MX: "Mexiko", JM: "Jamaika", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australien", CH: "Schweiz", LV: "Lettland" },
+  countries: { HR: "Kroatien", DE: "Deutschland", AT: "Österreich", FR: "Frankreich", IT: "Italien", ES: "Spanien", SI: "Slowenien", US: "USA", CN: "China", SCT: "Schottland", ENG: "England", IE: "Irland", JP: "Japan", TW: "Taiwan", MX: "Mexiko", JM: "Jamaika", HT: "Haiti", BB: "Barbados", GD: "Grenada", AU: "Australien", CH: "Schweiz", LV: "Lettland" },
   styles: {
     sparkling: "Schaumwein", sparkling_rose: "Rosé-Schaumwein",
     champagne: "Champagner", champagne_bdb: "Champagner · Blanc de Blancs", champagne_bdn: "Champagner · Blanc de Noirs",
@@ -790,7 +790,7 @@ zh: {
     liqueur: "利口酒", beer: "啤酒", water: "矿泉水", tonic: "汤力水",
     juice: "果汁与软饮", coffee: "咖啡"
   },
-  countries: { HR: "克罗地亚", DE: "德国", AT: "奥地利", FR: "法国", IT: "意大利", ES: "西班牙", SI: "斯洛文尼亚", US: "美国", CN: "中国", SCT: "苏格兰", IE: "爱尔兰", JP: "日本", TW: "台湾", MX: "墨西哥", JM: "牙买加", HT: "海地", BB: "巴巴多斯", GD: "格林纳达", AU: "澳大利亚", CH: "瑞士", LV: "拉脱维亚" },
+  countries: { HR: "克罗地亚", DE: "德国", AT: "奥地利", FR: "法国", IT: "意大利", ES: "西班牙", SI: "斯洛文尼亚", US: "美国", CN: "中国", SCT: "苏格兰", ENG: "英格兰", IE: "爱尔兰", JP: "日本", TW: "台湾", MX: "墨西哥", JM: "牙买加", HT: "海地", BB: "巴巴多斯", GD: "格林纳达", AU: "澳大利亚", CH: "瑞士", LV: "拉脱维亚" },
   styles: {
     sparkling: "起泡酒", sparkling_rose: "桃红起泡酒",
     champagne: "香槟", champagne_bdb: "香槟 · 白中白", champagne_bdn: "香槟 · 黑中白",
@@ -977,7 +977,7 @@ sl: {
     "SI": "Slovenija",
     "US": "ZDA",
     "CN": "Kitajska",
-    "SCT": "Škotska",
+    "SCT": "Škotska", "ENG": "Engleska",
     "IE": "Irska",
     "JP": "Japonska",
     "TW": "Tajvan",
@@ -1425,7 +1425,7 @@ es: {
     "SI": "Eslovenia",
     "US": "EE. UU.",
     "CN": "China",
-    "SCT": "Escocia",
+    "SCT": "Escocia", "ENG": "Inglaterra",
     "IE": "Irlanda",
     "JP": "Japón",
     "TW": "Taiwán",
