@@ -134,13 +134,16 @@ body {
    316 x 88 is the SVG's own width/height, so the reserved box is the real one
    at every width the media queries set. */
 .start-logo, .header-logo { aspect-ratio: 316 / 88; }
-.start-logo { width: min(340px, 70vw); height: auto; animation: logo-breathe 7s ease-in-out infinite; }
+/* The logo used to breathe — a 7s loop on opacity *and* an animated
+   drop-shadow. The shadow is the expensive half: a filter that changes every
+   frame forces the browser to re-rasterise the whole wordmark, and on a phone
+   that is where the owner kept seeing the logo "move and glitch for a moment",
+   even after the file itself went from 685 kB to 64 kB. A wordmark that
+   pulses is also the one thing on this screen that has no reason to move.
+   Static now, at the brightness the loop spent most of its time at. */
+.start-logo { width: min(340px, 70vw); height: auto; opacity: .92; }
 .clickable-logo { cursor: pointer; }
 .clickable-logo:active { transform: scale(.98); }
-@keyframes logo-breathe {
-  0%, 100% { opacity: .82; filter: drop-shadow(0 0 0 rgba(201,169,97,0)); }
-  50% { opacity: 1; filter: drop-shadow(0 0 22px rgba(201,169,97,.28)); }
-}
 .lang-prompt { display: flex; flex-direction: column; align-items: center; gap: .45rem; }
 .globe { color: var(--gold); line-height: 0; opacity: .9; }
 .globe svg { width: 32px; height: 32px; }
@@ -420,21 +423,21 @@ body {
    when the content below it changes. Centred, every step re-centred: the dish
    list is long, the budget question short, and the two answers differ whenever
    the glass shelf has fewer matches or a wine name wraps on a narrow phone. */
-.modal.helper-mode { align-items: flex-start; padding: 6vh 1rem 3vh; }
-@supports (height: 100svh) {
-  .modal.helper-mode { padding: 6svh 1rem 3svh; }
-}
-/* …but only where the sheet is a large part of the screen. On a phone it very
-   nearly fills the height, so anchoring costs nothing and guarantees the title
-   and the dish hold still from the first question to the answer. On a tablet or
-   a laptop the same sheet is half the window, and pinned near the top it reads
-   as a panel that failed to centre rather than as a dialogue — the owner said
-   so the day it shipped. The answers no longer change height on the flip
-   (see .helper-stack), so centring is safe again there: what remains is the
-   wizard moving between its own steps, which is a change of screen. */
-@media (min-width: 700px) {
-  .modal.helper-mode { align-items: center; padding: 1rem; }
-}
+/* Centred, on every device, with no breakpoint (2026-08-12).
+
+   It was top-anchored to stop the sheet moving on the bottle/glass flip, and
+   then centred again above 700px when that read as a panel pinned to the top.
+   The owner still saw it at the top on his tablet — and was right: a great many
+   Android tablets report **600dp** wide in portrait, under the breakpoint, so
+   they kept the anchored layout. Anything keyed to device width will keep
+   finding a device on the wrong side of it.
+
+   None of it is needed any more. The reason for anchoring was that the answer
+   changed height when you flipped it, and .helper-stack fixed that at the
+   source: both answers occupy one cell, so the box is the same box either way.
+   What is left is the wizard moving between its own steps — a long dish list,
+   then three budget buttons — and that is a change of screen, not a jump. */
+.modal.helper-mode { align-items: center; padding: 1rem; }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
 .modal.detail-mode .modal-sheet { height: 87vh; max-height: none; }
 /* Laptops and desktops: no fixed height at all. A pointer device has no
@@ -789,8 +792,15 @@ body {
   padding-top: 1.3rem; border-top: 1px solid var(--line);
 }
 .waiter-shelf {
+  display: flex; flex-direction: column; align-items: center; gap: .15rem;
   font-family: var(--sans); font-size: 1rem; letter-spacing: .14em;
   text-transform: uppercase; color: var(--text-dim);
+}
+/* The guest's own word, under the waiter's: present enough to recognise, quiet
+   enough that the line does not read as the same thing said twice. */
+.waiter-shelf-guest {
+  font-size: .72rem; letter-spacing: .1em; color: var(--text-faint);
+  text-transform: lowercase;
 }
 .waiter-price { font-family: var(--serif); font-size: 2.1rem; color: var(--gold); }
 /* Fills the space the reserved height leaves under a short answer. Quiet: it

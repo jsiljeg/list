@@ -1338,13 +1338,15 @@ function showWaiterCard(ref, back, scope) {
   const sec = DATA.sections[si];
   const item = sec.categories[ci].groups[gi].items[ii];
   const t = T();
-  /* Croatian alone, whatever the guest is reading (owner, 2026-08-12: in
-     English it said "čaša · glass"). The pair was meant to serve both readers
-     and served neither: to a guest it is a word they already read above in
-     their own language, and to the waiter the second half is noise — or, for a
-     Chinese guest, unreadable. This one line is the staff's, and the line above
-     it, in the guest's language, tells them so. */
-  const shelf = I18N.hr.ui[sec.id === "glass" ? "perGlass" : "perBottle"];
+  /* Croatian leads and the guest's own word follows it underneath, smaller —
+     rather than side by side with a dot between them, which is what read as a
+     duplicate in English ("čaša · glass"). Both readers are served and neither
+     is asked to skip past the other's half: the waiter reads the line, the
+     guest recognises the word under it. A Croatian guest sees one word, since
+     the two would be identical. */
+  const key = sec.id === "glass" ? "perGlass" : "perBottle";
+  const shelf = I18N.hr.ui[key];
+  const shelfGuest = lang === "hr" ? "" : t.ui[key];
   $("modal-body").innerHTML = `
     <button class="detail-back" type="button">${esc(t.ui.back)}</button>
     <div class="waiter">
@@ -1352,7 +1354,7 @@ function showWaiterCard(ref, back, scope) {
       <div class="waiter-name">${esc(itemName(item))}</div>
       ${item.producer ? `<div class="waiter-producer">${esc(item.producer)}</div>` : ""}
       <div class="waiter-line">
-        <span class="waiter-shelf">${esc(shelf)}</span>
+        <span class="waiter-shelf">${esc(shelf)}${shelfGuest ? `<span class="waiter-shelf-guest">${esc(shelfGuest)}</span>` : ""}</span>
         ${item.price != null ? `<span class="waiter-price">${fmtPrice(item.price)} €</span>` : ""}
       </div>
     </div>`;

@@ -153,7 +153,8 @@
     "pairings": [
      "poultry",
      "aperitif",
-     "seafood"
+     "seafood",
+     "foie_gras"
     ],
     "temp": "8–10",
     "alcohol": "12.5",
@@ -953,6 +954,7 @@
      "white_flowers"
     ],
     "pairings": [
+     "foie_gras",
      "cheese_blue",
      "desserts",
      "dark_chocolate"
@@ -10275,6 +10277,7 @@
      "white_flowers"
     ],
     "pairings": [
+     "foie_gras",
      "cheese_blue",
      "desserts",
      "dark_chocolate"
