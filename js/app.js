@@ -611,14 +611,24 @@ function itemHtml(item, ref, context, showFlag, aside) {
 /* Producer|name → the by-the-glass price, for the wines sold both ways. 24 of
    the 32 pours are, which is what makes the sommelier's glass offer work as a
    line on a bottle rather than as a second list. Rebuilt whenever DATA is,
-   since a wine can be 86'd off one shelf and not the other. */
+   since a wine can be 86'd off one shelf and not the other.
+
+   The format suffix is stripped from the key (2026-08-12). The Prošek is poured
+   as "Ruža Dalmatinska" and sold as "Ruža Dalmatinska – 0,375 l", which are the
+   same wine in two sizes — but as raw strings they are two different keys, so
+   the bottle row never showed "i na čašu" and, worse, the sommelier could not
+   tell that its glass answer was recommending a wine its bottle answer had
+   already recommended. That is the owner's "don't show me the same three
+   twice" (2026-08-12), and it was a string-matching bug rather than a policy. */
+const FORMAT_SUFFIX = /\s*[–—-]\s*\d+(?:[.,]\d+)?\s*l\s*$/i;
+const wineKey = (producer, name) => `${producer}|${String(name).replace(FORMAT_SUFFIX, "")}`;
 let GLASS_PRICE = null;
 function glassPrices() {
   if (GLASS_PRICE) return GLASS_PRICE;
   GLASS_PRICE = new Map();
   const sec = DATA.sections.find((s) => s.id === "glass");
   if (sec) for (const cat of sec.categories) for (const g of cat.groups) for (const it of g.items)
-    if (it && typeof it.price === "number") GLASS_PRICE.set(`${it.producer}|${it.name}`, it.price);
+    if (it && typeof it.price === "number") GLASS_PRICE.set(wineKey(it.producer, it.name), it.price);
   return GLASS_PRICE;
 }
 
@@ -2087,11 +2097,11 @@ function renderHelperResults(budgetKey) {
   const key = `${dishName(dish)}|${budgetKey}`;
   if (!helperState.picks || helperState.picks.key !== key) {
     const bottles = foodFirst(scored).slice(0, 3);
-    const twins = new Set(bottles.map((r) => `${r.item.producer}|${r.item.name}`)
+    const twins = new Set(bottles.map((r) => wineKey(r.item.producer, r.item.name))
                                  .filter((k) => glassPrices().has(k)));
     const pool = foodFirst(glasses);
-    const fresh = pool.filter((r) => !twins.has(`${r.item.producer}|${r.item.name}`));
-    const rest = pool.filter((r) => twins.has(`${r.item.producer}|${r.item.name}`));
+    const fresh = pool.filter((r) => !twins.has(wineKey(r.item.producer, r.item.name)));
+    const rest = pool.filter((r) => twins.has(wineKey(r.item.producer, r.item.name)));
     helperState.picks = { key, bottles, glasses: fresh.concat(rest).slice(0, 3) };
   }
   const rows = helperState.picks[byGlass ? "glasses" : "bottles"];
@@ -2147,7 +2157,7 @@ function renderHelperResults(budgetKey) {
   const answer = (rowsFor, glassMode, active) => {
     const rowsHtml = rowsFor.length
       ? rowsFor.map((r) => {
-          const also = !glassMode && gp.get(`${r.item.producer}|${r.item.name}`);
+          const also = !glassMode && gp.get(wineKey(r.item.producer, r.item.name));
           const aside = also ? `🍷 ${esc(t.ui.alsoByGlass)} ${esc(fmtPrice(also))} €` : "";
           return itemHtml(r.item, r.ref, "", true, aside);
         }).join("")

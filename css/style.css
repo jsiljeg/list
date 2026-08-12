@@ -787,7 +787,9 @@ body {
   text-transform: uppercase; color: var(--text-dim);
 }
 .waiter-line {
-  display: flex; align-items: baseline; justify-content: center; gap: 1.1rem;
+  /* centred, not baseline: the shelf is two stacked words now, and on a
+     baseline the price hung off the top of them */
+  display: flex; align-items: center; justify-content: center; gap: 1.1rem;
   flex-wrap: wrap; margin-top: 1.8rem;
   padding-top: 1.3rem; border-top: 1px solid var(--line);
 }
@@ -796,11 +798,13 @@ body {
   font-family: var(--sans); font-size: 1rem; letter-spacing: .14em;
   text-transform: uppercase; color: var(--text-dim);
 }
-/* The guest's own word, under the waiter's: present enough to recognise, quiet
-   enough that the line does not read as the same thing said twice. */
+/* The guest's own word, under the waiter's. Same case and same tracking as the
+   line above it — mixing BOCA with "bottle" made the pair read as two different
+   kinds of thing (owner, 2026-08-12). Only the size and the tone separate them,
+   which is what makes it one label with a hierarchy rather than two labels. */
 .waiter-shelf-guest {
-  font-size: .72rem; letter-spacing: .1em; color: var(--text-faint);
-  text-transform: lowercase;
+  font-size: .72rem; letter-spacing: .14em; color: var(--text-faint);
+  text-transform: uppercase;
 }
 .waiter-price { font-family: var(--serif); font-size: 2.1rem; color: var(--gold); }
 /* Fills the space the reserved height leaves under a short answer. Quiet: it
