@@ -42,10 +42,16 @@ export const STYLE_ORDER = {
     "veal", "asian"],
   white_aromatic: ["asian", "spicy", "asparagus", "salads", "cheese_fresh", "vegetables",
     "sushi", "white_fish", "seafood", "light_starters", "poultry"],
+  /* foie_gras sits at the end and is on exactly one mineral white: Zilliken's
+     Rausch Kabinett, which is 45 g/l of sugar at 8% alcohol. Mineral is what
+     a Saar Kabinett *is*, so the style is right and does not move (CLAUDE.md:
+     do not split a style because of one wine) — but the sweetness is real, and
+     the house's own Auslese carries the tag already. Last in the order, so the
+     card still opens on what the wine is usually poured for. */
   white_mineral: ["oysters", "shellfish", "white_fish", "seafood", "grilled_fish", "caviar",
     "sushi", "light_starters", "salads", "asparagus", "vegetables", "asian", "spicy", "cheese_fresh",
     "poultry", "white_meat", "risotto", "pasta", "veal", "pork", "mushrooms", "prosciutto",
-    "cheese_hard", "solo"],
+    "cheese_hard", "foie_gras", "solo"],
   white_rich: ["poultry", "white_fish", "truffles", "risotto", "mushrooms", "shellfish", "veal",
     "white_meat", "foie_gras", "cheese_hard", "seafood", "cheese_fresh", "salads", "vegetables",
     "pasta", "solo"],

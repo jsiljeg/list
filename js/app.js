@@ -2149,7 +2149,16 @@ function renderHelperResults(budgetKey) {
   const stack = `<div class="helper-stack">` +
     answer(helperState.picks.bottles, false, !byGlass) +
     answer(helperState.picks.glasses, true, byGlass) + `</div>`;
-  const flip = `<button class="helper-flip" type="button">🍷 ${esc(byGlass ? t.ui.ratherBottle : t.ui.ratherGlass)}</button>`;
+  /* Both labels live in the button, one on top of the other, and only the one
+     that applies is visible — the same trick as the answers above, and for the
+     same reason (owner, 2026-08-12: "the size of a frame for Radije na čašu and
+     Ipak bocu? are different"). A pill sized to its text is a different pill in
+     each direction, and no fixed width fixes it across eight languages, where
+     one pair is "Rather a glass?" / "A bottle after all?" and another is
+     "Plutôt un verre ?" / "Finalement une bouteille ?". Stacked, the button is
+     always as wide as the longer of *this* language's two, by itself. */
+  const flipLabel = (text, on) => `<span class="flip-lbl${on ? " on" : ""}">🍷 ${esc(text)}</span>`;
+  const flip = `<button class="helper-flip" type="button">${flipLabel(t.ui.ratherBottle, byGlass)}${flipLabel(t.ui.ratherGlass, !byGlass)}</button>`;
   $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${stack}${flip}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
   showModal("helper");
   $("modal-body").querySelector(".helper-flip").addEventListener("click", () => {

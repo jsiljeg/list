@@ -59,7 +59,13 @@ body {
   font-family: var(--sans);
   font-weight: 400;
   line-height: 1.5;
+  /* svh, not vh: on a phone 100vh is the *large* viewport — the height with
+     the address bar hidden — so a body sized to it is taller than what the
+     guest can see, the page becomes scrollable by that difference, and the
+     first flick both hides the bar and moves everything. The language screen
+     is locked to 100svh inside it, so the overflow was pure liability. */
   min-height: 100vh;
+  min-height: 100svh;
   /* The section-change animation slides the list 40px sideways. Without this
      the page grows a horizontal scrollbar for the length of the animation and
      the browser pans the whole screen along with the finger. */
@@ -418,6 +424,17 @@ body {
 @supports (height: 100svh) {
   .modal.helper-mode { padding: 6svh 1rem 3svh; }
 }
+/* …but only where the sheet is a large part of the screen. On a phone it very
+   nearly fills the height, so anchoring costs nothing and guarantees the title
+   and the dish hold still from the first question to the answer. On a tablet or
+   a laptop the same sheet is half the window, and pinned near the top it reads
+   as a panel that failed to centre rather than as a dialogue — the owner said
+   so the day it shipped. The answers no longer change height on the flip
+   (see .helper-stack), so centring is safe again there: what remains is the
+   wizard moving between its own steps, which is a change of screen. */
+@media (min-width: 700px) {
+  .modal.helper-mode { align-items: center; padding: 1rem; }
+}
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
 .modal.detail-mode .modal-sheet { height: 87vh; max-height: none; }
 /* Laptops and desktops: no fixed height at all. A pointer device has no
@@ -714,8 +731,13 @@ body {
   /* the producer line is uppercase; this is a sentence, not a name */
   text-transform: none; letter-spacing: normal;
 }
+/* One pill, two labels stacked in a single grid cell so its width is the wider
+   of them and the button does not change size when it is pressed. */
+.helper-flip .flip-lbl { grid-area: 1 / 1; visibility: hidden; white-space: nowrap; }
+.helper-flip .flip-lbl.on { visibility: visible; }
 .helper-flip {
-  display: block; margin: .9rem auto .2rem; padding: .5rem 1.1rem;
+  display: grid; justify-items: center; width: fit-content;
+  margin: .9rem auto .2rem; padding: .5rem 1.1rem;
   background: none; border: 1px solid var(--line); border-radius: 999px;
   color: var(--gold-soft); font-family: var(--sans); font-size: .9rem;
   cursor: pointer; transition: border-color .15s, color .15s;

@@ -556,7 +556,10 @@ test("changing the budget answers with bottles, even from the glass view", async
   const after = await sections();
   expect(after.length, "a new budget returned nothing").toBeGreaterThan(0);
   expect(after.every((s) => s.startsWith("bottle-")), `still on glasses after changing the budget: ${after}`).toBe(true);
-  await expect(page.locator(".helper-flip")).toContainText("čašu");
+  /* The visible label, not the button: since 2026-08-12 both labels are in the
+     DOM — stacked, so the pill is the same width in either direction — and the
+     button's textContent therefore always contains both. */
+  await expect(page.locator(".helper-flip .flip-lbl.on")).toContainText("čašu");
   expectClean(bag);
 });
 
