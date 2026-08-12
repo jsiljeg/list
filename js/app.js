@@ -185,7 +185,36 @@ function dropHidden(data, rules) {
 const fresh = (url) => fetch(url, { cache: "no-cache" });
 
 function init() {
-  Promise.all([
+  /* Before the data, not after it. primeFace() used to be called from
+     showStart(), i.e. once ~1 MB of JSON had arrived — so on a phone the
+     decode of the 1084x811 face began at the same moment the language buttons
+     appeared, and a guest who taps straight away out-runs it. Measured
+     2026-08-12 at 1.6 Mbps with a 4x CPU throttle: the bytes are there at
+     ~3s and the paint was landing ~1.4s after the tap. Started here, the
+     decode happens while the network is still busy and the guest is still
+     reading, which is CPU nobody is using. */
+  primeFace();
+  const idleReset = sessionStorage.getItem("idle-reset");
+  sessionStorage.removeItem("idle-reset");
+  const returning = !!(lang && I18N[lang] && !idleReset);
+
+  /* The language screen is painted *before* the data, not after it.
+
+     It used to wait for all six files — about 1 MB, of which the library alone
+     is 270 kB — even though it needs none of them: it is a logo, a line of
+     type and ten flags, all of it already in the HTML and the dictionaries.
+     Measured 2026-08-12 at 1.6 Mbps: the first screen appeared after 13.3
+     seconds. On the restaurant's own wifi it is 0.4s, which is why this went
+     unnoticed for so long — but the QR code puts this app on a guest's phone
+     on mobile data, and thirteen seconds of black is a guest who has put the
+     phone down.
+
+     (This is also the answer to "the face takes a while": it does not. The
+     image is finished before the language screen exists — 77ms against 367ms
+     on wifi, 3.2s against 13.3s throttled. What was late was everything.) */
+  if (!returning) showStart();
+
+  DATA_READY = Promise.all([
     fresh("library/wines.json").then((r) => r.json()),
     fresh("lists/theatrium.json").then((r) => r.json()),
     fresh("data/menu.json").then((r) => r.json()).catch(() => ({ courses: [], dishes: [] })),
@@ -202,12 +231,19 @@ function init() {
       PRODUCERS = pr.producers || {};
       REGIONS = rg.regions || [];
       currentSection = d.sections[0].id;
-      const idleReset = sessionStorage.getItem("idle-reset");
-      sessionStorage.removeItem("idle-reset");
-      if (lang && I18N[lang] && !idleReset) showApp(); else showStart();
+      /* A guest who reached the splash while the list was still arriving is
+         waiting on the Enter button; let them in the moment it lands. */
+      const enter = $("story-enter");
+      if (enter) enter.classList.remove("waiting");
+      if (returning) showApp();
+      else if (enterPending) { enterPending = false; showApp(); }
       startPolling();
   });
 }
+/* Resolves when the list is usable. Only the two paths into the app itself
+   wait on it — the language screen and the splash need nothing from it. */
+let DATA_READY = null;
+let enterPending = false;
 
 /* ---------- staying current while the tablet is in a guest's hands ----------
    The app used to read its data once, at load. A tablet on the charger picked a
@@ -369,12 +405,22 @@ function showStory() {
     t.story.paras.map((p) => `<p>${esc(p)}</p>`).join("") +
     `<div class="story-legend">${legendHtml()}</div>`;
   $("story-enter").textContent = t.ui.enter;
+  /* On a slow phone the guest can now reach the splash before the list has
+     arrived — that is the point of painting this early. The button says so
+     rather than swallowing the tap in silence, and lets them in the instant
+     the data lands. */
+  $("story-enter").classList.toggle("waiting", !DATA);
   window.scrollTo({ top: 0 });
 }
 
 /* ---------- main app ---------- */
 let appEntered = false;
 function showApp() {
+  /* The one place that genuinely needs the list. Reached with nothing loaded
+     only on a slow connection, where the guest has read the splash faster than
+     their phone could download 1 MB: remember the tap and honour it when the
+     data lands, rather than rendering an empty cellar. */
+  if (!DATA) { enterPending = true; return; }
   guardBack();
   appEntered = true;
   $("start").classList.add("hidden");
@@ -1175,6 +1221,13 @@ function openDetail(ref, back, scope) {
     ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(criticName(r.critic))}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
+    ${/* The one thing the card could not do: get the wine from the guest to the
+          waiter. Half of this list is unpronounceable to the guest reading it —
+          "Riesling Wehlener Sonnenuhr Auslese 2023 – 0,375 l" defeats anyone
+          who does not speak German, and we pour more than one Prüm, so
+          pointing at "the Prüm" is ambiguous. Sitting under the price on
+          purpose: that is where a guest decides. */
+      `<button class="detail-waiter" type="button">${esc(t.ui.showWaiter)}</button>`}
     <div class="detail-style">${spirit
       ? esc(spiritTerm("classes", ins.class))
       : esc(t.styles[ins.style] || "") + (ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : "") + (ins.sweetness && t.sweetness ? " · " + esc(t.sweetness[ins.sweetness] || ins.sweetness) : "")}</div>
@@ -1264,7 +1317,47 @@ function openDetail(ref, back, scope) {
   }
   showModal("detail");
   if (back) { const bb = $("modal-body").querySelector(".detail-back"); if (bb) bb.addEventListener("click", back); }
+  const wb = $("modal-body").querySelector(".detail-waiter");
+  if (wb) wb.addEventListener("click", () => showWaiterCard(ref, back, scope));
   setDetailNav(ref, back);
+}
+
+/* ---------- the card you hold up ----------
+   Everything a waiter needs to fetch the right bottle, in type readable across
+   a table, and nothing else: no aromas, no blurb, no scrolling.
+
+   Two languages on the shelf line, and only there. The wine's name, its
+   producer and its price are the same in every language — but "boca" is for
+   the waiter, who reads Croatian, while the guest chose German an hour ago and
+   should still recognise what they are holding up. So Croatian leads and the
+   guest's own word follows it, which costs one word and confuses nobody. The
+   instruction at the top is the other way round: it is addressed to the guest,
+   so it is in their language alone. */
+function showWaiterCard(ref, back, scope) {
+  const [si, ci, gi, ii] = ref.split(".").map(Number);
+  const sec = DATA.sections[si];
+  const item = sec.categories[ci].groups[gi].items[ii];
+  const t = T();
+  const staff = I18N.hr.ui;
+  const key = sec.id === "glass" ? "perGlass" : "perBottle";
+  const shelf = lang === "hr" ? staff[key] : `${staff[key]} · ${t.ui[key]}`;
+  $("modal-body").innerHTML = `
+    <button class="detail-back" type="button">${esc(t.ui.back)}</button>
+    <div class="waiter">
+      <div class="waiter-hint">${esc(t.ui.waiterHint)}</div>
+      <div class="waiter-name">${esc(itemName(item))}</div>
+      ${item.producer ? `<div class="waiter-producer">${esc(item.producer)}</div>` : ""}
+      <div class="waiter-line">
+        <span class="waiter-shelf">${esc(shelf)}</span>
+        ${item.price != null ? `<span class="waiter-price">${fmtPrice(item.price)} €</span>` : ""}
+      </div>
+    </div>`;
+  /* Its own frame: no ‹ › arrows (stepping to the next wine while a waiter is
+     reading it would be the worst possible time), and centred, because a card
+     held up should sit in the middle of the screen. */
+  showModal("waiter");
+  $("modal-body").querySelector(".detail-back")
+    .addEventListener("click", () => openDetail(ref, back, scope));
 }
 
 /* ---------- step between wines ---------- */
@@ -2004,32 +2097,69 @@ function renderHelperResults(budgetKey) {
      kitchen changes, and they tell the guest something they already know —
      they ordered the dish. What they cannot know is *why* these three wines.
      This line says it, in words already translated, from data already there. */
-  const why = rows.length
-    ? [...new Set(rows.flatMap((r) => (r.item.insight.pairings || [])
-        .filter((f) => (dish.pairings || []).includes(f))))]
-        .slice(0, 3).map((f) => t.pairings[f] || f)
-    : [];
   const forDish = helperState.dish
-    ? `<div class="helper-fordish">${esc(dishName(helperState.dish))}` +
-      (why.length ? `<span class="helper-why">${esc(t.ui.pairings.toLowerCase())}: ${esc(why.join(", "))}</span>` : "") +
-      `</div>`
+    ? `<div class="helper-fordish">${esc(dishName(helperState.dish))}</div>`
     : "";
-  const list = rows.length
-    ? rows.map((r) => {
-        const also = !byGlass && gp.get(`${r.item.producer}|${r.item.name}`);
-        const aside = also ? `🍷 ${esc(t.ui.alsoByGlass)} ${esc(fmtPrice(also))} €` : "";
-        return itemHtml(r.item, r.ref, "", true, aside);
-      }).join("")
-    : `<p class="no-results">${t.ui.noResults}</p>`;
+  /* Both answers are rendered, one on top of the other in a single grid cell,
+     and the one you are not reading is `visibility: hidden` — still there, so
+     it still counts towards the height, but untouchable and invisible.
+
+     The owner's call, 2026-08-12: the bottom edge must not move either. A flip
+     changes the wines and nothing else — same box, same borders, and
+     "Promijeni budžet" / "Odaberi drugo jelo" exactly where the thumb left
+     them. Anchoring the top had fixed the worst of it, but a one-wine glass
+     answer under a three-wine bottle answer still dragged those two buttons
+     280px up the screen.
+
+     Stacking rather than measuring, because CSS takes the maximum of the two
+     for us: no second render, no stored heights, and it is right on the *first*
+     paint instead of after a flip has taught it the other height. The price is
+     dark space under the shorter answer, and that is the trade — a frame that
+     holds still is worth more than a box that hugs its contents. */
+  const tallest = Math.max(helperState.picks.bottles.length, helperState.picks.glasses.length);
+  const answer = (rowsFor, glassMode, active) => {
+    /* Under the dish, the foods these suggestions actually share with it. It
+       belongs to the answer and not to the dish: bottles and glasses can match
+       on different foods, so this line changes with the flip, which means it
+       had to move inside the stack along with everything else that does. */
+    const why = rowsFor.length
+      ? [...new Set(rowsFor.flatMap((r) => (r.item.insight.pairings || [])
+          .filter((f) => (dish.pairings || []).includes(f))))]
+          .slice(0, 3).map((f) => t.pairings[f] || f)
+      : [];
+    const rowsHtml = rowsFor.length
+      ? rowsFor.map((r) => {
+          const also = !glassMode && gp.get(`${r.item.producer}|${r.item.name}`);
+          const aside = also ? `🍷 ${esc(t.ui.alsoByGlass)} ${esc(fmtPrice(also))} €` : "";
+          return itemHtml(r.item, r.ref, "", true, aside);
+        }).join("")
+      : `<p class="no-results">${t.ui.noResults}</p>`;
+    /* Where this answer is shorter than the other one, the reserved height
+       leaves dark space under it — and a hole under one wine reads as
+       something that failed to load. One quiet line says what the space
+       actually means: this is the whole answer, not a truncated one. The
+       extreme is rare (three bottles against a single glass of Riesling for
+       foie gras) but that is exactly where the emptiness shouts loudest. */
+    const short = rowsFor.length && rowsFor.length < tallest;
+    return `<div class="helper-answer${active ? "" : " off"}"${active ? "" : ' aria-hidden="true"'}>` +
+      (why.length ? `<span class="helper-why">${esc(t.ui.pairings.toLowerCase())}: ${esc(why.join(", "))}</span>` : "") +
+      rowsHtml +
+      (short ? `<p class="helper-allshown">${esc(t.ui.allShown)}</p>` : "") + `</div>`;
+  };
+  const stack = `<div class="helper-stack">` +
+    answer(helperState.picks.bottles, false, !byGlass) +
+    answer(helperState.picks.glasses, true, byGlass) + `</div>`;
   const flip = `<button class="helper-flip" type="button">🍷 ${esc(byGlass ? t.ui.ratherBottle : t.ui.ratherGlass)}</button>`;
-  $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${list}${flip}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
+  $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>${forDish}${stack}${flip}<div class="helper-nav"><button class="helper-opt helper-budget" type="button">${esc(t.helper.changeBudget)}</button><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
   showModal("helper");
   $("modal-body").querySelector(".helper-flip").addEventListener("click", () => {
     helperState.mode = byGlass ? "bottle" : "glass";
     renderHelperResults(budgetKey);
   });
   const scope = rows.map((r) => r.ref);
-  $("modal-body").querySelectorAll(".item.clickable").forEach((b) =>
+  /* Only the answer on top: the hidden one cannot be tapped anyway, but its
+     wines must not join the ‹ › stepping set either. */
+  $("modal-body").querySelectorAll(".helper-answer:not(.off) .item.clickable").forEach((b) =>
     b.addEventListener("click", () =>
       openDetail(b.dataset.ref, () => renderHelperResults(budgetKey), scope))
   );

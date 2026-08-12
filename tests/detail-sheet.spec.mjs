@@ -9,7 +9,7 @@
    The overlap bugs came back three separate times, each on a viewport nobody
    checked, so these run on all three. */
 import { test, expect } from "@playwright/test";
-import { openApp, expectClean, openWine, box, overlaps } from "./helpers.mjs";
+import { openApp, expectClean, openWine, pickSection, box, overlaps } from "./helpers.mjs";
 
 /* Wines chosen to cover the shapes that broke before: a long name with a full
    row of critic scores, a short name with nothing at all, the tallest glass in
@@ -158,4 +158,55 @@ test("Escape and the ✕ both close the card", async ({ page }) => {
   await openWine(page, "Meursault");
   await page.locator(".modal-close").click();
   await expect(page.locator("#modal")).toHaveClass(/hidden/);
+});
+
+test("the card you hold up says what to order and nothing else", async ({ page }) => {
+  /* Added 2026-08-12 (owner asked how a guest tells the waiter which wine).
+     Half this list is unpronounceable to the guest reading it, and we pour
+     more than one Prüm, so "the Prüm" is ambiguous. The card carries the four
+     things an order needs — producer, wine, shelf, price — in type that reads
+     across a table.
+
+     The shelf word is the one thing that is deliberately bilingual: it is read
+     by the waiter, who reads Croatian, while the guest may have chosen German
+     an hour ago. Croatian leads, the guest's own word follows. */
+  const bag = await openApp(page, { lang: "de" });
+  await openWine(page, "Wehlener Sonnenuhr");
+  const card = await page.evaluate(() => {
+    const q = (s) => document.querySelector(s);
+    return {
+      name: q(".detail-name").textContent.trim(),
+      producer: q(".detail-producer") ? q(".detail-producer").textContent.trim() : "",
+      price: q(".detail-price") ? q(".detail-price").textContent.trim() : ""
+    };
+  });
+
+  await page.locator(".detail-waiter").click();
+  await expect(page.locator(".waiter-name")).toBeVisible();
+  await expect(page.locator(".waiter-name")).toHaveText(card.name);
+  await expect(page.locator(".waiter-producer")).toHaveText(card.producer);
+  await expect(page.locator(".waiter-price")).toHaveText(card.price);
+  /* Croatian first for the waiter, German second for the guest who is holding
+     it up — a bottle from a bottle section. */
+  await expect(page.locator(".waiter-shelf")).toHaveText(/boca\s·\sFlasche/i);
+  /* Nothing to step onto while somebody else is reading it. */
+  expect(await page.locator(".modal-nav:not(.hidden)").count(),
+    "the ‹ › arrows are live on the card held up to a waiter").toBe(0);
+
+  await page.locator(".detail-back").click();
+  await expect(page.locator(".detail-name"), "no way back to the wine").toHaveText(card.name);
+  expectClean(bag);
+});
+
+test("a wine by the glass says so on the card held up", async ({ page }) => {
+  /* The shelf line is read off the section the guest opened the wine from, so
+     the same wine says "boca" from the bottle list and "čaša" from the glass
+     list — which is the distinction the waiter needs and the one an 86 already
+     makes (data/unavailable.json takes a `where`). */
+  await openApp(page);
+  await pickSection(page, "čašu");
+  await page.locator("#content .item").first().click();
+  await expect(page.locator(".detail-name")).toBeVisible();
+  await page.locator(".detail-waiter").click();
+  await expect(page.locator(".waiter-shelf")).toHaveText(/čaša/i);
 });

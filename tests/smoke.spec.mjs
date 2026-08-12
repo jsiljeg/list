@@ -103,3 +103,46 @@ test("the regions view renders", async ({ page }) => {
   await expect(page.locator(".region-app").first()).toBeVisible();
   expectClean(bag);
 });
+
+test("the language screen does not wait for the wine list", async ({ page }) => {
+  /* Added 2026-08-12. init() used to paint nothing until all six data files
+     had arrived — about 1 MB, of which the library alone is 270 kB — although
+     the language screen needs none of them: a logo, one line of type and ten
+     flags, all already in the HTML and the dictionaries. Measured at 1.6 Mbps
+     the first screen appeared after 13.3 seconds; on the restaurant's wifi it
+     is 0.4s, which is how it went unnoticed. The QR code puts this app on a
+     guest's phone on mobile data, and thirteen seconds of black is a guest who
+     has put the phone down.
+
+     Held here by stalling the library rather than by throttling, so the test
+     asserts the ordering itself and cannot go quiet if a timing changes. */
+  let release;
+  const held = new Promise((r) => { release = r; });
+  await page.route("**/library/wines.json", async (route) => {
+    await held;
+    await route.continue();
+  });
+
+  await page.goto("/index.html", { waitUntil: "commit" });
+  await page.evaluate(() => localStorage.removeItem("theatrium-lang"));
+  await page.goto("/index.html", { waitUntil: "commit" });
+
+  /* The list is still stalled at this point — the screen must be up anyway. */
+  await expect(page.locator(".lang-btn").first(),
+    "the language screen waited for the wine list").toBeVisible({ timeout: 8000 });
+  await expect(page.locator("#lang-buttons .lang-btn")).toHaveCount(8);
+
+  /* A guest who is quicker than their connection reaches the splash, and the
+     Enter button says it is waiting rather than swallowing the tap. */
+  await page.locator(".lang-btn").first().click();
+  await expect(page.locator("#story-enter")).toBeVisible();
+  await expect(page.locator("#story-enter"), "no sign the list is still coming")
+    .toHaveClass(/waiting/);
+  await page.locator("#story-enter").click();
+  await expect(page.locator("#app"), "an empty cellar was rendered").toHaveClass(/hidden/);
+
+  /* …and the tap is honoured the moment the list lands. */
+  release();
+  await expect(page.locator("#app"), "the remembered tap was never honoured").not.toHaveClass(/hidden/);
+  await expect(page.locator("#content .item").first()).toBeVisible();
+});

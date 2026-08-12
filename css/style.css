@@ -43,6 +43,15 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+/* Kiosk manners (2026-08-12). None of this locks a tablet down — only the OS
+   can do that — but each removes one thing that invites a guest out of the
+   list. A long press used to raise Android's "copy / search the web" bar and
+   iOS's callout, both of which are a door out; a double tap zoomed the page
+   and left it zoomed; and a pull past the top reloaded it. Text selection
+   stays on where text is typed. */
+body, #app, .start, .modal { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+input, textarea { -webkit-user-select: text; user-select: text; }
+button, .item, .chip, a { touch-action: manipulation; }
 html { font-size: 17px; }
 body {
   background: var(--bg);
@@ -55,7 +64,10 @@ body {
      the page grows a horizontal scrollbar for the length of the animation and
      the browser pans the whole screen along with the finger. */
   overflow-x: hidden;
-  overscroll-behavior-x: none;
+  /* Both axes: sideways stops the section animation panning the page, and
+     downwards stops a pull past the top from reloading the list under a guest
+     who was only scrolling back up. */
+  overscroll-behavior: none;
 }
 .hidden { display: none !important; }
 
@@ -587,6 +599,12 @@ body {
   letter-spacing: .04em; cursor: pointer;
   transition: transform .1s, filter .15s;
 }
+/* The list is still on its way — only ever seen on a slow phone, and only
+   because the splash now paints without waiting for it. Dimmed and quietly
+   breathing: the tap is remembered and honoured the moment the data lands. */
+.enter-btn.waiting { opacity: .55; animation: enter-wait 1.6s ease-in-out infinite; }
+@keyframes enter-wait { 0%, 100% { opacity: .45; } 50% { opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .enter-btn.waiting { animation: none; } }
 .enter-btn:hover { filter: brightness(1.08); }
 .enter-btn:active { transform: scale(.97); }
 .detail-ratings {
@@ -650,8 +668,16 @@ body {
 .helper-course:first-of-type { margin-top: .3rem; }
 .helper-fordish {
   font-family: var(--serif); font-style: italic; color: var(--gold);
-  font-size: 1.15rem; margin-bottom: 1rem;
+  font-size: 1.15rem; margin-bottom: .5rem;
 }
+/* The bottle answer and the glass answer share one grid cell, so the block is
+   as tall as the taller of them and the flip button and the two nav buttons
+   below never move (owner, 2026-08-12). `visibility: hidden` rather than
+   `display: none` is the whole trick — hidden children still occupy the cell,
+   which is what keeps the height honest. */
+.helper-stack { display: grid; }
+.helper-answer { grid-area: 1 / 1; align-self: start; }
+.helper-answer.off { visibility: hidden; pointer-events: none; }
 /* "Vina na čašu" / "Na bocu" over the two halves of a suggestion. Quieter than
    .helper-course, which titles the dish picker — here it separates two answers
    to one question rather than naming a section. */
@@ -680,11 +706,59 @@ body {
 .helper-flip:hover, .helper-flip:focus-visible {
   border-color: var(--gold-soft); color: var(--text); outline: none;
 }
-/* Why these three: the foods the suggestions share with the dish. */
+/* Why these three: the foods the suggestions share with the dish. It sits
+   inside the answer rather than under the dish name, because the bottles and
+   the glasses can share different foods — so it changes with the flip, and
+   everything that changes with the flip lives in the stack. */
 .helper-why {
-  display: block; margin-top: .2rem;
+  display: block; margin: 0 0 .7rem;
   font-family: var(--sans); font-style: normal;
   font-size: .8rem; color: var(--text-faint); letter-spacing: .01em;
+}
+/* ---------- "Pokaži konobaru" ---------- */
+/* On the wine card, under the price. Outlined rather than filled: it is an
+   offer, not the point of the card. */
+.detail-waiter {
+  display: block; width: 100%; margin: .1rem 0 1.1rem; padding: .7rem 1rem;
+  background: none; border: 1px solid var(--line); border-radius: 12px;
+  color: var(--gold-soft); font-family: var(--sans); font-size: .95rem;
+  letter-spacing: .02em; cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+@media (hover: hover) {
+  .detail-waiter:hover { border-color: var(--gold-soft); color: var(--text); }
+}
+.detail-waiter:focus-visible { border-color: var(--gold); color: var(--text); outline: none; }
+/* The card itself, read across a table by someone standing up: everything is
+   sized for a metre away, and there is nothing on it that is not the order. */
+.waiter { text-align: center; padding: 1.2rem 0 .6rem; }
+.waiter-hint {
+  font-family: var(--sans); font-size: .82rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--text-faint); margin-bottom: 1.6rem;
+}
+.waiter-name {
+  font-family: var(--serif); font-size: clamp(2rem, 7vw, 2.9rem); line-height: 1.15;
+  color: var(--text); margin-bottom: .5rem;
+}
+.waiter-producer {
+  font-family: var(--sans); font-size: 1.05rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+.waiter-line {
+  display: flex; align-items: baseline; justify-content: center; gap: 1.1rem;
+  flex-wrap: wrap; margin-top: 1.8rem;
+  padding-top: 1.3rem; border-top: 1px solid var(--line);
+}
+.waiter-shelf {
+  font-family: var(--sans); font-size: 1rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--text-dim);
+}
+.waiter-price { font-family: var(--serif); font-size: 2.1rem; color: var(--gold); }
+/* Fills the space the reserved height leaves under a short answer. Quiet: it
+   is a fact about the cellar, not an apology. */
+.helper-allshown {
+  margin-top: .8rem; text-align: center;
+  font-family: var(--sans); font-size: .82rem; color: var(--text-faint);
 }
 .helper .item { border-radius: 12px; background: var(--bg-card); margin-bottom: .6rem; border: 1px solid var(--line); }
 .helper .item + .item { border-top: 1px solid var(--line); }

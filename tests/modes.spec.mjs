@@ -140,13 +140,13 @@ test("food recommendations: the three picks open, and stepping stays inside them
   await page.waitForTimeout(400);
 
   const picks = await page.evaluate(() =>
-    [...document.querySelectorAll("#modal-body .item")].map((el) => {
+    [...document.querySelectorAll("#modal-body .helper-answer:not(.off) .item")].map((el) => {
       const n = el.querySelector("strong, .item-name");
       return (n ? n.textContent : el.textContent).trim();
     }));
   expect(picks.length, "the sommelier suggested nothing").toBeGreaterThan(0);
 
-  await page.locator("#modal-body .item").first().click();
+  await page.locator("#modal-body .helper-answer:not(.off) .item").first().click();
   await expect(page.locator(".detail-name")).toBeVisible();
   await page.waitForTimeout(300);
 
@@ -176,12 +176,12 @@ test("food recommendations: there is a way back to the wines", async ({ page }) 
   await page.waitForTimeout(300);
   await page.locator(".helper-opt[data-k]").first().click();
   await page.waitForTimeout(400);
-  await page.locator("#modal-body .item").first().click();
+  await page.locator("#modal-body .helper-answer:not(.off) .item").first().click();
   await page.waitForTimeout(300);
   await expect(page.locator(".detail-back"), "no way back to the shortlist").toBeVisible();
   await page.locator(".detail-back").click();
   await page.waitForTimeout(400);
-  await expect(page.locator("#modal-body .item").first()).toBeVisible();
+  await expect(page.locator("#modal-body .helper-answer:not(.off) .item").first()).toBeVisible();
 });
 
 /* ---------- the categories are a bounded set ---------- */
@@ -261,7 +261,7 @@ test("the sommelier answers in one list, and offers the glass quietly", async ({
      poured by the glass, and one link to flip the whole answer over. */
   const bag = await openApp(page);
   const sectionOf = () => page.evaluate(() =>
-    [...document.querySelectorAll(".helper .item[data-ref]")].map((el) =>
+    [...document.querySelectorAll(".helper-answer:not(.off) .item[data-ref]")].map((el) =>
       DATA.sections[Number(el.dataset.ref.split(".")[0])].id));
 
   await page.locator("#helper-open").click();
@@ -300,20 +300,43 @@ test("the sommelier's sheet stays where the guest left it", async ({ page }) => 
      had just tapped it. The wizard's own steps did it too: the dish list is
      long and the budget question is three buttons.
 
-     One pixel of tolerance for sub-pixel layout; the bug was two orders of
+     Anchoring the top was the first fix and it was not enough (owner, same
+     day): the bottom edge still moved, so the flip button and the two nav
+     buttons under it slid up to 280px. Both answers are now rendered into one
+     grid cell with the inactive one hidden, so the box is as tall as the
+     taller answer and *nothing* moves. This test therefore measures the whole
+     frame — top, bottom, and the "Odaberi drugo jelo" button — not just the
+     top edge.
+
+     Two pixels of tolerance for sub-pixel layout; the bug was two orders of
      magnitude bigger than that. */
   const bag = await openApp(page);
-  const sheetTop = () => page.evaluate(() =>
-    Math.round(document.querySelector("#modal-sheet").getBoundingClientRect().top));
-  const held = async (was, what) =>
-    expect(Math.abs((await sheetTop()) - was), what).toBeLessThanOrEqual(2);
+  const frame = () => page.evaluate(() => {
+    const r = document.querySelector("#modal-sheet").getBoundingClientRect();
+    const nav = document.querySelector(".helper-again");
+    return {
+      top: Math.round(r.top), bottom: Math.round(r.bottom),
+      nav: nav ? Math.round(nav.getBoundingClientRect().top) : null
+    };
+  });
+  const sheetTop = async () => (await frame()).top;
+  const held = async (was, what) => {
+    const now = await frame();
+    expect(Math.abs(now.top - was.top), `${what} (top edge)`).toBeLessThanOrEqual(2);
+    if (was.bottom != null && now.bottom != null)
+      expect(Math.abs(now.bottom - was.bottom), `${what} (bottom edge)`).toBeLessThanOrEqual(2);
+    if (was.nav != null && now.nav != null)
+      expect(Math.abs(now.nav - was.nav), `${what} ("Odaberi drugo jelo" moved)`).toBeLessThanOrEqual(2);
+  };
 
   await page.locator("#helper-open").click();
   await page.locator(".helper-opt[data-dish]").first().waitFor();
   /* Past the sheet's own 220ms entry animation, which slides it up 24px — read
      during it, the anchor is 24px low and everything after it "moves". */
   await page.waitForTimeout(400);
-  const anchor = await sheetTop();
+  /* Across the wizard's own steps only the top is comparable: a dish list and
+     three budget buttons are honestly different lengths. */
+  const anchor = { top: await sheetTop(), bottom: null, nav: null };
 
   await page.locator(".helper-opt[data-dish]", { hasText: "Foie gras" }).first().click();
   await page.waitForTimeout(300);
@@ -322,14 +345,16 @@ test("the sommelier's sheet stays where the guest left it", async ({ page }) => 
   await page.locator(".helper-opt[data-k='b2']").click();
   await page.waitForTimeout(400);
   await held(anchor, "the sheet moved when the suggestions arrived");
+  /* From here the whole frame must hold: same dish, same budget, same box. */
+  const answer = await frame();
 
   await page.locator(".helper-flip").click();
   await page.waitForTimeout(400);
-  await held(anchor, "the sheet moved on the flip to glasses");
+  await held(answer, "the frame moved on the flip to glasses");
 
   await page.locator(".helper-flip").click();
   await page.waitForTimeout(400);
-  await held(anchor, "the sheet moved on the flip back to bottles");
+  await held(answer, "the frame moved on the flip back to bottles");
 
   /* The bottom edge does still move — a one-wine answer is shorter than a
      three-wine one — so the tap that flipped the list can end up over the
@@ -435,7 +460,7 @@ test("coming back from a wine restores the sommelier's own frame", async ({ page
   expect(before.helper, "the suggestions should be in the sommelier's own frame").toBe(true);
   expect(before.arrows, "no stepping arrows over the suggestions").toBe(0);
 
-  await page.locator(".helper .item.clickable").first().click();
+  await page.locator(".helper-answer:not(.off) .item.clickable").first().click();
   await page.waitForTimeout(500);
   expect((await frame()).detail, "a wine card should be in detail mode").toBe(true);
 
@@ -459,7 +484,7 @@ test("the flip is a toggle, not a reroll, and offers different wines", async ({ 
      wines again. */
   await openApp(page);
   const shown = () => page.evaluate(() =>
-    [...document.querySelectorAll(".helper .item")].map((e) => ({
+    [...document.querySelectorAll(".helper-answer:not(.off) .item")].map((e) => ({
       id: (e.querySelector(".item-producer")?.childNodes[0].textContent.trim() || "") + "|" +
           e.querySelector(".item-name").textContent.trim(),
       aside: !!e.querySelector(".item-aside")
@@ -514,7 +539,7 @@ test("changing the budget answers with bottles, even from the glass view", async
      changed nothing on screen. It reads as the app ignoring you. */
   const bag = await openApp(page);
   const sections = () => page.evaluate(() =>
-    [...document.querySelectorAll(".helper .item[data-ref]")].map((el) =>
+    [...document.querySelectorAll(".helper-answer:not(.off) .item[data-ref]")].map((el) =>
       DATA.sections[Number(el.dataset.ref.split(".")[0])].id));
 
   await page.locator("#helper-open").click();
@@ -553,7 +578,7 @@ test("the same dish does not always get the same three bottles", async ({ page }
     await page.locator(".helper-opt[data-dish]", { hasText: "Sirloin steak" }).click();
     await page.locator(".helper-opt[data-k='b2']").click();
     await page.waitForTimeout(120);
-    for (const n of await page.locator(".helper .item-name").allTextContents()) seen.add(n.trim());
+    for (const n of await page.locator(".helper-answer:not(.off) .item-name").allTextContents()) seen.add(n.trim());
     await page.keyboard.press("Escape");
     await page.waitForTimeout(80);
   }
@@ -586,7 +611,7 @@ test("a suggested wine names the food on its own card", async ({ page }) => {
       await page.waitForTimeout(120);
       const rows = await page.evaluate((name) => {
         const d = MENU.dishes.find((x) => x.name.hr === name);
-        return [...document.querySelectorAll(".helper .item[data-ref]")].map((el) => {
+        return [...document.querySelectorAll(".helper-answer:not(.off) .item[data-ref]")].map((el) => {
           const [si, ci, gi, ii] = el.dataset.ref.split(".").map(Number);
           const it = DATA.sections[si].categories[ci].groups[gi].items[ii];
           return { n: `${it.producer} — ${it.name}`,
