@@ -210,3 +210,29 @@ test("a wine by the glass says so on the card held up", async ({ page }) => {
   await page.locator(".detail-waiter").click();
   await expect(page.locator(".waiter-shelf")).toHaveText(/čaša/i);
 });
+
+test("a wine does not stay lit after the card is closed with Esc", async ({ page }) => {
+  /* Guards 2026-08-12 (owner, on a laptop): a wine came back from its card with
+     a grey rectangle around it. Not the latched :hover this time — that one was
+     fixed the same day and needs a touch screen. This is `:focus-visible`: a
+     click leaves the row focused and does not match it, but closing with Esc is
+     a keyboard interaction, and at that point the browser switches modality and
+     lights the element that still holds focus. The sheet now lets go of its
+     opener when it opens. */
+  await openApp(page);
+  await page.locator("#content .item").first().click();
+  await expect(page.locator(".detail-name")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#modal")).toHaveClass(/hidden/);
+  await page.waitForTimeout(200);
+  const lit = await page.evaluate(() => {
+    const el = document.activeElement;
+    return {
+      focusedItem: !!(el && el.classList && el.classList.contains("item")),
+      anyVisible: [...document.querySelectorAll("#content .item")]
+        .filter((i) => i.matches(":focus-visible")).length
+    };
+  });
+  expect(lit.focusedItem, "the row that opened the card still holds focus").toBe(false);
+  expect(lit.anyVisible, "a row is still drawn as focused").toBe(0);
+});

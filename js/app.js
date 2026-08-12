@@ -1513,6 +1513,16 @@ function showModal(kind) {
      a guest who means to leave is never that fast, and ✕, Esc and the back
      button are unaffected. */
   if (kind === "helper") helperDrawnAt = Date.now();
+  /* Let go of the row that opened this. A click leaves the button focused, and
+     `:focus-visible` does not match a mouse click — until the guest touches the
+     keyboard, which closing with Esc *is*. At that moment the browser switches
+     to keyboard modality and the still-focused row lights up, so the wine you
+     just read comes back with a grey rectangle around it (owner, on a laptop,
+     2026-08-12). Phones and tablets never showed it because they have no Esc.
+     The latched-`:hover` bug looked identical and was a different cause; this
+     is the other half of it. */
+  const opener = document.activeElement;
+  if (opener && opener !== document.body && typeof opener.blur === "function") opener.blur();
   if (ms) { ms.style.transform = ""; ms.style.transition = ""; }
   $("modal").classList.remove("hidden");
   // Reset the scroll only *after* the sheet is visible again: while the modal

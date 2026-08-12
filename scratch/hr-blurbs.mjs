@@ -15,7 +15,7 @@ const keyFor = (name) => {
 const hr = new Map();
 const walk = (n) => {
   if (!n || typeof n !== "object") return;
-  if (n.insight && n.producer && n.insight.country === "HR") {
+  if (n.insight && n.producer && n.insight.country === "FR") {
     const k = keyFor(n.producer);
     if (k && !hr.has(k)) hr.set(k, { key: k, producer: n.producer, wines: 0 });
     if (k) hr.get(k).wines++;
