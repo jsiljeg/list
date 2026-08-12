@@ -1338,9 +1338,13 @@ function showWaiterCard(ref, back, scope) {
   const sec = DATA.sections[si];
   const item = sec.categories[ci].groups[gi].items[ii];
   const t = T();
-  const staff = I18N.hr.ui;
-  const key = sec.id === "glass" ? "perGlass" : "perBottle";
-  const shelf = lang === "hr" ? staff[key] : `${staff[key]} · ${t.ui[key]}`;
+  /* Croatian alone, whatever the guest is reading (owner, 2026-08-12: in
+     English it said "čaša · glass"). The pair was meant to serve both readers
+     and served neither: to a guest it is a word they already read above in
+     their own language, and to the waiter the second half is noise — or, for a
+     Chinese guest, unreadable. This one line is the staff's, and the line above
+     it, in the guest's language, tells them so. */
+  const shelf = I18N.hr.ui[sec.id === "glass" ? "perGlass" : "perBottle"];
   $("modal-body").innerHTML = `
     <button class="detail-back" type="button">${esc(t.ui.back)}</button>
     <div class="waiter">
@@ -2117,16 +2121,28 @@ function renderHelperResults(budgetKey) {
      dark space under the shorter answer, and that is the trade — a frame that
      holds still is worth more than a box that hugs its contents. */
   const tallest = Math.max(helperState.picks.bottles.length, helperState.picks.glasses.length);
+  /* The foods the suggestions share with the dish — and the *same* foods in
+     both directions (owner, 2026-08-12: "when I toggle, the description in
+     'uz jela' changes — shouldn't it be the same?").
+
+     It was computed per answer, which was accurate and wrong: the bottles and
+     the glasses can share different foods with the dish, so the line rewrote
+     itself on a tap that was only supposed to swap the wines, and a line that
+     changes when you did not ask it to reads as instability rather than as
+     information. It is now taken from both answers at once, in the dish's own
+     order, so every word is still backed by a wine that is on offer — and it
+     holds still.
+
+     Ordered by the dish rather than by the wines, because the dish's list is
+     the one that does not depend on which three wines the tie-break picked. */
+  const shown = new Set([...helperState.picks.bottles, ...helperState.picks.glasses]
+    .flatMap((r) => r.item.insight.pairings || []));
+  const why = (dish.pairings || []).filter((f) => shown.has(f))
+    .slice(0, 3).map((f) => t.pairings[f] || f);
+  const whyHtml = why.length
+    ? `<span class="helper-why">${esc(t.ui.pairings.toLowerCase())}: ${esc(why.join(", "))}</span>`
+    : "";
   const answer = (rowsFor, glassMode, active) => {
-    /* Under the dish, the foods these suggestions actually share with it. It
-       belongs to the answer and not to the dish: bottles and glasses can match
-       on different foods, so this line changes with the flip, which means it
-       had to move inside the stack along with everything else that does. */
-    const why = rowsFor.length
-      ? [...new Set(rowsFor.flatMap((r) => (r.item.insight.pairings || [])
-          .filter((f) => (dish.pairings || []).includes(f))))]
-          .slice(0, 3).map((f) => t.pairings[f] || f)
-      : [];
     const rowsHtml = rowsFor.length
       ? rowsFor.map((r) => {
           const also = !glassMode && gp.get(`${r.item.producer}|${r.item.name}`);
@@ -2142,7 +2158,7 @@ function renderHelperResults(budgetKey) {
        foie gras) but that is exactly where the emptiness shouts loudest. */
     const short = rowsFor.length && rowsFor.length < tallest;
     return `<div class="helper-answer${active ? "" : " off"}"${active ? "" : ' aria-hidden="true"'}>` +
-      (why.length ? `<span class="helper-why">${esc(t.ui.pairings.toLowerCase())}: ${esc(why.join(", "))}</span>` : "") +
+      whyHtml +
       rowsHtml +
       (short ? `<p class="helper-allshown">${esc(t.ui.allShown)}</p>` : "") + `</div>`;
   };
