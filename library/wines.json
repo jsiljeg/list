@@ -12742,7 +12742,8 @@
     "pairings": [
      "desserts",
      "cigars",
-     "nuts"
+     "nuts",
+     "digestif"
     ]
    },
    "note": {
@@ -12791,7 +12792,8 @@
     "pairings": [
      "cigars",
      "dark_chocolate",
-     "nuts"
+     "nuts",
+     "digestif"
     ]
    },
    "note": {
@@ -12887,7 +12889,8 @@
     "pairings": [
      "charcuterie",
      "cheese_hard",
-     "desserts"
+     "desserts",
+     "digestif"
     ]
    },
    "note": {
@@ -12933,7 +12936,8 @@
     ],
     "pairings": [
      "fruit_desserts",
-     "cheese_fresh"
+     "cheese_fresh",
+     "digestif"
     ]
    },
    "note": {
@@ -12981,7 +12985,8 @@
     "pairings": [
      "prosciutto",
      "cheese_hard",
-     "charcuterie"
+     "charcuterie",
+     "digestif"
     ]
    },
    "note": {
@@ -13028,7 +13033,8 @@
     "pairings": [
      "prosciutto",
      "charcuterie",
-     "cheese_hard"
+     "cheese_hard",
+     "digestif"
     ]
    },
    "note": {
@@ -13077,7 +13083,8 @@
     "pairings": [
      "dark_chocolate",
      "desserts",
-     "nuts"
+     "nuts",
+     "digestif"
     ]
    },
    "note": {
@@ -13124,7 +13131,8 @@
     ],
     "pairings": [
      "desserts",
-     "dark_chocolate"
+     "dark_chocolate",
+     "digestif"
     ]
    },
    "note": {
@@ -13172,7 +13180,8 @@
     "pairings": [
      "cheese_hard",
      "desserts",
-     "nuts"
+     "nuts",
+     "digestif"
     ]
    },
    "note": {
@@ -13221,7 +13230,8 @@
     "pairings": [
      "desserts",
      "dark_chocolate",
-     "cheese_hard"
+     "cheese_hard",
+     "digestif"
     ]
    },
    "note": {
@@ -13266,6 +13276,7 @@
      "after_dinner"
     ],
     "pairings": [
+     "digestif",
      "desserts",
      "cheese_hard"
     ]
@@ -13313,6 +13324,7 @@
      "after_dinner"
     ],
     "pairings": [
+     "digestif",
      "dark_chocolate",
      "cigars",
      "nuts"
@@ -13362,6 +13374,7 @@
      "after_dinner"
     ],
     "pairings": [
+     "digestif",
      "cigars",
      "dark_chocolate",
      "nuts"
@@ -13407,6 +13420,7 @@
      "after_dinner"
     ],
     "pairings": [
+     "digestif",
      "dark_chocolate",
      "cigars",
      "desserts"
@@ -13505,6 +13519,7 @@
      "before_dinner"
     ],
     "pairings": [
+     "digestif",
      "cheese_hard",
      "charcuterie",
      "desserts"
@@ -13553,6 +13568,7 @@
      "after_dinner"
     ],
     "pairings": [
+     "digestif",
      "desserts",
      "dark_chocolate",
      "cheese_hard"
@@ -13601,6 +13617,7 @@
      "after_dinner"
     ],
     "pairings": [
+     "digestif",
      "dark_chocolate",
      "cigars",
      "desserts"
