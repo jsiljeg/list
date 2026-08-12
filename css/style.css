@@ -73,7 +73,7 @@ body {
 
 /* ---------- Start / language screen ---------- */
 .start {
-  min-height: 100vh; min-height: 100dvh;
+  min-height: 100vh; min-height: 100svh;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 2.2rem; padding: 2rem;
@@ -98,9 +98,23 @@ body {
 
 /* Language screen: lock to the viewport so it never scrolls on any device
    (matches the "fixed" tablet feel). Scoped by #id so the story splash, which
-   shares .start and needs to scroll internally, is unaffected. */
+   shares .start and needs to scroll internally, is unaffected.
+
+   svh, never dvh — the rule for this whole stylesheet (2026-08-12, owner: the
+   language screen "looks like it's live resizing" on a phone). dvh is the
+   *dynamic* viewport height: it tracks the browser's chrome, so it changes
+   every time the address bar collapses or expands, which on a phone happens
+   during the load and on the slightest scroll. This screen is a centred
+   column, so each of those changes re-centres everything in it at once — the
+   logo, the prompt, the flags — which is exactly what a live resize looks
+   like. It cannot be reproduced on a desktop or in a headless browser,
+   neither of which has an address bar to collapse, which is why it survived
+   two rounds of fixing the *other* causes (the font swap, the logo's missing
+   box). svh is the small viewport: the height with the chrome shown, i.e. the
+   stable minimum. Nothing moves, at the cost of a little unused space when
+   the bar is hidden. A test in layout.spec.mjs fails the file on any dvh. */
 #start {
-  height: 100vh; height: 100dvh;
+  height: 100vh; height: 100svh;
   overflow: hidden; overscroll-behavior: none;
 }
 /* The logo's box must exist before the file does. `height: auto` on an <img>
@@ -287,7 +301,7 @@ body {
    container, so the sticky header keeps sticking. */
 .app {
   overflow-x: clip;
-  min-height: 100vh; min-height: 100dvh;
+  min-height: 100vh; min-height: 100svh;
   display: flex; flex-direction: column;
 }
 .content { max-width: 900px; margin: 0 auto; padding: 1.4rem 1.2rem 3rem; flex: 1 0 auto; width: 100%; }
@@ -387,10 +401,13 @@ body {
    The helper wizard is a dialogue, not a card — it stays centred and sized to
    its content, which is how it was before. */
 .modal.detail-mode { align-items: flex-start; padding: 9vh 1rem 3vh; }
-/* dvh where it exists: on phones vh counts the space behind the browser
-   chrome, so a vh-sized card runs under the toolbar. */
-@supports (height: 100dvh) {
-  .modal.detail-mode { padding: 9dvh 1rem 3dvh; }
+/* svh where it exists: on phones vh counts the space behind the browser
+   chrome, so a vh-sized card runs under the toolbar. It was dvh until
+   2026-08-12, which fixed that but bought a card that resized itself every
+   time the toolbar moved; svh fixes both, being the height with the chrome
+   shown. See the note on #start. */
+@supports (height: 100svh) {
+  .modal.detail-mode { padding: 9svh 1rem 3svh; }
 }
 /* The sommelier is a dialogue and still sizes itself to its content — but it is
    anchored at the top, not centred, so what it already showed does not move
@@ -398,8 +415,8 @@ body {
    list is long, the budget question short, and the two answers differ whenever
    the glass shelf has fewer matches or a wine name wraps on a narrow phone. */
 .modal.helper-mode { align-items: flex-start; padding: 6vh 1rem 3vh; }
-@supports (height: 100dvh) {
-  .modal.helper-mode { padding: 6dvh 1rem 3dvh; }
+@supports (height: 100svh) {
+  .modal.helper-mode { padding: 6svh 1rem 3svh; }
 }
 .modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.6); }
 .modal.detail-mode .modal-sheet { height: 87vh; max-height: none; }
@@ -410,8 +427,8 @@ body {
 @media (min-width: 1025px) {
   .modal.detail-mode .modal-sheet { height: auto; max-height: min(74vh, 820px); }
 }
-@supports (height: 100dvh) {
-  .modal.detail-mode .modal-sheet { height: 87dvh; }
+@supports (height: 100svh) {
+  .modal.detail-mode .modal-sheet { height: 87svh; }
 }
 .modal-sheet::-webkit-scrollbar { width: 5px; }
 .modal-sheet::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
@@ -589,7 +606,7 @@ body {
   color: var(--gold); font-size: .82rem; font-weight: 600;
   letter-spacing: .08em; text-transform: uppercase;
 }
-.story-screen { justify-content: flex-start; padding-top: 3rem; gap: 1.4rem; min-height: 100vh; min-height: 100dvh; }
+.story-screen { justify-content: flex-start; padding-top: 3rem; gap: 1.4rem; min-height: 100vh; min-height: 100svh; }
 .start-logo.small { width: min(220px, 55vw); }
 .enter-btn {
   min-height: 60px; min-width: 240px;
@@ -840,7 +857,7 @@ body {
 /* tablet + phone: one clean, swipeable row of category chips (Vinske regije
    last) instead of a ragged wrapped block; and the story splash fits the view */
 @media (max-width: 1024px) {
-  .story-screen { height: 100vh; height: 100dvh; }
+  .story-screen { height: 100vh; height: 100svh; }
   .story-screen .story { flex: 1 1 auto; min-height: 0; overflow-y: auto; width: 100%; }
   .enter-btn { flex: none; }
 
@@ -872,7 +889,7 @@ body {
                 background: var(--line); margin: 0 auto .7rem; }
 
   /* language start screen: fit the whole viewport, no scrolling */
-  .start { height: 100vh; height: 100dvh; gap: .75rem; padding: 1rem 1.3rem; overflow: hidden; }
+  .start { height: 100vh; height: 100svh; gap: .75rem; padding: 1rem 1.3rem; overflow: hidden; }
   .start-logo { width: min(180px, 42vw); }
   .lang-prompt { gap: .3rem; }
   .start-title { font-size: 1.02rem; }
@@ -904,7 +921,7 @@ body {
   .nav button[data-sec="__regions"] { order: 99; }
 
   /* story splash fits the screen; "Otvori kartu" always in view */
-  .story-screen { height: 100dvh; padding-top: 1.4rem; gap: .7rem; }
+  .story-screen { height: 100svh; padding-top: 1.4rem; gap: .7rem; }
   .story-screen .story { flex: 1 1 auto; min-height: 0; overflow-y: auto; width: 100%; padding: .4rem 0 .6rem; }
   .start-logo.small { width: min(150px, 42vw); }
   .story-title { font-size: 1.6rem; margin-bottom: .8rem; }

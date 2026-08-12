@@ -411,6 +411,39 @@ picture, so the test blocks `fonts.gstatic.com` and compares the two paints
 rather than trusting the stylesheet; and `font-display: optional` is *not* the
 alternative — it would leave a first-time guest in Georgia for the whole visit.
 
+## svh, never dvh (2026-08-12) — the third cause of the same complaint
+
+The owner has reported the language screen "live resizing" on a phone three
+times. The first two causes were real and are fixed above: the **font swap**
+(Georgia 34% wider than Markazi) and the **logo's missing box** (`height:auto`
+on an SVG is 0px until the file lands). Both were fixed, and the feeling came
+back, because there was a third cause underneath them and it is the one that
+never goes away by itself.
+
+**`dvh` is the dynamic viewport height.** It follows the browser's chrome, so
+on a phone it changes every time the address bar collapses or expands — during
+the load, and on any scroll. The language screen and the splash are *centred
+columns locked to that height*, so each change re-centres everything in them at
+once: logo, prompt, all eight flags. That is what a live resize looks like.
+
+Every `dvh` in css/style.css is now **`svh`** — the small viewport, the height
+with the chrome shown, which never changes. The cost is a strip of unused space
+when the bar is hidden; the gain is that nothing moves. `vh` stays as the
+fallback for browsers without `svh`.
+
+Two things worth keeping:
+
+- **It cannot be reproduced in a browser without an address bar.** Desktop and
+  headless Chromium have none, so any on-page measurement passes while the app
+  is broken on the device the app is *for*. `tests/layout.spec.mjs` therefore
+  greps the stylesheet and fails on any `dvh` — assert the rule when you cannot
+  observe the paint, the same as the latched-`:hover` test.
+- **Measure the whole screen, not the element you suspect.**
+  `scratch/start-shift.mjs` samples every element on the first screen for two
+  seconds and prints what moves and when. That is what showed the title was
+  already fine (2px of 235px, the metric override doing its job) and sent the
+  search somewhere else.
+
 ## The two nail sculptures (settled 2026-07-30)
 
 Both are used **recoloured, never redrawn** — `scripts/nail-asset.py face|bowl`

@@ -452,3 +452,29 @@ test("a wine row does not stay lit after it has been tapped", async ({ page }) =
   const rows = ungated.filter((s) => /(^|[\s,>])\.item\b/.test(s));
   expect(rows, "a list-row :hover rule that a touch screen will latch").toEqual([]);
 });
+
+test("nothing is sized in dvh", async () => {
+  /* Guards 2026-08-12 (owner, third report of the language screen appearing to
+     resize itself on a phone — after the font swap and the logo's missing box
+     had each been fixed and each been the wrong culprit).
+
+     dvh is the *dynamic* viewport height. It tracks the browser's chrome, so
+     on a phone it changes whenever the address bar collapses or expands —
+     during the load, and on any scroll. The language screen is a centred
+     column locked to that height, so every one of those changes re-centres
+     the logo, the prompt and all eight flags at once. That is the "live
+     resizing".
+
+     It is a stylesheet test rather than a page test on purpose: neither a
+     desktop browser nor a headless one has an address bar to collapse, so
+     there is nothing to observe and any measurement would pass while the app
+     was broken. What can be asserted is the rule that makes it impossible.
+     svh — the height with the chrome shown, the stable minimum — is the
+     replacement everywhere. */
+  const css = readFileSync(resolve(HERE, "../css/style.css"), "utf8");
+  const hits = css.split(/\r?\n/)
+    .map((line, i) => [i + 1, line])
+    .filter(([, line]) => /\d\s*dvh\b/.test(line) && !line.trim().startsWith("*"))
+    .map(([n, line]) => `${n}: ${line.trim()}`);
+  expect(hits, "dvh makes the layout follow the phone's address bar — use svh").toEqual([]);
+});
