@@ -1237,7 +1237,7 @@ function openDetail(ref, back, scope) {
           who does not speak German, and we pour more than one Prüm, so
           pointing at "the Prüm" is ambiguous. Sitting under the price on
           purpose: that is where a guest decides. */
-      `<button class="detail-waiter" type="button">${esc(t.ui.showWaiter)}</button>`}
+      `<button class="detail-waiter" type="button">${esc(spirit ? t.ui.showWaiterDrink : t.ui.showWaiter)}</button>`}
     <div class="detail-style">${spirit
       ? esc(spiritTerm("classes", ins.class))
       : esc(t.styles[ins.style] || "") + (ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : "") + (ins.sweetness && t.sweetness ? " · " + esc(t.sweetness[ins.sweetness] || ins.sweetness) : "")}</div>
@@ -1354,9 +1354,15 @@ function showWaiterCard(ref, back, scope) {
      is asked to skip past the other's half: the waiter reads the line, the
      guest recognises the word under it. A Croatian guest sees one word, since
      the two would be identical. */
+  /* Only the wine list has a glass shelf and a bottle shelf. A rum, a beer or a
+     bottle of water sat in the `perBottle` branch by default and came out as
+     "BOCA" on a card for something poured by the measure (owner, 2026-08-12).
+     Nothing is printed there now — the price alone is the whole of what the
+     waiter needs, and a wrong word is worse than no word. */
+  const shelved = sec.id === "glass" || sec.id.startsWith("bottle-");
   const key = sec.id === "glass" ? "perGlass" : "perBottle";
-  const shelf = I18N.hr.ui[key];
-  const shelfGuest = lang === "hr" ? "" : t.ui[key];
+  const shelf = shelved ? I18N.hr.ui[key] : "";
+  const shelfGuest = shelved && lang !== "hr" ? t.ui[key] : "";
   $("modal-body").innerHTML = `
     <button class="detail-back" type="button">${esc(t.ui.back)}</button>
     <div class="waiter">
@@ -1364,7 +1370,7 @@ function showWaiterCard(ref, back, scope) {
       <div class="waiter-name">${esc(itemName(item))}</div>
       ${item.producer ? `<div class="waiter-producer">${esc(item.producer)}</div>` : ""}
       <div class="waiter-line">
-        <span class="waiter-shelf">${esc(shelf)}${shelfGuest ? `<span class="waiter-shelf-guest">${esc(shelfGuest)}</span>` : ""}</span>
+        ${shelf ? `<span class="waiter-shelf">${esc(shelf)}${shelfGuest ? `<span class="waiter-shelf-guest">${esc(shelfGuest)}</span>` : ""}</span>` : ""}
         ${item.price != null ? `<span class="waiter-price">${fmtPrice(item.price)} €</span>` : ""}
       </div>
     </div>`;
