@@ -114,7 +114,7 @@ hr: {
     ink: "tinta",
     mulberry: "murva",
     mahogany: "mahagonij", rooibos: "rooibos čaj",
-    espresso: "espresso", dried_rose: "suha ruža", cranberry: "brusnica", iron: "željezo", sea_shell: "morske školjke", coconut: "prženi kokos", autumn_leaves: "jesensko lišće", black_forest_cake: "Crna šuma torta", dried_herbs: "suho bilje",
+    espresso: "espresso", dried_rose: "suha ruža", cranberry: "brusnica", iron: "željezo", sea_shell: "morske školjke", coconut: "prženi kokos", autumn_leaves: "jesensko lišće", black_forest_cake: "Schwarzwald torta", dried_herbs: "suho bilje",
     nougat: "nugat",
     tomato_leaf: "list rajčice", asparagus: "šparoge",
    
@@ -149,7 +149,7 @@ hr: {
     pizza: "pizza", pork: "svinjetina", poultry: "perad", prosciutto: "pršut",
     risotto: "rižoto", salads: "salate", seafood: "plodovi mora", shellfish: "školjke i rakovi",
     solo: "samostalno, za posebne trenutke", spicy: "začinjena jela", steak: "odrezak",
-    stews: "gulaši i složena jela", sushi: "sushi", fish: "riba", shrimp_risotto: "rižota sa škampima ili kozicama", scallops: "školjke poput svetojakobskih kapica", pasta_white_seafood: "paste s bijelim mesom ili morskim plodovima", chicken_rice: "piletina s rižom", sushi_sashimi: "sushi i sashimi", istrian_fuzi: "istarski fuži", turkey: "puretina", black_forest_cake: "Crna šuma torta", dark_chocolate: "tamna čokolada", gingerbread: "medenjaci", truffles: "jela s tartufima",
+    stews: "gulaši i složena jela", sushi: "sushi", fish: "riba", shrimp_risotto: "rižota sa škampima ili kozicama", scallops: "školjke poput svetojakobskih kapica", pasta_white_seafood: "paste s bijelim mesom ili morskim plodovima", chicken_rice: "piletina s rižom", sushi_sashimi: "sushi i sashimi", istrian_fuzi: "istarski fuži", turkey: "puretina", black_forest_cake: "Schwarzwald torta", dark_chocolate: "tamna čokolada", gingerbread: "medenjaci", truffles: "jela s tartufima",
     veal: "teletina", lobster: "jastog", pigeon: "golub", green_tomato_sorbet: "sorbet od zelene rajčice", salmon_zucchini_tart: "tart od lososa s tikvicama", goat_cheese_veg_tiramisu: "kozji sir ili povrtni tiramisu", scallops_basil_mustard: "jakobove kapice ili škampi u umaku od bosiljka i senfa", vegetables: "povrće", white_fish: "bijela riba", white_meat: "bijelo meso"
   }
 },
@@ -1034,7 +1034,7 @@ sl: {
     "sea_shell": "morska školjka",
     "coconut": "praženi kokos",
     "autumn_leaves": "jesensko listje",
-    "black_forest_cake": "črnogozdna torta",
+    "black_forest_cake": "Schwarzwald torta",
     "dried_herbs": "posušena zelišča",
     "nougat": "nugat",
     "tomato_leaf": "paradižnikov list",
@@ -1281,7 +1281,7 @@ sl: {
     "sushi_sashimi": "suši in sašimi",
     "istrian_fuzi": "istrski fuži",
     "turkey": "puran",
-    "black_forest_cake": "Črni gozd torta",
+    "black_forest_cake": "Schwarzwald torta",
     "dark_chocolate": "temna čokolada",
     "gingerbread": "medenjaki",
     "truffles": "jedi z gomoljikami",
