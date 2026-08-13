@@ -482,6 +482,31 @@ test("guest text in a Latin-script language contains no Cyrillic", () => {
   expect(bad).toEqual([]);
 });
 
+test("Croatian says 47%, sherry and Schwarzwald", () => {
+  /* Owner, 2026-08-13, correcting four cards at once. Three spellings, one rule
+     each: a percentage is a figure and a glyph ("47% alkohola", never "četrdeset
+     sedam posto" and never "47 posto" — the figures rule applies to the unit as
+     well as the number); the wine is *sherry* in Croatian and Slovene, never the
+     transliterated "šeri", because that is what the cask line on the card
+     already says; and the Black Forest is *Schwarzwald*, never the calque
+     "crnošumski" — the same reasoning as Friuli over Furlanija, what a Croatian
+     speaker actually says. */
+  const bad = [];
+  const check = (where, lc, text) => {
+    if (lc !== "hr" && lc !== "sl") return;
+    if (/\d\s*posto\b/i.test(text)) bad.push(`${where} (${lc}): a percentage spelled "posto"`);
+    if (/\b(četrdeset|pedeset|šezdeset|sedamdeset|osamdeset|devedeset|dvadeset|trideset)\s+\w*\s*posto/i.test(text))
+      bad.push(`${where} (${lc}): a percentage spelled out in words`);
+    if (/šeri/i.test(text)) bad.push(`${where} (${lc}): "šeri" — write sherry`);
+    if (/crnošum/i.test(text)) bad.push(`${where} (${lc}): "crnošumski" — write Schwarzwald`);
+  };
+  for (const it of items) for (const [lc, text] of Object.entries(it.note || {}))
+    check(`${it.producer} — ${it.name}`, lc, text);
+  for (const [name, rec] of Object.entries(producers))
+    for (const [lc, text] of Object.entries((rec && rec.blurb) || {})) check(`producer ${name}`, lc, text);
+  expect(bad).toEqual([]);
+});
+
 test("a spirit does not inherit a winery's blurb", () => {
   /* producerInfo() matches by longest containing substring, so "Clairin"
      picked up Giorgio Clai's winery blurb until a Clairin record was added.

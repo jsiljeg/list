@@ -1190,7 +1190,7 @@ sl: {
     "yellow_pear": "rumena hruška",
     "stone_fruit": "koščičasto sadje",
     "orange": "pomaranča",
-    "acetaldehyde": "acetaldehid (šerijevski ton)",
+    "acetaldehyde": "acetaldehid (sherry ton)",
     "curry": "kari",
     "orange_oil": "pomarančno olje",
     "nutmeg": "muškatni orešček",

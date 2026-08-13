@@ -594,14 +594,14 @@
    },
    "terroir": "Hršak Breg",
    "note": {
-    "hr": "Dvije su bordoške kupaže s Hršak brega, a razlikuje ih sorta koja vodi: Karizmu cabernet, Enigmu merlot. Zato je ovo punija i mekša od njih dvije, s cabernet francom kao začinom — Zagorje koje ne traži dopuštenje.",
-    "en": "There are two Bordeaux blends off Hršak breg, and what separates them is the grape in charge: Cabernet leads the Karizma, Merlot leads this one. That makes Enigma the fuller and rounder of the pair, with Cabernet Franc for seasoning — Zagorje asking nobody's permission.",
-    "it": "Le cuvée bordolesi dell'Hršak breg sono due, e a distinguerle è il vitigno che comanda: nella Karizma il Cabernet, qui il Merlot. Per questo Enigma è la più piena e morbida delle due, con il Cabernet Franc come spezia — uno Zagorje che non chiede permesso.",
-    "fr": "Il y a deux assemblages bordelais sur le Hršak breg, et ce qui les sépare est le cépage qui mène : le cabernet pour la Karizma, le merlot pour celui-ci. Enigma est donc le plus ample et le plus rond des deux, avec le cabernet franc en épice — un Zagorje qui ne demande la permission à personne.",
-    "de": "Vom Hršak breg kommen zwei Bordeaux-Cuvées, unterschieden durch die führende Rebsorte: bei der Karizma der Cabernet, hier der Merlot. Damit ist Enigma die vollere und rundere der beiden, mit Cabernet Franc als Gewürz — ein Zagorje, das niemanden um Erlaubnis fragt.",
-    "zh": "赫尔沙克山岗上有两款波尔多混酿，分野在于领衔的品种：Karizma 是赤霞珠，Enigma 是梅洛。因此这一款是两者中更饱满、更圆润的，品丽珠只作调味——一个不必请示的扎戈列。",
-    "sl": "S Hršak brega prihajata dve bordojski zvrsti, ločuje pa ju sorta, ki vodi: pri Karizmi cabernet, pri tej merlot. Zato je Enigma polnejša in mehkejša od obeh, s cabernet francom kot začimbo — Zagorje, ki ne prosi za dovoljenje.",
-    "es": "Del Hršak breg salen dos mezclas bordelesas, y lo que las separa es la variedad que manda: en Karizma el cabernet, aquí el merlot. Por eso Enigma es la más plena y redonda de las dos, con cabernet franc de especia — un Zagorje que no pide permiso a nadie."
+    "hr": "Bordoške sorte na Hršak Bregu, gdje ih nitko nije trebao posaditi. Taman, ozbiljan i bez kompleksa — Zagorje koje ne traži dopuštenje.",
+    "en": "Bordeaux varieties on Hršak Breg, where nobody was supposed to plant them. Dark, serious and without a chip on its shoulder — Zagorje asking nobody's permission.",
+    "it": "Vitigni bordolesi su Hršak Breg, dove nessuno avrebbe dovuto piantarli. Scuro, serio e senza complessi — lo Zagorje che non chiede permesso.",
+    "fr": "Des cépages bordelais sur Hršak Breg, là où personne n'aurait dû en planter. Sombre, sérieux et sans complexe — le Zagorje qui ne demande la permission à personne.",
+    "de": "Bordeaux-Sorten auf dem Hršak Breg, wo sie niemand hätte pflanzen sollen. Dunkel, ernst und ohne Komplexe — das Zagorje, das niemanden um Erlaubnis fragt.",
+    "zh": "波尔多品种种在 Hršak Breg，那本不该有人去种的地方。深沉、严肃、毫无自卑——一个不必请示的扎戈列。",
+    "sl": "Bordojske sorte na Hršak Bregu, kjer jih nihče ne bi smel posaditi. Temno, resno in brez kompleksov — Zagorje, ki ne prosi za dovoljenje.",
+    "es": "Variedades bordelesas en Hršak Breg, donde nadie debía plantarlas. Oscuro, serio y sin complejos — el Zagorje que no pide permiso a nadie."
    }
   },
   "igor-ivanic--pinot-crni-dvije-ruze-2021": {
@@ -10830,7 +10830,7 @@
     "class": "gin_contemporary"
    },
    "note": {
-    "hr": "Četrdeset sedam sastojaka, četrdeset sedam posto — ali broj nije poanta. Poanta je brusnica iz Schwarzwalda, koju nema nitko drugi i koja ovom ginu daje kiselu, šumsku crtu ispod borovice. Recept vuče korijene iz poslijeratnog Berlina, a destilira se u crnošumskoj kući.",
+    "hr": "47 sastojaka, 47% alkohola — ali broj nije poanta. Poanta je brusnica iz Schwarzwalda, koju nema nitko drugi i koja ovom ginu daje kiselu, šumsku crtu ispod borovice. Recept vuče korijene iz poslijeratnog Berlina, a destilira se u kućici u Schwarzwaldu.",
     "en": "Forty-seven botanicals, forty-seven percent — but the number isn't the point. The point is the Black Forest lingonberry nobody else has, which puts a tart, forest-floor line under the juniper. The recipe traces back to post-war Berlin; the still stands in a Black Forest farmhouse.",
     "it": "Quarantasette botaniche, quarantasette per cento — ma il numero non è il punto. Il punto è il mirtillo rosso della Foresta Nera che nessun altro ha, e che mette sotto il ginepro una linea acidula di sottobosco. La ricetta risale alla Berlino del dopoguerra; l'alambicco sta in una casa colonica della Foresta Nera.",
     "fr": "Quarante-sept plantes, quarante-sept degrés — mais le chiffre n'est pas l'essentiel. L'essentiel, c'est l'airelle rouge de la Forêt-Noire que personne d'autre n'a, et qui glisse sous le genièvre une ligne acidulée de sous-bois. La recette remonte au Berlin de l'après-guerre ; l'alambic est dans une ferme de la Forêt-Noire.",
@@ -11434,7 +11434,7 @@
     ]
    },
    "note": {
-    "hr": "Ulaz u kuću, i namjerno lagan: bačve od bourbona i vinske bačve, 40 posto, mango i kokos koje tropska klima donese sama od sebe. Ovo je viski koji ne traži ništa od vas — pije se i s ledom, i to nije uvreda.",
+    "hr": "Ulaz u kuću, i namjerno lagan: bačve od bourbona i vinske bačve, 40% alkohola, mango i kokos koje tropska klima donese sama od sebe. Ovo je viski koji ne traži ništa od vas — pije se i s ledom, i to nije uvreda.",
     "en": "The way into the house, and deliberately easy: ex-bourbon and wine casks, 40 percent, the mango and coconut the tropical climate brings on its own. This is a whisky that asks nothing of you — it takes ice, and that is not an insult.",
     "it": "L'ingresso alla casa, e volutamente facile: botti ex bourbon e botti da vino, 40 gradi, il mango e il cocco che il clima tropicale porta da sé. È un whisky che non vi chiede nulla — regge il ghiaccio, e non è un'offesa.",
     "fr": "L'entrée dans la maison, et volontairement facile : fûts ex-bourbon et fûts de vin, 40 degrés, la mangue et la noix de coco que le climat tropical apporte tout seul. Un whisky qui ne vous demande rien — il accepte la glace, et ce n'est pas une insulte.",
@@ -11488,7 +11488,7 @@
     "fr": "À Yilan, un fût travaille trois à quatre fois plus vite qu'en Écosse, et les anges prennent jusqu'à un dixième par an. Quand ce fût était plein de xérès oloroso, on obtient une concentration que l'Europe n'atteindrait pas en vingt ans : raisin sec, noix, chocolat noir.",
     "de": "In Yilan arbeitet ein Fass drei- bis viermal schneller als in Schottland, und die Engel nehmen bis zu einem Zehntel im Jahr. War dieses Fass voll Oloroso-Sherry, ergibt das eine Konzentration, die Europa in zwanzig Jahren nicht erreichte: Rosine, Walnuss, dunkle Schokolade.",
     "zh": "在宜兰，一只桶的工作速度是苏格兰的三到四倍，天使每年要拿走多达十分之一。当这只桶原本装的是 oloroso 雪莉，结果就是欧洲二十年也达不到的浓度：葡萄干、核桃、黑巧克力。",
-    "sl": "V Yilanu sod dela trikrat do štirikrat hitreje kot na Škotskem, angeli pa vzamejo do desetino na leto. Ko je bil ta sod poln šerija oloroso, je rezultat koncentracija, ki je Evropa ne bi dosegla v dvajsetih letih: rozine, oreh, temna čokolada.",
+    "sl": "V Yilanu sod dela trikrat do štirikrat hitreje kot na Škotskem, angeli pa vzamejo do desetino na leto. Ko je bil ta sod poln sherryja oloroso, je rezultat koncentracija, ki je Evropa ne bi dosegla v dvajsetih letih: rozine, oreh, temna čokolada.",
     "es": "En Yilan una barrica trabaja tres o cuatro veces más rápido que en Escocia, y los ángeles se llevan hasta un décimo al año. Cuando esa barrica estuvo llena de jerez oloroso, el resultado es una concentración que Europa no alcanzaría en veinte años: pasa, nuez, chocolate negro."
    },
    "notePlain": true
@@ -11626,14 +11626,14 @@
     ]
    },
    "note": {
-    "hr": "Edition je ono što Tsunuki pusti jednom godišnje, iz bačava koje su te sezone spremne: većinom bourbon, uz otprilike desetinu oloroso šerija, i uvijek 50 posto. Ječam je tek blago dimljen, 5 do 6 ppm — dim je tu da zatvori gutljaj, a ne da ga vodi. Kagoshima je vruća i vlažna, pa bačva radi brzo: ovo zvuči starije nego što jest.",
-    "en": "Edition is what Tsunuki releases once a year, out of whatever casks are ready that season: mostly ex-bourbon, with roughly a tenth of oloroso sherry, and always 50 percent. The barley is only lightly peated, 5 to 6 ppm — the smoke is there to close the sip, not to lead it. Kagoshima is hot and humid, so the cask works fast: this sounds older than it is.",
-    "it": "Edition è ciò che Tsunuki rilascia una volta l'anno, dalle botti pronte quella stagione: in gran parte ex bourbon, con circa un decimo di oloroso, e sempre 50 gradi. L'orzo è appena affumicato, 5-6 ppm — il fumo serve a chiudere il sorso, non a guidarlo. Kagoshima è calda e umida, la botte lavora in fretta: questo suona più vecchio di quanto sia.",
-    "fr": "Edition, c'est ce que Tsunuki sort une fois par an, à partir des fûts prêts cette saison-là : surtout de l'ex-bourbon, avec environ un dixième d'oloroso, et toujours 50 degrés. L'orge n'est que légèrement tourbée, 5 à 6 ppm — la fumée est là pour fermer la gorgée, pas pour la mener. Kagoshima est chaude et humide, le fût travaille vite : cela sonne plus vieux que ce ne l'est.",
-    "de": "Edition ist, was Tsunuki einmal im Jahr abfüllt, aus den Fässern, die in jener Saison bereit sind: überwiegend Ex-Bourbon, dazu etwa ein Zehntel Oloroso, und immer 50 Prozent. Die Gerste ist nur leicht getorft, 5 bis 6 ppm — der Rauch schließt den Schluck, er führt ihn nicht. Kagoshima ist heiß und feucht, das Fass arbeitet schnell: das klingt älter, als es ist.",
-    "zh": "Edition 是津贯每年放出的一批，用当季备妥的桶：以波本桶为主，约一成来自 oloroso 雪莉桶，度数始终是 50。大麦只是轻泥煤，5 至 6 ppm——烟负责收尾，不负责领路。鹿儿岛又热又湿，桶走得快：它听起来比实际年份更老。",
-    "sl": "Edition je tisto, kar Tsunuki spusti enkrat na leto, iz sodov, ki so tisto sezono pripravljeni: večinoma ex-bourbon, z okoli desetino oloroso šerija, in vedno 50 odstotkov. Ječmen je le rahlo dimljen, 5 do 6 ppm — dim je tu, da zapre požirek, ne da ga vodi. Kagošima je vroča in vlažna, sod dela hitro: to zveni starejše, kot je.",
-    "es": "Edition es lo que Tsunuki saca una vez al año, con las barricas que esa temporada están listas: sobre todo ex bourbon, con alrededor de una décima parte de oloroso, y siempre 50 grados. La cebada apenas está ahumada, 5 a 6 ppm — el humo cierra el trago, no lo dirige. Kagoshima es cálida y húmeda, la barrica trabaja rápido: esto suena más viejo de lo que es."
+    "hr": "Edition je ono što Tsunuki pusti jednom godišnje, iz bačava koje su te sezone spremne: većinom bourbon, uz otprilike 10% oloroso sherry bačava, i uvijek 50% alkohola. Ječam je tek blago dimljen, 5 do 6 ppm — dim je tu da zatvori gutljaj, a ne da ga vodi. Kagoshima je vruća i vlažna, pa bačva radi brzo: ovo zvuči starije nego što jest.",
+    "en": "Edition is what Tsunuki releases once a year, out of whatever casks are ready that season: mostly ex-bourbon, with roughly 10% ex-oloroso sherry casks, and always 50% ABV. The barley is only lightly peated, 5 to 6 ppm — the smoke is there to close the sip, not to lead it. Kagoshima is hot and humid, so the cask works fast: this sounds older than it is.",
+    "it": "Edition è ciò che Tsunuki rilascia una volta l'anno, dalle botti pronte quella stagione: in gran parte ex bourbon, con circa il 10% di botti ex sherry oloroso, e sempre 50% vol.. L'orzo è appena affumicato, 5-6 ppm — il fumo serve a chiudere il sorso, non a guidarlo. Kagoshima è calda e umida, la botte lavora in fretta: questo suona più vecchio di quanto sia.",
+    "fr": "Edition, c'est ce que Tsunuki sort une fois par an, à partir des fûts prêts cette saison-là : surtout de l'ex-bourbon, avec environ 10% de fûts ex-oloroso, et toujours 50% vol.. L'orge n'est que légèrement tourbée, 5 à 6 ppm — la fumée est là pour fermer la gorgée, pas pour la mener. Kagoshima est chaude et humide, le fût travaille vite : cela sonne plus vieux que ce ne l'est.",
+    "de": "Edition ist, was Tsunuki einmal im Jahr abfüllt, aus den Fässern, die in jener Saison bereit sind: überwiegend Ex-Bourbon, dazu etwa 10% Ex-Oloroso-Sherryfässer, und immer 50% vol.. Die Gerste ist nur leicht getorft, 5 bis 6 ppm — der Rauch schließt den Schluck, er führt ihn nicht. Kagoshima ist heiß und feucht, das Fass arbeitet schnell: das klingt älter, als es ist.",
+    "zh": "Edition 是津贯每年放出的一批，用当季备妥的桶：以波本桶为主，约 10% 来自 oloroso 雪莉旧桶，度数始终是 50%。大麦只是轻泥煤，5 至 6 ppm——烟负责收尾，不负责领路。鹿儿岛又热又湿，桶走得快：它听起来比实际年份更老。",
+    "sl": "Edition je tisto, kar Tsunuki spusti enkrat na leto, iz sodov, ki so tisto sezono pripravljeni: večinoma ex-bourbon, z okoli 10% sodov po oloroso sherryju, in vedno 50% alkohola. Ječmen je le rahlo dimljen, 5 do 6 ppm — dim je tu, da zapre požirek, ne da ga vodi. Kagošima je vroča in vlažna, sod dela hitro: to zveni starejše, kot je.",
+    "es": "Edition es lo que Tsunuki saca una vez al año, con las barricas que esa temporada están listas: sobre todo ex bourbon, con alrededor de un 10% de botas de oloroso, y siempre 50% vol.. La cebada apenas está ahumada, 5 a 6 ppm — el humo cierra el trago, no lo dirige. Kagoshima es cálida y húmeda, la barrica trabaja rápido: esto suena más viejo de lo que es."
    },
    "notePlain": true
   },
@@ -12014,7 +12014,7 @@
     ]
    },
    "note": {
-    "hr": "HLCF su četiri slova s inventara: Hampden Light Continental Flavoured, jedna od marki koje kuća destilira i koja označava točan raspon estera — 400 do 600 grama na hektolitru čistog alkohola. Četiri tropske godine u bačvi i punih 60 posto — ovo je Hampden bez ijednog koraka unatrag. Kap vode ovdje nije slabost.",
+    "hr": "HLCF su četiri slova s inventara: Hampden Light Continental Flavoured, jedna od marki koje kuća destilira i koja označava točan raspon estera — 400 do 600 grama na hektolitru čistog alkohola. Četiri tropske godine u bačvi i punih 60% alkohola — ovo je Hampden bez ijednog koraka unatrag. Kap vode ovdje nije slabost.",
     "en": "HLCF is four letters off the inventory: Hampden Light Continental Flavoured, one of the marks the estate distils, denoting an exact ester range — 400 to 600 grams per hectolitre of pure alcohol. Four tropical years in cask and a full 60 percent — this is Hampden without a single step backwards. A drop of water here is not weakness.",
     "it": "HLCF sono quattro lettere d'inventario: Hampden Light Continental Flavoured, una delle marche che la tenuta distilla, che indica un preciso intervallo di esteri — da 400 a 600 grammi per ettolitro di alcol puro. Quattro anni tropicali in botte e 60 gradi pieni — è Hampden senza un solo passo indietro. Una goccia d'acqua, qui, non è debolezza.",
     "fr": "HLCF, ce sont quatre lettres d'inventaire : Hampden Light Continental Flavoured, l'une des marques que le domaine distille, désignant une plage d'esters précise — 400 à 600 grammes par hectolitre d'alcool pur. Quatre années tropicales en fût et 60 degrés pleins — c'est Hampden sans un pas en arrière. Une goutte d'eau ici n'est pas une faiblesse.",
@@ -12063,7 +12063,7 @@
     ]
    },
    "note": {
-    "hr": "Pure single znači: jedna destilerija, samo kotao, ništa dodano — najstroža oznaka koja u rumu postoji, i Hampden ju je pomogao definirati. Osam tropskih godina i 46 posto čine ovo najpristupačnijim ulazom u kuću: banana i tropsko voće su tu, ali drvo ih je naučilo redu.",
+    "hr": "Pure single znači: jedna destilerija, samo kotao, ništa dodano — najstroža oznaka koja u rumu postoji, i Hampden ju je pomogao definirati. Osam tropskih godina i 46% alkohola čine ovo najpristupačnijim ulazom u kuću: banana i tropsko voće su tu, ali drvo ih je naučilo redu.",
     "en": "Pure single means one distillery, pot still only, nothing added — the strictest designation rum has, and Hampden helped define it. Eight tropical years at 46 percent make this the gentlest way into the house: the banana and the tropical fruit are all there, but the wood has taught them manners.",
     "it": "Pure single vuol dire una sola distilleria, solo alambicco discontinuo, niente di aggiunto — la designazione più severa che il rum abbia, e Hampden ha contribuito a definirla. Otto anni tropicali a 46 gradi ne fanno la porta d'ingresso più gentile alla casa: banana e frutta tropicale ci sono tutte, ma il legno ha insegnato loro le buone maniere.",
     "fr": "Pure single veut dire une seule distillerie, alambic à repasse uniquement, rien d'ajouté — la mention la plus stricte du rhum, et Hampden a aidé à la définir. Huit années tropicales à 46 degrés en font l'entrée la plus douce dans la maison : la banane et les fruits tropicaux sont là, mais le bois leur a appris les bonnes manières.",
@@ -12361,7 +12361,7 @@
     "fr": "Le xérès sur un Hampden est un pari : un fût plein de vin oxydatif et de noix contre un distillat qui n'écoute personne. Plutôt que l'un l'emporte sur l'autre, la noix et la datte se glissent sous la banane et le vernis. Pagos, à Jerez, désigne un vignoble — d'où le nom.",
     "de": "Sherry auf einem Hampden ist ein mutiger Zug: ein Fass voll oxidativem, nussigem Wein gegen ein Destillat, das auf niemanden hört. Statt dass eines das andere schlägt, setzen sich Walnuss und Datteln unter Banane und Lack. Pagos heißt in Jerez Weinberg — daher der Name.",
     "zh": "让雪莉桶去碰 Hampden 是一步险棋：一只装满氧化、坚果调葡萄酒的桶，对上一款谁的话都不听的酒液。结果不是谁压倒谁，而是核桃与椰枣安坐在香蕉和清漆之下。Pagos 在赫雷斯是「葡萄园」的意思——名字由此而来。",
-    "sl": "Šeri na Hampdnu je pogumna poteza: sod, poln oksidativnega, orehovega vina, proti destilatu, ki ne uboga nikogar. Namesto da bi eno premagalo drugo, se oreh in datlji usedeta pod banano in lak. Pagos v Jerezu pomeni vinograd — od tod ime.",
+    "sl": "Sherry na Hampdnu je pogumna poteza: sod, poln oksidativnega, orehovega vina, proti destilatu, ki ne uboga nikogar. Namesto da bi eno premagalo drugo, se oreh in datlji usedeta pod banano in lak. Pagos v Jerezu pomeni vinograd — od tod ime.",
     "es": "El jerez sobre un Hampden es una jugada valiente: una bota llena de vino oxidativo y de nuez contra un destilado que no obedece a nadie. En vez de vencer uno al otro, la nuez y el dátil se sientan bajo el plátano y el barniz. Pagos, en Jerez, quiere decir pago de viña — de ahí el nombre."
    },
    "notePlain": true
@@ -12455,14 +12455,14 @@
     ]
    },
    "note": {
-    "hr": "Raconteur je pripovjedač, i Velier je to ime dao kupaži destiliranoj 2006.: jedan je dio 17 godina proveo u bourbonskim bačvama, drugi 12 od tih godina u starom oloroso šeriju. Puni se na 61 posto, točno onako kako je izašlo iz bačve — voda bi ovdje pojela pola priče.",
-    "en": "Raconteur means storyteller, and Velier gave the name to a blend distilled in 2006: one part spent 17 years in ex-bourbon casks, the other 12 of those years in old oloroso butts. Bottled at 61 percent, exactly as it left the wood — water here would eat half the story.",
-    "it": "Raconteur vuol dire narratore, e Velier ha dato quel nome a un blend distillato nel 2006: una parte ha passato 17 anni in botti ex bourbon, l'altra 12 di quegli anni in vecchie botti di oloroso. Imbottigliato a 61 gradi, esattamente come è uscito dal legno — qui l'acqua si mangerebbe metà del racconto.",
-    "fr": "Raconteur, c'est le conteur, et Velier a donné ce nom à un assemblage distillé en 2006 : une part a passé 17 ans en fûts d'ex-bourbon, l'autre 12 de ces années en vieux fûts d'oloroso. Mis en bouteille à 61 degrés, exactement tel qu'il est sorti du bois — l'eau mangerait ici la moitié de l'histoire.",
-    "de": "Raconteur heißt Geschichtenerzähler, und Velier hat den Namen einem 2006 gebrannten Blend gegeben: ein Teil lag 17 Jahre im Ex-Bourbonfass, der andere 12 dieser Jahre in alten Oloroso-Fässern. Abgefüllt mit 61 Prozent, genau so, wie er aus dem Holz kam — Wasser fräße hier die halbe Geschichte.",
-    "zh": "Raconteur 是「说书人」，Velier 把这个名字给了 2006 年蒸馏的一批调和：一部分在波本旧桶里待了 17 年，另一部分其中 12 年是在老 oloroso 雪莉桶里度过的。以 61 度装瓶，与出桶时一模一样——在这里兑水会吃掉一半故事。",
-    "sl": "Raconteur pomeni pripovedovalec, in Velier je to ime dal zvrsti, destilirani leta 2006: en del je 17 let preživel v bourbonskih sodih, drugi 12 od teh let v starih oloroso sodih. Polnjen pri 61 odstotkih, natanko tako, kot je prišel iz lesa — voda bi tu pojedla pol zgodbe.",
-    "es": "Raconteur quiere decir narrador, y Velier le puso ese nombre a una mezcla destilada en 2006: una parte pasó 17 años en barrica de ex bourbon, la otra 12 de esos años en viejas botas de oloroso. Embotellado a 61 grados, tal como salió de la madera — aquí el agua se comería la mitad del relato."
+    "hr": "Raconteur je pripovjedač, i Velier je to ime dao kupaži destiliranoj 2006.: jedan je dio 17 godina proveo u bourbonskim bačvama, drugi 12 od tih godina u starim oloroso sherry bačvama. Puni se na 61% alkohola, točno onako kako je izašlo iz bačve — voda bi ovdje pojela pola priče.",
+    "en": "Raconteur means storyteller, and Velier gave the name to a blend distilled in 2006: one part spent 17 years in ex-bourbon casks, the other 12 of those years in old oloroso butts. Bottled at 61% ABV, exactly as it left the wood — water here would eat half the story.",
+    "it": "Raconteur vuol dire narratore, e Velier ha dato quel nome a un blend distillato nel 2006: una parte ha passato 17 anni in botti ex bourbon, l'altra 12 di quegli anni in vecchie botti di oloroso. Imbottigliato a 61% vol., esattamente come è uscito dal legno — qui l'acqua si mangerebbe metà del racconto.",
+    "fr": "Raconteur, c'est le conteur, et Velier a donné ce nom à un assemblage distillé en 2006 : une part a passé 17 ans en fûts d'ex-bourbon, l'autre 12 de ces années en vieux fûts d'oloroso. Mis en bouteille à 61% vol., exactement tel qu'il est sorti du bois — l'eau mangerait ici la moitié de l'histoire.",
+    "de": "Raconteur heißt Geschichtenerzähler, und Velier hat den Namen einem 2006 gebrannten Blend gegeben: ein Teil lag 17 Jahre im Ex-Bourbonfass, der andere 12 dieser Jahre in alten Oloroso-Fässern. Abgefüllt mit 61% vol., genau so, wie er aus dem Holz kam — Wasser fräße hier die halbe Geschichte.",
+    "zh": "Raconteur 是「说书人」，Velier 把这个名字给了 2006 年蒸馏的一批调和：一部分在波本旧桶里待了 17 年，另一部分其中 12 年是在老 oloroso 雪莉桶里度过的。以 61% 装瓶，与出桶时一模一样——在这里兑水会吃掉一半故事。",
+    "sl": "Raconteur pomeni pripovedovalec, in Velier je to ime dal zvrsti, destilirani leta 2006: en del je 17 let preživel v bourbonskih sodih, drugi 12 od teh let v starih oloroso sodih. Polnjen pri 61% alkohola, natanko tako, kot je prišel iz lesa — voda bi tu pojedla pol zgodbe.",
+    "es": "Raconteur quiere decir narrador, y Velier le puso ese nombre a una mezcla destilada en 2006: una parte pasó 17 años en barrica de ex bourbon, la otra 12 de esos años en viejas botas de oloroso. Embotellado a 61% vol., tal como salió de la madera — aquí el agua se comería la mitad del relato."
    },
    "notePlain": true
   },
@@ -12556,7 +12556,7 @@
     ]
    },
    "note": {
-    "hr": "Dvije kupaže spojene u jednu: petnaest godina u bourbonskim bačvama, i deset godina u bourbonu pa još pet u bačvama od porta. Punjeno na Barbadosu u veljači 2024., 4800 boca, 62 posto. Port se ne osjeti kao slatkoća nego kao tamna trešnja ispod karamele.",
+    "hr": "Dvije kupaže spojene u jednu: petnaest godina u bourbonskim bačvama, i deset godina u bourbonu pa još pet u bačvama od porta. Punjeno na Barbadosu u veljači 2024., 4800 boca, 62% alkohola. Port se ne osjeti kao slatkoća nego kao tamna trešnja ispod karamele.",
     "en": "Two blends married into one: fifteen years in ex-bourbon, and ten in bourbon followed by five in port pipes. Bottled in Barbados in February 2024, 4,800 bottles, 62 percent. The port does not read as sweetness but as a dark cherry sitting under the toffee.",
     "it": "Due blend uniti in uno: quindici anni in ex bourbon, e dieci in bourbon più cinque in botti da porto. Imbottigliato a Barbados nel febbraio 2024, 4.800 bottiglie, 62 gradi. Il porto non si legge come dolcezza ma come una ciliegia scura sotto il toffee.",
     "fr": "Deux assemblages mariés en un : quinze ans en ex-bourbon, et dix en bourbon puis cinq en fûts de porto. Embouteillé à la Barbade en février 2024, 4 800 bouteilles, 62 degrés. Le porto ne se lit pas comme du sucre mais comme une cerise noire sous le caramel.",
@@ -13669,14 +13669,14 @@
     "age": "4"
    },
    "note": {
-    "hr": "Ova je boca dvaput prešla ekvator: dvije godine u bačvi kod kuće u Queenslandu, pa preko mora još dvije u europskom podrumu — po tom putovanju linija je i dobila ime. Ista bačva, dva podneblja: tropi rade brzo i grubo, Europa polako i uglađeno, a u čaši se čuje oboje.",
-    "en": "This bottle crossed the equator twice: two years in cask at home in Queensland, then two more in a European cellar — the crossing is what the line is named after. One cask, two climates: the tropics work fast and rough, Europe slowly and politely, and you can hear both in the glass.",
-    "it": "Questa bottiglia ha attraversato due volte l'equatore: due anni in botte a casa, nel Queensland, e altri due in una cantina europea — è da quel viaggio che la linea prende il nome. Stessa botte, due climi: ai tropici il lavoro è rapido e ruvido, in Europa lento ed educato, e nel bicchiere si sentono entrambi.",
-    "fr": "Cette bouteille a franchi l'équateur deux fois : deux ans en fût chez elle, dans le Queensland, puis deux de plus dans un chai européen — c'est de ce voyage que la gamme tire son nom. Même fût, deux climats : sous les tropiques le travail est rapide et rugueux, en Europe lent et poli, et le verre entend les deux.",
-    "de": "Diese Flasche hat den Äquator zweimal überquert: zwei Jahre im Fass daheim in Queensland, dann zwei weitere in einem europäischen Keller — nach dieser Reise ist die Serie benannt. Dasselbe Fass, zwei Klimata: die Tropen arbeiten schnell und grob, Europa langsam und höflich, und im Glas hört man beides.",
-    "zh": "这一瓶两次越过赤道：先在昆士兰的家中桶陈两年，又渡海在欧洲酒窖里待了两年——这条产品线正是以这趟航行命名。同一只桶，两种气候：热带走得快而粗，欧洲走得慢而斯文，杯中两者都听得见。",
-    "sl": "Ta steklenica je dvakrat prečkala ekvator: dve leti v sodu doma v Queenslandu, nato prek morja še dve v evropski kleti — po tem potovanju je linija dobila ime. Isti sod, dve podnebji: tropi delajo hitro in grobo, Evropa počasi in olikano, v kozarcu pa se sliši oboje.",
-    "es": "Esta botella cruzó el ecuador dos veces: dos años en barrica en casa, en Queensland, y otros dos en una bodega europea — de ese viaje toma el nombre la serie. La misma barrica, dos climas: el trópico trabaja rápido y áspero, Europa despacio y con modales, y en la copa se oyen los dos."
+    "hr": "Rijetka bačva koja je uopće napustila Queensland: otkupio ju je europski punitelj i odvezao preko ekvatora — dvije godine zrenja kod kuće, pa još dvije u hladnom europskom podrumu, i po tom putovanju linija je dobila ime. Ista bačva, dva podneblja: tropi rade brzo i grubo, Europa polako i uglađeno, a u čaši se čuje oboje.",
+    "en": "A rare cask that left Queensland at all: a European bottler bought it and shipped it across the equator — two years of maturing at home, then two more in a cold European cellar, and the line is named after that journey. One cask, two climates: the tropics work fast and rough, Europe slowly and politely, and you can hear both in the glass.",
+    "it": "Una delle rare botti che abbiano lasciato il Queensland: l'ha comprata un imbottigliatore europeo e l'ha portata oltre l'equatore — due anni di maturazione a casa, poi altri due in una fredda cantina europea, ed è da quel viaggio che la linea prende il nome. Stessa botte, due climi: ai tropici il lavoro è rapido e ruvido, in Europa lento ed educato, e nel bicchiere si sentono entrambi.",
+    "fr": "Un fût rare, de ceux qui quittent le Queensland : un embouteilleur européen l'a acheté et l'a fait passer l'équateur — deux ans de vieillissement à la maison, puis deux de plus dans un chai européen froid, et c'est de ce voyage que la gamme tire son nom. Même fût, deux climats : sous les tropiques le travail est rapide et rugueux, en Europe lent et poli, et le verre entend les deux.",
+    "de": "Ein seltenes Fass, das Queensland überhaupt verlassen hat: Ein europäischer Abfüller kaufte es und brachte es über den Äquator — zwei Jahre Reife daheim, dann zwei weitere in einem kalten europäischen Keller, und nach dieser Reise ist die Serie benannt. Dasselbe Fass, zwei Klimata: die Tropen arbeiten schnell und grob, Europa langsam und höflich, und im Glas hört man beides.",
+    "zh": "一只难得离开昆士兰的桶：被一家欧洲装瓶商买下，运过赤道——先在本地熟成两年，再在寒冷的欧洲酒窖里待两年，这条产品线正是以这趟航行命名。同一只桶，两种气候：热带走得快而粗，欧洲走得慢而斯文，杯中两者都听得见。",
+    "sl": "Redek sod, ki je Queensland sploh zapustil: odkupil ga je evropski polnilec in ga odpeljal čez ekvator — dve leti zorenja doma, nato še dve v hladni evropski kleti, in po tem potovanju je linija dobila ime. Isti sod, dve podnebji: tropi delajo hitro in grobo, Evropa počasi in olikano, v kozarcu pa se sliši oboje.",
+    "es": "Una barrica rara, de las que salen de Queensland: la compró un embotellador europeo y la cruzó el ecuador — dos años de crianza en casa y otros dos en una bodega europea fría, y de ese viaje toma el nombre la serie. La misma barrica, dos climas: el trópico trabaja rápido y áspero, Europa despacio y con modales, y en la copa se oyen los dos."
    },
    "notePlain": true
   },

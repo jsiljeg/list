@@ -271,6 +271,27 @@ still spell some numbers out; a sweep is worth doing but has to be per
 language, because each spells them differently — don't try to regex it across
 all eight at once.
 
+**The unit is a glyph too** (owner, 2026-08-13). The figures rule reaches the
+percent sign: `47% alkohola`, `50% vol.`, `61% alkohola` — never "47 posto" and
+never "četrdeset sedam posto". Two spellings settled with it, both by the
+Friuli-over-Furlanija test of *what a Croatian speaker actually says*: it is
+**sherry**, never the transliterated "šeri" (the cask line on the card already
+says "bačve od oloroso sherryja"), and it is **Schwarzwald**, never the calque
+"crnošumski". Slovene follows on both. Guarded by a test.
+
+**A note must not contradict the card under it** (owner, 2026-08-13, on
+Beenleigh). Splitting a repeated story between the note and the blurb can leave
+the two disagreeing: the distillery card says almost nothing leaves Queensland,
+and the bottle's note said it crossed the equator twice. The note now says *why*
+this one left — a European bottler bought the cask. Read the blurb and the note
+together after every such split; the guest reads both on one screen.
+
+**And a note is the owner's text.** Filho's line on Enigma was replaced to kill
+an overlap the owner had not asked about, and he asked for it back. Fixing an
+overlap means changing the side that is *repeating* — normally the blurb, which
+owes the guest no facts — not the sentence that gives the bottle its voice. If
+the note is the better half, leave it and say the overlap stands.
+
 **One story per card, not a CV** (settled 2026-08-05, from the owner asking
 whether there is a character limit). There isn't one, and the measurement is
 why. The blurb the owner loved most — Quintarelli — is **577** characters. The

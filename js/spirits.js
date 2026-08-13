@@ -850,7 +850,7 @@ sl: {
   },
   casks: {
     unaged: "brez lesa", ex_bourbon: "sodi po bourbonu",
-    ex_sherry_oloroso: "sodi po oloroso šeriju", ex_sherry_px: "sodi po PX šeriju",
+    ex_sherry_oloroso: "sodi po oloroso sherryju", ex_sherry_px: "sodi po PX sherryju",
     virgin_american_oak: "nov ameriški hrast", mizunara: "japonski hrast mizunara",
     french_oak: "francoski hrast", ex_port: "sodi po portovcu",
     slavonian_oak: "slavonski hrast", ex_wine: "sodi po vinu",
