@@ -61,6 +61,14 @@ for (const sec of data.sections) {
         const where = `${sec.id}/${cat.id}: "${item.name || "?"}"`;
         if (!item.name) errors.push(`item without name in ${sec.id}/${cat.id}`);
         if (item.price != null && typeof item.price !== "number") errors.push(`${where}: price must be a number (no quotes, no €)`);
+        /* The bottle format belongs to the listing, in litres, as a number:
+           `"vol": 0.375`, never "0,375 l" and never inside the name. The app
+           formats it per language; a string here would print a Croatian decimal
+           comma to a German. */
+        if (item.vol != null && (typeof item.vol !== "number" || !(item.vol > 0)))
+          errors.push(`${where}: vol must be litres as a number, e.g. 0.375 (got ${JSON.stringify(item.vol)})`);
+        if (/\d\s*(l|ml|cl)\s*$/i.test(String(item.name || "")))
+          errors.push(`${where}: the bottle format goes in "vol" on the list item, not in the name`);
         /* Residual sugar is grams per litre without the unit — "144" or the
            range "120–140", never "144 g/l". It is only present where a producer
            published it for that exact vintage, so a shape we can't read here is
@@ -185,7 +193,14 @@ for (const r of hidden) {
   if (!byName.length) { errors.push(`${at}: no wine with that name — check the spelling and the vintage against wines.json`); continue; }
   const byProd = r.producer ? byName.filter((x) => norm(x.it.producer) === norm(r.producer)) : byName;
   if (!byProd.length) { errors.push(`${at}: "${r.producer}" doesn't make it — wines.json says ${[...new Set(byName.map((x) => x.it.producer))].join(", ")}`); continue; }
-  const matched = byProd.filter((x) => !r.where || (r.where === "glass" ? x.secId === "glass" : x.secId.startsWith("bottle")));
+  /* `vol` narrows the rule to one format — the magnum out, the 0,75 still
+     poured. A vol nobody stocks is the same silent failure as a misspelt name. */
+  const byVol = r.vol == null ? byProd : byProd.filter((x) => Number(r.vol) === x.it.vol);
+  if (!byVol.length) {
+    errors.push(`${at}: not listed in ${r.vol} l — the sizes on the list are ${[...new Set(byProd.map((x) => x.it.vol || 0.75))].join(", ")}`);
+    continue;
+  }
+  const matched = byVol.filter((x) => !r.where || (r.where === "glass" ? x.secId === "glass" : x.secId.startsWith("bottle")));
   if (!matched.length) errors.push(`${at}: not on the list as "${r.where}" — it is in ${[...new Set(byProd.map((x) => x.secId))].join(", ")}`);
   if (!r.producer && new Set(byName.map((x) => norm(x.it.producer))).size > 1)
     errors.push(`${at}: more than one producer makes a wine by that name — add "producer" so it hides the right one`);

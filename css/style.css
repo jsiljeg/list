@@ -368,6 +368,13 @@ body {
 .vintage { color: var(--text-dim); font-size: .82em; }
 /* Chinese gloss appended after an icon producer/cuvée name (Latin stays primary) */
 .zh-gloss { color: var(--text-dim); font-size: .85em; font-weight: 400; }
+/* The bottle format, where the name used to carry it (" – 0,375 l"). Dimmer and
+   in the sans face, because it is a fact about the container and not part of
+   what the wine is called — the same reason it left the name in the data. */
+.item-vol {
+  font-family: var(--sans); font-size: .78em; font-weight: 400;
+  letter-spacing: .06em; color: var(--text-dim); white-space: nowrap;
+}
 .markers { display: inline-flex; align-items: center; gap: .3em; vertical-align: middle; margin-left: .15em; }
 .marker { width: .82em; height: .82em; display: inline-block; color: var(--gold); line-height: 0; }
 .marker svg { width: 100%; height: 100%; display: block; }

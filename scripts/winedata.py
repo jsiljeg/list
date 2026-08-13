@@ -15,7 +15,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # The venue decides these; everything else on an item comes from the library.
-VENUE_FIELDS = ("price", "recommended", "new")
+VENUE_FIELDS = ("price", "recommended", "new", "vol")
 
 
 def _read(rel):

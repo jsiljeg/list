@@ -8227,67 +8227,8 @@
    },
    "terroir": ""
   },
-  "chiara-condello--predappio-sangiovese-2023-1-5-l": {
-   "name": "Predappio Sangiovese 2023 – 1,5 l",
-   "producer": "Chiara Condello",
-   "insight": {
-    "grape": "Sangiovese",
-    "region": "Predappio, Romagna, Emilia-Romagna",
-    "country": "IT",
-    "style": "red_medium",
-    "body": "medium",
-    "aromas": [
-     "sour_cherry",
-     "violet",
-     "earth",
-     "spice",
-     "tomato_leaf"
-    ],
-    "pairings": [
-     "pasta",
-     "charcuterie",
-     "poultry"
-    ],
-    "temp": "16–18",
-    "alcohol": "13.5",
-    "sweetness": "dry"
-   },
-   "terroir": ""
-  },
   "chiara-condello--riserva-le-lucciole-2022": {
    "name": "Riserva “Le Lucciole” 2022",
-   "producer": "Chiara Condello",
-   "insight": {
-    "grape": "Sangiovese",
-    "region": "Predappio, Romagna, Emilia-Romagna",
-    "country": "IT",
-    "style": "red_full",
-    "body": "medium",
-    "aromas": [
-     "sour_cherry",
-     "rose",
-     "forest_floor",
-     "spice"
-    ],
-    "pairings": [
-     "beef",
-     "game",
-     "truffles"
-    ],
-    "temp": "16–18",
-    "alcohol": "14",
-    "sweetness": "dry"
-   },
-   "terroir": "Le Lucciole",
-   "ratings": [
-    {
-     "critic": "James Suckling",
-     "score": "94"
-    }
-   ]
-  },
-  "chiara-condello--riserva-le-lucciole-2022-1-5-l": {
-   "name": "Riserva “Le Lucciole” 2022 – 1,5 l",
    "producer": "Chiara Condello",
    "insight": {
     "grape": "Sangiovese",
@@ -8847,8 +8788,8 @@
     "excellent_vintage"
    ]
   },
-  "radikon--pignoli-2010-0-5-l": {
-   "name": "Pignoli 2010 – 0,5 l",
+  "radikon--pignoli-2010": {
+   "name": "Pignoli 2010",
    "producer": "Radikon",
    "insight": {
     "grape": "Pignolo",
@@ -10207,49 +10148,8 @@
     }
    ]
   },
-  "gerzinic--muskat-2020-0-5-l": {
-   "name": "Muškat 2020 – 0,5 l",
-   "producer": "Geržinić",
-   "insight": {
-    "grape": "Žuti muškat (Moscato Giallo)",
-    "region": "Zapadna Istra, Hrvatska Istra",
-    "country": "HR",
-    "style": "sweet",
-    "body": "medium",
-    "aromas": [
-     "rose",
-     "honey",
-     "apricot",
-     "candied_fruit",
-     "dried_apricot",
-     "molasses",
-     "coffee"
-    ],
-    "pairings": [
-     "foie_gras",
-     "cheese_blue",
-     "desserts",
-     "fruit_desserts"
-    ],
-    "temp": "8–10",
-    "alcohol": "12.5",
-    "sweetness": "semi_sweet"
-   },
-   "terroir": "Vižinada",
-   "note": {
-    "hr": "Ime mu je dugo govorilo da dolazi iz Sirije — zvali su ga moscato dalla Siria, moscato sirio. DNK je tu priču srušio: moscato giallo u izravnom je srodstvu s muškatom bijelim i rodio se na sjeveru Italije, ne na Bliskom istoku. U Bolzanu ga po boji zrele bobice zovu Goldmuskateller. Sorta koja gotovo posvuda završi slatka — kao i ovdje.",
-    "en": "Its name long said it came from Syria — it was called moscato dalla Siria, moscato sirio. DNA demolished that: Moscato Giallo is directly related to Muscat Blanc and was born in northern Italy, not the Middle East. In Bolzano they name it Goldmuskateller, after the colour of the ripe berry. A variety that ends up sweet almost everywhere — as it does here.",
-    "it": "Il nome ha a lungo detto che venisse dalla Siria — lo chiamavano moscato dalla Siria, moscato sirio. Il DNA ha demolito la storia: il Moscato Giallo è in rapporto diretto di parentela col Moscato Bianco ed è nato nel nord Italia, non in Medio Oriente. A Bolzano lo chiamano Goldmuskateller, dal colore dell'acino maturo. Un vitigno che quasi ovunque finisce dolce — come qui.",
-    "fr": "Son nom a longtemps dit qu'il venait de Syrie — on l'appelait moscato dalla Siria, moscato sirio. L'ADN a démoli l'histoire : le Moscato Giallo est directement apparenté au Muscat Blanc et il est né dans le nord de l'Italie, pas au Proche-Orient. À Bolzano on le nomme Goldmuskateller, d'après la couleur du grain mûr. Un cépage qui finit sucré presque partout — ici aussi.",
-    "de": "Sein Name behauptete lange, er stamme aus Syrien — man nannte ihn moscato dalla Siria, moscato sirio. Die DNA hat die Geschichte erledigt: Moscato Giallo ist direkt mit dem Weißen Muskateller verwandt und in Norditalien entstanden, nicht im Nahen Osten. In Bozen heißt er nach der Farbe der reifen Beere Goldmuskateller. Eine Sorte, die fast überall süß endet — hier auch.",
-    "zh": "它的名字长期宣称自己来自叙利亚——人们叫它 moscato dalla Siria、moscato sirio。DNA 推翻了这个说法：黄麝香与白麝香有直接亲缘关系，出生地在意大利北部，而非中东。在博尔扎诺，人们按成熟果粒的颜色称它为 Goldmuskateller。这是一个几乎在哪里都酿成甜酒的品种——这一款也是。",
-    "sl": "Ime je dolgo trdilo, da prihaja iz Sirije — klicali so ga moscato dalla Siria, moscato sirio. DNK je zgodbo podrl: moscato giallo je v neposrednem sorodstvu z belim muškatom in se je rodil na severu Italije, ne na Bližnjem vzhodu. V Bolzanu ga po barvi zrele jagode imenujejo Goldmuskateller. Sorta, ki skoraj povsod konča sladka — tudi tu.",
-    "es": "Su nombre dijo durante mucho tiempo que venía de Siria — lo llamaban moscato dalla Siria, moscato sirio. El ADN derribó la historia: el Moscato Giallo está emparentado directamente con el Moscatel de grano menudo y nació en el norte de Italia, no en Oriente Medio. En Bolzano lo llaman Goldmuskateller, por el color del grano maduro. Una variedad que acaba dulce casi en todas partes — aquí también."
-   },
-   "notePlain": true
-  },
-  "mrgudic--prosek-moskar-0-375-l": {
-   "name": "Prošek Moskar – 0,375 l",
+  "mrgudic--prosek-moskar": {
+   "name": "Prošek Moskar",
    "producer": "Mrgudić",
    "insight": {
     "grape": "Autohtone dalmatinske sorte (prošek)",
@@ -10277,50 +10177,8 @@
     "drinking_now"
    ]
   },
-  "niko-bura--prosek-ruza-dalmatinska-0-375-l": {
-   "name": "Prošek Ruža Dalmatinska – 0,375 l",
-   "producer": "Niko Bura",
-   "insight": {
-    "grape": "Rukatac",
-    "region": "Pelješac, Srednja i Južna Dalmacija",
-    "country": "HR",
-    "style": "sweet",
-    "body": "full",
-    "aromas": [
-     "fig",
-     "dried_fruit",
-     "dried_apricot",
-     "orange_peel",
-     "walnut",
-     "white_flowers"
-    ],
-    "pairings": [
-     "foie_gras",
-     "cheese_blue",
-     "desserts",
-     "dark_chocolate"
-    ],
-    "temp": "14",
-    "alcohol": "",
-    "sweetness": "sweet"
-   },
-   "terroir": "",
-   "note": {
-    "hr": "Zlatno-jantarne boje, guste i uljaste teksture — prošek prepun suhog voća, naranče i oraha, s vrlo dugim završetkom.",
-    "en": "Golden-amber and dense, almost oily in texture — a prošek layered with dried fruit, orange peel and walnut, finishing very long.",
-    "it": "Color oro-ambra, denso e quasi oleoso — un prošek stratificato di frutta secca, scorza d'arancia e noce, dal finale molto lungo.",
-    "fr": "Or ambré, dense et presque onctueux — un prošek aux couches de fruits secs, d'écorce d'orange et de noix, à la finale très longue.",
-    "de": "Goldbernstein und dicht, fast ölig in der Textur — ein Prošek voller Trockenfrüchte, Orangenschale und Walnuss mit sehr langem Abgang.",
-    "zh": "金琥珀色，质地浓稠近乎油润——层层叠叠的果干、橙皮与核桃气息，余韵极长的普罗塞克（prošek）。",
-    "sl": "Zlato-jantarne barve, gost in skoraj oljnat po teksturi — prošek, prepleten s suhim sadjem, pomarančno lupino in orehom, z zelo dolgim zaključkom.",
-    "es": "Ámbar dorado y denso, de textura casi aceitosa — un prošek con capas de fruta seca, piel de naranja y nuez, de final muy largo."
-   },
-   "tags": [
-    "drinking_now"
-   ]
-  },
-  "clai--tasel-0-375-l": {
-   "name": "Tasel – 0,375 l",
+  "clai--tasel": {
+   "name": "Tasel",
    "producer": "Clai",
    "insight": {
     "grape": "Muškat bijeli",
@@ -10348,8 +10206,8 @@
     "drinking_now"
    ]
   },
-  "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-auslese-2023-0-375-l": {
-   "name": "Riesling Wehlener Sonnenuhr Auslese 2023 – 0,375 l",
+  "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-auslese-2023": {
+   "name": "Riesling Wehlener Sonnenuhr Auslese 2023",
    "producer": "Weingut Joh. Jos. Prüm",
    "insight": {
     "grape": "Riesling",
@@ -10389,8 +10247,8 @@
     "excellent_vintage"
    ]
   },
-  "weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017-0-375-l": {
-   "name": "Riesling Schieferterrassen Beerenauslese 2017 – 0,375 l",
+  "weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017": {
+   "name": "Riesling Schieferterrassen Beerenauslese 2017",
    "producer": "Weingut Heymann-Löwenstein",
    "insight": {
     "grape": "Riesling",
@@ -10419,8 +10277,8 @@
     "excellent_vintage"
    ]
   },
-  "weingut-wittmann--riesling-aulerde-auslese-2015-0-5-l": {
-   "name": "Riesling Aulerde Auslese 2015 – 0,5 l",
+  "weingut-wittmann--riesling-aulerde-auslese-2015": {
+   "name": "Riesling Aulerde Auslese 2015",
    "producer": "Weingut Wittmann",
    "insight": {
     "grape": "Riesling",
@@ -10451,8 +10309,8 @@
    },
    "terroir": "Aulerde"
   },
-  "zilliken--riesling-auslese-goldkapsel-2009-0-375l": {
-   "name": "Riesling Auslese Goldkapsel 2009 – 0,375l",
+  "zilliken--riesling-auslese-goldkapsel-2009": {
+   "name": "Riesling Auslese Goldkapsel 2009",
    "producer": "Zilliken",
    "insight": {
     "grape": "Riesling",
@@ -10491,8 +10349,8 @@
     "es": "La cápsula dorada significa que Hanno apartó las mejores barricas y no dijo nada. Miel y clementina, y debajo de todo una acidez que lo sostiene erguido — diecisiete años y todavía sin prisa."
    }
   },
-  "giuseppe-quintarelli--recioto-classico-2011-0-5-l": {
-   "name": "Recioto Classico 2011 – 0,5 l",
+  "giuseppe-quintarelli--recioto-classico-2011": {
+   "name": "Recioto Classico 2011",
    "producer": "Giuseppe Quintarelli",
    "insight": {
     "grape": "Cabernet Sauvignon, Corvina, Corvinone, Nebbiolo, Rondinella, Sangiovese",
@@ -10563,8 +10421,8 @@
     "drinking_now"
    ]
   },
-  "donnafugata--ben-rye-2019-0-75-l": {
-   "name": "Ben Ryé 2019 – 0,75 l",
+  "donnafugata--ben-rye-2019": {
+   "name": "Ben Ryé 2019",
    "producer": "Donnafugata",
    "insight": {
     "grape": "Zibibbo (Muscat of Alexandria)",
@@ -10596,8 +10454,8 @@
     }
    ]
   },
-  "giuseppe-quintarelli--amabile-del-cere-2017-0-375l": {
-   "name": "Amabile del Cere 2017 – 0,375l",
+  "giuseppe-quintarelli--amabile-del-cere-2017": {
+   "name": "Amabile del Cere 2017",
    "producer": "Giuseppe Quintarelli",
    "insight": {
     "grape": "Garganega",
@@ -13636,8 +13494,8 @@
    },
    "notePlain": true
   },
-  "zmajska-pivovara--pils-0-5-l": {
-   "name": "Pils 0,5 l",
+  "zmajska-pivovara--pils": {
+   "name": "Pils",
    "producer": "Zmajska pivovara",
    "insight": {
     "kind": "spirit",
@@ -13677,32 +13535,24 @@
    },
    "notePlain": true
   },
-  "jana-0-25-l": {
-   "name": "Jana 0,25 l",
+  "jana": {
+   "name": "Jana",
    "producer": ""
   },
-  "jana-0-75-l": {
-   "name": "Jana 0,75 l",
+  "jamnica": {
+   "name": "Jamnica",
    "producer": ""
   },
-  "jamnica-0-33-l": {
-   "name": "Jamnica 0,33 l",
+  "jamnica-sensation": {
+   "name": "Jamnica Sensation",
    "producer": ""
   },
-  "jamnica-0-75-l": {
-   "name": "Jamnica 0,75 l",
+  "romerquelle": {
+   "name": "Römerquelle",
    "producer": ""
   },
-  "jamnica-sensation-0-25-l": {
-   "name": "Jamnica Sensation 0,25 l",
-   "producer": ""
-  },
-  "romerquelle-0-75-l": {
-   "name": "Römerquelle 0,75 l",
-   "producer": ""
-  },
-  "romerquelle-gazirana-0-75-l": {
-   "name": "Römerquelle gazirana 0,75 l",
+  "romerquelle-gazirana": {
+   "name": "Römerquelle gazirana",
    "producer": "",
    "nameI18n": {
     "hr": "Römerquelle gazirana 0,75 l",
@@ -13713,8 +13563,8 @@
     "zh": "Römerquelle 气泡 0,75 l"
    }
   },
-  "romerquelle-limunska-trava-0-35-l": {
-   "name": "Römerquelle limunska trava 0,35 l",
+  "romerquelle-limunska-trava": {
+   "name": "Römerquelle limunska trava",
    "producer": "",
    "nameI18n": {
     "hr": "Römerquelle limunska trava 0,35 l",
@@ -13757,12 +13607,12 @@
     "zh": "Artesian 气泡"
    }
   },
-  "schweppes-indian-tonic-water-0-25-l": {
-   "name": "Schweppes Indian Tonic Water 0,25 l",
+  "schweppes-indian-tonic-water": {
+   "name": "Schweppes Indian Tonic Water",
    "producer": ""
   },
-  "svjeze-cijedeni-sok-0-3-l": {
-   "name": "Svježe cijeđeni sok 0,3 l",
+  "svjeze-cijedeni-sok": {
+   "name": "Svježe cijeđeni sok",
    "producer": ""
   },
   "coca-cola": {

@@ -220,8 +220,29 @@ carry that, and acidity is no better published than sugar. The honest instrument
 there is a sentence in that wine's `note`, not another field.
 
 **Notes:** `note` + `noteSig` renders as a signed quote (defaults to "Filho");
-`notePlain: true` renders unsigned prose. Large-format twins (`– 1,5 l`,
-`– 0,375 l`) are the same wine and must carry identical insight/notes/ratings/tags.
+`notePlain: true` renders unsigned prose.
+
+**The bottle format is `vol` on the listing, never in the name** (owner,
+2026-08-13). It used to be a suffix — `Prošek Ruža Dalmatinska – 0,375 l` —
+which made one wine two library entries, each carrying its own copy of the same
+research, and two different strings to every comparison in the app: the
+glass/bottle match, the sommelier's "already suggested" check, the 86 board.
+The old *large-format twin* rule (twins must carry identical insight) existed
+only to keep those copies in step and is **gone with the twins** — 364 library
+entries became 358, and `data.spec.mjs` now fails any library name ending in a
+size instead.
+
+- `"vol": 0.375` — litres, a **number**, on the item in `lists/theatrium.json`,
+  beside `price`. Absent means the ordinary 0,75. The app formats it per
+  language (`volText`), so a stored `"0,375 l"` would print a Croatian comma
+  to a German.
+- One wine in two sizes is **one ref listed twice**, exactly like a wine poured
+  by the glass and sold by the bottle.
+- The clavelin was the case the name could never state: Bourdy's Vin Jaune is
+  `"vol": 0.62`.
+- A hide rule in `unavailable.json` may carry `vol` to 86 one size only; the
+  `/admin` switch has no per-size button and hides them all, which is what a
+  wine running out usually means.
 
 **Vocabulary:** every aroma/pairing/tag key in `wines.json` must exist in
 `js/i18n.js` in **all 8 languages** (hr, en, it, fr, de, zh, sl, es), plus zh

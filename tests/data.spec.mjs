@@ -2,10 +2,10 @@
    of trusted. These need no browser and run in a second.
 
    Guards: 1ddedd7 (the style line's casing), the region rule that produced
-   "France, Francuska" by putting the country in insight.region, the large-format
-   twin rule (a wine and its 1,5 l must carry identical insight), the blend
-   notation (name first, descending share), the critic-name list, and 87dffea
-   (a producer's region contradicting the wine's). */
+   "France, Francuska" by putting the country in insight.region, the format rule
+   (a bottle size is `vol` on the listing, never part of the wine's name), the
+   blend notation (name first, descending share), the critic-name list, and
+   87dffea (a producer's region contradicting the wine's). */
 import { test, expect } from "@playwright/test";
 import { readFileSync, readdirSync } from "node:fs";
 import vm from "node:vm";
@@ -66,25 +66,26 @@ test("blends are written name first, descending share", () => {
   expect(bad).toEqual([]);
 });
 
-test("large-format twins carry identical insight, ratings and tags", () => {
-  const byBase = new Map();
+test("a bottle format lives on the listing, never in the wine's name", () => {
+  /* Owner, 2026-08-13. Formats used to be written into the name — "Prošek Ruža
+     Dalmatinska – 0,375 l" — which made one wine two library entries, each
+     carrying its own copy of the same research (the large-format twin rule
+     existed only to keep those copies in step) and two different strings to
+     every comparison in the app: the glass/bottle match, the sommelier's
+     "already suggested" check, the 86 board. `vol` on the list item says the
+     size instead, and one wine is one entry no matter how many sizes we pour. */
+  const named = Object.entries(library())
+    .filter(([, w]) => /\d\s*(l|ml|cl)\s*$/i.test(String(w.name)))
+    .map(([ref, w]) => `${ref}: ${w.name}`);
+  expect(named, "library names carrying a bottle format").toEqual([]);
+
+  const bad = [];
   for (const it of items) {
-    const base = String(it.name).replace(/\s*–\s*\d+([.,]\d+)?\s*l\s*$/i, "").trim();
-    if (base === it.name) continue;
-    (byBase.get(base) || byBase.set(base, []).get(base)).push(it);
+    if (it.vol === undefined) continue;
+    if (typeof it.vol !== "number" || !(it.vol > 0) || it.vol > 30)
+      bad.push(`${it.producer} — ${it.name}: vol ${JSON.stringify(it.vol)} is not a size in litres`);
   }
-  const mismatched = [];
-  for (const [base, twins] of byBase) {
-    const parent = items.find((i) => i.name === base && i.producer === twins[0].producer);
-    if (!parent) continue;
-    for (const t of twins) {
-      const strip = (o) => { const c = { ...o.insight }; delete c.alcohol; return JSON.stringify(c); };
-      if (strip(parent) !== strip(t)) mismatched.push(`${t.name}: insight differs from ${base}`);
-      if (JSON.stringify(parent.ratings || []) !== JSON.stringify(t.ratings || [])) mismatched.push(`${t.name}: ratings differ`);
-      if (JSON.stringify(parent.tags || []) !== JSON.stringify(t.tags || [])) mismatched.push(`${t.name}: tags differ`);
-    }
-  }
-  expect(mismatched).toEqual([]);
+  expect(bad, "vol must be litres as a number (0,375 — not \"0,375 l\")").toEqual([]);
 });
 
 test("a wine listed by the glass and by the bottle carries identical data", () => {
@@ -953,8 +954,6 @@ test("the same wine is one library entry, not two that differ only by name", () 
       for (let j = i + 1; j < group.length; j++) {
         const a = group[i], b = group[j];
         const na = norm(a.w.name), nb = norm(b.w.name);
-        /* Large formats are a deliberate second entry (the "– 1,5 l" twins). */
-        if (/\d\s*l$/.test(na) || /\d\s*l$/.test(nb)) continue;
         if (na !== nb && !na.startsWith(nb) && !nb.startsWith(na)) continue;
         const strip = (x) => JSON.stringify({ ...x.w, name: undefined });
         if (strip(a) === strip(b))

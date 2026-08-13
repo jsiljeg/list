@@ -759,7 +759,8 @@
         },
         {
          "ref": "domaine-bourdy--vin-jaune-2014",
-         "price": 64
+         "price": 64,
+         "vol": 0.62
         },
         {
          "ref": "domaine-bourdy--chateau-chalon-2014",
@@ -1202,16 +1203,18 @@
          "price": 145
         },
         {
-         "ref": "chiara-condello--predappio-sangiovese-2023-1-5-l",
-         "price": 290
+         "ref": "chiara-condello--predappio-sangiovese-2023",
+         "price": 290,
+         "vol": 1.5
         },
         {
          "ref": "chiara-condello--riserva-le-lucciole-2022",
          "price": 160
         },
         {
-         "ref": "chiara-condello--riserva-le-lucciole-2022-1-5-l",
-         "price": 340
+         "ref": "chiara-condello--riserva-le-lucciole-2022",
+         "price": 340,
+         "vol": 1.5
         },
         {
          "ref": "antinori--tignanello-2019",
@@ -1258,8 +1261,9 @@
          "price": 350
         },
         {
-         "ref": "radikon--pignoli-2010-0-5-l",
-         "price": 94
+         "ref": "radikon--pignoli-2010",
+         "price": 94,
+         "vol": 0.5
         },
         {
          "ref": "soldera--case-basse-2020",
@@ -1414,20 +1418,24 @@
        "country": "HR",
        "items": [
         {
-         "ref": "gerzinic--muskat-2020-0-5-l",
-         "price": 31
+         "ref": "gerzinic--muskat-2020",
+         "price": 31,
+         "vol": 0.5
         },
         {
-         "ref": "mrgudic--prosek-moskar-0-375-l",
-         "price": 45
+         "ref": "mrgudic--prosek-moskar",
+         "price": 45,
+         "vol": 0.375
         },
         {
-         "ref": "niko-bura--prosek-ruza-dalmatinska-0-375-l",
-         "price": 58
+         "ref": "niko-bura--prosek-ruza-dalmatinska",
+         "price": 58,
+         "vol": 0.375
         },
         {
-         "ref": "clai--tasel-0-375-l",
-         "price": 64
+         "ref": "clai--tasel",
+         "price": 64,
+         "vol": 0.375
         },
         {
          "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
@@ -1439,20 +1447,24 @@
        "country": "DE",
        "items": [
         {
-         "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-auslese-2023-0-375-l",
-         "price": 70
+         "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-auslese-2023",
+         "price": 70,
+         "vol": 0.375
         },
         {
-         "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017-0-375-l",
-         "price": 115
+         "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017",
+         "price": 115,
+         "vol": 0.375
         },
         {
-         "ref": "weingut-wittmann--riesling-aulerde-auslese-2015-0-5-l",
-         "price": 94
+         "ref": "weingut-wittmann--riesling-aulerde-auslese-2015",
+         "price": 94,
+         "vol": 0.5
         },
         {
-         "ref": "zilliken--riesling-auslese-goldkapsel-2009-0-375l",
+         "ref": "zilliken--riesling-auslese-goldkapsel-2009",
          "price": 390,
+         "vol": 0.375,
          "recommended": true
         }
        ]
@@ -1461,20 +1473,23 @@
        "country": "IT",
        "items": [
         {
-         "ref": "giuseppe-quintarelli--recioto-classico-2011-0-5-l",
-         "price": 250
+         "ref": "giuseppe-quintarelli--recioto-classico-2011",
+         "price": 250,
+         "vol": 0.5
         },
         {
          "ref": "ca-la-bionda--recioto-classico-2015",
          "price": 145
         },
         {
-         "ref": "donnafugata--ben-rye-2019-0-75-l",
-         "price": 100
+         "ref": "donnafugata--ben-rye-2019",
+         "price": 100,
+         "vol": 0.75
         },
         {
-         "ref": "giuseppe-quintarelli--amabile-del-cere-2017-0-375l",
-         "price": 495
+         "ref": "giuseppe-quintarelli--amabile-del-cere-2017",
+         "price": 495,
+         "vol": 0.375
         }
        ]
       },
@@ -1868,8 +1883,9 @@
        "country": null,
        "items": [
         {
-         "ref": "zmajska-pivovara--pils-0-5-l",
-         "price": 6
+         "ref": "zmajska-pivovara--pils",
+         "price": 6,
+         "vol": 0.5
         }
        ]
       }
@@ -1887,36 +1903,44 @@
        "country": null,
        "items": [
         {
-         "ref": "jana-0-25-l",
-         "price": 4
+         "ref": "jana",
+         "price": 4,
+         "vol": 0.25
         },
         {
-         "ref": "jana-0-75-l",
-         "price": 5
+         "ref": "jana",
+         "price": 5,
+         "vol": 0.75
         },
         {
-         "ref": "jamnica-0-33-l",
-         "price": 4
+         "ref": "jamnica",
+         "price": 4,
+         "vol": 0.33
         },
         {
-         "ref": "jamnica-0-75-l",
-         "price": 5
+         "ref": "jamnica",
+         "price": 5,
+         "vol": 0.75
         },
         {
-         "ref": "jamnica-sensation-0-25-l",
-         "price": 3
+         "ref": "jamnica-sensation",
+         "price": 3,
+         "vol": 0.25
         },
         {
-         "ref": "romerquelle-0-75-l",
-         "price": 5
+         "ref": "romerquelle",
+         "price": 5,
+         "vol": 0.75
         },
         {
-         "ref": "romerquelle-gazirana-0-75-l",
-         "price": 5
+         "ref": "romerquelle-gazirana",
+         "price": 5,
+         "vol": 0.75
         },
         {
-         "ref": "romerquelle-limunska-trava-0-35-l",
-         "price": 3.7
+         "ref": "romerquelle-limunska-trava",
+         "price": 3.7,
+         "vol": 0.35
         },
         {
          "ref": "saint-geron",
@@ -1945,8 +1969,9 @@
        "country": null,
        "items": [
         {
-         "ref": "schweppes-indian-tonic-water-0-25-l",
-         "price": 4
+         "ref": "schweppes-indian-tonic-water",
+         "price": 4,
+         "vol": 0.25
         }
        ]
       }
@@ -1959,8 +1984,9 @@
        "country": null,
        "items": [
         {
-         "ref": "svjeze-cijedeni-sok-0-3-l",
-         "price": 5
+         "ref": "svjeze-cijedeni-sok",
+         "price": 5,
+         "vol": 0.3
         },
         {
          "ref": "coca-cola",

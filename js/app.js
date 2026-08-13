@@ -153,6 +153,11 @@ function hiddenTest(rules) {
   return (item, secId) => rs.some((r) =>
     hideNorm(r.name) === hideNorm(item.name) &&
     (!r.producer || hideNorm(r.producer) === hideNorm(item.producer)) &&
+    /* `vol` narrows a rule to one format. The magnum and the 0,75 are one wine
+       with one name since the format moved onto the listing (2026-08-13), so
+       without this the last magnum running out would take the 0,75 with it —
+       and both sit in the same bottle-* section, which `where` cannot split. */
+    (r.vol == null || Number(r.vol) === item.vol) &&
     (!r.where || (r.where === "glass" ? secId === "glass" : secId.startsWith("bottle"))));
 }
 
@@ -615,12 +620,22 @@ function legendHtml() {
    items — e.g. waters — carry a nameI18n map for descriptor words) */
 const itemName = (item) => (item.nameI18n && item.nameI18n[lang]) || item.name;
 
+/* The bottle format (2026-08-13). It used to be part of the name — "Prošek Ruža
+   Dalmatinska – 0,375 l" — which made the same wine two different wines to every
+   string comparison in the app, and meant the library carried a second copy of
+   its own research for every magnum. It is now `vol` on the *listing*, in litres,
+   because a format is something the venue sells rather than something the wine
+   is. Only the decimal mark is localized; "l" is the same symbol everywhere. */
+const volText = (v, l) => `${new Intl.NumberFormat(l || lang).format(v)} l`;
+const volHtml = (item) => (item.vol ? ` <span class="item-vol">${esc(volText(item.vol))}</span>` : "");
+
 function nameHtml(item) {
   const marked = esc(itemName(item)).replace(/\b((?:19|20)\d{2})\b/, '<span class="vintage">$1</span>');
   const gloss = wineZh(itemName(item));
   const marks = markerIcons(item);
   return marked +
     (gloss ? ` <span class="zh-gloss">（${gloss}）</span>` : "") +
+    volHtml(item) +
     (marks ? ` <span class="markers">${marks}</span>` : "") +
     (item.new ? ` <span class="new-badge">${esc(T().ui.newBadge)}</span>` : "");
 }
@@ -649,15 +664,16 @@ function itemHtml(item, ref, context, showFlag, aside) {
    line on a bottle rather than as a second list. Rebuilt whenever DATA is,
    since a wine can be 86'd off one shelf and not the other.
 
-   The format suffix is stripped from the key (2026-08-12). The Prošek is poured
-   as "Ruža Dalmatinska" and sold as "Ruža Dalmatinska – 0,375 l", which are the
-   same wine in two sizes — but as raw strings they are two different keys, so
-   the bottle row never showed "i na čašu" and, worse, the sommelier could not
-   tell that its glass answer was recommending a wine its bottle answer had
-   already recommended. That is the owner's "don't show me the same three
-   twice" (2026-08-12), and it was a string-matching bug rather than a policy. */
-const FORMAT_SUFFIX = /\s*[–—-]\s*\d+(?:[.,]\d+)?\s*l\s*$/i;
-const wineKey = (producer, name) => `${producer}|${String(name).replace(FORMAT_SUFFIX, "")}`;
+   The Prošek is poured as "Ruža Dalmatinska" and was sold as "Ruža Dalmatinska
+   – 0,375 l", which are the same wine in two sizes — but as raw strings they
+   were two different keys, so the bottle row never showed "i na čašu" and, worse,
+   the sommelier could not tell that its glass answer was recommending a wine its
+   bottle answer had already recommended. That is the owner's "don't show me the
+   same three twice" (2026-08-12), and it was a string-matching bug rather than a
+   policy. It was first patched by stripping the suffix off the key here; a day
+   later the format left the name altogether (see `volText`), so the names match
+   on their own and `data.spec.mjs` fails any library name that grows one back. */
+const wineKey = (producer, name) => `${producer}|${name}`;
 let GLASS_PRICE = null;
 function glassPrices() {
   if (GLASS_PRICE) return GLASS_PRICE;
@@ -919,9 +935,13 @@ function itemHay(item) {
     for (const tg of item.tags || []) if (d && d.tags && d.tags[tg]) parts.push(d.tags[tg]);
   }
   for (const r of item.ratings || []) parts.push(criticName(r.critic), r.score);
-  /* A large format has no separate name, only "– 1,5 l" appended. Magnum is
-     what a guest calls it. */
-  if (/1,5\s*l/.test(item.name || "")) parts.push("magnum");
+  /* The format is a number now, not a suffix on the name — so the words a
+     guest types for it have to be put back: the printed figure ("0,375") and
+     "magnum", which is what nobody calls a 1,5 l. */
+  if (item.vol) {
+    parts.push(volText(item.vol), String(item.vol).replace(".", ","));
+    if (item.vol >= 1.5) parts.push("magnum");
+  }
 
   /* ---- the second haystack: what it tastes like and what it goes with ----
      Aromas and pairings were searchable nowhere, which for a *restaurant* list
@@ -1265,7 +1285,7 @@ function openDetail(ref, back, scope) {
     ${back ? `<button class="detail-back" type="button">${esc(t.helper.backToWines)}</button>` : ""}
     <div class="detail-header">
       <div class="detail-head-text">
-        <div class="detail-name">${esc(itemName(item))}${wineZh(itemName(item)) ? ` <span class="zh-gloss">（${wineZh(itemName(item))}）</span>` : ""}</div>
+        <div class="detail-name">${esc(itemName(item))}${wineZh(itemName(item)) ? ` <span class="zh-gloss">（${wineZh(itemName(item))}）</span>` : ""}${volHtml(item)}</div>
         ${item.producer ? `<div class="detail-producer">${esc(item.producer)}${producerZh(item.producer) ? ` <span class="zh-gloss">（${producerZh(item.producer)}）</span>` : ""}</div>` : ""}
       </div>
       ${glassSvg ? `<div class="detail-glass">${glassSvg}</div>` : ""}
@@ -1422,7 +1442,7 @@ function showWaiterCard(ref, back, scope) {
       <div class="waiter-name">${esc(itemName(item))}</div>
       ${item.producer ? `<div class="waiter-producer">${esc(item.producer)}</div>` : ""}
       <div class="waiter-line">
-        ${shelf ? `<span class="waiter-shelf">${esc(shelf)}${shelfGuest ? `<span class="waiter-shelf-guest">${esc(shelfGuest)}</span>` : ""}</span>` : ""}
+        ${shelf ? `<span class="waiter-shelf">${esc(shelf)}${item.vol ? " " + esc(volText(item.vol, "hr")) : ""}${shelfGuest ? `<span class="waiter-shelf-guest">${esc(shelfGuest)}</span>` : ""}</span>` : ""}
         ${item.price != null ? `<span class="waiter-price">${fmtPrice(item.price)} €</span>` : ""}
       </div>
     </div>`;

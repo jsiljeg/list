@@ -75,6 +75,23 @@ Dodajte ili obrišite ovaj redak unutar vina:
 "recommended": true,
 ```
 
+### Veličina boce (0,375 l, magnum, klavlin…) → `lists/theatrium.json`
+Veličina **nije dio imena vina** nego podatak o boci koju prodajemo, pa se
+piše uz cijenu, u litrama, kao broj s **točkom** (ne zarezom) i bez „l":
+```json
+{ "ref": "clai--tasel", "price": 64, "vol": 0.375 },
+```
+Aplikacija sama ispiše `0,375 l` gostu koji čita hrvatski i `0.375 l`
+onome koji čita engleski.
+
+Zato **isto vino u dvije veličine ima jedan zapis u knjižnici i dva retka
+u karti** — magnum i obična boca, s različitom cijenom i različitim `vol`:
+```json
+{ "ref": "chiara-condello--predappio-sangiovese-2023", "price": 145 },
+{ "ref": "chiara-condello--predappio-sangiovese-2023", "price": 290, "vol": 1.5 },
+```
+Ako `vol` nema, aplikacija ne piše ništa — to je obična boca od 0,75 l.
+
 ### Istaknuti novo vino u ponudi ("NOVO")
 Dodajte redak:
 ```json
@@ -238,6 +255,9 @@ dodajte redak po vinu:
 - `where` — dodajte `"where": "glass"` ako vino nestaje samo iz ponude na
   čaše, a i dalje se prodaje na boce (ili `"bottle"` za obrnuto). Bez tog
   retka vino nestaje odasvud.
+- `vol` — dodajte `"vol": 1.5` ako je nestala samo ta veličina, a obična
+  boca se i dalje toči. Bez tog retka nestaju sve veličine (a to je i ono
+  što napravi prekidač na `/admin`).
 
 **Vraćanje vina u kartu:** obrišite njegov redak. Ništa više.
 

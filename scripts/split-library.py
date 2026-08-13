@@ -34,8 +34,10 @@ LIBRARY = ROOT / "library" / "wines.json"
 LIST = ROOT / "lists" / "theatrium.json"
 
 # What the venue decides. Everything else on an item belongs to the bottle and
-# moves to the library. `recommended` is Filho's pick *here*; `new` is new *here*.
-VENUE_FIELDS = ("price", "recommended", "new")
+# moves to the library. `recommended` is Filho's pick *here*; `new` is new *here*;
+# `vol` is the format this venue pours it in (litres), which is why the same wine
+# can be listed as a magnum and as a 0,75 without being two wines.
+VENUE_FIELDS = ("price", "recommended", "new", "vol")
 
 # Croatian and the other Latin alphabets on the list, flattened for slugs.
 # unicodedata strips the combining accents; đ/ð and ß have no decomposition.
