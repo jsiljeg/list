@@ -307,15 +307,21 @@ For Japan and Taiwan it is not a translation question at all — Chinese uses th
 same characters: 長野 → 长野, 鹿児島 → 鹿儿岛, 神戸 → 神户, 宜蘭 → 宜兰. Leaving
 those in Latin denies a Chinese reader their own script.
 
-**What stays Latin, on purpose**, per the header of js/zh-terms.js: rungs with
-no established Chinese name — Serravalle Scrivia, Segonzac, Barradères,
-Saint-Michel-de-l'Attalaye, San Luis del Río, Jesús María, Los Valles, Tain,
-Wigtownshire. A mixed line (`特基拉（Tequila）、Los Valles、哈利斯科（Jalisco）`) is
-the established pattern, not a defect — the wine side has read
-`波特兰（Portland）、俄勒冈（Oregon）` for a year. **Do not invent a
-transliteration to make a line uniform.** `Los Altos` was added only because
-our own note already said 洛斯阿尔托斯; `Los Valles` was not, because nothing
-attests it.
+I first left nine rungs in Latin on the grounds that a village has no
+"established" Chinese name. **That was wrong, and the owner found it with one
+question: how is Čara handled?** It has read **察拉** all along, as Ponikve reads
+波尼克韦 and Dingač 丁加奇. The wine side was swept to the last village years ago;
+leaving Segonzac and Serravalle Scrivia Latin was not a convention, it was half
+a job — and it left a guest parsing one Latin rung in the middle of a line.
+
+**So the rule is: every rung of every ladder has a Chinese name, however small
+the place.** All 935 on the list do. Transliterate by the usual Xinhua
+conventions rather than waiting for a name a hamlet will never acquire; the
+test fails on a single bare rung, wine or spirit. Torino was the embarrassing
+one — a city of a million, printed in Latin on four vermouth cards.
+
+Grape and producer names are the opposite and stay Latin: that is the name on
+the bottle, and the convention on premium Chinese lists.
 
 Guarded by a test in localization.spec.mjs: a list of well-known rungs must
 localize, and no spirit on the shelf may show a region line with no Chinese in

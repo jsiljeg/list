@@ -4,11 +4,18 @@
  * Chinese names and render them bilingually — 中文 (Latin) — so a guest can
  * still match the name on the bottle/label.
  *
- * Indigenous grapes (Plavac Mali, Pošip, Grk, Teran, Malvazija istarska…) and
- * small village/appellation names have no established Chinese name and are
- * intentionally left in Latin — that is the convention on premium Chinese
- * lists too. Producer/winery names are likewise kept in their original script
- * elsewhere. To add a translation, just add a token here.
+ * Indigenous grapes (Plavac Mali, Pošip, Grk, Teran, Malvazija istarska…) are
+ * intentionally left in Latin — that is the convention on premium Chinese lists
+ * too, and it is the name on the bottle. Producer/winery names likewise.
+ *
+ * PLACES ARE THE OPPOSITE: every rung of every region ladder on the list has a
+ * Chinese name, however small the place. Čara is 察拉, Ponikve is 波尼克韦,
+ * Segonzac is 塞贡扎克. The header used to claim small names were left in Latin;
+ * the file never did that, and the owner caught the contradiction on 2026-09-04
+ * after the spirits shelf had been swept only half-way. A guest reading Chinese
+ * should not have to parse one Latin rung in the middle of a line — so when you
+ * add a bottle, transliterate its places by the usual Xinhua conventions rather
+ * than waiting for an "established" name that a village will never have.
  */
 (function (g) {
   // Grape variety → standard Chinese name (rendered bilingually).
@@ -117,6 +124,18 @@
   // Region → standard Chinese name (rendered bilingually). Villages and small
   // appellations without an established Chinese name are omitted on purpose.
   g.ZH_REGION = {
+    "Torino": "都灵",
+    "Serravalle Scrivia": "塞拉瓦莱斯克里维亚",
+    "Segonzac": "塞贡扎克",
+    "Tain": "泰恩",
+    "Wigtownshire": "威格敦郡",
+    "Jesús María": "赫苏斯玛丽亚",
+    "Los Valles": "洛斯瓦列斯",
+    "San Luis del Río": "圣路易斯德尔里奥",
+    "Barradères": "巴拉德雷",
+    "Cavaillon": "卡瓦永",
+    "Saint-Michel-de-l'Attalaye": "圣米歇尔德拉塔莱",
+    "Petín": "佩廷",
     "Islay": "艾雷岛",
     "Speyside": "斯佩塞",
     "Highlands": "高地",
