@@ -244,6 +244,17 @@ size instead.
   `/admin` switch has no per-size button and hides them all, which is what a
   wine running out usually means.
 
+**Every stored decimal is localized on the way to the screen** (2026-09-04).
+Three numbers on a card come out of JSON in JSON's notation and must not reach
+a guest that way: `price` (a number), `vol` (a number) and `insight.alcohol`
+(a *string*, because it is a figure copied off a label). `fmtPrice`, `volText`
+and `alcText` all go through `PRICE_LOCALE`, so a Croatian reads `13,5% vol.`
+and `0,375 l` where an Englishman reads `13.5`. Alcohol was printing raw — 129
+of the wines carry a decimal, so it was a third of the list, and it surfaced
+only because the Hakutsuru umeshu is 19,5%. `alcText` reformats a bare number
+and nothing else: a blank stays blank, and any other shape is left alone.
+Guarded by a test in localization.spec.mjs.
+
 **Vocabulary:** every aroma/pairing/tag key in `wines.json` must exist in
 `js/i18n.js` in **all 8 languages** (hr, en, it, fr, de, zh, sl, es), plus zh
 tokens in `js/zh-terms.js` for new grape/region names. Run `node scripts/validate.mjs`

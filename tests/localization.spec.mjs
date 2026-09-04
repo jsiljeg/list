@@ -326,3 +326,33 @@ test("blurb asterisks become italics, and nothing else becomes markup", async ({
   const shown = await page.locator(".detail-winemaker p").first().innerText();
   expect(shown, "a literal asterisk reached the card").not.toContain("*");
 });
+
+test("a stored decimal is printed in the guest's own notation", async ({ page }) => {
+  /* Owner-facing numbers are stored the way JSON writes them — alcohol as the
+     string "13.5", `vol` as the number 0.375 — and both were printed raw at
+     some point, putting an English decimal point in front of a Croatian, a
+     German and a Frenchman. 129 of the wines carry a decimal alcohol, so this
+     was a third of the list; it was found on the Hakutsuru card, 2026-09-04.
+     The three formatters must agree, and only on the separator: "% vol." and
+     "l" are the same symbol in every language. */
+  await openApp(page);
+  const seen = {};
+  for (const lg of ["hr", "en", "de", "fr", "zh"]) {
+    await page.evaluate((l) => { lang = l; }, lg);
+    seen[lg] = await page.evaluate(() =>
+      [alcText("19.5"), volText(0.375), fmtPrice(6.5), alcText("42"), alcText("")]);
+  }
+  for (const lg of ["hr", "de", "fr"]) {
+    expect(seen[lg][0], `${lg} alcohol`).toBe("19,5");
+    expect(seen[lg][1], `${lg} volume`).toBe("0,375 l");
+    expect(seen[lg][2], `${lg} price`).toBe("6,5");
+  }
+  for (const lg of ["en", "zh"]) {
+    expect(seen[lg][0], `${lg} alcohol`).toBe("19.5");
+    expect(seen[lg][1], `${lg} volume`).toBe("0.375 l");
+  }
+  /* A whole number gains nothing, and a blank must stay blank rather than
+     becoming a NaN on the card. */
+  expect(seen.hr[3]).toBe("42");
+  expect(seen.hr[4]).toBe("");
+});

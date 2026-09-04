@@ -1944,19 +1944,23 @@
         },
         {
          "ref": "saint-geron",
-         "price": 9
+         "price": 6.5,
+         "vol": 0.75
         },
         {
          "ref": "saint-geron-gazirana",
-         "price": 9
+         "price": 6.5,
+         "vol": 0.75
         },
         {
          "ref": "artesian",
-         "price": 9
+         "price": 6.5,
+         "vol": 0.75
         },
         {
          "ref": "artesian-gazirana",
-         "price": 9
+         "price": 6.5,
+         "vol": 0.75
         }
        ]
       }
@@ -1990,11 +1994,13 @@
         },
         {
          "ref": "coca-cola",
-         "price": 4
+         "price": 4,
+         "vol": 0.25
         },
         {
          "ref": "coca-cola-zero",
-         "price": 4
+         "price": 4,
+         "vol": 0.25
         }
        ]
       }

@@ -526,6 +526,17 @@ function renderNav() {
 
 const PRICE_LOCALE = { hr: "hr-HR", en: "en-GB", it: "it-IT", fr: "fr-FR", de: "de-DE", sl: "sl-SI", es: "es-ES", zh: "zh-CN" };
 const fmtPrice = (n) => n.toLocaleString(PRICE_LOCALE[lang] || "hr-HR");
+/* Alcohol is stored as a string, because it is a figure off a label rather than
+   a quantity to compute with — but a third of the list carries a decimal, and
+   printing "13.5" raw put an English point in front of a Croatian, an Italian
+   and a German (found on the Hakutsuru card, 2026-09-04). Only a bare number is
+   reformatted; anything else is a shape we did not write and is left alone. */
+const alcText = (a) => {
+  const s = String(a).trim();
+  if (!/^\d+(?:[.,]\d+)?$/.test(s)) return s;
+  return parseFloat(s.replace(",", ".")).toLocaleString(PRICE_LOCALE[lang] || "hr-HR",
+    { maximumFractionDigits: 2 });
+};
 
 function priceHtml(item) {
   if (item.price == null) return "";
@@ -626,7 +637,7 @@ const itemName = (item) => (item.nameI18n && item.nameI18n[lang]) || item.name;
    its own research for every magnum. It is now `vol` on the *listing*, in litres,
    because a format is something the venue sells rather than something the wine
    is. Only the decimal mark is localized; "l" is the same symbol everywhere. */
-const volText = (v, l) => `${new Intl.NumberFormat(l || lang).format(v)} l`;
+const volText = (v, l) => `${v.toLocaleString(PRICE_LOCALE[l || lang] || "hr-HR")} l`;
 const volHtml = (item) => (item.vol ? ` <span class="item-vol">${esc(volText(item.vol))}</span>` : "");
 
 function nameHtml(item) {
@@ -1315,7 +1326,7 @@ function openDetail(ref, back, scope) {
       ${field(su.still, esc(slist(ins.still, "stills")))}
       ${field(su.cask, esc(slist(ins.cask, "casks")))}
       ${field(su.age, ins.age ? esc(ins.age) + " " + esc(su.years || "") : (ins.age === 0 ? esc(su.noAge || "") : ""))}
-      ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + "% vol." : "")}
+      ${field(t.ui.alcohol, ins.alcohol ? esc(alcText(ins.alcohol)) + "% vol." : "")}
       ${/* Independent bottlings are half this shelf — the distillery made it,
             somebody else chose the cask and put their name on it. A company
             name is not translated, so this one is a plain string. */
@@ -1327,7 +1338,7 @@ function openDetail(ref, back, scope) {
       ${field(t.ui.grape, esc(localizeGrape(ins.grape)))}
       ${field(regionLabel, region)}
       ${field(t.ui.body, esc(t.bodies[ins.body] || ins.body))}
-      ${field(t.ui.alcohol, ins.alcohol ? esc(ins.alcohol) + "% vol." : "")}
+      ${field(t.ui.alcohol, ins.alcohol ? esc(alcText(ins.alcohol)) + "% vol." : "")}
       ${/* Residual sugar, only where a producer publishes it for that exact
             vintage — the same rule as alcohol. It answers the question the
             sweetness word cannot: "slatko" covers everything from 46 g/l to

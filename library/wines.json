@@ -13253,11 +13253,11 @@
   },
   "amarone-grappa": {
    "name": "Amarone Grappa",
-   "producer": "",
+   "producer": "Lorenzo Inga",
    "insight": {
     "kind": "spirit",
-    "class": "grappa",
-    "region": "Veneto",
+    "class": "grappa_aged",
+    "region": "Piemonte",
     "country": "IT",
     "base": [
      "grape_pomace"
@@ -13265,11 +13265,15 @@
     "still": [
      "pot"
     ],
-    "alcohol": "",
+    "cask": [
+     "french_oak"
+    ],
+    "alcohol": "42",
     "aromas": [
      "dark_cherry",
      "raisin",
      "prune",
+     "vanilla",
      "brown_spices",
      "cocoa",
      "dried_fruit"
@@ -13299,11 +13303,11 @@
   },
   "umeshu-genshu": {
    "name": "Umeshu Genshu",
-   "producer": "",
+   "producer": "Hakutsuru",
    "insight": {
     "kind": "spirit",
     "class": "liqueur_fruit",
-    "region": "",
+    "region": "Nada, Kobe",
     "country": "JP",
     "base": [
      "ume"
@@ -13314,7 +13318,7 @@
     "cask": [
      "unaged"
     ],
-    "alcohol": "",
+    "alcohol": "19.5",
     "aromas": [
      "umeboshi",
      "apricot",
