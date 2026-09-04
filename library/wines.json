@@ -13757,6 +13757,198 @@
     "sweetness": "dry"
    },
    "terroir": "Stancija Meneghetti, Bale"
+  },
+  "fortaleza--blanco": {
+   "name": "Blanco",
+   "producer": "Fortaleza",
+   "insight": {
+    "kind": "spirit",
+    "class": "tequila_blanco",
+    "region": "Tequila, Jalisco",
+    "country": "MX",
+    "base": [
+     "agave_blue"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "roasted_agave",
+     "butter",
+     "olive",
+     "white_pepper",
+     "citrus",
+     "herbs"
+    ],
+    "serve": [
+     "neat",
+     "chilled"
+    ],
+    "pairings": [
+     "spicy",
+     "seafood",
+     "aperitif"
+    ]
+   },
+   "note": {
+    "hr": "Ovako miriše agava kad je ništa ne pokriva: bez drva, bez aditiva, bez šećera koji se industrijskoj tequili smije dodati do 1%. Maslac i maslina prije papra — okus koji dolazi iz kamena i drvene kace, a ne iz bačve.",
+    "en": "This is what agave smells like with nothing over it: no wood, no additives, none of the sugar industrial tequila is allowed to carry up to 1%. Butter and olive before the pepper — a flavour that comes from the stone and the wooden vat, not from a cask.",
+    "it": "Ecco come profuma l'agave quando non le si mette nulla sopra: niente legno, niente additivi, niente di quello zucchero che alla tequila industriale è concesso fino all'1%. Burro e oliva prima del pepe — un sapore che viene dalla pietra e dal tino di legno, non dalla botte.",
+    "fr": "Voilà ce que sent l'agave quand rien ne la recouvre : pas de bois, pas d'additifs, rien du sucre que la tequila industrielle a le droit d'ajouter jusqu'à 1%. Beurre et olive avant le poivre — un goût qui vient de la pierre et de la cuve en bois, pas du fût.",
+    "de": "So riecht Agave, wenn nichts über ihr liegt: kein Holz, keine Zusätze, nichts von dem Zucker, den industrieller Tequila bis zu 1% enthalten darf. Butter und Olive vor dem Pfeffer — ein Geschmack, der aus dem Stein und dem Holzbottich kommt, nicht aus dem Fass.",
+    "zh": "这就是龙舌兰在没有任何遮盖时的样子：不过桶、无添加，也没有工业龙舌兰获准添加的那最多 1% 的糖。黄油与橄榄走在胡椒之前——这味道来自石碾与木制发酵槽，而不是来自橡木桶。",
+    "sl": "Tako diši agava, kadar je nič ne prekriva: brez lesa, brez dodatkov, brez sladkorja, ki ga sme industrijska tekila imeti do 1%. Maslo in oliva pred poprom — okus, ki prihaja iz kamna in lesene kadi, ne iz soda.",
+    "es": "Así huele el agave cuando nada lo tapa: sin madera, sin aditivos, sin nada de ese azúcar que la tequila industrial puede llevar hasta un 1%. Mantequilla y aceituna antes que la pimienta — un sabor que viene de la piedra y de la tina de madera, no de la barrica."
+   },
+   "notePlain": true
+  },
+  "fortaleza--reposado": {
+   "name": "Reposado",
+   "producer": "Fortaleza",
+   "insight": {
+    "kind": "spirit",
+    "class": "tequila_reposado",
+    "region": "Tequila, Jalisco",
+    "country": "MX",
+    "base": [
+     "agave_blue"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "roasted_agave",
+     "vanilla",
+     "caramel",
+     "cinnamon",
+     "white_pepper",
+     "citrus"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "spicy",
+     "bbq",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Reposado znači odmorena, a zakon za tu riječ traži samo 2 mjeseca u drvu. Ova stoji 6 do 9 — dovoljno da bourbonska bačva doda vaniliju i cimet, premalo da agava ispod njih nestane. Drvo je ovdje začin, a ne kaput.",
+    "en": "Reposado means rested, and the law asks only 2 months in wood for the word. This one takes 6 to 9 — enough for the ex-bourbon cask to add vanilla and cinnamon, too little for the agave beneath them to disappear. Here the wood is a seasoning, not a coat.",
+    "it": "Reposado vuol dire riposata, e per quella parola la legge chiede appena 2 mesi di legno. Questa ne fa da 6 a 9 — abbastanza perché la botte ex bourbon aggiunga vaniglia e cannella, troppo poco perché l'agave sotto sparisca. Qui il legno è una spezia, non un cappotto.",
+    "fr": "Reposado veut dire reposée, et la loi n'exige que 2 mois de bois pour ce mot. Celle-ci en prend 6 à 9 — assez pour que le fût d'ex-bourbon apporte vanille et cannelle, trop peu pour que l'agave en dessous disparaisse. Ici le bois est un assaisonnement, pas un manteau.",
+    "de": "Reposado heißt geruht, und das Gesetz verlangt für dieses Wort nur 2 Monate Holz. Dieser nimmt sich 6 bis 9 — genug, damit das Ex-Bourbonfass Vanille und Zimt beisteuert, zu wenig, als dass die Agave darunter verschwände. Das Holz ist hier Gewürz, kein Mantel.",
+    "zh": "Reposado 是「歇过」的意思，而法律为这个词只要求 2 个月的桶陈。这一支用了 6 到 9 个月——足够让波本旧桶添上香草与肉桂，又不足以让底下的龙舌兰消失。木桶在这里是调味，不是外套。",
+    "sl": "Reposado pomeni spočita, zakon pa za to besedo zahteva le 2 meseca lesa. Ta jih vzame 6 do 9 — dovolj, da bourbonski sod doda vanilijo in cimet, premalo, da bi agava pod njima izginila. Les je tu začimba, ne plašč.",
+    "es": "Reposado quiere decir descansada, y la ley pide solo 2 meses de madera para esa palabra. Esta se toma de 6 a 9 — bastante para que la barrica de ex bourbon aporte vainilla y canela, muy poco para que el agave de debajo desaparezca. Aquí la madera es un condimento, no un abrigo."
+   },
+   "notePlain": true
+  },
+  "fortaleza--anejo": {
+   "name": "Añejo",
+   "producer": "Fortaleza",
+   "insight": {
+    "kind": "spirit",
+    "class": "tequila_anejo",
+    "region": "Tequila, Jalisco",
+    "country": "MX",
+    "base": [
+     "agave_blue"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "roasted_agave",
+     "toffee",
+     "dried_fruit",
+     "cocoa",
+     "brown_spices",
+     "oak"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "cigars",
+     "dark_chocolate",
+     "digestif"
+    ]
+   },
+   "note": {
+    "hr": "18 mjeseci u bačvi, i tequila prestaje biti piće za rundu — ovo se pije kao viski, polako i bez soli. Agava je i dalje tu, ispod toffeeja i suhog voća, ali sada govori zadnja umjesto prva.",
+    "en": "18 months in cask, and the tequila stops being a drink for a round — this is drunk like whisky, slowly and without salt. The agave is still there, under the toffee and the dried fruit, but it now speaks last instead of first.",
+    "it": "18 mesi di botte, e la tequila smette di essere un bicchiere da giro — questa si beve come un whisky, piano e senza sale. L'agave c'è ancora, sotto il toffee e la frutta secca, ma ora parla per ultima invece che per prima.",
+    "fr": "18 mois de fût, et la tequila cesse d'être un verre de tournée — celle-ci se boit comme un whisky, lentement et sans sel. L'agave est toujours là, sous le toffee et les fruits secs, mais elle parle désormais en dernier et non en premier.",
+    "de": "18 Monate im Fass, und der Tequila hört auf, ein Glas für die Runde zu sein — dieser wird wie Whisky getrunken, langsam und ohne Salz. Die Agave ist noch da, unter Toffee und Trockenfrucht, nur spricht sie jetzt zuletzt statt zuerst.",
+    "zh": "18 个月的桶陈之后，龙舌兰不再是拼一轮的酒——这一支要像威士忌那样喝，慢慢地，不配盐。龙舌兰仍在，藏在太妃糖与果干之下，只是如今最后开口，而不是最先。",
+    "sl": "18 mesecev v sodu, in tekila neha biti pijača za rundo — to se pije kot viski, počasi in brez soli. Agava je še vedno tu, pod toffeejem in suhim sadjem, le da zdaj spregovori zadnja namesto prva.",
+    "es": "18 meses de barrica, y la tequila deja de ser un vaso de ronda — esta se bebe como un whisky, despacio y sin sal. El agave sigue ahí, bajo el toffee y la fruta seca, pero ahora habla el último en vez del primero."
+   },
+   "notePlain": true
+  },
+  "clase-azul--reposado": {
+   "name": "Reposado",
+   "producer": "Clase Azul",
+   "insight": {
+    "kind": "spirit",
+    "class": "tequila_reposado",
+    "region": "Los Altos, Jalisco",
+    "country": "MX",
+    "base": [
+     "agave_blue"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "roasted_agave",
+     "vanilla",
+     "caramel",
+     "cinnamon",
+     "honey",
+     "orange_peel"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "desserts",
+     "dark_chocolate",
+     "digestif"
+    ]
+   },
+   "note": {
+    "hr": "Agava iz Los Altosa, visoravni čija crvena zemlja daje slađi i cvjetniji plod nego dolina, pečena polako u opekarskim pećima. Zatim 8 mjeseci u bačvama od američkog viskija: vanilija, cimet i med, i tekstura zbog koje se ova tequila pije bez ičega uz nju.",
+    "en": "Agave from Los Altos, the highlands whose red earth gives a sweeter, more floral fruit than the valley, slow-cooked in brick ovens. Then 8 months in American whiskey barrels: vanilla, cinnamon and honey, and a texture that is why this tequila is drunk with nothing beside it.",
+    "it": "Agave di Los Altos, l'altopiano la cui terra rossa dà un frutto più dolce e più floreale di quello della valle, cotta lentamente in forni di mattoni. Poi 8 mesi in botti da whiskey americano: vaniglia, cannella e miele, e una texture che è il motivo per cui questa tequila si beve senza nulla accanto.",
+    "fr": "Agave de Los Altos, ces hauts plateaux dont la terre rouge donne un fruit plus doux et plus floral que la vallée, cuite lentement dans des fours en briques. Puis 8 mois en fûts de whiskey américain : vanille, cannelle et miel, et une texture qui explique qu'on boive cette tequila sans rien à côté.",
+    "de": "Agave aus Los Altos, dem Hochland, dessen rote Erde eine süßere, blumigere Frucht gibt als das Tal, langsam in Ziegelöfen gegart. Dann 8 Monate in Fässern von amerikanischem Whiskey: Vanille, Zimt und Honig, und eine Textur, derentwegen man diesen Tequila ohne alles daneben trinkt.",
+    "zh": "龙舌兰来自洛斯阿尔托斯高地，那里的红土结出的果实比谷地更甜、更多花香，在砖窑中慢慢蒸烤。随后是 8 个月的美国威士忌桶陈：香草、肉桂与蜂蜜，以及一种口感——正因如此，这支龙舌兰旁边什么都不用配。",
+    "sl": "Agava iz Los Altosa, planote, katere rdeča zemlja da slajši in bolj cvetličen plod kot dolina, počasi pečena v opečnih pečeh. Nato 8 mesecev v sodih po ameriškem viskiju: vanilija, cimet in med ter tekstura, zaradi katere se ta tekila pije brez česar koli zraven.",
+    "es": "Agave de Los Altos, el altiplano cuya tierra roja da un fruto más dulce y más floral que el valle, cocido despacio en hornos de ladrillo. Después 8 meses en barricas de whiskey americano: vainilla, canela y miel, y una textura que explica por qué esta tequila se bebe sin nada al lado."
+   },
+   "notePlain": true
   }
  }
 }

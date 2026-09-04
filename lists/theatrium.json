@@ -1594,6 +1594,22 @@
          "price": 4
         },
         {
+         "ref": "fortaleza--blanco",
+         "price": 9
+        },
+        {
+         "ref": "fortaleza--reposado",
+         "price": 15
+        },
+        {
+         "ref": "fortaleza--anejo",
+         "price": 18
+        },
+        {
+         "ref": "clase-azul--reposado",
+         "price": 28
+        },
+        {
          "ref": "del-maguey--vida",
          "price": 7
         },
