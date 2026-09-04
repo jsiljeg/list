@@ -118,7 +118,8 @@ empty string deliberately suppresses the producer-region fallback in
 
 **One grape, one stored name** (settled 2026-07-31, from Caroline Gilby MW,
 "Malvasia – the first generic wine brand?", jancisrobinson.com 2026-04-14;
-copy at `data/source/malvasia-gilby-2026.pdf`). A variety is stored **once**
+the PDF was kept in `data/source/` until 2026-09-04 and is deleted — a
+copyrighted article is not ours to redistribute, and the repo is public). A variety is stored **once**
 under one canonical name; each language view renders it under the name that
 language's drinkers use, via `LANG_GRAPE` in js/app.js. **The guest's language
 wins over the bottle's origin** — a Croatian guest reads "Rebula" whether the

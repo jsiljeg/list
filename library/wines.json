@@ -13509,24 +13509,24 @@
    "name": "Römerquelle gazirana",
    "producer": "",
    "nameI18n": {
-    "hr": "Römerquelle gazirana 0,75 l",
-    "en": "Römerquelle sparkling 0,75 l",
-    "it": "Römerquelle frizzante 0,75 l",
-    "fr": "Römerquelle pétillante 0,75 l",
-    "de": "Römerquelle prickelnd 0,75 l",
-    "zh": "Römerquelle 气泡 0,75 l"
+    "hr": "Römerquelle gazirana",
+    "en": "Römerquelle sparkling",
+    "it": "Römerquelle frizzante",
+    "fr": "Römerquelle pétillante",
+    "de": "Römerquelle prickelnd",
+    "zh": "Römerquelle 气泡"
    }
   },
   "romerquelle-limunska-trava": {
    "name": "Römerquelle limunska trava",
    "producer": "",
    "nameI18n": {
-    "hr": "Römerquelle limunska trava 0,35 l",
-    "en": "Römerquelle lemongrass 0,35 l",
-    "it": "Römerquelle citronella 0,35 l",
-    "fr": "Römerquelle citronnelle 0,35 l",
-    "de": "Römerquelle Zitronengras 0,35 l",
-    "zh": "Römerquelle 柠檬草 0,35 l"
+    "hr": "Römerquelle limunska trava",
+    "en": "Römerquelle lemongrass",
+    "it": "Römerquelle citronella",
+    "fr": "Römerquelle citronnelle",
+    "de": "Römerquelle Zitronengras",
+    "zh": "Römerquelle 柠檬草"
    }
   },
   "saint-geron": {

@@ -1927,31 +1927,6 @@
        "country": null,
        "items": [
         {
-         "ref": "jana",
-         "price": 4,
-         "vol": 0.25
-        },
-        {
-         "ref": "jana",
-         "price": 5,
-         "vol": 0.75
-        },
-        {
-         "ref": "jamnica",
-         "price": 4,
-         "vol": 0.33
-        },
-        {
-         "ref": "jamnica",
-         "price": 5,
-         "vol": 0.75
-        },
-        {
-         "ref": "jamnica-sensation",
-         "price": 3,
-         "vol": 0.25
-        },
-        {
          "ref": "romerquelle",
          "price": 5,
          "vol": 0.75
@@ -1985,6 +1960,31 @@
          "ref": "artesian-gazirana",
          "price": 6.5,
          "vol": 0.75
+        },
+        {
+         "ref": "jana",
+         "price": 4,
+         "vol": 0.25
+        },
+        {
+         "ref": "jana",
+         "price": 5,
+         "vol": 0.75
+        },
+        {
+         "ref": "jamnica",
+         "price": 4,
+         "vol": 0.33
+        },
+        {
+         "ref": "jamnica",
+         "price": 5,
+         "vol": 0.75
+        },
+        {
+         "ref": "jamnica-sensation",
+         "price": 3,
+         "vol": 0.25
         }
        ]
       }

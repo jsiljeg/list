@@ -74,10 +74,21 @@ test("a bottle format lives on the listing, never in the wine's name", () => {
      every comparison in the app: the glass/bottle match, the sommelier's
      "already suggested" check, the 86 board. `vol` on the list item says the
      size instead, and one wine is one entry no matter how many sizes we pour. */
+  const FORMAT = /\d\s*(l|ml|cl)\s*$/i;
   const named = Object.entries(library)
-    .filter(([, w]) => /\d\s*(l|ml|cl)\s*$/i.test(String(w.name)))
+    .filter(([, w]) => FORMAT.test(String(w.name)))
     .map(([ref, w]) => `${ref}: ${w.name}`);
   expect(named, "library names carrying a bottle format").toEqual([]);
+
+  /* And the *localized* names, which the 2026-08-13 migration missed: it
+     stripped `name` and left `nameI18n`, so two Römerquelles printed the size
+     twice — "Römerquelle gazirana 0,75 l 0,75 l" — in six languages for three
+     weeks. Nothing failed; it was found by looking at the list (2026-09-04). */
+  const alsoNamed = [];
+  for (const [ref, w] of Object.entries(library))
+    for (const [lc, v] of Object.entries(w.nameI18n || {}))
+      if (FORMAT.test(String(v))) alsoNamed.push(`${ref}/${lc}: ${v}`);
+  expect(alsoNamed, "a localized name carrying a bottle format").toEqual([]);
 
   const bad = [];
   for (const it of items) {
