@@ -404,9 +404,11 @@ test("a spirit's region reads in Chinese, like a wine's", async ({ page }) => {
      blurbs and notes on the very cards whose region line said the Latin. Same
      failure as the ume base: two strings on one screen disagreeing.
 
-     Genuinely obscure rungs stay Latin on purpose, per the header of
-     js/zh-terms.js — Serravalle Scrivia, Segonzac, Barradères, Jesús María,
-     Los Valles, Tain, Wigtownshire. */
+     The owner then asked how Čara had been handled, which settled the rest: it
+     has read 察拉 all along, as Ponikve reads 波尼克韦. The wine side was swept to
+     the last village years ago, so leaving Segonzac or Serravalle Scrivia in
+     Latin was not a convention — it was half a job. Every rung of every ladder
+     on the list now has a Chinese name, checked below rather than asserted. */
   await openApp(page);
   const out = await page.evaluate(() => {
     lang = "zh";
@@ -429,4 +431,21 @@ test("a spirit's region reads in Chinese, like a wine's", async ({ page }) => {
   });
   expect(out.bare, "a well-known spirit region with no Chinese name").toEqual([]);
   expect(out.shelf, "a spirit whose whole region line is bare Latin in the Chinese view").toEqual([]);
+
+  /* and the real rule: not one rung anywhere, wine or spirit, comes out Latin. */
+  const bare = await page.evaluate(() => {
+    lang = "zh";
+    const cjk = (s) => /[㐀-鿿]/.test(s);
+    const out = new Set();
+    for (const s of DATA.sections) for (const c of s.categories) for (const g of c.groups)
+      for (const i of g.items) {
+        const ins = i.insight;
+        if (!ins) continue;
+        for (const rung of String(ins.region || "").split(",").map((x) => x.trim()).filter(Boolean))
+          if (!cjk(localizeRegion(rung))) out.add(rung);
+        if (i.terroir && !cjk(localizeRegion(i.terroir))) out.add(`terroir ${i.terroir}`);
+      }
+    return [...out];
+  });
+  expect(bare, "a region or terroir rung with no Chinese name — add it to ZH_REGION").toEqual([]);
 });
