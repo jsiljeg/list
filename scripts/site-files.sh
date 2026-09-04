@@ -28,4 +28,10 @@ cp data/menu.json data/producers.json data/regions.json data/unavailable.json "$
 cp library/wines.json "$out/library/"
 cp lists/theatrium.json "$out/lists/"
 
+# The drinks list as plain markup for theatrium.hr, so the restaurant site
+# stops keeping a second, hand-typed copy. Built here rather than committed:
+# it is derived from the two files above and must never be edited by hand.
+node scripts/build-embed.mjs
+cp embed-hr.html embed-en.html "$out/"
+
 echo "site assembled in $out/ ($(find "$out" -type f | wc -l) files)"
