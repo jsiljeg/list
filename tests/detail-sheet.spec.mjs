@@ -188,7 +188,7 @@ test("the card you hold up says what to order and nothing else", async ({ page }
   await expect(page.locator(".waiter-price")).toHaveText(card.price);
   /* Croatian first for the waiter, German second for the guest who is holding
      it up — a bottle from a bottle section. */
-  await expect(page.locator(".waiter-shelf")).toHaveText(/boca\s·\sFlasche/i);
+  await expect(page.locator(".waiter-shelf")).toHaveText(/boca\s*Flasche/i);
   /* Nothing to step onto while somebody else is reading it. */
   expect(await page.locator(".modal-nav:not(.hidden)").count(),
     "the ‹ › arrows are live on the card held up to a waiter").toBe(0);

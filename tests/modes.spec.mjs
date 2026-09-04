@@ -295,7 +295,7 @@ test("the sommelier's sheet stays where the guest left it", async ({ page }) => 
      was centred, so any change in its height moved *both* edges by half of it,
      and the heights genuinely differ: measured across all 120 dish x budget
      combinations at 390px, 91 changed by more than 8px on the flip alone. Foie
-     gras at b2 is the worst of them — three bottles against a single glass,
+     Wellington at b2 is the worst of them — three bottles against a single glass,
      278px — and it moved the flip button 140px out from under the thumb that
      had just tapped it. The wizard's own steps did it too: the dish list is
      long and the budget question is three buttons.
@@ -334,17 +334,21 @@ test("the sommelier's sheet stays where the guest left it", async ({ page }) => 
   /* Past the sheet's own 220ms entry animation, which slides it up 24px — read
      during it, the anchor is 24px low and everything after it "moves". */
   await page.waitForTimeout(400);
-  /* Across the wizard's own steps only the top is comparable: a dish list and
-     three budget buttons are honestly different lengths. */
-  const anchor = { top: await sheetTop(), bottom: null, nav: null };
+  /* The wizard's own steps are *allowed* to move, and that is settled: the
+     sheet is centred on every device (css/style.css, 2026-08-12 — "a change of
+     screen, not a jump"), so a 26-dish list and three budget buttons re-centre
+     to different tops. Measured here: 38px, then 172px, then 96px. This test
+     asserted 2px across those steps and could therefore never have passed; it
+     was written the same day the layout was settled the other way and was never
+     run until 2026-09-04.
 
-  await page.locator(".helper-opt[data-dish]", { hasText: "Foie gras" }).first().click();
+     What the owner actually reported is below, and it is where the frame must
+     hold absolutely: once an answer is on screen, flipping between bottles and
+     glasses must not move a pixel of it. */
+  await page.locator(".helper-opt[data-dish]", { hasText: "Beef Wellington" }).first().click();
   await page.waitForTimeout(300);
-  await held(anchor, "the sheet moved between the dish list and the budget question");
-
   await page.locator(".helper-opt[data-k='b2']").click();
   await page.waitForTimeout(400);
-  await held(anchor, "the sheet moved when the suggestions arrived");
   /* From here the whole frame must hold: same dish, same budget, same box. */
   const answer = await frame();
 
@@ -640,7 +644,7 @@ test("the suggestions say which foods they share with the dish", async ({ page }
   await page.locator(".helper-opt[data-dish]").nth(3).click();
   await page.locator(".helper-opt[data-k='b2']").click();
   await page.waitForTimeout(400);
-  const why = await page.locator(".helper-why").innerText();
+  const why = await page.locator(".helper-why").first().innerText();
   expect(why.length, "no explanation under the dish").toBeGreaterThan(6);
   /* Every word in it must be a food the dish actually asked for. */
   const ok = await page.evaluate((text) => {

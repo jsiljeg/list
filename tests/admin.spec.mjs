@@ -92,7 +92,7 @@ test("three flips in a row are all accepted, and batched", async ({ page }) => {
   const state = await board(page);
   await page.fill("#q", "Meneghetti");
   await page.waitForTimeout(200);
-  for (const name of ["Blanc de Blancs", "Meneghetti White", "Red 2020"]) {
+  for (const name of ["Blanc de Blancs", "White 2023", "Red 2020"]) {
     await page.locator(".row").filter({ hasText: name }).locator(".sw").click();
     await page.waitForTimeout(120);
   }

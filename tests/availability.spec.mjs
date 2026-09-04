@@ -7,6 +7,10 @@
    but not from DATA would open the wrong wine. */
 import { test, expect } from "@playwright/test";
 import { openApp, expectClean, wines } from "./helpers.mjs";
+import { readFileSync } from "node:fs";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 const everyWine = wines.sections.flatMap((s) => s.categories.flatMap((c) =>
   c.groups.flatMap((g) => g.items.map((i) => ({ name: i.name, producer: i.producer })))));
@@ -61,7 +65,11 @@ test("hiding a wine does not shift the wine below it", async ({ page }) => {
 test("a category emptied by hiding disappears from the nav", async ({ page }) => {
   /* spirits/vodka holds exactly one bottle. An empty chip that opens onto
      blank space reads as a broken app, not as a sold-out shelf. */
-  await hide(page, [{ name: "Stolichnaya" }]);
+  /* The name is "Elit Stolichnaya" and hiddenTest matches it whole, so the
+     short form matched nothing and the shelf never emptied — the failure this
+     very test exists to describe. validate.mjs rejects such a rule in real
+     data; a test fixture goes nowhere near it. */
+  await hide(page, [{ name: "Elit Stolichnaya" }]);
   const bag = await openApp(page);
   const cats = await page.evaluate(() =>
     DATA.sections.flatMap((s) => s.categories.map((c) => c.id)));
@@ -158,7 +166,7 @@ test("an open detail sheet is never rebuilt underneath the guest", async ({ page
   await expect(page.locator(".detail-name")).toContainText("Terbotz");
   expect(await page.evaluate(() => pending !== null), "should be queued, not applied").toBe(true);
 
-  await page.locator("#modal .detail-close, #modal-backdrop").first().click();
+  await page.locator("#modal-close").first().click();
   await page.waitForTimeout(350);
   expect((await names(page)).join(" | ")).not.toContain("Bregh Rose");
   expect(await page.evaluate(() => pending)).toBe(null);
@@ -248,7 +256,7 @@ test("a content change is queued while a detail sheet is open", async ({ page })
   await page.waitForTimeout(400);
   expect(await page.evaluate(() => pending !== null), "queued, not applied").toBe(true);
 
-  await page.locator("#modal .detail-close, #modal-backdrop").first().click();
+  await page.locator("#modal-close").first().click();
   await page.waitForTimeout(400);
   expect(await page.evaluate(() => pending)).toBe(null);
   expectClean(bag);
@@ -257,16 +265,36 @@ test("a content change is queued while a detail sheet is open", async ({ page })
 test("every data fetch revalidates instead of trusting a 10-minute cache", async ({ page }) => {
   /* The service worker rewrites these the same way, but it is not in charge on
      a first visit or right after its own update — which is when the stale read
-     actually happens. */
-  const modes = [];
+     actually happens.
+
+     Rewritten 2026-09-04, having finally been run. It used to read
+     `request.headers()["cache-control"]` and expect "no-cache" — and Chromium
+     sends **no such header**: `fetch(url, { cache: "no-cache" })` sets the
+     fetch's cache *mode*, which lives on the request object, not on the wire.
+     So the assertion could never pass, and the six fetches it flagged were
+     correct all along.
+
+     What is checkable is the rule itself: no data file is fetched except
+     through `fresh()`. That is a source assertion, the same shape as the `dvh`
+     check in layout.spec.mjs — assert the rule where you cannot observe the
+     behaviour. The runtime half stays too: the files must actually be
+     requested, or a typo in a path would pass a source grep. */
+  const src = readFileSync(resolve(ROOT, "js/app.js"), "utf8");
+  const bare = [...src.matchAll(/(?<!\w)fetch\(\s*["'`](?:\.\/)?(?:data|library|lists)\//g)]
+    .map((m) => m[0]);
+  expect(bare, "a data file fetched with bare fetch() instead of fresh()").toEqual([]);
+  expect(/const fresh = \(url\) => fetch\(url, \{ cache: "no-cache" \}\)/.test(src),
+    "fresh() no longer sets the no-cache fetch mode").toBe(true);
+
+  const asked = [];
   page.on("request", (r) => {
-    if (/\/(library|lists|data)\/[^/]+\.json/.test(r.url())) modes.push(`${r.url().split("/").pop()}:${r.headers()["cache-control"] || ""}`);
+    if (/\/(library|lists|data)\/[^/]+\.json/.test(r.url())) asked.push(r.url().split("/").pop());
   });
   await openApp(page);
-  const missing = modes.filter((m) => !/no-cache/.test(m));
-  expect(missing, "a data file was fetched without revalidating").toEqual([]);
+  for (const f of ["wines.json", "theatrium.json", "unavailable.json", "menu.json",
+                   "producers.json", "regions.json"])
+    expect(asked, `${f} was never fetched`).toContain(f);
 });
-
 test("a rewritten blurb reaches an open page without a reload", async ({ page }) => {
   /* Guards 2026-08-12. producers.json was fetched once at load and never
      again, so every winery and distillery blurb we corrected was live on the
