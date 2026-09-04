@@ -1249,11 +1249,23 @@ function sT() {
   if (typeof SPIRIT_I18N === "undefined") return null;
   return SPIRIT_I18N[lang] || SPIRIT_I18N.en || null;
 }
+/* The last resort must not be the key itself. Data reaches a tablet in under a
+   minute (pollData) but js/spirits.js only arrives on the next reload, so a
+   bottle added with a brand-new class, cask or aroma spends that window with no
+   word for it — and the owner read a literal "tequila_anejo" off the card
+   (2026-09-04). Humanising the key keeps the gap legible rather than technical:
+   "tequila_anejo" -> "Tequila añejo". validate.mjs still fails the deploy on an
+   unknown key, so this is a bridge across one reload, never a licence to skip
+   the dictionary. */
+function humanKey(key) {
+  const s = String(key).replace(/_/g, " ").trim();
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
 function spiritTerm(dict, key, fallback) {
   const s = sT();
   if (s && s[dict] && s[dict][key]) return s[dict][key];
   if (fallback && fallback[key]) return fallback[key];
-  return key;
+  return humanKey(key);
 }
 
 /* ---------- detail modal ---------- */

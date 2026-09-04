@@ -356,3 +356,38 @@ test("a stored decimal is printed in the guest's own notation", async ({ page })
   expect(seen.hr[3]).toBe("42");
   expect(seen.hr[4]).toBe("");
 });
+
+test("an unknown vocabulary key is humanised, never printed as a key", async ({ page }) => {
+  /* Owner, 2026-09-04: he read a literal "tequila_anejo" off a card. The key was
+     in js/spirits.js by then — but data reaches a tablet in under a minute
+     (pollData) while the dictionary only arrives on the next reload, so a bottle
+     added with a brand-new class spends that window with no word for it, and
+     spiritTerm() used to fall back to the key itself. validate.mjs still fails
+     the deploy on an unknown key; this only has to keep the gap readable. */
+  await openApp(page);
+  const out = await page.evaluate(() => ({
+    made: spiritTerm("classes", "tequila_cristalino"),
+    known: spiritTerm("classes", "tequila_anejo"),
+    human: humanKey("ex_sherry_oloroso")
+  }));
+  expect(out.made, "an unknown key reached the card as a key").not.toContain("_");
+  expect(out.made).toBe("Tequila cristalino");
+  expect(out.human).toBe("Ex sherry oloroso");
+  /* and the real key still wins over the fallback */
+  expect(out.known).toContain("añejo");
+  expect(out.known).not.toBe("Tequila anejo");
+});
+
+test("the ume base does not contradict the note above it", async ({ page }) => {
+  /* Owner, 2026-09-04: the note says ume is not a plum but a relative of the
+     apricot, and the SIROVINA line two centimetres below it said "japanske
+     šljive ume". Same failure as Beenleigh — two true-sounding strings on one
+     screen disagreeing. The card is read as a whole, so it has to agree as one. */
+  await openApp(page);
+  const said = await page.evaluate(() =>
+    ["hr", "en", "it", "fr", "de", "sl", "es"].map((l) => {
+      lang = l;
+      return spiritTerm("bases", "ume").toLowerCase();
+    }));
+  for (const s of said) expect(s, `ume base says plum: "${s}"`).not.toMatch(/šljiv|sliv|plum|prugn|prune|pflaum|ciruel/);
+});

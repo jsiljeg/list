@@ -13257,7 +13257,7 @@
    "insight": {
     "kind": "spirit",
     "class": "grappa_aged",
-    "region": "Piemonte",
+    "region": "Serravalle Scrivia, Piemonte",
     "country": "IT",
     "base": [
      "grape_pomace"
@@ -13318,7 +13318,7 @@
     "cask": [
      "unaged"
     ],
-    "alcohol": "19.5",
+    "alcohol": "19.7",
     "aromas": [
      "umeboshi",
      "apricot",
@@ -13329,8 +13329,8 @@
     ],
     "serve": [
      "rocks",
-     "chilled",
-     "before_dinner"
+     "with_soda",
+     "after_dinner"
     ],
     "pairings": [
      "japanese",
@@ -13764,7 +13764,7 @@
    "insight": {
     "kind": "spirit",
     "class": "tequila_blanco",
-    "region": "Tequila, Jalisco",
+    "region": "Tequila, Los Valles, Jalisco",
     "country": "MX",
     "base": [
      "agave_blue"
@@ -13812,7 +13812,7 @@
    "insight": {
     "kind": "spirit",
     "class": "tequila_reposado",
-    "region": "Tequila, Jalisco",
+    "region": "Tequila, Los Valles, Jalisco",
     "country": "MX",
     "base": [
      "agave_blue"
@@ -13860,7 +13860,7 @@
    "insight": {
     "kind": "spirit",
     "class": "tequila_anejo",
-    "region": "Tequila, Jalisco",
+    "region": "Tequila, Los Valles, Jalisco",
     "country": "MX",
     "base": [
      "agave_blue"
@@ -13908,7 +13908,7 @@
    "insight": {
     "kind": "spirit",
     "class": "tequila_reposado",
-    "region": "Los Altos, Jalisco",
+    "region": "Jesús María, Los Altos, Jalisco",
     "country": "MX",
     "base": [
      "agave_blue"

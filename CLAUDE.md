@@ -290,6 +290,37 @@ Friuli-over-Furlanija test of *what a Croatian speaker actually says*: it is
 says "bačve od oloroso sherryja"), and it is **Schwarzwald**, never the calque
 "crnošumski". Slovene follows on both. Guarded by a test.
 
+**A card is read as one screen, and the vocabulary is part of it** (owner,
+2026-09-04). The Beenleigh lesson repeated two centimetres apart: the umeshu
+note says ume *is not a plum but a relative of the apricot*, and the SIROVINA
+line under it said `japanske šljive ume`. Both strings were written
+separately and were individually defensible. The `bases` entry now says
+`ume, japanska marelica` in all eight languages, and a test greps every
+language of it for a word meaning plum. Check the dictionary too whenever a
+note makes a claim about what something *is*.
+
+**A vocabulary key must never reach a guest**, and the failure mode is not a
+missing translation — `validate.mjs` catches those. It is the **reload gap**:
+data polls onto a tablet in under a minute, `js/spirits.js` only arrives on the
+next reload, so a bottle added with a brand-new class spends that window with
+no word for it. `spiritTerm()` used to print the key, and the owner read
+`tequila_anejo` off a card. It now falls back through `humanKey()` —
+`tequila_anejo` → `Tequila añejo`. A bridge across one reload, not a licence
+to skip the dictionary.
+
+**Say the measure, not the comparison.** The first `tequila_reposado` /
+`tequila_anejo` strings read *odležana u drvu* / *dulje odležana* — a
+comparison that means nothing to a guest reading one card. Both terms are
+*defined* by time in law, so the card says the time: `2 do 12 mjeseci u drvu`,
+`1 do 3 godine u drvu`, beside the blanco's `neodležana`.
+
+**Mexico:** `<town>, <region>, <state>` — `Tequila, Los Valles, Jalisco`;
+`Jesús María, Los Altos, Jalisco`. Tequila is a town, and the drink is named
+after it. Los Valles and Los Altos are the two tequila regions, lowland and
+highland. Cimarrón still reads `Los Altos, Jalisco`, which describes where its
+*agave* grows rather than where it is distilled (Tequileña, in Tequila) — left
+alone pending the owner.
+
 **A note must not contradict the card under it** (owner, 2026-08-13, on
 Beenleigh). Splitting a repeated story between the note and the blurb can leave
 the two disagreeing: the distillery card says almost nothing leaves Queensland,
