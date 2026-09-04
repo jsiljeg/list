@@ -1126,3 +1126,45 @@ test("a percentage is never separated from its number", async () => {
   }
   expect(bad, "a space between a number and its % sign").toEqual([]);
 });
+
+test("a parked dish keeps everything it will need next season", () => {
+  /* Owner, 2026-09-04: the kitchen's card is seasonal, so a dish that comes off
+     it in September is usually back next spring. Deleting it would throw away
+     eight names and a hand-checked pairing set and make us re-invent them every
+     year, so it is parked with `"off": true` instead. Parked dishes are held to
+     exactly the same standard as live ones — that is the whole point of keeping
+     them — and the app must not offer wine for one. */
+  const menu = JSON.parse(readFileSync(resolve(ROOT, "data/menu.json"), "utf8"));
+  const bad = [];
+  for (const d of menu.dishes) {
+    if (!d.off) continue;
+    if (d.off !== true) bad.push(`${d.name.hr}: "off" must be true or absent`);
+    if (!(d.pairings || []).length) bad.push(`${d.name.hr}: parked without its pairings`);
+    if (!(d.styles || []).length) bad.push(`${d.name.hr}: parked without its styles`);
+    for (const lc of ["hr", "en", "it", "fr", "de", "sl", "es", "zh"])
+      if (!d.name[lc]) bad.push(`${d.name.hr}: parked without its ${lc} name`);
+  }
+  expect(bad, "a parked dish is missing what it was parked for").toEqual([]);
+  expect(menu.dishes.filter((d) => d.off).length,
+    "nothing is parked — did a seasonal change delete dishes instead?").toBeGreaterThan(0);
+});
+
+test("every spirit's region is where it is distilled, not where the fruit grew", () => {
+  /* Owner, 2026-09-04: "I want what makes the most sense and have it unanimous."
+     Cimarrón read "Los Altos, Jalisco" — where its agave grows — while it is
+     distilled at Tequileña in the town of Tequila, and the three older Inga
+     grappas said "Piemonte" where their fourth said the town. The rule is the
+     one every other spirit already followed: the region line is the still's
+     address. Where the fruit came from is the note's job — which is exactly
+     what Cimarrón's note and the Amarone grappa's note now do. */
+  const spirits = items.filter((i) => (i.insight || {}).kind === "spirit");
+  const byProducer = new Map();
+  for (const s of spirits) {
+    if (!s.producer) continue;
+    if (!byProducer.has(s.producer)) byProducer.set(s.producer, new Set());
+    byProducer.get(s.producer).add(s.insight.region || "");
+  }
+  const split = [...byProducer].filter(([, r]) => r.size > 1)
+    .map(([p, r]) => `${p}: ${[...r].map((x) => `"${x}"`).join(" vs ")}`);
+  expect(split, "one distillery giving two different addresses").toEqual([]);
+});

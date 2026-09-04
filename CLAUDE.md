@@ -290,6 +290,40 @@ Friuli-over-Furlanija test of *what a Croatian speaker actually says*: it is
 says "bačve od oloroso sherryja"), and it is **Schwarzwald**, never the calque
 "crnošumski". Slovene follows on both. Guarded by a test.
 
+## The kitchen's card is seasonal (2026-09-04)
+
+A dish that comes off the card in September is usually back next spring, and
+it costs eight names and a hand-checked pairing set to write. So a dish is
+**parked, never deleted**: `"off": true` on the dish in `data/menu.json`.
+Deleting one and re-inventing it every year is the thing this exists to stop —
+the owner asked for the mechanism by name.
+
+- `menuDishes()` in js/app.js is the only reader that faces a guest, and it
+  filters `off`. All three call sites go through it: the sommelier's picker,
+  the dish list on a wine card, and the dish lookup after a tap.
+- **`validate.mjs` still checks a parked dish in full** — that is the point of
+  parking it. Only the two *shelf* reports (under-three-by-the-glass, and
+  red_full without red_mature) look at live dishes, since they describe
+  tonight's service.
+- A test requires every parked dish to still carry its pairings, its styles and
+  all eight names, and requires at least one dish to be parked — a seasonal
+  change that deletes instead of parking fails the suite.
+- To bring a dish back: delete the one line. Nothing else.
+
+The August 2026 card parked 15 and added 11. `foie_gras`, `lamb` and
+`pasticada` therefore have no *live* dish, which is fine and is why parking
+matters: the wines keep the tags, the dishes keep the keys, and `pasticada`
+stays a legitimate rare key because the dish still exists in menu.json.
+
+**A spirit's region is where it is distilled** — settled 2026-09-04 when the
+owner asked for it to be unanimous. Not where the fruit grew: Cimarrón's agave
+is from Los Altos but it is distilled at Tequileña in the town of Tequila, and
+the Amarone grappa's pomace is Valpolicella but the still is at Serravalle
+Scrivia. Both now name the still and let their **note** carry the origin,
+which is the more interesting half anyway. A test fails one distillery giving
+two different addresses (the three older Inga grappas said `Piemonte` where
+the fourth said the town).
+
 **A card is read as one screen, and the vocabulary is part of it** (owner,
 2026-09-04). The Beenleigh lesson repeated two centimetres apart: the umeshu
 note says ume *is not a plum but a relative of the apricot*, and the SIROVINA

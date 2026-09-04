@@ -262,7 +262,10 @@ console.log(hidden.length
    drops a listing and strands its wine reads as the one mistake it is. */
 if (orphans.length)
   console.log(`note — ${orphans.length} library wine(s) this list doesn't pour: ${orphans.slice(0, 5).join(", ")}${orphans.length > 5 ? ", …" : ""}`);
-console.log(`menu OK — ${(menu.dishes || []).length} dishes, every pairing and style reachable`);
+const liveDishes = (menu.dishes || []).filter((d) => !d.off);
+const parked = (menu.dishes || []).length - liveDishes.length;
+console.log(`menu OK — ${liveDishes.length} dishes on the card` +
+  (parked ? `, ${parked} parked for the season` : "") + ", every pairing and style reachable");
 /* Also not an error, but worth saying out loud: a dish asking for a pairing
    almost no wine carries falls back to matching on style alone, and the
    suggestions get vaguer without anything looking broken. */
@@ -302,7 +305,7 @@ if (misordered.length) {
    serious red of full or medium body, and age only makes it a better match for
    a rich dish — so a dish asking for red_full almost certainly wants
    red_mature too. A note, because "almost certainly" is not "always". */
-const forgotMature = (menu.dishes || [])
+const forgotMature = liveDishes
   .filter((d) => (d.styles || []).includes("red_full") && !(d.styles || []).includes("red_mature"))
   .map((d) => d.name.hr || d.name.en);
 if (forgotMature.length)

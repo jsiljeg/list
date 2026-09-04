@@ -272,6 +272,23 @@ iz izbornika i vraća se kad vino vratite.
 datoteci. Povijest tko je što i kada sakrio i vratio stoji pod **History**
 te datoteke na GitHubu.
 
+### Jelo koje je sezonski otišlo s karte → `data/menu.json`
+**Nemojte ga brisati.** Jela se vraćaju sljedeće sezone, a uz svako stoji
+ime na 8 jezika i ručno provjeren popis sljubljivanja — to bi se svaki put
+iznova radilo. Umjesto brisanja dodajte jelu jedan redak:
+```json
+"off": true
+```
+Jelo odmah nestaje iz sommeliera („Pomozi mi odabrati") i s kartica vina,
+ali sve o njemu ostaje zapisano.
+
+**Kad se jelo vrati:** obrišite taj redak. Ništa više — sljubljivanja su
+ondje gdje ste ih ostavili.
+
+Trenutno je tako sklonjeno 15 jela (foie gras, pašticada, janjetina, fritto
+misto i ostala s proljetne karte). Provjera prije objave i dalje ih
+kontrolira kao i aktivna, pa ne mogu tiho zastarjeti dok čekaju.
+
 ### Obrisati vino s karte
 Obrišite mu redak (`{ "ref": …, "price": … },`) iz `lists/theatrium.json`.
 Ako je bio zadnji u popisu, prethodnom obrišite zarez iza `}`.

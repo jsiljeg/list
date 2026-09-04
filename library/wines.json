@@ -11023,7 +11023,7 @@
    "name": "Blanco Tequila",
    "producer": "Cimarrón",
    "insight": {
-    "region": "Los Altos, Jalisco",
+    "region": "Tequila, Los Valles, Jalisco",
     "country": "MX",
     "base": [
      "agave_blue"
@@ -13111,7 +13111,7 @@
    "insight": {
     "kind": "spirit",
     "class": "grappa_young",
-    "region": "Piemonte",
+    "region": "Serravalle Scrivia, Piemonte",
     "country": "IT",
     "base": [
      "grape_pomace"
@@ -13158,7 +13158,7 @@
    "insight": {
     "kind": "spirit",
     "class": "grappa_aged",
-    "region": "Piemonte",
+    "region": "Serravalle Scrivia, Piemonte",
     "country": "IT",
     "base": [
      "grape_pomace"
@@ -13207,7 +13207,7 @@
    "insight": {
     "kind": "spirit",
     "class": "grappa_aged",
-    "region": "Piemonte",
+    "region": "Serravalle Scrivia, Piemonte",
     "country": "IT",
     "base": [
      "grape_pomace"
@@ -13251,56 +13251,6 @@
    },
    "notePlain": true
   },
-  "amarone-grappa": {
-   "name": "Amarone Grappa",
-   "producer": "Lorenzo Inga",
-   "insight": {
-    "kind": "spirit",
-    "class": "grappa_aged",
-    "region": "Serravalle Scrivia, Piemonte",
-    "country": "IT",
-    "base": [
-     "grape_pomace"
-    ],
-    "still": [
-     "pot"
-    ],
-    "cask": [
-     "french_oak"
-    ],
-    "alcohol": "42",
-    "aromas": [
-     "dark_cherry",
-     "raisin",
-     "prune",
-     "vanilla",
-     "brown_spices",
-     "cocoa",
-     "dried_fruit"
-    ],
-    "serve": [
-     "neat",
-     "after_dinner"
-    ],
-    "pairings": [
-     "digestif",
-     "dark_chocolate",
-     "cigars",
-     "desserts"
-    ]
-   },
-   "note": {
-    "hr": "Amarone se radi od grožđa sušenog mjesecima na rešetkama, pa je i komina koja ostane suha, koncentrirana i još puna šećera — nešto što destilateru drugdje ne dolazi u ruke. Odatle grappa koja miriše na suho voće i višnju, bliža vinu od kojeg je nastala nego bilo koja druga.",
-    "en": "Amarone is made from grapes dried for months on racks, so even the pomace that is left is dry, concentrated and still full of sugar — something no distiller elsewhere ever gets to work with. Hence a grappa of dried fruit and cherry, closer to the wine it came from than any other.",
-    "it": "L'Amarone si fa con uve appassite per mesi sui graticci, così anche le vinacce che restano sono asciutte, concentrate e ancora ricche di zucchero — materia che altrove nessun distillatore riceve. Da qui una grappa di frutta secca e ciliegia, più vicina al vino da cui nasce di qualsiasi altra.",
-    "fr": "L'Amarone se fait de raisins séchés des mois sur claies, si bien que le marc qui reste est sec, concentré et encore chargé de sucre — une matière qu'aucun distillateur n'a ailleurs. D'où une grappa de fruits secs et de cerise, plus proche du vin dont elle vient que n'importe quelle autre.",
-    "de": "Amarone entsteht aus Trauben, die monatelang auf Horden trocknen, also ist auch der übrige Trester trocken, konzentriert und noch voller Zucker — Material, das ein Brenner sonst nirgends bekommt. Daher eine Grappa aus Trockenfrüchten und Kirsche, die dem Wein, aus dem sie stammt, näher ist als jede andere.",
-    "zh": "阿玛罗尼用的是在架上风干数月的葡萄，所以剩下的皮渣也是干的、浓缩的，仍然满是糖分——别处的蒸馏师根本拿不到这样的原料。于是有了这款果干与樱桃气息的格拉帕，比任何一款都更接近它所来自的那款酒。",
-    "sl": "Amarone nastaja iz grozdja, sušenega po več mesecev na policah, zato so tudi tropine, ki ostanejo, suhe, koncentrirane in še vedno polne sladkorja — snov, ki je destilater drugje ne dobi v roke. Od tod grappa suhega sadja in češnje, bližja vinu, iz katerega je nastala, kot katera koli druga.",
-    "es": "El Amarone se hace con uvas secadas durante meses en cañizos, así que hasta el orujo que queda es seco, concentrado y todavía lleno de azúcar — una materia que ningún destilador recibe en otra parte. De ahí una grappa de fruta seca y cereza, más cercana al vino del que nace que ninguna otra."
-   },
-   "notePlain": true
-  },
   "umeshu-genshu": {
    "name": "Umeshu Genshu",
    "producer": "Hakutsuru",
@@ -13339,14 +13289,14 @@
     ]
    },
    "note": {
-    "hr": "Ume nije šljiva nego rod marelice, i bere se dok je još tvrd i zelen — sirov je nejestiv. Umeshu nastaje potapanjem u alkohol sa šećerom; genshu znači da nije razrijeđen vodom, pa je gušći i kiseliji nego umeshu koji poznajete. U Japanu ga rade i doma, u staklenkama, svake godine.",
-    "en": "Ume is not a plum but a relative of the apricot, picked while still hard and green — raw, it is inedible. Umeshu is made by steeping it in spirit with sugar; genshu means it has not been cut with water, so it is thicker and sharper than the umeshu you know. In Japan it is still made at home, in jars, every year.",
-    "it": "L'ume non è una prugna ma un parente dell'albicocca, raccolto ancora duro e verde — crudo è immangiabile. L'umeshu nasce mettendolo in alcol con zucchero; genshu significa non diluito con acqua, quindi più denso e più acido dell'umeshu che conoscete. In Giappone lo si fa ancora in casa, nei vasi, ogni anno.",
-    "fr": "L'ume n'est pas une prune mais un cousin de l'abricot, cueilli encore dur et vert — cru, il est immangeable. L'umeshu se fait en le laissant macérer dans l'alcool avec du sucre ; genshu veut dire non coupé à l'eau, donc plus dense et plus acide que l'umeshu que vous connaissez. Au Japon, on en fait encore à la maison, en bocaux, chaque année.",
-    "de": "Ume ist keine Pflaume, sondern eine Verwandte der Aprikose, gepflückt, solange sie hart und grün ist — roh ist sie ungenießbar. Umeshu entsteht durch Einlegen in Alkohol mit Zucker; Genshu heißt unverdünnt, also dichter und säuerlicher als der Umeshu, den Sie kennen. In Japan wird er noch jedes Jahr zu Hause in Gläsern angesetzt.",
-    "zh": "梅不是李子，而是杏的近亲，趁着还硬还青时采下——生的不能吃。梅酒的做法是把它浸在酒与糖里；「原酒」意味着没有兑水，因此比你熟悉的梅酒更稠、更酸。在日本，人们至今每年还在家里用玻璃罐自己做。",
-    "sl": "Ume ni sliva, ampak sorodnica marelice, obrana, dokler je še trda in zelena — surova je neužitna. Umeshu nastane z namakanjem v alkoholu s sladkorjem; genshu pomeni, da ni razredčen z vodo, zato je gostejši in bolj kisel od umeshuja, ki ga poznate. Na Japonskem ga še vedno delajo doma, v kozarcih, vsako leto.",
-    "es": "El ume no es una ciruela sino un pariente del albaricoque, recogido aún duro y verde — crudo es incomible. El umeshu se hace macerándolo en alcohol con azúcar; genshu significa que no se ha rebajado con agua, así que es más denso y más ácido que el umeshu que conoce. En Japón se sigue haciendo en casa, en tarros, cada año."
+    "hr": "Ume se posvuda prevodi kao japanska šljiva i ta se kriva etiketa primila — zapravo je bliži marelici. Bere se dok je još tvrd i zelen, jer sirov je nejestiv. Umeshu nastaje potapanjem u alkohol sa šećerom; genshu znači da nije razrijeđen vodom, pa je gušći i kiseliji nego umeshu koji poznajete. U Japanu ga rade i doma, u staklenkama, svake godine.",
+    "en": "Ume is translated everywhere as Japanese plum and the wrong label has stuck — it is in fact closer to an apricot. It is picked while still hard and green, because raw it is inedible. Umeshu is made by steeping it in spirit with sugar; genshu means it has not been cut with water, so it is thicker and sharper than the umeshu you know. In Japan it is still made at home, in jars, every year.",
+    "it": "L'ume viene tradotto ovunque come prugna giapponese, e l'etichetta sbagliata ha attecchito — in realtà è più vicino all'albicocca. Si raccoglie ancora duro e verde, perché crudo è immangiabile. L'umeshu nasce mettendolo in alcol con zucchero; genshu significa non diluito con acqua, quindi più denso e più acido dell'umeshu che conoscete. In Giappone lo si fa ancora in casa, nei vasi, ogni anno.",
+    "fr": "L'ume est partout traduit par prune japonaise et la mauvaise étiquette a pris — il est en réalité plus proche de l'abricot. On le cueille encore dur et vert, car cru il est immangeable. L'umeshu se fait en le laissant macérer dans l'alcool avec du sucre ; genshu veut dire non coupé à l'eau, donc plus dense et plus acide que l'umeshu que vous connaissez. Au Japon, on en fait encore à la maison, en bocaux, chaque année.",
+    "de": "Ume wird überall als japanische Pflaume übersetzt, und das falsche Etikett hat sich gehalten — tatsächlich steht sie der Aprikose näher. Gepflückt wird sie hart und grün, denn roh ist sie ungenießbar. Umeshu entsteht durch Einlegen in Alkohol mit Zucker; Genshu heißt unverdünnt, also dichter und säuerlicher als der Umeshu, den Sie kennen. In Japan wird er noch jedes Jahr zu Hause in Gläsern angesetzt.",
+    "zh": "梅在各国都被译作「日本李子」，这个错名就此叫开了——它其实更接近杏。趁着还硬还青时采下，因为生的不能吃。梅酒的做法是把它浸在酒与糖里；「原酒」意味着没有兑水，因此比你熟悉的梅酒更稠、更酸。在日本，人们至今每年还在家里用玻璃罐自己做。",
+    "sl": "Ume se povsod prevaja kot japonska sliva in ta napačna oznaka se je prijela — v resnici je bližje marelici. Obira se, dokler je še trda in zelena, saj je surova neužitna. Umeshu nastane z namakanjem v alkoholu s sladkorjem; genshu pomeni, da ni razredčen z vodo, zato je gostejši in bolj kisel od umeshuja, ki ga poznate. Na Japonskem ga še vedno delajo doma, v kozarcih, vsako leto.",
+    "es": "El ume se traduce en todas partes como ciruela japonesa y la etiqueta equivocada ha cuajado — en realidad está más cerca del albaricoque. Se recoge aún duro y verde, porque crudo es incomible. El umeshu se hace macerándolo en alcohol con azúcar; genshu significa que no se ha rebajado con agua, así que es más denso y más ácido que el umeshu que conoce. En Japón se sigue haciendo en casa, en tarros, cada año."
    },
    "notePlain": true
   },
@@ -13947,6 +13897,56 @@
     "zh": "龙舌兰来自洛斯阿尔托斯高地，那里的红土结出的果实比谷地更甜、更多花香，在砖窑中慢慢蒸烤。随后是 8 个月的美国威士忌桶陈：香草、肉桂与蜂蜜，以及一种口感——正因如此，这支龙舌兰旁边什么都不用配。",
     "sl": "Agava iz Los Altosa, planote, katere rdeča zemlja da slajši in bolj cvetličen plod kot dolina, počasi pečena v opečnih pečeh. Nato 8 mesecev v sodih po ameriškem viskiju: vanilija, cimet in med ter tekstura, zaradi katere se ta tekila pije brez česar koli zraven.",
     "es": "Agave de Los Altos, el altiplano cuya tierra roja da un fruto más dulce y más floral que el valle, cocido despacio en hornos de ladrillo. Después 8 meses en barricas de whiskey americano: vainilla, canela y miel, y una textura que explica por qué esta tequila se bebe sin nada al lado."
+   },
+   "notePlain": true
+  },
+  "lorenzo-inga--grappa-amarone-invecchiata": {
+   "name": "Grappa Amarone Invecchiata",
+   "producer": "Lorenzo Inga",
+   "insight": {
+    "kind": "spirit",
+    "class": "grappa_aged",
+    "region": "Serravalle Scrivia, Piemonte",
+    "country": "IT",
+    "base": [
+     "grape_pomace"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "french_oak"
+    ],
+    "alcohol": "42",
+    "aromas": [
+     "dark_cherry",
+     "raisin",
+     "prune",
+     "vanilla",
+     "brown_spices",
+     "cocoa",
+     "dried_fruit"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "digestif",
+     "dark_chocolate",
+     "cigars",
+     "desserts"
+    ]
+   },
+   "note": {
+    "hr": "Amarone se radi od grožđa sušenog mjesecima na rešetkama, pa je i komina koja ostane suha, koncentrirana i još puna šećera — nešto što destilateru drugdje ne dolazi u ruke. Corvina, Molinara i Rondinella putuju iz Valpolicelle u Piemonte, gdje ih Inga destilira i pusti godinu dana u francuski hrast. Odatle grappa koja miriše na suho voće i višnju, bliža vinu od kojeg je nastala nego bilo koja druga.",
+    "en": "Amarone is made from grapes dried for months on racks, so even the pomace that is left is dry, concentrated and still full of sugar — something no distiller elsewhere ever gets to work with. Corvina, Molinara and Rondinella travel from Valpolicella to Piedmont, where Inga distils them and gives them a year in French oak. Hence a grappa of dried fruit and cherry, closer to the wine it came from than any other.",
+    "it": "L'Amarone si fa con uve appassite per mesi sui graticci, così anche le vinacce che restano sono asciutte, concentrate e ancora ricche di zucchero — materia che altrove nessun distillatore riceve. Corvina, Molinara e Rondinella viaggiano dalla Valpolicella al Piemonte, dove Inga le distilla e le lascia un anno in rovere francese. Da qui una grappa di frutta secca e ciliegia, più vicina al vino da cui nasce di qualsiasi altra.",
+    "fr": "L'Amarone se fait de raisins séchés des mois sur claies, si bien que le marc qui reste est sec, concentré et encore chargé de sucre — une matière qu'aucun distillateur n'a ailleurs. Corvina, Molinara et Rondinella voyagent de la Valpolicella au Piémont, où Inga les distille et leur donne un an de chêne français. D'où une grappa de fruits secs et de cerise, plus proche du vin dont elle vient que n'importe quelle autre.",
+    "de": "Amarone entsteht aus Trauben, die monatelang auf Horden trocknen, also ist auch der übrige Trester trocken, konzentriert und noch voller Zucker — Material, das ein Brenner sonst nirgends bekommt. Corvina, Molinara und Rondinella reisen von der Valpolicella ins Piemont, wo Inga sie brennt und ihnen ein Jahr französische Eiche gibt. Daher eine Grappa aus Trockenfrüchten und Kirsche, die dem Wein, aus dem sie stammt, näher ist als jede andere.",
+    "zh": "阿玛罗尼用的是在架上风干数月的葡萄，所以剩下的皮渣也是干的、浓缩的，仍然满是糖分——别处的蒸馏师根本拿不到这样的原料。科维纳、莫利纳拉与罗蒂内拉从瓦坡里切拉一路运到皮埃蒙特，由 Inga 蒸馏，再在法国橡木桶里待满一年。于是有了这款果干与樱桃气息的格拉帕，比任何一款都更接近它所来自的那款酒。",
+    "sl": "Amarone nastaja iz grozdja, sušenega po več mesecev na policah, zato so tudi tropine, ki ostanejo, suhe, koncentrirane in še vedno polne sladkorja — snov, ki je destilater drugje ne dobi v roke. Corvina, molinara in rondinella potujejo iz Valpolicelle v Piemont, kjer jih Inga destilira in jim da leto dni francoskega hrasta. Od tod grappa suhega sadja in češnje, bližja vinu, iz katerega je nastala, kot katera koli druga.",
+    "es": "El Amarone se hace con uvas secadas durante meses en cañizos, así que hasta el orujo que queda es seco, concentrado y todavía lleno de azúcar — una materia que ningún destilador recibe en otra parte. Corvina, molinara y rondinella viajan de la Valpolicella al Piamonte, donde Inga las destila y les da un año de roble francés. De ahí una grappa de fruta seca y cereza, más cercana al vino del que nace que ninguna otra."
    },
    "notePlain": true
   }

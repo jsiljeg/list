@@ -1226,9 +1226,17 @@ function producerInfo(producer) {
 }
 
 /* top dishes from the kitchen menu that suit this wine */
+/* The dishes the kitchen is cooking *tonight*. A seasonal dish comes off the
+   card and comes back next year, so it is parked with `"off": true` rather than
+   deleted — the pairings and the eight names cost real work and would otherwise
+   be re-invented every spring (owner, 2026-09-04). Everything that faces a
+   guest reads this; validate.mjs still checks the parked ones, so they stay
+   correct while they wait. */
+const menuDishes = () => ((MENU && MENU.dishes) || []).filter((d) => !d.off);
+
 function dishesForWine(ins) {
   if (!ins || !MENU || !MENU.dishes) return [];
-  const scored = MENU.dishes.map((dish) => {
+  const scored = menuDishes().map((dish) => {
     let sc = (dish.pairings || []).filter((k) => (ins.pairings || []).includes(k)).length * 3;
     if ((dish.styles || []).includes(ins.style)) sc += 3;
     return { dish, sc };
@@ -2068,7 +2076,7 @@ function renderHelperStep() {
     /* Step 1: pick a real dish from the kitchen menu, grouped by course. */
     let groups = "";
     (MENU.courses || []).forEach((course) => {
-      const dishes = MENU.dishes.filter((d) => d.course === course);
+      const dishes = menuDishes().filter((d) => d.course === course);
       if (!dishes.length) return;
       groups += `<div class="helper-course">${esc(h.courses[course] || course)}</div><div class="helper-opts">` +
         dishes.map((d) => `<button class="helper-opt" data-dish="${esc(dishName(d))}">${esc(dishName(d))}</button>`).join("") +
@@ -2084,7 +2092,7 @@ function renderHelperStep() {
   $("modal-body").querySelectorAll(".helper-opt").forEach((b) =>
     b.addEventListener("click", () => {
       if (helperState.step === 0) {
-        helperState.dish = MENU.dishes.find((d) => dishName(d) === b.dataset.dish);
+        helperState.dish = menuDishes().find((d) => dishName(d) === b.dataset.dish);
         helperState.step = 1;
         renderHelperStep();
       } else {

@@ -8,7 +8,8 @@ for (const s of list.sections) { if (!s.id.startsWith("bottle-")) continue;
   for (const c of s.categories) for (const g of c.groups) for (const i of g.items) if (i && i.insight) bottles.push(i); }
 const shares = (d, w) => (w.insight.pairings || []).some((p) => (d.pairings || []).includes(p));
 const rows = [];
-for (const d of menu.dishes) for (const [bk, [label, lo, hi]] of Object.entries(BUDGET)) {
+const live = menu.dishes.filter((d) => !d.off);
+for (const d of live) for (const [bk, [label, lo, hi]] of Object.entries(BUDGET)) {
   const band = bottles.filter((w) => w.price != null && w.price >= lo && w.price <= hi);
   const matching = band.filter((w) => shares(d, w));
   const n = matching.length ? Math.min(3, matching.length) : Math.min(3, band.filter((w) => (d.styles || []).includes(w.insight.style)).length);
