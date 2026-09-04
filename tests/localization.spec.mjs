@@ -391,3 +391,42 @@ test("the ume base does not contradict the note above it", async ({ page }) => {
     }));
   for (const s of said) expect(s, `ume base says plum: "${s}"`).not.toMatch(/šljiv|sliv|plum|prugn|prune|pflaum|ciruel/);
 });
+
+test("a spirit's region reads in Chinese, like a wine's", async ({ page }) => {
+  /* Owner, 2026-09-04. The zh sweep had only ever covered wines: 30 of the 35
+     distinct spirit regions came out as bare Latin — "Islay, 苏格兰",
+     "Tequila、Los Valles、Jalisco, 墨西哥", "Nada、Kobe, 日本". For the Japanese and
+     Taiwanese ones that is not even a translation question, since Chinese uses
+     the same characters (長野 → 长野, 宜蘭 → 宜兰).
+
+     What settles it is that our own Chinese prose already used the Chinese
+     forms — 特里劳尼, 鹿儿岛, 哈利斯科, 艾雷, 斯佩塞, 黑森林, 干邑 all appear in
+     blurbs and notes on the very cards whose region line said the Latin. Same
+     failure as the ume base: two strings on one screen disagreeing.
+
+     Genuinely obscure rungs stay Latin on purpose, per the header of
+     js/zh-terms.js — Serravalle Scrivia, Segonzac, Barradères, Jesús María,
+     Los Valles, Tain, Wigtownshire. */
+  await openApp(page);
+  const out = await page.evaluate(() => {
+    lang = "zh";
+    const bare = [];
+    const KNOWN = ["Islay", "Speyside", "Isle of Jura", "Highlands", "Lowlands", "Jalisco",
+      "Oaxaca", "Tequila", "Los Altos", "Nagano", "Kagoshima", "Kobe", "Nada", "Kumamoto",
+      "Shiga", "Yilan", "Cognac", "Grande Champagne", "Fins Bois", "Schwarzwald", "Trelawny",
+      "St Philip", "St Lucy", "Riga", "Appenzell", "Indiana", "Artibonite"];
+    for (const k of KNOWN) if (!/[\u3400-\u9FFF]/.test(localizeRegion(k))) bare.push(k);
+    /* and no spirit on the shelf may show a region line with no Chinese in it */
+    const shelf = [];
+    for (const s of DATA.sections) for (const c of s.categories) for (const g of c.groups)
+      for (const i of g.items) {
+        const ins = i.insight;
+        if (!ins || ins.kind !== "spirit" || !ins.region) continue;
+        if (!/[\u3400-\u9FFF]/.test(localizeRegion(ins.region)))
+          shelf.push(`${i.producer} ${i.name}: ${ins.region}`);
+      }
+    return { bare, shelf };
+  });
+  expect(out.bare, "a well-known spirit region with no Chinese name").toEqual([]);
+  expect(out.shelf, "a spirit whose whole region line is bare Latin in the Chinese view").toEqual([]);
+});

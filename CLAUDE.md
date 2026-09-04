@@ -290,6 +290,37 @@ Friuli-over-Furlanija test of *what a Croatian speaker actually says*: it is
 says "bačve od oloroso sherryja"), and it is **Schwarzwald**, never the calque
 "crnošumski". Slovene follows on both. Guarded by a test.
 
+**The Chinese sweep had only ever covered wines** (owner, 2026-09-04). The
+spirits shelf arrived in August and `ZH_REGION` was never extended to it, so
+**30 of the 35 distinct spirit regions rendered as bare Latin**: `Islay, 苏格兰`,
+`Tequila、Los Valles、Jalisco, 墨西哥`, `Nada、Kobe, 日本`. 40 names added.
+
+What settles the question — and the reason this is a *bug* rather than a
+preference — is that our own Chinese prose already used the Chinese forms.
+特里劳尼, 鹿儿岛, 哈利斯科, 艾雷, 斯佩塞, 黑森林, 干邑, 熊本, 宜兰, 长野, 圣菲利普
+and 朱拉 all appear in blurbs and notes **on the very cards whose region line
+said the Latin**. Same failure as the ume base: two strings on one screen
+disagreeing. Fix the field, and where the prose was the odd one out fix that
+instead (Cimarrón's blurb said `哈利斯科的 Los Altos`).
+
+For Japan and Taiwan it is not a translation question at all — Chinese uses the
+same characters: 長野 → 长野, 鹿児島 → 鹿儿岛, 神戸 → 神户, 宜蘭 → 宜兰. Leaving
+those in Latin denies a Chinese reader their own script.
+
+**What stays Latin, on purpose**, per the header of js/zh-terms.js: rungs with
+no established Chinese name — Serravalle Scrivia, Segonzac, Barradères,
+Saint-Michel-de-l'Attalaye, San Luis del Río, Jesús María, Los Valles, Tain,
+Wigtownshire. A mixed line (`特基拉（Tequila）、Los Valles、哈利斯科（Jalisco）`) is
+the established pattern, not a defect — the wine side has read
+`波特兰（Portland）、俄勒冈（Oregon）` for a year. **Do not invent a
+transliteration to make a line uniform.** `Los Altos` was added only because
+our own note already said 洛斯阿尔托斯; `Los Valles` was not, because nothing
+attests it.
+
+Guarded by a test in localization.spec.mjs: a list of well-known rungs must
+localize, and no spirit on the shelf may show a region line with no Chinese in
+it at all.
+
 **A name does not repeat the heading it sits under** (owner, 2026-09-04).
 Four rows reading *Grappa Bianca, Grappa Barrique, Grappa Riserva 18 Mesi,
 Grappa Amarone Invecchiata* under a heading that says GRAPPA make the eye skip
