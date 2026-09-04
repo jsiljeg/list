@@ -576,6 +576,57 @@ was dead (removed), and `producers.json` is keyed by *short* forms which
 `producerInfo()` resolves by longest containing substring — so an exact-key check
 reports forty-seven false orphans.
 
+## What the deploy publishes (2026-09-04)
+
+**The site is an allowlist, not the repo root.** It used to upload `path: .`,
+so theatrium.list.devinos.hr served every scratch script, `docs/`, `tests/`,
+`scripts/`, CLAUDE.md, package.json and `data/source/` — the supplier PDFs and
+a third-party journal article kept as a research copy. The owner found
+`/scratch/vinarije-vina.html` on the live site. The repo is public either way;
+the difference is that a page on the venue's own domain reads as part of the
+product and is indexed as one. `robots.txt` had been disallowing `/scratch/`
+and `/tests/` for a month, which is a request, not a control.
+
+`scripts/site-files.sh` copies the 27 files the app needs; the workflow uploads
+that. **Add a line when the app starts loading something new** — and
+`scripts/check-site.mjs` is the guard: it boots the assembled directory, opens
+the guest app, the admin page and the QR page, and fails on any request that
+is not 200, any console or page error, and any of seven internal paths that is
+still reachable. `npm run site` runs it locally; the deploy runs it too.
+
+## Running the suite: what the standing rule costs (2026-09-04)
+
+The owner asked for a full run — the first in weeks. **587 passed, 40 failed
+(14 distinct tests × 3 viewports), and every failing test had been written
+under "add a test with the fix, don't run the suite" and never executed.**
+The rule is still his call and still right for shipping speed, but the bill
+comes due in a batch, so it is worth knowing the shape of it:
+
+- **2 were real defects in the data**, invisible to anyone reading the repo:
+  Anselme Selosse spelled 塞洛斯 on two cards and 瑟洛斯 on two others, and three
+  real pairings with no place in `pairing-rank.mjs`. Both fixed.
+- **1 was a real layout bug** that only the phone viewport saw: `Bernkastel`
+  and `Mittelmosel` overlapping in the Mosel map.
+- **2 asserted a policy the owner had since replaced** — 121 bare-year
+  assertions superseded by "one story, one date", and a 2px sheet-stability
+  claim across the wizard's steps settled the other way in css/style.css the
+  same day (centred: "a change of screen, not a jump").
+- **9 were tests being wrong about the app**: `library` is the wines map not a
+  function; `#modal .detail-close` never existed; an admin row splits name and
+  producer into two divs; the waiter card's middle dot is CSS; four "lost
+  fact" regexes broke the match-the-stem rule written six lines above them.
+- **1 could never have passed**: it read `request.headers()["cache-control"]`
+  for "no-cache", but `fetch(url, {cache:"no-cache"})` sets the fetch *mode*
+  and sends no such header. Rewritten as a source assertion — no data file is
+  fetched except through `fresh()` — plus a runtime check that all six are
+  requested, so a typo in a path cannot pass a grep.
+
+**The lesson for writing one blind:** prefer an assertion you can evaluate
+without a browser (a source grep, a data invariant) over one about rendered
+geometry or request headers, because the second kind fails silently for weeks.
+And a test written the same day a layout decision is still moving will encode
+the draft, not the decision.
+
 ## Looking at the app (added 2026-07-30)
 
 `scripts/shot.py` boots a throwaway static server and a headless Chromium and
