@@ -290,6 +290,30 @@ Friuli-over-Furlanija test of *what a Croatian speaker actually says*: it is
 says "bačve od oloroso sherryja"), and it is **Schwarzwald**, never the calque
 "crnošumski". Slovene follows on both. Guarded by a test.
 
+**A name does not repeat the heading it sits under** (owner, 2026-09-04).
+Four rows reading *Grappa Bianca, Grappa Barrique, Grappa Riserva 18 Mesi,
+Grappa Amarone Invecchiata* under a heading that says GRAPPA make the eye skip
+seven characters on every row before reaching the word that tells them apart —
+the same cost that moved the bottle format out of the name. Trimmed: the four
+grappe, three Mulassano vermouths (`Bianco`, `Rosso`, `Extra Dry`), and
+Cimarrón's `Blanco Tequila` → `Blanco`. Refs moved with the names.
+
+**Only where the word is a pure echo.** Deliberately *not* applied to gin or
+rum, where the leading words are a claim: Hampden's `Pure Single Jamaican Rum
+8Y` names the strictest designation in rum and is the point of its note, and
+`American Single Malt` says what kind of whisky Westward makes. Mulassano's
+`Bitter` keeps its name because it is not a vermouth at all.
+
+Search is unaffected — `itemHay()` pushes every language's *class* string, so
+"grappa", "vermut", "vermouth", "tequila" and "mezcal" still reach these
+bottles through `Grappa · mlada` and `Vermut di Torino · bianco`. Verified
+rather than assumed, and guarded by a test.
+
+Tequila and mezcal **stay one category** (owner's call). The consequence,
+accepted: nothing in the list marks Del Maguey Vida and Bruxo as mezcal rather
+than tequila — only the detail card does, as was already true. Same for
+Mulassano's Bitter sitting under Vermut.
+
 ## The kitchen's card is seasonal (2026-09-04)
 
 A dish that comes off the card in September is usually back next spring, and

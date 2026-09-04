@@ -1564,15 +1564,15 @@
        "country": null,
        "items": [
         {
-         "ref": "mulassano--vermouth-bianco",
+         "ref": "mulassano--bianco",
          "price": 5
         },
         {
-         "ref": "mulassano--vermouth-rosso",
+         "ref": "mulassano--rosso",
          "price": 5
         },
         {
-         "ref": "mulassano--vermouth-extra-dry",
+         "ref": "mulassano--extra-dry",
          "price": 5
         },
         {
@@ -1590,7 +1590,7 @@
        "country": null,
        "items": [
         {
-         "ref": "cimarron--blanco-tequila",
+         "ref": "cimarron--blanco",
          "price": 4
         },
         {
@@ -1847,19 +1847,19 @@
        "country": null,
        "items": [
         {
-         "ref": "lorenzo-inga--grappa-bianca",
+         "ref": "lorenzo-inga--bianca",
          "price": 5
         },
         {
-         "ref": "lorenzo-inga--grappa-barrique",
+         "ref": "lorenzo-inga--barrique",
          "price": 5
         },
         {
-         "ref": "lorenzo-inga--grappa-riserva-18-mesi",
+         "ref": "lorenzo-inga--riserva-18-mesi",
          "price": 6
         },
         {
-         "ref": "lorenzo-inga--grappa-amarone-invecchiata",
+         "ref": "lorenzo-inga--amarone-invecchiata",
          "price": 8
         }
        ]

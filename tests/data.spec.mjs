@@ -1168,3 +1168,33 @@ test("every spirit's region is where it is distilled, not where the fruit grew",
     .map(([p, r]) => `${p}: ${[...r].map((x) => `"${x}"`).join(" vs ")}`);
   expect(split, "one distillery giving two different addresses").toEqual([]);
 });
+
+test("a name does not repeat the heading it sits under", () => {
+  /* Owner, 2026-09-04: four rows reading "Grappa Bianca, Grappa Barrique,
+     Grappa Riserva…" under a heading that already says GRAPPA. The eye skips
+     seven characters on every row before it reaches the word that tells them
+     apart — the same cost that moved the bottle format out of the name.
+
+     Only where the word is *pure* repetition. It is deliberately not applied to
+     gin or rum, where the leading words are a claim rather than an echo:
+     Hampden's "Pure Single Jamaican Rum 8Y" is the strictest designation in rum
+     and the whole point of its note, and "American Single Malt" says which kind
+     of whisky Westward makes. Search is unaffected either way — itemHay pushes
+     every language's class string, so "grappa", "vermut" and "vermouth" still
+     reach these bottles through "Grappa · mlada" and "Vermut di Torino". */
+  const { list } = joinRaw();
+  const ECHO = { grappa: /^grappa\b/i, vermouth: /^vermouth\b/i };
+  const bad = [];
+  for (const s of list.sections) for (const c of s.categories) {
+    const re = ECHO[c.id];
+    if (!re) continue;
+    for (const g of c.groups) for (const i of g.items)
+      if (re.test(i.name)) bad.push(`${c.id}: "${i.name}" repeats its own heading`);
+  }
+  /* and the one that said it backwards */
+  for (const s of list.sections) for (const c of s.categories)
+    if (c.id === "tequila-mezcal")
+      for (const g of c.groups) for (const i of g.items)
+        if (/\btequila\b/i.test(i.name)) bad.push(`tequila-mezcal: "${i.name}" repeats its own heading`);
+  expect(bad).toEqual([]);
+});

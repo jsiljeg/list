@@ -10841,8 +10841,8 @@
    },
    "notePlain": true
   },
-  "mulassano--vermouth-bianco": {
-   "name": "Vermouth Bianco",
+  "mulassano--bianco": {
+   "name": "Bianco",
    "producer": "Mulassano",
    "insight": {
     "region": "Torino, Piemonte",
@@ -10886,8 +10886,8 @@
    },
    "notePlain": true
   },
-  "mulassano--vermouth-rosso": {
-   "name": "Vermouth Rosso",
+  "mulassano--rosso": {
+   "name": "Rosso",
    "producer": "Mulassano",
    "insight": {
     "region": "Torino, Piemonte",
@@ -10931,8 +10931,8 @@
    },
    "notePlain": true
   },
-  "mulassano--vermouth-extra-dry": {
-   "name": "Vermouth Extra Dry",
+  "mulassano--extra-dry": {
+   "name": "Extra Dry",
    "producer": "Mulassano",
    "insight": {
     "region": "Torino, Piemonte",
@@ -11019,8 +11019,8 @@
    },
    "notePlain": true
   },
-  "cimarron--blanco-tequila": {
-   "name": "Blanco Tequila",
+  "cimarron--blanco": {
+   "name": "Blanco",
    "producer": "Cimarrón",
    "insight": {
     "region": "Tequila, Los Valles, Jalisco",
@@ -13105,8 +13105,8 @@
    },
    "notePlain": true
   },
-  "lorenzo-inga--grappa-bianca": {
-   "name": "Grappa Bianca",
+  "lorenzo-inga--bianca": {
+   "name": "Bianca",
    "producer": "Lorenzo Inga",
    "insight": {
     "kind": "spirit",
@@ -13152,8 +13152,8 @@
    },
    "notePlain": true
   },
-  "lorenzo-inga--grappa-barrique": {
-   "name": "Grappa Barrique",
+  "lorenzo-inga--barrique": {
+   "name": "Barrique",
    "producer": "Lorenzo Inga",
    "insight": {
     "kind": "spirit",
@@ -13201,8 +13201,8 @@
    },
    "notePlain": true
   },
-  "lorenzo-inga--grappa-riserva-18-mesi": {
-   "name": "Grappa Riserva 18 Mesi",
+  "lorenzo-inga--riserva-18-mesi": {
+   "name": "Riserva 18 Mesi",
    "producer": "Lorenzo Inga",
    "insight": {
     "kind": "spirit",
@@ -13900,8 +13900,8 @@
    },
    "notePlain": true
   },
-  "lorenzo-inga--grappa-amarone-invecchiata": {
-   "name": "Grappa Amarone Invecchiata",
+  "lorenzo-inga--amarone-invecchiata": {
+   "name": "Amarone Invecchiata",
    "producer": "Lorenzo Inga",
    "insight": {
     "kind": "spirit",
