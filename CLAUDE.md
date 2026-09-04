@@ -309,10 +309,20 @@ Search is unaffected — `itemHay()` pushes every language's *class* string, so
 bottles through `Grappa · mlada` and `Vermut di Torino · bianco`. Verified
 rather than assumed, and guarded by a test.
 
-Tequila and mezcal **stay one category** (owner's call). The consequence,
-accepted: nothing in the list marks Del Maguey Vida and Bruxo as mezcal rather
-than tequila — only the detail card does, as was already true. Same for
-Mulassano's Bitter sitting under Vermut.
+**Tequila and mezcal are two categories** (2026-09-04). Trimming the names made
+the case: once the rows read `Blanco / Reposado / Añejo / Vida / Bruxo`, nothing
+on the list said which two were mezcal. A category costs less than it looks —
+the chip strip is *sections*, so a new category is one more heading in the
+scroll, not a new chip — and 5 tequilas against 2 mezcals is two real shelves.
+
+**Mulassano's Bitter went the other way, and the difference is the count.** It
+is not a vermouth, but it is the only bitter on the list, and a category with
+one row is a heading with nothing under it. So the *heading* widened instead:
+`Vermut i bitter` / `Vermouth & bitter` / `Wermut & Bitter` / `味美思与苦味酒`.
+That also keeps the four Mulassanos on one shelf, which is right by purpose —
+vermouth and bitter are the same moment of the evening and the same two
+bottles in a Negroni, while the `liqueur` shelf next door is after-dinner
+(Jägermeister, pelinkovac, umeshu). Split at two, widen the heading at one.
 
 ## The kitchen's card is seasonal (2026-09-04)
 

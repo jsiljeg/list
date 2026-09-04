@@ -1584,10 +1584,9 @@
      ]
     },
     {
-     "id": "tequila-mezcal",
+     "id": "tequila",
      "groups": [
       {
-       "country": null,
        "items": [
         {
          "ref": "cimarron--blanco",
@@ -1608,7 +1607,16 @@
         {
          "ref": "clase-azul--reposado",
          "price": 28
-        },
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "mezcal",
+     "groups": [
+      {
+       "items": [
         {
          "ref": "del-maguey--vida",
          "price": 7

@@ -1193,8 +1193,8 @@ test("a name does not repeat the heading it sits under", () => {
   }
   /* and the one that said it backwards */
   for (const s of list.sections) for (const c of s.categories)
-    if (c.id === "tequila-mezcal")
+    if (c.id === "tequila")
       for (const g of c.groups) for (const i of g.items)
-        if (/\btequila\b/i.test(i.name)) bad.push(`tequila-mezcal: "${i.name}" repeats its own heading`);
+        if (/\btequila\b/i.test(i.name)) bad.push(`tequila: "${i.name}" repeats its own heading`);
   expect(bad).toEqual([]);
 });

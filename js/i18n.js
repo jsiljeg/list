@@ -89,8 +89,8 @@ hr: {
   categories: {
     sparkling: "Pjenušava vina", champagne: "Šampanjac", white: "Bijela vina",
     orange: "Macerirana bijela vina", red: "Crna vina", rose: "Rosé vina",
-    dessert: "Desertna vina", vodka: "Vodka", gin: "Gin", vermouth: "Vermut",
-    "tequila-mezcal": "Tequila i mezcal", whisky: "Viski", rum: "Rum",
+    dessert: "Desertna vina", vodka: "Vodka", gin: "Gin", vermouth: "Vermut i bitter",
+    tequila: "Tequila", mezcal: "Mezcal", whisky: "Viski", rum: "Rum",
     cognac: "Cognac", shochu: "Shochu", rakija: "Rakija", grappa: "Grappa",
     liqueur: "Likeri", beer: "Pivo", water: "Mineralna voda", tonic: "Tonik",
     juice: "Sokovi i bezalkoholna pića", coffee: "Kava"
@@ -228,8 +228,8 @@ en: {
   categories: {
     sparkling: "Sparkling wines", champagne: "Champagne", white: "White wines",
     orange: "Orange wines", red: "Red wines", rose: "Rosé wines",
-    dessert: "Dessert wines", vodka: "Vodka", gin: "Gin", vermouth: "Vermouth",
-    "tequila-mezcal": "Tequila & mezcal", whisky: "Whisky", rum: "Rum",
+    dessert: "Dessert wines", vodka: "Vodka", gin: "Gin", vermouth: "Vermouth & bitter",
+    tequila: "Tequila", mezcal: "Mezcal", whisky: "Whisky", rum: "Rum",
     cognac: "Cognac", shochu: "Shochu", rakija: "Rakija", grappa: "Grappa",
     liqueur: "Liqueurs", beer: "Beer", water: "Mineral water", tonic: "Tonic water",
     juice: "Juices & soft drinks", coffee: "Coffee"
@@ -367,8 +367,8 @@ it: {
   categories: {
     sparkling: "Spumanti", champagne: "Champagne", white: "Vini bianchi",
     orange: "Vini orange", red: "Vini rossi", rose: "Vini rosati",
-    dessert: "Vini da dessert", vodka: "Vodka", gin: "Gin", vermouth: "Vermut",
-    "tequila-mezcal": "Tequila e mezcal", whisky: "Whisky", rum: "Rum",
+    dessert: "Vini da dessert", vodka: "Vodka", gin: "Gin", vermouth: "Vermut e bitter",
+    tequila: "Tequila", mezcal: "Mezcal", whisky: "Whisky", rum: "Rum",
     cognac: "Cognac", shochu: "Shochu", rakija: "Rakija (acquavite)", grappa: "Grappa",
     liqueur: "Liquori", beer: "Birra", water: "Acqua minerale", tonic: "Acqua tonica",
     juice: "Succhi e bibite", coffee: "Caffè"
@@ -506,8 +506,8 @@ fr: {
   categories: {
     sparkling: "Vins effervescents", champagne: "Champagne", white: "Vins blancs",
     orange: "Vins orange", red: "Vins rouges", rose: "Vins rosés",
-    dessert: "Vins de dessert", vodka: "Vodka", gin: "Gin", vermouth: "Vermouth",
-    "tequila-mezcal": "Tequila et mezcal", whisky: "Whisky", rum: "Rhum",
+    dessert: "Vins de dessert", vodka: "Vodka", gin: "Gin", vermouth: "Vermouth et bitter",
+    tequila: "Tequila", mezcal: "Mezcal", whisky: "Whisky", rum: "Rhum",
     cognac: "Cognac", shochu: "Shochu", rakija: "Rakija (eau-de-vie)", grappa: "Grappa",
     liqueur: "Liqueurs", beer: "Bière", water: "Eau minérale", tonic: "Tonic",
     juice: "Jus et boissons sans alcool", coffee: "Café"
@@ -645,8 +645,8 @@ de: {
   categories: {
     sparkling: "Schaumweine", champagne: "Champagner", white: "Weißweine",
     orange: "Orange Weine", red: "Rotweine", rose: "Roséweine",
-    dessert: "Dessertweine", vodka: "Wodka", gin: "Gin", vermouth: "Wermut",
-    "tequila-mezcal": "Tequila & Mezcal", whisky: "Whisky", rum: "Rum",
+    dessert: "Dessertweine", vodka: "Wodka", gin: "Gin", vermouth: "Wermut & Bitter",
+    tequila: "Tequila", mezcal: "Mezcal", whisky: "Whisky", rum: "Rum",
     cognac: "Cognac", shochu: "Shochu", rakija: "Rakija (Obstbrand)", grappa: "Grappa",
     liqueur: "Liköre", beer: "Bier", water: "Mineralwasser", tonic: "Tonic Water",
     juice: "Säfte & Softdrinks", coffee: "Kaffee"
@@ -784,8 +784,8 @@ zh: {
   categories: {
     sparkling: "起泡酒", champagne: "香槟", white: "白葡萄酒",
     orange: "浸皮白葡萄酒", red: "红葡萄酒", rose: "桃红葡萄酒",
-    dessert: "甜酒", vodka: "伏特加", gin: "金酒", vermouth: "味美思",
-    "tequila-mezcal": "龙舌兰与梅斯卡尔", whisky: "威士忌", rum: "朗姆酒",
+    dessert: "甜酒", vodka: "伏特加", gin: "金酒", vermouth: "味美思与苦味酒",
+    tequila: "龙舌兰", mezcal: "梅斯卡尔", whisky: "威士忌", rum: "朗姆酒",
     cognac: "干邑", shochu: "烧酒", rakija: "拉基亚（果味白兰地）", grappa: "格拉帕",
     liqueur: "利口酒", beer: "啤酒", water: "矿泉水", tonic: "汤力水",
     juice: "果汁与软饮", coffee: "咖啡"
@@ -952,8 +952,8 @@ sl: {
     "dessert": "Desertna vina",
     "vodka": "Vodka",
     "gin": "Gin",
-    "vermouth": "Vermut",
-    "tequila-mezcal": "Tequila in mezcal",
+    "vermouth": "Vermut in bitter",
+    "tequila": "Tequila", "mezcal": "Mezcal",
     "whisky": "Viski",
     "rum": "Rum",
     "cognac": "Konjak",
@@ -1401,8 +1401,8 @@ es: {
     "dessert": "Vinos de postre",
     "vodka": "Vodka",
     "gin": "Ginebra",
-    "vermouth": "Vermut",
-    "tequila-mezcal": "Tequila y mezcal",
+    "vermouth": "Vermut y bitter",
+    "tequila": "Tequila", "mezcal": "Mezcal",
     "whisky": "Whisky",
     "rum": "Ron",
     "cognac": "Coñac",
