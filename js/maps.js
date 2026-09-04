@@ -113,7 +113,7 @@ germany: `<svg viewBox="0 0 320 240" class="rmap">
   <circle cx="42" cy="150" r="3" class="town"/><text x="10" y="142" class="t-town">Trier</text>
   <circle cx="110" cy="120" r="2.4" class="dot"/><text x="86" y="112" class="t-dot">Bernkastel</text>
   <circle cx="192" cy="146" r="3" class="town"/><text x="200" y="142" class="t-town">Mainz</text>
-  <text x="60" y="104" class="t-zone">Mittelmosel</text>
+  <text x="56" y="94" class="t-zone">Mittelmosel</text>
   <text x="150" y="70" class="t-zone">Terrassenmosel</text>
   <text x="6" y="222" class="t-zone">Saar</text>
   <text x="222" y="112" class="t-zone">Rheingau</text>
