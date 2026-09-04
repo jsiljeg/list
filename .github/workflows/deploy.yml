@@ -31,9 +31,27 @@ jobs:
         run: for f in js/*.js; do node --check "$f"; done
       - name: Validate the wine data (a broken edit never goes live)
         run: node scripts/validate.mjs
+      # The site is assembled from an allowlist, not from the repo root. It used
+      # to publish `path: .`, which put every working file on the restaurant's
+      # own domain — scratch/vinarije-vina.html, the internal docs, the tests,
+      # and data/source/, which holds the supplier PDFs and a third-party
+      # journal article we keep only as a research copy (owner, 2026-09-04:
+      # "probably I shouldn't"). The repo is public either way, but a page
+      # served from theatrium.list.devinos.hr reads as part of the product and
+      # is indexable as one. Add a line here when the app starts loading a new
+      # file; `scripts/site-files.sh` is the same list, so the local check and
+      # the deploy cannot drift.
+      - name: Assemble the site (nothing internal reaches the domain)
+        run: bash scripts/site-files.sh _site
+      # A file the app loads but the allowlist forgot is a 404 nobody sees
+      # until a tablet shows a blank screen mid-service. This opens the
+      # assembled directory and fails on any request that is not 200 — and on
+      # anything internal that is still reachable.
+      - name: Check the assembled site loads and hides the internals
+        run: npm ci && npx playwright install --with-deps chromium && node scripts/check-site.mjs _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
