@@ -1,0 +1,652 @@
+PREPORUKE SOMMELIERA — karta 08/2026
+Generirano: 2026-09-04. Ovo je ono što gost dobije kad u aplikaciji
+otvori 'Pomozi mi odabrati', po jelu i po budžetu.
+
+Broj lijevo je bodovni rezultat (koliko se vino i jelo poklapaju).
+'[samo stil]' znači da vino ne nosi nijedno jelo s ove kartice nego samo
+odgovarajući stil — pojavljuje se tek ako nema ničeg boljeg.
+Aplikacija rotira između vina unutar 3 boda od najboljeg, pa se redoslijed
+mijenja od gosta do gosta; ovdje su najbolji, po redu.
+
+
+==============================================================================
+Salata od pečene cikle i kozjeg sira   [starters]
+   uz jela: salads, cheese_fresh, vegetables
+   stilovi: white_aromatic, white_mineral, white_fresh, rose
+   NA CASU ()
+       9  9 EUR  Jakopić — Sauvignon 2024
+       6  11 EUR  Vie di Romans — Pinot Grigio 2023
+       3  8 EUR  Jakopić — Terbotz
+   do 60 EUR
+       9  54 EUR  Korak — Sauvignon 2024
+       9  45 EUR  Jakopić — Sauvignon 2024
+       9  50 EUR  Baraka — Malena 2022
+   60-120 EUR
+       9  75 EUR  Erdoro — Sauvignon Classy 2022
+       9  87 EUR  François Crochet — Sancerre Blanc 2023
+       7  110 EUR  Weingut Prager — Grüner Veltliner Federspiel Ried Hinter der Burg 2024
+   iznad 120 EUR
+       6  135 EUR  Théo Dancer — Bourgogne Aligoté 2023
+       6  127 EUR  Pascal Cotat — Sancerre Blanc Les Monts Damnés 2020
+       5  750 EUR  René & Vincent Dauvissat — Chablis 1er Cru Vaillons 2018
+   Bez ogranicenja (Ikone)
+       5  750 EUR  René & Vincent Dauvissat — Chablis 1er Cru Vaillons 2018
+       2  560 EUR  Jacques Selosse — Initial Brut
+       1  1780 EUR  Krug — Krug 1996
+
+==============================================================================
+Tartar od bifteka   [starters]
+   uz jela: beef, charcuterie, light_starters
+   stilovi: red_light, red_medium, champagne, white_mineral
+   NA CASU ()
+       7  8 EUR  Petrač — Karizma Cuvée 2022
+       6  11 EUR  Azienda Duemani — Cifra 2021
+       6  12 EUR  Moret-Nominé — Syrah Le Fales 2024
+   do 60 EUR
+       7  50 EUR  Petrač — Karizma Cuvée 2022
+       6  52 EUR  Fattoria di Magliano — Heba 2021
+       5  54 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+   60-120 EUR
+       7  80 EUR  Jules Desjourneys — Beaujolais Patacaisse Rouge 2022
+       6  66 EUR  Clai — Ottocento Crni 2022
+       6  80 EUR  Moret-Nominé — Syrah Le Fales 2024
+   iznad 120 EUR
+       8  150 EUR  Montevertine — Montevertine 2019
+       6  170 EUR  Vouette & Sorbée — Textures Brut Nature
+       6  135 EUR  Billecart-Salmon — Le Réserve
+   Bez ogranicenja (Ikone)
+       5  1540 EUR  Soldera — Case Basse 2020
+       4  790 EUR  Jacques Selosse — Rosé Brut
+       4  650 EUR  Hubert Lignier — Charmes-Chambertin Grand Cru 2021
+
+==============================================================================
+Drniški pršut vs. jamón ibérico de bellota   [starters]
+   uz jela: prosciutto, charcuterie, cheese_hard
+   stilovi: sparkling, sparkling_rose, orange, red_light, rose
+   NA CASU ()
+       7  8 EUR  Petrač — Bregh Rose
+       5  8 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+       5  10 EUR  Casa Rojo — CL98 2020
+   do 60 EUR
+      10  60 EUR  Clai — Malvazija Sv. Jakov 2021
+       7  48 EUR  Petrač — Bregh Rose
+       6  48 EUR  Tomac — Rose
+   60-120 EUR
+      10  60 EUR  Clai — Malvazija Sv. Jakov 2021
+      10  62 EUR  Clai — Ottocento bijeli 2022
+      10  67 EUR  Maria & Sepp Muster — Sauvignon vom Opok 2021
+   iznad 120 EUR
+       5  190 EUR  Conti Costanti — Brunello di Montalcino 2018
+       4  790 EUR  Jacques Selosse — Rosé Brut
+       4  135 EUR  Domaine Bourdy — Château-Chalon 2014
+   Bez ogranicenja (Ikone)
+       4  790 EUR  Jacques Selosse — Rosé Brut
+       4  689 EUR  Dal Forno Romano — Amarone della Valpolicella D.O.C. 2015
+       3  757 EUR  Giuseppe Quintarelli — Amarone Classico 2015
+
+==============================================================================
+Jakobove kapice   [starters]
+   uz jela: shellfish, caviar, seafood
+   stilovi: white_mineral, champagne_bdb, sparkling, white_fresh
+   NA CASU ()
+       7  9 EUR  Kunjas — Pošip 2024
+       7  12 EUR  Benanti — Etna Bianco 2023
+       6  9 EUR  Meneghetti — Blanc de Blancs
+   do 60 EUR
+       7  49 EUR  Kunjas — Pošip 2024
+       6  55 EUR  Tomac — Diplomat
+       6  55 EUR  Alois Lageder — Pinot Grigio Porer 2023
+   60-120 EUR
+       9  90 EUR  Markus — Dan po dan 2022
+       7  95 EUR  Benanti — Etna Bianco 2023
+       7  68 EUR  Casa Rojo — Orange Republic 2021
+   iznad 120 EUR
+      10  130 EUR  Čečavac — Jeka Blanc 2024
+       8  180 EUR  Weingut Wittmann — Riesling Kirchspiel GG 2020
+       7  145 EUR  Weingut Heymann-Löwenstein — Riesling Uhlen Blaufüßer Lay GG 2022
+   Bez ogranicenja (Ikone)
+       6  1450 EUR  Domaine François Raveneau — Chablis Grand Cru Valmur 2020
+       5  1450 EUR  Moët & Chandon — Dom Pérignon P2 2004
+       5  1780 EUR  Krug — Krug 1996
+
+==============================================================================
+Burrata i rajčice   [starters]
+   uz jela: cheese_fresh, vegetables, light_starters
+   stilovi: white_fresh, white_aromatic, rose, orange
+   NA CASU ()
+       6  9 EUR  Jakopić — Sauvignon 2024
+       4  8 EUR  Jakopić — Terbotz
+       4  9 EUR  Meneghetti — Blanc de Blancs
+   do 60 EUR
+       7  57 EUR  Bernhard Ott — Fass 4 Grüner Veltliner 2023
+       6  39 EUR  Petrač — Graševina 2024
+       6  54 EUR  Korak — Sauvignon 2024
+   60-120 EUR
+       6  75 EUR  Erdoro — Sauvignon Classy 2022
+       5  67 EUR  Maria & Sepp Muster — Sauvignon vom Opok 2021
+       3  84 EUR  Corte Aura — Franciacorta Satèn
+   iznad 120 EUR
+       3  170 EUR  Vouette & Sorbée — Textures Brut Nature
+       3  135 EUR  Billecart-Salmon — Le Réserve
+       3  560 EUR  Jacques Selosse — Initial Brut
+   Bez ogranicenja (Ikone)
+       3  560 EUR  Jacques Selosse — Initial Brut
+       2  750 EUR  René & Vincent Dauvissat — Chablis 1er Cru Vaillons 2018
+       1  540 EUR  Louis Roederer — Cristal 2015
+
+==============================================================================
+Kozice u panko mrvicama   [starters]
+   uz jela: shellfish, seafood, asian
+   stilovi: white_fresh, white_mineral, sparkling, champagne
+   NA CASU ()
+       8  13 EUR  Zilliken — Rausch Kabinett 2025
+       7  9 EUR  Kunjas — Pošip 2024
+       7  12 EUR  Benanti — Etna Bianco 2023
+   do 60 EUR
+       7  49 EUR  Kunjas — Pošip 2024
+       7  52 EUR  Weingut A. Christmann — Riesling Aus den Lagen 2021
+       6  55 EUR  Tomac — Diplomat
+   60-120 EUR
+       9  90 EUR  Markus — Dan po dan 2022
+       8  91 EUR  Zilliken — Rausch Kabinett 2025
+       7  89 EUR  Weingut Heymann-Löwenstein — Riesling Schieferterrassen 2023
+   iznad 120 EUR
+      10  130 EUR  Čečavac — Jeka Blanc 2024
+      10  155 EUR  Domaine Albert Mann — Riesling Grand Cru Schlossberg 2020
+       8  180 EUR  Weingut Wittmann — Riesling Kirchspiel GG 2020
+   Bez ogranicenja (Ikone)
+       6  1450 EUR  Domaine François Raveneau — Chablis Grand Cru Valmur 2020
+       2  1450 EUR  Moët & Chandon — Dom Pérignon P2 2004
+       2  1780 EUR  Krug — Krug 1996
+
+==============================================================================
+Carpaccio od bifteka   [starters]
+   uz jela: beef, light_starters, charcuterie
+   stilovi: red_light, champagne, white_mineral, red_medium
+   NA CASU ()
+       7  8 EUR  Petrač — Karizma Cuvée 2022
+       6  11 EUR  Azienda Duemani — Cifra 2021
+       6  12 EUR  Moret-Nominé — Syrah Le Fales 2024
+   do 60 EUR
+       7  50 EUR  Petrač — Karizma Cuvée 2022
+       6  52 EUR  Fattoria di Magliano — Heba 2021
+       5  54 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+   60-120 EUR
+       7  80 EUR  Jules Desjourneys — Beaujolais Patacaisse Rouge 2022
+       6  66 EUR  Clai — Ottocento Crni 2022
+       6  80 EUR  Moret-Nominé — Syrah Le Fales 2024
+   iznad 120 EUR
+       8  150 EUR  Montevertine — Montevertine 2019
+       6  170 EUR  Vouette & Sorbée — Textures Brut Nature
+       6  135 EUR  Billecart-Salmon — Le Réserve
+   Bez ogranicenja (Ikone)
+       5  1540 EUR  Soldera — Case Basse 2020
+       4  790 EUR  Jacques Selosse — Rosé Brut
+       4  650 EUR  Hubert Lignier — Charmes-Chambertin Grand Cru 2021
+
+==============================================================================
+Juha od kozica   [soups]
+   uz jela: seafood, asian, spicy
+   stilovi: white_aromatic, sweet, white_fresh, sparkling
+   NA CASU ()
+      10  8 EUR  Zilliken — Riesling Butterfly 2024
+       8  13 EUR  Zilliken — Rausch Kabinett 2025
+       7  9 EUR  Kunjas — Pošip 2024
+   do 60 EUR
+      10  55 EUR  Zilliken — Riesling Butterfly 2024
+       7  45 EUR  Jakopić — Riesling 2024
+       7  49 EUR  Kunjas — Pošip 2024
+   60-120 EUR
+      10  80 EUR  A. Clüsserath — Trittenheimer Apotheke Kabinett 2024
+      10  110 EUR  Weingut Joh. Jos. Prüm — Riesling Wehlener Sonnenuhr Kabinett 2023
+       8  91 EUR  Zilliken — Rausch Kabinett 2025
+   iznad 120 EUR
+       7  170 EUR  Egon Müller — Riesling Scharzhof 2023
+       5  130 EUR  Čečavac — Jeka Blanc 2024
+       4  136 EUR  Weingut Wittmann — Riesling Aulerde GG 2020
+   Bez ogranicenja (Ikone)
+       3  880 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2020   [samo stil]
+       3  940 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2015   [samo stil]
+       1  790 EUR  Jacques Selosse — Rosé Brut   [samo stil]
+
+==============================================================================
+Juha od kukuruza   [soups]
+   uz jela: vegetables, shellfish, light_starters
+   stilovi: white_rich, white_fresh, champagne
+   NA CASU ()
+       5  8 EUR  Benvenuti — Malvazija 2025
+       4  8 EUR  Jakopić — Terbotz
+       4  9 EUR  Meneghetti — Blanc de Blancs
+   do 60 EUR
+       7  57 EUR  Bernhard Ott — Fass 4 Grüner Veltliner 2023
+       6  39 EUR  Petrač — Graševina 2024
+       5  44 EUR  Benvenuti — Malvazija 2025
+   60-120 EUR
+       5  100 EUR  Pertois-Moriset — L'Assemblage Brut
+       3  70 EUR  Movia — Puro Brut
+       3  110 EUR  Weingut Prager — Grüner Veltliner Federspiel Ried Hinter der Burg 2024
+   iznad 120 EUR
+       7  400 EUR  Hubert Lamy — Saint-Aubin 1er Cru En Remilly 2023
+       6  170 EUR  Vouette & Sorbée — Textures Brut Nature
+       6  135 EUR  Billecart-Salmon — Le Réserve
+   Bez ogranicenja (Ikone)
+       3  1450 EUR  Domaine François Raveneau — Chablis Grand Cru Valmur 2020
+       2  1450 EUR  Moët & Chandon — Dom Pérignon P2 2004
+       2  1780 EUR  Krug — Krug 1996
+
+==============================================================================
+Juha od rajčice   [soups]
+   uz jela: vegetables, light_starters, salads
+   stilovi: white_fresh, rose, white_aromatic
+   NA CASU ()
+       7  9 EUR  Jakopić — Sauvignon 2024
+       6  8 EUR  Jakopić — Terbotz
+       6  11 EUR  Vie di Romans — Pinot Grigio 2023
+   do 60 EUR
+      10  50 EUR  Bastian — Rose
+       9  39 EUR  Petrač — Graševina 2024
+       9  50 EUR  Baraka — Malena 2022
+   60-120 EUR
+       7  75 EUR  Erdoro — Sauvignon Classy 2022
+       4  110 EUR  Weingut Prager — Grüner Veltliner Federspiel Ried Hinter der Burg 2024
+       4  87 EUR  François Crochet — Sancerre Blanc 2023
+   iznad 120 EUR
+       3  170 EUR  Vouette & Sorbée — Textures Brut Nature
+       3  135 EUR  Billecart-Salmon — Le Réserve
+       3  135 EUR  Théo Dancer — Bourgogne Aligoté 2023
+   Bez ogranicenja (Ikone)
+       1  540 EUR  Louis Roederer — Cristal 2015
+       1  560 EUR  Jacques Selosse — Initial Brut
+       1  1650 EUR  Salon — Salon Blanc de Blancs 2013
+
+==============================================================================
+Rižoto od bifteka   [mains]
+   uz jela: risotto, beef, cheese_hard
+   stilovi: red_medium, white_rich, white_fresh, red_light
+   NA CASU ()
+       8  8 EUR  Petrač — Karizma Cuvée 2022
+       7  10 EUR  Petrač — Enigma 2019
+       7  15 EUR  Meneghetti — Red 2020
+   do 60 EUR
+       8  50 EUR  Petrač — Karizma Cuvée 2022
+       7  46 EUR  Petrač — Chardonnay 2023
+       6  44 EUR  Benvenuti — Malvazija 2025
+   60-120 EUR
+       7  64 EUR  Domaine Bourdy — Vin Jaune 2014
+       7  75 EUR  Petrač — Enigma 2019
+       7  120 EUR  Le Piane — Boca 2019
+   iznad 120 EUR
+       8  190 EUR  Conti Costanti — Brunello di Montalcino 2018
+       7  135 EUR  Domaine Bourdy — Château-Chalon 2014
+       7  180 EUR  Meneghetti — Red 2020
+   Bez ogranicenja (Ikone)
+       7  689 EUR  Dal Forno Romano — Amarone della Valpolicella D.O.C. 2015
+       5  790 EUR  Bernard-Bonin — Meursault Clos du Cromin Le Pre Manche 2023
+       5  1540 EUR  Soldera — Case Basse 2020
+
+==============================================================================
+Paccheri all'amatriciana   [mains]
+   uz jela: pasta, pork, charcuterie
+   stilovi: red_medium, red_light
+   NA CASU ()
+      10  11 EUR  Azienda Duemani — Cifra 2021
+       6  8 EUR  Petrač — Karizma Cuvée 2022
+       6  8 EUR  Tomaz — Teran Barbarossa 2020
+   do 60 EUR
+      10  52 EUR  Fattoria di Magliano — Heba 2021
+       6  50 EUR  Petrač — Karizma Cuvée 2022
+       6  60 EUR  Tomaz — Teran 2022
+   60-120 EUR
+      10  63 EUR  Az. Agr. E. Pira & Figli – Chiara Boschis — Barbera d'Alba Superiore 2021
+      10  95 EUR  Lalù — Langhe Nebbiolo 2023
+      10  90 EUR  Le Piane — Piane 2019
+   iznad 120 EUR
+      10  145 EUR  Chiara Condello — Predappio Sangiovese 2023
+      10  290 EUR  Chiara Condello — Predappio Sangiovese 2023
+      10  150 EUR  Montevertine — Montevertine 2019
+   Bez ogranicenja (Ikone)   <<< SAMO 1
+       4  790 EUR  Jacques Selosse — Rosé Brut
+
+==============================================================================
+Wiener Schnitzel   [mains]
+   uz jela: veal, white_meat
+   stilovi: white_fresh, white_mineral, red_light, sparkling
+   NA CASU ()
+       6  8 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+       3  10 EUR  Meneghetti — White 2023
+       2  14 EUR  Philippe Chavy — Bourgogne Chardonnay 2023
+   do 60 EUR
+       6  57 EUR  Bernhard Ott — Fass 4 Grüner Veltliner 2023
+       6  54 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+       2  46 EUR  Petrač — Chardonnay 2023
+   60-120 EUR
+       5  89 EUR  Weingut Heymann-Löwenstein — Riesling Schieferterrassen 2023
+       5  110 EUR  Weingut Prager — Grüner Veltliner Federspiel Ried Hinter der Burg 2024
+       5  68 EUR  Casa Rojo — Orange Republic 2021
+   iznad 120 EUR
+       6  180 EUR  Weingut Wittmann — Riesling Kirchspiel GG 2020
+       5  145 EUR  Weingut Heymann-Löwenstein — Riesling Uhlen Blaufüßer Lay GG 2022
+       5  140 EUR  Dr. Bürklin-Wolf — Riesling Gaisböhl GG 2017
+   Bez ogranicenja (Ikone)
+       3  1400 EUR  Domaine Armand Rousseau Père & Fils — Gevrey-Chambertin 1er Cru Lavaux 2018
+       2  790 EUR  Bernard-Bonin — Meursault La Rencontre 2023
+       2  970 EUR  Bernard-Bonin — Meursault Villages Le Limozin 2023
+
+==============================================================================
+Teletina   [mains]
+   uz jela: veal, white_meat, stews
+   stilovi: red_light, red_medium, white_rich
+   NA CASU ()
+       7  8 EUR  Tomaz — Teran Barbarossa 2020
+       6  10 EUR  Meneghetti — White 2023
+       6  8 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+   do 60 EUR
+       7  60 EUR  Tomaz — Teran 2022
+       6  54 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+       5  46 EUR  Petrač — Chardonnay 2023
+   60-120 EUR
+       7  66 EUR  Clai — Ottocento Crni 2022
+       7  100 EUR  Budinski — Refošk Omo 2020
+       7  60 EUR  Tomaz — Teran 2022
+   iznad 120 EUR
+       6  400 EUR  Hubert Lamy — Saint-Aubin 1er Cru En Remilly 2023
+       6  139 EUR  Jules Desjourneys — Pouilly-Vinzelles Les Longeays Blanc 2021
+       6  129 EUR  Jules Desjourneys — Saint-Véran Blanc 2021
+   Bez ogranicenja (Ikone)
+       6  1400 EUR  Domaine Armand Rousseau Père & Fils — Gevrey-Chambertin 1er Cru Lavaux 2018
+       5  790 EUR  Bernard-Bonin — Meursault La Rencontre 2023
+       5  970 EUR  Bernard-Bonin — Meursault Villages Le Limozin 2023
+
+==============================================================================
+Sirloin steak   [mains]
+   uz jela: steak, beef, mushrooms
+   stilovi: red_full, red_mature, red_medium
+   NA CASU ()
+      11  10 EUR  Petrač — Enigma 2019
+      11  15 EUR  Meneghetti — Red 2020
+       7  8 EUR  Petrač — Karizma Cuvée 2022
+   do 60 EUR
+       7  50 EUR  Petrač — Karizma Cuvée 2022
+       4  54 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+       3  53 EUR  Domaine Bourdy — Savagnin 2018
+   60-120 EUR
+      11  75 EUR  Petrač — Enigma 2019
+      10  93 EUR  Fattoria di Magliano — Poggio Bestiale 2020
+       7  90 EUR  Boškinac — Cuvée Boškinac Crni 2018
+   iznad 120 EUR
+      11  180 EUR  Meneghetti — Red 2020
+      10  750 EUR  Tenuta dell'Ornellaia — Ornellaia 2020
+      10  170 EUR  Cakebread Cellars — Cabernet Sauvignon 2018
+   Bez ogranicenja (Ikone)
+      10  750 EUR  Tenuta dell'Ornellaia — Ornellaia 2020
+       8  650 EUR  Hubert Lignier — Charmes-Chambertin Grand Cru 2021
+       8  1400 EUR  Domaine Armand Rousseau Père & Fils — Gevrey-Chambertin 1er Cru Lavaux 2018
+
+==============================================================================
+Chicken tikka masala   [mains]
+   uz jela: asian, spicy, poultry
+   stilovi: white_aromatic, sweet, rose
+   NA CASU ()
+      10  8 EUR  Zilliken — Riesling Butterfly 2024
+       8  13 EUR  Zilliken — Rausch Kabinett 2025
+       5  16 EUR  Henri Giraud — Esprit Nature
+   do 60 EUR
+      10  55 EUR  Zilliken — Riesling Butterfly 2024
+       7  45 EUR  Jakopić — Riesling 2024
+       5  54 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+   60-120 EUR
+      10  80 EUR  A. Clüsserath — Trittenheimer Apotheke Kabinett 2024
+      10  110 EUR  Weingut Joh. Jos. Prüm — Riesling Wehlener Sonnenuhr Kabinett 2023
+       8  91 EUR  Zilliken — Rausch Kabinett 2025
+   iznad 120 EUR
+       7  170 EUR  Egon Müller — Riesling Scharzhof 2023
+       6  136 EUR  Weingut Wittmann — Riesling Aulerde GG 2020
+       6  150 EUR  Weingut Prager — Riesling Smaragd Ried Klaus 2024
+   Bez ogranicenja (Ikone)
+       5  790 EUR  Jacques Selosse — Rosé Brut
+       5  790 EUR  Bernard-Bonin — Meursault La Rencontre 2023
+       4  650 EUR  Jacques Selosse — Version Originale
+
+==============================================================================
+Šiš-ćevap od tune   [mains]
+   uz jela: grilled_fish, white_fish, asian
+   stilovi: red_light, rose, white_aromatic, white_mineral
+   NA CASU ()
+      10  13 EUR  Zilliken — Rausch Kabinett 2025
+       9  15 EUR  Miloš — Stalagmit 2022
+       7  8 EUR  Zilliken — Riesling Butterfly 2024
+   do 60 EUR
+      10  52 EUR  Weingut A. Christmann — Riesling Aus den Lagen 2021
+       8  45 EUR  Jakopić — Riesling 2024
+       7  45 EUR  A. Clüsserath — Vom Schiefer 2020
+   60-120 EUR
+      10  91 EUR  Zilliken — Rausch Kabinett 2025
+      10  89 EUR  Weingut Heymann-Löwenstein — Riesling Schieferterrassen 2023
+      10  87 EUR  Weingut Wittmann — Riesling Westhofener 2021
+   iznad 120 EUR
+      10  136 EUR  Weingut Wittmann — Riesling Aulerde GG 2020
+      10  140 EUR  Dr. Bürklin-Wolf — Riesling Gaisböhl GG 2017
+      10  150 EUR  Weingut Prager — Riesling Smaragd Ried Klaus 2024
+   Bez ogranicenja (Ikone)
+       7  750 EUR  René & Vincent Dauvissat — Chablis 1er Cru Vaillons 2018
+       7  1450 EUR  Domaine François Raveneau — Chablis Grand Cru Valmur 2020
+       4  560 EUR  Jacques Selosse — Initial Brut
+
+==============================================================================
+File svježe jadranske ribe na buzaru   [mains]
+   uz jela: white_fish, seafood, vegetables
+   stilovi: white_mineral, white_rich, white_fresh
+   NA CASU ()
+      11  11 EUR  Vie di Romans — Pinot Grigio 2023
+      10  12 EUR  Vie di Romans — Friulano 2023
+       7  8 EUR  Benvenuti — Malvazija 2025
+   do 60 EUR
+      11  55 EUR  Alois Lageder — Pinot Grigio Porer 2023
+       9  39 EUR  Petrač — Graševina 2024
+       9  57 EUR  Bernhard Ott — Fass 4 Grüner Veltliner 2023
+   60-120 EUR
+      10  87 EUR  Pattes Loup — Chablis 2022
+       7  60 EUR  Matošević — Grimalda bijela 2022
+       7  87 EUR  Meneghetti — White 2023
+   iznad 120 EUR
+       8  130 EUR  Čečavac — Jeka Blanc 2024
+       8  400 EUR  Hubert Lamy — Saint-Aubin 1er Cru En Remilly 2023
+       7  160 EUR  Ruppert-Leroy — Martin Fontaine 2019
+   Bez ogranicenja (Ikone)
+       7  750 EUR  René & Vincent Dauvissat — Chablis 1er Cru Vaillons 2018
+       7  1450 EUR  Domaine François Raveneau — Chablis Grand Cru Valmur 2020
+       7  790 EUR  Bernard-Bonin — Meursault La Rencontre 2023
+
+==============================================================================
+Beef Wellington   [mains]
+   uz jela: beef, steak, mushrooms
+   stilovi: red_full, red_mature, red_medium
+   NA CASU ()
+      11  10 EUR  Petrač — Enigma 2019
+      11  15 EUR  Meneghetti — Red 2020
+       7  8 EUR  Petrač — Karizma Cuvée 2022
+   do 60 EUR
+       7  50 EUR  Petrač — Karizma Cuvée 2022
+       4  54 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+       3  53 EUR  Domaine Bourdy — Savagnin 2018
+   60-120 EUR
+      11  75 EUR  Petrač — Enigma 2019
+      10  93 EUR  Fattoria di Magliano — Poggio Bestiale 2020
+       7  90 EUR  Boškinac — Cuvée Boškinac Crni 2018
+   iznad 120 EUR
+      11  180 EUR  Meneghetti — Red 2020
+      10  750 EUR  Tenuta dell'Ornellaia — Ornellaia 2020
+      10  170 EUR  Cakebread Cellars — Cabernet Sauvignon 2018
+   Bez ogranicenja (Ikone)
+      10  750 EUR  Tenuta dell'Ornellaia — Ornellaia 2020
+       8  650 EUR  Hubert Lignier — Charmes-Chambertin Grand Cru 2021
+       8  1400 EUR  Domaine Armand Rousseau Père & Fils — Gevrey-Chambertin 1er Cru Lavaux 2018
+
+==============================================================================
+Rižoto s morskim plodovima   [mains]
+   uz jela: risotto, shellfish, seafood
+   stilovi: white_mineral, white_fresh, white_rich
+   NA CASU ()
+       9  9 EUR  Kunjas — Pošip 2024
+       8  8 EUR  Benvenuti — Malvazija 2025
+       7  12 EUR  Benanti — Etna Bianco 2023
+   do 60 EUR
+       9  49 EUR  Kunjas — Pošip 2024
+       8  44 EUR  Benvenuti — Malvazija 2025
+       6  46 EUR  Petrač — Chardonnay 2023
+   60-120 EUR
+       9  90 EUR  Markus — Dan po dan 2022
+       7  87 EUR  Pattes Loup — Chablis 2022
+       7  95 EUR  Benanti — Etna Bianco 2023
+   iznad 120 EUR
+      10  130 EUR  Čečavac — Jeka Blanc 2024
+       8  180 EUR  Weingut Wittmann — Riesling Kirchspiel GG 2020
+       8  1450 EUR  Domaine François Raveneau — Chablis Grand Cru Valmur 2020
+   Bez ogranicenja (Ikone)
+       8  1450 EUR  Domaine François Raveneau — Chablis Grand Cru Valmur 2020
+       5  790 EUR  Bernard-Bonin — Meursault Clos du Cromin Le Pre Manche 2023
+       4  750 EUR  René & Vincent Dauvissat — Chablis 1er Cru Vaillons 2018
+
+==============================================================================
+Cacio e pepe   [mains]
+   uz jela: pasta, cheese_hard
+   stilovi: white_rich, red_light, orange, white_mineral
+   NA CASU ()
+       4  14 EUR  Philippe Chavy — Bourgogne Chardonnay 2023
+       4  8 EUR  Petrač — Karizma Cuvée 2022
+       4  11 EUR  Azienda Duemani — Cifra 2021
+   do 60 EUR
+       7  60 EUR  Clai — Malvazija Sv. Jakov 2021
+       7  53 EUR  Domaine Bourdy — Savagnin 2018
+       5  52 EUR  Fattoria di Magliano — Heba 2021
+   60-120 EUR
+       7  60 EUR  Clai — Malvazija Sv. Jakov 2021
+       7  62 EUR  Clai — Ottocento bijeli 2022
+       7  67 EUR  Maria & Sepp Muster — Sauvignon vom Opok 2021
+   iznad 120 EUR
+       7  135 EUR  Domaine Bourdy — Château-Chalon 2014
+       6  210 EUR  Isole e Olena — Cepparello 2019
+       5  139 EUR  Jules Desjourneys — Pouilly-Vinzelles Les Longeays Blanc 2021
+   Bez ogranicenja (Ikone)
+       4  970 EUR  Bernard-Bonin — Meursault Villages Le Limozin 2023
+       4  689 EUR  Dal Forno Romano — Amarone della Valpolicella D.O.C. 2015
+       3  757 EUR  Giuseppe Quintarelli — Amarone Classico 2015
+
+==============================================================================
+Kotlet od crne slavonske svinje   [mains]
+   uz jela: pork, charcuterie, prosciutto
+   stilovi: red_medium, white_aromatic, red_light, white_rich
+   NA CASU ()
+       6  11 EUR  Azienda Duemani — Cifra 2021
+       5  8 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+       5  8 EUR  Tomaz — Teran Barbarossa 2020
+   do 60 EUR
+       6  52 EUR  Fattoria di Magliano — Heba 2021
+       5  54 EUR  Igor Ivanić — Pinot Crni Dvije Ruže 2021
+       5  60 EUR  Tomaz — Teran 2022
+   60-120 EUR
+       8  80 EUR  Jules Desjourneys — Rouge 2023
+       7  80 EUR  Jules Desjourneys — Beaujolais Patacaisse Rouge 2022
+       6  66 EUR  Clai — Ottocento Crni 2022
+   iznad 120 EUR
+       6  145 EUR  Chiara Condello — Predappio Sangiovese 2023
+       6  290 EUR  Chiara Condello — Predappio Sangiovese 2023
+       6  150 EUR  Montevertine — Montevertine 2019
+   Bez ogranicenja (Ikone)   <<< SAMO 1
+       4  790 EUR  Jacques Selosse — Rosé Brut
+
+==============================================================================
+Soufflé od pistacija   [desserts]
+   uz jela: desserts, nuts
+   stilovi: sweet, champagne_prestige
+   NA CASU ()
+       5  5 EUR  Geržinić — Muškat 2020
+       5  8 EUR  Jakopić — Rajnski rizling izborna berba 2019
+       5  8 EUR  Niko Bura — Prošek Ruža Dalmatinska
+   do 60 EUR
+       8  45 EUR  Mrgudić — Prošek Moskar
+       5  31 EUR  Geržinić — Muškat 2020
+       5  58 EUR  Niko Bura — Prošek Ruža Dalmatinska
+   60-120 EUR
+       6  64 EUR  Clai — Tasel
+       6  100 EUR  Donnafugata — Ben Ryé 2019
+       5  60 EUR  Jakopić — Rajnski rizling izborna berba 2019
+   iznad 120 EUR
+       7  145 EUR  Ca' La Bionda — Recioto Classico 2015
+       6  250 EUR  Giuseppe Quintarelli — Recioto Classico 2011
+       6  495 EUR  Giuseppe Quintarelli — Amabile del Cere 2017
+   Bez ogranicenja (Ikone)   <<< SAMO 2
+       5  880 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2020
+       5  940 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2015
+
+==============================================================================
+Tiramisu   [desserts]
+   uz jela: desserts, dark_chocolate
+   stilovi: sweet
+   NA CASU ()
+       6  8 EUR  Niko Bura — Prošek Ruža Dalmatinska
+       5  5 EUR  Geržinić — Muškat 2020
+       5  8 EUR  Jakopić — Rajnski rizling izborna berba 2019
+   do 60 EUR
+       6  45 EUR  Mrgudić — Prošek Moskar
+       6  58 EUR  Niko Bura — Prošek Ruža Dalmatinska
+       5  31 EUR  Geržinić — Muškat 2020
+   60-120 EUR
+       6  64 EUR  Clai — Tasel
+       6  100 EUR  Donnafugata — Ben Ryé 2019
+       5  60 EUR  Jakopić — Rajnski rizling izborna berba 2019
+   iznad 120 EUR
+      10  145 EUR  Ca' La Bionda — Recioto Classico 2015
+       8  250 EUR  Giuseppe Quintarelli — Recioto Classico 2011
+       6  495 EUR  Giuseppe Quintarelli — Amabile del Cere 2017
+   Bez ogranicenja (Ikone)   <<< SAMO 2
+       5  880 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2020
+       5  940 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2015
+
+==============================================================================
+Čoko kugla   [desserts]
+   uz jela: dark_chocolate, desserts, fruit_desserts
+   stilovi: sweet
+   NA CASU ()
+       6  5 EUR  Geržinić — Muškat 2020
+       6  8 EUR  Jakopić — Rajnski rizling izborna berba 2019
+       6  8 EUR  Niko Bura — Prošek Ruža Dalmatinska
+   do 60 EUR
+       6  31 EUR  Geržinić — Muškat 2020
+       6  45 EUR  Mrgudić — Prošek Moskar
+       6  58 EUR  Niko Bura — Prošek Ruža Dalmatinska
+   60-120 EUR
+       8  64 EUR  Clai — Tasel
+       8  100 EUR  Donnafugata — Ben Ryé 2019
+       6  60 EUR  Jakopić — Rajnski rizling izborna berba 2019
+   iznad 120 EUR
+      10  145 EUR  Ca' La Bionda — Recioto Classico 2015
+       8  250 EUR  Giuseppe Quintarelli — Recioto Classico 2011
+       8  495 EUR  Giuseppe Quintarelli — Amabile del Cere 2017
+   Bez ogranicenja (Ikone)   <<< SAMO 2
+       5  880 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2020
+       5  940 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2015
+
+==============================================================================
+Šljiva   [desserts]
+   uz jela: fruit_desserts, desserts
+   stilovi: sweet, sparkling_rose, champagne_rose
+   NA CASU ()
+       6  5 EUR  Geržinić — Muškat 2020
+       6  8 EUR  Jakopić — Rajnski rizling izborna berba 2019
+       5  8 EUR  Niko Bura — Prošek Ruža Dalmatinska
+   do 60 EUR
+       6  31 EUR  Geržinić — Muškat 2020
+       6  45 EUR  Mrgudić — Prošek Moskar
+       6  60 EUR  Jakopić — Rajnski rizling izborna berba 2019
+   60-120 EUR
+       8  64 EUR  Clai — Tasel
+       8  100 EUR  Donnafugata — Ben Ryé 2019
+       6  60 EUR  Jakopić — Rajnski rizling izborna berba 2019
+   iznad 120 EUR
+       8  495 EUR  Giuseppe Quintarelli — Amabile del Cere 2017
+       7  145 EUR  Ca' La Bionda — Recioto Classico 2015
+       6  390 EUR  Zilliken — Riesling Auslese Goldkapsel 2009
+   Bez ogranicenja (Ikone)   <<< SAMO 2
+       5  880 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2020
+       5  940 EUR  Château d'Yquem — Sauternes 1er Cru Supérieur 2015
