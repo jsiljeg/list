@@ -52,9 +52,12 @@ wine's name — which vintage is in the cellar?
 Le Réserve and Le Rosé. We list it as "Blanc de Blancs Grand Cru". The score is
 the same either way (93); only the name is a question.
 
-## What is left to look up
+## The other direction — also finished
 
-Not these — every Parker score we hold is verified. What is unexamined is the
-other direction: **203 wines on the list carry no Parker rating at all**, and
-some of them have one on the site. 135 are outside Croatia and Slovenia and so
-are the plausible ones. See `docs/parker-missing.md`.
+Not these — every Parker score we hold is verified. The mirror question was
+whether wines with *no* Parker score have one, and that sweep is done too:
+**108 of the 279 wines carry a Parker score and the other 169 were searched and
+have none.** 32 of the 108 were found on 2026-09-06 and had never been on a
+card. See `docs/parker-missing.md` for the method, the traps and the two
+questions still open (Ridge Cabernet 2018, Marjan Simčič Sauvignon Vert).
+
