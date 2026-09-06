@@ -218,6 +218,35 @@ a test fails an entry matching no wine, so a typo cannot sit there silently
 never promoting anyone (Dunnuck's Rhône came out for that reason and goes back
 the day we stock one).
 
+**A non-vintage score belongs to a release, and we take the latest** (owner,
+2026-09-06). This was the open question for months and the answer turned out to
+be cheap. Parker reviews an NV once per release, so a bare number is attached to
+no bottle — **Krug Grande Cuvée runs 92 to 98** across the nineteen éditions he
+has reviewed (158ème to 174ème). Our old 94+ was the 173ème.
+
+A rating may now carry **`release`**, a plain string printed after the critic
+name on the card (`.rating-release` in css/style.css). Take the latest release
+the site has reviewed, and record which one it was.
+
+Only two of the thirteen NVs actually needed it, which is the thing worth
+knowing before spending a day on this: **eleven have exactly one NV row on the
+site with no release named at all**, so there is nothing to attach and the
+field stays off. The two that name one are Krug (`174ème Édition`) and De Sousa
+Cuvée 3A (`dég. 1/2016`, the site writes "Disg. 1/2016"). Selosse — the house I
+expected to be scored by disgorgement — has a single NV note per cuvée.
+
+One refinement, worth stating because it is a judgement: De Sousa's *latest*
+release is `dég. 1/2017` and Parker scores it **91+?**. The question mark is his
+own hedge and is not a score our data spec can hold or a card should print, so
+the rule is **the latest release carrying a score we can print** — here the
+1/2016 at 92. Flag it to the owner rather than inventing a notation.
+
+**Walter Scott Cuvée Ruth was never non-vintage.** Every Parker review of it is
+vintaged (2012–2022) and our listing carries no year, which no other wine on the
+list does. Our 94 is the 2022 exactly, so `release: "2022"` records that, but
+the real fix is the wine's name and needs the owner to say which vintage is in
+the cellar.
+
 **A score with no source does not stay on the card** (owner, 2026-09-06).
 Dom Pérignon P3 1993 and Quintarelli Recioto Classico 2011 had Parker scores
 that are not on robertparker.com at any vintage; both were removed rather than

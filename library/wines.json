@@ -123,7 +123,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "90"
+     "score": "87",
+     "checked": "2026-09-06"
     },
     {
      "critic": "James Suckling",
@@ -173,7 +174,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "92"
+     "score": "90",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Decanter",
@@ -1328,7 +1330,9 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "92"
+     "score": "92",
+     "checked": "2026-09-06",
+     "release": "dég. 1/2016"
     },
     {
      "critic": "Jancis Robinson",
@@ -1573,7 +1577,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "93"
+     "score": "92",
+     "checked": "2026-09-06"
     },
     {
      "critic": "James Suckling",
@@ -1667,7 +1672,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "93"
+     "score": "93",
+     "checked": "2026-09-06"
     }
    ]
   },
@@ -1748,7 +1754,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "91"
+     "score": "91",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Jancis Robinson",
@@ -1792,7 +1799,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "93"
+     "score": "93",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Decanter",
@@ -1835,7 +1843,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "92"
+     "score": "92",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Jancis Robinson",
@@ -1933,7 +1942,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "94"
+     "score": "95",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Wine Spectator",
@@ -1974,7 +1984,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "96"
+     "score": "95",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Jancis Robinson",
@@ -2060,7 +2071,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "95"
+     "score": "96",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Wine Spectator",
@@ -2327,7 +2339,9 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "94+"
+     "score": "94",
+     "checked": "2026-09-06",
+     "release": "174ème Édition"
     },
     {
      "critic": "Wine Spectator",
@@ -9680,7 +9694,9 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "94"
+     "score": "94",
+     "checked": "2026-09-06",
+     "release": "2022"
     },
     {
      "critic": "James Suckling",

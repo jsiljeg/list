@@ -1258,3 +1258,37 @@ test("a specialist outranks a generalist inside their own region only", () => {
     for (const w of where) if (!rungs.has(w)) dead.push(`${critic}: "${w}" matches no wine on the list`);
   expect(dead).toEqual([]);
 });
+
+test("every Robert Parker score has been checked against the source", () => {
+  /* Added 2026-09-06, when the last of the 76 was read off robertparker.com.
+     Eleven of them had been wrong, so the point of `checked` is that an
+     unverified Parker score is now visible instead of indistinguishable. This
+     fails when one is pasted in without being looked up — deliberately: it is
+     a test, not a validate.mjs error, so it never blocks a deploy. */
+  const bad = [];
+  for (const it of items) for (const r of it.ratings || [])
+    if (r.critic === "Robert Parker" && !/^\d{4}-\d{2}-\d{2}$/.test(r.checked || ""))
+      bad.push(`${it.producer} ${it.name}: Parker ${r.score} has no "checked" date`);
+  expect(bad).toEqual([]);
+});
+
+test("a release is recorded wherever the score needs one to mean anything", () => {
+  /* Parker scores a non-vintage wine per release, and the spread is not small:
+     Krug Grande Cuvée runs 92 to 98 across the éditions he has reviewed. So a
+     bare number on an NV is a number attached to no bottle. Where the source
+     names the release we store it and the card prints it. */
+  const withRelease = [];
+  for (const it of items) for (const r of it.ratings || []) if (r.release) {
+    withRelease.push(r.release);
+    expect(typeof r.release).toBe("string");
+    expect(r.release.trim()).toBe(r.release);
+    expect(r.release.length).toBeGreaterThan(0);
+  }
+  /* Krug is the case the field exists for; if it loses its édition the field
+     has been dropped by an edit and the number is unattached again. */
+  const krug = items.find((i) => /Grande Cuv/.test(i.name) && i.producer === "Krug");
+  expect(krug.ratings.find((r) => r.critic === "Robert Parker").release).toMatch(/Édition/);
+  /* And the card has to actually render it, or storing it is decoration. */
+  expect(readFileSync(resolve(ROOT, "js/app.js"), "utf8")).toContain("rating-release");
+  expect(withRelease.length).toBeGreaterThan(0);
+});

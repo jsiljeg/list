@@ -662,6 +662,12 @@ body {
   color: var(--text-dim); font-size: .85rem;
 }
 .rating-chip b { color: var(--gold); font-weight: 600; }
+/* A non-vintage wine is scored per release — Krug by édition, a grower by
+   disgorgement — so the release rides with the number. Without it the score
+   belongs to no particular bottle: Krug Grande Cuvée runs 92 to 98 across the
+   éditions Parker has reviewed. Only NV wines carry it, so it is rare. */
+.rating-release { font-style: normal; opacity: .75; }
+.rating-release::before { content: " · "; }
 .story { max-width: 640px; margin: 0 auto; padding: 1rem 0 2rem; }
 .story-title {
   font-family: var(--serif);
