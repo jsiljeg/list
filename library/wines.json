@@ -4424,7 +4424,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "94"
+     "score": "94",
+     "checked": "2026-09-06"
     }
    ],
    "note": {
@@ -4473,7 +4474,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "93"
+     "score": "93",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Tim Atkin",
@@ -7073,7 +7075,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "98"
+     "score": "98+",
+     "checked": "2026-09-06"
     },
     {
      "critic": "James Suckling",
@@ -7235,7 +7238,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "100"
+     "score": "100",
+     "checked": "2026-09-06"
     },
     {
      "critic": "James Suckling",
@@ -7568,7 +7572,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "95"
+     "score": "95",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",
@@ -7664,10 +7669,6 @@
    "terroir": "Pajé",
    "ratings": [
     {
-     "critic": "Robert Parker",
-     "score": "98"
-    },
-    {
      "critic": "Wine Spectator",
      "score": "98"
     },
@@ -7678,6 +7679,11 @@
     {
      "critic": "Vinous",
      "score": "96+"
+    },
+    {
+     "critic": "Robert Parker",
+     "score": "96",
+     "checked": "2026-09-06"
     }
    ],
    "tags": [
@@ -8308,7 +8314,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "96"
+     "score": "96",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Wine Spectator",
@@ -8666,7 +8673,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "96"
+     "score": "96",
+     "checked": "2026-09-06"
     }
    ],
    "tags": [
@@ -8795,7 +8803,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "96"
+     "score": "96",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Jancis Robinson",
@@ -9483,7 +9492,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "97"
+     "score": "97",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Falstaff",
@@ -10170,7 +10180,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "95"
+     "score": "95",
+     "checked": "2026-09-06"
     }
    ]
   },
@@ -10508,7 +10519,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "95"
+     "score": "95",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",

@@ -7,7 +7,7 @@ Needs the Claude Chrome extension connected and the browser logged in.
 A rating carries `checked: "YYYY-MM-DD"` once seen on the site. No `checked`
 means never verified.
 
-## Done — 28
+## Done — 40
 
         98    850 €  Jacques Selosse — Les Carelles
         98   1780 €  Krug — Krug 1996
@@ -37,18 +37,11 @@ means never verified.
         94    750 €  Tenuta San Guido — Sassicaia 2020   (was 96)
         95    750 €  Tenuta dell'Ornellaia — Ornellaia 2020   (was 97)
         97    689 €  Dal Forno Romano — Amarone della Valpolicella D.O.C. 2015
-
-## Queue 1 — the remaining "+" scores — done
-
-All eight confirmed on 2026-09-06; none had moved. They are in Done above.
-
-## Queue 2 — vintage wines, dearest first (34 left)
-
         95    580 €  Roagna — Barbaresco Albesani 2019
         95    525 €  LVMH – Shangri-La — Ao Yun 2018
         95    495 €  Giuseppe Quintarelli — Amabile del Cere 2017
-        98    478 €  Château Troplong Mondot — Saint-Émilion Grand Cru 2020
-        98    410 €  Roagna — Barbaresco Pajé 2019
+       98+    478 €  Château Troplong Mondot — Saint-Émilion Grand Cru 2020   (was 98)
+        96    410 €  Roagna — Barbaresco Pajé 2019   (was 98 — the Vecchie Viti's score)
         96    410 €  Montevertine — Le Pergole Torte 2020
         94    400 €  Hubert Lamy — Saint-Aubin 1er Cru En Remilly 2023
        100    390 €  Château Canon — Saint-Émilion Grand Cru 2020
@@ -56,6 +49,13 @@ All eight confirmed on 2026-09-06; none had moved. They are in Done above.
         97    350 €  Marqués de Murrieta — Castillo Ygay 2012
         93    295 €  Hubert Lamy — Saint-Aubin 1er Cru Les Frionnes 2023
         96    284 €  Antinori — Tignanello 2019
+
+## Queue 1 — the remaining "+" scores — done
+
+All eight confirmed on 2026-09-06; none had moved. They are in Done above.
+
+## Queue 2 — vintage wines, dearest first (22 left)
+
         95    280 €  Philip Togni — Cabernet Sauvignon 2019
         94    270 €  Mayacamas — Cabernet Sauvignon 2019
         95    250 €  Patrick Piuze — Chablis Grand Cru Les Clos 2023
