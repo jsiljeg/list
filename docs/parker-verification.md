@@ -7,7 +7,7 @@ Needs the Claude Chrome extension connected and the browser logged in.
 A rating carries `checked: "YYYY-MM-DD"` once seen on the site. No `checked`
 means never verified.
 
-## Done — 7
+## Done — 15
 
         98    850 €  Jacques Selosse — Les Carelles
         98   1780 €  Krug — Krug 1996
@@ -16,11 +16,6 @@ means never verified.
      91-93   1400 €  Domaine Armand Rousseau Père & Fils — Gevrey-Chambertin 1er Cru Lavaux 2018
        98+    495 €  Poggio di Sotto — Brunello di Montalcino 2019
        97+    495 €  Poggio di Sotto — Brunello di Montalcino 2020
-
-## Queue 1 — the remaining "+" scores (8)
-
-Provisional; Parker firms them up on re-tasting. Do these first.
-
        95+    540 €  Louis Roederer — Cristal 2015
        94+    480 €  Moët & Chandon — Dom Pérignon 2015
        96+   1650 €  Salon — Salon Blanc de Blancs 2013
@@ -29,6 +24,10 @@ Provisional; Parker firms them up on re-tasting. Do these first.
        97+    210 €  Isole e Olena — Cepparello 2019
        94+    260 €  Dal Forno Romano — Valpolicella D.O.C. Superiore 2015
        93+     75 €  López de Heredia — Bosconia Tinto Reserva 2013
+
+## Queue 1 — the remaining "+" scores — done
+
+All eight confirmed on 2026-09-06; none had moved. They are in Done above.
 
 ## Queue 2 — vintage wines, dearest first (48)
 
