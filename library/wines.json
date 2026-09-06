@@ -542,7 +542,14 @@
     "temp": "10–12",
     "alcohol": "",
     "sweetness": "dry"
-   }
+   },
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-09-06"
+    }
+   ]
   },
   "petrac--karizma-cuvee-2022": {
    "name": "Karizma Cuvée 2022",
@@ -3124,6 +3131,11 @@
    "terroir": "Trittenheimer Apotheke",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Falstaff",
      "score": "94"
     },
@@ -3203,6 +3215,13 @@
    "tags": [
     "excellent_vintage",
     "drinking_now"
+   ],
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92+",
+     "checked": "2026-09-06"
+    }
    ]
   },
   "weingut-heymann-lowenstein--riesling-uhlen-blaufusser-lay-gg-2022": {
@@ -3272,6 +3291,11 @@
    },
    "terroir": "",
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Falstaff",
      "score": "93"
@@ -3528,6 +3552,11 @@
     "sweetness": "dry"
    },
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "88+",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Falstaff",
      "score": "92"
@@ -5164,7 +5193,14 @@
     "alcohol": "14",
     "sweetness": "dry"
    },
-   "terroir": ""
+   "terroir": "",
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92+",
+     "checked": "2026-09-06"
+    }
+   ]
   },
   "domaine-bourdy--savagnin-2018": {
    "name": "Savagnin 2018",
@@ -5507,6 +5543,11 @@
    },
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "88",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Vinous",
      "score": "91"
     },
@@ -5611,7 +5652,14 @@
     "alcohol": "14",
     "sweetness": "dry"
    },
-   "terroir": "Monte Calvario"
+   "terroir": "Monte Calvario",
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-09-06"
+    }
+   ]
   },
   "damijan-podversic--kaplja-2018": {
    "name": "Kaplja 2018",
@@ -5726,7 +5774,14 @@
     "alcohol": "12.5",
     "sweetness": "dry"
    },
-   "terroir": "Colludrozza"
+   "terroir": "Colludrozza",
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "95+",
+     "checked": "2026-09-06"
+    }
+   ]
   },
   "dario-princic--jakot-2019": {
    "name": "Jakot 2019",
@@ -5851,6 +5906,11 @@
     "glass": "riesling"
    },
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "93",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "James Suckling",
      "score": "95"
@@ -7471,6 +7531,11 @@
    "terroir": "Krafuss",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "93",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Decanter",
      "score": "90"
     }
@@ -7838,6 +7903,11 @@
    "terroir": "",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Decanter",
      "score": "91"
     }
@@ -8165,6 +8235,11 @@
    },
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "89",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "James Suckling",
      "score": "89"
     },
@@ -8204,6 +8279,11 @@
    },
    "terroir": "",
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Wine Spectator",
      "score": "90"
@@ -8841,6 +8921,11 @@
    },
    "terroir": "",
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "93",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "James Suckling",
      "score": "92"
@@ -9804,7 +9889,14 @@
     "alcohol": "13.3",
     "sweetness": "dry"
    },
-   "terroir": "Mae Estate"
+   "terroir": "Mae Estate",
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "93",
+     "checked": "2026-09-06"
+    }
+   ]
   },
   "occidental-kistler-vineyards--occidental-2018": {
    "name": "Occidental 2018",
@@ -10383,6 +10475,11 @@
    "terroir": "Wehlener Sonnenuhr",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "96",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "James Suckling",
      "score": "97"
     },
@@ -10423,6 +10520,13 @@
    "terroir": "",
    "tags": [
     "excellent_vintage"
+   ],
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "97",
+     "checked": "2026-09-06"
+    }
    ]
   },
   "weingut-wittmann--riesling-aulerde-auslese-2015": {
