@@ -1,0 +1,51 @@
+{
+ "_": "Which critic's number a guest should read first. Ranked on five checkable properties, never on whether we like the score: FUNDING (reader-paid beats advertising-paid beats a merchant rating his own stock), ACCOUNTABILITY (a named palate you can follow beats an anonymous panel), SCOPE (a global reference beats a single region), CONTINUITY (decades of comparable published scores), and MARKET EFFECT (whether the score demonstrably moves the price). Rank 1 is read first. Ties cannot happen: no wine carries the same critic twice.",
+
+ "rank": {
+  "Robert Parker":   1,
+  "Jancis Robinson": 2,
+  "Vinous":          3,
+  "Wine Spectator":  4,
+  "Decanter":        5,
+  "James Suckling":  6,
+  "Jasper Morris":   7,
+  "Tim Atkin":       8,
+  "Jeb Dunnuck":     9,
+  "Wine Enthusiast": 10,
+  "Falstaff":        11,
+  "Stuart Pigott":   12,
+  "Jeannie Cho Lee": 13,
+  "Jeff Leve":       14,
+  "Lobenberg":       15
+ },
+
+ "why": {
+  "Robert Parker":   "Wrote the 100-point scale everyone else now uses. Subscription-only, takes no advertising, and the effect of his score on a wine's price is a documented market phenomenon. The reference by every one of the five tests.",
+  "Jancis Robinson": "MW, editor of the Oxford Companion to Wine, reader-funded, no advertising, publishing continuously since the 1970s. Scores out of 20, which is why her number looks small — it is not a lower opinion.",
+  "Vinous":          "Antonio Galloni, who was the Wine Advocate's own critic for Italy, Burgundy and Champagne before founding it. Subscription-funded, global, named palates.",
+  "Wine Spectator":  "Since 1976, blind tastings by named editors, enormous reach and a real price effect — but advertising-funded and scored by a panel rather than one accountable palate.",
+  "Decanter":        "Since 1975, broad global coverage and respected panels, but advertising-funded and panel-scored, so an individual palate cannot be followed across vintages.",
+  "James Suckling":  "Thirty years as Wine Spectator's European bureau chief, now his own subscription site, so the reach is real. Ranked below the others at his level because his scale runs visibly higher than theirs and he runs commercial events with producers he rates.",
+  "Jasper Morris":   "MW, Inside Burgundy — the Burgundy reference, subscription-funded. A specialist, so he is promoted above the generalists on the wines he actually covers.",
+  "Tim Atkin":       "MW, annual subscription reports on Rioja, Burgundy, South Africa and Chile. Same treatment: promoted inside those regions.",
+  "Jeb Dunnuck":     "Ex-Wine Advocate for the Rhône and California, now subscription. Promoted inside those two.",
+  "Wine Enthusiast": "US magazine, wide coverage, advertising-funded, no single accountable palate. Reliable, rarely the number that decides anything.",
+  "Falstaff":        "The German-language reference, Austrian, and the right first opinion on an Austrian or German bottle — promoted there, a generalist everywhere else.",
+  "Stuart Pigott":   "The English-language authority on German Riesling. Narrow scope, deep in it.",
+  "Jeannie Cho Lee": "MW, the Asian reference. Our two scores from her are Champagne, outside that.",
+  "Jeff Leve":       "Bordeaux, one man, decades of it — but a free site with no subscription behind it, so it answers to nobody.",
+  "Lobenberg":       "A German merchant scoring wine he sells. That is a conflict no amount of palate fixes, so he is read last."
+ },
+
+ "_specialists": "In these regions the critic is promoted to just behind the three global references and ahead of every generalist. Matched against the wine's country code or any rung of insight.region. Only regions we actually pour are listed, and a test fails an entry that matches no wine — otherwise a misspelled rung would sit here for ever, silently never promoting anyone. Jeb Dunnuck's Rhône is the case in point: it belongs on his CV but we stock no Rhône, so it goes back in the day we do.",
+ "specialists": {
+  "Jasper Morris":   ["Bourgogne"],
+  "Tim Atkin":       ["Bourgogne", "Rioja"],
+  "Jeb Dunnuck":     ["California"],
+  "Stuart Pigott":   ["DE"],
+  "Falstaff":        ["AT", "DE"],
+  "Jeff Leve":       ["Bordeaux"],
+  "Jeannie Cho Lee": ["CN"]
+ },
+ "specialistRank": 3.5
+}

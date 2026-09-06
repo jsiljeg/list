@@ -15,6 +15,7 @@ import { allItems, producers, library } from "./helpers.mjs";
 import { joinList as joinRaw } from "../scripts/lib/list.mjs";
 import { parseRs } from "../scripts/lib/rs.mjs";
 import { rankPairings, STYLE_ORDER } from "../scripts/lib/pairing-rank.mjs";
+import { CRITICS, criticRank, rankRatings } from "../scripts/lib/critics.mjs";
 
 /* import.meta.dirname needs Node 20.11; this works everywhere. */
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -145,9 +146,9 @@ test("every critic name resolves to one from the agreed list", () => {
     .split("const CRITIC_ALIAS = {")[1].split("};")[0]
     .matchAll(/"([^"]+)":\s*"([^"]+)"/g)) ALIAS[m[1]] = m[2];
 
-  const KNOWN = new Set(["Robert Parker", "James Suckling", "Wine Spectator", "Wine Enthusiast", "Vinous",
-    "Decanter", "Falstaff", "Jasper Morris", "Tim Atkin", "Jancis Robinson", "Lobenberg", "Jeff Leve",
-    "Jeb Dunnuck", "Jeannie Cho Lee", "Stuart Pigott"]);
+  /* The list used to be retyped here. It is now the ranking table's own key
+     set, because a critic we allow but cannot rank sorts nowhere. */
+  const KNOWN = new Set(Object.keys(CRITICS.rank));
   const canonical = (c) => ALIAS[String(c || "").trim().toLowerCase()] || c;
 
   const bad = [];
@@ -1217,4 +1218,43 @@ test("a name does not repeat the heading it sits under", () => {
       for (const g of c.groups) for (const i of g.items)
         if (/\btequila\b/i.test(i.name)) bad.push(`tequila: "${i.name}" repeats its own heading`);
   expect(bad).toEqual([]);
+});
+
+test("ratings are stored in critic order, not score order", () => {
+  /* Added with the ranking (owner, 2026-09-06): the order on a card is how
+     much the opinion is worth, so a Parker 95 stands above a Suckling 97.
+     Before this, ratings were sorted by score and 89 wines led with the
+     loudest number rather than the most authoritative one. */
+  const bad = [];
+  for (const it of items) {
+    if (!it.ratings || it.ratings.length < 2) continue;
+    const want = rankRatings(it.ratings, it).map((r) => r.critic).join(" · ");
+    const have = it.ratings.map((r) => r.critic).join(" · ");
+    if (want !== have) bad.push(`${it.name}: ${have} — should be ${want}`);
+  }
+  expect(bad).toEqual([]);
+});
+
+test("a specialist outranks a generalist inside their own region only", () => {
+  /* The rule that makes the ranking defensible: Jasper Morris is the Burgundy
+     reference and must not sit under Wine Spectator on a Gevrey, but he has no
+     claim on a Napa Cabernet. A flat global list gets one of those two wrong. */
+  const burgundy = { insight: { country: "FR", region: "Gevrey-Chambertin, Côte de Nuits, Bourgogne" } };
+  const napa = { insight: { country: "US", region: "Napa Valley, California" } };
+  expect(criticRank("Jasper Morris", burgundy)).toBeLessThan(criticRank("Wine Spectator", burgundy));
+  expect(criticRank("Jasper Morris", napa)).toBeGreaterThan(criticRank("Wine Spectator", napa));
+  /* Promotion stops short of the three global references. */
+  expect(criticRank("Jasper Morris", burgundy)).toBeGreaterThan(criticRank("Vinous", burgundy));
+  /* And every specialist region is spelled the way the data spells it, or the
+     promotion silently never fires. */
+  const rungs = new Set();
+  for (const it of items) {
+    const ins = it.insight || {};
+    for (const r of String(ins.region || "").split(",")) rungs.add(r.trim());
+    if (ins.country) rungs.add(ins.country);
+  }
+  const dead = [];
+  for (const [critic, where] of Object.entries(CRITICS.specialists))
+    for (const w of where) if (!rungs.has(w)) dead.push(`${critic}: "${w}" matches no wine on the list`);
+  expect(dead).toEqual([]);
 });

@@ -122,16 +122,16 @@
    },
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "90"
+    },
+    {
      "critic": "James Suckling",
      "score": "93"
     },
     {
      "critic": "Wine Enthusiast",
      "score": "92"
-    },
-    {
-     "critic": "Robert Parker",
-     "score": "90"
     }
    ]
   },
@@ -364,11 +364,11 @@
    "terroir": "Saarburger Rausch",
    "ratings": [
     {
-     "critic": "Lobenberg",
+     "critic": "Stuart Pigott",
      "score": "95"
     },
     {
-     "critic": "Stuart Pigott",
+     "critic": "Lobenberg",
      "score": "95"
     }
    ]
@@ -1327,16 +1327,16 @@
    },
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "95"
-    },
-    {
      "critic": "Robert Parker",
      "score": "92"
     },
     {
      "critic": "Jancis Robinson",
      "score": "16+/20"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "95"
     }
    ],
    "terroir": "Avize, Aÿ, Ambonnay"
@@ -1510,25 +1510,25 @@
    },
    "ratings": [
     {
-     "critic": "Wine Spectator",
-     "score": "95"
-    },
-    {
-     "critic": "Jeb Dunnuck",
-     "score": "94"
-    },
-    {
      "critic": "Robert Parker",
      "score": "92",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Vinous",
+     "score": "91"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "95"
     },
     {
      "critic": "James Suckling",
      "score": "92"
     },
     {
-     "critic": "Vinous",
-     "score": "91"
+     "critic": "Jeb Dunnuck",
+     "score": "94"
     }
    ],
    "tags": [
@@ -1572,16 +1572,16 @@
    "terroir": "Ambonnay, Verzenay, Bouzy",
    "ratings": [
     {
-     "critic": "Jeb Dunnuck",
-     "score": "94"
-    },
-    {
      "critic": "Robert Parker",
      "score": "93"
     },
     {
      "critic": "James Suckling",
      "score": "93"
+    },
+    {
+     "critic": "Jeb Dunnuck",
+     "score": "94"
     }
    ]
   },
@@ -1612,18 +1612,6 @@
    },
    "ratings": [
     {
-     "critic": "Wine Enthusiast",
-     "score": "98"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "97"
-    },
-    {
-     "critic": "Wine Spectator",
-     "score": "96"
-    },
-    {
      "critic": "Robert Parker",
      "score": "95+",
      "checked": "2026-09-06"
@@ -1631,6 +1619,18 @@
     {
      "critic": "Jancis Robinson",
      "score": "17.5+/20"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "96"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "97"
+    },
+    {
+     "critic": "Wine Enthusiast",
+     "score": "98"
     }
    ],
    "tags": [
@@ -1747,20 +1747,20 @@
    "terroir": "Montagne de Reims, Grande Vallée de la Marne",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "93"
-    },
-    {
      "critic": "Robert Parker",
      "score": "91"
     },
     {
-     "critic": "Wine Enthusiast",
-     "score": "90"
-    },
-    {
      "critic": "Jancis Robinson",
      "score": "17/20"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "93"
+    },
+    {
+     "critic": "Wine Enthusiast",
+     "score": "90"
     }
    ]
   },
@@ -1791,20 +1791,20 @@
    "terroir": "Avize, Chouilly, Cramant, Le Mesnil-sur-Oger",
    "ratings": [
     {
-     "critic": "Falstaff",
-     "score": "94"
-    },
-    {
      "critic": "Robert Parker",
      "score": "93"
+    },
+    {
+     "critic": "Decanter",
+     "score": "90"
     },
     {
      "critic": "James Suckling",
      "score": "93"
     },
     {
-     "critic": "Decanter",
-     "score": "90"
+     "critic": "Falstaff",
+     "score": "94"
     }
    ]
   },
@@ -1834,20 +1834,20 @@
    "terroir": "Montagne de Reims, Vallée de la Marne",
    "ratings": [
     {
-     "critic": "Decanter",
-     "score": "93"
-    },
-    {
-     "critic": "Vinous",
-     "score": "92"
-    },
-    {
      "critic": "Robert Parker",
      "score": "92"
     },
     {
      "critic": "Jancis Robinson",
      "score": "16.5/20"
+    },
+    {
+     "critic": "Vinous",
+     "score": "92"
+    },
+    {
+     "critic": "Decanter",
+     "score": "93"
     }
    ]
   },
@@ -1877,16 +1877,16 @@
    },
    "ratings": [
     {
-     "critic": "Falstaff",
-     "score": "96"
-    },
-    {
      "critic": "Vinous",
      "score": "93"
     },
     {
      "critic": "Tim Atkin",
      "score": "92"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "96"
     }
    ]
   },
@@ -1932,12 +1932,12 @@
    "terroir": "Avize, Cramant, Oger",
    "ratings": [
     {
-     "critic": "Wine Spectator",
-     "score": "96"
-    },
-    {
      "critic": "Robert Parker",
      "score": "94"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "96"
     }
    ]
   },
@@ -1973,16 +1973,16 @@
    "terroir": "Avize, Cramant, Oger",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "98"
-    },
-    {
      "critic": "Robert Parker",
      "score": "96"
     },
     {
      "critic": "Jancis Robinson",
      "score": "16/20"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "98"
     }
    ]
   },
@@ -2105,29 +2105,29 @@
    "terroir": "Best of 17 Grands Crus + Hautvillers Premier Cru",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "97"
+     "critic": "Robert Parker",
+     "score": "94+",
+     "checked": "2026-09-06"
     },
     {
-     "critic": "Wine Spectator",
-     "score": "96"
+     "critic": "Jancis Robinson",
+     "score": "17+/20"
     },
     {
      "critic": "Vinous",
      "score": "96"
     },
     {
-     "critic": "Robert Parker",
-     "score": "94+",
-     "checked": "2026-09-06"
+     "critic": "Wine Spectator",
+     "score": "96"
     },
     {
      "critic": "Decanter",
      "score": "94"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "17+/20"
+     "critic": "James Suckling",
+     "score": "97"
     }
    ],
    "tags": [
@@ -2171,14 +2171,6 @@
    "terroir": "Best of 17 Grands Crus + Hautvillers Premier Cru",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "96"
-    },
-    {
-     "critic": "Wine Spectator",
-     "score": "97"
-    },
-    {
      "critic": "Robert Parker",
      "score": "95",
      "checked": "2026-09-06"
@@ -2186,6 +2178,14 @@
     {
      "critic": "Jancis Robinson",
      "score": "16.5/20"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "97"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "96"
     }
    ],
    "notePlain": true,
@@ -2230,12 +2230,6 @@
     "drinking_now"
    ],
    "terroir": "Best of 17 Grands Crus + Hautvillers Premier Cru",
-   "ratings": [
-    {
-     "critic": "Robert Parker",
-     "score": "96"
-    }
-   ],
    "notePlain": true,
    "note": {
     "hr": "Treća Plénitude — objavljena nakon otprilike 25 godina na talogu, u iznimno malim količinama.",
@@ -2283,25 +2277,25 @@
    ],
    "ratings": [
     {
-     "critic": "Decanter",
-     "score": "97"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "97"
-    },
-    {
      "critic": "Robert Parker",
      "score": "96+",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "18.5+/20"
     },
     {
      "critic": "Wine Spectator",
      "score": "95"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "18.5+/20"
+     "critic": "Decanter",
+     "score": "97"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "97"
     }
    ]
   },
@@ -2332,16 +2326,16 @@
    },
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "97"
+     "critic": "Robert Parker",
+     "score": "94+"
     },
     {
      "critic": "Wine Spectator",
      "score": "96"
     },
     {
-     "critic": "Robert Parker",
-     "score": "94+"
+     "critic": "James Suckling",
+     "score": "97"
     }
    ],
    "notePlain": true,
@@ -2390,17 +2384,17 @@
    ],
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "98",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Wine Spectator",
      "score": "99"
     },
     {
      "critic": "Jeannie Cho Lee",
      "score": "99"
-    },
-    {
-     "critic": "Robert Parker",
-     "score": "98",
-     "checked": "2026-09-06"
     }
    ],
    "notePlain": true,
@@ -2455,25 +2449,25 @@
    "music": "III. Presto from Sinfonia Concertante in E-Flat, K. 364, for Violin, Viola and Orchestra — Shlomo Mintz",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "97"
-    },
-    {
      "critic": "Robert Parker",
      "score": "97",
      "checked": "2026-09-06"
     },
     {
-     "critic": "Decanter",
-     "score": "96"
+     "critic": "Jancis Robinson",
+     "score": "18.5/20"
     },
     {
      "critic": "Wine Spectator",
      "score": "95"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "18.5/20"
+     "critic": "Decanter",
+     "score": "96"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "97"
     }
    ]
   },
@@ -2511,25 +2505,25 @@
    "music": "Suite for Krug in 2008 — Ryuichi Sakamoto",
    "ratings": [
     {
-     "critic": "Falstaff",
-     "score": "100"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "99"
+     "critic": "Robert Parker",
+     "score": "98+",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",
      "score": "99"
     },
     {
-     "critic": "Robert Parker",
-     "score": "98+",
-     "checked": "2026-09-06"
-    },
-    {
      "critic": "Wine Spectator",
      "score": "98"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "99"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "100"
     }
    ],
    "notePlain": true,
@@ -2579,12 +2573,12 @@
      "checked": "2026-09-06"
     },
     {
-     "critic": "Jeannie Cho Lee",
-     "score": "97"
-    },
-    {
      "critic": "Wine Spectator",
      "score": "92"
+    },
+    {
+     "critic": "Jeannie Cho Lee",
+     "score": "97"
     }
    ]
   },
@@ -3064,12 +3058,12 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Lobenberg",
-     "score": "93+"
-    },
-    {
      "critic": "James Suckling",
      "score": "92"
+    },
+    {
+     "critic": "Lobenberg",
+     "score": "93+"
     }
    ],
    "tags": [
@@ -3103,16 +3097,16 @@
    "terroir": "Trittenheimer Apotheke",
    "ratings": [
     {
+     "critic": "Falstaff",
+     "score": "94"
+    },
+    {
      "critic": "James Suckling",
      "score": "96"
     },
     {
      "critic": "Lobenberg",
      "score": "95"
-    },
-    {
-     "critic": "Falstaff",
-     "score": "94"
     }
    ]
   },
@@ -3211,12 +3205,12 @@
    "terroir": "Uhlen Blaufüßer Lay",
    "ratings": [
     {
-     "critic": "Lobenberg",
-     "score": "96-97"
-    },
-    {
      "critic": "Falstaff",
      "score": "94"
+    },
+    {
+     "critic": "Lobenberg",
+     "score": "96-97"
     }
    ]
   },
@@ -3318,21 +3312,21 @@
    "terroir": "Kirchspiel",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "97"
-    },
-    {
      "critic": "Robert Parker",
      "score": "94",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "18/20"
     },
     {
      "critic": "Falstaff",
      "score": "94"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "18/20"
+     "critic": "James Suckling",
+     "score": "97"
     }
    ],
    "note": {
@@ -3405,21 +3399,21 @@
    "terroir": "Gaisböhl",
    "ratings": [
     {
-     "critic": "Lobenberg",
-     "score": "97"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "95"
+     "critic": "Robert Parker",
+     "score": "92+",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",
      "score": "93"
     },
     {
-     "critic": "Robert Parker",
-     "score": "92+",
-     "checked": "2026-09-06"
+     "critic": "James Suckling",
+     "score": "95"
+    },
+    {
+     "critic": "Lobenberg",
+     "score": "97"
     }
    ],
    "tags": [
@@ -3454,17 +3448,17 @@
    "terroir": "Wehlener Sonnenuhr",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "James Suckling",
      "score": "96"
     },
     {
      "critic": "Lobenberg",
      "score": "96+"
-    },
-    {
-     "critic": "Robert Parker",
-     "score": "94",
-     "checked": "2026-09-06"
     }
    ],
    "tags": [
@@ -3531,17 +3525,17 @@
    "terroir": "Idig",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "97"
+     "critic": "Robert Parker",
+     "score": "94+",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Falstaff",
      "score": "95"
     },
     {
-     "critic": "Robert Parker",
-     "score": "94+",
-     "checked": "2026-09-06"
+     "critic": "James Suckling",
+     "score": "97"
     }
    ]
   },
@@ -3572,12 +3566,12 @@
    "terroir": "Scharzhofberg",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "93"
-    },
-    {
      "critic": "Vinous",
      "score": "91"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "93"
     }
    ],
    "tags": [
@@ -3693,12 +3687,12 @@
      "score": "98"
     },
     {
-     "critic": "Lobenberg",
-     "score": "97+"
-    },
-    {
      "critic": "James Suckling",
      "score": "96"
+    },
+    {
+     "critic": "Lobenberg",
+     "score": "97+"
     }
    ],
    "tags": [
@@ -3866,25 +3860,25 @@
    ],
    "ratings": [
     {
-     "critic": "Tim Atkin",
-     "score": "94"
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Jasper Morris",
      "score": "90-94"
     },
     {
-     "critic": "James Suckling",
-     "score": "92-93"
-    },
-    {
-     "critic": "Robert Parker",
-     "score": "92",
-     "checked": "2026-09-06"
+     "critic": "Tim Atkin",
+     "score": "94"
     },
     {
      "critic": "Wine Spectator",
      "score": "92"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "92-93"
     }
    ]
   },
@@ -3952,10 +3946,6 @@
    "terroir": "Preuses",
    "ratings": [
     {
-     "critic": "Jasper Morris",
-     "score": "94"
-    },
-    {
      "critic": "Robert Parker",
      "score": "93",
      "checked": "2026-09-06"
@@ -3963,6 +3953,10 @@
     {
      "critic": "Vinous",
      "score": "93"
+    },
+    {
+     "critic": "Jasper Morris",
+     "score": "94"
     }
    ],
    "note": {
@@ -4021,12 +4015,12 @@
      "checked": "2026-09-06"
     },
     {
-     "critic": "Tim Atkin",
-     "score": "95"
-    },
-    {
      "critic": "Jasper Morris",
      "score": "94-96"
+    },
+    {
+     "critic": "Tim Atkin",
+     "score": "95"
     }
    ]
   },
@@ -4287,12 +4281,12 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Tim Atkin",
-     "score": "90"
-    },
-    {
      "critic": "Jasper Morris",
      "score": "89"
+    },
+    {
+     "critic": "Tim Atkin",
+     "score": "90"
     }
    ],
    "tags": [
@@ -4477,13 +4471,13 @@
    "terroir": "Les Frionnes",
    "ratings": [
     {
-     "critic": "Jasper Morris",
-     "score": "93"
-    },
-    {
      "critic": "Robert Parker",
      "score": "93",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jasper Morris",
+     "score": "93"
     },
     {
      "critic": "Tim Atkin",
@@ -4656,12 +4650,12 @@
    "terroir": "Le Poruzot Dessus",
    "ratings": [
     {
-     "critic": "Lobenberg",
-     "score": "96-97"
-    },
-    {
      "critic": "Jasper Morris",
      "score": "95"
+    },
+    {
+     "critic": "Lobenberg",
+     "score": "96-97"
     }
    ],
    "tags": [
@@ -4865,12 +4859,12 @@
    "terroir": "Corton-Charlemagne",
    "ratings": [
     {
-     "critic": "Decanter",
-     "score": "95"
-    },
-    {
      "critic": "Jasper Morris",
      "score": "94"
+    },
+    {
+     "critic": "Decanter",
+     "score": "95"
     }
    ],
    "tags": [
@@ -5048,17 +5042,17 @@
    "terroir": "Furstentum",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "96"
+     "critic": "Robert Parker",
+     "score": "93+",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",
      "score": "96"
     },
     {
-     "critic": "Robert Parker",
-     "score": "93+",
-     "checked": "2026-09-06"
+     "critic": "James Suckling",
+     "score": "96"
     }
    ],
    "tags": [
@@ -5428,12 +5422,12 @@
    },
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "95"
-    },
-    {
      "critic": "Vinous",
      "score": "92"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "95"
     }
    ]
   },
@@ -5466,20 +5460,20 @@
    },
    "ratings": [
     {
-     "critic": "Wine Enthusiast",
-     "score": "95"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "92"
-    },
-    {
      "critic": "Vinous",
      "score": "91"
     },
     {
      "critic": "Decanter",
      "score": "91"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "92"
+    },
+    {
+     "critic": "Wine Enthusiast",
+     "score": "95"
     }
    ]
   },
@@ -5751,10 +5745,6 @@
    },
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "96"
-    },
-    {
      "critic": "Robert Parker",
      "score": "95",
      "checked": "2026-09-06"
@@ -5766,6 +5756,10 @@
     {
      "critic": "Wine Spectator",
      "score": "93"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "96"
     }
    ],
    "notePlain": true,
@@ -6857,18 +6851,6 @@
    ],
    "ratings": [
     {
-     "critic": "Tim Atkin",
-     "score": "94"
-    },
-    {
-     "critic": "Jasper Morris",
-     "score": "92"
-    },
-    {
-     "critic": "Vinous",
-     "score": "92"
-    },
-    {
      "critic": "Robert Parker",
      "score": "91-93",
      "checked": "2026-09-06"
@@ -6876,6 +6858,18 @@
     {
      "critic": "Jancis Robinson",
      "score": "17/20"
+    },
+    {
+     "critic": "Vinous",
+     "score": "92"
+    },
+    {
+     "critic": "Jasper Morris",
+     "score": "92"
+    },
+    {
+     "critic": "Tim Atkin",
+     "score": "94"
     }
    ]
   },
@@ -6953,16 +6947,16 @@
    "terroir": "La Goujonne",
    "ratings": [
     {
-     "critic": "Lobenberg",
-     "score": "93-94"
+     "critic": "Jasper Morris",
+     "score": "90"
     },
     {
      "critic": "Tim Atkin",
      "score": "91"
     },
     {
-     "critic": "Jasper Morris",
-     "score": "90"
+     "critic": "Lobenberg",
+     "score": "93-94"
     }
    ]
   },
@@ -6994,11 +6988,11 @@
    "terroir": "Clos des Gravières",
    "ratings": [
     {
-     "critic": "Tim Atkin",
+     "critic": "Jasper Morris",
      "score": "94"
     },
     {
-     "critic": "Jasper Morris",
+     "critic": "Tim Atkin",
      "score": "94"
     }
    ]
@@ -7030,18 +7024,6 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Wine Spectator",
-     "score": "94"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "94"
-    },
-    {
-     "critic": "Decanter",
-     "score": "94"
-    },
-    {
      "critic": "Robert Parker",
      "score": "92",
      "checked": "2026-09-06"
@@ -7049,6 +7031,18 @@
     {
      "critic": "Jancis Robinson",
      "score": "16.5/20"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "94"
+    },
+    {
+     "critic": "Decanter",
+     "score": "94"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "94"
     }
    ],
    "tags": [
@@ -7082,13 +7076,25 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Decanter",
-     "score": "100"
-    },
-    {
      "critic": "Robert Parker",
      "score": "98+",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Vinous",
+     "score": "95"
+    },
+    {
+     "critic": "Jeff Leve",
+     "score": "97"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "92"
+    },
+    {
+     "critic": "Decanter",
+     "score": "100"
     },
     {
      "critic": "James Suckling",
@@ -7097,18 +7103,6 @@
     {
      "critic": "Falstaff",
      "score": "97"
-    },
-    {
-     "critic": "Jeff Leve",
-     "score": "97"
-    },
-    {
-     "critic": "Vinous",
-     "score": "95"
-    },
-    {
-     "critic": "Wine Spectator",
-     "score": "92"
     }
    ],
    "tags": [
@@ -7142,8 +7136,8 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "96"
+     "critic": "Jancis Robinson",
+     "score": "17/20"
     },
     {
      "critic": "Vinous",
@@ -7154,20 +7148,20 @@
      "score": "95"
     },
     {
-     "critic": "Wine Enthusiast",
+     "critic": "Decanter",
      "score": "94"
     },
     {
-     "critic": "Decanter",
+     "critic": "James Suckling",
+     "score": "96"
+    },
+    {
+     "critic": "Wine Enthusiast",
      "score": "94"
     },
     {
      "critic": "Falstaff",
      "score": "94"
-    },
-    {
-     "critic": "Jancis Robinson",
-     "score": "17/20"
     }
    ],
    "tags": [
@@ -7201,20 +7195,20 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Decanter",
-     "score": "94"
-    },
-    {
-     "critic": "Wine Spectator",
-     "score": "92"
+     "critic": "Jancis Robinson",
+     "score": "16/20"
     },
     {
      "critic": "Vinous",
      "score": "92"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "16/20"
+     "critic": "Wine Spectator",
+     "score": "92"
+    },
+    {
+     "critic": "Decanter",
+     "score": "94"
     }
    ],
    "tags": [
@@ -7254,12 +7248,12 @@
      "checked": "2026-09-06"
     },
     {
-     "critic": "James Suckling",
-     "score": "98"
-    },
-    {
      "critic": "Jancis Robinson",
      "score": "17.5/20"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "98"
     }
    ],
    "tags": [
@@ -7295,36 +7289,36 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Wine Enthusiast",
-     "score": "96"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "95"
-    },
-    {
-     "critic": "Decanter",
-     "score": "94"
+     "critic": "Robert Parker",
+     "score": "94+",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",
      "score": "94"
     },
     {
-     "critic": "Robert Parker",
-     "score": "94+",
-     "checked": "2026-09-06"
-    },
-    {
      "critic": "Jeff Leve",
      "score": "93"
     },
     {
-     "critic": "Falstaff",
+     "critic": "Wine Spectator",
      "score": "93"
     },
     {
-     "critic": "Wine Spectator",
+     "critic": "Decanter",
+     "score": "94"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "95"
+    },
+    {
+     "critic": "Wine Enthusiast",
+     "score": "96"
+    },
+    {
+     "critic": "Falstaff",
      "score": "93"
     }
    ]
@@ -7538,12 +7532,12 @@
    "terroir": "Pira",
    "ratings": [
     {
-     "critic": "Wine Spectator",
-     "score": "97"
-    },
-    {
      "critic": "Vinous",
      "score": "94+"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "97"
     }
    ],
    "tags": [
@@ -7579,10 +7573,6 @@
    "terroir": "Albesani",
    "ratings": [
     {
-     "critic": "Wine Spectator",
-     "score": "98"
-    },
-    {
      "critic": "Robert Parker",
      "score": "95",
      "checked": "2026-09-06"
@@ -7590,6 +7580,10 @@
     {
      "critic": "Vinous",
      "score": "95"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "98"
     }
    ],
    "tags": [
@@ -7643,12 +7637,12 @@
    ],
    "ratings": [
     {
-     "critic": "Wine Spectator",
-     "score": "98"
-    },
-    {
      "critic": "Vinous",
      "score": "96"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "98"
     }
    ]
   },
@@ -7681,21 +7675,21 @@
    "terroir": "Pajé",
    "ratings": [
     {
-     "critic": "Wine Spectator",
-     "score": "98"
-    },
-    {
-     "critic": "Falstaff",
-     "score": "98"
+     "critic": "Robert Parker",
+     "score": "96",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",
      "score": "96+"
     },
     {
-     "critic": "Robert Parker",
-     "score": "96",
-     "checked": "2026-09-06"
+     "critic": "Wine Spectator",
+     "score": "98"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "98"
     }
    ],
    "tags": [
@@ -7806,13 +7800,13 @@
    ],
    "ratings": [
     {
-     "critic": "Vinous",
-     "score": "96"
-    },
-    {
      "critic": "Robert Parker",
      "score": "93",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Vinous",
+     "score": "96"
     },
     {
      "critic": "James Suckling",
@@ -7861,20 +7855,20 @@
      "checked": "2026-09-06"
     },
     {
-     "critic": "James Suckling",
-     "score": "97"
-    },
-    {
-     "critic": "Falstaff",
-     "score": "97"
-    },
-    {
      "critic": "Vinous",
      "score": "96"
     },
     {
      "critic": "Decanter",
      "score": "95"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "97"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "97"
     }
    ],
    "tags": [
@@ -8033,21 +8027,21 @@
    },
    "ratings": [
     {
-     "critic": "Decanter",
-     "score": "94"
-    },
-    {
      "critic": "Robert Parker",
      "score": "93",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20"
     },
     {
      "critic": "Wine Spectator",
      "score": "93"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "17.5/20"
+     "critic": "Decanter",
+     "score": "94"
     }
    ],
    "tags": [
@@ -8132,16 +8126,16 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Falstaff",
-     "score": "93"
+     "critic": "Wine Spectator",
+     "score": "90"
     },
     {
      "critic": "James Suckling",
      "score": "90"
     },
     {
-     "critic": "Wine Spectator",
-     "score": "90"
+     "critic": "Falstaff",
+     "score": "93"
     }
    ],
    "tags": [
@@ -8183,16 +8177,16 @@
    ],
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "95"
-    },
-    {
      "critic": "Vinous",
      "score": "93+"
     },
     {
      "critic": "Wine Spectator",
      "score": "92"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "95"
     }
    ]
   },
@@ -8332,6 +8326,10 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Vinous",
+     "score": "95"
+    },
+    {
      "critic": "Wine Spectator",
      "score": "96"
     },
@@ -8341,10 +8339,6 @@
     },
     {
      "critic": "Wine Enthusiast",
-     "score": "95"
-    },
-    {
-     "critic": "Vinous",
      "score": "95"
     }
    ],
@@ -8385,14 +8379,6 @@
    "terroir": "Tenuta Tignanello",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "97"
-    },
-    {
-     "critic": "Wine Enthusiast",
-     "score": "96"
-    },
-    {
      "critic": "Robert Parker",
      "score": "95",
      "checked": "2026-09-06"
@@ -8400,6 +8386,14 @@
     {
      "critic": "Wine Spectator",
      "score": "94"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "97"
+    },
+    {
+     "critic": "Wine Enthusiast",
+     "score": "96"
     }
    ],
    "tags": [
@@ -8442,13 +8436,13 @@
    ],
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "96"
-    },
-    {
      "critic": "Robert Parker",
      "score": "94+",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17/20"
     },
     {
      "critic": "Vinous",
@@ -8459,8 +8453,8 @@
      "score": "94"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "17/20"
+     "critic": "James Suckling",
+     "score": "96"
     }
    ]
   },
@@ -8497,21 +8491,21 @@
    "terroir": "Monte Lodoletta",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "100"
+     "critic": "Robert Parker",
+     "score": "97",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",
      "score": "98"
     },
     {
-     "critic": "Robert Parker",
-     "score": "97",
-     "checked": "2026-09-06"
-    },
-    {
      "critic": "Wine Spectator",
      "score": "96"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "100"
     }
    ],
    "tags": [
@@ -8683,13 +8677,13 @@
    },
    "ratings": [
     {
-     "critic": "Vinous",
-     "score": "98"
-    },
-    {
      "critic": "Robert Parker",
      "score": "96",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Vinous",
+     "score": "98"
     }
    ],
    "tags": [
@@ -8769,11 +8763,11 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Falstaff",
+     "critic": "James Suckling",
      "score": "92"
     },
     {
-     "critic": "James Suckling",
+     "critic": "Falstaff",
      "score": "92"
     }
    ],
@@ -8814,10 +8808,6 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Falstaff",
-     "score": "97"
-    },
-    {
      "critic": "Robert Parker",
      "score": "96",
      "checked": "2026-09-06"
@@ -8825,6 +8815,10 @@
     {
      "critic": "Jancis Robinson",
      "score": "16/20"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "97"
     }
    ],
    "tags": [
@@ -8953,28 +8947,28 @@
    ],
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "95"
+     "critic": "Vinous",
+     "score": "94"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "93"
     },
     {
      "critic": "Decanter",
      "score": "95"
     },
     {
-     "critic": "Falstaff",
+     "critic": "James Suckling",
      "score": "95"
-    },
-    {
-     "critic": "Vinous",
-     "score": "94"
     },
     {
      "critic": "Wine Enthusiast",
      "score": "94"
     },
     {
-     "critic": "Wine Spectator",
-     "score": "93"
+     "critic": "Falstaff",
+     "score": "95"
     }
    ]
   },
@@ -9011,6 +9005,15 @@
    "terroir": "",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "18/20"
+    },
+    {
      "critic": "Vinous",
      "score": "97"
     },
@@ -9019,21 +9022,12 @@
      "score": "97"
     },
     {
-     "critic": "James Suckling",
-     "score": "97"
-    },
-    {
      "critic": "Decanter",
      "score": "97"
     },
     {
-     "critic": "Robert Parker",
-     "score": "94",
-     "checked": "2026-09-06"
-    },
-    {
-     "critic": "Jancis Robinson",
-     "score": "18/20"
+     "critic": "James Suckling",
+     "score": "97"
     }
    ],
    "tags": [
@@ -9079,6 +9073,14 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17/20"
+    },
+    {
+     "critic": "Vinous",
+     "score": "98"
+    },
+    {
      "critic": "Decanter",
      "score": "100"
     },
@@ -9087,16 +9089,8 @@
      "score": "98"
     },
     {
-     "critic": "Vinous",
-     "score": "98"
-    },
-    {
      "critic": "Wine Enthusiast",
      "score": "98"
-    },
-    {
-     "critic": "Jancis Robinson",
-     "score": "17/20"
     }
    ],
    "tags": [
@@ -9137,12 +9131,13 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "98"
+     "critic": "Robert Parker",
+     "score": "95",
+     "checked": "2026-09-06"
     },
     {
-     "critic": "Decanter",
-     "score": "97"
+     "critic": "Jancis Robinson",
+     "score": "18/20"
     },
     {
      "critic": "Vinous",
@@ -9153,13 +9148,12 @@
      "score": "96"
     },
     {
-     "critic": "Robert Parker",
-     "score": "95",
-     "checked": "2026-09-06"
+     "critic": "Decanter",
+     "score": "97"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "18/20"
+     "critic": "James Suckling",
+     "score": "98"
     }
    ],
    "tags": [
@@ -9200,12 +9194,9 @@
    "terroir": "Tenuta Tignanello",
    "ratings": [
     {
-     "critic": "Falstaff",
-     "score": "99"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "98"
+     "critic": "Robert Parker",
+     "score": "96",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",
@@ -9216,9 +9207,12 @@
      "score": "97"
     },
     {
-     "critic": "Robert Parker",
-     "score": "96",
-     "checked": "2026-09-06"
+     "critic": "James Suckling",
+     "score": "98"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "99"
     }
    ],
    "tags": [
@@ -9267,16 +9261,8 @@
      "checked": "2026-09-06"
     },
     {
-     "critic": "Falstaff",
-     "score": "98"
-    },
-    {
-     "critic": "Decanter",
-     "score": "97"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "96"
+     "critic": "Jancis Robinson",
+     "score": "17.5/20"
     },
     {
      "critic": "Vinous",
@@ -9287,8 +9273,16 @@
      "score": "94"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "17.5/20"
+     "critic": "Decanter",
+     "score": "97"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "96"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "98"
     }
    ]
   },
@@ -9325,25 +9319,25 @@
    "terroir": "Castelnuovo dell'Abate",
    "ratings": [
     {
-     "critic": "Falstaff",
-     "score": "99"
-    },
-    {
      "critic": "Robert Parker",
      "score": "97+",
      "checked": "2026-09-06"
     },
     {
-     "critic": "James Suckling",
-     "score": "97"
+     "critic": "Vinous",
+     "score": "94+"
     },
     {
      "critic": "Decanter",
      "score": "95"
     },
     {
-     "critic": "Vinous",
-     "score": "94+"
+     "critic": "James Suckling",
+     "score": "97"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "99"
     }
    ],
    "tags": [
@@ -9453,12 +9447,12 @@
    "terroir": "Medana Breg",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "94"
-    },
-    {
      "critic": "Vinous",
      "score": "92"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "94"
     }
    ]
   },
@@ -9499,25 +9493,25 @@
    "terroir": "Finca Ygay – La Plana",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "100"
+     "critic": "Robert Parker",
+     "score": "97",
+     "checked": "2026-09-06"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "95"
     },
     {
      "critic": "Decanter",
      "score": "97"
     },
     {
-     "critic": "Robert Parker",
-     "score": "97",
-     "checked": "2026-09-06"
+     "critic": "James Suckling",
+     "score": "100"
     },
     {
      "critic": "Falstaff",
      "score": "97"
-    },
-    {
-     "critic": "Wine Spectator",
-     "score": "95"
     }
    ]
   },
@@ -9582,17 +9576,17 @@
    "terroir": "Viña Bosconia",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "95"
+     "critic": "Robert Parker",
+     "score": "93+",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Tim Atkin",
      "score": "95"
     },
     {
-     "critic": "Robert Parker",
-     "score": "93+",
-     "checked": "2026-09-06"
+     "critic": "James Suckling",
+     "score": "95"
     }
    ]
   },
@@ -9633,21 +9627,21 @@
    "terroir": "Résonance Vineyard",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "93"
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Vinous",
      "score": "93"
     },
     {
-     "critic": "Robert Parker",
-     "score": "92",
-     "checked": "2026-09-06"
-    },
-    {
      "critic": "Wine Spectator",
      "score": "91"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "93"
     }
    ]
   },
@@ -9689,12 +9683,12 @@
      "score": "94"
     },
     {
-     "critic": "Wine Enthusiast",
-     "score": "93"
-    },
-    {
      "critic": "James Suckling",
      "score": "91"
+    },
+    {
+     "critic": "Wine Enthusiast",
+     "score": "93"
     }
    ]
   },
@@ -9831,13 +9825,13 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "91"
-    },
-    {
      "critic": "Robert Parker",
      "score": "90",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "91"
     }
    ],
    "tags": [
@@ -9877,12 +9871,12 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "93"
-    },
-    {
      "critic": "Wine Spectator",
      "score": "91"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "93"
     }
    ]
   },
@@ -9917,6 +9911,11 @@
    "terroir": "",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Vinous",
      "score": "97"
     },
@@ -9927,11 +9926,6 @@
     {
      "critic": "James Suckling",
      "score": "95"
-    },
-    {
-     "critic": "Robert Parker",
-     "score": "94",
-     "checked": "2026-09-06"
     }
    ],
    "tags": [
@@ -10000,17 +9994,17 @@
    "terroir": "",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "95+",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Vinous",
      "score": "96-99"
     },
     {
      "critic": "Wine Spectator",
      "score": "96"
-    },
-    {
-     "critic": "Robert Parker",
-     "score": "95+",
-     "checked": "2026-09-06"
     }
    ],
    "tags": [
@@ -10045,25 +10039,25 @@
    "terroir": "",
    "ratings": [
     {
-     "critic": "Vinous",
-     "score": "94"
-    },
-    {
-     "critic": "Wine Enthusiast",
-     "score": "93"
-    },
-    {
      "critic": "Robert Parker",
      "score": "91",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20"
+    },
+    {
+     "critic": "Vinous",
+     "score": "94"
     },
     {
      "critic": "Wine Spectator",
      "score": "91"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "17.5/20"
+     "critic": "Wine Enthusiast",
+     "score": "93"
     }
    ]
   },
@@ -10095,16 +10089,16 @@
    "terroir": "Monte Bello",
    "ratings": [
     {
-     "critic": "Wine Enthusiast",
-     "score": "94"
+     "critic": "Vinous",
+     "score": "93"
     },
     {
      "critic": "James Suckling",
      "score": "94"
     },
     {
-     "critic": "Vinous",
-     "score": "93"
+     "critic": "Wine Enthusiast",
+     "score": "94"
     }
    ]
   },
@@ -10136,20 +10130,20 @@
    "terroir": "Geyserville",
    "ratings": [
     {
-     "critic": "Vinous",
-     "score": "94+"
+     "critic": "Jancis Robinson",
+     "score": "16.5/20"
     },
     {
-     "critic": "Wine Enthusiast",
-     "score": "94"
+     "critic": "Vinous",
+     "score": "94+"
     },
     {
      "critic": "Wine Spectator",
      "score": "93"
     },
     {
-     "critic": "Jancis Robinson",
-     "score": "16.5/20"
+     "critic": "Wine Enthusiast",
+     "score": "94"
     }
    ],
    "tags": [
@@ -10192,17 +10186,17 @@
    "terroir": "Adong, Xidang, Sinong, Shuori",
    "ratings": [
     {
-     "critic": "James Suckling",
-     "score": "98"
+     "critic": "Robert Parker",
+     "score": "95",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Decanter",
      "score": "96"
     },
     {
-     "critic": "Robert Parker",
-     "score": "95",
-     "checked": "2026-09-06"
+     "critic": "James Suckling",
+     "score": "98"
     }
    ]
   },
@@ -10293,12 +10287,12 @@
    "terroir": "Wehlener Sonnenuhr",
    "ratings": [
     {
-     "critic": "Lobenberg",
-     "score": "98-100"
-    },
-    {
      "critic": "James Suckling",
      "score": "97"
+    },
+    {
+     "critic": "Lobenberg",
+     "score": "98-100"
     }
    ],
    "tags": [
@@ -10434,16 +10428,12 @@
    "terroir": "Valpolicella",
    "ratings": [
     {
-     "critic": "Robert Parker",
-     "score": "98"
+     "critic": "Vinous",
+     "score": "95"
     },
     {
      "critic": "James Suckling",
      "score": "97"
-    },
-    {
-     "critic": "Vinous",
-     "score": "95"
     }
    ],
    "tags": [
@@ -10579,26 +10569,6 @@
    },
    "ratings": [
     {
-     "critic": "Jeff Leve",
-     "score": "98"
-    },
-    {
-     "critic": "Falstaff",
-     "score": "97"
-    },
-    {
-     "critic": "Wine Enthusiast",
-     "score": "97"
-    },
-    {
-     "critic": "Decanter",
-     "score": "96"
-    },
-    {
-     "critic": "Wine Spectator",
-     "score": "95"
-    },
-    {
      "critic": "Robert Parker",
      "score": "94",
      "checked": "2026-09-06"
@@ -10606,6 +10576,26 @@
     {
      "critic": "Jancis Robinson",
      "score": "17/20"
+    },
+    {
+     "critic": "Jeff Leve",
+     "score": "98"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "95"
+    },
+    {
+     "critic": "Decanter",
+     "score": "96"
+    },
+    {
+     "critic": "Wine Enthusiast",
+     "score": "97"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "97"
     }
    ],
    "tags": [
@@ -10644,6 +10634,18 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Vinous",
+     "score": "98"
+    },
+    {
+     "critic": "Jeff Leve",
+     "score": "98"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "98"
+    },
+    {
      "critic": "Decanter",
      "score": "99"
     },
@@ -10653,18 +10655,6 @@
     },
     {
      "critic": "Wine Enthusiast",
-     "score": "98"
-    },
-    {
-     "critic": "Jeff Leve",
-     "score": "98"
-    },
-    {
-     "critic": "Vinous",
-     "score": "98"
-    },
-    {
-     "critic": "Wine Spectator",
      "score": "98"
     },
     {

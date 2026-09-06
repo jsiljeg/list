@@ -12,6 +12,7 @@ import vm from "node:vm";
 import { joinList } from "./lib/list.mjs";
 import { rankPairings } from "./lib/pairing-rank.mjs";
 import { parseRs } from "./lib/rs.mjs";
+import { criticRank, rankRatings } from "./lib/critics.mjs";
 
 const ctx = {};
 vm.createContext(ctx);
@@ -79,8 +80,25 @@ for (const sec of data.sections) {
           if (item.insight.sweetness === "dry")
             errors.push(`${where}: a wine tagged dry should not carry a residual-sugar figure`);
         }
-        if (item.ratings) for (const r of item.ratings) {
-          if (!r.critic || !r.score) errors.push(`${where}: each rating needs "critic" and "score"`);
+        /* Ratings are stored in the order a guest should read them, which is by
+           how much the critic's opinion is worth and not by which number is
+           biggest — a Suckling 97 above a Parker 95 tells a guest the wrong
+           thing. scripts/lib/critics.json is the table and
+           scripts/rank-ratings.py is the only writer; this fails a wine that
+           has drifted out of it, and an unknown critic, which would otherwise
+           sort nowhere at all. */
+        if (item.ratings) {
+          for (const r of item.ratings) {
+            if (!r.critic || !r.score) errors.push(`${where}: each rating needs "critic" and "score"`);
+            else if (criticRank(r.critic, item) === null)
+              errors.push(`${where}: "${r.critic}" has no rank in scripts/lib/critics.json`);
+          }
+          if (item.ratings.every((r) => criticRank(r.critic, item) !== null)) {
+            const want = rankRatings(item.ratings, item).map((r) => r.critic).join(" · ");
+            const have = item.ratings.map((r) => r.critic).join(" · ");
+            if (want !== have)
+              errors.push(`${where}: ratings out of critic order — run scripts/rank-ratings.py (want ${want})`);
+          }
         }
         if (item.note != null && (typeof item.note !== "object" || Array.isArray(item.note) ||
             Object.values(item.note).some((v) => typeof v !== "string"))) {

@@ -180,7 +180,50 @@ percent-first — `zhTokens`/`langTokens` strip a *trailing* percentage per toke
 Advocate"), James Suckling, Wine Spectator, Wine Enthusiast, Vinous, Decanter,
 Falstaff, Jasper Morris, Tim Atkin, Jancis Robinson (always `NN/20`), Lobenberg,
 Jeff Leve, Jeb Dunnuck, Jeannie Cho Lee, Stuart Pigott. `+` and ranges kept
-(`94+`, `91-93`). Order: 100-point scores high→low, the `/20` entry last.
+(`94+`, `91-93`).
+
+**Ratings are ordered by the critic, not by the score** (owner, 2026-09-06).
+They used to run highest number first, which prints the loudest opinion rather
+than the one worth most — a Suckling 97 stood above a Parker 95 and told a
+guest the wrong thing. 89 of the 105 rated wines led with the wrong critic.
+
+`scripts/lib/critics.json` is the table, and it is the only place the order
+lives: `scripts/rank-ratings.py` writes it into the data, `validate.mjs` fails
+the deploy on a wine that has drifted out of it or a critic with no rank, and
+two tests in data.spec.mjs guard the rest. Never hand-sort a ratings array —
+run the script.
+
+The rank comes from five **checkable properties of the publication**, never
+from whether we like the number: who pays for it (reader beats advertiser
+beats a merchant rating his own stock), whether one named palate is
+accountable, how wide it reaches, how long its scores have been comparable,
+and whether it moves the price. That gives Parker, Jancis Robinson and Vinous
+at the top, the ad-funded and panel-scored houses (Wine Spectator, Decanter,
+Suckling) next, and Lobenberg last because he is a merchant scoring wine he
+sells. Each rank carries its one-line reason in the file's `why` block.
+
+**A specialist is promoted inside their own region** — ahead of every
+generalist, behind the three global references. This is the half that makes
+the ranking defensible rather than a popularity list: Jasper Morris is the
+Burgundy reference and has no business under Wine Spectator on a Gevrey, but
+he has no claim on a Napa Cabernet either, and a flat global list gets exactly
+one of those two right. Same for Jeff Leve in Bordeaux, Falstaff in Austria
+and Germany, Tim Atkin in Rioja and Burgundy.
+
+Two consequences worth knowing. **Jancis Robinson is now read second on the
+wines she rates**, so a `17/20` sits above a 97 — the old rule parked her
+last because the number looks small, which was ordering by scale rather than
+by authority. And **only regions we actually pour are listed** as specialties;
+a test fails an entry matching no wine, so a typo cannot sit there silently
+never promoting anyone (Dunnuck's Rhône came out for that reason and goes back
+the day we stock one).
+
+**A score with no source does not stay on the card** (owner, 2026-09-06).
+Dom Pérignon P3 1993 and Quintarelli Recioto Classico 2011 had Parker scores
+that are not on robertparker.com at any vintage; both were removed rather than
+left carrying a number nobody can check. A wine left with no ratings drops the
+`ratings` key entirely — 218 wines do; an empty array is a third state nothing
+else uses.
 
 **Verifying a Parker score** (2026-09-06, owner has a subscription). The owner's
 logged-in browser is the only route — there is no public API; the Wine Advocate
