@@ -1371,7 +1371,15 @@
     "alcohol": "12.5",
     "dosage": "Extra Brut"
    },
-   "terroir": "Avize"
+   "terroir": "Avize",
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "93",
+     "checked": "2026-09-06",
+     "release": "base V13"
+    }
+   ]
   },
   "pertois-moriset--l-assemblage-brut": {
    "name": "L'Assemblage Brut",
@@ -1885,6 +1893,11 @@
     "dosage": "Brut"
    },
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Vinous",
      "score": "93"
@@ -3219,6 +3232,11 @@
    "terroir": "Uhlen Blaufüßer Lay",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "91-93",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Falstaff",
      "score": "94"
     },
@@ -3290,6 +3308,11 @@
    },
    "terroir": "Aulerde",
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Falstaff",
      "score": "93+"
@@ -3579,6 +3602,11 @@
    },
    "terroir": "Scharzhofberg",
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Vinous",
      "score": "91"
@@ -4539,6 +4567,11 @@
    },
    "terroir": "La Princée",
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "90",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Jasper Morris",
      "score": "93"
@@ -6820,6 +6853,13 @@
    "terroir": "Les Didiers",
    "tags": [
     "drinking_now"
+   ],
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "88-90",
+     "checked": "2026-09-06"
+    }
    ]
   },
   "domaine-armand-rousseau-pere-fils--gevrey-chambertin-1er-cru-lavaux-2018": {
@@ -6961,6 +7001,11 @@
    "terroir": "La Goujonne",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "88",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Jasper Morris",
      "score": "90"
     },
@@ -7001,6 +7046,11 @@
    },
    "terroir": "Clos des Gravières",
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "89",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Jasper Morris",
      "score": "94"
@@ -7748,6 +7798,11 @@
    },
    "terroir": "",
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Tim Atkin",
      "score": "90"
@@ -9779,6 +9834,11 @@
    "terroir": "",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "95+",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Vinous",
      "score": "94"
     }
@@ -9989,6 +10049,11 @@
    },
    "terroir": "Tanbark Hill",
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Wine Spectator",
      "score": "92"
@@ -10430,7 +10495,14 @@
     "zh": "金帽意味着 Hanno 把最好的桶留了下来，却什么也没说。蜂蜜与克莱门丁，之下是把一切撑直的酸度——十七年了，仍然不急。",
     "sl": "Zlata kapsula pomeni, da je Hanno odbral najboljše sode in o tem molčal. Med in klementina, pod vsem tem pa kislina, ki vse drži pokonci — sedemnajst let in se še vedno ne mudi.",
     "es": "La cápsula dorada significa que Hanno apartó las mejores barricas y no dijo nada. Miel y clementina, y debajo de todo una acidez que lo sostiene erguido — diecisiete años y todavía sin prisa."
-   }
+   },
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "95",
+     "checked": "2026-09-06"
+    }
+   ]
   },
   "giuseppe-quintarelli--recioto-classico-2011": {
    "name": "Recioto Classico 2011",
