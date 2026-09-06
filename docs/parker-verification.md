@@ -7,7 +7,7 @@ Needs the Claude Chrome extension connected and the browser logged in.
 A rating carries `checked: "YYYY-MM-DD"` once seen on the site. No `checked`
 means never verified.
 
-## Done — 15
+## Done — 28
 
         98    850 €  Jacques Selosse — Les Carelles
         98   1780 €  Krug — Krug 1996
@@ -24,27 +24,26 @@ means never verified.
        97+    210 €  Isole e Olena — Cepparello 2019
        94+    260 €  Dal Forno Romano — Valpolicella D.O.C. Superiore 2015
        93+     75 €  López de Heredia — Bosconia Tinto Reserva 2013
-
-## Queue 1 — the remaining "+" scores — done
-
-All eight confirmed on 2026-09-06; none had moved. They are in Done above.
-
-## Queue 2 — vintage wines, dearest first (48)
-
-        96   4850 €  Moët & Chandon — Dom Pérignon P3 1993
         97   1540 €  Soldera — Case Basse 2020
         95   1450 €  Moët & Chandon — Dom Pérignon P2 2004
         96   1450 €  Domaine François Raveneau — Chablis Grand Cru Valmur 2020
         96    945 €  Antinori — Solaia 2020
-        98    940 €  Château d'Yquem — Sauternes 1er Cru Supérieur 2015
+       99+    940 €  Château d'Yquem — Sauternes 1er Cru Supérieur 2015   (was 98)
         97    890 €  Krug — Krug 2004
         94    880 €  Château d'Yquem — Sauternes 1er Cru Supérieur 2020
        100    850 €  Tenuta San Guido — Sassicaia 2021
         96    757 €  Giuseppe Quintarelli — Amarone Classico 2015
         92    750 €  René & Vincent Dauvissat — Chablis 1er Cru Vaillons 2018
-        96    750 €  Tenuta San Guido — Sassicaia 2020
-        97    750 €  Tenuta dell'Ornellaia — Ornellaia 2020
+        94    750 €  Tenuta San Guido — Sassicaia 2020   (was 96)
+        95    750 €  Tenuta dell'Ornellaia — Ornellaia 2020   (was 97)
         97    689 €  Dal Forno Romano — Amarone della Valpolicella D.O.C. 2015
+
+## Queue 1 — the remaining "+" scores — done
+
+All eight confirmed on 2026-09-06; none had moved. They are in Done above.
+
+## Queue 2 — vintage wines, dearest first (34 left)
+
         95    580 €  Roagna — Barbaresco Albesani 2019
         95    525 €  LVMH – Shangri-La — Ao Yun 2018
         95    495 €  Giuseppe Quintarelli — Amabile del Cere 2017
@@ -79,6 +78,19 @@ All eight confirmed on 2026-09-06; none had moved. They are in Done above.
         92    100 €  Résonance Vineyard — Resonance 2015
         95     95 €  Damijan Podveršič — Ribolla 2015
         90     90 €  Patrick Piuze — Chablis La Grande Vallée 2024
+
+## Not on the site — 1
+
+Searched and genuinely absent, so the score we hold has no source to check it
+against. Owner's call what to do with it.
+
+        96   4850 €  Moët & Chandon — Dom Pérignon P3 1993
+
+Wine Advocate has no 1993 Dom Pérignon under any name. "P3", "Plénitude 3" and
+the vintage alone all return nothing, and the Œnothèque range — what P3 was
+called before the rename — is reviewed for 1990, 1995 and 1996 but not 1993.
+So this is not a gap in their coverage of the era; that vintage was never
+reviewed. Where our 96 came from is unknown.
 
 ## Blocked — non-vintage (13)
 

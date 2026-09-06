@@ -2178,7 +2178,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "95"
+     "score": "95",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Jancis Robinson",
@@ -2457,7 +2458,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "97"
+     "score": "97",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Decanter",
@@ -3871,7 +3873,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "92"
+     "score": "92",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Wine Spectator",
@@ -4006,7 +4009,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "96"
+     "score": "96",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Tim Atkin",
@@ -8480,7 +8484,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "97"
+     "score": "97",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Wine Spectator",
@@ -8578,7 +8583,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "96"
+     "score": "96",
+     "checked": "2026-09-06"
     }
    ]
   },
@@ -8880,7 +8886,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "97"
+     "score": "97",
+     "checked": "2026-09-06"
     }
    ]
   },
@@ -8996,7 +9003,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "96"
+     "score": "94",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Jancis Robinson",
@@ -9042,7 +9050,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "100"
+     "score": "100",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Decanter",
@@ -9107,10 +9116,6 @@
      "score": "98"
     },
     {
-     "critic": "Robert Parker",
-     "score": "97"
-    },
-    {
      "critic": "Decanter",
      "score": "97"
     },
@@ -9121,6 +9126,11 @@
     {
      "critic": "Wine Spectator",
      "score": "96"
+    },
+    {
+     "critic": "Robert Parker",
+     "score": "95",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Jancis Robinson",
@@ -9182,7 +9192,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "96"
+     "score": "96",
+     "checked": "2026-09-06"
     }
    ],
    "tags": [
@@ -10556,7 +10567,8 @@
     },
     {
      "critic": "Robert Parker",
-     "score": "94"
+     "score": "94",
+     "checked": "2026-09-06"
     },
     {
      "critic": "Jancis Robinson",
@@ -10594,16 +10606,17 @@
    },
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "99+",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Decanter",
      "score": "99"
     },
     {
      "critic": "James Suckling",
      "score": "99"
-    },
-    {
-     "critic": "Robert Parker",
-     "score": "98"
     },
     {
      "critic": "Wine Enthusiast",
