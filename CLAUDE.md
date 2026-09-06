@@ -182,6 +182,33 @@ Falstaff, Jasper Morris, Tim Atkin, Jancis Robinson (always `NN/20`), Lobenberg,
 Jeff Leve, Jeb Dunnuck, Jeannie Cho Lee, Stuart Pigott. `+` and ranges kept
 (`94+`, `91-93`). Order: 100-point scores high→low, the `/20` entry last.
 
+**Verifying a Parker score** (2026-09-06, owner has a subscription). The owner's
+logged-in browser is the only route — there is no public API; the Wine Advocate
+API is sold through Liv-ex. Search by URL rather than by typing in the box:
+
+    https://www.robertparker.com/search/wine?rating_computed=50+TO+100\
+      &sort=relevancy&keyword=Krug+Clos+du+Mesnil+2008
+
+A vintage in the keyword auto-sets the vintage filter. When the keyword pulls in
+neighbours — "Poggio di Sotto" also matches Poggio Antico, Nardone and Landi,
+306 results — tick the producer in the left rail, which adds `producer=<name>`
+to the URL and is the parameter to reuse. The list shows the **latest** review;
+a wine re-tasted after bottling shows one number where our note may still hold
+the barrel range.
+
+A rating may now carry **`checked`** — the ISO date it was seen on the site.
+Ratings without it have never been verified against the source. The two fields
+that were there before (`critic`, `score`) say nothing about *when*, which is
+why 76 Parker scores had to be re-read from scratch.
+
+**The trap is the non-vintage wines.** A Parker score for an NV Champagne
+belongs to a specific base year or disgorgement — Krug Grande Cuvée is scored
+per *édition* — and we store one bare number with no release attached. Fourteen
+of the 76 are like this (Deutz Brut Classic, three Billecart-Salmons, four
+Selosses, Egly-Ouriet Tradition, De Sousa 3A, Vouette Textures, Krug Grande
+Cuvée, Walter Scott Cuvée Ruth). There is nothing to verify them *against* until
+the release is recorded; decide that before looking them up.
+
 **Alcohol:** only from a producer tech sheet or an EU/vintage-specific retailer
 listing **for that exact wine and vintage**. A neighbouring vintage is not a
 source. Conflicting sources ⇒ leave blank and ask the owner to read the label.
