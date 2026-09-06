@@ -1,0 +1,203 @@
+ 1. Bernard-Bonin [FR]
+      Meursault Les Narvaux Dessus 2023
+      Meursault Villages Le Limozin 2023
+      Meursault Les Tillets 2023
+      Meursault La Rencontre 2023
+      Meursault Clos du Cromin Le Pre Manche 2023
+ 2. Angelo Gaja [IT]
+      Barbaresco 2020
+ 3. Hubert Lignier [FR]
+      Charmes-Chambertin Grand Cru 2021
+      Nuits-Saint-Georges “Les Didiers” 1er Cru 2013
+      Pommard 1er Cru Les Arvelets 2019
+      Morey-Saint-Denis 2019
+      Bourgogne 2023
+      Aligoté 2021
+ 4. Domaine Jean Chartron [FR]
+      Corton-Charlemagne Grand Cru 2022
+      Puligny-Montrachet 1er Cru Clos de la Pucelle Monopole 2021
+      Chassagne-Montrachet Les Benoites 2022
+      Rully Montmorin 2023
+ 5. Roagna [IT]
+      Barbaresco Asili “Vecchie Viti” 2019
+      Barolo Pira 2018
+ 6. Zilliken [DE]
+      Riesling Auslese Goldkapsel 2009
+      Rausch Kabinett 2025
+      Riesling Butterfly 2024
+ 7. Château Gazin [FR]
+      Pomerol 2020
+ 8. Chiara Condello [IT]
+      Riserva “Le Lucciole” 2022
+      Predappio Sangiovese 2023
+ 9. Hubert Lamy [FR]
+      Santenay 1er Cru Clos des Gravières Vieilles Vignes Rouge 2023
+      Chassagne-Montrachet La Goujonne Vieilles Vignes Rouge 2023
+      Saint-Aubin La Princée 2023
+10. Crissante Alessandria [IT]
+      Barolo La Morra DOCG 2021
+11. Rémi Jobard [FR]
+      Meursault 1er Cru Le Poruzot Dessus 2022
+      Volnay 1er Cru Les Santenots 2022
+      Meursault Sous la Velle 2022
+      Bourgogne Côte d'Or Blanc 2022
+12. Philippe Chavy [FR]
+      Meursault 1er Cru Les Charmes 2021
+      St-Aubin 1er Cru Les Murgers des Dents de Chien 2021
+      Bourgogne Chardonnay 2023
+13. Giuseppe Quintarelli [IT]
+      Valpolicella Superiore 2015
+      Recioto Classico 2011
+14. Podere Poggio Scalette [IT]
+      Piantonaia 2019
+      Il Carbonaione 2019
+15. Heitz Cellar [US]
+      Cabernet Sauvignon 2016
+16. Château La Pointe [FR]
+      La Pointe Rouge 2022
+17. David Moret [FR]
+      Meursault 2020
+      Saint-Romain 2023
+      Auxey-Duresses 2023
+      Rully 2023
+18. Machard de Gramont Bertrand [FR]
+      Vosne-Romanée Les Barreaux 2022
+      Vosne-Romanée 2022
+      Nuits-Saint-Georges Les Hauts-Pruliers 2016
+19. Az. Agr. E. Pira & Figli – Chiara Boschis [IT]
+      Barolo 2018
+      Barbera d'Alba Superiore 2021
+20. Le Piane [IT]
+      Plinius 2017
+      Boca 2019
+      Piane 2019
+21. Pertois-Moriset [FR]
+      L'Année Millésime Grand Cru Blanc de Blancs 2017
+      La Collection Rosé & Blanc Grand Cru
+      L'Assemblage Brut
+22. Casa Rojo [ES]
+      Tokyo Gomez-Rojo 2021
+      CL98 2020
+      Orange Republic 2021
+23. Pattes Loup [FR]
+      Chablis 1er Cru Butteaux 2019
+      Chablis 2022
+24. Ruppert-Leroy [FR]
+      Papillon
+      Martin Fontaine 2019
+25. Egon Müller [DE]
+      Riesling Scharzhof 2023
+26. Ridge [US]
+      Cabernet Sauvignon 2018
+      Geyserville 2021
+27. De Sousa [FR]
+      Mycorhize Grand Cru
+      Chemins des Terroirs
+28. Duckhorn [US]
+      Merlot 2018
+29. Weingut Prager [AT]
+      Riesling Smaragd Ried Klaus 2024
+      Grüner Veltliner Federspiel Ried Hinter der Burg 2024
+30. Tanbark Hill (Philip Togni) [US]
+      Cabernet Sauvignon 2018
+31. Weingut Heymann-Löwenstein [DE]
+      Riesling Uhlen Blaufüßer Lay GG 2022
+      Riesling Schieferterrassen Beerenauslese 2017
+      Riesling Stolzenberg 2017
+      Riesling Schieferterrassen 2023
+32. Ca' La Bionda [IT]
+      Recioto Classico 2015
+      Amarone Classico Vigna Ravazzol 2016
+33. Occidental – Kistler Vineyards [US]
+      Occidental 2018
+34. Jules Desjourneys [FR]
+      Pouilly-Vinzelles Les Longeays Blanc 2021
+      Saint-Véran Blanc 2021
+      Pouilly-Fuissé Blanc 2021
+      Mâcon Prissé En Chailloux Blanc 2021
+      Mâcon Verzé Blanc 2021
+      Beaujolais Patacaisse Rouge 2022
+      Rouge 2023
+35. Weingut Wittmann [DE]
+      Riesling Aulerde GG 2020
+      Riesling Aulerde Auslese 2015
+      Riesling Westhofener 2021
+36. Henri Giraud [FR]
+      Hommage au Pinot Noir
+37. Théo Dancer [FR]
+      Bourgogne Aligoté 2023
+38. Domaine Bourdy [FR]
+      Château-Chalon 2014
+      Vin Jaune 2014
+      Savagnin 2018
+39. Pascal Cotat [FR]
+      Sancerre Blanc Les Monts Damnés 2020
+40. Tyler [US]
+      Mae Estate 2019
+41. Weingut Knebel [DE]
+      Riesling Röttgen GG 2023
+42. François Mikulski [FR]
+      Bourgogne 2023
+43. Alois Lageder [IT]
+      Pinot Nero Krafuss 2019
+      Cabernet Löwengang 2013
+      Pinot Grigio Porer 2023
+      Chardonnay 2024
+      Pinot Bianco Versalto 2023
+44. Vodopivec [IT]
+      Solo 2018
+      Origine 2016
+45. Donnafugata [IT]
+      Ben Ryé 2019
+46. L'Hoste Père & Fils [FR]
+      L'Hoste Rosé
+47. Benanti [IT]
+      Etna Bianco 2023
+48. Damijan Podveršič [IT]
+      Kaplja 2018
+      Malvasia 2018
+      Ribolla 2020
+49. Lalù [IT]
+      Langhe Nebbiolo 2023
+50. Radikon [IT]
+      Pignoli 2010
+51. Fattoria di Magliano [IT]
+      Poggio Bestiale 2020
+      Heba 2021
+52. López de Heredia [ES]
+      Gravonia Crianza 2015
+53. Azienda Duemani [IT]
+      Cifra 2021
+54. Maria & Sepp Muster [AT]
+      Graf 2020
+      Sauvignon vom Opok 2021
+55. François Crochet [FR]
+      Sancerre Blanc 2023
+56. Domaine Albert Mann [FR]
+      Pinot Gris Grand Cru Hengst 2020
+      Riesling 2022
+57. Corte Aura [IT]
+      Franciacorta Satèn
+      Franciacorta Brut
+58. Moret-Nominé [FR]
+      Syrah Le Fales 2024
+59. A. Clüsserath [DE]
+      Trittenheimer Apotheke Kabinett 2024
+      Vom Schiefer 2020
+60. Dario Prinčič [IT]
+      Jakot 2019
+61. Weingut Joh. Jos. Prüm [DE]
+      Riesling Wehlener Sonnenuhr Auslese 2023
+62. Domaine de l'Écu [FR]
+      Matris 2018
+63. Bernhard Ott [AT]
+      Fass 4 Grüner Veltliner 2023
+64. Weingut A. Christmann [DE]
+      Riesling Aus den Lagen 2021
+65. Peter Dipoli [IT]
+      Sauvignon Voglar 2019
+66. Contarini [IT]
+      Prosecco Millesimato 2023
+67. Vie di Romans [IT]
+      Friulano 2023
+      Pinot Grigio 2023

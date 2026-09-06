@@ -7150,6 +7150,11 @@
    "terroir": "",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "93+",
+     "checked": "2026-09-06"
+    },
+    {
      "critic": "Jancis Robinson",
      "score": "17/20"
     },
@@ -7650,6 +7655,11 @@
     "rare"
    ],
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "98",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Vinous",
      "score": "96"
@@ -8960,6 +8970,11 @@
     "rare"
    ],
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-09-06"
+    },
     {
      "critic": "Vinous",
      "score": "94"

@@ -38,7 +38,47 @@ the same wine up twice. Plenty of these genuinely have no Parker review.
 
 
 
-## Queue — outside Croatia and Slovenia (136), dearest first
+## Checked — 8 of 104 queries (2026-09-06)
+
+The unit of work is **producer + vintage**, not one wine at a time: 136 wines
+collapse to 104 queries that way, and a producer's whole vintage comes back on
+one screen. 11 wines resolved in the first 8.
+
+**Found — three scores we did not have:**
+
+        94   745 €  Angelo Gaja — Barbaresco 2020
+        98   550 €  Roagna — Barbaresco Asili «Vecchie Viti» 2019
+       93+   390 €  Château Gazin — Pomerol 2020
+
+The Roagna is a small vindication of the Pajé correction: the 98 that was
+sitting on the wrong wine turns out to be real, and this is the wine it belongs
+to — a different bottle, which we also pour.
+
+**Established zeros — do not look these up again:**
+
+  - **Bernard-Bonin, all five 2023 Meursaults.** Parker has this domaine only in
+    2018 (four wines, 88–93). Nothing later exists.
+  - **Hubert Lignier, Charmes-Chambertin Grand Cru 2021 and Aligoté 2021.** The
+    2021 vintage has 20 Lignier wines and the name list runs Chambolle-Musigny →
+    Clos de la Roche with no Charmes between them, and no Aligoté. He is
+    reviewed deeply; these two cuvées are not.
+  - **Domaine Jean Chartron, both 2022s.** 170 Chartron reviews and the vintage
+    stops at 2020.
+  - **Roagna Barolo Pira 2018.** Roagna's 2018 is two wines, Derthona
+    Montemarzino and Dolcetto d'Alba. No Barolo.
+
+**Unfinished:** Zilliken Riesling Auslese Goldkapsel 2009. The 2009 has 16
+Zilliken wines and eight of the names truncate to "Saarburger Rausch Rieslin…",
+so it needs the rating filter narrowed (`rating_computed=91+TO+100`) or the
+names read one by one. Not resolved either way.
+
+**The pattern worth knowing before continuing:** most of the zeros are vintage,
+not obscurity. Our Burgundy shelf is heavily 2022–2023 and Parker's Burgundy
+coverage thins after 2022, so a French zero usually means *too new* rather than
+*not reviewed*. Check the producer's vintage range first — it answers several
+wines at once and costs one lookup.
+
+## Queue — the remaining 96 queries, dearest first
 
 
 
@@ -49,29 +89,18 @@ Austria and Spain thoroughly.
 
 
 
-       970 €  FR  Bernard-Bonin — Meursault Les Narvaux Dessus 2023
 
-       970 €  FR  Bernard-Bonin — Meursault Villages Le Limozin 2023
 
-       920 €  FR  Bernard-Bonin — Meursault Les Tillets 2023
 
-       790 €  FR  Bernard-Bonin — Meursault La Rencontre 2023
 
-       790 €  FR  Bernard-Bonin — Meursault Clos du Cromin Le Pre Manche 2023
 
-       745 €  IT  Angelo Gaja — Barbaresco 2020
 
-       650 €  FR  Hubert Lignier — Charmes-Chambertin Grand Cru 2021
 
-       560 €  FR  Domaine Jean Chartron — Corton-Charlemagne Grand Cru 2022
 
-       550 €  IT  Roagna — Barbaresco Asili “Vecchie Viti” 2019
 
-       390 €  FR  Château Gazin — Pomerol 2020
 
        390 €  DE  Zilliken — Riesling Auslese Goldkapsel 2009
 
-       380 €  IT  Roagna — Barolo Pira 2018
 
        340 €  FR  Hubert Lignier — Nuits-Saint-Georges “Les Didiers” 1er Cru 2013
 
@@ -143,7 +172,6 @@ Austria and Spain thoroughly.
 
        150 €  US  Tanbark Hill (Philip Togni) — Cabernet Sauvignon 2018
 
-       146 €  FR  Domaine Jean Chartron — Chassagne-Montrachet Les Benoites 2022
 
        145 €  DE  Weingut Heymann-Löwenstein — Riesling Uhlen Blaufüßer Lay GG 2022
 
@@ -287,7 +315,6 @@ Austria and Spain thoroughly.
 
         67 €  AT  Maria & Sepp Muster — Sauvignon vom Opok 2021
 
-        65 €  FR  Hubert Lignier — Aligoté 2021
 
         65 €  FR  Domaine de l'Écu — Matris 2018
 
