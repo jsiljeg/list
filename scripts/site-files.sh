@@ -28,16 +28,12 @@ cp data/menu.json data/producers.json data/regions.json data/unavailable.json "$
 cp library/wines.json "$out/library/"
 cp lists/theatrium.json "$out/lists/"
 
-# The drinks list as plain markup for theatrium.hr, so the restaurant site
-# stops keeping a second, hand-typed copy. Built here rather than committed:
-# it is derived from the two files above and must never be edited by hand.
-node scripts/build-embed.mjs
-cp embed-hr.html embed-en.html "$out/"
-
-# A staging replica of theatrium.hr carrying the embedded list, so the owner can
-# see proposal 1 in their own page design before their developer touches the
-# live site. Not linked from anywhere and noindex'd; delete the line when the
-# real site has the fragment and the preview has served its purpose.
-cp -r preview "$out/"
+# Nothing here is published for theatrium.hr to embed any more (2026-09-07).
+# The plan is a plain link from their nav to this list, so there is no fragment
+# for their developer to paste and no staging replica of their site: embed-hr /
+# embed-en, scripts/build-embed.mjs and preview/ are all gone. check-site.mjs
+# fails if any of those paths becomes reachable again — Pages has no auth, so
+# "published but hidden" is not a state it can offer, and robots.txt is a
+# request rather than a control (the lesson /scratch/ already taught once).
 
 echo "site assembled in $out/ ($(find "$out" -type f | wc -l) files)"

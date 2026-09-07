@@ -9,7 +9,6 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
-Disallow: /preview/
 Disallow: /scratch/
 Disallow: /tests/
 

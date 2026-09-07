@@ -25,8 +25,7 @@ await new Promise((r) => srv.listen(4199, r));
 
 const bad = [];
 const b = await chromium.launch();
-for (const page of ["/", "/admin.html", "/qr.html",
-                    "/preview/index.html", "/preview/ponuda-pica.html"]) {
+for (const page of ["/", "/admin.html", "/qr.html"]) {
   const p = await b.newPage({ viewport: { width: 1024, height: 768 } });
   p.on("pageerror", (e) => bad.push(`${page}: page error — ${e.message}`));
   p.on("console", (m) => { if (m.type() === "error") bad.push(`${page}: console — ${m.text()}`); });
@@ -47,15 +46,11 @@ for (const page of ["/", "/admin.html", "/qr.html",
     if (n < 300) bad.push(`/: only ${n} listings loaded`);
     else console.log(`  index: ${n} listings, data and code all resolved`);
     /* the internal tree must NOT be reachable */
-    /* the fragment theatrium.hr embeds — a 404 here silently empties their page */
-    for (const u of ["/embed-hr.html", "/embed-en.html"]) {
-      const r = await p.request.get("http://127.0.0.1:4199" + u);
-      if (r.status() !== 200) bad.push(`missing: ${u} (${r.status()})`);
-      else if (!(await r.text()).includes("tl-n")) bad.push(`${u} has no items`);
-    }
     for (const u of ["/scratch/vinarije-vina.html", "/docs/preporuke-2026-08.txt",
                      "/data/source/wine-card-2026.pdf", "/tests/data.spec.mjs",
-                     "/CLAUDE.md", "/package.json", "/scripts/validate.mjs"]) {
+                     "/CLAUDE.md", "/package.json", "/scripts/validate.mjs",
+                     "/preview/", "/preview/index.html", "/preview/ponuda-pica.html",
+                     "/embed-hr.html", "/embed-en.html"]) {
       const r = await p.request.get("http://127.0.0.1:4199" + u);
       if (r.status() !== 404) bad.push(`still published: ${u} (${r.status()})`);
     }
