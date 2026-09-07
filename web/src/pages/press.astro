@@ -1,31 +1,57 @@
 ---
 /* Press.
-
-   The rule here is legal, not stylistic: we link, we never republish. Outlet,
-   headline, date, link, and our own sentence saying why it is worth reading.
-   At most a short quoted phrase in quotation marks with attribution. An
-   article's text belongs to the publication that paid for it, and reprinting
-   it — reworded or not — is an infringement however generously we credit it.
-   Photographs inside articles belong to the photographer; we use our own.
-
-   Fill ITEMS with real coverage. The shape is the whole point: everything
-   below `note` is ours, everything above it is a reference. */
+ *
+ * WE LINK, WE NEVER REPUBLISH. Outlet, headline, date, link — and a sentence
+ * of our own saying why it is worth reading. The headline is how a piece is
+ * identified; everything after `note` is ours. An article's text belongs to
+ * the publication that paid for it, and reprinting it — reworded or not — is
+ * an infringement however generously we credit it.
+ *
+ * NO IMAGES FROM THE ARTICLES, and none of the outlets' logos either. Those
+ * belong to the photographers and the publications, and a press page is a
+ * conspicuous place to borrow them. When the shoot lands, our own photography
+ * can sit alongside these; until then the page carries its weight through
+ * typography rather than through pictures we are not entitled to use.
+ *
+ * Every link below was opened and confirmed. Two were nearly wrong: a search
+ * result gave the Plava kamenica piece a slug that redirects, and my first
+ * guess at the Večernji id was a different article entirely. */
 import Base from "../layouts/Base.astro";
 
-const ITEMS = [
+const GUIDE = [
   {
     outlet: "MICHELIN Guide",
     title: "Theatrium by Filho — Zagreb",
     date: "",
     url: "https://guide.michelin.com/rs/en/zagreb-region/zagreb/restaurant/theatrium-by-filho",
-    note: "Restoran je uvršten u MICHELIN Guide. (Uvrštenje u vodič, bez zvjezdice.)",
+    /* Deliberately explicit. The restaurant is *in* the guide; it does not hold
+       a star, and a press page implying otherwise would be the worst kind of
+       error to make in public. */
+    note: "Restoran je uvršten u vodič. Uvrštenje, bez zvjezdice.",
+  },
+];
+
+const PRESS = [
+  {
+    outlet: "Večernji list",
+    title: "Iza kulisa zagrebačkog restorana Theatrium by Filho",
+    date: "",
+    url: "https://www.vecernji.hr/lifestyle/iza-kulisa-theratriuma-by-filho-jedan-dan-sa-chefom-filipom-horvatom-1514453",
+    note: "Jedan dan s chefom, od nabave do servisa.",
   },
   {
     outlet: "Buro 24/7",
     title: "Filip Horvat: „Nismo zreli ni za Michelinovu zvjezdicu u Zagrebu, a kamoli za plant based restoran“",
     date: "2025-03-26",
     url: "https://buro247.hr/filip-horvat-theatrium-by-filho-intervju/",
-    note: "Veliki intervju s chefom, o zagrebačkoj sceni i o tome što restoranu treba prije nagrada. Razgovarala Ana Pavić.",
+    note: "Veliki intervju o zagrebačkoj sceni i o tome što restoranu treba prije nagrada. Razgovarala Ana Pavić.",
+  },
+  {
+    outlet: "Večernji list",
+    title: "Posebna i smjela autorska kuhinja chefa Filipa Horvata",
+    date: "",
+    url: "https://www.vecernji.hr/zagreb/posebna-i-smjela-autorska-kuhinja-chefa-filipa-horvata-1412204",
+    note: "O kuhinji koja rastavlja poznata jela i slaže ih iznova.",
   },
   {
     outlet: "Plava kamenica",
@@ -34,65 +60,165 @@ const ITEMS = [
     url: "https://plavakamenica.hr/2026/07/24/theatrium-restoran-zagreb-filip-horvat-caroni-rum/",
     note: "Specijalizirani gastro portal o kuhinji i o karti pića — uključujući bocu iz chefove privatne zalihe.",
   },
+  {
+    outlet: "Eat Out Zagreb",
+    title: "Chef Filip Horvat potpuno izluđuje goste",
+    date: "2022-05-15",
+    url: "https://www.eatoutzagreb.com/recenzije-restorani/chef-filip-horvat-potpuno-izluduje-goste/",
+    note: "Recenzija iz perspektive gosta za stolom.",
+  },
+  {
+    outlet: "Plava kamenica",
+    title: "Theatrium je pobijedio: Filip Horvat preko puta restorana otvara novi",
+    date: "2023-09-29",
+    url: "https://plavakamenica.hr/2023/09/29/theatrium-je-pobijedio-filip-horvat-preko-puta-restorana-otvara-novi/",
+    note: "O širenju preko puta — i o tome kako je Theatrium do toga došao.",
+  },
+  {
+    outlet: "Plava kamenica",
+    title: "Chef Horvat pronašao je formulu za uspjeh Theatriuma",
+    date: "2020-05-14",
+    url: "https://plavakamenica.hr/2020/05/14/chef-horvat-pronasao-je-formulu-za-uspjeh-theatriuma/",
+    note: "Rani tekst, iz godine u kojoj je restoran pronašao svoj ton.",
+  },
 ];
 
-const schema = ITEMS.length
-  ? {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      itemListElement: ITEMS.map((it, i) => ({
-        "@type": "ListItem",
-        position: i + 1,
-        url: it.url,
-        name: it.title,
-      })),
-    }
-  : null;
+const ALL = [...GUIDE, ...PRESS];
+
+const MONTHS = ["siječnja","veljače","ožujka","travnja","svibnja","lipnja",
+                "srpnja","kolovoza","rujna","listopada","studenoga","prosinca"];
+const hrDate = (iso) => {
+  if (!iso) return "";
+  const [y, m, d] = iso.split("-").map(Number);
+  return `${d}. ${MONTHS[m - 1]} ${y}.`;
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Press — Theatrium by Filho",
+  itemListElement: ALL.map((it, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: it.url,
+    name: it.title,
+  })),
+};
 ---
 
 <Base
   title="Press — Theatrium by Filho"
-  description="Napisano o restoranu Theatrium by Filho i chefu Filipu Horvatu."
+  description="Napisano o restoranu Theatrium by Filho i chefu Filipu Horvatu — odabrani tekstovi i vodiči."
   schema={schema}
 >
   <header class="head">
     <p class="eyebrow">Press</p>
     <h1>Napisano o nama</h1>
-    <p class="lede">Odabrani tekstovi o Theatriumu i chefu Filipu Horvatu.</p>
+    <p class="lede">
+      Odabrani tekstovi o Theatriumu i chefu Filipu Horvatu. Svaka poveznica
+      vodi na izvorni tekst kod izdavača.
+    </p>
   </header>
 
-  {ITEMS.length === 0 ? (
-    <p class="empty">
-      Popis se priprema. Svaki unos vodi na izvorni tekst kod izdavača.
-    </p>
-  ) : (
+  <section class="group">
+    <h2 class="gtitle">Vodiči</h2>
     <ul class="items">
-      {ITEMS.map((it) => (
+      {GUIDE.map((it) => (
         <li>
           <a href={it.url} rel="noopener nofollow" target="_blank">
-            <span class="p-outlet">{it.outlet}</span>
+            <span class="p-head">
+              <span class="p-outlet">{it.outlet}</span>
+              {it.date && <time datetime={it.date}>{hrDate(it.date)}</time>}
+            </span>
             <span class="p-title">{it.title}</span>
+            <span class="p-note">{it.note}</span>
+            <span class="p-go" aria-hidden="true">→</span>
           </a>
-          <p class="p-note">{it.note}</p>
-          <time datetime={it.date}>{it.date}</time>
         </li>
       ))}
     </ul>
-  )}
+  </section>
+
+  <section class="group">
+    <h2 class="gtitle">U medijima</h2>
+    <ul class="items">
+      {PRESS.map((it) => (
+        <li>
+          <a href={it.url} rel="noopener nofollow" target="_blank">
+            <span class="p-head">
+              <span class="p-outlet">{it.outlet}</span>
+              {it.date && <time datetime={it.date}>{hrDate(it.date)}</time>}
+            </span>
+            <span class="p-title">{it.title}</span>
+            <span class="p-note">{it.note}</span>
+            <span class="p-go" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <p class="foot">
+    Pišete o nama? <a href="mailto:joy@theatrium.hr">joy@theatrium.hr</a>
+  </p>
 </Base>
 
 <style>
-  .head { padding: 3.5rem 0 2rem; max-width: 44rem; }
+  .head { padding: 3.5rem 0 1rem; max-width: 46rem; }
   .lede { color: var(--text-dim); font-size: 1.1rem; }
-  .empty { color: var(--text-faint); padding: 2rem 0 var(--section); }
-  .items { list-style: none; margin: 0; padding: 0 0 var(--section); max-width: 46rem; }
-  .items li { padding: 1.4rem 0; border-top: 1px solid var(--line); }
-  .items a { text-decoration: none; display: block; }
+
+  .group { padding-top: 3rem; }
+  .gtitle {
+    font-family: var(--sans); font-weight: 500;
+    font-size: .78rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--gold-soft);
+    padding-bottom: .9rem; border-bottom: 1px solid var(--line);
+  }
+
+  .items { list-style: none; margin: 0; padding: 0; }
+  .items li { border-bottom: 1px solid var(--line); }
+  .items a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: .35rem 1.5rem;
+    padding: 1.6rem 0;
+    text-decoration: none;
+    transition: padding-left .2s ease;
+  }
+  .items a:hover, .items a:focus-visible { padding-left: .7rem; }
+
+  .p-head {
+    grid-column: 1; display: flex; flex-wrap: wrap; align-items: baseline; gap: .8rem;
+  }
   .p-outlet {
-    font-size: .76rem; letter-spacing: .18em; text-transform: uppercase;
+    font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
     color: var(--gold-soft);
   }
-  .p-title { display: block; font-family: var(--serif); font-size: 1.4rem; margin-top: .2rem; }
-  .p-note { color: var(--text-dim); margin: .5rem 0 .4rem; }
-  time { font-size: .82rem; color: var(--text-faint); }
+  time { font-size: .78rem; color: var(--text-faint); }
+
+  .p-title {
+    grid-column: 1;
+    font-family: var(--serif); font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    line-height: 1.25; color: var(--text); text-wrap: balance;
+  }
+  .p-note { grid-column: 1; color: var(--text-dim); font-size: .95rem; max-width: 46ch; }
+
+  .p-go {
+    grid-column: 2; grid-row: 1 / span 3; align-self: center;
+    color: var(--gold); font-size: 1.3rem; opacity: 0;
+    transform: translateX(-.4rem);
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .items a:hover .p-go, .items a:focus-visible .p-go { opacity: 1; transform: none; }
+
+  .foot {
+    margin: 3.5rem 0 var(--section);
+    color: var(--text-faint); font-size: .95rem;
+  }
+  .foot a { color: var(--gold-soft); }
+
+  @media (max-width: 560px) {
+    .items a { grid-template-columns: 1fr; }
+    .p-go { display: none; }
+  }
 </style>
