@@ -127,36 +127,55 @@ and the build step must do the same.
 
 ---
 
-## 6. Reservations — the honest version
+## 6. Reservations — built, and what the model is
 
-**Do not build a table-management system.** Availability is where these products
-earn their fee: covers per slot, turn times, combining and splitting tables,
-walk-ins, waitlists, no-show tracking, deposits, cancellation windows. Getting
-that wrong double-books a Saturday.
+**Decision: real bookings, confirmed on the spot.** Owner's call, 2026-09-07.
 
-**Recommended path — a booking *request*, not a booking.**
+The model is **covers-based pacing with turn times, not table assignment**, and
+the distinction is worth keeping written down because "real reservations" can
+mean either.
 
-```
-guest fills form → stored in D1 → email to restaurant + acknowledgement to guest
-                                → staff confirm by reply/phone
-                                → simple /admin list, PIN-gated like the 86 board
-```
+Assigning tables means modelling table sizes, combining two-tops into a four,
+splitting them back, and choosing who sits where — and when it goes wrong a
+party stands at the door on a Saturday. Pacing answers the two questions that
+actually constrain a room, and gives the guest the same thing (instant
+confirmation, capacity respected):
 
-This is honest with the guest ("we will confirm within X"), it is a few hundred
-lines, it costs nothing to run, and it removes the SevenRooms bill. Most small
-fine-dining rooms run exactly this way.
+1. **Capacity** — how many covers are in the room at once.
+2. **Pacing** — how many arrive within the same 15 minutes.
 
-**Before building even that, price the alternatives.** "Too expensive" is worth
-re-testing against Resmio, Zenchef/Formitable, Quandoo and TheFork — some have
-cover-based or flat low tiers. Building is not free either: it is maintenance,
-deliverability, GDPR and being on call when a form breaks on a Friday night.
-Decide with numbers, not by default.
+The second is the one kitchens lose on. A kitchen that serves 40 covers across
+an evening cannot serve 20 that walk in together.
 
-**If real-time availability is genuinely needed later**, the honest scope is:
-service periods, covers-per-slot caps, a hold on submit, and an admin calendar.
-That is a project, not a page.
+**Where it lives**
 
----
+| Piece | File |
+|---|---|
+| The rules, pure and testable | `src/lib/booking.mjs` |
+| Slot list for a date + party | `functions/api/availability.js` |
+| Taking the booking | `functions/api/reservations.js` |
+| Guest + house email | `functions/_lib/mail.js` |
+| Tables | `schema.sql` |
+| The three-step form | `src/pages/rezervacija.astro` |
+
+**The race is handled in SQL.** Two guests can be looking at the last two seats
+at 20:00. Checking availability in JavaScript and then inserting is
+check-then-act with a gap, and that gap is the double-booking. The capacity test
+is therefore part of the INSERT — a conditional `INSERT ... SELECT ... WHERE`
+that writes one row or none, atomically. The loser gets a 409 and a refreshed
+slot list. `/api/availability` is advisory only and is never trusted.
+
+**Email cannot fail a booking.** The row is written first; a send failure is
+logged, not surfaced. A guest seeing an error after their seat was taken is the
+worst available outcome.
+
+**Still to build:** cancellation page (`/otkazivanje/`), the staff view behind
+Cloudflare Access — not a PIN, because this holds guest personal data — blackout
+management for closures and private events, and a no-show flag.
+
+**Run SevenRooms in parallel for a month before cancelling it.** The failure
+mode here is silent: a booking that never arrives is not noticed until an empty
+table at 20:00.
 
 ## 7. Newsletter and birthdays — where the traps are
 
