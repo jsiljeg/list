@@ -190,6 +190,8 @@ a { color: inherit; text-decoration: none; }
 
 .btn-outline {
   display: inline-block;
+  max-width: 100%;
+  line-height: 1.45;
   border: 1px solid var(--ink);
   padding: 15px 34px;
   font-size: 15px;
@@ -349,6 +351,7 @@ a { color: inherit; text-decoration: none; }
   .nav-toggle { right: 18px; }
   .cover { padding: 120px 0 70px; }
   .list-cta { padding: 26px 22px; gap: 18px; }
+  .btn-outline { padding: 13px 20px; font-size: 14px; letter-spacing: 2px; }
   .list-cta .txt { max-width: none; }
   .rule { height: 62px; }
 }
