@@ -267,17 +267,30 @@ pages are the search equity we have.
 
 ---
 
-## 12. Decisions needed from you
+## 12. Decisions — answered 2026-09-07
 
-1. **Reservations — build or buy?** I recommend building the *request* flow and
-   pricing the alternatives first. Needs a number: covers per week.
-2. **Newsletter provider** — Resend (we send, staff don't touch it) or
-   MailerLite/Brevo (staff write and send themselves)?
-3. **Languages at launch** — hr + en only, or it/de too? Affects content cost
-   more than code.
-4. **Photography** — is there a usable shoot, or does one need commissioning?
-   This is the single biggest quality lever on a restaurant site and the one
-   thing code cannot fake.
-5. **Domain for staging** — a subdomain of devinos.hr is fine, but the DNS for
-   theatrium.hr sits with whoever runs their WordPress. Getting that access
-   early makes Phase 4 painless and blocks nothing now.
+| Question | Answer |
+|---|---|
+| Reservations | **Build real bookings**, not a request flow. Done: capacity + pacing, instant confirmation. |
+| Newsletter | **We send it**, staff never touch a campaign tool → Resend. |
+| Languages | Croatian first; the other seven added afterwards on the wine list's pattern. |
+| Photography | All 26 dishes plus room, chef, interiors — brief in PHOTOGRAPHY.md, list in SHOTLIST-DISHES.md. |
+| Domain | devinos.hr for now, theatrium.hr at cutover. |
+
+### Still blocking
+
+1. **Cloudflare credentials.** A token with Pages + D1 + Workers scope, and the
+   account id, as secrets on a `theatrium-web` GitHub environment. The existing
+   `theatrium` token is DNS-scoped and cannot deploy.
+2. **Resend key and a verified sending domain.** Sending from an unverified
+   domain earns a bad reputation in a week that takes months to undo.
+3. **The service numbers are my guesses and must be corrected before go-live** —
+   they are in `src/lib/booking.mjs`:
+   - open Tue–Sat? (currently Mon–Sat, closed Sunday)
+   - lunch 12:00–15:00, dinner 18:00–23:00 (23:30 Fri/Sat)
+   - **34 covers bookable online** — deliberately under true capacity so walk-ins
+     and the phone still have somewhere to go
+   - **8 covers may start in any 15 minutes** (kitchen pacing)
+   - turn: 90 min to 2 people, 105 to 4, 135 above
+   - parties over 8 are told to call
+   Every one of these is a business decision, not a technical one.

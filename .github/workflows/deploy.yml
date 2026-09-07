@@ -3,6 +3,13 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    # The new site lives in web/ and deploys through deploy-web.yml. Without
+    # this, every commit there republishes the wine list byte-for-byte — a
+    # pointless run against the venue's live domain.
+    paths-ignore:
+      - "web/**"
+      - "scratch/**"
+      - "docs/**"
   workflow_dispatch:
 
 permissions:

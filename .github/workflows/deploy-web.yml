@@ -1,0 +1,56 @@
+# The new restaurant site (web/) → Cloudflare Pages.
+#
+# Deliberately a separate workflow from deploy.yml: that one publishes the wine
+# list to GitHub Pages and must not be touched by work here. The two share a
+# repo and nothing else — different output, different host, different trigger.
+name: Deploy web to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "web/**"
+      - ".github/workflows/deploy-web.yml"
+      # the new site reads these at build time, so a menu or wine change
+      # should rebuild the dish pages
+      - "data/menu.json"
+      - "library/wines.json"
+      - "lists/theatrium.json"
+  workflow_dispatch:
+
+concurrency:
+  group: web-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: theatrium-web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install
+        working-directory: web
+        run: npm ci
+
+      - name: Generate dish → wine pairings
+        working-directory: web
+        # Reads the wine list's own files. Fails on a pairing tag with no
+        # Croatian word rather than printing the raw tag.
+        run: node scripts/build-pairings.mjs
+
+      - name: Build
+        working-directory: web
+        run: npx astro build
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: web
+          command: pages deploy dist --project-name=theatrium-web --branch=main

@@ -1,97 +1,224 @@
 ---
-/* Reservation — a *request*, not a booking.
-
-   Deliberately not a table-management system. Availability is where SevenRooms
-   and its competitors earn their fee: covers per slot, turn times, combining
-   and splitting tables, walk-ins, waitlists, no-shows, deposits. Getting that
-   wrong double-books a Saturday, and a half-built version is worse than none.
-
-   So this is honest with the guest: they send a request, staff confirm. That
-   is how most rooms this size actually run, it costs nothing, and it is a few
-   hundred lines instead of a product.
-
-   PoC: the form posts nowhere yet. Phase 2 wires it to a Cloudflare Pages
-   Function writing to D1, an email to the restaurant and an acknowledgement to
-   the guest, with the staff list behind Cloudflare Access — not a PIN, because
-   this holds guest personal data and the 86 board's own notes are clear that a
-   PIN is a screen lock rather than a credential. */
+/* Reservation — a real booking, confirmed on the spot.
+ *
+ * Three steps on one page: how many and when, which slot, who you are. The
+ * slot list comes from /api/availability; the booking goes to
+ * /api/reservations, which re-checks capacity inside the INSERT so two people
+ * cannot take the last table between them.
+ *
+ * The only client-side JavaScript on the site. Everything else ships none. */
 import Base from "../layouts/Base.astro";
+import { CONFIG, nowInZagreb, addDays } from "../lib/booking.mjs";
 
-const today = new Date().toISOString().slice(0, 10);
+const now = nowInZagreb();
+const min = now.date;
+const max = addDays(now.date, CONFIG.horizonDays);
 ---
 
 <Base
   title="Rezervacija — Theatrium by Filho"
-  description="Zatražite stol u restoranu Theatrium by Filho, Teslina 7, Zagreb."
+  description="Rezervirajte stol u restoranu Theatrium by Filho, Teslina 7, Zagreb. Potvrda odmah."
 >
   <header class="head">
     <p class="eyebrow">Rezervacija</p>
-    <h1>Zatražite stol</h1>
+    <h1>Rezervirajte stol</h1>
     <p class="lede">
-      Javit ćemo se s potvrdom u najkraćem roku. Za isti dan nazovite
-      <a href="tel:+385995844652">+385 99 5844 652</a>.
+      Potvrda stiže odmah, e-poštom. Za isti dan i za grupe veće od
+      {CONFIG.maxParty} osoba nazovite <a href="tel:+385995844652">+385 99 5844 652</a>.
     </p>
   </header>
 
-  <form class="book" method="post" action="/api/rezervacija" novalidate>
-    <div class="row">
-      <label>
-        <span>Ime i prezime</span>
-        <input type="text" name="name" required autocomplete="name" />
-      </label>
-      <label>
-        <span>Broj gostiju</span>
-        <input type="number" name="covers" min="1" max="12" value="2" required />
-      </label>
-    </div>
+  <form class="book" id="book" novalidate data-min={min} data-max={max}>
+    <fieldset class="step">
+      <legend><span class="n">1</span> Koliko vas je i kada</legend>
+      <div class="row">
+        <label>
+          <span>Gostiju</span>
+          <select name="covers" id="covers">
+            {Array.from({ length: CONFIG.maxParty }, (_, i) => i + 1).map((n) => (
+              <option value={n} selected={n === 2}>{n}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span>Datum</span>
+          <input type="date" name="date" id="date" min={min} max={max} required />
+        </label>
+      </div>
+    </fieldset>
 
-    <div class="row">
-      <label>
-        <span>Datum</span>
-        <input type="date" name="date" min={today} required />
-      </label>
-      <label>
-        <span>Vrijeme</span>
-        <input type="time" name="time" required />
-      </label>
-    </div>
+    <fieldset class="step" id="step-slots" hidden>
+      <legend><span class="n">2</span> Odaberite vrijeme</legend>
+      <div id="slots" class="slots" role="group" aria-label="Slobodni termini"></div>
+      <p id="slots-empty" class="empty" hidden>
+        Za taj dan i broj gostiju nema slobodnih termina. Pokušajte s drugim
+        datumom ili nas nazovite.
+      </p>
+    </fieldset>
 
-    <div class="row">
+    <fieldset class="step" id="step-who" hidden>
+      <legend><span class="n">3</span> Vaši podaci</legend>
+      <div class="row">
+        <label>
+          <span>Ime i prezime</span>
+          <input type="text" name="name" required autocomplete="name" />
+        </label>
+        <label>
+          <span>E-mail</span>
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+      </div>
       <label>
-        <span>E-mail</span>
-        <input type="email" name="email" required autocomplete="email" />
-      </label>
-      <label>
-        <span>Telefon</span>
+        <span>Telefon <em>(za slučaj promjene)</em></span>
         <input type="tel" name="phone" autocomplete="tel" />
       </label>
-    </div>
+      <label>
+        <span>Napomena <em>(alergije, prigoda, stol)</em></span>
+        <textarea name="note" rows="3"></textarea>
+      </label>
 
-    <label class="full">
-      <span>Napomena <em>(alergije, prigoda, stol)</em></span>
-      <textarea name="note" rows="3"></textarea>
-    </label>
+      <label class="check">
+        <input type="checkbox" name="privacy" value="yes" required />
+        <span>
+          Suglasan/na sam da se moji podaci koriste za obradu ove rezervacije.
+          <a href="/privatnost/">Izjava o privatnosti</a>.
+        </span>
+      </label>
 
-    <!-- Consent is separate from the booking and unticked. A reservation is
-         performed under contract; marketing needs its own opt-in, and a
-         pre-ticked box is not consent under the GDPR. -->
-    <label class="check">
-      <input type="checkbox" name="newsletter" value="yes" />
-      <span>Želim primati obavijesti o novom jelovniku i vinima.</span>
-    </label>
+      <!-- Separate, unticked, and not required. The reservation is performed
+           under contract; marketing needs its own opt-in. -->
+      <label class="check">
+        <input type="checkbox" name="newsletter" value="yes" />
+        <span>Želim primati obavijesti o novom jelovniku i vinima.</span>
+      </label>
 
-    <p class="legal">
-      Podatke koristimo isključivo za obradu ove rezervacije. Više u
-      <a href="/privatnost/">izjavi o privatnosti</a>.
-    </p>
-
-    <button class="btn btn-solid" type="submit">Pošalji upit</button>
-
-    <p class="poc">
-      Ovo je nacrt — obrazac još nije spojen. (PoC: endpoint dolazi u fazi 2.)
-    </p>
+      <button class="btn btn-solid" type="submit" id="submit">Rezerviraj</button>
+      <p class="err" id="err" hidden role="alert"></p>
+    </fieldset>
   </form>
+
+  <div class="done" id="done" hidden role="status">
+    <h2>Rezervacija je potvrđena</h2>
+    <p id="done-line"></p>
+    <p class="muted">Potvrdu smo poslali e-poštom. Vidimo se.</p>
+  </div>
 </Base>
+
+<script>
+  const form = document.getElementById("book");
+  const covers = document.getElementById("covers");
+  const date = document.getElementById("date");
+  const slotsBox = document.getElementById("slots");
+  const stepSlots = document.getElementById("step-slots");
+  const stepWho = document.getElementById("step-who");
+  const empty = document.getElementById("slots-empty");
+  const err = document.getElementById("err");
+  const submit = document.getElementById("submit");
+  let chosen = null;
+
+  const show = (el, on) => { el.hidden = !on; };
+
+  async function loadSlots() {
+    chosen = null;
+    show(stepWho, false);
+    if (!date.value) return show(stepSlots, false);
+
+    slotsBox.innerHTML = '<p class="loading">Tražimo slobodne termine…</p>';
+    show(stepSlots, true);
+    show(empty, false);
+
+    let data;
+    try {
+      const r = await fetch(`/api/availability?date=${date.value}&covers=${covers.value}`);
+      data = await r.json();
+    } catch {
+      slotsBox.innerHTML = '<p class="loading">Nije moguće dohvatiti termine.</p>';
+      return;
+    }
+
+    const slots = data.slots || [];
+    slotsBox.innerHTML = "";
+    if (!slots.length) { show(empty, true); return; }
+
+    for (const s of slots) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "slot";
+      b.textContent = s.time;
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", () => {
+        chosen = s.time;
+        slotsBox.querySelectorAll(".slot").forEach((o) =>
+          o.setAttribute("aria-pressed", String(o === b)));
+        show(stepWho, true);
+        stepWho.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+      slotsBox.appendChild(b);
+    }
+  }
+
+  covers.addEventListener("change", loadSlots);
+  date.addEventListener("change", loadSlots);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!chosen) return;
+    show(err, false);
+    submit.disabled = true;
+    submit.textContent = "Šaljemo…";
+
+    const fd = new FormData(form);
+    const payload = {
+      date: date.value,
+      time: chosen,
+      covers: Number(covers.value),
+      name: fd.get("name"),
+      email: fd.get("email"),
+      phone: fd.get("phone"),
+      note: fd.get("note"),
+      consentPrivacy: fd.get("privacy") === "yes",
+      newsletter: fd.get("newsletter") === "yes",
+      locale: "hr",
+    };
+
+    let r, data;
+    try {
+      r = await fetch("/api/reservations", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      data = await r.json();
+    } catch {
+      data = { error: "network" };
+    }
+
+    submit.disabled = false;
+    submit.textContent = "Rezerviraj";
+
+    if (data && data.ok) {
+      form.hidden = true;
+      document.getElementById("done-line").textContent =
+        `${data.date} u ${data.time} · ${data.covers} ${data.covers === 1 ? "osoba" : "osobe"}`;
+      show(document.getElementById("done"), true);
+      return;
+    }
+
+    /* The one message that must be exactly right: someone else took the slot
+       while this guest was typing. Say so, and reload the list. */
+    const msg = {
+      "slot-taken": "Nažalost, taj je termin upravo zauzet. Odaberite drugi.",
+      "too-soon": "Za rezervacije za danas nazovite nas, molimo.",
+      closed: "Tog smo dana zatvoreni.",
+      invalid: "Provjerite ispravnost podataka.",
+      "no-database": "Rezervacije trenutno nisu dostupne. Nazovite nas, molimo.",
+    }[data && data.error] || "Nešto je pošlo po zlu. Pokušajte ponovno ili nas nazovite.";
+
+    err.textContent = msg;
+    show(err, true);
+    if (data && data.error === "slot-taken") loadSlots();
+  });
+</script>
 
 <style>
   .head { padding: 3.5rem 0 2rem; max-width: 44rem; }
@@ -99,6 +226,18 @@ const today = new Date().toISOString().slice(0, 10);
   .lede a { color: var(--gold); }
 
   .book { max-width: 42rem; padding-bottom: var(--section); }
+  .step { border: 0; padding: 0; margin: 0 0 2.6rem; }
+  legend {
+    font-size: .82rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--text-dim); margin-bottom: 1rem; padding: 0;
+    display: flex; align-items: center; gap: .7rem;
+  }
+  .n {
+    display: grid; place-items: center; width: 1.6rem; height: 1.6rem;
+    border: 1px solid var(--gold-soft); color: var(--gold);
+    border-radius: 50%; font-size: .78rem;
+  }
+
   .row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
   label { display: block; margin-bottom: 1rem; }
   label > span {
@@ -106,18 +245,35 @@ const today = new Date().toISOString().slice(0, 10);
     text-transform: uppercase; color: var(--text-dim); margin-bottom: .4rem;
   }
   label em { text-transform: none; letter-spacing: 0; color: var(--text-faint); font-style: normal; }
-  input, textarea {
+  input, textarea, select {
     width: 100%; background: var(--bg-raised); color: var(--text);
     border: 1px solid var(--line); padding: .75rem .9rem;
     font-family: inherit; font-size: 1rem; border-radius: 2px;
   }
-  input:focus, textarea:focus { border-color: var(--gold-soft); outline: none; }
-  .full { display: block; }
-  .check { display: flex; gap: .7rem; align-items: flex-start; margin: 1.4rem 0; }
-  .check input { width: auto; margin-top: .25rem; }
-  .check span { font-size: .95rem; color: var(--text-dim); }
-  .legal { font-size: .85rem; color: var(--text-faint); margin: 0 0 1.6rem; }
-  .legal a { color: var(--text-dim); }
-  button { cursor: pointer; font-family: inherit; }
-  .poc { margin-top: 1.5rem; font-size: .82rem; color: var(--text-faint); }
+  input:focus, textarea:focus, select:focus { border-color: var(--gold-soft); outline: none; }
+
+  .slots { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .slot {
+    background: var(--bg-raised); color: var(--text);
+    border: 1px solid var(--line); border-radius: 2px;
+    padding: .7rem 1.1rem; font-family: inherit; font-size: 1rem;
+    cursor: pointer; font-variant-numeric: tabular-nums;
+    transition: border-color .15s, background-color .15s;
+  }
+  .slot:hover { border-color: var(--gold-soft); }
+  .slot[aria-pressed="true"] { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+  .loading, .empty { color: var(--text-faint); margin: 0; }
+
+  .check { display: flex; gap: .7rem; align-items: flex-start; margin: 1.2rem 0; }
+  .check input { width: auto; margin-top: .3rem; }
+  .check span { font-size: .95rem; color: var(--text-dim); line-height: 1.6; }
+  .check a { color: var(--gold-soft); }
+
+  button[type="submit"] { cursor: pointer; font-family: inherit; margin-top: .6rem; }
+  .err { color: #e0866a; margin-top: 1rem; }
+
+  .done { max-width: 42rem; padding: 2rem 0 var(--section); }
+  .done h2 { margin-bottom: .8rem; }
+  .done p { color: var(--text-dim); margin: 0 0 .4rem; }
+  .done .muted { color: var(--text-faint); }
 </style>

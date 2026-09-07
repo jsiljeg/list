@@ -1,0 +1,26 @@
+# Cloudflare Pages project for the new restaurant site.
+#
+# The static pages come from dist/ (Astro), the API from functions/. D1 holds
+# reservations and the mailing list.
+#
+# First-time setup, once the account exists:
+#   npx wrangler d1 create theatrium
+#   -> paste the returned database_id below
+#   npx wrangler d1 execute theatrium --remote --file=schema.sql
+#
+# Secrets are NOT in this file and must never be. Set them on the Pages
+# project (Settings -> Environment variables), or with:
+#   npx wrangler pages secret put RESEND_API_KEY --project-name theatrium-web
+
+name = "theatrium-web"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "dist"
+
+[vars]
+MAIL_FROM  = "Theatrium <rezervacije@devinos.hr>"
+MAIL_HOUSE = "joy@theatrium.hr"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "theatrium"
+database_id = "PASTE_AFTER_wrangler_d1_create"

@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local `wrangler pages dev`. Never commit .dev.vars.
+RESEND_API_KEY=re_xxx
+MAIL_FROM=Theatrium <rezervacije@devinos.hr>
+MAIL_HOUSE=joy@theatrium.hr
