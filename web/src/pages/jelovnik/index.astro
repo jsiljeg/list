@@ -1,0 +1,89 @@
+---
+/* The menu index. Every dish links to its own page, which is where the wine
+   pairing lives — that is what turns a menu from one page into thirty, and
+   the thirty are pages guests and crawlers both have a reason to open. */
+import Base from "../../layouts/Base.astro";
+import dishes from "../../data/generated/dishes.json";
+
+const COURSES = [
+  ["starters", "Predjela"],
+  ["soups", "Juhe"],
+  ["mains", "Glavna jela"],
+  ["desserts", "Deserti"],
+];
+
+const byCourse = COURSES.map(([key, label]) => ({
+  key, label,
+  items: dishes.filter((d) => d.course === key),
+})).filter((c) => c.items.length);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  name: "Repertoire — Theatrium by Filho",
+  inLanguage: "hr",
+  hasMenuSection: byCourse.map((c) => ({
+    "@type": "MenuSection",
+    name: c.label,
+    hasMenuItem: c.items.map((d) => ({ "@type": "MenuItem", name: d.name.hr })),
+  })),
+};
+---
+
+<Base
+  title="Repertoire — jelovnik | Theatrium by Filho"
+  description="Jelovnik restorana Theatrium by Filho u Zagrebu. Uz svako jelo preporuka vina s naše karte."
+  schema={schema}
+>
+  <header class="head">
+    <p class="eyebrow">Repertoire</p>
+    <h1>Jelovnik</h1>
+    <p class="lede">
+      Uz svako jelo stoji vino s naše karte — ista preporuka koju dobijete za stolom.
+    </p>
+  </header>
+
+  {byCourse.map((c) => (
+    <section class="course">
+      <h2>{c.label}</h2>
+      <ul>
+        {c.items.map((d) => (
+          <li>
+            <a href={`/jelovnik/${d.slug}/`}>
+              <span class="d-name">{d.name.hr}</span>
+              <span class="d-en">{d.name.en}</span>
+              {d.wines[0] && (
+                <span class="d-wine">uz {d.wines[0].name} · {d.wines[0].producer}</span>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Base>
+
+<style>
+  .head { padding: 3.5rem 0 1rem; max-width: 44rem; }
+  .lede { color: var(--text-dim); font-size: 1.1rem; }
+
+  .course { padding-top: 3rem; }
+  .course h2 {
+    font-size: 1.1rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold-soft); font-family: var(--sans); font-weight: 500;
+    padding-bottom: .8rem; border-bottom: 1px solid var(--line);
+  }
+  .course ul { list-style: none; margin: 0; padding: 0; }
+  .course li { border-bottom: 1px solid var(--line); }
+  .course a {
+    display: block; padding: 1.15rem 0; text-decoration: none;
+    transition: padding-left .18s ease;
+  }
+  .course a:hover, .course a:focus-visible { padding-left: .6rem; }
+  .d-name { font-family: var(--serif); font-size: 1.35rem; display: block; }
+  .d-en { color: var(--text-faint); font-size: .9rem; font-style: italic; }
+  .d-wine {
+    display: block; margin-top: .35rem;
+    font-size: .82rem; letter-spacing: .06em; color: var(--gold-soft);
+  }
+</style>

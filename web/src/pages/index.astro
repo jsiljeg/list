@@ -1,0 +1,155 @@
+---
+/* Home. Photography leads here in a way it must not in the wine list: the list
+   is a tool used standing up, this page is read while someone decides whether
+   to come. The image slots are placeholders until a real shoot exists — that
+   is the single biggest quality lever on a restaurant site and the one thing
+   code cannot fake. */
+import Base from "../layouts/Base.astro";
+import dishes from "../data/generated/dishes.json";
+
+/* A few dishes on the front page, each already carrying its wine. Picked by
+   course so the row reads as a meal rather than as three starters. */
+const featured = ["starters", "mains", "desserts"]
+  .map((c) => dishes.find((d) => d.course === c && d.wines.length))
+  .filter(Boolean);
+---
+
+<Base
+  title="Theatrium by Filho — restoran u Zagrebu"
+  description="Theatrium by Filho, Teslina 7, Zagreb. Autorska kuhinja u atriju Zagrebačkog kazališta mladih, uz kartu od 393 pića."
+  wide={true}
+>
+  <section class="hero">
+    <div class="hero-img" role="img" aria-label="Interijer restorana Theatrium"></div>
+    <div class="hero-copy shell">
+      <p class="eyebrow">Teslina 7, Zagreb</p>
+      <h1>Predstava za iskusne<br />i znatiželjne</h1>
+      <p class="lede">
+        Autorska kuhinja u atriju Zagrebačkog kazališta mladih — i karta pića
+        koja se čita kao vlastito poglavlje.
+      </p>
+      <p class="cta">
+        <a class="btn btn-solid" href="/rezervacija/">Rezervacija</a>
+        <a class="btn" href="/jelovnik/">Jelovnik</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="shell">
+    <section class="section split">
+      <div>
+        <p class="eyebrow">Scenario</p>
+        <h2>Jelo kao predstava</h2>
+        <p>
+          Tradicionalni standardi rastavljeni su i ponovno složeni na neočekivan
+          način. Iz Repertoara se za ručak bira Predstava, od Prologa do Epiloga;
+          za večeru se dodaju autorski festivali u šest i devet sljedova.
+        </p>
+        <p><a class="btn" href="/o-nama/">O nama</a></p>
+      </div>
+      <div class="frame" role="img" aria-label="Jelo iz Theatriuma"></div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Repertoire</p>
+      <h2>Uz svako jelo, vino</h2>
+      <p class="lede wide">
+        Preporuka nije ukras — dolazi iz iste karte koju dobijete za stolom, uz
+        {dishes.length} jela i 393 pića.
+      </p>
+
+      <ul class="cards">
+        {featured.map((d) => (
+          <li>
+            <a href={`/jelovnik/${d.slug}/`}>
+              <span class="c-img" aria-hidden="true"></span>
+              <span class="c-body">
+                <span class="c-name">{d.name.hr}</span>
+                <span class="c-wine">uz {d.wines[0].name} · {d.wines[0].producer}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <p class="more"><a class="btn" href="/jelovnik/">Cijeli jelovnik</a></p>
+    </section>
+
+    <section class="section band">
+      <p class="eyebrow">Karta pića</p>
+      <h2>393 pića, osam jezika</h2>
+      <p class="lede wide">
+        Vina, žestoka pića i vode — s pretragom, bilješkama i preporukom vina uz
+        jelo. Ista karta koju gosti čitaju za stolom.
+      </p>
+      <p><a class="btn" href="https://theatrium.list.devinos.hr">Otvori kartu pića</a></p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .hero { position: relative; display: grid; }
+  .hero-img {
+    grid-area: 1 / 1;
+    min-height: min(78svh, 720px);
+    /* Placeholder until the shoot exists — a warm gradient rather than a stock
+       photo, because a wrong photograph reads worse than none. */
+    background:
+      radial-gradient(120% 90% at 30% 20%, #2b2721 0%, transparent 60%),
+      linear-gradient(160deg, #1c1a17 0%, #100f0e 100%);
+  }
+  .hero-copy {
+    grid-area: 1 / 1; align-self: end;
+    padding-bottom: clamp(2.5rem, 7vw, 5rem);
+    position: relative;
+  }
+  .hero h1 { margin: 0 0 1rem; }
+  .lede { color: var(--text-dim); font-size: 1.15rem; max-width: 34rem; }
+  .lede.wide { max-width: 44rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.8rem; }
+
+  .split {
+    display: grid; gap: clamp(1.5rem, 5vw, 4rem);
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    align-items: center;
+  }
+  .split p { color: var(--text-dim); max-width: 36rem; }
+  .split h2 { margin-bottom: 1rem; }
+  .frame {
+    aspect-ratio: 4 / 3; border: 1px solid var(--line);
+    background: linear-gradient(140deg, #221f1b, #15140f);
+  }
+
+  .cards {
+    list-style: none; margin: 2.5rem 0 0; padding: 0;
+    display: grid; gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+  .cards a {
+    display: block; text-decoration: none;
+    border: 1px solid var(--line); background: var(--bg-card);
+    transition: border-color .2s, transform .2s;
+  }
+  .cards a:hover, .cards a:focus-visible {
+    border-color: var(--gold-soft); transform: translateY(-3px);
+  }
+  .c-img {
+    display: block; aspect-ratio: 3 / 2;
+    background: linear-gradient(140deg, #26221c, #16150f);
+    border-bottom: 1px solid var(--line);
+  }
+  .c-body { display: block; padding: 1.1rem 1.2rem 1.3rem; }
+  .c-name { font-family: var(--serif); font-size: 1.3rem; display: block; }
+  .c-wine {
+    display: block; margin-top: .4rem;
+    font-size: .82rem; color: var(--gold-soft); letter-spacing: .05em;
+  }
+  .more { margin-top: 2.2rem; }
+
+  .band {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .band h2 { margin-bottom: .8rem; }
+  .band .btn { margin-top: 1.6rem; }
+</style>

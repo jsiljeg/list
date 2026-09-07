@@ -1,0 +1,36 @@
+---
+/* Scenario / about. Placeholder copy in the site's register — the owner's own
+   text and the chef's story go here, and this is one of the pages where real
+   words matter more than any code. */
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Scenario — Theatrium by Filho"
+  description="O restoranu Theatrium by Filho i chefu Filipu Horvatu, Teslina 7, Zagreb."
+>
+  <header class="head">
+    <p class="eyebrow">Scenario</p>
+    <h1>O nama</h1>
+    <p class="lede">
+      Restoran u atriju Zagrebackog kazalista mladih, nekoliko koraka od
+      sredisnjeg trga.
+    </p>
+  </header>
+
+  <div class="body">
+    <p>
+      Ovdje ide prica o kuhinji i o chefu — tekst vlasnika, ne nas. Stranica
+      postoji da bi ta prica imala svoje mjesto, svoju adresu i svoj naslov u
+      trazilici.
+    </p>
+    <p><a class="btn" href="/jelovnik/">Repertoire</a></p>
+  </div>
+</Base>
+
+<style>
+  .head { padding: 3.5rem 0 2rem; max-width: 44rem; }
+  .lede { color: var(--text-dim); font-size: 1.1rem; }
+  .body { max-width: 42rem; padding-bottom: var(--section); }
+  .body p { color: var(--text-dim); }
+</style>

@@ -1,0 +1,169 @@
+---
+/* The one layout. Everything SEO-structural lives here so a page can never
+   ship without a canonical, a description or the restaurant's structured data.
+
+   The JSON-LD is the piece that earns its keep for a restaurant: schema.org
+   Restaurant with hours, geo, price range and acceptsReservations is what
+   produces rich results in Google and what Maps reads back. */
+import "../styles/tokens.css";
+
+const {
+  title,
+  description,
+  /* Pages that are a thing in themselves (a dish) pass their own JSON-LD;
+     every page still gets the Restaurant block below. */
+  schema = null,
+  wide = false,
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://theatrium.preview.devinos.hr");
+const canonical = new URL(Astro.url.pathname, site).href;
+
+const RESTAURANT = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "Theatrium by Filho",
+  url: site.href,
+  servesCuisine: ["Croatian", "Contemporary European"],
+  priceRange: "€€€",
+  acceptsReservations: true,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Teslina 7",
+    addressLocality: "Zagreb",
+    postalCode: "10000",
+    addressCountry: "HR",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: 45.8109, longitude: 15.9769 },
+  telephone: "+385 99 5844 652",
+  email: "joy@theatrium.hr",
+  hasMenu: new URL("/jelovnik/", site).href,
+  /* The drinks list is a separate property and stays where it is. Naming it
+     here is how the restaurant gets credit for it in structured data. */
+  hasMap: "https://maps.google.com/?q=Teslina+7+Zagreb",
+};
+---
+
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Staging: nothing here may be indexed until Phase 4. Remove with the
+       domain cutover, not before — a staging copy competing with the real
+       site in search is the classic way to lose rankings to yourself. -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600&family=Raleway:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <script type="application/ld+json" set:html={JSON.stringify(RESTAURANT)} />
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+</head>
+<body>
+  <a class="skip" href="#main">Preskoči na sadržaj</a>
+
+  <header class="site-header">
+    <div class="shell bar">
+      <a class="brand" href="/">Theatrium <span>by Filho</span></a>
+      <nav aria-label="Glavni izbornik">
+        <a href="/jelovnik/">Repertoire</a>
+        <a href="/o-nama/">Scenario</a>
+        <a href="/press/">Press</a>
+        <a href="https://theatrium.list.devinos.hr">Karta pića</a>
+        <a class="btn btn-solid nav-cta" href="/rezervacija/">Rezervacija</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class={wide ? "" : "shell"}>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="cols">
+        <div>
+          <p class="eyebrow">Kontakt</p>
+          <p>Teslina 7, Zagreb</p>
+          <p><a href="tel:+385995844652">+385 99 5844 652</a></p>
+          <p><a href="mailto:joy@theatrium.hr">joy@theatrium.hr</a></p>
+        </div>
+        <div>
+          <p class="eyebrow">Stranice</p>
+          <p><a href="/jelovnik/">Repertoire</a></p>
+          <p><a href="https://theatrium.list.devinos.hr">Karta pića</a></p>
+          <p><a href="/press/">Press</a></p>
+        </div>
+        <div>
+          <p class="eyebrow">Novosti</p>
+          <p class="muted">Novi jelovnik i nova vina, nekoliko puta godišnje.</p>
+          <a class="btn" href="/newsletter/">Prijava</a>
+        </div>
+      </div>
+      <p class="copy">© 2026 Theatrium by Filho</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; gap: 1.5rem; padding-block: .9rem; }
+  .brand {
+    font-family: var(--serif); font-size: 1.4rem; letter-spacing: .18em;
+    text-transform: uppercase; text-decoration: none; margin-right: auto;
+  }
+  .brand span {
+    display: block; font-size: .58rem; letter-spacing: .3em; color: var(--text-faint);
+  }
+  nav { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+  nav a {
+    text-decoration: none; font-size: .78rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--text-dim);
+  }
+  nav a:hover { color: var(--text); }
+  .nav-cta { color: var(--bg); padding: .6rem 1.1rem; }
+  .nav-cta:hover { color: var(--bg); }
+
+  .site-footer {
+    border-top: 1px solid var(--line);
+    margin-top: var(--section);
+    padding: clamp(2.5rem, 6vw, 4rem) 0 2rem;
+    font-size: .92rem;
+  }
+  .cols {
+    display: grid; gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  }
+  .site-footer p { margin: 0 0 .35rem; }
+  .site-footer a { color: var(--text-dim); text-decoration: none; }
+  .site-footer a:hover { color: var(--text); }
+  .site-footer .btn { margin-top: .6rem; }
+  .muted { color: var(--text-dim); max-width: 24ch; }
+  .copy { margin-top: 2.5rem; color: var(--text-faint); font-size: .82rem; }
+
+  @media (max-width: 720px) {
+    .bar { flex-wrap: wrap; gap: .8rem 1rem; }
+    nav { gap: 1rem; }
+  }
+</style>

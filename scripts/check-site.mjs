@@ -50,7 +50,8 @@ for (const page of ["/", "/admin.html", "/qr.html"]) {
                      "/data/source/wine-card-2026.pdf", "/tests/data.spec.mjs",
                      "/CLAUDE.md", "/package.json", "/scripts/validate.mjs",
                      "/preview/", "/preview/index.html", "/preview/ponuda-pica.html",
-                     "/embed-hr.html", "/embed-en.html"]) {
+                     "/embed-hr.html", "/embed-en.html",
+                     "/web/", "/web/PLAN.md"]) {
       const r = await p.request.get("http://127.0.0.1:4199" + u);
       if (r.status() !== 404) bad.push(`still published: ${u} (${r.status()})`);
     }

@@ -1,0 +1,60 @@
+---
+/* Newsletter signup.
+   The sending is never ours — deliverability (SPF, DKIM, DMARC, bounces,
+   complaints, list hygiene) is a specialist job, and getting it wrong puts the
+   restaurant's own booking confirmations in spam folders. Phase 3 wires this
+   to a provider. Double opt-in, because it is both the defensible standard
+   under the GDPR and the thing that keeps the list clean. */
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Novosti — Theatrium by Filho"
+  description="Obavijesti o novom jelovniku i novim vinima u restoranu Theatrium by Filho."
+>
+  <header class="head">
+    <p class="eyebrow">Novosti</p>
+    <h1>Novi jelovnik, nova vina</h1>
+    <p class="lede">Nekoliko puta godisnje. Odjava jednim klikom, uvijek.</p>
+  </header>
+
+  <form class="sub" method="post" action="/api/newsletter" novalidate>
+    <label>
+      <span>E-mail</span>
+      <input type="email" name="email" required autocomplete="email" />
+    </label>
+    <label class="check">
+      <input type="checkbox" name="consent" value="yes" required />
+      <span>Pristajem primati obavijesti e-postom.</span>
+    </label>
+    <p class="legal">
+      Adresu koristimo samo za ove obavijesti. Vise u
+      <a href="/privatnost/">izjavi o privatnosti</a>.
+    </p>
+    <button class="btn btn-solid" type="submit">Prijavi me</button>
+    <p class="poc">Nacrt — obrazac jos nije spojen.</p>
+  </form>
+</Base>
+
+<style>
+  .head { padding: 3.5rem 0 2rem; max-width: 44rem; }
+  .lede { color: var(--text-dim); font-size: 1.1rem; }
+  .sub { max-width: 30rem; padding-bottom: var(--section); }
+  label { display: block; margin-bottom: 1rem; }
+  label > span {
+    display: block; font-size: .78rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: .4rem;
+  }
+  input {
+    width: 100%; background: var(--bg-raised); color: var(--text);
+    border: 1px solid var(--line); padding: .75rem .9rem;
+    font-family: inherit; font-size: 1rem; border-radius: 2px;
+  }
+  .check { display: flex; gap: .7rem; align-items: flex-start; }
+  .check input { width: auto; margin-top: .25rem; }
+  .check span { font-size: .95rem; color: var(--text-dim); }
+  .legal { font-size: .85rem; color: var(--text-faint); }
+  .legal a { color: var(--text-dim); }
+  button { cursor: pointer; font-family: inherit; }
+  .poc { margin-top: 1.4rem; font-size: .82rem; color: var(--text-faint); }
+</style>

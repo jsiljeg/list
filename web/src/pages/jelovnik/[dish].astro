@@ -1,0 +1,151 @@
+---
+/* A page per dish, with the wines that go with it.
+
+   This is the page that justifies the rebuild. The pairing is computed at
+   build time by scripts/build-pairings.mjs using the same scoring the list app
+   runs in the browser, so the wine names arrive as HTML rather than as JSON a
+   crawler will never execute. "Which wine with X" is a question people type.
+
+   Every dish here is live: parked (seasonal) dishes are filtered out in the
+   generator, the same way menuDishes() filters them for guests. */
+import Base from "../../layouts/Base.astro";
+import dishes from "../../data/generated/dishes.json";
+
+export function getStaticPaths() {
+  return dishes.map((dish) => ({ params: { dish: dish.slug }, props: { dish } }));
+}
+
+const { dish } = Astro.props;
+
+const COURSE = {
+  starters: "Predjela",
+  soups: "Juhe",
+  mains: "Glavna jela",
+  desserts: "Deserti",
+};
+
+import { food } from "../../lib/food.mjs";
+
+const title = `${dish.name.hr} — Theatrium by Filho`;
+const description =
+  `${dish.name.hr}. Uz ovo jelo preporučujemo ` +
+  dish.wines.slice(0, 2).map((w) => `${w.name} (${w.producer})`).join(" i ") + ".";
+
+/* schema.org MenuItem, with the pairing expressed as suggestedAnswer-free
+   plain properties. Kept modest on purpose: inventing nutrition or allergen
+   fields we have not verified would be worse than omitting them. */
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "MenuItem",
+  name: dish.name.hr,
+  inLanguage: "hr",
+  menuAddOn: dish.wines.map((w) => ({
+    "@type": "MenuItem",
+    name: `${w.name} — ${w.producer}`,
+    ...(w.price != null ? { offers: { "@type": "Offer", price: w.price, priceCurrency: "EUR" } } : {}),
+  })),
+};
+---
+
+<Base title={title} description={description} schema={schema}>
+  <nav class="crumbs" aria-label="Putanja">
+    <a href="/">Početna</a> <span aria-hidden="true">·</span>
+    <a href="/jelovnik/">Repertoire</a> <span aria-hidden="true">·</span>
+    <span>{COURSE[dish.course] ?? dish.course}</span>
+  </nav>
+
+  <article class="dish">
+    <header>
+      <p class="eyebrow">{COURSE[dish.course] ?? dish.course}</p>
+      <h1>{dish.name.hr}</h1>
+      <p class="en">{dish.name.en}</p>
+    </header>
+
+    {dish.pairings.length > 0 && (
+      <p class="tags">
+        {dish.pairings.map((p) => <span class="tag">{food(p)}</span>)}
+      </p>
+    )}
+
+    <section class="pairings">
+      <h2>Uz ovo jelo</h2>
+      <p class="lede">
+        {dish.styleOnly
+          ? "Vina koja po stilu odgovaraju ovom jelu."
+          : "Vina s naše karte koja dijele okuse s ovim jelom."}
+      </p>
+
+      <ul class="wines">
+        {dish.wines.map((w) => (
+          <li>
+            <div class="w-main">
+              <span class="w-name">{w.name}</span>
+              <span class="w-producer">{w.producer}</span>
+            </div>
+            <div class="w-meta">
+              {w.grape && <span>{w.grape}</span>}
+              {w.region && <span>{w.region}</span>}
+            </div>
+            {w.shared.length > 0 && (
+              <p class="w-why">uz {w.shared.map(food).join(", ")}</p>
+            )}
+            {w.price != null && <span class="w-price">{w.price} €</span>}
+          </li>
+        ))}
+      </ul>
+
+      <p class="more">
+        <a class="btn" href="https://theatrium.list.devinos.hr">Cijela karta pića</a>
+      </p>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .crumbs {
+    font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text-faint); padding-top: 2rem;
+  }
+  .crumbs a { color: var(--text-dim); text-decoration: none; }
+  .crumbs a:hover { color: var(--text); }
+
+  .dish { padding: 2rem 0 var(--section); max-width: 46rem; }
+  .dish header { margin-bottom: 1.6rem; }
+  .en { color: var(--text-dim); font-style: italic; margin: .5rem 0 0; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 3rem; }
+  .tag {
+    border: 1px solid var(--line); border-radius: 2px;
+    padding: .25rem .7rem; font-size: .76rem;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim);
+  }
+
+  .pairings h2 { margin-bottom: .4rem; }
+  .lede { color: var(--text-dim); margin: 0 0 1.8rem; }
+
+  .wines { list-style: none; margin: 0; padding: 0; }
+  .wines li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: .2rem 1rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .w-main { grid-column: 1; }
+  .w-name { font-family: var(--serif); font-size: 1.25rem; display: block; }
+  .w-producer {
+    font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .w-meta {
+    grid-column: 1; display: flex; flex-wrap: wrap; gap: .8rem;
+    font-size: .85rem; color: var(--text-faint);
+  }
+  .w-why { grid-column: 1; margin: .3rem 0 0; font-size: .88rem; color: var(--gold-soft); }
+  .w-price {
+    grid-column: 2; grid-row: 1; align-self: start;
+    font-family: var(--serif); font-size: 1.2rem; color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+  .more { margin-top: 2.5rem; }
+</style>

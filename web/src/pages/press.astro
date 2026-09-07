@@ -1,0 +1,84 @@
+---
+/* Press.
+
+   The rule here is legal, not stylistic: we link, we never republish. Outlet,
+   headline, date, link, and our own sentence saying why it is worth reading.
+   At most a short quoted phrase in quotation marks with attribution. An
+   article's text belongs to the publication that paid for it, and reprinting
+   it — reworded or not — is an infringement however generously we credit it.
+   Photographs inside articles belong to the photographer; we use our own.
+
+   Fill ITEMS with real coverage. The shape is the whole point: everything
+   below `note` is ours, everything above it is a reference. */
+import Base from "../layouts/Base.astro";
+
+const ITEMS = [
+  // {
+  //   outlet: "…",
+  //   title: "…",                         // the headline as published
+  //   date: "2026-03-14",
+  //   url: "https://…",
+  //   note: "Our own sentence on why a guest might want to read it.",
+  // },
+];
+
+const schema = ITEMS.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: ITEMS.map((it, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: it.url,
+        name: it.title,
+      })),
+    }
+  : null;
+---
+
+<Base
+  title="Press — Theatrium by Filho"
+  description="Napisano o restoranu Theatrium by Filho i chefu Filipu Horvatu."
+  schema={schema}
+>
+  <header class="head">
+    <p class="eyebrow">Press</p>
+    <h1>Napisano o nama</h1>
+    <p class="lede">Odabrani tekstovi o Theatriumu i chefu Filipu Horvatu.</p>
+  </header>
+
+  {ITEMS.length === 0 ? (
+    <p class="empty">
+      Popis se priprema. Svaki unos vodi na izvorni tekst kod izdavača.
+    </p>
+  ) : (
+    <ul class="items">
+      {ITEMS.map((it) => (
+        <li>
+          <a href={it.url} rel="noopener nofollow" target="_blank">
+            <span class="p-outlet">{it.outlet}</span>
+            <span class="p-title">{it.title}</span>
+          </a>
+          <p class="p-note">{it.note}</p>
+          <time datetime={it.date}>{it.date}</time>
+        </li>
+      ))}
+    </ul>
+  )}
+</Base>
+
+<style>
+  .head { padding: 3.5rem 0 2rem; max-width: 44rem; }
+  .lede { color: var(--text-dim); font-size: 1.1rem; }
+  .empty { color: var(--text-faint); padding: 2rem 0 var(--section); }
+  .items { list-style: none; margin: 0; padding: 0 0 var(--section); max-width: 46rem; }
+  .items li { padding: 1.4rem 0; border-top: 1px solid var(--line); }
+  .items a { text-decoration: none; display: block; }
+  .p-outlet {
+    font-size: .76rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold-soft);
+  }
+  .p-title { display: block; font-family: var(--serif); font-size: 1.4rem; margin-top: .2rem; }
+  .p-note { color: var(--text-dim); margin: .5rem 0 .4rem; }
+  time { font-size: .82rem; color: var(--text-faint); }
+</style>

@@ -1,0 +1,123 @@
+---
+/* Reservation — a *request*, not a booking.
+
+   Deliberately not a table-management system. Availability is where SevenRooms
+   and its competitors earn their fee: covers per slot, turn times, combining
+   and splitting tables, walk-ins, waitlists, no-shows, deposits. Getting that
+   wrong double-books a Saturday, and a half-built version is worse than none.
+
+   So this is honest with the guest: they send a request, staff confirm. That
+   is how most rooms this size actually run, it costs nothing, and it is a few
+   hundred lines instead of a product.
+
+   PoC: the form posts nowhere yet. Phase 2 wires it to a Cloudflare Pages
+   Function writing to D1, an email to the restaurant and an acknowledgement to
+   the guest, with the staff list behind Cloudflare Access — not a PIN, because
+   this holds guest personal data and the 86 board's own notes are clear that a
+   PIN is a screen lock rather than a credential. */
+import Base from "../layouts/Base.astro";
+
+const today = new Date().toISOString().slice(0, 10);
+---
+
+<Base
+  title="Rezervacija — Theatrium by Filho"
+  description="Zatražite stol u restoranu Theatrium by Filho, Teslina 7, Zagreb."
+>
+  <header class="head">
+    <p class="eyebrow">Rezervacija</p>
+    <h1>Zatražite stol</h1>
+    <p class="lede">
+      Javit ćemo se s potvrdom u najkraćem roku. Za isti dan nazovite
+      <a href="tel:+385995844652">+385 99 5844 652</a>.
+    </p>
+  </header>
+
+  <form class="book" method="post" action="/api/rezervacija" novalidate>
+    <div class="row">
+      <label>
+        <span>Ime i prezime</span>
+        <input type="text" name="name" required autocomplete="name" />
+      </label>
+      <label>
+        <span>Broj gostiju</span>
+        <input type="number" name="covers" min="1" max="12" value="2" required />
+      </label>
+    </div>
+
+    <div class="row">
+      <label>
+        <span>Datum</span>
+        <input type="date" name="date" min={today} required />
+      </label>
+      <label>
+        <span>Vrijeme</span>
+        <input type="time" name="time" required />
+      </label>
+    </div>
+
+    <div class="row">
+      <label>
+        <span>E-mail</span>
+        <input type="email" name="email" required autocomplete="email" />
+      </label>
+      <label>
+        <span>Telefon</span>
+        <input type="tel" name="phone" autocomplete="tel" />
+      </label>
+    </div>
+
+    <label class="full">
+      <span>Napomena <em>(alergije, prigoda, stol)</em></span>
+      <textarea name="note" rows="3"></textarea>
+    </label>
+
+    <!-- Consent is separate from the booking and unticked. A reservation is
+         performed under contract; marketing needs its own opt-in, and a
+         pre-ticked box is not consent under the GDPR. -->
+    <label class="check">
+      <input type="checkbox" name="newsletter" value="yes" />
+      <span>Želim primati obavijesti o novom jelovniku i vinima.</span>
+    </label>
+
+    <p class="legal">
+      Podatke koristimo isključivo za obradu ove rezervacije. Više u
+      <a href="/privatnost/">izjavi o privatnosti</a>.
+    </p>
+
+    <button class="btn btn-solid" type="submit">Pošalji upit</button>
+
+    <p class="poc">
+      Ovo je nacrt — obrazac još nije spojen. (PoC: endpoint dolazi u fazi 2.)
+    </p>
+  </form>
+</Base>
+
+<style>
+  .head { padding: 3.5rem 0 2rem; max-width: 44rem; }
+  .lede { color: var(--text-dim); font-size: 1.1rem; }
+  .lede a { color: var(--gold); }
+
+  .book { max-width: 42rem; padding-bottom: var(--section); }
+  .row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+  label { display: block; margin-bottom: 1rem; }
+  label > span {
+    display: block; font-size: .78rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: .4rem;
+  }
+  label em { text-transform: none; letter-spacing: 0; color: var(--text-faint); font-style: normal; }
+  input, textarea {
+    width: 100%; background: var(--bg-raised); color: var(--text);
+    border: 1px solid var(--line); padding: .75rem .9rem;
+    font-family: inherit; font-size: 1rem; border-radius: 2px;
+  }
+  input:focus, textarea:focus { border-color: var(--gold-soft); outline: none; }
+  .full { display: block; }
+  .check { display: flex; gap: .7rem; align-items: flex-start; margin: 1.4rem 0; }
+  .check input { width: auto; margin-top: .25rem; }
+  .check span { font-size: .95rem; color: var(--text-dim); }
+  .legal { font-size: .85rem; color: var(--text-faint); margin: 0 0 1.6rem; }
+  .legal a { color: var(--text-dim); }
+  button { cursor: pointer; font-family: inherit; }
+  .poc { margin-top: 1.5rem; font-size: .82rem; color: var(--text-faint); }
+</style>

@@ -1,0 +1,84 @@
+/* Design tokens.
+
+   Taken from the wine list rather than from theatrium.hr, because the list is
+   the newer and more considered system: a warm near-black instead of pure
+   black, and a champagne accent that carries meaning rather than decorating.
+   The theatrical vocabulary (Scenario / Ensemble / Repertoire) stays, because
+   that is the part guests recognise. */
+
+@font-face {
+  font-family: "Markazi Fallback";
+  src: local("Georgia");
+  size-adjust: 74.6%;
+  ascent-override: 112.5%;
+  descent-override: 48.4%;
+  line-gap-override: 0%;
+}
+
+:root {
+  --bg: #161513;
+  --bg-raised: #1f1d1a;
+  --bg-card: #242220;
+  --line: #35322d;
+  --gold: #c9a961;
+  --gold-soft: #b39655;
+  --text: #efe9dd;
+  --text-dim: #a89f8f;
+  --text-faint: #7c7466;
+
+  --serif: "Markazi Text", "Markazi Fallback", Georgia, serif;
+  --sans: "Raleway", system-ui, -apple-system, sans-serif;
+
+  --shell: 1180px;
+  --gap: clamp(1rem, 3vw, 2rem);
+  --section: clamp(4rem, 9vw, 8rem);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+h3 { font-size: 1.35rem; }
+
+.shell { width: 100%; max-width: var(--shell); margin: 0 auto; padding: 0 var(--gap); }
+.section { padding: var(--section) 0; }
+
+.eyebrow {
+  font-size: .78rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold-soft); margin: 0 0 .9rem;
+}
+
+.btn {
+  display: inline-block; border: 1px solid var(--gold); color: var(--gold);
+  padding: .85rem 1.8rem; text-decoration: none;
+  font-size: .82rem; letter-spacing: .16em; text-transform: uppercase;
+  transition: background-color .2s, color .2s;
+}
+.btn:hover, .btn:focus-visible { background: var(--gold); color: var(--bg); }
+.btn-solid { background: var(--gold); color: var(--bg); }
+.btn-solid:hover, .btn-solid:focus-visible { background: var(--gold-soft); border-color: var(--gold-soft); }
+
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.skip {
+  position: absolute; left: -9999px;
+  background: var(--gold); color: var(--bg); padding: .7rem 1.2rem; z-index: 99;
+}
+.skip:focus { left: 1rem; top: 1rem; }
