@@ -14,8 +14,20 @@
   descent-override: 48.4%;
   line-gap-override: 0%;
 }
+@font-face {
+  font-family: "Markazi Fallback 2";
+  src: local("Times New Roman");
+  size-adjust: 79.8%;
+  ascent-override: 105.2%;
+  descent-override: 45.3%;
+  line-gap-override: 0%;
+}
 
 :root {
+  /* Native widgets follow this: scrollbars, checkboxes, autofill. Without it
+     the browser paints them for a light page and they look pasted on. */
+  color-scheme: dark;
+
   --bg: #161513;
   --bg-raised: #1f1d1a;
   --bg-card: #242220;
@@ -26,8 +38,8 @@
   --text-dim: #a89f8f;
   --text-faint: #7c7466;
 
-  --serif: "Markazi Text", "Markazi Fallback", Georgia, serif;
-  --sans: "Raleway", system-ui, -apple-system, sans-serif;
+  --serif: "Markazi Text", "Markazi Fallback", "Markazi Fallback 2", Georgia, serif;
+  --sans: "Raleway", "Open Sans", system-ui, sans-serif;
 
   --shell: 1180px;
   --gap: clamp(1rem, 3vw, 2rem);

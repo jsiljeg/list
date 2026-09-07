@@ -1,18 +1,44 @@
 ---
 /* Reservation — a real booking, confirmed on the spot.
  *
- * Three steps on one page: how many and when, which slot, who you are. The
- * slot list comes from /api/availability; the booking goes to
- * /api/reservations, which re-checks capacity inside the INSERT so two people
- * cannot take the last table between them.
+ * THE PICKER. Three scrollers, each narrowing the last: guests → day → hour →
+ * the few exact times inside that hour. That shape is copied from how
+ * SevenRooms actually feels to use, and it exists because the first version
+ * dumped all 41 available slots on the page at once, which reads as work
+ * rather than as an offer.
  *
- * The only client-side JavaScript on the site. Everything else ships none. */
+ * NO NATIVE <input type="date">. Its display format follows the operating
+ * system's locale, not the page's — which is why it showed mm/dd/yyyy — and
+ * nothing in HTML or CSS can force dd/mm. The day strip below is ours, so it
+ * is Croatian by construction and matches the rest of the site.
+ *
+ * STYLING NOTE, learned the hard way: everything the script creates is styled
+ * through :global(). Astro scopes component CSS by adding a data-astro-cid
+ * attribute to the elements it renders, and elements created by
+ * document.createElement never get that attribute — so the scoped rules simply
+ * did not match and the buttons fell back to the browser's default chrome.
+ * That is what the "basic white rectangles" were. */
 import Base from "../layouts/Base.astro";
-import { CONFIG, nowInZagreb, addDays } from "../lib/booking.mjs";
+import { CONFIG, SERVICE, nowInZagreb, addDays, weekday } from "../lib/booking.mjs";
 
 const now = nowInZagreb();
-const min = now.date;
-const max = addDays(now.date, CONFIG.horizonDays);
+
+/* The day strip is built on the server so it is in the HTML, not assembled by
+   script after paint. Closed days are dropped rather than shown disabled —
+   a Sunday the restaurant never opens is noise, not information. */
+const DAY = ["ned", "pon", "uto", "sri", "čet", "pet", "sub"];
+const MONTH_SHORT = (iso) => Number(iso.slice(5, 7));
+const days = [];
+for (let i = 0; i < CONFIG.horizonDays && days.length < 45; i++) {
+  const iso = addDays(now.date, i);
+  if (!(SERVICE[weekday(iso)] || []).length) continue;
+  days.push({
+    iso,
+    dow: DAY[weekday(iso)],
+    label: `${Number(iso.slice(8, 10))}.${MONTH_SHORT(iso)}.`,
+    today: i === 0,
+  });
+}
 ---
 
 <Base
@@ -23,41 +49,48 @@ const max = addDays(now.date, CONFIG.horizonDays);
     <p class="eyebrow">Rezervacija</p>
     <h1>Rezervirajte stol</h1>
     <p class="lede">
-      Potvrda stiže odmah, e-poštom. Za isti dan i za grupe veće od
-      {CONFIG.maxParty} osoba nazovite <a href="tel:+385995844652">+385 99 5844 652</a>.
+      Potvrda stiže odmah, e-poštom. Za grupe veće od {CONFIG.maxParty} osoba
+      nazovite <a href="tel:+385995844652">+385 99 5844 652</a>.
     </p>
   </header>
 
-  <form class="book" id="book" novalidate data-min={min} data-max={max}>
+  <form class="book" id="book" novalidate>
     <fieldset class="step">
-      <legend><span class="n">1</span> Koliko vas je i kada</legend>
-      <div class="row">
-        <label>
-          <span>Gostiju</span>
-          <select name="covers" id="covers">
-            {Array.from({ length: CONFIG.maxParty }, (_, i) => i + 1).map((n) => (
-              <option value={n} selected={n === 2}>{n}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          <span>Datum</span>
-          <input type="date" name="date" id="date" min={min} max={max} required />
-        </label>
+      <legend><span class="n">1</span> Koliko vas je</legend>
+      <div class="chips" id="covers" role="group" aria-label="Broj gostiju">
+        {Array.from({ length: CONFIG.maxParty }, (_, i) => i + 1).map((n) => (
+          <button type="button" class="chip" data-covers={n} aria-pressed={n === 2 ? "true" : "false"}>
+            {n}
+          </button>
+        ))}
       </div>
     </fieldset>
 
-    <fieldset class="step" id="step-slots" hidden>
-      <legend><span class="n">2</span> Odaberite vrijeme</legend>
-      <div id="slots" class="slots" role="group" aria-label="Slobodni termini"></div>
+    <fieldset class="step">
+      <legend><span class="n">2</span> Koji dan</legend>
+      <div class="strip" id="days" role="group" aria-label="Datum">
+        {days.map((d) => (
+          <button type="button" class="day" data-date={d.iso} aria-pressed="false">
+            <span class="dow">{d.today ? "danas" : d.dow}</span>
+            <span class="dnum">{d.label}</span>
+          </button>
+        ))}
+      </div>
+    </fieldset>
+
+    <fieldset class="step" id="step-time" hidden>
+      <legend><span class="n">3</span> U koliko sati</legend>
+      <div class="strip" id="hours" role="group" aria-label="Sat"></div>
+      <div class="slots" id="slots" role="group" aria-label="Točno vrijeme"></div>
       <p id="slots-empty" class="empty" hidden>
-        Za taj dan i broj gostiju nema slobodnih termina. Pokušajte s drugim
-        datumom ili nas nazovite.
+        Tog dana nema slobodnih termina za toliko gostiju. Pokušajte s drugim
+        danom ili nas nazovite.
       </p>
     </fieldset>
 
     <fieldset class="step" id="step-who" hidden>
-      <legend><span class="n">3</span> Vaši podaci</legend>
+      <legend><span class="n">4</span> Vaši podaci</legend>
+      <p class="recap" id="recap"></p>
       <div class="row">
         <label>
           <span>Ime i prezime</span>
@@ -84,9 +117,6 @@ const max = addDays(now.date, CONFIG.horizonDays);
           <a href="/privatnost/">Izjava o privatnosti</a>.
         </span>
       </label>
-
-      <!-- Separate, unticked, and not required. The reservation is performed
-           under contract; marketing needs its own opt-in. -->
       <label class="check">
         <input type="checkbox" name="newsletter" value="yes" />
         <span>Želim primati obavijesti o novom jelovniku i vinima.</span>
@@ -105,51 +135,124 @@ const max = addDays(now.date, CONFIG.horizonDays);
 </Base>
 
 <script>
-  const form = document.getElementById("book");
-  const covers = document.getElementById("covers");
-  const date = document.getElementById("date");
-  const slotsBox = document.getElementById("slots");
-  const stepSlots = document.getElementById("step-slots");
-  const stepWho = document.getElementById("step-who");
-  const empty = document.getElementById("slots-empty");
-  const err = document.getElementById("err");
-  const submit = document.getElementById("submit");
-  let chosen = null;
+  const $ = (id) => document.getElementById(id);
+  const form = $("book"), coversBox = $("covers"), daysBox = $("days");
+  const hoursBox = $("hours"), slotsBox = $("slots"), empty = $("slots-empty");
+  const stepTime = $("step-time"), stepWho = $("step-who");
+  const err = $("err"), submit = $("submit"), recap = $("recap");
 
+  const state = { covers: 2, date: null, hour: null, time: null, slots: [] };
+  var PREFERRED_HOUR = 19;
   const show = (el, on) => { el.hidden = !on; };
+  const press = (box, el) =>
+    box.querySelectorAll("[aria-pressed]").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b === el)));
 
+  const DOW = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
+  function human(iso) {
+    const [y, m, d] = iso.split("-").map(Number);
+    const w = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
+    return `${DOW[w]}, ${d}.${m}.${y}.`;
+  }
+
+  /* ---- 1. guests ---- */
+  coversBox.addEventListener("click", (e) => {
+    const b = e.target.closest(".chip");
+    if (!b) return;
+    state.covers = Number(b.dataset.covers);
+    press(coversBox, b);
+    if (state.date) loadSlots();
+  });
+
+  /* ---- 2. day ---- */
+  daysBox.addEventListener("click", (e) => {
+    const b = e.target.closest(".day");
+    if (!b) return;
+    state.date = b.dataset.date;
+    press(daysBox, b);
+    loadSlots();
+  });
+
+  /* ---- 3. hour, then the exact times inside it ---- */
   async function loadSlots() {
-    chosen = null;
+    state.hour = null; state.time = null;
     show(stepWho, false);
-    if (!date.value) return show(stepSlots, false);
-
-    slotsBox.innerHTML = '<p class="loading">Tražimo slobodne termine…</p>';
-    show(stepSlots, true);
+    show(stepTime, true);
     show(empty, false);
+    slotsBox.innerHTML = "";
+    hoursBox.innerHTML = '<p class="loading">Tražimo slobodne termine…</p>';
 
     let data;
     try {
-      const r = await fetch(`/api/availability?date=${date.value}&covers=${covers.value}`);
+      const r = await fetch(`/api/availability?date=${state.date}&covers=${state.covers}`);
       data = await r.json();
     } catch {
-      slotsBox.innerHTML = '<p class="loading">Nije moguće dohvatiti termine.</p>';
+      hoursBox.innerHTML = '<p class="loading">Nije moguće dohvatiti termine.</p>';
       return;
     }
 
-    const slots = data.slots || [];
-    slotsBox.innerHTML = "";
-    if (!slots.length) { show(empty, true); return; }
+    state.slots = data.slots || [];
+    hoursBox.innerHTML = "";
+    if (!state.slots.length) { show(empty, true); return; }
 
-    for (const s of slots) {
+    /* One button per hour that has anything free — this is the "scroll to
+       roughly when" step. The exact quarter-hours stay hidden until asked for,
+       which is the difference between an offer and a wall. */
+    const byHour = new Map();
+    for (const s of state.slots) {
+      const h = Math.floor(s.start / 60);
+      if (!byHour.has(h)) byHour.set(h, []);
+      byHour.get(h).push(s);
+    }
+
+    for (const [h, list] of byHour) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "hour";
+      b.setAttribute("aria-pressed", "false");
+      b.innerHTML =
+        `<span class="hnum">${String(h).padStart(2, "0")}:00</span>` +
+        `<span class="hfree">${list.length} ${list.length === 1 ? "termin" : "termina"}</span>`;
+      b.addEventListener("click", () => {
+        state.hour = h;
+        press(hoursBox, b);
+        renderSlots(list);
+      });
+      hoursBox.appendChild(b);
+    }
+
+    /* Land on something useful rather than on an empty step. SevenRooms
+       pre-fills date, guests and time for the same reason: a guest should see
+       an offer, not a form. We stop one short of choosing the exact minute —
+       the hour is a guess, the booking is theirs. */
+    const want = [...byHour.keys()].reduce(
+      (best, h) => (Math.abs(h - PREFERRED_HOUR) < Math.abs(best - PREFERRED_HOUR) ? h : best),
+      [...byHour.keys()][0]);
+    const btn = [...hoursBox.querySelectorAll(".hour")]
+      .find((b) => b.querySelector(".hnum").textContent.startsWith(String(want).padStart(2, "0")));
+    if (btn) {
+      state.hour = want;
+      press(hoursBox, btn);
+      renderSlots(byHour.get(want));
+      btn.scrollIntoView({ block: "nearest", inline: "center" });
+    }
+  }
+
+  function renderSlots(list) {
+    slotsBox.innerHTML = "";
+    state.time = null;
+    show(stepWho, false);
+    for (const s of list) {
       const b = document.createElement("button");
       b.type = "button";
       b.className = "slot";
       b.textContent = s.time;
       b.setAttribute("aria-pressed", "false");
       b.addEventListener("click", () => {
-        chosen = s.time;
-        slotsBox.querySelectorAll(".slot").forEach((o) =>
-          o.setAttribute("aria-pressed", String(o === b)));
+        state.time = s.time;
+        press(slotsBox, b);
+        recap.textContent =
+          `${human(state.date)} u ${s.time} · ${state.covers} ${state.covers === 1 ? "osoba" : "osobe"}`;
         show(stepWho, true);
         stepWho.scrollIntoView({ behavior: "smooth", block: "nearest" });
       });
@@ -157,55 +260,57 @@ const max = addDays(now.date, CONFIG.horizonDays);
     }
   }
 
-  covers.addEventListener("change", loadSlots);
-  date.addEventListener("change", loadSlots);
+  /* ---- defaults: the next open day, two people, dinner ----------------
+     Chosen so the page answers a question before it asks one. Two covers is
+     the commonest booking; 19:00 is the start of dinner service and the hour
+     nearest it wins if it happens to be full. */
 
+  (function start() {
+    const first = daysBox.querySelector(".day");
+    if (!first) return;
+    state.date = first.dataset.date;
+    press(daysBox, first);
+    loadSlots();
+  })();
+
+  /* ---- 4. book ---- */
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (!chosen) return;
+    if (!state.time) return;
     show(err, false);
     submit.disabled = true;
     submit.textContent = "Šaljemo…";
 
     const fd = new FormData(form);
     const payload = {
-      date: date.value,
-      time: chosen,
-      covers: Number(covers.value),
-      name: fd.get("name"),
-      email: fd.get("email"),
-      phone: fd.get("phone"),
-      note: fd.get("note"),
+      date: state.date, time: state.time, covers: state.covers,
+      name: fd.get("name"), email: fd.get("email"),
+      phone: fd.get("phone"), note: fd.get("note"),
       consentPrivacy: fd.get("privacy") === "yes",
       newsletter: fd.get("newsletter") === "yes",
       locale: "hr",
     };
 
-    let r, data;
+    let data;
     try {
-      r = await fetch("/api/reservations", {
+      const r = await fetch("/api/reservations", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(payload),
       });
       data = await r.json();
-    } catch {
-      data = { error: "network" };
-    }
+    } catch { data = { error: "network" }; }
 
     submit.disabled = false;
     submit.textContent = "Rezerviraj";
 
     if (data && data.ok) {
       form.hidden = true;
-      document.getElementById("done-line").textContent =
-        `${data.date} u ${data.time} · ${data.covers} ${data.covers === 1 ? "osoba" : "osobe"}`;
-      show(document.getElementById("done"), true);
+      $("done-line").textContent = `${human(data.date)} u ${data.time} · ${data.covers} ${data.covers === 1 ? "osoba" : "osobe"}`;
+      show($("done"), true);
       return;
     }
 
-    /* The one message that must be exactly right: someone else took the slot
-       while this guest was typing. Say so, and reload the list. */
     const msg = {
       "slot-taken": "Nažalost, taj je termin upravo zauzet. Odaberite drugi.",
       "too-soon": "Za rezervacije za danas nazovite nas, molimo.",
@@ -213,65 +318,116 @@ const max = addDays(now.date, CONFIG.horizonDays);
       invalid: "Provjerite ispravnost podataka.",
       "no-database": "Rezervacije trenutno nisu dostupne. Nazovite nas, molimo.",
     }[data && data.error] || "Nešto je pošlo po zlu. Pokušajte ponovno ili nas nazovite.";
-
     err.textContent = msg;
     show(err, true);
     if (data && data.error === "slot-taken") loadSlots();
   });
 </script>
 
-<style>
-  .head { padding: 3.5rem 0 2rem; max-width: 44rem; }
-  .lede { color: var(--text-dim); font-size: 1.1rem; }
-  .lede a { color: var(--gold); }
+<style is:global>
+  /* Global rather than scoped, because half of what is styled here is created
+     by the script and Astro's scoping attribute never reaches it. Namespaced
+     under .book / .head so nothing leaks into the rest of the site. */
 
-  .book { max-width: 42rem; padding-bottom: var(--section); }
-  .step { border: 0; padding: 0; margin: 0 0 2.6rem; }
-  legend {
+  .book { max-width: 44rem; padding-bottom: var(--section); }
+  .book .step { border: 0; padding: 0; margin: 0 0 2.6rem; }
+  .book legend {
     font-size: .82rem; letter-spacing: .18em; text-transform: uppercase;
     color: var(--text-dim); margin-bottom: 1rem; padding: 0;
     display: flex; align-items: center; gap: .7rem;
   }
-  .n {
+  .book .n {
     display: grid; place-items: center; width: 1.6rem; height: 1.6rem;
     border: 1px solid var(--gold-soft); color: var(--gold);
-    border-radius: 50%; font-size: .78rem;
+    border-radius: 50%; font-size: .78rem; font-family: var(--sans);
   }
 
-  .row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
-  label { display: block; margin-bottom: 1rem; }
-  label > span {
+  /* guests */
+  .book .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .book .chip {
+    min-width: 2.9rem; padding: .6rem .5rem;
+    font-family: var(--sans); font-size: 1rem;
+  }
+
+  /* day and hour strips — horizontal scrollers, so a long list stays one line */
+  .book .strip {
+    display: flex; gap: .5rem; overflow-x: auto; padding-bottom: .6rem;
+    scroll-snap-type: x proximity; scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+  .book .strip::-webkit-scrollbar { height: 6px; }
+  .book .strip::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+  .book .day, .book .hour {
+    flex: none; scroll-snap-align: start;
+    display: grid; gap: .15rem; justify-items: center;
+    padding: .6rem .85rem; min-width: 4.6rem;
+    font-family: var(--sans);
+  }
+  .book .dow, .book .hfree {
+    font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .book .dnum, .book .hnum {
+    font-family: var(--serif); font-size: 1.15rem; color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* the exact quarter-hours */
+  .book .slots { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .book .slot {
+    padding: .65rem 1.05rem; font-family: var(--serif); font-size: 1.05rem;
+    font-variant-numeric: tabular-nums; min-width: 4.4rem;
+  }
+
+  /* one appearance for every pressable thing in the form */
+  .book .chip, .book .day, .book .hour, .book .slot {
+    background: var(--bg-raised); color: var(--text);
+    border: 1px solid var(--line); border-radius: 2px;
+    cursor: pointer; text-align: center;
+    transition: border-color .15s, background-color .15s, color .15s;
+  }
+  .book .chip:hover, .book .day:hover, .book .hour:hover, .book .slot:hover {
+    border-color: var(--gold-soft);
+  }
+  .book .chip[aria-pressed="true"], .book .day[aria-pressed="true"],
+  .book .hour[aria-pressed="true"], .book .slot[aria-pressed="true"] {
+    background: var(--gold); border-color: var(--gold); color: var(--bg);
+  }
+  .book .day[aria-pressed="true"] .dow, .book .day[aria-pressed="true"] .dnum,
+  .book .hour[aria-pressed="true"] .hnum, .book .hour[aria-pressed="true"] .hfree {
+    color: var(--bg);
+  }
+
+  .book .loading, .book .empty { color: var(--text-faint); margin: 0; }
+  .book .recap {
+    font-family: var(--serif); font-size: 1.15rem; color: var(--gold-soft);
+    margin: 0 0 1.4rem;
+  }
+
+  /* text fields */
+  .book .row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+  .book label { display: block; margin-bottom: 1rem; }
+  .book label > span {
     display: block; font-size: .78rem; letter-spacing: .14em;
     text-transform: uppercase; color: var(--text-dim); margin-bottom: .4rem;
   }
-  label em { text-transform: none; letter-spacing: 0; color: var(--text-faint); font-style: normal; }
-  input, textarea, select {
+  .book label em { text-transform: none; letter-spacing: 0; color: var(--text-faint); font-style: normal; }
+  .book input[type="text"], .book input[type="email"], .book input[type="tel"], .book textarea {
     width: 100%; background: var(--bg-raised); color: var(--text);
     border: 1px solid var(--line); padding: .75rem .9rem;
-    font-family: inherit; font-size: 1rem; border-radius: 2px;
+    font-family: var(--sans); font-size: 1rem; border-radius: 2px;
   }
-  input:focus, textarea:focus, select:focus { border-color: var(--gold-soft); outline: none; }
+  .book input:focus, .book textarea:focus { border-color: var(--gold-soft); outline: none; }
+  .book .check { display: flex; gap: .7rem; align-items: flex-start; margin: 1.2rem 0; }
+  .book .check input { width: auto; margin-top: .3rem; accent-color: var(--gold); }
+  .book .check span { font-size: .95rem; color: var(--text-dim); line-height: 1.6; }
+  .book .check a { color: var(--gold-soft); }
+  .book button[type="submit"] { cursor: pointer; font-family: var(--sans); margin-top: .6rem; }
+  .book .err { color: #e0866a; margin-top: 1rem; }
 
-  .slots { display: flex; flex-wrap: wrap; gap: .55rem; }
-  .slot {
-    background: var(--bg-raised); color: var(--text);
-    border: 1px solid var(--line); border-radius: 2px;
-    padding: .7rem 1.1rem; font-family: inherit; font-size: 1rem;
-    cursor: pointer; font-variant-numeric: tabular-nums;
-    transition: border-color .15s, background-color .15s;
-  }
-  .slot:hover { border-color: var(--gold-soft); }
-  .slot[aria-pressed="true"] { background: var(--gold); color: var(--bg); border-color: var(--gold); }
-  .loading, .empty { color: var(--text-faint); margin: 0; }
-
-  .check { display: flex; gap: .7rem; align-items: flex-start; margin: 1.2rem 0; }
-  .check input { width: auto; margin-top: .3rem; }
-  .check span { font-size: .95rem; color: var(--text-dim); line-height: 1.6; }
-  .check a { color: var(--gold-soft); }
-
-  button[type="submit"] { cursor: pointer; font-family: inherit; margin-top: .6rem; }
-  .err { color: #e0866a; margin-top: 1rem; }
-
+  .head { padding: 3.5rem 0 2rem; max-width: 44rem; }
+  .head .lede { color: var(--text-dim); font-size: 1.1rem; }
+  .head .lede a { color: var(--gold); }
   .done { max-width: 42rem; padding: 2rem 0 var(--section); }
   .done h2 { margin-bottom: .8rem; }
   .done p { color: var(--text-dim); margin: 0 0 .4rem; }
