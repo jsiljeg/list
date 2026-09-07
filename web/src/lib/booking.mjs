@@ -25,15 +25,26 @@
 
 export const TZ = "Europe/Zagreb";
 
-/* 0 = Sunday, matching Date#getDay. Empty array = closed. */
+/* 0 = Sunday, matching Date#getDay. Empty array = closed.
+ *
+ * Taken from the Google Business Profile on 2026-09-07: Mon-Sat 12:00-23:00
+ * continuous, Sunday closed. NOT the split lunch/dinner service I first
+ * guessed — the room runs straight through.
+ *
+ * TWO THINGS TO CONFIRM WITH THE OWNER, because Google cannot answer them:
+ *   - 23:00 is when the *door* closes. If the kitchen stops earlier, the last
+ *     seating must come off the kitchen time, not the door time.
+ *   - A 90-minute turn against a 23:00 close puts the last bookable table at
+ *     21:30, and a party of five at 20:45. If that feels late or early, it is
+ *     the turn times below that need changing, not this. */
 export const SERVICE = {
   0: [],
-  1: [{ from: "12:00", to: "15:00" }, { from: "18:00", to: "23:00" }],
-  2: [{ from: "12:00", to: "15:00" }, { from: "18:00", to: "23:00" }],
-  3: [{ from: "12:00", to: "15:00" }, { from: "18:00", to: "23:00" }],
-  4: [{ from: "12:00", to: "15:00" }, { from: "18:00", to: "23:00" }],
-  5: [{ from: "12:00", to: "15:00" }, { from: "18:00", to: "23:30" }],
-  6: [{ from: "12:00", to: "15:00" }, { from: "18:00", to: "23:30" }],
+  1: [{ from: "12:00", to: "23:00" }],
+  2: [{ from: "12:00", to: "23:00" }],
+  3: [{ from: "12:00", to: "23:00" }],
+  4: [{ from: "12:00", to: "23:00" }],
+  5: [{ from: "12:00", to: "23:00" }],
+  6: [{ from: "12:00", to: "23:00" }],
 };
 
 export const CONFIG = {

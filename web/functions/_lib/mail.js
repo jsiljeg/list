@@ -8,10 +8,21 @@
  * getting it wrong puts the restaurant's own booking confirmations in spam
  * folders. Resend does that part; we hand it finished messages.
  *
- * BEFORE THE FIRST SEND: verify theatrium.hr (or the devinos.hr sending
- * subdomain) in Resend and publish the SPF/DKIM records it gives you. Sending
- * from an unverified domain is how a new domain earns a bad reputation in a
- * week that takes months to undo. */
+ * BEFORE THE FIRST SEND: verify the sending domain in Resend and publish the
+ * SPF/DKIM records it gives you. Sending from an unverified domain is how a new
+ * domain earns a bad reputation in a week that takes months to undo.
+ *
+ * YOU DO NOT NEED A MAILBOX AT THE SENDING ADDRESS. Resend authenticates the
+ * *domain* by DNS; nothing has to receive at rezervacije@devinos.hr for mail to
+ * go out from it. What that does mean is that a guest hitting reply would be
+ * writing to nowhere — so every message sets reply_to to MAIL_HOUSE, which is a
+ * real inbox.
+ *
+ * TEMPORARY: devinos.hr is a testing sender. A guest booking Theatrium and
+ * receiving mail from devinos.hr reads as a phishing attempt, and it wastes the
+ * sending reputation we build on a domain we will abandon. SWITCH TO
+ * theatrium.hr BEFORE GOING LIVE — it needs DNS access to theatrium.hr, which
+ * is the same access the Phase 4 cutover needs anyway. */
 
 const API = "https://api.resend.com/emails";
 
@@ -81,7 +92,13 @@ export function sendGuestConfirmation(env, { name, email, date, start, covers, n
     </p>
     <p style="margin:16px 0 0;font-size:12px;color:#7c7466">Broj rezervacije: ${esc(id).slice(0, 8)}</p>
   `);
-  return send(env, { to: email, subject: `Rezervacija ${date} u ${hhmm(start)} — Theatrium`, html });
+  /* Replies go to a real inbox, not to the sending domain. */
+  return send(env, {
+    to: email,
+    subject: `Rezervacija ${date} u ${hhmm(start)} — Theatrium`,
+    html,
+    replyTo: env.MAIL_HOUSE || "joy@theatrium.hr",
+  });
 }
 
 export function sendHouseNotice(env, { name, email, phone, date, start, covers, note, id }) {
