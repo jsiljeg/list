@@ -40,10 +40,17 @@ SUBJECTS = {
     # 1:1 the wide one is visibly soft and the tight one resolves individual
     # nails, while at the .32 watermark opacity the outer scatter survives
     # either way. Unsharp masking was tried on top and speckles the shadows.
+    # Alpha, not a baked ground (2026-09-07). It used to bake BG in, which was
+    # invisible only because the page happened to be BG: the ?theme=theatrium
+    # skin puts it on pure black and the baked rectangle showed as a faint warm
+    # block behind the face. Compositing GOLD at alpha k over a page of colour
+    # B gives B + k*(GOLD - B), and the baked pixel was BG + k*(GOLD - BG), so
+    # on the default page the two are the same value — this changes nothing
+    # there and fixes every other background at once.
     "face": dict(src="data/source/atrium-face-source.jpg",
                  out="assets/atrium-face.webp",
                  wide=1084, s_full=0.34, s_none=0.44,
-                 lum=(60, 200), alpha=False),
+                 lum=(60, 200), alpha=True),
     # The bowl is an inline ornament, so it wants transparency rather than a
     # baked charcoal ground: the closing mark sits on the list background and
     # must not paint a rectangle over it.
@@ -89,5 +96,14 @@ for y in range(h):
         else:
             op[x, y] = tuple(int(round(BG[i] + (GOLD[i] - BG[i]) * k)) for i in range(3))
 
-out.save(cfg["out"], quality=86, method=6)
+# Encode settings measured against the exact float mask, not against the
+# previous file (2026-09-07). Alpha is stored as its own plane in WebP and its
+# default quality is generous: at 86/86 the face costs 160 kB for a maximum
+# deviation of 2/255, while 82/70 costs 87 kB for a maximum of 8 — under a
+# watermark drawn at .32 opacity that is ~2.5/255 on screen, invisible, and
+# still smaller than the 105 kB the baked RGB version took.
+save = dict(quality=86, method=6)
+if cfg["alpha"]:
+    save = dict(quality=82, alpha_quality=70, method=6)
+out.save(cfg["out"], **save)
 print("%s — %dx%d, %.0f kB" % (cfg["out"], w, h, os.path.getsize(cfg["out"]) / 1024))
