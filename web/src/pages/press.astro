@@ -83,7 +83,34 @@ const PRESS = [
   },
 ];
 
-const ALL = [...GUIDE, ...PRESS];
+
+/* Video and podcast. Links only — an embed would load a tracking player on
+   every visit and hand a third party our visitors for nothing. */
+const VIDEO = [
+  {
+    outlet: "Tipsy Podcast",
+    title: "Filip Horvat o svom kuharskom putovanju, hrvatskim namirnicama i kako biti chef i vlasnik restorana",
+    date: "2025-04-24",
+    url: "https://www.youtube.com/watch?v=FtBjl40LDJk",
+    note: "Dugi razgovor — kuhinja, namirnice i vođenje restorana.",
+  },
+  {
+    outlet: "Best Food Croatia",
+    title: "David Skoko: „Jeo sam labuda!“ · Theatrium by Filho",
+    date: "2026-05-06",
+    url: "https://www.youtube.com/watch?v=uFYQb3uCPEQ",
+    note: "David Skoko u Theatriumu, za stolom s Filipom.",
+  },
+  {
+    outlet: "Nova TV · dnevnik.hr",
+    title: "Gostujući chef: Filip Horvat",
+    date: "",
+    url: "https://dnevnik.hr/video/gostujuci-chef-filip-horvat---63214608",
+    note: "Televizijski prilog s chefom u ulozi gostujućeg kuhara.",
+  },
+];
+
+const ALL = [...GUIDE, ...PRESS, ...VIDEO];
 
 const MONTHS = ["siječnja","veljače","ožujka","travnja","svibnja","lipnja",
                 "srpnja","kolovoza","rujna","listopada","studenoga","prosinca"];
@@ -143,6 +170,25 @@ const schema = {
     <h2 class="gtitle">U medijima</h2>
     <ul class="items">
       {PRESS.map((it) => (
+        <li>
+          <a href={it.url} rel="noopener nofollow" target="_blank">
+            <span class="p-head">
+              <span class="p-outlet">{it.outlet}</span>
+              {it.date && <time datetime={it.date}>{hrDate(it.date)}</time>}
+            </span>
+            <span class="p-title">{it.title}</span>
+            <span class="p-note">{it.note}</span>
+            <span class="p-go" aria-hidden="true">→</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="group">
+    <h2 class="gtitle">Video i podcast</h2>
+    <ul class="items">
+      {VIDEO.map((it) => (
         <li>
           <a href={it.url} rel="noopener nofollow" target="_blank">
             <span class="p-head">
