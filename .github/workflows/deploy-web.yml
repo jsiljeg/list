@@ -25,6 +25,11 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Reuses the environment the wine list already stores its Cloudflare token
+    # in. Expanding a token's permissions in Cloudflare does not change its
+    # value, so the secret stored here is the same string and now reaches Pages
+    # and D1 too — the owner only has to add the account id.
+    environment: theatrium
     steps:
       - uses: actions/checkout@v4
 
