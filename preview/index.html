@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theatrium by Filho</title>
+<meta name="description" content="Predstava za iskusne i znatiželjne — Teslina 7, Zagreb.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" fetchpriority="high" href="assets/Theatrium_hero.jpg">
+<link rel="icon" href="assets/theatrium-logo.svg">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="Theatrium by Filho">
+      <img src="assets/theatrium-logo.svg" alt="Theatrium by Filho">
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" aria-label="Izbornik">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-panel" aria-label="Glavni izbornik">
+  <ul>
+    <li><a href="index.html">Početna</a></li>
+    <li><a href="#info">Scenario</a></li>
+    <li><a href="#team">Ensemble</a></li>
+    <li><a href="#explore">Repertoire</a></li>
+    <li><a href="ponuda-pica.html">How to solve drinking problems</a></li>
+    <li><a href="#colophon">Rezervacija</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section class="cover" id="hero" style="background-image:url('assets/Theatrium_hero.jpg')">
+    <div class="container">
+      <h1>Predstava za iskusne<br>i znatiželjne</h1>
+      <p class="lede">
+        Nekoliko koraka od središnjeg trga, u atriju Zagrebačkog kazališta mladih.
+        Gastronomsko iskustvo u dramatičnom kazališnom interijeru.
+      </p>
+      <a class="btn-outline" href="#colophon">Rezervacija</a>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <section class="section" id="info">
+    <div class="container">
+      <h2 class="section-title">Scenario</h2>
+      <div class="prose">
+        <p>
+          Tradicionalni standardi hrvatske kuhinje rastavljeni su i ponovno složeni
+          na neočekivan način. Svaki obrok je predstava s karakterom.
+        </p>
+        <p>
+          Za ručak se bira iz Predstave, od Prologa do Epiloga. Za večeru se
+          dodaju autorski festivali u šest i devet sljedova.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <section class="section" id="team">
+    <div class="container">
+      <h2 class="section-title">Ensemble</h2>
+      <div class="prose">
+        <p>
+          Kuharsku postavu čine sous chefovi s iskustvom iz europskih restorana s
+          Michelinovim zvjezdicama.
+        </p>
+        <p>
+          Namirnice stižu svako jutro s Dolca — voće i povrće iz okolnih vrtova,
+          meso od provjerenih malih uzgajivača, riba s Jadrana.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <section class="section" id="explore">
+    <div class="container">
+      <h2 class="section-title">Repertoire</h2>
+      <div class="prose">
+        <p>
+          Očekuje vas niz iznenađenja i neočekivanih obrata, kao u svakom vrhunskom
+          dramskom djelu. Vrijeme je za predstavu.
+        </p>
+      </div>
+      <div class="figure">
+        <img src="assets/Theatrium_menu_H.jpg" alt="Theatrium — interijer restorana" loading="lazy">
+      </div>
+      <div class="prose" style="margin-top:52px">
+        <p><a class="btn-outline" href="ponuda-pica.html">Karta pića</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="colophon">
+  <div class="container">
+    <h2>Kontakt</h2>
+    <p>Teslina 7, Zagreb, Croatia</p>
+    <p><a href="tel:+385995844652">+385 99 5844 652</a></p>
+    <p><a href="mailto:joy@theatrium.hr">joy@theatrium.hr</a></p>
+    <p class="copy">Copyright © 2026 Theatrium by Filho</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var toggle = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  var header = document.getElementById("site-header");
+
+  function setOpen(open) {
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    panel.classList.toggle("is-open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+  toggle.addEventListener("click", function () {
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+  panel.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") setOpen(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") setOpen(false);
+  });
+
+  function onScroll() {
+    header.classList.toggle("is-stuck", window.scrollY > 60);
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>

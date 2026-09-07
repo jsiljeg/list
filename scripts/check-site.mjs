@@ -25,7 +25,8 @@ await new Promise((r) => srv.listen(4199, r));
 
 const bad = [];
 const b = await chromium.launch();
-for (const page of ["/", "/admin.html", "/qr.html"]) {
+for (const page of ["/", "/admin.html", "/qr.html",
+                    "/preview/index.html", "/preview/ponuda-pica.html"]) {
   const p = await b.newPage({ viewport: { width: 1024, height: 768 } });
   p.on("pageerror", (e) => bad.push(`${page}: page error — ${e.message}`));
   p.on("console", (m) => { if (m.type() === "error") bad.push(`${page}: console — ${m.text()}`); });

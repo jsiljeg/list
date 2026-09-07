@@ -34,4 +34,10 @@ cp lists/theatrium.json "$out/lists/"
 node scripts/build-embed.mjs
 cp embed-hr.html embed-en.html "$out/"
 
+# A staging replica of theatrium.hr carrying the embedded list, so the owner can
+# see proposal 1 in their own page design before their developer touches the
+# live site. Not linked from anywhere and noindex'd; delete the line when the
+# real site has the fragment and the preview has served its purpose.
+cp -r preview "$out/"
+
 echo "site assembled in $out/ ($(find "$out" -type f | wc -l) files)"

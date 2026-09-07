@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to solve drinking problems - Theatrium by Filho</title>
+<meta name="description" content="Karta pića — vina na čašu i na butelje, žestoka pića, rakije i vode.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" fetchpriority="high" href="assets/Theatrium_hero.jpg">
+<link rel="icon" href="assets/theatrium-logo.svg">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="Theatrium by Filho">
+      <img src="assets/theatrium-logo.svg" alt="Theatrium by Filho">
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" aria-label="Izbornik">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-panel" aria-label="Glavni izbornik">
+  <ul>
+    <li><a href="index.html">Početna</a></li>
+    <li><a href="index.html#info">Scenario</a></li>
+    <li><a href="index.html#team">Ensemble</a></li>
+    <li><a href="index.html#explore">Repertoire</a></li>
+    <li><a href="ponuda-pica.html">How to solve drinking problems</a></li>
+    <li><a href="index.html#colophon">Rezervacija</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section class="cover cover-page" style="background-image:url('assets/Theatrium_hero.jpg')">
+    <div class="container">
+      <h1>How to solve<br>drinking problems</h1>
+      <p class="kicker">– Guide –</p>
+    </div>
+  </section>
+
+  <section class="drinks">
+    <div class="container">
+
+      <!-- Gumb prema cijeloj karti, za goste na mobitelu: pretraga, 8 jezika
+           i preporuka vina uz jelo postoje samo u aplikaciji. -->
+      <div class="list-cta">
+        <a class="btn-outline" href="https://theatrium.list.devinos.hr" target="_blank" rel="noopener">
+          Otvori kartu pića
+        </a>
+        <span class="txt">8 jezika · pretraga · preporuka vina uz jelo</span>
+      </div>
+
+      <div class="lang-switch" role="group" aria-label="Jezik karte">
+        <button type="button" data-lang="hr" aria-pressed="true">Hrvatski</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
+
+      <!-- ============================================================
+           Ovdje se ispisuje karta pića. Sadržaj se povlači iz iste
+           karte koju gosti čitaju za stolom, pa se cijene i berbe
+           mijenjaju na jednom mjestu.
+           ============================================================ -->
+      <div id="theatrium-lista"></div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="colophon">
+  <div class="container">
+    <h2>Kontakt</h2>
+    <p>Teslina 7, Zagreb, Croatia</p>
+    <p><a href="tel:+385995844652">+385 99 5844 652</a></p>
+    <p><a href="mailto:joy@theatrium.hr">joy@theatrium.hr</a></p>
+    <p class="copy">Copyright © 2026 Theatrium by Filho</p>
+  </div>
+</footer>
+
+<script>
+/* ------------------------------------------------------------------ menu */
+(function () {
+  var toggle = document.getElementById("nav-toggle");
+  var panel = document.getElementById("nav-panel");
+  var header = document.getElementById("site-header");
+
+  function setOpen(open) {
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    panel.classList.toggle("is-open", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+  toggle.addEventListener("click", function () {
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+  panel.addEventListener("click", function (e) { if (e.target.tagName === "A") setOpen(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
+
+  function onScroll() { header.classList.toggle("is-stuck", window.scrollY > 60); }
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ------------------------------------------------------- karta pića
+   Ovo je cijela integracija. Odsječak je gotov HTML — nema <html> ni
+   <head>, samo popis — i osvježava se sam pri svakoj promjeni karte.
+   CORS je otvoren (access-control-allow-origin: *), pa fetch radi
+   izravno s theatrium.hr; nije potreban proxy ni ključ.               */
+(function () {
+  var LIVE = "https://theatrium.list.devinos.hr/";
+  var mount = document.getElementById("theatrium-lista");
+  var buttons = document.querySelectorAll(".lang-switch button");
+
+  function load(lang) {
+    var file = "embed-" + lang + ".html";
+    mount.innerHTML = '<p class="tl-status">Učitavanje karte…</p>';
+
+    /* Live adresa je ono što ide programeru. Relativna je samo zato da
+       ova preview-stranica radi i prije nego je objavljena. */
+    fetch(LIVE + file)
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .catch(function () { return fetch("../" + file).then(function (r) { return r.text(); }); })
+      .then(function (html) { mount.innerHTML = html; })
+      .catch(function () {
+        mount.innerHTML = '<p class="tl-status">Karta trenutno nije dostupna.</p>';
+      });
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      buttons.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      document.documentElement.lang = b.dataset.lang;
+      load(b.dataset.lang);
+    });
+  });
+
+  load("hr");
+})();
+</script>
+
+</body>
+</html>
