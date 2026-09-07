@@ -79,13 +79,15 @@ const RESTAURANT = {
 
   <header class="site-header">
     <div class="shell bar">
-      <a class="brand" href="/">Theatrium <span>by Filho</span></a>
+      <a class="brand" href="/" aria-label="Theatrium by Filho">
+        <img src="/theatrium-logo.svg" alt="Theatrium by Filho" width="316" height="88" />
+      </a>
       <nav aria-label="Glavni izbornik">
         <a href="/jelovnik/">Repertoire</a>
         <a href="/o-nama/">Scenario</a>
         <a href="/press/">Press</a>
         <a href="https://theatrium.list.devinos.hr">Karta pića</a>
-        <a class="btn btn-solid nav-cta" href="/rezervacija/">Rezervacija</a>
+        <a class="nav-cta" href="/rezervacija/">Rezervacija</a>
       </nav>
     </div>
   </header>
@@ -129,21 +131,32 @@ const RESTAURANT = {
     border-bottom: 1px solid var(--line);
   }
   .bar { display: flex; align-items: center; gap: 1.5rem; padding-block: .9rem; }
-  .brand {
-    font-family: var(--serif); font-size: 1.4rem; letter-spacing: .18em;
-    text-transform: uppercase; text-decoration: none; margin-right: auto;
-  }
-  .brand span {
-    display: block; font-size: .58rem; letter-spacing: .3em; color: var(--text-faint);
-  }
+  /* The real wordmark. It was set in Markazi before, which is close enough to
+     look like a mistake rather than a choice — the letterforms are spaced by
+     hand in the original and no font reproduces them. White fill, so it sits
+     on the dark ground with no treatment. */
+  .brand { margin-right: auto; line-height: 0; }
+  .brand img { width: 168px; height: auto; }
   nav { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
   nav a {
     text-decoration: none; font-size: .78rem; letter-spacing: .14em;
     text-transform: uppercase; color: var(--text-dim);
   }
   nav a:hover { color: var(--text); }
-  .nav-cta { color: var(--bg); padding: .6rem 1.1rem; }
-  .nav-cta:hover { color: var(--bg); }
+  /* Outlined, not a filled block. The solid version was mine rather than the
+     restaurant's, and it read as a yellow rectangle dropped into a dark bar.
+     `nav a.nav-cta` rather than `.nav-cta` because `nav a` above sets a colour
+     and a bare class does not reliably beat it once Astro has scoped both —
+     which is how this shipped as dim grey on gold. */
+  nav a.nav-cta {
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: .55rem 1.15rem;
+    background: none;
+  }
+  nav a.nav-cta:hover, nav a.nav-cta:focus-visible {
+    background: var(--gold); color: var(--bg);
+  }
 
   .site-footer {
     border-top: 1px solid var(--line);
