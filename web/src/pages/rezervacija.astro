@@ -81,7 +81,12 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
 
     <fieldset class="step" id="step-time" hidden>
       <legend><span class="n">1</span> Slobodni termini</legend>
-      <div class="slots" id="slots" role="group" aria-label="Vrijeme"></div>
+      <div class="timerow">
+        <button type="button" class="tnav" id="t-prev" aria-label="Raniji termini">‹</button>
+        <div class="slots" id="slots" role="group" aria-label="Vrijeme"></div>
+        <button type="button" class="tnav" id="t-next" aria-label="Kasniji termini">›</button>
+      </div>
+      <p class="tmore" id="t-count"></p>
       <p id="slots-empty" class="empty" hidden>
         Tog dana nema slobodnih termina za toliko gostiju. Pokušajte s drugim
         danom ili nas nazovite.
@@ -147,6 +152,9 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
   const MAX_PARTY = 8;
 
   const state = { covers: 2, dayIndex: 0, time: null };
+  const WINDOW = 7;         // times shown at once
+  let ALL = [];             // every free time for the chosen day
+  let offset = 0;           // where the window starts
   const show = (el, on) => { el.hidden = !on; };
 
   const DOW = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
@@ -189,19 +197,34 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
     }
 
     const slots = (data && data.slots) || [];
-    slotsBox.innerHTML = "";
-    if (!slots.length) { show(empty, true); return; }
+    if (!slots.length) { slotsBox.innerHTML = ""; show(empty, true); paintNav(); return; }
 
-    /* One row of times, scrolled to dinner on arrival. That was the useful half
-       of the hour-then-minute version — a guest reads an offer and can still
-       scroll anywhere — without the extra step or the counts under it. */
-    let nearest = null, best = Infinity;
-    slots.forEach((sl) => {
+    /* A WINDOW, not the whole day. Showing every free time is what made this
+       "too much" twice over — first as a wall of buttons, then as one very long
+       row. Seven around the hour you want is an offer; forty-one is a list to
+       work through. The arrows move the window, so nothing is unreachable. */
+    ALL = slots;
+    let nearest = 0, best = Infinity;
+    slots.forEach((sl, i) => {
+      const d = Math.abs(sl.start - PREFERRED_HOUR * 60);
+      if (d < best) { best = d; nearest = i; }
+    });
+    offset = Math.max(0, Math.min(nearest - Math.floor(WINDOW / 2), slots.length - WINDOW));
+    if (offset < 0) offset = 0;
+    renderWindow();
+    return;
+
+  }
+
+  function renderWindow() {
+    const date = DAYS[state.dayIndex].iso;
+    slotsBox.innerHTML = "";
+    ALL.slice(offset, offset + WINDOW).forEach((sl) => {
       const b = document.createElement("button");
       b.type = "button";
       b.className = "slot";
       b.textContent = sl.time;
-      b.setAttribute("aria-pressed", "false");
+      b.setAttribute("aria-pressed", String(state.time === sl.time));
       b.addEventListener("click", () => {
         state.time = sl.time;
         slotsBox.querySelectorAll(".slot").forEach((o) =>
@@ -212,12 +235,27 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
         stepWho.scrollIntoView({ behavior: "smooth", block: "nearest" });
       });
       slotsBox.appendChild(b);
-
-      const diff = Math.abs(sl.start - PREFERRED_HOUR * 60);
-      if (diff < best) { best = diff; nearest = b; }
     });
-    if (nearest) nearest.scrollIntoView({ block: "nearest", inline: "center" });
+    paintNav();
   }
+
+  function paintNav() {
+    $("t-prev").disabled = offset <= 0;
+    $("t-next").disabled = offset + WINDOW >= ALL.length;
+    const c = $("t-count");
+    c.textContent = ALL.length > WINDOW
+      ? "još " + (ALL.length - WINDOW) + " termina tog dana"
+      : "";
+  }
+
+  $("t-prev").addEventListener("click", () => {
+    offset = Math.max(0, offset - WINDOW);
+    renderWindow();
+  });
+  $("t-next").addEventListener("click", () => {
+    offset = Math.min(Math.max(0, ALL.length - WINDOW), offset + WINDOW);
+    renderWindow();
+  });
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -340,6 +378,26 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
   .book .slot:hover { border-color: var(--gold-soft); }
   .book .slot[aria-pressed="true"] {
     background: var(--gold); border-color: var(--gold); color: var(--bg);
+  }
+
+  /* the time row: arrows either side, matching the wine list's stepping */
+  .book .timerow { display: flex; align-items: center; gap: .5rem; }
+  .book .tnav {
+    width: 2.3rem; height: 2.3rem; flex: none;
+    display: grid; place-items: center;
+    background: var(--bg-card); border: 1px solid var(--line); border-radius: 50%;
+    color: var(--gold-soft); font-size: 1.25rem; line-height: 1; cursor: pointer;
+    transition: color .15s, border-color .15s;
+  }
+  /* Only where a pointer can hover: on a touch screen :hover latches after a
+     tap and the ring stays lit long after the finger has gone. */
+  @media (hover: hover) {
+    .book .tnav:hover:not(:disabled) { color: var(--text); border-color: var(--gold); }
+  }
+  .book .tnav:disabled { opacity: .25; cursor: default; }
+  .book .tmore {
+    margin: .7rem 0 0; font-size: .78rem; letter-spacing: .06em;
+    color: var(--text-faint);
   }
 
   .book .loading, .book .empty { color: var(--text-faint); margin: 0; }

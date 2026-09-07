@@ -141,14 +141,9 @@ const featured = ITEMS.filter((i) => i.featured);
 const rest = ITEMS.filter((i) => !i.featured)
   .sort((a, b) => (b.date || "0").localeCompare(a.date || "0"));
 
-/* Year buckets, undated collected at the end under their own heading. */
-const years = [];
-for (const it of rest) {
-  const y = it.date ? it.date.slice(0, 4) : "—";
-  const last = years[years.length - 1];
-  if (last && last.year === y) last.items.push(it);
-  else years.push({ year: y, items: [it] });
-}
+/* Featured lead, then newest first. The rail is one row, so the order *is* the
+   editing: whatever should be seen first goes first. */
+const ordered = [...featured, ...rest];
 
 const counts = Object.keys(KIND)
   .map((k) => ({ k, label: KIND[k], n: ITEMS.filter((i) => i.kind === k).length }))
@@ -179,52 +174,37 @@ const schema = {
     </p>
   </header>
 
-  {featured.length > 0 && (
-    <section class="feature">
-      {featured.map((it) => (
-        <a class="fcard" href={it.url} rel="noopener nofollow" target="_blank">
-          <span class="f-kind">{KIND[it.kind]}</span>
-          <span class="f-outlet">{it.outlet}</span>
-          <span class="f-title">{it.title}</span>
-          <span class="f-note">{it.note}</span>
-          <span class="f-go">Pročitaj <span aria-hidden="true">→</span></span>
-        </a>
-      ))}
-    </section>
-  )}
-
-  <nav class="filters" id="filters" aria-label="Filtriraj">
-    <button type="button" class="fchip" data-kind="all" aria-pressed="true">
-      Sve <span class="n">{ITEMS.length}</span>
-    </button>
-    {counts.map((c) => (
-      <button type="button" class="fchip" data-kind={c.k} aria-pressed="false">
-        {c.label} <span class="n">{c.n}</span>
+  <div class="rail-head">
+    <nav class="filters" id="filters" aria-label="Filtriraj">
+      <button type="button" class="fchip" data-kind="all" aria-pressed="true">
+        Sve <span class="n">{ITEMS.length}</span>
       </button>
-    ))}
-  </nav>
+      {counts.map((c) => (
+        <button type="button" class="fchip" data-kind={c.k} aria-pressed="false">
+          {c.label} <span class="n">{c.n}</span>
+        </button>
+      ))}
+    </nav>
+    <div class="rail-nav">
+      <button type="button" class="rnav" id="rail-prev" aria-label="Prethodni">‹</button>
+      <button type="button" class="rnav" id="rail-next" aria-label="Sljedeći">›</button>
+    </div>
+  </div>
 
-  {years.map((grp) => (
-    <section class="year" data-year={grp.year}>
-      <h2 class="ytitle">{grp.year === "—" ? "Bez datuma" : grp.year}</h2>
-      <ul class="items">
-        {grp.items.map((it) => (
-          <li data-kind={it.kind}>
-            <a href={it.url} rel="noopener nofollow" target="_blank">
-              <span class="p-head">
-                <span class="p-outlet">{it.outlet}</span>
-                <span class="p-kind">{KIND[it.kind]}</span>
-                {it.date && <time datetime={it.date}>{hrDate(it.date)}</time>}
-              </span>
-              <span class="p-title">{it.title}</span>
-              <span class="p-note">{it.note}</span>
-              <span class="p-go" aria-hidden="true">→</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  ))}
+  <div class="rail" id="rail">
+    {ordered.map((it) => (
+      <a class="card" data-kind={it.kind} href={it.url} rel="noopener nofollow" target="_blank">
+        <span class="c-top">
+          <span class="c-kind">{KIND[it.kind]}</span>
+          {it.date && <time datetime={it.date}>{hrDate(it.date)}</time>}
+        </span>
+        <span class="c-outlet">{it.outlet}</span>
+        <span class="c-title">{it.title}</span>
+        <span class="c-note">{it.note}</span>
+        <span class="c-go">Otvori <span aria-hidden="true">→</span></span>
+      </a>
+    ))}
+  </div>
 
   <p class="foot">
     Pišete o nama? <a href="mailto:joy@theatrium.hr">joy@theatrium.hr</a>
