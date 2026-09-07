@@ -82,6 +82,40 @@ jobs:
 
           npx wrangler d1 execute theatrium --remote --file=schema.sql -y
 
+      # Attach theatrium.devinos.hr, once. Idempotent and non-fatal: a failure
+      # here must not stop a deploy that is otherwise fine, because the site is
+      # always reachable on its pages.dev address regardless.
+      #
+      # One level of subdomain on purpose. Cloudflare's Universal SSL covers
+      # *.devinos.hr but not a second level — the wine list hit exactly that on
+      # theatrium.list.devinos.hr and had to go DNS-only to get a certificate.
+      # Pages needs the record proxied, so a two-level name would have no cert.
+      - name: Attach the custom domain
+        continue-on-error: true
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_ZONE: ${{ vars.CLOUDFLARE_ZONE_ID }}
+          HOST: theatrium.devinos.hr
+        run: |
+          set -uo pipefail
+          [ -n "${CF_ZONE:-}" ] || { echo "no CLOUDFLARE_ZONE_ID variable — skipping"; exit 0; }
+          api() { curl -sS -H "Authorization: Bearer $CF_TOKEN" -H "Content-Type: application/json" "$@"; }
+
+          if api "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects/theatrium-web/domains"                | grep -q "\"$HOST\""; then
+            echo "custom domain already attached"
+          else
+            echo "attaching $HOST to the Pages project"
+            api -X POST "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects/theatrium-web/domains"               --data "{\"name\":\"$HOST\"}" | jq -r '.success, (.errors // [])[]?.message'
+          fi
+
+          if api "https://api.cloudflare.com/client/v4/zones/$CF_ZONE/dns_records?name=$HOST"                | jq -e '.result | length > 0' >/dev/null; then
+            echo "DNS record already present"
+          else
+            echo "creating CNAME $HOST -> theatrium-web.pages.dev (proxied)"
+            api -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE/dns_records"               --data '{"type":"CNAME","name":"theatrium","content":"theatrium-web.pages.dev","proxied":true,"comment":"new restaurant site (staging)"}'               | jq -r '.success, (.errors // [])[]?.message'
+          fi
+
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
