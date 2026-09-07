@@ -212,123 +212,134 @@ const schema = {
 </Base>
 
 <script>
-  /* Filtering is a class toggle over server-rendered markup — every item is in
-     the HTML, so this works without JS and search sees all of it. */
+  /* Filtering hides server-rendered cards — everything is in the HTML, so this
+     works with JS off and a crawler sees all of it. */
+  const rail = document.getElementById("rail");
   const chips = document.querySelectorAll("#filters .fchip");
+  const prev = document.getElementById("rail-prev");
+  const next = document.getElementById("rail-next");
+
+  const visible = () => [...rail.querySelectorAll(".card")].filter((c) => !c.hidden);
+
+  function step(dir) {
+    const cards = visible();
+    if (!cards.length) return;
+    const w = cards[0].getBoundingClientRect().width + 16; // card + gap
+    rail.scrollBy({ left: dir * w * 1, behavior: "smooth" });
+  }
+  prev.addEventListener("click", () => step(-1));
+  next.addEventListener("click", () => step(1));
+
+  function paintNav() {
+    const max = rail.scrollWidth - rail.clientWidth - 2;
+    prev.disabled = rail.scrollLeft <= 2;
+    next.disabled = rail.scrollLeft >= max;
+  }
+  rail.addEventListener("scroll", paintNav, { passive: true });
+  addEventListener("resize", paintNav);
+
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
       const kind = chip.dataset.kind;
       chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
-      document.querySelectorAll(".items li").forEach((li) => {
-        li.hidden = kind !== "all" && li.dataset.kind !== kind;
+      rail.querySelectorAll(".card").forEach((c) => {
+        c.hidden = kind !== "all" && c.dataset.kind !== kind;
       });
-      /* A year heading with nothing under it is noise. */
-      document.querySelectorAll(".year").forEach((sec) => {
-        sec.hidden = ![...sec.querySelectorAll("li")].some((li) => !li.hidden);
-      });
+      rail.scrollTo({ left: 0, behavior: "smooth" });
+      paintNav();
     });
   });
+
+  paintNav();
 </script>
 
 <style>
   .head { padding: 3.5rem 0 1rem; max-width: 46rem; }
   .lede { color: var(--text-dim); font-size: 1.1rem; }
 
-  /* the featured pieces */
-  .feature {
-    display: grid; gap: 1rem; margin: 2.4rem 0 2.8rem;
-    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  .rail-head {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;
+    margin: 2.4rem 0 1.4rem;
   }
-  .fcard {
-    display: grid; align-content: start; gap: .5rem;
-    padding: 1.6rem 1.7rem 1.5rem;
-    background: var(--bg-card); border: 1px solid var(--line);
-    text-decoration: none;
-    transition: border-color .2s, transform .2s;
-  }
-  .fcard:hover, .fcard:focus-visible { border-color: var(--gold-soft); transform: translateY(-2px); }
-  .f-kind {
-    justify-self: start; font-size: .64rem; letter-spacing: .18em;
-    text-transform: uppercase; color: var(--bg); background: var(--gold);
-    padding: .2rem .55rem;
-  }
-  .f-outlet {
-    font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--gold-soft); margin-top: .3rem;
-  }
-  .f-title {
-    font-family: var(--serif); font-size: clamp(1.35rem, 2.3vw, 1.7rem);
-    line-height: 1.25; color: var(--text); text-wrap: balance;
-  }
-  .f-note { color: var(--text-dim); font-size: .95rem; }
-  .f-go {
-    margin-top: .5rem; font-size: .74rem; letter-spacing: .16em;
-    text-transform: uppercase; color: var(--gold);
-  }
-
-  /* filters */
-  .filters {
-    display: flex; flex-wrap: wrap; gap: .45rem;
-    padding-bottom: 1.6rem; border-bottom: 1px solid var(--line);
-  }
+  .filters { display: flex; flex-wrap: wrap; gap: .45rem; margin-right: auto; }
   .fchip {
     background: none; color: var(--text-dim);
     border: 1px solid var(--line); border-radius: 999px;
     padding: .42rem .95rem; cursor: pointer;
-    font-family: var(--sans); font-size: .76rem;
+    font-family: var(--sans); font-size: .74rem;
     letter-spacing: .1em; text-transform: uppercase;
     transition: border-color .15s, color .15s, background-color .15s;
   }
   .fchip:hover { border-color: var(--gold-soft); color: var(--text); }
   .fchip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--bg); }
-  .fchip .n { opacity: .55; margin-left: .25rem; font-variant-numeric: tabular-nums; }
+  .fchip .n { opacity: .55; margin-left: .3rem; font-variant-numeric: tabular-nums; }
 
-  /* the list */
-  .year { padding-top: 2.2rem; }
-  .ytitle {
-    font-family: var(--sans); font-weight: 500;
-    font-size: .74rem; letter-spacing: .22em; color: var(--text-faint);
-    margin-bottom: .3rem;
+  .rail-nav { display: flex; gap: .4rem; }
+  .rnav {
+    width: 2.4rem; height: 2.4rem;
+    display: grid; place-items: center;
+    background: var(--bg-card); border: 1px solid var(--line); border-radius: 50%;
+    color: var(--gold-soft); font-size: 1.3rem; line-height: 1; cursor: pointer;
+    transition: color .15s, border-color .15s;
   }
-  .items { list-style: none; margin: 0; padding: 0; }
-  .items li { border-bottom: 1px solid var(--line); }
-  .items a {
-    display: grid; grid-template-columns: 1fr auto; gap: .3rem 1.5rem;
-    padding: 1.3rem 0; text-decoration: none;
-    transition: padding-left .2s ease;
+  /* Hover only where a pointer exists: on touch, :hover latches after a tap. */
+  @media (hover: hover) {
+    .rnav:hover:not(:disabled) { color: var(--text); border-color: var(--gold); }
   }
-  .items a:hover, .items a:focus-visible { padding-left: .7rem; }
+  .rnav:disabled { opacity: .25; cursor: default; }
 
-  .p-head { grid-column: 1; display: flex; flex-wrap: wrap; align-items: baseline; gap: .7rem; }
-  .p-outlet {
-    font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+  /* the rail itself */
+  .rail {
+    display: flex; gap: 1rem;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+    scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+  }
+  .rail::-webkit-scrollbar { height: 6px; }
+  .rail::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+
+  /* A card is a grid so the CTA can sit at the bottom however long the title
+     runs — otherwise the row of cards ends ragged. */
+  .card {
+    flex: 0 0 auto; width: min(23rem, 82vw);
+    scroll-snap-align: start;
+    display: grid; grid-template-rows: auto auto 1fr auto auto;
+    gap: .55rem;
+    padding: 1.5rem 1.6rem 1.4rem;
+    background: var(--bg-card); border: 1px solid var(--line);
+    text-decoration: none;
+    transition: border-color .2s, transform .2s;
+  }
+  .card:hover, .card:focus-visible { border-color: var(--gold-soft); transform: translateY(-2px); }
+
+  .c-top { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; }
+  .c-kind {
+    font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--bg); background: var(--gold); padding: .2rem .5rem;
+  }
+  .c-top time { font-size: .74rem; color: var(--text-faint); white-space: nowrap; }
+  .c-outlet {
+    font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
     color: var(--gold-soft);
   }
-  .p-kind {
-    font-size: .64rem; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--text-faint); border: 1px solid var(--line);
-    padding: .05rem .4rem; border-radius: 2px;
-  }
-  time { font-size: .76rem; color: var(--text-faint); }
-  .p-title {
-    grid-column: 1; font-family: var(--serif);
-    font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.3;
+  .c-title {
+    font-family: var(--serif); font-size: 1.35rem; line-height: 1.28;
     color: var(--text); text-wrap: balance;
+    /* Four lines maximum: a long headline must not make one card twice the
+       height of its neighbours. */
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  .p-note { grid-column: 1; color: var(--text-dim); font-size: .92rem; max-width: 52ch; }
-  .p-go {
-    grid-column: 2; grid-row: 1 / span 3; align-self: center;
-    color: var(--gold); font-size: 1.2rem; opacity: 0;
-    transform: translateX(-.4rem);
-    transition: opacity .2s ease, transform .2s ease;
+  .c-note {
+    color: var(--text-dim); font-size: .92rem; line-height: 1.55;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  .items a:hover .p-go, .items a:focus-visible .p-go { opacity: 1; transform: none; }
+  .c-go {
+    margin-top: .3rem; font-size: .72rem; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--gold);
+  }
 
-  .foot { margin: 3.5rem 0 var(--section); color: var(--text-faint); font-size: .95rem; }
+  .foot { margin: 2.5rem 0 var(--section); color: var(--text-faint); font-size: .95rem; }
   .foot a { color: var(--gold-soft); }
-
-  @media (max-width: 560px) {
-    .items a { grid-template-columns: 1fr; }
-    .p-go { display: none; }
-  }
 </style>

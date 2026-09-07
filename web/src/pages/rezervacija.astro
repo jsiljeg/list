@@ -73,10 +73,12 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
         <span class="plabel">Datum</span>
         <div class="stepper">
           <button type="button" class="pbtn" id="day-prev" aria-label="Prethodni dan">‹</button>
-          <span class="pval" id="day-val" aria-live="polite">&nbsp;</span>
+          <button type="button" class="pval pval-btn" id="day-val"
+                  aria-haspopup="dialog" aria-expanded="false">&nbsp;</button>
           <button type="button" class="pbtn" id="day-next" aria-label="Sljedeći dan">›</button>
         </div>
       </div>
+      <div class="cal" id="cal" hidden role="dialog" aria-label="Odaberite datum"></div>
     </div>
 
     <fieldset class="step" id="step-time" hidden>
@@ -155,6 +157,11 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
   const WINDOW = 7;         // times shown at once
   let ALL = [];             // every free time for the chosen day
   let offset = 0;           // where the window starts
+  /* The minute the guest is currently looking at. Changing the party size or
+     the day reloads availability, and snapping back to 19:00 every time threw
+     away where they had scrolled to — which reads as the picker resetting
+     itself. Seeded with dinner, then it follows them. */
+  let anchorMin = PREFERRED_HOUR * 60;
   const show = (el, on) => { el.hidden = !on; };
 
   const DOW = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
@@ -206,7 +213,7 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
     ALL = slots;
     let nearest = 0, best = Infinity;
     slots.forEach((sl, i) => {
-      const d = Math.abs(sl.start - PREFERRED_HOUR * 60);
+      const d = Math.abs(sl.start - anchorMin);
       if (d < best) { best = d; nearest = i; }
     });
     offset = Math.max(0, Math.min(nearest - Math.floor(WINDOW / 2), slots.length - WINDOW));
@@ -227,6 +234,7 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
       b.setAttribute("aria-pressed", String(state.time === sl.time));
       b.addEventListener("click", () => {
         state.time = sl.time;
+        anchorMin = sl.start;
         slotsBox.querySelectorAll(".slot").forEach((o) =>
           o.setAttribute("aria-pressed", String(o === b)));
         recap.textContent = human(date) + " u " + sl.time + " · " + state.covers +
@@ -250,12 +258,21 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
 
   $("t-prev").addEventListener("click", () => {
     offset = Math.max(0, offset - WINDOW);
+    rememberAnchor();
     renderWindow();
   });
   $("t-next").addEventListener("click", () => {
     offset = Math.min(Math.max(0, ALL.length - WINDOW), offset + WINDOW);
+    rememberAnchor();
     renderWindow();
   });
+
+  /* Middle of the visible window, so paging left or right carries over to the
+     next day or party size. */
+  function rememberAnchor() {
+    const mid = ALL[Math.min(ALL.length - 1, offset + Math.floor(WINDOW / 2))];
+    if (mid) anchorMin = mid.start;
+  }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -306,6 +323,85 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
     show(err, true);
     if (data && data.error === "slot-taken") loadSlots();
   });
+
+  /* ---- calendar -----------------------------------------------------------
+     A month grid in the site's own style. The native picker was removed
+     because its format follows the operating system's locale (mm/dd/yyyy), and
+     this replaces it rather than reinstating it.
+
+     Selectable days come from DAYS, which the server built from the opening
+     hours — so a closed day cannot be picked here even by accident, and the
+     client never reimplements the rule. */
+  const cal = $("cal"), dayVal = $("day-val");
+  const MONTH = ["Siječanj","Veljača","Ožujak","Travanj","Svibanj","Lipanj",
+                 "Srpanj","Kolovoz","Rujan","Listopad","Studeni","Prosinac"];
+  const openByIso = new Map(DAYS.map((d, i) => [d.iso, i]));
+  let calY, calM;
+
+  function openCal(on) {
+    cal.hidden = !on;
+    dayVal.setAttribute("aria-expanded", String(on));
+    if (on) {
+      const cur = DAYS[state.dayIndex].iso.split("-").map(Number);
+      calY = cur[0]; calM = cur[1] - 1;
+      renderCal();
+    }
+  }
+
+  function renderCal() {
+    const first = new Date(Date.UTC(calY, calM, 1));
+    /* Croatian weeks start on Monday; getUTCDay() starts on Sunday. */
+    const lead = (first.getUTCDay() + 6) % 7;
+    const len = new Date(Date.UTC(calY, calM + 1, 0)).getUTCDate();
+
+    const firstIso = DAYS[0].iso, lastIso = DAYS[DAYS.length - 1].iso;
+    const canPrev = `${calY}-${String(calM + 1).padStart(2, "0")}` > firstIso.slice(0, 7);
+    const canNext = `${calY}-${String(calM + 1).padStart(2, "0")}` < lastIso.slice(0, 7);
+
+    let html =
+      '<div class="cal-top">' +
+      '<button type="button" class="cnav" data-mv="-1" aria-label="Prethodni mjesec"' + (canPrev ? "" : " disabled") + ">‹</button>" +
+      '<span class="cal-mon">' + MONTH[calM] + " " + calY + "</span>" +
+      '<button type="button" class="cnav" data-mv="1" aria-label="Sljedeći mjesec"' + (canNext ? "" : " disabled") + ">›</button>" +
+      "</div><div class=\"cal-grid\">" +
+      ["pon","uto","sri","čet","pet","sub","ned"].map((d) => '<span class="cal-dow">' + d + "</span>").join("");
+
+    for (let i = 0; i < lead; i++) html += "<span></span>";
+    for (let d = 1; d <= len; d++) {
+      const iso = `${calY}-${String(calM + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+      const idx = openByIso.get(iso);
+      const on = idx !== undefined;
+      const sel = on && idx === state.dayIndex;
+      html += on
+        ? '<button type="button" class="cal-day" data-i="' + idx + '"' +
+          (sel ? ' aria-pressed="true"' : ' aria-pressed="false"') + ">" + d + "</button>"
+        : '<span class="cal-off">' + d + "</span>";
+    }
+    html += "</div>";
+    cal.innerHTML = html;
+  }
+
+  dayVal.addEventListener("click", () => openCal(cal.hidden));
+  cal.addEventListener("click", (e) => {
+    const mv = e.target.closest(".cnav");
+    if (mv) {
+      calM += Number(mv.dataset.mv);
+      if (calM < 0) { calM = 11; calY--; }
+      if (calM > 11) { calM = 0; calY++; }
+      renderCal();
+      return;
+    }
+    const day = e.target.closest(".cal-day");
+    if (!day) return;
+    state.dayIndex = Number(day.dataset.i);
+    openCal(false);
+    paint();
+    loadSlots();
+  });
+  document.addEventListener("click", (e) => {
+    if (!cal.hidden && !cal.contains(e.target) && e.target !== dayVal) openCal(false);
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") openCal(false); });
 
   paint();
   loadSlots();
@@ -399,6 +495,50 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
     margin: .7rem 0 0; font-size: .78rem; letter-spacing: .06em;
     color: var(--text-faint);
   }
+
+  /* calendar */
+  .pval-btn {
+    background: none; border: 0; cursor: pointer; padding: 0;
+    font-family: var(--serif); color: var(--text);
+    border-bottom: 1px dashed var(--line);
+  }
+  .pval-btn:hover { border-bottom-color: var(--gold-soft); }
+  .prow { position: relative; }
+  .cal {
+    position: absolute; z-index: 30; top: calc(100% + .6rem); left: 0;
+    background: var(--bg-card); border: 1px solid var(--line);
+    padding: .9rem; width: 19rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .45);
+  }
+  .cal-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .7rem; }
+  .cal-mon {
+    font-family: var(--serif); font-size: 1.05rem; color: var(--text);
+    letter-spacing: .04em;
+  }
+  .cnav {
+    width: 1.9rem; height: 1.9rem; display: grid; place-items: center;
+    background: none; border: 1px solid var(--line); border-radius: 50%;
+    color: var(--gold-soft); cursor: pointer; font-size: 1rem; line-height: 1;
+  }
+  .cnav:disabled { opacity: .25; cursor: default; }
+  @media (hover: hover) { .cnav:hover:not(:disabled) { border-color: var(--gold); color: var(--text); } }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .15rem; }
+  .cal-dow {
+    text-align: center; font-size: .62rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--text-faint); padding-bottom: .35rem;
+  }
+  .cal-day, .cal-off {
+    display: grid; place-items: center; aspect-ratio: 1;
+    font-family: var(--sans); font-size: .86rem; border-radius: 2px;
+  }
+  .cal-day {
+    background: none; color: var(--text);
+    border: 1px solid transparent; cursor: pointer;
+  }
+  @media (hover: hover) { .cal-day:hover { border-color: var(--gold-soft); } }
+  .cal-day[aria-pressed="true"] { background: var(--gold); color: var(--bg); }
+  /* Closed days are shown but unpickable: a gap would make the month read wrong. */
+  .cal-off { color: var(--text-faint); opacity: .35; }
 
   .book .loading, .book .empty { color: var(--text-faint); margin: 0; }
   .book .recap {
