@@ -1,0 +1,231 @@
+---
+/* Private events.
+ *
+ * A service page, not a booking page: the enquiry goes to a person, because a
+ * private event is a conversation about whether the room can do the thing at
+ * all. It deliberately shares nothing with the reservation flow — no slots, no
+ * capacity, no instant confirmation, because none of those can be honest here.
+ *
+ * FACTS I DO NOT HAVE, and have therefore not written:
+ *   - how many the room seats, and how many standing
+ *   - whether a full buyout is offered, and on which days
+ *   - minimum spend, deposit, or cancellation terms
+ *   - what a private menu includes, and how many courses
+ *   - how much notice is needed
+ * Every one of those is a sentence the owner can give me and I will not guess
+ * at, because a wrong number here is a booking someone turns up expecting.
+ * The page reads correctly without them and gets sharper with them. */
+import Base from "../layouts/Base.astro";
+
+const KINDS = [
+  { v: "proslava", label: "Proslava ili rođendan" },
+  { v: "poslovni", label: "Poslovni događaj" },
+  { v: "vjencanje", label: "Vjenčanje ili svečanost" },
+  { v: "degustacija", label: "Degustacija vina" },
+  { v: "ostalo", label: "Nešto drugo" },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Privatni događaji i proslave",
+  provider: { "@type": "Restaurant", name: "Theatrium by Filho" },
+  areaServed: { "@type": "City", name: "Zagreb" },
+};
+---
+
+<Base
+  title="Privatni događaji — Theatrium by Filho"
+  description="Privatne proslave, poslovne večere i degustacije u restoranu Theatrium by Filho, Teslina 7, Zagreb."
+  schema={schema}
+>
+  <header class="head">
+    <p class="eyebrow">Privatni događaji</p>
+    <h1>Predstava samo za vaše goste</h1>
+    <p class="lede">
+      Proslave, poslovne večere i degustacije u atriju Zagrebačkog kazališta
+      mladih — s autorskim menijem i kartom od 393 pića.
+    </p>
+  </header>
+
+  <section class="kinds">
+    <article>
+      <h2>Proslave</h2>
+      <p>Rođendani, obljetnice i obiteljska okupljanja, s menijem složenim za tu večer.</p>
+    </article>
+    <article>
+      <h2>Poslovni događaji</h2>
+      <p>Večere s klijentima, timske proslave i predstavljanja — u prostoru koji se pamti.</p>
+    </article>
+    <article>
+      <h2>Degustacije vina</h2>
+      <p>Vođena degustacija uz jela, iz karte koju inače čitate za stolom.</p>
+    </article>
+  </section>
+
+  <section class="ask">
+    <div class="ask-copy">
+      <h2>Recite nam što planirate</h2>
+      <p>
+        Javite prigodu, okvirni datum i broj gostiju — vraćamo se s prijedlogom
+        menija i terminima. Za brz odgovor nazovite
+        <a href="tel:+385995844652">+385 99 5844 652</a>.
+      </p>
+    </div>
+
+    <form class="enq" id="enq" novalidate>
+      <div class="row">
+        <label>
+          <span>Ime i prezime</span>
+          <input type="text" name="name" required autocomplete="name" />
+        </label>
+        <label>
+          <span>E-mail</span>
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          <span>Telefon</span>
+          <input type="tel" name="phone" autocomplete="tel" />
+        </label>
+        <label>
+          <span>Tvrtka <em>(ako je poslovni)</em></span>
+          <input type="text" name="company" autocomplete="organization" />
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          <span>Prigoda</span>
+          <select name="kind">
+            {KINDS.map((k) => <option value={k.v}>{k.label}</option>)}
+          </select>
+        </label>
+        <label>
+          <span>Gostiju <em>(okvirno)</em></span>
+          <input type="number" name="guests" min="1" max="400" inputmode="numeric" />
+        </label>
+      </div>
+      <label>
+        <span>Kada <em>(okvirno je dovoljno)</em></span>
+        <input type="text" name="datetext" placeholder="npr. druga polovica svibnja" />
+      </label>
+      <label>
+        <span>Poruka</span>
+        <textarea name="message" rows="4" placeholder="Prigoda, želje, alergije, sve što nam pomaže."></textarea>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" name="privacy" value="yes" required />
+        <span>
+          Suglasan/na sam da se moji podaci koriste za odgovor na ovaj upit.
+          <a href="/privatnost/">Izjava o privatnosti</a>.
+        </span>
+      </label>
+
+      <button class="btn btn-solid" type="submit" id="enq-send">Pošalji upit</button>
+      <p class="err" id="enq-err" hidden role="alert"></p>
+    </form>
+
+    <div class="done" id="enq-done" hidden role="status">
+      <h2>Upit je poslan</h2>
+      <p>Javljamo se s prijedlogom i terminima u najkraćem roku.</p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.getElementById("enq");
+  const err = document.getElementById("enq-err");
+  const btn = document.getElementById("enq-send");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    err.hidden = true;
+    btn.disabled = true;
+    btn.textContent = "Šaljemo…";
+
+    const fd = new FormData(form);
+    /* The date is free text on purpose — "sometime in May" is a real answer to
+       this question, and a date picker would refuse it. It travels inside the
+       message so nothing pretends to be a calendar entry. */
+    const when = String(fd.get("datetext") || "").trim();
+    const message = [when ? "Kada: " + when : "", String(fd.get("message") || "")]
+      .filter(Boolean).join("\n\n");
+
+    let data;
+    try {
+      const r = await fetch("/api/dogadaji", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name: fd.get("name"), email: fd.get("email"), phone: fd.get("phone"),
+          company: fd.get("company"), kind: fd.get("kind"),
+          guests: fd.get("guests"), message,
+          consentPrivacy: fd.get("privacy") === "yes", locale: "hr",
+        }),
+      });
+      data = await r.json();
+    } catch (e2) { data = { error: "network" }; }
+
+    btn.disabled = false;
+    btn.textContent = "Pošalji upit";
+
+    if (data && data.ok) {
+      form.hidden = true;
+      document.getElementById("enq-done").hidden = false;
+      return;
+    }
+    err.textContent = data && data.error === "invalid"
+      ? "Provjerite ime, e-mail i privolu."
+      : "Nešto je pošlo po zlu. Pokušajte ponovno ili nas nazovite.";
+    err.hidden = false;
+  });
+</script>
+
+<style>
+  .head { padding: 3.5rem 0 1rem; max-width: 46rem; }
+  .lede { color: var(--text-dim); font-size: 1.15rem; }
+
+  .kinds {
+    display: grid; gap: 1rem; padding: 2.6rem 0 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+  .kinds article {
+    border: 1px solid var(--line); background: var(--bg-card);
+    padding: 1.5rem 1.6rem;
+  }
+  .kinds h2 { font-size: 1.3rem; margin-bottom: .5rem; }
+  .kinds p { color: var(--text-dim); font-size: .95rem; margin: 0; }
+
+  .ask { padding: 3rem 0 var(--section); max-width: 44rem; }
+  .ask-copy { margin-bottom: 2.2rem; }
+  .ask-copy h2 { margin-bottom: .7rem; }
+  .ask-copy p { color: var(--text-dim); max-width: 42ch; }
+  .ask-copy a { color: var(--gold); }
+
+  .row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+  label { display: block; margin-bottom: 1rem; }
+  label > span {
+    display: block; font-size: .74rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: .4rem;
+  }
+  label em { text-transform: none; letter-spacing: 0; color: var(--text-faint); font-style: normal; }
+  input, textarea, select {
+    width: 100%; background: var(--bg-raised); color: var(--text);
+    border: 1px solid var(--line); padding: .75rem .9rem;
+    font-family: var(--sans); font-size: 1rem; border-radius: 2px;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--gold-soft); outline: none; }
+  input::placeholder, textarea::placeholder { color: var(--text-faint); }
+
+  .check { display: flex; gap: .7rem; align-items: flex-start; margin: 1.3rem 0; }
+  .check input { width: auto; margin-top: .3rem; accent-color: var(--gold); }
+  .check span { font-size: .95rem; color: var(--text-dim); line-height: 1.6; }
+  .check a { color: var(--gold-soft); }
+
+  button[type="submit"] { cursor: pointer; font-family: var(--sans); }
+  .err { color: #e0866a; margin-top: 1rem; }
+  .done h2 { margin-bottom: .6rem; }
+  .done p { color: var(--text-dim); }
+</style>

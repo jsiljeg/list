@@ -120,3 +120,46 @@ export function sendHouseNotice(env, { name, email, phone, date, start, covers, 
   /* Reply-to the guest, so answering the notice reaches them directly. */
   return send(env, { to, subject: `Rezervacija ${date} ${hhmm(start)} · ${covers} os. · ${name}`, html, replyTo: email });
 }
+
+/* ---- private events -------------------------------------------------------
+   An enquiry is answered by a person, so neither message promises anything.
+   The acknowledgement exists to stop the guest wondering whether it arrived. */
+
+export function sendEnquiryAck(env, { name, email }) {
+  const html = wrap(`
+    <h1 style="font-size:24px;font-weight:normal;margin:0 0 16px">Primili smo va&#353; upit</h1>
+    <p style="margin:0 0 18px;color:#a89f8f;line-height:1.7">
+      Hvala, ${esc(name)}. Javljamo se s prijedlogom i terminima u najkra&#263;em roku.
+    </p>
+    <p style="margin:0;color:#a89f8f;line-height:1.7">
+      Ako je hitno, nazovite nas na +385 99 5844 652.
+    </p>
+  `);
+  return send(env, {
+    to: email,
+    subject: "Upit za privatni događaj — Theatrium",
+    html,
+    replyTo: env.MAIL_HOUSE || "jures91@gmail.com",
+  });
+}
+
+export function sendEnquiryNotice(env, { name, email, phone, company, kind, date, guests, message, id }) {
+  const to = env.MAIL_HOUSE || "jures91@gmail.com";
+  const row = (k, v) =>
+    v ? `<tr><td style="padding:6px 0;color:#a89f8f">${k}</td><td style="padding:6px 0;text-align:right">${esc(v)}</td></tr>` : "";
+  const html = wrap(`
+    <h1 style="font-size:22px;font-weight:normal;margin:0 0 16px">Upit za privatni doga&#273;aj</h1>
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      ${row("Ime", name)}
+      ${row("E-mail", email)}
+      ${row("Telefon", phone)}
+      ${row("Tvrtka", company)}
+      ${row("Prigoda", kind)}
+      ${row("Datum", date)}
+      ${row("Gostiju", guests)}
+    </table>
+    ${message ? `<p style="margin:18px 0 0;color:#a89f8f;line-height:1.7;white-space:pre-wrap">${esc(message)}</p>` : ""}
+    <p style="margin:20px 0 0;font-size:12px;color:#7c7466">${esc(id)}</p>
+  `);
+  return send(env, { to, subject: `Privatni događaj · ${name}${guests ? " · " + guests + " os." : ""}`, html, replyTo: email });
+}

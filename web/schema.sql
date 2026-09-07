@@ -71,3 +71,24 @@ CREATE TABLE IF NOT EXISTS subscribers (
 );
 CREATE UNIQUE INDEX IF NOT EXISTS idx_sub_unsub ON subscribers (unsub_token);
 CREATE INDEX IF NOT EXISTS idx_sub_birthday ON subscribers (birthday, confirmed_at);
+
+-- Private events. A separate table from `reservations` on purpose: an enquiry
+-- is not a booking. It has no slot, it does not consume capacity, and it is
+-- answered by a person rather than by the availability rules.
+CREATE TABLE IF NOT EXISTS event_enquiries (
+  id           TEXT PRIMARY KEY,
+  created_at   TEXT NOT NULL,
+  name         TEXT NOT NULL,
+  email        TEXT NOT NULL,
+  phone        TEXT,
+  company      TEXT,
+  kind         TEXT,               -- rodendan / poslovni / vjencanje / ostalo
+  date         TEXT,               -- YYYY-MM-DD, may be empty: "sometime in May"
+  guests       INTEGER,
+  message      TEXT,
+  status       TEXT NOT NULL DEFAULT 'new'
+               CHECK (status IN ('new', 'answered', 'booked', 'lost')),
+  consent_privacy_at TEXT NOT NULL,
+  locale       TEXT NOT NULL DEFAULT 'hr'
+);
+CREATE INDEX IF NOT EXISTS idx_enq_status ON event_enquiries (status, created_at);
