@@ -8,6 +8,7 @@ on:
     # pointless run against the venue's live domain.
     paths-ignore:
       - "web/**"
+      - ".github/workflows/deploy-web.yml"
       - "scratch/**"
       - "docs/**"
   workflow_dispatch:

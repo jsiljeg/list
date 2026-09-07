@@ -53,4 +53,9 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: web
+          # Use the wrangler from package.json rather than letting the action
+          # npx-fetch one: a non-interactive runner cannot answer npx's
+          # install prompt, and the version should be pinned anyway.
+          packageManager: npm
+          wranglerVersion: "3.114.17"
           command: pages deploy dist --project-name=theatrium-web --branch=main
