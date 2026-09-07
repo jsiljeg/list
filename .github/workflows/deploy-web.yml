@@ -51,6 +51,37 @@ jobs:
         working-directory: web
         run: npx astro build
 
+      # Create the Pages project and the database on first run, so the only
+      # thing a human ever supplies is the two secrets. Every step is
+      # idempotent: it checks before it creates, and schema.sql is written with
+      # IF NOT EXISTS throughout.
+      - name: Ensure Cloudflare resources exist
+        working-directory: web
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+
+          if ! npx wrangler pages project list 2>/dev/null | grep -q 'theatrium-web'; then
+            echo "creating Pages project"
+            npx wrangler pages project create theatrium-web --production-branch=main
+          fi
+
+          id=$(npx wrangler d1 list --json 2>/dev/null                  | jq -r '.[] | select(.name == "theatrium") | .uuid' || true)
+          if [ -z "${id:-}" ] || [ "$id" = "null" ]; then
+            echo "creating D1 database"
+            npx wrangler d1 create theatrium >/dev/null
+            id=$(npx wrangler d1 list --json | jq -r '.[] | select(.name == "theatrium") | .uuid')
+          fi
+          echo "D1 id: ${id:0:8}…"
+
+          # wrangler.toml ships a placeholder rather than a real id, because the
+          # id is account-specific and belongs to whoever deploys, not to the repo.
+          sed -i "s/PASTE_AFTER_wrangler_d1_create/$id/" wrangler.toml
+
+          npx wrangler d1 execute theatrium --remote --file=schema.sql -y
+
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
