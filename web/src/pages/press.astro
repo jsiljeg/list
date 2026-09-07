@@ -311,6 +311,10 @@ const schema = {
     transition: border-color .2s, transform .2s;
   }
   .card:hover, .card:focus-visible { border-color: var(--gold-soft); transform: translateY(-2px); }
+  /* A class setting `display` beats the browser's own [hidden] rule, so the
+     filter set the attribute on every card and nothing moved. Anything that
+     declares display must restate this. */
+  .card[hidden] { display: none; }
 
   .c-top { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; }
   .c-kind {
