@@ -77,8 +77,8 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
                   aria-haspopup="dialog" aria-expanded="false">&nbsp;</button>
           <button type="button" class="pbtn" id="day-next" aria-label="Sljedeći dan">›</button>
         </div>
+        <div class="cal" id="cal" hidden role="dialog" aria-label="Odaberite datum"></div>
       </div>
-      <div class="cal" id="cal" hidden role="dialog" aria-label="Odaberite datum"></div>
     </div>
 
     <fieldset class="step" id="step-time" hidden>
@@ -186,12 +186,24 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
   $("day-prev").addEventListener("click", () => bump(() => { state.dayIndex = Math.max(0, state.dayIndex - 1); }));
   $("day-next").addEventListener("click", () => bump(() => { state.dayIndex = Math.min(DAYS.length - 1, state.dayIndex + 1); }));
 
+  /* Every stepper press starts a request, and they do not come back in the
+     order they were sent — a fast reply to "4 people" can land after a slow
+     reply to "3", repainting the row with the wrong day's times. That is the
+     blinking. Only the newest request is allowed to paint. */
+  let reqId = 0;
+
   async function loadSlots() {
+    const mine = ++reqId;
     state.time = null;
     show(stepWho, false);
     show(stepTime, true);
     show(empty, false);
-    slotsBox.innerHTML = '<p class="loading">Tražimo slobodne termine…</p>';
+    /* Only say "searching" if there is nothing to look at yet. Replacing a
+       filled row with a loading line on every press is the other half of the
+       flicker. */
+    if (!slotsBox.querySelector(".slot")) {
+      slotsBox.innerHTML = '<p class="loading">Tražimo slobodne termine…</p>';
+    }
 
     const date = DAYS[state.dayIndex].iso;
     let data;
@@ -199,9 +211,11 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
       const r = await fetch("/api/availability?date=" + date + "&covers=" + state.covers);
       data = await r.json();
     } catch (e) {
+      if (mine !== reqId) return;
       slotsBox.innerHTML = '<p class="loading">Nije moguće dohvatiti termine.</p>';
       return;
     }
+    if (mine !== reqId) return;   // a newer press already owns the row
 
     const slots = (data && data.slots) || [];
     if (!slots.length) { slotsBox.innerHTML = ""; show(empty, true); paintNav(); return; }
