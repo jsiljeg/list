@@ -57,6 +57,13 @@ export const CONFIG = {
   capacity: 34,
   /* Covers allowed to start within one slot, so arrivals do not bunch. */
   pacing: 8,
+  /* The latest table offered, regardless of when the door shuts. This is how
+     SevenRooms is configured for the restaurant today (last booking 22:00) and
+     it is a different rule from the one I first built: I derived the last slot
+     from the turn time against closing, which pushed a party of five back to
+     20:45. A room will happily seat you at 22:00 and let you sit past close.
+     The turn still governs how long the table counts against capacity. */
+  lastSeating: "22:00",
   minParty: 1,
   maxParty: 8,
   /* Above maxParty we ask them to call — a private-event conversation, not a
@@ -109,13 +116,15 @@ export function addDays(dateStr, n) {
 
 /** Every slot the kitchen would in principle seat on this date. */
 export function candidateSlots(dateStr, covers) {
-  const turn = CONFIG.turnMinutes(covers);
   const out = [];
+  const last = toMin(CONFIG.lastSeating);
   for (const period of SERVICE[weekday(dateStr)] || []) {
     const from = toMin(period.from), to = toMin(period.to);
-    /* Last seating leaves a full turn before the period ends — offering 22:55
-       for a 105-minute turn is how a kitchen ends up serving at 00:40. */
-    for (let t = from; t + turn <= to; t += CONFIG.slotMinutes) out.push(t);
+    /* Bounded by the last-seating rule, and never past the door closing —
+       whichever comes first. Not by turn time: the restaurant decides when it
+       stops seating, not the arithmetic. */
+    const cap = Math.min(to, last);
+    for (let t = from; t <= cap; t += CONFIG.slotMinutes) out.push(t);
   }
   return out;
 }

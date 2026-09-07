@@ -97,12 +97,14 @@ export function sendGuestConfirmation(env, { name, email, date, start, covers, n
     to: email,
     subject: `Rezervacija ${date} u ${hhmm(start)} — Theatrium`,
     html,
-    replyTo: env.MAIL_HOUSE || "joy@theatrium.hr",
+    replyTo: env.MAIL_HOUSE || "jures91@gmail.com",
   });
 }
 
 export function sendHouseNotice(env, { name, email, phone, date, start, covers, note, id }) {
-  const to = env.MAIL_HOUSE || "joy@theatrium.hr";
+  /* Default is the developer, not the restaurant: nothing reaches the owner
+     until MAIL_HOUSE is deliberately changed. */
+  const to = env.MAIL_HOUSE || "jures91@gmail.com";
   const html = wrap(`
     <h1 style="font-size:22px;font-weight:normal;margin:0 0 16px">Nova rezervacija</h1>
     <table style="width:100%;border-collapse:collapse;font-size:15px">

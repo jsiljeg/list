@@ -18,7 +18,9 @@ pages_build_output_dir = "dist"
 
 [vars]
 MAIL_FROM  = "Theatrium <rezervacije@devinos.hr>"
-MAIL_HOUSE = "joy@theatrium.hr"
+# TEMPORARY: notifications go to the developer while this is being built.
+# Switch to joy@theatrium.hr only when the owner asks — see CUTOVER.md.
+MAIL_HOUSE = "jures91@gmail.com"
 
 [[d1_databases]]
 binding = "DB"
