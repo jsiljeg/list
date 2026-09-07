@@ -58,11 +58,6 @@
         <span class="txt">8 jezika · pretraga · preporuka vina uz jelo</span>
       </div>
 
-      <div class="lang-switch" role="group" aria-label="Jezik karte">
-        <button type="button" data-lang="hr" aria-pressed="true">Hrvatski</button>
-        <button type="button" data-lang="en" aria-pressed="false">English</button>
-      </div>
-
       <!-- ============================================================
            Ovdje se ispisuje karta pića. Sadržaj se povlači iz iste
            karte koju gosti čitaju za stolom, pa se cijene i berbe
@@ -114,34 +109,18 @@
    CORS je otvoren (access-control-allow-origin: *), pa fetch radi
    izravno s theatrium.hr; nije potreban proxy ni ključ.               */
 (function () {
-  var LIVE = "https://theatrium.list.devinos.hr/";
   var mount = document.getElementById("theatrium-lista");
-  var buttons = document.querySelectorAll(".lang-switch button");
+  mount.innerHTML = '<p class="tl-status">Učitavanje karte…</p>';
 
-  function load(lang) {
-    var file = "embed-" + lang + ".html";
-    mount.innerHTML = '<p class="tl-status">Učitavanje karte…</p>';
-
-    /* Live adresa je ono što ide programeru. Relativna je samo zato da
-       ova preview-stranica radi i prije nego je objavljena. */
-    fetch(LIVE + file)
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-      .catch(function () { return fetch("../" + file).then(function (r) { return r.text(); }); })
-      .then(function (html) { mount.innerHTML = html; })
-      .catch(function () {
-        mount.innerHTML = '<p class="tl-status">Karta trenutno nije dostupna.</p>';
-      });
-  }
-
-  buttons.forEach(function (b) {
-    b.addEventListener("click", function () {
-      buttons.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
-      document.documentElement.lang = b.dataset.lang;
-      load(b.dataset.lang);
+  /* Live adresa je ono što ide programeru. Relativna je samo zato da
+     ova preview-stranica radi i prije nego je objavljena. */
+  fetch("https://theatrium.list.devinos.hr/embed-hr.html")
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .catch(function () { return fetch("../embed-hr.html").then(function (r) { return r.text(); }); })
+    .then(function (html) { mount.innerHTML = html; })
+    .catch(function () {
+      mount.innerHTML = '<p class="tl-status">Karta trenutno nije dostupna.</p>';
     });
-  });
-
-  load("hr");
 })();
 </script>
 
