@@ -82,10 +82,9 @@ const schema = {
               <span class="w-name">{w.name}</span>
               <span class="w-producer">{w.producer}</span>
             </div>
-            <div class="w-meta">
-              {w.grape && <span>{w.grape}</span>}
-              {w.region && <span>{w.region}</span>}
-            </div>
+            {(w.grape || w.region) && (
+              <p class="w-meta">{[w.grape, w.region].filter(Boolean).join(" · ")}</p>
+            )}
             {w.shared.length > 0 && (
               <p class="w-why">uz {w.shared.map(food).join(", ")}</p>
             )}
@@ -137,9 +136,13 @@ const schema = {
     font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
     color: var(--text-dim);
   }
+  /* One flowing line, not two flex items. As flex children the grape and the
+     region snapped onto separate lines the moment either got long, so the same
+     card looked different on two phones. As text they wrap mid-phrase, which
+     is predictable. */
   .w-meta {
-    grid-column: 1; display: flex; flex-wrap: wrap; gap: .8rem;
-    font-size: .85rem; color: var(--text-faint);
+    grid-column: 1; margin: 0;
+    font-size: .85rem; color: var(--text-faint); line-height: 1.5;
   }
   .w-why { grid-column: 1; margin: .3rem 0 0; font-size: .88rem; color: var(--gold-soft); }
   .w-price {

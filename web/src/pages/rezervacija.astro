@@ -194,8 +194,10 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
 
   async function loadSlots() {
     const mine = ++reqId;
-    state.time = null;
-    show(stepWho, false);
+    /* Remember what was chosen. Changing the party size or the day used to
+       close the details form unconditionally, which threw the guest back a
+       step for no reason — most changes leave the same time available. */
+    const wanted = state.time;
     show(stepTime, true);
     show(empty, false);
     /* Only say "searching" if there is nothing to look at yet. Replacing a
@@ -218,18 +220,37 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
     if (mine !== reqId) return;   // a newer press already owns the row
 
     const slots = (data && data.slots) || [];
-    if (!slots.length) { slotsBox.innerHTML = ""; show(empty, true); paintNav(); return; }
+    if (!slots.length) {
+      slotsBox.innerHTML = "";
+      state.time = null;
+      show(empty, true);
+      show(stepWho, false);
+      paintNav();
+      return;
+    }
+
+    /* Keep the selection if that time still exists for the new party or day;
+       drop it, and the form with it, only when it genuinely no longer does. */
+    state.time = slots.some((sl) => sl.time === wanted) ? wanted : null;
+    show(stepWho, Boolean(state.time));
 
     /* A WINDOW, not the whole day. Showing every free time is what made this
        "too much" twice over — first as a wall of buttons, then as one very long
        row. Seven around the hour you want is an offer; forty-one is a list to
        work through. The arrows move the window, so nothing is unreachable. */
     ALL = slots;
+    const focus = state.time
+      ? slots.find((sl) => sl.time === state.time).start
+      : anchorMin;
     let nearest = 0, best = Infinity;
     slots.forEach((sl, i) => {
-      const d = Math.abs(sl.start - anchorMin);
+      const d = Math.abs(sl.start - focus);
       if (d < best) { best = d; nearest = i; }
     });
+    if (state.time) {
+      recap.textContent = human(DAYS[state.dayIndex].iso) + " u " + state.time +
+        " · " + state.covers + (state.covers === 1 ? " osoba" : " osobe");
+    }
     offset = Math.max(0, Math.min(nearest - Math.floor(WINDOW / 2), slots.length - WINDOW));
     if (offset < 0) offset = 0;
     renderWindow();

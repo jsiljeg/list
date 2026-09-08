@@ -139,13 +139,28 @@ const RESTAURANT = {
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
   }
-  .bar { display: flex; align-items: center; gap: 1.5rem; padding-block: .9rem; }
+  /* The wordmark is centred, which is what theatrium.hr does and what the wine
+     list does. Left-aligning it here was the odd one out of three properties.
+     Absolute rather than a grid column so the nav can use the full width; it
+     falls back to the flow position on narrow screens, where a centred logo
+     and a wrapped nav would collide. */
+  .bar {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding-block: .9rem; position: relative;
+  }
   /* The real wordmark. It was set in Markazi before, which is close enough to
      look like a mistake rather than a choice — the letterforms are spaced by
      hand in the original and no font reproduces them. White fill, so it sits
      on the dark ground with no treatment. */
   .brand { margin-right: auto; line-height: 0; }
-  .brand img { width: 168px; height: auto; }
+  .brand img { width: 168px; height: auto; display: block; }
+  @media (min-width: 1024px) {
+    .brand {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      margin-right: 0;
+    }
+    nav { margin-left: auto; }
+  }
   nav { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
   nav a {
     text-decoration: none; font-size: .78rem; letter-spacing: .14em;
