@@ -198,6 +198,13 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
        close the details form unconditionally, which threw the guest back a
        step for no reason — most changes leave the same time available. */
     const wanted = state.time;
+    /* Where the chosen chip sits inside the visible seven. Re-centring on it
+       after a reload kept the right time but moved it under the cursor — the
+       row looked like it had shuffled. Holding its position means only the
+       times around it change, which is what actually happened. */
+    const wantedSeat = wanted
+      ? ALL.findIndex((sl) => sl.time === wanted) - offset
+      : -1;
     show(stepTime, true);
     show(empty, false);
     /* Only say "searching" if there is nothing to look at yet. Replacing a
@@ -239,14 +246,22 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
        row. Seven around the hour you want is an offer; forty-one is a list to
        work through. The arrows move the window, so nothing is unreachable. */
     ALL = slots;
-    const focus = state.time
-      ? slots.find((sl) => sl.time === state.time).start
-      : anchorMin;
-    let nearest = 0, best = Infinity;
-    slots.forEach((sl, i) => {
-      const d = Math.abs(sl.start - focus);
-      if (d < best) { best = d; nearest = i; }
-    });
+    let nearest;
+    if (state.time && wantedSeat >= 0) {
+      /* Same seat in the row as before. */
+      const at = slots.findIndex((sl) => sl.time === state.time);
+      nearest = at - Math.floor(WINDOW / 2) + wantedSeat;
+    } else {
+      const focus = state.time
+        ? slots.find((sl) => sl.time === state.time).start
+        : anchorMin;
+      nearest = 0;
+      let best = Infinity;
+      slots.forEach((sl, i) => {
+        const d = Math.abs(sl.start - focus);
+        if (d < best) { best = d; nearest = i; }
+      });
+    }
     if (state.time) {
       recap.textContent = human(DAYS[state.dayIndex].iso) + " u " + state.time +
         " · " + state.covers + (state.covers === 1 ? " osoba" : " osobe");

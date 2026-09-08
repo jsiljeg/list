@@ -154,12 +154,17 @@ const RESTAURANT = {
      on the dark ground with no treatment. */
   .brand { margin-right: auto; line-height: 0; }
   .brand img { width: 168px; height: auto; display: block; }
-  @media (min-width: 1024px) {
-    .brand {
-      position: absolute; left: 50%; transform: translateX(-50%);
-      margin-right: 0;
-    }
-    nav { margin-left: auto; }
+
+  /* Centred by stacking, not by absolute positioning. Floating the wordmark to
+     50% left it overlapping the nav as soon as the links needed the width —
+     seven items and a button is more than fits either side of a 168px mark.
+     Two rows cannot collide by construction, and the wordmark stays centred,
+     which is what theatrium.hr and the wine list both do. */
+  @media (min-width: 900px) {
+    .bar { flex-direction: column; gap: .55rem; padding-block: 1rem .7rem; }
+    .brand { margin-right: 0; }
+    .brand img { width: 150px; }
+    nav { margin: 0; justify-content: center; }
   }
   nav { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
   nav a {
