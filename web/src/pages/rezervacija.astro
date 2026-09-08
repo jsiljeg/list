@@ -154,9 +154,16 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
   const MAX_PARTY = 8;
 
   const state = { covers: 2, dayIndex: 0, time: null };
-  const WINDOW = 7;         // times shown at once
+  /* The row shows a fixed SPAN of the clock, not a fixed count of slots.
+     Indexing by slot looked stable until the slots themselves changed: a
+     larger party has a longer turn, so the day ends earlier and every index
+     shifts under you. Anchoring to wall-clock time means 18:15–19:45 stays
+     18:15–19:45 whatever the party size or the day — which is what "start and
+     end should be the same" actually asks for. The number of chips inside the
+     span may vary; the span may not. */
+  const SPAN = 90;          // minutes covered by the row (7 slots at 15 min)
   let ALL = [];             // every free time for the chosen day
-  let offset = 0;           // where the window starts
+  let winStart = null;      // first minute of the visible range
   /* The minute the guest is currently looking at. Changing the party size or
      the day reloads availability, and snapping back to 19:00 every time threw
      away where they had scrolled to — which reads as the picker resetting
@@ -198,13 +205,9 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
        close the details form unconditionally, which threw the guest back a
        step for no reason — most changes leave the same time available. */
     const wanted = state.time;
-    /* Where the chosen chip sits inside the visible seven. Re-centring on it
-       after a reload kept the right time but moved it under the cursor — the
-       row looked like it had shuffled. Holding its position means only the
-       times around it change, which is what actually happened. */
-    const wantedSeat = wanted
-      ? ALL.findIndex((sl) => sl.time === wanted) - offset
-      : -1;
+    /* The range is kept exactly as it is whenever one is already set. Nothing
+       about changing the party size or the day should move the row. */
+    const keepWindow = winStart !== null;
     show(stepTime, true);
     show(empty, false);
     /* Only say "searching" if there is nothing to look at yet. Replacing a
@@ -246,37 +249,30 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
        row. Seven around the hour you want is an offer; forty-one is a list to
        work through. The arrows move the window, so nothing is unreachable. */
     ALL = slots;
-    let nearest;
-    if (state.time && wantedSeat >= 0) {
-      /* Same seat in the row as before. */
-      const at = slots.findIndex((sl) => sl.time === state.time);
-      nearest = at - Math.floor(WINDOW / 2) + wantedSeat;
-    } else {
-      const focus = state.time
-        ? slots.find((sl) => sl.time === state.time).start
-        : anchorMin;
-      nearest = 0;
-      let best = Infinity;
-      slots.forEach((sl, i) => {
-        const d = Math.abs(sl.start - focus);
-        if (d < best) { best = d; nearest = i; }
-      });
+    const first = slots[0].start, last = slots[slots.length - 1].start;
+    if (!keepWindow) {
+      /* First load: centre the span on dinner. */
+      winStart = anchorMin - Math.floor(SPAN / 2);
     }
+    /* Clamp into the day, but never re-centre — a day that starts later simply
+       pins the row to its own first slot. */
+    winStart = Math.max(first, Math.min(Math.max(first, last - SPAN), winStart));
     if (state.time) {
       recap.textContent = human(DAYS[state.dayIndex].iso) + " u " + state.time +
         " · " + state.covers + (state.covers === 1 ? " osoba" : " osobe");
     }
-    offset = Math.max(0, Math.min(nearest - Math.floor(WINDOW / 2), slots.length - WINDOW));
-    if (offset < 0) offset = 0;
     renderWindow();
     return;
 
   }
 
+  const inWindow = () =>
+    ALL.filter((sl) => sl.start >= winStart && sl.start <= winStart + SPAN);
+
   function renderWindow() {
     const date = DAYS[state.dayIndex].iso;
     slotsBox.innerHTML = "";
-    ALL.slice(offset, offset + WINDOW).forEach((sl) => {
+    inWindow().forEach((sl) => {
       const b = document.createElement("button");
       b.type = "button";
       b.className = "slot";
@@ -298,31 +294,25 @@ for (let i = 0; i < CONFIG.horizonDays; i++) {
   }
 
   function paintNav() {
-    $("t-prev").disabled = offset <= 0;
-    $("t-next").disabled = offset + WINDOW >= ALL.length;
-    const c = $("t-count");
-    c.textContent = ALL.length > WINDOW
-      ? "još " + (ALL.length - WINDOW) + " termina tog dana"
+    if (!ALL.length) { $("t-prev").disabled = $("t-next").disabled = true; $("t-count").textContent = ""; return; }
+    const first = ALL[0].start, last = ALL[ALL.length - 1].start;
+    $("t-prev").disabled = winStart <= first;
+    $("t-next").disabled = winStart + SPAN >= last;
+    const shown = inWindow().length;
+    $("t-count").textContent = ALL.length > shown
+      ? "još " + (ALL.length - shown) + " termina tog dana"
       : "";
   }
 
-  $("t-prev").addEventListener("click", () => {
-    offset = Math.max(0, offset - WINDOW);
-    rememberAnchor();
+  function shift(dir) {
+    if (!ALL.length) return;
+    const first = ALL[0].start, last = ALL[ALL.length - 1].start;
+    winStart = Math.max(first, Math.min(last - SPAN, winStart + dir * (SPAN + 15)));
+    anchorMin = winStart;
     renderWindow();
-  });
-  $("t-next").addEventListener("click", () => {
-    offset = Math.min(Math.max(0, ALL.length - WINDOW), offset + WINDOW);
-    rememberAnchor();
-    renderWindow();
-  });
-
-  /* Middle of the visible window, so paging left or right carries over to the
-     next day or party size. */
-  function rememberAnchor() {
-    const mid = ALL[Math.min(ALL.length - 1, offset + Math.floor(WINDOW / 2))];
-    if (mid) anchorMin = mid.start;
   }
+  $("t-prev").addEventListener("click", () => shift(-1));
+  $("t-next").addEventListener("click", () => shift(1));
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
