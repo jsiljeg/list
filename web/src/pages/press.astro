@@ -23,7 +23,7 @@
  * guess at the Večernji id was a different article. */
 import Base from "../layouts/Base.astro";
 
-/* kind: vodic | intervju | recenzija | tekst | video
+/* kind: vodic | intervju | recenzija | tekst | putovanje | video
    featured: at most one or two — the strongest thing we have. */
 const ITEMS = [
   {
@@ -35,6 +35,15 @@ const ITEMS = [
     /* Explicit on purpose: the restaurant is *in* the guide and does not hold a
        star. Implying otherwise is the worst error a press page can make. */
     note: "Restoran je uvršten u vodič — uvrštenje, bez zvjezdice.",
+    featured: true,
+  },
+  {
+    kind: "vodic",
+    outlet: "Gault&Millau Croatia",
+    title: "Theatrium by Filho — 16/20",
+    date: "",
+    url: "https://hr.gaultmillau.com/hr/restaurants/theatrium-by-filho",
+    note: "Ocjena 16/20 u hrvatskom izdanju vodiča.",
     featured: true,
   },
   {
@@ -127,6 +136,14 @@ const ITEMS = [
     note: "O jednom jelu i o tome zašto ga u Zagrebu dvadeset godina nije bilo.",
   },
   {
+    kind: "putovanje",
+    outlet: "Plava kamenica",
+    title: "Horvat u New Yorku: zašto mislim da je Le Bernardin jedan od najboljih restorana na svijetu",
+    date: "2024-09-18",
+    url: "https://plavakamenica.hr/2024/09/18/horvat-u-new-yorku-evo-zasto-mislim-da-je-le-bernardin-jedan-od-najboljih-restorana-na-svijetu-1/",
+    note: "Filip piše s puta — o jednom njujorškom restoranu i o tome što od njega nosi natrag u kuhinju.",
+  },
+  {
     kind: "video",
     outlet: "Tipsy Podcast",
     title: "Filip Horvat o svom kuharskom putovanju, hrvatskim namirnicama i kako biti chef i vlasnik restorana",
@@ -154,6 +171,7 @@ const ITEMS = [
 
 const KIND = {
   vodic: "Vodič",
+  putovanje: "S puta",
   intervju: "Intervju",
   recenzija: "Recenzija",
   tekst: "Tekst",
