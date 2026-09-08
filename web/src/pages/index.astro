@@ -7,11 +7,12 @@
 import Base from "../layouts/Base.astro";
 import dishes from "../data/generated/dishes.json";
 
-/* A few dishes on the front page, each already carrying its wine. Picked by
-   course so the row reads as a meal rather than as three starters. */
-const featured = ["starters", "mains", "desserts"]
-  .map((c) => dishes.find((d) => d.course === c && d.wines.length))
-  .filter(Boolean);
+/* Every live dish, in menu order, each carrying its wine. It was three picked
+   by course, which was right for a static row and wrong for a rail — arrows
+   with nine cards behind them are a tease, arrows with the whole menu behind
+   them are a way to read it. Course order so it still scrolls like a meal. */
+const ORDER = ["starters", "soups", "mains", "desserts"];
+const featured = ORDER.flatMap((c) => dishes.filter((d) => d.course === c && d.wines.length));
 ---
 
 <Base
@@ -51,14 +52,22 @@ const featured = ["starters", "mains", "desserts"]
     </section>
 
     <section class="section">
-      <p class="eyebrow">Repertoire</p>
-      <h2>Uz svako jelo, vino</h2>
-      <p class="lede wide">
-        Preporuka nije ukras — dolazi iz iste karte koju dobijete za stolom, uz
-        {dishes.length} jela i 393 pića.
-      </p>
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Repertoire</p>
+          <h2>Uz svako jelo, vino</h2>
+          <p class="lede wide">
+            Preporuka nije ukras — dolazi iz iste karte koju dobijete za stolom,
+            uz {dishes.length} jela i 393 pića.
+          </p>
+        </div>
+        <div class="rail-nav">
+          <button type="button" class="rnav" id="dish-prev" aria-label="Prethodna jela">‹</button>
+          <button type="button" class="rnav" id="dish-next" aria-label="Sljedeća jela">›</button>
+        </div>
+      </div>
 
-      <ul class="cards">
+      <ul class="cards rail" id="dish-rail">
         {featured.map((d) => (
           <li>
             <a href={`/jelovnik/${d.slug}/`}>
@@ -86,6 +95,31 @@ const featured = ["starters", "mains", "desserts"]
     </section>
   </div>
 </Base>
+
+<script>
+  /* Same stepping as the press rail. One card per press, and the arrows
+     disable at the ends so they never lie about there being more. */
+  const rail = document.getElementById("dish-rail");
+  const prev = document.getElementById("dish-prev");
+  const next = document.getElementById("dish-next");
+
+  function step(dir) {
+    const card = rail.querySelector("li");
+    if (!card) return;
+    rail.scrollBy({ left: dir * (card.getBoundingClientRect().width + 16), behavior: "smooth" });
+  }
+  prev.addEventListener("click", () => step(-1));
+  next.addEventListener("click", () => step(1));
+
+  function paint() {
+    const max = rail.scrollWidth - rail.clientWidth - 2;
+    prev.disabled = rail.scrollLeft <= 2;
+    next.disabled = rail.scrollLeft >= max;
+  }
+  rail.addEventListener("scroll", paint, { passive: true });
+  addEventListener("resize", paint);
+  paint();
+</script>
 
 <style>
   .hero { position: relative; display: grid; }
@@ -120,13 +154,19 @@ const featured = ["starters", "mains", "desserts"]
     background: linear-gradient(140deg, #221f1b, #15140f);
   }
 
-  .cards {
-    list-style: none; margin: 2.5rem 0 0; padding: 0;
-    display: grid; gap: 1.4rem;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  /* The heading and the arrows share a line: the controls belong to the row
+     they drive, and putting them at the top means they are visible before a
+     guest has scrolled past the thing they control. */
+  .sec-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 1.5rem; flex-wrap: wrap;
   }
+  .cards {
+    list-style: none; margin: 2.5rem 0 0; padding: 0 0 1rem;
+  }
+  .cards li { flex: 0 0 auto; width: min(19rem, 78vw); scroll-snap-align: start; }
   .cards a {
-    display: block; text-decoration: none;
+    display: block; height: 100%; text-decoration: none;
     border: 1px solid var(--line); background: var(--bg-card);
     transition: border-color .2s, transform .2s;
   }

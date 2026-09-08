@@ -61,7 +61,8 @@ marketing site has different pressures).
 ## 4. SEO: where the wins actually are
 
 Ordered by how much they matter for a restaurant, which is not the order people
-expect.
+expect. The measurements this ordering rests on are in
+**`AUDIT-THEATRIUM-HR.md`**.
 
 ### 4.1 Off-site comes first, and it is not our code
 The largest source of restaurant discovery is **Google Business Profile / Maps**,

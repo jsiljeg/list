@@ -370,29 +370,7 @@ const schema = {
   .fchip[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--bg); }
   .fchip .n { opacity: .55; margin-left: .3rem; font-variant-numeric: tabular-nums; }
 
-  .rail-nav { display: flex; gap: .4rem; }
-  .rnav {
-    width: 2.4rem; height: 2.4rem;
-    display: grid; place-items: center;
-    background: var(--bg-card); border: 1px solid var(--line); border-radius: 50%;
-    color: var(--gold-soft); font-size: 1.3rem; line-height: 1; cursor: pointer;
-    transition: color .15s, border-color .15s;
-  }
-  /* Hover only where a pointer exists: on touch, :hover latches after a tap. */
-  @media (hover: hover) {
-    .rnav:hover:not(:disabled) { color: var(--text); border-color: var(--gold); }
-  }
-  .rnav:disabled { opacity: .25; cursor: default; }
-
-  /* the rail itself */
-  .rail {
-    display: flex; gap: 1rem;
-    overflow-x: auto; scroll-snap-type: x mandatory;
-    padding-bottom: 1rem;
-    scrollbar-width: thin; scrollbar-color: var(--line) transparent;
-  }
-  .rail::-webkit-scrollbar { height: 6px; }
-  .rail::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+  /* .rail, .rail-nav and .rnav come from tokens.css. */
 
   /* A card is a grid so the CTA can sit at the bottom however long the title
      runs — otherwise the row of cards ends ragged. */

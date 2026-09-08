@@ -94,3 +94,41 @@ h3 { font-size: 1.35rem; }
   background: var(--gold); color: var(--bg); padding: .7rem 1.2rem; z-index: 99;
 }
 .skip:focus { left: 1rem; top: 1rem; }
+
+/* ---------------------------------------------------------------- rails
+   A horizontal scroller with arrows. Third use of this pattern (press cards,
+   dish cards, and the reservation times borrow the button), so it lives here
+   rather than being pasted a third time.
+
+   The hover state sits inside @media (hover: hover) deliberately: on a touch
+   screen :hover latches after a tap and the gold ring stays lit long after the
+   finger has gone — a bug the wine list already found and wrote down. */
+
+.rail {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+.rail::-webkit-scrollbar { height: 6px; }
+.rail::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+
+.rail-nav { display: flex; gap: .4rem; }
+.rnav {
+  width: 2.4rem; height: 2.4rem; flex: none;
+  display: grid; place-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--gold-soft);
+  font-size: 1.3rem; line-height: 1;
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+}
+@media (hover: hover) {
+  .rnav:hover:not(:disabled) { color: var(--text); border-color: var(--gold); }
+}
+.rnav:disabled { opacity: .25; cursor: default; }
