@@ -1,0 +1,72 @@
+---
+/* Filip's own writing, listed. Distinct from /press/ on purpose: that page
+   links to people writing about the restaurant, this one holds writing by it.
+   A chef with a voice is the one thing a competitor cannot commission. */
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+const posts = (await getCollection("zapisi", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const MONTHS = ["siječnja","veljače","ožujka","travnja","svibnja","lipnja",
+                "srpnja","kolovoza","rujna","listopada","studenoga","prosinca"];
+const hrDate = (d) => `${d.getDate()}. ${MONTHS[d.getMonth()]} ${d.getFullYear()}.`;
+---
+
+<Base
+  title="Zapisi — Theatrium by Filho"
+  description="Tekstovi chefa Filipa Horvata — s puta, iz kuhinje i o onome što donosi natrag."
+>
+  <header class="head">
+    <p class="eyebrow">Zapisi</p>
+    <h1>Filipovim riječima</h1>
+    <p class="lede">
+      S puta, iz kuhinje, i o onome što se iz jednog i drugog vraća na tanjur.
+    </p>
+  </header>
+
+  {posts.length === 0 ? (
+    <p class="empty">Prvi tekst uskoro.</p>
+  ) : (
+    <ul class="items">
+      {posts.map((p) => (
+        <li>
+          <a href={`/zapisi/${p.slug}/`}>
+            <span class="z-top">
+              {p.data.place && <span class="z-place">{p.data.place}</span>}
+              <time datetime={p.data.date.toISOString().slice(0, 10)}>
+                {hrDate(p.data.date)}
+              </time>
+            </span>
+            <span class="z-title">{p.data.title}</span>
+            <span class="z-sum">{p.data.summary}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</Base>
+
+<style>
+  .head { padding: 3.5rem 0 1rem; max-width: 46rem; }
+  .lede { color: var(--text-dim); font-size: 1.1rem; }
+  .empty { color: var(--text-faint); padding: 2.5rem 0 var(--section); }
+  .items { list-style: none; margin: 2.5rem 0 var(--section); padding: 0; max-width: 46rem; }
+  .items li { border-top: 1px solid var(--line); }
+  .items a {
+    display: grid; gap: .35rem; padding: 1.6rem 0;
+    text-decoration: none; transition: padding-left .2s ease;
+  }
+  .items a:hover, .items a:focus-visible { padding-left: .7rem; }
+  .z-top { display: flex; gap: .9rem; align-items: baseline; }
+  .z-place {
+    font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold-soft);
+  }
+  time { font-size: .78rem; color: var(--text-faint); }
+  .z-title {
+    font-family: var(--serif); font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    line-height: 1.25; color: var(--text); text-wrap: balance;
+  }
+  .z-sum { color: var(--text-dim); font-size: .96rem; max-width: 52ch; }
+</style>

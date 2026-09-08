@@ -1,0 +1,76 @@
+---
+/* One piece. Article schema with Filip as the named author, because that is
+   what makes this different from every other page on the site — and what a
+   search engine needs to attribute it to a person rather than to a restaurant. */
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("zapisi", ({ data }) => !data.draft);
+  return posts.map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const MONTHS = ["siječnja","veljače","ožujka","travnja","svibnja","lipnja",
+                "srpnja","kolovoza","rujna","listopada","studenoga","prosinca"];
+const d = post.data.date;
+const hr = `${d.getDate()}. ${MONTHS[d.getMonth()]} ${d.getFullYear()}.`;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.summary,
+  datePublished: d.toISOString().slice(0, 10),
+  inLanguage: "hr",
+  author: { "@type": "Person", name: "Filip Horvat", jobTitle: "Chef" },
+  publisher: { "@type": "Restaurant", name: "Theatrium by Filho" },
+};
+---
+
+<Base title={`${post.data.title} — Theatrium by Filho`} description={post.data.summary} schema={schema}>
+  <article class="piece">
+    <header>
+      <p class="crumb"><a href="/zapisi/">Zapisi</a></p>
+      <h1>{post.data.title}</h1>
+      <p class="meta">
+        {post.data.place && <span class="place">{post.data.place}</span>}
+        <time datetime={d.toISOString().slice(0, 10)}>{hr}</time>
+        <span class="by">Filip Horvat</span>
+      </p>
+    </header>
+    <div class="body"><Content /></div>
+    <p class="back"><a class="btn" href="/zapisi/">Svi zapisi</a></p>
+  </article>
+</Base>
+
+<style>
+  .piece { max-width: 40rem; padding: 3.5rem 0 var(--section); }
+  .crumb {
+    font-size: .74rem; letter-spacing: .18em; text-transform: uppercase;
+    margin-bottom: 1.4rem;
+  }
+  .crumb a { color: var(--text-dim); text-decoration: none; }
+  .crumb a:hover { color: var(--text); }
+  .meta { display: flex; flex-wrap: wrap; gap: .9rem; align-items: baseline; margin-top: 1rem; }
+  .place {
+    font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold-soft);
+  }
+  time, .by { font-size: .82rem; color: var(--text-faint); }
+
+  /* Reading measure, not layout width: prose wants about 65 characters a line. */
+  .body { margin-top: 2.4rem; font-size: 1.08rem; line-height: 1.8; }
+  .body :global(p) { margin: 0 0 1.4rem; color: var(--text-dim); }
+  .body :global(h2) { font-size: 1.5rem; margin: 2.6rem 0 .8rem; color: var(--text); }
+  .body :global(a) { color: var(--gold); }
+  .body :global(blockquote) {
+    margin: 1.8rem 0; padding-left: 1.2rem;
+    border-left: 2px solid var(--gold-soft);
+    font-family: var(--serif); font-size: 1.25rem; color: var(--text);
+  }
+  .body :global(img) { margin: 2rem 0; border: 1px solid var(--line); }
+  .back { margin-top: 3rem; }
+</style>

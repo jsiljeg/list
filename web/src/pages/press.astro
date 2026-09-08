@@ -136,6 +136,22 @@ const ITEMS = [
     note: "O jednom jelu i o tome zašto ga u Zagrebu dvadeset godina nije bilo.",
   },
   {
+    kind: "recenzija",
+    outlet: "Telegram",
+    title: "Theatrium: kušali smo novi meni i izdvojili favorite",
+    date: "2024-02-18",
+    url: "https://www.telegram.hr/super1/life/theatriumu-restoran-zagreb-novi-meni/",
+    note: "Redom kroz novi jelovnik, s izdvojenim favoritima.",
+  },
+  {
+    kind: "tekst",
+    outlet: "Story",
+    title: "Kazalište okusa u srcu Zagreba: chef Filip Horvat vodi nas kroz proljetni meni Theatriuma",
+    date: "2025-05-19",
+    url: "https://story.hr/life-and-style/food-and-travel/a342205/Kazaliste-okusa-u-srcu-Zagreba-chef-Filip-Horvat-vodi-nas-kroz-proljetni-meni-Theatriuma.html",
+    note: "Chef vodi kroz proljetni jelovnik, jelo po jelo.",
+  },
+  {
     kind: "putovanje",
     outlet: "Plava kamenica",
     title: "Horvat u New Yorku: zašto mislim da je Le Bernardin jedan od najboljih restorana na svijetu",
@@ -191,9 +207,30 @@ const featured = ITEMS.filter((i) => i.featured);
 const rest = ITEMS.filter((i) => !i.featured)
   .sort((a, b) => (b.date || "0").localeCompare(a.date || "0"));
 
-/* Featured lead, then newest first. The rail is one row, so the order *is* the
-   editing: whatever should be seen first goes first. */
-const ordered = [...featured, ...rest];
+/* Spread the outlets. Sorted purely by date, Plava kamenica landed four cards
+   in a row and the rail read like one publication's feed rather than a range of
+   coverage. This keeps the date order as the preference and only reaches past
+   a card when its outlet just appeared — so the sequence stays roughly
+   chronological without ever repeating a masthead back to back.
+
+   Greedy and deliberately simple: take the newest item whose outlet differs
+   from the last one placed; if every remaining item is from that outlet, take
+   the newest anyway rather than contorting the order to avoid it. */
+function spread(items) {
+  const pool = [...items];
+  const out = [];
+  let last = null;
+  while (pool.length) {
+    let i = pool.findIndex((x) => x.outlet !== last);
+    if (i === -1) i = 0;
+    out.push(pool[i]);
+    last = pool[i].outlet;
+    pool.splice(i, 1);
+  }
+  return out;
+}
+
+const ordered = [...featured, ...spread(rest)];
 
 const counts = Object.keys(KIND)
   .map((k) => ({ k, label: KIND[k], n: ITEMS.filter((i) => i.kind === k).length }))
