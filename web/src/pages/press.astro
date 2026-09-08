@@ -259,6 +259,10 @@ const schema = {
       {ITEMS.length} tekstova, emisija i vodiča o Theatriumu i chefu Filipu
       Horvatu. Svaka poveznica vodi na izvornik.
     </p>
+    <p class="cross">
+      Tražite Filipove vlastite tekstove? Oni su u
+      <a href="/zapisi/">Zapisima</a>.
+    </p>
   </header>
 
   <div class="rail-head">
@@ -343,6 +347,11 @@ const schema = {
 <style>
   .head { padding: 3.5rem 0 1rem; max-width: 46rem; }
   .lede { color: var(--text-dim); font-size: 1.1rem; }
+  /* The one sentence that tells the two pages apart. Guests will not infer the
+     difference between "press" and "zapisi" from the words alone, so it is
+     said rather than implied — on both pages, each pointing at the other. */
+  .cross { margin-top: 1rem; font-size: .95rem; color: var(--text-faint); }
+  .cross a { color: var(--gold-soft); }
 
   .rail-head {
     display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;

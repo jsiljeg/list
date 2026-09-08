@@ -184,12 +184,18 @@ const schema = {
 </script>
 
 <style>
-  .head { padding: 3.5rem 0 1rem; max-width: 46rem; }
-  .lede { color: var(--text-dim); font-size: 1.15rem; }
+  /* One column for the whole page. The cards used to run the full shell width
+     while the form stopped at 44rem, so the two blocks shared a left edge and
+     nothing else — which is what read as "not aligned". Everything sits in the
+     same measure now and both edges line up. */
+  .head, .kinds, .ask { max-width: 62rem; }
+
+  .head { padding: 3.5rem 0 1rem; }
+  .lede { color: var(--text-dim); font-size: 1.15rem; max-width: 46rem; }
 
   .kinds {
     display: grid; gap: 1rem; padding: 2.6rem 0 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   }
   .kinds article {
     border: 1px solid var(--line); background: var(--bg-card);
@@ -198,13 +204,18 @@ const schema = {
   .kinds h2 { font-size: 1.3rem; margin-bottom: .5rem; }
   .kinds p { color: var(--text-dim); font-size: .95rem; margin: 0; }
 
-  .ask { padding: 3rem 0 var(--section); max-width: 44rem; }
+  .ask { padding: 3rem 0 var(--section); }
   .ask-copy { margin-bottom: 2.2rem; }
   .ask-copy h2 { margin-bottom: .7rem; }
-  .ask-copy p { color: var(--text-dim); max-width: 42ch; }
+  /* 42ch against a 62rem column produced a narrow ragged block beside a wide
+     one. A reading measure still, just one that belongs to this width. */
+  .ask-copy p { color: var(--text-dim); max-width: 58ch; }
   .ask-copy a { color: var(--gold); }
 
-  .row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+  .row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  /* "Kada" and "Poruka" are full-width fields; without this they inherited the
+     narrower flow and ended on a different right edge from the rows above. */
+  .enq > label { max-width: none; }
   label { display: block; margin-bottom: 1rem; }
   label > span {
     display: block; font-size: .74rem; letter-spacing: .14em;

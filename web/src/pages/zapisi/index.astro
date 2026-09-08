@@ -22,6 +22,10 @@ const hrDate = (d) => `${d.getDate()}. ${MONTHS[d.getMonth()]} ${d.getFullYear()
     <h1>Filipovim riječima</h1>
     <p class="lede">
       S puta, iz kuhinje, i o onome što se iz jednog i drugog vraća na tanjur.
+      Piše Filip Horvat.
+    </p>
+    <p class="cross">
+      Ono što su drugi pisali o nama je u <a href="/press/">Pressu</a>.
     </p>
   </header>
 
@@ -50,6 +54,8 @@ const hrDate = (d) => `${d.getDate()}. ${MONTHS[d.getMonth()]} ${d.getFullYear()
 <style>
   .head { padding: 3.5rem 0 1rem; max-width: 46rem; }
   .lede { color: var(--text-dim); font-size: 1.1rem; }
+  .cross { margin-top: 1rem; font-size: .95rem; color: var(--text-faint); }
+  .cross a { color: var(--gold-soft); }
   .empty { color: var(--text-faint); padding: 2.5rem 0 var(--section); }
   .items { list-style: none; margin: 2.5rem 0 var(--section); padding: 0; max-width: 46rem; }
   .items li { border-top: 1px solid var(--line); }
