@@ -1,0 +1,158 @@
+{
+ "salata-od-pecene-cikle-i-kozjeg-sira": {
+  "course": "starters",
+  "name": "Salata od pečene cikle i kozjeg sira",
+  "price": 18,
+  "ingredients": "Cikla pečena u acetu, špinat, mlada salata, kozji sir, tostirani lješnjaci"
+ },
+ "jakobove-kapice": {
+  "course": "starters",
+  "name": "Jakobove kapice",
+  "price": 21,
+  "ingredients": "Jakobove kapice, pil-pil umak, kavijar od lososa"
+ },
+ "burrata-i-rajcice": {
+  "course": "starters",
+  "name": "Burrata i rajčice",
+  "price": 18,
+  "ingredients": "Dimljena burrata, pečena rajčica, ulje od bosiljka"
+ },
+ "drniski-prsut-vs-jamon-iberico-de-bellota": {
+  "course": "starters",
+  "name": "Drniški pršut vs. jamón ibérico de bellota",
+  "price": 19,
+  "ingredients": "Sladoled od drniškog pršuta, hrskavac od paškog sira, tanko rezani jamón ibérico na kroketu od jamón ibérica"
+ },
+ "tartar-od-bifteka": {
+  "course": "starters",
+  "name": "Tartar od bifteka",
+  "price": 21,
+  "ingredients": "Klasični tartar od bifteka, ulje od vlasca, čips od imotskog krumpira"
+ },
+ "kozice-u-panko-mrvicama": {
+  "course": "starters",
+  "name": "Kozice u panko mrvicama",
+  "price": 21,
+  "ingredients": "Krema od pečene buče, kozice u panko mrvicama, majoneza od wasabija, jabuka"
+ },
+ "carpaccio-od-bifteka": {
+  "course": "starters",
+  "name": "Carpaccio od bifteka",
+  "price": 21,
+  "ingredients": "Biftek mariniran u šampanjcu, jabuka, karamelizirani luk, majoneza od vlasca, mlada salata"
+ },
+ "juha-od-kozica": {
+  "course": "soups",
+  "name": "Juha od kozica",
+  "price": 10,
+  "ingredients": "Naša verzija Tom Kha Gai juhe, sfera od kokosa, kozice, vlasac, čili, limunska trava"
+ },
+ "juha-od-kukuruza": {
+  "course": "soups",
+  "name": "Juha od kukuruza",
+  "price": 10,
+  "ingredients": "Krem juha od kukuruza, majoneza od škampa"
+ },
+ "juha-od-rajcice": {
+  "course": "soups",
+  "name": "Juha od rajčice",
+  "price": 9,
+  "ingredients": "Krem juha od rajčice, ulje od bosiljka, hrskavac od kruha i sira"
+ },
+ "rizoto-od-bifteka": {
+  "course": "mains",
+  "name": "Rižoto od bifteka",
+  "price": 19,
+  "ingredients": "Carnaroli riža, biftek, vlasac, Parmigiano, sušena rajčica"
+ },
+ "rizoto-s-morskim-plodovima": {
+  "course": "mains",
+  "name": "Rižoto s morskim plodovima",
+  "price": 23,
+  "ingredients": "Carnaroli riža, dagnje, vongole, morski ježinac, plavi rak"
+ },
+ "paccheri-all-amatriciana": {
+  "course": "mains",
+  "name": "Paccheri all’amatriciana",
+  "price": 21,
+  "ingredients": "Paccheri u umaku od pečenih rajčica, bosiljak, hrskavi špek"
+ },
+ "cacio-e-pepe": {
+  "course": "mains",
+  "name": "Cacio e pepe",
+  "price": 23,
+  "ingredients": "Ručno rađeni špageti, umak od papra i sira Pecorino"
+ },
+ "wiener-schnitzel": {
+  "course": "mains",
+  "name": "Wiener Schnitzel",
+  "price": 26,
+  "ingredients": "Pohana teletina, krumpir-salata"
+ },
+ "teletina": {
+  "course": "mains",
+  "name": "Teletina",
+  "price": 26,
+  "ingredients": "Sporo pečena teletina, pečeni krumpir, mrkva, umak od teletine"
+ },
+ "chicken-tikka-masala": {
+  "course": "mains",
+  "name": "Chicken tikka masala",
+  "price": 25,
+  "ingredients": "Chicken tikka masala, basmati riža, naan od koromača"
+ },
+ "sirloin-steak": {
+  "course": "mains",
+  "name": "Sirloin steak",
+  "price": 32,
+  "ingredients": "Sirloin steak, bukovače, bamija, muštarda, goveđi jus"
+ },
+ "kotlet-od-crne-slavonske-svinje": {
+  "course": "mains",
+  "name": "Kotlet od crne slavonske svinje",
+  "price": 33,
+  "ingredients": "Pečeni kotlet od crne slavonske svinje, umak od jabuke i pršuta"
+ },
+ "sis-cevap-od-tune": {
+  "course": "mains",
+  "name": "Šiš-ćevap od tune",
+  "price": 26,
+  "ingredients": "Šiš-ćevap od jadranske tune, bao buns, umak od hrena, mladi luk, čili kajmak"
+ },
+ "file-svjeze-jadranske-ribe-na-buzaru": {
+  "course": "mains",
+  "name": "File svježe jadranske ribe na buzaru",
+  "price": 29,
+  "ingredients": "Pečeni file svježe jadranske ribe, žganci, umak od ribe i buzare, raštika"
+ },
+ "beef-wellington": {
+  "course": "mains",
+  "name": "Beef Wellington",
+  "price": 36,
+  "ingredients": "Biftek u lisnatom tijestu s kremom od gljiva i drniškim pršutom, goveđi jus, krema od krumpira"
+ },
+ "souffle-od-pistacija": {
+  "course": "desserts",
+  "name": "Soufflé od pistacija",
+  "price": 10,
+  "ingredients": "Soufflé od pistacija, sladoled od pistacija"
+ },
+ "tiramisu": {
+  "course": "desserts",
+  "name": "Tiramisu",
+  "price": 9,
+  "ingredients": "Krema od mascarponea i viskija, ganache od čokolade, sladoled od kave, domaće piškote"
+ },
+ "coko-kugla": {
+  "course": "desserts",
+  "name": "Čoko kugla",
+  "price": 10,
+  "ingredients": "Čokoladna kugla, krema od karamele, krema od malina, malina"
+ },
+ "sljiva": {
+  "course": "desserts",
+  "name": "Šljiva",
+  "price": 10,
+  "ingredients": "Grilana šljiva, chamoy od šljiva, sladoled od tonka oraščića, bosiljak"
+ }
+}

@@ -4,6 +4,7 @@
    the thirty are pages guests and crawlers both have a reason to open. */
 import Base from "../../layouts/Base.astro";
 import dishes from "../../data/generated/dishes.json";
+import detail from "../../data/menu-detail.json";
 
 const COURSES = [
   ["starters", "Predjela"],
@@ -25,7 +26,14 @@ const schema = {
   hasMenuSection: byCourse.map((c) => ({
     "@type": "MenuSection",
     name: c.label,
-    hasMenuItem: c.items.map((d) => ({ "@type": "MenuItem", name: d.name.hr })),
+    hasMenuItem: c.items.map((d) => ({
+      "@type": "MenuItem",
+      name: d.name.hr,
+      ...(detail[d.slug]?.ingredients ? { description: detail[d.slug].ingredients } : {}),
+      ...(detail[d.slug]?.price != null
+        ? { offers: { "@type": "Offer", price: detail[d.slug].price, priceCurrency: "EUR" } }
+        : {}),
+    })),
   })),
 };
 ---
@@ -50,8 +58,15 @@ const schema = {
         {c.items.map((d) => (
           <li>
             <a href={`/jelovnik/${d.slug}/`}>
-              <span class="d-name">{d.name.hr}</span>
-              <span class="d-en">{d.name.en}</span>
+              <span class="d-row">
+                <span class="d-name">{d.name.hr}</span>
+                {detail[d.slug]?.price != null && (
+                  <span class="d-price">{detail[d.slug].price} €</span>
+                )}
+              </span>
+              {detail[d.slug]?.ingredients && (
+                <span class="d-ing">{detail[d.slug].ingredients}</span>
+              )}
               {d.wines[0] && (
                 <span class="d-wine">uz {d.wines[0].name} · {d.wines[0].producer}</span>
               )}
@@ -80,8 +95,16 @@ const schema = {
     transition: padding-left .18s ease;
   }
   .course a:hover, .course a:focus-visible { padding-left: .6rem; }
-  .d-name { font-family: var(--serif); font-size: 1.35rem; display: block; }
-  .d-en { color: var(--text-faint); font-size: .9rem; font-style: italic; }
+  .d-row { display: flex; align-items: baseline; gap: 1rem; }
+  .d-name { font-family: var(--serif); font-size: 1.35rem; }
+  .d-price {
+    margin-left: auto; font-family: var(--serif); font-size: 1.2rem;
+    color: var(--gold); font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .d-ing {
+    display: block; margin-top: .25rem; color: var(--text-dim);
+    font-size: .93rem; line-height: 1.55; max-width: 54ch;
+  }
   .d-wine {
     display: block; margin-top: .35rem;
     font-size: .82rem; letter-spacing: .06em; color: var(--gold-soft);
