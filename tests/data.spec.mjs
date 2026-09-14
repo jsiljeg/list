@@ -1292,3 +1292,19 @@ test("a release is recorded wherever the score needs one to mean anything", () =
   expect(readFileSync(resolve(ROOT, "js/app.js"), "utf8")).toContain("rating-release");
   expect(withRelease.length).toBeGreaterThan(0);
 });
+
+test("the Grimalda on the list is the crna, not the blue-label plava", () => {
+  /* Caught by the owner 2026-09-14. Matosevic bottles two reds off the same
+     hill: Grimalda crna, the standard Merlot/Teran/Cabernet aged 15 months in
+     oak, and Grimalda plava, a 50/50 Merlot/Teran special edition made only in
+     climatically unusual years (2012, 2013, then 2021). We had recorded the
+     plava's blend and the plava's forest-fruit aromas against the bottle the
+     venue actually pours, and the bare name "Grimalda 2021" is what let the two
+     be confused — the white on the same list already said "bijela". Where a
+     producer bottles one estate name more than once, the name has to say which
+     one it is. */
+  const g = items.filter((i) => /^Grimalda/.test(i.name) && /Mato/.test(i.producer));
+  expect(g.map((i) => i.name).sort()).toEqual(["Grimalda bijela 2022", "Grimalda crna 2021"]);
+  const crna = g.find((i) => /crna/.test(i.name));
+  expect(crna.insight.grape).toMatch(/^Merlot 60%, Teran 30%/);
+});

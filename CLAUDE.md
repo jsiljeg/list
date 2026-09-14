@@ -176,6 +176,17 @@ critic, not *is* one, and every alias value must itself be on the list.
 **Blends:** `Variety NN%, Variety NN%`, name first, descending share. Never
 percent-first — `zhTokens`/`langTokens` strip a *trailing* percentage per token.
 
+**A name must say which bottling it is** (owner, 2026-09-14). Matošević bottles
+two reds off the same hill — **Grimalda crna**, the standard Merlot 60%, Teran
+30%, Cabernet Sauvignon 10% aged 15 months in oak, and **Grimalda plava**, a
+50/50 Merlot/Teran special edition made only in climatically unusual years
+(2012, 2013, then 2021). The venue's PDF says only "Grimalda 2021", both exist
+in 2021, and the record was researched as the plava: its blend, and its
+forest-fruit aromas, on the bottle the venue actually pours. The white beside it
+had said `bijela` all along, which is the whole lesson — when a producer sells
+one estate name more than once, the *name* carries the distinguishing word even
+if the supplier's list drops it. Guarded by a test.
+
 **Critic names** (exact strings already in use): Robert Parker (never "Wine
 Advocate"), James Suckling, Wine Spectator, Wine Enthusiast, Vinous, Decanter,
 Falstaff, Jasper Morris, Tim Atkin, Jancis Robinson (always `NN/20`), Lobenberg,
@@ -618,16 +629,19 @@ scores, aromas, region/terroir rework), the scroll-to-top fix for the detail
 sheet, and a sweep of all 79 multi-wine producers whose blurbs described only one
 wine (17 rewritten — full from/to in `docs/producer-blurb-changes.md`).
 
-**Next up: continue with reds.** Wines still missing `insight.alcohol`, by
-country: **US 13** (Ridge Geyserville + Cabernet, both Togni, Heitz, Mayacamas,
-Domaine Eden, Cakebread, Duckhorn, Tyler, Résonance, Occidental, Walter Scott),
-**IT 10** (Pira & Figli Barolo 2018, Isole e Olena Cabernet 2013, Piane 2019,
-Tignanello 2019, both Valpolicella Superiore, both Montevertine, Duemani 2018,
-Soldera 2020), **HR 7**, **FR 7** (all five Lignier reds, NSG Les Hauts-Pruliers
-2016, both Desjourneys Beaujolais), **ES 5**, **SI 3**, **CN 1** (Ao Yun 2018).
+**Alcohol: 17 wines left** (2026-09-14, after the owner read a batch of labels).
+**HR 7** (Jakopić Terbotz + Riesling 2024, Ivanić Pinot Crni, Tomaz Teran
+Barbarossa, Erdoro Pinot Noir, both Prošeks), **IT 4** (Pira & Figli Barolo
+2018, Isole e Olena Cabernet 2013, Piane 2019, Vie di Romans Pinot Grigio
+2023), **DE 2** (Heymann-Löwenstein BA 2017, Zilliken Auslese GK 2009), **AT 1**
+(Muster Graf 2020), **ES 1** (Casa Rojo Tokyo 2021), **FR 1** (Machard de
+Gramont NSG Les Hauts-Pruliers 2016), **US 1** (Tanbark Hill Cabernet 2018).
+The five Lignier reds, Cotat's Monts Damnés (14,5 — it read 13) and both
+Desjourneys Beaujolais came off the list that day, from the owner's own reading
+of the bottles: **the label in the owner's hand beats any published sheet**, and
+it is the only source that settles a vintage nobody has written up.
 
 Open questions for the owner:
-- Desjourneys Beaujolais 2022/2023 ABV — 13% in 2020 and 2021, unverified for ours.
 - Whether "rizling"/lowercase "chardonnay" in Croatian blurbs should become
   Riesling/Chardonnay, as "kabernet" did.
 - Five blurbs that name an estate wine we don't stock (Benvenuti/Teran,

@@ -2006,8 +2006,9 @@ function glassFor(style, grape, override, region) {
      the wide cone. Which Winewings follows Riedel's own varietal lists: Pinot
      Noir and Nebbiolo to the Burgundy bowl, Cabernet and Merlot to the Bordeaux
      cone. The dominant grape decides, since our blends are written name-first in
-     descending share — so Grimalda's "Teran 50%, Merlot 50%" is not a Bordeaux
-     by accident of listing order. Blends led by a third grape fall through to
+     descending share — so Grimalda crna reads "Merlot 60%" first and would take
+     the Bordeaux cone on the rule alone; the override above is what puts it in
+     the wide bowl. Blends led by a third grape fall through to
      the Bordeaux glass on their Cabernet or Merlot component, which is where
      Riedel puts Sangiovese too (Brunello is on its Bordeaux list, not the
      Burgundy one) — that is Tignanello, and Quintarelli's two Veneto wines. */

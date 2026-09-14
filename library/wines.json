@@ -5004,7 +5004,7 @@
      "white_fish"
     ],
     "temp": "10–12",
-    "alcohol": "13",
+    "alcohol": "14.5",
     "sweetness": "dry"
    },
    "terroir": "Les Monts Damnés, Chavignol",
@@ -6102,22 +6102,22 @@
    },
    "terroir": "Križevac, Cimbuščak"
   },
-  "matosevic--grimalda-2021": {
-   "name": "Grimalda 2021",
+  "matosevic--grimalda-crna-2021": {
+   "name": "Grimalda crna 2021",
    "producer": "Matošević",
    "insight": {
-    "grape": "Teran 50%, Merlot 50%",
+    "grape": "Merlot 60%, Teran 30%, Cabernet Sauvignon 10%",
     "region": "Centralna Istra, Hrvatska Istra",
     "country": "HR",
     "style": "red_medium",
     "body": "medium",
     "aromas": [
+     "blackcurrant",
      "cherry",
      "plum",
+     "vanilla",
      "earth",
-     "spice",
-     "blackberry",
-     "blueberry"
+     "tobacco"
     ],
     "pairings": [
      "truffles",
@@ -6655,7 +6655,7 @@
      "veal"
     ],
     "temp": "14–16",
-    "alcohol": "",
+    "alcohol": "13.5",
     "sweetness": "dry"
    },
    "terroir": "",
@@ -6689,7 +6689,7 @@
      "beef"
     ],
     "temp": "16–18",
-    "alcohol": "",
+    "alcohol": "13.5",
     "sweetness": "dry"
    },
    "terroir": "Les Arvelets",
@@ -6720,7 +6720,7 @@
      "truffles"
     ],
     "temp": "16–18",
-    "alcohol": "",
+    "alcohol": "15",
     "sweetness": "dry"
    },
    "terroir": "Charmes-Chambertin",
@@ -6756,7 +6756,7 @@
      "veal"
     ],
     "temp": "16–18",
-    "alcohol": "",
+    "alcohol": "13",
     "sweetness": "dry"
    },
    "terroir": "",
@@ -7473,7 +7473,7 @@
      "cheese_hard"
     ],
     "temp": "14–16",
-    "alcohol": "",
+    "alcohol": "13",
     "sweetness": "dry"
    },
    "terroir": ""
@@ -7499,7 +7499,7 @@
      "pork"
     ],
     "temp": "13–15",
-    "alcohol": "",
+    "alcohol": "13",
     "sweetness": "dry"
    },
    "terroir": ""

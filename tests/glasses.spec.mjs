@@ -111,7 +111,7 @@ test("the named exceptions are still where the owner put them", async ({ page })
   /* Each of these was a decision, not a rule, so a rule change must not quietly
      undo it. */
   const EXPECTED = {
-    "Grimalda 2021": "burgundy",
+    "Grimalda crna 2021": "burgundy",
     "Ottocento Crni 2022": "burgundy",
     "Amarone Classico 2015": "burgundy",
     "Valpolicella Superiore 2015": "burgundy",

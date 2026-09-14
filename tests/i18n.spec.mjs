@@ -15,7 +15,7 @@ test.describe.configure({ mode: "parallel" });
 
 test("the style line is sentence case, not Title Case", async ({ page }) => {
   await openApp(page);
-  await openWine(page, "Grimalda 2021");
+  await openWine(page, "Grimalda crna 2021");
   const line = (await page.locator(".detail-style").innerText()).trim();
   const parts = line.split("·").map((s) => s.trim()).filter(Boolean);
   expect(parts.length, `expected a compound descriptor, got "${line}"`).toBeGreaterThan(1);
