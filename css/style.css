@@ -402,6 +402,20 @@ body {
   font-family: var(--serif);
   font-size: 1.35rem; color: var(--gold);
   white-space: nowrap;
+  /* A column, so the anchor price sits under the price it is there to be
+     compared with. An inline-flex box takes its baseline from its first line,
+     so the gold figure still sits on the same baseline as the name and the
+     dotted leader, exactly as it did when it was a bare span. */
+  display: inline-flex; flex-direction: column; align-items: flex-end;
+}
+/* The anchor price on a list row. It is on all 393 of them, so it is set as
+   quietly as it can be and still be read at arm's length on a tablet: the sans
+   face and the faint ink, because it is a disclosure rather than a second
+   price tag, and nothing about it should compete with the gold. */
+.item-anchor {
+  font-family: var(--sans); font-size: .7rem; font-weight: 400;
+  letter-spacing: .05em; color: var(--text-faint);
+  margin-top: .12rem;
 }
 .item-chevron { color: var(--text-faint); font-size: 1.1rem; align-self: center; }
 .item-flag { margin-left: .55rem; line-height: 0; display: inline-block; vertical-align: -3px; }
@@ -568,6 +582,14 @@ body {
 .detail-price {
   font-family: var(--serif); font-size: 1.7rem; color: var(--gold);
   margin: .6rem 0 1rem;
+}
+/* The card has room to say what the number is, where the row can only print a
+   date and a figure. Same register as the other small labels on the card. */
+.detail-anchor {
+  display: block;
+  font-family: var(--sans); font-size: .72rem; font-weight: 400;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--text-faint); margin-top: .35rem;
 }
 .detail-style { color: var(--text-dim); font-style: italic; margin-bottom: 1.1rem; }
 .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem 1.4rem; }

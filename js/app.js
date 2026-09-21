@@ -471,7 +471,10 @@ function showApp() {
   const t = T();
   $("subtitle").textContent = t.ui.subtitle;
   $("search").placeholder = t.ui.search;
-  $("legal").textContent = t.ui.legal;
+  /* One paragraph of notices, and the anchor-price sentence belongs in it: a
+     row prints a date and a number, and this is the only place on the screen
+     that says what that number is. */
+  $("legal").textContent = `${t.ui.legal} ${t.ui.anchorNote}`;
   $("company").textContent = t.ui.company;
   $("copyright").textContent = t.ui.copyright;
   $("picks-toggle").querySelector("span").textContent = t.ui.picks;
@@ -538,9 +541,30 @@ const alcText = (a) => {
     { maximumFractionDigits: 2 });
 };
 
+/* The anchor price — "sidrena cijena", required on every Croatian price list
+   from 01.10.2026: beside what a guest pays tonight, the regular price the
+   same item carried on the reference day, 10.09.2026.
+
+   It is *stored* per listing (`anchor` in lists/theatrium.json) rather than
+   derived from anything, and that is the whole point of the field. The day a
+   price moves, a derived anchor would move with it and quietly claim the wine
+   had always cost that — which is the thing the rule exists to stop. Seeded
+   once by scripts/anchor-prices.py and never edited again; validate.mjs diffs
+   it against the frozen warrant on every deploy.
+
+   Printed on every row, not only where the two numbers differ. A line that
+   appeared only on the wines we have repriced would point at exactly those,
+   and the rule is about a guest being able to compare, not about us
+   confessing. An item that joined the list after the reference day has no
+   anchor — it had no price that day — and prints none. */
+const anchorText = (item) =>
+  (item.anchor == null ? "" : `${T().ui.anchorDate} · ${fmtPrice(item.anchor)} €`);
+
 function priceHtml(item) {
   if (item.price == null) return "";
-  return `<span class="item-price">${fmtPrice(item.price)}&nbsp;€</span>`;
+  const anchor = anchorText(item);
+  return `<span class="item-price">${fmtPrice(item.price)}&nbsp;€${
+    anchor ? `<small class="item-anchor">${esc(anchor)}</small>` : ""}</span>`;
 }
 
 /* minimalist gold marker icons for the list + legend */
@@ -1325,7 +1349,8 @@ function openDetail(ref, back, scope) {
     ${item.new ? `<div class="detail-rec detail-new">${esc(t.ui.newBadge)}</div>` : ""}
     ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(criticName(r.critic))}${r.release ? `<i class="rating-release">${esc(r.release)}</i>` : ""}</span>`).join("")}</div>` : ""}
-    ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €</div>` : ""}
+    ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €${
+      item.anchor != null ? `<span class="detail-anchor">${esc(t.ui.anchorLabel)} · ${esc(t.ui.anchorDate)} · ${fmtPrice(item.anchor)} €</span>` : ""}</div>` : ""}
     ${/* The one thing the card could not do: get the wine from the guest to the
           waiter. Half of this list is unpronounceable to the guest reading it —
           "Riesling Wehlener Sonnenuhr Auslese 2023 – 0,375 l" defeats anyone

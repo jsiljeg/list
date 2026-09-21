@@ -472,6 +472,76 @@ vermouth and bitter are the same moment of the evening and the same two
 bottles in a Negroni, while the `liqueur` shelf next door is after-dinner
 (Jägermeister, pelinkovac, umeshu). Split at two, widen the heading at one.
 
+## The anchor price, and the cjenik (2026-09-21)
+
+Croatian rules in force **01.10.2026**: beside the price a guest pays, a list
+must show the regular price that item carried on the reference day, and a
+business with a website must publish its price list there in a machine-readable
+format, refreshed as soon as anything changes and kept reachable for 30 days.
+
+**The reference day here is 10.09.2026**, the service-provider date. The
+02.05.2025 date in the same rules is the exception for *retail* food, drink and
+cosmetics that were already under the 2025 price-control measures — a
+restaurant's own menu never was. If that reading is ever challenged, the date
+lives in exactly three places: `ui.anchorDate` (×8 languages), `ANCHOR_DATE` in
+scripts/make-cjenik.mjs, and the warrant filename.
+
+The owner confirmed the list had not moved since, so **every anchor was seeded
+from the price standing on 2026-09-21** and all 393 currently agree.
+
+- **`"anchor"` sits beside `"price"`** on the listing, and is the venue's, not
+  the wine's — `VENUE_FIELDS` carries it. Seeded once by
+  `scripts/anchor-prices.py`; **never edited again**. The day a price moves,
+  only `price` moves.
+- **A derived anchor would be worse than none**, which is why it is stored. If
+  it were computed, it would follow every price change and print a figure the
+  venue never charged, on the one line a guest is invited to compare — and
+  because the two numbers would always agree, nobody could spot it by reading.
+- **`data/source/anchor-prices-2026-09-10.json` is the warrant**, keyed by
+  shelf|ref|vol — shelf, so a wine reclassified from white to dessert keeps its
+  anchor, but a glass pour and a bottle keep their separate ones.
+  `validate.mjs` fails the deploy on a drifted, lost or invented anchor.
+- **A listing added after the reference day has no anchor** and prints none: it
+  had no price that day. That is why the seeding script is not idempotent over
+  new items — `--all` would stamp today's price on a bottle that arrived last
+  week and claim it was for sale in September.
+- **Printed on every row, not only where the two differ.** A line that appeared
+  only on the repriced wines would point straight at them; the rule is about a
+  guest being able to compare.
+
+**The cjenik is generated, never hand-written.** `npm run cjenik` writes
+`cjenik/cjenik.xml` + `.csv` (stable URLs), a dated archive pair **only when
+the content changes** — nothing was published on a day nothing moved — and
+`cjenik/index.html`, which lists the archive. The XML root carries `sazetak`, a
+digest of the rows alone; `validate.mjs` recomputes it from the live data, so a
+price edited without regenerating **stops the deploy**. That is the only way
+"immediately after every change" is a rule rather than a memory.
+
+XML and CSV are tuned differently on purpose: the XML for a parser (ISO dates,
+dot decimals), the CSV for Excel in an office in Zagreb (semicolons, BOM) with
+dot decimals so both files read the same numbers.
+
+**Two things the data cannot answer yet**, both flagged to the owner: the
+measure a spirit, rakija or liqueur is poured in (the field is empty rather
+than an invented 0,03 l — same rule as alcohol and terroir), and the company
+OIB for the cjenik header, which is left off rather than emitted blank.
+
+## The QR code (2026-09-21)
+
+`python scripts/qr.py` writes all three from one encode: `assets/qr.svg`
+(vector, charcoal on transparent — what qr.html shows and what a printer
+should get), `assets/qr.png` (1312 px) and `assets/qr-print.png` (4920 px, a
+42 cm square at 300 dpi). Error correction is **H**, up from the old code's
+level, and the quiet zone is the spec's 4 modules rather than the 2 that
+shipped before — a code on a restaurant table collects thumbprints and wine
+rings, and the URL is short enough that H still fits a version 4, so the
+modules are no smaller for it.
+
+`--check` decodes the PNGs back with pyzbar and compares them to the URL. Both
+decoded to `https://theatrium.list.devinos.hr` on the day they were written;
+that is the only verification that means anything, since a QR that encodes the
+wrong string looks exactly like one that does not.
+
 ## The kitchen's card is seasonal (2026-09-04)
 
 A dish that comes off the card in September is usually back next spring, and

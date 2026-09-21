@@ -64,10 +64,27 @@ vidite pod karticom **Actions** (crveni X, s opisom što je krivo).
 > (sorta, arome, citat, ocjene, oznake) je u `library/wines.json`.
 
 ### Promijeniti cijenu → `lists/theatrium.json`
-Nađite vino (Ctrl+F / ⌘+F) i promijenite broj — **bez navodnika i bez €**:
+Nađite vino (Ctrl+F / ⌘+F) i promijenite **samo `price`** — bez navodnika i bez €:
 ```json
-{ "ref": "kunjas--posip-2024", "price": 49 },
+{ "ref": "kunjas--posip-2024", "price": 52, "anchor": 49 },
 ```
+
+> **`anchor` se NIKAD ne mijenja.** To je *sidrena cijena* — redovna cijena tog
+> vina na dan **10.09.2026.**, koju zakon od 01.10.2026. traži da bude
+> istaknuta uz svaku cijenu. Ona je tamo upravo zato da ostane ista kad se
+> `price` promijeni. Ako je slučajno promijenite, objava će se zaustaviti i
+> javiti vam koji je broj bio ispravan.
+
+Nakon svake promjene cijene pokrenite i:
+```
+npm run cjenik
+```
+To osvježi strojno čitljiv cjenik u mapi `cjenik/` (XML i CSV), koji zakon
+traži da bude objavljen na stranici. Bez toga objava ne prolazi — javit će
+`cjenik/ is out of date`.
+
+Novo vino koje na 10.09.2026. nije bilo na karti **nema `anchor`** — taj redak
+jednostavno izostavite.
 
 ### Označiti / maknuti "Filho preporučuje" ★
 Dodajte ili obrišite ovaj redak unutar vina:
@@ -350,6 +367,27 @@ drugu čašu, dodajte mu `"vessel": "tumbler"` u `insight`.
 Priču o destileriji **ne pišite u svako piće** — ide u `data/producers.json`,
 isto kao tekst o vinaru, i prikazuje se ispod svih pića te kuće. `note` je za
 ono što razlikuje baš tu bocu.
+
+## Sidrena cijena i objava cjenika (zakon od 01.10.2026.)
+
+Tri stvari koje zakon traži, i gdje su riješene:
+
+1. **Sidrena cijena uz svaku cijenu.** Piše ispod cijene na svakom retku
+   (`10.09.2026. · 49 €`) i na kartici vina, na svih osam jezika. Podatak je
+   `"anchor"` u `lists/theatrium.json`; nikad se ne mijenja.
+2. **Cjenik u strojno čitljivom formatu na stranici.** Mapa `cjenik/`:
+   `cjenik.xml` i `cjenik.csv` su uvijek važeći cjenik, na stalnoj adresi
+   `theatrium.list.devinos.hr/cjenik/`. CSV se otvara u Excelu dvoklikom.
+3. **Arhiva od najmanje 30 dana.** Svaka promjena zapiše i `cjenik-DATUM.xml`
+   / `.csv`, a `cjenik/index.html` ih sve izlistava. Ništa se ne briše.
+
+Cijeli postupak nakon promjene cijena: uredite `price`, pokrenite
+`npm run cjenik`, spremite (commit + push). Objava sama provjerava je li
+cjenik u koraku s kartom i neće proći ako nije.
+
+**Još nije riješeno, treba vaša odluka:** mjera za žestoka pića, rakije i
+likere (npr. 0,03 l) — u podacima je nemamo, pa u cjeniku stoji prazno polje;
+i OIB tvrtke, koji bi trebao stajati u zaglavlju cjenika.
 
 ## Ostalo što se može urediti
 

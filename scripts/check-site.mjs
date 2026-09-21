@@ -11,7 +11,8 @@ import { join, extname, resolve } from "node:path";
 const root = resolve(process.argv[2] || "_site");
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css",
   ".json": "application/json", ".svg": "image/svg+xml", ".webp": "image/webp",
-  ".png": "image/png", ".webmanifest": "application/manifest+json" };
+  ".png": "image/png", ".webmanifest": "application/manifest+json",
+  ".xml": "application/xml", ".csv": "text/csv" };
 const srv = createServer(async (req, res) => {
   let p = join(root, decodeURIComponent(req.url.split("?")[0]));
   try {
@@ -25,7 +26,7 @@ await new Promise((r) => srv.listen(4199, r));
 
 const bad = [];
 const b = await chromium.launch();
-for (const page of ["/", "/admin.html", "/qr.html"]) {
+for (const page of ["/", "/admin.html", "/qr.html", "/cjenik/"]) {
   const p = await b.newPage({ viewport: { width: 1024, height: 768 } });
   p.on("pageerror", (e) => bad.push(`${page}: page error — ${e.message}`));
   p.on("console", (m) => { if (m.type() === "error") bad.push(`${page}: console — ${m.text()}`); });
@@ -54,6 +55,13 @@ for (const page of ["/", "/admin.html", "/qr.html"]) {
                      "/web/", "/web/PLAN.md"]) {
       const r = await p.request.get("http://127.0.0.1:4199" + u);
       if (r.status() !== 404) bad.push(`still published: ${u} (${r.status()})`);
+    }
+    /* …and the cjenik must be. Publishing the price list in a machine-readable
+       format is the obligation itself, not a nicety, so a stable URL that 404s
+       is exactly as bad as a missing price. */
+    for (const u of ["/cjenik/", "/cjenik/cjenik.xml", "/cjenik/cjenik.csv"]) {
+      const r = await p.request.get("http://127.0.0.1:4199" + u);
+      if (r.status() !== 200) bad.push(`cjenik not published: ${u} (${r.status()})`);
     }
   }
   await p.close();

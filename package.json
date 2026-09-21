@@ -4,6 +4,8 @@
   "description": "Theatrium by Filho — digital wine list. The site itself is plain static files; everything here is test tooling and never ships.",
   "scripts": {
     "validate": "node scripts/validate.mjs",
+    "cjenik": "node scripts/make-cjenik.mjs",
+    "qr": "python scripts/qr.py",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:tablet": "playwright test --project=tablet",

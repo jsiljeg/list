@@ -1308,3 +1308,84 @@ test("the Grimalda on the list is the crna, not the blue-label plava", () => {
   const crna = g.find((i) => /crna/.test(i.name));
   expect(crna.insight.grape).toMatch(/^Merlot 60%, Teran 30%/);
 });
+
+/* ---------- the anchor price ("sidrena cijena") ----------
+   Croatian rules in force 01.10.2026: beside every price, the regular price
+   that item carried on the reference day, 10.09.2026. Added with the change,
+   not run (standing rule) — so these are deliberately assertions about data
+   and source text rather than about rendered geometry, which is the kind that
+   fails silently for weeks. */
+
+const ANCHOR_DATE = "2026-09-10";
+const warrant = JSON.parse(readFileSync(resolve(ROOT, `data/source/anchor-prices-${ANCHOR_DATE}.json`), "utf8"));
+const rawList = JSON.parse(readFileSync(resolve(ROOT, "lists/theatrium.json"), "utf8"));
+const anchorShelf = (id) => (id === "glass" ? "glass" : id.startsWith("bottle-") ? "bottle" : id);
+const listings = [];
+for (const sec of rawList.sections)
+  for (const cat of sec.categories)
+    for (const g of cat.groups)
+      for (const it of g.items) listings.push({ sec: sec.id, cat: cat.id, ...it });
+
+test("every priced listing carries its anchor price, frozen at the reference day", () => {
+  const byKey = new Map(warrant.prices.map((p) =>
+    [[p.shelf, p.ref, p.vol == null ? "" : String(p.vol)].join("|"), p.price]));
+  const drifted = [], lost = [];
+  for (const it of listings) {
+    const key = [anchorShelf(it.sec), it.ref, it.vol == null ? "" : String(it.vol)].join("|");
+    const was = byKey.get(key);
+    if (was === undefined) continue;                 /* added after the reference day */
+    if (it.anchor === undefined) lost.push(it.ref);
+    else if (it.anchor !== was) drifted.push(`${it.ref}: ${it.anchor} vs ${was}`);
+  }
+  expect(lost).toEqual([]);
+  expect(drifted).toEqual([]);
+  expect(warrant.date).toBe(ANCHOR_DATE);
+});
+
+test("an anchor price is a number, like a price", () => {
+  /* Same trap as `vol` before it: a "45 €" here would print a currency twice
+     and sort as a string. */
+  const wrong = listings.filter((it) => it.anchor !== undefined && typeof it.anchor !== "number");
+  expect(wrong.map((i) => i.ref)).toEqual([]);
+});
+
+test("the anchor price is rendered, and the date is in all eight languages", () => {
+  const app = readFileSync(resolve(ROOT, "js/app.js"), "utf8");
+  expect(app).toContain("item-anchor");             /* the list row */
+  expect(app).toContain("detail-anchor");           /* the wine card */
+  expect(app).toContain("anchorNote");              /* the footer, saying what it is */
+  const css = readFileSync(resolve(ROOT, "css/style.css"), "utf8");
+  expect(css).toContain(".item-anchor");
+  expect(css).toContain(".detail-anchor");
+
+  const ctx = {};
+  vm.createContext(ctx);
+  vm.runInContext(readFileSync(resolve(ROOT, "js/i18n.js"), "utf8") + "\nthis.I18N = I18N; this.LANGS = LANGS;", ctx);
+  for (const { code } of ctx.LANGS) {
+    const ui = ctx.I18N[code].ui;
+    for (const k of ["anchorDate", "anchorLabel", "anchorNote"])
+      expect(`${code}.${k}: ${ui[k] || ""}`).toMatch(/: .+/);
+    /* Whatever the language writes the date as, it is the 10th of the 9th,
+       2026 — a translated note that quietly moved the day would be the one
+       error a guest could not catch and an inspector could. */
+    expect(`${code}: ${ui.anchorDate}`).toMatch(/2026/);
+    expect(`${code}: ${ui.anchorNote}`).toMatch(/2026/);
+  }
+});
+
+test("the published cjenik is the list, in both machine formats", () => {
+  /* Rules 4-6: published on the site, refreshed on every change, kept 30 days.
+     The digest is what makes "on every change" checkable — validate.mjs fails
+     the deploy when these disagree. */
+  const xml = readFileSync(resolve(ROOT, "cjenik/cjenik.xml"), "utf8");
+  const csv = readFileSync(resolve(ROOT, "cjenik/cjenik.csv"), "utf8");
+  expect(xml).toContain(`datum_sidrene_cijene="${ANCHOR_DATE}"`);
+  expect(csv.charCodeAt(0)).toBe(0xfeff);            /* BOM, so Croatian Excel opens it */
+  expect(csv.split(/\r\n/)[0].split(";").length).toBe(8);
+  /* one <stavka> per listing, one CSV row per listing */
+  expect((xml.match(/<stavka /g) || []).length).toBe(listings.length);
+  expect(csv.trimEnd().split(/\r\n/).length - 1).toBe(listings.length);
+  /* and an archive exists to retain — the retention is the archive */
+  const archive = readdirSync(resolve(ROOT, "cjenik")).filter((f) => /^cjenik-\d{4}-\d{2}-\d{2}\.xml$/.test(f));
+  expect(archive.length).toBeGreaterThan(0);
+});

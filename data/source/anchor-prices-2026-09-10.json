@@ -1,0 +1,2365 @@
+{
+ "note": "The regular prices in force on the reference day, frozen. Croatian anchor-price rules, in force 01.10.2026. Never edit: scripts/validate.mjs diffs lists/*.json against this.",
+ "date": "2026-09-10",
+ "currency": "EUR",
+ "prices": [
+  {
+   "shelf": "bottle",
+   "ref": "a-clusserath--trittenheimer-apotheke-kabinett-2024",
+   "vol": null,
+   "price": 80
+  },
+  {
+   "shelf": "bottle",
+   "ref": "a-clusserath--vom-schiefer-2020",
+   "vol": null,
+   "price": 45
+  },
+  {
+   "shelf": "bottle",
+   "ref": "alois-lageder--cabernet-lowengang-2013",
+   "vol": null,
+   "price": 110
+  },
+  {
+   "shelf": "bottle",
+   "ref": "alois-lageder--chardonnay-2024",
+   "vol": null,
+   "price": 47
+  },
+  {
+   "shelf": "bottle",
+   "ref": "alois-lageder--pinot-bianco-versalto-2023",
+   "vol": null,
+   "price": 47
+  },
+  {
+   "shelf": "bottle",
+   "ref": "alois-lageder--pinot-grigio-porer-2023",
+   "vol": null,
+   "price": 55
+  },
+  {
+   "shelf": "bottle",
+   "ref": "alois-lageder--pinot-nero-krafuss-2019",
+   "vol": null,
+   "price": 110
+  },
+  {
+   "shelf": "bottle",
+   "ref": "angelo-gaja--barbaresco-2020",
+   "vol": null,
+   "price": 745
+  },
+  {
+   "shelf": "bottle",
+   "ref": "antinori--solaia-2020",
+   "vol": null,
+   "price": 945
+  },
+  {
+   "shelf": "bottle",
+   "ref": "antinori--tignanello-2019",
+   "vol": null,
+   "price": 284
+  },
+  {
+   "shelf": "bottle",
+   "ref": "antinori--tignanello-2020",
+   "vol": null,
+   "price": 250
+  },
+  {
+   "shelf": "bottle",
+   "ref": "az-agr-e-pira-figli-chiara-boschis--barbera-d-alba-superiore-2021",
+   "vol": null,
+   "price": 63
+  },
+  {
+   "shelf": "bottle",
+   "ref": "az-agr-e-pira-figli-chiara-boschis--barolo-2018",
+   "vol": null,
+   "price": 210
+  },
+  {
+   "shelf": "bottle",
+   "ref": "azienda-duemani--cifra-2021",
+   "vol": null,
+   "price": 88
+  },
+  {
+   "shelf": "bottle",
+   "ref": "azienda-duemani--duemani-2018",
+   "vol": null,
+   "price": 350
+  },
+  {
+   "shelf": "bottle",
+   "ref": "baraka--malena-2022",
+   "vol": null,
+   "price": 50
+  },
+  {
+   "shelf": "bottle",
+   "ref": "bastian--rose",
+   "vol": null,
+   "price": 50
+  },
+  {
+   "shelf": "bottle",
+   "ref": "benanti--etna-bianco-2023",
+   "vol": null,
+   "price": 95
+  },
+  {
+   "shelf": "bottle",
+   "ref": "benmosche-family--dingac-2021",
+   "vol": null,
+   "price": 91
+  },
+  {
+   "shelf": "bottle",
+   "ref": "benmosche-family--zinfandel-2019",
+   "vol": null,
+   "price": 89
+  },
+  {
+   "shelf": "bottle",
+   "ref": "benvenuti--malvazija-2025",
+   "vol": null,
+   "price": 44
+  },
+  {
+   "shelf": "bottle",
+   "ref": "bernard-bonin--meursault-clos-du-cromin-le-pre-manche-2023",
+   "vol": null,
+   "price": 790
+  },
+  {
+   "shelf": "bottle",
+   "ref": "bernard-bonin--meursault-la-rencontre-2023",
+   "vol": null,
+   "price": 790
+  },
+  {
+   "shelf": "bottle",
+   "ref": "bernard-bonin--meursault-les-narvaux-dessus-2023",
+   "vol": null,
+   "price": 970
+  },
+  {
+   "shelf": "bottle",
+   "ref": "bernard-bonin--meursault-les-tillets-2023",
+   "vol": null,
+   "price": 920
+  },
+  {
+   "shelf": "bottle",
+   "ref": "bernard-bonin--meursault-villages-le-limozin-2023",
+   "vol": null,
+   "price": 970
+  },
+  {
+   "shelf": "bottle",
+   "ref": "bernhard-ott--fass-4-gruner-veltliner-2023",
+   "vol": null,
+   "price": 57
+  },
+  {
+   "shelf": "bottle",
+   "ref": "billecart-salmon--blanc-de-blancs-grand-cru",
+   "vol": null,
+   "price": 210
+  },
+  {
+   "shelf": "bottle",
+   "ref": "billecart-salmon--le-reserve",
+   "vol": null,
+   "price": 135
+  },
+  {
+   "shelf": "bottle",
+   "ref": "billecart-salmon--le-rose",
+   "vol": null,
+   "price": 185
+  },
+  {
+   "shelf": "bottle",
+   "ref": "bire--grk-2025",
+   "vol": null,
+   "price": 100
+  },
+  {
+   "shelf": "bottle",
+   "ref": "boskinac--cuvee-boskinac-crni-2018",
+   "vol": null,
+   "price": 90
+  },
+  {
+   "shelf": "bottle",
+   "ref": "budinski--refosk-omo-2020",
+   "vol": null,
+   "price": 100
+  },
+  {
+   "shelf": "bottle",
+   "ref": "ca-la-bionda--amarone-classico-vigna-ravazzol-2016",
+   "vol": null,
+   "price": 130
+  },
+  {
+   "shelf": "bottle",
+   "ref": "ca-la-bionda--recioto-classico-2015",
+   "vol": null,
+   "price": 145
+  },
+  {
+   "shelf": "bottle",
+   "ref": "cakebread-cellars--cabernet-sauvignon-2018",
+   "vol": null,
+   "price": 170
+  },
+  {
+   "shelf": "bottle",
+   "ref": "casa-rojo--cl98-2020",
+   "vol": null,
+   "price": 68
+  },
+  {
+   "shelf": "bottle",
+   "ref": "casa-rojo--orange-republic-2021",
+   "vol": null,
+   "price": 68
+  },
+  {
+   "shelf": "bottle",
+   "ref": "casa-rojo--tokyo-gomez-rojo-2021",
+   "vol": null,
+   "price": 180
+  },
+  {
+   "shelf": "bottle",
+   "ref": "cecavac--jeka-blanc-2024",
+   "vol": null,
+   "price": 130
+  },
+  {
+   "shelf": "bottle",
+   "ref": "cecavac-gaspar--jeka-dalmatia-2020",
+   "vol": null,
+   "price": 250
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chateau-canon--saint-emilion-grand-cru-2020",
+   "vol": null,
+   "price": 390
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chateau-d-yquem--sauternes-1er-cru-superieur-2015",
+   "vol": null,
+   "price": 940
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chateau-d-yquem--sauternes-1er-cru-superieur-2020",
+   "vol": null,
+   "price": 880
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chateau-de-pez--saint-estephe-2022",
+   "vol": null,
+   "price": 155
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chateau-gazin--pomerol-2020",
+   "vol": null,
+   "price": 390
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chateau-la-pointe--la-pointe-rouge-2022",
+   "vol": null,
+   "price": 220
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chateau-leoville-barton--saint-julien-2021",
+   "vol": null,
+   "price": 390
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chateau-troplong-mondot--saint-emilion-grand-cru-2020",
+   "vol": null,
+   "price": 478
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chiara-condello--predappio-sangiovese-2023",
+   "vol": null,
+   "price": 145
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chiara-condello--predappio-sangiovese-2023",
+   "vol": 1.5,
+   "price": 290
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chiara-condello--riserva-le-lucciole-2022",
+   "vol": null,
+   "price": 160
+  },
+  {
+   "shelf": "bottle",
+   "ref": "chiara-condello--riserva-le-lucciole-2022",
+   "vol": 1.5,
+   "price": 340
+  },
+  {
+   "shelf": "bottle",
+   "ref": "clai--malvazija-sv-jakov-2021",
+   "vol": null,
+   "price": 60
+  },
+  {
+   "shelf": "bottle",
+   "ref": "clai--ottocento-bijeli-2022",
+   "vol": null,
+   "price": 62
+  },
+  {
+   "shelf": "bottle",
+   "ref": "clai--ottocento-crni-2022",
+   "vol": null,
+   "price": 66
+  },
+  {
+   "shelf": "bottle",
+   "ref": "clai--tasel",
+   "vol": 0.375,
+   "price": 64
+  },
+  {
+   "shelf": "bottle",
+   "ref": "contarini--prosecco-millesimato-2023",
+   "vol": null,
+   "price": 40
+  },
+  {
+   "shelf": "bottle",
+   "ref": "conti-costanti--brunello-di-montalcino-2018",
+   "vol": null,
+   "price": 190
+  },
+  {
+   "shelf": "bottle",
+   "ref": "corte-aura--franciacorta-brut",
+   "vol": null,
+   "price": 67
+  },
+  {
+   "shelf": "bottle",
+   "ref": "corte-aura--franciacorta-saten",
+   "vol": null,
+   "price": 84
+  },
+  {
+   "shelf": "bottle",
+   "ref": "crissante-alessandria--barolo-la-morra-docg-2021",
+   "vol": null,
+   "price": 290
+  },
+  {
+   "shelf": "bottle",
+   "ref": "dal-forno-romano--amarone-della-valpolicella-d-o-c-2015",
+   "vol": null,
+   "price": 689
+  },
+  {
+   "shelf": "bottle",
+   "ref": "dal-forno-romano--valpolicella-d-o-c-superiore-2015",
+   "vol": null,
+   "price": 260
+  },
+  {
+   "shelf": "bottle",
+   "ref": "damijan-podversic--kaplja-2018",
+   "vol": null,
+   "price": 95
+  },
+  {
+   "shelf": "bottle",
+   "ref": "damijan-podversic--malvasia-2018",
+   "vol": null,
+   "price": 93
+  },
+  {
+   "shelf": "bottle",
+   "ref": "damijan-podversic--ribolla-2015",
+   "vol": null,
+   "price": 95
+  },
+  {
+   "shelf": "bottle",
+   "ref": "damijan-podversic--ribolla-2020",
+   "vol": null,
+   "price": 77
+  },
+  {
+   "shelf": "bottle",
+   "ref": "dario-princic--jakot-2019",
+   "vol": null,
+   "price": 75
+  },
+  {
+   "shelf": "bottle",
+   "ref": "david-moret--auxey-duresses-2023",
+   "vol": null,
+   "price": 107
+  },
+  {
+   "shelf": "bottle",
+   "ref": "david-moret--meursault-2020",
+   "vol": null,
+   "price": 210
+  },
+  {
+   "shelf": "bottle",
+   "ref": "david-moret--rully-2023",
+   "vol": null,
+   "price": 97
+  },
+  {
+   "shelf": "bottle",
+   "ref": "david-moret--saint-romain-2023",
+   "vol": null,
+   "price": 115
+  },
+  {
+   "shelf": "bottle",
+   "ref": "de-sousa--chemins-des-terroirs",
+   "vol": null,
+   "price": 100
+  },
+  {
+   "shelf": "bottle",
+   "ref": "de-sousa--cuvee-3a-grand-cru",
+   "vol": null,
+   "price": 170
+  },
+  {
+   "shelf": "bottle",
+   "ref": "de-sousa--mycorhize-grand-cru",
+   "vol": null,
+   "price": 167
+  },
+  {
+   "shelf": "bottle",
+   "ref": "delamotte--blanc-de-blancs-2018",
+   "vol": null,
+   "price": 240
+  },
+  {
+   "shelf": "bottle",
+   "ref": "deutz--brut-classic",
+   "vol": null,
+   "price": 115
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-albert-mann--pinot-gris-grand-cru-hengst-2020",
+   "vol": null,
+   "price": 87
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-albert-mann--riesling-2022",
+   "vol": null,
+   "price": 81
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-albert-mann--riesling-grand-cru-furstentum-2020",
+   "vol": null,
+   "price": 155
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-albert-mann--riesling-grand-cru-schlossberg-2020",
+   "vol": null,
+   "price": 155
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-armand-rousseau-pere-fils--gevrey-chambertin-1er-cru-lavaux-2018",
+   "vol": null,
+   "price": 1400
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-bourdy--chateau-chalon-2014",
+   "vol": null,
+   "price": 135
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-bourdy--savagnin-2018",
+   "vol": null,
+   "price": 53
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-bourdy--vin-jaune-2014",
+   "vol": 0.62,
+   "price": 64
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-de-l-ecu--matris-2018",
+   "vol": null,
+   "price": 65
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-eden--cabernet-sauvignon-2017",
+   "vol": null,
+   "price": 170
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-francois-raveneau--chablis-grand-cru-valmur-2020",
+   "vol": null,
+   "price": 1450
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-jean-chartron--chassagne-montrachet-les-benoites-2022",
+   "vol": null,
+   "price": 146
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-jean-chartron--corton-charlemagne-grand-cru-2022",
+   "vol": null,
+   "price": 560
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-jean-chartron--puligny-montrachet-1er-cru-clos-de-la-pucelle-monopole-2021",
+   "vol": null,
+   "price": 245
+  },
+  {
+   "shelf": "bottle",
+   "ref": "domaine-jean-chartron--rully-montmorin-2023",
+   "vol": null,
+   "price": 88
+  },
+  {
+   "shelf": "bottle",
+   "ref": "donnafugata--ben-rye-2019",
+   "vol": 0.75,
+   "price": 100
+  },
+  {
+   "shelf": "bottle",
+   "ref": "dr-burklin-wolf--riesling-gaisbohl-gg-2017",
+   "vol": null,
+   "price": 140
+  },
+  {
+   "shelf": "bottle",
+   "ref": "duckhorn--merlot-2018",
+   "vol": null,
+   "price": 160
+  },
+  {
+   "shelf": "bottle",
+   "ref": "edi-simcic--duet-lex-2022",
+   "vol": null,
+   "price": 130
+  },
+  {
+   "shelf": "bottle",
+   "ref": "egly-ouriet--grand-cru-brut-tradition",
+   "vol": null,
+   "price": 170
+  },
+  {
+   "shelf": "bottle",
+   "ref": "egon-muller--riesling-scharzhof-2023",
+   "vol": null,
+   "price": 170
+  },
+  {
+   "shelf": "bottle",
+   "ref": "erdoro--pinot-noir-2021",
+   "vol": null,
+   "price": 70
+  },
+  {
+   "shelf": "bottle",
+   "ref": "erdoro--sauvignon-classy-2022",
+   "vol": null,
+   "price": 75
+  },
+  {
+   "shelf": "bottle",
+   "ref": "fattoria-di-magliano--heba-2021",
+   "vol": null,
+   "price": 52
+  },
+  {
+   "shelf": "bottle",
+   "ref": "fattoria-di-magliano--poggio-bestiale-2020",
+   "vol": null,
+   "price": 93
+  },
+  {
+   "shelf": "bottle",
+   "ref": "francois-crochet--sancerre-blanc-2023",
+   "vol": null,
+   "price": 87
+  },
+  {
+   "shelf": "bottle",
+   "ref": "francois-mikulski--bourgogne-2023",
+   "vol": null,
+   "price": 110
+  },
+  {
+   "shelf": "bottle",
+   "ref": "gerzinic--muskat-2020",
+   "vol": 0.5,
+   "price": 31
+  },
+  {
+   "shelf": "bottle",
+   "ref": "giuseppe-quintarelli--amabile-del-cere-2017",
+   "vol": 0.375,
+   "price": 495
+  },
+  {
+   "shelf": "bottle",
+   "ref": "giuseppe-quintarelli--amarone-classico-2015",
+   "vol": null,
+   "price": 757
+  },
+  {
+   "shelf": "bottle",
+   "ref": "giuseppe-quintarelli--recioto-classico-2011",
+   "vol": 0.5,
+   "price": 250
+  },
+  {
+   "shelf": "bottle",
+   "ref": "giuseppe-quintarelli--valpolicella-superiore-2015",
+   "vol": null,
+   "price": 260
+  },
+  {
+   "shelf": "bottle",
+   "ref": "heitz-cellar--cabernet-sauvignon-2016",
+   "vol": null,
+   "price": 225
+  },
+  {
+   "shelf": "bottle",
+   "ref": "henri-giraud--esprit-nature",
+   "vol": null,
+   "price": 120
+  },
+  {
+   "shelf": "bottle",
+   "ref": "henri-giraud--hommage-au-pinot-noir",
+   "vol": null,
+   "price": 135
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lamy--chassagne-montrachet-la-goujonne-vieilles-vignes-rouge-2023",
+   "vol": null,
+   "price": 280
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lamy--saint-aubin-1er-cru-en-remilly-2023",
+   "vol": null,
+   "price": 400
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lamy--saint-aubin-1er-cru-les-frionnes-2023",
+   "vol": null,
+   "price": 295
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lamy--saint-aubin-la-princee-2023",
+   "vol": null,
+   "price": 270
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lamy--santenay-1er-cru-clos-des-gravieres-vieilles-vignes-rouge-2023",
+   "vol": null,
+   "price": 290
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lignier--aligote-2021",
+   "vol": null,
+   "price": 65
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lignier--bourgogne-2023",
+   "vol": null,
+   "price": 106
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lignier--charmes-chambertin-grand-cru-2021",
+   "vol": null,
+   "price": 650
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lignier--morey-saint-denis-2019",
+   "vol": null,
+   "price": 178
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lignier--nuits-saint-georges-les-didiers-1er-cru-2013",
+   "vol": null,
+   "price": 340
+  },
+  {
+   "shelf": "bottle",
+   "ref": "hubert-lignier--pommard-1er-cru-les-arvelets-2019",
+   "vol": null,
+   "price": 186
+  },
+  {
+   "shelf": "bottle",
+   "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021",
+   "vol": null,
+   "price": 54
+  },
+  {
+   "shelf": "bottle",
+   "ref": "isole-e-olena--cabernet-sauvignon-collezione-de-marchi-2013",
+   "vol": null,
+   "price": 210
+  },
+  {
+   "shelf": "bottle",
+   "ref": "isole-e-olena--cepparello-2019",
+   "vol": null,
+   "price": 210
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jacques-selosse--initial-brut",
+   "vol": null,
+   "price": 560
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jacques-selosse--les-carelles",
+   "vol": null,
+   "price": 850
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jacques-selosse--rose-brut",
+   "vol": null,
+   "price": 790
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jacques-selosse--version-originale",
+   "vol": null,
+   "price": 650
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
+   "vol": null,
+   "price": 60
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jakopic--riesling-2024",
+   "vol": null,
+   "price": 45
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jakopic--sauvignon-2024",
+   "vol": null,
+   "price": 45
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jakopic--terbotz",
+   "vol": null,
+   "price": 49
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jules-desjourneys--beaujolais-patacaisse-rouge-2022",
+   "vol": null,
+   "price": 80
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jules-desjourneys--macon-prisse-en-chailloux-blanc-2021",
+   "vol": null,
+   "price": 90
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jules-desjourneys--macon-verze-blanc-2021",
+   "vol": null,
+   "price": 90
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jules-desjourneys--pouilly-fuisse-blanc-2021",
+   "vol": null,
+   "price": 120
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jules-desjourneys--pouilly-vinzelles-les-longeays-blanc-2021",
+   "vol": null,
+   "price": 139
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jules-desjourneys--rouge-2023",
+   "vol": null,
+   "price": 80
+  },
+  {
+   "shelf": "bottle",
+   "ref": "jules-desjourneys--saint-veran-blanc-2021",
+   "vol": null,
+   "price": 129
+  },
+  {
+   "shelf": "bottle",
+   "ref": "korak--chardonnay-sur-lie-2024",
+   "vol": null,
+   "price": 70
+  },
+  {
+   "shelf": "bottle",
+   "ref": "korak--pinot-crni-2023",
+   "vol": null,
+   "price": 70
+  },
+  {
+   "shelf": "bottle",
+   "ref": "korak--sauvignon-2024",
+   "vol": null,
+   "price": 54
+  },
+  {
+   "shelf": "bottle",
+   "ref": "krajancic--posip-intrada-2025",
+   "vol": null,
+   "price": 73
+  },
+  {
+   "shelf": "bottle",
+   "ref": "krug--clos-d-ambonnay-1996",
+   "vol": null,
+   "price": 4890
+  },
+  {
+   "shelf": "bottle",
+   "ref": "krug--clos-du-mesnil-2008",
+   "vol": null,
+   "price": 2780
+  },
+  {
+   "shelf": "bottle",
+   "ref": "krug--krug-1996",
+   "vol": null,
+   "price": 1780
+  },
+  {
+   "shelf": "bottle",
+   "ref": "krug--krug-2004",
+   "vol": null,
+   "price": 890
+  },
+  {
+   "shelf": "bottle",
+   "ref": "krug--krug-grande-cuvee",
+   "vol": null,
+   "price": 510
+  },
+  {
+   "shelf": "bottle",
+   "ref": "kunjas--grk-2024",
+   "vol": null,
+   "price": 63
+  },
+  {
+   "shelf": "bottle",
+   "ref": "kunjas--pagadebit-2018",
+   "vol": null,
+   "price": 85
+  },
+  {
+   "shelf": "bottle",
+   "ref": "kunjas--posip-2024",
+   "vol": null,
+   "price": 49
+  },
+  {
+   "shelf": "bottle",
+   "ref": "l-hoste-pere-fils--l-hoste-rose",
+   "vol": null,
+   "price": 97
+  },
+  {
+   "shelf": "bottle",
+   "ref": "lalu--langhe-nebbiolo-2023",
+   "vol": null,
+   "price": 95
+  },
+  {
+   "shelf": "bottle",
+   "ref": "le-piane--boca-2019",
+   "vol": null,
+   "price": 120
+  },
+  {
+   "shelf": "bottle",
+   "ref": "le-piane--piane-2019",
+   "vol": null,
+   "price": 90
+  },
+  {
+   "shelf": "bottle",
+   "ref": "le-piane--plinius-2017",
+   "vol": null,
+   "price": 200
+  },
+  {
+   "shelf": "bottle",
+   "ref": "lopez-de-heredia--bosconia-tinto-reserva-2013",
+   "vol": null,
+   "price": 75
+  },
+  {
+   "shelf": "bottle",
+   "ref": "lopez-de-heredia--gravonia-crianza-2015",
+   "vol": null,
+   "price": 90
+  },
+  {
+   "shelf": "bottle",
+   "ref": "louis-roederer--cristal-2015",
+   "vol": null,
+   "price": 540
+  },
+  {
+   "shelf": "bottle",
+   "ref": "lvmh-shangri-la--ao-yun-2018",
+   "vol": null,
+   "price": 525
+  },
+  {
+   "shelf": "bottle",
+   "ref": "machard-de-gramont-bertrand--nuits-saint-georges-les-hauts-pruliers-2016",
+   "vol": null,
+   "price": 127
+  },
+  {
+   "shelf": "bottle",
+   "ref": "machard-de-gramont-bertrand--vosne-romanee-2022",
+   "vol": null,
+   "price": 178
+  },
+  {
+   "shelf": "bottle",
+   "ref": "machard-de-gramont-bertrand--vosne-romanee-les-barreaux-2022",
+   "vol": null,
+   "price": 210
+  },
+  {
+   "shelf": "bottle",
+   "ref": "maria-sepp-muster--graf-2020",
+   "vol": null,
+   "price": 87
+  },
+  {
+   "shelf": "bottle",
+   "ref": "maria-sepp-muster--sauvignon-vom-opok-2021",
+   "vol": null,
+   "price": 67
+  },
+  {
+   "shelf": "bottle",
+   "ref": "marjan-simcic--merlot-opoka-2017",
+   "vol": null,
+   "price": 125
+  },
+  {
+   "shelf": "bottle",
+   "ref": "marjan-simcic--pinot-noir-opoka-2021",
+   "vol": null,
+   "price": 125
+  },
+  {
+   "shelf": "bottle",
+   "ref": "marjan-simcic--sauvignon-vert",
+   "vol": null,
+   "price": 100
+  },
+  {
+   "shelf": "bottle",
+   "ref": "markus--dan-po-dan-2022",
+   "vol": null,
+   "price": 90
+  },
+  {
+   "shelf": "bottle",
+   "ref": "markus--fetivi-2020",
+   "vol": null,
+   "price": 145
+  },
+  {
+   "shelf": "bottle",
+   "ref": "markus--pepejuh-2017",
+   "vol": null,
+   "price": 160
+  },
+  {
+   "shelf": "bottle",
+   "ref": "markus--pepejuh-2019",
+   "vol": null,
+   "price": 150
+  },
+  {
+   "shelf": "bottle",
+   "ref": "marques-de-murrieta--capellania-2019",
+   "vol": null,
+   "price": 180
+  },
+  {
+   "shelf": "bottle",
+   "ref": "marques-de-murrieta--castillo-ygay-2012",
+   "vol": null,
+   "price": 350
+  },
+  {
+   "shelf": "bottle",
+   "ref": "matosevic--grimalda-bijela-2022",
+   "vol": null,
+   "price": 60
+  },
+  {
+   "shelf": "bottle",
+   "ref": "matosevic--grimalda-crna-2021",
+   "vol": null,
+   "price": 66
+  },
+  {
+   "shelf": "bottle",
+   "ref": "mayacamas--cabernet-sauvignon-2019",
+   "vol": null,
+   "price": 270
+  },
+  {
+   "shelf": "bottle",
+   "ref": "meneghetti--red-2020",
+   "vol": null,
+   "price": 180
+  },
+  {
+   "shelf": "bottle",
+   "ref": "meneghetti--white-2023",
+   "vol": null,
+   "price": 87
+  },
+  {
+   "shelf": "bottle",
+   "ref": "milos--stagnum-2016",
+   "vol": null,
+   "price": 145
+  },
+  {
+   "shelf": "bottle",
+   "ref": "milos--stalagmit-2022",
+   "vol": null,
+   "price": 120
+  },
+  {
+   "shelf": "bottle",
+   "ref": "moet-chandon--dom-perignon-2015",
+   "vol": null,
+   "price": 480
+  },
+  {
+   "shelf": "bottle",
+   "ref": "moet-chandon--dom-perignon-p2-2004",
+   "vol": null,
+   "price": 1450
+  },
+  {
+   "shelf": "bottle",
+   "ref": "moet-chandon--dom-perignon-p3-1993",
+   "vol": null,
+   "price": 4850
+  },
+  {
+   "shelf": "bottle",
+   "ref": "montevertine--le-pergole-torte-2020",
+   "vol": null,
+   "price": 410
+  },
+  {
+   "shelf": "bottle",
+   "ref": "montevertine--montevertine-2019",
+   "vol": null,
+   "price": 150
+  },
+  {
+   "shelf": "bottle",
+   "ref": "moret-nomine--syrah-le-fales-2024",
+   "vol": null,
+   "price": 80
+  },
+  {
+   "shelf": "bottle",
+   "ref": "movia--puro-brut",
+   "vol": null,
+   "price": 70
+  },
+  {
+   "shelf": "bottle",
+   "ref": "movia--puro-rose",
+   "vol": null,
+   "price": 70
+  },
+  {
+   "shelf": "bottle",
+   "ref": "mrgudic--bura-2021",
+   "vol": null,
+   "price": 195
+  },
+  {
+   "shelf": "bottle",
+   "ref": "mrgudic--postup-mare-2020",
+   "vol": null,
+   "price": 96
+  },
+  {
+   "shelf": "bottle",
+   "ref": "mrgudic--prosek-moskar",
+   "vol": 0.375,
+   "price": 45
+  },
+  {
+   "shelf": "bottle",
+   "ref": "niko-bura--prosek-ruza-dalmatinska",
+   "vol": 0.375,
+   "price": 58
+  },
+  {
+   "shelf": "bottle",
+   "ref": "occidental-kistler-vineyards--occidental-2018",
+   "vol": null,
+   "price": 140
+  },
+  {
+   "shelf": "bottle",
+   "ref": "opg-vina-violic--sagul-plavac-mali-2022",
+   "vol": null,
+   "price": 49
+  },
+  {
+   "shelf": "bottle",
+   "ref": "pascal-cotat--sancerre-blanc-les-monts-damnes-2020",
+   "vol": null,
+   "price": 127
+  },
+  {
+   "shelf": "bottle",
+   "ref": "patrick-piuze--chablis-grand-cru-les-clos-2023",
+   "vol": null,
+   "price": 250
+  },
+  {
+   "shelf": "bottle",
+   "ref": "patrick-piuze--chablis-grand-cru-preuses-2022",
+   "vol": null,
+   "price": 250
+  },
+  {
+   "shelf": "bottle",
+   "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
+   "vol": null,
+   "price": 90
+  },
+  {
+   "shelf": "bottle",
+   "ref": "pattes-loup--chablis-1er-cru-butteaux-2019",
+   "vol": null,
+   "price": 178
+  },
+  {
+   "shelf": "bottle",
+   "ref": "pattes-loup--chablis-2022",
+   "vol": null,
+   "price": 87
+  },
+  {
+   "shelf": "bottle",
+   "ref": "pertois-moriset--l-annee-millesime-grand-cru-blanc-de-blancs-2017",
+   "vol": null,
+   "price": 190
+  },
+  {
+   "shelf": "bottle",
+   "ref": "pertois-moriset--l-assemblage-brut",
+   "vol": null,
+   "price": 100
+  },
+  {
+   "shelf": "bottle",
+   "ref": "pertois-moriset--la-collection-rose-blanc-grand-cru",
+   "vol": null,
+   "price": 127
+  },
+  {
+   "shelf": "bottle",
+   "ref": "peter-dipoli--sauvignon-voglar-2019",
+   "vol": null,
+   "price": 50
+  },
+  {
+   "shelf": "bottle",
+   "ref": "petrac--bregh-rose",
+   "vol": null,
+   "price": 48
+  },
+  {
+   "shelf": "bottle",
+   "ref": "petrac--chardonnay-2023",
+   "vol": null,
+   "price": 46
+  },
+  {
+   "shelf": "bottle",
+   "ref": "petrac--enigma-2019",
+   "vol": null,
+   "price": 75
+  },
+  {
+   "shelf": "bottle",
+   "ref": "petrac--grasevina-2024",
+   "vol": null,
+   "price": 39
+  },
+  {
+   "shelf": "bottle",
+   "ref": "petrac--karizma-cuvee-2022",
+   "vol": null,
+   "price": 50
+  },
+  {
+   "shelf": "bottle",
+   "ref": "philip-togni--cabernet-sauvignon-2019",
+   "vol": null,
+   "price": 280
+  },
+  {
+   "shelf": "bottle",
+   "ref": "philippe-chavy--bourgogne-chardonnay-2023",
+   "vol": null,
+   "price": 89
+  },
+  {
+   "shelf": "bottle",
+   "ref": "philippe-chavy--meursault-1er-cru-les-charmes-2021",
+   "vol": null,
+   "price": 268
+  },
+  {
+   "shelf": "bottle",
+   "ref": "philippe-chavy--st-aubin-1er-cru-les-murgers-des-dents-de-chien-2021",
+   "vol": null,
+   "price": 127
+  },
+  {
+   "shelf": "bottle",
+   "ref": "podere-poggio-scalette--il-carbonaione-2019",
+   "vol": null,
+   "price": 100
+  },
+  {
+   "shelf": "bottle",
+   "ref": "podere-poggio-scalette--piantonaia-2019",
+   "vol": null,
+   "price": 250
+  },
+  {
+   "shelf": "bottle",
+   "ref": "poggio-di-sotto--brunello-di-montalcino-2019",
+   "vol": null,
+   "price": 495
+  },
+  {
+   "shelf": "bottle",
+   "ref": "poggio-di-sotto--brunello-di-montalcino-2020",
+   "vol": null,
+   "price": 495
+  },
+  {
+   "shelf": "bottle",
+   "ref": "radikon--pignoli-2010",
+   "vol": 0.5,
+   "price": 94
+  },
+  {
+   "shelf": "bottle",
+   "ref": "remi-jobard--bourgogne-cote-d-or-blanc-2022",
+   "vol": null,
+   "price": 75
+  },
+  {
+   "shelf": "bottle",
+   "ref": "remi-jobard--meursault-1er-cru-le-poruzot-dessus-2022",
+   "vol": null,
+   "price": 284
+  },
+  {
+   "shelf": "bottle",
+   "ref": "remi-jobard--meursault-sous-la-velle-2022",
+   "vol": null,
+   "price": 190
+  },
+  {
+   "shelf": "bottle",
+   "ref": "remi-jobard--volnay-1er-cru-les-santenots-2022",
+   "vol": null,
+   "price": 235
+  },
+  {
+   "shelf": "bottle",
+   "ref": "rene-vincent-dauvissat--chablis-1er-cru-vaillons-2018",
+   "vol": null,
+   "price": 750
+  },
+  {
+   "shelf": "bottle",
+   "ref": "resonance-vineyard--resonance-2015",
+   "vol": null,
+   "price": 100
+  },
+  {
+   "shelf": "bottle",
+   "ref": "ridge--cabernet-sauvignon-2018",
+   "vol": null,
+   "price": 170
+  },
+  {
+   "shelf": "bottle",
+   "ref": "ridge--geyserville-2021",
+   "vol": null,
+   "price": 140
+  },
+  {
+   "shelf": "bottle",
+   "ref": "rizman--tribidrag-2022",
+   "vol": null,
+   "price": 75
+  },
+  {
+   "shelf": "bottle",
+   "ref": "roagna--barbaresco-albesani-2019",
+   "vol": null,
+   "price": 580
+  },
+  {
+   "shelf": "bottle",
+   "ref": "roagna--barbaresco-asili-vecchie-viti-2019",
+   "vol": null,
+   "price": 550
+  },
+  {
+   "shelf": "bottle",
+   "ref": "roagna--barbaresco-paje-2019",
+   "vol": null,
+   "price": 410
+  },
+  {
+   "shelf": "bottle",
+   "ref": "roagna--barolo-pira-2018",
+   "vol": null,
+   "price": 380
+  },
+  {
+   "shelf": "bottle",
+   "ref": "ruppert-leroy--martin-fontaine-2019",
+   "vol": null,
+   "price": 160
+  },
+  {
+   "shelf": "bottle",
+   "ref": "ruppert-leroy--papillon",
+   "vol": null,
+   "price": 170
+  },
+  {
+   "shelf": "bottle",
+   "ref": "saints-hills--black-2022",
+   "vol": null,
+   "price": 70
+  },
+  {
+   "shelf": "bottle",
+   "ref": "saints-hills--le-chiffre-2023",
+   "vol": null,
+   "price": 140
+  },
+  {
+   "shelf": "bottle",
+   "ref": "saints-hills--pape-2023",
+   "vol": null,
+   "price": 70
+  },
+  {
+   "shelf": "bottle",
+   "ref": "salon--salon-blanc-de-blancs-2013",
+   "vol": null,
+   "price": 1650
+  },
+  {
+   "shelf": "bottle",
+   "ref": "sember--pavel",
+   "vol": null,
+   "price": 58
+  },
+  {
+   "shelf": "bottle",
+   "ref": "skaramuca--dingac-elegance-2020",
+   "vol": null,
+   "price": 75
+  },
+  {
+   "shelf": "bottle",
+   "ref": "soldera--case-basse-2020",
+   "vol": null,
+   "price": 1540
+  },
+  {
+   "shelf": "bottle",
+   "ref": "tanbark-hill-philip-togni--cabernet-sauvignon-2018",
+   "vol": null,
+   "price": 150
+  },
+  {
+   "shelf": "bottle",
+   "ref": "tenuta-dell-ornellaia--ornellaia-2020",
+   "vol": null,
+   "price": 750
+  },
+  {
+   "shelf": "bottle",
+   "ref": "tenuta-san-guido--sassicaia-2020",
+   "vol": null,
+   "price": 750
+  },
+  {
+   "shelf": "bottle",
+   "ref": "tenuta-san-guido--sassicaia-2021",
+   "vol": null,
+   "price": 850
+  },
+  {
+   "shelf": "bottle",
+   "ref": "theo-dancer--bourgogne-aligote-2023",
+   "vol": null,
+   "price": 135
+  },
+  {
+   "shelf": "bottle",
+   "ref": "tomac--blanc-de-noirs",
+   "vol": null,
+   "price": 67
+  },
+  {
+   "shelf": "bottle",
+   "ref": "tomac--diplomat",
+   "vol": null,
+   "price": 55
+  },
+  {
+   "shelf": "bottle",
+   "ref": "tomac--rose",
+   "vol": null,
+   "price": 48
+  },
+  {
+   "shelf": "bottle",
+   "ref": "tomaz--teran-2022",
+   "vol": null,
+   "price": 60
+  },
+  {
+   "shelf": "bottle",
+   "ref": "tyler--mae-estate-2019",
+   "vol": null,
+   "price": 120
+  },
+  {
+   "shelf": "bottle",
+   "ref": "vodopivec--origine-2016",
+   "vol": null,
+   "price": 96
+  },
+  {
+   "shelf": "bottle",
+   "ref": "vodopivec--solo-2018",
+   "vol": null,
+   "price": 109
+  },
+  {
+   "shelf": "bottle",
+   "ref": "vouette-sorbee--textures-brut-nature",
+   "vol": null,
+   "price": 170
+  },
+  {
+   "shelf": "bottle",
+   "ref": "walter-scott--cuvee-ruth-pinot-noir",
+   "vol": null,
+   "price": 90
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-a-christmann--idig-riesling-gg-2021",
+   "vol": null,
+   "price": 189
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-a-christmann--riesling-aus-den-lagen-2021",
+   "vol": null,
+   "price": 52
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023",
+   "vol": null,
+   "price": 89
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017",
+   "vol": 0.375,
+   "price": 115
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-heymann-lowenstein--riesling-stolzenberg-2017",
+   "vol": null,
+   "price": 97
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-heymann-lowenstein--riesling-uhlen-blaufusser-lay-gg-2022",
+   "vol": null,
+   "price": 145
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-auslese-2023",
+   "vol": 0.375,
+   "price": 70
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-kabinett-2023",
+   "vol": null,
+   "price": 110
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-knebel--riesling-rottgen-gg-2023",
+   "vol": null,
+   "price": 110
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-prager--gruner-veltliner-federspiel-ried-hinter-der-burg-2024",
+   "vol": null,
+   "price": 110
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-prager--riesling-smaragd-ried-klaus-2024",
+   "vol": null,
+   "price": 150
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-wittmann--riesling-aulerde-auslese-2015",
+   "vol": 0.5,
+   "price": 94
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-wittmann--riesling-aulerde-gg-2020",
+   "vol": null,
+   "price": 136
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-wittmann--riesling-kirchspiel-gg-2020",
+   "vol": null,
+   "price": 180
+  },
+  {
+   "shelf": "bottle",
+   "ref": "weingut-wittmann--riesling-westhofener-2021",
+   "vol": null,
+   "price": 87
+  },
+  {
+   "shelf": "bottle",
+   "ref": "zilliken--rausch-kabinett-2025",
+   "vol": null,
+   "price": 91
+  },
+  {
+   "shelf": "bottle",
+   "ref": "zilliken--riesling-auslese-goldkapsel-2009",
+   "vol": 0.375,
+   "price": 390
+  },
+  {
+   "shelf": "bottle",
+   "ref": "zilliken--riesling-butterfly-2024",
+   "vol": null,
+   "price": 55
+  },
+  {
+   "shelf": "glass",
+   "ref": "azienda-duemani--cifra-2021",
+   "vol": null,
+   "price": 11
+  },
+  {
+   "shelf": "glass",
+   "ref": "benanti--etna-bianco-2023",
+   "vol": null,
+   "price": 12
+  },
+  {
+   "shelf": "glass",
+   "ref": "benvenuti--malvazija-2025",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "glass",
+   "ref": "benvenuti--santa-elizabeta-2021",
+   "vol": null,
+   "price": 15
+  },
+  {
+   "shelf": "glass",
+   "ref": "casa-rojo--cl98-2020",
+   "vol": null,
+   "price": 10
+  },
+  {
+   "shelf": "glass",
+   "ref": "deutz--brut-classic",
+   "vol": null,
+   "price": 16
+  },
+  {
+   "shelf": "glass",
+   "ref": "gerzinic--muskat-2020",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "glass",
+   "ref": "henri-giraud--esprit-nature",
+   "vol": null,
+   "price": 16
+  },
+  {
+   "shelf": "glass",
+   "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "glass",
+   "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "glass",
+   "ref": "jakopic--sauvignon-2024",
+   "vol": null,
+   "price": 9
+  },
+  {
+   "shelf": "glass",
+   "ref": "jakopic--terbotz",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "glass",
+   "ref": "kunjas--posip-2024",
+   "vol": null,
+   "price": 9
+  },
+  {
+   "shelf": "glass",
+   "ref": "meneghetti--blanc-de-blancs",
+   "vol": null,
+   "price": 9
+  },
+  {
+   "shelf": "glass",
+   "ref": "meneghetti--red-2020",
+   "vol": null,
+   "price": 15
+  },
+  {
+   "shelf": "glass",
+   "ref": "meneghetti--white-2023",
+   "vol": null,
+   "price": 10
+  },
+  {
+   "shelf": "glass",
+   "ref": "milos--stalagmit-2022",
+   "vol": null,
+   "price": 15
+  },
+  {
+   "shelf": "glass",
+   "ref": "moret-nomine--syrah-le-fales-2024",
+   "vol": null,
+   "price": 12
+  },
+  {
+   "shelf": "glass",
+   "ref": "niko-bura--prosek-ruza-dalmatinska",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "glass",
+   "ref": "opg-vina-violic--sagul-plavac-mali-2022",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "glass",
+   "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
+   "vol": null,
+   "price": 12
+  },
+  {
+   "shelf": "glass",
+   "ref": "petrac--bregh-rose",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "glass",
+   "ref": "petrac--enigma-2019",
+   "vol": null,
+   "price": 10
+  },
+  {
+   "shelf": "glass",
+   "ref": "petrac--karizma-cuvee-2022",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "glass",
+   "ref": "philippe-chavy--bourgogne-chardonnay-2023",
+   "vol": null,
+   "price": 14
+  },
+  {
+   "shelf": "glass",
+   "ref": "rizman--tribidrag-2022",
+   "vol": null,
+   "price": 10
+  },
+  {
+   "shelf": "glass",
+   "ref": "skaramuca--dingac-elegance-2020",
+   "vol": null,
+   "price": 14
+  },
+  {
+   "shelf": "glass",
+   "ref": "tomaz--teran-barbarossa-2020",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "glass",
+   "ref": "vie-di-romans--friulano-2023",
+   "vol": null,
+   "price": 12
+  },
+  {
+   "shelf": "glass",
+   "ref": "vie-di-romans--pinot-grigio-2023",
+   "vol": null,
+   "price": 11
+  },
+  {
+   "shelf": "glass",
+   "ref": "zilliken--rausch-kabinett-2025",
+   "vol": null,
+   "price": 13
+  },
+  {
+   "shelf": "glass",
+   "ref": "zilliken--riesling-butterfly-2024",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "other",
+   "ref": "artesian",
+   "vol": 0.75,
+   "price": 6.5
+  },
+  {
+   "shelf": "other",
+   "ref": "artesian-gazirana",
+   "vol": 0.75,
+   "price": 6.5
+  },
+  {
+   "shelf": "other",
+   "ref": "coca-cola",
+   "vol": 0.25,
+   "price": 4
+  },
+  {
+   "shelf": "other",
+   "ref": "coca-cola-zero",
+   "vol": 0.25,
+   "price": 4
+  },
+  {
+   "shelf": "other",
+   "ref": "espresso",
+   "vol": null,
+   "price": 4
+  },
+  {
+   "shelf": "other",
+   "ref": "jamnica",
+   "vol": 0.33,
+   "price": 4
+  },
+  {
+   "shelf": "other",
+   "ref": "jamnica",
+   "vol": 0.75,
+   "price": 5
+  },
+  {
+   "shelf": "other",
+   "ref": "jamnica-sensation",
+   "vol": 0.25,
+   "price": 3
+  },
+  {
+   "shelf": "other",
+   "ref": "jana",
+   "vol": 0.25,
+   "price": 4
+  },
+  {
+   "shelf": "other",
+   "ref": "jana",
+   "vol": 0.75,
+   "price": 5
+  },
+  {
+   "shelf": "other",
+   "ref": "macchiato",
+   "vol": null,
+   "price": 4
+  },
+  {
+   "shelf": "other",
+   "ref": "romerquelle",
+   "vol": 0.75,
+   "price": 5
+  },
+  {
+   "shelf": "other",
+   "ref": "romerquelle-gazirana",
+   "vol": 0.75,
+   "price": 5
+  },
+  {
+   "shelf": "other",
+   "ref": "romerquelle-limunska-trava",
+   "vol": 0.35,
+   "price": 3.7
+  },
+  {
+   "shelf": "other",
+   "ref": "saint-geron",
+   "vol": 0.75,
+   "price": 6.5
+  },
+  {
+   "shelf": "other",
+   "ref": "saint-geron-gazirana",
+   "vol": 0.75,
+   "price": 6.5
+  },
+  {
+   "shelf": "other",
+   "ref": "schweppes-indian-tonic-water",
+   "vol": 0.25,
+   "price": 4
+  },
+  {
+   "shelf": "other",
+   "ref": "svjeze-cijedeni-sok",
+   "vol": 0.3,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "appenzeller",
+   "vol": null,
+   "price": 6
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "jagermeister-manifest",
+   "vol": null,
+   "price": 9
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "lorenzo-inga--amarone-invecchiata",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "lorenzo-inga--barrique",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "lorenzo-inga--bianca",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "lorenzo-inga--riserva-18-mesi",
+   "vol": null,
+   "price": 6
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "umeshu-genshu",
+   "vol": null,
+   "price": 6
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "wise-grus--ginko-pelinkovac",
+   "vol": null,
+   "price": 4
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "wise-grus--loza",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "wise-grus--medica",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "wise-grus--orahovac",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "wise-grus--sljivovica",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "wise-grus--teranino",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "wise-grus--travarica",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "wise-grus--viljamovka",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "wise-grus--visnjevac",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "rakija-beer",
+   "ref": "zmajska-pivovara--pils",
+   "vol": 0.5,
+   "price": 6
+  },
+  {
+   "shelf": "spirits",
+   "ref": "aura--karbun",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "spirits",
+   "ref": "aviation--american-gin",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "spirits",
+   "ref": "beenleigh--australia-2015",
+   "vol": null,
+   "price": 10
+  },
+  {
+   "shelf": "spirits",
+   "ref": "brick-gin--straight-organic-distilled-dry-gin",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "spirits",
+   "ref": "bruxo--bruxo",
+   "vol": null,
+   "price": 7
+  },
+  {
+   "shelf": "spirits",
+   "ref": "chelo-saint-michael--vieux-sajous-2018",
+   "vol": null,
+   "price": 13
+  },
+  {
+   "shelf": "spirits",
+   "ref": "cimarron--blanco",
+   "vol": null,
+   "price": 4
+  },
+  {
+   "shelf": "spirits",
+   "ref": "clairin--casimir",
+   "vol": null,
+   "price": 6
+  },
+  {
+   "shelf": "spirits",
+   "ref": "clairin--sajous",
+   "vol": null,
+   "price": 6
+  },
+  {
+   "shelf": "spirits",
+   "ref": "clairin--vaval",
+   "vol": null,
+   "price": 6
+  },
+  {
+   "shelf": "spirits",
+   "ref": "clase-azul--reposado",
+   "vol": null,
+   "price": 28
+  },
+  {
+   "shelf": "spirits",
+   "ref": "del-maguey--vida",
+   "vol": null,
+   "price": 7
+  },
+  {
+   "shelf": "spirits",
+   "ref": "fortaleza--anejo",
+   "vol": null,
+   "price": 18
+  },
+  {
+   "shelf": "spirits",
+   "ref": "fortaleza--blanco",
+   "vol": null,
+   "price": 9
+  },
+  {
+   "shelf": "spirits",
+   "ref": "fortaleza--reposado",
+   "vol": null,
+   "price": 15
+  },
+  {
+   "shelf": "spirits",
+   "ref": "foursquare--absolutio-15y",
+   "vol": null,
+   "price": 27
+  },
+  {
+   "shelf": "spirits",
+   "ref": "foursquare--raconteur",
+   "vol": null,
+   "price": 35
+  },
+  {
+   "shelf": "spirits",
+   "ref": "gibson-s--london-dry-gin",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "spirits",
+   "ref": "habitation-velier--renegade-2020",
+   "vol": null,
+   "price": 14
+  },
+  {
+   "shelf": "spirits",
+   "ref": "hampden-estate--great-house-2024",
+   "vol": null,
+   "price": 13
+  },
+  {
+   "shelf": "spirits",
+   "ref": "hampden-estate--hlcf-classic-4y",
+   "vol": null,
+   "price": 7
+  },
+  {
+   "shelf": "spirits",
+   "ref": "hampden-estate--pagos-sherry-cask",
+   "vol": null,
+   "price": 12
+  },
+  {
+   "shelf": "spirits",
+   "ref": "hampden-estate--pure-single-jamaican-rum-8y",
+   "vol": null,
+   "price": 10
+  },
+  {
+   "shelf": "spirits",
+   "ref": "japanese-rhum--nine-leaves-2016",
+   "vol": null,
+   "price": 20
+  },
+  {
+   "shelf": "spirits",
+   "ref": "kavalan-taiwan--distillery-select",
+   "vol": null,
+   "price": 8
+  },
+  {
+   "shelf": "spirits",
+   "ref": "kavalan-taiwan--ex-sherry-oak",
+   "vol": null,
+   "price": 11
+  },
+  {
+   "shelf": "spirits",
+   "ref": "kavalan-taiwan--solist",
+   "vol": null,
+   "price": 25
+  },
+  {
+   "shelf": "spirits",
+   "ref": "kilchoman-scotland--machir-bay",
+   "vol": null,
+   "price": 6
+  },
+  {
+   "shelf": "spirits",
+   "ref": "latvijas-balzams--elit-stolichnaya",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "spirits",
+   "ref": "long-pond--cambridge-2005",
+   "vol": null,
+   "price": 27
+  },
+  {
+   "shelf": "spirits",
+   "ref": "mars-japan--komagatake-limited-edition-2018",
+   "vol": null,
+   "price": 36
+  },
+  {
+   "shelf": "spirits",
+   "ref": "mars-japan--maltage-cosmo",
+   "vol": null,
+   "price": 9
+  },
+  {
+   "shelf": "spirits",
+   "ref": "mars-japan--tsunuki-edition-2023",
+   "vol": null,
+   "price": 16
+  },
+  {
+   "shelf": "spirits",
+   "ref": "monkey-47--schwarzwald-dry-gin",
+   "vol": null,
+   "price": 7
+  },
+  {
+   "shelf": "spirits",
+   "ref": "mount-gay--last-ward-2007-barbados",
+   "vol": null,
+   "price": 30
+  },
+  {
+   "shelf": "spirits",
+   "ref": "mulassano--bianco",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "spirits",
+   "ref": "mulassano--bitter",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "spirits",
+   "ref": "mulassano--extra-dry",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "spirits",
+   "ref": "mulassano--rosso",
+   "vol": null,
+   "price": 5
+  },
+  {
+   "shelf": "spirits",
+   "ref": "ohishi--premium-mizunara",
+   "vol": null,
+   "price": 16
+  },
+  {
+   "shelf": "spirits",
+   "ref": "scotland--bladnoch-19y",
+   "vol": null,
+   "price": 36
+  },
+  {
+   "shelf": "spirits",
+   "ref": "scotland--glen-rothes-9y-artist-collective-2015",
+   "vol": null,
+   "price": 19
+  },
+  {
+   "shelf": "spirits",
+   "ref": "scotland--glenmorangie-signet",
+   "vol": null,
+   "price": 36
+  },
+  {
+   "shelf": "spirits",
+   "ref": "scotland--sponge-ed-jura-1994",
+   "vol": null,
+   "price": 73
+  },
+  {
+   "shelf": "spirits",
+   "ref": "through-the-grapevine--chateau-de-beaulon-1988-fins-bois",
+   "vol": null,
+   "price": 25
+  },
+  {
+   "shelf": "spirits",
+   "ref": "through-the-grapevine--michel-forgeron-1992-grande-champagne",
+   "vol": null,
+   "price": 25
+  },
+  {
+   "shelf": "spirits",
+   "ref": "usa--redemption",
+   "vol": null,
+   "price": 6
+  },
+  {
+   "shelf": "spirits",
+   "ref": "usa--westward",
+   "vol": null,
+   "price": 18
+  },
+  {
+   "shelf": "spirits",
+   "ref": "velier--papalim-7y",
+   "vol": null,
+   "price": 10
+  },
+  {
+   "shelf": "spirits",
+   "ref": "veritas--white-blended-rum",
+   "vol": null,
+   "price": 5
+  }
+ ]
+}

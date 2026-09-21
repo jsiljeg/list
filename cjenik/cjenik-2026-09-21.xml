@@ -1,0 +1,3544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cjenik ugostiteljskog objekta. Cijene su u eurima, PDV uracunat.
+     "sidrena_cijena" je redovna cijena stavke na dan 2026-09-10. -->
+<cjenik obveznik="Apelacija d.o.o." objekt="Restoran Theatrium by Filho" adresa="Teslina 7, 10000 Zagreb" valuta="EUR" pdv_ukljucen="da" datum_objave="2026-09-21"
+        datum_sidrene_cijene="2026-09-10" broj_stavki="393"
+        sazetak="sha256:e0ca62a48669cceabb8bcad121f8078d">
+  <stavka sifra="petrac--bregh-rose">
+    <naziv>Bregh Rose</naziv>
+    <proizvodjac>Petrač</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jakopic--terbotz">
+    <naziv>Terbotz</naziv>
+    <proizvodjac>Jakopić</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="meneghetti--blanc-de-blancs">
+    <naziv>Blanc de Blancs</naziv>
+    <proizvodjac>Meneghetti</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">9.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">9.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="deutz--brut-classic">
+    <naziv>Brut Classic</naziv>
+    <proizvodjac>Deutz</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">16.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">16.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="henri-giraud--esprit-nature">
+    <naziv>Esprit Nature</naziv>
+    <proizvodjac>Henri Giraud</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">16.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">16.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="zilliken--riesling-butterfly-2024">
+    <naziv>Riesling Butterfly 2024</naziv>
+    <proizvodjac>Zilliken</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jakopic--sauvignon-2024">
+    <naziv>Sauvignon 2024</naziv>
+    <proizvodjac>Jakopić</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">9.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">9.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="zilliken--rausch-kabinett-2025">
+    <naziv>Rausch Kabinett 2025</naziv>
+    <proizvodjac>Zilliken</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">13.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">13.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="benvenuti--malvazija-2025">
+    <naziv>Malvazija 2025</naziv>
+    <proizvodjac>Benvenuti</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="kunjas--posip-2024">
+    <naziv>Pošip 2024</naziv>
+    <proizvodjac>Kunjas</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">9.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">9.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="vie-di-romans--pinot-grigio-2023">
+    <naziv>Pinot Grigio 2023</naziv>
+    <proizvodjac>Vie di Romans</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">11.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">11.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="patrick-piuze--chablis-la-grande-vallee-2024">
+    <naziv>Chablis La Grande Vallée 2024</naziv>
+    <proizvodjac>Patrick Piuze</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">12.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">12.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="benanti--etna-bianco-2023">
+    <naziv>Etna Bianco 2023</naziv>
+    <proizvodjac>Benanti</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">12.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">12.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="vie-di-romans--friulano-2023">
+    <naziv>Friulano 2023</naziv>
+    <proizvodjac>Vie di Romans</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">12.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">12.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="philippe-chavy--bourgogne-chardonnay-2023">
+    <naziv>Bourgogne Chardonnay 2023</naziv>
+    <proizvodjac>Philippe Chavy</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">14.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">14.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="milos--stalagmit-2022">
+    <naziv>Stalagmit 2022</naziv>
+    <proizvodjac>Miloš</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">15.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">15.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="meneghetti--white-2023">
+    <naziv>White 2023</naziv>
+    <proizvodjac>Meneghetti</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">10.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">10.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="igor-ivanic--pinot-crni-dvije-ruze-2021">
+    <naziv>Pinot Crni Dvije Ruže 2021</naziv>
+    <proizvodjac>Igor Ivanić</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="petrac--karizma-cuvee-2022">
+    <naziv>Karizma Cuvée 2022</naziv>
+    <proizvodjac>Petrač</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tomaz--teran-barbarossa-2020">
+    <naziv>Teran Barbarossa 2020</naziv>
+    <proizvodjac>Tomaz</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="casa-rojo--cl98-2020">
+    <naziv>CL98 2020</naziv>
+    <proizvodjac>Casa Rojo</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">10.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">10.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="azienda-duemani--cifra-2021">
+    <naziv>Cifra 2021</naziv>
+    <proizvodjac>Azienda Duemani</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">11.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">11.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="moret-nomine--syrah-le-fales-2024">
+    <naziv>Syrah Le Fales 2024</naziv>
+    <proizvodjac>Moret-Nominé</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">12.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">12.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="opg-vina-violic--sagul-plavac-mali-2022">
+    <naziv>Sagul Plavac mali 2022</naziv>
+    <proizvodjac>OPG Vina Violić</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="petrac--enigma-2019">
+    <naziv>Enigma 2019</naziv>
+    <proizvodjac>Petrač</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">10.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">10.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="rizman--tribidrag-2022">
+    <naziv>Tribidrag 2022</naziv>
+    <proizvodjac>Rizman</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">10.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">10.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="skaramuca--dingac-elegance-2020">
+    <naziv>Dingač Elegance 2020</naziv>
+    <proizvodjac>Skaramuča</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">14.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">14.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="meneghetti--red-2020">
+    <naziv>Red 2020</naziv>
+    <proizvodjac>Meneghetti</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">15.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">15.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="benvenuti--santa-elizabeta-2021">
+    <naziv>Santa Elizabeta 2021</naziv>
+    <proizvodjac>Benvenuti</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,1 l</mjera>
+    <cijena valuta="EUR">15.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">15.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="gerzinic--muskat-2020">
+    <naziv>Muškat 2020</naziv>
+    <proizvodjac>Geržinić</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,05 l</mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jakopic--rajnski-rizling-izborna-berba-2019">
+    <naziv>Rajnski rizling izborna berba 2019</naziv>
+    <proizvodjac>Jakopić</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,05 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="niko-bura--prosek-ruza-dalmatinska">
+    <naziv>Prošek Ruža Dalmatinska</naziv>
+    <proizvodjac>Niko Bura</proizvodjac>
+    <skupina>Vina na čašu</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,05 l</mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jakopic--terbotz">
+    <naziv>Terbotz</naziv>
+    <proizvodjac>Jakopić</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">49.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">49.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="petrac--bregh-rose">
+    <naziv>Bregh Rose</naziv>
+    <proizvodjac>Petrač</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">48.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">48.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="sember--pavel">
+    <naziv>Pavel</naziv>
+    <proizvodjac>Šember</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">58.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">58.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tomac--diplomat">
+    <naziv>Diplomat</naziv>
+    <proizvodjac>Tomac</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">55.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">55.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tomac--blanc-de-noirs">
+    <naziv>Blanc de Noirs</naziv>
+    <proizvodjac>Tomac</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">67.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">67.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tomac--rose">
+    <naziv>Rose</naziv>
+    <proizvodjac>Tomac</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">48.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">48.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="contarini--prosecco-millesimato-2023">
+    <naziv>Prosecco Millesimato 2023</naziv>
+    <proizvodjac>Contarini</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">40.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">40.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="corte-aura--franciacorta-brut">
+    <naziv>Franciacorta Brut</naziv>
+    <proizvodjac>Corte Aura</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">67.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">67.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="corte-aura--franciacorta-saten">
+    <naziv>Franciacorta Satèn</naziv>
+    <proizvodjac>Corte Aura</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">84.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">84.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="movia--puro-rose">
+    <naziv>Puro Rose</naziv>
+    <proizvodjac>Movia</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">70.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">70.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="movia--puro-brut">
+    <naziv>Puro Brut</naziv>
+    <proizvodjac>Movia</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Pjenušava vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">70.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">70.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="de-sousa--chemins-des-terroirs">
+    <naziv>Chemins des Terroirs</naziv>
+    <proizvodjac>De Sousa</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">100.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">100.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="de-sousa--cuvee-3a-grand-cru">
+    <naziv>Cuvée 3A Grand Cru</naziv>
+    <proizvodjac>De Sousa</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">170.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">170.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="de-sousa--mycorhize-grand-cru">
+    <naziv>Mycorhize Grand Cru</naziv>
+    <proizvodjac>De Sousa</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">167.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">167.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="pertois-moriset--l-assemblage-brut">
+    <naziv>L'Assemblage Brut</naziv>
+    <proizvodjac>Pertois-Moriset</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">100.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">100.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="pertois-moriset--l-annee-millesime-grand-cru-blanc-de-blancs-2017">
+    <naziv>L'Année Millésime Grand Cru Blanc de Blancs 2017</naziv>
+    <proizvodjac>Pertois-Moriset</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">190.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">190.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="pertois-moriset--la-collection-rose-blanc-grand-cru">
+    <naziv>La Collection Rosé &amp; Blanc Grand Cru</naziv>
+    <proizvodjac>Pertois-Moriset</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">127.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">127.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="l-hoste-pere-fils--l-hoste-rose">
+    <naziv>L'Hoste Rosé</naziv>
+    <proizvodjac>L'Hoste Père &amp; Fils</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">97.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">97.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="delamotte--blanc-de-blancs-2018">
+    <naziv>Blanc de Blancs 2018</naziv>
+    <proizvodjac>Delamotte</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">240.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">240.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="deutz--brut-classic">
+    <naziv>Brut Classic</naziv>
+    <proizvodjac>Deutz</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">115.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">115.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="egly-ouriet--grand-cru-brut-tradition">
+    <naziv>Grand Cru Brut Tradition</naziv>
+    <proizvodjac>Egly-Ouriet</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">170.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">170.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="louis-roederer--cristal-2015">
+    <naziv>Cristal 2015</naziv>
+    <proizvodjac>Louis Roederer</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">540.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">540.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="vouette-sorbee--textures-brut-nature">
+    <naziv>Textures Brut Nature</naziv>
+    <proizvodjac>Vouette &amp; Sorbée</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">170.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">170.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="ruppert-leroy--martin-fontaine-2019">
+    <naziv>Martin Fontaine 2019</naziv>
+    <proizvodjac>Ruppert-Leroy</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">160.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">160.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="ruppert-leroy--papillon">
+    <naziv>Papillon</naziv>
+    <proizvodjac>Ruppert-Leroy</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">170.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">170.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="billecart-salmon--le-reserve">
+    <naziv>Le Réserve</naziv>
+    <proizvodjac>Billecart-Salmon</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">135.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">135.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="billecart-salmon--blanc-de-blancs-grand-cru">
+    <naziv>Blanc de Blancs Grand Cru</naziv>
+    <proizvodjac>Billecart-Salmon</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">210.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">210.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="billecart-salmon--le-rose">
+    <naziv>Le Rosé</naziv>
+    <proizvodjac>Billecart-Salmon</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">185.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">185.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="henri-giraud--esprit-nature">
+    <naziv>Esprit Nature</naziv>
+    <proizvodjac>Henri Giraud</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">120.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">120.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="henri-giraud--hommage-au-pinot-noir">
+    <naziv>Hommage au Pinot Noir</naziv>
+    <proizvodjac>Henri Giraud</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">135.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">135.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jacques-selosse--initial-brut">
+    <naziv>Initial Brut</naziv>
+    <proizvodjac>Jacques Selosse</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">560.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">560.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jacques-selosse--version-originale">
+    <naziv>Version Originale</naziv>
+    <proizvodjac>Jacques Selosse</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">650.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">650.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jacques-selosse--les-carelles">
+    <naziv>Les Carelles</naziv>
+    <proizvodjac>Jacques Selosse</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">850.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">850.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jacques-selosse--rose-brut">
+    <naziv>Rosé Brut</naziv>
+    <proizvodjac>Jacques Selosse</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">790.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">790.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="moet-chandon--dom-perignon-2015">
+    <naziv>Dom Pérignon 2015</naziv>
+    <proizvodjac>Moët &amp; Chandon</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">480.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">480.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="moet-chandon--dom-perignon-p2-2004">
+    <naziv>Dom Pérignon P2 2004</naziv>
+    <proizvodjac>Moët &amp; Chandon</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">1450.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">1450.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="moet-chandon--dom-perignon-p3-1993">
+    <naziv>Dom Pérignon P3 1993</naziv>
+    <proizvodjac>Moët &amp; Chandon</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">4850.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4850.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="salon--salon-blanc-de-blancs-2013">
+    <naziv>Salon Blanc de Blancs 2013</naziv>
+    <proizvodjac>Salon</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">1650.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">1650.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="krug--krug-grande-cuvee">
+    <naziv>Krug Grande Cuvée</naziv>
+    <proizvodjac>Krug</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">510.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">510.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="krug--krug-1996">
+    <naziv>Krug 1996</naziv>
+    <proizvodjac>Krug</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">1780.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">1780.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="krug--krug-2004">
+    <naziv>Krug 2004</naziv>
+    <proizvodjac>Krug</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">890.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">890.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="krug--clos-du-mesnil-2008">
+    <naziv>Clos du Mesnil 2008</naziv>
+    <proizvodjac>Krug</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">2780.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">2780.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="krug--clos-d-ambonnay-1996">
+    <naziv>Clos d'Ambonnay 1996</naziv>
+    <proizvodjac>Krug</proizvodjac>
+    <skupina>Pjenušci i šampanjci</skupina>
+    <kategorija>Šampanjac</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">4890.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4890.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="petrac--grasevina-2024">
+    <naziv>Graševina 2024</naziv>
+    <proizvodjac>Petrač</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">39.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">39.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="petrac--chardonnay-2023">
+    <naziv>Chardonnay 2023</naziv>
+    <proizvodjac>Petrač</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">46.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">46.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="erdoro--sauvignon-classy-2022">
+    <naziv>Sauvignon Classy 2022</naziv>
+    <proizvodjac>Erdoro</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">75.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">75.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="korak--sauvignon-2024">
+    <naziv>Sauvignon 2024</naziv>
+    <proizvodjac>Korak</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">54.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">54.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="korak--chardonnay-sur-lie-2024">
+    <naziv>Chardonnay “Sur Lie” 2024</naziv>
+    <proizvodjac>Korak</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">70.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">70.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jakopic--sauvignon-2024">
+    <naziv>Sauvignon 2024</naziv>
+    <proizvodjac>Jakopić</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">45.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">45.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jakopic--riesling-2024">
+    <naziv>Riesling 2024</naziv>
+    <proizvodjac>Jakopić</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">45.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">45.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="benvenuti--malvazija-2025">
+    <naziv>Malvazija 2025</naziv>
+    <proizvodjac>Benvenuti</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">44.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">44.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="matosevic--grimalda-bijela-2022">
+    <naziv>Grimalda bijela 2022</naziv>
+    <proizvodjac>Matošević</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">60.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">60.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="clai--malvazija-sv-jakov-2021">
+    <naziv>Malvazija Sv. Jakov 2021</naziv>
+    <proizvodjac>Clai</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">60.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">60.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="clai--ottocento-bijeli-2022">
+    <naziv>Ottocento bijeli 2022</naziv>
+    <proizvodjac>Clai</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">62.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">62.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="meneghetti--white-2023">
+    <naziv>White 2023</naziv>
+    <proizvodjac>Meneghetti</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">87.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">87.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="saints-hills--le-chiffre-2023">
+    <naziv>Le Chiffre 2023</naziv>
+    <proizvodjac>Saints Hills</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">140.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">140.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="krajancic--posip-intrada-2025">
+    <naziv>Pošip Intrada 2025</naziv>
+    <proizvodjac>Krajančić</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">73.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">73.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="kunjas--posip-2024">
+    <naziv>Pošip 2024</naziv>
+    <proizvodjac>Kunjas</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">49.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">49.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="kunjas--grk-2024">
+    <naziv>Grk 2024</naziv>
+    <proizvodjac>Kunjas</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">63.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">63.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="milos--stalagmit-2022">
+    <naziv>Stalagmit 2022</naziv>
+    <proizvodjac>Miloš</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">120.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">120.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="markus--dan-po-dan-2022">
+    <naziv>Dan po dan 2022</naziv>
+    <proizvodjac>Markus</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">90.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">90.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="bire--grk-2025">
+    <naziv>Grk 2025</naziv>
+    <proizvodjac>Bire</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">100.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">100.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="cecavac--jeka-blanc-2024">
+    <naziv>Jeka Blanc 2024</naziv>
+    <proizvodjac>Čečavac</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">130.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">130.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="a-clusserath--vom-schiefer-2020">
+    <naziv>Vom Schiefer 2020</naziv>
+    <proizvodjac>A. Clüsserath</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">45.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">45.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="a-clusserath--trittenheimer-apotheke-kabinett-2024">
+    <naziv>Trittenheimer Apotheke Kabinett 2024</naziv>
+    <proizvodjac>A. Clüsserath</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">80.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">80.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="zilliken--riesling-butterfly-2024">
+    <naziv>Riesling Butterfly 2024</naziv>
+    <proizvodjac>Zilliken</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">55.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">55.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="zilliken--rausch-kabinett-2025">
+    <naziv>Rausch Kabinett 2025</naziv>
+    <proizvodjac>Zilliken</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">91.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">91.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-heymann-lowenstein--riesling-schieferterrassen-2023">
+    <naziv>Riesling Schieferterrassen 2023</naziv>
+    <proizvodjac>Weingut Heymann-Löwenstein</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">89.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">89.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-heymann-lowenstein--riesling-stolzenberg-2017">
+    <naziv>Riesling Stolzenberg 2017</naziv>
+    <proizvodjac>Weingut Heymann-Löwenstein</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">97.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">97.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-heymann-lowenstein--riesling-uhlen-blaufusser-lay-gg-2022">
+    <naziv>Riesling Uhlen Blaufüßer Lay GG 2022</naziv>
+    <proizvodjac>Weingut Heymann-Löwenstein</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">145.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">145.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-wittmann--riesling-westhofener-2021">
+    <naziv>Riesling Westhofener 2021</naziv>
+    <proizvodjac>Weingut Wittmann</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">87.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">87.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-wittmann--riesling-aulerde-gg-2020">
+    <naziv>Riesling Aulerde GG 2020</naziv>
+    <proizvodjac>Weingut Wittmann</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">136.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">136.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-wittmann--riesling-kirchspiel-gg-2020">
+    <naziv>Riesling Kirchspiel GG 2020</naziv>
+    <proizvodjac>Weingut Wittmann</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">180.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">180.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-knebel--riesling-rottgen-gg-2023">
+    <naziv>Riesling Röttgen GG 2023</naziv>
+    <proizvodjac>Weingut Knebel</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">110.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">110.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="dr-burklin-wolf--riesling-gaisbohl-gg-2017">
+    <naziv>Riesling Gaisböhl GG 2017</naziv>
+    <proizvodjac>Dr. Bürklin-Wolf</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">140.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">140.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-kabinett-2023">
+    <naziv>Riesling Wehlener Sonnenuhr Kabinett 2023</naziv>
+    <proizvodjac>Weingut Joh. Jos. Prüm</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">110.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">110.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-a-christmann--riesling-aus-den-lagen-2021">
+    <naziv>Riesling Aus den Lagen 2021</naziv>
+    <proizvodjac>Weingut A. Christmann</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">52.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">52.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-a-christmann--idig-riesling-gg-2021">
+    <naziv>Idig Riesling GG 2021</naziv>
+    <proizvodjac>Weingut A. Christmann</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">189.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">189.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="egon-muller--riesling-scharzhof-2023">
+    <naziv>Riesling Scharzhof 2023</naziv>
+    <proizvodjac>Egon Müller</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">170.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">170.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="bernhard-ott--fass-4-gruner-veltliner-2023">
+    <naziv>Fass 4 Grüner Veltliner 2023</naziv>
+    <proizvodjac>Bernhard Ott</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">57.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">57.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-prager--gruner-veltliner-federspiel-ried-hinter-der-burg-2024">
+    <naziv>Grüner Veltliner Federspiel Ried Hinter der Burg 2024</naziv>
+    <proizvodjac>Weingut Prager</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">110.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">110.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-prager--riesling-smaragd-ried-klaus-2024">
+    <naziv>Riesling Smaragd Ried Klaus 2024</naziv>
+    <proizvodjac>Weingut Prager</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">150.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">150.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="maria-sepp-muster--sauvignon-vom-opok-2021">
+    <naziv>Sauvignon vom Opok 2021</naziv>
+    <proizvodjac>Maria &amp; Sepp Muster</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">67.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">67.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="maria-sepp-muster--graf-2020">
+    <naziv>Graf 2020</naziv>
+    <proizvodjac>Maria &amp; Sepp Muster</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">87.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">87.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="patrick-piuze--chablis-la-grande-vallee-2024">
+    <naziv>Chablis La Grande Vallée 2024</naziv>
+    <proizvodjac>Patrick Piuze</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">90.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">90.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="pattes-loup--chablis-2022">
+    <naziv>Chablis 2022</naziv>
+    <proizvodjac>Pattes Loup</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">87.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">87.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="pattes-loup--chablis-1er-cru-butteaux-2019">
+    <naziv>Chablis 1er Cru Butteaux 2019</naziv>
+    <proizvodjac>Pattes Loup</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">178.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">178.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="rene-vincent-dauvissat--chablis-1er-cru-vaillons-2018">
+    <naziv>Chablis 1er Cru Vaillons 2018</naziv>
+    <proizvodjac>René &amp; Vincent Dauvissat</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">750.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">750.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="patrick-piuze--chablis-grand-cru-les-clos-2023">
+    <naziv>Chablis Grand Cru Les Clos 2023</naziv>
+    <proizvodjac>Patrick Piuze</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">250.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">250.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="patrick-piuze--chablis-grand-cru-preuses-2022">
+    <naziv>Chablis Grand Cru Preuses 2022</naziv>
+    <proizvodjac>Patrick Piuze</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">250.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">250.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-francois-raveneau--chablis-grand-cru-valmur-2020">
+    <naziv>Chablis Grand Cru Valmur 2020</naziv>
+    <proizvodjac>Domaine François Raveneau</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">1450.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">1450.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="remi-jobard--bourgogne-cote-d-or-blanc-2022">
+    <naziv>Bourgogne Côte d'Or Blanc 2022</naziv>
+    <proizvodjac>Rémi Jobard</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">75.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">75.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="philippe-chavy--bourgogne-chardonnay-2023">
+    <naziv>Bourgogne Chardonnay 2023</naziv>
+    <proizvodjac>Philippe Chavy</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">89.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">89.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="francois-mikulski--bourgogne-2023">
+    <naziv>Bourgogne 2023</naziv>
+    <proizvodjac>François Mikulski</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">110.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">110.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-jean-chartron--rully-montmorin-2023">
+    <naziv>Rully Montmorin 2023</naziv>
+    <proizvodjac>Domaine Jean Chartron</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">88.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">88.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="david-moret--rully-2023">
+    <naziv>Rully 2023</naziv>
+    <proizvodjac>David Moret</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">97.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">97.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="david-moret--saint-romain-2023">
+    <naziv>Saint-Romain 2023</naziv>
+    <proizvodjac>David Moret</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">115.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">115.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="david-moret--auxey-duresses-2023">
+    <naziv>Auxey-Duresses 2023</naziv>
+    <proizvodjac>David Moret</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">107.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">107.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="david-moret--meursault-2020">
+    <naziv>Meursault 2020</naziv>
+    <proizvodjac>David Moret</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">210.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">210.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="theo-dancer--bourgogne-aligote-2023">
+    <naziv>Bourgogne Aligoté 2023</naziv>
+    <proizvodjac>Théo Dancer</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">135.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">135.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lignier--aligote-2021">
+    <naziv>Aligoté 2021</naziv>
+    <proizvodjac>Hubert Lignier</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">65.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">65.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-jean-chartron--chassagne-montrachet-les-benoites-2022">
+    <naziv>Chassagne-Montrachet Les Benoites 2022</naziv>
+    <proizvodjac>Domaine Jean Chartron</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">146.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">146.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-jean-chartron--puligny-montrachet-1er-cru-clos-de-la-pucelle-monopole-2021">
+    <naziv>Puligny-Montrachet 1er Cru Clos de la Pucelle Monopole 2021</naziv>
+    <proizvodjac>Domaine Jean Chartron</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">245.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">245.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="philippe-chavy--st-aubin-1er-cru-les-murgers-des-dents-de-chien-2021">
+    <naziv>St-Aubin 1er Cru Les Murgers des Dents de Chien 2021</naziv>
+    <proizvodjac>Philippe Chavy</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">127.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">127.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lamy--saint-aubin-1er-cru-en-remilly-2023">
+    <naziv>Saint-Aubin 1er Cru En Remilly 2023</naziv>
+    <proizvodjac>Hubert Lamy</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">400.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">400.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lamy--saint-aubin-1er-cru-les-frionnes-2023">
+    <naziv>Saint-Aubin 1er Cru Les Frionnes 2023</naziv>
+    <proizvodjac>Hubert Lamy</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">295.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">295.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lamy--saint-aubin-la-princee-2023">
+    <naziv>Saint-Aubin La Princée 2023</naziv>
+    <proizvodjac>Hubert Lamy</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">270.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">270.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="philippe-chavy--meursault-1er-cru-les-charmes-2021">
+    <naziv>Meursault 1er Cru Les Charmes 2021</naziv>
+    <proizvodjac>Philippe Chavy</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">268.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">268.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="remi-jobard--meursault-sous-la-velle-2022">
+    <naziv>Meursault Sous la Velle 2022</naziv>
+    <proizvodjac>Rémi Jobard</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">190.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">190.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="remi-jobard--meursault-1er-cru-le-poruzot-dessus-2022">
+    <naziv>Meursault 1er Cru Le Poruzot Dessus 2022</naziv>
+    <proizvodjac>Rémi Jobard</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">284.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">284.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="bernard-bonin--meursault-les-tillets-2023">
+    <naziv>Meursault Les Tillets 2023</naziv>
+    <proizvodjac>Bernard-Bonin</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">920.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">920.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="bernard-bonin--meursault-la-rencontre-2023">
+    <naziv>Meursault La Rencontre 2023</naziv>
+    <proizvodjac>Bernard-Bonin</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">790.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">790.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="bernard-bonin--meursault-clos-du-cromin-le-pre-manche-2023">
+    <naziv>Meursault Clos du Cromin Le Pre Manche 2023</naziv>
+    <proizvodjac>Bernard-Bonin</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">790.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">790.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="bernard-bonin--meursault-les-narvaux-dessus-2023">
+    <naziv>Meursault Les Narvaux Dessus 2023</naziv>
+    <proizvodjac>Bernard-Bonin</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">970.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">970.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="bernard-bonin--meursault-villages-le-limozin-2023">
+    <naziv>Meursault Villages Le Limozin 2023</naziv>
+    <proizvodjac>Bernard-Bonin</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">970.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">970.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-jean-chartron--corton-charlemagne-grand-cru-2022">
+    <naziv>Corton-Charlemagne Grand Cru 2022</naziv>
+    <proizvodjac>Domaine Jean Chartron</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">560.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">560.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="francois-crochet--sancerre-blanc-2023">
+    <naziv>Sancerre Blanc 2023</naziv>
+    <proizvodjac>François Crochet</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">87.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">87.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="pascal-cotat--sancerre-blanc-les-monts-damnes-2020">
+    <naziv>Sancerre Blanc Les Monts Damnés 2020</naziv>
+    <proizvodjac>Pascal Cotat</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">127.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">127.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-albert-mann--riesling-2022">
+    <naziv>Riesling 2022</naziv>
+    <proizvodjac>Domaine Albert Mann</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">81.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">81.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-albert-mann--riesling-grand-cru-schlossberg-2020">
+    <naziv>Riesling Grand Cru Schlossberg 2020</naziv>
+    <proizvodjac>Domaine Albert Mann</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">155.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">155.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-albert-mann--riesling-grand-cru-furstentum-2020">
+    <naziv>Riesling Grand Cru Furstentum 2020</naziv>
+    <proizvodjac>Domaine Albert Mann</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">155.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">155.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-albert-mann--pinot-gris-grand-cru-hengst-2020">
+    <naziv>Pinot Gris Grand Cru Hengst 2020</naziv>
+    <proizvodjac>Domaine Albert Mann</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">87.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">87.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-de-l-ecu--matris-2018">
+    <naziv>Matris 2018</naziv>
+    <proizvodjac>Domaine de l'Écu</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">65.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">65.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-bourdy--savagnin-2018">
+    <naziv>Savagnin 2018</naziv>
+    <proizvodjac>Domaine Bourdy</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">53.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">53.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-bourdy--vin-jaune-2014">
+    <naziv>Vin Jaune 2014</naziv>
+    <proizvodjac>Domaine Bourdy</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,62 l</mjera>
+    <cijena valuta="EUR">64.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">64.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-bourdy--chateau-chalon-2014">
+    <naziv>Château-Chalon 2014</naziv>
+    <proizvodjac>Domaine Bourdy</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">135.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">135.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jules-desjourneys--macon-prisse-en-chailloux-blanc-2021">
+    <naziv>Mâcon Prissé En Chailloux Blanc 2021</naziv>
+    <proizvodjac>Jules Desjourneys</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">90.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">90.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jules-desjourneys--macon-verze-blanc-2021">
+    <naziv>Mâcon Verzé Blanc 2021</naziv>
+    <proizvodjac>Jules Desjourneys</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">90.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">90.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jules-desjourneys--pouilly-fuisse-blanc-2021">
+    <naziv>Pouilly-Fuissé Blanc 2021</naziv>
+    <proizvodjac>Jules Desjourneys</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">120.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">120.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jules-desjourneys--pouilly-vinzelles-les-longeays-blanc-2021">
+    <naziv>Pouilly-Vinzelles Les Longeays Blanc 2021</naziv>
+    <proizvodjac>Jules Desjourneys</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">139.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">139.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jules-desjourneys--saint-veran-blanc-2021">
+    <naziv>Saint-Véran Blanc 2021</naziv>
+    <proizvodjac>Jules Desjourneys</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">129.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">129.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="alois-lageder--chardonnay-2024">
+    <naziv>Chardonnay 2024</naziv>
+    <proizvodjac>Alois Lageder</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">47.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">47.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="alois-lageder--pinot-bianco-versalto-2023">
+    <naziv>Pinot Bianco Versalto 2023</naziv>
+    <proizvodjac>Alois Lageder</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">47.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">47.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="alois-lageder--pinot-grigio-porer-2023">
+    <naziv>Pinot Grigio Porer 2023</naziv>
+    <proizvodjac>Alois Lageder</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">55.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">55.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="peter-dipoli--sauvignon-voglar-2019">
+    <naziv>Sauvignon Voglar 2019</naziv>
+    <proizvodjac>Peter Dipoli</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">50.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">50.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="damijan-podversic--ribolla-2015">
+    <naziv>Ribolla 2015</naziv>
+    <proizvodjac>Damijan Podveršič</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">95.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">95.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="damijan-podversic--ribolla-2020">
+    <naziv>Ribolla 2020</naziv>
+    <proizvodjac>Damijan Podveršič</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">77.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">77.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="damijan-podversic--kaplja-2018">
+    <naziv>Kaplja 2018</naziv>
+    <proizvodjac>Damijan Podveršič</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">95.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">95.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="damijan-podversic--malvasia-2018">
+    <naziv>Malvasia 2018</naziv>
+    <proizvodjac>Damijan Podveršič</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">93.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">93.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="benanti--etna-bianco-2023">
+    <naziv>Etna Bianco 2023</naziv>
+    <proizvodjac>Benanti</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">95.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">95.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="vodopivec--origine-2016">
+    <naziv>Origine 2016</naziv>
+    <proizvodjac>Vodopivec</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">96.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">96.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="vodopivec--solo-2018">
+    <naziv>Solo 2018</naziv>
+    <proizvodjac>Vodopivec</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">109.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">109.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="dario-princic--jakot-2019">
+    <naziv>Jakot 2019</naziv>
+    <proizvodjac>Dario Prinčič</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">75.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">75.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="marques-de-murrieta--capellania-2019">
+    <naziv>Capellanía 2019</naziv>
+    <proizvodjac>Marqués de Murrieta</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">180.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">180.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="lopez-de-heredia--gravonia-crianza-2015">
+    <naziv>Gravonia Crianza 2015</naziv>
+    <proizvodjac>López de Heredia</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">90.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">90.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="casa-rojo--orange-republic-2021">
+    <naziv>Orange Republic 2021</naziv>
+    <proizvodjac>Casa Rojo</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">68.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">68.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="marjan-simcic--sauvignon-vert">
+    <naziv>Sauvignon Vert</naziv>
+    <proizvodjac>Marjan Simčič</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">100.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">100.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="baraka--malena-2022">
+    <naziv>Malena 2022</naziv>
+    <proizvodjac>Baraka</proizvodjac>
+    <skupina>Rosé vina</skupina>
+    <kategorija>Rosé vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">50.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">50.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="bastian--rose">
+    <naziv>Rose</naziv>
+    <proizvodjac>Bastian</proizvodjac>
+    <skupina>Rosé vina</skupina>
+    <kategorija>Rosé vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">50.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">50.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="petrac--karizma-cuvee-2022">
+    <naziv>Karizma Cuvée 2022</naziv>
+    <proizvodjac>Petrač</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">50.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">50.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="petrac--enigma-2019">
+    <naziv>Enigma 2019</naziv>
+    <proizvodjac>Petrač</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">75.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">75.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="igor-ivanic--pinot-crni-dvije-ruze-2021">
+    <naziv>Pinot Crni Dvije Ruže 2021</naziv>
+    <proizvodjac>Igor Ivanić</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">54.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">54.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="erdoro--pinot-noir-2021">
+    <naziv>Pinot Noir 2021</naziv>
+    <proizvodjac>Erdoro</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">70.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">70.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="korak--pinot-crni-2023">
+    <naziv>Pinot Crni 2023</naziv>
+    <proizvodjac>Korak</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">70.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">70.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="matosevic--grimalda-crna-2021">
+    <naziv>Grimalda crna 2021</naziv>
+    <proizvodjac>Matošević</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">66.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">66.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="clai--ottocento-crni-2022">
+    <naziv>Ottocento Crni 2022</naziv>
+    <proizvodjac>Clai</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">66.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">66.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="budinski--refosk-omo-2020">
+    <naziv>Refošk Omo 2020</naziv>
+    <proizvodjac>Budinski</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">100.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">100.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tomaz--teran-2022">
+    <naziv>Teran 2022</naziv>
+    <proizvodjac>Tomaz</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">60.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">60.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="boskinac--cuvee-boskinac-crni-2018">
+    <naziv>Cuvée Boškinac Crni 2018</naziv>
+    <proizvodjac>Boškinac</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">90.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">90.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="opg-vina-violic--sagul-plavac-mali-2022">
+    <naziv>Sagul Plavac mali 2022</naziv>
+    <proizvodjac>OPG Vina Violić</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">49.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">49.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mrgudic--postup-mare-2020">
+    <naziv>Postup Mare 2020</naziv>
+    <proizvodjac>Mrgudić</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">96.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">96.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="benmosche-family--dingac-2021">
+    <naziv>Dingač 2021</naziv>
+    <proizvodjac>Benmosche Family</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">91.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">91.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="benmosche-family--zinfandel-2019">
+    <naziv>Zinfandel 2019</naziv>
+    <proizvodjac>Benmosche Family</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">89.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">89.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="saints-hills--black-2022">
+    <naziv>Black 2022</naziv>
+    <proizvodjac>Saints Hills</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">70.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">70.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="rizman--tribidrag-2022">
+    <naziv>Tribidrag 2022</naziv>
+    <proizvodjac>Rizman</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">75.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">75.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="kunjas--pagadebit-2018">
+    <naziv>Pagadebit 2018</naziv>
+    <proizvodjac>Kunjas</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">85.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">85.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="saints-hills--pape-2023">
+    <naziv>Pape 2023</naziv>
+    <proizvodjac>Saints Hills</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">70.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">70.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="milos--stagnum-2016">
+    <naziv>Stagnum 2016</naziv>
+    <proizvodjac>Miloš</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">145.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">145.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="cecavac-gaspar--jeka-dalmatia-2020">
+    <naziv>Jeka Dalmatia 2020</naziv>
+    <proizvodjac>Čečavac &amp; Gašpar</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">250.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">250.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mrgudic--bura-2021">
+    <naziv>Bura 2021</naziv>
+    <proizvodjac>Mrgudić</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">195.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">195.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="meneghetti--red-2020">
+    <naziv>Red 2020</naziv>
+    <proizvodjac>Meneghetti</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">180.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">180.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="markus--fetivi-2020">
+    <naziv>Fetivi 2020</naziv>
+    <proizvodjac>Markus</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">145.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">145.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="markus--pepejuh-2019">
+    <naziv>Pepejuh 2019</naziv>
+    <proizvodjac>Markus</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">150.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">150.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="markus--pepejuh-2017">
+    <naziv>Pepejuh 2017</naziv>
+    <proizvodjac>Markus</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">160.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">160.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="skaramuca--dingac-elegance-2020">
+    <naziv>Dingač Elegance 2020</naziv>
+    <proizvodjac>Skaramuča</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">75.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">75.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lignier--bourgogne-2023">
+    <naziv>Bourgogne 2023</naziv>
+    <proizvodjac>Hubert Lignier</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">106.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">106.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lignier--pommard-1er-cru-les-arvelets-2019">
+    <naziv>Pommard 1er Cru Les Arvelets 2019</naziv>
+    <proizvodjac>Hubert Lignier</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">186.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">186.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lignier--charmes-chambertin-grand-cru-2021">
+    <naziv>Charmes-Chambertin Grand Cru 2021</naziv>
+    <proizvodjac>Hubert Lignier</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">650.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">650.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lignier--morey-saint-denis-2019">
+    <naziv>Morey-Saint-Denis 2019</naziv>
+    <proizvodjac>Hubert Lignier</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">178.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">178.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="machard-de-gramont-bertrand--vosne-romanee-2022">
+    <naziv>Vosne-Romanée 2022</naziv>
+    <proizvodjac>Machard de Gramont Bertrand</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">178.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">178.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="machard-de-gramont-bertrand--vosne-romanee-les-barreaux-2022">
+    <naziv>Vosne-Romanée Les Barreaux 2022</naziv>
+    <proizvodjac>Machard de Gramont Bertrand</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">210.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">210.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="machard-de-gramont-bertrand--nuits-saint-georges-les-hauts-pruliers-2016">
+    <naziv>Nuits-Saint-Georges Les Hauts-Pruliers 2016</naziv>
+    <proizvodjac>Machard de Gramont Bertrand</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">127.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">127.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lignier--nuits-saint-georges-les-didiers-1er-cru-2013">
+    <naziv>Nuits-Saint-Georges “Les Didiers” 1er Cru 2013</naziv>
+    <proizvodjac>Hubert Lignier</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">340.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">340.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-armand-rousseau-pere-fils--gevrey-chambertin-1er-cru-lavaux-2018">
+    <naziv>Gevrey-Chambertin 1er Cru Lavaux 2018</naziv>
+    <proizvodjac>Domaine Armand Rousseau Père &amp; Fils</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">1400.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">1400.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="remi-jobard--volnay-1er-cru-les-santenots-2022">
+    <naziv>Volnay 1er Cru Les Santenots 2022</naziv>
+    <proizvodjac>Rémi Jobard</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">235.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">235.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lamy--chassagne-montrachet-la-goujonne-vieilles-vignes-rouge-2023">
+    <naziv>Chassagne-Montrachet La Goujonne Vieilles Vignes Rouge 2023</naziv>
+    <proizvodjac>Hubert Lamy</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">280.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">280.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hubert-lamy--santenay-1er-cru-clos-des-gravieres-vieilles-vignes-rouge-2023">
+    <naziv>Santenay 1er Cru Clos des Gravières Vieilles Vignes Rouge 2023</naziv>
+    <proizvodjac>Hubert Lamy</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">290.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">290.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chateau-de-pez--saint-estephe-2022">
+    <naziv>Saint-Estèphe 2022</naziv>
+    <proizvodjac>Château de Pez</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">155.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">155.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chateau-troplong-mondot--saint-emilion-grand-cru-2020">
+    <naziv>Saint-Émilion Grand Cru 2020</naziv>
+    <proizvodjac>Château Troplong Mondot</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">478.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">478.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chateau-gazin--pomerol-2020">
+    <naziv>Pomerol 2020</naziv>
+    <proizvodjac>Château Gazin</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">390.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">390.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chateau-la-pointe--la-pointe-rouge-2022">
+    <naziv>La Pointe Rouge 2022</naziv>
+    <proizvodjac>Château La Pointe</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">220.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">220.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chateau-canon--saint-emilion-grand-cru-2020">
+    <naziv>Saint-Émilion Grand Cru 2020</naziv>
+    <proizvodjac>Château Canon</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">390.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">390.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chateau-leoville-barton--saint-julien-2021">
+    <naziv>Saint-Julien 2021</naziv>
+    <proizvodjac>Château Léoville Barton</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">390.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">390.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="moret-nomine--syrah-le-fales-2024">
+    <naziv>Syrah Le Fales 2024</naziv>
+    <proizvodjac>Moret-Nominé</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">80.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">80.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jules-desjourneys--beaujolais-patacaisse-rouge-2022">
+    <naziv>Beaujolais Patacaisse Rouge 2022</naziv>
+    <proizvodjac>Jules Desjourneys</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">80.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">80.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jules-desjourneys--rouge-2023">
+    <naziv>Rouge 2023</naziv>
+    <proizvodjac>Jules Desjourneys</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">80.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">80.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="alois-lageder--pinot-nero-krafuss-2019">
+    <naziv>Pinot Nero Krafuss 2019</naziv>
+    <proizvodjac>Alois Lageder</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">110.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">110.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="alois-lageder--cabernet-lowengang-2013">
+    <naziv>Cabernet Löwengang 2013</naziv>
+    <proizvodjac>Alois Lageder</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">110.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">110.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="az-agr-e-pira-figli-chiara-boschis--barbera-d-alba-superiore-2021">
+    <naziv>Barbera d'Alba Superiore 2021</naziv>
+    <proizvodjac>Az. Agr. E. Pira &amp; Figli – Chiara Boschis</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">63.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">63.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="az-agr-e-pira-figli-chiara-boschis--barolo-2018">
+    <naziv>Barolo 2018</naziv>
+    <proizvodjac>Az. Agr. E. Pira &amp; Figli – Chiara Boschis</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">210.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">210.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="roagna--barolo-pira-2018">
+    <naziv>Barolo Pira 2018</naziv>
+    <proizvodjac>Roagna</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">380.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">380.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="roagna--barbaresco-albesani-2019">
+    <naziv>Barbaresco Albesani 2019</naziv>
+    <proizvodjac>Roagna</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">580.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">580.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="roagna--barbaresco-asili-vecchie-viti-2019">
+    <naziv>Barbaresco Asili “Vecchie Viti” 2019</naziv>
+    <proizvodjac>Roagna</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">550.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">550.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="roagna--barbaresco-paje-2019">
+    <naziv>Barbaresco Pajé 2019</naziv>
+    <proizvodjac>Roagna</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">410.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">410.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="crissante-alessandria--barolo-la-morra-docg-2021">
+    <naziv>Barolo La Morra DOCG 2021</naziv>
+    <proizvodjac>Crissante Alessandria</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">290.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">290.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="lalu--langhe-nebbiolo-2023">
+    <naziv>Langhe Nebbiolo 2023</naziv>
+    <proizvodjac>Lalù</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">95.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">95.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="isole-e-olena--cabernet-sauvignon-collezione-de-marchi-2013">
+    <naziv>Cabernet Sauvignon Collezione de Marchi 2013</naziv>
+    <proizvodjac>Isole e Olena</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">210.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">210.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="isole-e-olena--cepparello-2019">
+    <naziv>Cepparello 2019</naziv>
+    <proizvodjac>Isole e Olena</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">210.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">210.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="le-piane--boca-2019">
+    <naziv>Boca 2019</naziv>
+    <proizvodjac>Le Piane</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">120.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">120.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="le-piane--plinius-2017">
+    <naziv>Plinius 2017</naziv>
+    <proizvodjac>Le Piane</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">200.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">200.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="le-piane--piane-2019">
+    <naziv>Piane 2019</naziv>
+    <proizvodjac>Le Piane</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">90.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">90.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="conti-costanti--brunello-di-montalcino-2018">
+    <naziv>Brunello di Montalcino 2018</naziv>
+    <proizvodjac>Conti Costanti</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">190.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">190.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="fattoria-di-magliano--heba-2021">
+    <naziv>Heba 2021</naziv>
+    <proizvodjac>Fattoria di Magliano</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">52.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">52.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="fattoria-di-magliano--poggio-bestiale-2020">
+    <naziv>Poggio Bestiale 2020</naziv>
+    <proizvodjac>Fattoria di Magliano</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">93.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">93.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="podere-poggio-scalette--il-carbonaione-2019">
+    <naziv>Il Carbonaione 2019</naziv>
+    <proizvodjac>Podere Poggio Scalette</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">100.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">100.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="podere-poggio-scalette--piantonaia-2019">
+    <naziv>Piantonaia 2019</naziv>
+    <proizvodjac>Podere Poggio Scalette</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">250.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">250.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chiara-condello--predappio-sangiovese-2023">
+    <naziv>Predappio Sangiovese 2023</naziv>
+    <proizvodjac>Chiara Condello</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">145.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">145.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chiara-condello--predappio-sangiovese-2023">
+    <naziv>Predappio Sangiovese 2023</naziv>
+    <proizvodjac>Chiara Condello</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>1,5 l</mjera>
+    <cijena valuta="EUR">290.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">290.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chiara-condello--riserva-le-lucciole-2022">
+    <naziv>Riserva “Le Lucciole” 2022</naziv>
+    <proizvodjac>Chiara Condello</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">160.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">160.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chiara-condello--riserva-le-lucciole-2022">
+    <naziv>Riserva “Le Lucciole” 2022</naziv>
+    <proizvodjac>Chiara Condello</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>1,5 l</mjera>
+    <cijena valuta="EUR">340.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">340.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="antinori--tignanello-2019">
+    <naziv>Tignanello 2019</naziv>
+    <proizvodjac>Antinori</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">284.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">284.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="antinori--tignanello-2020">
+    <naziv>Tignanello 2020</naziv>
+    <proizvodjac>Antinori</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">250.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">250.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="dal-forno-romano--valpolicella-d-o-c-superiore-2015">
+    <naziv>Valpolicella D.O.C. Superiore 2015</naziv>
+    <proizvodjac>Dal Forno Romano</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">260.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">260.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="dal-forno-romano--amarone-della-valpolicella-d-o-c-2015">
+    <naziv>Amarone della Valpolicella D.O.C. 2015</naziv>
+    <proizvodjac>Dal Forno Romano</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">689.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">689.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="ca-la-bionda--amarone-classico-vigna-ravazzol-2016">
+    <naziv>Amarone Classico Vigna Ravazzol 2016</naziv>
+    <proizvodjac>Ca' La Bionda</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">130.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">130.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="giuseppe-quintarelli--amarone-classico-2015">
+    <naziv>Amarone Classico 2015</naziv>
+    <proizvodjac>Giuseppe Quintarelli</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">757.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">757.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="giuseppe-quintarelli--valpolicella-superiore-2015">
+    <naziv>Valpolicella Superiore 2015</naziv>
+    <proizvodjac>Giuseppe Quintarelli</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">260.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">260.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="montevertine--le-pergole-torte-2020">
+    <naziv>Le Pergole Torte 2020</naziv>
+    <proizvodjac>Montevertine</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">410.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">410.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="montevertine--montevertine-2019">
+    <naziv>Montevertine 2019</naziv>
+    <proizvodjac>Montevertine</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">150.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">150.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="azienda-duemani--cifra-2021">
+    <naziv>Cifra 2021</naziv>
+    <proizvodjac>Azienda Duemani</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">88.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">88.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="azienda-duemani--duemani-2018">
+    <naziv>Duemani 2018</naziv>
+    <proizvodjac>Azienda Duemani</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">350.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">350.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="radikon--pignoli-2010">
+    <naziv>Pignoli 2010</naziv>
+    <proizvodjac>Radikon</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,5 l</mjera>
+    <cijena valuta="EUR">94.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">94.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="soldera--case-basse-2020">
+    <naziv>Case Basse 2020</naziv>
+    <proizvodjac>Soldera</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">1540.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">1540.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="angelo-gaja--barbaresco-2020">
+    <naziv>Barbaresco 2020</naziv>
+    <proizvodjac>Angelo Gaja</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">745.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">745.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tenuta-san-guido--sassicaia-2020">
+    <naziv>Sassicaia 2020</naziv>
+    <proizvodjac>Tenuta San Guido</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">750.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">750.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tenuta-san-guido--sassicaia-2021">
+    <naziv>Sassicaia 2021</naziv>
+    <proizvodjac>Tenuta San Guido</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">850.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">850.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tenuta-dell-ornellaia--ornellaia-2020">
+    <naziv>Ornellaia 2020</naziv>
+    <proizvodjac>Tenuta dell'Ornellaia</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">750.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">750.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="antinori--solaia-2020">
+    <naziv>Solaia 2020</naziv>
+    <proizvodjac>Antinori</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">945.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">945.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="poggio-di-sotto--brunello-di-montalcino-2019">
+    <naziv>Brunello di Montalcino 2019</naziv>
+    <proizvodjac>Poggio di Sotto</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">495.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">495.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="poggio-di-sotto--brunello-di-montalcino-2020">
+    <naziv>Brunello di Montalcino 2020</naziv>
+    <proizvodjac>Poggio di Sotto</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">495.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">495.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="edi-simcic--duet-lex-2022">
+    <naziv>Duet Lex 2022</naziv>
+    <proizvodjac>Edi Simčič</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">130.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">130.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="marjan-simcic--merlot-opoka-2017">
+    <naziv>Merlot Opoka 2017</naziv>
+    <proizvodjac>Marjan Simčič</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">125.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">125.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="marjan-simcic--pinot-noir-opoka-2021">
+    <naziv>Pinot Noir Opoka 2021</naziv>
+    <proizvodjac>Marjan Simčič</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">125.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">125.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="marques-de-murrieta--castillo-ygay-2012">
+    <naziv>Castillo Ygay 2012</naziv>
+    <proizvodjac>Marqués de Murrieta</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">350.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">350.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="casa-rojo--cl98-2020">
+    <naziv>CL98 2020</naziv>
+    <proizvodjac>Casa Rojo</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">68.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">68.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="casa-rojo--tokyo-gomez-rojo-2021">
+    <naziv>Tokyo Gomez-Rojo 2021</naziv>
+    <proizvodjac>Casa Rojo</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">180.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">180.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="lopez-de-heredia--bosconia-tinto-reserva-2013">
+    <naziv>Bosconia Tinto Reserva 2013</naziv>
+    <proizvodjac>López de Heredia</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">75.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">75.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="resonance-vineyard--resonance-2015">
+    <naziv>Resonance 2015</naziv>
+    <proizvodjac>Résonance Vineyard</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">100.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">100.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="walter-scott--cuvee-ruth-pinot-noir">
+    <naziv>Cuvée Ruth Pinot Noir</naziv>
+    <proizvodjac>Walter Scott</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">90.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">90.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tyler--mae-estate-2019">
+    <naziv>Mae Estate 2019</naziv>
+    <proizvodjac>Tyler</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">120.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">120.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="occidental-kistler-vineyards--occidental-2018">
+    <naziv>Occidental 2018</naziv>
+    <proizvodjac>Occidental – Kistler Vineyards</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">140.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">140.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="duckhorn--merlot-2018">
+    <naziv>Merlot 2018</naziv>
+    <proizvodjac>Duckhorn</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">160.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">160.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="cakebread-cellars--cabernet-sauvignon-2018">
+    <naziv>Cabernet Sauvignon 2018</naziv>
+    <proizvodjac>Cakebread Cellars</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">170.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">170.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="heitz-cellar--cabernet-sauvignon-2016">
+    <naziv>Cabernet Sauvignon 2016</naziv>
+    <proizvodjac>Heitz Cellar</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">225.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">225.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mayacamas--cabernet-sauvignon-2019">
+    <naziv>Cabernet Sauvignon 2019</naziv>
+    <proizvodjac>Mayacamas</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">270.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">270.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="tanbark-hill-philip-togni--cabernet-sauvignon-2018">
+    <naziv>Cabernet Sauvignon 2018</naziv>
+    <proizvodjac>Tanbark Hill (Philip Togni)</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">150.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">150.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="philip-togni--cabernet-sauvignon-2019">
+    <naziv>Cabernet Sauvignon 2019</naziv>
+    <proizvodjac>Philip Togni</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">280.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">280.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="domaine-eden--cabernet-sauvignon-2017">
+    <naziv>Cabernet Sauvignon 2017</naziv>
+    <proizvodjac>Domaine Eden</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">170.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">170.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="ridge--cabernet-sauvignon-2018">
+    <naziv>Cabernet Sauvignon 2018</naziv>
+    <proizvodjac>Ridge</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">170.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">170.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="ridge--geyserville-2021">
+    <naziv>Geyserville 2021</naziv>
+    <proizvodjac>Ridge</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">140.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">140.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="lvmh-shangri-la--ao-yun-2018">
+    <naziv>Ao Yun 2018</naziv>
+    <proizvodjac>LVMH – Shangri-La</proizvodjac>
+    <skupina>Crna vina</skupina>
+    <kategorija>Crna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">525.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">525.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="gerzinic--muskat-2020">
+    <naziv>Muškat 2020</naziv>
+    <proizvodjac>Geržinić</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,5 l</mjera>
+    <cijena valuta="EUR">31.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">31.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mrgudic--prosek-moskar">
+    <naziv>Prošek Moskar</naziv>
+    <proizvodjac>Mrgudić</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,375 l</mjera>
+    <cijena valuta="EUR">45.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">45.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="niko-bura--prosek-ruza-dalmatinska">
+    <naziv>Prošek Ruža Dalmatinska</naziv>
+    <proizvodjac>Niko Bura</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,375 l</mjera>
+    <cijena valuta="EUR">58.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">58.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="clai--tasel">
+    <naziv>Tasel</naziv>
+    <proizvodjac>Clai</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,375 l</mjera>
+    <cijena valuta="EUR">64.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">64.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jakopic--rajnski-rizling-izborna-berba-2019">
+    <naziv>Rajnski rizling izborna berba 2019</naziv>
+    <proizvodjac>Jakopić</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">60.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">60.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-auslese-2023">
+    <naziv>Riesling Wehlener Sonnenuhr Auslese 2023</naziv>
+    <proizvodjac>Weingut Joh. Jos. Prüm</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,375 l</mjera>
+    <cijena valuta="EUR">70.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">70.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017">
+    <naziv>Riesling Schieferterrassen Beerenauslese 2017</naziv>
+    <proizvodjac>Weingut Heymann-Löwenstein</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,375 l</mjera>
+    <cijena valuta="EUR">115.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">115.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="weingut-wittmann--riesling-aulerde-auslese-2015">
+    <naziv>Riesling Aulerde Auslese 2015</naziv>
+    <proizvodjac>Weingut Wittmann</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,5 l</mjera>
+    <cijena valuta="EUR">94.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">94.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="zilliken--riesling-auslese-goldkapsel-2009">
+    <naziv>Riesling Auslese Goldkapsel 2009</naziv>
+    <proizvodjac>Zilliken</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,375 l</mjera>
+    <cijena valuta="EUR">390.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">390.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="giuseppe-quintarelli--recioto-classico-2011">
+    <naziv>Recioto Classico 2011</naziv>
+    <proizvodjac>Giuseppe Quintarelli</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,5 l</mjera>
+    <cijena valuta="EUR">250.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">250.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="ca-la-bionda--recioto-classico-2015">
+    <naziv>Recioto Classico 2015</naziv>
+    <proizvodjac>Ca' La Bionda</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">145.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">145.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="donnafugata--ben-rye-2019">
+    <naziv>Ben Ryé 2019</naziv>
+    <proizvodjac>Donnafugata</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">100.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">100.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="giuseppe-quintarelli--amabile-del-cere-2017">
+    <naziv>Amabile del Cere 2017</naziv>
+    <proizvodjac>Giuseppe Quintarelli</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,375 l</mjera>
+    <cijena valuta="EUR">495.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">495.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chateau-d-yquem--sauternes-1er-cru-superieur-2020">
+    <naziv>Sauternes 1er Cru Supérieur 2020</naziv>
+    <proizvodjac>Château d'Yquem</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">880.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">880.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chateau-d-yquem--sauternes-1er-cru-superieur-2015">
+    <naziv>Sauternes 1er Cru Supérieur 2015</naziv>
+    <proizvodjac>Château d'Yquem</proizvodjac>
+    <skupina>Desertna vina</skupina>
+    <kategorija>Desertna vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">940.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">940.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="latvijas-balzams--elit-stolichnaya">
+    <naziv>Elit Stolichnaya</naziv>
+    <proizvodjac>Latvijas Balzams</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Vodka</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="gibson-s--london-dry-gin">
+    <naziv>London Dry Gin</naziv>
+    <proizvodjac>Gibson's</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Gin</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="aura--karbun">
+    <naziv>Karbun</naziv>
+    <proizvodjac>Aura</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Gin</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="brick-gin--straight-organic-distilled-dry-gin">
+    <naziv>Straight Organic Distilled Dry Gin</naziv>
+    <proizvodjac>Brick Gin</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Gin</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="aviation--american-gin">
+    <naziv>American Gin</naziv>
+    <proizvodjac>Aviation</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Gin</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="monkey-47--schwarzwald-dry-gin">
+    <naziv>Schwarzwald Dry Gin</naziv>
+    <proizvodjac>Monkey 47</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Gin</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">7.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">7.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mulassano--bianco">
+    <naziv>Bianco</naziv>
+    <proizvodjac>Mulassano</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Vermut i bitter</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mulassano--rosso">
+    <naziv>Rosso</naziv>
+    <proizvodjac>Mulassano</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Vermut i bitter</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mulassano--extra-dry">
+    <naziv>Extra Dry</naziv>
+    <proizvodjac>Mulassano</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Vermut i bitter</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mulassano--bitter">
+    <naziv>Bitter</naziv>
+    <proizvodjac>Mulassano</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Vermut i bitter</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="cimarron--blanco">
+    <naziv>Blanco</naziv>
+    <proizvodjac>Cimarrón</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Tequila</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">4.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="fortaleza--blanco">
+    <naziv>Blanco</naziv>
+    <proizvodjac>Fortaleza</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Tequila</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">9.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">9.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="fortaleza--reposado">
+    <naziv>Reposado</naziv>
+    <proizvodjac>Fortaleza</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Tequila</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">15.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">15.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="fortaleza--anejo">
+    <naziv>Añejo</naziv>
+    <proizvodjac>Fortaleza</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Tequila</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">18.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">18.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="clase-azul--reposado">
+    <naziv>Reposado</naziv>
+    <proizvodjac>Clase Azul</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Tequila</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">28.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">28.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="del-maguey--vida">
+    <naziv>Vida</naziv>
+    <proizvodjac>Del Maguey</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Mezcal</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">7.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">7.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="bruxo--bruxo">
+    <naziv>Bruxo</naziv>
+    <proizvodjac>Bruxo</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Mezcal</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">7.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">7.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="kilchoman-scotland--machir-bay">
+    <naziv>Machir Bay</naziv>
+    <proizvodjac>Kilchoman</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">6.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="scotland--glen-rothes-9y-artist-collective-2015">
+    <naziv>9Y Artist Collective 2015</naziv>
+    <proizvodjac>Glenrothes</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">19.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">19.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="scotland--sponge-ed-jura-1994">
+    <naziv>1994 – Whisky Sponge</naziv>
+    <proizvodjac>Isle of Jura</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">73.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">73.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="scotland--bladnoch-19y">
+    <naziv>19Y</naziv>
+    <proizvodjac>Bladnoch</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">36.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">36.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="scotland--glenmorangie-signet">
+    <naziv>Signet</naziv>
+    <proizvodjac>Glenmorangie</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">36.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">36.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="kavalan-taiwan--distillery-select">
+    <naziv>Distillery Select</naziv>
+    <proizvodjac>Kavalan</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="kavalan-taiwan--ex-sherry-oak">
+    <naziv>Ex-Sherry Oak</naziv>
+    <proizvodjac>Kavalan</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">11.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">11.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="kavalan-taiwan--solist">
+    <naziv>Solist</naziv>
+    <proizvodjac>Kavalan</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">25.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">25.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mars-japan--maltage-cosmo">
+    <naziv>Maltage Cosmo</naziv>
+    <proizvodjac>Mars Shinshu</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">9.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">9.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mars-japan--tsunuki-edition-2023">
+    <naziv>Tsunuki Edition 2023</naziv>
+    <proizvodjac>Mars Tsunuki</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">16.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">16.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mars-japan--komagatake-limited-edition-2018">
+    <naziv>Komagatake Limited Edition 2018</naziv>
+    <proizvodjac>Mars Shinshu</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">36.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">36.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="usa--westward">
+    <naziv>American Single Malt</naziv>
+    <proizvodjac>Westward</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">18.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">18.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="usa--redemption">
+    <naziv>Rye</naziv>
+    <proizvodjac>Redemption</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Viski</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">6.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="veritas--white-blended-rum">
+    <naziv>White Blended Rum</naziv>
+    <proizvodjac>Veritas</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="clairin--sajous">
+    <naziv>Sajous</naziv>
+    <proizvodjac>Clairin</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">6.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="clairin--casimir">
+    <naziv>Casimir</naziv>
+    <proizvodjac>Clairin</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">6.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="clairin--vaval">
+    <naziv>Vaval</naziv>
+    <proizvodjac>Clairin</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">6.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hampden-estate--hlcf-classic-4y">
+    <naziv>HLCF Classic 4Y</naziv>
+    <proizvodjac>Hampden Estate</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">7.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">7.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hampden-estate--pure-single-jamaican-rum-8y">
+    <naziv>Pure Single Jamaican Rum 8Y</naziv>
+    <proizvodjac>Hampden Estate</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">10.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">10.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="velier--papalim-7y">
+    <naziv>Papalin 7Y</naziv>
+    <proizvodjac>Velier</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">10.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">10.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="long-pond--cambridge-2005">
+    <naziv>Cambridge 2005</naziv>
+    <proizvodjac>Long Pond</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">27.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">27.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="mount-gay--last-ward-2007-barbados">
+    <naziv>The Last Ward 2007</naziv>
+    <proizvodjac>Mount Gay</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">30.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">30.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="chelo-saint-michael--vieux-sajous-2018">
+    <naziv>Vieux Sajous 2018</naziv>
+    <proizvodjac>Chelo</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">13.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">13.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="beenleigh--australia-2015">
+    <naziv>Australia 2015</naziv>
+    <proizvodjac>Beenleigh</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">10.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">10.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="japanese-rhum--nine-leaves-2016">
+    <naziv>2016</naziv>
+    <proizvodjac>Nine Leaves</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">20.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">20.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hampden-estate--pagos-sherry-cask">
+    <naziv>Pagos – Sherry Cask</naziv>
+    <proizvodjac>Hampden Estate</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">12.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">12.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="hampden-estate--great-house-2024">
+    <naziv>Great House 2024</naziv>
+    <proizvodjac>Hampden Estate</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">13.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">13.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="foursquare--raconteur">
+    <naziv>Raconteur</naziv>
+    <proizvodjac>Foursquare</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">35.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">35.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="habitation-velier--renegade-2020">
+    <naziv>Renegade 2020</naziv>
+    <proizvodjac>Renegade</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">14.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">14.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="foursquare--absolutio-15y">
+    <naziv>Absolutio 15Y</naziv>
+    <proizvodjac>Foursquare</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Rum</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">27.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">27.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="through-the-grapevine--chateau-de-beaulon-1988-fins-bois">
+    <naziv>1988 Fins Bois</naziv>
+    <proizvodjac>Château de Beaulon</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Cognac</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">25.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">25.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="through-the-grapevine--michel-forgeron-1992-grande-champagne">
+    <naziv>1992 Grande Champagne</naziv>
+    <proizvodjac>Michel Forgeron</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Cognac</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">25.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">25.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="ohishi--premium-mizunara">
+    <naziv>Premium Mizunara</naziv>
+    <proizvodjac>Ohishi</proizvodjac>
+    <skupina>Žestoka pića</skupina>
+    <kategorija>Shochu</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">16.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">16.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="wise-grus--sljivovica">
+    <naziv>Šljivovica</naziv>
+    <proizvodjac>Wise Grus</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Rakija</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="wise-grus--viljamovka">
+    <naziv>Viljamovka</naziv>
+    <proizvodjac>Wise Grus</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Rakija</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="wise-grus--travarica">
+    <naziv>Travarica</naziv>
+    <proizvodjac>Wise Grus</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Rakija</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="wise-grus--loza">
+    <naziv>Loza</naziv>
+    <proizvodjac>Wise Grus</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Rakija</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="wise-grus--orahovac">
+    <naziv>Orahovac</naziv>
+    <proizvodjac>Wise Grus</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Rakija</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="wise-grus--visnjevac">
+    <naziv>Višnjevac</naziv>
+    <proizvodjac>Wise Grus</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Rakija</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="wise-grus--medica">
+    <naziv>Medica</naziv>
+    <proizvodjac>Wise Grus</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Rakija</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="wise-grus--teranino">
+    <naziv>Teranino</naziv>
+    <proizvodjac>Wise Grus</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Rakija</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="lorenzo-inga--bianca">
+    <naziv>Bianca</naziv>
+    <proizvodjac>Lorenzo Inga</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Grappa</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="lorenzo-inga--barrique">
+    <naziv>Barrique</naziv>
+    <proizvodjac>Lorenzo Inga</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Grappa</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="lorenzo-inga--riserva-18-mesi">
+    <naziv>Riserva 18 Mesi</naziv>
+    <proizvodjac>Lorenzo Inga</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Grappa</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">6.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="lorenzo-inga--amarone-invecchiata">
+    <naziv>Amarone Invecchiata</naziv>
+    <proizvodjac>Lorenzo Inga</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Grappa</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">8.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">8.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="umeshu-genshu">
+    <naziv>Umeshu Genshu</naziv>
+    <proizvodjac>Hakutsuru</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Likeri</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">6.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="appenzeller">
+    <naziv>Alpenbitter</naziv>
+    <proizvodjac>Appenzeller Alpenbitter</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Likeri</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">6.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="wise-grus--ginko-pelinkovac">
+    <naziv>Ginko Pelinkovac</naziv>
+    <proizvodjac>Wise Grus</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Likeri</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">4.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jagermeister-manifest">
+    <naziv>Manifest</naziv>
+    <proizvodjac>Jägermeister</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Likeri</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">9.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">9.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="zmajska-pivovara--pils">
+    <naziv>Pils</naziv>
+    <proizvodjac>Zmajska pivovara</proizvodjac>
+    <skupina>Rakije, grappe, likeri i pivo</skupina>
+    <kategorija>Pivo</kategorija>
+    <mjera>0,5 l</mjera>
+    <cijena valuta="EUR">6.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="romerquelle">
+    <naziv>Römerquelle</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="romerquelle-gazirana">
+    <naziv>Römerquelle gazirana</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="romerquelle-limunska-trava">
+    <naziv>Römerquelle limunska trava</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,35 l</mjera>
+    <cijena valuta="EUR">3.70</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">3.70</sidrena_cijena>
+  </stavka>
+  <stavka sifra="saint-geron">
+    <naziv>Saint Géron</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">6.50</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.50</sidrena_cijena>
+  </stavka>
+  <stavka sifra="saint-geron-gazirana">
+    <naziv>Saint Géron gazirana</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">6.50</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.50</sidrena_cijena>
+  </stavka>
+  <stavka sifra="artesian">
+    <naziv>Artesian</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">6.50</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.50</sidrena_cijena>
+  </stavka>
+  <stavka sifra="artesian-gazirana">
+    <naziv>Artesian gazirana</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">6.50</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">6.50</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jana">
+    <naziv>Jana</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,25 l</mjera>
+    <cijena valuta="EUR">4.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jana">
+    <naziv>Jana</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jamnica">
+    <naziv>Jamnica</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,33 l</mjera>
+    <cijena valuta="EUR">4.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jamnica">
+    <naziv>Jamnica</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="jamnica-sensation">
+    <naziv>Jamnica Sensation</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Mineralna voda</kategorija>
+    <mjera>0,25 l</mjera>
+    <cijena valuta="EUR">3.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">3.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="schweppes-indian-tonic-water">
+    <naziv>Schweppes Indian Tonic Water</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Tonik</kategorija>
+    <mjera>0,25 l</mjera>
+    <cijena valuta="EUR">4.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="svjeze-cijedeni-sok">
+    <naziv>Svježe cijeđeni sok</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Sokovi i bezalkoholna pića</kategorija>
+    <mjera>0,3 l</mjera>
+    <cijena valuta="EUR">5.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">5.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="coca-cola">
+    <naziv>Coca-Cola</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Sokovi i bezalkoholna pića</kategorija>
+    <mjera>0,25 l</mjera>
+    <cijena valuta="EUR">4.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="coca-cola-zero">
+    <naziv>Coca-Cola Zero</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Sokovi i bezalkoholna pića</kategorija>
+    <mjera>0,25 l</mjera>
+    <cijena valuta="EUR">4.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="espresso">
+    <naziv>Espresso</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Kava</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">4.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="macchiato">
+    <naziv>Macchiato</naziv>
+    <proizvodjac></proizvodjac>
+    <skupina>Vode i ostala pića</skupina>
+    <kategorija>Kava</kategorija>
+    <mjera></mjera>
+    <cijena valuta="EUR">4.00</cijena>
+    <sidrena_cijena valuta="EUR" datum="2026-09-10">4.00</sidrena_cijena>
+  </stavka>
+</cjenik>

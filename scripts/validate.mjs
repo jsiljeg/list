@@ -13,6 +13,7 @@ import { joinList } from "./lib/list.mjs";
 import { rankPairings } from "./lib/pairing-rank.mjs";
 import { parseRs } from "./lib/rs.mjs";
 import { criticRank, rankRatings } from "./lib/critics.mjs";
+import { rows as cjenikRows, digest as cjenikDigest } from "./make-cjenik.mjs";
 
 const ctx = {};
 vm.createContext(ctx);
@@ -264,6 +265,59 @@ for (const dish of menu.dishes || []) {
     if (!I18N.hr.styles[s]) errors.push(`${at}: style "${s}" is not a wine style`);
     else if (!wineStyles.has(s)) errors.push(`${at}: style "${s}" is on no wine we pour`);
   }
+}
+
+/* ---------- the anchor price, and the cjenik that publishes it ----------
+   "Sidrena cijena": from 01.10.2026 every price on a Croatian list must be
+   shown beside the regular price that same item carried on the reference day,
+   10.09.2026. It is stored per listing and seeded once by
+   scripts/anchor-prices.py; this is what keeps it frozen afterwards.
+
+   A hard error, not a note. An anchor that quietly followed its price would
+   print a figure the venue never charged, on the one line a guest is being
+   invited to compare — the exact failure the rule exists to prevent, and the
+   one nobody could catch by reading the list, because the two numbers would
+   always agree. */
+const warrant = JSON.parse(fs.readFileSync("data/source/anchor-prices-2026-09-10.json", "utf8"));
+const anchorShelf = (id) => (id === "glass" ? "glass" : id.startsWith("bottle-") ? "bottle" : id);
+const anchorKey = (shelfId, ref, vol) => [shelfId, ref, vol == null ? "" : String(vol)].join("|");
+const wasCharged = new Map(warrant.prices.map((p) => [anchorKey(p.shelf, p.ref, p.vol), p.price]));
+
+/* Read the list raw, not joined: mergeList() drops `ref`, and the ref is the
+   half of the key that says which wine this is. */
+const rawList = JSON.parse(fs.readFileSync("lists/theatrium.json", "utf8"));
+const stillListed = new Set();
+for (const sec of rawList.sections)
+  for (const cat of sec.categories)
+    for (const g of cat.groups)
+      for (const it of g.items) {
+        const key = anchorKey(anchorShelf(sec.id), it.ref, it.vol);
+        const was = wasCharged.get(key);
+        const at = `${sec.id}/${cat.id}: "${it.ref}"`;
+        if (was !== undefined) stillListed.add(key);
+        if (it.anchor === undefined) {
+          if (was !== undefined)
+            errors.push(`${at}: lost its anchor price — it was ${was} € on ${warrant.date}. Restore "anchor": ${was}`);
+        } else if (typeof it.anchor !== "number") {
+          errors.push(`${at}: anchor must be a number (no quotes, no €)`);
+        } else if (was === undefined) {
+          errors.push(`${at}: has an anchor price but was not on the list on ${warrant.date} — a listing added since has none, so drop the field`);
+        } else if (it.anchor !== was) {
+          errors.push(`${at}: anchor says ${it.anchor} € but ${warrant.date} says ${was} €. The anchor never changes — edit "price" and put this one back`);
+        }
+      }
+
+/* The published cjenik has to *be* the list. A service provider republishes
+   immediately after every change, so the deploy is the moment to check: a
+   price edited without regenerating leaves a stale file at a public URL for
+   as long as nobody looks. */
+if (!fs.existsSync("cjenik/cjenik.xml")) {
+  errors.push("cjenik/cjenik.xml is missing — run: npm run cjenik");
+} else {
+  const published = (fs.readFileSync("cjenik/cjenik.xml", "utf8").match(/sazetak="([^"]+)"/) || [])[1];
+  const fresh = cjenikDigest(cjenikRows());
+  if (published !== fresh)
+    errors.push(`cjenik/ is out of date — run: npm run cjenik, then commit cjenik/ (${published} vs ${fresh})`);
 }
 
 if (errors.length) {

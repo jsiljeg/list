@@ -17,6 +17,12 @@ mkdir -p "$out"
 
 # pages, the service worker, and the crawler/TDM declarations (see LICENSE)
 cp index.html admin.html qr.html manifest.webmanifest sw.js robots.txt LICENSE "$out/"
+
+# the price list in a form a machine can read, plus its archive. Croatian law
+# from 01.10.2026: published on the website, refreshed as soon as anything
+# changes, and every published version reachable for at least 30 days. The
+# whole directory goes, because the archive *is* the retention.
+cp -r cjenik "$out/"
 cp -r .well-known "$out/"
 
 # code and artwork
