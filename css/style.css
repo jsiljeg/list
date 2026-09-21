@@ -402,22 +402,44 @@ body {
   font-family: var(--serif);
   font-size: 1.35rem; color: var(--gold);
   white-space: nowrap;
-  /* A column, so the anchor price sits under the price it is there to be
-     compared with. An inline-flex box takes its baseline from its first line,
-     so the gold figure still sits on the same baseline as the name and the
-     dotted leader, exactly as it did when it was a bare span. */
-  display: inline-flex; flex-direction: column; align-items: flex-end;
+  /* Two price columns need to be columns: a fixed minimum and a right edge, so
+     the figures stack into a line down the list instead of ragging with the
+     length of each number. Tabular figures because 1 is narrower than 8 in
+     this face, and a price list is read by scanning down. */
+  min-width: 3.9rem; text-align: right;
+  font-variant-numeric: tabular-nums;
 }
-/* The anchor price on a list row. It is on all 393 of them, so it is set as
-   quietly as it can be and still be read at arm's length on a tablet: the sans
-   face and the faint ink, because it is a disclosure rather than a second
-   price tag, and nothing about it should compete with the gold. */
+/* The anchor price ("sidrena cijena"), in its own column to the left of the
+   price it is there to be compared with. Sans and faint: it is a disclosure,
+   not a second price tag, and nothing about it should compete with the gold. */
 .item-anchor {
-  font-family: var(--sans); font-size: .7rem; font-weight: 400;
-  letter-spacing: .05em; color: var(--text-faint);
-  margin-top: .12rem;
+  font-family: var(--sans); font-size: .84rem; font-weight: 400;
+  color: var(--text-faint); white-space: nowrap;
+  min-width: 3.6rem; text-align: right;
+  font-variant-numeric: tabular-nums;
 }
-.item-chevron { color: var(--text-faint); font-size: 1.1rem; align-self: center; }
+/* The caption that names the two columns, once per list instead of eleven
+   characters on every row. It is a real row, borrowing .item-row's cells, so
+   the labels sit over the columns they name without a second set of widths to
+   keep in step. */
+.price-cols {
+  display: flex; align-items: baseline; gap: .55rem;
+  padding: .1rem .6rem 0;               /* .item's horizontal padding, so the cells line up */
+}
+.price-cols .dots { border-bottom: none; }
+.price-cols .item-anchor,
+.price-cols .item-price {
+  font-family: var(--sans); font-size: .62rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-faint); line-height: 1.2;
+}
+/* A fixed cell, not a glyph: the caption above the price columns has an empty
+   one, and a row that opens no card (the water shelf) has an empty one too, so
+   every price column starts at the same x. */
+.item-chevron {
+  color: var(--text-faint); font-size: 1.1rem; align-self: center;
+  flex: none; width: .7rem; text-align: center;
+}
 .item-flag { margin-left: .55rem; line-height: 0; display: inline-block; vertical-align: -3px; }
 .item-flag svg, .item-flag .flag-img { width: 19px; height: 13px; border-radius: 2px; opacity: .9; box-shadow: 0 0 0 1px rgba(255,255,255,.1); }
 .search-context { display: block; color: var(--text-faint); font-size: .8rem; margin-top: .15rem; }
@@ -590,6 +612,13 @@ body {
   font-family: var(--sans); font-size: .72rem; font-weight: 400;
   letter-spacing: .09em; text-transform: uppercase;
   color: var(--text-faint); margin-top: .35rem;
+}
+/* On a phone the two columns and a long wine name are fighting for 390px, so
+   the anchor gives up its reserved width first — the figures still align,
+   just less generously. */
+@media (max-width: 460px) {
+  .item-anchor { min-width: 3rem; font-size: .78rem; }
+  .item-price { min-width: 3.4rem; }
 }
 .detail-style { color: var(--text-dim); font-style: italic; margin-bottom: 1.1rem; }
 .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem 1.4rem; }

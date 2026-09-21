@@ -557,14 +557,32 @@ const alcText = (a) => {
    and the rule is about a guest being able to compare, not about us
    confessing. An item that joined the list after the reference day has no
    anchor — it had no price that day — and prints none. */
-const anchorText = (item) =>
-  (item.anchor == null ? "" : `${T().ui.anchorDate} · ${fmtPrice(item.anchor)} €`);
+/* Two columns, and the date once. The first version printed
+   "10.09.2026. · 49 €" under every price, which put the same eleven
+   characters on all 393 rows to carry one number that varies — the owner read
+   it as "a lot of letters", which is exactly what it was. The date is a
+   property of the *column*, not of the row, so it moved into a caption at the
+   top of each list and the row keeps only the figure.
+
+   Where the two numbers are equal, they print equal. That looks redundant and
+   is not: today every price on the list is unchanged since the reference day,
+   and two matching columns say so at a glance. */
+const priceCaption = () => {
+  const t = T();
+  return `<div class="price-cols" aria-hidden="true">
+    <span class="item-name"></span><span class="dots"></span>
+    <span class="item-anchor">${esc(t.ui.anchorDate)}</span>
+    <span class="item-price">${esc(t.ui.priceCol)}</span>
+    <span class="item-chevron"></span></div>`;
+};
 
 function priceHtml(item) {
   if (item.price == null) return "";
-  const anchor = anchorText(item);
-  return `<span class="item-price">${fmtPrice(item.price)}&nbsp;€${
-    anchor ? `<small class="item-anchor">${esc(anchor)}</small>` : ""}</span>`;
+  /* The anchor cell is emitted even when empty, so a listing added since the
+     reference day does not pull the price column out of line. */
+  return `<span class="item-anchor">${
+    item.anchor == null ? "" : esc(fmtPrice(item.anchor)) + " €"}</span>` +
+    `<span class="item-price">${fmtPrice(item.price)}&nbsp;€</span>`;
 }
 
 /* minimalist gold marker icons for the list + legend */
@@ -687,7 +705,7 @@ function itemHtml(item, ref, context, showFlag, aside) {
       <span class="item-name">${nameHtml(item)}</span>
       <span class="dots" aria-hidden="true"></span>
       ${priceHtml(item)}
-      ${clickable ? '<span class="item-chevron">›</span>' : ""}
+      <span class="item-chevron">${clickable ? "›" : ""}</span>
     </span>
     ${item.producer || showFlag || aside ? `<span class="item-producer">${esc(item.producer || "")}${producerZh(item.producer) ? `<span class="zh-gloss">（${producerZh(item.producer)}）</span>` : ""}${showFlag ? itemFlag(item) : ""}${aside ? `<span class="item-aside">${aside}</span>` : ""}</span>` : ""}
     ${context ? `<span class="search-context">${esc(context)}</span>` : ""}
@@ -1098,7 +1116,7 @@ function renderContent() {
     const render = (rows, label) => {
       if (!rows.length) return;
       if (found === 0) html += `<div class="cat">`;
-      html += `<div class="search-group">${esc(label)} <span class="search-count">${rows.length}</span></div>`;
+      html += `<div class="search-group">${esc(label)} <span class="search-count">${rows.length}</span></div>` + priceCaption();
       for (const r of rows) {
         found++;
         searchRefs.push(r.ref);
@@ -1144,7 +1162,7 @@ function renderContent() {
       });
     });
     html = newHtml
-      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.sparkle}</span>${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${newHtml}</section>`
+      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.sparkle}</span>${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${priceCaption()}${newHtml}</section>`
       : `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (prideOnly) {
     const pride = [];
@@ -1161,7 +1179,7 @@ function renderContent() {
     pride.sort((a, b) => b.item.price - a.item.price);
     if (pride.length) {
       html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.crown}</span>${esc(t.ui.pride)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div><p class="pride-sub">${esc(t.ui.prideSub)}</p>`;
-      html += pride.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
+      html += priceCaption() + pride.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
       html += `</section>`;
     } else {
       html = `<p class="no-results">${t.ui.noResults}</p>`;
@@ -1181,7 +1199,7 @@ function renderContent() {
     rated.sort((a, b) => b.best - a.best);
     if (rated.length) {
       html += `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.trophy}</span>${esc(t.ui.bestRated)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>`;
-      html += rated.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
+      html += priceCaption() + rated.map((r) => itemHtml(r.item, r.ref, [t.sections[r.sec.id], r.country ? t.countries[r.country] : null].filter(Boolean).join(" · "))).join("");
       html += `</section>`;
     } else {
       html = `<p class="no-results">${t.ui.noResults}</p>`;
@@ -1205,7 +1223,7 @@ function renderContent() {
       if (secHtml) body += `<h3 class="picks-group">${esc(t.sections[sec.id])}</h3>${secHtml}`;
     });
     html = total
-      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.picks)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${body}</section>`
+      ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.picks)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${priceCaption()}${body}</section>`
       : `<p class="no-results">${t.ui.noResults}</p>`;
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
@@ -1213,6 +1231,7 @@ function renderContent() {
     sec.categories.forEach((cat, ci) => {
       html += `<section class="cat"><h2 class="cat-title">${esc(t.categories[cat.id] || cat.id)}${cat.serving ? ` <span class="cat-serving">${cat.serving}</span>` : ""}</h2><div class="ornament" aria-hidden="true">${ornamentFor(sec.id)}</div>`;
       if (cat.priceNote) html += `<p class="price-note">${t.ui.priceNote}</p>`;
+      html += priceCaption();
       cat.groups.forEach((g, gi) => {
         if (g.country) html += `<h3 class="country">${COUNTRY_FLAGS[g.country] ? `<span class="country-flag">${COUNTRY_FLAGS[g.country]()}</span>` : ""}<span>${esc(t.countries[g.country] || g.country)}</span></h3>`;
         html += g.items.map((item, ii) => itemHtml(item, [si, ci, gi, ii].join("."))).join("");
@@ -2301,7 +2320,7 @@ function renderHelperResults(budgetKey) {
     : "";
   const answer = (rowsFor, glassMode, active) => {
     const rowsHtml = rowsFor.length
-      ? rowsFor.map((r) => {
+      ? priceCaption() + rowsFor.map((r) => {
           const also = !glassMode && gp.get(wineKey(r.item.producer, r.item.name));
           const aside = also ? `🍷 ${esc(t.ui.alsoByGlass)} ${esc(fmtPrice(also))} €` : "";
           return itemHtml(r.item, r.ref, "", true, aside);

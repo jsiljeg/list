@@ -507,7 +507,40 @@ from the price standing on 2026-09-21** and all 393 currently agree.
   week and claim it was for sale in September.
 - **Printed on every row, not only where the two differ.** A line that appeared
   only on the repriced wines would point straight at them; the rule is about a
-  guest being able to compare.
+  guest being able to compare. Where the two agree they print twice, which is
+  not redundancy: today nothing has moved since the reference day, and two
+  matching columns say exactly that.
+
+**It is a column, and the date is said once** (owner, 2026-09-21: "this looks a
+bit weird with a lot of letters"). The first version printed
+`10.09.2026. · 49 €` under every price — 393 copies of eleven characters to
+carry the one number that varies. The date is a property of the *column*, not
+of the row, so it moved to a caption at the top of each list
+(`10.09.2026.` / `CIJENA`) and the row keeps the figure alone.
+
+- `priceCaption()` is emitted by **all seven surfaces that list rows**: a
+  category, search (under each of its two block headings), Filho's picks, the
+  Ikone board, the best-rated board, new arrivals, and the sommelier's
+  suggestions — which are a choosing surface and so carry the columns like any
+  other list.
+- **The caption is not an `.item`.** It was, for one round, and `shot.mjs`
+  immediately opened it instead of the first wine; 40 assertions in the suite
+  count `.item`s. It is its own `.price-cols` row that borrows the same cells.
+- **Every row emits a chevron cell, empty when the row opens no card.** It used
+  to be emitted only when clickable, which pushed the water shelf's prices a
+  chevron's width right of every wine's. The cell now has a fixed width so the
+  caption's empty one matches too.
+- Measured rather than eyeballed, per the standing lesson: at 390px and 1024px,
+  in four categories, there is **exactly one right edge** for each column and
+  no name/price collision.
+
+**"Ovo vino, molim" deliberately shows no anchor.** The waiter card is a
+pointing surface, not a choosing one — the guest has already decided, and the
+price is there so the two of them agree on which bottle. CLAUDE.md already
+says nothing else belongs on it ("the price alone is the whole of what the
+waiter needs"), and a compliance disclosure on a card read across a noisy
+table in one second is the wrong place for it. The price list, every board,
+the search, the sommelier and the wine's own card all carry it.
 
 **The cjenik is generated, never hand-written.** `npm run cjenik` writes
 `cjenik/cjenik.xml` + `.csv` (stable URLs), a dated archive pair **only when
