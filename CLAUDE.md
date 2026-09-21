@@ -569,6 +569,38 @@ decoded to `https://theatrium.list.devinos.hr` on the day they were written;
 that is the only verification that means anything, since a QR that encodes the
 wrong string looks exactly like one that does not.
 
+## A contact QR is a different problem from the list QR (2026-09-21)
+
+`scripts/qr-card.py` writes a vCard code for a printed business card. It is
+not the same job as `scripts/qr.py`, and the difference is worth stating,
+because the instinct — raise the error correction, like the table code — is
+exactly wrong here.
+
+The list URL is 32 bytes, so its symbol is a version 4 at any size a table
+card allows. **A vCard is 150-250 bytes, and a business card gives the code
+about 20mm.** Module size is then the whole design:
+
+    full vCard (with ADR + URL)  256 B  M  v12  73 modules  0.27mm at 20mm
+    lean vCard (no ADR, no URL)  164 B  M   v9  61 modules  0.33mm at 20mm
+    MECARD                        87 B  M   v6  49 modules  0.41mm at 20mm
+
+A phone wants roughly **0.4mm per module** off paper and gets unreliable below
+0.3mm in restaurant light. So the full vCard fails at any size that fits a
+card — it looks perfect on a screen and fails in a pocket. What ships is the
+**lean vCard at M, printed at 25mm** (0.41mm/module); the script refuses to
+stay quiet about it and prints the smallest size that still scans.
+
+Two judgements inside that. **vCard over the smaller MECARD**, because iOS
+reads vCard reliably and MECARD unevenly, and half the guests are on iPhones.
+And **the postal address is not in the code** — it is printed on the card
+where a human reads it, and spending a third of the symbol on it is what
+pushed the modules under the limit.
+
+**Nothing personal is committed.** The script has no defaults, takes the
+details as arguments, and writes to `cards/`, which is gitignored: the repo is
+public, and a mobile number handed to a guest across a table is not the same
+thing as one indexed on the web.
+
 ## The kitchen's card is seasonal (2026-09-04)
 
 A dish that comes off the card in September is usually back next spring, and

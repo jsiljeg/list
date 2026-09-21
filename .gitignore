@@ -12,3 +12,8 @@ __pycache__/
 scratch/producers.html
 scratch/producers-export.json
 _site/
+
+# Personal contact cards. The repo is public: a mobile number handed to a guest
+# across a table is not the same thing as one indexed on the web. Regenerate
+# with scripts/qr-card.py, which keeps no personal data of its own.
+cards/
