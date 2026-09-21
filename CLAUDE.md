@@ -569,37 +569,52 @@ decoded to `https://theatrium.list.devinos.hr` on the day they were written;
 that is the only verification that means anything, since a QR that encodes the
 wrong string looks exactly like one that does not.
 
-## A contact QR is a different problem from the list QR (2026-09-21)
+## The business card carries the list, not the person (2026-09-21)
 
-`scripts/qr-card.py` writes a vCard code for a printed business card. It is
-not the same job as `scripts/qr.py`, and the difference is worth stating,
-because the instinct — raise the error correction, like the table code — is
-exactly wrong here.
+`scripts/make-card.mjs` builds a business card — 85x55mm, an HTML to look at
+and a print-ready PDF. The first version put a **vCard** QR on it and that was
+wrong (owner: "I meant QR code with wine list"). A guest handed this card wants
+the wine list; the phone and email are printed beside it as text, which is
+where a human reads them anyway. `scripts/qr-card.py`, which wrote the vCard,
+is deleted — it is in the history if a contact code is ever wanted.
 
-The list URL is 32 bytes, so its symbol is a version 4 at any size a table
-card allows. **A vCard is 150-250 bytes, and a business card gives the code
-about 20mm.** Module size is then the whole design:
+It also makes the code far more comfortable, which is the part worth keeping:
 
-    full vCard (with ADR + URL)  256 B  M  v12  73 modules  0.27mm at 20mm
-    lean vCard (no ADR, no URL)  164 B  M   v9  61 modules  0.33mm at 20mm
-    MECARD                        87 B  M   v6  49 modules  0.41mm at 20mm
+    vCard, 164 bytes   61 modules   0.33mm per module at 20mm   marginal
+    list URL, 32 B     41 modules   0.49mm per module at 20mm   comfortable
 
-A phone wants roughly **0.4mm per module** off paper and gets unreliable below
-0.3mm in restaurant light. So the full vCard fails at any size that fits a
-card — it looks perfect on a screen and fails in a pocket. What ships is the
-**lean vCard at M, printed at 25mm** (0.41mm/module); the script refuses to
-stay quiet about it and prints the smallest size that still scans.
+A phone wants about 0.4mm off paper. The payload, not the error correction, is
+what decides whether a code on a card scans.
 
-Two judgements inside that. **vCard over the smaller MECARD**, because iOS
-reads vCard reliably and MECARD unevenly, and half the guests are on iPhones.
-And **the postal address is not in the code** — it is printed on the card
-where a human reads it, and spending a third of the symbol on it is what
-pushed the modules under the limit.
+Three things cost real time here, and all three were found by measuring rather
+than looking:
 
-**Nothing personal is committed.** The script has no defaults, takes the
-details as arguments, and writes to `cards/`, which is gitignored: the repo is
-public, and a mobile number handed to a guest across a table is not the same
-thing as one indexed on the web.
+- **`filter: invert(1)` rasterizes in print-to-PDF.** The owner reported a
+  pixelated logo beside crisp text. The suspect was the `<img src=".svg">` and
+  it was innocent — Chromium prints a linked SVG as paths. The cream card
+  needed the filter because the logo ships white; measured, plain and
+  `opacity: .9` produce 0 image objects and `invert(1)` produces 2. The card is
+  dark now, so the white logo goes on untouched.
+- **segno writes no viewBox.** Its QR is `width="492" height="492"` with the
+  path scaled 12x inside. Strip the size off to let CSS size it — the obvious
+  thing to do when inlining — and the coordinate system stays unscaled: the
+  code renders as one giant corner block, and it is still a valid SVG, so
+  nothing complains. `inline()` derives a viewBox from the width and height
+  before dropping them.
+- **`/Image` is the wrong string to grep in a PDF.** Every Chromium PDF lists
+  `/ImageB /ImageC /ImageI` in its ProcSet, so the check reported three rasters
+  on a page containing nothing but text, and sent me hunting a bug that did not
+  exist. Match `/Subtype /Image`.
+
+The card is the app's identity rather than a light flyer — charcoal, gold,
+Markazi over Raleway — because a card that does not look like the list is a
+card a guest does not connect to the list. The code sits on a cream tile:
+scanners want dark modules on a light field, and an inverted QR is a coin flip
+on half the phones in the room. Layout is flex, not grid; the grid version let
+the tile drive the row heights and pushed the email 5.3mm off the bottom.
+
+Output goes to `cards/`, which is gitignored: the repo is public, and a number
+handed across a table is not one indexed on the web.
 
 ## The kitchen's card is seasonal (2026-09-04)
 
