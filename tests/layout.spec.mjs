@@ -478,3 +478,24 @@ test("nothing is sized in dvh", async () => {
     .map(([n, line]) => `${n}: ${line.trim()}`);
   expect(hits, "dvh makes the layout follow the phone's address bar — use svh").toEqual([]);
 });
+
+test("the list dissolves under the header instead of being cut", async () => {
+  /* Owner, 2026-09-21: "sharp edges... maybe the text should fade a bit while
+     we scroll". A wine name was sliced clean in half at the line where the
+     header's 97% backdrop stops, with the chips' rounded bottoms resting on
+     it. Two fixes, and both are asserted here rather than on a painted screen:
+     a gradient that hangs below the header, and bottom padding on the chip
+     strip, which was 0. Geometry assertions about a sticky overlay are exactly
+     the kind that pass while looking wrong, so this checks the rule. */
+  const ROOT = resolve(HERE, "..");          /* as the sibling tests do */
+  const css = readFileSync(resolve(ROOT, "css/style.css"), "utf8");
+  const after = css.slice(css.indexOf(".header::after"), css.indexOf(".header::after") + 320);
+  expect(after).toContain("top: 100%");          /* below the header, not inside it */
+  expect(after).toContain("linear-gradient");
+  expect(after).toContain("pointer-events: none"); /* never eats a tap on the row */
+
+  const nav = css.slice(css.indexOf("\n.nav {"), css.indexOf("\n.nav {") + 500);
+  const pad = nav.match(/padding:\s*[\d.]+rem\s+[\d.]+rem\s+([\d.]+)rem/);
+  expect(pad, "the .nav padding shorthand should carry a bottom value").not.toBeNull();
+  expect(Number(pad[1])).toBeGreaterThan(0);
+});
