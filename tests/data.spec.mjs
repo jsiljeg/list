@@ -1349,52 +1349,45 @@ test("an anchor price is a number, like a price", () => {
   expect(wrong.map((i) => i.ref)).toEqual([]);
 });
 
-test("the anchor price is a column, and the date is said once per list", () => {
-  /* The first version printed the date under every price — 393 copies of
-     eleven characters to carry one number (owner, 2026-09-21: "a lot of
-     letters"). The date belongs to the column, so it lives in the caption and
-     the row keeps only the figure. Asserted against the source rather than a
-     rendered screen: this is a rule about where a string is written, and a
-     source assertion cannot pass for weeks while the app is wrong. */
+test("the anchor price is rendered, and the date is in all eight languages", () => {
+  /* Two designs were tried on 2026-09-21. The row carries the date *and* the
+     figure, stacked under the price — Filho's call, over a column layout that
+     said the date once per list. Asserted so a future tidy-up of the repeated
+     date is a decision someone makes, not one they make by accident. */
   const app = readFileSync(resolve(ROOT, "js/app.js"), "utf8");
-  const priceFn = app.slice(app.indexOf("function priceHtml"), app.indexOf("/* minimalist gold marker"));
-  expect(priceFn).toContain("item-anchor");
-  expect(priceFn).not.toContain("anchorDate");        /* the row prints no date */
-  const caption = app.slice(app.indexOf("const priceCaption"), app.indexOf("function priceHtml"));
-  expect(caption).toContain("anchorDate");            /* the caption does */
-  expect(caption).toContain("priceCol");
-  expect(app).toContain("detail-anchor");             /* the card, in full */
-  expect(app).toContain("anchorNote");                /* the footer, saying what it is */
-
+  expect(app).toContain("item-anchor");             /* the list row */
+  expect(app).toContain("const anchorText");        /* date + figure, per row */
+  expect(app).toContain("detail-anchor");           /* the wine card */
+  expect(app).toContain("anchorNote");              /* the footer, saying what it is */
   const css = readFileSync(resolve(ROOT, "css/style.css"), "utf8");
-  for (const sel of [".item-anchor", ".detail-anchor", ".price-cols"]) expect(css).toContain(sel);
+  expect(css).toContain(".item-anchor");
+  expect(css).toContain(".detail-anchor");
 
   const ctx = {};
   vm.createContext(ctx);
   vm.runInContext(readFileSync(resolve(ROOT, "js/i18n.js"), "utf8") + "\nthis.I18N = I18N; this.LANGS = LANGS;", ctx);
   for (const { code } of ctx.LANGS) {
     const ui = ctx.I18N[code].ui;
-    for (const k of ["anchorDate", "anchorLabel", "anchorNote", "priceCol"])
+    for (const k of ["anchorDate", "anchorLabel", "anchorNote"])
       expect(`${code}.${k}: ${ui[k] || ""}`).toMatch(/: .+/);
-    /* Whatever the language writes the date as, it is 2026 — a translated note
-       that quietly moved the day would be the one error a guest could not
-       catch and an inspector could. */
+    /* Whatever the language writes the date as, it is the 10th of the 9th,
+       2026 — a translated note that quietly moved the day would be the one
+       error a guest could not catch and an inspector could. */
     expect(`${code}: ${ui.anchorDate}`).toMatch(/2026/);
     expect(`${code}: ${ui.anchorNote}`).toMatch(/2026/);
   }
 });
 
-test("every row keeps a chevron cell, so the price columns line up", () => {
-  /* Caught while building the columns (2026-09-21): the chevron was emitted
-     only on rows that open a card, so the water shelf — which opens none —
-     printed its prices a chevron's width to the right of every wine. The cell
-     is now always there and empty when the row is not clickable, and it has a
-     fixed width so the caption's empty one matches. */
+test("every row keeps a chevron cell, so the prices line up", () => {
+  /* Found while trying the column layout (2026-09-21): the chevron was
+     emitted only on rows that open a card, so the water shelf — which opens
+     none — printed its prices a chevron's width right of every wine's. It was
+     invisible until the price grew a second line under it. The cell is now
+     always there, empty when the row is not clickable, at a fixed width. */
   const app = readFileSync(resolve(ROOT, "js/app.js"), "utf8");
-  const row = app.slice(app.indexOf("function itemHtml"), app.indexOf("/* Producer|name → the by-the-glass price"));
-  expect(row).toMatch(/<span class="item-chevron">\$\{clickable \?/);
+  expect(app).toContain('<span class="item-chevron">${clickable ?');
   const css = readFileSync(resolve(ROOT, "css/style.css"), "utf8");
-  expect(css.slice(css.indexOf(".item-chevron {"), css.indexOf(".item-chevron {") + 220)).toContain("width:");
+  expect(css.slice(css.indexOf(".item-chevron {"), css.indexOf(".item-chevron {") + 240)).toContain("width:");
 });
 
 test("the published cjenik is the list, in both machine formats", () => {

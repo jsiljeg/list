@@ -507,40 +507,34 @@ from the price standing on 2026-09-21** and all 393 currently agree.
   week and claim it was for sale in September.
 - **Printed on every row, not only where the two differ.** A line that appeared
   only on the repriced wines would point straight at them; the rule is about a
-  guest being able to compare. Where the two agree they print twice, which is
-  not redundancy: today nothing has moved since the reference day, and two
-  matching columns say exactly that.
+  guest being able to compare.
 
-**It is a column, and the date is said once** (owner, 2026-09-21: "this looks a
-bit weird with a lot of letters"). The first version printed
-`10.09.2026. · 49 €` under every price — 393 copies of eleven characters to
-carry the one number that varies. The date is a property of the *column*, not
-of the row, so it moved to a caption at the top of each list
-(`10.09.2026.` / `CIJENA`) and the row keeps the figure alone.
+**The date is repeated on every row, and that is the chosen design.** Two were
+built on 2026-09-21. The second printed the date once per list as a column
+caption (`10.09.2026.` / `CIJENA`) with the bare figure in its own column, on
+the reasoning that eleven characters × 393 rows carry one number — and it
+measured clean, one right edge per column at 390px and 1024px. **Filho
+preferred the first**, so the anchor stays a small faint line stacked under
+the price, date and figure together, and the columns were reverted.
 
-- `priceCaption()` is emitted by **all seven surfaces that list rows**: a
-  category, search (under each of its two block headings), Filho's picks, the
-  Ikone board, the best-rated board, new arrivals, and the sommelier's
-  suggestions — which are a choosing surface and so carry the columns like any
-  other list.
-- **The caption is not an `.item`.** It was, for one round, and `shot.mjs`
-  immediately opened it instead of the first wine; 40 assertions in the suite
-  count `.item`s. It is its own `.price-cols` row that borrows the same cells.
-- **Every row emits a chevron cell, empty when the row opens no card.** It used
-  to be emitted only when clickable, which pushed the water shelf's prices a
-  chevron's width right of every wine's. The cell now has a fixed width so the
-  caption's empty one matches too.
-- Measured rather than eyeballed, per the standing lesson: at 390px and 1024px,
-  in four categories, there is **exactly one right edge** for each column and
-  no name/price collision.
+Worth knowing before anyone "tidies up" the repetition again: it has already
+been tried, it works, and it was turned down on taste. The stacked line reads
+as a note attached to *that* price; the column reads as a table. A wine list
+is not a table. `data.spec.mjs` asserts the stacked form so the next attempt
+is a decision rather than a drive-by.
 
 **"Ovo vino, molim" deliberately shows no anchor.** The waiter card is a
 pointing surface, not a choosing one — the guest has already decided, and the
-price is there so the two of them agree on which bottle. CLAUDE.md already
-says nothing else belongs on it ("the price alone is the whole of what the
-waiter needs"), and a compliance disclosure on a card read across a noisy
-table in one second is the wrong place for it. The price list, every board,
-the search, the sommelier and the wine's own card all carry it.
+price is there so the two of them agree on which bottle. The file already says
+nothing else belongs on it ("the price alone is the whole of what the waiter
+needs"). The list, the search, all three boards, the sommelier's suggestions
+and the wine's own card all carry it.
+
+**Every row emits a chevron cell, empty when the row opens no card** — kept
+from the column round, because it is independent of the layout. It used to be
+emitted only when clickable, so the water shelf carried its prices a chevron's
+width right of every wine's; invisible until the price grew a second line, and
+then not.
 
 **The cjenik is generated, never hand-written.** `npm run cjenik` writes
 `cjenik/cjenik.xml` + `.csv` (stable URLs), a dated archive pair **only when
