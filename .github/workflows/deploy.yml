@@ -11,6 +11,8 @@ on:
       - ".github/workflows/deploy-web.yml"
       - "scratch/**"
       - "docs/**"
+      # Claude Code skills (the sommelier) are tooling, not the site.
+      - ".claude/**"
   workflow_dispatch:
 
 permissions:
