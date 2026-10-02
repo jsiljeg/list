@@ -6,6 +6,8 @@
  *   node .claude/skills/sommelier/pair.mjs --wine "dingač"            which live dishes suit a wine
  *   node .claude/skills/sommelier/pair.mjs --vocab                    every food tag and style, with counts
  *
+ *   ... --bands       exactly what the tablet's "Pomozi mi odabrati" shows, band by band
+ *
  * Options: --glass (by-the-glass pours only)  --budget 0-60 (bottle price)
  *          --n 10  --live (read the published list instead of the working tree)
  *
@@ -86,6 +88,34 @@ const unknown = dish.pairings.filter((k) => !rows.some((r) => (r.insight.pairing
 console.log(`foods:  ${dish.pairings.map(word).join(", ") || "—"}`);
 console.log(`styles: ${dish.styles.join(", ") || "—"}`);
 if (unknown.length) console.log(`!! no wine on the list carries: ${unknown.join(", ")} — that tag cannot find anything`);
+
+/* --bands: the tablet's answer, per budget band. The tablet adds up to 4
+   points of random tie-break (js/app.js renderHelperResults), so it shows the
+   top three *most of the time*; any wine within 4 points of the third takes
+   turns with it — listed as "rotates". Bands as HELPER_BUDGET: do 60, 60–120,
+   iznad 120, and "Bez ograničenja" = the Ikone (500 €+). The glass answer is
+   not budgeted, and skips wines the bottle rows already offer by the glass. */
+if (has("bands")) {
+  const BANDS = [["do 60 €", 0, 60], ["60–120 €", 60, 120], ["iznad 120 €", 120, Infinity], ["Bez ograničenja (500 €+)", 500, Infinity]];
+  const line = (w, glass) => `${w.producer} — ${w.name}${w.recommended ? " ★" : ""}  ${glass ? `čaša ${w.price} €` : `${w.price} €`}` +
+    `${!glass && w.glassPrice != null ? ` (i na čašu ${w.glassPrice} €)` : ""}  [${w.score}${w.shared.length ? `: ${w.shared.join(", ")}` : ", samo stil"}]`;
+  const block = (xs, glass) => {
+    if (!xs.length) return console.log("    (ništa)");
+    xs.slice(0, 3).forEach((w) => console.log(`    ${line(w, glass)}`));
+    const third = xs[Math.min(2, xs.length - 1)].score;
+    const rot = xs.slice(3).filter((w) => w.score > third - 4);
+    if (rot.length) console.log(`    rotates: ${rot.map((w) => `${w.producer} ${w.name} (${w.score})`).join(" · ")}`);
+  };
+  for (const [label, lo, hi] of BANDS) {
+    console.log(`
+  ${label}`);
+    block(suggest(dish, rows, { n: 50, lo, hi }), false);
+  }
+  console.log(`
+  Radije na čašu?`);
+  block(suggest(dish, rows, { n: 50, glassOnly: true }), true);
+  process.exit(0);
+}
 
 const [lo, hi] = (opt("budget") || "0-").split("-").map((x) => (x === "" ? Infinity : Number(x)));
 const n = Number(opt("n")) || 8;
