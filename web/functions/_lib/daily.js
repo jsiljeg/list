@@ -20,9 +20,16 @@ export const COURSE_HR = { starters: "Predjela", soups: "Juhe", mains: "Glavna j
 const WINE_LIST = "https://theatrium.list.devinos.hr";
 export const wineListOrigin = (env) => (env && env.WINE_LIST_ORIGIN) || WINE_LIST;
 
-/** Today on the restaurant's wall clock, YYYY-MM-DD. */
+/* The service day, YYYY-MM-DD. It rolls over at 03:00 UTC (04:00/05:00 in
+   Zagreb), not at midnight — owner, 2026-10-02: the day's offer disappears by
+   itself overnight and nobody has to remove it, but a table still eating at
+   00:30 does not watch it vanish. Nothing is deleted: the row stays in D1 for
+   the staff page, it is simply no longer "today". The wine list's sommelier
+   uses the same rule (branch wine-list-daily-offer), so the two cannot
+   disagree about which offer is current. */
+export const ROLLOVER_UTC_HOUR = 3;
 export const today = () =>
-  new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb" }).format(new Date());
+  new Date(Date.now() - ROLLOVER_UTC_HOUR * 3600e3).toISOString().slice(0, 10);
 
 export const isDate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(String(s || ""));
 
@@ -194,7 +201,7 @@ function wineHtml(w, food) {
 </li>`;
 }
 
-export function renderOffer(o, { archive = [], food = (k) => k } = {}) {
+export function renderOffer(o, { food = (k) => k } = {}) {
   const title = o.title.hr || "Dnevna ponuda";
   let h = `<header class="daily-head">
   <p class="eyebrow">${esc(dateHr(o.date))}</p>
@@ -225,22 +232,14 @@ export function renderOffer(o, { archive = [], food = (k) => k } = {}) {
   }
   h += `<p class="daily-legal muted">Cijene su u eurima, PDV uključen. Za informacije o alergenima obratite se našem osoblju.
   Vina su s naše <a href="https://theatrium.list.devinos.hr">karte pića</a>.</p>`;
-  if (archive.length) h += archiveHtml(archive, o.date);
   return h;
 }
 
-export function renderEmpty(archive) {
+export function renderEmpty() {
   return `<header class="daily-head">
   <p class="eyebrow">${esc(dateHr(today()))}</p>
   <h1>Dnevna ponuda</h1>
   <p class="lede">Današnja ponuda još nije objavljena — Filho je vjerojatno još na tržnici.
   Do tada: <a href="/jelovnik/">jelovnik</a> i <a href="https://theatrium.list.devinos.hr">karta pića</a>.</p>
-</header>${archive.length ? archiveHtml(archive) : ""}`;
-}
-
-function archiveHtml(dates, current) {
-  const others = dates.filter((d) => d !== current).slice(0, 7);
-  if (!others.length) return "";
-  return `<nav class="daily-archive" aria-label="Prethodne ponude"><p class="eyebrow">Prethodnih dana</p><ul>${others
-    .map((d) => `<li><a href="/dnevna-ponuda/${d}/">${esc(dateHr(d))}</a></li>`).join("")}</ul></nav>`;
+</header>`;
 }

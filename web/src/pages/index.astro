@@ -36,6 +36,28 @@ const featured = ORDER.flatMap((c) => dishes.filter((d) => d.course === c && d.w
     </div>
   </section>
 
+  <!-- The daily offer, as a theatre ticket pinned to the corner of the
+       landing page (owner, 2026-10-02: visible, "but not standard"). It is
+       not a section of the page because it is not always true: it exists only
+       while a published offer exists for the current service day, and the
+       script below reveals it — no offer, no ticket, nothing to hide. It is
+       not in the nav for the same reason: a menu item that is empty every
+       morning until the chef is back from the market is a broken link.
+       It sits right after the hero in the DOM: on a desktop it floats in the
+       corner, on a phone it is placed in the flow there, because floating it
+       over a 390px screen covered the Rezervacija button. -->
+  <aside class="ticket" id="daily-ticket" hidden aria-label="Dnevna ponuda">
+    <button type="button" class="t-close" aria-label="Zatvori">×</button>
+    <a class="t-link" href="/dnevna-ponuda/">
+      <span class="t-photo" aria-hidden="true"></span>
+      <span class="t-body">
+        <span class="t-eyebrow">Danas s tržnice</span>
+        <span class="t-dishes"></span>
+        <span class="t-cta">Dnevna ponuda →</span>
+      </span>
+    </a>
+  </aside>
+
   <div class="shell">
     <section class="section split">
       <div>
@@ -94,9 +116,39 @@ const featured = ORDER.flatMap((c) => dishes.filter((d) => d.course === c && d.w
       <p><a class="btn" href="https://theatrium.list.devinos.hr">Otvori kartu pića</a></p>
     </section>
   </div>
+
 </Base>
 
 <script>
+  /* The ticket. One request to the public feed — the same one the wine list
+     will read — and nothing at all on a day with no offer, or if the feed
+     fails: the landing page never waits on it and never shows an empty box.
+     Closing it holds for the rest of that service day on that device. */
+  (async () => {
+    const t = document.getElementById("daily-ticket");
+    let data;
+    try { data = await (await fetch("/api/dnevna-ponuda")).json(); } catch { return; }
+    const o = data && data.offer;
+    if (!o || !o.dishes || !o.dishes.length) return;
+    const key = `ticket-closed-${data.date}`;
+    try { if (localStorage.getItem(key)) return; } catch {}
+    const names = o.dishes.slice(0, 3).map((d) => d.name.hr);
+    const more = o.dishes.length - names.length;
+    const box = t.querySelector(".t-dishes");
+    names.forEach((n) => { const s = document.createElement("span"); s.textContent = n; box.append(s); });
+    if (more > 0) { const s = document.createElement("span"); s.className = "t-more"; s.textContent = `i još ${more}`; box.append(s); }
+    const photo = o.photos?.[0] || o.dishes.find((d) => d.photo)?.photo;
+    const ph = t.querySelector(".t-photo");
+    if (photo) ph.style.backgroundImage = `url("${photo}")`; else ph.remove();
+    t.querySelector(".t-close").addEventListener("click", () => {
+      t.classList.remove("in");
+      setTimeout(() => (t.hidden = true), 300);
+      try { localStorage.setItem(key, "1"); } catch {}
+    });
+    t.hidden = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add("in")));
+  })();
+
   /* Same stepping as the press rail. One card per press, and the arrows
      disable at the ends so they never lie about there being more. */
   const rail = document.getElementById("dish-rail");
@@ -122,6 +174,58 @@ const featured = ORDER.flatMap((c) => dishes.filter((d) => d.course === c && d.w
 </script>
 
 <style>
+  /* ---- the daily ticket ----
+     A ticket stub: cream paper on the dark page, a perforated edge cut by
+     two half-circle notches, slightly turned as if tucked into a frame. The
+     only light surface on the site, which is the point — it is a note pinned
+     to the page, not part of it. */
+  .ticket {
+    position: fixed; z-index: 30; right: clamp(12px, 3vw, 32px); bottom: clamp(12px, 3vw, 32px);
+    width: min(340px, calc(100vw - 24px));
+    color: #1d1b18;
+    /* drop-shadow, not box-shadow: the notches are a mask on .t-link, and a
+       filter on the parent follows the masked shape where a box-shadow would
+       draw a rectangle behind the holes */
+    filter: drop-shadow(0 16px 28px rgba(0,0,0,.5));
+    transform: translateY(130%) rotate(-2deg);
+    transition: transform .55s cubic-bezier(.2,.9,.25,1.1);
+  }
+  .ticket.in { transform: translateY(0) rotate(-2deg); }
+  @media (prefers-reduced-motion: reduce) { .ticket { transition: none; } }
+  .ticket[hidden] { display: none; }
+  @media (max-width: 700px) {
+    .ticket {
+      position: relative; right: auto; bottom: auto; z-index: 1;
+      margin: -1.5rem auto 0; width: min(340px, calc(100% - 32px));
+      transform: rotate(-2deg); opacity: 0; transition: opacity .5s ease;
+    }
+    .ticket.in { transform: rotate(-2deg); opacity: 1; }
+  }
+  .t-link {
+    display: flex; text-decoration: none; color: inherit; background: #efe6d2;
+    -webkit-mask: radial-gradient(circle 9px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+                  radial-gradient(circle 9px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+            mask: radial-gradient(circle 9px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+                  radial-gradient(circle 9px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+  }
+  .t-photo {
+    flex: 0 0 96px; background: #c9a961 center / cover no-repeat;
+    border-right: 2px dashed rgba(29,27,24,.35);
+  }
+  .t-body { display: flex; flex-direction: column; gap: .15rem; padding: .95rem 2.2rem .95rem 1.1rem; min-width: 0; }
+  .t-eyebrow { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: #8a6d2c; }
+  .t-dishes { display: flex; flex-direction: column; font-family: var(--serif); font-size: 1.22rem; line-height: 1.15; }
+  .t-dishes span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .t-dishes .t-more { font-family: var(--sans); font-size: .8rem; color: #6b6355; margin-top: .15rem; }
+  .t-cta { margin-top: .45rem; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: #1d1b18; border-bottom: 1px solid currentColor; align-self: flex-start; }
+  .t-link:hover .t-cta, .t-link:focus-visible .t-cta { color: #8a6d2c; }
+  .t-close {
+    position: absolute; top: .35rem; right: .45rem; width: 32px; height: 32px;
+    border: 0; background: none; color: #6b6355; font-size: 1.3rem; cursor: pointer; line-height: 1;
+    z-index: 1; /* above .t-link, which is later in the DOM and would take the tap */
+  }
+  .t-close:hover { color: #1d1b18; }
+
   .hero { position: relative; display: grid; }
   .hero-img {
     grid-area: 1 / 1;

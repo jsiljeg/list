@@ -49,7 +49,9 @@ import "../../styles/tokens.css";
       get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
       set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} },
     };
-    const todayZg = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb" }).format(new Date());
+    /* The service day: rolls over at 03:00 UTC, exactly as the server's
+       today() does — so "today" here is the day guests are being shown. */
+    const todayZg = () => new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
 
     const S = {
       key: store.get("kuhinja-key"),
@@ -108,7 +110,7 @@ import "../../styles/tokens.css";
         <section class="k-bar">
           <label>Datum <input type="date" id="date" value="${S.date}"></label>
           <span class="k-status ${S.status}">${S.status === "published" ? "Objavljeno" : "Skica"}${S.dirty ? " · nespremljene promjene" : ""}</span>
-          <a class="k-link" href="/dnevna-ponuda/${S.date === todayZg() ? "" : S.date + "/"}" target="_blank">Pogledaj stranicu ↗</a>
+          ${S.date === todayZg() ? `<a class="k-link" href="/dnevna-ponuda/" target="_blank">Pogledaj stranicu ↗</a>` : `<span class="k-dim">${S.date > todayZg() ? "Gosti ga vide tog dana" : "Prošao dan — gosti ga više ne vide"}</span>`}
         </section>
 
         <section class="k-card">
