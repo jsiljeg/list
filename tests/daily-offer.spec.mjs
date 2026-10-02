@@ -46,20 +46,15 @@ test("today's dishes lead the dish picker and get the usual pairing answer", asy
   expectClean(bag);
 });
 
-test("a dish the chef paired by hand answers with his wines and skips the budget", async ({ page }) => {
+test("a daily dish takes the same path as a menu dish: budget first, wines named on the dish", async ({ page }) => {
   const f = feed();
-  f.offer.dishes[0].wines = [{ name: "Chablis 2022", producer: "Pattes Loup" },
-                             { name: "Friulano 2023", producer: "Vie di Romans" },
-                             { name: "Ne postoji 2020", producer: "Nitko" }];   // not on the list: simply absent
-  const bag = await openApp(page, { daily: f });
+  f.offer.dishes[0].wines = [{ name: "Chablis 2022", producer: "Pattes Loup" }];   // the website's picks do not short-cut the tablet
+  await openApp(page, { daily: f });
   await helper(page);
   await page.locator(".helper-opts").first().locator(".helper-opt").first().click();
-  await expect(page.locator(".helper-opt[data-k]")).toHaveCount(0);              // no budget question
-  await expect(page.locator("#modal-body .item")).toHaveCount(2);
-  await expect(page.locator("#modal-body .item").first()).toContainText("Chablis");
-  await page.locator("#modal-body .item.clickable").first().click();
-  await expect(page.locator(".detail-name").first()).toContainText("Chablis");
-  expectClean(bag);
+  await expect(page.locator(".helper-opt[data-k]")).toHaveCount(4);
+  await page.locator(".helper-opt[data-k]").first().click();
+  await expect(page.locator(".helper-flip")).toBeVisible();
 });
 
 test("the dish name follows the guest's language", async ({ page }) => {

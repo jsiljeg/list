@@ -415,8 +415,7 @@ function dailyDishes() {
   if (!DAILY || DAILY.date !== todayZagreb()) return [];
   return DAILY.dishes
     .filter((d) => d && d.name && d.name.hr && ((d.pairings || []).length || (d.styles || []).length))
-    .map((d) => ({ course: d.course, name: d.name, pairings: d.pairings || [], styles: d.styles || [],
-                   wines: Array.isArray(d.wines) ? d.wines : [], daily: true }));
+    .map((d) => ({ course: d.course, name: d.name, pairings: d.pairings || [], styles: d.styles || [], daily: true }));
 }
 
 function startPolling() {
@@ -2170,14 +2169,10 @@ function renderHelperStep() {
     b.addEventListener("click", () => {
       if (helperState.step === 0) {
         helperState.dish = dailyDishes().concat(menuDishes()).find((d) => dishName(d) === b.dataset.dish);
-        /* A daily dish the chef paired by hand answers with his wines and
-           skips the budget: the choice is already made, by the person who
-           cooked it. Untouched by hand — or every pick 86'd since — it falls
-           through to the ordinary flow like any menu dish. */
-        if (helperState.dish && helperState.dish.daily && dailyPickRows(helperState.dish).length) {
-          renderDailyPicks(helperState.dish);
-          return;
-        }
+        /* A daily dish takes exactly the path a menu dish takes — budget,
+           three bottles, the glass flip, the same scoring (owner, 2026-10-02:
+           "the whole menu should be standardized"). What makes its answer good
+           is how it is tagged, which is the sommelier's job on the website. */
         helperState.step = 1;
         renderHelperStep();
       } else {
@@ -2414,54 +2409,6 @@ function renderHelperResults(budgetKey) {
     helperState.step = 1;
     renderHelperStep();
   });
-  $("modal-body").querySelector(".helper-again").addEventListener("click", openHelper);
-}
-
-/* The chef's own wines for a daily dish, as the list sells them tonight: one
-   row per wine — the bottle, with "i na čašu" when it is also poured, or the
-   glass alone when that is the only way it is sold. Found in DATA, so an 86'd
-   wine is simply absent. Same rows, same card, same stepping as every other
-   answer the sommelier gives. */
-function dailyPickRows(dish) {
-  const rows = [];
-  const want = new Set((dish.wines || []).map((w) => wineKey(w.producer, w.name)));
-  const found = new Map();
-  DATA.sections.forEach((sec, si) => {
-    const byGlass = sec.id === "glass";
-    if (!byGlass && !sec.id.startsWith("bottle-")) return;
-    sec.categories.forEach((cat, ci) => cat.groups.forEach((g, gi) => g.items.forEach((item, ii) => {
-      const k = wineKey(item.producer, item.name);
-      if (!want.has(k)) return;
-      const e = found.get(k) || {};
-      const row = { item, ref: [si, ci, gi, ii].join(".") };
-      if (byGlass) e.glass = e.glass || row; else e.bottle = e.bottle || row;
-      found.set(k, e);
-    })));
-  });
-  (dish.wines || []).forEach((w) => {
-    const e = found.get(wineKey(w.producer, w.name));
-    if (!e) return;
-    rows.push(e.bottle ? { ...e.bottle, glassPrice: e.glass && e.glass.item.price } : e.glass);
-  });
-  return rows;
-}
-
-function renderDailyPicks(dish) {
-  const t = T();
-  const rows = dailyPickRows(dish);
-  const shown = new Set(rows.flatMap((r) => r.item.insight.pairings || []));
-  const why = (dish.pairings || []).filter((f) => shown.has(f)).slice(0, 3).map((f) => t.pairings[f] || f);
-  const whyHtml = why.length ? `<span class="helper-why">${esc(t.ui.pairings.toLowerCase())}: ${esc(why.join(", "))}</span>` : "";
-  const rowsHtml = rows.map((r) => itemHtml(r.item, r.ref, "", true,
-    r.glassPrice != null ? `🍷 ${esc(t.ui.alsoByGlass)} ${esc(fmtPrice(r.glassPrice))} €` : "")).join("");
-  $("modal-body").innerHTML = `<div class="helper"><div class="helper-title">🍷 ${esc(t.helper.results)}</div>` +
-    `<div class="helper-fordish">${esc(dishName(dish))}</div>` +
-    `<div class="helper-answer">${whyHtml}${rowsHtml}</div>` +
-    `<div class="helper-nav"><button class="helper-opt helper-again" type="button">${esc(t.helper.again)}</button></div></div>`;
-  showModal("helper");
-  const scope = rows.map((r) => r.ref);
-  $("modal-body").querySelectorAll(".item.clickable").forEach((b) =>
-    b.addEventListener("click", () => openDetail(b.dataset.ref, () => renderDailyPicks(dish), scope)));
   $("modal-body").querySelector(".helper-again").addEventListener("click", openHelper);
 }
 
