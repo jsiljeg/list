@@ -35,8 +35,15 @@ export function allItems(node = wines, out = []) {
  * collecting the failures that should never happen: page errors, console
  * errors, and requests that 404. Assert with `expectClean(bag)`.
  */
-export async function openApp(page, { lang = "hr" } = {}) {
+export async function openApp(page, { lang = "hr", daily = null } = {}) {
   const bag = { errors: [], console: [], bad: [] };
+  /* The kitchen's daily-offer feed lives on the restaurant website, not here.
+     Every test answers it locally so the suite never depends on that site:
+     "nothing published today" unless a test passes its own feed body. */
+  await page.route("https://theatrium.devinos.hr/api/dnevna-ponuda*", (r) => r.fulfill({
+    status: 200, contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+    body: JSON.stringify(daily || { offer: null })
+  }));
   page.on("pageerror", (e) => bag.errors.push(String(e)));
   page.on("console", (m) => { if (m.type() === "error") bag.console.push(m.text()); });
   page.on("response", (r) => { if (r.status() >= 400) bag.bad.push(`${r.status()} ${r.url()}`); });

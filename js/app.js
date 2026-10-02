@@ -375,12 +375,67 @@ function pollData() {
 /* The name the availability tests drive the tick by. */
 function pollHidden() { return pollData(); }
 
+/* ---------- the kitchen's daily offer (dnevna ponuda) ----------
+   Published by the chef on the restaurant's website (web/DAILY-OFFER.md) and
+   shown at the top of "Filhov izbor". The feed names wines by producer and
+   name; they are found in DATA here, so a wine 86'd on this list is gone from
+   the block too, and every row is an ordinary row that opens the ordinary
+   card. Anything wrong with the feed — down, empty, malformed, or not today's
+   (the service worker can answer offline from yesterday's cache) — leaves the
+   list exactly as it was without it. */
+const DAILY_FEED = "https://theatrium.devinos.hr/api/dnevna-ponuda";
+let DAILY = null, dailyRaw = "";
+const todayZagreb = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb" }).format(new Date());
+
+function loadDaily() {
+  return fetch(DAILY_FEED, { cache: "no-cache" })
+    .then((r) => (r.ok ? r.text() : null))
+    .then((text) => {
+      if (text == null || text === dailyRaw) return;
+      dailyRaw = text;
+      let offer = null;
+      try { offer = JSON.parse(text).offer; } catch (e) { offer = null; }
+      DAILY = offer && offer.date === todayZagreb() && Array.isArray(offer.dishes) && offer.dishes.length ? offer : null;
+      if (picksOnly && !modalOpen && !$("search").value.trim()) renderContent();
+    })
+    .catch(() => {});
+}
+
+/* The "Danas iz kuhinje" block: each dish in the guest's language, then its
+   wines as list rows. A dish none of whose wines is on the list tonight is
+   left out rather than shown bare — the block is about the pairing. */
+function dailyHtml(t) {
+  if (!DAILY || DAILY.date !== todayZagreb()) return "";
+  const where = new Map();
+  DATA.sections.forEach((sec, si) => sec.categories.forEach((cat, ci) => cat.groups.forEach((g, gi) =>
+    g.items.forEach((item, ii) => {
+      if (!item.insight || item.insight.kind) return;
+      const k = wineKey(item.producer, item.name);
+      if (!where.has(k)) where.set(k, []);
+      where.get(k).push({ item, ref: [si, ci, gi, ii].join("."), sec });
+    }))));
+  let body = "";
+  DAILY.dishes.forEach((d) => {
+    const rows = (d.wines || []).flatMap((w) => where.get(wineKey(w.producer, w.name)) || []);
+    if (!rows.length) return;
+    const name = (d.name && (d.name[lang] || d.name.en || d.name.hr)) || "";
+    const desc = d.description && (d.description[lang] || (lang === "hr" ? "" : d.description.en) || (lang === "hr" ? d.description.hr : ""));
+    body += `<h3 class="picks-group daily-dish">${esc(name)}</h3>` +
+      (desc ? `<p class="daily-desc">${esc(desc)}</p>` : "") +
+      rows.map((r) => itemHtml(r.item, r.ref, t.sections[r.sec.id])).join("");
+  });
+  if (!body) return "";
+  return `<section class="cat daily"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.todayKitchen)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${body}</section>`;
+}
+
 function startPolling() {
   setInterval(pollData, POLL_MS);
+  setInterval(loadDaily, POLL_MS);
+  loadDaily();
   /* A tablet that was asleep in an apron pocket should not wait out the rest of
      its interval when it comes back. */
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") pollData();
+    if (document.visibilityState === "visible") { pollData(); loadDaily(); }
   });
 }
 
@@ -1204,9 +1259,10 @@ function renderContent() {
       });
       if (secHtml) body += `<h3 class="picks-group">${esc(t.sections[sec.id])}</h3>${secHtml}`;
     });
-    html = total
+    const daily = dailyHtml(t);
+    html = daily + (total
       ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.picks)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${body}</section>`
-      : `<p class="no-results">${t.ui.noResults}</p>`;
+      : (daily ? "" : `<p class="no-results">${t.ui.noResults}</p>`));
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
