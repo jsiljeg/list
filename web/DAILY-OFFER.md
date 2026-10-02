@@ -17,10 +17,19 @@ know the daily offer exists (yet — see "Filhov izbor" below).
 market photos, an optional video, then the dishes by course, each with its
 photo, price, description and the wines picked for it (glass and bottle
 price, live from the list). Before anything is published it says so and
-links to the menu and the list. `/dnevna-ponuda/2026-10-02/` is a past day.
+links to the menu and the list.
 
-Not in the nav yet: the six-item nav was a deliberate decision. Where to link
-it from (nav, the home page, Instagram bio) is the owner's call.
+**It disappears by itself at 03:00 UTC** (owner, 2026-10-02). The *service
+day* rolls over then — `today()` in `functions/_lib/daily.js` — not at
+midnight, so a late table does not watch it vanish. Nothing is deleted; past
+days are simply never public again (an old `/dnevna-ponuda/<date>/` link
+redirects to the current page). "Povuci objavu" on the staff page removes
+it sooner, from the website and the wine list at once.
+
+**The landing page carries it as a ticket** — a cream, notched, tilted stub,
+in the corner on a desktop and under the hero on a phone — only while there
+is an offer. Not in the nav: an item that is empty every morning until the
+chef is back from the market would read as a broken link.
 
 ## What the chef does — `/kuhinja/`
 
@@ -104,6 +113,17 @@ branch **`wine-list-daily-offer`** and not merged. When merged:
 
 Merge only when the owner says so — not before there are daily dishes and a
 website — and run `npx playwright test tests/daily-offer.spec.mjs` first.
+
+**Preview:** every push to the branch deploys it to
+https://theatrium-list-preview.pages.dev (`preview-list.yml`, branch-only, a
+separate Cloudflare project — never GitHub Pages, never the live domain;
+admin.html stripped, noindex). Delete that workflow when the branch is
+merged or dropped.
+
+Open question: the tablet answers a daily dish with the *model's* three
+bottles, like any menu dish. The chef's own ticked wines are on the website.
+If the owner wants the chef's picks to lead on the tablet too, it is a small
+change in `renderHelperResults()`.
 
 ## Open for the owner
 
