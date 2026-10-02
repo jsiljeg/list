@@ -376,13 +376,17 @@ function pollData() {
 function pollHidden() { return pollData(); }
 
 /* ---------- the kitchen's daily offer (dnevna ponuda) ----------
-   Published by the chef on the restaurant's website (web/DAILY-OFFER.md) and
-   shown at the top of "Filhov izbor". The feed names wines by producer and
-   name; they are found in DATA here, so a wine 86'd on this list is gone from
-   the block too, and every row is an ordinary row that opens the ordinary
-   card. Anything wrong with the feed — down, empty, malformed, or not today's
-   (the service worker can answer offline from yesterday's cache) — leaves the
-   list exactly as it was without it. */
+   Published by the chef on the restaurant's website (web/DAILY-OFFER.md).
+   On the list it lives in exactly one place: the sommelier ("Pomozi mi
+   odabrati"), as a first group of dishes above the kitchen's menu — so the
+   day's dishes get the same pairing answer as every dish on the card, from
+   the same dishScore(), the same budget bands and the same glass flip. That
+   is the parity the owner asked for: list <-> menu, list <-> daily offer.
+
+   The feed carries each dish's food tags and wine styles, the vocabulary
+   data/menu.json uses. Anything wrong with it — down, empty, malformed, or not
+   today's (the service worker can answer offline from yesterday's cache) —
+   and the helper shows the menu exactly as it does without it. */
 const DAILY_FEED = "https://theatrium.devinos.hr/api/dnevna-ponuda";
 let DAILY = null, dailyRaw = "";
 const todayZagreb = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb" }).format(new Date());
@@ -395,37 +399,19 @@ function loadDaily() {
       dailyRaw = text;
       let offer = null;
       try { offer = JSON.parse(text).offer; } catch (e) { offer = null; }
-      DAILY = offer && offer.date === todayZagreb() && Array.isArray(offer.dishes) && offer.dishes.length ? offer : null;
-      if (picksOnly && !modalOpen && !$("search").value.trim()) renderContent();
+      DAILY = offer && offer.date === todayZagreb() && Array.isArray(offer.dishes) ? offer : null;
     })
     .catch(() => {});
 }
 
-/* The "Danas iz kuhinje" block: each dish in the guest's language, then its
-   wines as list rows. A dish none of whose wines is on the list tonight is
-   left out rather than shown bare — the block is about the pairing. */
-function dailyHtml(t) {
-  if (!DAILY || DAILY.date !== todayZagreb()) return "";
-  const where = new Map();
-  DATA.sections.forEach((sec, si) => sec.categories.forEach((cat, ci) => cat.groups.forEach((g, gi) =>
-    g.items.forEach((item, ii) => {
-      if (!item.insight || item.insight.kind) return;
-      const k = wineKey(item.producer, item.name);
-      if (!where.has(k)) where.set(k, []);
-      where.get(k).push({ item, ref: [si, ci, gi, ii].join("."), sec });
-    }))));
-  let body = "";
-  DAILY.dishes.forEach((d) => {
-    const rows = (d.wines || []).flatMap((w) => where.get(wineKey(w.producer, w.name)) || []);
-    if (!rows.length) return;
-    const name = (d.name && (d.name[lang] || d.name.en || d.name.hr)) || "";
-    const desc = d.description && (d.description[lang] || (lang === "hr" ? "" : d.description.en) || (lang === "hr" ? d.description.hr : ""));
-    body += `<h3 class="picks-group daily-dish">${esc(name)}</h3>` +
-      (desc ? `<p class="daily-desc">${esc(desc)}</p>` : "") +
-      rows.map((r) => itemHtml(r.item, r.ref, t.sections[r.sec.id])).join("");
-  });
-  if (!body) return "";
-  return `<section class="cat daily"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.todayKitchen)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${body}</section>`;
+/* Today's dishes in the shape menu.json uses. A dish the chef did not tag
+   cannot be paired, so it is not offered — a button that answers with
+   nothing is worse than no button. */
+function dailyDishes() {
+  if (!DAILY || DAILY.date !== todayZagreb()) return [];
+  return DAILY.dishes
+    .filter((d) => d && d.name && d.name.hr && ((d.pairings || []).length || (d.styles || []).length))
+    .map((d) => ({ course: d.course, name: d.name, pairings: d.pairings || [], styles: d.styles || [], daily: true }));
 }
 
 function startPolling() {
@@ -1259,10 +1245,9 @@ function renderContent() {
       });
       if (secHtml) body += `<h3 class="picks-group">${esc(t.sections[sec.id])}</h3>${secHtml}`;
     });
-    const daily = dailyHtml(t);
-    html = daily + (total
+    html = total
       ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.star}</span>${esc(t.ui.picks)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${body}</section>`
-      : (daily ? "" : `<p class="no-results">${t.ui.noResults}</p>`));
+      : `<p class="no-results">${t.ui.noResults}</p>`;
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
@@ -2157,6 +2142,11 @@ function renderHelperStep() {
   if (helperState.step === 0) {
     /* Step 1: pick a real dish from the kitchen menu, grouped by course. */
     let groups = "";
+    const today = dailyDishes();
+    if (today.length)
+      groups += `<div class="helper-course helper-daily">${esc(t.ui.todayKitchen)}</div><div class="helper-opts">` +
+        today.map((d) => `<button class="helper-opt" data-dish="${esc(dishName(d))}">${esc(dishName(d))}</button>`).join("") +
+        `</div>`;
     (MENU.courses || []).forEach((course) => {
       const dishes = menuDishes().filter((d) => d.course === course);
       if (!dishes.length) return;
@@ -2174,7 +2164,7 @@ function renderHelperStep() {
   $("modal-body").querySelectorAll(".helper-opt").forEach((b) =>
     b.addEventListener("click", () => {
       if (helperState.step === 0) {
-        helperState.dish = menuDishes().find((d) => dishName(d) === b.dataset.dish);
+        helperState.dish = dailyDishes().concat(menuDishes()).find((d) => dishName(d) === b.dataset.dish);
         helperState.step = 1;
         renderHelperStep();
       } else {
