@@ -389,7 +389,11 @@ function pollHidden() { return pollData(); }
    and the helper shows the menu exactly as it does without it. */
 const DAILY_FEED = "https://theatrium.devinos.hr/api/dnevna-ponuda";
 let DAILY = null, dailyRaw = "";
-const todayZagreb = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb" }).format(new Date());
+/* The service day rolls over at 03:00 UTC, the website's rule (today() in
+   web/functions/_lib/daily.js): the day's dishes leave the sommelier by
+   themselves overnight, even on a tablet that never reloads, because this is
+   checked every time the picker is drawn — not only when the feed changes. */
+const todayZagreb = () => new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
 
 function loadDaily() {
   return fetch(DAILY_FEED, { cache: "no-cache" })

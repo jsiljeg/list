@@ -14,7 +14,8 @@
 import { test, expect } from "@playwright/test";
 import { openApp, expectClean } from "./helpers.mjs";
 
-const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb" }).format(new Date());
+// the service day, rolling over at 03:00 UTC like the website and js/app.js
+const today = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
 const feed = (date = today) => ({
   date,
   offer: {
