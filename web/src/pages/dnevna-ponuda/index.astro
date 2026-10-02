@@ -1,0 +1,92 @@
+---
+/* The daily offer — the frame only.
+
+   The content changes every morning and lives in D1, so it is not built here:
+   functions/dnevna-ponuda/[[path]].js fetches this page and fills #daily-slot
+   with the day's dishes and wines as real HTML on every request. What is
+   built here is everything that does not change — layout, nav, styles — and
+   the fallback a guest sees if the page is ever served without the function
+   (astro dev, or the function failing). See DAILY-OFFER.md. */
+import Base from "../../layouts/Base.astro";
+---
+
+<Base
+  title="Dnevna ponuda | Theatrium by Filho"
+  description="Što je Filho jutros donio s tržnice — dnevna ponuda restorana Theatrium u Zagrebu, s vinom s naše karte uz svako jelo."
+>
+  <div id="daily-slot" class="daily">
+    <header class="daily-head">
+      <p class="eyebrow">Dnevna ponuda</p>
+      <h1>S tržnice, danas</h1>
+      <p class="lede">Ponudu objavljujemo svako jutro nakon tržnice.
+        Do tada: <a href="/jelovnik/">jelovnik</a> i
+        <a href="https://theatrium.list.devinos.hr">karta pića</a>.</p>
+    </header>
+  </div>
+</Base>
+
+<!-- Global, because the markup arrives from the function after Astro has
+     scoped everything else; prefixed .daily so nothing leaks. -->
+<style is:global>
+  .daily { padding-bottom: 2rem; }
+  .daily-head { padding: 3.5rem 0 1.5rem; max-width: 44rem; }
+  .daily-head .eyebrow::first-letter { text-transform: uppercase; }
+  .daily .lede { color: var(--text-dim); font-size: 1.1rem; }
+  .daily .muted { color: var(--text-faint); }
+
+  /* The market photos run as a strip: they are the story of the morning,
+     not illustrations of a dish, and a strip reads as a sequence. */
+  .daily-photos {
+    display: flex; gap: .75rem; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: .5rem; margin: .5rem 0 1rem;
+  }
+  .daily-photos img {
+    flex: 0 0 auto; height: clamp(220px, 42vw, 420px); width: auto;
+    aspect-ratio: auto; object-fit: cover; scroll-snap-align: start;
+  }
+  .daily-video { position: relative; aspect-ratio: 16 / 9; max-width: 44rem; margin: 1rem 0; }
+  .daily-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .daily-video-link a { color: var(--gold); }
+
+  .daily-course { padding-top: 2.5rem; }
+  .daily-course h2 {
+    font-size: 1.1rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold-soft); font-family: var(--sans); font-weight: 500;
+    padding-bottom: .8rem; border-bottom: 1px solid var(--line);
+  }
+  .daily-dish {
+    display: grid; gap: 1.25rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line);
+  }
+  @media (min-width: 760px) {
+    .daily-dish:has(.dd-photo) { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); align-items: start; }
+  }
+  .dd-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .daily-dish h3 { display: flex; align-items: baseline; gap: 1rem; font-size: 1.5rem; }
+  .dd-price {
+    margin-left: auto; color: var(--gold); font-size: 1.25rem;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .dd-desc { color: var(--text-dim); margin: .4rem 0 0; max-width: 58ch; }
+  .dd-label {
+    margin: 1.1rem 0 .4rem; font-size: .78rem; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--gold-soft);
+  }
+  .dd-why { text-transform: none; letter-spacing: .04em; color: var(--text-faint); }
+  .daily-wines { list-style: none; margin: 0; padding: 0; display: grid; gap: .7rem; }
+  .daily-wine { display: grid; grid-template-columns: 1fr auto; column-gap: 1rem; }
+  .dw-name { font-family: var(--serif); font-size: 1.2rem; }
+  .dw-producer, .dw-meta { grid-column: 1; color: var(--text-dim); font-size: .9rem; }
+  .dw-meta { color: var(--text-faint); font-size: .82rem; }
+  .dw-price {
+    grid-column: 2; grid-row: 1 / span 2; align-self: start; text-align: right;
+    color: var(--gold); font-size: .9rem; font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  @media (max-width: 520px) {
+    .daily-wine { grid-template-columns: 1fr; }
+    .dw-price { grid-column: 1; grid-row: auto; text-align: left; }
+  }
+  .daily-legal { font-size: .85rem; margin-top: 2rem; max-width: 60ch; }
+  .daily-archive { margin-top: 2.5rem; }
+  .daily-archive ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; }
+  .daily-archive a { color: var(--text-dim); }
+</style>

@@ -92,3 +92,40 @@ CREATE TABLE IF NOT EXISTS event_enquiries (
   locale       TEXT NOT NULL DEFAULT 'hr'
 );
 CREATE INDEX IF NOT EXISTS idx_enq_status ON event_enquiries (status, created_at);
+
+-- Daily offer (dnevna ponuda), added 2026-10-02.
+--
+-- One row per day, the whole offer as one JSON document. A day is edited as a
+-- unit — the chef writes it in the morning, after the market, and publishes it
+-- — so saving it whole is atomic for free and needs no join to read back.
+-- The shape is documented in functions/_lib/daily.js (normalizeOffer).
+--
+-- Wines are stored as refs into the wine library (library/wines.json), never
+-- as names or prices: the price is the list's, read live when the page is
+-- served, and a wine that has been 86'd since breakfast simply drops out.
+CREATE TABLE IF NOT EXISTS daily_offers (
+  date          TEXT PRIMARY KEY,           -- YYYY-MM-DD, Zagreb wall clock
+  status        TEXT NOT NULL DEFAULT 'draft'
+                CHECK (status IN ('draft', 'published')),
+  body          TEXT NOT NULL,              -- JSON, see normalizeOffer()
+  updated_at    TEXT NOT NULL,              -- ISO 8601 UTC
+  published_at  TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_daily_status ON daily_offers (status, date);
+
+-- Photos for the daily offer: the market in the morning, the plate at noon.
+-- Stored in D1 rather than a bucket so the feature needs nothing the account
+-- does not already have; the browser shrinks every photo to ~1600px WebP
+-- before upload, which keeps a row far under D1's 2 MB limit. Video is a link
+-- (Instagram, YouTube) on the offer, not a file here — see web/DAILY-OFFER.md.
+-- `id` is a content hash, so the served URL is immutable and caches for ever.
+CREATE TABLE IF NOT EXISTS media (
+  id          TEXT PRIMARY KEY,
+  date        TEXT NOT NULL,                -- the offer it was uploaded for
+  mime        TEXT NOT NULL,
+  width       INTEGER,
+  height      INTEGER,
+  bytes       BLOB NOT NULL,
+  created_at  TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_media_date ON media (date);

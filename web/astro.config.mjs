@@ -5,7 +5,9 @@ import sitemap from "@astrojs/sitemap";
 // old URL gets a 301 — those six indexed pages are the search equity we have.
 export default defineConfig({
   site: "https://theatrium.preview.devinos.hr",
-  integrations: [sitemap()],
+  // /kuhinja/ is the staff page for the daily offer: public by necessity
+  // (Pages has no auth), useless without the key, and no business in a sitemap.
+  integrations: [sitemap({ filter: (page) => !page.includes("/kuhinja/") })],
   build: { inlineStylesheets: "auto" },
   compressHTML: true,
 });

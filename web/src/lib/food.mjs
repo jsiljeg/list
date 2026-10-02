@@ -22,6 +22,10 @@ export const FOOD = {
   nuts: "orašasti plodovi",
   steak: "biftek",
   stews: "variva",
+  /* added with the daily offer (2026-10-02): the staff page offers every tag
+     the shelf carries, so every one of them needs a word */
+  asparagus: "šparoge", japanese: "japanska kuhinja", cheese_blue: "plavi sirevi",
+  bbq: "jela s roštilja", pizza: "pizza", solo: "samo za sebe",
 };
 
 export const food = (k) => FOOD[k] || k.replace(/_/g, " ");

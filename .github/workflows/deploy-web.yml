@@ -116,6 +116,22 @@ jobs:
             api -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE/dns_records"               --data '{"type":"CNAME","name":"theatrium","content":"theatrium-web.pages.dev","proxied":true,"comment":"new restaurant site (staging)"}'               | jq -r '.success, (.errors // [])[]?.message'
           fi
 
+      # The daily offer's staff key (DAILY-OFFER.md). Stored as a GitHub secret
+      # and copied onto the Pages project on every deploy, so rotating it is
+      # `gh secret set STAFF_KEY -e theatrium` and a re-run — nobody needs a
+      # Cloudflare login. Non-fatal and skipped when unset: without it /kuhinja/
+      # simply says the key is not configured, and the rest of the site is fine.
+      - name: Set the daily-offer staff key
+        continue-on-error: true
+        working-directory: web
+        env:
+          STAFF_KEY: ${{ secrets.STAFF_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          [ -n "${STAFF_KEY:-}" ] || { echo "no STAFF_KEY secret — skipping"; exit 0; }
+          printf '%s' "$STAFF_KEY" | npx wrangler pages secret put STAFF_KEY --project-name theatrium-web
+
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:

@@ -1,0 +1,441 @@
+---
+/* /kuhinja/ — where the chef writes the daily offer, on a phone, after the
+   market. Staff-only: everything it does goes through /api/kuhinja/*, which
+   refuses without the staff key. The page itself is public on purpose (Pages
+   has no auth), and shows nothing without the key.
+
+   Wine suggestions are computed here, in the browser, by the same scoring the
+   wine list uses (src/lib/pairing.mjs) against the list's live published
+   files — so what the chef sees suggested is what the list itself would
+   suggest, minus anything 86'd tonight. The chef ticks the ones to print.
+   See DAILY-OFFER.md. */
+import "../../styles/tokens.css";
+---
+
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Kuhinja — dnevna ponuda</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="k" id="app">
+    <header class="k-head">
+      <p class="eyebrow">Kuhinja</p>
+      <h1>Dnevna ponuda</h1>
+    </header>
+    <div id="view"><p class="k-dim">Učitavam…</p></div>
+  </main>
+
+  <script>
+    import { suggest, wineRows, foodVocabulary, clash, STYLE_HR } from "../../lib/pairing.mjs";
+    import { food } from "../../lib/food.mjs";
+
+    const WINE_LIST = "https://theatrium.list.devinos.hr";
+    const LANGS_MORE = [["en", "English"], ["it", "Italiano"], ["de", "Deutsch"], ["fr", "Français"], ["sl", "Slovenščina"], ["es", "Español"], ["zh", "中文"]];
+    const COURSES = [["starters", "Predjelo"], ["soups", "Juha"], ["mains", "Glavno jelo"], ["desserts", "Desert"]];
+    const STYLE_KEYS = Object.keys(STYLE_HR);
+
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const eur = (n) => (n == null ? "" : `${String(n).replace(".", ",")} €`);
+    const store = {
+      get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
+      set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} },
+    };
+    const todayZg = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb" }).format(new Date());
+
+    const S = {
+      key: store.get("kuhinja-key"),
+      date: todayZg(),
+      offer: null,
+      status: "draft",
+      recent: [],
+      rows: null,       // the wine list tonight, flat
+      vocab: [],        // food tags the shelf carries
+      byRef: new Map(),
+      dirty: false,
+      msg: "",
+    };
+    const blankOffer = () => ({ title: {}, intro: {}, video: "", photos: [], dishes: [] });
+    const blankDish = () => ({ course: "mains", name: {}, description: {}, price: null, pairings: [], styles: [], wines: [], photo: null, open: true });
+
+    async function api(path, opts = {}) {
+      const r = await fetch(path, { ...opts, headers: { authorization: `Bearer ${S.key}`, ...(opts.headers || {}) } });
+      const body = await r.json().catch(() => ({}));
+      if (r.status === 401) { S.key = null; store.set("kuhinja-key", null); render(); throw new Error("key"); }
+      if (r.status === 503 && body.error === "not_configured") throw new Error("Ključ još nije postavljen na serveru (STAFF_KEY).");
+      if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`);
+      return body;
+    }
+
+    async function loadShelf() {
+      const get = (p) => fetch(WINE_LIST + p, { cache: "no-cache" }).then((r) => r.json());
+      const [lib, list, un] = await Promise.all([get("/library/wines.json"), get("/lists/theatrium.json"),
+        get("/data/unavailable.json").catch(() => ({ hidden: [] }))]);
+      S.rows = wineRows(lib, list, un);
+      S.vocab = foodVocabulary(S.rows);
+      S.byRef = new Map();
+      for (const r of S.rows) {
+        const e = S.byRef.get(r.ref) || { ...r, bottle: null, glassP: null };
+        if (r.glass) e.glassP = r.price; else if (e.bottle == null || r.price < e.bottle) e.bottle = r.price;
+        S.byRef.set(r.ref, e);
+      }
+    }
+
+    async function loadOffer() {
+      const b = await api(`/api/kuhinja/ponuda?date=${S.date}`);
+      S.recent = b.recent || [];
+      const o = b.offer;
+      S.status = o ? o.status : "draft";
+      S.offer = o ? { title: o.title || {}, intro: o.intro || {}, video: o.video || "", photos: o.photos || [],
+        dishes: (o.dishes || []).map((d) => ({ ...d, open: false })) } : blankOffer();
+      S.dirty = false;
+    }
+
+    /* ---------------------------------------------------------- views */
+    function render() {
+      if (!S.key) return renderKey();
+      if (!S.offer || !S.rows) return;
+      const o = S.offer;
+      $("view").innerHTML = `
+        <section class="k-bar">
+          <label>Datum <input type="date" id="date" value="${S.date}"></label>
+          <span class="k-status ${S.status}">${S.status === "published" ? "Objavljeno" : "Skica"}${S.dirty ? " · nespremljene promjene" : ""}</span>
+          <a class="k-link" href="/dnevna-ponuda/${S.date === todayZg() ? "" : S.date + "/"}" target="_blank">Pogledaj stranicu ↗</a>
+        </section>
+
+        <section class="k-card">
+          <label class="k-field">Naslov (neobavezno)
+            <input data-path="title.hr" value="${esc(o.title.hr)}" placeholder="npr. Jesen na Dolcu"></label>
+          <label class="k-field">Uvodna riječ — što je jutros na tržnici
+            <textarea data-path="intro.hr" rows="3" placeholder="Prve vrganje, škampi iz Kvarnera…">${esc(o.intro.hr)}</textarea></label>
+          <details class="k-more"><summary>Uvod na drugim jezicima</summary>
+            ${LANGS_MORE.map(([l, n]) => `<label class="k-field">${n}<textarea data-path="intro.${l}" rows="2">${esc(o.intro[l])}</textarea></label>`).join("")}
+          </details>
+          <label class="k-field">Video (Instagram / YouTube link)
+            <input data-path="video" type="url" value="${esc(o.video)}" placeholder="https://www.instagram.com/reel/…"></label>
+        </section>
+
+        <section class="k-card">
+          <h2>Fotografije</h2>
+          <div class="k-photos">
+            ${o.photos.map((id, i) => `<figure><img src="/media/${id}" alt=""><button class="k-x" data-act="photo-del" data-i="${i}" aria-label="Ukloni">×</button></figure>`).join("")}
+            <label class="k-add-photo">+ Dodaj<input type="file" id="photo-in" accept="image/*" multiple hidden></label>
+          </div>
+          <p class="k-dim" id="photo-msg"></p>
+        </section>
+
+        <section>
+          <h2 class="k-h2">Jela</h2>
+          ${o.dishes.map(dishHtml).join("")}
+          <button class="btn" data-act="dish-add">+ Dodaj jelo</button>
+        </section>
+
+        <section class="k-actions">
+          <button class="btn" data-act="save">Spremi skicu</button>
+          <button class="btn btn-solid" data-act="publish">${S.status === "published" ? "Spremi i objavi" : "Objavi"}</button>
+          ${S.status === "published" ? `<button class="btn k-ghost" data-act="unpublish">Povuci objavu</button>` : ""}
+          <p class="k-msg" id="msg">${esc(S.msg)}</p>
+        </section>
+
+        <footer class="k-foot">
+          ${S.recent.length ? `<p class="k-dim">Objavljeno: ${S.recent.slice(0, 10).map((d) => `<a href="#" data-act="goto" data-d="${d}">${d}</a>`).join(" · ")}</p>` : ""}
+          <button class="k-ghost-link" data-act="logout">Odjava s ovog uređaja</button>
+        </footer>`;
+    }
+
+    function dishHtml(d, i) {
+      const head = `${esc(d.name.hr || "Novo jelo")}${d.price ? ` · ${eur(d.price)}` : ""}`;
+      if (!d.open) {
+        const ws = d.wines.map((r) => S.byRef.get(r)).filter(Boolean).map((w) => w.name).join(", ");
+        return `<article class="k-card k-dish"><button class="k-dish-head" data-act="dish-open" data-i="${i}">
+          <span>${head}</span><span class="k-dim">${esc(ws || "bez vina")} ›</span></button></article>`;
+      }
+      const vocab = S.vocab.map(({ k, count }) =>
+        `<button class="chip ${d.pairings.includes(k) ? "on" : ""}" data-act="tag" data-i="${i}" data-k="${k}">${esc(food(k))} <small>${count}</small></button>`).join("");
+      const styles = STYLE_KEYS.map((k) =>
+        `<button class="chip ${d.styles.includes(k) ? "on" : ""}" data-act="style" data-i="${i}" data-k="${k}">${esc(STYLE_HR[k])}</button>`).join("");
+      return `<article class="k-card k-dish open">
+        <div class="k-row">
+          <select data-dish="${i}" data-f="course">${COURSES.map(([k, n]) => `<option value="${k}" ${d.course === k ? "selected" : ""}>${n}</option>`).join("")}</select>
+          <input class="k-price" data-dish="${i}" data-f="price" type="number" inputmode="decimal" step="0.5" min="0" placeholder="€" value="${d.price ?? ""}">
+          <button class="k-ghost-link" data-act="dish-close" data-i="${i}">Sklopi</button>
+        </div>
+        <label class="k-field">Naziv jela<input data-dish="${i}" data-f="name.hr" value="${esc(d.name.hr)}" placeholder="npr. Brancin s blitvom"></label>
+        <label class="k-field">Opis (sastojci)<textarea data-dish="${i}" data-f="description.hr" rows="2">${esc(d.description.hr)}</textarea></label>
+        <details class="k-more"><summary>Naziv i opis na drugim jezicima</summary>
+          ${LANGS_MORE.map(([l, n]) => `<div class="k-lang"><span>${n}</span>
+            <input data-dish="${i}" data-f="name.${l}" value="${esc(d.name[l])}" placeholder="naziv">
+            <input data-dish="${i}" data-f="description.${l}" value="${esc(d.description[l])}" placeholder="opis"></div>`).join("")}
+        </details>
+
+        ${S.offer.photos.length ? `<p class="k-label">Fotografija jela</p><div class="k-pick">${S.offer.photos.map((id) =>
+          `<button class="${d.photo === id ? "on" : ""}" data-act="dish-photo" data-i="${i}" data-id="${id}"><img src="/media/${id}" alt=""></button>`).join("")}</div>` : ""}
+
+        <p class="k-label">Što je na tanjuru? <span class="k-dim">— odaberite 2–4; broj je koliko vina na karti to prati</span></p>
+        <div class="chips">${vocab}</div>
+        <p class="k-label">Koji stil vina? <span class="k-dim">— neobavezno, 2–4</span></p>
+        <div class="chips">${styles}</div>
+
+        <div class="k-wines" id="wines-${i}">${winesHtml(d, i)}</div>
+        <button class="k-ghost-link k-danger" data-act="dish-del" data-i="${i}">Ukloni jelo</button>
+      </article>`;
+    }
+
+    function wineLine(w, d, i, extra = "") {
+      const on = d.wines.includes(w.ref);
+      const p = [w.glassPrice != null ? `čaša ${eur(w.glassPrice)}` : "", w.price != null ? `boca ${eur(w.price)}` : ""].filter(Boolean).join(" · ");
+      return `<label class="k-wine ${on ? "on" : ""}">
+        <input type="checkbox" data-act="wine" data-i="${i}" data-ref="${esc(w.ref)}" ${on ? "checked" : ""}>
+        <span><b>${esc(w.name)}</b> · ${esc(w.producer)}${w.recommended ? " ★" : ""}<br>
+        <small>${esc(STYLE_HR[w.style] || "")}${w.shared?.length ? ` · ${esc(w.shared.map(food).join(", "))}` : ""}${p ? ` · ${p}` : ""}${extra}</small></span></label>`;
+    }
+
+    function winesHtml(d, i) {
+      if (!d.pairings.length && !d.styles.length)
+        return `<p class="k-dim">Odaberite što je na tanjuru i ovdje se pojave vina s karte.</p>`;
+      const bottles = suggest(d, S.rows, { n: 8 });
+      /* a glass row's own price is the glass price; show the bottle beside it */
+      const glasses = suggest(d, S.rows, { n: 4, glassOnly: true })
+        .map((w) => ({ ...w, price: S.byRef.get(w.ref)?.bottle ?? null }));
+      const shown = new Set([...bottles, ...glasses].map((w) => w.ref));
+      const chosenElsewhere = d.wines.filter((r) => !shown.has(r)).map((r) => S.byRef.get(r)).filter(Boolean)
+        .map((w) => ({ ...w, style: w.insight.style, price: w.bottle, glassPrice: w.glassP, shared: [] }));
+      const weak = bottles[0]?.styleOnly ? `<p class="k-warn">Nijedno vino na karti ne navodi ovu hranu — prijedlozi su samo po stilu. Dodajte još jednu oznaku ili odaberite ručno.</p>` : "";
+      return `<p class="k-label">Vina uz jelo <span class="k-dim">— označite 1–3 koja idu na stranicu; ${d.wines.length}/6</span></p>
+        ${weak}
+        ${chosenElsewhere.map((w) => wineLine(w, d, i, " · odabrano ručno")).join("")}
+        <p class="k-sub">Na čašu</p>${glasses.map((w) => wineLine(w, d, i)).join("") || `<p class="k-dim">Nijedno vino na čašu ne odgovara.</p>`}
+        <p class="k-sub">Na bocu</p>${bottles.map((w) => wineLine(w, d, i)).join("") || `<p class="k-dim">Nema prijedloga.</p>`}
+        <input class="k-search" data-act="find" data-i="${i}" placeholder="Potraži drugo vino s karte…">
+        <div class="k-found" id="found-${i}"></div>`;
+    }
+
+    function renderKey() {
+      $("view").innerHTML = `<form class="k-card" id="key-form">
+        <label class="k-field">Ključ za kuhinju
+          <input id="key-in" type="password" autocomplete="current-password" required></label>
+        <p class="k-dim">Ključ se pamti na ovom uređaju. Dobiva se od voditelja.</p>
+        <button class="btn btn-solid">Uđi</button></form>`;
+      $("key-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        S.key = $("key-in").value.trim();
+        store.set("kuhinja-key", S.key);
+        boot();
+      });
+    }
+
+    /* ---------------------------------------------------------- edits */
+    const setPath = (obj, path, v) => {
+      const ks = path.split("."); let o = obj;
+      while (ks.length > 1) { const k = ks.shift(); o[k] = o[k] || {}; o = o[k]; }
+      o[ks[0]] = v;
+    };
+    const touch = () => { if (!S.dirty) { S.dirty = true; const st = document.querySelector(".k-status"); if (st) st.textContent += " · nespremljene promjene"; } };
+    const rerenderWines = (i) => { const box = $(`wines-${i}`); if (box) box.innerHTML = winesHtml(S.offer.dishes[i], i); };
+
+    document.addEventListener("input", (e) => {
+      const el = e.target;
+      if (el.dataset.path) { setPath(S.offer, el.dataset.path, el.value); touch(); }
+      else if (el.dataset.dish != null) {
+        const d = S.offer.dishes[+el.dataset.dish];
+        setPath(d, el.dataset.f, el.dataset.f === "price" ? (el.value === "" ? null : Number(el.value)) : el.value);
+        touch();
+      } else if (el.dataset.act === "find") find(+el.dataset.i, el.value);
+    });
+    document.addEventListener("change", async (e) => {
+      const el = e.target;
+      if (el.id === "date") {
+        if (S.dirty && !confirm("Imate nespremljene promjene. Ipak promijeniti datum?")) { el.value = S.date; return; }
+        S.date = el.value || todayZg(); S.msg = ""; await loadOffer(); render();
+      } else if (el.id === "photo-in") upload([...el.files]);
+      else if (el.dataset.f === "course") { S.offer.dishes[+el.dataset.dish].course = el.value; touch(); }
+      else if (el.dataset.act === "wine") {
+        const d = S.offer.dishes[+el.dataset.i], ref = el.dataset.ref;
+        if (el.checked && d.wines.length >= 6) { el.checked = false; return; }
+        d.wines = el.checked ? [...d.wines, ref] : d.wines.filter((r) => r !== ref);
+        touch(); rerenderWines(+el.dataset.i);
+      }
+    });
+    document.addEventListener("click", async (e) => {
+      const b = e.target.closest("[data-act]");
+      if (!b || b.tagName === "INPUT") return;
+      const i = b.dataset.i != null ? +b.dataset.i : null;
+      const d = i != null ? S.offer.dishes[i] : null;
+      const toggle = (arr, k) => (arr.includes(k) ? arr.filter((x) => x !== k) : [...arr, k]);
+      switch (b.dataset.act) {
+        case "tag": d.pairings = toggle(d.pairings, b.dataset.k); b.classList.toggle("on"); touch(); rerenderWines(i); return;
+        case "style": d.styles = toggle(d.styles, b.dataset.k); b.classList.toggle("on"); touch(); rerenderWines(i); return;
+        case "dish-add": S.offer.dishes.forEach((x) => (x.open = false)); S.offer.dishes.push(blankDish()); touch(); break;
+        case "dish-open": S.offer.dishes.forEach((x, j) => (x.open = j === i)); break;
+        case "dish-close": d.open = false; break;
+        case "dish-del": if (!confirm(`Ukloniti „${d.name.hr || "jelo"}"?`)) return; S.offer.dishes.splice(i, 1); touch(); break;
+        case "dish-photo": d.photo = d.photo === b.dataset.id ? null : b.dataset.id; touch(); break;
+        case "photo-del": {
+          const id = S.offer.photos[+b.dataset.i];
+          S.offer.photos.splice(+b.dataset.i, 1);
+          S.offer.dishes.forEach((x) => { if (x.photo === id) x.photo = null; });
+          touch(); break;
+        }
+        case "add-found": if (!d.wines.includes(b.dataset.ref) && d.wines.length < 6) d.wines.push(b.dataset.ref); touch(); rerenderWines(i); return;
+        case "save": return save("draft");
+        case "publish": return save("published");
+        case "unpublish": return save("draft", "Objava povučena — stranica više ne prikazuje ovaj dan.");
+        case "goto": e.preventDefault(); if (S.dirty && !confirm("Imate nespremljene promjene. Ipak otvoriti drugi dan?")) return;
+          S.date = b.dataset.d; await loadOffer(); break;
+        case "logout": S.key = null; store.set("kuhinja-key", null); break;
+        default: return;
+      }
+      render();
+    });
+
+    function find(i, q) {
+      const box = $(`found-${i}`); if (!box) return;
+      q = q.trim().toLowerCase();
+      if (q.length < 2) { box.innerHTML = ""; return; }
+      const d = S.offer.dishes[i];
+      const hits = [...S.byRef.values()].filter((w) => `${w.name} ${w.producer} ${w.insight.grape || ""}`.toLowerCase().includes(q)).slice(0, 8);
+      box.innerHTML = hits.map((w) => {
+        const c = clash(w.insight, d.pairings);
+        return `<button class="k-found-row" data-act="add-found" data-i="${i}" data-ref="${esc(w.ref)}">
+          <b>${esc(w.name)}</b> · ${esc(w.producer)} <small>${esc(STYLE_HR[w.insight.style] || "")}</small>
+          ${c ? `<span class="k-warn">⚠ ${esc(food(c.food))}: ${esc(c.why)}</span>` : ""}</button>`;
+      }).join("") || `<p class="k-dim">Ništa na karti.</p>`;
+    }
+
+    async function save(status, okMsg) {
+      const o = S.offer;
+      const bad = o.dishes.findIndex((d) => !(d.name.hr || "").trim());
+      if (bad >= 0) { S.msg = `Jelo ${bad + 1} nema naziv.`; return render(); }
+      if (status === "published" && !o.dishes.length) { S.msg = "Dodajte barem jedno jelo prije objave."; return render(); }
+      const noWine = o.dishes.filter((d) => !d.wines.length && d.course !== "desserts").map((d) => d.name.hr);
+      if (status === "published" && noWine.length && !confirm(`Bez vina: ${noWine.join(", ")}. Ipak objaviti?`)) return;
+      S.msg = "Spremam…"; render();
+      try {
+        const body = { date: S.date, status, ...o, dishes: o.dishes.map(({ open, ...d }) => d) };
+        const r = await api("/api/kuhinja/ponuda", { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+        S.status = r.status; S.dirty = false;
+        const t = new Date(r.updatedAt).toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" });
+        S.msg = okMsg || (status === "published" ? `Objavljeno u ${t}. Gosti je vide u roku od minute.` : `Skica spremljena u ${t}. Gosti je ne vide.`);
+      } catch (err) { S.msg = err.message === "key" ? "" : `Nije spremljeno: ${err.message}`; }
+      render();
+    }
+
+    /* Photos are shrunk on the phone before they leave it: a 12 MP original is
+       5–8 MB, the page shows it at most 1600px wide, and D1 holds 2 MB a row.
+       WebP where the browser can encode it, JPEG where it cannot (older iOS
+       silently returns PNG from toBlob("image/webp")). */
+    async function shrink(file) {
+      const bmp = await createImageBitmap(file, { imageOrientation: "from-image" }).catch(() => createImageBitmap(file));
+      const k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+      const w = Math.round(bmp.width * k), h = Math.round(bmp.height * k);
+      const c = document.createElement("canvas"); c.width = w; c.height = h;
+      c.getContext("2d").drawImage(bmp, 0, 0, w, h);
+      const as = (type, q) => new Promise((res) => c.toBlob(res, type, q));
+      let blob = await as("image/webp", 0.82);
+      if (!blob || blob.type !== "image/webp") blob = await as("image/jpeg", 0.85);
+      return { blob, w, h };
+    }
+    async function upload(files) {
+      const msg = $("photo-msg");
+      for (const [n, f] of files.entries()) {
+        if (msg) msg.textContent = `Šaljem ${n + 1}/${files.length}…`;
+        try {
+          const { blob, w, h } = await shrink(f);
+          const r = await api(`/api/kuhinja/media?date=${S.date}&w=${w}&h=${h}`, { method: "POST", headers: { "content-type": blob.type }, body: blob });
+          if (!S.offer.photos.includes(r.id)) S.offer.photos.push(r.id);
+          touch();
+        } catch (err) { alert(`Fotografija ${f.name} nije poslana: ${err.message}`); }
+      }
+      render();
+    }
+
+    window.addEventListener("beforeunload", (e) => { if (S.dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+    async function boot() {
+      if (!S.key) return render();
+      $("view").innerHTML = `<p class="k-dim">Učitavam kartu pića i ponudu…</p>`;
+      try {
+        await Promise.all([S.rows ? null : loadShelf(), loadOffer()]);
+        render();
+      } catch (err) {
+        if (err.message !== "key") $("view").innerHTML = `<p class="k-warn">${esc(err.message)}</p>`;
+      }
+    }
+    boot();
+  </script>
+
+  <style is:global>
+    .k { max-width: 760px; margin: 0 auto; padding: 1rem 16px 5rem; }
+    .k-head { padding: 1.5rem 0 1rem; }
+    .k-head h1 { font-size: 2.4rem; }
+    .k h2, .k-h2 { font-size: 1.5rem; margin: 1.6rem 0 .8rem; }
+    .k-card { background: var(--bg-card); border: 1px solid var(--line); padding: 1rem; margin: 0 0 1rem; }
+    .k-card h2 { margin-top: 0; }
+    .k-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.2rem; margin-bottom: 1rem; }
+    .k-status { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-dim); }
+    .k-status.published { color: var(--gold); }
+    .k-link, .k-foot a { color: var(--gold); font-size: .9rem; }
+    .k-field { display: block; margin: 0 0 .9rem; font-size: .85rem; color: var(--text-dim); }
+    .k input, .k textarea, .k select {
+      display: block; width: 100%; margin-top: .3rem; padding: .7rem .75rem;
+      background: var(--bg); color: var(--text); border: 1px solid var(--line);
+      font: inherit; font-size: 16px; /* 16px stops iOS zooming on focus */
+    }
+    .k input[type=file] { display: none; }
+    .k input[type=checkbox] { width: auto; display: inline; margin: .2rem .6rem 0 0; }
+    .k-bar input { display: inline-block; width: auto; margin: 0 0 0 .4rem; }
+    .k-row { display: flex; gap: .6rem; align-items: center; margin-bottom: .9rem; }
+    .k-row select { flex: 1; margin: 0; }
+    .k-row .k-price { width: 6.5rem; margin: 0; }
+    .k-more { margin: 0 0 1rem; color: var(--text-dim); font-size: .9rem; }
+    .k-more summary { cursor: pointer; padding: .3rem 0; }
+    .k-lang { display: grid; grid-template-columns: 6.5rem 1fr 1fr; gap: .4rem; align-items: center; margin-top: .4rem; }
+    .k-lang input { margin: 0; }
+    @media (max-width: 520px) { .k-lang { grid-template-columns: 1fr; } }
+    .k-label { margin: 1rem 0 .5rem; font-size: .85rem; color: var(--gold-soft); }
+    .k-sub { margin: .9rem 0 .3rem; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-faint); }
+    .k-dim { color: var(--text-faint); font-size: .85rem; }
+    .k-warn { color: #e0a36b; font-size: .85rem; display: block; }
+    .k-msg { margin: .6rem 0 0; color: var(--gold); min-height: 1.4em; }
+    .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .chip {
+      background: none; border: 1px solid var(--line); color: var(--text-dim);
+      padding: .5rem .75rem; font: inherit; font-size: .88rem; cursor: pointer; min-height: 40px;
+    }
+    .chip small { color: var(--text-faint); margin-left: .2rem; }
+    .chip.on { border-color: var(--gold); color: var(--bg); background: var(--gold); }
+    .chip.on small { color: var(--bg); }
+    .k-wine { display: flex; align-items: flex-start; padding: .55rem .4rem; border-bottom: 1px solid var(--line); cursor: pointer; font-size: .95rem; }
+    .k-wine.on { background: color-mix(in srgb, var(--gold) 12%, transparent); }
+    .k-wine small { color: var(--text-dim); }
+    .k-search { margin-top: .9rem !important; }
+    .k-found-row { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); color: var(--text); padding: .55rem .2rem; font: inherit; cursor: pointer; }
+    .k-found-row small { color: var(--text-faint); }
+    .k-photos, .k-pick { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .k-photos figure { position: relative; margin: 0; }
+    .k-photos img, .k-pick img { width: 96px; height: 96px; object-fit: cover; }
+    .k-x { position: absolute; top: 2px; right: 2px; width: 28px; height: 28px; border: 0; background: rgba(0,0,0,.7); color: #fff; font-size: 1.1rem; cursor: pointer; }
+    .k-add-photo { width: 96px; height: 96px; display: grid; place-items: center; border: 1px dashed var(--gold-soft); color: var(--gold); cursor: pointer; font-size: .9rem; }
+    .k-pick button { padding: 0; border: 2px solid transparent; background: none; cursor: pointer; }
+    .k-pick button.on { border-color: var(--gold); }
+    .k-dish-head { display: flex; justify-content: space-between; gap: 1rem; width: 100%; background: none; border: 0; color: var(--text); font: inherit; text-align: left; cursor: pointer; padding: .2rem 0; }
+    .k-dish-head span:first-child { font-family: var(--serif); font-size: 1.3rem; }
+    .k-actions { position: sticky; bottom: 0; background: var(--bg); padding: 1rem 0; border-top: 1px solid var(--line); margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+    .k-actions .k-msg { flex-basis: 100%; }
+    .k .btn { cursor: pointer; background: none; font: inherit; font-size: .8rem; }
+    .k .btn-solid { background: var(--gold); color: var(--bg); }
+    .k-ghost { border-color: var(--line) !important; color: var(--text-dim) !important; }
+    .k-ghost-link { background: none; border: 0; color: var(--text-faint); font: inherit; font-size: .85rem; text-decoration: underline; cursor: pointer; padding: .4rem 0; margin-left: auto; }
+    .k-danger { color: #c97a6b; display: block; margin: 1rem 0 0; }
+    .k-foot { margin-top: 2rem; }
+  </style>
+</body>
+</html>
