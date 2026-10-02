@@ -28,6 +28,13 @@ const bad = [];
 const b = await chromium.launch();
 for (const page of ["/", "/admin.html", "/qr.html", "/cjenik/"]) {
   const p = await b.newPage({ viewport: { width: 1024, height: 768 } });
+  /* The daily-offer feed is on the restaurant website, a different deploy.
+     Answered locally so the website being down can never block the wine
+     list from going out — the list works without it by design. */
+  await p.route("https://theatrium.devinos.hr/api/dnevna-ponuda*", (r) => r.fulfill({
+    status: 200, contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+    body: JSON.stringify({ offer: null })
+  }));
   p.on("pageerror", (e) => bad.push(`${page}: page error — ${e.message}`));
   p.on("console", (m) => { if (m.type() === "error") bad.push(`${page}: console — ${m.text()}`); });
   p.on("response", (r) => {

@@ -1,0 +1,51 @@
+# A PREVIEW of the wine list from the branch wine-list-daily-offer, so the
+# owner can see the daily offer in "Pomozi mi odabrati" on a real tablet
+# without anything reaching the live list.
+#
+# Lives only on that branch and triggers only on pushes to it. It never
+# touches GitHub Pages (theatrium.list.devinos.hr): it uploads to a separate
+# Cloudflare Pages project, theatrium-list-preview, at its pages.dev address.
+# Its own concurrency group, so it can never cancel or queue behind the live
+# deploy. Delete this file when the branch is merged or dropped.
+name: Preview wine list (branch)
+
+on:
+  push:
+    branches: [wine-list-daily-offer]
+  workflow_dispatch:
+
+concurrency:
+  group: list-preview
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    environment: theatrium
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax-check and validate (same guards as the live deploy)
+        run: |
+          for f in js/*.js; do node --check "$f"; done
+          node scripts/validate.mjs
+      - name: Assemble, then make it unmistakably a preview
+        run: |
+          bash scripts/site-files.sh _site
+          # The 86 board writes to the REAL data/unavailable.json through the
+          # GitHub API. A preview must not carry a switch that edits the live list.
+          rm -f _site/admin.html _site/js/admin.js
+          # Never indexed, never mistaken for the real thing.
+          printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
+          sed -i 's|<head>|<head><meta name="robots" content="noindex, nofollow">|' _site/index.html
+      - name: Create the preview project once
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@3.114.17 pages project list 2>/dev/null | grep -q 'theatrium-list-preview' \
+            || npx --yes wrangler@3.114.17 pages project create theatrium-list-preview --production-branch=preview
+      - name: Upload
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@3.114.17 pages deploy _site --project-name=theatrium-list-preview --branch=preview --commit-dirty=true

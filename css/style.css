@@ -254,6 +254,8 @@ body {
   margin: 1.5rem 0 .5rem; padding-top: .7rem; border-top: 1px solid var(--line);
 }
 .picks-group:first-of-type { margin-top: .5rem; padding-top: 0; border-top: none; }
+/* the kitchen's daily offer, first group in the sommelier's dish picker */
+.helper-course.helper-daily { color: var(--gold); }
 .pride-sub {
   font-family: var(--serif); font-style: italic; color: var(--gold-soft);
   font-size: 1.05rem; margin: -.2rem 0 1.1rem; text-align: center;

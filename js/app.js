@@ -375,12 +375,57 @@ function pollData() {
 /* The name the availability tests drive the tick by. */
 function pollHidden() { return pollData(); }
 
+/* ---------- the kitchen's daily offer (dnevna ponuda) ----------
+   Published by the chef on the restaurant's website (web/DAILY-OFFER.md).
+   On the list it lives in exactly one place: the sommelier ("Pomozi mi
+   odabrati"), as a first group of dishes above the kitchen's menu — so the
+   day's dishes get the same pairing answer as every dish on the card, from
+   the same dishScore(), the same budget bands and the same glass flip. That
+   is the parity the owner asked for: list <-> menu, list <-> daily offer.
+
+   The feed carries each dish's food tags and wine styles, the vocabulary
+   data/menu.json uses. Anything wrong with it — down, empty, malformed, or not
+   today's (the service worker can answer offline from yesterday's cache) —
+   and the helper shows the menu exactly as it does without it. */
+const DAILY_FEED = "https://theatrium.devinos.hr/api/dnevna-ponuda";
+let DAILY = null, dailyRaw = "";
+/* The service day rolls over at 03:00 UTC, the website's rule (today() in
+   web/functions/_lib/daily.js): the day's dishes leave the sommelier by
+   themselves overnight, even on a tablet that never reloads, because this is
+   checked every time the picker is drawn — not only when the feed changes. */
+const todayZagreb = () => new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
+
+function loadDaily() {
+  return fetch(DAILY_FEED, { cache: "no-cache" })
+    .then((r) => (r.ok ? r.text() : null))
+    .then((text) => {
+      if (text == null || text === dailyRaw) return;
+      dailyRaw = text;
+      let offer = null;
+      try { offer = JSON.parse(text).offer; } catch (e) { offer = null; }
+      DAILY = offer && offer.date === todayZagreb() && Array.isArray(offer.dishes) ? offer : null;
+    })
+    .catch(() => {});
+}
+
+/* Today's dishes in the shape menu.json uses. A dish the chef did not tag
+   cannot be paired, so it is not offered — a button that answers with
+   nothing is worse than no button. */
+function dailyDishes() {
+  if (!DAILY || DAILY.date !== todayZagreb()) return [];
+  return DAILY.dishes
+    .filter((d) => d && d.name && d.name.hr && ((d.pairings || []).length || (d.styles || []).length))
+    .map((d) => ({ course: d.course, name: d.name, pairings: d.pairings || [], styles: d.styles || [], daily: true }));
+}
+
 function startPolling() {
   setInterval(pollData, POLL_MS);
+  setInterval(loadDaily, POLL_MS);
+  loadDaily();
   /* A tablet that was asleep in an apron pocket should not wait out the rest of
      its interval when it comes back. */
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") pollData();
+    if (document.visibilityState === "visible") { pollData(); loadDaily(); }
   });
 }
 
@@ -2101,6 +2146,11 @@ function renderHelperStep() {
   if (helperState.step === 0) {
     /* Step 1: pick a real dish from the kitchen menu, grouped by course. */
     let groups = "";
+    const today = dailyDishes();
+    if (today.length)
+      groups += `<div class="helper-course helper-daily">${esc(t.ui.todayKitchen)}</div><div class="helper-opts">` +
+        today.map((d) => `<button class="helper-opt" data-dish="${esc(dishName(d))}">${esc(dishName(d))}</button>`).join("") +
+        `</div>`;
     (MENU.courses || []).forEach((course) => {
       const dishes = menuDishes().filter((d) => d.course === course);
       if (!dishes.length) return;
@@ -2118,7 +2168,11 @@ function renderHelperStep() {
   $("modal-body").querySelectorAll(".helper-opt").forEach((b) =>
     b.addEventListener("click", () => {
       if (helperState.step === 0) {
-        helperState.dish = menuDishes().find((d) => dishName(d) === b.dataset.dish);
+        helperState.dish = dailyDishes().concat(menuDishes()).find((d) => dishName(d) === b.dataset.dish);
+        /* A daily dish takes exactly the path a menu dish takes — budget,
+           three bottles, the glass flip, the same scoring (owner, 2026-10-02:
+           "the whole menu should be standardized"). What makes its answer good
+           is how it is tagged, which is the sommelier's job on the website. */
         helperState.step = 1;
         renderHelperStep();
       } else {
