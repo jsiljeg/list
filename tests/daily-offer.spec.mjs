@@ -30,7 +30,7 @@ const feed = (date = today) => ({
 
 async function helper(page) {
   await page.click("#helper-open");
-  await expect(page.locator(".helper")).toBeVisible();
+  await expect(page.locator("#modal-body .helper")).toBeVisible();   // not ".helper": the open button carries that class too
 }
 
 test("today's dishes lead the dish picker and get the usual pairing answer", async ({ page }) => {
