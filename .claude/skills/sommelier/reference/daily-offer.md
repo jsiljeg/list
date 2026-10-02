@@ -9,10 +9,11 @@ Where it shows:
   live now;
 - **the wine list's sommelier** ("Pomozi mi odabrati"), as a first group of
   dishes above the menu, paired from the dish's tags exactly like a menu dish
-  — via the JSON feed `/api/dnevna-ponuda`. Prepared on branch
-  `wine-list-daily-offer`, **not live**, not to be merged until the owner
-  says so. Never in Filhov izbor. This is why **every daily dish needs its
-  tags**: untagged, it cannot appear on the tablets.
+  — via the JSON feed `/api/dnevna-ponuda`. **Live since 2026-10-02.**
+  Same path as a menu dish: budget bands, three bottles, glass flip. Never in
+  Filhov izbor. The tablet answers from the dish's **tags**, so tagging is the
+  sommelier's decision — review it with `pair.mjs --bands`. Untagged, a dish
+  cannot appear on the tablets.
 
 Who writes it:
 - the chef, on the staff page `/kuhinja/` — the page proposes wines with this

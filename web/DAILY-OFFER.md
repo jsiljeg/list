@@ -93,37 +93,24 @@ Decisions worth knowing:
   `deploy-web.yml` copies it to the Pages project. Rotate:
   `gh secret set STAFF_KEY -e theatrium`, then re-run the web deploy.
 
-## On the wine list — the sommelier, prepared, not live
+## On the wine list — the sommelier (LIVE since 2026-10-02)
 
-Owner, 2026-10-02: parity. The list already pairs every dish on the
-kitchen's menu in "Pomozi mi odabrati"; the day's dishes belong there too,
-and **only** there (not in Filhov izbor). That needs a change to
-`js/app.js`, which must not happen while the tablets are new, so it is on the
-branch **`wine-list-daily-offer`** and not merged. When merged:
+Parity with the menu (owner): today's dishes are the first group in "Pomozi mi
+odabrati", in the guest's language, and take **exactly the path a menu dish
+takes** — budget bands, three bottles, the glass flip, the same scoring. Not
+in Filhov izbor. The tablet's answer comes from the dish's **tags**, not from
+the wines ticked on `/kuhinja/` (those are the website's); "the whole menu
+should be standardized" (owner). Review a dish band by band with
+`node .claude/skills/sommelier/pair.mjs --foods … --styles … --bands`.
 
-- the list polls `/api/dnevna-ponuda` on its usual 30 s cycle;
-- the sommelier's dish picker opens with a *Danas iz kuhinje* group — the
-  day's dishes in the guest's language — above Predjela/Juhe/…;
-- picking one runs the ordinary flow: budget, three bottles, the glass
-  flip, all from the dish's **tags** (what is on the plate + wine styles),
-  exactly as for a menu dish. The wines the chef ticked are for the website;
-  the tablet answers with the same model the rest of the list uses;
-- an untagged dish is not offered there (the staff page warns on publish);
-- a feed that is down, empty or not today's leaves the picker as it is now.
-
-Merge only when the owner says so — not before there are daily dishes and a
-website — and run `npx playwright test tests/daily-offer.spec.mjs` first.
-
-**Preview:** every push to the branch deploys it to
-https://theatrium-list-preview.pages.dev (`preview-list.yml`, branch-only, a
-separate Cloudflare project — never GitHub Pages, never the live domain;
-admin.html stripped, noindex). Delete that workflow when the branch is
-merged or dropped.
-
-Open question: the tablet answers a daily dish with the *model's* three
-bottles, like any menu dish. The chef's own ticked wines are on the website.
-If the owner wants the chef's picks to lead on the tablet too, it is a small
-change in `renderHelperResults()`.
+- the list polls `/api/dnevna-ponuda` every 30 s (`loadDaily()` in js/app.js);
+- an untagged dish is not offered (the staff page warns on publish);
+- down, empty, malformed or not-today's feed: the picker is the menu alone;
+- `tests/daily-offer.spec.mjs`, and `tests/helpers.mjs` / `check-site.mjs`
+  answer the feed locally, so neither the suite nor a wine list deploy
+  depends on the website being up;
+- when the website moves to theatrium.hr, `DAILY_FEED` in js/app.js moves
+  with it (CUTOVER).
 
 ## Open for the owner
 
