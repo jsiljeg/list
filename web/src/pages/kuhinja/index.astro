@@ -317,6 +317,11 @@ import "../../styles/tokens.css";
       if (status === "published" && !o.dishes.length) { S.msg = "Dodajte barem jedno jelo prije objave."; return render(); }
       const noWine = o.dishes.filter((d) => !d.wines.length && d.course !== "desserts").map((d) => d.name.hr);
       if (status === "published" && noWine.length && !confirm(`Bez vina: ${noWine.join(", ")}. Ipak objaviti?`)) return;
+      /* The tags are what the wine list's sommelier pairs from: an untagged
+         dish is left out of "Pomozi mi odabrati" on the tablets. */
+      const noTags = o.dishes.filter((d) => !d.pairings.length && !d.styles.length).map((d) => d.name.hr);
+      if (status === "published" && noTags.length &&
+          !confirm(`Bez oznaka (što je na tanjuru): ${noTags.join(", ")}. Ta jela se neće pojaviti u preporukama na karti pića. Ipak objaviti?`)) return;
       S.msg = "Spremam…"; render();
       try {
         const body = { date: S.date, status, ...o, dishes: o.dishes.map(({ open, ...d }) => d) };

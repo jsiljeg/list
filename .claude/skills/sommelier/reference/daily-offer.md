@@ -7,9 +7,12 @@ list. Full technical picture: `web/DAILY-OFFER.md`.
 Where it shows:
 - **website** `/dnevna-ponuda/` (staging: https://theatrium.devinos.hr) —
   live now;
-- **JSON feed** `/api/dnevna-ponuda` — for the wine list's "Filhov izbor"
-  (prepared on branch `wine-list-daily-offer`, **not live**, waiting for
-  the owner's go-ahead).
+- **the wine list's sommelier** ("Pomozi mi odabrati"), as a first group of
+  dishes above the menu, paired from the dish's tags exactly like a menu dish
+  — via the JSON feed `/api/dnevna-ponuda`. Prepared on branch
+  `wine-list-daily-offer`, **not live**, not to be merged until the owner
+  says so. Never in Filhov izbor. This is why **every daily dish needs its
+  tags**: untagged, it cannot appear on the tablets.
 
 Who writes it:
 - the chef, on the staff page `/kuhinja/` — the page proposes wines with this

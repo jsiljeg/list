@@ -84,22 +84,26 @@ Decisions worth knowing:
   `deploy-web.yml` copies it to the Pages project. Rotate:
   `gh secret set STAFF_KEY -e theatrium`, then re-run the web deploy.
 
-## Filhov izbor on the wine list — prepared, not live
+## On the wine list — the sommelier, prepared, not live
 
-The owner wants the day's dishes in the wine list's recommendations. That
-needs a change to `js/app.js`, which is exactly what must not happen while
-the tablets are new. So it is built on the branch **`wine-list-daily-offer`**
-and not merged. What it does when merged:
+Owner, 2026-10-02: parity. The list already pairs every dish on the
+kitchen's menu in "Pomozi mi odabrati"; the day's dishes belong there too,
+and **only** there (not in Filhov izbor). That needs a change to
+`js/app.js`, which must not happen while the tablets are new, so it is on the
+branch **`wine-list-daily-offer`** and not merged. When merged:
 
-- the list polls `/api/dnevna-ponuda` alongside its own data (same 30 s
-  cycle); a failed or empty feed changes nothing;
-- "Filhov izbor" opens with a *Danas iz kuhinje* block: each dish in the
-  guest's language, and under it the chosen wines as ordinary rows — tap
-  opens the wine's card, exactly like every other row;
-- a wine 86'd on the list is gone from the block too, because rows are
-  resolved against the list's own (already filtered) data.
+- the list polls `/api/dnevna-ponuda` on its usual 30 s cycle;
+- the sommelier's dish picker opens with a *Danas iz kuhinje* group — the
+  day's dishes in the guest's language — above Predjela/Juhe/…;
+- picking one runs the ordinary flow: budget, three bottles, the glass
+  flip, all from the dish's **tags** (what is on the plate + wine styles),
+  exactly as for a menu dish. The wines the chef ticked are for the website;
+  the tablet answers with the same model the rest of the list uses;
+- an untagged dish is not offered there (the staff page warns on publish);
+- a feed that is down, empty or not today's leaves the picker as it is now.
 
-Merge when the owner says so, ideally on a quiet day, and run the suite.
+Merge only when the owner says so — not before there are daily dishes and a
+website — and run `npx playwright test tests/daily-offer.spec.mjs` first.
 
 ## Open for the owner
 
