@@ -113,6 +113,11 @@ import "../../styles/tokens.css";
           ${S.date === todayZg() ? `<a class="k-link" href="/dnevna-ponuda/" target="_blank">Pogledaj stranicu ↗</a>` : `<span class="k-dim">${S.date > todayZg() ? "Gosti ga vide tog dana" : "Prošao dan — gosti ga više ne vide"}</span>`}
         </section>
 
+        ${copyFrom() ? `<section class="k-card k-copy">
+          <p>Za ovaj dan još nema ponude. Ponuda se povlači sama u 03:00 UTC, pa se sezonska jela
+          ne moraju pisati iznova — preuzmite zadnju objavljenu kao skicu, promijenite što treba i objavite.</p>
+          <button class="btn" data-act="copy">Preuzmi ponudu od ${copyFrom()}</button></section>` : ""}
+
         <section class="k-card">
           <label class="k-field">Naslov (neobavezno)
             <input data-path="title.hr" value="${esc(o.title.hr)}" placeholder="npr. Jesen na Dolcu"></label>
@@ -189,6 +194,14 @@ import "../../styles/tokens.css";
         <div class="k-wines" id="wines-${i}">${winesHtml(d, i)}</div>
         <button class="k-ghost-link k-danger" data-act="dish-del" data-i="${i}">Ukloni jelo</button>
       </article>`;
+    }
+
+    /* The last published day before this one, offered only on an empty day:
+       copying over a day that already has dishes would silently replace them. */
+    function copyFrom() {
+      const o = S.offer;
+      if (S.status === "published" || o.dishes.length || o.photos.length || (o.intro.hr || "").trim()) return null;
+      return S.recent.find((d) => d < S.date) || null;
     }
 
     function wineLine(w, d, i, extra = "") {
@@ -287,6 +300,18 @@ import "../../styles/tokens.css";
           touch(); break;
         }
         case "add-found": if (!d.wines.includes(b.dataset.ref) && d.wines.length < 6) d.wines.push(b.dataset.ref); touch(); rerenderWines(i); return;
+        case "copy": {
+          const from = copyFrom(); if (!from) return;
+          try {
+            const b = await api(`/api/kuhinja/ponuda?date=${from}`);
+            const o = b.offer || {};
+            S.offer = { title: o.title || {}, intro: o.intro || {}, video: o.video || "", photos: o.photos || [],
+              dishes: (o.dishes || []).map((d) => ({ ...d, open: false })) };
+            S.status = "draft"; S.dirty = true;
+            S.msg = `Preuzeto od ${from} kao skica — provjerite i objavite.`;
+          } catch (err) { S.msg = `Nije preuzeto: ${err.message}`; }
+          break;
+        }
         case "save": return save("draft");
         case "publish": return save("published");
         case "unpublish": return save("draft", "Objava povučena — stranica više ne prikazuje ovaj dan.");
@@ -443,6 +468,8 @@ import "../../styles/tokens.css";
     .k-ghost-link { background: none; border: 0; color: var(--text-faint); font: inherit; font-size: .85rem; text-decoration: underline; cursor: pointer; padding: .4rem 0; margin-left: auto; }
     .k-danger { color: #c97a6b; display: block; margin: 1rem 0 0; }
     .k-foot { margin-top: 2rem; }
+    .k-copy { border-color: var(--gold-soft); }
+    .k-copy p { margin: 0 0 .8rem; color: var(--text-dim); font-size: .92rem; }
   </style>
 </body>
 </html>
