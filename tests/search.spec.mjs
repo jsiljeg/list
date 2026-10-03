@@ -11,6 +11,18 @@
 import { test, expect } from "@playwright/test";
 import { openApp } from "./helpers.mjs";
 
+/* Search is tested against the whole list, not tonight's stock. These tests
+   read the real data, and on 2026-10-03 two of them failed for a reason that
+   had nothing to do with search: staff 86'd López de Heredia's Bosconia — the
+   only Garnacha on the list — so "grenache" correctly found nothing, and
+   nine hidden wines shrank the total enough to put "med" exactly on its
+   limit. What a query matches is the subject here; what is in the cellar is
+   availability.spec's. */
+test.beforeEach(async ({ page }) => {
+  await page.route("**/data/unavailable.json*", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ hidden: [] }) }));
+});
+
 test.describe.configure({ mode: "parallel" });
 
 /** How many wines a query finds, and their names. */

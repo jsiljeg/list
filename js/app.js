@@ -1165,8 +1165,7 @@ function renderContent() {
             const hay = itemHay(item);
             if ((hayMatch(hay, q) || (qf && hayMatch(hay, qf))) && (!picksOnly || item.recommended || item.new)) {
               const ref = [si, ci, gi, ii].join(".");
-              const ctx = [t.sections[sec.id], t.categories[cat.id], g.country ? t.countries[g.country] : null]
-                .filter(Boolean).join(" · ");
+              const ctx = searchContext(item, sec, cat, g, t);
               /* A wine is an item with insight and no `kind` — the same single
                  switch openDetail() reads. Water and the soft drinks have no
                  insight at all and belong in the second block with the spirits. */
@@ -2050,6 +2049,56 @@ function localizeMap(svg) {
     }).join(" · ");
     return open + esc(out) + close;
   });
+}
+
+/* The line under a search hit (owner, 2026-10-03). It used to be the wine's
+   *address* on the list — tab · heading · country — which read "Bijela vina ·
+   Bijela vina · Francuska" wherever a tab has one heading of the same name,
+   gave the glass and sparkling shelves no country at all, and told a guest
+   nothing about the wine. It now describes the wine:
+
+     still:      [Vina na čašu] · style · region, country
+     sparkling:  [Vina na čašu] · type · body · dosage · region, country
+
+   Built only from vocabulary already translated into all eight languages
+   (sections.glass, styles, bodies, the region tables, countries), so no
+   language needs a new string.
+
+   - "Vina na čašu" is the one piece of shelf information worth keeping: in
+     mixed results it is what tells a glass from a bottle.
+   - The region is the broadest rung — Burgundija, Toskana, Mosel, Istra —
+     the one a guest recognises; the wine card keeps the full ladder.
+   - Champagne is a *region* (owner): it appears only as the place, never as
+     the style. A sparkling wine's type is Blanc de Blancs / Blanc de Noirs
+     for a Champagne that is one, "rosé" for any rosé — by style, or by name,
+     because Selosse's Rosé is filed as a prestige cuvée — otherwise
+     "sparkling wine". Body and dosage always: every sparkling listing has
+     both, and plain Brut is information too.
+   - Spirits and the rest keep their heading, plus the country if any. */
+const SEARCH_REGION_SHORT = { "Hrvatska Istra": "Istra" };   /* the official name repeats the country */
+function searchContext(item, sec, cat, g, t) {
+  const ins = item.insight;
+  const country = (c) => (c && t.countries[c]) || null;
+  if (!ins || ins.kind) {
+    const c = ins ? country(ins.country) : (g.country ? country(g.country) : null);
+    return [t.categories[cat.id] || null, c].filter(Boolean).join(" · ");
+  }
+  const rungs = String(ins.region || "").split(",").map((s) => s.trim()).filter(Boolean);
+  const broad = rungs.length ? rungs[rungs.length - 1] : "";
+  const region = broad ? localizeRegion(SEARCH_REGION_SHORT[broad] || broad) : "";
+  const where = [region, country(ins.country)].filter(Boolean).join(", ");
+  let what;
+  if (/^(sparkling|champagne)/.test(ins.style)) {
+    const rose = /rose$/.test(ins.style) || /\bros[eé]\b/i.test(item.name);
+    const kind = rose ? t.styles.sparkling_rose
+      : /_(bdb|bdn)$/.test(ins.style) ? String(t.styles[ins.style] || "").split(" · ").pop()
+      : t.styles.sparkling;
+    what = [kind, ins.body ? t.bodies[ins.body] : null, ins.dosage ? localizeDosage(ins.dosage) : null]
+      .filter(Boolean).join(" · ");
+  } else {
+    what = t.styles[ins.style] || "";
+  }
+  return [sec.id === "glass" ? t.sections.glass : null, what || null, where || null].filter(Boolean).join(" · ");
 }
 
 function localizeRegion(str) {
