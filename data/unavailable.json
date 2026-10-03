@@ -1,4 +1,10 @@
 {
  "_": "Vina koja se trenutno NE prikazuju gostima. Uređuje se preko /admin.html ili ručno.",
- "hidden": []
+ "hidden": [
+  {
+   "producer": "Antinori",
+   "name": "Tignanello 2020",
+   "since": "2026-10-03"
+  }
+ ]
 }
