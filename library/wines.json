@@ -8207,6 +8207,67 @@
     "excellent_vintage"
    ]
   },
+  "conti-costanti--brunello-di-montalcino-2020": {
+   "name": "Brunello di Montalcino 2020",
+   "producer": "Conti Costanti",
+   "insight": {
+    "grape": "Sangiovese",
+    "region": "Montalcino, Toscana",
+    "country": "IT",
+    "style": "red_full",
+    "body": "full",
+    "aromas": [
+     "sour_cherry",
+     "violet",
+     "tobacco",
+     "spice",
+     "tomato_leaf",
+     "smoke"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "beef",
+     "game"
+    ],
+    "temp": "16–18",
+    "alcohol": "",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Costanti radi Brunello kao da je još 1970. Bez novog drva i bez šminke: višnja, koža i zemlja, i tanin koji te čeka deset godina bez ljutnje.",
+    "en": "Costanti makes Brunello as though it were still 1970. No new oak, no make-up: sour cherry, leather and earth, and a tannin that will wait ten years for you without resentment.",
+    "it": "Costanti fa il Brunello come se fosse ancora il 1970. Niente legno nuovo, niente trucco: amarena, cuoio e terra, e un tannino che ti aspetta dieci anni senza rancore.",
+    "fr": "Costanti fait son brunello comme si l'on était encore en 1970. Pas de bois neuf, pas de fard : griotte, cuir et terre, et un tanin qui t'attendra dix ans sans rancune.",
+    "de": "Costanti macht Brunello, als wäre es noch 1970. Kein neues Holz, keine Schminke: Sauerkirsche, Leder und Erde, und ein Tannin, das zehn Jahre ohne Groll auf dich wartet.",
+    "zh": "科斯坦蒂酿布鲁奈罗，仿佛还停在 1970 年。没有新桶，没有妆：酸樱桃、皮革与泥土，还有能毫无怨言等你十年的单宁。",
+    "sl": "Costanti dela Brunello, kot da je še vedno 1970. Brez novega lesa in brez šminke: višnja, usnje in zemlja, ter tanin, ki te deset let čaka brez zamere.",
+    "es": "Costanti hace el Brunello como si aún fuera 1970. Sin madera nueva y sin maquillaje: guinda, cuero y tierra, y un tanino que te espera diez años sin rencor."
+   },
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20"
+    },
+    {
+     "critic": "Vinous",
+     "score": "95"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "93",
+     "checked": "2026-10-03"
+    },
+    {
+     "critic": "Decanter",
+     "score": "97"
+    }
+   ]
+  },
   "fattoria-di-magliano--heba-2021": {
    "name": "Heba 2021",
    "producer": "Fattoria di Magliano",

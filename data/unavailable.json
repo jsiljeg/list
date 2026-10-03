@@ -40,6 +40,12 @@
    "producer": "Wise Grus",
    "name": "Orahovac",
    "since": "2026-10-03"
+  },
+  {
+   "producer": "Conti Costanti",
+   "name": "Brunello di Montalcino 2018",
+   "since": "2026-10-03",
+   "reason": "zamijenjen berbom 2020"
   }
  ]
 }
