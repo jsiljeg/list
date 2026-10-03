@@ -75,6 +75,10 @@ Nađite vino (Ctrl+F / ⌘+F) i promijenite **samo `price`** — bez navodnika i
 > `price` promijeni. Ako je slučajno promijenite, objava će se zaustaviti i
 > javiti vam koji je broj bio ispravan.
 
+> **Trenutno pauzirano (od 03.10.2026.):** cjenik i sidrena cijena odgođeni
+> su za mjesec dana, pa nakon promjene cijene **ne treba** pokretati
+> `npm run cjenik`. Kad se uvede ponovno, vrijedi ovo:
+
 Nakon svake promjene cijene pokrenite i:
 ```
 npm run cjenik
@@ -369,6 +373,12 @@ isto kao tekst o vinaru, i prikazuje se ispod svih pića te kuće. `note` je za
 ono što razlikuje baš tu bocu.
 
 ## Sidrena cijena i objava cjenika (zakon od 01.10.2026.)
+
+> **Pauzirano od 03.10.2026.** — obveza je odgođena za mjesec dana. Sidrena
+> cijena se gostima ne prikazuje, a `/cjenik/` se ne objavljuje. Ništa nije
+> obrisano: podaci, provjere i arhiva ostaju. Uključuje se ponovno u
+> `js/app.js` (`SHOW_ANCHOR`) i `scripts/lib/cjenik-publish.json`
+> (`"publish": true`, pa `npm run cjenik`). Opis ispod vrijedi kad se uključi.
 
 Tri stvari koje zakon traži, i gdje su riješene:
 

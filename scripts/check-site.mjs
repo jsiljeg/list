@@ -26,7 +26,8 @@ await new Promise((r) => srv.listen(4199, r));
 
 const bad = [];
 const b = await chromium.launch();
-for (const page of ["/", "/admin.html", "/qr.html", "/cjenik/"]) {
+const cjenikOn = JSON.parse(await readFile(resolve("scripts/lib/cjenik-publish.json"), "utf8")).publish === true;
+for (const page of ["/", "/admin.html", "/qr.html", ...(cjenikOn ? ["/cjenik/"] : [])]) {
   const p = await b.newPage({ viewport: { width: 1024, height: 768 } });
   /* The daily-offer feed is on the restaurant website, a different deploy.
      Answered locally so the website being down can never block the wine
@@ -66,9 +67,13 @@ for (const page of ["/", "/admin.html", "/qr.html", "/cjenik/"]) {
     /* …and the cjenik must be. Publishing the price list in a machine-readable
        format is the obligation itself, not a nicety, so a stable URL that 404s
        is exactly as bad as a missing price. */
+    /* While postponed (scripts/lib/cjenik-publish.json), the opposite holds:
+       it must NOT be reachable, so a half-paused state cannot ship. */
+
     for (const u of ["/cjenik/", "/cjenik/cjenik.xml", "/cjenik/cjenik.csv"]) {
       const r = await p.request.get("http://127.0.0.1:4199" + u);
-      if (r.status() !== 200) bad.push(`cjenik not published: ${u} (${r.status()})`);
+      if (cjenikOn && r.status() !== 200) bad.push(`cjenik not published: ${u} (${r.status()})`);
+      if (!cjenikOn && r.status() !== 404) bad.push(`cjenik is postponed but still published: ${u} (${r.status()})`);
     }
   }
   await p.close();

@@ -1,0 +1,4 @@
+{
+ "publish": false,
+ "why": "Postponed together with the anchor price (sidrena cijena), owner 2026-10-03. While false: /cjenik/ is not published, validate.mjs does not demand a fresh cjenik, and check-site.mjs requires /cjenik/ to be absent. The generator (npm run cjenik) and the archive in cjenik/ stay in the repo. To turn it back on: set true, run npm run cjenik, commit — then decide whether hidden (86'd) wines belong in it, which changes how /admin and the deploy interact (see CLAUDE.md)."
+}

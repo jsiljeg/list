@@ -1852,13 +1852,28 @@ notice; nothing was deleted. The `anchor` data, the warrant, validate.mjs and
 the cjenik's `sidrena_cijena` column all keep running, so the anchors stay
 frozen and correct. `tests/anchor.spec.mjs` follows the switch either way.
 
-**When it comes back — do this, it is the owner's explicit ask:** flip the
-constant, and settle the wines added since the reference day (Chavost ×2,
-Carillon, and anything after). Under the rule as read on 2026-09-21 they had
-no price on 10.09.2026 and correctly carry no anchor; if the postponed rule
+**The cjenik is postponed with it** (owner, 2026-10-03, chosen over keeping it
+or excluding hidden wines): `scripts/lib/cjenik-publish.json` `"publish":
+false`. While false, site-files.sh does not copy `cjenik/`, validate.mjs does
+not demand a fresh one, check-site.mjs requires `/cjenik/` to 404, and the
+data.spec cjenik test skips. The generator and archive stay in the repo and go
+stale on purpose.
+
+**When it comes back — do this, it is the owner's explicit ask:** flip both
+switches (`SHOW_ANCHOR`, `cjenik-publish.json`), run `npm run cjenik`, and
+settle the wines added since the reference day (Chavost ×2, Carillon, Costanti
+Brunello 2020, and anything after). Under the rule as read on 2026-09-21 they
+had no price on 10.09.2026 and correctly carry no anchor; if the postponed rule
 moves the reference day, re-seed with `scripts/anchor-prices.py` against the
 new date rather than hand-writing anchors. Ask the owner which reading holds
 before touching the data.
+
+The owner has asked for **hidden (86'd) wines to be left out of the cjenik**.
+That is a real design change, not a filter: validate.mjs fails the deploy on a
+stale cjenik, so once hidden wines change the cjenik, every /admin hide would
+block the deploy — the 86 would never reach the guests. Do it only together
+with making the deploy regenerate the cjenik itself (and commit the dated
+archive), and test an /admin hide end to end before switching it on.
 
 ## Chavost (added 2026-10-03)
 

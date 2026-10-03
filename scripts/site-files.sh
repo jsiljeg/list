@@ -22,7 +22,13 @@ cp index.html admin.html qr.html manifest.webmanifest sw.js robots.txt LICENSE "
 # from 01.10.2026: published on the website, refreshed as soon as anything
 # changes, and every published version reachable for at least 30 days. The
 # whole directory goes, because the archive *is* the retention.
-cp -r cjenik "$out/"
+#
+# Postponed with the anchor price (owner, 2026-10-03): one switch,
+# scripts/lib/cjenik-publish.json. While it is false the directory simply is
+# not published, and check-site.mjs makes sure of that.
+if grep -q '"publish": true' scripts/lib/cjenik-publish.json; then
+  cp -r cjenik "$out/"
+fi
 cp -r .well-known "$out/"
 
 # code and artwork

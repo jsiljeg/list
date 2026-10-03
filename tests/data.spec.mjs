@@ -1390,10 +1390,23 @@ test("every row keeps a chevron cell, so the prices line up", () => {
   expect(css.slice(css.indexOf(".item-chevron {"), css.indexOf(".item-chevron {") + 240)).toContain("width:");
 });
 
+const CJENIK_SWITCH = JSON.parse(readFileSync(resolve(ROOT, "scripts/lib/cjenik-publish.json"), "utf8"));
+
+test("the cjenik switch is a plain boolean, and every guard reads it", () => {
+  /* Postponed with the anchor price (owner, 2026-10-03). One switch for the
+     deploy, the validator and the site check — a half-paused cjenik (copied
+     but not validated, or validated but not copied) is the failure this stops. */
+  expect(typeof CJENIK_SWITCH.publish).toBe("boolean");
+  for (const f of ["scripts/site-files.sh", "scripts/validate.mjs", "scripts/check-site.mjs"])
+    expect(readFileSync(resolve(ROOT, f), "utf8"), f).toContain("cjenik-publish.json");
+});
+
 test("the published cjenik is the list, in both machine formats", () => {
   /* Rules 4-6: published on the site, refreshed on every change, kept 30 days.
      The digest is what makes "on every change" checkable — validate.mjs fails
-     the deploy when these disagree. */
+     the deploy when these disagree. Only while it is published: postponed, the
+     stored files are allowed to go stale until it is switched back on. */
+  test.skip(!CJENIK_SWITCH.publish, "cjenik postponed (scripts/lib/cjenik-publish.json)");
   const xml = readFileSync(resolve(ROOT, "cjenik/cjenik.xml"), "utf8");
   const csv = readFileSync(resolve(ROOT, "cjenik/cjenik.csv"), "utf8");
   expect(xml).toContain(`datum_sidrene_cijene="${ANCHOR_DATE}"`);

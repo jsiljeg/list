@@ -311,7 +311,14 @@ for (const sec of rawList.sections)
    immediately after every change, so the deploy is the moment to check: a
    price edited without regenerating leaves a stale file at a public URL for
    as long as nobody looks. */
-if (!fs.existsSync("cjenik/cjenik.xml")) {
+/* …but only while it is published. Postponed with the anchor price (owner,
+   2026-10-03): with scripts/lib/cjenik-publish.json false, a stale cjenik is
+   no one's problem, and demanding `npm run cjenik` on every price edit would
+   be friction for a file nobody can see. Run it before switching back on. */
+const CJENIK_PUBLISHED = JSON.parse(fs.readFileSync("scripts/lib/cjenik-publish.json", "utf8")).publish === true;
+if (!CJENIK_PUBLISHED) {
+  /* nothing to check */
+} else if (!fs.existsSync("cjenik/cjenik.xml")) {
   errors.push("cjenik/cjenik.xml is missing — run: npm run cjenik");
 } else {
   const published = (fs.readFileSync("cjenik/cjenik.xml", "utf8").match(/sazetak="([^"]+)"/) || [])[1];
