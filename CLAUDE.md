@@ -1828,6 +1828,22 @@ Full write-up: `web/DAILY-OFFER.md`. Pairing decisions of any kind go through
 the skill `.claude/skills/sommelier` (`pair.mjs --bands` shows what the tablet
 answers, band by band). `deploy.yml` ignores `.claude/**` and `web/**`.
 
+## Tablets update themselves (2026-10-03)
+
+The owner has no hands on the tablets. **Data** (wines, prices, notes, 86s)
+already reaches an open tablet in 30 s with no reload. **Code** now does too,
+at a safe moment: `scripts/site-files.sh` stamps a fingerprint of the code
+only (index.html, sw.js, manifest, css, js/*) into index.html's
+`app-version` meta and `version.json`, and loads every script as
+`?v=<fingerprint>` so a reload cannot come from the browser cache. app.js
+compares the two every 30 s; a new version reloads the **language screen after
+1 idle minute**, the list after the usual **3 idle minutes**, never under an
+open card, and only once per version per 10 minutes (stale-CDN guard). The
+source page says `dev`, which switches it off locally and in tests.
+`check-site.mjs` fails a deploy whose page is unstamped or whose scripts lack
+`?v=`. `tests/update.spec.mjs` covers it with a fake clock. Worst case for a
+code change to reach every tablet: about deploy + 30 s + the idle window.
+
 ## The anchor price is HIDDEN (owner, 2026-10-03)
 
 The sidrena-cijena requirement was postponed by a month. `SHOW_ANCHOR = false`
