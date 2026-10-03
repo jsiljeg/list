@@ -34,6 +34,30 @@ cp data/menu.json data/producers.json data/regions.json data/unavailable.json "$
 cp library/wines.json "$out/library/"
 cp lists/theatrium.json "$out/lists/"
 
+# The code version (2026-10-03). The owner has no hands on the tablets, so a
+# new app.js has to reach them by itself. Two parts, both done here so the
+# source stays a plain static site with nothing to build:
+#
+#  1. A fingerprint of the CODE only — the page, the stylesheet, the scripts,
+#     the service worker. Data is left out on purpose: a price edit already
+#     reaches every tablet in 30 seconds without a reload, and must not cause
+#     one. It goes into index.html's app-version meta and into version.json;
+#     the app polls the second and compares it with the first.
+#  2. ?v=<fingerprint> on every script and the stylesheet, so a reload can
+#     never be answered from the browser's own cache. GitHub Pages sends
+#     max-age=600, and a plain reload in Chrome does not revalidate
+#     subresources — without this a tablet could reload and keep running the
+#     old app.js for up to ten minutes.
+code_files="index.html sw.js manifest.webmanifest css/style.css $(ls js/*.js | sort | tr '\n' ' ')"
+version=$(cat $code_files | sha256sum | cut -c1-12)
+sed -i \
+  -e "s|<meta name=\"app-version\" content=\"dev\">|<meta name=\"app-version\" content=\"$version\">|" \
+  -e "s|href=\"css/style.css\"|href=\"css/style.css?v=$version\"|" \
+  -e "s|src=\"js/\([a-z0-9-]*\)\.js\"|src=\"js/\1.js?v=$version\"|g" \
+  "$out/index.html"
+grep -q "content=\"$version\"" "$out/index.html" || { echo "app-version meta not stamped into index.html" >&2; exit 1; }
+printf '{"code":"%s"}\n' "$version" > "$out/version.json"
+
 # Nothing here is published for theatrium.hr to embed any more (2026-09-07).
 # The plan is a plain link from their nav to this list, so there is no fragment
 # for their developer to paste and no staging replica of their site: embed-hr /

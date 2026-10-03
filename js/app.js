@@ -418,14 +418,52 @@ function dailyDishes() {
     .map((d) => ({ course: d.course, name: d.name, pairings: d.pairings || [], styles: d.styles || [], daily: true }));
 }
 
+/* ---------- picking up a new version of the app ----------
+   Data polls in place (above); code cannot be swapped into a running page, so
+   a new app.js needs a reload — and the owner has no hands on the tablets
+   (2026-10-03). The deploy stamps a fingerprint of the code into the page and
+   into version.json (scripts/site-files.sh); this compares the two on the
+   same 30-second beat. A data-only deploy leaves the fingerprint alone, so it
+   never causes a reload.
+
+   Noticing is not reloading. `updateReady` only arms the idle timer below,
+   which picks a moment nobody is using the tablet. "dev" — the stamp in the
+   source, so locally and in the tests — switches all of it off. */
+const APP_VERSION = (document.querySelector('meta[name="app-version"]') || {}).content || "dev";
+let updateReady = false;
+
+/* One reload per new version per ten minutes. If the CDN ever handed back a
+   stale page after a deploy, the version would still not match after the
+   reload, and without this the language screen would reload every minute. */
+const UPDATE_RETRY_MS = 10 * 60 * 1000;
+function reloadedRecentlyFor(code) {
+  try {
+    const t = JSON.parse(sessionStorage.getItem("update-tried") || "null");
+    return !!t && t.code === code && Date.now() - t.at < UPDATE_RETRY_MS;
+  } catch (e) { return false; }
+}
+
+function checkVersion() {
+  if (APP_VERSION === "dev" || updateReady) return Promise.resolve();
+  return fetch("version.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((v) => {
+      if (!v || !v.code || v.code === APP_VERSION || reloadedRecentlyFor(v.code)) return;
+      updateReady = v.code;
+    })
+    .catch(() => { /* offline: try again on the next beat */ });
+}
+
 function startPolling() {
   setInterval(pollData, POLL_MS);
   setInterval(loadDaily, POLL_MS);
+  setInterval(checkVersion, POLL_MS);
   loadDaily();
+  checkVersion();
   /* A tablet that was asleep in an apron pocket should not wait out the rest of
      its interval when it comes back. */
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") { pollData(); loadDaily(); }
+    if (document.visibilityState === "visible") { pollData(); loadDaily(); checkVersion(); }
   });
 }
 
@@ -2427,8 +2465,22 @@ let lastActivity = Date.now();
 ["pointerdown", "keydown", "scroll", "touchstart"].forEach((ev) =>
   document.addEventListener(ev, () => { lastActivity = Date.now(); }, { passive: true })
 );
+/* When a new version is waiting (checkVersion), the language screen may reload
+   after a single minute untouched: it holds no state, so a reload there costs
+   a guest nothing — and it is exactly where a tablet otherwise sat for a whole
+   day on old code, because the reload below only ever fires inside the list.
+   Inside the list nothing changes: still three idle minutes, never under an
+   open card, never while someone is scrolling. */
+const UPDATE_IDLE_MS = 60 * 1000;
 setInterval(() => {
-  if (Date.now() - lastActivity < IDLE_MS) return;
+  const idle = Date.now() - lastActivity;
+  if (updateReady && idle >= UPDATE_IDLE_MS && !modalOpen && !$("start").classList.contains("hidden")) {
+    try { sessionStorage.setItem("update-tried", JSON.stringify({ code: updateReady, at: Date.now() })); } catch (e) {}
+    sessionStorage.setItem("idle-reset", "1");
+    location.reload();
+    return;
+  }
+  if (idle < IDLE_MS) return;
   if ($("start").classList.contains("hidden")) {
     /* Reload (not just reset): the tablet silently picks up newly
        deployed versions while idle, then lands on the language screen. */

@@ -75,5 +75,25 @@ for (const page of ["/", "/admin.html", "/qr.html", "/cjenik/"]) {
 }
 await b.close();
 srv.close();
+
+/* The self-update (2026-10-03): the page must carry a real code stamp, the
+   same one version.json announces, and every script must be addressed by it.
+   A tablet whose page said "dev" would never update again, and one whose
+   scripts lacked ?v= could reload straight back into a cached old app.js. */
+{
+  const html = await readFile(join(root, "index.html"), "utf8");
+  const stamp = (html.match(/<meta name="app-version" content="([^"]+)">/) || [])[1];
+  let announced = null;
+  try { announced = JSON.parse(await readFile(join(root, "version.json"), "utf8")).code; } catch {}
+  if (!stamp || stamp === "dev") bad.push(`index.html is not stamped with a code version (${stamp})`);
+  else if (announced !== stamp) bad.push(`version.json (${announced}) does not match index.html (${stamp})`);
+  /* [a-z0-9-], not [a-z-]: the first version of this missed i18n.js — digits —
+     in both the stamping and this check, so each agreed with the other. */
+  const assets = [...html.matchAll(/(?:src|href)="((?:js\/[a-z0-9-]+\.js)|(?:css\/style\.css))([^"]*)"/g)];
+  for (const [, file, q] of assets)
+    if (q !== `?v=${stamp}`) bad.push(`index.html loads ${file} without ?v=${stamp}`);
+  if (assets.length < 6) bad.push(`expected the stylesheet and 5 scripts to be versioned, found ${assets.length}`);
+}
+
 if (bad.length) { console.error("FAIL\n  " + bad.join("\n  ")); process.exit(1); }
 console.log("site OK — every file the app loads is published, nothing internal is");
