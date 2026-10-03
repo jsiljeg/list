@@ -1,0 +1,48 @@
+# One-off: ship the branch `search-context` at 01:00 Zagreb on 4 Oct 2026
+# (owner, 2026-10-03: "deploy at 1AM — the restaurant still works now").
+#
+# 23:00 UTC = 01:00 CEST. GitHub may start a scheduled run some minutes late;
+# with the restaurant closed that does not matter. It merges the branch into
+# main and then runs the ordinary deploy (deploy.yml, with all its checks) —
+# a push made with GITHUB_TOKEN does not trigger other workflows, a
+# workflow_dispatch does. If the branch is already merged it does nothing.
+# Delete this file once it has run.
+name: Scheduled — ship search-context (one-off)
+
+on:
+  schedule:
+    - cron: "0 23 3 10 *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  ship:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Merge search-context into main
+        id: merge
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin search-context
+          if git merge-base --is-ancestor origin/search-context HEAD; then
+            echo "already merged — nothing to do"; echo "shipped=no" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          git merge --no-ff origin/search-context -m "Merge search-context: the search line describes the wine (scheduled 01:00)"
+          for f in js/*.js; do node --check "$f"; done
+          node scripts/validate.mjs
+          git push origin main
+          echo "shipped=yes" >> "$GITHUB_OUTPUT"
+      - name: Deploy
+        if: steps.merge.outputs.shipped == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main --repo "${{ github.repository }}"
