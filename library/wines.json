@@ -14207,6 +14207,80 @@
     "es": "El Amarone se hace con uvas secadas durante meses en cañizos, así que hasta el orujo que queda es seco, concentrado y todavía lleno de azúcar — una materia que ningún destilador recibe en otra parte. Corvina, molinara y rondinella viajan de la Valpolicella al Piamonte, donde Inga las destila y les da un año de roble francés. De ahí una grappa de fruta seca y cereza, más cercana al vino del que nace que ninguna otra."
    },
    "notePlain": true
+  },
+  "chavost--blanc-de-chardonnay": {
+   "name": "Blanc de Chardonnay",
+   "producer": "Chavost",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Chavot-Courcourt, Coteaux Sud d'Épernay, Champagne",
+    "country": "FR",
+    "style": "champagne_bdb",
+    "body": "light",
+    "aromas": [
+     "lemon",
+     "white_fruit",
+     "toast",
+     "saline"
+    ],
+    "pairings": [
+     "white_fish",
+     "oysters",
+     "shellfish",
+     "sushi"
+    ],
+    "temp": "8–10",
+    "alcohol": "",
+    "dosage": "Brut Nature"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Samo chardonnay iz Chavota, samo prvi tijesak, divlji kvasci — i ništa dodano, ni sumpor ni šećer. Između vinograda i čaše ne stoji nitko.",
+    "en": "Only Chardonnay from Chavot, only the first pressing, wild yeasts — and nothing added, neither sulphur nor sugar. Nobody stands between the vineyard and the glass.",
+    "it": "Solo chardonnay di Chavot, solo il primo mosto, lieviti indigeni — e niente aggiunto, né zolfo né zucchero. Tra la vigna e il bicchiere non c'è nessuno.",
+    "fr": "Rien que du chardonnay de Chavot, rien que la cuvée, levures indigènes — et rien d'ajouté, ni soufre ni sucre. Entre la vigne et le verre, il n'y a personne.",
+    "de": "Nur Chardonnay aus Chavot, nur die erste Pressung, wilde Hefen — und nichts hinzugefügt, weder Schwefel noch Zucker. Zwischen Weinberg und Glas steht niemand.",
+    "zh": "只用沙沃的霞多丽，只取第一道压榨汁，野生酵母——什么都不加，不加硫，也不加糖。葡萄园和酒杯之间，没有任何人。",
+    "sl": "Samo chardonnay iz Chavota, samo prvi tisk, divje kvasovke — in nič dodanega, ne žvepla ne sladkorja. Med vinogradom in kozarcem ne stoji nihče.",
+    "es": "Solo chardonnay de Chavot, solo el primer prensado, levaduras salvajes — y nada añadido, ni azufre ni azúcar. Entre la viña y la copa no hay nadie."
+   }
+  },
+  "chavost--paradoxe": {
+   "name": "Paradoxe",
+   "producer": "Chavost",
+   "insight": {
+    "grape": "Chardonnay 60%, Pinot Meunier 40%",
+    "region": "Chavot-Courcourt, Coteaux Sud d'Épernay, Champagne",
+    "country": "FR",
+    "style": "champagne",
+    "body": "medium",
+    "aromas": [
+     "brioche",
+     "pear",
+     "citrus",
+     "saline"
+    ],
+    "pairings": [
+     "white_fish",
+     "aperitif",
+     "oysters",
+     "seafood"
+    ],
+    "temp": "10–12",
+    "alcohol": "12.5",
+    "dosage": "Brut Nature"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Kuća koja je dosad punila samo pojedinačne berbe ovdje je spojila 5 berbi, od 2019. do 2023. — pola u velikim bačvama, pola u inoksu, i opet bez sumpora i šećera. Paradoks: najklasičniji potez u Champagni, a u njemu ništa klasično.",
+    "en": "A house that had only ever bottled single harvests blends 5 of them here, 2019 to 2023 — half in big casks, half in steel, and still no sulphur and no sugar. The paradox: Champagne's most classic move, with nothing classic about it.",
+    "it": "Una casa che aveva sempre imbottigliato singole vendemmie qui ne unisce 5, dal 2019 al 2023 — metà in grandi botti, metà in acciaio, e ancora senza zolfo né zucchero. Il paradosso: il gesto più classico della Champagne, senza niente di classico.",
+    "fr": "Une maison qui n'avait jamais mis en bouteille que des récoltes uniques en assemble ici 5, de 2019 à 2023 — moitié en grands foudres, moitié en inox, et toujours sans soufre ni sucre. Le paradoxe : le geste le plus classique de la Champagne, sans rien de classique.",
+    "de": "Ein Haus, das bisher nur einzelne Jahrgänge abfüllte, verschneidet hier 5, von 2019 bis 2023 — halb im großen Fass, halb im Stahl, und wieder ohne Schwefel und ohne Zucker. Das Paradox: der klassischste Handgriff der Champagne, und nichts daran ist klassisch.",
+    "zh": "这家酒庄此前只装瓶单一年份，这次却把 2019 到 2023 的 5 个年份调在一起——一半在大桶，一半在不锈钢罐，依然不加硫、不加糖。悖论在于：这是香槟最经典的做法，却没有一点经典的样子。",
+    "sl": "Hiša, ki je doslej stekleničila le posamezne letnike, je tu združila 5, od 2019 do 2023 — pol v velikih sodih, pol v inoksu, in spet brez žvepla in sladkorja. Paradoks: najbolj klasična poteza v Champagni, v kateri ni nič klasičnega.",
+    "es": "Una casa que solo había embotellado cosechas únicas mezcla aquí 5, de 2019 a 2023 — mitad en grandes toneles, mitad en acero, y otra vez sin azufre ni azúcar. La paradoja: el gesto más clásico de Champagne, sin nada de clásico."
+   }
   }
  }
 }

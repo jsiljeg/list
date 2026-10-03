@@ -306,6 +306,16 @@
        "country": null,
        "items": [
         {
+         "ref": "chavost--paradoxe",
+         "price": 95,
+         "new": true
+        },
+        {
+         "ref": "chavost--blanc-de-chardonnay",
+         "price": 105,
+         "new": true
+        },
+        {
          "ref": "de-sousa--chemins-des-terroirs",
          "price": 100,
          "anchor": 100

@@ -1812,6 +1812,31 @@ research, the structure. That is what the database right is for.
 Do not "improve" this with obfuscation or a bundler. It buys minutes against a
 copier and costs the no-build design that makes a price edit live in a minute.
 
+## The daily offer and the sommelier skill (2026-10-02)
+
+The chef's daily offer (dnevna ponuda) lives on the website (`web/`, staging
+theatrium.devinos.hr): staff page `/kuhinja/`, public page `/dnevna-ponuda/`,
+a ticket on the landing page, and the feed `/api/dnevna-ponuda` that this list
+reads. On the list it appears **only** in "Pomozi mi odabrati", as a first
+group of dishes taking exactly the menu-dish path; it rolls off at 03:00 UTC.
+Full write-up: `web/DAILY-OFFER.md`. Pairing decisions of any kind go through
+the skill `.claude/skills/sommelier` (`pair.mjs --bands` shows what the tablet
+answers, band by band). `deploy.yml` ignores `.claude/**` and `web/**`.
+
+## Chavost (added 2026-10-03)
+
+Two new Champagnes, top of NOVO: **Paradoxe** (95 €) and **Blanc de
+Chardonnay** (105 €; the owner said "Blanc de Blancs", the label says
+Blanc de Chardonnay and the label wins). Both are the first Champagnes on the
+full ladder rule — `Chavot-Courcourt, Coteaux Sud d'Épernay, Champagne` — the
+other 32 still carry a bare `Champagne` with villages in `terroir`, which
+predates the rule; a sweep is open. Open for the owner: the Blanc de
+Chardonnay's **alcohol** (12,5 vs 12,7 across releases — read the back label),
+and its **release** (an earlier *Extra Brut* release has Tim Atkin 90, not
+attachable to this Brut Nature one). Paradoxe has Vinum 92, left off because
+Vinum is not in `scripts/lib/critics.json` — adding a critic is a ranking
+decision.
+
 ## Windows environment notes
 
 - Git Bash paths (`/c/...`) don't work inside `python -c` — pass `C:/...` style paths.

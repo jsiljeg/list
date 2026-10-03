@@ -348,6 +348,8 @@
     "Vallée de la Marne": "马恩河谷",
     "Grande Vallée de la Marne": "大马恩河谷",
     "Coteaux du Vitryat": "维特里丘",
+    "Coteaux Sud d'Épernay": "埃佩尔奈南丘",
+    "Chavot-Courcourt": "沙沃-库尔库尔",
     /* Vineyard sites, climats and Einzellagen. Chinese wine writing has no
      * established name for any of these, so these are careful phonetic
      * transliterations in the same spirit as the village names above — the
