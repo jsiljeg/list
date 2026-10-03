@@ -2,8 +2,8 @@
 <!-- Cjenik ugostiteljskog objekta. Cijene su u eurima, PDV uracunat.
      "sidrena_cijena" je redovna cijena stavke na dan 2026-09-10. -->
 <cjenik obveznik="Apelacija d.o.o." objekt="Restoran Theatrium by Filho" adresa="Teslina 7, 10000 Zagreb" valuta="EUR" pdv_ukljucen="da" datum_objave="2026-10-03"
-        datum_sidrene_cijene="2026-09-10" broj_stavki="395"
-        sazetak="sha256:294a9f7f7933102da9fc462518ff936a">
+        datum_sidrene_cijene="2026-09-10" broj_stavki="396"
+        sazetak="sha256:e9a30a4d965c1d609f3cde8bc013841c">
   <stavka sifra="petrac--bregh-rose">
     <naziv>Bregh Rose</naziv>
     <proizvodjac>Petrač</proizvodjac>
@@ -1234,6 +1234,14 @@
     <mjera>0,75 l</mjera>
     <cijena valuta="EUR">245.00</cijena>
     <sidrena_cijena valuta="EUR" datum="2026-09-10">245.00</sidrena_cijena>
+  </stavka>
+  <stavka sifra="francois-carillon--saint-aubin-1er-cru-les-murgers-des-dents-de-chien-2023">
+    <naziv>Saint-Aubin 1er Cru Les Murgers des Dents de Chien 2023</naziv>
+    <proizvodjac>François Carillon</proizvodjac>
+    <skupina>Bijela vina</skupina>
+    <kategorija>Bijela vina</kategorija>
+    <mjera>0,75 l</mjera>
+    <cijena valuta="EUR">178.00</cijena>
   </stavka>
   <stavka sifra="philippe-chavy--st-aubin-1er-cru-les-murgers-des-dents-de-chien-2021">
     <naziv>St-Aubin 1er Cru Les Murgers des Dents de Chien 2021</naziv>

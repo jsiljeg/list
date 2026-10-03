@@ -14230,12 +14230,12 @@
      "sushi"
     ],
     "temp": "8–10",
-    "alcohol": "",
+    "alcohol": "12.5",
     "dosage": "Brut Nature"
    },
    "terroir": "",
    "note": {
-    "hr": "Samo chardonnay iz Chavota, samo prvi tijesak, divlji kvasci — i ništa dodano, ni sumpor ni šećer. Između vinograda i čaše ne stoji nitko.",
+    "hr": "Samo chardonnay iz Chavota, samo prva preša, divlji kvasci — i ništa dodano, ni sumpor ni šećer. Između vinograda i čaše ne stoji nitko.",
     "en": "Only Chardonnay from Chavot, only the first pressing, wild yeasts — and nothing added, neither sulphur nor sugar. Nobody stands between the vineyard and the glass.",
     "it": "Solo chardonnay di Chavot, solo il primo mosto, lieviti indigeni — e niente aggiunto, né zolfo né zucchero. Tra la vigna e il bicchiere non c'è nessuno.",
     "fr": "Rien que du chardonnay de Chavot, rien que la cuvée, levures indigènes — et rien d'ajouté, ni soufre ni sucre. Entre la vigne et le verre, il n'y a personne.",
@@ -14281,6 +14281,49 @@
     "sl": "Hiša, ki je doslej stekleničila le posamezne letnike, je tu združila 5, od 2019 do 2023 — pol v velikih sodih, pol v inoksu, in spet brez žvepla in sladkorja. Paradoks: najbolj klasična poteza v Champagni, v kateri ni nič klasičnega.",
     "es": "Una casa que solo había embotellado cosechas únicas mezcla aquí 5, de 2019 a 2023 — mitad en grandes toneles, mitad en acero, y otra vez sin azufre ni azúcar. La paradoja: el gesto más clásico de Champagne, sin nada de clásico."
    }
+  },
+  "francois-carillon--saint-aubin-1er-cru-les-murgers-des-dents-de-chien-2023": {
+   "name": "Saint-Aubin 1er Cru Les Murgers des Dents de Chien 2023",
+   "producer": "François Carillon",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Saint-Aubin, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "white_rich",
+    "body": "medium",
+    "aromas": [
+     "citrus",
+     "white_flowers",
+     "almond",
+     "chalk"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "risotto",
+     "shellfish"
+    ],
+    "temp": "12–14",
+    "alcohol": "",
+    "sweetness": "dry"
+   },
+   "terroir": "Les Murgers des Dents de Chien",
+   "note": {
+    "hr": "Isti vinograd kao Chavyjev Murgers odmah do njega na karti — vjetrovita padina iznad grand crua Pulignyja, kamenje oštro kao psi zubi. Naručite oba: ista kreda, dva rukopisa.",
+    "en": "The same vineyard as Chavy's Murgers, right beside it on this list — a windswept slope above the Puligny grands crus, its stones as sharp as a dog's teeth. Order both: the same chalk, two handwritings.",
+    "it": "La stessa vigna del Murgers di Chavy, subito accanto in carta — un pendio ventoso sopra i grand cru di Puligny, pietre affilate come denti di cane. Ordinateli entrambi: lo stesso gesso, due calligrafie.",
+    "fr": "La même vigne que le Murgers de Chavy, juste à côté sur cette carte — un coteau battu par le vent au-dessus des grands crus de Puligny, des pierres aiguës comme des dents de chien. Commandez les deux : la même craie, deux écritures.",
+    "de": "Derselbe Weinberg wie Chavys Murgers, gleich daneben auf dieser Karte — ein windiger Hang über den Grands Crus von Puligny, Steine scharf wie Hundezähne. Bestellen Sie beide: dieselbe Kreide, zwei Handschriften.",
+    "zh": "和菜单上紧挨着的 Chavy 那款 Murgers 出自同一片园——普利尼特级园上方一片迎风的山坡，石头尖得像狗的牙齿。两款都点吧：同样的白垩，两种笔迹。",
+    "sl": "Isti vinograd kot Chavyjev Murgers, takoj ob njem na karti — vetrovno pobočje nad grand cruji Pulignyja, kamni ostri kot pasji zobje. Naročite oba: ista kreda, dve pisavi.",
+    "es": "La misma viña que el Murgers de Chavy, justo al lado en esta carta — una ladera batida por el viento sobre los grands crus de Puligny, piedras afiladas como dientes de perro. Pidan los dos: la misma creta, dos caligrafías."
+   },
+   "ratings": [
+    {
+     "critic": "Jasper Morris",
+     "score": "92-95"
+    }
+   ]
   }
  }
 }

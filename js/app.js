@@ -519,7 +519,7 @@ function showApp() {
   /* One paragraph of notices, and the anchor-price sentence belongs in it: a
      row prints a date and a number, and this is the only place on the screen
      that says what that number is. */
-  $("legal").textContent = `${t.ui.legal} ${t.ui.anchorNote}`;
+  $("legal").textContent = SHOW_ANCHOR ? `${t.ui.legal} ${t.ui.anchorNote}` : t.ui.legal;
   $("company").textContent = t.ui.company;
   $("copyright").textContent = t.ui.copyright;
   $("picks-toggle").querySelector("span").textContent = t.ui.picks;
@@ -601,9 +601,18 @@ const alcText = (a) => {
    appeared only on the wines we have repriced would point at exactly those,
    and the rule is about a guest being able to compare, not about us
    confessing. An item that joined the list after the reference day has no
-   anchor — it had no price that day — and prints none. */
+   anchor — it had no price that day — and prints none.
+
+   **Hidden for now** (owner, 2026-10-03): the requirement was postponed by a
+   month, and a line under every price is clutter until it is due. Hidden, not
+   removed — the data, the warrant and validate.mjs all keep running, so the
+   anchors stay frozen and correct while nobody sees them. Turning it back on
+   is this one constant; tests/anchor.spec.mjs follows it either way. The
+   machine-readable cjenik is a separate file and still carries the column. */
+const SHOW_ANCHOR = false;
+
 const anchorText = (item) =>
-  (item.anchor == null ? "" : `${T().ui.anchorDate} · ${fmtPrice(item.anchor)} €`);
+  (!SHOW_ANCHOR || item.anchor == null ? "" :`${T().ui.anchorDate} · ${fmtPrice(item.anchor)} €`);
 
 function priceHtml(item) {
   if (item.price == null) return "";
@@ -1395,7 +1404,7 @@ function openDetail(ref, back, scope) {
     ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(criticName(r.critic))}${r.release ? `<i class="rating-release">${esc(r.release)}</i>` : ""}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €${
-      item.anchor != null ? `<span class="detail-anchor">${esc(t.ui.anchorLabel)} · ${esc(t.ui.anchorDate)} · ${fmtPrice(item.anchor)} €</span>` : ""}</div>` : ""}
+      SHOW_ANCHOR && item.anchor != null ? `<span class="detail-anchor">${esc(t.ui.anchorLabel)} · ${esc(t.ui.anchorDate)} · ${fmtPrice(item.anchor)} €</span>` : ""}</div>` : ""}
     ${/* The one thing the card could not do: get the wine from the guest to the
           waiter. Half of this list is unpronounceable to the guest reading it —
           "Riesling Wehlener Sonnenuhr Auslese 2023 – 0,375 l" defeats anyone

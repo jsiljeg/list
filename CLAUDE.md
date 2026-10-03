@@ -1823,6 +1823,22 @@ Full write-up: `web/DAILY-OFFER.md`. Pairing decisions of any kind go through
 the skill `.claude/skills/sommelier` (`pair.mjs --bands` shows what the tablet
 answers, band by band). `deploy.yml` ignores `.claude/**` and `web/**`.
 
+## The anchor price is HIDDEN (owner, 2026-10-03)
+
+The sidrena-cijena requirement was postponed by a month. `SHOW_ANCHOR = false`
+in js/app.js hides the line under every price, on the card, and in the legal
+notice; nothing was deleted. The `anchor` data, the warrant, validate.mjs and
+the cjenik's `sidrena_cijena` column all keep running, so the anchors stay
+frozen and correct. `tests/anchor.spec.mjs` follows the switch either way.
+
+**When it comes back — do this, it is the owner's explicit ask:** flip the
+constant, and settle the wines added since the reference day (Chavost ×2,
+Carillon, and anything after). Under the rule as read on 2026-09-21 they had
+no price on 10.09.2026 and correctly carry no anchor; if the postponed rule
+moves the reference day, re-seed with `scripts/anchor-prices.py` against the
+new date rather than hand-writing anchors. Ask the owner which reading holds
+before touching the data.
+
 ## Chavost (added 2026-10-03)
 
 Two new Champagnes, top of NOVO: **Paradoxe** (95 €) and **Blanc de
@@ -1830,10 +1846,18 @@ Chardonnay** (105 €; the owner said "Blanc de Blancs", the label says
 Blanc de Chardonnay and the label wins). Both are the first Champagnes on the
 full ladder rule — `Chavot-Courcourt, Coteaux Sud d'Épernay, Champagne` — the
 other 32 still carry a bare `Champagne` with villages in `terroir`, which
-predates the rule; a sweep is open. Open for the owner: the Blanc de
-Chardonnay's **alcohol** (12,5 vs 12,7 across releases — read the back label),
-and its **release** (an earlier *Extra Brut* release has Tim Atkin 90, not
-attachable to this Brut Nature one). Paradoxe has Vinum 92, left off because
+predates the rule; a sweep is open. The Blanc de Chardonnay's alcohol is
+**12,5** (owner, from the bottle, 2026-10-03 — sources had 12,5 and 12,7). In
+Croatian, "first press" is **prva preša**, never "prvi tijesak". Still open:
+its **release** (an earlier *Extra Brut* release has Tim Atkin 90, not
+attachable to this Brut Nature one).
+
+**François Carillon** Saint-Aubin 1er Cru Les Murgers des Dents de Chien 2023
+(178 €, 2026-10-03) sits beside Philippe Chavy's bottle from the same climat,
+and its note invites ordering both. Alcohol blank: merchants give 13 and 13,5
+for 2023 — read the label. Jasper Morris 92-95 is quoted identically by two
+merchants; his own note is behind the paywall, so no `checked`. A Wine
+Advocate 92 is reported but unverified — check with the owner's subscription. Paradoxe has Vinum 92, left off because
 Vinum is not in `scripts/lib/critics.json` — adding a critic is a ranking
 decision.
 
