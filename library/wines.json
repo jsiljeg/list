@@ -14213,7 +14213,7 @@
    "producer": "Chavost",
    "insight": {
     "grape": "Chardonnay",
-    "region": "Chavot-Courcourt, Coteaux Sud d'Épernay, Champagne",
+    "region": "Champagne",
     "country": "FR",
     "style": "champagne_bdb",
     "body": "light",
@@ -14233,7 +14233,7 @@
     "alcohol": "12.5",
     "dosage": "Brut Nature"
    },
-   "terroir": "",
+   "terroir": "Chavot-Courcourt, Coteaux Sud d'Épernay",
    "note": {
     "hr": "Samo chardonnay iz Chavota, samo prva preša, divlji kvasci — i ništa dodano, ni sumpor ni šećer. Između vinograda i čaše ne stoji nitko.",
     "en": "Only Chardonnay from Chavot, only the first pressing, wild yeasts — and nothing added, neither sulphur nor sugar. Nobody stands between the vineyard and the glass.",
@@ -14250,7 +14250,7 @@
    "producer": "Chavost",
    "insight": {
     "grape": "Chardonnay 60%, Pinot Meunier 40%",
-    "region": "Chavot-Courcourt, Coteaux Sud d'Épernay, Champagne",
+    "region": "Champagne",
     "country": "FR",
     "style": "champagne",
     "body": "medium",
@@ -14270,7 +14270,7 @@
     "alcohol": "12.5",
     "dosage": "Brut Nature"
    },
-   "terroir": "",
+   "terroir": "Chavot-Courcourt, Coteaux Sud d'Épernay",
    "note": {
     "hr": "Kuća koja je dosad punila samo pojedinačne berbe ovdje je spojila 5 berbi, od 2019. do 2023. — pola u velikim bačvama, pola u inoksu, i opet bez sumpora i šećera. Paradoks: najklasičniji potez u Champagni, a u njemu ništa klasično.",
     "en": "A house that had only ever bottled single harvests blends 5 of them here, 2019 to 2023 — half in big casks, half in steel, and still no sulphur and no sugar. The paradox: Champagne's most classic move, with nothing classic about it.",
@@ -14304,12 +14304,12 @@
      "shellfish"
     ],
     "temp": "12–14",
-    "alcohol": "",
+    "alcohol": "13",
     "sweetness": "dry"
    },
    "terroir": "Les Murgers des Dents de Chien",
    "note": {
-    "hr": "Isti vinograd kao Chavyjev Murgers odmah do njega na karti — vjetrovita padina iznad grand crua Pulignyja, kamenje oštro kao psi zubi. Naručite oba: ista kreda, dva rukopisa.",
+    "hr": "Isti vinograd kao Chavyjev Murgers odmah do njega na karti — vjetrovita padina iznad grand crua Pulignyja, kamenje oštro kao pseći zubi. Naručite oba: ista kreda, dva rukopisa.",
     "en": "The same vineyard as Chavy's Murgers, right beside it on this list — a windswept slope above the Puligny grands crus, its stones as sharp as a dog's teeth. Order both: the same chalk, two handwritings.",
     "it": "La stessa vigna del Murgers di Chavy, subito accanto in carta — un pendio ventoso sopra i grand cru di Puligny, pietre affilate come denti di cane. Ordinateli entrambi: lo stesso gesso, due calligrafie.",
     "fr": "La même vigne que le Murgers de Chavy, juste à côté sur cette carte — un coteau battu par le vent au-dessus des grands crus de Puligny, des pierres aiguës comme des dents de chien. Commandez les deux : la même craie, deux écritures.",
@@ -14321,7 +14321,7 @@
    "ratings": [
     {
      "critic": "Jasper Morris",
-     "score": "92-95"
+     "score": "95"
     }
    ]
   }

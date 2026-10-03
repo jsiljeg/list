@@ -70,6 +70,11 @@ empty string deliberately suppresses the producer-region fallback in
 - **France:** `<appellation>, <subregion>, <region>` — `Pommard, Côte de Beaune,
   Bourgogne`; `Saint-Estèphe, Médoc, Bordeaux`; two rungs where the appellation
   is its own côte (`Chablis, Bourgogne`).
+- **Champagne is the exception** (owner, 2026-10-03): `region` is always the
+  bare `Champagne`, and anything finer — village, sub-region, crus — goes in
+  `terroir`: `Chavot-Courcourt, Coteaux Sud d'Épernay`; `Côte des Blancs,
+  Bouzy`; `Avize, Cramant, Oger`. Never a ladder in `region` for a Champagne;
+  `terroir` stays `""` when nothing finer is known.
 - **Italy:** `<comune/subzone>, <denominazione/zone>, <regione>` —
   `Castiglione Falletto, Barolo, Piemonte`; `Marano di Valpolicella,
   Valpolicella Classica, Veneto`. The comune matters most here: Barolo spans 11
@@ -1843,23 +1848,24 @@ before touching the data.
 
 Two new Champagnes, top of NOVO: **Paradoxe** (95 €) and **Blanc de
 Chardonnay** (105 €; the owner said "Blanc de Blancs", the label says
-Blanc de Chardonnay and the label wins). Both are the first Champagnes on the
-full ladder rule — `Chavot-Courcourt, Coteaux Sud d'Épernay, Champagne` — the
-other 32 still carry a bare `Champagne` with villages in `terroir`, which
-predates the rule; a sweep is open. The Blanc de Chardonnay's alcohol is
-**12,5** (owner, from the bottle, 2026-10-03 — sources had 12,5 and 12,7). In
-Croatian, "first press" is **prva preša**, never "prvi tijesak". Still open:
-its **release** (an earlier *Extra Brut* release has Tim Atkin 90, not
-attachable to this Brut Nature one).
+Blanc de Chardonnay and the label wins). Region `Champagne`, terroir
+`Chavot-Courcourt, Coteaux Sud d'Épernay` — the Champagne rule in the
+conventions (they were briefly given a ladder in `region` and corrected the
+same day). The Blanc de Chardonnay's alcohol is **12,5** (owner, from the
+bottle — sources had 12,5 and 12,7). In Croatian, "first press" is **prva
+preša**, never "prvi tijesak". Still open: its **release** (an earlier *Extra
+Brut* release has Tim Atkin 90, not attachable to this Brut Nature one).
+Paradoxe has Vinum 92, left off because Vinum is not in
+`scripts/lib/critics.json` — adding a critic is a ranking decision.
 
 **François Carillon** Saint-Aubin 1er Cru Les Murgers des Dents de Chien 2023
 (178 €, 2026-10-03) sits beside Philippe Chavy's bottle from the same climat,
-and its note invites ordering both. Alcohol blank: merchants give 13 and 13,5
-for 2023 — read the label. Jasper Morris 92-95 is quoted identically by two
-merchants; his own note is behind the paywall, so no `checked`. A Wine
-Advocate 92 is reported but unverified — check with the owner's subscription. Paradoxe has Vinum 92, left off because
-Vinum is not in `scripts/lib/critics.json` — adding a critic is a ranking
-decision.
+and its note invites ordering both. Alcohol **13** (owner, from the label;
+merchants had 13 and 13,5). Jasper Morris **95** (owner; merchants still quote
+the barrel range 92-95). A Wine Advocate 92 is reported but unverified — check
+with the owner's subscription. The name: *Dents de Chien* are the white,
+triangular, jagged stones in the soil; *murgers* the walls of stone cleared
+from the vines. Croatian says "oštro kao **pseći** zubi".
 
 ## Windows environment notes
 
