@@ -8230,7 +8230,7 @@
      "game"
     ],
     "temp": "16–18",
-    "alcohol": "",
+    "alcohol": "14",
     "sweetness": "dry"
    },
    "terroir": "",
@@ -8247,7 +8247,8 @@
    "ratings": [
     {
      "critic": "Robert Parker",
-     "score": "94"
+     "score": "94",
+     "checked": "2026-10-03"
     },
     {
      "critic": "Jancis Robinson",
