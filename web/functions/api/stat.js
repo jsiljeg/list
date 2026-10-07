@@ -15,8 +15,9 @@
  * Nothing about a guest is stored: no cookie, no IP, no id, no sequence of events. Only the wine
  * list's own origin may post, and every field is checked, so junk can't fill the tables.
  *
- * GET ?days=30 — everything added up, for the owner's dashboard. Aggregates only; a search that
- * found something shows once at least two tables used it. */
+ * GET ?days=30 — everything added up, for the owner's dashboard: tablets and phones only (a computer
+ * is the owner or staff checking; ?all=1 includes it). Aggregates only; a search that found something
+ * shows once at least two tables used it. */
 import { json, LANGS } from "../_lib/daily.js";
 
 const ORIGINS = ["https://theatrium.list.devinos.hr"];
@@ -85,9 +86,13 @@ export async function onRequestPost({ request, env }) {
 }
 
 export async function onRequestGet({ request, env }) {
-  const days = Math.min(365, Math.max(1, Number(new URL(request.url).searchParams.get("days")) || 30));
+  const params = new URL(request.url).searchParams;
+  const days = Math.min(365, Math.max(1, Number(params.get("days")) || 30));
   const since = new Date(Date.now() - (days - 1) * 86400000).toISOString().slice(0, 10);
-  const q = (sql) => env.DB.prepare(sql).bind(since).all().then((r) => r.results || []);
+  // Guests use the restaurant's tablets or their own phones; a computer is the owner or staff
+  // checking the list, so it stays out of the totals unless ?all=1.
+  const guestsOnly = params.get("all") !== "1";
+  const q = (sql) => env.DB.prepare(guestsOnly ? sql.replace(/WHERE date >= \?1/g, "WHERE date >= ?1 AND device != 'desktop'") : sql).bind(since).all().then((r) => r.results || []);
   const [languages, depth, devices, byHour, byDay, wines, winesByLang, sections, searches, empty, features] = await Promise.all([
     // Per language: tables, cards opened, searches, minutes browsing.
     q(`SELECT lang, SUM(n) AS tables, SUM(cards) AS cards, SUM(searches) AS searches, SUM(seconds) AS seconds FROM guest_sessions WHERE date >= ?1 GROUP BY lang ORDER BY tables DESC`),
