@@ -129,3 +129,19 @@ CREATE TABLE IF NOT EXISTS media (
   created_at  TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS idx_media_date ON media (date);
+
+-- Guest statistics from the wine list (/api/stat): anonymous counters only.
+-- No cookies, no IP addresses, nothing that tells one guest from another: a row
+-- is "on this date, in this hour, this many taps of this kind on this device
+-- type". kind: 'visit' (the list opened, key = its language), 'lang' (a guest
+-- picked or switched language), 'wine' (a wine's detail opened, key = its id),
+-- 'search' (a search term, lowercased). Date and hour are Zagreb wall clock.
+CREATE TABLE IF NOT EXISTS guest_stats (
+  date    TEXT NOT NULL,
+  hour    INTEGER NOT NULL,
+  kind    TEXT NOT NULL CHECK (kind IN ('visit', 'lang', 'wine', 'search')),
+  key     TEXT NOT NULL,
+  device  TEXT NOT NULL CHECK (device IN ('tablet', 'phone', 'desktop')),
+  n       INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (date, hour, kind, key, device)
+);

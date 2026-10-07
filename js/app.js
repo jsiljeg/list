@@ -76,6 +76,19 @@ const COUNTRY_FLAGS = {
 FLAGS.sl = COUNTRY_FLAGS.SI();
 FLAGS.es = COUNTRY_FLAGS.ES();
 
+/* Anonymous guest statistics (web/functions/api/stat.js): which languages guests pick, on what kind
+   of device, which wines they open, what they search for. One counter tick per event, no cookie and
+   no id, so nothing tells one guest from another. Only on the real domain: local runs (dev, the
+   deploy's site check) aren't guests. sendBeacon with a string is a plain text/plain POST, so no
+   CORS preflight, and it survives the page being closed right after the tap. */
+const STATS_URL = "https://theatrium.devinos.hr/api/stat";
+const STATS_ON = location.hostname === "theatrium.list.devinos.hr";
+const DEVICE = !matchMedia("(pointer: coarse)").matches ? "desktop" : Math.min(screen.width, screen.height) >= 600 ? "tablet" : "phone";
+function stat(kind, key) {
+  if (!STATS_ON || !key) return;
+  try { navigator.sendBeacon(STATS_URL, JSON.stringify({ kind, key, device: DEVICE })); } catch { /* statistics never break the list */ }
+}
+
 let DATA = null;
 let lang = localStorage.getItem(LS_KEY);
 let currentSection = null;
@@ -202,6 +215,9 @@ function init() {
   const idleReset = sessionStorage.getItem("idle-reset");
   sessionStorage.removeItem("idle-reset");
   const returning = !!(lang && I18N[lang] && !idleReset);
+  /* A guest back on a phone that remembers the language counts as a visit in it; everyone else
+     picks a language on the start screen, which counts there (one tick per guest either way). */
+  if (returning) stat("visit", lang);
 
   /* The language screen is painted *before* the data, not after it.
 
@@ -513,6 +529,7 @@ function showStart() {
     b.addEventListener("click", () => {
       lang = b.dataset.lang;
       localStorage.setItem(LS_KEY, lang);
+      stat("lang", lang);
       appEntered ? showApp() : showStory();   /* changing language skips the intro splash */
     })
   );
@@ -1399,6 +1416,7 @@ function openDetail(ref, back, scope) {
   const item = DATA.sections[si].categories[ci].groups[gi].items[ii];
   const ins = item.insight;
   if (!ins) return;
+  stat("wine", `${item.producer ? `${item.producer} — ` : ""}${itemName(item)}`);
   const t = T();
   const field = (label, value, wide) =>
     value ? `<div class="detail-field${wide ? " wide" : ""}"><div class="detail-label">${label}</div><div class="detail-value">${value}</div></div>` : "";
@@ -2545,7 +2563,16 @@ $("search").addEventListener("input", () => {
     ["picks-toggle", "rated-toggle", "pride-toggle"].forEach((b) => $(b).classList.remove("active"));
   }
   renderContent();
+  /* The term a guest settled on, not every keystroke on the way ("c", "ca", "cab"…): counted once
+     typing has paused for two seconds, and the same term only once in a row. */
+  clearTimeout(searchStatTimer);
+  searchStatTimer = setTimeout(() => {
+    const term = $("search").value.trim().toLowerCase();
+    if (term.length >= 3 && term !== lastSearchStat) { lastSearchStat = term; stat("search", term); }
+  }, 2000);
 });
+let searchStatTimer = 0;
+let lastSearchStat = "";
 $("modal-close").addEventListener("click", closeModal);
 $("modal-backdrop").addEventListener("click", () => {
   /* See showModal(): a tap that lands here right after the sommelier redrew is
