@@ -10,7 +10,8 @@
  *   { "kind": "wine" | "search" | "search-empty" | "feature", "key", "lang", "device", "section"? }
  *     one tick per wine card opened (with the language it was read in and the list section), per
  *     search term settled on (and whether it found nothing), per feature used (sommelier helper,
- *     Filho's picks, best rated, pride of the house).
+ *     Filho's picks, best rated, pride of the house, switching language mid-browse) and per tap on
+ *     the category bar ("nav:<section>"), so unused parts of the list show up.
  *
  * Nothing about a guest is stored: no cookie, no IP, no id, no sequence of events. Only the wine
  * list's own origin may post, and every field is checked, so junk can't fill the tables.
@@ -22,7 +23,9 @@ import { json, LANGS } from "../_lib/daily.js";
 
 const ORIGINS = ["https://theatrium.list.devinos.hr"];
 const EVENT_KINDS = ["wine", "search", "search-empty", "feature"];
-const FEATURES = ["helper", "picks", "rated", "pride"];
+const FEATURES = ["helper", "picks", "rated", "pride", "lang-switch"];
+/* Taps on the category bar count as "nav:<section id>" (regions, new arrivals, each drink section). */
+const NAV = /^nav:[a-z_-]{2,30}$/;
 const DEVICES = ["tablet", "phone", "desktop"];
 
 const ZAGREB = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hourCycle: "h23" });
@@ -42,7 +45,7 @@ function cleanKey(kind, raw) {
     const q = s.toLowerCase().slice(0, 40);
     return q.length >= 3 && !/[<>{}]/.test(q) ? q : null;
   }
-  if (kind === "feature") return FEATURES.includes(s) ? s : null;
+  if (kind === "feature") return FEATURES.includes(s) || NAV.test(s) ? s : null;
   return null;
 }
 
@@ -93,7 +96,7 @@ export async function onRequestGet({ request, env }) {
   // checking the list, so it stays out of the totals unless ?all=1.
   const guestsOnly = params.get("all") !== "1";
   const q = (sql) => env.DB.prepare(guestsOnly ? sql.replace(/WHERE date >= \?1/g, "WHERE date >= ?1 AND device != 'desktop'") : sql).bind(since).all().then((r) => r.results || []);
-  const [languages, depth, devices, byHour, byDay, wines, winesByLang, sections, searches, empty, features] = await Promise.all([
+  const [languages, depth, devices, byHour, byDay, wines, winesByLang, sections, searches, empty, features, totals] = await Promise.all([
     // Per language: tables, cards opened, searches, minutes browsing.
     q(`SELECT lang, SUM(n) AS tables, SUM(cards) AS cards, SUM(searches) AS searches, SUM(seconds) AS seconds FROM guest_sessions WHERE date >= ?1 GROUP BY lang ORDER BY tables DESC`),
     q(`SELECT lang, depth, SUM(n) AS tables FROM guest_sessions WHERE date >= ?1 GROUP BY lang, depth`),
@@ -108,6 +111,7 @@ export async function onRequestGet({ request, env }) {
     q(`SELECT key AS term, SUM(n) AS n FROM guest_events WHERE date >= ?1 AND kind = 'search' GROUP BY key HAVING SUM(n) >= 2 ORDER BY n DESC LIMIT 15`),
     q(`SELECT key AS term, SUM(n) AS n FROM guest_events WHERE date >= ?1 AND kind = 'search-empty' GROUP BY key ORDER BY n DESC LIMIT 15`),
     q(`SELECT key AS feature, SUM(n) AS n FROM guest_events WHERE date >= ?1 AND kind = 'feature' GROUP BY key ORDER BY n DESC`),
+    q(`SELECT kind, SUM(n) AS n FROM guest_events WHERE date >= ?1 GROUP BY kind`),
   ]);
-  return json({ since, days, languages, depth, devices, byHour, byDay, wines, winesByLang, sections, searches, empty, features }, 200, { "cache-control": "no-store" });
+  return json({ since, days, languages, depth, devices, byHour, byDay, wines, winesByLang, sections, searches, empty, features, totals }, 200, { "cache-control": "no-store" });
 }

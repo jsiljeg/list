@@ -618,7 +618,7 @@ function renderLangSwitch() {
   const box = $("lang-switch");
   const cur = LANGS.find((l) => l.code === lang) || LANGS[0];
   box.innerHTML = `<button class="lang-current" type="button" aria-label="${esc(cur.name)}" title="${esc(cur.name)}"><span class="globe-sm">${GLOBE_SVG}</span><span class="lang-name">${esc(cur.name)}</span></button>`;
-  box.querySelector("button").addEventListener("click", showStart);
+  box.querySelector("button").addEventListener("click", () => { stat("feature", "lang-switch"); showStart(); });
 }
 
 function renderNav() {
@@ -634,6 +634,7 @@ function renderNav() {
   nav.querySelectorAll("button").forEach((b) =>
     b.addEventListener("click", () => {
       currentSection = b.dataset.sec;
+      stat("feature", `nav:${currentSection}`);
       $("search").value = "";
       picksOnly = false;
       ratedOnly = false;
