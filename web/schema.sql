@@ -130,18 +130,37 @@ CREATE TABLE IF NOT EXISTS media (
 );
 CREATE INDEX IF NOT EXISTS idx_media_date ON media (date);
 
--- Guest statistics from the wine list (/api/stat): anonymous counters only.
--- No cookies, no IP addresses, nothing that tells one guest from another: a row
--- is "on this date, in this hour, this many taps of this kind on this device
--- type". kind: 'visit' (the list opened, key = its language), 'lang' (a guest
--- picked or switched language), 'wine' (a wine's detail opened, key = its id),
--- 'search' (a search term, lowercased). Date and hour are Zagreb wall clock.
-CREATE TABLE IF NOT EXISTS guest_stats (
+-- Guest statistics from the wine list (/api/stat): anonymous counters only. No cookies, no IP
+-- addresses, no ids, no sequences: nothing tells one guest from another. Date and hour are Zagreb
+-- wall clock. The first version (guest_stats: one counter per language pick) couldn't say how deeply
+-- a table read the list, so it went; it only ever held a test row.
+DROP TABLE IF EXISTS guest_stats;
+
+-- One row tick per table (a tablet resets to the language screen after three idle minutes): which
+-- language they read in, on what, how many wine cards they opened (depth bucket + total), how many
+-- searches, how many seconds they browsed.
+CREATE TABLE IF NOT EXISTS guest_sessions (
+  date      TEXT NOT NULL,
+  hour      INTEGER NOT NULL,
+  lang      TEXT NOT NULL,
+  device    TEXT NOT NULL CHECK (device IN ('tablet', 'phone', 'desktop')),
+  depth     TEXT NOT NULL CHECK (depth IN ('0', '1', '2-3', '4-7', '8+')),
+  n         INTEGER NOT NULL DEFAULT 0,
+  cards     INTEGER NOT NULL DEFAULT 0,
+  searches  INTEGER NOT NULL DEFAULT 0,
+  seconds   INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (date, hour, lang, device, depth)
+);
+
+-- One tick per wine card opened (key = producer — wine) and its list section (kind 'section'), per
+-- search term settled on ('search', or 'search-empty' when it found nothing), per feature used.
+CREATE TABLE IF NOT EXISTS guest_events (
   date    TEXT NOT NULL,
   hour    INTEGER NOT NULL,
-  kind    TEXT NOT NULL CHECK (kind IN ('visit', 'lang', 'wine', 'search')),
+  kind    TEXT NOT NULL CHECK (kind IN ('wine', 'section', 'search', 'search-empty', 'feature')),
   key     TEXT NOT NULL,
+  lang    TEXT NOT NULL,
   device  TEXT NOT NULL CHECK (device IN ('tablet', 'phone', 'desktop')),
   n       INTEGER NOT NULL DEFAULT 0,
-  PRIMARY KEY (date, hour, kind, key, device)
+  PRIMARY KEY (date, hour, kind, key, lang, device)
 );

@@ -76,18 +76,38 @@ const COUNTRY_FLAGS = {
 FLAGS.sl = COUNTRY_FLAGS.SI();
 FLAGS.es = COUNTRY_FLAGS.ES();
 
-/* Anonymous guest statistics (web/functions/api/stat.js): which languages guests pick, on what kind
-   of device, which wines they open, what they search for. One counter tick per event, no cookie and
-   no id, so nothing tells one guest from another. Only on the real domain: local runs (dev, the
-   deploy's site check) aren't guests. sendBeacon with a string is a plain text/plain POST, so no
-   CORS preflight, and it survives the page being closed right after the tap. */
+/* Anonymous guest statistics (web/functions/api/stat.js). The tablet goes from table to table and
+   resets to the language screen after three idle minutes, so one "session" is one table: it starts
+   when they pick a language (or a phone comes back remembering one) and is sent once when it ends
+   (idle reset, page closed) with how many wine cards they opened, how many searches, how long they
+   browsed, in the language they ended up reading. That tells one guest reading everything from many
+   guests opening one wine each. Each card opened, search settled on (found or not) and feature used
+   is also counted, with its language. Nothing tells one guest from another: no cookie, no id, no
+   sequence of events leaves the tablet. Only on the real domain: local runs (dev, the deploy's site
+   check) aren't guests. sendBeacon with a string is a plain text/plain POST, so no CORS preflight,
+   and it survives the page being closed right after. */
 const STATS_URL = "https://theatrium.devinos.hr/api/stat";
 const STATS_ON = location.hostname === "theatrium.list.devinos.hr";
 const DEVICE = !matchMedia("(pointer: coarse)").matches ? "desktop" : Math.min(screen.width, screen.height) >= 600 ? "tablet" : "phone";
-function stat(kind, key) {
-  if (!STATS_ON || !key) return;
-  try { navigator.sendBeacon(STATS_URL, JSON.stringify({ kind, key, device: DEVICE })); } catch { /* statistics never break the list */ }
+function beacon(body) {
+  if (!STATS_ON) return;
+  try { navigator.sendBeacon(STATS_URL, JSON.stringify({ ...body, device: DEVICE })); } catch { /* statistics never break the list */ }
 }
+function stat(kind, key, extra = {}) {
+  if (key && lang) beacon({ kind, key, lang, ...extra });
+}
+let session = null;
+function startSession() {
+  if (!session && lang) session = { cards: 0, searches: 0, started: Date.now() };
+}
+function endSession() {
+  if (!session || !lang) return;
+  const s = session;
+  session = null;
+  beacon({ kind: "session", lang, cards: s.cards, searches: s.searches, seconds: Math.min(4 * 3600, Math.round((Date.now() - s.started) / 1000)) });
+}
+/* A phone closing the list (or a tablet browser killing the tab) ends the table too. */
+addEventListener("pagehide", endSession);
 
 let DATA = null;
 let lang = localStorage.getItem(LS_KEY);
@@ -217,7 +237,7 @@ function init() {
   const returning = !!(lang && I18N[lang] && !idleReset);
   /* A guest back on a phone that remembers the language counts as a visit in it; everyone else
      picks a language on the start screen, which counts there (one tick per guest either way). */
-  if (returning) stat("visit", lang);
+  if (returning) startSession();
 
   /* The language screen is painted *before* the data, not after it.
 
@@ -529,7 +549,8 @@ function showStart() {
     b.addEventListener("click", () => {
       lang = b.dataset.lang;
       localStorage.setItem(LS_KEY, lang);
-      stat("lang", lang);
+      /* A table switching language mid-browse is still one table, counted in the language it ends in. */
+      startSession();
       appEntered ? showApp() : showStory();   /* changing language skips the intro splash */
     })
   );
@@ -1416,7 +1437,9 @@ function openDetail(ref, back, scope) {
   const item = DATA.sections[si].categories[ci].groups[gi].items[ii];
   const ins = item.insight;
   if (!ins) return;
-  stat("wine", `${item.producer ? `${item.producer} — ` : ""}${itemName(item)}`);
+  stat("wine", `${item.producer ? `${item.producer} — ` : ""}${itemName(item)}`, { section: /^[a-z_-]{2,30}$/.test(currentSection || "") ? currentSection : undefined });
+  startSession();
+  if (session) session.cards++;
   const t = T();
   const field = (label, value, wide) =>
     value ? `<div class="detail-field${wide ? " wide" : ""}"><div class="detail-label">${label}</div><div class="detail-value">${value}</div></div>` : "";
@@ -2544,6 +2567,7 @@ setInterval(() => {
   if (updateReady && idle >= UPDATE_IDLE_MS && !modalOpen && !$("start").classList.contains("hidden")) {
     try { sessionStorage.setItem("update-tried", JSON.stringify({ code: updateReady, at: Date.now() })); } catch (e) {}
     sessionStorage.setItem("idle-reset", "1");
+    endSession();
     location.reload();
     return;
   }
@@ -2552,6 +2576,7 @@ setInterval(() => {
     /* Reload (not just reset): the tablet silently picks up newly
        deployed versions while idle, then lands on the language screen. */
     sessionStorage.setItem("idle-reset", "1");
+    endSession();
     location.reload();
   }
 }, 30000);
@@ -2568,7 +2593,14 @@ $("search").addEventListener("input", () => {
   clearTimeout(searchStatTimer);
   searchStatTimer = setTimeout(() => {
     const term = $("search").value.trim().toLowerCase();
-    if (term.length >= 3 && term !== lastSearchStat) { lastSearchStat = term; stat("search", term); }
+    if (term.length >= 3 && term !== lastSearchStat) {
+      lastSearchStat = term;
+      /* "Found nothing" is the useful one: a wine or a word guests expect that the list doesn't have. */
+      const empty = !!$("content").querySelector(".no-results");
+      stat(empty ? "search-empty" : "search", term);
+      startSession();
+      if (session) session.searches++;
+    }
   }, 2000);
 });
 let searchStatTimer = 0;
@@ -2817,10 +2849,10 @@ function bindToggle(id, get, set) {
     window.scrollTo({ top: 0 });
   });
 }
-bindToggle("picks-toggle", () => picksOnly, (v) => { picksOnly = v; });
-bindToggle("rated-toggle", () => ratedOnly, (v) => { ratedOnly = v; });
-bindToggle("pride-toggle", () => prideOnly, (v) => { prideOnly = v; });
-$("helper-open").addEventListener("click", openHelper);
+bindToggle("picks-toggle", () => picksOnly, (v) => { picksOnly = v; if (v) stat("feature", "picks"); });
+bindToggle("rated-toggle", () => ratedOnly, (v) => { ratedOnly = v; if (v) stat("feature", "rated"); });
+bindToggle("pride-toggle", () => prideOnly, (v) => { prideOnly = v; if (v) stat("feature", "pride"); });
+$("helper-open").addEventListener("click", () => { stat("feature", "helper"); openHelper(); });
 
 if ("serviceWorker" in navigator &&
     (location.protocol === "https:" || location.hostname === "localhost")) {
