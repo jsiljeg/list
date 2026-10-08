@@ -98,16 +98,23 @@ function stat(kind, key, extra = {}) {
 }
 let session = null;
 function startSession() {
-  if (!session && lang) session = { cards: 0, searches: 0, started: Date.now() };
+  if (!session && lang) session = { cards: 0, searches: 0, started: Date.now(), touched: Date.now() };
 }
+/* The time a table spends is from its first to its last touch, not until the tablet happens to reset:
+   a tablet left on the list (or put to sleep) would otherwise count its idle hours as reading. */
+["pointerdown", "keydown", "scroll", "touchstart"].forEach((ev) =>
+  document.addEventListener(ev, () => { if (session) session.touched = Date.now(); }, { passive: true })
+);
 function endSession() {
   if (!session || !lang) return;
   const s = session;
   session = null;
-  beacon({ kind: "session", lang, cards: s.cards, searches: s.searches, seconds: Math.min(4 * 3600, Math.round((Date.now() - s.started) / 1000)) });
+  beacon({ kind: "session", lang, cards: s.cards, searches: s.searches, seconds: Math.min(4 * 3600, Math.round((s.touched - s.started) / 1000)) });
 }
-/* A phone closing the list (or a tablet browser killing the tab) ends the table too. */
+/* A phone closing the list, a tablet browser killing the tab, or the screen going off ends the table:
+   while the screen is off the three-minute reset can't run, so the next guest would join this table. */
 addEventListener("pagehide", endSession);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") endSession(); });
 
 let DATA = null;
 let lang = localStorage.getItem(LS_KEY);
