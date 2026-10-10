@@ -94,6 +94,43 @@ button{font:inherit;cursor:pointer}
 .pedit .ok{background:var(--gold);color:#1a1814;font-weight:600}
 .pedit .no{background:transparent;color:var(--dim);border-color:var(--line)}
 
+/* tabs */
+.tabs{display:flex;gap:6px;margin-top:10px}
+.tabs button{padding:8px 14px;border-radius:999px;border:1px solid var(--line);
+             background:transparent;color:var(--dim)}
+.tabs button.on{border-color:var(--gold);color:var(--gold)}
+
+/* Novo vino */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}
+.card h2{font:500 24px/1.1 "Markazi Text",Georgia,serif;margin:0 0 8px}
+.lbl{display:block;margin:12px 0 0;font-size:13px;color:var(--dim)}
+.lbl input,.lbl select{display:block;width:100%;margin-top:4px;padding:11px 12px;background:var(--bg);
+  color:var(--ink);border:1px solid var(--line);border-radius:10px;font:inherit;font-size:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{display:flex;gap:8px;align-items:center;margin:14px 0 0;font-size:14px}
+.card .btn{margin-top:14px}
+.req-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.req .nm{font-weight:600}
+.badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
+.st-ready .badge,.st-needs_info .badge{border-color:var(--gold);color:var(--gold)}
+.st-published .badge{border-color:var(--ok);color:#9cc79e}
+.st-failed .badge{border-color:var(--off);color:#e0a49c}
+.pics{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.pics img,.pics .ph{width:84px;height:112px;object-fit:cover;border-radius:6px;background:var(--bg)}
+.pics .ph{display:flex;align-items:center;justify-content:center;color:var(--dim);border:1px dashed var(--line)}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.pv table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+.pv th{text-align:left;color:var(--dim);font-weight:400;padding:4px 10px 4px 0;vertical-align:top;width:110px}
+.pv td{padding:4px 0}
+.pv .note{font-style:italic;margin:12px 0 0}
+.pv .blurb{font-size:14px;margin:10px 0 0;color:#cfc8bb}
+
+/* Povijest */
+.hist{display:grid;grid-template-columns:96px 104px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.hist .when{color:var(--dim);font-variant-numeric:tabular-nums}
+.hist .badge{justify-self:start}
+.h-novo .badge{border-color:var(--gold);color:var(--gold)}
+
 /* receipt */
 .receipt{position:fixed;left:0;right:0;bottom:0;background:var(--panel);
          border-top:1px solid var(--line);padding:12px 16px;z-index:9}
@@ -133,19 +170,26 @@ button{font:inherit;cursor:pointer}
 <!-- ---------- the list ---------- -->
 <div id="main" class="wrap hidden">
   <header>
-    <h1>Čega nema</h1>
+    <h1>Theatrium · osoblje</h1>
     <div class="status">
       <span><span class="dot" id="dot"></span><span id="state">učitavam…</span></span>
       <span><b id="n-hidden">0</b> skriveno</span>
       <span id="n-listed" class="muted"></span>
       <button class="chip" id="logout" style="margin-left:auto">Odjava</button>
     </div>
-    <div class="filters">
+    <nav class="tabs">
+      <button data-tab="karta" class="on">Karta</button>
+      <button data-tab="novo">Novo vino</button>
+      <button data-tab="povijest">Povijest</button>
+    </nav>
+    <div class="filters" id="filters">
       <input id="q" type="search" placeholder="Traži vino ili vinara… (dodirnite cijenu za izmjenu)" autocomplete="off">
       <button class="chip" id="only-off">Samo skriveno</button>
     </div>
   </header>
-  <div id="rows"></div>
+  <div id="tab-karta"><div id="rows"></div></div>
+  <div id="tab-novo" class="hidden"></div>
+  <div id="tab-povijest" class="hidden"></div>
 </div>
 
 <div id="receipt" class="receipt hidden">
@@ -158,5 +202,7 @@ button{font:inherit;cursor:pointer}
 </div>
 
 <script src="js/admin.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/admin-wines.js"></script>
 </body>
 </html>

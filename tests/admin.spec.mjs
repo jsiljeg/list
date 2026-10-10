@@ -232,3 +232,55 @@ test("a price that is not a price is refused, and a big jump asks first", async 
   expect(dialogs).toEqual(["alert", "confirm"]);
   expect(state.listPuts, "dismissed, so nothing written").toEqual([]);
 });
+
+/* ---------- Novo vino (2026-10-10) ---------- */
+
+test("Novo vino: a bottle is sent, a question is answered, the card is previewed in Croatian", async ({ page }) => {
+  /* The inbox lives on the restaurant site; here it is an in-memory fake at
+     the real URL, so nothing reaches Cloudflare or GitHub. */
+  await board(page);
+  const inbox = { items: [], posts: [] };
+  const lib = JSON.parse(readFileSync(new URL("../library/wines.json", import.meta.url), "utf8")).wines;
+  await page.route("https://theatrium.devinos.hr/api/vina**", async (route) => {
+    const req = route.request(), url = new URL(req.url());
+    const send = (b, s = 200) => route.fulfill({ status: s, contentType: "application/json", body: JSON.stringify(b) });
+    if (req.headers().authorization !== "Bearer staff-test") return send({ error: "key" }, 401);
+    if (url.pathname.endsWith("/foto/1")) return route.fulfill({ status: 404, body: "" });
+    if (req.method() === "GET") return send({ items: inbox.items, limits: { enabled: true, today: inbox.items.length, dailyCap: 5, month: 1, monthlyCap: 60 } });
+    inbox.posts.push({ path: url.pathname, body: req.postData() || "" });
+    if (url.pathname === "/api/vina") {
+      inbox.items.unshift({ id: "r1", status: "needs_info", created_at: "2026-10-10T10:00:00Z", price_bottle: 130, price_glass: null,
+        vol: null, photos: [1], questions: ["Koliko je alkohola na etiketi?"], answers: [], result: null });
+      return send({ ok: true }, 201);
+    }
+    if (url.pathname.endsWith("/odgovor")) {
+      Object.assign(inbox.items[0], { status: "ready", questions: [], result: {
+        draft: { wine: lib["le-ragose--amarone-classico-riserva-2013"], listings: [{ after: "x", price: 130 }] }, gaps: ["Parker nije provjeren"] } });
+      return send({ ok: true });
+    }
+    return send({ ok: true });
+  });
+
+  await page.click('.tabs button[data-tab="novo"]');
+  await page.fill("#staff-key", "staff-test");
+  await page.click("#staff-go");
+  await page.setInputFiles("#n-photos", { name: "front.jpg", mimeType: "image/jpeg",
+    buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
+  await page.fill("#n-bottle", "130");
+  await page.click("#n-send");
+  await expect(page.locator("#novo-msg")).toContainText("Poslano", { timeout: 15000 });
+  const sent = inbox.posts[0].body;
+  expect(sent).toContain('name="price_bottle"');
+  expect(sent).toContain("130");
+  expect(sent, "the photo is re-encoded as JPEG before it leaves").toContain("image/jpeg");
+
+  await page.fill("[data-answer='0']", "16%");
+  await page.click('[data-act="odgovor"]');
+  await expect(page.locator(".pv")).toBeVisible();
+  const pv = await page.locator(".pv").innerText();
+  expect(pv).toContain("ostale sorte 10%");
+  expect(pv, "aromas in Croatian, not keys").toContain("višnja");
+  expect(pv, "body is not printed twice").toContain("Crno · puno · suho");
+  expect(pv).toContain("Parker nije provjeren");
+  expect(inbox.posts[1].body).toContain("16%");
+});

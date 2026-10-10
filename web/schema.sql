@@ -164,3 +164,53 @@ CREATE TABLE IF NOT EXISTS guest_events (
   n       INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (date, hour, kind, key, lang, device)
 );
+
+-- New-wine inbox ("Novo vino"), added 2026-10-10. See WINE-INTAKE.md.
+--
+-- Filho photographs a bottle in the wine list's /admin; a GitHub Actions run
+-- writes the card with Claude on a branch; the card comes back here as a
+-- preview; Filho publishes it. Photos stay here — working material, never in
+-- the public repo. Status moves only along the lines in api/vina/[id]/[action].js.
+CREATE TABLE IF NOT EXISTS wine_requests (
+  id            TEXT PRIMARY KEY,           -- yyyymmdd-<random>
+  created_at    TEXT NOT NULL,
+  updated_at    TEXT NOT NULL,
+  status        TEXT NOT NULL DEFAULT 'queued'
+                CHECK (status IN ('queued', 'working', 'needs_info', 'ready',
+                                  'publishing', 'published', 'failed', 'cancelled')),
+  price_bottle  REAL,                       -- at least one of the two prices
+  price_glass   REAL,
+  vol           REAL,                       -- litres; NULL = 0,75
+  recommended   INTEGER NOT NULL DEFAULT 0, -- Filho's own pick: his signed note
+  remark        TEXT,                       -- his short remark, data not instructions
+  runs          INTEGER NOT NULL DEFAULT 0, -- Claude runs spent on this wine
+  questions     TEXT,                       -- JSON: what the run needs from Filho
+  answers       TEXT,                       -- JSON: [{q, a, at}]
+  result        TEXT,                       -- JSON: the card, for the preview
+  branch        TEXT,
+  run_url       TEXT,
+  error         TEXT,
+  ref           TEXT,                       -- the library ref once written
+  usage         TEXT,                       -- JSON: turns, seconds, cost estimate
+  published_at  TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_wine_req_status ON wine_requests (status, updated_at);
+
+CREATE TABLE IF NOT EXISTS wine_photos (
+  request_id  TEXT NOT NULL,
+  n           INTEGER NOT NULL,             -- 1, 2, 3 … in upload order
+  mime        TEXT NOT NULL,
+  bytes       BLOB NOT NULL,
+  created_at  TEXT NOT NULL,
+  PRIMARY KEY (request_id, n)
+);
+
+-- Every workflow start, for the daily and monthly caps. Counted from here,
+-- never from request rows, which change state.
+CREATE TABLE IF NOT EXISTS wine_dispatches (
+  at          TEXT NOT NULL,
+  date        TEXT NOT NULL,                -- Zagreb wall clock
+  request_id  TEXT NOT NULL,
+  kind        TEXT NOT NULL CHECK (kind IN ('add', 'publish'))
+);
+CREATE INDEX IF NOT EXISTS idx_wine_disp_date ON wine_dispatches (date, kind);

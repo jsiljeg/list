@@ -1,0 +1,291 @@
+/* Theatrium admin — "Novo vino" and "Povijest".
+ *
+ * Novo vino: Filho photographs a bottle (front and back — alcohol is often on
+ * the back), types the price, and sends it. The inbox on the restaurant site
+ * (theatrium.devinos.hr/api/vina) queues it; a GitHub Actions run writes the
+ * card with Claude; if something is not legible it asks him here, in
+ * Croatian; when the card is done he reads the preview and taps "Objavi".
+ * Design: web/WINE-INTAKE.md.
+ *
+ * Povijest: what changed on the list, newest first, from the repository's own
+ * commits — wines added, prices, what ran out. Read-only.
+ *
+ * Kept out of js/admin.js on purpose: the 86 board is used mid-service and
+ * must not be able to break because of a form it does not need. The two share
+ * only the page and the GitHub token (Povijest reads commits with it).
+ */
+"use strict";
+(function () {
+  const API = window.WINE_API || "https://theatrium.devinos.hr/api/vina";
+  const LS_STAFF = "theatrium-staff-key";
+  const POLL_MS = 15000;
+  const T = (typeof I18N !== "undefined" && I18N.hr) || {};
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const eur = (n) => (n == null ? "" : String(n).replace(".", ",") + " €");
+
+  let staffKey = localStorage.getItem(LS_STAFF) || "";
+  let items = [], limits = null, timer = null, tab = "karta";
+  const thumbs = new Map();   /* id|n -> object URL, so photos are fetched once */
+
+  /* ---------- tabs ---------- */
+  document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => show(b.dataset.tab)));
+  function show(name) {
+    tab = name;
+    document.querySelectorAll(".tabs button").forEach((b) => b.classList.toggle("on", b.dataset.tab === name));
+    ["karta", "novo", "povijest"].forEach((t) => $("tab-" + t).classList.toggle("hidden", t !== name));
+    $("filters").classList.toggle("hidden", name !== "karta");
+    clearTimeout(timer);
+    if (name === "novo") loadRequests();
+    if (name === "povijest") loadHistory();
+  }
+
+  /* ---------- the inbox ---------- */
+  async function api(path, opts = {}) {
+    const r = await fetch(API + path, { ...opts, headers: { authorization: "Bearer " + staffKey, ...(opts.headers || {}) } });
+    if (r.status === 401) { staffKey = ""; localStorage.removeItem(LS_STAFF); renderNovo(); throw new Error("key"); }
+    const ct = r.headers.get("content-type") || "";
+    const body = ct.includes("json") ? await r.json().catch(() => ({})) : r;
+    if (!r.ok) throw new Error(MSG[body.error] || body.error || `HTTP ${r.status}`);
+    return body;
+  }
+  const MSG = {
+    no_photo: "Dodajte barem jednu fotografiju etikete.",
+    no_price: "Upišite cijenu boce ili čaše.",
+    price: "Cijena nije broj (npr. 130 ili 8,50).",
+    vol: "Volumen nije ispravan.",
+    too_many_photos: "Najviše 3 fotografije odjednom.",
+    photo_too_big: "Fotografija je prevelika.",
+    photo_type: "Fotografija mora biti JPEG, WebP ili PNG.",
+    not_ready: "Vino još nije spremno za objavu.",
+    disabled: "Unos novih vina je trenutno isključen.",
+    running: "Claude upravo radi na ovom vinu — pričekajte.",
+    too_late: "Vino je već objavljeno.",
+  };
+
+  async function loadRequests() {
+    if (!staffKey) return renderNovo();
+    try {
+      const b = await api("");
+      items = b.items || []; limits = b.limits;
+      renderNovo();
+      for (const it of items) for (const n of it.photos) loadThumb(it.id, n);
+    } catch (e) { if (e.message !== "key") $("novo-msg").textContent = "Ne mogu učitati: " + e.message; }
+    /* Poll while something is moving; a finished list does not need it. */
+    if (tab === "novo" && items.some((i) => ["queued", "working", "publishing"].includes(i.status)))
+      timer = setTimeout(loadRequests, POLL_MS);
+  }
+
+  async function loadThumb(id, n) {
+    const k = id + "|" + n;
+    if (thumbs.has(k)) return;
+    thumbs.set(k, "");   /* loading — a re-render shows the placeholder, not a broken image */
+    try {
+      const r = await fetch(`${API}/${id}/foto/${n}`, { headers: { authorization: "Bearer " + staffKey } });
+      if (!r.ok) throw new Error(r.status);
+      thumbs.set(k, URL.createObjectURL(await r.blob()));
+      const ph = document.querySelector(`[data-thumb="${CSS.escape(k)}"]`);
+      if (ph) ph.outerHTML = thumbHtml(id, n);
+    } catch (e) { thumbs.delete(k); /* tried again on the next refresh */ }
+  }
+
+  /* Shrunk on the tablet before it leaves: a 12 MP photo is 5–8 MB, and the
+     label's small print still reads at 2000px — which is why this is larger
+     than the 1600px the daily offer uses. */
+  async function shrink(file) {
+    const bmp = await createImageBitmap(file, { imageOrientation: "from-image" }).catch(() => createImageBitmap(file));
+    const k = Math.min(1, 2000 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas");
+    c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    let q = 0.88, blob;
+    do { blob = await new Promise((res) => c.toBlob(res, "image/jpeg", q)); q -= 0.1; } while (blob && blob.size > 1400000 && q > 0.4);
+    return blob;
+  }
+
+  const STATUS = {
+    queued: ["U redu čekanja", "Claude će početi uskoro."],
+    working: ["Claude piše karticu", "Istraživanje i pisanje traje 5–15 minuta."],
+    needs_info: ["Treba odgovor", "Odgovorite na pitanje ispod."],
+    ready: ["Spremno za pregled", "Pročitajte i objavite."],
+    publishing: ["Objavljujem…", "Vino ide na kartu."],
+    published: ["Na karti", ""],
+    failed: ["Nije uspjelo", ""],
+    cancelled: ["Odustano", ""],
+  };
+
+  function renderNovo() {
+    const box = $("tab-novo");
+    if (!staffKey) {
+      box.innerHTML = `<div class="card"><h2>Ključ za novo vino</h2>
+        <p class="muted">Isti ključ kao za dnevnu ponudu (/kuhinja/). Upisuje se jednom na ovom tabletu.</p>
+        <input id="staff-key" type="password" autocomplete="off" placeholder="ključ">
+        <button class="btn" id="staff-go" style="margin-top:10px">Spremi</button>
+        <div class="err" id="novo-msg"></div></div>`;
+      $("staff-go").addEventListener("click", () => {
+        staffKey = $("staff-key").value.trim();
+        if (!staffKey) return;
+        localStorage.setItem(LS_STAFF, staffKey);
+        loadRequests();
+      });
+      return;
+    }
+    const lim = limits ? (limits.enabled
+      ? `Danas ${limits.today}/${limits.dailyCap} · ovaj mjesec ${limits.month}/${limits.monthlyCap}`
+      : "Unos novih vina je trenutno isključen — zahtjevi čekaju.") : "";
+    box.innerHTML = `
+      <div class="card">
+        <h2>Novo vino</h2>
+        <p class="muted">Fotografirajte <b>prednju i stražnju etiketu</b> — alkohol i volumen su često straga.
+          Neka tekst bude oštar i cijeli u kadru. Claude napiše karticu, a vi je pregledate prije objave.</p>
+        <label class="lbl">Fotografije (1–3)
+          <input id="n-photos" type="file" accept="image/*" capture="environment" multiple></label>
+        <div class="grid2">
+          <label class="lbl">Cijena boce (€)<input id="n-bottle" type="text" inputmode="decimal" placeholder="npr. 130"></label>
+          <label class="lbl">Cijena čaše (€)<input id="n-glass" type="text" inputmode="decimal" placeholder="ako se toči"></label>
+        </div>
+        <label class="lbl">Volumen boce
+          <select id="n-vol"><option value="">0,75 l</option><option value="0.375">0,375 l</option>
+            <option value="0.5">0,5 l</option><option value="1.5">1,5 l (magnum)</option><option value="3">3 l</option></select></label>
+        <label class="chk"><input id="n-rec" type="checkbox"> Moja preporuka — bilješka ide s mojim potpisom</label>
+        <label class="lbl">Napomena (neobavezno)
+          <input id="n-remark" type="text" maxlength="300" placeholder="npr. zamjenjuje Amarone Ravazzol"></label>
+        <button class="btn" id="n-send">Pošalji</button>
+        <div class="muted" id="novo-msg" style="margin-top:8px">${esc(lim)}</div>
+      </div>
+      ${items.length ? `<h2 class="sec">Zahtjevi</h2>` : ""}
+      ${items.map(card).join("")}`;
+    $("n-send").addEventListener("click", submit);
+    box.querySelectorAll("[data-act]").forEach((b) => b.addEventListener("click", () => act(b.dataset.act, b.dataset.id)));
+  }
+
+  function thumbHtml(id, n) {
+    const k = id + "|" + n, url = thumbs.get(k);
+    return url ? `<img data-thumb="${esc(k)}" src="${esc(url)}" alt="Etiketa ${n}">`
+               : `<span class="ph" data-thumb="${esc(k)}">${n}</span>`;
+  }
+
+  function card(it) {
+    const [label, hint] = STATUS[it.status] || [it.status, ""];
+    const r = it.result || {};
+    const w = (r.draft && r.draft.wine) || null;
+    const title = w ? `${w.producer} — ${w.name}` : (r.name || "Novo vino");
+    const pics = it.photos.map((n) => thumbHtml(it.id, n)).join("");
+    const prices = [it.price_bottle != null ? `boca ${eur(it.price_bottle)}` : "", it.price_glass != null ? `čaša ${eur(it.price_glass)}` : "",
+      it.vol ? String(it.vol).replace(".", ",") + " l" : ""].filter(Boolean).join(" · ");
+    let body = "";
+    if (it.status === "needs_info") {
+      body = `<div class="ask">${it.questions.map((q, i) => `<label class="lbl">${esc(q)}
+          <input type="text" data-answer="${i}" maxlength="500"></label>`).join("")}
+        <label class="lbl">Dodatna fotografija (neobavezno)<input type="file" data-more accept="image/*" capture="environment" multiple></label>
+        <button class="btn" data-act="odgovor" data-id="${esc(it.id)}">Pošalji odgovor</button></div>`;
+    }
+    if (it.status === "ready" && w) body = preview(it, r) +
+      `<div class="acts"><button class="btn" data-act="objavi" data-id="${esc(it.id)}">Objavi na karti</button>
+       <button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
+    if (it.status === "published") body = `<p class="muted">Objavljeno ${esc((it.published_at || "").slice(0, 10))}. Gosti ga vide pod NOVO.</p>`;
+    if (it.status === "failed") body = `<p class="err">${esc(it.error || "Nepoznata greška")}</p>
+      <div class="acts"><button class="btn ghost" data-act="ponovi" data-id="${esc(it.id)}">Pokušaj ponovno</button>
+      <button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
+    if (["queued", "needs_info"].includes(it.status)) body += `<div class="acts"><button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
+    return `<div class="card req st-${esc(it.status)}" id="req-${esc(it.id)}">
+      <div class="req-head"><div><div class="nm">${esc(title)}</div><div class="muted">${esc(prices)} · ${esc(it.created_at.slice(0, 10))}</div></div>
+        <span class="badge">${esc(label)}</span></div>
+      ${hint ? `<p class="muted">${esc(hint)}</p>` : ""}
+      <div class="pics">${pics}</div>${body}</div>`;
+  }
+
+  /* The card as the guest will read it, in Croatian, plus what the run could
+     not settle. Not the app's own renderer — that would mean loading the guest
+     app into the staff page — but every field the card prints. */
+  function preview(it, r) {
+    const w = r.draft.wine, i = w.insight || {}, p = r.draft.producer;
+    const tr = (group, k) => (T[group] && T[group][k]) || k;
+    const row = (k, v) => (v ? `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>` : "");
+    const note = w.note && w.note.hr;
+    return `<div class="pv">
+      <table>
+        ${row("Sorta", i.grape)}
+        ${row("Regija", [i.region, tr("countries", i.country)].filter(Boolean).join(", "))}
+        ${row("Položaj", w.terroir)}
+        ${/* the style string already carries the body ("Crno · puno") */ ""}
+        ${row("Stil", [tr("styles", i.style), tr("sweetness", i.sweetness)].filter(Boolean).join(" · "))}
+        ${row("Alkohol", i.alcohol ? String(i.alcohol).replace(".", ",") + "% vol." : "— (nije potvrđeno)")}
+        ${row("Posluživanje", i.temp ? i.temp + " °C" : "")}
+        ${row("Čaša", r.glass || i.glass || "")}
+        ${row("Arome", (i.aromas || []).map((k) => tr("aromas", k)).join(", "))}
+        ${row("Uz jelo", (i.pairings || []).map((k) => tr("pairings", k)).join(", "))}
+        ${row("Ocjene", (w.ratings || []).map((x) => `${x.critic} ${x.score}`).join(", "))}
+      </table>
+      ${note ? `<p class="note">${w.notePlain ? "" : "„"}${esc(note)}${w.notePlain ? "" : "“ — Filho"}</p>` : ""}
+      ${p ? `<p class="blurb"><b>${esc(p.name)}</b> — ${esc(p.blurb && p.blurb.hr)}</p>` : ""}
+      ${r.placement ? `<p class="muted">Na karti: ${esc(r.placement)}</p>` : ""}
+      ${(r.gaps || []).length ? `<p class="muted">Nije potvrđeno: ${esc(r.gaps.join("; "))}</p>` : ""}
+    </div>`;
+  }
+
+  async function submit() {
+    const files = [...$("n-photos").files];
+    const msg = $("novo-msg");
+    if (!files.length) { msg.textContent = MSG.no_photo; return; }
+    if (files.length > 3) { msg.textContent = MSG.too_many_photos; return; }
+    if (!$("n-bottle").value.trim() && !$("n-glass").value.trim()) { msg.textContent = MSG.no_price; return; }
+    $("n-send").disabled = true;
+    msg.textContent = "Pripremam fotografije…";
+    try {
+      const fd = new FormData();
+      for (const f of files) fd.append("photo", await shrink(f), "label.jpg");
+      fd.append("price_bottle", $("n-bottle").value);
+      fd.append("price_glass", $("n-glass").value);
+      fd.append("vol", $("n-vol").value);
+      if ($("n-rec").checked) fd.append("recommended", "1");
+      fd.append("remark", $("n-remark").value);
+      msg.textContent = "Šaljem…";
+      await api("", { method: "POST", body: fd });
+      await loadRequests();
+      $("novo-msg").textContent = "Poslano. Claude počinje za koju minutu.";
+    } catch (e) { msg.textContent = e.message === "key" ? "" : "Nije poslano: " + e.message; }
+    finally { const b = $("n-send"); if (b) b.disabled = false; }
+  }
+
+  async function act(action, id) {
+    const box = $("req-" + id);
+    try {
+      if (action === "odgovor") {
+        const fd = new FormData();
+        box.querySelectorAll("[data-answer]").forEach((inp) => fd.append("answer_" + inp.dataset.answer, inp.value));
+        for (const f of [...(box.querySelector("[data-more]").files || [])].slice(0, 3)) fd.append("photo", await shrink(f), "label.jpg");
+        await api(`/${id}/odgovor`, { method: "POST", body: fd });
+      } else {
+        if (action === "objavi" && !confirm("Objaviti ovo vino na karti? Gosti ga vide za minutu.")) return;
+        if (action === "odustani" && !confirm("Odustati od ovog vina?")) return;
+        await api(`/${id}/${action}`, { method: "POST" });
+      }
+      await loadRequests();
+    } catch (e) { if (e.message !== "key") alert(e.message); }
+  }
+
+  /* ---------- Povijest ---------- */
+  async function loadHistory() {
+    const box = $("tab-povijest");
+    const token = localStorage.getItem("theatrium-admin-token") || "";
+    box.innerHTML = `<p class="muted">Učitavam…</p>`;
+    try {
+      const paths = ["lists/theatrium.json", "data/unavailable.json", "library/wines.json"];
+      const lists = await Promise.all(paths.map((p) => fetch(
+        `https://api.github.com/repos/jsiljeg/list/commits?sha=main&path=${encodeURIComponent(p)}&per_page=40`,
+        { headers: { Authorization: "Bearer " + token, Accept: "application/vnd.github+json" } }).then((r) => (r.ok ? r.json() : []))));
+      const seen = new Map();
+      for (const c of lists.flat()) if (!seen.has(c.sha)) seen.set(c.sha, c);
+      const rows = [...seen.values()].sort((a, b) => b.commit.author.date.localeCompare(a.commit.author.date)).slice(0, 60);
+      const kind = (m) => (/^Cijena:/.test(m) ? "cijena" : /^Nema|^Vraćeno|na karti$/.test(m) ? "nema" : /joins|NOVO|Novo vino|dodan/i.test(m) ? "novo" : "ostalo");
+      const label = { cijena: "Cijena", nema: "Dostupnost", novo: "Novo vino", ostalo: "Izmjena" };
+      box.innerHTML = rows.map((c) => {
+        const m = c.commit.message.split("\n")[0], k = kind(m);
+        const d = new Date(c.commit.author.date).toLocaleString("hr-HR", { day: "numeric", month: "numeric", hour: "2-digit", minute: "2-digit" });
+        return `<div class="hist h-${k}"><span class="when">${esc(d)}</span><span class="badge">${label[k]}</span><span class="what">${esc(m)}</span></div>`;
+      }).join("") || `<p class="muted">Nema zapisa.</p>`;
+    } catch (e) { box.innerHTML = `<p class="err">Ne mogu učitati povijest: ${esc(e.message)}</p>`; }
+  }
+})();
