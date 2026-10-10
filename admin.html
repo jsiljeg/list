@@ -167,14 +167,21 @@ button{font:inherit;cursor:pointer}
 .pv .blurb{font-size:14px;margin:10px 0 0;color:#cfc8bb}
 
 .shots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 4px}
-.shot{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;
+.shot{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;
       min-height:150px;padding:10px;border:2px dashed var(--line);border-radius:12px;cursor:pointer;
       text-align:center;overflow:hidden;background:var(--bg)}
 .shot:first-child{border-color:var(--gold)}
-.shot input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+.shot input,.shot-btns input{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+.shot-btns{position:relative;display:flex;gap:6px;width:100%;margin-top:8px}
+.shot-btns.inline{margin:6px 0 4px}
+.shot-btn{flex:1;position:relative;padding:9px 4px;border-radius:9px;background:#2a2823;color:var(--ink);
+          font-size:13px;text-align:center;cursor:pointer;white-space:nowrap}
+.shot.has .shot-btn{background:rgba(22,21,19,.82)}
+.shot-btn{min-width:0;overflow:hidden;text-overflow:ellipsis}
+/* on a phone the two buttons stack, so neither runs past the tile */
+@media (max-width:480px){ .shot .shot-btns{flex-direction:column;gap:5px} .shot{padding:10px 8px} }
 .shot-img{position:absolute;inset:0;background:center/cover no-repeat;opacity:.55}
-.shot-cam{font-size:34px;margin-bottom:auto;margin-top:18px;position:relative}
-.shot.has .shot-cam{display:none}
+
 .shot.has{border-style:solid;border-color:var(--ok)}
 .shot b,.shot .muted{position:relative}
 .steps{margin:6px 0 10px;padding-left:22px;font-size:15px;line-height:1.6}

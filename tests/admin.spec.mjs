@@ -356,11 +356,24 @@ test("the board's views are one choice: Sve, Skriveno or NOVO, never two at once
   expect(await page.locator(".row").count()).toBeGreaterThan(nNew);
 });
 
-test("Dodaj vino takes photos from the gallery too, not only the camera", async () => {
-  /* Owner, 2026-10-11. `capture` makes Android open the camera and nothing
-     else; without it every phone offers camera, gallery and files. A source
-     assertion, since no headless browser has a camera to prove it with. */
-  const src = readFileSync(new URL("../js/admin-wines.js", import.meta.url), "utf8");
-  expect(src, "no file input may force the camera").not.toMatch(/capture=/);
-  expect(src).toMatch(/accept="image\/\*,\.heic,\.heif"/);
+test("Dodaj vino: every photo slot offers both the camera and the gallery", async ({ page }) => {
+  /* Owner, 2026-10-11. With `capture` Android opens only the camera; without
+     it newer Android pickers offer no camera at all. So each slot has two
+     buttons, "Slikaj" (capture) and "Galerija" (no capture), and either fills
+     it. Checked in the rendered form: two slots, each with exactly one of each. */
+  await board(page);
+  await page.route("https://theatrium.devinos.hr/api/vina**", (r) => r.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify({ items: [], limits: { enabled: true, today: 0, dailyCap: 5, month: 0, monthlyCap: 60 } }) }));
+  await page.click('.tabs button[data-tab="novo"]');
+  await page.waitForSelector("#n-send");
+  for (const slot of ["n-front", "n-back"]) {
+    const tile = page.locator(`#${slot}-tile`);
+    expect(await tile.locator('input[capture]').count(), `${slot}: a camera button`).toBe(1);
+    expect(await tile.locator('input:not([capture])').count(), `${slot}: a gallery button`).toBe(1);
+    await expect(tile.locator(".shot-btn")).toHaveText(["📷 Slikaj", "🖼 Galerija"]);
+  }
+  /* the gallery one fills the slot just as the camera one does */
+  await page.setInputFiles("#n-front", { name: "x.png", mimeType: "image/png",
+    buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
+  await expect(page.locator("#n-front-tile")).toHaveClass(/has/);
 });

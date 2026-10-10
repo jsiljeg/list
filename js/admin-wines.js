@@ -169,11 +169,13 @@
     $("n-send").addEventListener("click", submit);
     /* A photo slot shows what was taken, so Filho sees the label is readable
        before anything is sent. */
-    for (const id of ["n-front", "n-back"]) {
-      $(id).addEventListener("change", () => {
-        const f = $(id).files[0], tile = $(id).closest(".shot");
-        tile.classList.toggle("has", !!f);
-        tile.querySelector(".shot-img").style.backgroundImage = f ? `url(${URL.createObjectURL(f)})` : "";
+    for (const inp of document.querySelectorAll("#tab-novo .shot input")) {
+      inp.addEventListener("change", () => {
+        const f = inp.files[0], slot = inp.dataset.slot, tile = $(slot + "-tile");
+        if (!f) return;
+        picked[slot] = f;
+        tile.classList.add("has");
+        tile.querySelector(".shot-img").style.backgroundImage = `url(${URL.createObjectURL(f)})`;
       });
     }
     box.querySelectorAll("[data-act]").forEach((b) => b.addEventListener("click", () => act(b.dataset.act, b.dataset.id)));
@@ -212,10 +214,19 @@
                : `<span class="ph" data-thumb="${esc(k)}">${n}</span>`;
   }
 
+  /* Two ways into one slot (owner, 2026-10-11): "Slikaj" opens the camera
+     (capture), "Galerija" the photos and files. Newer Android pickers offer
+     no camera at all without `capture`, and with it no gallery — so both,
+     side by side, on every phone. Whichever was used last fills the slot. */
+  const picked = {};
   function shot(id, title, hint) {
-    return `<label class="shot"><input id="${id}" type="file" accept="image/*,.heic,.heif">
-      <span class="shot-img"></span><span class="shot-cam">📷</span>
-      <b>${title}</b><span class="muted">${hint}</span></label>`;
+    return `<div class="shot" id="${id}-tile">
+      <span class="shot-img"></span>
+      <b>${title}</b><span class="muted">${hint}</span>
+      <span class="shot-btns">
+        <label class="shot-btn">📷 Slikaj<input id="${id}-cam" data-slot="${id}" type="file" accept="image/*" capture="environment"></label>
+        <label class="shot-btn">🖼 Galerija<input id="${id}" data-slot="${id}" type="file" accept="image/*,.heic,.heif"></label>
+      </span></div>`;
   }
 
   /* Cancelled requests are nobody's business any more, and a published wine
@@ -236,7 +247,11 @@
     if (it.status === "needs_info") {
       body = `<div class="ask">${it.questions.map((q, i) => `<label class="lbl">${esc(q)}
           <input type="text" data-answer="${i}" maxlength="500"></label>`).join("")}
-        <label class="lbl">Dodatna fotografija (neobavezno)<input type="file" data-more accept="image/*,.heic,.heif" multiple></label>
+        <span class="lbl">Dodatna fotografija (neobavezno)</span>
+        <span class="shot-btns inline">
+          <label class="shot-btn">📷 Slikaj<input type="file" data-more accept="image/*" capture="environment"></label>
+          <label class="shot-btn">🖼 Galerija<input type="file" data-more accept="image/*,.heic,.heif" multiple></label>
+        </span>
         <button class="btn wide" data-act="odgovor" data-id="${esc(it.id)}">Pošalji odgovor</button></div>`;
     }
     if (it.status === "ready" && w) {
@@ -323,7 +338,7 @@
   }
 
   async function submit() {
-    const front = $("n-front").files[0], back = $("n-back").files[0];
+    const front = picked["n-front"], back = picked["n-back"];
     const files = [front, back].filter(Boolean);
     const msg = $("novo-msg");
     if (!front) { msg.textContent = "Dodajte fotografiju prednje etikete."; return; }
@@ -341,6 +356,7 @@
       fd.append("remark", $("n-remark").value);
       msg.textContent = "Šaljem…";
       await api("", { method: "POST", body: fd });
+      delete picked["n-front"]; delete picked["n-back"];
       await loadRequests();
       $("novo-msg").textContent = "Poslano. Claude počinje za koju minutu.";
     } catch (e) { msg.textContent = "Nije poslano: " + e.message; }
@@ -373,7 +389,8 @@
       if (action === "odgovor") {
         const fd = new FormData();
         box.querySelectorAll("[data-answer]").forEach((inp) => fd.append("answer_" + inp.dataset.answer, inp.value));
-        for (const f of [...(box.querySelector("[data-more]").files || [])].slice(0, 3)) fd.append("photo", await shrink(f), "label.jpg");
+        const more = [...box.querySelectorAll("[data-more]")].flatMap((i) => [...(i.files || [])]);
+        for (const f of more.slice(0, 3)) fd.append("photo", await shrink(f), "label.jpg");
         await api(`/${id}/odgovor`, { method: "POST", body: fd });
       } else {
         if (action === "objavi" && !confirm("Objaviti ovo vino na karti? Gosti ga vide za minutu.")) return;
