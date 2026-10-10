@@ -54,7 +54,7 @@ cp lists/theatrium.json "$out/lists/"
 #     max-age=600, and a plain reload in Chrome does not revalidate
 #     subresources — without this a tablet could reload and keep running the
 #     old app.js for up to ten minutes.
-code_files="index.html sw.js manifest.webmanifest css/style.css $(ls js/*.js | sort | tr '\n' ' ')"
+code_files="index.html admin.html sw.js manifest.webmanifest css/style.css $(ls js/*.js | sort | tr '\n' ' ')"
 version=$(cat $code_files | sha256sum | cut -c1-12)
 sed -i \
   -e "s|<meta name=\"app-version\" content=\"dev\">|<meta name=\"app-version\" content=\"$version\">|" \
@@ -62,6 +62,13 @@ sed -i \
   -e "s|src=\"js/\([a-z0-9-]*\)\.js\"|src=\"js/\1.js?v=$version\"|g" \
   "$out/index.html"
 grep -q "content=\"$version\"" "$out/index.html" || { echo "app-version meta not stamped into index.html" >&2; exit 1; }
+# The staff page too (2026-10-10). Its page and scripts are cached separately
+# for 10 minutes, so a phone could pair a new admin.js with an old admin.html
+# — "Cannot read properties of null" and a half-styled board. With the
+# fingerprint on its scripts, a page only ever loads the scripts it was
+# deployed with.
+sed -i -e "s|src=\"js/\([a-z0-9-]*\)\.js\"|src=\"js/\1.js?v=$version\"|g" "$out/admin.html"
+grep -q "admin.js?v=$version" "$out/admin.html" || { echo "admin.html scripts not stamped" >&2; exit 1; }
 printf '{"code":"%s"}\n' "$version" > "$out/version.json"
 
 # Nothing here is published for theatrium.hr to embed any more (2026-09-07).

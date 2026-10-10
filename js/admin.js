@@ -50,6 +50,9 @@ const POLL_MS = 4000;               /* how often we re-check the published file 
 const PUBLISH_TIMEOUT_MS = 180000;  /* deploys run 20–50s; give it three minutes */
 
 const $ = (id) => document.getElementById(id);
+/* Sets a counter only if the page has it: a page and a script from two
+   different deploys must degrade, never throw (2026-10-10). */
+const setText = (id, v) => { const el = $(id); if (el) el.textContent = v; };
 const esc = (s) => String(s == null ? "" : s)
   .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -145,7 +148,7 @@ async function start() {
     await Promise.all([loadList(), loadRules()]);
     render();
     setState("live", "spremno");
-    $("n-listed").textContent = wines.length + " vina na karti";
+    setText("n-listed", wines.length + " vina na karti");
   } catch (e) {
     setState("bad", "ne mogu učitati kartu: " + (e.message || e));
   }
@@ -271,15 +274,15 @@ function render() {
     .filter((w) => (view !== "skriveno" || stateOf(w) !== "on"))
     .filter((w) => (view !== "novo" || w.listings.some((l) => l.entry.new)));
   const off = wines.filter((w) => stateOf(w) !== "on");
-  $("n-hidden").textContent = off.length;
+  setText("n-hidden", off.length);
   document.querySelectorAll("#views button").forEach((b) => {
     b.classList.toggle("on", b.dataset.view === view);
     b.setAttribute("aria-pressed", String(b.dataset.view === view));
   });
-  $("n-off").textContent = off.length;
-  $("n-new").textContent = wines.filter((w) => w.listings.some((l) => l.entry.new)).length;
-  $("n-all").textContent = wines.length;
-  $("novo-rule").classList.toggle("hidden", view !== "novo");
+  setText("n-off", off.length);
+  setText("n-new", wines.filter((w) => w.listings.some((l) => l.entry.new)).length);
+  setText("n-all", wines.length);
+  if ($("novo-rule")) $("novo-rule").classList.toggle("hidden", view !== "novo");
 
   if (!rows.length) {
     $("rows").innerHTML = `<p class="muted" style="padding:24px 0">Ništa ne odgovara.</p>`;
