@@ -26,3 +26,10 @@ MAIL_HOUSE = "jures91@gmail.com"
 binding = "DB"
 database_name = "theatrium"
 database_id = "PASTE_AFTER_wrangler_d1_create"
+
+# Alerts to the owner (Novo vino) go through his cloud monitor, which e-mails
+# them via Cloudflare Email Routing. A service binding, not a URL: the monitor
+# has no public address, and nothing else can reach it. See WINE-INTAKE.md.
+[[services]]
+binding = "ALERTS"
+service = "pr-checkups-monitor"

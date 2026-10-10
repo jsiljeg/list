@@ -92,6 +92,22 @@ export { isStaff };
    new wine reaches him with the laptop off. Optional: no NTFY_TOPIC, no push.
    Never throws: a notification must not fail the request it reports on. */
 export async function notifyOwner(env, title, body, click) {
+  /* E-mail first: the owner's cloud monitor sends it (Cloudflare Email
+     Routing → his Gmail, which his phone shows). ntfy from here is refused
+     with 429 — Cloudflare's IPs share one anonymous quota — and is kept only
+     as a fallback for when no binding exists. */
+  if (env && env.ALERTS) {
+    try {
+      const r = await env.ALERTS.fetch("https://alerts/notify", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ title, body, click: click || "" }),
+      });
+      const j = await r.json().catch(() => ({}));
+      return { sent: r.ok && j.mail !== false, via: "email", status: r.status, why: r.ok ? (j.mail === false ? "monitor has no mail binding" : "") : await r.text().catch(() => "") };
+    } catch (e) {
+      console.log(`alerts binding failed: ${e}`);
+    }
+  }
   if (!env || !env.NTFY_TOPIC) return { sent: false, why: "no NTFY_TOPIC" };
   const enc = (s) => (/^[\x20-\x7e]*$/.test(s) ? s : `=?UTF-8?B?${btoa(String.fromCharCode(...new TextEncoder().encode(s)))}?=`);
   try {
