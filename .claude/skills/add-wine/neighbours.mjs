@@ -26,6 +26,16 @@ const known = [...src.matchAll(/^\s{2}(\w+):\s*'<svg/gm)].map((m) => m[1]);
 const glassFor = new Function("GLASS_ICONS", `${src.slice(a, b)}; return glassFor;`)(
   Object.fromEntries(known.map((k) => [k, true])));
 const glassOf = (w) => w.insight ? glassFor(w.insight.style, w.insight.grape, w.insight.glass, w.insight.region) : null;
+/* The keys are internal names, and "burgundy" is not the Burgundy glass — it
+   is the wide red cone. The first cloud run read the key and told Filho the
+   Amarone goes in "čaša za Bordeaux". Say what each one is, in Croatian too. */
+const GLASS_NAME = {
+  champagne: "flute — čaša za pjenušac", riesling: "uska čaša za bijelo (Riesling)",
+  chardonnay: "široka čaša za bijelo (Chardonnay)", burgundy: "široki stožac za crno",
+  winewingsBordeaux: "Winewings Bordeaux (Cabernet, Merlot)", winewingsBurgundy: "Winewings Burgundy (Pinot noir, Nebbiolo)",
+  dessert: "čaša za desertno vino",
+};
+const glassText = (w) => { const k = glassOf(w); return k ? `${k} = ${GLASS_NAME[k] || k}` : "—"; };
 
 const arg = process.argv[2];
 if (!arg) { console.error("usage: neighbours.mjs <ref | draft.json>"); process.exit(1); }
@@ -63,7 +73,7 @@ const near = [
 const line = (r, w, why) => {
   const x = w.insight;
   return `${(why || "").padEnd(22)} ${String(price.get(r) ?? "").padStart(5)} €  ${w.producer} — ${w.name}\n` +
-    `${"".padEnd(31)}${x.style} · ${x.body} · ${x.temp} °C · glass ${glassOf(w)}${x.glass ? " (override)" : ""} · ${x.alcohol || "—"}%\n` +
+    `${"".padEnd(31)}${x.style} · ${x.body} · ${x.temp} °C · glass ${glassText(w)}${x.glass ? " (override)" : ""} · ${x.alcohol || "—"}%\n` +
     `${"".padEnd(31)}aromas: ${(x.aromas || []).join(", ")}\n${"".padEnd(31)}food:   ${(x.pairings || []).join(", ")}`;
 };
 

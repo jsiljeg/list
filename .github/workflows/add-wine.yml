@@ -134,7 +134,13 @@ jobs:
           set -euo pipefail
           mkdir -p out
           cp "$RUNNER_TEMP/usage.json" out/usage.json
-          if [ -f intake/result.json ] && jq -e '.status == "ready" or .status == "needs_info"' intake/result.json > /dev/null; then
+          # "ready" with no change to the data is the same answer as
+          # "already_listed": the wine is on the list and nothing was added.
+          if [ -f intake/result.json ] && jq -e '.status == "ready"' intake/result.json > /dev/null \
+             && git diff --quiet -- library lists data js; then
+            jq '.status = "already_listed"' intake/result.json > intake/r.tmp && mv intake/r.tmp intake/result.json
+          fi
+          if [ -f intake/result.json ] && jq -e '.status == "ready" or .status == "needs_info" or .status == "already_listed"' intake/result.json > /dev/null; then
             cp intake/result.json out/result.json
             echo "status=$(jq -r .status intake/result.json)" >> "$GITHUB_OUTPUT"
           else
@@ -210,7 +216,13 @@ jobs:
         run: |
           set -uo pipefail
           usage=$(cat out/usage.json 2>/dev/null || echo '{}')
-          if [ "$STATUS" = "needs_info" ]; then
+          if [ "$STATUS" = "already_listed" ]; then
+            # Not a failure, but nothing to publish: say so plainly, in Croatian.
+            body=$(jq -c --argjson u "$usage" --arg run "$RUN_URL" \
+              '{status: "failed", usage: $u, run_url: $run,
+                error: ("Ovo vino je već na karti — ništa nije dodano." + (if .placement then " " + .placement else "" end)
+                        + " Ako je druga berba ili veličina, napišite to u napomeni i pošaljite ponovno.")}' out/result.json)
+          elif [ "$STATUS" = "needs_info" ]; then
             body=$(jq -c --argjson u "$usage" --arg run "$RUN_URL" '{status: "needs_info", questions: .questions, usage: $u, run_url: $run}' out/result.json)
           elif [ "$STATUS" = "ready" ] && [ "$APPLIED" = "success" ]; then
             body=$(jq -c --argjson u "$usage" --arg run "$RUN_URL" --arg b "$BRANCH" \

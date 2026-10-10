@@ -67,7 +67,10 @@ this one wine.
   `recommended: true` on the listing. Otherwise `notePlain: true`.
 - **Same wine already in the library** (same producer, name and vintage):
   do not create a second entry — list the existing ref (add.py supports a
-  draft with only `ref` and `listings`).
+  draft with only `ref` and `listings`). If it is **already listed** in the
+  same size and section, add nothing at all and write
+  `{"status": "already_listed", "placement": "<where it is, Croatian>"}` —
+  Filho is told it is already on the list.
 
 ## Edit mode
 
@@ -96,7 +99,7 @@ or
   "status": "ready",
   "ref": "<library ref>",
   "draft": { "wine": {…}, "listings": [{…}], "producer": {…} | null },
-  "glass": "<the glass the card will show, in Croatian>",
+  "glass": "<the glass the card will show: the Croatian name neighbours.mjs prints after '=', never the key>",
   "novo": true,
   "novo_reason": "<Croatian, only when novo is false>",
   "placement": "<where it sits on the list, in Croatian>",
