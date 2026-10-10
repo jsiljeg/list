@@ -11,6 +11,7 @@
    30-second tablet countdown then held the *next* flip hostage — worst on an
    un-hide, which is the one thing that should never be slow. */
 import { test, expect } from "@playwright/test";
+import { readFileSync } from "node:fs";
 
 /* One board, one viewport: it is the bar tablet, not the guest's phone. */
 test.describe.configure({ mode: "serial" });
@@ -18,22 +19,33 @@ test.use({ viewport: { width: 1024, height: 768 } });
 
 const PIN = "7777";
 
-/** Fake GitHub + the published file, wired to the same in-memory document. */
+/** Fake GitHub + the published files, wired to the same in-memory documents.
+    Two files since prices came to the board (2026-10-10): the 86 list and the
+    wine list, each with its own sha, told apart by path. `state.list` starts
+    as the real lists/theatrium.json. */
 async function board(page) {
-  const state = { file: { _: "test", hidden: [] }, sha: "sha0", puts: [] };
+  const list = JSON.parse(readFileSync(new URL("../lists/theatrium.json", import.meta.url), "utf8"));
+  const state = { file: { _: "test", hidden: [] }, sha: "sha0", puts: [], list, listSha: "L0", listPuts: [] };
   await page.route("https://api.github.com/**", (route) => {
     const req = route.request();
+    const isList = req.url().includes("lists/theatrium.json");
     if (req.method() === "GET") {
       return route.fulfill({
         status: 200, contentType: "application/json",
         body: JSON.stringify({
-          sha: state.sha,
-          content: Buffer.from(JSON.stringify(state.file), "utf8").toString("base64")
+          sha: isList ? state.listSha : state.sha,
+          content: Buffer.from(JSON.stringify(isList ? state.list : state.file), "utf8").toString("base64")
         })
       });
     }
     const body = JSON.parse(req.postData());
-    state.file = JSON.parse(Buffer.from(body.content, "base64").toString("utf8"));
+    const doc = JSON.parse(Buffer.from(body.content, "base64").toString("utf8"));
+    if (isList) {
+      state.list = doc; state.listPuts.push(body.message); state.listSha = "L" + state.listPuts.length;
+      state.listBody = Buffer.from(body.content, "base64").toString("utf8");
+      return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ content: { sha: state.listSha } }) });
+    }
+    state.file = doc;
     state.puts.push(body.message);
     state.sha = "sha" + state.puts.length;
     return route.fulfill({
@@ -46,6 +58,8 @@ async function board(page) {
      an hour. */
   await page.route(/^http:\/\/127\.0\.0\.1:\d+\/data\/unavailable\.json/, (route) =>
     route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(state.file) }));
+  await page.route(/^http:\/\/127\.0\.0\.1:\d+\/lists\/theatrium\.json/, (route) =>
+    route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(state.list) }));
 
   await page.goto("/admin.html");
   await page.fill("#pin", PIN);
@@ -166,4 +180,55 @@ test("hiding the bottle does not put the glass pour back", async ({ page }) => {
   /* and turning one back on leaves the other off */
   await scope.first().click();
   await expect.poll(() => JSON.stringify(state.file.hidden.map((r) => r.where || "all"))).toBe('["bottle"]');
+});
+
+/* ---------- prices (2026-10-10) ---------- */
+
+const priceOf = (list, ref, sec) => {
+  for (const s of list.sections) if (!sec || s.id === sec) for (const c of s.categories) for (const g of c.groups)
+    for (const it of g.items) if (it.ref === ref) return it;
+};
+
+test("a price is edited on the board, and only the price changes", async ({ page }) => {
+  /* Owner: "price editing ... so Filho could do it by himself". The anchor is
+     the legal reference price and must never move with it, and the file must
+     come back byte-identical apart from that one number. */
+  const state = await board(page);
+  const ref = "marjan-simcic--merlot-opoka-2017";
+  const before = JSON.parse(JSON.stringify(priceOf(state.list, ref)));
+  await page.fill("#q", "Merlot Opoka");
+  await page.waitForTimeout(200);
+  await page.locator(".row").filter({ hasText: "Merlot Opoka" }).locator(".price").first().click();
+  await page.fill(".pedit input", String(before.price + 10));
+  await page.click(".pedit .ok");
+  await page.waitForFunction(() => document.getElementById("s2").className === "done", null, { timeout: 60000 });
+
+  const after = priceOf(state.list, ref);
+  expect(after.price).toBe(before.price + 10);
+  expect(after.anchor, "the anchor is never edited").toBe(before.anchor);
+  expect(state.listPuts).toEqual([`Cijena: Marjan Simčič Merlot Opoka 2017: ${before.price} → ${before.price + 10} €`]);
+  const disk = readFileSync(new URL("../lists/theatrium.json", import.meta.url), "utf8");
+  const lines = (t) => t.replace(/\r/g, "").split("\n");
+  const changed = lines(state.listBody).filter((l, i) => l !== lines(disk)[i]);
+  expect(changed, "only the price line differs").toEqual([`         "price": ${before.price + 10},`]);
+});
+
+test("a price that is not a price is refused, and a big jump asks first", async ({ page }) => {
+  const state = await board(page);
+  await page.fill("#q", "Merlot Opoka");
+  await page.waitForTimeout(200);
+  const dialogs = [];
+  page.on("dialog", (d) => { dialogs.push(d.type()); d.type() === "confirm" ? d.dismiss() : d.accept(); });
+
+  await page.locator(".row").filter({ hasText: "Merlot Opoka" }).locator(".price").first().click();
+  await page.fill(".pedit input", "sto pedeset");
+  await page.click(".pedit .ok");
+  await page.waitForTimeout(300);
+  expect(dialogs).toEqual(["alert"]);
+
+  await page.fill(".pedit input", "1500");          /* 150 → 1500: one zero too many */
+  await page.click(".pedit .ok");
+  await page.waitForTimeout(600);
+  expect(dialogs).toEqual(["alert", "confirm"]);
+  expect(state.listPuts, "dismissed, so nothing written").toEqual([]);
 });

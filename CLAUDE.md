@@ -1247,6 +1247,18 @@ with an in-memory file. Scope that route by **origin** — `**/data/unavailable.
 also matches the GitHub contents URL, which silently feeds the page the wrong
 shape.
 
+**Prices are edited on the same board** (owner, 2026-10-10: "so Filho could
+do it by himself"). Each price on a row is a button; tapping it opens a field,
+Spremi writes `price` on that one listing of lists/theatrium.json through the
+contents API, one commit per change ("Cijena: <wine>: 125 → 150 €"), the same
+queue and the same three-step receipt (published = the deployed list carries
+the price). `anchor` is never touched. Input is euros with up to two
+decimals; a change over 40% asks first. The list is read from GitHub, not the
+site, and written back byte-identical apart from the number — a test diffs it.
+A 409 re-reads and asks again rather than writing over a commit from the
+office. When the cjenik comes back, a price edit must regenerate it, or
+validate.mjs will stop the deploy — solve that before switching it on.
+
 ## Out of stock tonight, back tomorrow (2026-07-31)
 
 `data/unavailable.json` is the 86 list: `{"hidden": [{"producer", "name",

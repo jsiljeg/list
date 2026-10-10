@@ -15,6 +15,13 @@
  *     tablet can do is hide and unhide wines on our own list, and revoking it
  *     on github.com/settings/tokens takes a minute.
  *
+ * Prices are edited here too (owner, 2026-10-10: "so Filho could do it by
+ * himself"). Tapping a price opens a field; saving rewrites `price` on that one
+ * listing in lists/theatrium.json through the same contents API, the same
+ * queue and the same receipt. Only `price` — the anchor is the legal reference
+ * price and is never edited, by anyone. Each change is its own commit,
+ * "Cijena: <wine>: 125 → 150 €", so the history says who changed what.
+ *
  * The receipt is the point of the page. A switch you don't trust is worse than
  * typing JSON, because typing JSON at least feels like it did something — so
  * the page never says "done", it reports saved → published → on the tablets,
@@ -25,6 +32,9 @@
 
 const REPO = "jsiljeg/list";
 const PATH = "data/unavailable.json";
+const LIST_PATH = "lists/theatrium.json";
+/* A change bigger than this asks first: 125 → 1250 is one extra zero. */
+const BIG_CHANGE = 0.4;
 const BRANCH = "main";
 /* Change this to whatever the staff will remember. It is visible to anyone who
    reads this file — the repo is public — and that is fine, because it guards a
@@ -39,11 +49,15 @@ const esc = (s) => String(s == null ? "" : s)
   .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 let token = "";
-let wines = [];        /* one row per distinct wine: {key, name, producer, inGlass, inBottle} */
+let wines = [];        /* one row per distinct wine: {key, name, producer, inGlass, inBottle, listings} */
+let library = {};
+let listDoc = null;    /* lists/theatrium.json as GitHub has it, edited in place */
+let listSha = null;
+let editing = null;    /* "key|index" of the price field that is open */
 let rules = [];        /* the current contents of unavailable.json */
 let sha = null;        /* the blob sha we last saw, for the conditional write */
 let onlyOff = false;
-let queue = [];        /* commit messages waiting to be written */
+let queue = [];        /* {file: "rules"|"list", message} waiting to be written */
 let draining = false;
 
 /* ---------- base64 that survives Croatian ----------
@@ -111,12 +125,11 @@ async function start() {
   $("main").classList.remove("hidden");
   setState("busy", "učitavam kartu…");
   try {
-    const [lib, list] = await Promise.all([
-      fetch("library/wines.json", { cache: "no-cache" }).then((r) => r.json()),
-      fetch("lists/theatrium.json", { cache: "no-cache" }).then((r) => r.json())
-    ]);
-    wines = collect(lib.wines || {}, list);
-    await loadRules();
+    const lib = await fetch("library/wines.json", { cache: "no-cache" }).then((r) => r.json());
+    library = lib.wines || {};
+    /* The list comes from GitHub, not from the site: a price is written back to
+       this exact document, and the deployed copy can be a minute behind it. */
+    await Promise.all([loadList(), loadRules()]);
     render();
     setState("live", "spremno");
     $("n-listed").textContent = wines.length + " vina na karti";
@@ -142,16 +155,66 @@ function collect(library, list) {
           if (!seen.has(k)) seen.set(k, {
             key: k, name: w.name, producer: w.producer,
             hay: norm(w.producer + " " + w.name),
-            inGlass: false, inBottle: false
+            inGlass: false, inBottle: false, listings: []
           });
           const row = seen.get(k);
           if (sec.id === "glass") row.inGlass = true;
           else if (sec.id.startsWith("bottle")) row.inBottle = true;
+          /* The listing object itself, so an edit lands on the document that
+             is written back. Same wine twice on one shelf (a magnum beside the
+             bottle) is two listings, told apart by `vol`. */
+          if (entry.price != null) row.listings.push({ entry, glass: sec.id === "glass" });
         }
       }
     }
   }
   return [...seen.values()];
+}
+
+async function loadList() {
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${LIST_PATH}?ref=${BRANCH}&t=${Date.now()}`,
+    { headers: ghHeaders(), cache: "no-store" });
+  if (!r.ok) throw new Error(`GitHub ${r.status} pri čitanju ${LIST_PATH}`);
+  const j = await r.json();
+  listSha = j.sha;
+  listDoc = JSON.parse(b64decode(j.content));
+  wines = collect(library, listDoc);
+}
+
+/* ---------- prices ---------- */
+const fmtEur = (n) => String(n).replace(".", ",");
+const volLabel = (v) => (v && v !== 0.75 ? fmtEur(v) + " l" : "");
+function listingLabel(l) {
+  const kind = l.glass ? "čaša" : (volLabel(l.entry.vol) || "boca");
+  return `${kind} ${fmtEur(l.entry.price)} €`;
+}
+/* "150", "150,5", "8.50", "1.250" (a thousands dot) — anything else is refused
+   rather than guessed. Two decimals at most, and never zero or negative. */
+function parsePrice(text) {
+  let t = String(text).trim().replace(/\s|€/g, "");
+  if (/^\d{1,3}(\.\d{3})+$/.test(t)) t = t.replace(/\./g, "");
+  t = t.replace(",", ".");
+  if (!/^\d+(\.\d{1,2})?$/.test(t)) return null;
+  const n = Number(t);
+  return n > 0 && n < 100000 ? n : null;
+}
+
+function savePrice(key, idx, text) {
+  const w = wines.find((x) => x.key === key);
+  const l = w && w.listings[idx];
+  if (!l) return;
+  const next = parsePrice(text);
+  if (next == null) { alert("Upišite cijenu u eurima, npr. 150 ili 8,50."); return; }
+  const prev = l.entry.price;
+  editing = null;
+  if (next === prev) { render(); return; }
+  if (Math.abs(next - prev) / prev > BIG_CHANGE &&
+      !confirm(`${w.name}\n${fmtEur(prev)} € → ${fmtEur(next)} €\n\nJeste li sigurni?`)) { render(); return; }
+  l.entry.price = next;     /* never l.entry.anchor */
+  render();
+  const what = l.glass ? " (čaša)" : volLabel(l.entry.vol) ? ` (${volLabel(l.entry.vol)})` : "";
+  queue.push({ file: "list", message: `Cijena: ${w.producer} ${w.name}${what}: ${fmtEur(prev)} → ${fmtEur(next)} €` });
+  drain();
 }
 
 async function loadRules() {
@@ -202,10 +265,19 @@ function render() {
         <button data-k="${esc(w.key)}" data-w="glass" class="${st === "glass" ? "on" : ""}">nema na čašu</button>
         <button data-k="${esc(w.key)}" data-w="bottle" class="${st === "bottle" ? "on" : ""}">nema na bocu</button>
       </div>` : "";
+    const prices = w.listings.length ? `<div class="prices">${w.listings.map((l, i) => {
+      const id = w.key + "|" + i;
+      return editing === id
+        ? `<span class="pedit"><input type="text" inputmode="decimal" value="${esc(fmtEur(l.entry.price))}"
+             data-k="${esc(w.key)}" data-i="${i}" aria-label="Nova cijena">
+           <button class="ok" data-k="${esc(w.key)}" data-i="${i}">Spremi</button>
+           <button class="no">Odustani</button></span>`
+        : `<button class="price" data-k="${esc(w.key)}" data-i="${i}">${esc(listingLabel(l))}</button>`;
+    }).join("")}</div>` : "";
     return `<div class="row ${st === "on" ? "" : "off"}">
       <div class="who">
         <div class="nm">${esc(w.name)}</div>
-        <div class="pr">${esc(w.producer)}</div>${meta}
+        <div class="pr">${esc(w.producer)}</div>${meta}${prices}
       </div>
       ${scope}
       <button class="sw" data-k="${esc(w.key)}" aria-pressed="${st === "off"}"
@@ -217,6 +289,19 @@ function render() {
     b.addEventListener("click", () => toggle(b.dataset.k, null)));
   $("rows").querySelectorAll(".scope button").forEach((b) =>
     b.addEventListener("click", () => toggle(b.dataset.k, b.dataset.w)));
+  $("rows").querySelectorAll(".price").forEach((b) =>
+    b.addEventListener("click", () => { editing = b.dataset.k + "|" + b.dataset.i; render(); }));
+  const field = $("rows").querySelector(".pedit input");
+  if (field) {
+    field.focus(); field.select();
+    const go = () => savePrice(field.dataset.k, Number(field.dataset.i), field.value);
+    field.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") go();
+      if (e.key === "Escape") { editing = null; render(); }
+    });
+    $("rows").querySelector(".pedit .ok").addEventListener("click", go);
+    $("rows").querySelector(".pedit .no").addEventListener("click", () => { editing = null; render(); });
+  }
 }
 
 $("q").addEventListener("input", render);
@@ -265,7 +350,7 @@ function toggle(key, where) {
   /* Optimistic: the switch moves now, the write catches up. */
   rules = next;
   render();
-  queue.push(message);
+  queue.push({ file: "rules", message });
   drain();
 }
 
@@ -283,12 +368,25 @@ async function drain() {
   draining = true;
   try {
     while (queue.length) {
-      const msgs = queue.splice(0);
+      const batch = queue.splice(0);
       receipt(1, "now");
-      await put(rules, msgs.length === 1 ? msgs[0] : `${msgs.length} ${changesWord(msgs.length)} na karti`);
+      /* One commit per file. Hides and prices are separate files, so a batch
+         that holds both writes twice; within a file the current state is sent,
+         never a snapshot, so a change made mid-flight is simply included. */
+      const wrote = [];
+      for (const file of ["rules", "list"]) {
+        const msgs = batch.filter((b) => b.file === file).map((b) => b.message);
+        if (!msgs.length) continue;
+        const message = msgs.length === 1 ? msgs[0] : `${msgs.length} ${changesWord(msgs.length)} na karti`;
+        if (file === "rules") await put(rules, message);
+        else await putList(message + (msgs.length > 1 ? "\n\n" + msgs.join("\n") : ""));
+        wrote.push(file);
+      }
       if (queue.length) continue;              /* someone flipped again — write once more */
       receipt(1, "done"); receipt(2, "now");
-      const ok = await waitForPublish(rules);
+      let ok = true;
+      if (wrote.includes("rules")) ok = await waitForPublish(rules);
+      if (ok && wrote.includes("list") && !queue.length) ok = await waitForList();
       if (queue.length) continue;
       if (!ok) throw new Error("objava traje predugo — provjerite Actions na GitHubu");
       receipt(2, "done"); receipt(3, "now");
@@ -301,7 +399,7 @@ async function drain() {
   } catch (e) {
     $("s-err").textContent = "· " + (e.message || e);
     setState("bad", "nije objavljeno");
-    await loadRules().catch(() => {});         /* resync with what GitHub really has */
+    await Promise.all([loadRules(), loadList()]).catch(() => {});   /* resync with what GitHub really has */
     render();
   } finally {
     draining = false;
@@ -335,6 +433,52 @@ async function put(next, message) {
   }
   const j = await r.json();
   sha = j.content && j.content.sha;
+}
+
+/* Same rules as put(): a 409 means another tablet (or a commit from the
+   office) changed the list since we read it, so re-read and say so rather than
+   write over it. The body is the document as GitHub had it plus our prices,
+   serialised exactly as the repo stores it (one-space indent, trailing
+   newline), so the commit diff is the price lines and nothing else. */
+async function putList(message) {
+  const body = JSON.stringify(listDoc, null, 1) + "\n";
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${LIST_PATH}`, {
+    method: "PUT",
+    headers: { ...ghHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ message, content: b64encode(body), sha: listSha, branch: BRANCH })
+  });
+  if (r.status === 409) {
+    await loadList();
+    render();
+    throw new Error("karta je u međuvremenu promijenjena — osvježeno, ponovite cijenu");
+  }
+  if (!r.ok) {
+    const t = await r.text().catch(() => "");
+    throw new Error(`GitHub ${r.status}${t ? " — " + t.slice(0, 120) : ""}`);
+  }
+  const j = await r.json();
+  listSha = j.content && j.content.sha;
+}
+
+/* Published when the deployed list carries every price we hold. */
+const priceFingerprint = (doc) => {
+  const out = [];
+  for (const sec of (doc && doc.sections) || []) for (const cat of sec.categories) for (const g of cat.groups)
+    for (const it of g.items) out.push(`${sec.id}|${it.ref}|${it.vol || ""}|${it.price}`);
+  return out.join("\n");
+};
+async function waitForList() {
+  const want = priceFingerprint(listDoc);
+  const until = Date.now() + PUBLISH_TIMEOUT_MS;
+  while (Date.now() < until) {
+    if (queue.length) return true;
+    await sleep(POLL_MS);
+    try {
+      const r = await fetch(`${LIST_PATH}?t=${Date.now()}`, { cache: "no-store" });
+      if (r.ok && priceFingerprint(await r.json()) === want) return true;
+    } catch (e) { /* mid-deploy; try again */ }
+  }
+  return false;
 }
 
 /* Verified, not assumed: re-fetch the file the tablets actually read until it
