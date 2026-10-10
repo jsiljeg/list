@@ -1,0 +1,223 @@
+# Novo vino — write one wine card with Claude (web/WINE-INTAKE.md).
+#
+# Started ONLY by the inbox on theatrium.devinos.hr (workflow_dispatch with a
+# fine-grained token that can do nothing but start workflows). No push, PR,
+# issue or comment trigger exists, so nobody outside the repo can start it, and
+# its only input is a request id — nothing Filho types reaches this file.
+#
+# Two jobs, so the model never holds a credential that can write:
+#   write   Claude + the add-wine skill. Read-only token, no stored git
+#           credentials, tools allow-listed (no free shell), and the worker
+#           key is never in its environment. Produces a patch and result.json.
+#   commit  No Claude. Checks the patch touches only data files, applies it,
+#           runs validate.mjs, pushes branch wine/<id>, reports to the inbox.
+name: Novo vino — write
+
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "inbox request id"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wine-intake
+  cancel-in-progress: false
+
+env:
+  INBOX: https://theatrium.devinos.hr/api/vina
+  ID: ${{ inputs.id }}
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    environment: wine-intake
+    timeout-minutes: 35
+    outputs:
+      status: ${{ steps.out.outputs.status }}
+      mode: ${{ steps.fetch.outputs.mode }}
+    steps:
+      - name: Check the id
+        run: '[[ "$ID" =~ ^[0-9]{8}-[0-9a-f]{12}$ ]] || { echo "bad id"; exit 1; }'
+
+      - name: Fetch the request and its photos
+        id: fetch
+        env:
+          KEY: ${{ secrets.WINE_WORKER_KEY }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/intake"
+          curl -sfS -H "Authorization: Bearer $KEY" "$INBOX/$ID" > "$RUNNER_TEMP/req.json"
+          jq -e '.item.status == "working"' "$RUNNER_TEMP/req.json" > /dev/null || { echo "not working"; exit 1; }
+          # edit mode: the preview was edited, so start from the card's branch
+          mode=add
+          if jq -e '(.item.branch != "") and (([.item.answers[] | select(.kind != "novo")] | last | .kind) == "edit")' "$RUNNER_TEMP/req.json" > /dev/null; then mode=edit; fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "branch=$(jq -r '.item.branch' "$RUNNER_TEMP/req.json")" >> "$GITHUB_OUTPUT"
+          for n in $(jq -r '.item.photos[]' "$RUNNER_TEMP/req.json"); do
+            curl -sfS -H "Authorization: Bearer $KEY" "$INBOX/$ID/foto/$n" -o "$RUNNER_TEMP/intake/photo-$n.jpg"
+          done
+          # round = Claude runs so far (the inbox counted this one); questions
+          # stop after two rounds of answers — then the card is finished with
+          # what is known, never another question.
+          jq --arg mode "$mode" '.item as $i | {
+              mode: $mode, round: $i.runs,
+              final: (([$i.answers[] | select(.kind == null)] | map(.at) | unique | length) >= 2),
+              price_bottle: $i.price_bottle, price_glass: $i.price_glass, vol: $i.vol,
+              recommended: $i.recommended, remark: $i.remark,
+              answers: [$i.answers[] | select(.kind == null) | {q, a}],
+              edits: [$i.answers[] | select(.kind == "edit") | {field, from, to}],
+              photos: [$i.photos[] | "intake/photo-\(.).jpg"] }' "$RUNNER_TEMP/req.json" > "$RUNNER_TEMP/intake/request.json"
+          curl -sfS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
+               -d "{\"status\":\"working\",\"run_url\":\"$RUN_URL\"}" "$INBOX/$ID/stanje" > /dev/null
+
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          ref: ${{ steps.fetch.outputs.mode == 'edit' && steps.fetch.outputs.branch || 'main' }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Put the intake beside the repo
+        run: cp -r "$RUNNER_TEMP/intake" intake
+
+      # Always the newest CLI, and the alias rather than a model id, so the
+      # newest frontier model is used the day it ships (owner, 2026-10-10).
+      # WINE_MODEL (an environment variable) overrides it if ever needed.
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code@latest
+
+      - name: Write the card
+        id: claude
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          MODEL: ${{ vars.WINE_MODEL || 'fable' }}
+        run: |
+          set -uo pipefail
+          # The settings deny reading anything outside the checkout, so the
+          # token in this process's environment cannot be read back through a
+          # file tool and handed to a web fetch.
+          cat > "$RUNNER_TEMP/settings.json" <<'JSON'
+          { "permissions": {
+              "deny": ["Read(/proc/**)", "Read(/sys/**)", "Read(/etc/**)", "Read(/root/**)",
+                       "Read(/home/runner/work/_temp/**)", "Read(/home/runner/.claude/**)",
+                       "Read(/home/runner/.config/**)", "Read(/home/runner/.gitconfig)",
+                       "Read(/tmp/**)", "Read(/opt/**)", "Read(/usr/**)", "Read(/var/**)",
+                       "Edit(.github/**)", "Write(.github/**)", "Edit(.claude/**)", "Write(.claude/**)"] } }
+          JSON
+          tools='Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Skill'
+          tools+=',Bash(node scripts/validate.mjs),Bash(node scripts/after-86.mjs)'
+          tools+=',Bash(node .claude/skills/add-wine/neighbours.mjs:*),Bash(python3 .claude/skills/add-wine/add.py:*)'
+          tools+=',Bash(node .claude/skills/sommelier/pair.mjs:*),Bash(python3 scripts/rank-ratings.py)'
+          claude -p "$(cat .github/wine-intake/prompt.md)" \
+            --model "$MODEL" --fallback-model opus \
+            --max-turns 120 \
+            --settings "$RUNNER_TEMP/settings.json" \
+            --allowedTools "$tools" \
+            --output-format json > "$RUNNER_TEMP/claude.json"
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+          jq '{turns: .num_turns, seconds: ((.duration_ms // 0) / 1000 | floor), cost_usd: .total_cost_usd,
+               model: (.modelUsage // {} | keys)}' "$RUNNER_TEMP/claude.json" > "$RUNNER_TEMP/usage.json" || echo '{}' > "$RUNNER_TEMP/usage.json"
+          cat "$RUNNER_TEMP/usage.json"
+
+      - name: Collect the result
+        id: out
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          cp "$RUNNER_TEMP/usage.json" out/usage.json
+          if [ -f intake/result.json ] && jq -e '.status == "ready" or .status == "needs_info"' intake/result.json > /dev/null; then
+            cp intake/result.json out/result.json
+            echo "status=$(jq -r .status intake/result.json)" >> "$GITHUB_OUTPUT"
+          else
+            echo '{"status":"failed","error":"Claude nije završio karticu."}' > out/result.json
+            echo "status=failed" >> "$GITHUB_OUTPUT"
+          fi
+          git diff --binary -- library lists data js > out/card.patch || true
+          ls -la out
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: card
+          path: out/
+          retention-days: 30
+
+  commit:
+    needs: write
+    if: always() && needs.write.result != 'skipped'
+    runs-on: ubuntu-latest
+    environment: wine-intake
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: card
+          path: out
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Apply, validate, push wine/<id>
+        id: apply
+        if: needs.write.outputs.status == 'ready'
+        env:
+          MODE: ${{ needs.write.outputs.mode }}
+        run: |
+          set -euo pipefail
+          branch="wine/$ID"
+          if [ "$MODE" = "edit" ]; then git checkout "$branch"; else git checkout -B "$branch" origin/main; fi
+          # The model may only have changed data files; anything else in the
+          # patch means something went wrong, and nothing is applied.
+          bad=$(grep '^diff --git' out/card.patch | awk '{print $3}' | sed 's#^a/##' \
+                | grep -vE '^(library/wines\.json|lists/theatrium\.json|data/producers\.json|data/unavailable\.json|js/zh-terms\.js|js/i18n\.js)$' || true)
+          [ -z "$bad" ] || { echo "patch touches $bad"; exit 1; }
+          [ -s out/card.patch ] || { echo "empty patch"; exit 1; }
+          git apply --whitespace=nowarn out/card.patch
+          node --check js/zh-terms.js && node --check js/i18n.js
+          node scripts/validate.mjs
+          git config user.name "Novo vino"
+          git config user.email "novo-vino@users.noreply.github.com"
+          git add library lists data js
+          git commit -q -m "Novo vino ($ID): $(jq -r '.draft.wine.producer + " — " + .draft.wine.name' out/result.json)" \
+                     -m "$(jq -r '.notes // ""' out/result.json)"
+          git push -f origin "$branch"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Report to the inbox
+        if: always()
+        env:
+          KEY: ${{ secrets.WINE_WORKER_KEY }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          STATUS: ${{ needs.write.outputs.status }}
+          APPLIED: ${{ steps.apply.outcome }}
+          BRANCH: ${{ steps.apply.outputs.branch }}
+        run: |
+          set -uo pipefail
+          usage=$(cat out/usage.json 2>/dev/null || echo '{}')
+          if [ "$STATUS" = "needs_info" ]; then
+            body=$(jq -c --argjson u "$usage" --arg run "$RUN_URL" '{status: "needs_info", questions: .questions, usage: $u, run_url: $run}' out/result.json)
+          elif [ "$STATUS" = "ready" ] && [ "$APPLIED" = "success" ]; then
+            body=$(jq -c --argjson u "$usage" --arg run "$RUN_URL" --arg b "$BRANCH" \
+              '{status: "ready", branch: $b, ref: .ref, usage: $u, run_url: $run,
+                result: {draft, glass, placement, gaps, pairings_hr, notes, flags, novo, novo_reason}}' out/result.json)
+          else
+            err="Kartica nije prošla provjeru — vlasnik je obaviješten."
+            [ "$STATUS" = "failed" ] && err="Claude nije završio karticu."
+            body=$(jq -nc --arg e "$err" --argjson u "$usage" --arg run "$RUN_URL" '{status: "failed", error: $e, usage: $u, run_url: $run}')
+          fi
+          curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" -d "$body" "$INBOX/$ID/stanje"

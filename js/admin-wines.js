@@ -62,7 +62,15 @@
     disabled: "Unos novih vina je trenutno isključen.",
     running: "Claude upravo radi na ovom vinu — pričekajte.",
     too_late: "Vino je već objavljeno.",
+    empty: "Niste ništa promijenili.",
+    /* errors a request carries, from the inbox or the run */
+    run_timed_out: "Claude nije završio na vrijeme. Pokušajte ponovno.",
+    too_many_rounds: "Previše pokušaja za ovo vino — javite vlasniku.",
+    no_dispatch_token: "Čeka da vlasnik uključi automatsko dodavanje.",
+    daily_cap: "Danas je dosegnut dnevni limit — nastavlja sutra.",
+    monthly_cap: "Dosegnut je mjesečni limit — javite vlasniku.",
   };
+  const errText = (e) => MSG[e] || (/^github_/.test(e || "") ? "Pokretanje nije uspjelo — pokušat će ponovno." : e);
 
   async function loadRequests() {
     if (!staffKey) return renderNovo();
@@ -137,16 +145,24 @@
     box.innerHTML = `
       <div class="card">
         <h2>Novo vino</h2>
-        <p class="muted">Fotografirajte <b>prednju i stražnju etiketu</b> — alkohol i volumen su često straga.
-          Neka tekst bude oštar i cijeli u kadru. Claude napiše karticu, a vi je pregledate prije objave.</p>
-        <label class="lbl">Fotografije (1–3)
-          <input id="n-photos" type="file" accept="image/*" capture="environment" multiple></label>
+        <ol class="steps">
+          <li><b>Prednja etiketa</b> — cijela, oštra, bez odsjaja.</li>
+          <li><b>Stražnja etiketa</b> — tamo su obično alkohol i volumen. Bez nje Claude će vas to pitati.</li>
+          <li><b>Cijena</b> — boce, i čaše ako se toči.</li>
+        </ol>
+        <p class="muted">To je sve. Claude istraži vino i napiše karticu na 8 jezika (5–15 minuta).
+          Ako nešto ne može pročitati, pitat će vas ovdje. Prije objave vidite cijelu karticu i možete je ispraviti.</p>
         <div class="grid2">
-          <label class="lbl">Cijena boce (€)<input id="n-bottle" type="text" inputmode="decimal" placeholder="npr. 130"></label>
+          <label class="lbl">1. Prednja etiketa *<input id="n-front" type="file" accept="image/*" capture="environment"></label>
+          <label class="lbl">2. Stražnja etiketa<input id="n-back" type="file" accept="image/*" capture="environment"></label>
+        </div>
+        <label class="lbl">3. Dodatna fotografija (neobavezno)<input id="n-extra" type="file" accept="image/*" capture="environment"></label>
+        <div class="grid2">
+          <label class="lbl">Cijena boce (€) *<input id="n-bottle" type="text" inputmode="decimal" placeholder="npr. 130"></label>
           <label class="lbl">Cijena čaše (€)<input id="n-glass" type="text" inputmode="decimal" placeholder="ako se toči"></label>
         </div>
         <label class="lbl">Volumen boce
-          <select id="n-vol"><option value="">0,75 l</option><option value="0.375">0,375 l</option>
+          <select id="n-vol"><option value="">Prepoznaj sa slike</option><option value="0.75">0,75 l</option><option value="0.375">0,375 l</option>
             <option value="0.5">0,5 l</option><option value="1.5">1,5 l (magnum)</option><option value="3">3 l</option></select></label>
         <label class="chk"><input id="n-rec" type="checkbox"> Moja preporuka — bilješka ide s mojim potpisom</label>
         <label class="lbl">Napomena (neobavezno)
@@ -158,6 +174,33 @@
       ${items.map(card).join("")}`;
     $("n-send").addEventListener("click", submit);
     box.querySelectorAll("[data-act]").forEach((b) => b.addEventListener("click", () => act(b.dataset.act, b.dataset.id)));
+    box.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => editField(b)));
+  }
+
+  /* Filho's corrections, held on the tablet until he sends them. A field is
+     edited in place: a box for a number or a short phrase, a larger one for
+     the note and the winery story. Nothing leaves until "Pošalji ispravke". */
+  const pending = {};
+  function editField(btn) {
+    const id = btn.dataset.id, field = btn.dataset.edit, from = btn.dataset.from;
+    const mine = (pending[id] = pending[id] || {});
+    const cur = mine[field] ? mine[field].to : from;
+    const holder = btn.closest("td") || btn.closest("p");
+    const long = !!btn.dataset.long;
+    const box = document.createElement("div");
+    box.className = "editbox";
+    box.innerHTML = (long ? `<textarea rows="${field === "komentar" ? 3 : 6}"></textarea>` : `<input type="text">`) +
+      `<div class="acts"><button class="btn small ok">U redu</button><button class="btn ghost small no">Odustani</button></div>`;
+    const inp = box.querySelector(long ? "textarea" : "input");
+    inp.value = cur;
+    holder.replaceChildren(box);
+    inp.focus();
+    box.querySelector(".ok").addEventListener("click", () => {
+      const v = inp.value.trim();
+      if (v === from || (!v && field === "komentar")) delete mine[field]; else mine[field] = { field, from, to: v };
+      renderNovo();
+    });
+    box.querySelector(".no").addEventListener("click", renderNovo);
   }
 
   function thumbHtml(id, n) {
@@ -181,11 +224,20 @@
         <label class="lbl">Dodatna fotografija (neobavezno)<input type="file" data-more accept="image/*" capture="environment" multiple></label>
         <button class="btn" data-act="odgovor" data-id="${esc(it.id)}">Pošalji odgovor</button></div>`;
     }
-    if (it.status === "ready" && w) body = preview(it, r) +
-      `<div class="acts"><button class="btn" data-act="objavi" data-id="${esc(it.id)}">Objavi na karti</button>
-       <button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
+    if (it.status === "ready" && w) {
+      const n = Object.keys(pending[it.id] || {}).length;
+      body = preview(it, r) + (it.error ? `<p class="err">${esc(errText(it.error))}</p>` : "") +
+        `<p class="muted">Nešto ne valja? Dodirnite ✎ uz polje i ispravite. Cijena se mijenja odmah;
+           ispravak teksta Claude prenese na svih 8 jezika (par minuta).</p>
+        <div class="acts">${n
+          ? `<button class="btn" data-act="ispravak" data-id="${esc(it.id)}">Pošalji ispravke (${n})</button>
+             <button class="btn ghost" data-act="ponisti" data-id="${esc(it.id)}">Poništi</button>`
+          : `<button class="btn" data-act="objavi" data-id="${esc(it.id)}">Objavi na karti</button>
+             <button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button>`}</div>`;
+    }
     if (it.status === "published") body = `<p class="muted">Objavljeno ${esc((it.published_at || "").slice(0, 10))}. Gosti ga vide pod NOVO.</p>`;
-    if (it.status === "failed") body = `<p class="err">${esc(it.error || "Nepoznata greška")}</p>
+    if (it.status === "queued" && it.error) body = `<p class="muted">${esc(errText(it.error))}</p>`;
+    if (it.status === "failed") body = `<p class="err">${esc(errText(it.error) || "Nepoznata greška")}</p>
       <div class="acts"><button class="btn ghost" data-act="ponovi" data-id="${esc(it.id)}">Pokušaj ponovno</button>
       <button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
     if (["queued", "needs_info"].includes(it.status)) body += `<div class="acts"><button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
@@ -199,38 +251,70 @@
   /* The card as the guest will read it, in Croatian, plus what the run could
      not settle. Not the app's own renderer — that would mean loading the guest
      app into the staff page — but every field the card prints. */
+  /* NOVO is decided on the preview, with one tap and no run (owner,
+     2026-10-10): a wine that has just arrived is NOVO; a new vintage of a wine
+     we already pour is not. The run proposes, Filho decides. */
+  function novoState(it, r) {
+    const mine = [...(it.answers || [])].reverse().find((a) => a.kind === "novo");
+    return mine ? !!mine.to : r.novo !== false;
+  }
+  function novoSwitch(it, r) {
+    const on = novoState(it, r);
+    const why = r.novo_reason ? ` <span class="muted">(${esc(r.novo_reason)})</span>` : "";
+    return `<button class="novo ${on ? "on" : ""}" data-act="novo" data-id="${esc(it.id)}" aria-pressed="${on}">NOVO</button>
+      ${on ? "Prikazuje se pod NOVO" : "Ne prikazuje se pod NOVO"}${why}`;
+  }
+
   function preview(it, r) {
     const w = r.draft.wine, i = w.insight || {}, p = r.draft.producer;
     const tr = (group, k) => (T[group] && T[group][k]) || k;
     const row = (k, v) => (v ? `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>` : "");
-    const note = w.note && w.note.hr;
+    const mine = pending[it.id] || {};
+    /* An editable value: what Filho changed wins over what the run wrote. */
+    const ed = (label, field, value, long) => {
+      const v = mine[field] != null ? mine[field].to : value;
+      const changed = mine[field] != null ? " changed" : "";
+      return `<tr><th>${esc(label)}</th><td><span class="ev${changed}">${esc(v || "—")}</span>
+        <button class="pen" data-edit="${field}" data-id="${esc(it.id)}" data-long="${long ? 1 : ""}"
+                data-from="${esc(value || "")}" aria-label="Ispravi ${esc(label)}">✎</button></td></tr>`;
+    };
+    const note = mine.note ? mine.note.to : (w.note && w.note.hr);
     return `<div class="pv">
       <table>
-        ${row("Sorta", i.grape)}
-        ${row("Regija", [i.region, tr("countries", i.country)].filter(Boolean).join(", "))}
-        ${row("Položaj", w.terroir)}
+        ${ed("Cijena boce", "price_bottle", it.price_bottle != null ? String(it.price_bottle).replace(".", ",") : "")}
+        ${it.price_glass != null ? ed("Cijena čaše", "price_glass", String(it.price_glass).replace(".", ",")) : ""}
+        ${ed("Sorta", "grape", i.grape)}
+        ${ed("Regija", "region", i.region)}
+        ${row("Država", tr("countries", i.country))}
+        <tr><th>NOVO</th><td>${novoSwitch(it, r)}</td></tr>
+        ${ed("Položaj", "terroir", w.terroir)}
         ${/* the style string already carries the body ("Crno · puno") */ ""}
         ${row("Stil", [tr("styles", i.style), tr("sweetness", i.sweetness)].filter(Boolean).join(" · "))}
-        ${row("Alkohol", i.alcohol ? String(i.alcohol).replace(".", ",") + "% vol." : "— (nije potvrđeno)")}
-        ${row("Posluživanje", i.temp ? i.temp + " °C" : "")}
+        ${ed("Alkohol (%)", "alcohol", i.alcohol ? String(i.alcohol).replace(".", ",") : "")}
+        ${ed("Posluživanje (°C)", "temp", i.temp)}
         ${row("Čaša", r.glass || i.glass || "")}
         ${row("Arome", (i.aromas || []).map((k) => tr("aromas", k)).join(", "))}
         ${row("Uz jelo", (i.pairings || []).map((k) => tr("pairings", k)).join(", "))}
         ${row("Ocjene", (w.ratings || []).map((x) => `${x.critic} ${x.score}`).join(", "))}
       </table>
-      ${note ? `<p class="note">${w.notePlain ? "" : "„"}${esc(note)}${w.notePlain ? "" : "“ — Filho"}</p>` : ""}
-      ${p ? `<p class="blurb"><b>${esc(p.name)}</b> — ${esc(p.blurb && p.blurb.hr)}</p>` : ""}
+      ${note ? `<p class="note${mine.note ? " changed" : ""}">${w.notePlain ? "" : "„"}${esc(note)}${w.notePlain ? "" : "“ — Filho"}
+        <button class="pen" data-edit="note" data-id="${esc(it.id)}" data-long="1" data-from="${esc((w.note && w.note.hr) || "")}" aria-label="Ispravi bilješku">✎</button></p>` : ""}
+      ${p ? `<p class="blurb${mine.blurb ? " changed" : ""}"><b>${esc(p.name)}</b> — ${esc(mine.blurb ? mine.blurb.to : (p.blurb && p.blurb.hr))}
+        <button class="pen" data-edit="blurb" data-id="${esc(it.id)}" data-long="1" data-from="${esc((p.blurb && p.blurb.hr) || "")}" aria-label="Ispravi priču o vinariji">✎</button></p>` : ""}
+      <p class="muted"><button class="linkish" data-edit="komentar" data-id="${esc(it.id)}" data-long="1" data-from="">+ Napišite Claudeu što još promijeniti</button>
+        ${mine.komentar ? `<br><i>${esc(mine.komentar.to)}</i>` : ""}</p>
       ${r.placement ? `<p class="muted">Na karti: ${esc(r.placement)}</p>` : ""}
       ${(r.gaps || []).length ? `<p class="muted">Nije potvrđeno: ${esc(r.gaps.join("; "))}</p>` : ""}
     </div>`;
   }
 
   async function submit() {
-    const files = [...$("n-photos").files];
+    const front = $("n-front").files[0], back = $("n-back").files[0], extra = $("n-extra").files[0];
+    const files = [front, back, extra].filter(Boolean);
     const msg = $("novo-msg");
-    if (!files.length) { msg.textContent = MSG.no_photo; return; }
-    if (files.length > 3) { msg.textContent = MSG.too_many_photos; return; }
+    if (!front) { msg.textContent = "Dodajte fotografiju prednje etikete."; return; }
     if (!$("n-bottle").value.trim() && !$("n-glass").value.trim()) { msg.textContent = MSG.no_price; return; }
+    if (!back && !confirm("Bez stražnje etikete Claude vjerojatno neće znati alkohol i pitat će vas. Poslati ipak?")) return;
     $("n-send").disabled = true;
     msg.textContent = "Pripremam fotografije…";
     try {
@@ -252,6 +336,26 @@
   async function act(action, id) {
     const box = $("req-" + id);
     try {
+      if (action === "ponisti") { delete pending[id]; renderNovo(); return; }
+      if (action === "novo") {
+        const it = items.find((x) => x.id === id);
+        const on = !novoState(it, it.result || {});
+        await api(`/${id}/ispravak`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ novo: on }) });
+        await loadRequests();
+        return;
+      }
+      if (action === "ispravak") {
+        const mine = pending[id] || {};
+        const body = { edits: [] };
+        for (const [field, e] of Object.entries(mine)) {
+          if (field === "price_bottle" || field === "price_glass") body[field] = e.to;
+          else body.edits.push(e);
+        }
+        await api(`/${id}/ispravak`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+        delete pending[id];
+        await loadRequests();
+        return;
+      }
       if (action === "odgovor") {
         const fd = new FormData();
         box.querySelectorAll("[data-answer]").forEach((inp) => fd.append("answer_" + inp.dataset.answer, inp.value));

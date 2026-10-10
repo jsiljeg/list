@@ -264,8 +264,9 @@ test("Novo vino: a bottle is sent, a question is answered, the card is previewed
   await page.click('.tabs button[data-tab="novo"]');
   await page.fill("#staff-key", "staff-test");
   await page.click("#staff-go");
-  await page.setInputFiles("#n-photos", { name: "front.jpg", mimeType: "image/jpeg",
-    buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
+  const img = (name) => ({ name, mimeType: "image/png", buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
+  await page.setInputFiles("#n-front", img("front.png"));
+  await page.setInputFiles("#n-back", img("back.png"));
   await page.fill("#n-bottle", "130");
   await page.click("#n-send");
   await expect(page.locator("#novo-msg")).toContainText("Poslano", { timeout: 15000 });
@@ -283,4 +284,51 @@ test("Novo vino: a bottle is sent, a question is answered, the card is previewed
   expect(pv, "body is not printed twice").toContain("Crno · puno · suho");
   expect(pv).toContain("Parker nije provjeren");
   expect(inbox.posts[1].body).toContain("16%");
+});
+
+test("NOVO is switched on the board, on every listing of that wine", async ({ page }) => {
+  /* Owner, 2026-10-10: Filho decides when a wine stops being news. */
+  const state = await board(page);
+  const ref = "marjan-simcic--merlot-opoka-2017";
+  await page.fill("#q", "Merlot Opoka");
+  await page.waitForTimeout(200);
+  const chip = page.locator(".row").filter({ hasText: "Merlot Opoka" }).locator(".novo");
+  await expect(chip).toHaveAttribute("aria-pressed", "false");
+  await chip.click();
+  await page.waitForFunction(() => document.getElementById("s2").className === "done", null, { timeout: 60000 });
+  expect(priceOf(state.list, ref).new).toBe(true);
+  expect(state.listPuts).toEqual(["NOVO: Marjan Simčič Merlot Opoka 2017 — dodano"]);
+});
+
+test("Novo vino: Filho corrects the preview — a price at once, a word through a run", async ({ page }) => {
+  await board(page);
+  const lib = JSON.parse(readFileSync(new URL("../library/wines.json", import.meta.url), "utf8")).wines;
+  const posts = [];
+  const item = { id: "r2", status: "ready", created_at: "2026-10-10T10:00:00Z", price_bottle: 130, price_glass: null,
+    vol: null, photos: [], questions: [], answers: [],
+    result: { draft: { wine: lib["le-ragose--amarone-classico-riserva-2013"], listings: [] }, gaps: [] } };
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => {
+    const req = route.request();
+    if (req.method() === "POST") posts.push({ path: new URL(req.url()).pathname, body: JSON.parse(req.postData()) });
+    return route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify(req.method() === "GET" ? { items: [item], limits: { enabled: true, today: 1, dailyCap: 5, month: 1, monthlyCap: 60 } } : { ok: true }) });
+  });
+  await page.click('.tabs button[data-tab="novo"]');
+  await page.fill("#staff-key", "staff-test");
+  await page.click("#staff-go");
+  await expect(page.locator(".pv")).toBeVisible();
+
+  await page.click('.pen[data-edit="price_bottle"]');
+  await page.fill(".editbox input", "135");
+  await page.click(".editbox .ok");
+  await page.click('.pen[data-edit="alcohol"]');
+  await page.fill(".editbox input", "16,5");
+  await page.click(".editbox .ok");
+  /* Publishing is not offered while corrections are unsent. */
+  await expect(page.locator('[data-act="objavi"]')).toHaveCount(0);
+  await page.click('[data-act="ispravak"]');
+  await page.waitForTimeout(400);
+  expect(posts[0].path).toBe("/api/vina/r2/ispravak");
+  expect(posts[0].body.price_bottle).toBe("135");
+  expect(posts[0].body.edits).toEqual([{ field: "alcohol", from: "16", to: "16,5" }]);
 });

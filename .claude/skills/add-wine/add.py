@@ -25,6 +25,9 @@ touches the live data:
   `recommended` are passed through; `new` defaults to true (NOVO).
 - **Never writes `anchor`.** A listing added after 10.09.2026 had no price that
   day and carries none (CLAUDE.md, "The anchor price").
+- A wine already in the library (a new vintage is a new wine; the *same*
+  bottle coming back, or a new size, is not) is listed by ref alone:
+  `{"ref": "<existing ref>", "listings": [...]}` with no "wine" key.
 - Refuses a ref already in the library and a producer already in
   producers.json — an existing estate's blurb is edited, not overwritten.
 - Files round-trip exactly: ensure_ascii=False, indent=1, CRLF.
@@ -74,14 +77,17 @@ def place(node, anchor, entry, before, section=None):
 def main(path, dry):
     with open(path, encoding="utf-8") as fh:
         draft = json.load(fh)
-    wine = draft["wine"]
-    ref = split_library.ref_for(wine)
-    if draft.get("ref") and draft["ref"] != ref:
-        sys.exit("ref mismatch: draft says %s, the name gives %s" % (draft["ref"], ref))
+    wine = draft.get("wine")
+    if wine is None:
+        ref = draft.get("ref") or sys.exit("a draft needs either wine or ref")
+    else:
+        ref = split_library.ref_for(wine)
+        if draft.get("ref") and draft["ref"] != ref:
+            sys.exit("ref mismatch: draft says %s, the name gives %s" % (draft["ref"], ref))
 
     problems = []
     for key in ("note",):
-        if key in wine:
+        if wine and key in wine:
             missing = [l for l in LANGS if not wine[key].get(l)]
             if missing:
                 problems.append("note missing %s" % ", ".join(missing))
@@ -99,14 +105,17 @@ def main(path, dry):
         sys.exit("draft not ready:\n  " + "\n  ".join(problems))
 
     lib = load("library/wines.json")
-    if ref in lib["wines"]:
-        sys.exit("already in the library: %s (edit it, or list the existing ref)" % ref)
+    if wine is not None and ref in lib["wines"]:
+        sys.exit("already in the library: %s (draft {ref, listings} to list it)" % ref)
+    if wine is None and ref not in lib["wines"]:
+        sys.exit("no such library wine: %s" % ref)
     lst = load("lists/theatrium.json")
     producers = load("data/producers.json")
     if prod and prod["name"] in producers["producers"]:
         sys.exit("producer already has a blurb: %s — edit it instead" % prod["name"])
 
-    lib["wines"][ref] = wine
+    if wine is not None:
+        lib["wines"][ref] = wine
     for l in draft.get("listings", []):
         entry = {"ref": ref, "price": l["price"]}
         if l.get("vol") is not None:
@@ -127,7 +136,8 @@ def main(path, dry):
     if dry:
         print("dry run — nothing written")
         return
-    save("library/wines.json", lib)
+    if wine is not None:
+        save("library/wines.json", lib)
     save("lists/theatrium.json", lst)
     if prod:
         save("data/producers.json", producers)

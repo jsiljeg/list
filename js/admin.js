@@ -22,6 +22,11 @@
  * price and is never edited, by anyone. Each change is its own commit,
  * "Cijena: <wine>: 125 → 150 €", so the history says who changed what.
  *
+ * And NOVO (owner, 2026-10-10): a chip on each row puts the wine under NOVO
+ * on the list or takes it off — `new` on every listing of that wine, the same
+ * write path as a price. A wine leaves NOVO when it stops being news; that is
+ * Filho's call, not a date.
+ *
  * The receipt is the point of the page. A switch you don't trust is worse than
  * typing JSON, because typing JSON at least feels like it did something — so
  * the page never says "done", it reports saved → published → on the tablets,
@@ -57,6 +62,7 @@ let editing = null;    /* "key|index" of the price field that is open */
 let rules = [];        /* the current contents of unavailable.json */
 let sha = null;        /* the blob sha we last saw, for the conditional write */
 let onlyOff = false;
+let onlyNew = false;
 let queue = [];        /* {file: "rules"|"list", message} waiting to be written */
 let draining = false;
 
@@ -199,6 +205,16 @@ function parsePrice(text) {
   return n > 0 && n < 100000 ? n : null;
 }
 
+function toggleNew(key) {
+  const w = wines.find((x) => x.key === key);
+  if (!w || !w.listings.length) return;
+  const on = !w.listings.some((l) => l.entry.new);
+  for (const l of w.listings) { if (on) l.entry.new = true; else delete l.entry.new; }
+  render();
+  queue.push({ file: "list", message: `NOVO: ${w.producer} ${w.name} — ${on ? "dodano" : "maknuto"}` });
+  drain();
+}
+
 function savePrice(key, idx, text) {
   const w = wines.find((x) => x.key === key);
   const l = w && w.listings[idx];
@@ -245,10 +261,14 @@ function render() {
   const q = norm($("q").value);
   const rows = wines
     .filter((w) => (!q || w.hay.indexOf(q) !== -1))
-    .filter((w) => (!onlyOff || stateOf(w) !== "on"));
+    .filter((w) => (!onlyOff || stateOf(w) !== "on"))
+    .filter((w) => (!onlyNew || w.listings.some((l) => l.entry.new)));
   const off = wines.filter((w) => stateOf(w) !== "on");
   $("n-hidden").textContent = off.length;
   $("only-off").classList.toggle("on", onlyOff);
+  $("only-new").classList.toggle("on", onlyNew);
+  $("n-new").textContent = wines.filter((w) => w.listings.some((l) => l.entry.new)).length;
+  $("novo-rule").classList.toggle("hidden", !onlyNew);
 
   if (!rows.length) {
     $("rows").innerHTML = `<p class="muted" style="padding:24px 0">Ništa ne odgovara.</p>`;
@@ -265,7 +285,10 @@ function render() {
         <button data-k="${esc(w.key)}" data-w="glass" class="${st === "glass" ? "on" : ""}">nema na čašu</button>
         <button data-k="${esc(w.key)}" data-w="bottle" class="${st === "bottle" ? "on" : ""}">nema na bocu</button>
       </div>` : "";
-    const prices = w.listings.length ? `<div class="prices">${w.listings.map((l, i) => {
+    const isNew = w.listings.some((l) => l.entry.new);
+    const novo = w.listings.length
+      ? `<button class="novo ${isNew ? "on" : ""}" data-k="${esc(w.key)}" aria-pressed="${isNew}">NOVO</button>` : "";
+    const prices = w.listings.length ? `<div class="prices">${novo}${w.listings.map((l, i) => {
       const id = w.key + "|" + i;
       return editing === id
         ? `<span class="pedit"><input type="text" inputmode="decimal" value="${esc(fmtEur(l.entry.price))}"
@@ -289,6 +312,8 @@ function render() {
     b.addEventListener("click", () => toggle(b.dataset.k, null)));
   $("rows").querySelectorAll(".scope button").forEach((b) =>
     b.addEventListener("click", () => toggle(b.dataset.k, b.dataset.w)));
+  $("rows").querySelectorAll(".novo").forEach((b) =>
+    b.addEventListener("click", () => toggleNew(b.dataset.k)));
   $("rows").querySelectorAll(".price").forEach((b) =>
     b.addEventListener("click", () => { editing = b.dataset.k + "|" + b.dataset.i; render(); }));
   const field = $("rows").querySelector(".pedit input");
@@ -306,6 +331,7 @@ function render() {
 
 $("q").addEventListener("input", render);
 $("only-off").addEventListener("click", () => { onlyOff = !onlyOff; render(); });
+$("only-new").addEventListener("click", () => { onlyNew = !onlyNew; render(); });
 
 /* ---------- the flip ---------- */
 function toggle(key, where) {
@@ -464,7 +490,7 @@ async function putList(message) {
 const priceFingerprint = (doc) => {
   const out = [];
   for (const sec of (doc && doc.sections) || []) for (const cat of sec.categories) for (const g of cat.groups)
-    for (const it of g.items) out.push(`${sec.id}|${it.ref}|${it.vol || ""}|${it.price}`);
+    for (const it of g.items) out.push(`${sec.id}|${it.ref}|${it.vol || ""}|${it.price}|${it.new ? 1 : 0}`);
   return out.join("\n");
 };
 async function waitForList() {

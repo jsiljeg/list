@@ -4,12 +4,14 @@
  *                       (multipart: answer_<i> per question, photo files).
  *                       needs_info → queued, and the queue is pumped.
  *   objavi    (staff)   ready → publishing; starts the publish workflow.
+ *   ispravak  (staff)   corrections on a ready preview: prices at once,
+ *                       card fields through a short edit run.
  *   ponovi    (staff)   failed → queued, inside the per-wine run limit.
  *   odustani  (staff)   anything not yet published → cancelled.
  *   stanje    (worker)  the run reports: working | needs_info | ready |
  *                       published | failed, with questions / result / branch /
  *                       run_url / ref / usage / error. Only legal moves. */
-import { reply, isStaff, isWorker, readRequest, setStatus, savePhotos, pump, startPublish, clip } from "../../../_lib/wines.js";
+import { reply, isStaff, isWorker, readRequest, setStatus, savePhotos, pump, startPublish, clip, euros } from "../../../_lib/wines.js";
 
 const WORKER_MOVES = {
   working: ["working", "needs_info", "ready", "failed"],
@@ -73,6 +75,42 @@ export async function onRequestPost({ request, env, params }) {
   if (action === "objavi") {
     const d = await startPublish(env, id);
     return d.error ? reply(request, { error: d.error }, 409) : reply(request, { ok: true, item: await readRequest(env, id) });
+  }
+
+  /* Filho's corrections on the preview (owner, 2026-10-10: "move a word or
+     two; a number or two"). Prices are the venue's, not the card's, so they
+     change here and now, without a run, and publish-wine.yml writes them onto
+     the listing. Anything on the card itself queues a short edit run on the
+     card's branch, so the other seven languages follow the Croatian he typed.
+     Only these fields can be edited; the comment is data for the run, like
+     every answer. */
+  if (action === "ispravak") {
+    if (item.status !== "ready") return reply(request, { error: "not_ready" }, 409);
+    let b;
+    try { b = await request.json(); } catch { return reply(request, { error: "body" }, 400); }
+    const FIELDS = ["alcohol", "temp", "grape", "region", "terroir", "note", "blurb", "komentar"];
+    const at = new Date().toISOString();
+    const priceFields = {};
+    for (const k of ["price_bottle", "price_glass"]) if (b[k] !== undefined) {
+      const v = euros(b[k]);
+      if (Number.isNaN(v)) return reply(request, { error: "price" }, 400);
+      priceFields[k] = v;
+    }
+    const edits = (Array.isArray(b.edits) ? b.edits : []).slice(0, 12)
+      .filter((e) => e && FIELDS.includes(e.field))
+      .map((e) => ({ kind: "edit", field: e.field, from: clip(e.from, 2000), to: clip(e.to, 2000), at }))
+      .filter((e) => e.to !== e.from);
+    /* NOVO on or off: immediate, like a price; publish-wine.yml reads the
+       latest choice. */
+    const novo = typeof b.novo === "boolean" ? [{ kind: "novo", to: b.novo, at }] : [];
+    if (!edits.length && !novo.length && !Object.keys(priceFields).length) return reply(request, { error: "empty" }, 400);
+    if (Object.keys(priceFields).length) await setStatus(env, id, priceFields);
+    if (novo.length) await setStatus(env, id, { answers: JSON.stringify(item.answers.concat(novo)) });
+    if (!edits.length) return reply(request, { ok: true, item: await readRequest(env, id) });
+    const now = await readRequest(env, id);
+    await setStatus(env, id, { status: "queued", answers: JSON.stringify(now.answers.concat(edits)) });
+    const pumped = await pump(env);
+    return reply(request, { ok: true, item: await readRequest(env, id), pumped });
   }
 
   /* A failed run goes back in the queue — still inside MAX_RUNS, which pump()

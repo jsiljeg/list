@@ -24,7 +24,7 @@ import { json, isStaff } from "./daily.js";
 
 export const DAILY_CAP = 5;        /* owner, 2026-10-10 */
 export const MONTHLY_CAP = 60;
-export const MAX_RUNS = 3;         /* the first run plus two rounds of questions */
+export const MAX_RUNS = 5;         /* the first run, two rounds of questions, two rounds of edits */
 export const MAX_PHOTOS = 6;       /* across all rounds */
 export const PHOTO_MAX = 1_500_000;
 export const PHOTO_TYPES = ["image/jpeg", "image/webp", "image/png"];

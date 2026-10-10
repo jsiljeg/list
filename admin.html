@@ -87,6 +87,9 @@ button{font:inherit;cursor:pointer}
 .price{padding:6px 10px;font-size:13px;border-radius:8px;border:1px solid var(--line);
        background:transparent;color:var(--gold);font-variant-numeric:tabular-nums}
 .row.off .price{color:var(--dim)}
+.novo{padding:6px 10px;font-size:11px;letter-spacing:.12em;border-radius:8px;border:1px dashed var(--line);
+      background:transparent;color:var(--dim)}
+.novo.on{border-style:solid;border-color:var(--gold);color:#1a1814;background:var(--gold);font-weight:600}
 .pedit{display:flex;gap:6px;align-items:center}
 .pedit input{width:110px;padding:8px 10px;background:var(--panel);color:var(--ink);
              border:1px solid var(--gold);border-radius:8px;font:inherit;font-size:16px}
@@ -124,6 +127,16 @@ button{font:inherit;cursor:pointer}
 .pv td{padding:4px 0}
 .pv .note{font-style:italic;margin:12px 0 0}
 .pv .blurb{font-size:14px;margin:10px 0 0;color:#cfc8bb}
+
+.steps{margin:6px 0 10px;padding-left:22px;font-size:15px;line-height:1.6}
+.pen{margin-left:8px;padding:2px 9px;border-radius:7px;border:1px solid var(--line);
+     background:transparent;color:var(--gold);font-size:15px;vertical-align:1px}
+.linkish{background:none;border:none;color:var(--gold);padding:0;font-size:13px;text-decoration:underline}
+.changed,.ev.changed{color:var(--gold)}
+.editbox{width:100%}
+.editbox input,.editbox textarea{width:100%;padding:10px 12px;background:var(--bg);color:var(--ink);
+  border:1px solid var(--gold);border-radius:8px;font:inherit;font-size:16px;line-height:1.45}
+.btn.small{padding:8px 14px;margin-top:8px;font-size:14px}
 
 /* Povijest */
 .hist{display:grid;grid-template-columns:96px 104px 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
@@ -185,7 +198,11 @@ button{font:inherit;cursor:pointer}
     <div class="filters" id="filters">
       <input id="q" type="search" placeholder="Traži vino ili vinara… (dodirnite cijenu za izmjenu)" autocomplete="off">
       <button class="chip" id="only-off">Samo skriveno</button>
+      <button class="chip" id="only-new">Samo NOVO · <span id="n-new">0</span></button>
     </div>
+    <p id="novo-rule" class="muted hidden" style="margin:6px 0 0">
+      <b>NOVO</b> je vino koje je tek stiglo na kartu. Vino koje je bilo skriveno pa se vraća nije NOVO,
+      a ni nova berba vina koje već imamo. Kad vino prestane biti novost, isključite NOVO ovdje.</p>
   </header>
   <div id="tab-karta"><div id="rows"></div></div>
   <div id="tab-novo" class="hidden"></div>

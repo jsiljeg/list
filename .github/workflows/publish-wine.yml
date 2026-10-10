@@ -1,0 +1,128 @@
+# Novo vino — publish a finished card (web/WINE-INTAKE.md).
+#
+# Started ONLY by the inbox, when Filho taps "Objavi na karti" on a card that
+# is `ready`. No Claude here. Squash-merges wine/<id> onto main, re-validates
+# against today's main (prices and 86s may have moved since the card was
+# written), pushes, and starts the two deploys — a push made with
+# GITHUB_TOKEN does not trigger other workflows by itself.
+name: Novo vino — publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "inbox request id"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: wine-publish
+  cancel-in-progress: false
+
+env:
+  INBOX: https://theatrium.devinos.hr/api/vina
+  ID: ${{ inputs.id }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: wine-intake
+    timeout-minutes: 10
+    steps:
+      - name: Check the id and the request
+        id: req
+        env:
+          KEY: ${{ secrets.WINE_WORKER_KEY }}
+        run: |
+          set -euo pipefail
+          [[ "$ID" =~ ^[0-9]{8}-[0-9a-f]{12}$ ]] || { echo "bad id"; exit 1; }
+          curl -sfS -H "Authorization: Bearer $KEY" "$INBOX/$ID" > req.json
+          jq -e '.item.status == "publishing"' req.json > /dev/null || { echo "not publishing"; exit 1; }
+          echo "ref=$(jq -r .item.ref req.json)" >> "$GITHUB_OUTPUT"
+          echo "title=$(jq -r '.item.result.draft.wine | .producer + ": " + .name' req.json)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Merge, validate, push
+        id: merge
+        env:
+          # Through the environment, never ${{ }} inside the script: the title
+          # is a wine name the model wrote, and must not be parsed as shell.
+          TITLE: ${{ steps.req.outputs.title }}
+        run: |
+          set -euo pipefail
+          git config user.name "Novo vino"
+          git config user.email "novo-vino@users.noreply.github.com"
+          git fetch origin "wine/$ID"
+          git merge --squash "origin/wine/$ID"
+          # Prices are Filho's and may have been corrected on the preview after
+          # the card was written: the request holds the latest. Set them on this
+          # wine's new listings — glass in the glass section, bottle elsewhere.
+          python3 - req.json <<'PY'
+          import json, sys
+          req = json.load(open(sys.argv[1], encoding="utf-8"))["item"]
+          ref, pb, pg = req["ref"], req.get("price_bottle"), req.get("price_glass")
+          # NOVO: Filho's last tap on the preview, else what the run proposed.
+          taps = [a for a in req.get("answers") or [] if a.get("kind") == "novo"]
+          novo = bool(taps[-1]["to"]) if taps else (req.get("result") or {}).get("novo", True) is not False
+          p = "lists/theatrium.json"
+          doc = json.load(open(p, encoding="utf-8"))
+          mine = []
+          for sec in doc["sections"]:
+              for cat in sec["categories"]:
+                  for g in cat["groups"]:
+                      for it in g["items"]:
+                          if it.get("ref") == ref and "anchor" not in it:
+                              mine.append((sec["id"], it))
+          # This wine's listings added on the branch (no anchor). One bottle
+          # listing takes the bottle price; with several sizes, only the size
+          # Filho asked for (an auto-detected size is the single listing).
+          bottles = [it for s, it in mine if s != "glass"]
+          for sid, it in mine:
+              if novo: it["new"] = True
+              else: it.pop("new", None)
+              want = pg if sid == "glass" else pb
+              if sid != "glass" and len(bottles) > 1 and (it.get("vol") or 0.75) != (req.get("vol") or 0.75):
+                  continue   # a magnum beside it keeps its own price
+              if want is not None:
+                  it["price"] = int(want) if float(want).is_integer() else want
+          open(p, "w", encoding="utf-8", newline="\n").write(json.dumps(doc, ensure_ascii=False, indent=1) + "\n")
+          PY
+          node --check js/zh-terms.js && node --check js/i18n.js
+          node scripts/validate.mjs
+          git commit -q -m "$TITLE joins NOVO" \
+                     -m "Added through Novo vino (request $ID), published by Filho from /admin."
+          git push origin HEAD:main
+          git push origin --delete "wine/$ID" || true
+
+      - name: Start the deploys
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run deploy.yml --ref main
+          gh workflow run deploy-web.yml --ref main
+
+      - name: Report to the inbox
+        if: always()
+        env:
+          KEY: ${{ secrets.WINE_WORKER_KEY }}
+          OK: ${{ steps.merge.outcome }}
+          REF: ${{ steps.req.outputs.ref }}
+        run: |
+          if [ "$OK" = "success" ]; then
+            body=$(jq -nc --arg r "$REF" '{status: "published", ref: $r}')
+          else
+            # back to ready, so "Objavi" can simply be tapped again
+            body='{"status":"ready","error":"Objava nije uspjela — pokušajte ponovno za minutu. Ako se ponovi, javite vlasniku."}'
+          fi
+          curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" -d "$body" "$INBOX/$ID/stanje"
