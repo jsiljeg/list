@@ -92,15 +92,21 @@ export { isStaff };
    new wine reaches him with the laptop off. Optional: no NTFY_TOPIC, no push.
    Never throws: a notification must not fail the request it reports on. */
 export async function notifyOwner(env, title, body, click) {
-  if (!env || !env.NTFY_TOPIC) return;
+  if (!env || !env.NTFY_TOPIC) return { sent: false, why: "no NTFY_TOPIC" };
   const enc = (s) => (/^[\x20-\x7e]*$/.test(s) ? s : `=?UTF-8?B?${btoa(String.fromCharCode(...new TextEncoder().encode(s)))}?=`);
   try {
-    await fetch(`https://ntfy.sh/${encodeURIComponent(env.NTFY_TOPIC)}`, {
+    const r = await fetch(`https://ntfy.sh/${encodeURIComponent(env.NTFY_TOPIC)}`, {
       method: "POST",
       headers: { Title: enc(title), Priority: "3", Tags: "wine_glass", ...(click ? { Click: click } : {}) },
       body,
     });
-  } catch { /* best effort */ }
+    const why = r.ok ? "" : (await r.text().catch(() => "")).slice(0, 200);
+    if (!r.ok) console.log(`ntfy ${r.status}: ${why}`);
+    return { sent: r.ok, status: r.status, why };
+  } catch (e) {
+    console.log(`ntfy failed: ${e}`);
+    return { sent: false, why: String(e) };
+  }
 }
 
 export const zagrebDate = (d = new Date()) =>
