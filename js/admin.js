@@ -292,36 +292,50 @@ function render() {
     const both = w.inGlass && w.inBottle;
     const meta = st !== "on" && rule && (rule.since || rule.reason)
       ? `<div class="meta">${esc([rule.since, rule.reason].filter(Boolean).join(" · "))}</div>` : "";
-    const scope = both ? `<div class="scope">
-        <button data-k="${esc(w.key)}" data-w="glass" class="${st === "glass" ? "on" : ""}">nema na čašu</button>
-        <button data-k="${esc(w.key)}" data-w="bottle" class="${st === "bottle" ? "on" : ""}">nema na bocu</button>
-      </div>` : "";
     const isNew = w.listings.some((l) => l.entry.new);
     const novo = w.listings.length
       ? `<button class="novo ${isNew ? "on" : ""}" data-k="${esc(w.key)}" aria-pressed="${isNew}">NOVO</button>` : "";
-    const prices = w.listings.length ? `<div class="prices">${novo}${w.listings.map((l, i) => {
+    /* One tile per format — the glass, the bottle, a magnum — with its price
+       and, for a wine sold both ways, its own "nema" button. Price and
+       availability of the same pour sit together, so a row is never more
+       than three short lines on a phone (owner, 2026-10-10: prices and the
+       čaša/boca buttons were wrapping onto three separate lines). */
+    let gaveGlass = false, gaveBottle = false;
+    const tiles = w.listings.map((l, i) => {
       const id = w.key + "|" + i;
-      return editing === id
-        ? `<span class="pedit"><input type="text" inputmode="decimal" value="${esc(fmtEur(l.entry.price))}"
+      const kind = l.glass ? "glass" : "bottle";
+      const out = st === "off" || st === kind;
+      let nema = "";
+      if (both && kind === "glass" && !gaveGlass) { gaveGlass = true; nema = "glass"; }
+      if (both && kind === "bottle" && !gaveBottle) { gaveBottle = true; nema = "bottle"; }
+      const nemaBtn = nema
+        ? `<button class="nema ${st === nema ? "on" : ""}" data-k="${esc(w.key)}" data-w="${nema}"
+                   aria-pressed="${st === nema}">${st === nema ? "nema — vrati" : "nema"}</button>` : "";
+      if (editing === id) {
+        return `<div class="fmt editing"><span class="pedit"><input type="text" inputmode="decimal" value="${esc(fmtEur(l.entry.price))}"
              data-k="${esc(w.key)}" data-i="${i}" aria-label="Nova cijena">
-           <button class="ok" data-k="${esc(w.key)}" data-i="${i}">Spremi</button>
-           <button class="no">Odustani</button></span>`
-        : `<button class="price" data-k="${esc(w.key)}" data-i="${i}">${esc(listingLabel(l))}</button>`;
-    }).join("")}</div>` : "";
+           <span class="pbtns"><button class="ok" data-k="${esc(w.key)}" data-i="${i}">Spremi</button>
+           <button class="no">Odustani</button></span></span></div>`;
+      }
+      const label = l.glass ? "čaša" : (volLabel(l.entry.vol) || "boca");
+      return `<div class="fmt ${out ? "out" : ""}">
+        <button class="price" data-k="${esc(w.key)}" data-i="${i}" aria-label="${esc(label)} — promijeni cijenu">
+          <span class="k">${esc(label)}</span><span class="v">${esc(fmtEur(l.entry.price))} €</span></button>${nemaBtn}</div>`;
+    }).join("");
     return `<div class="row ${st === "on" ? "" : "off"}">
       <div class="who">
         <div class="nm">${esc(w.name)}</div>
-        <div class="pr">${esc(w.producer)}</div>${meta}${prices}
+        <div class="pr">${esc(w.producer)}</div>${meta}
       </div>
-      ${scope}
-      <button class="sw" data-k="${esc(w.key)}" aria-pressed="${st === "off"}"
-              aria-label="${esc(w.name)}"></button>
+      <div class="side">${novo}<button class="sw" data-k="${esc(w.key)}" aria-pressed="${st === "off"}"
+              aria-label="${esc(w.name)}"></button></div>
+      ${tiles ? `<div class="fmts">${tiles}</div>` : ""}
     </div>`;
   }).join("");
 
   $("rows").querySelectorAll(".sw").forEach((b) =>
     b.addEventListener("click", () => toggle(b.dataset.k, null)));
-  $("rows").querySelectorAll(".scope button").forEach((b) =>
+  $("rows").querySelectorAll(".nema").forEach((b) =>
     b.addEventListener("click", () => toggle(b.dataset.k, b.dataset.w)));
   $("rows").querySelectorAll(".novo").forEach((b) =>
     b.addEventListener("click", () => toggleNew(b.dataset.k)));

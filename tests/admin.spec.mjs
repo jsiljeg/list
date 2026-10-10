@@ -93,9 +93,9 @@ test("a wine sold both ways gets its own glass and bottle buttons", async ({ pag
   await page.fill("#q", "Meneghetti");
   await page.waitForTimeout(200);
   /* Blanc de Blancs is glass-only; White and Red 2020 are both. */
-  expect(await page.locator(".scope button").count()).toBe(4);
+  expect(await page.locator(".nema").count()).toBe(4);
 
-  await page.locator(".row").filter({ hasText: "Red 2020" }).locator(".scope button").first().click();
+  await page.locator(".row").filter({ hasText: "Red 2020" }).locator(".nema").first().click();
   await page.waitForTimeout(600);
   expect(hidden(state)).toEqual(["Red 2020/glass"]);
 });
@@ -159,7 +159,7 @@ test("the commit message says what actually happened", async ({ page }) => {
   await page.waitForTimeout(200);
   const row = page.locator(".row").filter({ hasText: "Meneghetti" });
 
-  await row.locator(".scope button").first().click();
+  await row.locator(".nema").first().click();
   await expect.poll(() => state.puts.at(-1)).toMatch(/^Nema na čašu:/);
   expect(state.file.hidden.map((r) => r.where)).toEqual(["glass"]);
 });
@@ -170,7 +170,7 @@ test("hiding the bottle does not put the glass pour back", async ({ page }) => {
   const state = await board(page);
   await page.fill("#q", "Red 2020");
   await page.waitForTimeout(200);
-  const scope = page.locator(".row").filter({ hasText: "Meneghetti" }).locator(".scope button");
+  const scope = page.locator(".row").filter({ hasText: "Meneghetti" }).locator(".nema");
 
   await scope.first().click();
   await expect.poll(() => state.file.hidden.length).toBe(1);
