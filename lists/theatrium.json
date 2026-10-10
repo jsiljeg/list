@@ -15,7 +15,8 @@
          "ref": "petrac--bregh-rose",
          "price": 8,
          "anchor": 8,
-         "recommended": true
+         "recommended": true,
+         "new": true
         },
         {
          "ref": "jakopic--terbotz",
@@ -248,7 +249,8 @@
          "ref": "petrac--bregh-rose",
          "price": 48,
          "anchor": 48,
-         "recommended": true
+         "recommended": true,
+         "new": true
         },
         {
          "ref": "sember--pavel",
