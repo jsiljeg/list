@@ -205,6 +205,16 @@ CREATE TABLE IF NOT EXISTS wine_photos (
   PRIMARY KEY (request_id, n)
 );
 
+-- Who sent a request and who published it (2026-10-11): the staff share one
+-- key, so the person is the name chosen on the device. A side table rather
+-- than new columns, because schema.sql is re-run on every deploy and SQLite
+-- has no ADD COLUMN IF NOT EXISTS.
+CREATE TABLE IF NOT EXISTS wine_people (
+  request_id    TEXT PRIMARY KEY,
+  created_by    TEXT,
+  published_by  TEXT
+);
+
 -- Every workflow start, for the daily and monthly caps. Counted from here,
 -- never from request rows, which change state.
 CREATE TABLE IF NOT EXISTS wine_dispatches (

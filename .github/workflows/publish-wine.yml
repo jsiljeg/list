@@ -44,6 +44,9 @@ jobs:
           jq -e '.item.status == "publishing"' req.json > /dev/null || { echo "not publishing"; exit 1; }
           echo "ref=$(jq -r .item.ref req.json)" >> "$GITHUB_OUTPUT"
           echo "title=$(jq -r '.item.result.draft.wine | .producer + ": " + .name' req.json)" >> "$GITHUB_OUTPUT"
+          # who tapped "Objavi" on the device (letters only), and who sent it
+          echo "by=$(jq -r '.item.published_by // ""' req.json | tr -cd '[:alpha:] .-' | cut -c1-40)" >> "$GITHUB_OUTPUT"
+          echo "sent=$(jq -r '.item.created_by // ""' req.json | tr -cd '[:alpha:] .-' | cut -c1-40)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/checkout@v4
         with:
@@ -59,6 +62,8 @@ jobs:
           # Through the environment, never ${{ }} inside the script: the title
           # is a wine name the model wrote, and must not be parsed as shell.
           TITLE: ${{ steps.req.outputs.title }}
+          BY: ${{ steps.req.outputs.by }}
+          SENT: ${{ steps.req.outputs.sent }}
         run: |
           set -euo pipefail
           git config user.name "Dodaj vino"
@@ -100,8 +105,10 @@ jobs:
           PY
           node --check js/zh-terms.js && node --check js/i18n.js
           node scripts/validate.mjs
-          git commit -q -m "$TITLE joins NOVO" \
-                     -m "Added through Dodaj vino (request $ID), published by Filho from /admin."
+          who="${BY:-Filho}"
+          email="$(printf '%s' "$who" | tr '[:upper:]' '[:lower:]' | tr -cd 'a-z0-9')@theatrium-admin.invalid"
+          git commit -q --author="$who <$email>" -m "$TITLE joins NOVO — $who" \
+                     -m "Added through Dodaj vino (request $ID): sent by ${SENT:-?}, published by $who from /admin."
           git push origin HEAD:main
           git push origin --delete "wine/$ID" || true
 

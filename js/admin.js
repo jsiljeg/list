@@ -46,6 +46,28 @@ const BRANCH = "main";
    screen and not a credential. The token is the credential. */
 const PIN = "7777";
 const LS_TOKEN = "theatrium-admin-token";
+/* Who is making the change (owner, 2026-10-11): the GitHub key on the device
+   says it. Filho's phone keeps the key it has; the owner uses a second key
+   of his own. GitHub shows the same account for both, so the page tells them
+   apart by a fingerprint — the first 16 hex of the key's SHA-256, which
+   cannot be turned back into the key and is safe in a public repo. A listed
+   fingerprint is that person; any other key is Filho's.
+
+   Each commit is then authored in that name and its message ends
+   "— <name>"; the key's account still shows as the committer, as it is. */
+const KEY_PEOPLE = {
+  /* "<16 hex>": "Jure", — added once the owner's own key exists */
+};
+const DEFAULT_PERSON = "Filho";
+let who = "";
+let keyPrint = "";
+const authorOf = (name) => ({ name, email: `${name.toLowerCase().replace(/[^a-z0-9]+/g, "")}@theatrium-admin.invalid` });
+const signed = (message) => message.replace(/^([^\n]*)/, `$1 — ${who}`);
+window.adminWho = () => who;
+async function keyFingerprint(t) {
+  const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t));
+  return [...new Uint8Array(d)].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 16);
+}
 const POLL_MS = 4000;               /* how often we re-check the published file */
 const PUBLISH_TIMEOUT_MS = 180000;  /* deploys run 20–50s; give it three minutes */
 
@@ -140,6 +162,11 @@ const ghHeaders = (t) => ({
 /* ---------- load ---------- */
 async function start() {
   $("main").classList.remove("hidden");
+  keyPrint = await keyFingerprint(token);
+  who = KEY_PEOPLE[keyPrint] || DEFAULT_PERSON;
+  $("who").textContent = who;
+  $("who").title = `ključ ${keyPrint}`;
+  window.adminKeyPrint = keyPrint;
   setState("busy", "učitavam kartu…");
   try {
     const lib = await fetch("library/wines.json", { cache: "no-cache" }).then((r) => r.json());
@@ -487,7 +514,7 @@ async function put(next, message) {
   const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${PATH}`, {
     method: "PUT",
     headers: { ...ghHeaders(), "Content-Type": "application/json" },
-    body: JSON.stringify({ message, content: b64encode(body), sha, branch: BRANCH })
+    body: JSON.stringify({ message: signed(message), content: b64encode(body), sha, branch: BRANCH, author: authorOf(who) })
   });
   if (r.status === 409) {
     await loadRules();
@@ -512,7 +539,7 @@ async function putList(message) {
   const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${LIST_PATH}`, {
     method: "PUT",
     headers: { ...ghHeaders(), "Content-Type": "application/json" },
-    body: JSON.stringify({ message, content: b64encode(body), sha: listSha, branch: BRANCH })
+    body: JSON.stringify({ message: signed(message), content: b64encode(body), sha: listSha, branch: BRANCH, author: authorOf(who) })
   });
   if (r.status === 409) {
     await loadList();

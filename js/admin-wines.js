@@ -271,7 +271,7 @@
       <button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
     if (["queued", "needs_info"].includes(it.status)) body += `<div class="acts"><button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
     return `<div class="card req st-${esc(it.status)}" id="req-${esc(it.id)}">
-      <div class="req-head"><div><div class="nm">${esc(title)}</div><div class="muted">${esc(prices)} · ${esc(it.created_at.slice(0, 10))}</div></div>
+      <div class="req-head"><div><div class="nm">${esc(title)}</div><div class="muted">${esc(prices)} · ${esc(it.created_at.slice(0, 10))}${it.created_by ? ` · poslao ${esc(it.created_by)}` : ""}${it.published_by ? ` · objavio ${esc(it.published_by)}` : ""}</div></div>
         <span class="badge">${esc(label)}</span></div>
       ${hint ? `<p class="muted">${esc(hint)}</p>` : ""}
       <div class="pics">${pics}</div>${body}</div>`;
@@ -354,6 +354,7 @@
       fd.append("vol", $("n-vol").value);
       if ($("n-rec").checked) fd.append("recommended", "1");
       fd.append("remark", $("n-remark").value);
+      fd.append("by", (window.adminWho && window.adminWho()) || "");
       msg.textContent = "Šaljem…";
       await api("", { method: "POST", body: fd });
       delete picked["n-front"]; delete picked["n-back"];
@@ -395,7 +396,8 @@
       } else {
         if (action === "objavi" && !confirm("Objaviti ovo vino na karti? Gosti ga vide za minutu.")) return;
         if (action === "odustani" && !confirm("Odustati od ovog vina?")) return;
-        await api(`/${id}/${action}`, { method: "POST" });
+        await api(`/${id}/${action}`, { method: "POST", headers: { "content-type": "application/json" },
+          body: JSON.stringify({ by: (window.adminWho && window.adminWho()) || "" }) });
       }
       await loadRequests();
     } catch (e) { alert(e.message); }
@@ -421,9 +423,17 @@
       box.innerHTML = rows.filter((c) => kind(c.commit.message.split("\n")[0])).map((c) => {
         const m = c.commit.message.split("\n")[0], k = kind(m);
         const d = new Date(c.commit.author.date).toLocaleString("hr-HR", { day: "numeric", month: "numeric", hour: "2-digit", minute: "2-digit" });
-        const what = m.replace(/^(Nema na čašu|Nema na bocu|Nema|Vraćeno na kartu):\s*/, "").replace(/\s+joins NOVO.*$/, "");
-        return `<div class="hist h-${k}"><span class="when">${esc(d)}</span><span class="badge">${label[k]}${/čašu/.test(m) ? " (čaša)" : /bocu/.test(m) ? " (boca)" : ""}</span><span class="what">${esc(what)}</span></div>`;
+        /* Who: the name the message is signed with ("… — Filho"), else the
+           commit's author; the owner's own GitHub login reads as "Jure". */
+        const signedBy = (m.match(/ — ([^—]+)$/) || [])[1];
+        const by = signedBy || ({ jsiljeg: "Jure" }[c.commit.author.name] || c.commit.author.name);
+        const what = m.replace(/ — [^—]+$/, "").replace(/^(Nema na čašu|Nema na bocu|Nema|Vraćeno na kartu):\s*/, "").replace(/\s+joins NOVO.*$/, "");
+        return `<div class="hist h-${k}"><span class="when">${esc(d)}</span><span class="badge">${label[k]}${/čašu/.test(m) ? " (čaša)" : /bocu/.test(m) ? " (boca)" : ""}</span><span class="what">${esc(what)}<span class="by"> · ${esc(by)}</span></span></div>`;
       }).join("") || `<p class="muted">Nema zapisa.</p>`;
+      /* Which key this device uses, by its fingerprint — the owner reads it
+         here to register his own key as "Jure" (see KEY_PEOPLE in admin.js). */
+      box.insertAdjacentHTML("beforeend", `<p class="muted keyline">Prijavljen: ${esc((window.adminWho && window.adminWho()) || "?")}
+        · ključ ${esc(window.adminKeyPrint || "?")}</p>`);
     } catch (e) { box.innerHTML = `<p class="err">Ne mogu učitati povijest: ${esc(e.message)}</p>`; }
   }
 })();

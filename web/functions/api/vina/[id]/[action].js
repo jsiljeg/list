@@ -11,7 +11,7 @@
  *   stanje    (worker)  the run reports: working | needs_info | ready |
  *                       published | failed, with questions / result / branch /
  *                       run_url / ref / usage / error. Only legal moves. */
-import { reply, isStaffAsync, isWorker, readRequest, setStatus, savePhotos, pump, startPublish, clip, euros, notifyOwner } from "../../../_lib/wines.js";
+import { reply, isStaffAsync, isWorker, readRequest, setStatus, savePhotos, pump, startPublish, clip, euros, notifyOwner, person, setPerson } from "../../../_lib/wines.js";
 
 const WORKER_MOVES = {
   working: ["working", "needs_info", "ready", "failed"],
@@ -86,6 +86,9 @@ export async function onRequestPost({ request, env, params }) {
   }
 
   if (action === "objavi") {
+    /* who tapped it — the publish commit is authored in that name */
+    const b = await request.json().catch(() => ({}));
+    await setPerson(env, id, "published_by", person(b.by));
     const d = await startPublish(env, id);
     return d.error ? reply(request, { error: d.error }, 409) : reply(request, { ok: true, item: await readRequest(env, id) });
   }

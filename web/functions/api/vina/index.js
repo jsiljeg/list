@@ -8,7 +8,7 @@
  *
  * A staff GET also pumps the queue — see pump() in _lib/wines.js. */
 import { reply, isStaffAsync, isWorker, isReader, newId, savePhotos, readRequest, shape, pump, limits,
-         euros, clip } from "../../_lib/wines.js";
+         euros, clip, person, setPerson } from "../../_lib/wines.js";
 
 export async function onRequestGet({ request, env }) {
   const staff = await isStaffAsync(request, env);
@@ -16,8 +16,10 @@ export async function onRequestGet({ request, env }) {
   if (!env.DB) return reply(request, { error: "no_db" }, 503);
   const pumped = staff ? await pump(env) : null;
   const { results } = await env.DB.prepare(
-    `SELECT r.*, (SELECT GROUP_CONCAT(n) FROM wine_photos p WHERE p.request_id = r.id) AS pics
-       FROM wine_requests r ORDER BY r.created_at DESC LIMIT 100`).all();
+    `SELECT r.*, (SELECT GROUP_CONCAT(n) FROM wine_photos p WHERE p.request_id = r.id) AS pics,
+            w.created_by, w.published_by
+       FROM wine_requests r LEFT JOIN wine_people w ON w.request_id = r.id
+      ORDER BY r.created_at DESC LIMIT 100`).all();
   const items = (results || []).map((r) => shape(r, r.pics ? String(r.pics).split(",").map(Number) : []));
   return reply(request, { items, limits: await limits(env), pumped });
 }
@@ -49,6 +51,7 @@ export async function onRequestPost({ request, env }) {
     await env.DB.prepare("DELETE FROM wine_requests WHERE id = ?1").bind(id).run();
     return reply(request, { error: saved.error }, 400);
   }
+  await setPerson(env, id, "created_by", person(form.get("by")));
   const pumped = await pump(env);
   return reply(request, { ok: true, item: await readRequest(env, id), pumped }, 201);
 }

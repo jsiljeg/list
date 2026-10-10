@@ -25,6 +25,8 @@ h1{font:500 22px/1.1 "Markazi Text",Georgia,serif;margin:0;letter-spacing:.02em}
 .topbar{display:flex;align-items:baseline;gap:10px;padding:6px 0 4px}
 .topbar h1{flex:none}
 .status{font-size:13px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.whoname{margin-left:auto;color:var(--gold);font-size:13px;white-space:nowrap}
+.whoname + .linkbtn{margin-left:8px}
 .linkbtn{margin-left:auto;padding:4px 0 4px 8px;border:none;background:none;color:var(--dim);font-size:13px;text-decoration:underline;text-underline-offset:3px}
 header{position:sticky;top:0;z-index:5;background:var(--bg);padding:2px 0 8px}
 /* The list fades out under the header instead of being cut at its edge —
@@ -200,6 +202,7 @@ button{font:inherit;cursor:pointer}
 .hist .when{color:var(--dim);font-variant-numeric:tabular-nums;font-size:13px}
 .hist .badge{justify-self:start;white-space:nowrap}
 .hist .what{grid-column:1/-1;font-weight:500}
+.hist .by{color:var(--dim);font-weight:400;font-size:13px}
 @media (min-width:700px){
   .hist{grid-template-columns:110px 130px 1fr}
   .hist .what{grid-column:auto}
@@ -249,6 +252,7 @@ button{font:inherit;cursor:pointer}
   <div class="topbar">
     <h1>Theatrium · osoblje</h1>
     <span class="status"><span class="dot" id="dot"></span><span id="state">učitavam…</span><span class="st-sep"> · </span><b id="n-hidden">0</b> skriveno</span>
+    <span class="whoname" id="who"></span>
     <button class="linkbtn" id="logout">Odjava</button>
   </div>
   <header>

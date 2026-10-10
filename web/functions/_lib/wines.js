@@ -151,11 +151,14 @@ export function shape(row, photos = []) {
     result: parse(row.result, null), branch: row.branch || "", run_url: row.run_url || "",
     error: row.error || "", ref: row.ref || "", published_at: row.published_at || "",
     usage: parse(row.usage, null), photos,
+    created_by: row.created_by || "", published_by: row.published_by || "",
   };
 }
 
 export async function readRequest(env, id) {
-  const row = await env.DB.prepare("SELECT * FROM wine_requests WHERE id = ?1").bind(id).first();
+  const row = await env.DB.prepare(
+    `SELECT r.*, p.created_by, p.published_by FROM wine_requests r
+       LEFT JOIN wine_people p ON p.request_id = r.id WHERE r.id = ?1`).bind(id).first();
   if (!row) return null;
   const { results } = await env.DB.prepare(
     "SELECT n, mime FROM wine_photos WHERE request_id = ?1 ORDER BY n").bind(id).all();
@@ -245,6 +248,16 @@ export async function pump(env) {
   const d = await dispatch(env, "add", next.id);
   if (d.error) await setStatus(env, next.id, { status: "queued", runs: next.runs, error: d.error });
   return d.error ? { held: d.error } : { started: next.id };
+}
+
+/* A person's name as the device gave it: letters, spaces and dashes only. */
+export const person = (v) => String(v ?? "").replace(/[^\p{L} .-]/gu, "").trim().slice(0, 40);
+
+export async function setPerson(env, id, field, name) {
+  if (!name) return;
+  await env.DB.prepare(
+    `INSERT INTO wine_people (request_id, ${field}) VALUES (?1, ?2)
+     ON CONFLICT(request_id) DO UPDATE SET ${field} = excluded.${field}`).bind(id, name).run();
 }
 
 export async function startPublish(env, id) {

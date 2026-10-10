@@ -215,7 +215,7 @@ test("a price is edited on the board, and only the price changes", async ({ page
   const after = priceOf(state.list, ref);
   expect(after.price).toBe(before.price + 10);
   expect(after.anchor, "the anchor is never edited").toBe(before.anchor);
-  expect(state.listPuts).toEqual([`Cijena: Marjan Simčič Merlot Opoka 2017: ${before.price} → ${before.price + 10} €`]);
+  expect(state.listPuts).toEqual([`Cijena: Marjan Simčič Merlot Opoka 2017: ${before.price} → ${before.price + 10} € — Filho`]);
   const disk = readFileSync(new URL("../lists/theatrium.json", import.meta.url), "utf8");
   const lines = (t) => t.replace(/\r/g, "").split("\n");
   const changed = lines(state.listBody).filter((l, i) => l !== lines(disk)[i]);
@@ -304,7 +304,7 @@ test("NOVO is switched on the board, on every listing of that wine", async ({ pa
   await chip.click();
   await page.waitForFunction(() => document.getElementById("s2").className === "done", null, { timeout: 60000 });
   expect(priceOf(state.list, ref).new).toBe(true);
-  expect(state.listPuts).toEqual(["NOVO: Marjan Simčič Merlot Opoka 2017 — dodano"]);
+  expect(state.listPuts).toEqual(["NOVO: Marjan Simčič Merlot Opoka 2017 — dodano — Filho"]);
 });
 
 test("Dodaj vino: Filho corrects the preview — a price at once, a word through a run", async ({ page }) => {
@@ -376,4 +376,23 @@ test("Dodaj vino: every photo slot offers both the camera and the gallery", asyn
   await page.setInputFiles("#n-front", { name: "x.png", mimeType: "image/png",
     buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
   await expect(page.locator("#n-front-tile")).toHaveClass(/has/);
+});
+
+test("a change is signed by whoever's key made it", async ({ page }) => {
+  /* Owner, 2026-10-11: Filho and the owner share one GitHub account, so
+     GitHub alone would credit the owner with everything. The key decides:
+     a registered fingerprint is that person, any other key is Filho. */
+  const state = await board(page);
+  const author = [];
+  await page.route("https://api.github.com/**", async (route) => {
+    if (route.request().method() === "PUT") author.push(JSON.parse(route.request().postData()).author);
+    return route.fallback();
+  });
+  await expect(page.locator("#who")).toHaveText("Filho");
+  await page.fill("#q", "Blanc de Blancs");
+  await page.waitForTimeout(200);
+  await page.locator(".row").first().locator(".sw").click();
+  await expect.poll(() => state.puts.length).toBe(1);
+  expect(state.puts[0]).toMatch(/ — Filho$/);
+  expect(author[0].name).toBe("Filho");
 });
