@@ -146,10 +146,11 @@ jobs:
           WINE_INTAKE_ENABLED: ${{ vars.WINE_INTAKE_ENABLED }}
           WINE_READ_KEY: ${{ secrets.WINE_READ_KEY }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          for name in WINE_WORKER_KEY GH_DISPATCH_TOKEN WINE_INTAKE_ENABLED WINE_READ_KEY NTFY_TOPIC; do
+          for name in WINE_WORKER_KEY GH_DISPATCH_TOKEN WINE_INTAKE_ENABLED WINE_READ_KEY NTFY_TOPIC NTFY_TOKEN; do
             val="${!name:-}"
             [ -n "$val" ] || { echo "no $name — skipping"; continue; }
             printf '%s' "$val" | npx wrangler pages secret put "$name" --project-name theatrium-web > /dev/null && echo "set $name"

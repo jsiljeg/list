@@ -97,7 +97,11 @@ export async function notifyOwner(env, title, body, click) {
   try {
     const r = await fetch(`https://ntfy.sh/${encodeURIComponent(env.NTFY_TOPIC)}`, {
       method: "POST",
-      headers: { Title: enc(title), Priority: "3", Tags: "wine_glass", ...(click ? { Click: click } : {}) },
+      /* Anonymous ntfy counts messages per IP, and Cloudflare's IPs are shared
+         with everyone: the daily quota was gone before our first alert
+         (429, 2026-10-10). An account token makes the quota the owner's own. */
+      headers: { Title: enc(title), Priority: "3", Tags: "wine_glass", ...(click ? { Click: click } : {}),
+                 ...(env.NTFY_TOKEN ? { Authorization: `Bearer ${env.NTFY_TOKEN}` } : {}) },
       body,
     });
     const why = r.ok ? "" : (await r.text().catch(() => "")).slice(0, 200);
