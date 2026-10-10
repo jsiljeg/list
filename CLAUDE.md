@@ -1906,3 +1906,25 @@ from the vines. Croatian says "oštro kao **pseći** zubi".
 
 - Git Bash paths (`/c/...`) don't work inside `python -c` — pass `C:/...` style paths.
 - Python 3.9 default console encoding is cp1252 — always write files with `encoding='utf-8'` (Croatian diacritics!).
+## After every 86 or return (owner, 2026-10-10)
+
+"If added — reconsider the pairings. If removed — reconsider the pairings
+again." The *hiding* is automatic and needs nobody: "Pomozi mi odabrati"
+scores only `DATA`, which `dropHidden()` has already filtered, and the
+website's daily offer reads the same `unavailable.json` — a pick that gets
+86'd is replaced by the model's next food-sharing bottle (`dishWines()` in
+web/functions/_lib/daily.js), so a dish is never left short. What needs a
+person is the judgement, so whenever a session sees new hides or returns:
+
+    node scripts/after-86.mjs
+
+prints, for every live dish x band x glass, how many wines share a food
+(under 3 is listed), and any note or winery story saying a producer "is on
+this list" when nothing of theirs is. On 2026-10-10, with 38 hidden, the only
+gaps were the 7 Ikone-band ones that exist with nothing hidden (thin by
+design), and two texts were rewritten (Erdoro → Budinski's OMO, Le Ragose →
+Quintarelli). **Write cross-references so they survive a night's 86**: name
+the other house as a fact ("Budinski makes a wine of his own, OMO"), not as a
+claim about tonight's shelf, unless the two are the same producer. The script
+checks producers, not single wines — a note pointing at one hidden bottle of
+a house that still has others needs reading by eye.

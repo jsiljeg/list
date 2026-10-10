@@ -11,7 +11,7 @@
  *   3. Only a *published* offer for *today* reaches a guest by default. A
  *      draft is the chef's; yesterday's dishes are sold out. */
 
-import { wineRows } from "../../src/lib/pairing.mjs";
+import { wineRows, suggest } from "../../src/lib/pairing.mjs";
 
 export const LANGS = ["hr", "en", "it", "fr", "de", "sl", "es", "zh"];
 export const COURSES = ["starters", "soups", "mains", "desserts"];
@@ -168,9 +168,32 @@ export function resolveOffer(offer, shelf) {
       pairings: d.pairings || [],
       styles: d.styles || [],
       photo: photo(d.photo),
-      wines: shelf ? (d.wines || []).map((ref) => byRef.get(ref)).filter(Boolean) : [],
+      wines: shelf ? dishWines(d, shelf, byRef) : [],
     })),
   };
+}
+
+/* The chef's wines for one dish, as many as were picked.
+
+   A wine 86'd after the offer was published drops out, and the dish must not
+   be left short for it (owner, 2026-10-10: "remove wines if removed from the
+   list and show again what can be shown"). Each lost pick is replaced by the
+   model's next-best bottle for the dish's own tags — the same scoring the
+   staff page proposed from, so the stand-in is a wine the chef would have
+   seen at the top of the list. The chef's surviving picks keep their order and
+   come first; nothing is added when nothing was lost. */
+export function dishWines(d, shelf, byRef) {
+  const refs = d.wines || [];
+  const kept = refs.map((ref) => byRef.get(ref)).filter(Boolean);
+  const lost = refs.length - kept.length;
+  if (lost <= 0 || !(d.pairings || []).length) return kept;
+  const have = new Set(refs);
+  const extra = suggest({ pairings: d.pairings || [], styles: d.styles || [] }, shelf, { n: 40 })
+    .filter((s) => !s.styleOnly && !have.has(s.ref))
+    .slice(0, lost)
+    .map((s) => byRef.get(s.ref))
+    .filter(Boolean);
+  return kept.concat(extra);
 }
 
 /* ---- the public page, Croatian ---- */

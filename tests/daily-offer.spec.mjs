@@ -84,3 +84,27 @@ test("no offer, an old offer, or no feed at all: the picker is the menu alone", 
   await helper(page);
   await expect(page.locator(".helper-daily")).toHaveCount(0);
 });
+
+test("website: a chef's pick that is 86'd is replaced, never left short", async () => {
+  /* Added 2026-10-10. The public daily-offer page dropped a hidden wine and
+     put nothing in its place, so a dish whose picks were all 86'd showed no
+     wine at all. Owner: "remove wines if removed from the list and show again
+     what can be shown". Each lost pick is topped up with the model's next
+     food-sharing bottle; the chef's surviving picks stay first. No browser. */
+  const { readFileSync } = await import("node:fs");
+  const { resolveOffer } = await import("../web/functions/_lib/daily.js");
+  const { wineRows } = await import("../web/src/lib/pairing.mjs");
+  const rd = (p) => JSON.parse(readFileSync(new URL(`../${p}`, import.meta.url), "utf8"));
+  const lib = rd("library/wines.json"), list = rd("lists/theatrium.json");
+  const kept = "le-ragose--amarone-classico-riserva-2013";
+  const gone = "petrac--enigma-2019";
+  const shelf = wineRows(lib, list, { hidden: [{ producer: lib.wines[gone].producer, name: lib.wines[gone].name }] });
+  const dish = { course: "mains", name: { hr: "Test" }, pairings: ["beef", "cheese_hard"], styles: ["red_full"], wines: [kept, gone] };
+  const wines = resolveOffer({ date: "2026-10-10", dishes: [dish] }, shelf).dishes[0].wines;
+  expect(wines.map((w) => w.ref)[0], "the chef's surviving pick leads").toBe(kept);
+  expect(wines, "as many wines as the chef picked").toHaveLength(2);
+  expect(wines.map((w) => w.ref), "the hidden wine is gone").not.toContain(gone);
+  /* nothing lost, nothing added */
+  const full = resolveOffer({ date: "2026-10-10", dishes: [{ ...dish, wines: [kept] }] }, shelf).dishes[0].wines;
+  expect(full.map((w) => w.ref)).toEqual([kept]);
+});
