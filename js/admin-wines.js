@@ -416,19 +416,48 @@
       const seen = new Map();
       for (const c of lists.flat()) if (!seen.has(c.sha)) seen.set(c.sha, c);
       const rows = [...seen.values()].sort((a, b) => b.commit.author.date.localeCompare(a.commit.author.date)).slice(0, 60);
-      /* Only wines that came onto the list or went off it (owner, 2026-10-10):
-         prices, NOVO flips and corrections stay in GitHub's own history. */
-      const kind = (m) => (/^Nema|^Nema na/.test(m) ? "makn" : /^Vraćeno/.test(m) ? "vrac" : /joins NOVO|joins the list|joins|^Novo vino|^Dodaj vino/i.test(m) ? "novo" : null);
-      const label = { novo: "Dodano", makn: "Skinuto", vrac: "Vraćeno" };
-      box.innerHTML = rows.filter((c) => kind(c.commit.message.split("\n")[0])).map((c) => {
-        const m = c.commit.message.split("\n")[0], k = kind(m);
+      /* Everything the two of them change, and who did it (owner, 2026-10-11:
+         "full history of changes … between ourselves"): wines added, taken
+         off and brought back, prices, NOVO on and off. A batch commit
+         ("3 promjene na karti") lists its changes one per line in the body,
+         and each becomes its own row, under the batch's signer. */
+      const kind = (m) => (/^Nema/.test(m) ? "makn" : /^Vraćeno/.test(m) ? "vrac"
+        : /^Cijena:/.test(m) ? "cijena" : /^NOVO:/.test(m) ? "flag"
+        : /joins NOVO|joins the list|joins|^Novo vino|^Dodaj vino/i.test(m) ? "novo" : null);
+      const label = { novo: "Dodano", makn: "Skinuto", vrac: "Vraćeno", cijena: "Cijena", flag: "NOVO" };
+      const entries = [];
+      for (const c of rows) {
+        const lines = c.commit.message.split("\n");
+        const first = lines[0];
+        /* Who: the name the first line is signed with ("… — Filho") — but not
+           NOVO's own "— dodano/maknuto" on an older, unsigned commit — else
+           the commit's author; the owner's GitHub login reads as "Jure". */
+        let signer = (first.match(/ — ([^—]+)$/) || [])[1];
+        if (/^(dodano|maknuto)$/.test(signer || "")) signer = "";
+        const by = signer || ({ jsiljeg: "Jure" }[c.commit.author.name] || c.commit.author.name);
+        const items = /^\d+ promjen/.test(first) ? lines.slice(1).filter((l) => l.trim()) : [first];
+        for (const raw of items) {
+          const item = signer ? raw.replace(new RegExp(` — ${signer.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`), "") : raw;
+          const k = kind(item);
+          if (k) entries.push({ c, item, k, by });
+        }
+      }
+      box.innerHTML = entries.slice(0, 80).map(({ c, item, k, by }) => {
         const d = new Date(c.commit.author.date).toLocaleString("hr-HR", { day: "numeric", month: "numeric", hour: "2-digit", minute: "2-digit" });
-        /* Who: the name the message is signed with ("… — Filho"), else the
-           commit's author; the owner's own GitHub login reads as "Jure". */
-        const signedBy = (m.match(/ — ([^—]+)$/) || [])[1];
-        const by = signedBy || ({ jsiljeg: "Jure" }[c.commit.author.name] || c.commit.author.name);
-        const what = m.replace(/ — [^—]+$/, "").replace(/^(Nema na čašu|Nema na bocu|Nema|Vraćeno na kartu):\s*/, "").replace(/\s+joins NOVO.*$/, "");
-        return `<div class="hist h-${k}"><span class="when">${esc(d)}</span><span class="badge">${label[k]}${/čašu/.test(m) ? " (čaša)" : /bocu/.test(m) ? " (boca)" : ""}</span><span class="what">${esc(what)}<span class="by"> · ${esc(by)}</span></span></div>`;
+        let badge = label[k], what = item;
+        if (k === "makn" || k === "vrac") {
+          badge += /čašu/.test(item) ? " (čaša)" : /bocu/.test(item) ? " (boca)" : "";
+          what = item.replace(/^(Nema na čašu|Nema na bocu|Nema|Vraćeno na kartu):\s*/, "");
+        } else if (k === "cijena") {
+          what = item.replace(/^Cijena:\s*/, "");
+        } else if (k === "flag") {
+          const on = / — dodano$/.test(item);
+          badge = on ? "NOVO uklj." : "NOVO isklj.";
+          what = item.replace(/^NOVO:\s*/, "").replace(/ — (dodano|maknuto)$/, "");
+        } else {
+          what = item.replace(/\s+joins NOVO.*$/, "");
+        }
+        return `<div class="hist h-${k}"><span class="when">${esc(d)}</span><span class="badge">${esc(badge)}</span><span class="what">${esc(what)}<span class="by"> · ${esc(by)}</span></span></div>`;
       }).join("") || `<p class="muted">Nema zapisa.</p>`;
       /* Which key this device uses, by its fingerprint — the owner reads it
          here to register his own key as "Jure" (see KEY_PEOPLE in admin.js). */

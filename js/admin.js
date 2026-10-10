@@ -472,7 +472,7 @@ async function drain() {
         const msgs = batch.filter((b) => b.file === file).map((b) => b.message);
         if (!msgs.length) continue;
         const message = msgs.length === 1 ? msgs[0] : `${msgs.length} ${changesWord(msgs.length)} na karti`;
-        if (file === "rules") await put(rules, message);
+        if (file === "rules") await put(rules, message + (msgs.length > 1 ? "\n\n" + msgs.join("\n") : ""));
         else await putList(message + (msgs.length > 1 ? "\n\n" + msgs.join("\n") : ""));
         wrote.push(file);
       }

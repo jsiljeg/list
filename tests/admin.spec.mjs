@@ -396,3 +396,29 @@ test("a change is signed by whoever's key made it", async ({ page }) => {
   expect(state.puts[0]).toMatch(/ — Filho$/);
   expect(author[0].name).toBe("Filho");
 });
+
+test("Povijest shows every change between the two of them, and who made it", async ({ page }) => {
+  /* Owner, 2026-10-11: prices and NOVO too, not only wines in and out; a
+     batch commit split into its changes; an older unsigned NOVO commit's
+     "— dodano" must not be read as a person. */
+  await board(page);
+  const commits = [
+    ["Cijena: Marjan Simčič Merlot Opoka 2017: 125 → 150 € — Jure", "2026-10-11T09:51:00Z", "jsiljeg"],
+    ["NOVO: Le Ragose Caloetto 2015 — maknuto — Filho", "2026-10-11T09:40:00Z", "Filho"],
+    ["2 promjene na karti — Filho\n\nNema: Kilchoman Machir Bay\nNema na čašu: Meneghetti Red 2020", "2026-10-11T09:30:00Z", "Filho"],
+    ["NOVO: Chavost Paradoxe — dodano", "2026-10-10T20:00:00Z", "jsiljeg"],
+  ].map(([message, date, name], i) => ({ sha: "h" + i, commit: { message, author: { date, name } } }));
+  await page.route(/api\.github\.com\/repos\/jsiljeg\/list\/commits/, (r) =>
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(commits) }));
+  await page.click('.tabs button[data-tab="povijest"]');
+  await page.waitForSelector(".hist");
+  const rows = await page.locator(".hist").evaluateAll((els) => els.map((e) =>
+    `${e.querySelector(".badge").textContent}|${e.querySelector(".what").textContent}`));
+  expect(rows).toEqual([
+    "Cijena|Marjan Simčič Merlot Opoka 2017: 125 → 150 € · Jure",
+    "NOVO isklj.|Le Ragose Caloetto 2015 · Filho",
+    "Skinuto|Kilchoman Machir Bay · Filho",
+    "Skinuto (čaša)|Meneghetti Red 2020 · Filho",
+    "NOVO uklj.|Chavost Paradoxe · Jure",
+  ]);
+});
