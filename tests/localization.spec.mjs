@@ -262,6 +262,8 @@ test("a region card localizes into every language", async ({ page }) => {
 });
 
 test("Moscato Giallo reads in the guest's own language", async ({ page }) => {
+  /* Eight app boots in one test: past 30 s at the laptop viewport (2026-10-10). */
+  test.slow();
   /* Added 2026-08-03. Geržinić's Muškat was stored as a bare "Muscat" — as
      useless an identifier as a bare Malvasia — until the owner settled it as
      Moscato Giallo off the estate's own "Muškat žuti".
@@ -297,6 +299,7 @@ test("Moscato Giallo reads in the guest's own language", async ({ page }) => {
 });
 
 test("the unnamed share of a blend reads in the guest's own language", async ({ page }) => {
+  test.slow();   /* eight app boots, like Moscato Giallo above */
   /* Added 2026-10-10, with Le Ragose. Their sheet says "10% altri vitigni
      autorizzati" and names no grape; the first entry dropped the share and the
      blend added up to 90%. The owner asked for it stated honestly in every

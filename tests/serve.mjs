@@ -35,6 +35,20 @@ createServer(async (req, res) => {
     const url = new URL(req.url, "http://localhost");
     let path = decodeURIComponent(url.pathname);
     if (path.endsWith("/")) path += "index.html";
+    /* The tests run against the whole list, not tonight's. data/unavailable.json
+       is the live 86 board, edited by staff from /admin, so serving the file
+       made every test that opens a named wine depend on what happened to be in
+       stock: on 2026-10-10, with 38 hidden, Moret's Meursault 2020, Costanti's
+       Brunello 2018 and Meneghetti's Blanc de Blancs vanished from under eleven
+       tests across every viewport. A test about hiding injects its own rules
+       with page.route(), which wins over the server. TEST_LIVE_86=1 serves
+       the real file, to look at the list as a guest sees it tonight. */
+    if (path === "/data/unavailable.json" && !process.env.TEST_LIVE_86) {
+      const body = Buffer.from('{\n "hidden": []\n}\n');
+      res.writeHead(200, { "content-type": TYPES[".json"], "content-length": body.length, "cache-control": "no-store" });
+      res.end(body);
+      return;
+    }
     /* Never serve above the repo root, whatever the request says. */
     const file = join(ROOT, normalize(path).replace(/^(\.\.[/\\])+/, ""));
     if (!file.startsWith(ROOT)) { res.writeHead(403).end("forbidden"); return; }

@@ -826,6 +826,14 @@ The deploy keeps the cheap guards: `node --check` on every script and
 the same commit as the fix.** Not later. The test goes in the spec that owns that
 area, with a comment naming what it caught.
 
+**The tests run against the whole list, not tonight's** (2026-10-10).
+`tests/serve.mjs` serves an empty `data/unavailable.json`: the real file is the
+live 86 board, and with 38 hidden it pulled the example wines out from under
+11 tests. A test about hiding injects its own rules with `page.route()`.
+`TEST_LIVE_86=1` serves the real file. And `reuseExistingServer` means a
+stray `node tests/serve.mjs` left on port 4173 is silently reused — kill it
+before believing a run that ignores a change to the server.
+
 Every spec names the commit it guards in its header comment. See `tests/README.md`
 for the table of what is covered. Three things worth knowing before adding one:
 
