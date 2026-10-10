@@ -6,13 +6,17 @@ for the sweep in docs/parker-missing.md, where the two outcomes are equally
 useful: a score, or a zero. A zero costs the same lookup as a hit, so it is
 written to scripts/lib/parker-none.json and never looked up again.
 
-    python scripts/parker-add.py <ref> <score>     # found one
-    python scripts/parker-add.py <ref> none        # looked, there is none
+    python scripts/parker-add.py <ref> <score> [YYYY-MM-DD]   # found one
+    python scripts/parker-add.py <ref> none [YYYY-MM-DD]      # looked, there is none
+
+The date is the day it was seen on robertparker.com; it defaults to today.
+(It was a constant, 2026-09-06, from the one sweep this was written for.)
 
 Refuses a wine that already carries a Parker rating. Re-run rank-ratings.py
 afterwards — a new score does not arrive in the right place by itself.
 """
 import io
+import datetime
 import json
 import os
 import sys
@@ -20,7 +24,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LIB = os.path.join(ROOT, "library", "wines.json")
 NONE = os.path.join(ROOT, "scripts", "lib", "parker-none.json")
-DATE = "2026-09-06"
+DATE = datetime.date.today().isoformat()
 
 
 def load(path):
@@ -56,6 +60,8 @@ def main(ref, score):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
+    if len(sys.argv) not in (3, 4):
         sys.exit(__doc__)
-    main(*sys.argv[1:])
+    if len(sys.argv) == 4:
+        DATE = sys.argv[3]
+    main(*sys.argv[1:3])
