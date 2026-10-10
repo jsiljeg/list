@@ -100,7 +100,9 @@ export async function notifyOwner(env, title, body, click) {
     try {
       const r = await env.ALERTS.fetch("https://alerts/notify", {
         method: "POST", headers: { "content-type": "application/json" },
-        body: JSON.stringify({ title, body, click: click || "" }),
+        /* Signed as Theatrium's, not as the monitor that happens to send it. */
+        body: JSON.stringify({ title, body, click: click || "",
+                               source: "Theatrium · Novo vino", sign: "Theatrium · Novo vino (vinska karta)" }),
       });
       const j = await r.json().catch(() => ({}));
       return { sent: r.ok && j.mail !== false, via: "email", status: r.status, why: r.ok ? (j.mail === false ? "monitor has no mail binding" : "") : await r.text().catch(() => "") };
