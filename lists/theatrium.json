@@ -85,8 +85,7 @@
         {
          "ref": "kunjas--posip-2024",
          "price": 9,
-         "anchor": 9,
-         "new": true
+         "anchor": 9
         },
         {
          "ref": "vie-di-romans--pinot-grigio-2023",
@@ -567,8 +566,7 @@
         {
          "ref": "kunjas--posip-2024",
          "price": 49,
-         "anchor": 49,
-         "new": true
+         "anchor": 49
         },
         {
          "ref": "kunjas--grk-2024",
