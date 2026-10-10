@@ -296,6 +296,26 @@ test("Moscato Giallo reads in the guest's own language", async ({ page }) => {
   expect(zh, "Chinese must not fall back to bare Latin").toMatch(CJK);
 });
 
+test("the unnamed share of a blend reads in the guest's own language", async ({ page }) => {
+  /* Added 2026-10-10, with Le Ragose. Their sheet says "10% altri vitigni
+     autorizzati" and names no grape; the first entry dropped the share and the
+     blend added up to 90%. The owner asked for it stated honestly in every
+     language, so it is a stored token, "ostale sorte 10%", translated like a
+     grape name. The percentage must survive the translation. */
+  const BLEND = "Corvina 50%, Corvinone 20%, Rondinella 20%, ostale sorte 10%";
+  const want = {
+    hr: "ostale sorte 10%", en: "other varieties 10%", it: "altre varietà 10%",
+    fr: "autres cépages 10%", de: "andere Sorten 10%", es: "otras variedades 10%",
+    sl: "druge sorte 10%", zh: "其他品种 10%",
+  };
+  for (const [lang, expected] of Object.entries(want)) {
+    await openApp(page, { lang });
+    const got = await page.evaluate((b) => localizeGrape(b), BLEND);
+    expect(got, `${lang}: the remainder renders wrong`).toContain(expected);
+    if (lang !== "hr") expect(got, `${lang}: Croatian leaked through`).not.toContain("ostale");
+  }
+});
+
 test("blurb asterisks become italics, and nothing else becomes markup", async ({ page }) => {
   /* Owner, 2026-08-04, asking for viticoltura eroica in italic. Blurbs are
      plain text and must stay escaped, so the convention is *asterisks* in the

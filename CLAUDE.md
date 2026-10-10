@@ -180,6 +180,10 @@ critic, not *is* one, and every alias value must itself be on the list.
 
 **Blends:** `Variety NN%, Variety NN%`, name first, descending share. Never
 percent-first — `zhTokens`/`langTokens` strip a *trailing* percentage per token.
+A share the producer leaves unnamed ("10% altri vitigni autorizzati") is
+stored as the last token, `ostale sorte 10%` (owner, 2026-10-10: say it
+honestly, don't drop it). `OTHER_GRAPES` in js/app.js translates it in all 8
+languages; never guess which grapes it is.
 
 **A name must say which bottling it is** (owner, 2026-09-14). Matošević bottles
 two reds off the same hill — **Grimalda crna**, the standard Merlot 60%, Teran

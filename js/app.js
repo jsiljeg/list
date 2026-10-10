@@ -2021,10 +2021,16 @@ function zhTokens(str, map) {
    decorative: "Muškat žuti" on its own is open to the same confusion Slovenian
    just proved, and "(Moscato Giallo)" closes it. */
 const MOSCATO_GIALLO = "Žuti muškat (Moscato Giallo)";
+/* The unnamed share of a blend (2026-10-10, Le Ragose). A producer sheet that
+   says "10% altri vitigni autorizzati" names no grape, and leaving the share
+   out makes the blend add up to 90% — so it is stored as one more token,
+   "ostale sorte 10%", and translated here like a grape name. Lowercase because
+   it never leads a blend: it is always the remainder, after the named grapes. */
+const OTHER_GRAPES = "ostale sorte";
 const LANG_GRAPE = {
   it: {
     "Pinot Noir": "Pinot Nero", "Malvazija istarska": "Malvasia Istriana",
-    [MOSCATO_GIALLO]: "Moscato Giallo",
+    [MOSCATO_GIALLO]: "Moscato Giallo", [OTHER_GRAPES]: "altre varietà",
   },
   hr: { "Pinot Bianco": "Pinot Blanc", "Ribolla Gialla": "Rebula" },
   /* Malvasia Istriana is the name the international literature uses — it is
@@ -2032,18 +2038,18 @@ const LANG_GRAPE = {
      French and German trade both take the Italian form; "Malvoisie" would be
      actively wrong, being one of the ambiguous variants the article warns
      about. Spanish accents its own spelling of the word. */
-  en: { "Malvazija istarska": "Malvasia Istriana", [MOSCATO_GIALLO]: "Moscato Giallo" },
-  fr: { "Malvazija istarska": "Malvasia Istriana", [MOSCATO_GIALLO]: "Moscato Giallo" },
+  en: { "Malvazija istarska": "Malvasia Istriana", [MOSCATO_GIALLO]: "Moscato Giallo", [OTHER_GRAPES]: "other varieties" },
+  fr: { "Malvazija istarska": "Malvasia Istriana", [MOSCATO_GIALLO]: "Moscato Giallo", [OTHER_GRAPES]: "autres cépages" },
   /* Goldmuskateller is the established German name — South Tyrol grows it under
      that name beside the Italian one. */
-  de: { "Malvazija istarska": "Malvasia Istriana", [MOSCATO_GIALLO]: "Goldmuskateller" },
-  es: { "Malvazija istarska": "Malvasía istriana", [MOSCATO_GIALLO]: "Moscato Giallo" },
+  de: { "Malvazija istarska": "Malvasia Istriana", [MOSCATO_GIALLO]: "Goldmuskateller", [OTHER_GRAPES]: "andere Sorten" },
+  es: { "Malvazija istarska": "Malvasía istriana", [MOSCATO_GIALLO]: "Moscato Giallo", [OTHER_GRAPES]: "otras variedades" },
   /* Slovenia's own name for the grape everyone else calls Friulano. It was
      Sauvignonasse / Zeleni sauvignon after the 2007 ban and officially became
      Jakot in 2013 — so a Slovenian guest reading Prinčič's "Jakot 2019" or
      Simčič's "Sauvignon Vert" sees the variety under the name they use, which
      is the settled rule. The wine's own name is never touched. */
-  sl: { "Friulano": "Jakot", [MOSCATO_GIALLO]: "Moscato Giallo" }
+  sl: { "Friulano": "Jakot", [MOSCATO_GIALLO]: "Moscato Giallo", [OTHER_GRAPES]: "druge sorte" }
 };
 function langTokens(str, map) {
   return str

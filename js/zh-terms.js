@@ -118,7 +118,8 @@
     "Autohtone dalmatinske sorte": "达尔马提亚本土品种",
     "Autohtone dalmatinske sorte (prošek)": "达尔马提亚本土品种",
     "Dalmatinske autohtone sorte": "达尔马提亚本土品种",
-    "Španjolske sorte": "西班牙本土品种"
+    "Španjolske sorte": "西班牙本土品种",
+    "ostale sorte": "其他品种"
   };
 
   // Region → standard Chinese name (rendered bilingually). Villages and small
@@ -572,7 +573,8 @@
     "Autohtone dalmatinske sorte": 1,
     "Autohtone dalmatinske sorte (prošek)": 1,
     "Dalmatinske autohtone sorte": 1,
-    "Španjolske sorte": 1
+    "Španjolske sorte": 1,
+    "ostale sorte": 1
   };
 
   /* Icon producers & cuvées — ONLY genuine, market-established Chinese names

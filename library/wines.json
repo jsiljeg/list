@@ -14401,7 +14401,7 @@
    "name": "Amarone Classico Riserva 2013",
    "producer": "Le Ragose",
    "insight": {
-    "grape": "Corvina 50%, Corvinone 20%, Rondinella 20%",
+    "grape": "Corvina 50%, Corvinone 20%, Rondinella 20%, ostale sorte 10%",
     "region": "Negrar, Valpolicella Classica, Veneto",
     "country": "IT",
     "style": "red_full",
@@ -14444,7 +14444,7 @@
    "name": "Amarone Classico Riserva Caloetto 2015",
    "producer": "Le Ragose",
    "insight": {
-    "grape": "Corvina 50%, Corvinone 20%, Rondinella 20%",
+    "grape": "Corvina 50%, Corvinone 20%, Rondinella 20%, ostale sorte 10%",
     "region": "Negrar, Valpolicella Classica, Veneto",
     "country": "IT",
     "style": "red_full",
@@ -14465,7 +14465,7 @@
      "solo"
     ],
     "temp": "16–18",
-    "alcohol": "",
+    "alcohol": "16",
     "sweetness": "dry"
    },
    "terroir": "Caloetto",
