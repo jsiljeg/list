@@ -62,6 +62,7 @@ let library = {};
 let listDoc = null;    /* lists/theatrium.json as GitHub has it, edited in place */
 let listSha = null;
 let editing = null;    /* "key|index" of the price field that is open */
+let choosing = null;   /* the wine whose hide/return choices are open */
 let rules = [];        /* the current contents of unavailable.json */
 let sha = null;        /* the blob sha we last saw, for the conditional write */
 /* One view at a time — "sve", "skriveno" or "novo" (owner, 2026-10-10: two
@@ -288,58 +289,70 @@ function render() {
     $("rows").innerHTML = `<p class="muted" style="padding:24px 0">Ništa ne odgovara.</p>`;
     return;
   }
+  /* A row is two quiet lines (owner, 2026-10-10: "functional, clean, and not
+     two wines taking the whole screen"): the name and the winery, then the
+     prices as plain text — tap one to change it — and NOVO. No boxes. For a
+     wine sold both ways the switch opens one line of choices that fit its
+     state (hide all / only the glass / only the bottle, or bring one back),
+     shown only while choosing. */
+  const HALF = { glass: ["čašu", "čaša"], bottle: ["bocu", "boca"] };
   $("rows").innerHTML = rows.map((w) => {
     const st = stateOf(w);
     const rule = rules.find((r) => r && norm(r.name) === norm(w.name) &&
       (!r.producer || norm(r.producer) === norm(w.producer)));
     const both = w.inGlass && w.inBottle;
-    const meta = st !== "on" && rule && (rule.since || rule.reason)
-      ? `<div class="meta">${esc([rule.since, rule.reason].filter(Boolean).join(" · "))}</div>` : "";
     const isNew = w.listings.some((l) => l.entry.new);
-    const novo = w.listings.length
-      ? `<button class="novo ${isNew ? "on" : ""}" data-k="${esc(w.key)}" aria-pressed="${isNew}">NOVO</button>` : "";
-    /* One tile per format — the glass, the bottle, a magnum — with its price
-       and, for a wine sold both ways, its own "nema" button. Price and
-       availability of the same pour sit together, so a row is never more
-       than three short lines on a phone (owner, 2026-10-10: prices and the
-       čaša/boca buttons were wrapping onto three separate lines). */
-    let gaveGlass = false, gaveBottle = false;
-    const tiles = w.listings.map((l, i) => {
+    const out = (glass) => st === "off" || st === (glass ? "glass" : "bottle");
+    const prices = w.listings.map((l, i) => {
       const id = w.key + "|" + i;
-      const kind = l.glass ? "glass" : "bottle";
-      const out = st === "off" || st === kind;
-      let nema = "";
-      if (both && kind === "glass" && !gaveGlass) { gaveGlass = true; nema = "glass"; }
-      if (both && kind === "bottle" && !gaveBottle) { gaveBottle = true; nema = "bottle"; }
-      const nemaBtn = nema
-        ? `<button class="nema ${st === nema ? "on" : ""}" data-k="${esc(w.key)}" data-w="${nema}"
-                   aria-pressed="${st === nema}">${st === nema ? "nema — vrati" : "nema"}</button>` : "";
-      if (editing === id) {
-        return `<div class="fmt editing"><span class="pedit"><input type="text" inputmode="decimal" value="${esc(fmtEur(l.entry.price))}"
-             data-k="${esc(w.key)}" data-i="${i}" aria-label="Nova cijena">
-           <span class="pbtns"><button class="ok" data-k="${esc(w.key)}" data-i="${i}">Spremi</button>
-           <button class="no">Odustani</button></span></span></div>`;
-      }
       const label = l.glass ? "čaša" : (volLabel(l.entry.vol) || "boca");
-      return `<div class="fmt ${out ? "out" : ""}">
-        <button class="price" data-k="${esc(w.key)}" data-i="${i}" aria-label="${esc(label)} — promijeni cijenu">
-          <span class="k">${esc(label)}</span><span class="v">${esc(fmtEur(l.entry.price))} €</span></button>${nemaBtn}</div>`;
-    }).join("");
-    return `<div class="row ${st === "on" ? "" : "off"}">
-      <div class="who">
-        <div class="nm">${esc(w.name)}</div>
-        <div class="pr">${esc(w.producer)}</div>${meta}
-      </div>
-      <div class="side">${novo}<button class="sw" data-k="${esc(w.key)}" aria-pressed="${st === "off"}"
-              aria-label="${esc(w.name)}"></button></div>
-      ${tiles ? `<div class="fmts">${tiles}</div>` : ""}
+      if (editing === id) {
+        return `<span class="pedit"><span class="k">${esc(label)}</span><input type="text" inputmode="decimal"
+            value="${esc(fmtEur(l.entry.price))}" data-k="${esc(w.key)}" data-i="${i}" aria-label="Nova cijena: ${esc(label)}">
+          <button class="ok" data-k="${esc(w.key)}" data-i="${i}" aria-label="Spremi">✓</button>
+          <button class="no" aria-label="Odustani">✕</button></span>`;
+      }
+      return `<button class="price ${out(l.glass) ? "gone" : ""}" data-k="${esc(w.key)}" data-i="${i}"
+          aria-label="${esc(label)} — promijeni cijenu"><span class="k">${esc(label)}</span> ${esc(fmtEur(l.entry.price))} €</button>`;
+    }).join('<span class="sep">·</span>');
+    const partial = st === "glass" || st === "bottle"
+      ? `<span class="partial">nema na ${HALF[st][0]}</span>` : "";
+    const since = st !== "on" && rule && (rule.since || rule.reason)
+      ? `<span class="since">${esc([rule.since, rule.reason].filter(Boolean).join(" · "))}</span>` : "";
+    const novo = w.listings.length
+      ? `<button class="novo ${isNew ? "on" : ""}" data-k="${esc(w.key)}" aria-pressed="${isNew}"
+           aria-label="NOVO ${isNew ? "uključeno" : "isključeno"}">NOVO</button>` : "";
+    let choose = "";
+    if (choosing === w.key && both) {
+      const acts = [];
+      for (const h of ["glass", "bottle"]) {
+        const hidden = st === "off" || st === h;
+        acts.push(`<button class="nema" data-k="${esc(w.key)}" data-w="${h}">${hidden ? "vrati" : "sakrij"} ${HALF[h][0]}</button>`);
+      }
+      acts.unshift(`<button class="nema all" data-k="${esc(w.key)}" data-w="">${st === "on" ? "sakrij sve" : "vrati sve"}</button>`);
+      choose = `<div class="choose">${acts.join("")}<button class="nema cancel" aria-label="Odustani">✕</button></div>`;
+    }
+    return `<div class="row ${st === "off" ? "off" : ""} ${st === "glass" || st === "bottle" ? "part" : ""}">
+      <div class="who"><span class="nm">${esc(w.name)}</span> <span class="pr">${esc(w.producer)}</span></div>
+      <button class="sw ${st === "glass" || st === "bottle" ? "half" : ""}" data-k="${esc(w.key)}" data-both="${both ? 1 : ""}"
+              aria-pressed="${st === "off"}" aria-label="${esc(w.name)}"></button>
+      <div class="line2">${prices}${novo}${partial}${since}</div>
+      ${choose}
     </div>`;
   }).join("");
 
   $("rows").querySelectorAll(".sw").forEach((b) =>
-    b.addEventListener("click", () => toggle(b.dataset.k, null)));
+    b.addEventListener("click", () => {
+      if (b.dataset.both) { choosing = choosing === b.dataset.k ? null : b.dataset.k; render(); }
+      else toggle(b.dataset.k, null);
+    }));
   $("rows").querySelectorAll(".nema").forEach((b) =>
-    b.addEventListener("click", () => toggle(b.dataset.k, b.dataset.w)));
+    b.addEventListener("click", () => {
+      const k = b.dataset.k;
+      choosing = null;
+      if (b.classList.contains("cancel")) { render(); return; }
+      toggle(k, b.dataset.w || null);
+    }));
   $("rows").querySelectorAll(".novo").forEach((b) =>
     b.addEventListener("click", () => toggleNew(b.dataset.k)));
   $("rows").querySelectorAll(".price").forEach((b) =>

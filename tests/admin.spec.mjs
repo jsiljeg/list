@@ -88,16 +88,27 @@ test("every wine with a producer gets a switch", async ({ page }) => {
   await expect(page.locator("#n-hidden")).toHaveText("0");
 });
 
-test("a wine sold both ways gets its own glass and bottle buttons", async ({ page }) => {
+/* A wine sold both ways: its switch opens one line of choices (hide all,
+   only the glass, only the bottle). Since 2026-10-10 they are shown only
+   while choosing, so the row stays two lines. */
+const choose = async (page, name, what) => {
+  const row = page.locator(".row").filter({ hasText: name });
+  await row.locator(".sw").click();
+  await row.locator(what === "all" ? ".nema.all" : `.nema[data-w="${what}"]`).click();
+};
+
+test("a wine sold both ways gets its own glass and bottle choices", async ({ page }) => {
   const state = await board(page);
   await page.fill("#q", "Meneghetti");
   await page.waitForTimeout(200);
   /* Blanc de Blancs is glass-only; White and Red 2020 are both. */
-  expect(await page.locator(".nema").count()).toBe(4);
+  expect(await page.locator('.sw[data-both="1"]').count()).toBe(2);
+  expect(await page.locator(".nema").count(), "no choices until asked").toBe(0);
 
-  await page.locator(".row").filter({ hasText: "Red 2020" }).locator(".nema").first().click();
+  await choose(page, "Red 2020", "glass");
   await page.waitForTimeout(600);
   expect(hidden(state)).toEqual(["Red 2020/glass"]);
+  expect(await page.locator(".nema").count(), "the choices close after one").toBe(0);
 });
 
 test("three flips in a row are all accepted, and batched", async ({ page }) => {
@@ -106,8 +117,10 @@ test("three flips in a row are all accepted, and batched", async ({ page }) => {
   const state = await board(page);
   await page.fill("#q", "Meneghetti");
   await page.waitForTimeout(200);
-  for (const name of ["Blanc de Blancs", "White 2023", "Red 2020"]) {
-    await page.locator(".row").filter({ hasText: name }).locator(".sw").click();
+  await page.locator(".row").filter({ hasText: "Blanc de Blancs" }).locator(".sw").click();
+  await page.waitForTimeout(120);
+  for (const name of ["White 2023", "Red 2020"]) {
+    await choose(page, name, "all");
     await page.waitForTimeout(120);
   }
   await expect(page.locator("#n-hidden")).toHaveText("3");
@@ -157,9 +170,7 @@ test("the commit message says what actually happened", async ({ page }) => {
   const state = await board(page);
   await page.fill("#q", "Red 2020");
   await page.waitForTimeout(200);
-  const row = page.locator(".row").filter({ hasText: "Meneghetti" });
-
-  await row.locator(".nema").first().click();
+  await choose(page, "Red 2020", "glass");
   await expect.poll(() => state.puts.at(-1)).toMatch(/^Nema na čašu:/);
   expect(state.file.hidden.map((r) => r.where)).toEqual(["glass"]);
 });
@@ -170,15 +181,13 @@ test("hiding the bottle does not put the glass pour back", async ({ page }) => {
   const state = await board(page);
   await page.fill("#q", "Red 2020");
   await page.waitForTimeout(200);
-  const scope = page.locator(".row").filter({ hasText: "Meneghetti" }).locator(".nema");
-
-  await scope.first().click();
+  await choose(page, "Red 2020", "glass");
   await expect.poll(() => state.file.hidden.length).toBe(1);
-  await scope.nth(1).click();
+  await choose(page, "Red 2020", "bottle");          /* "sakrij bocu" too */
   await expect.poll(() => JSON.stringify(state.file.hidden.map((r) => r.where || "all"))).toBe('["all"]');
 
-  /* and turning one back on leaves the other off */
-  await scope.first().click();
+  /* and bringing one back leaves the other off */
+  await choose(page, "Red 2020", "glass");           /* "vrati čašu" */
   await expect.poll(() => JSON.stringify(state.file.hidden.map((r) => r.where || "all"))).toBe('["bottle"]');
 });
 
