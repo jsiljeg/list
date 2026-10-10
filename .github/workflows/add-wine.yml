@@ -11,7 +11,7 @@
 #           key is never in its environment. Produces a patch and result.json.
 #   commit  No Claude. Checks the patch touches only data files, applies it,
 #           runs validate.mjs, pushes branch wine/<id>, reports to the inbox.
-name: Novo vino — write
+name: Dodaj vino — write
 
 on:
   workflow_dispatch:
@@ -197,10 +197,10 @@ jobs:
           git apply --whitespace=nowarn out/card.patch
           node --check js/zh-terms.js && node --check js/i18n.js
           node scripts/validate.mjs
-          git config user.name "Novo vino"
+          git config user.name "Dodaj vino"
           git config user.email "novo-vino@users.noreply.github.com"
           git add library lists data js
-          git commit -q -m "Novo vino ($ID): $(jq -r '.draft.wine.producer + " — " + .draft.wine.name' out/result.json)" \
+          git commit -q -m "Dodaj vino ($ID): $(jq -r '.draft.wine.producer + " — " + .draft.wine.name' out/result.json)" \
                      -m "$(jq -r '.notes // ""' out/result.json)"
           git push -f origin "$branch"
           echo "branch=$branch" >> "$GITHUB_OUTPUT"

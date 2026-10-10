@@ -52,10 +52,10 @@ export async function onRequestPost({ request, env, params }) {
     const name = wine ? `${wine.producer} — ${wine.name}` : (item.result && item.result.draft && item.result.draft.wine
       ? `${item.result.draft.wine.producer} — ${item.result.draft.wine.name}` : `zahtjev ${id}`);
     const say = {
-      ready: ["Novo vino: kartica spremna", `${name}. Filho je može pregledati i objaviti.`],
-      published: ["Novo vino objavljeno", `${name} je na karti.`],
-      failed: ["Novo vino: nije uspjelo", `${name}: ${f.error || ""}`],
-      needs_info: ["Novo vino: pitanje za Filha", `${name}: ${(b.questions || []).join(" ")}`],
+      ready: ["Dodaj vino: kartica spremna", `${name}. Filho je može pregledati i objaviti.`],
+      published: ["Dodaj vino: objavljeno", `${name} je na karti.`],
+      failed: ["Dodaj vino: nije uspjelo", `${name}: ${f.error || ""}`],
+      needs_info: ["Dodaj vino: pitanje za Filha", `${name}: ${(b.questions || []).join(" ")}`],
     }[b.status];
     if (say) await notifyOwner(env, say[0], say[1], b.run_url || item.run_url);
     if (b.status !== "working") await pump(env);   /* the next one in line may start */

@@ -94,14 +94,14 @@ export { isStaff };
 export async function notifyOwner(env, title, body, click) {
   /* E-mail first, through Theatrium's own sender (web/alerts/: Cloudflare
      Email Routing → the owner's Gmail, which his phone shows), signed
-     "Theatrium · Novo vino". ntfy from here is refused with 429 — Cloudflare's
+     "Theatrium · Dodaj vino". ntfy from here is refused with 429 — Cloudflare's
      IPs share one anonymous quota — and is kept only as a fallback for when
      no binding exists. */
   if (env && env.ALERTS) {
     try {
       const r = await env.ALERTS.fetch("https://alerts/notify", {
         method: "POST", headers: { "content-type": "application/json" },
-        body: JSON.stringify({ topic: "Novo vino", title, body, click: click || "" }),
+        body: JSON.stringify({ topic: "Dodaj vino", title, body, click: click || "" }),
       });
       const j = await r.json().catch(() => ({}));
       return { sent: r.ok && j.mail !== false, via: "email", status: r.status, why: r.ok ? (j.mail === false ? "sender has no mail binding" : "") : (j.why || "") };

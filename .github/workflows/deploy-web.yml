@@ -137,7 +137,7 @@ jobs:
       # switch. Same pattern as STAFF_KEY: GitHub holds them, every deploy
       # copies them, rotating is `gh secret set … -e theatrium` and a re-run.
       # An unset one is skipped, and the inbox then simply holds requests.
-      - name: Set the Novo vino keys
+      - name: Set the Dodaj vino keys
         continue-on-error: true
         working-directory: web
         env:

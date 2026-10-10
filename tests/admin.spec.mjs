@@ -233,9 +233,9 @@ test("a price that is not a price is refused, and a big jump asks first", async 
   expect(state.listPuts, "dismissed, so nothing written").toEqual([]);
 });
 
-/* ---------- Novo vino (2026-10-10) ---------- */
+/* ---------- Dodaj vino (2026-10-10; "Novo vino" until the owner renamed it) ---------- */
 
-test("Novo vino: a bottle is sent, a question is answered, the card is previewed in Croatian", async ({ page }) => {
+test("Dodaj vino: a bottle is sent, a question is answered, the card is previewed in Croatian", async ({ page }) => {
   /* The inbox lives on the restaurant site; here it is an in-memory fake at
      the real URL, so nothing reaches Cloudflare or GitHub. */
   await board(page);
@@ -298,7 +298,7 @@ test("NOVO is switched on the board, on every listing of that wine", async ({ pa
   expect(state.listPuts).toEqual(["NOVO: Marjan Simčič Merlot Opoka 2017 — dodano"]);
 });
 
-test("Novo vino: Filho corrects the preview — a price at once, a word through a run", async ({ page }) => {
+test("Dodaj vino: Filho corrects the preview — a price at once, a word through a run", async ({ page }) => {
   await board(page);
   const lib = JSON.parse(readFileSync(new URL("../library/wines.json", import.meta.url), "utf8")).wines;
   const posts = [];

@@ -5,7 +5,7 @@
 # against today's main (prices and 86s may have moved since the card was
 # written), pushes, and starts the two deploys — a push made with
 # GITHUB_TOKEN does not trigger other workflows by itself.
-name: Novo vino — publish
+name: Dodaj vino — publish
 
 on:
   workflow_dispatch:
@@ -61,7 +61,7 @@ jobs:
           TITLE: ${{ steps.req.outputs.title }}
         run: |
           set -euo pipefail
-          git config user.name "Novo vino"
+          git config user.name "Dodaj vino"
           git config user.email "novo-vino@users.noreply.github.com"
           git fetch origin "wine/$ID"
           git merge --squash "origin/wine/$ID"
@@ -101,7 +101,7 @@ jobs:
           node --check js/zh-terms.js && node --check js/i18n.js
           node scripts/validate.mjs
           git commit -q -m "$TITLE joins NOVO" \
-                     -m "Added through Novo vino (request $ID), published by Filho from /admin."
+                     -m "Added through Dodaj vino (request $ID), published by Filho from /admin."
           git push origin HEAD:main
           git push origin --delete "wine/$ID" || true
 

@@ -25,7 +25,7 @@ const clean = (s, n) => String(s ?? "").replace(/[\r\n<>"]/g, " ").trim().slice(
 
 export default {
   /* POST {topic, title, body, click} from a bound service. `topic` is the
-     part of Theatrium it is about ("Novo vino"); the sender is always
+     part of Theatrium it is about ("Dodaj vino"); the sender is always
      Theatrium. */
   async fetch(request, env) {
     if (request.method !== "POST") return new Response("POST only", { status: 405 });

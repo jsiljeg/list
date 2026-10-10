@@ -131,7 +131,7 @@
       : "Unos novih vina je trenutno isključen — zahtjevi čekaju.") : "";
     box.innerHTML = `
       <div class="card">
-        <h2>Novo vino</h2>
+        <h2>Dodaj vino</h2>
         <ol class="steps">
           <li><b>Prednja etiketa</b> — cijela, oštra, bez odsjaja.</li>
           <li><b>Stražnja etiketa</b> — tamo su obično alkohol i volumen. Bez nje Claude će vas to pitati.</li>
@@ -215,7 +215,7 @@
     const [label, hint] = STATUS[it.status] || [it.status, ""];
     const r = it.result || {};
     const w = (r.draft && r.draft.wine) || null;
-    const title = w ? `${w.producer} — ${w.name}` : (r.name || "Novo vino");
+    const title = w ? `${w.producer} — ${w.name}` : (r.name || "Vino u obradi");
     const pics = it.photos.map((n) => thumbHtml(it.id, n)).join("");
     const prices = [it.price_bottle != null ? `boca ${eur(it.price_bottle)}` : "", it.price_glass != null ? `čaša ${eur(it.price_glass)}` : "",
       it.vol ? String(it.vol).replace(".", ",") + " l" : ""].filter(Boolean).join(" · ");
@@ -387,7 +387,7 @@
       const rows = [...seen.values()].sort((a, b) => b.commit.author.date.localeCompare(a.commit.author.date)).slice(0, 60);
       /* Only wines that came onto the list or went off it (owner, 2026-10-10):
          prices, NOVO flips and corrections stay in GitHub's own history. */
-      const kind = (m) => (/^Nema|^Nema na/.test(m) ? "makn" : /^Vraćeno/.test(m) ? "vrac" : /joins NOVO|joins the list|joins|^Novo vino/i.test(m) ? "novo" : null);
+      const kind = (m) => (/^Nema|^Nema na/.test(m) ? "makn" : /^Vraćeno/.test(m) ? "vrac" : /joins NOVO|joins the list|joins|^Novo vino|^Dodaj vino/i.test(m) ? "novo" : null);
       const label = { novo: "Dodano", makn: "Skinuto", vrac: "Vraćeno" };
       box.innerHTML = rows.filter((c) => kind(c.commit.message.split("\n")[0])).map((c) => {
         const m = c.commit.message.split("\n")[0], k = kind(m);
