@@ -55,8 +55,12 @@ button{font:inherit;cursor:pointer}
 /* list */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 6px}
 .filters input{flex:1 1 100%;font-size:16px}
-.filters .chip{flex:1;text-align:center}
-@media (min-width:700px){ .filters input{flex:1 1 auto} .filters .chip{flex:none} }
+/* The three views are one control: exactly one is lit, a tap moves it. */
+.views{display:flex;flex:1 1 100%;border:1px solid var(--line);border-radius:999px;padding:3px;gap:3px}
+.views button{flex:1;padding:9px 6px;border:none;border-radius:999px;background:transparent;
+              color:var(--dim);font-size:15px;white-space:nowrap}
+.views button.on{background:var(--gold);color:#1a1814;font-weight:600}
+@media (min-width:700px){ .filters input{flex:1 1 auto} .views{flex:0 0 380px} }
 .chip{padding:10px 14px;border-radius:999px;border:1px solid var(--line);
       background:transparent;color:var(--dim);white-space:nowrap}
 .chip.on{border-color:var(--gold);color:var(--gold)}
@@ -228,8 +232,11 @@ button{font:inherit;cursor:pointer}
     </nav>
     <div class="filters" id="filters">
       <input id="q" type="search" placeholder="Traži vino ili vinara… (dodirnite cijenu za izmjenu)" autocomplete="off">
-      <button class="chip" id="only-off">Samo skriveno</button>
-      <button class="chip" id="only-new">Samo NOVO · <span id="n-new">0</span></button>
+      <div class="views" id="views" role="group" aria-label="Prikaz">
+        <button data-view="sve" class="on" aria-pressed="true">Sve · <span id="n-all">0</span></button>
+        <button data-view="skriveno" aria-pressed="false">Skriveno · <span id="n-off">0</span></button>
+        <button data-view="novo" aria-pressed="false">NOVO · <span id="n-new">0</span></button>
+      </div>
     </div>
     <p id="novo-rule" class="muted hidden" style="margin:6px 0 0">
       <b>NOVO</b> je vino koje je tek stiglo na kartu. Vino koje je bilo skriveno pa se vraća nije NOVO,

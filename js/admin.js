@@ -61,8 +61,15 @@ let listSha = null;
 let editing = null;    /* "key|index" of the price field that is open */
 let rules = [];        /* the current contents of unavailable.json */
 let sha = null;        /* the blob sha we last saw, for the conditional write */
-let onlyOff = false;
-let onlyNew = false;
+/* One view at a time — "sve", "skriveno" or "novo" (owner, 2026-10-10: two
+   independent toggles had to be undone by hand before the other meant
+   anything). Picking one replaces the other; the Karta tab resets to "sve". */
+let view = "sve";
+function setView(v) {
+  view = v;
+  render();
+}
+window.boardView = setView;
 let queue = [];        /* {file: "rules"|"list", message} waiting to be written */
 let draining = false;
 
@@ -261,14 +268,18 @@ function render() {
   const q = norm($("q").value);
   const rows = wines
     .filter((w) => (!q || w.hay.indexOf(q) !== -1))
-    .filter((w) => (!onlyOff || stateOf(w) !== "on"))
-    .filter((w) => (!onlyNew || w.listings.some((l) => l.entry.new)));
+    .filter((w) => (view !== "skriveno" || stateOf(w) !== "on"))
+    .filter((w) => (view !== "novo" || w.listings.some((l) => l.entry.new)));
   const off = wines.filter((w) => stateOf(w) !== "on");
   $("n-hidden").textContent = off.length;
-  $("only-off").classList.toggle("on", onlyOff);
-  $("only-new").classList.toggle("on", onlyNew);
+  document.querySelectorAll("#views button").forEach((b) => {
+    b.classList.toggle("on", b.dataset.view === view);
+    b.setAttribute("aria-pressed", String(b.dataset.view === view));
+  });
+  $("n-off").textContent = off.length;
   $("n-new").textContent = wines.filter((w) => w.listings.some((l) => l.entry.new)).length;
-  $("novo-rule").classList.toggle("hidden", !onlyNew);
+  $("n-all").textContent = wines.length;
+  $("novo-rule").classList.toggle("hidden", view !== "novo");
 
   if (!rows.length) {
     $("rows").innerHTML = `<p class="muted" style="padding:24px 0">Ništa ne odgovara.</p>`;
@@ -330,8 +341,8 @@ function render() {
 }
 
 $("q").addEventListener("input", render);
-$("only-off").addEventListener("click", () => { onlyOff = !onlyOff; render(); });
-$("only-new").addEventListener("click", () => { onlyNew = !onlyNew; render(); });
+document.querySelectorAll("#views button").forEach((b) =>
+  b.addEventListener("click", () => setView(b.dataset.view)));
 
 /* ---------- the flip ---------- */
 function toggle(key, where) {

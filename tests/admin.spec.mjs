@@ -328,3 +328,21 @@ test("Dodaj vino: Filho corrects the preview — a price at once, a word through
   expect(posts[0].body.price_bottle).toBe("135");
   expect(posts[0].body.edits).toEqual([{ field: "alcohol", from: "16", to: "16,5" }]);
 });
+
+test("the board's views are one choice: Sve, Skriveno or NOVO, never two at once", async ({ page }) => {
+  /* Owner, 2026-10-10: two independent toggles had to be undone by hand
+     before the other meant anything. Now picking one replaces the other, and
+     the Karta tab always comes back to the whole list. */
+  await board(page);
+  const on = () => page.locator("#views button.on").allTextContents();
+  expect((await on()).length).toBe(1);
+  await page.click('#views [data-view="novo"]');
+  expect(await on()).toEqual([expect.stringMatching(/^NOVO/)]);
+  const nNew = await page.locator(".row").count();
+  await page.click('#views [data-view="skriveno"]');
+  expect(await on()).toEqual([expect.stringMatching(/^Skriveno/)]);
+  await page.click('.tabs button[data-tab="povijest"]');
+  await page.click('.tabs button[data-tab="karta"]');
+  expect(await on()).toEqual([expect.stringMatching(/^Sve/)]);
+  expect(await page.locator(".row").count()).toBeGreaterThan(nNew);
+});
