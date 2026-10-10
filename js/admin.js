@@ -56,7 +56,7 @@ const LS_TOKEN = "theatrium-admin-token";
    Each commit is then authored in that name and its message ends
    "— <name>"; the key's account still shows as the committer, as it is. */
 const KEY_PEOPLE = {
-  /* "<16 hex>": "Jure", — added once the owner's own key exists */
+  "b9cd7ec0570a5b64": "Jure",   /* the owner's own key, 2026-10-11 */
 };
 const DEFAULT_PERSON = "Filho";
 let who = "";
