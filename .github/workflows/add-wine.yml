@@ -89,8 +89,9 @@ jobs:
         run: cp -r "$RUNNER_TEMP/intake" intake
 
       # Always the newest CLI, and the alias rather than a model id, so the
-      # newest frontier model is used the day it ships (owner, 2026-10-10).
-      # WINE_MODEL (an environment variable) overrides it if ever needed.
+      # newest Opus is used the day it ships (owner, 2026-10-10: Opus by
+      # default; `fable`, the frontier tier, spends the subscription faster).
+      # Set the repo/environment variable WINE_MODEL=fable to switch.
       - name: Install Claude Code
         run: npm install -g @anthropic-ai/claude-code@latest
 
@@ -98,7 +99,7 @@ jobs:
         id: claude
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          MODEL: ${{ vars.WINE_MODEL || 'fable' }}
+          MODEL: ${{ vars.WINE_MODEL || 'opus' }}
         run: |
           set -uo pipefail
           # The settings deny reading anything outside the checkout, so the
@@ -117,7 +118,7 @@ jobs:
           tools+=',Bash(node .claude/skills/add-wine/neighbours.mjs:*),Bash(python3 .claude/skills/add-wine/add.py:*)'
           tools+=',Bash(node .claude/skills/sommelier/pair.mjs:*),Bash(python3 scripts/rank-ratings.py)'
           claude -p "$(cat .github/wine-intake/prompt.md)" \
-            --model "$MODEL" --fallback-model opus \
+            --model "$MODEL" --fallback-model sonnet \
             --max-turns 120 \
             --settings "$RUNNER_TEMP/settings.json" \
             --allowedTools "$tools" \

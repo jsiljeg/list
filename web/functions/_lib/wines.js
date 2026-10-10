@@ -60,6 +60,32 @@ export function isReader(request, env) {
   const got = (request.headers.get("authorization") || "").replace(/^Bearer\s+/i, "");
   return same(got, env && env.WINE_READ_KEY);
 }
+/* Staff, the way the tablet already proves it: the GitHub key the 86 board
+   uses. Owner, 2026-10-10: a second key on the Novo vino tab only confused
+   him. The key is checked with GitHub itself — it must belong to an account
+   in WINE_GH_LOGINS (default the owner's) — so a key that is not one of his
+   gets nothing here, and revoking it on github.com revokes it here too. The
+   daily offer's STAFF_KEY still works, for /kuhinja/-style use. */
+const GH_CACHE = new Map();   /* sha256(token) -> {login, until}; per isolate, best effort */
+async function githubLogin(token) {
+  const h = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(token)))]
+    .map((b) => b.toString(16).padStart(2, "0")).join("");
+  const hit = GH_CACHE.get(h);
+  if (hit && hit.until > Date.now()) return hit.login;
+  const r = await fetch("https://api.github.com/user", {
+    headers: { authorization: `Bearer ${token}`, accept: "application/vnd.github+json", "user-agent": "theatrium-wine-intake" },
+  });
+  const login = r.ok ? String((await r.json()).login || "") : "";
+  GH_CACHE.set(h, { login, until: Date.now() + 5 * 60000 });
+  return login;
+}
+export async function isStaffAsync(request, env) {
+  if (isStaff(request, env)) return true;
+  const got = (request.headers.get("authorization") || "").replace(/^Bearer\s+/i, "");
+  if (!/^(github_pat_|ghp_|gho_)[A-Za-z0-9_]{20,}$/.test(got)) return false;
+  const allowed = String((env && env.WINE_GH_LOGINS) || "jsiljeg").split(",").map((s) => s.trim().toLowerCase());
+  return allowed.includes((await githubLogin(got)).toLowerCase());
+}
 export { isStaff };
 
 /* The owner's phone, through the same ntfy topic his dashboard uses — so a

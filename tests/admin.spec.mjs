@@ -244,7 +244,7 @@ test("Novo vino: a bottle is sent, a question is answered, the card is previewed
   await page.route("https://theatrium.devinos.hr/api/vina**", async (route) => {
     const req = route.request(), url = new URL(req.url());
     const send = (b, s = 200) => route.fulfill({ status: s, contentType: "application/json", body: JSON.stringify(b) });
-    if (req.headers().authorization !== "Bearer staff-test") return send({ error: "key" }, 401);
+    if (req.headers().authorization !== "Bearer github_pat_fake") return send({ error: "key" }, 401);
     if (url.pathname.endsWith("/foto/1")) return route.fulfill({ status: 404, body: "" });
     if (req.method() === "GET") return send({ items: inbox.items, limits: { enabled: true, today: inbox.items.length, dailyCap: 5, month: 1, monthlyCap: 60 } });
     inbox.posts.push({ path: url.pathname, body: req.postData() || "" });
@@ -262,8 +262,6 @@ test("Novo vino: a bottle is sent, a question is answered, the card is previewed
   });
 
   await page.click('.tabs button[data-tab="novo"]');
-  await page.fill("#staff-key", "staff-test");
-  await page.click("#staff-go");
   const img = (name) => ({ name, mimeType: "image/png", buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
   await page.setInputFiles("#n-front", img("front.png"));
   await page.setInputFiles("#n-back", img("back.png"));
@@ -314,8 +312,6 @@ test("Novo vino: Filho corrects the preview — a price at once, a word through 
       body: JSON.stringify(req.method() === "GET" ? { items: [item], limits: { enabled: true, today: 1, dailyCap: 5, month: 1, monthlyCap: 60 } } : { ok: true }) });
   });
   await page.click('.tabs button[data-tab="novo"]');
-  await page.fill("#staff-key", "staff-test");
-  await page.click("#staff-go");
   await expect(page.locator(".pv")).toBeVisible();
 
   await page.click('.pen[data-edit="price_bottle"]');

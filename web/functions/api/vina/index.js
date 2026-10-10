@@ -7,11 +7,11 @@
  *                              remark (a short note from Filho, ≤ 300 chars)
  *
  * A staff GET also pumps the queue — see pump() in _lib/wines.js. */
-import { reply, isStaff, isWorker, isReader, newId, savePhotos, readRequest, shape, pump, limits,
+import { reply, isStaffAsync, isWorker, isReader, newId, savePhotos, readRequest, shape, pump, limits,
          euros, clip } from "../../_lib/wines.js";
 
 export async function onRequestGet({ request, env }) {
-  const staff = isStaff(request, env);
+  const staff = await isStaffAsync(request, env);
   if (!staff && !isWorker(request, env) && !isReader(request, env)) return reply(request, { error: "key" }, 401);
   if (!env.DB) return reply(request, { error: "no_db" }, 503);
   const pumped = staff ? await pump(env) : null;
@@ -23,7 +23,7 @@ export async function onRequestGet({ request, env }) {
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!isStaff(request, env)) return reply(request, { error: "key" }, 401);
+  if (!(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
   if (!env.DB) return reply(request, { error: "no_db" }, 503);
   let form;
   try { form = await request.formData(); } catch { return reply(request, { error: "body" }, 400); }

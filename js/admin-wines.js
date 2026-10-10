@@ -17,7 +17,9 @@
 "use strict";
 (function () {
   const API = window.WINE_API || "https://theatrium.devinos.hr/api/vina";
-  const LS_STAFF = "theatrium-staff-key";
+  /* The same GitHub key the 86 board stores — the inbox checks it with GitHub.
+     No second key for Filho to find (owner, 2026-10-10). */
+  const LS_GH = "theatrium-admin-token";
   const POLL_MS = 15000;
   const T = (typeof I18N !== "undefined" && I18N.hr) || {};
   const $ = (id) => document.getElementById(id);
@@ -25,7 +27,7 @@
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   const eur = (n) => (n == null ? "" : String(n).replace(".", ",") + " €");
 
-  let staffKey = localStorage.getItem(LS_STAFF) || "";
+  const ghKey = () => localStorage.getItem(LS_GH) || "";
   let items = [], limits = null, timer = null, tab = "karta";
   const thumbs = new Map();   /* id|n -> object URL, so photos are fetched once */
 
@@ -43,8 +45,8 @@
 
   /* ---------- the inbox ---------- */
   async function api(path, opts = {}) {
-    const r = await fetch(API + path, { ...opts, headers: { authorization: "Bearer " + staffKey, ...(opts.headers || {}) } });
-    if (r.status === 401) { staffKey = ""; localStorage.removeItem(LS_STAFF); renderNovo(); throw new Error("key"); }
+    const r = await fetch(API + path, { ...opts, headers: { authorization: "Bearer " + ghKey(), ...(opts.headers || {}) } });
+    if (r.status === 401) throw new Error("Ključ na ovom tabletu ne vrijedi za novo vino — javite vlasniku.");
     const ct = r.headers.get("content-type") || "";
     const body = ct.includes("json") ? await r.json().catch(() => ({})) : r;
     if (!r.ok) throw new Error(MSG[body.error] || body.error || `HTTP ${r.status}`);
@@ -73,13 +75,12 @@
   const errText = (e) => MSG[e] || (/^github_/.test(e || "") ? "Pokretanje nije uspjelo — pokušat će ponovno." : e);
 
   async function loadRequests() {
-    if (!staffKey) return renderNovo();
     try {
       const b = await api("");
       items = b.items || []; limits = b.limits;
       renderNovo();
       for (const it of items) for (const n of it.photos) loadThumb(it.id, n);
-    } catch (e) { if (e.message !== "key") $("novo-msg").textContent = "Ne mogu učitati: " + e.message; }
+    } catch (e) { renderNovo(); $("novo-msg").textContent = "Ne mogu učitati: " + e.message; }
     /* Poll while something is moving; a finished list does not need it. */
     if (tab === "novo" && items.some((i) => ["queued", "working", "publishing"].includes(i.status)))
       timer = setTimeout(loadRequests, POLL_MS);
@@ -90,7 +91,7 @@
     if (thumbs.has(k)) return;
     thumbs.set(k, "");   /* loading — a re-render shows the placeholder, not a broken image */
     try {
-      const r = await fetch(`${API}/${id}/foto/${n}`, { headers: { authorization: "Bearer " + staffKey } });
+      const r = await fetch(`${API}/${id}/foto/${n}`, { headers: { authorization: "Bearer " + ghKey() } });
       if (!r.ok) throw new Error(r.status);
       thumbs.set(k, URL.createObjectURL(await r.blob()));
       const ph = document.querySelector(`[data-thumb="${CSS.escape(k)}"]`);
@@ -125,20 +126,6 @@
 
   function renderNovo() {
     const box = $("tab-novo");
-    if (!staffKey) {
-      box.innerHTML = `<div class="card"><h2>Ključ za novo vino</h2>
-        <p class="muted">Isti ključ kao za dnevnu ponudu (/kuhinja/). Upisuje se jednom na ovom tabletu.</p>
-        <input id="staff-key" type="password" autocomplete="off" placeholder="ključ">
-        <button class="btn" id="staff-go" style="margin-top:10px">Spremi</button>
-        <div class="err" id="novo-msg"></div></div>`;
-      $("staff-go").addEventListener("click", () => {
-        staffKey = $("staff-key").value.trim();
-        if (!staffKey) return;
-        localStorage.setItem(LS_STAFF, staffKey);
-        loadRequests();
-      });
-      return;
-    }
     const lim = limits ? (limits.enabled
       ? `Danas ${limits.today}/${limits.dailyCap} · ovaj mjesec ${limits.month}/${limits.monthlyCap}`
       : "Unos novih vina je trenutno isključen — zahtjevi čekaju.") : "";
@@ -152,11 +139,11 @@
         </ol>
         <p class="muted">To je sve. Claude istraži vino i napiše karticu na 8 jezika (5–15 minuta).
           Ako nešto ne može pročitati, pitat će vas ovdje. Prije objave vidite cijelu karticu i možete je ispraviti.</p>
-        <div class="grid2">
-          <label class="lbl">1. Prednja etiketa *<input id="n-front" type="file" accept="image/*" capture="environment"></label>
-          <label class="lbl">2. Stražnja etiketa<input id="n-back" type="file" accept="image/*" capture="environment"></label>
+        <div class="shots">
+          ${shot("n-front", "Prednja etiketa", "obavezno")}
+          ${shot("n-back", "Stražnja etiketa", "alkohol, volumen")}
+          ${shot("n-extra", "Dodatna", "neobavezno")}
         </div>
-        <label class="lbl">3. Dodatna fotografija (neobavezno)<input id="n-extra" type="file" accept="image/*" capture="environment"></label>
         <div class="grid2">
           <label class="lbl">Cijena boce (€) *<input id="n-bottle" type="text" inputmode="decimal" placeholder="npr. 130"></label>
           <label class="lbl">Cijena čaše (€)<input id="n-glass" type="text" inputmode="decimal" placeholder="ako se toči"></label>
@@ -173,6 +160,15 @@
       ${items.length ? `<h2 class="sec">Zahtjevi</h2>` : ""}
       ${items.map(card).join("")}`;
     $("n-send").addEventListener("click", submit);
+    /* A photo slot shows what was taken, so Filho sees the label is readable
+       before anything is sent. */
+    for (const id of ["n-front", "n-back", "n-extra"]) {
+      $(id).addEventListener("change", () => {
+        const f = $(id).files[0], tile = $(id).closest(".shot");
+        tile.classList.toggle("has", !!f);
+        tile.querySelector(".shot-img").style.backgroundImage = f ? `url(${URL.createObjectURL(f)})` : "";
+      });
+    }
     box.querySelectorAll("[data-act]").forEach((b) => b.addEventListener("click", () => act(b.dataset.act, b.dataset.id)));
     box.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => editField(b)));
   }
@@ -207,6 +203,12 @@
     const k = id + "|" + n, url = thumbs.get(k);
     return url ? `<img data-thumb="${esc(k)}" src="${esc(url)}" alt="Etiketa ${n}">`
                : `<span class="ph" data-thumb="${esc(k)}">${n}</span>`;
+  }
+
+  function shot(id, title, hint) {
+    return `<label class="shot"><input id="${id}" type="file" accept="image/*" capture="environment">
+      <span class="shot-img"></span><span class="shot-cam">📷</span>
+      <b>${title}</b><span class="muted">${hint}</span></label>`;
   }
 
   function card(it) {
@@ -329,7 +331,7 @@
       await api("", { method: "POST", body: fd });
       await loadRequests();
       $("novo-msg").textContent = "Poslano. Claude počinje za koju minutu.";
-    } catch (e) { msg.textContent = e.message === "key" ? "" : "Nije poslano: " + e.message; }
+    } catch (e) { msg.textContent = "Nije poslano: " + e.message; }
     finally { const b = $("n-send"); if (b) b.disabled = false; }
   }
 
@@ -367,7 +369,7 @@
         await api(`/${id}/${action}`, { method: "POST" });
       }
       await loadRequests();
-    } catch (e) { if (e.message !== "key") alert(e.message); }
+    } catch (e) { alert(e.message); }
   }
 
   /* ---------- Povijest ---------- */
@@ -383,12 +385,15 @@
       const seen = new Map();
       for (const c of lists.flat()) if (!seen.has(c.sha)) seen.set(c.sha, c);
       const rows = [...seen.values()].sort((a, b) => b.commit.author.date.localeCompare(a.commit.author.date)).slice(0, 60);
-      const kind = (m) => (/^Cijena:/.test(m) ? "cijena" : /^Nema|^Vraćeno|na karti$/.test(m) ? "nema" : /joins|NOVO|Novo vino|dodan/i.test(m) ? "novo" : "ostalo");
-      const label = { cijena: "Cijena", nema: "Dostupnost", novo: "Novo vino", ostalo: "Izmjena" };
-      box.innerHTML = rows.map((c) => {
+      /* Only wines that came onto the list or went off it (owner, 2026-10-10):
+         prices, NOVO flips and corrections stay in GitHub's own history. */
+      const kind = (m) => (/^Nema|^Nema na/.test(m) ? "makn" : /^Vraćeno/.test(m) ? "vrac" : /joins NOVO|joins the list|joins|^Novo vino/i.test(m) ? "novo" : null);
+      const label = { novo: "Dodano", makn: "Skinuto", vrac: "Vraćeno" };
+      box.innerHTML = rows.filter((c) => kind(c.commit.message.split("\n")[0])).map((c) => {
         const m = c.commit.message.split("\n")[0], k = kind(m);
         const d = new Date(c.commit.author.date).toLocaleString("hr-HR", { day: "numeric", month: "numeric", hour: "2-digit", minute: "2-digit" });
-        return `<div class="hist h-${k}"><span class="when">${esc(d)}</span><span class="badge">${label[k]}</span><span class="what">${esc(m)}</span></div>`;
+        const what = m.replace(/^(Nema na čašu|Nema na bocu|Nema|Vraćeno na kartu):\s*/, "").replace(/\s+joins NOVO.*$/, "");
+        return `<div class="hist h-${k}"><span class="when">${esc(d)}</span><span class="badge">${label[k]}${/čašu/.test(m) ? " (čaša)" : /bocu/.test(m) ? " (boca)" : ""}</span><span class="what">${esc(what)}</span></div>`;
       }).join("") || `<p class="muted">Nema zapisa.</p>`;
     } catch (e) { box.innerHTML = `<p class="err">Ne mogu učitati povijest: ${esc(e.message)}</p>`; }
   }

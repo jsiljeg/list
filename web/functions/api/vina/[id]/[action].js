@@ -11,7 +11,7 @@
  *   stanje    (worker)  the run reports: working | needs_info | ready |
  *                       published | failed, with questions / result / branch /
  *                       run_url / ref / usage / error. Only legal moves. */
-import { reply, isStaff, isWorker, readRequest, setStatus, savePhotos, pump, startPublish, clip, euros, notifyOwner } from "../../../_lib/wines.js";
+import { reply, isStaffAsync, isWorker, readRequest, setStatus, savePhotos, pump, startPublish, clip, euros, notifyOwner } from "../../../_lib/wines.js";
 
 const WORKER_MOVES = {
   working: ["working", "needs_info", "ready", "failed"],
@@ -62,7 +62,7 @@ export async function onRequestPost({ request, env, params }) {
     return reply(request, { ok: true });
   }
 
-  if (!isStaff(request, env)) return reply(request, { error: "key" }, 401);
+  if (!(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
 
   if (action === "odgovor") {
     if (item.status !== "needs_info") return reply(request, { error: "not_waiting" }, 409);
