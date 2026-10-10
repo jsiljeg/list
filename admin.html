@@ -141,6 +141,15 @@ button{font:inherit;cursor:pointer}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .chk{display:flex;gap:8px;align-items:center;margin:14px 0 0;font-size:14px}
 .card .btn{margin-top:14px}
+/* the one thing to do on the screen: full width, big enough for a thumb */
+.btn.wide{display:block;width:100%;padding:15px;font-size:17px;margin-top:16px}
+.acts .btn.wide{flex:1 1 100%}
+.center{text-align:center;margin-top:8px}
+.more{margin-top:12px}
+.more summary{color:var(--dim);font-size:14px;cursor:pointer;padding:6px 0;list-style:none}
+.more summary::-webkit-details-marker{display:none}
+.more summary::before{content:"+ "}
+.more[open] summary::before{content:"− "}
 .req-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
 .req .nm{font-weight:600}
 .badge{font-size:12px;padding:3px 9px;border-radius:999px;border:none;background:#26241f;color:var(--dim);white-space:nowrap}

@@ -139,17 +139,22 @@
           ${shot("n-back", "Stražnja etiketa", "ako postoji")}
         </div>
         <div class="grid2">
-          <label class="lbl">Cijena boce (€) *<input id="n-bottle" type="text" inputmode="decimal" placeholder="npr. 130"></label>
+          <label class="lbl">Cijena boce (€)<input id="n-bottle" type="text" inputmode="decimal" placeholder="npr. 130"></label>
           <label class="lbl">Cijena čaše (€)<input id="n-glass" type="text" inputmode="decimal" placeholder="ako se toči"></label>
         </div>
-        <label class="lbl">Volumen boce
-          <select id="n-vol"><option value="">Prepoznaj sa slike</option><option value="0.75">0,75 l</option><option value="0.375">0,375 l</option>
-            <option value="0.5">0,5 l</option><option value="1.5">1,5 l (magnum)</option><option value="3">3 l</option></select></label>
-        <label class="chk"><input id="n-rec" type="checkbox"> Moja preporuka — bilješka ide s mojim potpisom</label>
-        <label class="lbl">Napomena (neobavezno)
-          <input id="n-remark" type="text" maxlength="300" placeholder="npr. zamjenjuje Amarone Ravazzol"></label>
-        <button class="btn" id="n-send">Pošalji</button>
-        <div class="muted" id="novo-msg" style="margin-top:8px">${esc(lim)}</div>
+        <!-- Rarely needed, so folded away: the size is read off the label by
+             default (owner, 2026-10-11: "easier … and a bit more clean"). -->
+        <details class="more">
+          <summary>Više</summary>
+          <label class="lbl">Volumen boce
+            <select id="n-vol"><option value="">Prepoznaj sa slike</option><option value="0.75">0,75 l</option><option value="0.375">0,375 l</option>
+              <option value="0.5">0,5 l</option><option value="1.5">1,5 l (magnum)</option><option value="3">3 l</option></select></label>
+          <label class="chk"><input id="n-rec" type="checkbox"> Moja preporuka — bilješka s mojim potpisom</label>
+          <label class="lbl">Napomena
+            <input id="n-remark" type="text" maxlength="300" placeholder="npr. zamjenjuje Amarone Ravazzol"></label>
+        </details>
+        <button class="btn wide" id="n-send">Pošalji</button>
+        <div class="muted center" id="novo-msg">${esc(lim)}</div>
       </div>
       ${shown().length ? `<h2 class="sec">Zahtjevi</h2>` : ""}
       ${shown().map(card).join("")}`;
@@ -224,7 +229,7 @@
       body = `<div class="ask">${it.questions.map((q, i) => `<label class="lbl">${esc(q)}
           <input type="text" data-answer="${i}" maxlength="500"></label>`).join("")}
         <label class="lbl">Dodatna fotografija (neobavezno)<input type="file" data-more accept="image/*" capture="environment" multiple></label>
-        <button class="btn" data-act="odgovor" data-id="${esc(it.id)}">Pošalji odgovor</button></div>`;
+        <button class="btn wide" data-act="odgovor" data-id="${esc(it.id)}">Pošalji odgovor</button></div>`;
     }
     if (it.status === "ready" && w) {
       const n = Object.keys(pending[it.id] || {}).length;
@@ -233,7 +238,7 @@
         <div class="acts">${n
           ? `<button class="btn" data-act="ispravak" data-id="${esc(it.id)}">Pošalji ispravke (${n})</button>
              <button class="btn ghost" data-act="ponisti" data-id="${esc(it.id)}">Poništi</button>`
-          : `<button class="btn" data-act="objavi" data-id="${esc(it.id)}">Objavi na karti</button>
+          : `<button class="btn wide" data-act="objavi" data-id="${esc(it.id)}">Objavi na karti</button>
              <button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button>`}</div>`;
     }
     if (it.status === "published") body = `<p class="muted">Objavljeno ${esc((it.published_at || "").slice(0, 10))}. Gosti ga vide pod NOVO.</p>`;
