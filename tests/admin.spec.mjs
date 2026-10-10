@@ -355,3 +355,12 @@ test("the board's views are one choice: Sve, Skriveno or NOVO, never two at once
   expect(await on()).toEqual([expect.stringMatching(/^Sve/)]);
   expect(await page.locator(".row").count()).toBeGreaterThan(nNew);
 });
+
+test("Dodaj vino takes photos from the gallery too, not only the camera", async () => {
+  /* Owner, 2026-10-11. `capture` makes Android open the camera and nothing
+     else; without it every phone offers camera, gallery and files. A source
+     assertion, since no headless browser has a camera to prove it with. */
+  const src = readFileSync(new URL("../js/admin-wines.js", import.meta.url), "utf8");
+  expect(src, "no file input may force the camera").not.toMatch(/capture=/);
+  expect(src).toMatch(/accept="image\/\*,\.heic,\.heif"/);
+});

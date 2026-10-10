@@ -104,8 +104,16 @@
   /* Shrunk on the tablet before it leaves: a 12 MP photo is 5–8 MB, and the
      label's small print still reads at 2000px — which is why this is larger
      than the 1600px the daily offer uses. */
+  /* Any photo the phone offers — camera or gallery, iPhone or Android
+     (owner, 2026-10-11: "pull pictures from gallery … not only live
+     pictures"; `capture` forced the camera on Android, so it is gone). It
+     is decoded here and re-encoded as JPEG, which also turns an iPhone's
+     HEIC into something the inbox accepts. A format this phone's browser
+     cannot decode gets a plain message rather than a silent failure. */
   async function shrink(file) {
-    const bmp = await createImageBitmap(file, { imageOrientation: "from-image" }).catch(() => createImageBitmap(file));
+    const bmp = await createImageBitmap(file, { imageOrientation: "from-image" })
+      .catch(() => createImageBitmap(file))
+      .catch(() => { throw new Error("Ovu fotografiju telefon ne može otvoriti. Odaberite drugu ili je fotografirajte ponovno."); });
     const k = Math.min(1, 2000 / Math.max(bmp.width, bmp.height));
     const c = document.createElement("canvas");
     c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
@@ -205,7 +213,7 @@
   }
 
   function shot(id, title, hint) {
-    return `<label class="shot"><input id="${id}" type="file" accept="image/*" capture="environment">
+    return `<label class="shot"><input id="${id}" type="file" accept="image/*,.heic,.heif">
       <span class="shot-img"></span><span class="shot-cam">📷</span>
       <b>${title}</b><span class="muted">${hint}</span></label>`;
   }
@@ -228,7 +236,7 @@
     if (it.status === "needs_info") {
       body = `<div class="ask">${it.questions.map((q, i) => `<label class="lbl">${esc(q)}
           <input type="text" data-answer="${i}" maxlength="500"></label>`).join("")}
-        <label class="lbl">Dodatna fotografija (neobavezno)<input type="file" data-more accept="image/*" capture="environment" multiple></label>
+        <label class="lbl">Dodatna fotografija (neobavezno)<input type="file" data-more accept="image/*,.heic,.heif" multiple></label>
         <button class="btn wide" data-act="odgovor" data-id="${esc(it.id)}">Pošalji odgovor</button></div>`;
     }
     if (it.status === "ready" && w) {
