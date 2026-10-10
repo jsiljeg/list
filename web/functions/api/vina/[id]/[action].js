@@ -11,7 +11,7 @@
  *   stanje    (worker)  the run reports: working | needs_info | ready |
  *                       published | failed, with questions / result / branch /
  *                       run_url / ref / usage / error. Only legal moves. */
-import { reply, isStaff, isWorker, readRequest, setStatus, savePhotos, pump, startPublish, clip, euros } from "../../../_lib/wines.js";
+import { reply, isStaff, isWorker, readRequest, setStatus, savePhotos, pump, startPublish, clip, euros, notifyOwner } from "../../../_lib/wines.js";
 
 const WORKER_MOVES = {
   working: ["working", "needs_info", "ready", "failed"],
@@ -46,6 +46,18 @@ export async function onRequestPost({ request, env, params }) {
     }
     if (b.status === "published") f.published_at = new Date().toISOString();
     await setStatus(env, id, f);
+    /* The owner hears about every card the moment it exists, and again when
+       it goes live — he checks them, and the laptop may be off. */
+    const wine = b.result && b.result.draft && b.result.draft.wine;
+    const name = wine ? `${wine.producer} — ${wine.name}` : (item.result && item.result.draft && item.result.draft.wine
+      ? `${item.result.draft.wine.producer} — ${item.result.draft.wine.name}` : `zahtjev ${id}`);
+    const say = {
+      ready: ["Novo vino: kartica spremna", `${name}. Filho je može pregledati i objaviti.`],
+      published: ["Novo vino objavljeno", `${name} je na karti.`],
+      failed: ["Novo vino: nije uspjelo", `${name}: ${f.error || ""}`],
+      needs_info: ["Novo vino: pitanje za Filha", `${name}: ${(b.questions || []).join(" ")}`],
+    }[b.status];
+    if (say) await notifyOwner(env, say[0], say[1], b.run_url || item.run_url);
     if (b.status !== "working") await pump(env);   /* the next one in line may start */
     return reply(request, { ok: true });
   }

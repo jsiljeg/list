@@ -12,7 +12,8 @@
  *   1. Who may write. Staff (the existing STAFF_KEY, the same model as the
  *      daily offer) create, answer, publish and cancel. The worker (a separate
  *      WINE_WORKER_KEY, held only by the GitHub environment) reports progress.
- *      Neither key can do the other's job.
+ *      Neither key can do the other's job. The owner's dashboard (pr-checkups)
+ *      reads with WINE_READ_KEY, which can do nothing else.
  *   2. When a run may start. Never more than one at a time, DAILY_CAP a day,
  *      MONTHLY_CAP a month, MAX_RUNS per wine, and only while the owner's
  *      switch WINE_INTAKE_ENABLED is "1". The workflow is started with the
@@ -55,7 +56,26 @@ export function isWorker(request, env) {
   const got = (request.headers.get("authorization") || "").replace(/^Bearer\s+/i, "");
   return same(got, env && env.WINE_WORKER_KEY);
 }
+export function isReader(request, env) {
+  const got = (request.headers.get("authorization") || "").replace(/^Bearer\s+/i, "");
+  return same(got, env && env.WINE_READ_KEY);
+}
 export { isStaff };
+
+/* The owner's phone, through the same ntfy topic his dashboard uses — so a
+   new wine reaches him with the laptop off. Optional: no NTFY_TOPIC, no push.
+   Never throws: a notification must not fail the request it reports on. */
+export async function notifyOwner(env, title, body, click) {
+  if (!env || !env.NTFY_TOPIC) return;
+  const enc = (s) => (/^[\x20-\x7e]*$/.test(s) ? s : `=?UTF-8?B?${btoa(String.fromCharCode(...new TextEncoder().encode(s)))}?=`);
+  try {
+    await fetch(`https://ntfy.sh/${encodeURIComponent(env.NTFY_TOPIC)}`, {
+      method: "POST",
+      headers: { Title: enc(title), Priority: "3", Tags: "wine_glass", ...(click ? { Click: click } : {}) },
+      body,
+    });
+  } catch { /* best effort */ }
+}
 
 export const zagrebDate = (d = new Date()) =>
   new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb" }).format(d);

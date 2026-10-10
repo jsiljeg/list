@@ -7,12 +7,12 @@
  *                              remark (a short note from Filho, ≤ 300 chars)
  *
  * A staff GET also pumps the queue — see pump() in _lib/wines.js. */
-import { reply, isStaff, isWorker, newId, savePhotos, readRequest, shape, pump, limits,
+import { reply, isStaff, isWorker, isReader, newId, savePhotos, readRequest, shape, pump, limits,
          euros, clip } from "../../_lib/wines.js";
 
 export async function onRequestGet({ request, env }) {
   const staff = isStaff(request, env);
-  if (!staff && !isWorker(request, env)) return reply(request, { error: "key" }, 401);
+  if (!staff && !isWorker(request, env) && !isReader(request, env)) return reply(request, { error: "key" }, 401);
   if (!env.DB) return reply(request, { error: "no_db" }, 503);
   const pumped = staff ? await pump(env) : null;
   const { results } = await env.DB.prepare(
