@@ -1,0 +1,15 @@
+# Theatrium's e-mail sender (see worker.js). Deployed by deploy-web.yml.
+name = "theatrium-alerts"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = false
+
+[vars]
+MAIL_FROM = "alerts@devinos.hr"
+MAIL_TO = "jures91@gmail.com"
+
+# Can only deliver to this address, which is verified in Email Routing for
+# devinos.hr. Change both here and in the Cloudflare dashboard, never one.
+[[send_email]]
+name = "MAIL"
+destination_address = "jures91@gmail.com"

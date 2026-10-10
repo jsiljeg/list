@@ -92,20 +92,19 @@ export { isStaff };
    new wine reaches him with the laptop off. Optional: no NTFY_TOPIC, no push.
    Never throws: a notification must not fail the request it reports on. */
 export async function notifyOwner(env, title, body, click) {
-  /* E-mail first: the owner's cloud monitor sends it (Cloudflare Email
-     Routing → his Gmail, which his phone shows). ntfy from here is refused
-     with 429 — Cloudflare's IPs share one anonymous quota — and is kept only
-     as a fallback for when no binding exists. */
+  /* E-mail first, through Theatrium's own sender (web/alerts/: Cloudflare
+     Email Routing → the owner's Gmail, which his phone shows), signed
+     "Theatrium · Novo vino". ntfy from here is refused with 429 — Cloudflare's
+     IPs share one anonymous quota — and is kept only as a fallback for when
+     no binding exists. */
   if (env && env.ALERTS) {
     try {
       const r = await env.ALERTS.fetch("https://alerts/notify", {
         method: "POST", headers: { "content-type": "application/json" },
-        /* Signed as Theatrium's, not as the monitor that happens to send it. */
-        body: JSON.stringify({ title, body, click: click || "",
-                               source: "Theatrium · Novo vino", sign: "Theatrium · Novo vino (vinska karta)" }),
+        body: JSON.stringify({ topic: "Novo vino", title, body, click: click || "" }),
       });
       const j = await r.json().catch(() => ({}));
-      return { sent: r.ok && j.mail !== false, via: "email", status: r.status, why: r.ok ? (j.mail === false ? "monitor has no mail binding" : "") : await r.text().catch(() => "") };
+      return { sent: r.ok && j.mail !== false, via: "email", status: r.status, why: r.ok ? (j.mail === false ? "sender has no mail binding" : "") : (j.why || "") };
     } catch (e) {
       console.log(`alerts binding failed: ${e}`);
     }
