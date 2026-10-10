@@ -134,15 +134,14 @@
         <h2>Dodaj vino</h2>
         <ol class="steps">
           <li><b>Prednja etiketa</b> — cijela, oštra, bez odsjaja.</li>
-          <li><b>Stražnja etiketa</b> — tamo su obično alkohol i volumen. Bez nje Claude će vas to pitati.</li>
+          <li><b>Stražnja etiketa</b>, ako je boca ima — tamo su obično alkohol i volumen.</li>
           <li><b>Cijena</b> — boce, i čaše ako se toči.</li>
         </ol>
         <p class="muted">To je sve. Claude istraži vino i napiše karticu na 8 jezika (5–15 minuta).
           Ako nešto ne može pročitati, pitat će vas ovdje. Prije objave vidite cijelu karticu i možete je ispraviti.</p>
         <div class="shots">
           ${shot("n-front", "Prednja etiketa", "obavezno")}
-          ${shot("n-back", "Stražnja etiketa", "alkohol, volumen")}
-          ${shot("n-extra", "Dodatna", "neobavezno")}
+          ${shot("n-back", "Stražnja etiketa", "ako postoji")}
         </div>
         <div class="grid2">
           <label class="lbl">Cijena boce (€) *<input id="n-bottle" type="text" inputmode="decimal" placeholder="npr. 130"></label>
@@ -162,7 +161,7 @@
     $("n-send").addEventListener("click", submit);
     /* A photo slot shows what was taken, so Filho sees the label is readable
        before anything is sent. */
-    for (const id of ["n-front", "n-back", "n-extra"]) {
+    for (const id of ["n-front", "n-back"]) {
       $(id).addEventListener("change", () => {
         const f = $(id).files[0], tile = $(id).closest(".shot");
         tile.classList.toggle("has", !!f);
@@ -311,12 +310,12 @@
   }
 
   async function submit() {
-    const front = $("n-front").files[0], back = $("n-back").files[0], extra = $("n-extra").files[0];
-    const files = [front, back, extra].filter(Boolean);
+    const front = $("n-front").files[0], back = $("n-back").files[0];
+    const files = [front, back].filter(Boolean);
     const msg = $("novo-msg");
     if (!front) { msg.textContent = "Dodajte fotografiju prednje etikete."; return; }
     if (!$("n-bottle").value.trim() && !$("n-glass").value.trim()) { msg.textContent = MSG.no_price; return; }
-    if (!back && !confirm("Bez stražnje etikete Claude vjerojatno neće znati alkohol i pitat će vas. Poslati ipak?")) return;
+    if (!back && !confirm("Nema stražnje etikete? Ako je boca ima, alkohol je obično tamo. Poslati samo prednju?")) return;
     $("n-send").disabled = true;
     msg.textContent = "Pripremam fotografije…";
     try {

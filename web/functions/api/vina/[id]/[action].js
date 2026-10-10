@@ -46,14 +46,15 @@ export async function onRequestPost({ request, env, params }) {
     }
     if (b.status === "published") f.published_at = new Date().toISOString();
     await setStatus(env, id, f);
-    /* The owner hears about every card the moment it exists, and again when
-       it goes live — he checks them, and the laptop may be off. */
+    /* The owner hears about every card the moment it exists — he checks
+       them, and the laptop may be off. Not when it goes live: the cloud
+       monitor's "new on the list" e-mail says that, for every wine however
+       it was added, and one e-mail per new wine is enough (owner, 2026-10-10). */
     const wine = b.result && b.result.draft && b.result.draft.wine;
     const name = wine ? `${wine.producer} — ${wine.name}` : (item.result && item.result.draft && item.result.draft.wine
       ? `${item.result.draft.wine.producer} — ${item.result.draft.wine.name}` : `zahtjev ${id}`);
     const say = {
       ready: ["Dodaj vino: kartica spremna", `${name}. Filho je može pregledati i objaviti.`],
-      published: ["Dodaj vino: objavljeno", `${name} je na karti.`],
       failed: ["Dodaj vino: nije uspjelo", `${name}: ${f.error || ""}`],
       needs_info: ["Dodaj vino: pitanje za Filha", `${name}: ${(b.questions || []).join(" ")}`],
     }[b.status];
