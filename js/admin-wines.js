@@ -133,14 +133,7 @@
       : "Unos novih vina je trenutno isključen — zahtjevi čekaju.") : "";
     box.innerHTML = `
       <div class="card">
-        <h2>Dodaj vino</h2>
-        <ol class="steps">
-          <li><b>Prednja etiketa</b> — cijela, oštra, bez odsjaja.</li>
-          <li><b>Stražnja etiketa</b>, ako je boca ima — tamo su obično alkohol i volumen.</li>
-          <li><b>Cijena</b> — boce, i čaše ako se toči.</li>
-        </ol>
-        <p class="muted">To je sve. Claude istraži vino i napiše karticu na 8 jezika (5–15 minuta).
-          Ako nešto ne može pročitati, pitat će vas ovdje. Prije objave vidite cijelu karticu i možete je ispraviti.</p>
+        <p class="muted" style="margin:0">Fotografirajte etiketu i upišite cijenu.</p>
         <div class="shots">
           ${shot("n-front", "Prednja etiketa", "obavezno")}
           ${shot("n-back", "Stražnja etiketa", "ako postoji")}
@@ -158,8 +151,8 @@
         <button class="btn" id="n-send">Pošalji</button>
         <div class="muted" id="novo-msg" style="margin-top:8px">${esc(lim)}</div>
       </div>
-      ${items.length ? `<h2 class="sec">Zahtjevi</h2>` : ""}
-      ${items.map(card).join("")}`;
+      ${shown().length ? `<h2 class="sec">Zahtjevi</h2>` : ""}
+      ${shown().map(card).join("")}`;
     $("n-send").addEventListener("click", submit);
     /* A photo slot shows what was taken, so Filho sees the label is readable
        before anything is sent. */
@@ -212,6 +205,12 @@
       <b>${title}</b><span class="muted">${hint}</span></label>`;
   }
 
+  /* Cancelled requests are nobody's business any more, and a published wine
+     belongs to Povijest after a few days (owner, 2026-10-11: "not sure what
+     'Odustano' means"). */
+  const shown = () => items.filter((it) => it.status !== "cancelled" &&
+    !(it.status === "published" && Date.now() - Date.parse(it.published_at || it.updated_at) > 3 * 86400000));
+
   function card(it) {
     const [label, hint] = STATUS[it.status] || [it.status, ""];
     const r = it.result || {};
@@ -230,8 +229,7 @@
     if (it.status === "ready" && w) {
       const n = Object.keys(pending[it.id] || {}).length;
       body = preview(it, r) + (it.error ? `<p class="err">${esc(errText(it.error))}</p>` : "") +
-        `<p class="muted">Nešto ne valja? Dodirnite ✎ uz polje i ispravite. Cijena se mijenja odmah;
-           ispravak teksta Claude prenese na svih 8 jezika (par minuta).</p>
+        `<p class="muted">✎ ispravlja polje.</p>
         <div class="acts">${n
           ? `<button class="btn" data-act="ispravak" data-id="${esc(it.id)}">Pošalji ispravke (${n})</button>
              <button class="btn ghost" data-act="ponisti" data-id="${esc(it.id)}">Poništi</button>`
