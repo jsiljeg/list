@@ -1948,3 +1948,30 @@ the other house as a fact ("Budinski makes a wine of his own, OMO"), not as a
 claim about tonight's shelf, unless the two are the same producer. The script
 checks producers, not single wines — a note pointing at one hidden bottle of
 a house that still has others needs reading by eye.
+
+## Novo vino — Filho adds wines himself (2026-10-10)
+
+Design and every rule: `web/WINE-INTAKE.md`. In one paragraph: /admin
+"Novo vino" (front + back label photo, price, size or "recognise") posts to
+the inbox on theatrium.devinos.hr (`/api/vina`, D1); the inbox starts
+`add-wine.yml` (workflow_dispatch only, request id only) when its brakes allow
+(owner's switch `WINE_INTAKE_ENABLED`, one at a time, 5/day, 60/month, 5 runs
+per wine); Claude (`--model fable` = newest frontier, latest CLI, owner's
+subscription token `CLAUDE_CODE_OAUTH_TOKEN` in environment `wine-intake`)
+writes the card with the add-wine skill and `.github/wine-intake/prompt.md`
+in a job with no write credentials; a second job validates and pushes
+`wine/<id>`; Filho previews in Croatian, corrects with ✎ (prices and NOVO at
+once, words through an edit run), and taps "Objavi" → `publish-wine.yml`
+merges, applies his prices/NOVO, validates, deploys.
+
+- **Questions to Filho**: Croatian, one round, ≤3, only what photos and
+  research cannot settle; after two rounds the card is finished with gaps.
+- **NOVO** is a fact about arrival, not a flag on every write: a wine back
+  from an 86 is not NOVO, a new vintage of a wine we pour is not NOVO. The
+  run proposes, Filho decides on the preview and on the board ("Samo NOVO").
+- **Parker** cannot be checked in the cloud. pr-checkups (Sites tab) sweeps
+  new wines once a day in the owner's Chrome (`scripts/parker-sweep.md`), in
+  its own clone.
+- **Keys**: STAFF_KEY (Filho), WINE_WORKER_KEY (the runs), WINE_READ_KEY
+  (pr-checkups, read only), GH_DISPATCH_TOKEN (Actions only), NTFY_TOPIC
+  (owner's phone). Never one key doing another's job.
