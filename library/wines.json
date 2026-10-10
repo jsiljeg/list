@@ -14396,6 +14396,94 @@
      "score": "95"
     }
    ]
+  },
+  "le-ragose--amarone-classico-riserva-2013": {
+   "name": "Amarone Classico Riserva 2013",
+   "producer": "Le Ragose",
+   "insight": {
+    "grape": "Corvina 50%, Corvinone 20%, Rondinella 20%",
+    "region": "Negrar, Valpolicella Classica, Veneto",
+    "country": "IT",
+    "style": "red_full",
+    "body": "full",
+    "aromas": [
+     "sour_cherry",
+     "dried_cherry",
+     "prune",
+     "leather",
+     "licorice",
+     "balsamic"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "stews",
+     "beef",
+     "game"
+    ],
+    "temp": "16–18",
+    "alcohol": "16",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Isto selo i isti spori zanat kao Quintarellijev Amarone na ovoj karti — 8 godina u velikim slavonskim bačvama, prije nego što smije u bocu — za šestinu cijene. Dvanaest godina nakon berbe višnja je otišla u suhu voćku, kožu i balzam: ovo je Amarone koji je dočekao svoj trenutak.",
+    "en": "The same village and the same slow craft as Quintarelli's Amarone on this list — 8 years in great Slavonian casks before it is allowed into bottle — for a sixth of the price. Twelve years after the harvest the cherry has turned to dried fruit, leather and balsam: an Amarone that has reached its moment.",
+    "it": "Lo stesso paese e lo stesso mestiere lento dell'Amarone di Quintarelli in questa carta — 8 anni in grandi botti di Slavonia prima di poter andare in bottiglia — a un sesto del prezzo. A dodici anni dalla vendemmia l'amarena è diventata frutta secca, cuoio e balsamo: un Amarone arrivato al suo momento.",
+    "fr": "Le même village et le même artisanat lent que l'Amarone de Quintarelli sur cette carte — 8 ans en grands foudres de Slavonie avant d'avoir le droit d'aller en bouteille — pour un sixième du prix. Douze ans après la vendange, la cerise est devenue fruits secs, cuir et balsamique : un Amarone arrivé à son heure.",
+    "de": "Dasselbe Dorf und dasselbe langsame Handwerk wie Quintarellis Amarone auf dieser Karte — 8 Jahre in großen slawonischen Fässern, bevor er auf die Flasche darf — für ein Sechstel des Preises. Zwölf Jahre nach der Lese ist die Kirsche zu Trockenfrucht, Leder und Balsamico geworden: ein Amarone, der bei seinem Moment angekommen ist.",
+    "zh": "与本酒单上昆塔雷利的阿玛罗尼同一个村、同一门慢工——在斯拉沃尼亚大桶中陈放 8 年才准装瓶——价格却只有六分之一。采收 12 年后，樱桃已化作果干、皮革与香脂：一款正当其时的阿玛罗尼。",
+    "sl": "Ista vas in isto počasno rokodelstvo kot Quintarellijev Amarone na tej karti — 8 let v velikih slavonskih sodih, preden sme v steklenico — za šestino cene. Dvanajst let po trgatvi je višnja prešla v suho sadje, usnje in balzam: Amarone, ki je dočakal svoj trenutek.",
+    "es": "El mismo pueblo y el mismo oficio lento que el Amarone de Quintarelli en esta carta — 8 años en grandes toneles de Eslavonia antes de poder ir a botella — por una sexta parte del precio. Doce años después de la vendimia, la guinda se ha vuelto fruta seca, cuero y bálsamo: un Amarone que ha llegado a su momento."
+   },
+   "notePlain": true,
+   "tags": [
+    "drinking_now"
+   ]
+  },
+  "le-ragose--amarone-classico-riserva-caloetto-2015": {
+   "name": "Amarone Classico Riserva Caloetto 2015",
+   "producer": "Le Ragose",
+   "insight": {
+    "grape": "Corvina 50%, Corvinone 20%, Rondinella 20%",
+    "region": "Negrar, Valpolicella Classica, Veneto",
+    "country": "IT",
+    "style": "red_full",
+    "body": "full",
+    "aromas": [
+     "dark_cherry",
+     "sour_cherry",
+     "chocolate",
+     "sweet_spice",
+     "licorice",
+     "tobacco"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "stews",
+     "beef",
+     "game",
+     "solo"
+    ],
+    "temp": "16–18",
+    "alcohol": "",
+    "sweetness": "dry"
+   },
+   "terroir": "Caloetto",
+   "note": {
+    "hr": "Najviše terase imanja, i s njih samo najrjeđi grozdovi — oni kroz koje zrak prolazi, pa 3 mjeseca venu bez truleži. Svega 2.000 do 3.000 boca godišnje, i za razliku od Riserve do njega sazrijeva u francuskim bačvama od 500 litara. Ista kuća, ista sorta, druga bačva: naručite oba i probajte razliku.",
+    "en": "The estate's highest terraces, and from them only the loosest bunches — the ones air can pass through, so they wither for 3 months without rot. Just 2,000 to 3,000 bottles a year, and unlike the Riserva beside it, it matures in 500-litre French casks. Same house, same grapes, a different cask: order both and taste the difference.",
+    "it": "Le terrazze più alte della tenuta, e da queste solo i grappoli più spargoli — quelli in cui passa l'aria, così appassiscono 3 mesi senza marcire. Appena 2.000-3.000 bottiglie l'anno e, a differenza della Riserva accanto, matura in tonneaux francesi da 500 litri. Stessa casa, stesse uve, un'altra botte: ordinateli entrambi e assaggiate la differenza.",
+    "fr": "Les terrasses les plus hautes du domaine, et sur elles seulement les grappes les plus lâches — celles où l'air passe, si bien qu'elles se flétrissent 3 mois sans pourrir. À peine 2 000 à 3 000 bouteilles par an et, contrairement à la Riserva voisine, un élevage en tonneaux français de 500 litres. Même maison, mêmes cépages, un autre fût : commandez les deux et goûtez la différence.",
+    "de": "Die höchsten Terrassen des Guts, und von ihnen nur die lockersten Trauben — die, durch die Luft zieht, sodass sie 3 Monate welken, ohne zu faulen. Nur 2.000 bis 3.000 Flaschen im Jahr, und anders als die Riserva daneben reift er in französischen 500-Liter-Fässern. Dasselbe Haus, dieselben Trauben, ein anderes Fass: Bestellen Sie beide und schmecken Sie den Unterschied.",
+    "zh": "酒庄最高处的梯田，且只取其中最松散的果串——空气能从中穿过，于是风干 3 个月也不会腐烂。每年仅 2,000 至 3,000 瓶；与旁边的珍藏不同，它在 500 升的法国橡木桶中熟成。同一酒庄，同样的葡萄，不同的桶：两款都点，尝尝其中的差别。",
+    "sl": "Najvišje terase posestva, in z njih le najbolj rahli grozdi — tisti, skozi katere gre zrak, zato 3 mesece venejo brez gnilobe. Le 2.000 do 3.000 steklenic na leto in za razliko od Riserve ob njem zori v francoskih sodih po 500 litrov. Ista hiša, iste sorte, drug sod: naročite oba in poskusite razliko.",
+    "es": "Las terrazas más altas de la finca, y de ellas sólo los racimos más sueltos — aquellos por los que pasa el aire, de modo que se pasifican 3 meses sin pudrirse. Apenas 2.000 a 3.000 botellas al año y, a diferencia de la Riserva de al lado, madura en toneles franceses de 500 litros. La misma casa, las mismas uvas, otra barrica: pidan los dos y prueben la diferencia."
+   },
+   "notePlain": true,
+   "tags": [
+    "rare",
+    "drinking_now"
+   ]
   }
  }
 }

@@ -386,6 +386,7 @@
     "Le Pergole Torte": "佩尔戈莱托尔泰",
     "Monte Lodoletta": "洛多莱塔山",
     "Ravazzòl": "拉瓦佐尔",
+    "Caloetto": "卡洛埃托",
     "Ruffoli": "鲁福利",
     "Tenuta Tignanello": "天娜庄园",
     "Monte Calvario": "卡尔瓦里奥山",
