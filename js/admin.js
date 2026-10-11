@@ -360,19 +360,18 @@ function render() {
     /* Every action confirms the same way (owner, 2026-10-11: no pop-up, no
        ✓/✕, no third mechanism): one line under the wine with the actions as
        buttons and "odustani". One line open at a time. */
-    /* One shape for every line (owner, 2026-10-11: "odustani" kept wrapping
-       onto a row of its own): a heading with "odustani" at its right, which
-       never wraps, and the actions sharing the full width underneath. */
-    const panel = (title, acts, extra = "", cls = "") =>
-      `<div class="choose ${cls}"><div class="ch-head"><span>${title}</span>
-         <button class="nema cancel">odustani</button></div>
-       <div class="ch-acts">${acts}</div>${extra}</div>`;
+    /* One row, equal cells (owner, 2026-10-11): the action(s) and then
+       "odustani", the same size as everything else — no heading line, no
+       small link to aim at. The open price or NOVO tag stays highlighted
+       above, which says what the row is about. */
+    const panel = (acts, extra = "", cls = "") =>
+      `<div class="choose ${cls}"><div class="ch-acts">${acts}<button class="nema cancel">odustani</button></div>${extra}</div>`;
     let choose = "";
     const editIdx = editing && editing.startsWith(w.key + "|") ? Number(editing.slice(w.key.length + 1)) : -1;
     if (editIdx >= 0 && w.listings[editIdx]) {
       const l = w.listings[editIdx];
       const label = l.glass ? "čaša" : (volLabel(l.entry.vol) || "boca");
-      choose = panel(`Nova cijena · ${esc(label)}`,
+      choose = panel(
         `<span class="field"><input type="text" inputmode="decimal" value="${esc(priceDraft != null ? priceDraft : fmtEur(l.entry.price))}"
            data-k="${esc(w.key)}" data-i="${editIdx}" aria-label="Nova cijena: ${esc(label)}"><span class="eur">€</span></span>
          <button class="nema ok" data-k="${esc(w.key)}" data-i="${editIdx}">${bigAsk && bigAsk.id === editing
@@ -380,23 +379,22 @@ function render() {
         priceNote ? `<div class="note">${esc(priceNote)}</div>` : "", "pedit");
     }
     if (novoAsk === w.key) {
-      choose = panel("NOVO", `<button class="nema yes novo-yes" data-k="${esc(w.key)}">${isNew ? "isključi NOVO" : "uključi NOVO"}</button>`);
+      choose = panel(`<button class="nema yes novo-yes" data-k="${esc(w.key)}">${isNew ? "isključi NOVO" : "uključi NOVO"}</button>`);
     }
     if (choosing === w.key && both) {
-      /* With everything on, the heading says the verb and the buttons only
-         what: "Sakrij — sve · čašu · bocu". Otherwise each says what it does. */
+      /* Each button says what it does: "sakrij sve · sakrij čašu · sakrij
+         bocu", or "vrati …" for what is already off. */
       const acts = [];
-      const fresh = st === "on";
       for (const h of ["glass", "bottle"]) {
         const hidden = st === "off" || st === h;
-        acts.push(`<button class="nema" data-k="${esc(w.key)}" data-w="${h}">${fresh ? HALF[h][0] : `${hidden ? "vrati" : "sakrij"} ${HALF[h][0]}`}</button>`);
+        acts.push(`<button class="nema two" data-k="${esc(w.key)}" data-w="${h}"><small>${hidden ? "vrati" : "sakrij"}</small> ${HALF[h][0]}</button>`);
       }
-      acts.unshift(`<button class="nema all" data-k="${esc(w.key)}" data-w="">${fresh ? "sve" : "vrati sve"}</button>`);
-      choose = panel(fresh ? "Sakrij" : "Čaša i boca", acts.join(""));
+      acts.unshift(`<button class="nema all two" data-k="${esc(w.key)}" data-w=""><small>${st === "on" ? "sakrij" : "vrati"}</small> sve</button>`);
+      choose = panel(acts.join(""));
     } else if (choosing === w.key) {
       /* A wine sold one way asks too (owner, 2026-10-11: a tap on the switch
          hid Meneghetti Blanc de Blancs straight away) — same line, one action. */
-      choose = panel(st === "on" ? "Sakrij" : "Vrati",
+      choose = panel(
         `<button class="nema all" data-k="${esc(w.key)}" data-w="">${st === "on" ? "sakrij s karte" : "vrati na kartu"}</button>`);
     }
     return `<div class="row ${st === "off" ? "off" : ""} ${st === "glass" || st === "bottle" ? "part" : ""}">

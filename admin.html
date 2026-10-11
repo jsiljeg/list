@@ -101,37 +101,23 @@ button{font:inherit;cursor:pointer}
 .novo.on{background:var(--gold);color:#1a1814;font-weight:700}
 .partial{color:#e0a49c;font-size:13px}
 .since{color:var(--dim);font-size:12px}
-.pedit{display:inline-flex;gap:6px;align-items:center}
-.pedit .k{color:var(--dim);font-size:13px}
-.pedit input{width:84px;padding:6px 8px;background:var(--bg);color:var(--ink);
-             border:1px solid var(--gold);border-radius:7px;font:inherit;font-size:16px}
-.pedit button{width:34px;height:34px;border-radius:7px;border:none;font-size:16px;line-height:1}
-.pedit .ok{background:var(--gold);color:#1a1814;font-weight:700}
-.pedit .no{background:var(--panel);color:var(--dim)}
-/* the hide/return choices for a wine sold both ways, shown while choosing */
-.choose{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;padding-top:6px}
-.choose{display:block!important}
-.ch-head{display:flex;align-items:center;justify-content:space-between;gap:10px;
-         font-size:13px;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
-.ch-head .nema.cancel{min-height:36px;padding:0 4px;text-transform:none;letter-spacing:0;font-size:15px;
-                      color:var(--dim);text-decoration:underline;text-underline-offset:3px}
-.ch-acts{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px;margin-top:4px}
-.ch-acts .nema{width:100%;padding:0 6px;white-space:nowrap}
-.pedit .ch-acts{grid-auto-columns:auto;grid-template-columns:1fr auto}
-.pedit .field{display:flex;align-items:center;gap:6px;min-width:0}
-.pedit .field input{flex:1;min-width:0;width:auto}
-.nema{min-height:44px;padding:0 14px;border:none;border-radius:9px;background:var(--panel);color:var(--ink);font-size:15px}
+/* Every confirm is one row of equal cells under the wine (owner, 2026-10-11):
+   the action(s), then "odustani" as a real button of the same size. */
+.choose{grid-column:1/-1;padding-top:8px}
+.ch-acts{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px}
+.nema{min-height:48px;width:100%;padding:2px 6px;border:none;border-radius:9px;background:var(--panel);
+      color:var(--ink);font-size:15px;line-height:1.15}
 .nema.all{background:#2a1c1a;color:#e0a49c}
+.nema.two small{display:block;font-size:12px;opacity:.75;margin-bottom:1px}
 .nema.yes,.nema.ok{background:var(--gold);color:#1a1814;font-weight:600}
-.nema.cancel{background:transparent;color:var(--dim)}
-.choose.pedit .k{color:var(--dim);font-size:14px}
-.choose.pedit input{width:96px;min-height:44px;padding:0 10px;background:var(--bg);color:var(--ink);
-  border:1px solid var(--gold);border-radius:9px;font:inherit;font-size:17px}
-.choose.pedit .eur{color:var(--dim);margin-right:4px}
+.nema.cancel{background:transparent;color:var(--ink);border:1px solid #4a463e}
+.pedit .field{display:flex;align-items:center;min-width:0;min-height:48px;padding:0 10px;
+              background:var(--bg);border:1px solid var(--gold);border-radius:9px}
+.pedit .field input{flex:1;min-width:0;width:100%;padding:0;border:none;outline:none;background:transparent;
+                    color:var(--ink);font:inherit;font-size:17px;text-align:right}
+.pedit .field .eur{color:var(--dim);margin-left:4px}
 .price.open,.novo.open{background:#2a2823}
 .choose .note{margin-top:8px;color:#e0a49c;font-size:14px}
-.choose.pedit{display:flex}
-.choose.pedit button{width:auto;height:auto}
 
 /* the switch: big enough for a thumb mid-service */
 .sw{position:relative;width:58px;height:34px;flex:none;border-radius:999px;
