@@ -239,7 +239,7 @@ test("a price that is not a price is refused, and a big jump asks first", async 
   await page.fill(".pedit input", "1500");          /* 150 → 1500: one zero too many */
   await page.click(".pedit .ok");
   await expect(page.locator(".choose .note")).toContainText("velika promjena");
-  await expect(page.locator(".pedit .ok")).toHaveText("da, spremi 1500 €");
+  await expect(page.locator(".pedit .ok")).toHaveText("da, 1500 €");
   await expect(page.locator(".pedit input"), "what was typed stays in the field").toHaveValue("1500");
   await page.click(".choose .nema.cancel");
   await page.waitForTimeout(300);

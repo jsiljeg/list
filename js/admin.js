@@ -360,30 +360,39 @@ function render() {
     /* Every action confirms the same way (owner, 2026-10-11: no pop-up, no
        ✓/✕, no third mechanism): one line under the wine with the actions as
        buttons and "odustani". One line open at a time. */
-    const cancel = `<button class="nema cancel">odustani</button>`;
+    /* One shape for every line (owner, 2026-10-11: "odustani" kept wrapping
+       onto a row of its own): a heading with "odustani" at its right, which
+       never wraps, and the actions sharing the full width underneath. */
+    const panel = (title, acts, extra = "", cls = "") =>
+      `<div class="choose ${cls}"><div class="ch-head"><span>${title}</span>
+         <button class="nema cancel">odustani</button></div>
+       <div class="ch-acts">${acts}</div>${extra}</div>`;
     let choose = "";
     const editIdx = editing && editing.startsWith(w.key + "|") ? Number(editing.slice(w.key.length + 1)) : -1;
     if (editIdx >= 0 && w.listings[editIdx]) {
       const l = w.listings[editIdx];
       const label = l.glass ? "čaša" : (volLabel(l.entry.vol) || "boca");
-      choose = `<div class="choose pedit"><span class="k">${esc(label)}</span>
-        <input type="text" inputmode="decimal" value="${esc(priceDraft != null ? priceDraft : fmtEur(l.entry.price))}" data-k="${esc(w.key)}" data-i="${editIdx}"
-               aria-label="Nova cijena: ${esc(label)}"><span class="eur">€</span>
-        <button class="nema ok" data-k="${esc(w.key)}" data-i="${editIdx}">${bigAsk && bigAsk.id === editing
-          ? `da, spremi ${esc(fmtEur(bigAsk.value))} €` : "spremi"}</button>${cancel}
-        ${priceNote ? `<span class="note">${esc(priceNote)}</span>` : ""}</div>`;
+      choose = panel(`Nova cijena · ${esc(label)}`,
+        `<span class="field"><input type="text" inputmode="decimal" value="${esc(priceDraft != null ? priceDraft : fmtEur(l.entry.price))}"
+           data-k="${esc(w.key)}" data-i="${editIdx}" aria-label="Nova cijena: ${esc(label)}"><span class="eur">€</span></span>
+         <button class="nema ok" data-k="${esc(w.key)}" data-i="${editIdx}">${bigAsk && bigAsk.id === editing
+          ? `da, ${esc(fmtEur(bigAsk.value))} €` : "spremi"}</button>`,
+        priceNote ? `<div class="note">${esc(priceNote)}</div>` : "", "pedit");
     }
     if (novoAsk === w.key) {
-      choose = `<div class="choose"><button class="nema yes novo-yes" data-k="${esc(w.key)}">${isNew ? "isključi NOVO" : "uključi NOVO"}</button>${cancel}</div>`;
+      choose = panel("NOVO", `<button class="nema yes novo-yes" data-k="${esc(w.key)}">${isNew ? "isključi NOVO" : "uključi NOVO"}</button>`);
     }
     if (choosing === w.key && both) {
+      /* With everything on, the heading says the verb and the buttons only
+         what: "Sakrij — sve · čašu · bocu". Otherwise each says what it does. */
       const acts = [];
+      const fresh = st === "on";
       for (const h of ["glass", "bottle"]) {
         const hidden = st === "off" || st === h;
-        acts.push(`<button class="nema" data-k="${esc(w.key)}" data-w="${h}">${hidden ? "vrati" : "sakrij"} ${HALF[h][0]}</button>`);
+        acts.push(`<button class="nema" data-k="${esc(w.key)}" data-w="${h}">${fresh ? HALF[h][0] : `${hidden ? "vrati" : "sakrij"} ${HALF[h][0]}`}</button>`);
       }
-      acts.unshift(`<button class="nema all" data-k="${esc(w.key)}" data-w="">${st === "on" ? "sakrij sve" : "vrati sve"}</button>`);
-      choose = `<div class="choose">${acts.join("")}${cancel}</div>`;
+      acts.unshift(`<button class="nema all" data-k="${esc(w.key)}" data-w="">${fresh ? "sve" : "vrati sve"}</button>`);
+      choose = panel(fresh ? "Sakrij" : "Čaša i boca", acts.join(""));
     }
     return `<div class="row ${st === "off" ? "off" : ""} ${st === "glass" || st === "bottle" ? "part" : ""}">
       <div class="who"><span class="nm">${esc(w.name)}</span> <span class="pr">${esc(w.producer)}</span></div>
