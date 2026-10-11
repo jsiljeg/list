@@ -565,6 +565,8 @@ test("Troškovi: where the money goes, receipts by month, a category fixed in on
   /* Pregled: the month total and the biggest group first */
   await expect(page.locator(".big b")).toHaveText(/128\s€/);
   await expect(page.locator(".bars .bar").first()).toContainText("Piće");
+  /* receipts are added in Računi only (owner, 2026-10-12) */
+  await expect(page.locator("#tab-troskovi [data-up]")).toHaveCount(0);
 
   /* Cijene: the chicken went from 8 to 9 €/kg */
   await page.click('[data-sub="cijene"]');
@@ -572,6 +574,7 @@ test("Troškovi: where the money goes, receipts by month, a category fixed in on
 
   /* Računi: grouped by month; a line's category changes on the tap */
   await page.click('[data-sub="racuni"]');
+  await expect(page.locator("#tab-troskovi [data-up]")).toHaveCount(2);   /* camera and gallery */
   await expect(page.locator(".mh").first()).toContainText(/128\s€/);
   await page.click('[data-open="a"]');
   await page.locator(".chip").filter({ hasText: "Ambalaža" }).click();

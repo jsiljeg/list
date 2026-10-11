@@ -55,6 +55,7 @@
   const hrDate = (d) => (d ? `${Number(d.slice(8, 10))}. ${Number(d.slice(5, 7))}.` : "");
 
   /* ---------- state ---------- */
+  let opened = false;
   let receipts = [], limits = null, sub = "pregled", month = "", open = null, timer = null, err = "";
   let openGroup = null, catPick = null, confirmDel = null;
   const picked = [];            /* photos chosen, not yet sent */
@@ -75,6 +76,8 @@
       receipts = b.items || []; limits = b.limits; err = "";
     } catch (e) { err = "Ne mogu učitati troškove: " + e.message; }
     if (!month) month = latestMonth();
+    /* until the first receipt is read, the tab opens where receipts are added */
+    if (!opened) { opened = true; if (!receipts.some((r) => r.status === "done")) sub = "racuni"; }
     render();
     if (visible() && receipts.some((r) => r.status === "queued" || r.status === "working")) timer = setTimeout(load, POLL_MS);
   }
@@ -133,7 +136,10 @@
     const list = inMonth(month), prev = inMonth(shiftMonth(month, -1));
     const total = list.reduce((s, r) => s + totalOf(r), 0), prevTotal = prev.reduce((s, r) => s + totalOf(r), 0);
     if (!done().length) {
-      return `${uploadCard()}<p class="muted center">Još nema pročitanih računa. Slikajte prvi račun gore — ovdje će se pokazati kamo odlazi novac.</p>`;
+      /* Receipts are added in one place only, Računi (owner, 2026-10-12:
+         "why does Pregled also let me upload?"). */
+      return `<p class="muted center">Još nema pročitanih računa. Kad ih dodate, ovdje se vidi kamo odlazi novac.</p>
+        <button class="btn wide" data-sub="racuni">Dodaj račun</button>`;
     }
     const p = pct(total, prevTotal);
     const cmp = prevTotal && list.length
@@ -172,7 +178,6 @@
     const days = new Date(Date.UTC(+month.slice(0, 4), +month.slice(5, 7), 0)).getUTCDate();
     const today = new Date().toISOString().slice(0, 7) === month ? new Date().getDate() : days;
     return `
-      ${uploadCard(true)}
       ${monthNav()}
       ${list.length ? `
       <div class="big"><b>${eur0(total)}</b>
