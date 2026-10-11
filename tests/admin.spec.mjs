@@ -301,7 +301,9 @@ test("Dodaj vino: a bottle is sent, a question is answered, the card is previewe
   await page.setInputFiles("#n-front", img("front.png"));
   await page.setInputFiles("#n-back", img("back.png"));
   await page.fill("#n-bottle", "130");
-  await page.fill("#n-ratings", "Parker 95, Suckling 96");   /* offered on every wine */
+  /* a field per approved critic, offered on every wine */
+  await page.fill('#n-ratings [data-critic="Robert Parker"]', "95");
+  await page.fill('#n-ratings [data-critic="James Suckling"]', "96");
   await page.click("#n-send");
   await expect(page.locator("#novo-msg")).toContainText("Poslano", { timeout: 15000 });
   const sent = inbox.posts[0].body;
@@ -309,7 +311,7 @@ test("Dodaj vino: a bottle is sent, a question is answered, the card is previewe
   expect(sent).toContain("130");
   expect(sent, "the photo is re-encoded as JPEG before it leaves").toContain("image/jpeg");
   expect(sent).toContain('name="ratings"');
-  expect(sent).toContain("Parker 95, Suckling 96");
+  expect(sent).toContain("Robert Parker 95, James Suckling 96");
 
   await page.fill("[data-answer='0']", "16%");
   await page.click('[data-act="odgovor"]');
@@ -515,4 +517,21 @@ test("Dodaj vino: progress is shown step by step, and nothing pops up", async ({
   await page.click('#req-r1 [data-sure="1"]');
   await expect.poll(() => posts.filter((p) => p.endsWith("/objavi")).length).toBe(1);
   expect(dialogs).toEqual([]);
+});
+
+test("the ratings fields offer exactly the approved critics, in the house order", async ({ page }) => {
+  /* owner, 2026-10-11: placeholders for the critics we use, so no unapproved one gets added */
+  await board(page);
+  await page.route("https://theatrium.devinos.hr/api/vina**", (r) => r.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="novo"]');
+  const shown = await page.locator("#n-ratings [data-critic]").evaluateAll((els) => els.map((e) => e.dataset.critic));
+  const rank = JSON.parse(readFileSync(new URL("../scripts/lib/critics.json", import.meta.url), "utf8")).rank;
+  expect(shown).toEqual(Object.keys(rank).sort((a, b) => rank[a] - rank[b]));
+  await page.fill('#n-ratings [data-critic="Jancis Robinson"]', "17");
+  await page.fill('#n-ratings [data-critic="Vinous"]', "nije broj");
+  await page.setInputFiles("#n-front", { name: "f.png", mimeType: "image/png", buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
+  await page.setInputFiles("#n-back", { name: "b.png", mimeType: "image/png", buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
+  await page.fill("#n-bottle", "90");
+  await page.click("#n-send");
+  await expect(page.locator("#novo-msg")).toContainText("Vinous");
 });

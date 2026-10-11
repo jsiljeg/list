@@ -152,8 +152,8 @@
         </div>
         <!-- Offered on every wine (owner, 2026-10-11): ratings he already
              knows go straight onto the card. -->
-        <label class="lbl">Ocjene kritičara, ako ih znate
-          <input id="n-ratings" type="text" maxlength="300" placeholder="npr. Parker 95, Suckling 96"></label>
+        <div class="lbl">Ocjene kritičara, ako ih znate</div>
+        <div id="n-ratings">${criticsGrid("")}</div>
         <!-- Rarely needed, so folded away: the size is read off the label by
              default (owner, 2026-10-11: "easier … and a bit more clean"). -->
         <details class="more">
@@ -198,6 +198,19 @@
     const long = !!btn.dataset.long;
     const box = document.createElement("div");
     box.className = "editbox";
+    if (field === "ratings") {
+      box.innerHTML = criticsGrid(cur) + `<p class="err" hidden></p>
+        <div class="ch-acts"><button class="nema ok">U redu</button><button class="nema cancel no">odustani</button></div>`;
+      holder.replaceChildren(box);
+      box.querySelector(".ok").addEventListener("click", () => {
+        const rt = readGrid(box);
+        if (rt.bad.length) { const e = box.querySelector(".err"); e.hidden = false; e.textContent = `Nije u obliku kritičara: ${rt.bad.join(", ")}`; return; }
+        if (rt.text === from) delete mine[field]; else mine[field] = { field, from, to: rt.text };
+        renderNovo();
+      });
+      box.querySelector(".no").addEventListener("click", renderNovo);
+      return;
+    }
     /* The field and its two buttons share one width (owner, 2026-10-11),
        the same row of equal cells as everywhere else on the page. */
     box.innerHTML = (long ? `<textarea rows="${field === "komentar" ? 3 : 6}"></textarea>` : `<input type="text">`) +
@@ -212,6 +225,49 @@
       renderNovo();
     });
     box.querySelector(".no").addEventListener("click", renderNovo);
+  }
+
+  /* Ratings: one field per critic the list accepts (owner, 2026-10-11:
+     "placeholders for the ones we use … to avoid adding critics that are not
+     approved"). The list and its order are scripts/lib/critics.json's — a test
+     keeps them equal. The six most common are shown; the rest fold away. */
+  const CRITICS = ["Robert Parker", "Jancis Robinson", "Vinous", "Wine Spectator", "Decanter", "James Suckling",
+    "Jasper Morris", "Tim Atkin", "Jeb Dunnuck", "Wine Enthusiast", "Falstaff", "Stuart Pigott",
+    "Jeannie Cho Lee", "Jeff Leve", "Lobenberg"];
+  const SHOWN = 6;
+  const ph = (c) => (c === "Jancis Robinson" ? "17/20" : c === "Robert Parker" ? "94+" : "95");
+  /* "Robert Parker 95, Jancis Robinson 17/20" ⇄ {critic: score} */
+  const parseRatings = (s) => {
+    const out = {};
+    for (const part of String(s || "").split(",")) {
+      const c = CRITICS.find((k) => part.trim().startsWith(k));
+      if (c) out[c] = part.trim().slice(c.length).trim();
+    }
+    return out;
+  };
+  function criticsGrid(text) {
+    const have = parseRatings(text);
+    const cell = (c) => `<label class="crit"><span>${esc(c)}</span>
+      <input type="text" autocomplete="off" data-critic="${esc(c)}" value="${esc(have[c] || "")}" placeholder="${ph(c)}"></label>`;
+    const more = CRITICS.slice(SHOWN);
+    const open = more.some((c) => have[c]);
+    return `<div class="crits">${CRITICS.slice(0, SHOWN).map(cell).join("")}</div>
+      <details class="more"${open ? " open" : ""}><summary>ostali kritičari</summary><div class="crits">${more.map(cell).join("")}</div></details>`;
+  }
+  /* A score as the critic writes it: 95, 94+, 92-94; Jancis out of 20. */
+  function readGrid(root) {
+    const parts = [], bad = [];
+    for (const inp of root.querySelectorAll("[data-critic]")) {
+      let v = inp.value.trim().replace(/\s+/g, "").replace(",", ".").replace("–", "-");
+      if (!v) continue;
+      const c = inp.dataset.critic;
+      if (c === "Jancis Robinson") {
+        if (/^\d{1,2}(\.5)?\+?$/.test(v)) v += "/20";
+        if (!/^\d{1,2}(\.5)?\+?\/20$/.test(v)) { bad.push(c); continue; }
+      } else if (!/^(100|[5-9]\d)(\+|-(100|[5-9]\d))?$/.test(v)) { bad.push(c); continue; }
+      parts.push(`${c} ${v}`);
+    }
+    return { text: parts.join(", "), bad };
   }
 
   function thumbHtml(id, n) {
@@ -445,7 +501,9 @@
       fd.append("vol", $("n-vol").value);
       if ($("n-rec").checked) fd.append("recommended", "1");
       fd.append("remark", $("n-remark").value);
-      fd.append("ratings", $("n-ratings").value);
+      const rt = readGrid($("n-ratings"));
+      if (rt.bad.length) { sending = ""; setSend(); $("novo-msg").textContent = `Ocjena nije u obliku koji kritičar koristi: ${rt.bad.join(", ")}`; return; }
+      fd.append("ratings", rt.text);
       fd.append("by", (window.adminWho && window.adminWho()) || "");
       sending = "Šaljem…"; setSend();
       await api("", { method: "POST", body: fd });

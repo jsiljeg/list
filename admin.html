@@ -205,6 +205,13 @@ button{font:inherit;cursor:pointer}
 .linkish{background:none;border:none;color:var(--gold);padding:0;font-size:13px;text-decoration:underline}
 .changed,.ev.changed{color:var(--gold)}
 .editbox{width:100%}
+/* ratings: one small field per approved critic */
+.crits{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin:6px 0}
+.crit{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:14px;color:var(--dim)}
+.crit input{width:64px;padding:8px;background:var(--bg);color:var(--ink);border:1px solid #4a463e;border-radius:8px;
+            font:inherit;font-size:15px;text-align:center}
+.crit input::placeholder{color:#5c574d}
+@media (max-width:420px){.crits{grid-template-columns:1fr}}
 .editbox .ch-acts{margin-top:8px}
 /* Dodaj vino: progress of a run, step by step */
 .prog{list-style:none;margin:12px 0 6px;padding:0;font-size:15px}
