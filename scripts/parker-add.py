@@ -33,7 +33,10 @@ def load(path):
 
 
 def save(path, data):
-    with io.open(path, "w", encoding="utf-8", newline="\r\n") as fh:
+    # the file's own line ending: CRLF in a Windows checkout, LF on a runner
+    with open(path, "rb") as fh:
+        nl = "\r\n" if b"\r\n" in fh.read(4096) else "\n"
+    with io.open(path, "w", encoding="utf-8", newline=nl) as fh:
         fh.write(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
 
 

@@ -86,3 +86,29 @@ wrote `req.json` into the workspace and `actions/checkout` then cleaned it
 away (now in `$RUNNER_TEMP`); and add.py always wrote CRLF, so on the Linux
 runner a 54-line card rewrote every line of both data files (add.py now keeps
 the file's own ending, and both jobs strip CRs before committing).
+
+## Robert Parker, in the cloud (2026-10-11)
+
+The owner's subscription is **commercial**, which is what allows the scores
+on the list at all (personal subscribers may not reproduce them; commercial
+ones may, for wines they sell). Their agreement forbids robots "designed to
+systematically download the Content"; one lookup per new wine is not that.
+
+After the card is applied, the commit job runs `.github/wine-intake/parker.mjs`
+— a fixed Playwright script, no AI — with `PARKER_USER` / `PARKER_PASS` from
+the `wine-intake` environment. It logs in, searches by URL, picks the result
+that is this wine and vintage by rule (producer present, the wine's own words
+present, nothing extra, same vintage), reads the score from the wine's page,
+and the job records it with `scripts/parker-add.py` + `rank-ratings.py`.
+Outcomes on the preview: the score on the card; "Parker još nije ocijenio
+ovu berbu" (re-checked daily by the pr-checkups sweep); or "Parker nije
+provjeren" with the candidates in `flags` for the owner. Skipped when the card
+already carries a Parker score. Titles and scores only are printed — never
+review text, the repo and its logs being public.
+
+Verified on 2026-10-11 against the hand-checked values: Wittmann Aulerde GG
+2020 → 94, 2023 → 94. **No logout**: the logged-in header has no account
+control the script can find, so each lookup ends by discarding the browser.
+The subscription allows one device at a time; if the owner's own Chrome is
+ever logged out, this is the likely cause. `parker-test.yml` runs a lookup
+on its own, by hand.

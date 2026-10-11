@@ -24,8 +24,9 @@ this one wine.
 
 ## What differs from an interactive session
 
-- **Parker: do not try.** There is no browser here. Record
-  `"Parker nije provjeren"` in `gaps`; the owner checks it later.
+- **Parker: do not try.** The workflow looks it up after you, on the
+  owner's subscription, with a fixed script. Record `"Parker nije provjeren"`
+  in `gaps` as before; the lookup replaces it with the score, or says why not.
 - **Questions go to Filho, in Croatian**, through `result.json`. Ask only what
   the photos and research cannot settle, and only what matters on the card:
   1. the alcohol, when it is not legible and no source for *this vintage*

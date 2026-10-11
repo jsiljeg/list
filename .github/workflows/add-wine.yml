@@ -210,6 +210,8 @@ jobs:
         env:
           MODE: ${{ needs.write.outputs.mode }}
           KEY: ${{ secrets.WINE_WORKER_KEY }}
+          PU: ${{ secrets.PARKER_USER }}
+          PP: ${{ secrets.PARKER_PASS }}
         run: |
           set -euo pipefail
           curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
@@ -229,6 +231,55 @@ jobs:
           git diff --stat
           node --check js/zh-terms.js && node --check js/i18n.js
           node scripts/validate.mjs
+
+          # Robert Parker, looked up here on the commercial subscription
+          # (owner, 2026-10-11). A fixed script, no AI: the password and the
+          # logged-in page never reach Claude. Skipped when the card already
+          # has a Parker score (given up front, or a wine we already pour).
+          ref=$(jq -r '.ref // empty' out/result.json)
+          if [ -n "$ref" ] && ! jq -e --arg r "$ref" '[.wines[$r].ratings // [] | .[] | select(.critic == "Robert Parker")] | length > 0' library/wines.json > /dev/null; then
+            curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
+                 -d '{"phase":"Provjerava ocjenu Roberta Parkera"}' "$INBOX/$ID/stanje" > /dev/null || true
+            mkdir -p "$RUNNER_TEMP/rp"
+            if curl -sfS "https://raw.githubusercontent.com/${{ github.repository }}/main/.github/wine-intake/parker.mjs" -o "$RUNNER_TEMP/rp/parker.mjs" \
+               && (cd "$RUNNER_TEMP/rp" && npm init -y > /dev/null && npm install --no-save --silent playwright-core@1.62.0 \
+                   && npx --yes playwright@1.62.0 install --with-deps chromium > /dev/null 2>&1); then
+              producer=$(jq -r --arg r "$ref" '.wines[$r].producer' library/wines.json)
+              wname=$(jq -r --arg r "$ref" '.wines[$r].name' library/wines.json)
+              PARKER_USER="$PU" PARKER_PASS="$PP" node "$RUNNER_TEMP/rp/parker.mjs" "$RUNNER_TEMP/parker.json" "$producer" "$wname" || true
+            fi
+            [ -f "$RUNNER_TEMP/parker.json" ] || echo '{"status":"error","note":"lookup did not run"}' > "$RUNNER_TEMP/parker.json"
+            if jq -e '.status == "found"' "$RUNNER_TEMP/parker.json" > /dev/null; then
+              python3 scripts/parker-add.py "$ref" "$(jq -r .score "$RUNNER_TEMP/parker.json")"
+              python3 scripts/rank-ratings.py
+              sed -i 's/\r$//' library/wines.json
+              node scripts/validate.mjs
+            fi
+            # what Filho reads: the score on the card, or why it is not there
+            python3 - "$ref" "$RUNNER_TEMP/parker.json" out/result.json <<'PY'
+          import json, sys
+          ref, pj, rj = sys.argv[1:4]
+          p = json.load(open(pj, encoding="utf-8"))
+          r = json.load(open(rj, encoding="utf-8"))
+          lib = json.load(open("library/wines.json", encoding="utf-8"))["wines"]
+          gaps = [g for g in r.get("gaps") or [] if "parker" not in g.lower()]
+          flags = list(r.get("flags") or [])
+          st = p.get("status")
+          if st == "none":
+              gaps.append("Parker još nije ocijenio ovu berbu — provjerava se ponovno svaki dan")
+          elif st != "found":
+              gaps.append("Parker nije provjeren")
+              cands = "; ".join("%s %s" % (c.get("title", ""), c.get("score", "")) for c in (p.get("candidates") or [])[:5])
+              flags.append("Parker lookup: %s — %s%s" % (st, p.get("note", ""), (" | " + cands) if cands else ""))
+          r["gaps"], r["flags"] = gaps, flags
+          r["parker"] = {k: p.get(k) for k in ("status", "score", "match", "note")}
+          if r.get("draft") and r["draft"].get("wine") is not None and ref in lib:
+              r["draft"]["wine"]["ratings"] = lib[ref].get("ratings", [])
+          open(rj, "w", encoding="utf-8").write(json.dumps(r, ensure_ascii=False, indent=1) + "\n")
+          print("parker:", st, p.get("score") or "", p.get("note") or "")
+          PY
+          fi
+
           git config user.name "Dodaj vino"
           git config user.email "novo-vino@users.noreply.github.com"
           git add library lists data js
@@ -260,7 +311,7 @@ jobs:
             body=$(jq -c --argjson u "$usage" --arg run "$RUN_URL" --arg b "$BRANCH" \
               '{status: "ready", branch: $b, ref: .ref, usage: $u, run_url: $run,
                 result: {draft, glass, placement, gaps, pairings_hr, notes, flags, novo, novo_reason,
-                         producer_status, producer_known, producer_note}}' out/result.json)
+                         producer_status, producer_known, producer_note, parker}}' out/result.json)
           else
             err="Kartica nije prošla provjeru — vlasnik je obaviješten."
             [ "$STATUS" = "failed" ] && err="Kartica nije dovršena — pokušajte ponovno."
