@@ -11,7 +11,7 @@
  *   stanje    (worker)  the run reports: working | needs_info | ready |
  *                       published | failed, with questions / result / branch /
  *                       run_url / ref / usage / error. Only legal moves. */
-import { reply, isStaffAsync, isWorker, readRequest, setStatus, savePhotos, pump, startPublish, clip, euros, notifyOwner, person, setPerson } from "../../../_lib/wines.js";
+import { reply, isStaffAsync, isWorker, readRequest, setStatus, addPhase, savePhotos, pump, startPublish, clip, euros, notifyOwner, person, setPerson } from "../../../_lib/wines.js";
 
 const WORKER_MOVES = {
   working: ["working", "needs_info", "ready", "failed"],
@@ -27,6 +27,14 @@ export async function onRequestPost({ request, env, params }) {
     if (!isWorker(request, env)) return reply(request, { error: "key" }, 401);
     let b;
     try { b = await request.json(); } catch { return reply(request, { error: "body" }, 400); }
+    /* A step report ({phase}, no status) changes nothing but the progress
+       list, and is accepted only while a run or a publish is going. */
+    if (b.phase && !b.status) {
+      if (!["working", "publishing"].includes(item.status)) return reply(request, { error: "move" }, 409);
+      await addPhase(env, id, clip(b.phase, 120), !!b.reset);
+      return reply(request, { ok: true });
+    }
+    if (b.phase) await addPhase(env, id, clip(b.phase, 120), !!b.reset);
     const allowed = WORKER_MOVES[item.status] || [];
     if (!allowed.includes(b.status)) return reply(request, { error: "move", from: item.status, to: b.status }, 409);
     const f = { status: b.status };

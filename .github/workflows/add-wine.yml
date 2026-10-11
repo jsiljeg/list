@@ -74,7 +74,7 @@ jobs:
               edits: [$i.answers[] | select(.kind == "edit") | {field, from, to}],
               photos: [$i.photos[] | "intake/photo-\(.).jpg"] }' "$RUNNER_TEMP/req.json" > "$RUNNER_TEMP/intake/request.json"
           curl -sfS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
-               -d "{\"status\":\"working\",\"run_url\":\"$RUN_URL\"}" "$INBOX/$ID/stanje" > /dev/null
+               -d "{\"status\":\"working\",\"run_url\":\"$RUN_URL\",\"phase\":\"Pokrenuto — priprema\",\"reset\":true}" "$INBOX/$ID/stanje" > /dev/null
 
       - uses: actions/checkout@v4
         with:
@@ -100,8 +100,17 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           MODEL: ${{ vars.WINE_MODEL || 'opus' }}
+          # For progress.mjs only — removed from Claude's environment below.
+          WK: ${{ secrets.WINE_WORKER_KEY }}
         run: |
           set -uo pipefail
+          # progress.mjs is read from main's copy in this checkout; an edit run
+          # on an older branch may not have it, and then there is no live
+          # progress, but the run is unaffected.
+          P=.github/wine-intake/progress.mjs
+          cp "$P" "$RUNNER_TEMP/progress.mjs" 2>/dev/null || true
+          curl -sS -X POST -H "Authorization: Bearer $WK" -H "content-type: application/json" \
+               -d '{"phase":"Čita etiketu"}' "$INBOX/$ID/stanje" > /dev/null || true
           # The settings deny reading anything outside the checkout, so the
           # token in this process's environment cannot be read back through a
           # file tool and handed to a web fetch.
@@ -117,13 +126,18 @@ jobs:
           tools+=',Bash(node scripts/validate.mjs),Bash(node scripts/after-86.mjs)'
           tools+=',Bash(node .claude/skills/add-wine/neighbours.mjs:*),Bash(python3 .claude/skills/add-wine/add.py:*)'
           tools+=',Bash(node .claude/skills/sommelier/pair.mjs:*),Bash(python3 scripts/rank-ratings.py)'
-          claude -p "$(cat .github/wine-intake/prompt.md)" \
+          # Streamed, so each step can be shown to Filho as it happens; the
+          # stream is kept, and its final "result" event is the old JSON output.
+          env -u WK claude -p "$(cat .github/wine-intake/prompt.md)" \
             --model "$MODEL" --fallback-model sonnet \
             --max-turns 120 \
             --settings "$RUNNER_TEMP/settings.json" \
             --allowedTools "$tools" \
-            --output-format json > "$RUNNER_TEMP/claude.json"
-          echo "exit=$?" >> "$GITHUB_OUTPUT"
+            --output-format stream-json --verbose \
+            | tee "$RUNNER_TEMP/stream.jsonl" \
+            | { if [ -f "$RUNNER_TEMP/progress.mjs" ]; then KEY="$WK" node "$RUNNER_TEMP/progress.mjs"; else cat > /dev/null; fi; }
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+          jq -s '[.[] | select(.type == "result")] | last // {}' "$RUNNER_TEMP/stream.jsonl" > "$RUNNER_TEMP/claude.json"
           jq '{turns: .num_turns, seconds: ((.duration_ms // 0) / 1000 | floor), cost_usd: .total_cost_usd,
                model: (.modelUsage // {} | keys)}' "$RUNNER_TEMP/claude.json" > "$RUNNER_TEMP/usage.json" || echo '{}' > "$RUNNER_TEMP/usage.json"
           cat "$RUNNER_TEMP/usage.json"
@@ -144,7 +158,7 @@ jobs:
             cp intake/result.json out/result.json
             echo "status=$(jq -r .status intake/result.json)" >> "$GITHUB_OUTPUT"
           else
-            echo '{"status":"failed","error":"Claude nije završio karticu."}' > out/result.json
+            echo '{"status":"failed","error":"Kartica nije dovršena — pokušajte ponovno."}' > out/result.json
             echo "status=failed" >> "$GITHUB_OUTPUT"
           fi
           git diff --binary -- library lists data js > out/card.patch || true
@@ -184,8 +198,11 @@ jobs:
         if: needs.write.outputs.status == 'ready'
         env:
           MODE: ${{ needs.write.outputs.mode }}
+          KEY: ${{ secrets.WINE_WORKER_KEY }}
         run: |
           set -euo pipefail
+          curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
+               -d '{"phase":"Provjerava i sprema karticu"}' "$INBOX/$ID/stanje" > /dev/null || true
           branch="wine/$ID"
           if [ "$MODE" = "edit" ]; then git checkout "$branch"; else git checkout -B "$branch" origin/main; fi
           # The model may only have changed data files; anything else in the
@@ -195,6 +212,10 @@ jobs:
           [ -z "$bad" ] || { echo "patch touches $bad"; exit 1; }
           [ -s out/card.patch ] || { echo "empty patch"; exit 1; }
           git apply --whitespace=nowarn out/card.patch
+          # The repo stores LF; a CR that slipped in turns a 50-line card into
+          # a rewrite of every line of the data files.
+          sed -i 's/\r$//' library/wines.json lists/theatrium.json data/producers.json data/unavailable.json js/zh-terms.js js/i18n.js
+          git diff --stat
           node --check js/zh-terms.js && node --check js/i18n.js
           node scripts/validate.mjs
           git config user.name "Dodaj vino"
@@ -230,7 +251,7 @@ jobs:
                 result: {draft, glass, placement, gaps, pairings_hr, notes, flags, novo, novo_reason}}' out/result.json)
           else
             err="Kartica nije prošla provjeru — vlasnik je obaviješten."
-            [ "$STATUS" = "failed" ] && err="Claude nije završio karticu."
+            [ "$STATUS" = "failed" ] && err="Kartica nije dovršena — pokušajte ponovno."
             body=$(jq -nc --arg e "$err" --argjson u "$usage" --arg run "$RUN_URL" '{status: "failed", error: $e, usage: $u, run_url: $run}')
           fi
           curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" -d "$body" "$INBOX/$ID/stanje"

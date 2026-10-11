@@ -457,3 +457,47 @@ test("Povijest shows every change between the two of them, and who made it", asy
     "NOVO uklj.|Chavost Paradoxe · Jure",
   ]);
 });
+
+test("Dodaj vino: progress is shown step by step, and nothing pops up", async ({ page }) => {
+  /* Owner, 2026-10-11: "we need to see the progress all the time", and
+     "objavi" was a pop-up when the rest of the admin had moved away from them. */
+  await board(page);
+  const dialogs = [];
+  page.on("dialog", (d) => { dialogs.push(d.message()); d.dismiss(); });
+  const lib = JSON.parse(readFileSync(new URL("../library/wines.json", import.meta.url), "utf8")).wines;
+  const ago = (m) => new Date(Date.now() - m * 60000).toISOString();
+  const posts = [];
+  const items = [
+    { id: "w1", status: "working", created_at: ago(9), updated_at: ago(8), price_bottle: 95, photos: [], questions: [], answers: [], result: null,
+      progress: [{ t: "Čita etiketu", at: ago(7) }, { t: "Istražuje · wittmann-weingut.com", at: ago(3) }] },
+    { id: "r1", status: "ready", created_at: ago(60), updated_at: ago(40), price_bottle: 130, photos: [], questions: [], answers: [],
+      result: { draft: { wine: lib["le-ragose--amarone-classico-riserva-2013"] }, gaps: [], novo: true } },
+  ];
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => {
+    const req = route.request();
+    if (req.method() === "POST") posts.push(new URL(req.url()).pathname);
+    return route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify(req.method() === "GET" ? { items, limits: { enabled: true, today: 1, dailyCap: 5, month: 1, monthlyCap: 60 } } : { ok: true }) });
+  });
+  await page.click('.tabs button[data-tab="novo"]');
+  const steps = page.locator("#req-w1 .prog li");
+  await expect(steps).toHaveCount(3);
+  await expect(steps.last()).toHaveClass(/now/);
+  await expect(steps.last()).toContainText("wittmann-weingut.com");
+  await expect(steps.last()).toContainText("3 min");
+  expect(await page.locator("#tab-novo").innerText(), "no Claude in what Filho reads").not.toMatch(/Claude/);
+
+  /* NOVO changes on the tap, before the server answers */
+  await page.click('#req-r1 [data-act="novo"][data-to=""]');
+  await expect(page.locator('#req-r1 [data-act="novo"][data-to=""]')).toHaveClass(/ok/);
+
+  /* publishing asks on the same row: odustani changes nothing */
+  await page.click('#req-r1 [data-act="objavi"]');
+  await expect(page.locator('#req-r1 [data-sure="1"]')).toHaveText("da, objavi");
+  await page.click('#req-r1 [data-act="ne"]');
+  expect(posts.filter((p) => p.endsWith("/objavi"))).toEqual([]);
+  await page.click('#req-r1 [data-act="objavi"]');
+  await page.click('#req-r1 [data-sure="1"]');
+  await expect.poll(() => posts.filter((p) => p.endsWith("/objavi")).length).toBe(1);
+  expect(dialogs).toEqual([]);
+});

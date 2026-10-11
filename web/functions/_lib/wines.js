@@ -152,13 +152,15 @@ export function shape(row, photos = []) {
     error: row.error || "", ref: row.ref || "", published_at: row.published_at || "",
     usage: parse(row.usage, null), photos,
     created_by: row.created_by || "", published_by: row.published_by || "",
+    progress: parse(row.steps, []),
   };
 }
 
 export async function readRequest(env, id) {
   const row = await env.DB.prepare(
-    `SELECT r.*, p.created_by, p.published_by FROM wine_requests r
-       LEFT JOIN wine_people p ON p.request_id = r.id WHERE r.id = ?1`).bind(id).first();
+    `SELECT r.*, p.created_by, p.published_by, g.steps FROM wine_requests r
+       LEFT JOIN wine_people p ON p.request_id = r.id
+       LEFT JOIN wine_progress g ON g.request_id = r.id WHERE r.id = ?1`).bind(id).first();
   if (!row) return null;
   const { results } = await env.DB.prepare(
     "SELECT n, mime FROM wine_photos WHERE request_id = ?1 ORDER BY n").bind(id).all();
@@ -179,6 +181,19 @@ export async function savePhotos(env, id, files) {
       .bind(id, n, f.type, bytes, nowIso()).run();
   }
   return { ok: true };
+}
+
+/* One step of a run, as Filho reads it ("Istražuje · wittmann-weingut.com").
+   `reset` starts a new list — a new run is a new story. The same step twice in
+   a row is one step; the list keeps the last 40. */
+export async function addPhase(env, id, t, reset) {
+  const row = await env.DB.prepare("SELECT steps FROM wine_progress WHERE request_id = ?1").bind(id).first();
+  let steps = reset || !row ? [] : parse(row.steps, []);
+  if (!steps.length || steps[steps.length - 1].t !== t) steps.push({ t, at: nowIso() });
+  steps = steps.slice(-40);
+  await env.DB.prepare(
+    `INSERT INTO wine_progress (request_id, steps) VALUES (?1, ?2)
+       ON CONFLICT (request_id) DO UPDATE SET steps = excluded.steps`).bind(id, JSON.stringify(steps)).run();
 }
 
 export async function setStatus(env, id, fields) {
@@ -245,6 +260,7 @@ export async function pump(env) {
     "UPDATE wine_requests SET status = 'working', runs = runs + 1, error = '', updated_at = ?2 WHERE id = ?1 AND status = 'queued'")
     .bind(next.id, nowIso()).run();
   if (!claim.meta || !claim.meta.changes) return { held: "raced" };
+  await addPhase(env, next.id, "Pokreće se — čeka slobodan server", true);
   const d = await dispatch(env, "add", next.id);
   if (d.error) await setStatus(env, next.id, { status: "queued", runs: next.runs, error: d.error });
   return d.error ? { held: d.error } : { started: next.id };
@@ -266,6 +282,7 @@ export async function startPublish(env, id) {
     "UPDATE wine_requests SET status = 'publishing', updated_at = ?2 WHERE id = ?1 AND status = 'ready'")
     .bind(id, nowIso()).run();
   if (!claim.meta || !claim.meta.changes) return { error: "not_ready" };
+  await addPhase(env, id, "Pokreće objavu", true);
   const d = await dispatch(env, "publish", id);
   if (d.error) await setStatus(env, id, { status: "ready", error: d.error });
   return d;

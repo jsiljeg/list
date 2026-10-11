@@ -209,6 +209,15 @@ CREATE TABLE IF NOT EXISTS wine_photos (
 -- key, so the person is the name chosen on the device. A side table rather
 -- than new columns, because schema.sql is re-run on every deploy and SQLite
 -- has no ADD COLUMN IF NOT EXISTS.
+-- What a run is doing right now, for the progress list under the request
+-- (owner, 2026-10-11: "we need to see the progress all the time"). JSON
+-- [{t, at}], appended by the runs, reset when a new run starts. A side table,
+-- for the same reason as wine_people below.
+CREATE TABLE IF NOT EXISTS wine_progress (
+  request_id  TEXT PRIMARY KEY,
+  steps       TEXT
+);
+
 CREATE TABLE IF NOT EXISTS wine_people (
   request_id    TEXT PRIMARY KEY,
   created_by    TEXT,

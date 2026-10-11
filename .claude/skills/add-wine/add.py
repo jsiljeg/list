@@ -30,7 +30,7 @@ touches the live data:
   `{"ref": "<existing ref>", "listings": [...]}` with no "wine" key.
 - Refuses a ref already in the library and a producer already in
   producers.json — an existing estate's blurb is edited, not overwritten.
-- Files round-trip exactly: ensure_ascii=False, indent=1, CRLF.
+- Files round-trip exactly: ensure_ascii=False, indent=1, the file's own line ending.
 """
 import importlib.util
 import io
@@ -55,7 +55,14 @@ def load(rel):
 
 
 def save(rel, data):
-    with io.open(os.path.join(ROOT, rel), "w", encoding="utf-8", newline="\r\n") as fh:
+    # Keep the file's own line ending: CRLF in a Windows checkout (autocrlf),
+    # LF on the Linux runner, where the repo's LF is what gets committed.
+    # Always writing CRLF made a Dodaj vino branch rewrite every line of both
+    # data files (2026-10-11).
+    path = os.path.join(ROOT, rel)
+    with open(path, "rb") as fh:
+        nl = "\r\n" if b"\r\n" in fh.read(4096) else "\n"
+    with io.open(path, "w", encoding="utf-8", newline=nl) as fh:
         fh.write(json.dumps(data, ensure_ascii=False, indent=1) + "\n")
 
 

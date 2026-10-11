@@ -17,8 +17,9 @@ export async function onRequestGet({ request, env }) {
   const pumped = staff ? await pump(env) : null;
   const { results } = await env.DB.prepare(
     `SELECT r.*, (SELECT GROUP_CONCAT(n) FROM wine_photos p WHERE p.request_id = r.id) AS pics,
-            w.created_by, w.published_by
+            w.created_by, w.published_by, g.steps
        FROM wine_requests r LEFT JOIN wine_people w ON w.request_id = r.id
+       LEFT JOIN wine_progress g ON g.request_id = r.id
       ORDER BY r.created_at DESC LIMIT 100`).all();
   const items = (results || []).map((r) => shape(r, r.pics ? String(r.pics).split(",").map(Number) : []));
   return reply(request, { items, limits: await limits(env), pumped });

@@ -65,3 +65,24 @@ npx astro build && npx wrangler pages dev dist --port 8799
 ```
 
 The admin page takes `window.WINE_API` to point at it.
+
+## Progress, step by step (2026-10-11)
+
+The request card shows what a run is doing while it does it. The write job
+streams Claude's output (`--output-format stream-json`) through
+`.github/wine-intake/progress.mjs`, which turns each tool call into a short
+Croatian step ("Čita etiketu", "Istražuje · wittmann-weingut.com", "Bira jela
+uz vino") and posts it as `{phase}` to `/stanje`; the commit job and the
+publish workflow post their own steps with curl. Steps live in the side table
+`wine_progress`, reset at the start of every run and every publish. The
+worker key reaches progress.mjs only — Claude runs under `env -u WK`.
+
+A phase-only report changes nothing but the list and is accepted only while
+the request is `working` or `publishing`. Posting is best effort: a step that
+fails to send is overtaken by the next, and cannot fail the run.
+
+Two bugs fixed the same day, both on the first real publish: publish-wine.yml
+wrote `req.json` into the workspace and `actions/checkout` then cleaned it
+away (now in `$RUNNER_TEMP`); and add.py always wrote CRLF, so on the Linux
+runner a 54-line card rewrote every line of both data files (add.py now keeps
+the file's own ending, and both jobs strip CRs before committing).

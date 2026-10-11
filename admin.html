@@ -203,6 +203,25 @@ button{font:inherit;cursor:pointer}
 .linkish{background:none;border:none;color:var(--gold);padding:0;font-size:13px;text-decoration:underline}
 .changed,.ev.changed{color:var(--gold)}
 .editbox{width:100%}
+.editbox .ch-acts{margin-top:8px}
+/* Dodaj vino: progress of a run, step by step */
+.prog{list-style:none;margin:12px 0 6px;padding:0;font-size:15px}
+.prog li{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;padding:5px 0}
+.prog li.done{color:var(--dim)}
+.prog li.done .dot{color:var(--ok)}
+.prog li.now{color:var(--ink);font-weight:600}
+.prog .at{font-size:13px;color:var(--dim);font-weight:400;font-variant-numeric:tabular-nums}
+.muted.small{font-size:13px;line-height:1.45}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--gold);border-right-color:transparent;
+      border-radius:50%;animation:spin .9s linear infinite;vertical-align:-2px}
+.btn.busy .spin{margin-right:10px;border-color:#1a1814;border-right-color:transparent}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:3s}}
+.req .ch-acts{margin-top:14px}
+/* on a card the panel colour is the background: a plain button needs an outline */
+.card .nema:not(.ok):not(.all):not(.yes){background:transparent;border:1px solid #4a463e}
+.pv .seg{max-width:260px}
+.pv .seg .nema{min-height:40px;font-size:14px}
 .editbox input,.editbox textarea{width:100%;padding:10px 12px;background:var(--bg);color:var(--ink);
   border:1px solid var(--gold);border-radius:8px;font:inherit;font-size:16px;line-height:1.45}
 .btn.small{padding:8px 14px;margin-top:8px;font-size:14px}

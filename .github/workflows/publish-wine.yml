@@ -39,6 +39,9 @@ jobs:
           KEY: ${{ secrets.WINE_WORKER_KEY }}
         run: |
           set -euo pipefail
+          # In RUNNER_TEMP, not the workspace: actions/checkout below cleans
+          # the workspace, and took req.json with it (2026-10-11).
+          cd "$RUNNER_TEMP"
           [[ "$ID" =~ ^[0-9]{8}-[0-9a-f]{12}$ ]] || { echo "bad id"; exit 1; }
           curl -sfS -H "Authorization: Bearer $KEY" "$INBOX/$ID" > req.json
           jq -e '.item.status == "publishing"' req.json > /dev/null || { echo "not publishing"; exit 1; }
@@ -59,6 +62,7 @@ jobs:
       - name: Merge, validate, push
         id: merge
         env:
+          KEY: ${{ secrets.WINE_WORKER_KEY }}
           # Through the environment, never ${{ }} inside the script: the title
           # is a wine name the model wrote, and must not be parsed as shell.
           TITLE: ${{ steps.req.outputs.title }}
@@ -66,14 +70,18 @@ jobs:
           SENT: ${{ steps.req.outputs.sent }}
         run: |
           set -euo pipefail
+          # each step shown to Filho under the request, best effort
+          phase() { curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json"                       -d "$(jq -nc --arg p "$1" '{phase: $p}')" "$INBOX/$ID/stanje" > /dev/null || true; }
+          phase "Spaja vino s kartom"
           git config user.name "Dodaj vino"
           git config user.email "novo-vino@users.noreply.github.com"
           git fetch origin "wine/$ID"
           git merge --squash "origin/wine/$ID"
+          sed -i 's/\r$//' library/wines.json lists/theatrium.json data/producers.json data/unavailable.json js/zh-terms.js js/i18n.js
           # Prices are Filho's and may have been corrected on the preview after
           # the card was written: the request holds the latest. Set them on this
           # wine's new listings — glass in the glass section, bottle elsewhere.
-          python3 - req.json <<'PY'
+          python3 - "$RUNNER_TEMP/req.json" <<'PY'
           import json, sys
           req = json.load(open(sys.argv[1], encoding="utf-8"))["item"]
           ref, pb, pg = req["ref"], req.get("price_bottle"), req.get("price_glass")
@@ -103,8 +111,10 @@ jobs:
                   it["price"] = int(want) if float(want).is_integer() else want
           open(p, "w", encoding="utf-8", newline="\n").write(json.dumps(doc, ensure_ascii=False, indent=1) + "\n")
           PY
+          phase "Provjerava cijelu kartu"
           node --check js/zh-terms.js && node --check js/i18n.js
           node scripts/validate.mjs
+          phase "Sprema na kartu"
           who="${BY:-Filho}"
           email="$(printf '%s' "$who" | tr '[:upper:]' '[:lower:]' | tr -cd 'a-z0-9')@theatrium-admin.invalid"
           git commit -q --author="$who <$email>" -m "$TITLE joins NOVO — $who" \
@@ -115,7 +125,9 @@ jobs:
       - name: Start the deploys
         env:
           GH_TOKEN: ${{ github.token }}
+          KEY: ${{ secrets.WINE_WORKER_KEY }}
         run: |
+          curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json"                -d '{"phase":"Šalje na tablete i web"}' "$INBOX/$ID/stanje" > /dev/null || true
           gh workflow run deploy.yml --ref main
           gh workflow run deploy-web.yml --ref main
 

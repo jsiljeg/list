@@ -20,7 +20,7 @@
   /* The same GitHub key the 86 board stores — the inbox checks it with GitHub.
      No second key for Filho to find (owner, 2026-10-10). */
   const LS_GH = "theatrium-admin-token";
-  const POLL_MS = 15000;
+  const POLL_MS = 8000;
   const T = (typeof I18N !== "undefined" && I18N.hr) || {};
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s == null ? "" : s)
@@ -64,11 +64,11 @@
     photo_type: "Fotografija mora biti JPEG, WebP ili PNG.",
     not_ready: "Vino još nije spremno za objavu.",
     disabled: "Unos novih vina je trenutno isključen.",
-    running: "Claude upravo radi na ovom vinu — pričekajte.",
+    running: "Na ovom vinu se upravo radi — pričekajte.",
     too_late: "Vino je već objavljeno.",
     empty: "Niste ništa promijenili.",
     /* errors a request carries, from the inbox or the run */
-    run_timed_out: "Claude nije završio na vrijeme. Pokušajte ponovno.",
+    run_timed_out: "Rad nije završio na vrijeme. Pokušajte ponovno.",
     too_many_rounds: "Previše pokušaja za ovo vino — javite vlasniku.",
     no_dispatch_token: "Čeka da vlasnik uključi automatsko dodavanje.",
     daily_cap: "Danas je dosegnut dnevni limit — nastavlja sutra.",
@@ -124,11 +124,11 @@
   }
 
   const STATUS = {
-    queued: ["U redu čekanja", "Claude će početi uskoro."],
-    working: ["Claude piše karticu", "Istraživanje i pisanje traje 5–15 minuta."],
+    queued: ["U redu čekanja", ""],
+    working: ["U izradi", ""],
     needs_info: ["Treba odgovor", "Odgovorite na pitanje ispod."],
     ready: ["Spremno za pregled", "Pročitajte i objavite."],
-    publishing: ["Objavljujem…", "Vino ide na kartu."],
+    publishing: ["Objavljujem", ""],
     published: ["Na karti", ""],
     failed: ["Nije uspjelo", ""],
     cancelled: ["Odustano", ""],
@@ -161,12 +161,12 @@
           <label class="lbl">Napomena
             <input id="n-remark" type="text" maxlength="300" placeholder="npr. zamjenjuje Amarone Ravazzol"></label>
         </details>
-        <button class="btn wide" id="n-send">Pošalji</button>
+        <div id="n-send-row">${sendRow()}</div>
         <div class="muted center" id="novo-msg">${esc(lim)}</div>
       </div>
       ${shown().length ? `<h2 class="sec">Zahtjevi</h2>` : ""}
       ${shown().map(card).join("")}`;
-    $("n-send").addEventListener("click", submit);
+    wireSend();
     /* A photo slot shows what was taken, so Filho sees the label is readable
        before anything is sent. */
     for (const inp of document.querySelectorAll("#tab-novo .shot input")) {
@@ -178,7 +178,7 @@
         tile.querySelector(".shot-img").style.backgroundImage = `url(${URL.createObjectURL(f)})`;
       });
     }
-    box.querySelectorAll("[data-act]").forEach((b) => b.addEventListener("click", () => act(b.dataset.act, b.dataset.id)));
+    box.querySelectorAll("[data-act]").forEach((b) => b.addEventListener("click", () => act(b.dataset.act, b.dataset.id, b)));
     box.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => editField(b)));
   }
 
@@ -194,8 +194,10 @@
     const long = !!btn.dataset.long;
     const box = document.createElement("div");
     box.className = "editbox";
+    /* The field and its two buttons share one width (owner, 2026-10-11),
+       the same row of equal cells as everywhere else on the page. */
     box.innerHTML = (long ? `<textarea rows="${field === "komentar" ? 3 : 6}"></textarea>` : `<input type="text">`) +
-      `<div class="acts"><button class="btn small ok">U redu</button><button class="btn ghost small no">Odustani</button></div>`;
+      `<div class="ch-acts"><button class="nema ok">U redu</button><button class="nema cancel no">odustani</button></div>`;
     const inp = box.querySelector(long ? "textarea" : "input");
     inp.value = cur;
     holder.replaceChildren(box);
@@ -235,6 +237,40 @@
   const shown = () => items.filter((it) => it.status !== "cancelled" &&
     !(it.status === "published" && Date.now() - Date.parse(it.published_at || it.updated_at) > 3 * 86400000));
 
+  /* What a run is doing, step by step, with the time on the current one
+     (owner, 2026-10-11: "we need to see the progress all the time"). The steps
+     come from the run itself; the page only adds the clock. */
+  const hm = (iso) => new Date(iso).toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" });
+  const mins = (from) => Math.max(0, Math.floor((Date.now() - Date.parse(from)) / 60000));
+  function progress(it) {
+    const steps = [{ t: "Poslano", at: it.created_at }, ...(it.progress || [])];
+    const live = ["queued", "working", "publishing"].includes(it.status);
+    if (it.status === "queued") steps.push({ t: it.error ? errText(it.error) : "Čeka na red", at: it.updated_at });
+    const li = steps.map((s, i) => {
+      const now = live && i === steps.length - 1;
+      return `<li class="${now ? "now" : "done"}"><span class="dot">${now ? `<span class="spin"></span>` : "✓"}</span>
+        <span class="t">${esc(s.t)}</span><span class="at"${now ? ` data-since="${esc(s.at)}"` : ""}>${now ? `${mins(s.at)} min` : esc(hm(s.at))}</span></li>`;
+    }).join("");
+    const start = it.status === "publishing" ? (it.progress && it.progress[0] ? it.progress[0].at : it.updated_at) : it.created_at;
+    const usual = it.status === "publishing" ? "obično 1–2 min" : "obično 5–15 min";
+    return `<ol class="prog">${li}</ol>${live ? `<p class="muted small">Ukupno <span data-since="${esc(start)}">${mins(start)} min</span> · ${usual}.
+      Možete zaključati mobitel ili zatvoriti stranicu — sve se radi na serveru, a ovdje piše dokle je stiglo.</p>` : ""}`;
+  }
+  /* A row of equal buttons; a step that cannot be undone asks on the same
+     row first — "da, objavi" · "odustani" — never in a pop-up. */
+  let confirming = null;   /* {id, action} */
+  const cardErr = {};
+  const ASK = { objavi: ["da, objavi", "ok"], odbaci: ["da, odbaci vino", "all"] };
+  function actRow(id, acts) {
+    if (confirming && confirming.id === id) {
+      const [label, cls] = ASK[confirming.action];
+      return `<div class="ch-acts"><button class="nema ${cls}" data-act="${confirming.action}" data-sure="1" data-id="${esc(id)}">${label}</button>
+        <button class="nema cancel" data-act="ne" data-id="${esc(id)}">odustani</button></div>`;
+    }
+    return `<div class="ch-acts">${acts.map(([act, label, cls]) =>
+      `<button class="nema ${cls || ""}" data-act="${act}" data-id="${esc(id)}">${label}</button>`).join("")}</div>`;
+  }
+
   function card(it) {
     const [label, hint] = STATUS[it.status] || [it.status, ""];
     const r = it.result || {};
@@ -252,24 +288,28 @@
           <label class="shot-btn">📷 Slikaj<input type="file" data-more accept="image/*" capture="environment"></label>
           <label class="shot-btn">🖼 Galerija<input type="file" data-more accept="image/*,.heic,.heif" multiple></label>
         </span>
-        <button class="btn wide" data-act="odgovor" data-id="${esc(it.id)}">Pošalji odgovor</button></div>`;
+        <button class="btn wide" data-act="odgovor" data-id="${esc(it.id)}">Pošalji odgovor</button></div>
+        ${actRow(it.id, [["odbaci", "odbaci vino"]])}`;
     }
     if (it.status === "ready" && w) {
       const n = Object.keys(pending[it.id] || {}).length;
       body = preview(it, r) + (it.error ? `<p class="err">${esc(errText(it.error))}</p>` : "") +
         `<p class="muted">✎ ispravlja polje.</p>
-        <div class="acts">${n
-          ? `<button class="btn" data-act="ispravak" data-id="${esc(it.id)}">Pošalji ispravke (${n})</button>
-             <button class="btn ghost" data-act="ponisti" data-id="${esc(it.id)}">Poništi</button>`
-          : `<button class="btn wide" data-act="objavi" data-id="${esc(it.id)}">Objavi na karti</button>
-             <button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button>`}</div>`;
+        ${n ? actRow(it.id, [["ispravak", `pošalji ispravke (${n})`, "ok"], ["ponisti", "poništi"]])
+            : actRow(it.id, [["objavi", "objavi na karti", "ok"], ["odbaci", "odbaci vino"]])}`;
     }
     if (it.status === "published") body = `<p class="muted">Objavljeno ${esc((it.published_at || "").slice(0, 10))}. Gosti ga vide pod NOVO.</p>`;
-    if (it.status === "queued" && it.error) body = `<p class="muted">${esc(errText(it.error))}</p>`;
-    if (it.status === "failed") body = `<p class="err">${esc(errText(it.error) || "Nepoznata greška")}</p>
-      <div class="acts"><button class="btn ghost" data-act="ponovi" data-id="${esc(it.id)}">Pokušaj ponovno</button>
-      <button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
-    if (["queued", "needs_info"].includes(it.status)) body += `<div class="acts"><button class="btn ghost" data-act="odustani" data-id="${esc(it.id)}">Odustani</button></div>`;
+    if (["queued", "working", "publishing"].includes(it.status)) body = progress(it) +
+      (it.status === "queued" ? actRow(it.id, [["odbaci", "odbaci vino"]]) : "");
+    /* A failure says where it stopped, and that nothing has to be sent again. */
+    if (it.status === "failed") {
+      const lastStep = (it.progress || []).slice(-1)[0];
+      body = `<p class="err">${esc(errText(it.error) || "Nepoznata greška")}</p>
+      ${lastStep ? `<p class="muted small">Stalo kod: ${esc(lastStep.t)}.</p>` : ""}
+      <p class="muted small">Fotografije i cijene su spremljene — „pokušaj ponovno” kreće ispočetka, ništa ne treba slati ponovno.</p>
+      ${actRow(it.id, [["ponovi", "pokušaj ponovno", "ok"], ["odbaci", "odbaci vino"]])}`;
+    }
+    if (cardErr[it.id]) body += `<p class="err">${esc(cardErr[it.id])}</p>`;
     return `<div class="card req st-${esc(it.status)}" id="req-${esc(it.id)}">
       <div class="req-head"><div><div class="nm">${esc(title)}</div><div class="muted">${esc(prices)} · ${esc(it.created_at.slice(0, 10))}${it.created_by ? ` · poslao ${esc(it.created_by)}` : ""}${it.published_by ? ` · objavio ${esc(it.published_by)}` : ""}</div></div>
         <span class="badge">${esc(label)}</span></div>
@@ -290,8 +330,10 @@
   function novoSwitch(it, r) {
     const on = novoState(it, r);
     const why = r.novo_reason ? ` <span class="muted">(${esc(r.novo_reason)})</span>` : "";
-    return `<button class="novo ${on ? "on" : ""}" data-act="novo" data-id="${esc(it.id)}" aria-pressed="${on}">NOVO</button>
-      ${on ? "Prikazuje se pod NOVO" : "Ne prikazuje se pod NOVO"}${why}`;
+    /* Two choices, the chosen one lit (owner, 2026-10-11: a lone NOVO tag
+       did not look tappable, and waited on the server before changing). */
+    return `<div class="ch-acts seg"><button class="nema ${on ? "ok" : ""}" data-act="novo" data-to="1" data-id="${esc(it.id)}" aria-pressed="${on}">NOVO</button>
+      <button class="nema ${on ? "" : "ok"}" data-act="novo" data-to="" data-id="${esc(it.id)}" aria-pressed="${!on}">nije novo</button></div>${why}`;
   }
 
   function preview(it, r) {
@@ -315,7 +357,7 @@
         ${ed("Sorta", "grape", i.grape)}
         ${ed("Regija", "region", i.region)}
         ${row("Država", tr("countries", i.country))}
-        <tr><th>NOVO</th><td>${novoSwitch(it, r)}</td></tr>
+        <tr><th>Pod NOVO</th><td>${novoSwitch(it, r)}</td></tr>
         ${ed("Položaj", "terroir", w.terroir)}
         ${/* the style string already carries the body ("Crno · puno") */ ""}
         ${row("Stil", [tr("styles", i.style), tr("sweetness", i.sweetness)].filter(Boolean).join(" · "))}
@@ -330,22 +372,40 @@
         <button class="pen" data-edit="note" data-id="${esc(it.id)}" data-long="1" data-from="${esc((w.note && w.note.hr) || "")}" aria-label="Ispravi bilješku">✎</button></p>` : ""}
       ${p ? `<p class="blurb${mine.blurb ? " changed" : ""}"><b>${esc(p.name)}</b> — ${esc(mine.blurb ? mine.blurb.to : (p.blurb && p.blurb.hr))}
         <button class="pen" data-edit="blurb" data-id="${esc(it.id)}" data-long="1" data-from="${esc((p.blurb && p.blurb.hr) || "")}" aria-label="Ispravi priču o vinariji">✎</button></p>` : ""}
-      <p class="muted"><button class="linkish" data-edit="komentar" data-id="${esc(it.id)}" data-long="1" data-from="">+ Napišite Claudeu što još promijeniti</button>
+      <p class="muted"><button class="linkish" data-edit="komentar" data-id="${esc(it.id)}" data-long="1" data-from="">+ Što još promijeniti?</button>
         ${mine.komentar ? `<br><i>${esc(mine.komentar.to)}</i>` : ""}</p>
       ${r.placement ? `<p class="muted">Na karti: ${esc(r.placement)}</p>` : ""}
       ${(r.gaps || []).length ? `<p class="muted">Nije potvrđeno: ${esc(r.gaps.join("; "))}</p>` : ""}
     </div>`;
   }
 
-  async function submit() {
+  /* The send button is the progress (owner, 2026-10-11: "progress show when
+     I click"): it says what it is doing until the request is in. A missing
+     back label is asked on the same row, like every other confirm. */
+  let askBack = false, sending = "";
+  function sendRow() {
+    if (sending) return `<button class="btn wide busy" id="n-send" disabled><span class="spin"></span>${esc(sending)}</button>`;
+    if (askBack) return `<p class="muted center" style="margin:16px 0 8px">Nema stražnje etikete? Alkohol je obično tamo.</p>
+      <div class="ch-acts"><button class="nema ok" id="n-send-front">samo prednju</button><button class="nema cancel" id="n-send-no">odustani</button></div>`;
+    return `<button class="btn wide" id="n-send">Pošalji</button>`;
+  }
+  function setSend() { const r = $("n-send-row"); if (r) { r.innerHTML = sendRow(); wireSend(); } }
+  function wireSend() {
+    const go = $("n-send"), front = $("n-send-front"), no = $("n-send-no");
+    if (go && !sending) go.addEventListener("click", () => submit(false));
+    if (front) front.addEventListener("click", () => { askBack = false; submit(true); });
+    if (no) no.addEventListener("click", () => { askBack = false; setSend(); });
+  }
+
+  async function submit(frontOnly) {
     const front = picked["n-front"], back = picked["n-back"];
     const files = [front, back].filter(Boolean);
     const msg = $("novo-msg");
     if (!front) { msg.textContent = "Dodajte fotografiju prednje etikete."; return; }
     if (!$("n-bottle").value.trim() && !$("n-glass").value.trim()) { msg.textContent = MSG.no_price; return; }
-    if (!back && !confirm("Nema stražnje etikete? Ako je boca ima, alkohol je obično tamo. Poslati samo prednju?")) return;
-    $("n-send").disabled = true;
-    msg.textContent = "Pripremam fotografije…";
+    if (!back && !frontOnly) { askBack = true; setSend(); return; }
+    msg.textContent = "";
+    sending = "Pripremam fotografije…"; setSend();
     try {
       const fd = new FormData();
       for (const f of files) fd.append("photo", await shrink(f), "label.jpg");
@@ -355,24 +415,41 @@
       if ($("n-rec").checked) fd.append("recommended", "1");
       fd.append("remark", $("n-remark").value);
       fd.append("by", (window.adminWho && window.adminWho()) || "");
-      msg.textContent = "Šaljem…";
+      sending = "Šaljem…"; setSend();
       await api("", { method: "POST", body: fd });
+      sending = "";
       delete picked["n-front"]; delete picked["n-back"];
       await loadRequests();
-      $("novo-msg").textContent = "Poslano. Claude počinje za koju minutu.";
-    } catch (e) { msg.textContent = "Nije poslano: " + e.message; }
-    finally { const b = $("n-send"); if (b) b.disabled = false; }
+      $("novo-msg").textContent = "Poslano — napredak pratite ispod.";
+      const first = document.querySelector("#tab-novo .req");
+      if (first) first.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (e) { sending = ""; setSend(); $("novo-msg").textContent = "Nije poslano: " + e.message; }
   }
 
-  async function act(action, id) {
+  async function act(action, id, btn) {
     const box = $("req-" + id);
+    delete cardErr[id];
+    if (action === "ne") { confirming = null; renderNovo(); return; }
+    if (ASK[action] && !(btn && btn.dataset.sure)) { confirming = { id, action }; renderNovo(); return; }
+    confirming = null;
     try {
       if (action === "ponisti") { delete pending[id]; renderNovo(); return; }
       if (action === "novo") {
+        /* Shown at once; the server catches up behind it, and a failure puts
+           it back and says so. */
         const it = items.find((x) => x.id === id);
-        const on = !novoState(it, it.result || {});
-        await api(`/${id}/ispravak`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ novo: on }) });
-        await loadRequests();
+        const on = !!(btn && btn.dataset.to);
+        if (on === novoState(it, it.result || {})) return;
+        const mark = { kind: "novo", to: on, local: true };
+        it.answers = [...(it.answers || []), mark];
+        renderNovo();
+        try {
+          await api(`/${id}/ispravak`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ novo: on }) });
+        } catch (e) {
+          it.answers = it.answers.filter((a) => a !== mark);
+          cardErr[id] = "NOVO nije spremljen: " + e.message;
+          renderNovo();
+        }
         return;
       }
       if (action === "ispravak") {
@@ -394,14 +471,18 @@
         for (const f of more.slice(0, 3)) fd.append("photo", await shrink(f), "label.jpg");
         await api(`/${id}/odgovor`, { method: "POST", body: fd });
       } else {
-        if (action === "objavi" && !confirm("Objaviti ovo vino na karti? Gosti ga vide za minutu.")) return;
-        if (action === "odustani" && !confirm("Odustati od ovog vina?")) return;
-        await api(`/${id}/${action}`, { method: "POST", headers: { "content-type": "application/json" },
+        const path = action === "odbaci" ? "odustani" : action;
+        await api(`/${id}/${path}`, { method: "POST", headers: { "content-type": "application/json" },
           body: JSON.stringify({ by: (window.adminWho && window.adminWho()) || "" }) });
       }
       await loadRequests();
-    } catch (e) { alert(e.message); }
+    } catch (e) { cardErr[id] = e.message; renderNovo(); }
   }
+
+  /* The minute counters tick between polls. */
+  setInterval(() => {
+    for (const el of document.querySelectorAll("#tab-novo [data-since]")) el.textContent = mins(el.dataset.since) + " min";
+  }, 10000);
 
   /* ---------- Povijest ---------- */
   async function loadHistory() {
