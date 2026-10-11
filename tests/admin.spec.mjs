@@ -301,6 +301,13 @@ test("NOVO is switched on the board, on every listing of that wine", async ({ pa
   await page.waitForTimeout(200);
   const chip = page.locator(".row").filter({ hasText: "Merlot Opoka" }).locator(".novo");
   await expect(chip).toHaveAttribute("aria-pressed", "false");
+  /* asked first: dismissing changes nothing, accepting switches it */
+  page.once("dialog", (d) => d.dismiss());
+  await chip.click();
+  await page.waitForTimeout(300);
+  await expect(chip).toHaveAttribute("aria-pressed", "false");
+  expect(state.listPuts).toEqual([]);
+  page.once("dialog", (d) => { expect(d.message()).toBe("Uključiti NOVO za Marjan Simčič Merlot Opoka 2017?"); d.accept(); });
   await chip.click();
   await page.waitForFunction(() => document.getElementById("s2").className === "done", null, { timeout: 60000 });
   expect(priceOf(state.list, ref).new).toBe(true);

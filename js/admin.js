@@ -247,6 +247,9 @@ function toggleNew(key) {
   const w = wines.find((x) => x.key === key);
   if (!w || !w.listings.length) return;
   const on = !w.listings.some((l) => l.entry.new);
+  /* Asked first (owner, 2026-10-11): NOVO is one small tag on a busy row,
+     and a stray thumb should not put a wine under NOVO or take it off. */
+  if (!confirm(`${on ? "Uključiti" : "Isključiti"} NOVO za ${w.producer} ${w.name}?`)) return;
   for (const l of w.listings) { if (on) l.entry.new = true; else delete l.entry.new; }
   render();
   queue.push({ file: "list", message: `NOVO: ${w.producer} ${w.name} — ${on ? "dodano" : "maknuto"}` });
