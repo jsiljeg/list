@@ -91,11 +91,32 @@ test("every wine with a producer gets a switch", async ({ page }) => {
 /* A wine sold both ways: its switch opens one line of choices (hide all,
    only the glass, only the bottle). Since 2026-10-10 they are shown only
    while choosing, so the row stays two lines. */
+/* Every switch asks on a line under the wine — even a wine sold one way
+   (owner, 2026-10-11: one tap hid Meneghetti Blanc de Blancs unasked). */
+const flip = async (row) => {
+  await row.locator(".sw").click();
+  await row.locator(".nema.all").click();
+};
 const choose = async (page, name, what) => {
   const row = page.locator(".row").filter({ hasText: name });
   await row.locator(".sw").click();
   await row.locator(what === "all" ? ".nema.all" : `.nema[data-w="${what}"]`).click();
 };
+
+test("a wine sold one way is not hidden by a single tap", async ({ page }) => {
+  /* Caught 2026-10-11: tapping Meneghetti Blanc de Blancs (glass only) hid
+     it at once, while a wine sold both ways asked first. */
+  const state = await board(page);
+  await page.fill("#q", "Blanc de Blancs");
+  await page.waitForTimeout(200);
+  const row = page.locator(".row").first();
+  await row.locator(".sw").click();
+  await expect(row.locator(".nema.all")).toHaveText("sakrij s karte");
+  await row.locator(".nema.cancel").click();
+  await page.waitForTimeout(300);
+  expect(state.puts, "odustani writes nothing").toEqual([]);
+  await expect(page.locator(".row.off")).toHaveCount(0);
+});
 
 test("a wine sold both ways gets its own glass and bottle choices", async ({ page }) => {
   const state = await board(page);
@@ -117,7 +138,7 @@ test("three flips in a row are all accepted, and batched", async ({ page }) => {
   const state = await board(page);
   await page.fill("#q", "Meneghetti");
   await page.waitForTimeout(200);
-  await page.locator(".row").filter({ hasText: "Blanc de Blancs" }).locator(".sw").click();
+  await flip(page.locator(".row").filter({ hasText: "Blanc de Blancs" }));
   await page.waitForTimeout(120);
   for (const name of ["White 2023", "Red 2020"]) {
     await choose(page, name, "all");
@@ -133,12 +154,12 @@ test("an un-hide during the tablet countdown is not made to wait it out", async 
   const state = await board(page);
   await page.fill("#q", "Blanc de Blancs");
   await page.waitForTimeout(200);
-  await page.locator(".row").first().locator(".sw").click();
+  await flip(page.locator(".row").first());
   await page.waitForFunction(() => document.getElementById("s2").className === "done", null, { timeout: 60000 });
   await page.waitForFunction(() => /\(\d+s\)/.test(document.getElementById("s3").textContent), null, { timeout: 10000 });
 
   const t0 = Date.now();
-  await page.locator(".row").first().locator(".sw").click();
+  await flip(page.locator(".row").first());
   await page.waitForFunction(() => document.querySelectorAll(".row.off").length === 0, null, { timeout: 8000 });
   await page.waitForTimeout(1000);
   expect(hidden(state)).toEqual([]);
@@ -154,7 +175,7 @@ test("the receipt reports publication, it does not assume it", async ({ page }) 
 
   await page.fill("#q", "Blanc de Blancs");
   await page.waitForTimeout(200);
-  await page.locator(".row").first().locator(".sw").click();
+  await flip(page.locator(".row").first());
   await page.waitForFunction(() => document.getElementById("s1").className === "done", null, { timeout: 20000 });
   await page.waitForTimeout(6000);
   expect(await page.locator("#s2").getAttribute("class"), "must stay pending, not go green").toBe("now");
@@ -405,7 +426,7 @@ test("a change is signed by whoever's key made it", async ({ page }) => {
   await expect(page.locator("#who")).toHaveText("Filho");
   await page.fill("#q", "Blanc de Blancs");
   await page.waitForTimeout(200);
-  await page.locator(".row").first().locator(".sw").click();
+  await flip(page.locator(".row").first());
   await expect.poll(() => state.puts.length).toBe(1);
   expect(state.puts[0]).toMatch(/ — Filho$/);
   expect(author[0].name).toBe("Filho");

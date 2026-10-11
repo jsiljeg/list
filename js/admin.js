@@ -393,6 +393,11 @@ function render() {
       }
       acts.unshift(`<button class="nema all" data-k="${esc(w.key)}" data-w="">${fresh ? "sve" : "vrati sve"}</button>`);
       choose = panel(fresh ? "Sakrij" : "Čaša i boca", acts.join(""));
+    } else if (choosing === w.key) {
+      /* A wine sold one way asks too (owner, 2026-10-11: a tap on the switch
+         hid Meneghetti Blanc de Blancs straight away) — same line, one action. */
+      choose = panel(st === "on" ? "Sakrij" : "Vrati",
+        `<button class="nema all" data-k="${esc(w.key)}" data-w="">${st === "on" ? "sakrij s karte" : "vrati na kartu"}</button>`);
     }
     return `<div class="row ${st === "off" ? "off" : ""} ${st === "glass" || st === "bottle" ? "part" : ""}">
       <div class="who"><span class="nm">${esc(w.name)}</span> <span class="pr">${esc(w.producer)}</span></div>
@@ -406,8 +411,7 @@ function render() {
   const closeAll = () => { choosing = null; editing = null; novoAsk = null; priceNote = ""; bigAsk = null; priceDraft = null; };
   $("rows").querySelectorAll(".sw").forEach((b) =>
     b.addEventListener("click", () => {
-      if (b.dataset.both) { const k = b.dataset.k, was = choosing === k; closeAll(); choosing = was ? null : k; render(); }
-      else { closeAll(); toggle(b.dataset.k, null); }
+      const k = b.dataset.k, was = choosing === k; closeAll(); choosing = was ? null : k; render();
     }));
   $("rows").querySelectorAll(".nema.cancel").forEach((b) =>
     b.addEventListener("click", () => { closeAll(); render(); }));
