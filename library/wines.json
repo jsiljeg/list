@@ -14514,6 +14514,11 @@
    "terroir": "Aulerde",
    "ratings": [
     {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-10-11"
+    },
+    {
      "critic": "James Suckling",
      "score": "97"
     }
