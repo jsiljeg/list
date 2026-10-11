@@ -72,6 +72,7 @@ jobs:
               recommended: $i.recommended, remark: $i.remark,
               answers: [$i.answers[] | select(.kind == null) | {q, a}],
               edits: [$i.answers[] | select(.kind == "edit") | {field, from, to}],
+              ratings_given: ([$i.answers[] | select(.kind == "ratings") | .to] | last // ""),
               photos: [$i.photos[] | "intake/photo-\(.).jpg"] }' "$RUNNER_TEMP/req.json" > "$RUNNER_TEMP/intake/request.json"
           curl -sfS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
                -d "{\"status\":\"working\",\"run_url\":\"$RUN_URL\",\"phase\":\"Pokrenuto — priprema\",\"reset\":true}" "$INBOX/$ID/stanje" > /dev/null

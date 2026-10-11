@@ -1,6 +1,6 @@
 ---
 name: add-wine
-description: Add a wine (or spirit) to the Theatrium list the house way — label-first identification, producer research, Parker check on the owner's subscription, region/terroir ladder, alcohol and serving temperature verified, glass and aromas matched to similar wines already on the list, food pairings, a Filho-voice note and winery story in all 8 languages, placement and price, then the knock-on checks on "Pomozi mi odabrati" and the daily offer. Also covers removing a wine and changing a price. Triggers on "add this wine", "dodaj vino", "new wine", "novo vino", "we got these bottles", a label photo with a price, "replace X with Y", "remove/zamijeni/makni vino", "price is now", "cijena je sada".
+description: Add a wine (or spirit) to the Theatrium list the house way — label-first identification, producer research, Parker check on the owner's subscription, region/terroir ladder, alcohol and serving temperature verified, glass and aromas matched to similar wines already on the list, food pairings, a winery story and — only when there is something worth saying — a note, in all 8 languages, placement and price, then the knock-on checks on "Pomozi mi odabrati" and the daily offer. Also covers removing a wine and changing a price. Triggers on "add this wine", "dodaj vino", "new wine", "novo vino", "we got these bottles", a label photo with a price, "replace X with Y", "remove/zamijeni/makni vino", "price is now", "cijena je sada".
 ---
 
 # Adding a wine to the Theatrium list
@@ -119,7 +119,10 @@ a reason you could tell the owner.
 Languages: hr, en, it, fr, de, zh, sl, es. Write Croatian first and best.
 
 **The note** (per bottle) says what distinguishes *this* bottle. Two or
-three sentences. **The blurb** (per estate, in `data/producers.json`) is
+three sentences. **Only when it is earned** (owner, 2026-10-11): a story, a
+method, something genuinely nice or educational. Otherwise there is no
+`note` key at all — two thirds of the list has none, and a filler note is
+worse than none. Never write one just to have one. **The blurb** (per estate, in `data/producers.json`) is
 written once per house, about the house, never about one flagship — a guest
 must not read about a wine we do not pour.
 

@@ -112,7 +112,7 @@ export async function onRequestPost({ request, env, params }) {
     if (item.status !== "ready") return reply(request, { error: "not_ready" }, 409);
     let b;
     try { b = await request.json(); } catch { return reply(request, { error: "body" }, 400); }
-    const FIELDS = ["alcohol", "temp", "grape", "region", "terroir", "note", "blurb", "komentar"];
+    const FIELDS = ["alcohol", "temp", "grape", "region", "terroir", "note", "blurb", "ratings", "komentar"];
     const at = new Date().toISOString();
     const priceFields = {};
     for (const k of ["price_bottle", "price_glass"]) if (b[k] !== undefined) {

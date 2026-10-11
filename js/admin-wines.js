@@ -150,6 +150,10 @@
           <label class="lbl">Cijena boce (€)<input id="n-bottle" type="text" inputmode="decimal" placeholder="npr. 130"></label>
           <label class="lbl">Cijena čaše (€)<input id="n-glass" type="text" inputmode="decimal" placeholder="ako se toči"></label>
         </div>
+        <!-- Offered on every wine (owner, 2026-10-11): ratings he already
+             knows go straight onto the card. -->
+        <label class="lbl">Ocjene kritičara, ako ih znate
+          <input id="n-ratings" type="text" maxlength="300" placeholder="npr. Parker 95, Suckling 96"></label>
         <!-- Rarely needed, so folded away: the size is read off the label by
              default (owner, 2026-10-11: "easier … and a bit more clean"). -->
         <details class="more">
@@ -391,10 +395,13 @@
         ${row("Čaša", r.glass || i.glass || "")}
         ${row("Arome", (i.aromas || []).map((k) => tr("aromas", k)).join(", "))}
         ${row("Uz jelo", (i.pairings || []).map((k) => tr("pairings", k)).join(", "))}
-        ${row("Ocjene", (w.ratings || []).map((x) => `${x.critic} ${x.score}`).join(", "))}
+        ${ed("Ocjene", "ratings", (w.ratings || []).map((x) => `${x.critic} ${x.score}`).join(", "))}
       </table>
       ${note ? `<p class="note${mine.note ? " changed" : ""}">${w.notePlain ? "" : "„"}${esc(note)}${w.notePlain ? "" : "“ — Filho"}
-        <button class="pen" data-edit="note" data-id="${esc(it.id)}" data-long="1" data-from="${esc((w.note && w.note.hr) || "")}" aria-label="Ispravi bilješku">✎</button></p>` : ""}
+        <button class="pen" data-edit="note" data-id="${esc(it.id)}" data-long="1" data-from="${esc((w.note && w.note.hr) || "")}" aria-label="Ispravi bilješku">✎</button></p>`
+        /* No note is a normal card (owner, 2026-10-11: a note is earned, never forced). */
+        : `<p class="muted small">Bez bilješke — vino je ne treba ako nema što posebno reći.
+            <button class="linkish" data-edit="note" data-id="${esc(it.id)}" data-long="1" data-from="">+ dodaj bilješku</button></p>`}
       ${winery(it, r, p, mine)}
       <p class="muted"><button class="linkish" data-edit="komentar" data-id="${esc(it.id)}" data-long="1" data-from="">+ Što još promijeniti?</button>
         ${mine.komentar ? `<br><i>${esc(mine.komentar.to)}</i>` : ""}</p>
@@ -438,6 +445,7 @@
       fd.append("vol", $("n-vol").value);
       if ($("n-rec").checked) fd.append("recommended", "1");
       fd.append("remark", $("n-remark").value);
+      fd.append("ratings", $("n-ratings").value);
       fd.append("by", (window.adminWho && window.adminWho()) || "");
       sending = "Šaljem…"; setSend();
       await api("", { method: "POST", body: fd });

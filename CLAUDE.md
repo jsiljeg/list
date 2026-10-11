@@ -342,6 +342,14 @@ there is a sentence in that wine's `note`, not another field.
 **Notes:** `note` + `noteSig` renders as a signed quote (defaults to "Filho");
 `notePlain: true` renders unsigned prose.
 
+**A note is earned, never forced** (owner, 2026-10-11). A wine gets a `note`
+only when there is something genuinely nice or educational to say about that
+bottle — a story, a method, a reason to order it. Otherwise it has no `note`
+key at all, which is the normal state: 237 of 369 library wines have none.
+A filler note is worse than no note. This applies to every way a wine is
+added — by hand, through the add-wine skill, and through Dodaj vino — and
+Filho can always add one later from the preview.
+
 **The bottle format is `vol` on the listing, never in the name** (owner,
 2026-08-13). It used to be a suffix — `Prošek Ruža Dalmatinska – 0,375 l` —
 which made one wine two library entries, each carrying its own copy of the same

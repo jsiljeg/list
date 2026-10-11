@@ -65,6 +65,22 @@ this one wine.
   `recommended: true` means it
   is Filho's own pick: his signed note (no `notePlain`) and
   `recommended: true` on the listing. Otherwise `notePlain: true`.
+- **Ratings given up front** (`ratings_given`, e.g. *"Parker 95, Suckling
+  96-98"*) are the owner's or Filho's word: put them on the card as given —
+  critic names through the canonical names in CLAUDE.md (an alias like "WA"
+  or "RP" is Robert Parker), `+` and ranges kept, Jancis as `NN/20` — then
+  `python3 scripts/rank-ratings.py`. No `checked` date: nobody saw it on the
+  critic's site in this run. A Parker score given here means no
+  "Parker nije provjeren" gap. A critic not in `scripts/lib/critics.json`
+  stays off the card and goes in `flags` (adding a critic is a ranking
+  decision). A `ratings` edit in edit mode replaces the card's ratings the
+  same way.
+- **A note only when it is earned** (owner, 2026-10-11). Write `note` when
+  there is something genuinely nice or educational to say about *this*
+  bottle — a story, a method, a reason to order it. Otherwise leave `note`
+  out altogether: two thirds of the list has none, and a filler note is
+  worse than no note. Never pad one to have one. Filho can still add one
+  from the preview (a `note` edit from empty).
 - **The winery.** Check `data/producers.json` first (the app matches by the
   longest key contained in the producer name). **New house** → write its
   story in `draft.producer`, all 8 languages, by the blurb rules in

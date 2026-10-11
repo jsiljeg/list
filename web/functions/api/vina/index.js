@@ -42,10 +42,14 @@ export async function onRequestPost({ request, env }) {
   if (photos.length > 3) return reply(request, { error: "too_many_photos" }, 400);
 
   const id = newId(), now = new Date().toISOString();
+  /* Ratings he already knows ("Parker 95, Suckling 96"), owner 2026-10-11:
+     an answer given up front, data for the run like every answer. */
+  const ratings = clip(form.get("ratings"), 300);
+  const answers = ratings ? JSON.stringify([{ kind: "ratings", to: ratings, at: now }]) : null;
   await env.DB.prepare(
-    `INSERT INTO wine_requests (id, created_at, updated_at, status, price_bottle, price_glass, vol, recommended, remark, runs)
-     VALUES (?1, ?2, ?2, 'queued', ?3, ?4, ?5, ?6, ?7, 0)`)
-    .bind(id, now, bottle, glass, vol, form.get("recommended") === "1" ? 1 : 0, clip(form.get("remark"), 300)).run();
+    `INSERT INTO wine_requests (id, created_at, updated_at, status, price_bottle, price_glass, vol, recommended, remark, runs, answers)
+     VALUES (?1, ?2, ?2, 'queued', ?3, ?4, ?5, ?6, ?7, 0, ?8)`)
+    .bind(id, now, bottle, glass, vol, form.get("recommended") === "1" ? 1 : 0, clip(form.get("remark"), 300), answers).run();
   const saved = await savePhotos(env, id, photos);
   if (saved.error) {
     await env.DB.prepare("DELETE FROM wine_photos WHERE request_id = ?1").bind(id).run();

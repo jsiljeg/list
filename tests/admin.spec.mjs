@@ -301,12 +301,15 @@ test("Dodaj vino: a bottle is sent, a question is answered, the card is previewe
   await page.setInputFiles("#n-front", img("front.png"));
   await page.setInputFiles("#n-back", img("back.png"));
   await page.fill("#n-bottle", "130");
+  await page.fill("#n-ratings", "Parker 95, Suckling 96");   /* offered on every wine */
   await page.click("#n-send");
   await expect(page.locator("#novo-msg")).toContainText("Poslano", { timeout: 15000 });
   const sent = inbox.posts[0].body;
   expect(sent).toContain('name="price_bottle"');
   expect(sent).toContain("130");
   expect(sent, "the photo is re-encoded as JPEG before it leaves").toContain("image/jpeg");
+  expect(sent).toContain('name="ratings"');
+  expect(sent).toContain("Parker 95, Suckling 96");
 
   await page.fill("[data-answer='0']", "16%");
   await page.click('[data-act="odgovor"]');
