@@ -127,9 +127,22 @@ try {
   /* log out: one device at a time on this subscription */
   if (loggedIn) {
     try {
-      const out = await page.evaluate(() => { const a = [...document.querySelectorAll("a")].find((x) => /log ?out|sign ?out/i.test(x.textContent + x.href)); return a ? a.href : ""; });
-      if (out) await page.goto(out, { waitUntil: "domcontentloaded" });
+      const find = () => page.evaluate(() => {
+        const el = [...document.querySelectorAll("a,button")].find((x) => /log ?out|sign ?out|odjava/i.test(x.textContent + " " + (x.href || "")));
+        return el ? (el.href || "button") : "";
+      });
+      await page.goto(BASE + "/", { waitUntil: "domcontentloaded" });
+      let out = await find();
+      if (!out) {
+        /* behind the account menu: open it, then look again */
+        const menu = page.locator("header").getByText(/my account|account|profile/i).first();
+        if (await menu.isVisible().catch(() => false)) { await menu.click(); await page.waitForTimeout(1000); out = await find(); }
+      }
+      if (out && out !== "button") await page.goto(out, { waitUntil: "domcontentloaded" });
+      else if (out === "button") await page.getByRole("button", { name: /log ?out|sign ?out/i }).first().click();
       result.loggedOut = !!out;
+      if (!out) result.logoutHints = await page.evaluate(() => [...document.querySelectorAll("header a, header button, nav a")]
+        .map((x) => (x.textContent || "").trim().slice(0, 30) + " → " + (x.getAttribute("href") || "")).filter((s) => s.length > 3).slice(0, 30));
       writeFileSync(OUT, JSON.stringify(result, null, 1) + "\n");
     } catch { /* the session expires on its own */ }
   }

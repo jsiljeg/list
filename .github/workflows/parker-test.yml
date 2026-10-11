@@ -45,4 +45,4 @@ jobs:
           NAME: ${{ inputs.name }}
         run: |
           node .github/wine-intake/parker.mjs "$RUNNER_TEMP/parker.json" "$PRODUCER" "$NAME"
-          jq '{status, query, match, score, note, loggedOut, candidates: [.candidates[] | {title, score}]}' "$RUNNER_TEMP/parker.json"
+          jq '{status, query, match, score, note, loggedOut, logoutHints, candidates: [.candidates[] | {title, score}]}' "$RUNNER_TEMP/parker.json"
