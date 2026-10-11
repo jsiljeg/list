@@ -14533,6 +14533,50 @@
     "sl": "Aulerde je najtoplejši kotiček Westhofna, ob vznožju Kirchspiela, in to se okusi: rdeča pomaranča, ingver in sol, bolj mesnato in zrelo kot zgoraj na hribu — pa vendar suho do zadnje kapljice. Lep je že danes, zdržal pa bo desetletja.",
     "es": "Aulerde es el rincón más cálido de Westhofen, al pie del Kirchspiel, y se nota en la copa: naranja sanguina, jengibre y sal, más carnoso y maduro que arriba en la colina — y aun así seco hasta la última gota. Precioso ya hoy, y aguantará décadas."
    }
+  },
+  "coche-dury--auxey-duresses-2018": {
+   "name": "Auxey-Duresses 2018",
+   "producer": "Coche-Dury",
+   "insight": {
+    "grape": "Pinot Noir",
+    "region": "Auxey-Duresses, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "red_medium",
+    "body": "medium",
+    "aromas": [
+     "cherry",
+     "strawberry",
+     "blueberry",
+     "earth"
+    ],
+    "pairings": [
+     "poultry",
+     "mushrooms",
+     "game",
+     "veal"
+    ],
+    "temp": "16–18",
+    "alcohol": "13",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "notePlain": true,
+   "ratings": [
+    {
+     "critic": "Vinous",
+     "score": "92"
+    }
+   ],
+   "note": {
+    "hr": "Svijet ovu kuću zna po bijelome, a ovo je njezin crni — s 2 parcele, Les Fosses i Les Boutonniers, zajedno jedva pola hektara. Grozdovi se potpuno odvajaju od peteljki i vino se radi nježno: trešnja i zgnječena jagoda, sočna svježina i zemljani ton ispod. Najtiši ulaz u jedno od najtraženijih imena Burgundije.",
+    "en": "The world knows this house for its whites; this is its red — from 2 parcels, Les Fosses and Les Boutonniers, barely half a hectare between them. Fully destemmed and made gently: cherry and crushed strawberry, juicy freshness and an earthy note underneath. The quietest way into one of the most sought-after names in Burgundy.",
+    "it": "Il mondo conosce questa casa per i suoi bianchi; questo è il suo rosso — da 2 parcelle, Les Fosses e Les Boutonniers, appena mezzo ettaro in tutto. Uve completamente diraspate, vinificazione delicata: ciliegia e fragola schiacciata, freschezza succosa e una nota terrosa sotto. La porta più discreta per uno dei nomi più ricercati della Borgogna.",
+    "fr": "Le monde connaît cette maison pour ses blancs ; voici son rouge — 2 parcelles, Les Fosses et Les Boutonniers, à peine un demi-hectare à elles deux. Raisins entièrement éraflés, vinification tout en douceur : cerise et fraise écrasée, fraîcheur juteuse et une note terrienne en dessous. L'entrée la plus discrète chez l'un des noms les plus recherchés de Bourgogne.",
+    "de": "Die Welt kennt dieses Haus für seine Weißen; das hier ist sein Roter — aus 2 Parzellen, Les Fosses und Les Boutonniers, zusammen kaum ein halber Hektar. Vollständig entrappt und behutsam ausgebaut: Kirsche und zerdrückte Erdbeere, saftige Frische und ein erdiger Ton darunter. Der leiseste Weg zu einem der begehrtesten Namen Burgunds.",
+    "zh": "世人认识这家酒庄是因为它的白葡萄酒；这是它的红葡萄酒——来自 Les Fosses 和 Les Boutonniers 两块地，加起来只有半公顷。葡萄全部去梗，酿造手法轻柔：樱桃与压碎的草莓，多汁的清新，底下一层泥土气息。走进勃艮第最抢手的名字之一，这是最安静的一扇门。",
+    "sl": "Svet to hišo pozna po belih vinih; to je njeno rdeče — z 2 parcel, Les Fosses in Les Boutonniers, skupaj komaj pol hektarja. Grozdje je v celoti razpecljano, vino narejeno nežno: češnja in zmečkana jagoda, sočna svežina in zemeljski ton spodaj. Najtišji vstop v eno najbolj iskanih imen Burgundije.",
+    "es": "El mundo conoce esta casa por sus blancos; este es su tinto — de 2 parcelas, Les Fosses y Les Boutonniers, apenas media hectárea entre las dos. Uva totalmente despalillada y elaboración delicada: cereza y fresa aplastada, frescura jugosa y una nota terrosa debajo. La entrada más discreta a uno de los nombres más buscados de Borgoña."
+   }
   }
  }
 }
