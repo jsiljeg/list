@@ -85,6 +85,7 @@ let listDoc = null;    /* lists/theatrium.json as GitHub has it, edited in place
 let listSha = null;
 let editing = null;    /* "key|index" of the price field that is open */
 let choosing = null;   /* the wine whose hide/return choices are open */
+let novoAsk = null;    /* the wine whose NOVO line is open */
 let rules = [];        /* the current contents of unavailable.json */
 let sha = null;        /* the blob sha we last saw, for the conditional write */
 /* One view at a time — "sve", "skriveno" or "novo" (owner, 2026-10-10: two
@@ -247,26 +248,36 @@ function toggleNew(key) {
   const w = wines.find((x) => x.key === key);
   if (!w || !w.listings.length) return;
   const on = !w.listings.some((l) => l.entry.new);
-  /* Asked first (owner, 2026-10-11): NOVO is one small tag on a busy row,
-     and a stray thumb should not put a wine under NOVO or take it off. */
-  if (!confirm(`${on ? "Uključiti" : "Isključiti"} NOVO za ${w.producer} ${w.name}?`)) return;
+  /* Confirmed on the line under the wine ("uključi NOVO" / "odustani"),
+     the same way as hiding — a stray thumb on the tag changes nothing. */
   for (const l of w.listings) { if (on) l.entry.new = true; else delete l.entry.new; }
   render();
   queue.push({ file: "list", message: `NOVO: ${w.producer} ${w.name} — ${on ? "dodano" : "maknuto"}` });
   drain();
 }
 
-function savePrice(key, idx, text) {
+/* Nothing pops up (owner, 2026-10-11): a price that is not a price, and a
+   jump big enough to be a typo, are both said on the same line under the
+   wine where the price is typed — "spremi 1500 €" / "odustani". */
+let priceNote = "";          /* a message on the open price line */
+let bigAsk = null;           /* {id, value} awaiting "spremi" on a big jump */
+let priceDraft = null;       /* what was typed, kept across a re-render */
+function savePrice(key, idx, text, sure) {
   const w = wines.find((x) => x.key === key);
   const l = w && w.listings[idx];
   if (!l) return;
+  priceDraft = text;
   const next = parsePrice(text);
-  if (next == null) { alert("Upišite cijenu u eurima, npr. 150 ili 8,50."); return; }
+  if (next == null) { priceNote = "Upišite cijenu u eurima, npr. 150 ili 8,50."; bigAsk = null; render(); return; }
   const prev = l.entry.price;
-  editing = null;
-  if (next === prev) { render(); return; }
-  if (Math.abs(next - prev) / prev > BIG_CHANGE &&
-      !confirm(`${w.name}\n${fmtEur(prev)} € → ${fmtEur(next)} €\n\nJeste li sigurni?`)) { render(); return; }
+  if (next === prev) { editing = null; priceNote = ""; bigAsk = null; priceDraft = null; render(); return; }
+  if (!sure && Math.abs(next - prev) / prev > BIG_CHANGE) {
+    priceNote = `${fmtEur(prev)} € → ${fmtEur(next)} € — velika promjena. Sigurno?`;
+    bigAsk = { id: key + "|" + idx, value: next };
+    render();
+    return;
+  }
+  editing = null; priceNote = ""; bigAsk = null; priceDraft = null;
   l.entry.price = next;     /* never l.entry.anchor */
   render();
   const what = l.glass ? " (čaša)" : volLabel(l.entry.vol) ? ` (${volLabel(l.entry.vol)})` : "";
@@ -336,13 +347,7 @@ function render() {
     const prices = w.listings.map((l, i) => {
       const id = w.key + "|" + i;
       const label = l.glass ? "čaša" : (volLabel(l.entry.vol) || "boca");
-      if (editing === id) {
-        return `<span class="pedit"><span class="k">${esc(label)}</span><input type="text" inputmode="decimal"
-            value="${esc(fmtEur(l.entry.price))}" data-k="${esc(w.key)}" data-i="${i}" aria-label="Nova cijena: ${esc(label)}">
-          <button class="ok" data-k="${esc(w.key)}" data-i="${i}" aria-label="Spremi">✓</button>
-          <button class="no" aria-label="Odustani">✕</button></span>`;
-      }
-      return `<button class="price ${out(l.glass) ? "gone" : ""}" data-k="${esc(w.key)}" data-i="${i}"
+      return `<button class="price ${out(l.glass) ? "gone" : ""} ${editing === id ? "open" : ""}" data-k="${esc(w.key)}" data-i="${i}"
           aria-label="${esc(label)} — promijeni cijenu"><span class="k">${esc(label)}</span> ${esc(fmtEur(l.entry.price))} €</button>`;
     }).join('<span class="sep">·</span>');
     const partial = st === "glass" || st === "bottle"
@@ -350,9 +355,27 @@ function render() {
     const since = st !== "on" && rule && (rule.since || rule.reason)
       ? `<span class="since">${esc([rule.since, rule.reason].filter(Boolean).join(" · "))}</span>` : "";
     const novo = w.listings.length
-      ? `<button class="novo ${isNew ? "on" : ""}" data-k="${esc(w.key)}" aria-pressed="${isNew}"
+      ? `<button class="novo ${isNew ? "on" : ""} ${novoAsk === w.key ? "open" : ""}" data-k="${esc(w.key)}" aria-pressed="${isNew}"
            aria-label="NOVO ${isNew ? "uključeno" : "isključeno"}">NOVO</button>` : "";
+    /* Every action confirms the same way (owner, 2026-10-11: no pop-up, no
+       ✓/✕, no third mechanism): one line under the wine with the actions as
+       buttons and "odustani". One line open at a time. */
+    const cancel = `<button class="nema cancel">odustani</button>`;
     let choose = "";
+    const editIdx = editing && editing.startsWith(w.key + "|") ? Number(editing.slice(w.key.length + 1)) : -1;
+    if (editIdx >= 0 && w.listings[editIdx]) {
+      const l = w.listings[editIdx];
+      const label = l.glass ? "čaša" : (volLabel(l.entry.vol) || "boca");
+      choose = `<div class="choose pedit"><span class="k">${esc(label)}</span>
+        <input type="text" inputmode="decimal" value="${esc(priceDraft != null ? priceDraft : fmtEur(l.entry.price))}" data-k="${esc(w.key)}" data-i="${editIdx}"
+               aria-label="Nova cijena: ${esc(label)}"><span class="eur">€</span>
+        <button class="nema ok" data-k="${esc(w.key)}" data-i="${editIdx}">${bigAsk && bigAsk.id === editing
+          ? `da, spremi ${esc(fmtEur(bigAsk.value))} €` : "spremi"}</button>${cancel}
+        ${priceNote ? `<span class="note">${esc(priceNote)}</span>` : ""}</div>`;
+    }
+    if (novoAsk === w.key) {
+      choose = `<div class="choose"><button class="nema yes novo-yes" data-k="${esc(w.key)}">${isNew ? "isključi NOVO" : "uključi NOVO"}</button>${cancel}</div>`;
+    }
     if (choosing === w.key && both) {
       const acts = [];
       for (const h of ["glass", "bottle"]) {
@@ -360,7 +383,7 @@ function render() {
         acts.push(`<button class="nema" data-k="${esc(w.key)}" data-w="${h}">${hidden ? "vrati" : "sakrij"} ${HALF[h][0]}</button>`);
       }
       acts.unshift(`<button class="nema all" data-k="${esc(w.key)}" data-w="">${st === "on" ? "sakrij sve" : "vrati sve"}</button>`);
-      choose = `<div class="choose">${acts.join("")}<button class="nema cancel" aria-label="Odustani">✕</button></div>`;
+      choose = `<div class="choose">${acts.join("")}${cancel}</div>`;
     }
     return `<div class="row ${st === "off" ? "off" : ""} ${st === "glass" || st === "bottle" ? "part" : ""}">
       <div class="who"><span class="nm">${esc(w.name)}</span> <span class="pr">${esc(w.producer)}</span></div>
@@ -371,32 +394,38 @@ function render() {
     </div>`;
   }).join("");
 
+  const closeAll = () => { choosing = null; editing = null; novoAsk = null; priceNote = ""; bigAsk = null; priceDraft = null; };
   $("rows").querySelectorAll(".sw").forEach((b) =>
     b.addEventListener("click", () => {
-      if (b.dataset.both) { choosing = choosing === b.dataset.k ? null : b.dataset.k; render(); }
-      else toggle(b.dataset.k, null);
+      if (b.dataset.both) { const k = b.dataset.k, was = choosing === k; closeAll(); choosing = was ? null : k; render(); }
+      else { closeAll(); toggle(b.dataset.k, null); }
     }));
-  $("rows").querySelectorAll(".nema").forEach((b) =>
-    b.addEventListener("click", () => {
-      const k = b.dataset.k;
-      choosing = null;
-      if (b.classList.contains("cancel")) { render(); return; }
-      toggle(k, b.dataset.w || null);
-    }));
+  $("rows").querySelectorAll(".nema.cancel").forEach((b) =>
+    b.addEventListener("click", () => { closeAll(); render(); }));
+  $("rows").querySelectorAll(".nema[data-w]").forEach((b) =>
+    b.addEventListener("click", () => { const k = b.dataset.k; closeAll(); toggle(k, b.dataset.w || null); }));
   $("rows").querySelectorAll(".novo").forEach((b) =>
-    b.addEventListener("click", () => toggleNew(b.dataset.k)));
+    b.addEventListener("click", () => { const k = b.dataset.k, was = novoAsk === k; closeAll(); novoAsk = was ? null : k; render(); }));
+  $("rows").querySelectorAll(".novo-yes").forEach((b) =>
+    b.addEventListener("click", () => { const k = b.dataset.k; closeAll(); toggleNew(k); }));
   $("rows").querySelectorAll(".price").forEach((b) =>
-    b.addEventListener("click", () => { editing = b.dataset.k + "|" + b.dataset.i; render(); }));
+    b.addEventListener("click", () => {
+      const id = b.dataset.k + "|" + b.dataset.i, was = editing === id;
+      closeAll(); editing = was ? null : id; render();
+    }));
   const field = $("rows").querySelector(".pedit input");
   if (field) {
-    field.focus(); field.select();
-    const go = () => savePrice(field.dataset.k, Number(field.dataset.i), field.value);
+    field.focus();
+    if (!priceNote) field.select();
+    const go = () => savePrice(field.dataset.k, Number(field.dataset.i), field.value,
+      !!(bigAsk && bigAsk.id === editing && parsePrice(field.value) === bigAsk.value));
+    /* typing again after a warning asks again */
+    field.addEventListener("input", () => { priceDraft = field.value; if (bigAsk) { bigAsk = null; priceNote = ""; } });
     field.addEventListener("keydown", (e) => {
       if (e.key === "Enter") go();
-      if (e.key === "Escape") { editing = null; render(); }
+      if (e.key === "Escape") { closeAll(); render(); }
     });
     $("rows").querySelector(".pedit .ok").addEventListener("click", go);
-    $("rows").querySelector(".pedit .no").addEventListener("click", () => { editing = null; render(); });
   }
 }
 

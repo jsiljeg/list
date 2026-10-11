@@ -223,23 +223,28 @@ test("a price is edited on the board, and only the price changes", async ({ page
 });
 
 test("a price that is not a price is refused, and a big jump asks first", async ({ page }) => {
+  /* Both said on the line under the wine (owner, 2026-10-11: one way of
+     confirming, nothing popping up). */
   const state = await board(page);
   await page.fill("#q", "Merlot Opoka");
   await page.waitForTimeout(200);
   const dialogs = [];
-  page.on("dialog", (d) => { dialogs.push(d.type()); d.type() === "confirm" ? d.dismiss() : d.accept(); });
+  page.on("dialog", (d) => { dialogs.push(d.type()); d.dismiss(); });
 
   await page.locator(".row").filter({ hasText: "Merlot Opoka" }).locator(".price").first().click();
   await page.fill(".pedit input", "sto pedeset");
   await page.click(".pedit .ok");
-  await page.waitForTimeout(300);
-  expect(dialogs).toEqual(["alert"]);
+  await expect(page.locator(".choose .note")).toContainText("Upišite cijenu");
 
   await page.fill(".pedit input", "1500");          /* 150 → 1500: one zero too many */
   await page.click(".pedit .ok");
-  await page.waitForTimeout(600);
-  expect(dialogs).toEqual(["alert", "confirm"]);
-  expect(state.listPuts, "dismissed, so nothing written").toEqual([]);
+  await expect(page.locator(".choose .note")).toContainText("velika promjena");
+  await expect(page.locator(".pedit .ok")).toHaveText("da, spremi 1500 €");
+  await expect(page.locator(".pedit input"), "what was typed stays in the field").toHaveValue("1500");
+  await page.click(".choose .nema.cancel");
+  await page.waitForTimeout(300);
+  expect(state.listPuts, "cancelled, so nothing written").toEqual([]);
+  expect(dialogs, "nothing pops up").toEqual([]);
 });
 
 /* ---------- Dodaj vino (2026-10-10; "Novo vino" until the owner renamed it) ---------- */
@@ -301,14 +306,16 @@ test("NOVO is switched on the board, on every listing of that wine", async ({ pa
   await page.waitForTimeout(200);
   const chip = page.locator(".row").filter({ hasText: "Merlot Opoka" }).locator(".novo");
   await expect(chip).toHaveAttribute("aria-pressed", "false");
-  /* asked first: dismissing changes nothing, accepting switches it */
-  page.once("dialog", (d) => d.dismiss());
+  /* confirmed on the line under the wine, like hiding: "odustani" changes
+     nothing, "uključi NOVO" switches it */
   await chip.click();
+  await page.click(".choose .nema.cancel");
   await page.waitForTimeout(300);
   await expect(chip).toHaveAttribute("aria-pressed", "false");
   expect(state.listPuts).toEqual([]);
-  page.once("dialog", (d) => { expect(d.message()).toBe("Uključiti NOVO za Marjan Simčič Merlot Opoka 2017?"); d.accept(); });
   await chip.click();
+  await expect(page.locator(".novo-yes")).toHaveText("uključi NOVO");
+  await page.click(".novo-yes");
   await page.waitForFunction(() => document.getElementById("s2").className === "done", null, { timeout: 60000 });
   expect(priceOf(state.list, ref).new).toBe(true);
   expect(state.listPuts).toEqual(["NOVO: Marjan Simčič Merlot Opoka 2017 — dodano — Filho"]);
