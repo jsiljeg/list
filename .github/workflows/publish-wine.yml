@@ -82,7 +82,7 @@ jobs:
           # the card was written: the request holds the latest. Set them on this
           # wine's new listings — glass in the glass section, bottle elsewhere.
           python3 - "$RUNNER_TEMP/req.json" <<'PY'
-          import json, sys
+          import json, os, sys
           req = json.load(open(sys.argv[1], encoding="utf-8"))["item"]
           ref, pb, pg = req["ref"], req.get("price_bottle"), req.get("price_glass")
           # NOVO: Filho's last tap on the preview, else what the run proposed.
@@ -109,6 +109,8 @@ jobs:
                   continue   # a magnum beside it keeps its own price
               if want is not None:
                   it["price"] = int(want) if float(want).is_integer() else want
+          # the commit title says what was published, NOVO or not
+          open(os.environ["RUNNER_TEMP"] + "/novo", "w").write("1" if novo else "")
           open(p, "w", encoding="utf-8", newline="\n").write(json.dumps(doc, ensure_ascii=False, indent=1) + "\n")
           PY
           phase "Provjerava cijelu kartu"
@@ -117,7 +119,8 @@ jobs:
           phase "Sprema na kartu"
           who="${BY:-Filho}"
           email="$(printf '%s' "$who" | tr '[:upper:]' '[:lower:]' | tr -cd 'a-z0-9')@theatrium-admin.invalid"
-          git commit -q --author="$who <$email>" -m "$TITLE joins NOVO — $who" \
+          if [ -s "$RUNNER_TEMP/novo" ]; then joins="joins NOVO"; else joins="joins the list"; fi
+          git commit -q --author="$who <$email>" -m "$TITLE $joins — $who" \
                      -m "Added through Dodaj vino (request $ID): sent by ${SENT:-?}, published by $who from /admin."
           git push origin HEAD:main
           git push origin --delete "wine/$ID" || true

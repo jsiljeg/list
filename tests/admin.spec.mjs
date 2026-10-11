@@ -471,7 +471,15 @@ test("Dodaj vino: progress is shown step by step, and nothing pops up", async ({
     { id: "w1", status: "working", created_at: ago(9), updated_at: ago(8), price_bottle: 95, photos: [], questions: [], answers: [], result: null,
       progress: [{ t: "Čita etiketu", at: ago(7) }, { t: "Istražuje · wittmann-weingut.com", at: ago(3) }] },
     { id: "r1", status: "ready", created_at: ago(60), updated_at: ago(40), price_bottle: 130, photos: [], questions: [], answers: [],
-      result: { draft: { wine: lib["le-ragose--amarone-classico-riserva-2013"] }, gaps: [], novo: true } },
+      result: { draft: { wine: lib["le-ragose--amarone-classico-riserva-2013"] }, gaps: [], novo: true,
+        producer_status: "known", producer_known: { name: "Le Ragose", blurb_hr: "Priča o kući.", other_wines: ["Caloetto 2015"] } } },
+    /* published without NOVO: the card must not claim it */
+    { id: "p1", status: "published", created_at: ago(90), updated_at: ago(80), published_at: ago(80), price_bottle: 200, photos: [], questions: [], answers: [],
+      result: { draft: { wine: lib["le-ragose--amarone-classico-riserva-2013"] }, novo: false, novo_reason: "nova berba vina koje već imamo" } },
+    /* published after Filho switched NOVO on over the run's "no": his tap wins */
+    { id: "p2", status: "published", created_at: ago(95), updated_at: ago(85), published_at: ago(85), price_bottle: 90, photos: [], questions: [],
+      answers: [{ kind: "novo", to: true, at: ago(86) }],
+      result: { draft: { wine: lib["le-ragose--amarone-classico-riserva-2013"] }, novo: false } },
   ];
   await page.route("https://theatrium.devinos.hr/api/vina**", (route) => {
     const req = route.request();
@@ -486,6 +494,10 @@ test("Dodaj vino: progress is shown step by step, and nothing pops up", async ({
   await expect(steps.last()).toContainText("wittmann-weingut.com");
   await expect(steps.last()).toContainText("3 min");
   expect(await page.locator("#tab-novo").innerText(), "no Claude in what Filho reads").not.toMatch(/Claude/);
+
+  await expect(page.locator("#req-r1 .winery")).toContainText("Vinarija je već na karti (Caloetto 2015)");
+  await expect(page.locator("#req-p1")).toContainText("nije pod NOVO (nova berba vina koje već imamo)");
+  await expect(page.locator("#req-p2")).toContainText("Gosti ga vide pod NOVO");
 
   /* NOVO changes on the tap, before the server answers */
   await page.click('#req-r1 [data-act="novo"][data-to=""]');

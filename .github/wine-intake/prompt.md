@@ -65,6 +65,22 @@ this one wine.
   `recommended: true` means it
   is Filho's own pick: his signed note (no `notePlain`) and
   `recommended: true` on the listing. Otherwise `notePlain: true`.
+- **The winery.** Check `data/producers.json` first (the app matches by the
+  longest key contained in the producer name). **New house** → write its
+  story in `draft.producer`, all 8 languages, by the blurb rules in
+  CLAUDE.md. **House already there** → `draft.producer: null`; keep its story
+  unless the new wine makes it wrong or leaves it out entirely (a story about
+  their Riesling when we now pour their Spätburgunder too) — then edit that
+  entry in place, all 8 languages, and say so. Either way write
+  `"producer_note"`: one Croatian line for Filho, e.g. *"Priča o vinariji
+  ostaje ista — već govori o njihovim GG rizlinzima."* or *"Dopunio sam
+  priču: sad spominje i njihov pinot."* The workflow adds
+  `producer_status` / `producer_known` itself; don't write those.
+- **An older vintage of the same wine still on the list** (Aulerde GG 2020
+  beside the 2023 you are adding): add the new one beside it, leave the old
+  listing alone, and say it in `placement` and in `gaps`, in Croatian —
+  *"Na karti je i berba 2020 (136 €) — skinite je na Karti ako je
+  zamijenjena."* Whether the old bottles are gone is Filho's to say.
 - **Same wine already in the library** (same producer, name and vintage):
   do not create a second entry — list the existing ref (add.py supports a
   draft with only `ref` and `listings`). If it is **already listed** in the
@@ -79,7 +95,9 @@ some fields in the preview; `request.json.edits` lists them
 (`{field, from, to}`). Apply exactly those changes. A changed Croatian note
 or winery story must be mirrored in **all 8 languages**, keeping each
 language's voice; a changed number (alcohol, temperature, price) is applied
-as given. Change nothing else. Ask nothing unless an edit is genuinely
+as given. A `blurb` edit on a house that was already on the list
+(`draft.producer` is null) changes that house's entry in
+`data/producers.json` — the same story every wine of theirs shows. Change nothing else. Ask nothing unless an edit is genuinely
 ambiguous. Then re-run the checks and write `result.json` as in add mode.
 
 ## Checks before you finish (same as the skill)
@@ -105,6 +123,7 @@ or
   "placement": "<where it sits on the list, in Croatian>",
   "gaps": ["Parker nije provjeren", "…"],
   "pairings_hr": "<one line: which dishes it now suits and in which band>",
+  "producer_note": "<one Croatian line: new story, story kept, or story changed and how>",
   "notes": "<for the owner, English: sources, departures, judgement calls>",
   "flags": []
 }

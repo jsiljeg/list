@@ -88,6 +88,14 @@ jobs:
       - name: Put the intake beside the repo
         run: cp -r "$RUNNER_TEMP/intake" intake
 
+      # The two helpers always come from main: an edit run checks out the
+      # card's branch, which may predate them.
+      - name: Fetch the helpers from main
+        run: |
+          for f in progress.mjs producer-known.mjs; do
+            curl -sfS "https://raw.githubusercontent.com/${{ github.repository }}/main/.github/wine-intake/$f" -o "$RUNNER_TEMP/$f" || true
+          done
+
       # Always the newest CLI, and the alias rather than a model id, so the
       # newest Opus is used the day it ships (owner, 2026-10-10: Opus by
       # default; `fable`, the frontier tier, spends the subscription faster).
@@ -104,11 +112,8 @@ jobs:
           WK: ${{ secrets.WINE_WORKER_KEY }}
         run: |
           set -uo pipefail
-          # progress.mjs is read from main's copy in this checkout; an edit run
-          # on an older branch may not have it, and then there is no live
-          # progress, but the run is unaffected.
-          P=.github/wine-intake/progress.mjs
-          cp "$P" "$RUNNER_TEMP/progress.mjs" 2>/dev/null || true
+          # If progress.mjs could not be fetched there is no live progress,
+          # but the run is unaffected.
           curl -sS -X POST -H "Authorization: Bearer $WK" -H "content-type: application/json" \
                -d '{"phase":"Čita etiketu"}' "$INBOX/$ID/stanje" > /dev/null || true
           # The settings deny reading anything outside the checkout, so the
@@ -153,6 +158,11 @@ jobs:
           if [ -f intake/result.json ] && jq -e '.status == "ready"' intake/result.json > /dev/null \
              && git diff --quiet -- library lists data js; then
             jq '.status = "already_listed"' intake/result.json > intake/r.tmp && mv intake/r.tmp intake/result.json
+          fi
+          # Whether the winery is new or already on the list, read from the
+          # files rather than taken from the model (owner, 2026-10-11).
+          if [ -f intake/result.json ] && [ -f "$RUNNER_TEMP/producer-known.mjs" ]; then
+            node "$RUNNER_TEMP/producer-known.mjs" intake/result.json || true
           fi
           if [ -f intake/result.json ] && jq -e '.status == "ready" or .status == "needs_info" or .status == "already_listed"' intake/result.json > /dev/null; then
             cp intake/result.json out/result.json
@@ -248,7 +258,8 @@ jobs:
           elif [ "$STATUS" = "ready" ] && [ "$APPLIED" = "success" ]; then
             body=$(jq -c --argjson u "$usage" --arg run "$RUN_URL" --arg b "$BRANCH" \
               '{status: "ready", branch: $b, ref: .ref, usage: $u, run_url: $run,
-                result: {draft, glass, placement, gaps, pairings_hr, notes, flags, novo, novo_reason}}' out/result.json)
+                result: {draft, glass, placement, gaps, pairings_hr, notes, flags, novo, novo_reason,
+                         producer_status, producer_known, producer_note}}' out/result.json)
           else
             err="Kartica nije prošla provjeru — vlasnik je obaviješten."
             [ "$STATUS" = "failed" ] && err="Kartica nije dovršena — pokušajte ponovno."

@@ -259,6 +259,7 @@
   /* A row of equal buttons; a step that cannot be undone asks on the same
      row first — "da, objavi" · "odustani" — never in a pop-up. */
   let confirming = null;   /* {id, action} */
+  const novoSaving = {};    /* id -> the NOVO save in flight */
   const cardErr = {};
   const ASK = { objavi: ["da, objavi", "ok"], odbaci: ["da, odbaci vino", "all"] };
   function actRow(id, acts) {
@@ -298,7 +299,10 @@
         ${n ? actRow(it.id, [["ispravak", `pošalji ispravke (${n})`, "ok"], ["ponisti", "poništi"]])
             : actRow(it.id, [["objavi", "objavi na karti", "ok"], ["odbaci", "odbaci vino"]])}`;
     }
-    if (it.status === "published") body = `<p class="muted">Objavljeno ${esc((it.published_at || "").slice(0, 10))}. Gosti ga vide pod NOVO.</p>`;
+    /* Says what was actually published (owner, 2026-10-11: the line said
+       "pod NOVO" on a new vintage that, by the rule, was not NOVO). */
+    if (it.status === "published") body = `<p class="muted">Objavljeno ${esc((it.published_at || "").slice(0, 10))}. ${novoState(it, r)
+      ? "Gosti ga vide pod NOVO." : `Na karti je, ali nije pod NOVO${r.novo_reason ? ` (${esc(r.novo_reason)})` : ""} — uključuje se na Karti.`}</p>`;
     if (["queued", "working", "publishing"].includes(it.status)) body = progress(it) +
       (it.status === "queued" ? actRow(it.id, [["odbaci", "odbaci vino"]]) : "");
     /* A failure says where it stopped, and that nothing has to be sent again. */
@@ -336,6 +340,27 @@
       <button class="nema ${on ? "" : "ok"}" data-act="novo" data-to="" data-id="${esc(it.id)}" aria-pressed="${!on}">nije novo</button></div>${why}`;
   }
 
+  /* The winery, always said (owner, 2026-10-11: "if we have the producer, it
+     should say so"): a new story the run wrote, the story already on the list
+     with what else of theirs we pour, or that there is none. Either story is
+     corrected with ✎ like any field; a change to an existing one is made in
+     place, in all 8 languages, by an edit run. */
+  function winery(it, r, p, mine) {
+    const known = r.producer_known;
+    const status = r.producer_status || (p ? "new" : known ? "known" : "");
+    const name = p ? p.name : known ? known.name : "";
+    const text = p ? (p.blurb && p.blurb.hr) || "" : known ? known.blurb_hr || "" : "";
+    const head = status === "new" ? "Nova vinarija na karti — nova priča"
+      : status === "known" ? `Vinarija je već na karti${known.other_wines && known.other_wines.length
+          ? ` (${known.other_wines.map(esc).join(", ")})` : ""} — priča ostaje ista`
+      : status === "none" ? "Vinarija nema priču na karti" : "";
+    if (!head) return "";
+    return `<div class="winery"><div class="w-head">${head}</div>
+      ${text ? `<p class="blurb${mine.blurb ? " changed" : ""}"><b>${esc(name)}</b> — ${esc(mine.blurb ? mine.blurb.to : text)}
+        <button class="pen" data-edit="blurb" data-id="${esc(it.id)}" data-long="1" data-from="${esc(text)}" aria-label="Ispravi priču o vinariji">✎</button></p>` : ""}
+      ${r.producer_note ? `<p class="muted small">${esc(r.producer_note)}</p>` : ""}</div>`;
+  }
+
   function preview(it, r) {
     const w = r.draft.wine, i = w.insight || {}, p = r.draft.producer;
     const tr = (group, k) => (T[group] && T[group][k]) || k;
@@ -370,8 +395,7 @@
       </table>
       ${note ? `<p class="note${mine.note ? " changed" : ""}">${w.notePlain ? "" : "„"}${esc(note)}${w.notePlain ? "" : "“ — Filho"}
         <button class="pen" data-edit="note" data-id="${esc(it.id)}" data-long="1" data-from="${esc((w.note && w.note.hr) || "")}" aria-label="Ispravi bilješku">✎</button></p>` : ""}
-      ${p ? `<p class="blurb${mine.blurb ? " changed" : ""}"><b>${esc(p.name)}</b> — ${esc(mine.blurb ? mine.blurb.to : (p.blurb && p.blurb.hr))}
-        <button class="pen" data-edit="blurb" data-id="${esc(it.id)}" data-long="1" data-from="${esc((p.blurb && p.blurb.hr) || "")}" aria-label="Ispravi priču o vinariji">✎</button></p>` : ""}
+      ${winery(it, r, p, mine)}
       <p class="muted"><button class="linkish" data-edit="komentar" data-id="${esc(it.id)}" data-long="1" data-from="">+ Što još promijeniti?</button>
         ${mine.komentar ? `<br><i>${esc(mine.komentar.to)}</i>` : ""}</p>
       ${r.placement ? `<p class="muted">Na karti: ${esc(r.placement)}</p>` : ""}
@@ -443,9 +467,12 @@
         const mark = { kind: "novo", to: on, local: true };
         it.answers = [...(it.answers || []), mark];
         renderNovo();
-        try {
-          await api(`/${id}/ispravak`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ novo: on }) });
-        } catch (e) {
+        /* Filho's choice is final (owner, 2026-10-11), so "objavi" waits for
+           it to be saved rather than racing it. */
+        const save = (novoSaving[id] || Promise.resolve()).then(() =>
+          api(`/${id}/ispravak`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ novo: on }) }));
+        novoSaving[id] = save.catch(() => {});
+        try { await save; } catch (e) {
           it.answers = it.answers.filter((a) => a !== mark);
           cardErr[id] = "NOVO nije spremljen: " + e.message;
           renderNovo();
@@ -471,6 +498,8 @@
         for (const f of more.slice(0, 3)) fd.append("photo", await shrink(f), "label.jpg");
         await api(`/${id}/odgovor`, { method: "POST", body: fd });
       } else {
+        if (action === "objavi" && novoSaving[id]) await novoSaving[id];
+        if (cardErr[id]) return;   /* the NOVO choice did not save: say so, publish nothing */
         const path = action === "odbaci" ? "odustani" : action;
         await api(`/${id}/${path}`, { method: "POST", headers: { "content-type": "application/json" },
           body: JSON.stringify({ by: (window.adminWho && window.adminWho()) || "" }) });
