@@ -1,0 +1,48 @@
+# Parker lookup, on its own — to try parker.mjs against the real site without
+# adding a wine. Manual only; uses the commercial subscription's login from the
+# wine-intake environment. Prints titles and scores, never review text.
+name: Parker lookup (test)
+
+on:
+  workflow_dispatch:
+    inputs:
+      producer:
+        description: "producer, as on our list"
+        required: true
+        type: string
+      name:
+        description: "wine name with vintage, as on our list"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  lookup:
+    runs-on: ubuntu-latest
+    environment: wine-intake
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout: .github/wine-intake
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install a browser
+        run: |
+          cd .github/wine-intake
+          npm init -y > /dev/null
+          npm install --no-save --silent playwright-core@1.62.0
+          npx --yes playwright@1.62.0 install --with-deps chromium > /dev/null
+      - name: Look it up
+        env:
+          PARKER_USER: ${{ secrets.PARKER_USER }}
+          PARKER_PASS: ${{ secrets.PARKER_PASS }}
+          PRODUCER: ${{ inputs.producer }}
+          NAME: ${{ inputs.name }}
+        run: |
+          node .github/wine-intake/parker.mjs "$RUNNER_TEMP/parker.json" "$PRODUCER" "$NAME"
+          jq '{status, query, match, score, note, loggedOut, candidates: [.candidates[] | {title, score}]}' "$RUNNER_TEMP/parker.json"
