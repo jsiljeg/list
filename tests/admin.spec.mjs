@@ -535,3 +535,54 @@ test("the ratings fields offer exactly the approved critics, in the house order"
   await page.click("#n-send");
   await expect(page.locator("#novo-msg")).toContainText("Vinous");
 });
+
+test("Troškovi: where the money goes, receipts by month, a category fixed in one tap, nothing pops up", async ({ page }) => {
+  /* Owner, 2026-10-11: Filho photographs receipts; the tab shows where his
+     money goes. The API is faked here — receipts never leave the inbox. */
+  await board(page);
+  const dialogs = [];
+  page.on("dialog", (d) => { dialogs.push(d.message()); d.dismiss(); });
+  const now = new Date().toISOString().slice(0, 7);
+  const r = (id, day, vendor, items) => ({ id, created_at: `${now}-${day}T09:00:00Z`, updated_at: `${now}-${day}T09:00:00Z`, status: "done",
+    vendor, doc_date: `${now}-${day}`, total: items.reduce((s, i) => s + i.total, 0), vat: null, payment: "", items, photos: [1], note: "", created_by: "Filho" });
+  const items = [
+    r("a", "02", "Metro", [{ name: "Pileća prsa", key: "pileca prsa", qty: 2, unit: "kg", unit_price: 8, total: 16, category: "meso" },
+                           { name: "Folija", key: "folija", qty: 1, unit: "kom", unit_price: 4, total: 4, category: "ambalaza" }]),
+    r("b", "05", "Metro", [{ name: "Pileća prsa", key: "pileca prsa", qty: 2, unit: "kg", unit_price: 9, total: 18, category: "meso" }]),
+    r("c", "06", "Vinoteka", [{ name: "Pošip", key: "posip", qty: 6, unit: "kom", unit_price: 15, total: 90, category: "vino" }]),
+  ];
+  const posts = [];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => {
+    const req = route.request();
+    if (req.method() === "POST") posts.push({ path: new URL(req.url()).pathname, body: req.postData() || "" });
+    if (req.url().includes("/foto/")) return route.fulfill({ status: 404, body: "" });
+    return route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify(req.method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) });
+  });
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+
+  /* Pregled: the month total and the biggest group first */
+  await expect(page.locator(".big b")).toHaveText(/128\s€/);
+  await expect(page.locator(".bars .bar").first()).toContainText("Piće");
+
+  /* Cijene: the chicken went from 8 to 9 €/kg */
+  await page.click('[data-sub="cijene"]');
+  await expect(page.locator(".pr").filter({ hasText: "Pileća prsa" })).toContainText("13%");
+
+  /* Računi: grouped by month; a line's category changes on the tap */
+  await page.click('[data-sub="racuni"]');
+  await expect(page.locator(".mh").first()).toContainText(/128\s€/);
+  await page.click('[data-open="a"]');
+  await page.locator(".chip").filter({ hasText: "Ambalaža" }).click();
+  await page.click('[data-setcat="a|1|ciscenje"]');
+  await expect(page.locator(".chip").filter({ hasText: "Čišćenje" })).toBeVisible();
+  await expect.poll(() => posts.map((p) => p.path)).toContain("/api/troskovi/a/kategorija");
+
+  /* deleting asks on the row first */
+  await page.click('[data-del="a"]');
+  await expect(page.locator('[data-del="a"][data-sure="1"]')).toHaveText("da, obriši račun");
+  await page.click("[data-nodel]");
+  expect(posts.some((p) => p.path.endsWith("/obrisi"))).toBe(false);
+  expect(dialogs).toEqual([]);
+});

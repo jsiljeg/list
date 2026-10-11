@@ -233,3 +233,46 @@ CREATE TABLE IF NOT EXISTS wine_dispatches (
   kind        TEXT NOT NULL CHECK (kind IN ('add', 'publish'))
 );
 CREATE INDEX IF NOT EXISTS idx_wine_disp_date ON wine_dispatches (date, kind);
+
+-- Troškovi (2026-10-11): Filho photographs his receipts in /admin, a private
+-- repository's run reads them, and the admin shows where the money goes.
+-- Confidential: photos and results live here only — never in the public list
+-- repo, its logs or its artifacts. Design: web/EXPENSES.md.
+CREATE TABLE IF NOT EXISTS expense_receipts (
+  id          TEXT PRIMARY KEY,               -- yyyymmdd-<random>
+  created_at  TEXT NOT NULL,
+  updated_at  TEXT NOT NULL,
+  created_by  TEXT,
+  status      TEXT NOT NULL DEFAULT 'queued'
+              CHECK (status IN ('queued', 'working', 'done', 'failed')),
+  batch       TEXT,                           -- the run reading it
+  runs        INTEGER NOT NULL DEFAULT 0,
+  vendor      TEXT,                           -- as printed
+  vendor_oib  TEXT,
+  doc_date    TEXT,                           -- YYYY-MM-DD, from the receipt
+  doc_no      TEXT,
+  total       REAL,                           -- what was paid, EUR
+  vat         REAL,
+  payment     TEXT,                           -- gotovina | kartica | virman | ""
+  items       TEXT,                           -- JSON [{name, key, qty, unit, unit_price, total, category}]
+  note        TEXT,                           -- the reader's remark: illegible, partial, a duplicate …
+  error       TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_exp_status ON expense_receipts (status, updated_at);
+CREATE INDEX IF NOT EXISTS idx_exp_date ON expense_receipts (doc_date);
+
+CREATE TABLE IF NOT EXISTS expense_photos (
+  receipt_id  TEXT NOT NULL,
+  n           INTEGER NOT NULL,
+  mime        TEXT NOT NULL,
+  bytes       BLOB NOT NULL,
+  created_at  TEXT NOT NULL,
+  PRIMARY KEY (receipt_id, n)
+);
+
+CREATE TABLE IF NOT EXISTS expense_dispatches (
+  at     TEXT NOT NULL,
+  date   TEXT NOT NULL,                       -- Zagreb day, for the caps
+  batch  TEXT NOT NULL,
+  n      INTEGER NOT NULL                     -- receipts in it
+);
