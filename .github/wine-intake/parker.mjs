@@ -135,14 +135,21 @@ try {
       let out = await find();
       if (!out) {
         /* behind the account menu: open it, then look again */
-        const menu = page.locator("header").getByText(/my account|account|profile/i).first();
-        if (await menu.isVisible().catch(() => false)) { await menu.click(); await page.waitForTimeout(1000); out = await find(); }
+        const menus = page.locator('[class*="user" i], [class*="account" i], [class*="avatar" i], [class*="profile" i], [aria-label*="account" i], [aria-label*="user" i]');
+        for (let i = 0; i < Math.min(await menus.count(), 6) && !out; i++) {
+          const m = menus.nth(i);
+          if (!(await m.isVisible().catch(() => false))) continue;
+          await m.click({ timeout: 3000 }).catch(() => {});
+          await page.waitForTimeout(800);
+          out = await find();
+        }
       }
       if (out && out !== "button") await page.goto(out, { waitUntil: "domcontentloaded" });
       else if (out === "button") await page.getByRole("button", { name: /log ?out|sign ?out/i }).first().click();
       result.loggedOut = !!out;
-      if (!out) result.logoutHints = await page.evaluate(() => [...document.querySelectorAll("header a, header button, nav a")]
-        .map((x) => (x.textContent || "").trim().slice(0, 30) + " → " + (x.getAttribute("href") || "")).filter((s) => s.length > 3).slice(0, 30));
+      if (!out) result.logoutHints = await page.evaluate(() => [...document.querySelectorAll("header *, nav *")]
+        .filter((x) => !(x.textContent || "").trim() && (x.onclick || x.tagName === "BUTTON" || x.tagName === "A" || x.getAttribute("role") === "button" || /user|account|avatar|profile|login/i.test(x.className + "")))
+        .map((x) => `${x.tagName}.${String(x.className).slice(0, 60)} aria=${x.getAttribute("aria-label") || ""} href=${x.getAttribute("href") || ""}`).slice(0, 25));
       writeFileSync(OUT, JSON.stringify(result, null, 1) + "\n");
     } catch { /* the session expires on its own */ }
   }
