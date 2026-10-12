@@ -572,7 +572,7 @@ test("Troškovi: where the money goes, receipts by month, a category fixed in on
   await page.click('[data-sub="cijene"]');
   await expect(page.locator(".pr").filter({ hasText: "Pileća prsa" })).toContainText("13%");
 
-  /* Računi: grouped by month; a line's category changes on the tap */
+  /* Računi: this month, with its total; a line's category changes on the tap */
   await page.click('[data-sub="racuni"]');
   await expect(page.locator("#tab-troskovi [data-up]")).toHaveCount(2);   /* camera and gallery */
   await expect(page.locator(".mh").first()).toContainText(/128\s€/);
@@ -795,4 +795,31 @@ test("Troškovi: a paid mark on a photo carries over to its e-invoice twin", () 
   const src = readFileSync(new URL("../web/functions/api/troskovi/[id]/[action].js", import.meta.url), "utf8");
   expect(src).toMatch(/if \(photo\.paid_at && !einv\.paid_at\) await setFields\(env, einv\.id, \{ paid_at: photo\.paid_at \}\)/);
   expect(readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8")).toMatch(/SELECT id, doc_no, doc_date, total, paid_at FROM/);
+});
+
+/* Owner, 2026-10-12: "month option to select and only then invoices are
+   shown, not endless scrolling". Računi lists one month, switched with the
+   same ‹ › as Pregled, and the two tabs share the month. */
+test("Troškovi: Računi shows one month at a time, the same month as Pregled", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const [y, m] = ym.split("-").map(Number);
+  const prev = new Date(Date.UTC(y, m - 2, 1)).toISOString().slice(0, 7);
+  const r = (id, mo, total) => ({ id, created_at: `${mo}-03T09:00:00Z`, updated_at: "", status: "done", vendor: "Dobavljač " + id,
+    vendor_oib: "", doc_date: `${mo}-03`, doc_no: "", total, vat: null, payment: "kartica", photos: [], note: "", created_by: "",
+    source: "foto", dup_of: "", due_date: "", paid_at: "", items: [{ name: "x", key: "", qty: null, unit: "", unit_price: null, total, category: "meso" }] });
+  const items = [r("now1", ym, 10), r("now2", ym, 20), r("old", prev, 70)];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="racuni"]');
+  await expect(page.locator(".rec")).toHaveCount(2);
+  await expect(page.locator(".mh")).toContainText(/2 računa\s*30\s€/);
+  await page.click('.mnav [data-m="-1"]');
+  await expect(page.locator(".rec")).toHaveCount(1);
+  await expect(page.locator('[data-open="old"]')).toBeVisible();
+  /* Pregled is on the same month */
+  await page.click('[data-sub="pregled"]');
+  await expect(page.locator(".big b")).toHaveText(/^70\s€/);
 });

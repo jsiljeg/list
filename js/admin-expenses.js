@@ -154,9 +154,9 @@
     for (const i of r.items) { const g = groupOf(i.category)[0]; by[g] = (by[g] || 0) + Math.abs(i.total || 0); }
     return Object.entries(by).sort((a, b) => b[1] - a[1])[0][0];
   }
-  function kindChips() {
+  function kindChips(list) {
     const counts = {};
-    for (const r of done()) { const k = kindOf(r); if (k) counts[k] = (counts[k] || 0) + 1; }
+    for (const r of list) { const k = !r.dup_of && kindOf(r); if (k) counts[k] = (counts[k] || 0) + 1; }
     const shown = GROUPS.filter(([k]) => counts[k] || k === kind);
     if (shown.length < 2 && !kind) return "";
     return `<div class="kinds" role="group" aria-label="Vrsta računa">
@@ -385,6 +385,7 @@
     saving = true; err = ""; render();
     try {
       await api(m.editId ? `/${m.editId}/uredi` : "", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+      month = (m.date || "").slice(0, 7) || month;
       manual = null; saving = false; catPick = null;
       await load();
     } catch (e) { saving = false; err = "Nije spremljeno: " + e.message; render(); }
@@ -417,28 +418,27 @@
       }
       picked.splice(0).forEach((p) => URL.revokeObjectURL(p.url));
       oneReceipt = false; sending = "";
-      sub = "racuni";
+      sub = "racuni"; month = latestMonth();
       await load();
     } catch (e) { sending = ""; err = "Nije poslano: " + e.message; render(); }
   }
 
   /* ---------- receipts ---------- */
+  /* One month at a time (owner, 2026-10-12: "month option to select and only
+     then invoices are shown — not endless scrolling"), with the same ‹ month ›
+     switch and the same month as Pregled; a kind chosen narrows it further
+     and the total follows. */
   function receiptsView() {
-    /* grouped by month, each with its total, newest first; a kind chosen
-       above narrows the list and the month totals with it */
     const fits = (r) => !kind || kindOf(r) === kind;
-    let lastMonth = "";
-    const rows = receipts.filter(fits).map((r) => {
-      const m = monthOf(r);
-      let headline = "";
-      if (m !== lastMonth) {
-        lastMonth = m;
-        const sum = inMonth(m).filter(fits).reduce((s, x) => s + totalOf(x), 0);
-        headline = `<h3 class="h mh"><span>${esc(monthName(m))}</span><span>${sum ? eur0(sum) : ""}</span></h3>`;
-      }
-      return headline + receiptRow(r);
-    }).join("");
-    return `${uploadCard()}${merLine()}${kindChips()}${rows || `<p class="muted center">Nema računa.</p>`}`;
+    const ofMonth = receipts.filter((r) => monthOf(r) === month);
+    const list = ofMonth.filter(fits);
+    const counted = list.filter((r) => r.status === "done" && !r.dup_of);
+    const sum = counted.reduce((s, r) => s + totalOf(r), 0);
+    const mloc = MONTHS_LOC[Number(month.slice(5, 7)) - 1];
+    return `${uploadCard()}${merLine()}${monthNav()}${kindChips(ofMonth)}
+      ${list.length ? `<h3 class="h mh"><span>${counted.length} ${plural(counted.length, "račun", "računa", "računa")}</span><span>${sum ? eur0(sum) : ""}</span></h3>
+        ${list.map(receiptRow).join("")}`
+        : `<p class="muted center">${kind ? "Ovakvih računa" : "Računa"} u ${mloc} nema.</p>`}`;
   }
 
   /* moj-eRačun: one quiet line. E-invoices come in by themselves; the line
@@ -612,7 +612,7 @@
   /* ---------- wiring ---------- */
   function wire(box) {
     box.querySelectorAll("[data-sub]").forEach((b) => b.addEventListener("click", () => { sub = b.dataset.sub; render(); }));
-    box.querySelectorAll("[data-m]").forEach((b) => b.addEventListener("click", () => { month = shiftMonth(month, Number(b.dataset.m)); openGroup = null; render(); }));
+    box.querySelectorAll("[data-m]").forEach((b) => b.addEventListener("click", () => { month = shiftMonth(month, Number(b.dataset.m)); openGroup = null; open = null; render(); }));
     box.querySelectorAll("[data-month]").forEach((b) => b.addEventListener("click", () => { month = b.dataset.month; openGroup = null; render(); }));
     box.querySelectorAll("[data-group]").forEach((b) => b.addEventListener("click", () => { openGroup = openGroup === b.dataset.group ? null : b.dataset.group; render(); }));
     box.querySelectorAll("[data-up]").forEach((inp) => inp.addEventListener("change", () => {
