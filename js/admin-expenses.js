@@ -136,7 +136,7 @@
     r.paid_at = paid ? todayIso() : "ne";
     if (paid && document.getElementById("za-platiti")) justPaid.set(id, setTimeout(() => { justPaid.delete(id); render(); }, 6000));
     render();
-    try { await api(`/${id}/placeno`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ paid }) }); }
+    try { await api(`/${id}/placeno`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ paid, by: who() }) }); }
     catch (e) { r.paid_at = before; justPaid.delete(id); err = "Nije spremljeno: " + e.message; render(); }
   }
   function payPill(r) {
@@ -455,16 +455,22 @@
     return `<p class="mer">📨 e-Računi iz moj-eRačuna stižu sami${mer.last_ok ? ` · provjereno ${at(mer.last_ok)}` : ""}${btn}</p>`;
   }
 
-  /* A line as printed on the paper (owner, 2026-10-12: "Teranino didn't cost
-     like you put it"): 6 kom × 16,80 € · rabat 5%, then the printed amount.
-     The per-kg/l price with PDV that Cijene compares is never shown here. */
+  /* A line in the paper's own quantity and unit (owner, 2026-10-12:
+     "Teranino didn't cost like you put it"), priced WITH PDV ("you can just
+     show price with PDV"): an invoice that prints 6 kom × 16,80 € − 5% net
+     reads 6 kom × 19,95 € · s rabatom 5%, = 119,70 €. A till receipt already
+     prints with PDV, so its price is the printed one. The per-kg/l price that
+     Cijene compares is never shown here. */
   const nf = (n) => new Intl.NumberFormat("hr-HR", { maximumFractionDigits: 3 }).format(n);
   function lineSmall(it) {
     if (it.doc_total != null) {
       const u = esc(it.doc_unit || "kom");
       const q = it.doc_qty != null ? `${nf(it.doc_qty)} ${u}` : "";
-      const p = it.doc_price != null ? `${eur(it.doc_price)}${it.doc_base ? ` / ${nf(it.doc_base)} ${u}` : ""}` : "";
-      const parts = [[q, p].filter(Boolean).join(" × "), it.discount ? `rabat ${nf(it.discount)}%` : ""].filter(Boolean);
+      const asPrinted = it.total == null || Math.abs(it.doc_total - it.total) < 0.01;
+      const price = asPrinted ? it.doc_price
+        : it.doc_qty ? Math.round((it.total / it.doc_qty) * (it.doc_base || 1) * 100) / 100 : null;
+      const p = price != null ? `${eur(price)}${it.doc_base ? ` / ${nf(it.doc_base)} ${u}` : ""}` : "";
+      const parts = [[q, p].filter(Boolean).join(" × "), it.discount ? `s rabatom ${nf(it.discount)}%` : ""].filter(Boolean);
       return parts.length ? `<small>${parts.join(" · ")}</small>` : "";
     }
     /* read before 2026-10-12: only the converted figures exist */
@@ -490,8 +496,7 @@
         ${st === "failed" ? `<p class="err">${esc(r.error || "Račun se ne može pročitati.")}</p>` : ""}
         ${r.items.length ? `<div class="items">${r.items.map((it, i) => `
           <div class="it"><span class="in">${esc(it.name)}${lineSmall(it)}</span>
-            <b>${eur(it.doc_total != null ? it.doc_total : it.total)}${it.doc_total != null && it.total != null && Math.abs(it.doc_total - it.total) > 0.01
-              ? `<small>s PDV-om ${eur(it.total)}</small>` : ""}</b>
+            <b>${eur(it.total != null ? it.total : it.doc_total)}</b>
             <button class="chip" data-cat="${esc(r.id)}|${i}" style="border-color:${groupOf(it.category)[3]}">${esc(CAT[it.category] || it.category)} ▾</button>
             ${catPick === `${r.id}|${i}` ? catPicker(`r|${r.id}|${i}`, it.category) : ""}
           </div>`).join("")}</div>` : ""}

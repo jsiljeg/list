@@ -199,6 +199,20 @@ export function cleanItems(items) {
 }
 export { num };
 
+/* Povijest for Troškovi (owner, 2026-10-12: "who put the invoice in PLAĆENO /
+   NEPLAĆENO, Filho/Jure — just like for NOVO"). The wine list's history is its
+   git log; receipts never touch git, so their history lives here, beside
+   them, behind the same staff key. The supplier and amount are copied in, so
+   a line still reads after its receipt is deleted. */
+export async function logEvent(env, { who, receipt, action }) {
+  try {
+    await env.DB.prepare(
+      "INSERT INTO expense_events (at, who, receipt_id, action, vendor, amount) VALUES (?1, ?2, ?3, ?4, ?5, ?6)")
+      .bind(nowIso(), clip(who, 40).replace(/[^\p{L} .-]/gu, ""), receipt.id, action, clip(receipt.vendor, 120),
+            receipt.total != null ? receipt.total : null).run();
+  } catch { /* history must never fail the change it records */ }
+}
+
 /* A receipt read again keeps the categories Filho chose by hand: line by line
    when the count is the same, otherwise where the product key matches. */
 export function keepFixed(oldItems, newItems) {

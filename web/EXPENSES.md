@@ -190,3 +190,21 @@ a card receipt he is still settling), empty (the default).
 
 The made-up demo ("Pogledaj primjer") was removed at the owner's request —
 the tab has real receipts now.
+
+## As printed, priced with PDV — and who marked it paid (owner, 2026-10-12)
+
+"Numbers are made up — Teranino didn't cost like you put it." They were
+converted, not made up: the reader turned bottles into litres and added PDV,
+and the receipt showed only that (4,2 l × 28,50 € for 6 × 0,7 l). Each line now
+keeps the paper's quantity and unit (`doc_qty`, `doc_unit`, `doc_price`,
+`discount`, `doc_total`, `vat_rate` — copied, never derived) and is **shown
+with PDV**, as the owner asked: *6 kom × 19,95 € · s rabatom 5% … 119,70 €*.
+A till receipt prints with PDV already, so its price is the printed one. The
+per-kg/l price lives only in Cijene. "Pročitaj ponovno" re-reads a photo,
+keeping categories chosen by hand.
+
+**Povijest** lists PLAĆENO / NEPLAĆENO taps with who made them, among the wine
+list's changes. The wine list's history is its git log; receipts never touch
+git, so these come from `expense_events` in D1 (`GET /api/troskovi/povijest`,
+staff key), with supplier and amount copied in so a deleted receipt still
+reads. The toggle sends `by` — the name /admin is signed in as, as for NOVO.

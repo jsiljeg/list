@@ -288,6 +288,18 @@ CREATE TABLE IF NOT EXISTS expense_dispatches (
 --                 invoice means still to pay (card and cash need no mark)
 -- moj-eRačun: every document the inbox has handed over, so none is fetched
 -- twice — including one Filho deleted, which must not come back.
+-- Povijest for Troškovi: who marked what paid or unpaid, and when. Receipts
+-- never go to git, so unlike the wine list their history is kept here.
+CREATE TABLE IF NOT EXISTS expense_events (
+  at          TEXT NOT NULL,                  -- ISO
+  who         TEXT,                           -- the name /admin is signed in as
+  receipt_id  TEXT NOT NULL,
+  action      TEXT NOT NULL,                  -- placeno | neplaceno
+  vendor      TEXT,                           -- copied, so a deleted receipt still reads
+  amount      REAL
+);
+CREATE INDEX IF NOT EXISTS idx_exp_events_at ON expense_events (at);
+
 CREATE TABLE IF NOT EXISTS expense_mer_docs (
   electronic_id INTEGER PRIMARY KEY,         -- MER's ElectronicId
   receipt_id    TEXT,                        -- NULL when it was not an invoice

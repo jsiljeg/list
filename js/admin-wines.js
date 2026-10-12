@@ -587,6 +587,10 @@
     box.innerHTML = `<p class="muted">Učitavam…</p>`;
     try {
       const paths = ["lists/theatrium.json", "data/unavailable.json", "library/wines.json"];
+      /* Troškovi keeps its own log beside the receipts (never in git); a
+         failure there must not cost the wine list its history */
+      const expenses = fetch("https://theatrium.devinos.hr/api/troskovi/povijest", { headers: { Authorization: "Bearer " + token } })
+        .then((r) => (r.ok ? r.json() : { events: [] })).then((b) => b.events || []).catch(() => []);
       const lists = await Promise.all(paths.map((p) => fetch(
         `https://api.github.com/repos/jsiljeg/list/commits?sha=main&path=${encodeURIComponent(p)}&per_page=40`,
         { headers: { Authorization: "Bearer " + token, Accept: "application/vnd.github+json" } }).then((r) => (r.ok ? r.json() : []))));
@@ -601,7 +605,8 @@
       const kind = (m) => (/^Nema/.test(m) ? "makn" : /^Vraćeno/.test(m) ? "vrac"
         : /^Cijena:/.test(m) ? "cijena" : /^NOVO:/.test(m) ? "flag"
         : /joins NOVO|joins the list|joins|^Novo vino|^Dodaj vino/i.test(m) ? "novo" : null);
-      const label = { novo: "Dodano", makn: "Skinuto", vrac: "Vraćeno", cijena: "Cijena", flag: "NOVO" };
+      const label = { novo: "Dodano", makn: "Skinuto", vrac: "Vraćeno", cijena: "Cijena", flag: "NOVO",
+                      placeno: "PLAĆENO", neplaceno: "NEPLAĆENO" };
       const entries = [];
       for (const c of rows) {
         const lines = c.commit.message.split("\n");
@@ -616,11 +621,16 @@
         for (const raw of items) {
           const item = signer ? raw.replace(new RegExp(` — ${signer.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`), "") : raw;
           const k = kind(item);
-          if (k) entries.push({ c, item, k, by });
+          if (k) entries.push({ at: c.commit.author.date, item, k, by });
         }
       }
-      box.innerHTML = entries.slice(0, 80).map(({ c, item, k, by }) => {
-        const d = new Date(c.commit.author.date).toLocaleString("hr-HR", { day: "numeric", month: "numeric", hour: "2-digit", minute: "2-digit" });
+      const money = (n) => (n == null ? "" : " · " + new Intl.NumberFormat("hr-HR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n) + " €");
+      for (const e of await expenses) {
+        entries.push({ at: e.at, item: `Račun: ${e.vendor || "bez naziva"}${money(e.amount)}`, k: e.action, by: e.who || "?" });
+      }
+      entries.sort((a, b) => b.at.localeCompare(a.at));
+      box.innerHTML = entries.slice(0, 80).map(({ at, item, k, by }) => {
+        const d = new Date(at).toLocaleString("hr-HR", { day: "numeric", month: "numeric", hour: "2-digit", minute: "2-digit" });
         let badge = label[k], what = item;
         if (k === "makn" || k === "vrac") {
           badge += /čašu/.test(item) ? " (čaša)" : /bocu/.test(item) ? " (boca)" : "";

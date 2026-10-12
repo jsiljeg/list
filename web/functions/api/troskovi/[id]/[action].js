@@ -4,13 +4,14 @@
  *   kategorija  (staff)  {i, category}: Filho moves one line to another category
  *   ispravi     (staff)  {vendor?, doc_date?, total?}: he corrects the header
  *   uredi       (staff)  a hand-typed expense, typed again (same body as POST /api/troskovi)
- *   placeno     (staff)  {paid: true|false}: paid today, or not paid after all
+ *   placeno     (staff)  {paid: true|false, by}: paid today, or not paid after all —
+ *                        logged with who tapped it, for Povijest (expense_events)
  *   nije_isti   (staff)  "this is not the same invoice": a receipt marked as a twin counts again
  *   ponovi      (staff)  a receipt is read again — a failed one, or a photo read
  *                        under older rules (categories chosen by hand are kept)
  *   obrisi      (staff)  the receipt and its photos are deleted for good */
 import { reply, isStaffAsync, isExpenseWorker, readReceipt, setFields, pump, clip, num, cleanItems, cleanManual,
-         mergeEinvoice, keepFixed, zagrebDate, CATEGORIES } from "../../../_lib/expenses.js";
+         mergeEinvoice, keepFixed, zagrebDate, logEvent, CATEGORIES } from "../../../_lib/expenses.js";
 import { findTwin } from "../../../_lib/mer.js";
 
 export async function onRequestPost({ request, env, params }) {
@@ -93,6 +94,7 @@ export async function onRequestPost({ request, env, params }) {
   if (action === "placeno") {
     /* "ne" says he unmarked it — a card receipt he still owes on stays unpaid */
     await setFields(env, id, { paid_at: b.paid === false ? "ne" : zagrebDate() });
+    await logEvent(env, { who: b.by, receipt: item, action: b.paid === false ? "neplaceno" : "placeno" });
     return reply(request, { ok: true, item: await readReceipt(env, id) });
   }
   if (action === "nije_isti") {

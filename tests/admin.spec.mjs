@@ -684,7 +684,7 @@ test("Troškovi: PLAĆENO / NEPLAĆENO is one pill that toggles on every receipt
   await expect(page.getByText("Pogledaj primjer")).toHaveCount(0);
 });
 
-test("Troškovi: a line shows what is printed on the paper, not the converted price", async ({ page }) => {
+test("Troškovi: a line shows the paper's quantity, priced with PDV — not a converted price", async ({ page }) => {
   /* owner, 2026-10-12: "Teranino didn't cost like you put it". The LIGNUM
      invoice prints 6 kom × 16,80 € − 5% = 95,76 € net; we showed 4,2 l × 28,50 €. */
   await board(page);
@@ -701,9 +701,32 @@ test("Troškovi: a line shows what is printed on the paper, not the converted pr
   await page.click('[data-sub="racuni"]');
   await page.click('[data-open="lig"]');
   const line = page.locator(".it").first();
-  await expect(line).toContainText(/6 kom × 16,80\s€ · rabat 5%/);
-  await expect(line.locator("b")).toContainText(/^95,76\s€/);
-  await expect(line.locator("b small")).toContainText(/s PDV-om 119,70\s€/);
+  /* the paper's quantity, priced with PDV (owner: "you can just show price with PDV") */
+  await expect(line).toContainText(/6 kom × 19,95\s€ · s rabatom 5%/);
+  await expect(line.locator("b")).toHaveText(/^119,70\s€$/);
   await expect(line).not.toContainText("28,50");
   await expect(page.locator('[data-retry="lig"]')).toHaveText("pročitaj ponovno");
+});
+
+test("Povijest: who marked an invoice PLAĆENO or NEPLAĆENO, among the wine list's changes", async ({ page }) => {
+  /* owner, 2026-10-12: "who put the invoice in PLAĆENO/NEPLAĆENO (Filho/Jure),
+     just like for NOVO". Receipts never touch git, so their log comes from the
+     inbox, and the toggle sends who tapped it. */
+  await board(page);
+  const commits = [{ sha: "h0", commit: { message: "NOVO: Chavost Paradoxe — dodano — Filho", author: { date: "2026-10-12T10:00:00Z", name: "Filho" } } }];
+  await page.route(/api\.github\.com\/repos\/jsiljeg\/list\/commits/, (r) =>
+    r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(commits) }));
+  await page.route("https://theatrium.devinos.hr/api/troskovi/povijest", (r) => r.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify({ events: [
+      { at: "2026-10-12T11:00:00Z", who: "Jure", receipt_id: "a", action: "neplaceno", vendor: "KONZUM plus d.o.o.", amount: 102.82 },
+      { at: "2026-10-12T09:00:00Z", who: "Filho", receipt_id: "b", action: "placeno", vendor: "LIGNUM d.o.o.", amount: 523.65 }] }) }));
+  await page.click('.tabs button[data-tab="povijest"]');
+  await page.waitForSelector(".hist");
+  const rows = await page.locator(".hist").evaluateAll((els) => els.map((e) =>
+    `${e.querySelector(".badge").textContent}|${e.querySelector(".what").textContent}`));
+  expect(rows).toEqual([
+    "NEPLAĆENO|Račun: KONZUM plus d.o.o. · 102,82 € · Jure",
+    "NOVO uklj.|Chavost Paradoxe · Filho",
+    "PLAĆENO|Račun: LIGNUM d.o.o. · 523,65 € · Filho",
+  ]);
 });
