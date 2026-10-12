@@ -62,7 +62,142 @@
   let oneReceipt = false, sending = "";
   const thumbs = new Map();
 
+  /* ---------- the demo (owner, 2026-10-12: "mock data … so I can show Filho
+     how it works") ----------
+     Six months of made-up receipts from Zagreb suppliers, answered by the same
+     api() every screen uses — so upload, reading, recategorising and deleting
+     all behave as they will for real. Nothing leaves the phone: no request is
+     made while the demo is on, and leaving it brings the real tab back. A
+     receipt "sent" in the demo is "read" a few seconds later, which is the
+     whole flow in one minute. */
+  let demo = false, demoData = null;
+  function seeded(seed) {
+    let s = seed;
+    return () => { s = (s * 1103515245 + 12345) % 2147483648; return s / 2147483648; };
+  }
+  const DEMO_SHOPS = [
+    ["Metro Cash & Carry", "38016445738", "kartica", [
+      ["Pileća prsa", "pileca prsa", "kg", 8.49, "meso", 4, 9], ["Svinjski vrat", "svinjski vrat", "kg", 7.2, "meso", 3, 7],
+      ["Maslinovo ulje ekstra djevičansko 5 l", "maslinovo ulje ekstra djevicansko", "l", 8.4, "suha", 10, 10],
+      ["Brašno T-550", "brasno t550", "kg", 0.89, "suha", 10, 25], ["Tjestenina penne", "tjestenina penne", "kg", 2.1, "suha", 5, 10],
+      ["Riža arborio", "riza arborio", "kg", 3.6, "suha", 3, 6], ["Vrhnje za kuhanje 1 l", "vrhnje za kuhanje", "l", 2.89, "mlijecno", 6, 12],
+      ["Maslac", "maslac", "kg", 9.9, "mlijecno", 2, 4], ["Parmigiano Reggiano", "parmigiano reggiano", "kg", 21.9, "mlijecno", 1, 3],
+      ["Jaja L", "jaja", "kom", 0.32, "mlijecno", 30, 90], ["Prozirna folija 300 m", "prozirna folija", "kom", 6.5, "ambalaza", 1, 2],
+      ["Papir za pečenje", "papir za pecenje", "kom", 4.2, "ambalaza", 1, 3], ["Deterdžent za suđe 5 l", "deterdzent za sude", "l", 2.98, "ciscenje", 5, 10],
+      ["Sol za perilicu", "sol za perilicu", "kg", 0.9, "ciscenje", 4, 8]]],
+    ["Ribarnica Kaptol", "61928374650", "gotovina", [
+      ["Brancin", "brancin", "kg", 18.5, "riba", 3, 8], ["Orada", "orada", "kg", 16.9, "riba", 2, 6],
+      ["Škampi", "skampi", "kg", 38, "riba", 1, 3], ["Lignje", "lignje", "kg", 19.5, "riba", 1, 4]]],
+    ["OPG Horvat, Dolac", "", "gotovina", [
+      ["Rajčica", "rajcica", "kg", 3.2, "povrce", 5, 12], ["Tikvice", "tikvice", "kg", 2.4, "povrce", 3, 8],
+      ["Bosiljak", "bosiljak", "kom", 1.2, "povrce", 5, 15], ["Krumpir", "krumpir", "kg", 1.1, "povrce", 10, 25],
+      ["Limun", "limun", "kg", 2.9, "povrce", 2, 5]]],
+    ["Mesnica Bobić", "28374655102", "kartica", [
+      ["Junetina za gulaš", "junetina za gulas", "kg", 13.9, "meso", 3, 7], ["Juneći file", "juneci file", "kg", 39, "meso", 1, 3],
+      ["Teleći obrazi", "teleci obrazi", "kg", 18.5, "meso", 2, 4]]],
+    ["Vinoteka Bornstein", "90817263544", "virman", [
+      ["Kunjas Pošip 2024", "kunjas posip", "kom", 14.2, "vino", 6, 12], ["Meneghetti Blanc de Blancs", "meneghetti blanc de blancs", "kom", 24, "vino", 6, 6],
+      ["Pinot Grigio Vie di Romans", "vie di romans pinot grigio", "kom", 28, "vino", 3, 6]]],
+    ["Pekara Dubravica", "11223344556", "gotovina", [
+      ["Kruh pšenični", "kruh psenicni", "kom", 1.9, "pekara", 10, 20], ["Ciabatta", "ciabatta", "kom", 0.9, "pekara", 20, 40]]],
+    ["Franck kava", "45612378901", "virman", [["Kava u zrnu 1 kg", "kava u zrnu", "kg", 19.8, "kava", 4, 8]]],
+  ];
+  function demoReceipts() {
+    const rnd = seeded(20261012), out = [];
+    const today = new Date();
+    let n = 0;
+    for (let back = 5; back >= 0; back--) {
+      const d0 = new Date(Date.UTC(today.getFullYear(), today.getMonth() - back, 1));
+      const ym = d0.toISOString().slice(0, 7);
+      const fullDays = new Date(Date.UTC(d0.getUTCFullYear(), d0.getUTCMonth() + 1, 0)).getUTCDate();
+      const lastDay = back === 0 ? today.getDate() : fullDays;
+      const visits = [[0, 4], [1, 3], [2, 4], [3, 2], [4, 2], [5, 4], [6, 1]];
+      for (const [si, times] of visits) {
+        const [vendor, oib, pay, goods] = DEMO_SHOPS[si];
+        for (let t = 0; t < times; t++) {
+          /* days spread over the whole month; this month keeps only those up to today */
+          const day = Math.min(fullDays, Math.max(1, Math.round(((t + 0.5) / times) * fullDays + (rnd() - 0.5) * 4)));
+          if (day > lastDay) { rnd(); continue; }
+          const pickN = Math.max(1, Math.min(goods.length, 2 + Math.floor(rnd() * 5)));
+          const chosen = goods.slice().sort(() => rnd() - 0.5).slice(0, pickN);
+          const items = chosen.map(([name, key, unit, base, category, lo, hi]) => {
+            const qty = unit === "kom" || lo >= 5 ? Math.round(lo + rnd() * (hi - lo)) : Math.round((lo + rnd() * (hi - lo)) * 100) / 100;
+            /* two that visibly climb, for Cijene */
+            /* a few climb, one gets cheaper with the season, the rest hold */
+            const months = 5 - back;
+            const climb = { "maslinovo ulje ekstra djevicansko": 1 + months * 0.03, skampi: 1 + months * 0.025, "juneci file": 1 + (months >= 3 ? 0.08 : 0),
+              "pileca prsa": 1 + (months >= 4 ? 0.06 : 0), rajcica: 1 - months * 0.04, "kava u zrnu": 1 + (months >= 2 ? 0.05 : 0) }[key] || 1;
+            const unit_price = Math.round(base * climb * 100) / 100;
+            return { name, key, qty, unit, unit_price, total: Math.round(qty * unit_price * 100) / 100, category };
+          });
+          const total = Math.round(items.reduce((s, i) => s + i.total, 0) * 100) / 100;
+          out.push({ id: `demo-${++n}`, created_at: `${ym}-${String(day).padStart(2, "0")}T10:00:00Z`, updated_at: "", created_by: "Filho",
+            status: "done", vendor, vendor_oib: oib, doc_date: `${ym}-${String(day).padStart(2, "0")}`, doc_no: `${n}/1/1`,
+            total, vat: Math.round(total * 0.16 * 100) / 100, payment: pay, items, note: "", error: "", photos: [] });
+        }
+      }
+      /* the monthly bills */
+      for (const [vendor, name, key, amount, category, day] of [
+        ["HEP Elektra", "Električna energija", "struja", 610 + (5 - back) * 18, "rezije", 20],
+        ["Gradska plinara Zagreb", "Plin", "plin", 240 - back * 6, "rezije", 18],
+        ["Najam prostora", "Najam", "najam", 2500, "rezije", 1],
+        ["Knjigovodstvo Marić", "Knjigovodstvene usluge", "knjigovodstvo", 300, "usluge", 5]]) {
+        if (day > lastDay) continue;
+        out.push({ id: `demo-${++n}`, created_at: `${ym}-${String(day).padStart(2, "0")}T09:00:00Z`, updated_at: "", created_by: "Filho",
+          status: "done", vendor, vendor_oib: "", doc_date: `${ym}-${String(day).padStart(2, "0")}`, doc_no: "", total: amount, vat: null,
+          payment: "virman", items: [{ name, key, qty: 1, unit: "kom", unit_price: amount, total: amount, category }], note: "", error: "", photos: [] });
+      }
+    }
+    /* one that could not be read, as it will happen */
+    out.push({ id: "demo-mutan", created_at: today.toISOString(), updated_at: "", created_by: "Filho", status: "failed",
+      vendor: "", items: [], photos: [], note: "", error: "Slika je mutna — ukupni iznos se ne vidi. Slikajte račun ravno, pri svjetlu." });
+    return out.sort((a, b) => (b.doc_date || b.created_at).localeCompare(a.doc_date || a.created_at));
+  }
+  /* a receipt "sent" in the demo is read a few seconds later */
+  function demoRead(r) {
+    const rnd = seeded(Date.now() % 100000);
+    const [vendor, oib, pay, goods] = DEMO_SHOPS[Math.floor(rnd() * 3)];
+    const items = goods.slice(0, 3 + Math.floor(rnd() * 3)).map(([name, key, unit, base, category, lo, hi]) => {
+      const qty = unit === "kom" || lo >= 5 ? Math.round(lo + rnd() * (hi - lo)) : Math.round((lo + rnd() * (hi - lo)) * 100) / 100;
+      const unit_price = Math.round(base * 1.1 * 100) / 100;
+      return { name, key, qty, unit, unit_price, total: Math.round(qty * unit_price * 100) / 100, category };
+    });
+    const total = Math.round(items.reduce((s, i) => s + i.total, 0) * 100) / 100;
+    Object.assign(r, { status: "done", vendor, vendor_oib: oib, payment: pay, doc_date: new Date().toISOString().slice(0, 10),
+      doc_no: "99/1/1", total, vat: Math.round(total * 0.16 * 100) / 100, items });
+  }
+  async function demoApi(path, opts = {}) {
+    await new Promise((res) => setTimeout(res, 250));
+    const method = opts.method || "GET";
+    if (!path && method === "GET") return { items: demoData, limits: { ready: true } };
+    if (!path && method === "POST") {
+      const r = { id: `demo-new-${Date.now()}`, created_at: new Date().toISOString(), updated_at: "", created_by: who() || "Filho",
+        status: "working", vendor: "", items: [], photos: [], note: "", error: "" };
+      demoData.unshift(r);
+      setTimeout(() => { demoRead(r); if (demo) load(); }, 5000);
+      return { ok: true, item: r };
+    }
+    const [, id, action] = path.split("/");
+    const r = demoData.find((x) => x.id === id);
+    if (!r) throw new Error("not_found");
+    if (action === "kategorija") { const b = JSON.parse(opts.body); r.items[b.i].category = b.category; return { ok: true }; }
+    if (action === "obrisi") { demoData = demoData.filter((x) => x !== r); return { ok: true }; }
+    if (action === "ponovi") {
+      r.status = "working"; r.error = "";
+      setTimeout(() => { demoRead(r); if (demo) load(); }, 5000);
+      return { ok: true };
+    }
+    return { ok: true };
+  }
+  function setDemo(on) {
+    demo = on; demoData = on ? demoReceipts() : null;
+    open = null; openGroup = null; catPick = null; confirmDel = null; err = "";
+    sub = "pregled"; month = new Date().toISOString().slice(0, 7);
+    load();
+  }
+
   async function api(path, opts = {}) {
+    if (demo) return demoApi(path, opts);
     const r = await fetch(API + path, { ...opts, headers: { authorization: "Bearer " + ghKey(), ...(opts.headers || {}) } });
     const b = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(b.error || "HTTP " + r.status);
@@ -79,7 +214,7 @@
     /* until the first receipt is read, the tab opens where receipts are added */
     if (!opened) { opened = true; if (!receipts.some((r) => r.status === "done")) sub = "racuni"; }
     render();
-    if (visible() && receipts.some((r) => r.status === "queued" || r.status === "working")) timer = setTimeout(load, POLL_MS);
+    if (visible() && receipts.some((r) => r.status === "queued" || r.status === "working")) timer = setTimeout(load, demo ? 1500 : POLL_MS);
   }
   const visible = () => { const t = $("tab-troskovi"); return t && !t.classList.contains("hidden"); };
   const latestMonth = () => new Date().toISOString().slice(0, 7);
@@ -119,9 +254,12 @@
         ${[["pregled", "Pregled"], ["racuni", "Računi"], ["cijene", "Cijene"]].map(([k, l]) =>
           `<button data-sub="${k}" class="${sub === k ? "on" : ""}" aria-pressed="${sub === k}">${l}</button>`).join("")}
       </div>
+      ${demo ? `<div class="demo-bar"><span><b>Primjer</b> s izmišljenim računima — ništa se ne sprema.</span>
+        <button class="linkbtn" data-demo="">izađi iz primjera</button></div>` : ""}
       ${err ? `<p class="err">${esc(err)}</p>` : ""}
-      ${waiting ? `<p class="muted small center"><span class="spin"></span> ${waiting} ${waiting === 1 ? "račun se čita" : "računa se čita"} — obično nekoliko minuta.</p>` : ""}
-      ${sub === "pregled" ? overview() : sub === "racuni" ? receiptsView() : pricesView()}`;
+      ${waiting ? `<p class="muted small center"><span class="spin"></span> ${waiting} ${waiting === 1 ? "račun se čita" : "računa se čita"} — ${demo ? "u primjeru nekoliko sekundi" : "obično minuta-dvije"}.</p>` : ""}
+      ${sub === "pregled" ? overview() : sub === "racuni" ? receiptsView() : pricesView()}
+      ${demo ? "" : `<p class="center" style="margin:28px 0 8px"><button class="linkbtn" data-demo="1">Pogledaj primjer s izmišljenim računima</button></p>`}`;
     wire(box);
   }
 
@@ -141,9 +279,16 @@
       return `<p class="muted center">Još nema pročitanih računa. Kad ih dodate, ovdje se vidi kamo odlazi novac.</p>
         <button class="btn wide" data-sub="racuni">Dodaj račun</button>`;
     }
-    const p = pct(total, prevTotal);
-    const cmp = prevTotal && list.length
-      ? `<span class="${p > 0 ? "up" : "down"}">${p > 0 ? "▲" : "▼"} ${Math.abs(p)}%</span> u odnosu na ${MONTHS[Number(shiftMonth(month, -1).slice(5, 7)) - 1]} (${eur0(prevTotal)})`
+    /* A month still running is compared with the same days of the last one
+       — 12 days of October against all of September always looks like a drop. */
+    const pm = shiftMonth(month, -1), pmName = MONTHS_GEN[Number(pm.slice(5, 7)) - 1];
+    const running = month === new Date().toISOString().slice(0, 7);
+    const upTo = new Date().getDate();
+    const prevSame = running ? prev.filter((r) => Number(dateOf(r).slice(8, 10)) <= upTo).reduce((s, r) => s + totalOf(r), 0) : prevTotal;
+    const p = pct(total, prevSame);
+    const cmp = prevSame && list.length
+      ? `<span class="${p > 0 ? "up" : "down"}">${p > 0 ? "▲" : "▼"} ${Math.abs(p)}%</span> ${running
+          ? `u odnosu na 1.–${upTo}. ${pmName} (${eur0(prevSame)})` : `u odnosu na ${MONTHS[Number(pm.slice(5, 7)) - 1]} (${eur0(prevSame)})`}`
       : "";
     const { cats, rest } = byCategory(list);
     const groups = GROUPS.map(([k, label, members, color]) => ({
@@ -347,6 +492,7 @@
 
   /* ---------- wiring ---------- */
   function wire(box) {
+    box.querySelectorAll("[data-demo]").forEach((b) => b.addEventListener("click", () => setDemo(!!b.dataset.demo)));
     box.querySelectorAll("[data-sub]").forEach((b) => b.addEventListener("click", () => { sub = b.dataset.sub; render(); }));
     box.querySelectorAll("[data-m]").forEach((b) => b.addEventListener("click", () => { month = shiftMonth(month, Number(b.dataset.m)); openGroup = null; render(); }));
     box.querySelectorAll("[data-month]").forEach((b) => b.addEventListener("click", () => { month = b.dataset.month; openGroup = null; render(); }));

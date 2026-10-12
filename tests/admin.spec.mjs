@@ -589,3 +589,25 @@ test("Troškovi: where the money goes, receipts by month, a category fixed in on
   expect(posts.some((p) => p.path.endsWith("/obrisi"))).toBe(false);
   expect(dialogs).toEqual([]);
 });
+
+test("Troškovi: the demo shows made-up receipts and simulates reading, without a single request", async ({ page }) => {
+  /* owner, 2026-10-12: mock data to show Filho how it works — never in the real database */
+  await board(page);
+  const calls = [];
+  await page.route("https://theatrium.devinos.hr/**", (route) => { calls.push(route.request().method()); return route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[],"limits":{"ready":true}}' }); });
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-demo="1"]');
+  const before = calls.length;
+  await expect(page.locator(".demo-bar")).toContainText("Primjer");
+  await expect(page.locator(".bars .bar").first()).toBeVisible();
+  await page.click('[data-sub="cijene"]');
+  await expect(page.locator("#tab-troskovi .pr").first()).toBeVisible();
+  await page.click('[data-sub="racuni"]');
+  await page.setInputFiles("[data-up][multiple]", { name: "r.png", mimeType: "image/png", buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
+  await page.click("[data-send]");
+  await expect(page.locator(".badge").filter({ hasText: "čita se" })).toBeVisible();
+  await expect(page.locator(".badge").filter({ hasText: "čita se" })).toHaveCount(0, { timeout: 12000 });
+  expect(calls.length - before, "nothing leaves the phone in the demo").toBe(0);
+  await page.click('[data-demo=""]');
+  await expect(page.locator(".demo-bar")).toHaveCount(0);
+});
