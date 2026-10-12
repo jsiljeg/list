@@ -201,6 +201,25 @@ posebno." The Za platiti card above the receipts and the Pregled banner are
 gone; the pill on each receipt, month by month, is the whole of it. What is
 above in this section about the list and the banner is history.
 
+## A long month kept clean (owner, 2026-10-12: "many invoices — pretty but clean")
+
+- **One month at a time** in Računi, with Pregled's ‹ month › and the same
+  month in both tabs.
+- **Supplier as a person says it**: the legal form and anything after it is
+  dropped ("SELECTA ADRIA d.o.o. za trgovinu" → Selecta Adria), all-capitals
+  words get ordinary ones unless they are 3 letters or fewer (HEP, CWS). The
+  full name, the number of lines and who added it are on the opened receipt.
+  Pregled and Cijene use the same short name.
+- **One quiet line** under a supplier: its kind, in the kind's colour, and
+  the date.
+- **Twin photos are out of the way**: a photo that also arrived from MER is
+  hidden, with "2 slike — stigle i kao e-račun ›" under the list.
+- **Neplaćeno** is a chip at the end of the kinds row — a filter, never a
+  section of its own, which is what Filho asked to be rid of.
+- **Search** covers every month: supplier, invoice number, a line's name, or
+  the amount ("523" or "523,65"). It redraws only the list, so the phone
+  keyboard stays up.
+
 ## Receipts by kind (Filho, 2026-10-12)
 
 "Bilo bi dobro ako bi moglo i račune razvrstavat. Kao hrana, piće, potrošno,

@@ -51,6 +51,25 @@
   const plural = (n, one, few, many) => (n % 10 === 1 && n % 100 !== 11 ? one
     : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? few : many);
   const dateOf = (r) => r.doc_date || (r.created_at || "").slice(0, 10);
+  /* A supplier as a person says it (owner, 2026-10-12: "pretty but clean"):
+     "SELECTA ADRIA d.o.o. za trgovinu" → Selecta Adria, "HEP-OPSKRBA D.O.O."
+     → HEP-Opskrba. The legal form and whatever follows it go; a word in
+     capitals gets ordinary ones unless it is short enough to be an acronym
+     (HEP, CWS, PPD). The full name stays on the opened receipt. */
+  const LEGAL = /[\s,]+(j\.?\s?d\.?\s?o\.?\s?o\.?|d\.?\s?o\.?\s?o\.?|d\.\s?d\.?|j\.?\s?t\.?\s?d\.?|društvo s ograničenom|obrt\b)(?=[\s,.]|$).*$/i;
+  const SMALL_WORDS = new Set(["i", "u", "za", "na", "od", "s"]);
+  function shortName(v) {
+    const cut = String(v || "").replace(LEGAL, "").trim();
+    const name = cut || String(v || "").trim();
+    return name.split(/(\s+|-)/).map((w, i) => {
+      if (!/\p{Lu}/u.test(w) || w !== w.toLocaleUpperCase("hr")) return w;   /* not all capitals: as written */
+      const low = w.toLocaleLowerCase("hr");
+      if (i > 0 && SMALL_WORDS.has(low)) return low;
+      if (w.length <= 3) return w;                                                  /* an acronym */
+      return low[0].toLocaleUpperCase("hr") + low.slice(1);
+    }).join("");
+  }
+  const fold = (s) => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/gi, "d").toLowerCase();
   const monthOf = (r) => dateOf(r).slice(0, 7);
   const hrDate = (d) => (d ? `${Number(d.slice(8, 10))}. ${Number(d.slice(5, 7))}.` : "");
 
@@ -59,6 +78,7 @@
   let receipts = [], limits = null, sub = "pregled", month = "", open = null, timer = null, err = "";
   let openGroup = null, catPick = null, confirmDel = null;
   let kind = "";                /* Računi shows one kind of receipt, or all */
+  let unpaidOnly = false, showDup = false, query = "";
   const groupView = {};         /* picker scope → a group opened but not yet chosen from */
   const picked = [];            /* photos chosen, not yet sent */
   let oneReceipt = false, sending = "";
@@ -154,15 +174,20 @@
     for (const i of r.items) { const g = groupOf(i.category)[0]; by[g] = (by[g] || 0) + Math.abs(i.total || 0); }
     return Object.entries(by).sort((a, b) => b[1] - a[1])[0][0];
   }
+  /* unpaid is a filter on the same row, never a list of its own (Filho:
+     "bez ove gornje za neplaćene posebno") */
+  const unpaid = (r) => r.status === "done" && !r.dup_of && !isPaid(r) && totalOf(r) > 0;
   function kindChips(list) {
     const counts = {};
     for (const r of list) { const k = !r.dup_of && kindOf(r); if (k) counts[k] = (counts[k] || 0) + 1; }
     const shown = GROUPS.filter(([k]) => counts[k] || k === kind);
-    if (shown.length < 2 && !kind) return "";
+    const owed = list.filter(unpaid).length;
+    if (shown.length < 2 && !kind && !owed && !unpaidOnly) return "";
     return `<div class="kinds" role="group" aria-label="Vrsta računa">
       <button data-kind="" class="${kind ? "" : "on"}" aria-pressed="${!kind}">Sve</button>
       ${shown.map(([k, label, , color]) => `<button data-kind="${k}" class="${kind === k ? "on" : ""}" aria-pressed="${kind === k}"
-        style="--c:${color}">${esc(label)}<small>${counts[k] || 0}</small></button>`).join("")}</div>`;
+        style="--c:${color}">${esc(label)}<small>${counts[k] || 0}</small></button>`).join("")}
+      ${owed || unpaidOnly ? `<button data-unpaid class="unp${unpaidOnly ? " on" : ""}" aria-pressed="${unpaidOnly}">Neplaćeno<small>${owed}</small></button>` : ""}</div>`;
   }
 
   const shiftMonth = (m, d) => {
@@ -232,7 +257,7 @@
 
     /* suppliers */
     const vend = {};
-    for (const r of list) { const v = r.vendor || "Nepoznat"; vend[v] = (vend[v] || 0) + totalOf(r); }
+    for (const r of list) { const v = shortName(r.vendor) || "Nepoznat"; vend[v] = (vend[v] || 0) + totalOf(r); }
     const topV = Object.entries(vend).sort((a, b) => b[1] - a[1]).slice(0, 5);
     const vmax = Math.max(...topV.map(([, v]) => v), 1);
 
@@ -242,7 +267,7 @@
     const smax = Math.max(...sums, 1);
 
     /* the biggest single lines this month */
-    const lines = list.flatMap((r) => r.items.map((i) => ({ ...i, vendor: r.vendor, date: dateOf(r) })))
+    const lines = list.flatMap((r) => r.items.map((i) => ({ ...i, vendor: shortName(r.vendor), date: dateOf(r) })))
       .filter((i) => i.total > 0).sort((a, b) => b.total - a.total).slice(0, 5);
 
     const days = new Date(Date.UTC(+month.slice(0, 4), +month.slice(5, 7), 0)).getUTCDate();
@@ -429,16 +454,38 @@
      switch and the same month as Pregled; a kind chosen narrows it further
      and the total follows. */
   function receiptsView() {
-    const fits = (r) => !kind || kindOf(r) === kind;
-    const ofMonth = receipts.filter((r) => monthOf(r) === month);
-    const list = ofMonth.filter(fits);
+    return `${uploadCard()}${merLine()}
+      <input type="search" id="rq" class="rq" value="${esc(query)}" placeholder="Traži: dobavljač, broj računa, iznos" autocomplete="off" aria-label="Traži račune">
+      <div id="rlist">${receiptList()}</div>`;
+  }
+  /* A search looks through every month — "when did we last pay Selecta?" —
+     by supplier, invoice number, a line's name, or the amount ("523", "523,65"). */
+  function matches(r, q) {
+    const words = fold([r.vendor, shortName(r.vendor), r.doc_no, ...r.items.map((i) => i.name)].join(" "));
+    if (words.includes(q)) return true;
+    if (!/\d/.test(q)) return false;
+    const qa = q.replace(/[\s€]/g, "").replace(/\.(\d{1,2})$/, ",$1").replace(/\./g, "");
+    return eur(totalOf(r)).replace(/[\s\u00a0\u202f€.]/g, "").includes(qa);
+  }
+  function receiptList() {
+    const q = fold(query.trim());
+    const base = q ? receipts.filter((r) => matches(r, q)) : receipts.filter((r) => monthOf(r) === month);
+    const fits = (r) => (!kind || kindOf(r) === kind) && (!unpaidOnly || unpaid(r));
+    /* a photo that also arrived from MER counts once; it is out of the way
+       until asked for */
+    const twins = base.filter((r) => r.dup_of && fits({ ...r, dup_of: "" }));
+    const list = base.filter((r) => (showDup || !r.dup_of) && (r.dup_of ? fits({ ...r, dup_of: "" }) : fits(r)));
     const counted = list.filter((r) => r.status === "done" && !r.dup_of);
     const sum = counted.reduce((s, r) => s + totalOf(r), 0);
     const mloc = MONTHS_LOC[Number(month.slice(5, 7)) - 1];
-    return `${uploadCard()}${merLine()}${monthNav()}${kindChips(ofMonth)}
-      ${list.length ? `<h3 class="h mh"><span>${counted.length} ${plural(counted.length, "račun", "računa", "računa")}</span><span>${sum ? eur0(sum) : ""}</span></h3>
-        ${list.map(receiptRow).join("")}`
-        : `<p class="muted center">${kind ? "Ovakvih računa" : "Računa"} u ${mloc} nema.</p>`}`;
+    const head = q ? `${counted.length} ${plural(counted.length, "pronađen", "pronađena", "pronađenih")}`
+      : `${counted.length} ${plural(counted.length, "račun", "računa", "računa")}${unpaidOnly ? " za platiti" : ""}`;
+    const empty = q ? "Ništa nije pronađeno." : unpaidOnly ? `U ${mloc} je sve plaćeno.` : `${kind ? "Ovakvih računa" : "Računa"} u ${mloc} nema.`;
+    return `${q ? "" : monthNav()}${kindChips(base)}
+      ${list.length ? `<h3 class="h mh"><span>${head}</span><span>${sum ? eur0(sum) : ""}</span></h3>
+        ${list.map(receiptRow).join("")}` : `<p class="muted center">${empty}</p>`}
+      ${twins.length ? `<button class="linkbtn dups" data-showdup>${showDup ? "sakrij slike koje su stigle i kao e-račun"
+        : `${twins.length} ${plural(twins.length, "slika", "slike", "slika")} — ${twins.length === 1 ? "stigla" : "stigle"} i kao e-račun ›`}</button>` : ""}`;
   }
 
   /* moj-eRačun: one quiet line. E-invoices come in by themselves; the line
@@ -485,14 +532,19 @@
         : `<span class="badge">${r.source === "mer" ? "razvrstava se" : "čita se"}</span>`;
       const k = kindOf(r), g = k && GROUPS.find((x) => x[0] === k);
       const kindTag = g ? `<span class="kind" style="--c:${g[3]}">${esc(g[1])}</span> · ` : "";
-      const src = r.source === "mer" ? `<span class="badge src">e-račun</span>` : r.source === "rucno" ? `<span class="badge src">bez računa</span>` : "";
+      /* where it came from rides in the quiet line, so the name has the width */
+      const src = r.source === "mer" ? ` · <span class="from">e-račun</span>` : r.source === "rucno" ? ` · <span class="from">bez računa</span>` : "";
       const head = `<button class="rhead" data-open="${esc(r.id)}" aria-expanded="${open === r.id}">
-        <span class="rv">${esc(r.vendor || (st === "done" ? "Nepoznat" : "Račun"))}${src}${r.dup_of ? `<span class="badge src dup">dvaput</span>` : ""}<small>${kindTag}${hrDate(dateOf(r))}${r.items.length ? ` · ${r.items.length} ${plural(r.items.length, "stavka", "stavke", "stavki")}` : ""}${r.created_by ? ` · ${esc(r.created_by)}` : ""}</small></span>
+        <span class="rv">${esc(shortName(r.vendor) || (st === "done" ? "Nepoznat" : "Račun"))}${r.dup_of ? `<span class="badge src dup">dvaput</span>` : ""}<small>${kindTag}${hrDate(dateOf(r))}${query && dateOf(r).slice(0, 4) !== String(new Date().getFullYear()) ? " " + dateOf(r).slice(0, 4) + "." : ""}${src}</small></span>
         <span class="rt">${st === "done" ? eur(totalOf(r)) : badge}</span></button>`;
       const cls = r.dup_of ? " dup" : "";
       const top = st === "done" && !r.dup_of ? `<div class="rrow">${head}${payPill(r)}</div>` : head;
       if (open !== r.id) return `<div class="rec${cls}">${top}</div>`;
       return `<div class="rec open${cls}">${top}
+        ${r.vendor && shortName(r.vendor) !== r.vendor || r.created_by || r.items.length > 1
+          ? `<p class="muted small">${[r.vendor && shortName(r.vendor) !== r.vendor ? esc(r.vendor) : "",
+              r.items.length > 1 ? `${r.items.length} ${plural(r.items.length, "stavka", "stavke", "stavki")}` : "",
+              r.created_by ? `dodao ${esc(r.created_by)}` : ""].filter(Boolean).join(" · ")}</p>` : ""}
         ${r.dup_of ? `<p class="muted small">Isti račun stigao je i kao e-račun iz moj-eRačuna, pa se ovaj ne zbraja. Slobodno ga obrišite.
           <button class="linkbtn" data-notdup="${esc(r.id)}">nije isti račun</button></p>` : ""}
         ${r.note ? `<p class="muted small">${esc(r.note)}</p>` : ""}
@@ -546,7 +598,7 @@
         /* products only: a bill or a service has no unit price worth following */
         if (!it.key || it.unit_price == null || it.unit_price <= 0 || ["rezije", "usluge", "odrzavanje"].includes(it.category)) continue;
         const k = it.key + "|" + (it.unit || "");
-        (seen[k] = seen[k] || []).push({ p: it.unit_price, d: dateOf(r), v: r.vendor, name: it.name, unit: it.unit, spent: it.total || 0 });
+        (seen[k] = seen[k] || []).push({ p: it.unit_price, d: dateOf(r), v: shortName(r.vendor), name: it.name, unit: it.unit, spent: it.total || 0 });
       }
     }
     const rows = Object.values(seen).filter((h) => h.length >= 2).map((h) => {
@@ -629,7 +681,7 @@
       open = open === b.dataset.open ? null : b.dataset.open; catPick = null; confirmDel = null; render();
     }));
     box.querySelectorAll("[data-cat]").forEach((b) => b.addEventListener("click", () => { catPick = catPick === b.dataset.cat ? null : b.dataset.cat; delete groupView[`r|${b.dataset.cat}`]; render(); }));
-    if (!box.dataset.picks) {        /* once: the box outlives every render */
+    if (box.id === "tab-troskovi" && !box.dataset.picks) {        /* once: the box outlives every render */
       box.dataset.picks = "1";
       box.addEventListener("click", (e) => {
         const b = e.target.closest("[data-pickg],[data-pickc]");
@@ -686,6 +738,12 @@
       if (r) markPaid(r.id, !isPaid(r));
     }));
     box.querySelectorAll("[data-kind]").forEach((b) => b.addEventListener("click", () => { kind = b.dataset.kind; open = null; render(); }));
+    box.querySelectorAll("[data-unpaid]").forEach((b) => b.addEventListener("click", () => { unpaidOnly = !unpaidOnly; open = null; render(); }));
+    box.querySelectorAll("[data-showdup]").forEach((b) => b.addEventListener("click", () => { showDup = !showDup; render(); }));
+    box.querySelectorAll("#rq").forEach((inp) => inp.addEventListener("input", () => {
+      query = inp.value; open = null;
+      const l = $("rlist"); if (l) { l.innerHTML = receiptList(); wire(l); }
+    }));
     box.querySelectorAll("[data-notdup]").forEach((b) => b.addEventListener("click", async () => {
       try { await api(`/${b.dataset.notdup}/nije_isti`, { method: "POST" }); await load(); } catch (e) { err = e.message; render(); }
     }));

@@ -614,7 +614,10 @@ test("Troškovi: cash with no receipt is typed in, e-invoices are marked, a phot
   await expect(page.locator(".big b")).toHaveText(/^100\s€/);
   await page.click('[data-sub="racuni"]');
   await expect(page.locator(".mer")).toContainText("moj-eRačun");
-  await expect(page.locator('[data-open="e"] .badge')).toContainText("e-račun");
+  await expect(page.locator('[data-open="e"] .from')).toHaveText("e-račun");
+  /* the twin photo is out of the way until asked for (2026-10-12) */
+  await expect(page.locator('[data-open="p"]')).toHaveCount(0);
+  await page.click("[data-showdup]");
   await expect(page.locator('[data-open="p"] .badge')).toContainText("dvaput");
 
   /* no receipt: two lines, the category guessed from the words, the total summed */
@@ -822,4 +825,40 @@ test("Troškovi: Računi shows one month at a time, the same month as Pregled", 
   /* Pregled is on the same month */
   await page.click('[data-sub="pregled"]');
   await expect(page.locator(".big b")).toHaveText(/^70\s€/);
+});
+
+/* Owner, 2026-10-12: "many invoices — pretty but clean". Short supplier
+   names, the unpaid filter on the kinds row, and a search across months. */
+test("Troškovi: clean list — short names, Neplaćeno filter, search across months", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const [y, m] = ym.split("-").map(Number);
+  const prev = new Date(Date.UTC(y, m - 2, 1)).toISOString().slice(0, 7);
+  const r = (id, mo, vendor, total, extra = {}) => ({ id, created_at: `${mo}-03T09:00:00Z`, updated_at: "", status: "done", vendor,
+    vendor_oib: "", doc_date: `${mo}-03`, doc_no: "N-" + id, total, vat: null, payment: "virman", photos: [], note: "", created_by: "MER",
+    source: "mer", dup_of: "", due_date: "", paid_at: "", items: [{ name: "x", key: "", qty: null, unit: "", unit_price: null, total, category: "meso" }], ...extra });
+  const items = [r("sel", ym, "SELECTA ADRIA d.o.o. za trgovinu", 1954.27), r("hep", ym, "HEP-OPSKRBA D.O.O.", 200, { paid_at: `${ym}-04` }),
+    r("old", prev, "SELECTA ADRIA d.o.o. za trgovinu", 250.14)];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="racuni"]');
+  await expect(page.locator('[data-open="sel"] .rv')).toContainText(/^Selecta Adria/);
+  await expect(page.locator('[data-open="hep"] .rv')).toContainText(/^HEP-Opskrba/);
+  /* the full name is on the opened receipt */
+  await page.click('[data-open="sel"]');
+  await expect(page.locator(".rec.open")).toContainText("SELECTA ADRIA d.o.o. za trgovinu");
+  /* Neplaćeno narrows this month to what is owed */
+  await page.click(".kinds [data-unpaid]");
+  await expect(page.locator(".rec")).toHaveCount(1);
+  await expect(page.locator('[data-open="sel"]')).toBeVisible();
+  await page.click(".kinds [data-unpaid]");
+  /* search reaches last month too, by name or by amount */
+  await page.fill("#rq", "selecta");
+  await expect(page.locator(".rec")).toHaveCount(2);
+  await page.fill("#rq", "250,14");
+  await expect(page.locator(".rec")).toHaveCount(1);
+  await expect(page.locator('[data-open="old"]')).toBeVisible();
+  await expect(page.locator("#rq")).toBeFocused();
 });

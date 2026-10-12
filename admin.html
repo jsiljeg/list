@@ -168,7 +168,7 @@ button{font:inherit;cursor:pointer}
 .lines div{padding:6px 0;border-bottom:1px solid var(--line)}
 .lines b{white-space:nowrap}
 .mh{display:flex;justify-content:space-between;margin-top:18px}
-.mh span:first-child{text-transform:capitalize}
+.rv .from{color:var(--gold);white-space:nowrap}
 .lines small,.rv small,.in small,.pn small{display:block;color:var(--dim);font-size:12px;font-weight:400}
 .cols{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;align-items:end;height:150px}
 .cols button{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;padding:0;border:none;background:none;color:var(--dim);font-size:11px}
@@ -238,6 +238,10 @@ button{font:inherit;cursor:pointer}
 .kinds button small{margin-left:6px;color:var(--dim);font-size:12px}
 .kinds button.on{border-color:var(--c,var(--gold));background:color-mix(in srgb,var(--c,var(--gold)) 22%,transparent)}
 .rv .kind{color:var(--c)}
+.kinds .unp{border-color:#6b5a33;color:#d9b45a}
+.kinds .unp.on{border-color:#d9b45a;background:#2b2618}
+.rq{width:100%;margin:0 0 10px;padding:11px 14px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;font:inherit}
+.linkbtn.dups{display:block;margin:12px auto 4px}
 .pr{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
 .pp{text-align:right;white-space:nowrap}
 .pp small{color:var(--dim)}
