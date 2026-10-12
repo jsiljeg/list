@@ -82,6 +82,20 @@ jobs:
 
           npx wrangler d1 execute theatrium --remote --file=schema.sql -y
 
+          # Columns added after a table first shipped. SQLite has no ADD COLUMN
+          # IF NOT EXISTS, so ask the table what it has and add only the rest.
+          add_cols() {
+            local table=$1; shift
+            have=$(npx wrangler d1 execute theatrium --remote --json                      --command "SELECT name FROM pragma_table_info('$table')" -y | jq -r '.[0].results[].name' || true)
+            for col in "$@"; do
+              name=${col%% *}
+              grep -qx "$name" <<< "$have" && continue
+              echo "adding $table.$name"
+              npx wrangler d1 execute theatrium --remote --command "ALTER TABLE $table ADD COLUMN $col" -y > /dev/null               || echo "::warning::could not add $table.$name"
+            done
+          }
+          add_cols expense_receipts "source TEXT" "dup_of TEXT"
+
       # Attach theatrium.devinos.hr, once. Idempotent and non-fatal: a failure
       # here must not stop a deploy that is otherwise fine, because the site is
       # always reachable on its pages.dev address regardless.
@@ -151,10 +165,18 @@ jobs:
           # may start that one private workflow (falls back to GH_DISPATCH_TOKEN)
           EXPENSE_WORKER_KEY: ${{ secrets.EXPENSE_WORKER_KEY }}
           EXPENSE_DISPATCH_TOKEN: ${{ secrets.EXPENSE_DISPATCH_TOKEN }}
+          # moj-eRačun, read only (web/EXPENSES.md). Until all four are set the
+          # tab says "MER nije spojen" and nothing is asked of MER.
+          MER_USERNAME: ${{ secrets.MER_USERNAME }}
+          MER_PASSWORD: ${{ secrets.MER_PASSWORD }}
+          MER_COMPANY_ID: ${{ secrets.MER_COMPANY_ID }}
+          MER_SOFTWARE_ID: ${{ secrets.MER_SOFTWARE_ID }}
+          MER_COMPANY_BU: ${{ vars.MER_COMPANY_BU }}
+          MER_DEMO: ${{ vars.MER_DEMO }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          for name in WINE_WORKER_KEY GH_DISPATCH_TOKEN WINE_INTAKE_ENABLED WINE_READ_KEY NTFY_TOPIC NTFY_TOKEN EXPENSE_WORKER_KEY EXPENSE_DISPATCH_TOKEN; do
+          for name in WINE_WORKER_KEY GH_DISPATCH_TOKEN WINE_INTAKE_ENABLED WINE_READ_KEY NTFY_TOPIC NTFY_TOKEN EXPENSE_WORKER_KEY EXPENSE_DISPATCH_TOKEN MER_USERNAME MER_PASSWORD MER_COMPANY_ID MER_SOFTWARE_ID MER_COMPANY_BU MER_DEMO; do
             val="${!name:-}"
             [ -n "$val" ] || { echo "no $name — skipping"; continue; }
             printf '%s' "$val" | npx wrangler pages secret put "$name" --project-name theatrium-web > /dev/null && echo "set $name"

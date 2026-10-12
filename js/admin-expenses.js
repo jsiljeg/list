@@ -60,6 +60,10 @@
   let openGroup = null, catPick = null, confirmDel = null;
   const picked = [];            /* photos chosen, not yet sent */
   let oneReceipt = false, sending = "";
+  /* an expense with no receipt being typed in, or one being corrected:
+     {editId, vendor, date, payment, lines: [{name, total, category, picked}]} */
+  let manual = null, saving = false;
+  let mer = null, merBusy = false;      /* moj-eRačun: how the connection stands */
   const thumbs = new Map();
 
   /* ---------- the demo (owner, 2026-10-12: "mock data … so I can show Filho
@@ -70,7 +74,7 @@
      made while the demo is on, and leaving it brings the real tab back. A
      receipt "sent" in the demo is "read" a few seconds later, which is the
      whole flow in one minute. */
-  let demo = false, demoData = null;
+  let demo = false, demoData = null, demoMer = null;
   function seeded(seed) {
     let s = seed;
     return () => { s = (s * 1103515245 + 12345) % 2147483648; return s / 2147483648; };
@@ -131,9 +135,15 @@
             return { name, key, qty, unit, unit_price, total: Math.round(qty * unit_price * 100) / 100, category };
           });
           const total = Math.round(items.reduce((s, i) => s + i.total, 0) * 100) / 100;
-          out.push({ id: `demo-${++n}`, created_at: `${ym}-${String(day).padStart(2, "0")}T10:00:00Z`, updated_at: "", created_by: "Filho",
+          /* invoiced suppliers arrive through moj-eRačun; the market stall
+             has no receipt and is typed in by hand */
+          const source = si === 2 ? "rucno" : pay === "virman" || si === 0 ? "mer" : "foto";
+          out.push({ id: `demo-${++n}`, created_at: `${ym}-${String(day).padStart(2, "0")}T10:00:00Z`, updated_at: "",
+            created_by: source === "mer" ? "MER" : "Filho", source, dup_of: "",
             status: "done", vendor, vendor_oib: oib, doc_date: `${ym}-${String(day).padStart(2, "0")}`, doc_no: `${n}/1/1`,
-            total, vat: Math.round(total * 0.16 * 100) / 100, payment: pay, items, note: "", error: "", photos: [] });
+            total, vat: source === "rucno" ? null : Math.round(total * 0.16 * 100) / 100, payment: pay,
+            items: source === "rucno" ? items.map((i) => ({ ...i, qty: null, unit: "", unit_price: null, key: i.key })) : items,
+            note: "", error: "", photos: [] });
         }
       }
       /* the monthly bills */
@@ -148,6 +158,16 @@
           payment: "virman", items: [{ name, key, qty: 1, unit: "kom", unit_price: amount, total: amount, category }], note: "", error: "", photos: [] });
       }
     }
+    /* the repairman, paid in cash, no receipt */
+    for (const [back, name, amount] of [[1, "Popravak bojlera", 80], [3, "Servis rashladne vitrine", 120]]) {
+      const d = new Date(Date.UTC(today.getFullYear(), today.getMonth() - back, 14)).toISOString().slice(0, 10);
+      out.push({ id: `demo-${++n}`, created_at: d + "T12:00:00Z", updated_at: "", created_by: "Filho", source: "rucno", dup_of: "",
+        status: "done", vendor: "Majstor Ivo", vendor_oib: "", doc_date: d, doc_no: "", total: amount, vat: null, payment: "gotovina",
+        items: [{ name, key: "", qty: null, unit: "", unit_price: null, total: amount, category: "odrzavanje" }], note: "", error: "", photos: [] });
+    }
+    /* a Metro invoice photographed although it also came from moj-eRačun */
+    const twin = out.filter((r) => r.source === "mer" && r.vendor.startsWith("Metro")).pop();
+    if (twin) out.push({ ...twin, id: "demo-dvaput", source: "foto", created_by: "Filho", dup_of: twin.id });
     /* one that could not be read, as it will happen */
     out.push({ id: "demo-mutan", created_at: today.toISOString(), updated_at: "", created_by: "Filho", status: "failed",
       vendor: "", items: [], photos: [], note: "", error: "Slika je mutna — ukupni iznos se ne vidi. Slikajte račun ravno, pri svjetlu." });
@@ -169,10 +189,20 @@
   async function demoApi(path, opts = {}) {
     await new Promise((res) => setTimeout(res, 250));
     const method = opts.method || "GET";
-    if (!path && method === "GET") return { items: demoData, limits: { ready: true } };
+    if (!path && method === "GET") return { items: demoData, limits: { ready: true }, mer: demoMer };
+    if (path === "/mer") { demoMer = { ...demoMer, last_ok: new Date().toISOString() }; return { mer: demoMer }; }
+    if (!path && method === "POST" && typeof opts.body === "string") {
+      const b = JSON.parse(opts.body);
+      const r = { id: `demo-new-${Date.now()}`, created_at: new Date().toISOString(), updated_at: "", created_by: b.by || "Filho",
+        source: "rucno", dup_of: "", status: "done", vendor: b.vendor || b.items[0].name, vendor_oib: "", doc_date: b.doc_date, doc_no: "",
+        total: Math.round(b.items.reduce((s, i) => s + i.total, 0) * 100) / 100, vat: null, payment: b.payment,
+        items: b.items.map((i) => ({ ...i, key: "", qty: null, unit: "", unit_price: null })), note: "", error: "", photos: [] };
+      demoData.unshift(r);
+      return { ok: true, item: r };
+    }
     if (!path && method === "POST") {
       const r = { id: `demo-new-${Date.now()}`, created_at: new Date().toISOString(), updated_at: "", created_by: who() || "Filho",
-        status: "working", vendor: "", items: [], photos: [], note: "", error: "" };
+        status: "working", source: "foto", dup_of: "", vendor: "", items: [], photos: [], note: "", error: "" };
       demoData.unshift(r);
       setTimeout(() => { demoRead(r); if (demo) load(); }, 5000);
       return { ok: true, item: r };
@@ -181,7 +211,19 @@
     const r = demoData.find((x) => x.id === id);
     if (!r) throw new Error("not_found");
     if (action === "kategorija") { const b = JSON.parse(opts.body); r.items[b.i].category = b.category; return { ok: true }; }
-    if (action === "obrisi") { demoData = demoData.filter((x) => x !== r); return { ok: true }; }
+    if (action === "obrisi") {
+      demoData = demoData.filter((x) => x !== r);
+      demoData.forEach((x) => { if (x.dup_of === r.id) x.dup_of = ""; });
+      return { ok: true };
+    }
+    if (action === "nije_isti") { r.dup_of = ""; return { ok: true }; }
+    if (action === "uredi") {
+      const b = JSON.parse(opts.body);
+      Object.assign(r, { vendor: b.vendor || b.items[0].name, doc_date: b.doc_date, payment: b.payment,
+        total: Math.round(b.items.reduce((s, i) => s + i.total, 0) * 100) / 100,
+        items: b.items.map((i) => ({ ...i, key: "", qty: null, unit: "", unit_price: null })) });
+      return { ok: true };
+    }
     if (action === "ponovi") {
       r.status = "working"; r.error = "";
       setTimeout(() => { demoRead(r); if (demo) load(); }, 5000);
@@ -191,6 +233,8 @@
   }
   function setDemo(on) {
     demo = on; demoData = on ? demoReceipts() : null;
+    demoMer = on ? { state: "ok", last_ok: new Date(Date.now() - 12 * 60000).toISOString(), error: "", imported: 0 } : null;
+    manual = null;
     open = null; openGroup = null; catPick = null; confirmDel = null; err = "";
     sub = "pregled"; month = new Date().toISOString().slice(0, 7);
     load();
@@ -208,7 +252,7 @@
     clearTimeout(timer);
     try {
       const b = await api("");
-      receipts = b.items || []; limits = b.limits; err = "";
+      receipts = b.items || []; limits = b.limits; mer = b.mer || null; err = "";
     } catch (e) { err = "Ne mogu učitati troškove: " + e.message; }
     if (!month) month = latestMonth();
     /* until the first receipt is read, the tab opens where receipts are added */
@@ -221,7 +265,8 @@
   window.loadExpenses = load;
 
   /* ---------- numbers ---------- */
-  const done = () => receipts.filter((r) => r.status === "done");
+  /* a photo of an invoice that also came from MER counts once, as the e-invoice */
+  const done = () => receipts.filter((r) => r.status === "done" && !r.dup_of);
   const inMonth = (m) => done().filter((r) => monthOf(r) === m);
   const totalOf = (r) => (r.total != null ? r.total : r.items.reduce((s, i) => s + (i.total || 0), 0));
   /* Category amounts from the lines; whatever the lines do not explain
@@ -327,7 +372,11 @@
       ${list.length ? `
       <div class="big"><b>${eur0(total)}</b>
         <span class="muted small">${list.length} ${list.length % 10 === 1 && list.length % 100 !== 11 ? "račun" : "računa"} · prosječno ${eur0(total / Math.max(1, today))} dnevno</span>
-        ${cmp ? `<span class="small">${cmp}</span>` : ""}</div>
+        ${cmp ? `<span class="small">${cmp}</span>` : ""}
+        ${(() => {
+          const cash = list.filter((r) => r.source === "rucno"), sum = cash.reduce((s, r) => s + totalOf(r), 0);
+          return cash.length ? `<span class="muted small">od toga bez računa ${eur0(sum)} (${cash.length} ${plural(cash.length, "upis", "upisa", "upisa")})</span>` : "";
+        })()}</div>
       <h3 class="h">Kamo ide novac</h3>
       <div class="bars">${bars}</div>
       <h3 class="h">Dobavljači</h3>
@@ -345,18 +394,100 @@
 
   /* ---------- upload ---------- */
   function uploadCard(compact) {
+    if (manual) return manualForm();
     const n = picked.length;
     return `<div class="card up${compact && !n ? " compact" : ""}">
-      ${compact && !n ? "" : `<p class="muted small" style="margin:0 0 10px">Slikajte račun ili ga odaberite iz galerije. Dug račun može imati više slika.</p>`}
+      ${compact && !n ? "" : `<p class="muted small" style="margin:0 0 10px">Slikajte račun ili ga odaberite iz galerije. Dug račun može imati više slika. Gotovina bez računa (plac, majstor) upisuje se ručno.</p>`}
       <div class="ch-acts">
         <label class="nema shot-btn">📷 Slikaj račun<input type="file" accept="image/*" capture="environment" data-up></label>
         <label class="nema shot-btn">🖼 Galerija<input type="file" accept="image/*,.heic,.heif" multiple data-up></label>
       </div>
+      ${n ? "" : `<button class="nema man-btn" data-manual="">✍️ Plaćeno bez računa — upiši</button>`}
       ${n ? `<div class="pics up-pics">${picked.map((f, i) => `<span class="upth" style="background-image:url(${esc(f.url)})"><button data-unpick="${i}" aria-label="Makni sliku">✕</button></span>`).join("")}</div>
         ${n > 1 ? `<div class="ch-acts seg2"><button class="nema ${oneReceipt ? "" : "ok"}" data-one="">${n} računa</button><button class="nema ${oneReceipt ? "ok" : ""}" data-one="1">1 račun, ${n} slike</button></div>` : ""}
         ${sending ? `<button class="btn wide busy" disabled><span class="spin"></span>${esc(sending)}</button>`
           : `<div class="ch-acts"><button class="nema ok" data-send>pošalji${n > 1 && !oneReceipt ? ` (${n})` : ""}</button><button class="nema cancel" data-clear>odustani</button></div>`}` : ""}
     </div>`;
+  }
+
+  /* ---------- no receipt (Filho, 2026-10-12: "kad unesem 200 € napišem
+     opise, povrće koje i koliko je cijena … majstora isto plaćam gotovinom
+     bez računa — i da se to unese i prati") ----------
+     A description and an amount per line; the category is guessed from the
+     words as he types and is one tap to change. Saved as read, at once — no
+     run, nothing to wait for. */
+  const GUESS = [
+    [/majstor|popravak|popravi|servis|vodoinstal|elektri[cč]ar|bravar|stolar|keramičar|keramicar|limar|klima/i, "odrzavanje"],
+    [/povr[cć]|vo[cć]e|salat|raj[cč]ic|krumpir|luk|gljiv|tikvic|paprik|limun|bilj|za[cč]in|plac|tr[zž]nic|dolac|opg/i, "povrce"],
+    [/meso|mesn|pilet|piler|junet|june[cć]|svinj|tele[cć]|janj|kobasic|pr[sš]ut|slanin/i, "meso"],
+    [/rib|[sš]kamp|lign|[sš]kolj|kamenic|dagnj|hobotnic/i, "riba"],
+    [/mlijek|sir|jaja|jaje|vrhnj|maslac|jogurt/i, "mlijecno"],
+    [/kruh|pekar|peciv|kifl/i, "pekara"],
+    [/cvije[cć]|svije[cć]|dekor|ukras/i, "dekor"],
+    [/[cč]i[sš][cć]|deterd|sapun|spu[zž]v/i, "ciscenje"],
+    [/led|leda|vre[cć]ic|folij|salvet|ambala/i, "ambalaza"],
+    [/vin[oa]/i, "vino"], [/kav[ae]?|[cč]aj/i, "kava"], [/piv[oa]|sok|vod[ae]/i, "pivo_sokovi"],
+    [/dostav|praonic|pranje|knjigov|ra[cč]unovod|taksi|parking/i, "usluge"],
+    [/struj|plin|najam|re[zž]ij/i, "rezije"],
+    [/lonac|tav|no[zž]|[cč]a[sš]|tanjur|alat|aparat/i, "oprema"],
+  ];
+  const guess = (text) => (GUESS.find(([re]) => re.test(text || "")) || [, ""])[1];
+  const amountOf = (v) => { const n = Number(String(v || "").replace(/\s/g, "").replace(",", ".")); return Number.isFinite(n) ? n : 0; };
+  const blankLine = () => ({ name: "", total: "", category: "", picked: false });
+  function startManual(r) {
+    manual = r
+      ? { editId: r.id, vendor: r.vendor, date: dateOf(r), payment: r.payment || "gotovina",
+          lines: r.items.map((i) => ({ name: i.name, total: String(i.total ?? "").replace(".", ","), category: i.category, picked: true })) }
+      : { editId: "", vendor: "", date: new Date().toISOString().slice(0, 10), payment: "gotovina", lines: [blankLine()] };
+    err = "";
+  }
+  const manualTotal = () => manual.lines.reduce((s, l) => s + amountOf(l.total), 0);
+  function manualForm() {
+    const m = manual;
+    const today = new Date().toISOString().slice(0, 10);
+    return `<div class="card man">
+      <h3>${m.editId ? "Ispravak — bez računa" : "Plaćeno bez računa"}</h3>
+      <label class="f" for="man-vendor">Kome ili za što</label>
+      <input type="text" id="man-vendor" data-mf="vendor" value="${esc(m.vendor)}" placeholder="npr. Plac Dolac, majstor za bojler" autocomplete="off">
+      <label class="f" for="man-date">Datum</label>
+      <input type="date" id="man-date" data-mf="date" value="${esc(m.date)}" max="${today}">
+      <label class="f">Plaćeno</label>
+      <div class="ch-acts">${["gotovina", "kartica", "virman"].map((p) =>
+        `<button class="nema ${m.payment === p ? "ok" : ""}" data-pay="${p}">${p}</button>`).join("")}</div>
+      <label class="f">Što je plaćeno</label>
+      ${m.lines.map((l, i) => {
+        const c = l.category || guess(l.name) || guess(m.vendor) || "ostalo";
+        return `<div class="ml">
+          <input type="text" data-ml="${i}" data-k="name" value="${esc(l.name)}" placeholder="${i ? "još nešto" : "npr. rajčica, tikvice, bosiljak"}" autocomplete="off" aria-label="Opis">
+          <span class="amt"><input type="text" inputmode="decimal" data-ml="${i}" data-k="total" value="${esc(l.total)}" placeholder="0,00" aria-label="Iznos"><span>€</span></span>
+          ${m.lines.length > 1 ? `<button class="x" data-mldel="${i}" aria-label="Makni stavku">✕</button>` : "<span></span>"}
+          <button class="chip" data-mlcat="${i}" style="border-color:${groupOf(c)[3]}">${esc(CAT[c])}</button>
+          ${catPick === `m|${i}` ? `<div class="catpick">${Object.keys(CAT).map((k) =>
+            `<button data-mlset="${i}|${k}" class="${k === c ? "on" : ""}">${esc(CAT[k])}</button>`).join("")}</div>` : ""}
+        </div>`;
+      }).join("")}
+      <button class="nema add" data-mladd>+ još jedna stavka</button>
+      <div class="tot"><span>Ukupno</span><b id="man-total">${eur(manualTotal())}</b></div>
+      ${saving ? `<button class="btn wide busy" disabled><span class="spin"></span>Spremam…</button>`
+        : `<div class="ch-acts"><button class="nema ok" data-mansave>spremi</button><button class="nema cancel" data-mancancel>odustani</button></div>`}
+    </div>`;
+  }
+  async function saveManual() {
+    const m = manual;
+    const lines = m.lines.filter((l) => amountOf(l.total) !== 0);
+    if (!lines.length) { err = "Upišite iznos."; render(); return; }
+    if (lines.some((l) => !l.name.trim()) && !m.vendor.trim()) { err = "Upišite kome ili za što je plaćeno."; render(); return; }
+    const body = {
+      vendor: m.vendor.trim(), doc_date: m.date, payment: m.payment, by: who(),
+      items: lines.map((l) => ({ name: l.name.trim() || m.vendor.trim(), total: Math.round(amountOf(l.total) * 100) / 100,
+                                 category: l.category || guess(l.name) || guess(m.vendor) || "ostalo" })),
+    };
+    saving = true; err = ""; render();
+    try {
+      await api(m.editId ? `/${m.editId}/uredi` : "", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+      manual = null; saving = false; catPick = null;
+      await load();
+    } catch (e) { saving = false; err = "Nije spremljeno: " + e.message; render(); }
   }
 
   async function shrink(file) {
@@ -405,18 +536,38 @@
       }
       return headline + receiptRow(r);
     }).join("");
-    return `${uploadCard()}${rows || `<p class="muted center">Nema računa.</p>`}`;
+    return `${uploadCard()}${merLine()}${rows || `<p class="muted center">Nema računa.</p>`}`;
+  }
+
+  /* moj-eRačun: one quiet line. E-invoices come in by themselves; the line
+     says when the inbox was last asked, or what is missing. */
+  function merLine() {
+    if (!mer) return "";
+    const at = (iso) => {
+      if (!iso) return "";
+      const d = new Date(iso), t = d.toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" });
+      return d.toDateString() === new Date().toDateString() ? `danas u ${t}` : `${d.getDate()}. ${d.getMonth() + 1}. u ${t}`;
+    };
+    const btn = merBusy ? `<span><span class="spin"></span> provjeravam…</span>` : `<button class="linkbtn" data-mer>provjeri sada</button>`;
+    if (mer.state === "not_set_up") return `<p class="mer">📨 e-Računi iz moj-eRačuna stizat će ovdje sami — spajanje je u pripremi.</p>`;
+    if (mer.state === "error") return `<p class="mer"><span class="badge bad">moj-eRačun se ne javlja</span><span>${esc(mer.error)}</span>${btn}</p>`;
+    return `<p class="mer">📨 e-Računi iz moj-eRačuna stižu sami${mer.last_ok ? ` · provjereno ${at(mer.last_ok)}` : ""}${btn}</p>`;
   }
 
   function receiptRow(r) {
     {
       const st = r.status;
-      const badge = st === "done" ? "" : st === "failed" ? `<span class="badge bad">nije pročitan</span>` : `<span class="badge">čita se</span>`;
+      const badge = st === "done" ? "" : st === "failed" ? `<span class="badge bad">nije pročitan</span>`
+        : `<span class="badge">${r.source === "mer" ? "razvrstava se" : "čita se"}</span>`;
+      const src = r.source === "mer" ? `<span class="badge src">e-račun</span>` : r.source === "rucno" ? `<span class="badge src">bez računa</span>` : "";
       const head = `<button class="rhead" data-open="${esc(r.id)}" aria-expanded="${open === r.id}">
-        <span class="rv">${esc(r.vendor || (st === "done" ? "Nepoznat" : "Račun"))}<small>${hrDate(dateOf(r))}${r.items.length ? ` · ${r.items.length} ${plural(r.items.length, "stavka", "stavke", "stavki")}` : ""}${r.created_by ? ` · ${esc(r.created_by)}` : ""}</small></span>
+        <span class="rv">${esc(r.vendor || (st === "done" ? "Nepoznat" : "Račun"))}${src}${r.dup_of ? `<span class="badge src dup">dvaput</span>` : ""}<small>${hrDate(dateOf(r))}${r.items.length ? ` · ${r.items.length} ${plural(r.items.length, "stavka", "stavke", "stavki")}` : ""}${r.created_by ? ` · ${esc(r.created_by)}` : ""}</small></span>
         <span class="rt">${st === "done" ? eur(totalOf(r)) : badge}</span></button>`;
-      if (open !== r.id) return `<div class="rec">${head}</div>`;
-      return `<div class="rec open">${head}
+      const cls = r.dup_of ? " dup" : "";
+      if (open !== r.id) return `<div class="rec${cls}">${head}</div>`;
+      return `<div class="rec open${cls}">${head}
+        ${r.dup_of ? `<p class="muted small">Isti račun stigao je i kao e-račun iz moj-eRačuna, pa se ovaj ne zbraja. Slobodno ga obrišite.
+          <button class="linkbtn" data-notdup="${esc(r.id)}">nije isti račun</button></p>` : ""}
         ${r.note ? `<p class="muted small">${esc(r.note)}</p>` : ""}
         ${st === "failed" ? `<p class="err">${esc(r.error || "Račun se ne može pročitati.")}</p>` : ""}
         ${r.items.length ? `<div class="items">${r.items.map((it, i) => `
@@ -426,20 +577,24 @@
             ${catPick === `${r.id}|${i}` ? `<div class="catpick">${Object.keys(CAT).map((c) =>
               `<button data-setcat="${esc(r.id)}|${i}|${c}" class="${c === it.category ? "on" : ""}">${esc(CAT[c])}</button>`).join("")}</div>` : ""}
           </div>`).join("")}</div>` : ""}
-        ${r.vat != null ? `<p class="muted small">PDV ${eur(r.vat)}${r.payment ? ` · ${esc(r.payment)}` : ""}${r.doc_no ? ` · br. ${esc(r.doc_no)}` : ""}</p>` : ""}
-        <div class="pics">${r.photos.map((n) => thumb(r.id, n)).join("")}</div>
+        ${r.vat != null ? `<p class="muted small">PDV ${eur(r.vat)}${r.payment ? ` · ${esc(r.payment)}` : ""}${r.doc_no ? ` · br. ${esc(r.doc_no)}` : ""}</p>`
+          : r.source === "rucno" ? `<p class="muted small">Plaćeno ${esc(r.payment || "gotovina")}, bez računa${r.created_by ? ` · upisao ${esc(r.created_by)}` : ""}</p>` : ""}
+        <div class="pics">${r.photos.map((n) => thumb(r, n)).join("")}</div>
         ${confirmDel === r.id
           ? `<div class="ch-acts"><button class="nema all" data-del="${esc(r.id)}" data-sure="1">da, obriši račun</button><button class="nema cancel" data-nodel>odustani</button></div>`
           : `<div class="ch-acts">${st === "failed" ? `<button class="nema ok" data-retry="${esc(r.id)}">pokušaj ponovno</button>` : ""}
+              ${r.source === "rucno" ? `<button class="nema" data-edit="${esc(r.id)}">ispravi</button>` : ""}
               ${st === "working" ? "" : `<button class="nema" data-del="${esc(r.id)}">obriši</button>`}</div>`}
       </div>`;
     }
   }
 
-  function thumb(id, n) {
-    const k = id + "|" + n;
+  function thumb(r, n) {
+    const id = r.id, k = id + "|" + n;
     if (!thumbs.has(k)) loadThumb(id, n);
     const url = thumbs.get(k);
+    /* an e-invoice's attachment is the supplier's PDF, not a photo */
+    if (r.source === "mer") return url ? `<a class="nema shot-btn" href="${esc(url)}" target="_blank" rel="noopener">📄 Račun u PDF-u</a>` : "";
     return url ? `<a href="${esc(url)}" target="_blank" rel="noopener"><img src="${esc(url)}" alt="Račun, slika ${n}"></a>` : `<span class="ph">${n}</span>`;
   }
   async function loadThumb(id, n) {
@@ -525,6 +680,54 @@
       confirmDel = null;
       try { await api(`/${id}/obrisi`, { method: "POST" }); open = null; await load(); }
       catch (e) { err = "Nije obrisano: " + e.message; render(); }
+    }));
+    /* no receipt: typing never re-renders (the keyboard would drop); the
+       total and the guessed category follow in place */
+    box.querySelectorAll("[data-manual]").forEach((b) => b.addEventListener("click", () => { startManual(); render(); $("man-vendor") && $("man-vendor").focus(); }));
+    box.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => {
+      startManual(receipts.find((x) => x.id === b.dataset.edit)); sub = "racuni"; render();
+      box.querySelector(".man") && box.querySelector(".man").scrollIntoView({ block: "start", behavior: "smooth" });
+    }));
+    const showGuess = () => manual && manual.lines.forEach((l, i) => {
+      const chip = box.querySelector(`[data-mlcat="${i}"]`);
+      if (!chip || l.category) return;
+      const c = guess(l.name) || guess(manual.vendor) || "ostalo";
+      chip.textContent = CAT[c]; chip.style.borderColor = groupOf(c)[3];
+    });
+    box.querySelectorAll("[data-mf]").forEach((inp) => inp.addEventListener("input", () => { manual[inp.dataset.mf] = inp.value; showGuess(); }));
+    box.querySelectorAll("[data-ml]").forEach((inp) => inp.addEventListener("input", () => {
+      manual.lines[Number(inp.dataset.ml)][inp.dataset.k] = inp.value;
+      const t = $("man-total"); if (t) t.textContent = eur(manualTotal());
+      showGuess();
+    }));
+    box.querySelectorAll("[data-ml][data-k=total]").forEach((inp) => inp.addEventListener("keydown", (e) => {
+      /* Enter on the last amount opens the next line */
+      if (e.key !== "Enter") return;
+      e.preventDefault();
+      const i = Number(inp.dataset.ml);
+      if (i === manual.lines.length - 1) manual.lines.push(blankLine());
+      render(); const next = box.querySelector(`[data-ml="${i + 1}"][data-k=name]`); if (next) next.focus();
+    }));
+    box.querySelectorAll("[data-pay]").forEach((b) => b.addEventListener("click", () => { manual.payment = b.dataset.pay; render(); }));
+    box.querySelectorAll("[data-mladd]").forEach((b) => b.addEventListener("click", () => {
+      manual.lines.push(blankLine()); render();
+      const last = box.querySelector(`[data-ml="${manual.lines.length - 1}"][data-k=name]`); if (last) last.focus();
+    }));
+    box.querySelectorAll("[data-mldel]").forEach((b) => b.addEventListener("click", () => { manual.lines.splice(Number(b.dataset.mldel), 1); catPick = null; render(); }));
+    box.querySelectorAll("[data-mlcat]").forEach((b) => b.addEventListener("click", () => { const k = `m|${b.dataset.mlcat}`; catPick = catPick === k ? null : k; render(); }));
+    box.querySelectorAll("[data-mlset]").forEach((b) => b.addEventListener("click", () => {
+      const [i, c] = b.dataset.mlset.split("|"); manual.lines[Number(i)].category = c; catPick = null; render();
+    }));
+    box.querySelectorAll("[data-mansave]").forEach((b) => b.addEventListener("click", saveManual));
+    box.querySelectorAll("[data-mancancel]").forEach((b) => b.addEventListener("click", () => { manual = null; catPick = null; err = ""; render(); }));
+    box.querySelectorAll("[data-notdup]").forEach((b) => b.addEventListener("click", async () => {
+      try { await api(`/${b.dataset.notdup}/nije_isti`, { method: "POST" }); await load(); } catch (e) { err = e.message; render(); }
+    }));
+    box.querySelectorAll("[data-mer]").forEach((b) => b.addEventListener("click", async () => {
+      merBusy = true; render();
+      try { const r = await api("/mer", { method: "POST" }); mer = r.mer; await load(); }
+      catch (e) { err = "moj-eRačun: " + e.message; }
+      merBusy = false; render();
     }));
     box.querySelectorAll("[data-nodel]").forEach((b) => b.addEventListener("click", () => { confirmDel = null; render(); }));
     box.querySelectorAll("[data-retry]").forEach((b) => b.addEventListener("click", async () => {

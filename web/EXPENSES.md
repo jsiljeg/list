@@ -70,3 +70,79 @@ uploads no artifacts and its log prints counts and usage, never contents.
 - `CLAUDE_CODE_OAUTH_TOKEN` — a secret of the private repo (the owner's
   subscription), set by the owner.
 - Variable `EXPENSE_MODEL` in the private repo overrides the model (`opus`).
+
+## Bez računa — cash with no receipt (Filho, 2026-10-12)
+
+"Treba dodati da se može staviti račun plaćen gotovinom ali bez slike jer
+nema uvijek računa … majstora isto plaćam gotovinom bez računa — i da se to
+unese i prati."
+
+Računi → **✍️ Plaćeno bez računa — upiši**: kome ili za što, datum (today),
+gotovina / kartica / virman (gotovina), then lines of *description + amount*.
+The category is guessed from the words as he types (`GUESS` in
+js/admin-expenses.js: "majstor", "popravak" → Održavanje; "rajčica",
+"plac" → Voće i povrće …) and is one tap to change. Enter on an amount opens
+the next line. Saved as `source = 'rucno'`, status `done` at once — no run,
+no subscription spent. Shown with a **BEZ RAČUNA** badge and "ispravi"
+(re-opens the form); Pregled says *od toga bez računa X € (n upisa)* under
+the month's total, which is the "da se prati". Lines have no unit price, so
+they never reach Cijene.
+
+## moj-eRačun (MER) — e-invoices come in by themselves (2026-10-12)
+
+Filho: "kad bi se moglo na MER spojit di su e-računi, pa on može 80% sam
+učitavat". Since Fiskalizacija 2.0 (1.1.2026) every VAT-registered supplier
+must invoice electronically, so the wholesalers, the mesnica, the vinoteka
+and the utilities arrive in Theatrium's MER inbox; what is left for photos
+and *bez računa* is the market and the odd cash job.
+
+How (web/functions/_lib/mer.js, ubl.js):
+
+1. On a staff read of /api/troskovi (in the background, at most every 30
+   min) or on **provjeri sada**: `queryInbox` from the last check minus 3
+   days (60 days the first time). Documents already in `expense_mer_docs`
+   are skipped — including ones Filho deleted, which must not come back.
+2. Each new one: `receive` → UBL, parsed here: supplier, OIB, date, number,
+   payable amount, VAT, every line with VAT added back and g/ml converted to
+   kg/l. A credit note is negative. The embedded PDF is kept (≤1.5 MB) and
+   opens from the receipt as "📄 Račun u PDF-u". Not an invoice → recorded
+   as `other` and ignored.
+3. Stored as `source = 'mer'`, queued, and read by the same private run —
+   which for an e-invoice gets `/<id>/eracun` instead of photos and only
+   names the lines, sets key/unit for Cijene and the category. **The money
+   is never taken from the run** (`mergeEinvoice`): amounts stay the
+   invoice's own.
+4. **Twins**: the same invoice photographed *and* arrived from MER counts
+   once. On every finished read the other kind is looked up by OIB + number
+   (punctuation ignored) or OIB + date + total; the photo gets `dup_of`, is
+   left out of every sum, shown as **DVAPUT**, with "nije isti račun" to undo.
+
+**Read only, deliberately.** Nothing is sent to MER. Accepting/rejecting an
+e-invoice (`UpdateDokumentProcessStatus`) has legal weight under
+Fiskalizacija 2.0 and stays a person's act in MER itself.
+
+A refusal comes back as **HTTP 200** shaped per field —
+`{"Username":{"Messages":["Korisničko ime i lozinka nisu ispravni."]}}` —
+so `call()` reads Messages out of any JSON object and treats it as an
+error; the tab then says *moj-eRačun se ne javlja* with MER's own words.
+
+**Setup** — four secrets in GitHub environment `theatrium` (deploy-web copies
+them to Pages; until all four exist the tab says "spajanje je u pripremi" and
+MER is never called):
+
+| secret / variable | what |
+|---|---|
+| `MER_USERNAME` | the MER user id (best a separate user created for this, not Filho's own login) |
+| `MER_PASSWORD` | its password |
+| `MER_COMPANY_ID` | Theatrium's OIB |
+| `MER_SOFTWARE_ID` | the API software id MER issues for web-service access |
+| var `MER_COMPANY_BU` | optional business unit |
+| var `MER_DEMO` | `1` to talk to demo.moj-eracun.hr |
+
+Then deploy web (or wait for the next) and tap *provjeri sada*.
+Docs: manual.moj-eracun.hr/documentation/api-specification-2/. Brakes: 20
+documents per check (subrequest budget), the rest on the next one.
+
+Schema: `expense_receipts.source` and `.dup_of` are added by deploy-web's
+"add missing columns" step (SQLite has no ADD COLUMN IF NOT EXISTS);
+`expense_mer_docs`, `expense_mer_state` are in schema.sql.

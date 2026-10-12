@@ -55,7 +55,33 @@ export function shape(row, photos = []) {
     status: row.status, runs: row.runs, vendor: row.vendor || "", vendor_oib: row.vendor_oib || "",
     doc_date: row.doc_date || "", doc_no: row.doc_no || "", total: row.total, vat: row.vat,
     payment: row.payment || "", items: parse(row.items, []), note: row.note || "", error: row.error || "", photos,
+    /* foto: photographed and read · mer: an e-invoice from moj-eRačun ·
+       rucno: typed in by hand, paid with no receipt (cash at the market, a
+       repairman) — tracked on its own, since nothing documents it */
+    source: row.source || "foto", dup_of: row.dup_of || "",
   };
+}
+
+/* A hand-typed expense (Filho, 2026-10-12: "staviti račun plaćen gotovinom
+   ali bez slike jer nema uvijek računa"). Lines are a description and an
+   amount; the total is their sum. → fields for expense_receipts, or {error}. */
+export function cleanManual(b) {
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(b.doc_date || "") ? b.doc_date : zagrebDate();
+  if (date > zagrebDate()) return { error: "date" };
+  const items = (Array.isArray(b.items) ? b.items : []).slice(0, 60).map((it) => ({
+    name: clip(it && it.name, 120),
+    key: "", qty: null, unit: "", unit_price: null,
+    total: num(String((it && it.total) ?? "").replace(",", ".")),
+    category: CATEGORIES.includes(it && it.category) ? it.category : "ostalo",
+    fixed: true,
+  })).filter((it) => it.total != null && it.total !== 0);
+  if (!items.length) return { error: "no_amount" };
+  const vendor = clip(b.vendor, 120) || items[0].name;
+  return { fields: {
+    vendor, doc_date: date, payment: ["gotovina", "kartica", "virman"].includes(b.payment) ? b.payment : "gotovina",
+    total: Math.round(items.reduce((s, i) => s + i.total, 0) * 100) / 100, vat: null,
+    items: JSON.stringify(items), note: clip(b.note, 300),
+  } };
 }
 
 export async function readReceipt(env, id) {
@@ -153,3 +179,22 @@ export function cleanItems(items) {
   })).filter((it) => it.name || it.total != null);
 }
 export { num };
+
+/* The run's lines for an e-invoice: its names, keys, units and categories are
+   taken, but never its money — the amounts are the invoice's own, exact.
+   Line by line when the counts agree; otherwise the invoice's lines stay and
+   only a category is borrowed where the names match. */
+export function mergeEinvoice(draftItems, readItems) {
+  const read = cleanItems(readItems);
+  if (read.length === draftItems.length) {
+    return draftItems.map((d, i) => ({
+      name: read[i].name || d.name, key: read[i].key,
+      qty: read[i].qty ?? d.qty, unit: read[i].unit || d.unit,
+      unit_price: read[i].unit_price ?? d.unit_price, total: d.total, category: read[i].category,
+    }));
+  }
+  return draftItems.map((d) => {
+    const m = read.find((r) => r.name && d.name && r.name.toLowerCase() === d.name.toLowerCase());
+    return { ...d, key: m ? m.key : "", category: m ? m.category : (d.category || "ostalo") };
+  });
+}

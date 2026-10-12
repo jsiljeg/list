@@ -3,9 +3,13 @@
  *                        doc_date, doc_no, total, vat, payment, items[], note, error}
  *   kategorija  (staff)  {i, category}: Filho moves one line to another category
  *   ispravi     (staff)  {vendor?, doc_date?, total?}: he corrects the header
+ *   uredi       (staff)  a hand-typed expense, typed again (same body as POST /api/troskovi)
+ *   nije_isti   (staff)  "this is not the same invoice": a receipt marked as a twin counts again
  *   ponovi      (staff)  a failed receipt is read again
  *   obrisi      (staff)  the receipt and its photos are deleted for good */
-import { reply, isStaffAsync, isExpenseWorker, readReceipt, setFields, pump, clip, num, cleanItems, CATEGORIES } from "../../../_lib/expenses.js";
+import { reply, isStaffAsync, isExpenseWorker, readReceipt, setFields, pump, clip, num, cleanItems, cleanManual,
+         mergeEinvoice, CATEGORIES } from "../../../_lib/expenses.js";
+import { findTwin } from "../../../_lib/mer.js";
 
 export async function onRequestPost({ request, env, params }) {
   const { id, action } = params;
@@ -19,6 +23,12 @@ export async function onRequestPost({ request, env, params }) {
     if (item.status !== "working") return reply(request, { error: "move", from: item.status }, 409);
     if (b.status === "failed") {
       await setFields(env, id, { status: "failed", batch: null, error: clip(b.error, 300) || "Račun se ne može pročitati." });
+    } else if (item.source === "mer") {
+      /* an e-invoice: who, when and how much are the invoice's own and stay;
+         the run only names the lines and files them */
+      await setFields(env, id, { status: "done", batch: null, error: "",
+        items: JSON.stringify(mergeEinvoice(item.items, b.items)),
+        note: [item.note, clip(b.note, 200)].filter(Boolean).join(" ") });
     } else {
       const date = /^\d{4}-\d{2}-\d{2}$/.test(b.doc_date || "") ? b.doc_date : null;
       await setFields(env, id, {
@@ -28,6 +38,17 @@ export async function onRequestPost({ request, env, params }) {
         payment: ["gotovina", "kartica", "virman"].includes(b.payment) ? b.payment : "",
         items: JSON.stringify(cleanItems(b.items)), note: clip(b.note, 300),
       });
+    }
+    /* the same invoice, photographed and arrived from MER, counts once: the
+       e-invoice is exact, so the photo is the one set aside */
+    const now = await readReceipt(env, id);
+    if (now.status === "done") {
+      const isMer = now.source === "mer";
+      const twin = await findTwin(env, now, !isMer, id);
+      if (twin) {
+        if (isMer) await setFields(env, twin.id, { dup_of: id });
+        else await setFields(env, id, { dup_of: twin.id });
+      }
     }
     await pump(env);
     return reply(request, { ok: true });
@@ -59,6 +80,17 @@ export async function onRequestPost({ request, env, params }) {
     await setFields(env, id, f);
     return reply(request, { ok: true, item: await readReceipt(env, id) });
   }
+  if (action === "uredi") {
+    if (item.source !== "rucno") return reply(request, { error: "not_manual" }, 409);
+    const m = cleanManual(b);
+    if (m.error) return reply(request, { error: m.error }, 400);
+    await setFields(env, id, m.fields);
+    return reply(request, { ok: true, item: await readReceipt(env, id) });
+  }
+  if (action === "nije_isti") {
+    await setFields(env, id, { dup_of: null });
+    return reply(request, { ok: true, item: await readReceipt(env, id) });
+  }
   if (action === "ponovi") {
     if (item.status !== "failed") return reply(request, { error: "not_failed" }, 409);
     await setFields(env, id, { status: "queued", runs: 0, error: "" });
@@ -69,6 +101,8 @@ export async function onRequestPost({ request, env, params }) {
     if (item.status === "working") return reply(request, { error: "running" }, 409);
     await env.DB.prepare("DELETE FROM expense_photos WHERE receipt_id = ?1").bind(id).run();
     await env.DB.prepare("DELETE FROM expense_receipts WHERE id = ?1").bind(id).run();
+    /* a photo set aside as this one's twin counts again */
+    await env.DB.prepare("UPDATE expense_receipts SET dup_of = NULL WHERE dup_of = ?1").bind(id).run();
     return reply(request, { ok: true });
   }
   return reply(request, { error: "action" }, 404);

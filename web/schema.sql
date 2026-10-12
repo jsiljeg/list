@@ -276,3 +276,22 @@ CREATE TABLE IF NOT EXISTS expense_dispatches (
   batch  TEXT NOT NULL,
   n      INTEGER NOT NULL                     -- receipts in it
 );
+
+-- Troškovi, 2026-10-12. Two columns on expense_receipts, added by the deploy
+-- (deploy-web.yml, "Add missing columns": SQLite has no ADD COLUMN IF NOT
+-- EXISTS, and this file runs on every deploy):
+--   source  TEXT  foto | mer | rucno — photographed, an e-invoice from
+--                 moj-eRačun, or typed in by hand with no receipt at all
+--   dup_of  TEXT  the e-invoice this photo duplicates; left out of every sum
+-- moj-eRačun: every document the inbox has handed over, so none is fetched
+-- twice — including one Filho deleted, which must not come back.
+CREATE TABLE IF NOT EXISTS expense_mer_docs (
+  electronic_id INTEGER PRIMARY KEY,         -- MER's ElectronicId
+  receipt_id    TEXT,                        -- NULL when it was not an invoice
+  seen_at       TEXT NOT NULL,
+  kind          TEXT NOT NULL                -- invoice | other
+);
+CREATE TABLE IF NOT EXISTS expense_mer_state (
+  k TEXT PRIMARY KEY,                        -- last_ok | last_try | error | imported
+  v TEXT
+);

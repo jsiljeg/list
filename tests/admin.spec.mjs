@@ -611,3 +611,47 @@ test("Troškovi: the demo shows made-up receipts and simulates reading, without 
   await page.click('[data-demo=""]');
   await expect(page.locator(".demo-bar")).toHaveCount(0);
 });
+
+test("Troškovi: cash with no receipt is typed in, e-invoices are marked, a photographed twin is not counted", async ({ page }) => {
+  /* Filho, 2026-10-12: "staviti račun plaćen gotovinom ali bez slike jer nema
+     uvijek računa … majstora isto plaćam gotovinom bez računa — i da se prati";
+     and moj-eRačun, so most invoices arrive by themselves. */
+  await board(page);
+  const now = new Date().toISOString().slice(0, 7);
+  const r = (id, vendor, total, extra = {}) => ({ id, created_at: `${now}-02T09:00:00Z`, updated_at: "", status: "done", vendor,
+    vendor_oib: "38016445738", doc_date: `${now}-02`, doc_no: "7/1/1", total, vat: 1, payment: "virman", photos: [], note: "", created_by: "",
+    items: [{ name: "Maslac", key: "maslac", qty: 1, unit: "kg", unit_price: total, total, category: "mlijecno" }], source: "foto", dup_of: "", ...extra });
+  const items = [r("e", "Metro", 100, { source: "mer" }), r("p", "Metro", 100, { dup_of: "e" })];
+  const posts = [];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => {
+    const req = route.request();
+    if (req.method() === "POST") posts.push({ path: new URL(req.url()).pathname, body: req.postData() || "" });
+    return route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify(req.method() === "GET" ? { items, limits: { ready: true }, mer: { state: "ok", last_ok: new Date().toISOString() } } : { ok: true }) });
+  });
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+
+  /* the twin is left out: 100 €, not 200 € */
+  await expect(page.locator(".big b")).toHaveText(/^100\s€/);
+  await page.click('[data-sub="racuni"]');
+  await expect(page.locator(".mer")).toContainText("moj-eRačun");
+  await expect(page.locator('[data-open="e"] .badge')).toContainText("e-račun");
+  await expect(page.locator('[data-open="p"] .badge')).toContainText("dvaput");
+
+  /* no receipt: two lines, the category guessed from the words, the total summed */
+  await page.click("[data-manual]");
+  await page.fill("#man-vendor", "Plac Dolac");
+  await page.fill('[data-ml="0"][data-k=name]', "rajčica, tikvice");
+  await page.fill('[data-ml="0"][data-k=total]', "12,50");
+  await page.press('[data-ml="0"][data-k=total]', "Enter");
+  await page.fill('[data-ml="1"][data-k=name]', "majstor za bojler");
+  await page.fill('[data-ml="1"][data-k=total]', "80");
+  await expect(page.locator("#man-total")).toHaveText(/92,50\s€/);
+  await expect(page.locator('[data-mlcat="1"]')).toHaveText("Održavanje");
+  await page.click("[data-mansave]");
+  await expect.poll(() => posts.find((p) => p.path === "/api/troskovi")).toBeTruthy();
+  const sent = JSON.parse(posts.find((p) => p.path === "/api/troskovi").body);
+  expect(sent.payment).toBe("gotovina");
+  expect(sent.items.map((i) => [i.total, i.category])).toEqual([[12.5, "povrce"], [80, "odrzavanje"]]);
+});
