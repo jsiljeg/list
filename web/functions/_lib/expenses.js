@@ -150,6 +150,18 @@ export async function pump(env) {
       "UPDATE expense_receipts SET status = 'working', batch = ?2, runs = runs + 1, error = '', updated_at = ?3 WHERE id = ?1 AND status = 'queued'")
       .bind(id, batch, nowIso()).run();
   }
+  /* Two pumps can pass the busy check together (an upload and a staff read,
+     2026-10-12): both dispatched, GitHub cancelled one, and its receipts sat
+     "working" for half an hour. So after claiming, the lower batch id keeps
+     what it took and the other gives its claim back before dispatching. */
+  const rival = await env.DB.prepare(
+    "SELECT batch FROM expense_receipts WHERE status = 'working' AND batch != ?1 AND batch < ?1 LIMIT 1").bind(batch).first();
+  const mine = await env.DB.prepare("SELECT COUNT(*) AS n FROM expense_receipts WHERE batch = ?1 AND status = 'working'").bind(batch).first();
+  if (rival || !mine || !mine.n) {
+    await env.DB.prepare("UPDATE expense_receipts SET status = 'queued', batch = NULL, runs = runs - 1 WHERE batch = ?1 AND status = 'working'")
+      .bind(batch).run();
+    return { held: "busy" };
+  }
   const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${WORKFLOW}/dispatches`, {
     method: "POST",
     headers: { authorization: `Bearer ${token}`, accept: "application/vnd.github+json",

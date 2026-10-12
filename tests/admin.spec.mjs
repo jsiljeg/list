@@ -613,7 +613,8 @@ test("Troškovi: cash with no receipt is typed in, e-invoices are marked, a phot
   /* the twin is left out: 100 €, not 200 € */
   await expect(page.locator(".big b")).toHaveText(/^100\s€/);
   await page.click('[data-sub="racuni"]');
-  await expect(page.locator(".mer")).toContainText("moj-eRačun");
+  /* a working MER connection says nothing (owner, 2026-10-12) */
+  await expect(page.locator(".mer")).toHaveCount(0);
   await expect(page.locator('[data-open="e"] .from')).toHaveText("e-račun");
   /* the twin photo is out of the way until asked for (2026-10-12) */
   await expect(page.locator('[data-open="p"]')).toHaveCount(0);
@@ -861,4 +862,59 @@ test("Troškovi: clean list — short names, Neplaćeno filter, search across mo
   await expect(page.locator(".rec")).toHaveCount(1);
   await expect(page.locator('[data-open="old"]')).toBeVisible();
   await expect(page.locator("#rq")).toBeFocused();
+});
+
+/* Owner, 2026-10-12: "check what you are comparing — Hampden didn't increase
+   179%". Bumbu and Hampden shared one key. Cijene now leaves out what is not
+   a product, keeps two pack sizes apart, counts one purchase per invoice,
+   and opens a row onto the invoices it compares. */
+test("Troškovi: Cijene compares like with like and shows the invoices behind a row", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const line = (name, key, unit, unit_price, total) => ({ name, key, qty: total / unit_price, unit, unit_price, total, category: "pivo_sokovi" });
+  const r = (id, day, no, items) => ({ id, created_at: `${ym}-${day}T09:00:00Z`, updated_at: "", status: "done", vendor: "ROTO DINAMIC d.o.o.",
+    vendor_oib: "1", doc_date: `${ym}-${day}`, doc_no: no, total: items.reduce((s, i) => s + i.total, 0), vat: null, payment: "virman",
+    photos: [], note: "", created_by: "", source: "mer", dup_of: "", due_date: "", paid_at: "", items });
+  const items = [
+    r("a", "03", "238442-31", [line("Römerquelle negazirana voda 0,75 l", "voda negazirana", "l", 1.6, 12),
+      line("Römerquelle negazirana voda 0,33 l", "voda negazirana", "l", 2.77, 9.14),
+      line("Povratna naknada za ambalažu", "povratna naknada", "kom", 0.1, 2)]),
+    r("b", "06", "241232-31", [line("Römerquelle negazirana voda 0,75 l", "voda negazirana", "l", 1.8, 13.5),
+      line("Römerquelle negazirana voda 0,75 l", "voda negazirana", "l", 1.8, 13.5),
+      line("Povratna naknada", "povratna naknada", "kom", 0.2, 2)]),
+  ];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="cijene"]');
+  /* one row: the 0,75 l, bought on two invoices; the 0,33 l and the deposit are not compared */
+  await expect(page.locator(".pr")).toHaveCount(1);
+  await expect(page.locator(".pr")).toContainText("0,75 l");
+  await expect(page.locator(".pr")).toContainText("2×");
+  await expect(page.locator(".pr")).toContainText("13%");
+  /* the evidence: both invoices, by number; one tap opens the invoice */
+  await page.click(".pr .prh");
+  await expect(page.locator(".ph .phr")).toHaveCount(2);
+  await expect(page.locator(".ph")).toContainText("br. 241232-31");
+  await expect(page.locator(".ph")).toContainText("br. 238442-31");
+  await page.locator(".ph .phr").first().click();
+  await expect(page.locator('[data-sub="racuni"]')).toHaveClass(/on/);
+  await expect(page.locator(".rec.open")).toHaveCount(1);
+});
+
+/* The reader is told the keys already in use (2026-10-12), so the same
+   article keeps one key across invoices. Source assertion: server code. */
+test("Troškovi: the reading job carries the product keys already in use", () => {
+  const src = readFileSync(new URL("../web/functions/api/troskovi/posao/[batch].js", import.meta.url), "utf8");
+  expect(src).toMatch(/known_keys: await knownKeys\(env\)/);
+});
+
+/* Two pumps at once dispatched two runs and GitHub cancelled one, leaving 8
+   receipts "working" for 30 minutes (2026-10-12). The loser of a race now
+   gives its claim back before dispatching. Source assertion: server code. */
+test("Troškovi: a pump that loses a race gives its receipts back", () => {
+  const src = readFileSync(new URL("../web/functions/_lib/expenses.js", import.meta.url), "utf8");
+  expect(src).toMatch(/status = 'working' AND batch != \?1 AND batch < \?1/);
+  expect(src).toMatch(/if \(rival \|\| !mine \|\| !mine\.n\)/);
 });

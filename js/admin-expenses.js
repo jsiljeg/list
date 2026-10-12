@@ -85,7 +85,7 @@
   /* an expense with no receipt being typed in, or one being corrected:
      {editId, vendor, date, payment, lines: [{name, total, category, picked}]} */
   let manual = null, saving = false;
-  let mer = null, merBusy = false;      /* moj-eRačun: how the connection stands */
+  let mer = null;                       /* moj-eRačun: how the connection stands */
   const thumbs = new Map();
 
   async function api(path, opts = {}) {
@@ -488,8 +488,7 @@
         : `${twins.length} ${plural(twins.length, "slika", "slike", "slika")} — ${twins.length === 1 ? "stigla" : "stigle"} i kao e-račun ›`}</button>` : ""}`;
   }
 
-  /* moj-eRačun: one quiet line. E-invoices come in by themselves; the line
-     says when the inbox was last asked, or what is missing. */
+  /* moj-eRačun: silent while it works; one line when it does not. */
   function merLine() {
     if (!mer) return "";
     const at = (iso) => {
@@ -497,10 +496,11 @@
       const d = new Date(iso), t = d.toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" });
       return d.toDateString() === new Date().toDateString() ? `danas u ${t}` : `${d.getDate()}. ${d.getMonth() + 1}. u ${t}`;
     };
-    const btn = merBusy ? `<span><span class="spin"></span> provjeravam…</span>` : `<button class="linkbtn" data-mer>provjeri sada</button>`;
-    if (mer.state === "not_set_up") return `<p class="mer">📨 e-Računi iz moj-eRačuna stizat će ovdje sami — spajanje je u pripremi.</p>`;
-    if (mer.state === "error") return `<p class="mer"><span class="badge bad">moj-eRačun se ne javlja</span><span>${esc(mer.error)}</span>${btn}</p>`;
-    return `<p class="mer">📨 e-Računi iz moj-eRačuna stižu sami${mer.last_ok ? ` · provjereno ${at(mer.last_ok)}` : ""}${btn}</p>`;
+    /* Only when something is wrong (owner, 2026-10-12: "we probably don't
+       need this note, and possibly even the option to pull now"). The inbox
+       is asked by itself every 30 minutes; a working connection says nothing. */
+    if (mer.state !== "error") return "";
+    return `<p class="mer"><span class="badge bad">moj-eRačun se ne javlja</span><span>${esc(mer.error)}${mer.last_ok ? ` · zadnje uspješno ${at(mer.last_ok)}` : ""}</span></p>`;
   }
 
   /* A line in the paper's own quantity and unit (owner, 2026-10-12:
@@ -590,20 +590,37 @@
     } catch { thumbs.delete(k); }
   }
 
-  /* ---------- prices ---------- */
+  /* ---------- prices ----------
+     Owner, 2026-10-12: "check what you are comparing — Hampden didn't
+     increase 179%". It had not: Bumbu and Hampden shared the key "rum". So:
+     only real products (no deposit, interest, delivery, fee or discount),
+     one purchase per invoice, two pack sizes never one product, and every
+     row opens onto the invoices and lines it compares — the evidence, so a
+     wrong pairing is visible at a glance. */
+  const NOT_A_PRODUCT = /povratn|naknad|kamat|dostav|prijevoz|popust|rabat|kaucij|tro[sš]ak|pristojb|[cč]lanarin|pretplat/i;
+  /* "0,75 l", "800 g", "300–400 g", "1,5 kg" in a line's name */
+  function packOf(name) {
+    const m = String(name || "").match(/(\d+(?:[.,]\d+)?)(?:\s*[-–]\s*(\d+(?:[.,]\d+)?))?\+?\s*(ml|cl|l|kg|g)\b/i);
+    return m ? `${m[1].replace(",", ".")}${m[2] ? "-" + m[2].replace(",", ".") : ""}${m[3].toLowerCase()}` : "";
+  }
+  let openPrice = null;
   function pricesView() {
     const seen = {};
     for (const r of done().slice().sort((a, b) => dateOf(a).localeCompare(dateOf(b)))) {
+      const here = new Set();
       for (const it of r.items) {
-        /* products only: a bill or a service has no unit price worth following */
         if (!it.key || it.unit_price == null || it.unit_price <= 0 || ["rezije", "usluge", "odrzavanje"].includes(it.category)) continue;
-        const k = it.key + "|" + (it.unit || "");
-        (seen[k] = seen[k] || []).push({ p: it.unit_price, d: dateOf(r), v: shortName(r.vendor), name: it.name, unit: it.unit, spent: it.total || 0 });
+        if (NOT_A_PRODUCT.test(it.name) || NOT_A_PRODUCT.test(it.key)) continue;
+        const k = `${it.key}|${it.unit || ""}|${packOf(it.name)}`;
+        if (here.has(k)) continue;                 /* the same article twice on one invoice is one purchase */
+        here.add(k);
+        (seen[k] = seen[k] || []).push({ p: it.unit_price, d: dateOf(r), v: shortName(r.vendor), name: it.name, unit: it.unit,
+          spent: it.total || 0, id: r.id, no: r.doc_no, line: lineSmall(it) });
       }
     }
-    const rows = Object.values(seen).filter((h) => h.length >= 2).map((h) => {
+    const rows = Object.entries(seen).filter(([, h]) => h.length >= 2).map(([k, h]) => {
       const last = h[h.length - 1], prev = h[h.length - 2], first = h[0];
-      return { name: last.name, unit: last.unit, last, prev, first, n: h.length, change: pct(last.p, prev.p),
+      return { k, name: last.name, unit: last.unit, last, prev, first, h, n: h.length, change: pct(last.p, prev.p),
                since: pct(last.p, first.p), spent: h.reduce((s, x) => s + x.spent, 0) };
     });
     if (!rows.length) {
@@ -617,12 +634,16 @@
     const row = (r) => {
       const where = r.last.v === r.prev.v ? esc(r.last.v || "") : `${esc(r.prev.v || "")} → ${esc(r.last.v || "")}`;
       const was = r.change ? `prije ${eur(r.prev.p)}` : r.since ? `u ${mname(r.first.d)} ${eur(r.first.p)}` : "";
-      return `<div class="pr">
+      const isOpen = openPrice === r.k;
+      return `<div class="pr${isOpen ? " open" : ""}"><button class="prh" data-price="${esc(r.k)}" aria-expanded="${isOpen}">
       <span class="pn">${esc(r.name)}<small>${where} · ${r.n}× · zadnje ${hrDate(r.last.d)}${was ? ` · ${was}` : ""}</small></span>
       <span class="pp"><b>${eur(r.last.p)}</b><small>/${esc(r.unit || "kom")}</small>
-        ${r.change ? arrow(r.change, "") : r.since ? arrow(r.since, ` od ${MONTHS_GEN[Number(r.first.d.slice(5, 7)) - 1]}`) : `<span class="muted">ista</span>`}</span></div>`;
+        ${r.change ? arrow(r.change, "") : r.since ? arrow(r.since, ` od ${MONTHS_GEN[Number(r.first.d.slice(5, 7)) - 1]}`) : `<span class="muted">ista</span>`}</span></button>
+      ${isOpen ? `<div class="ph">${r.h.slice().reverse().map((x) => `<button class="phr" data-goto="${esc(x.id)}">
+          <span>${hrDate(x.d)} · ${esc(x.v || "")}${x.no ? ` · br. ${esc(x.no)}` : ""}<small>${esc(x.name)}</small>${x.line}</span>
+          <b>${eur(x.p)}<small>/${esc(x.unit || "kom")}</small></b></button>`).join("")}</div>` : ""}</div>`;
     };
-    return `<p class="muted small">Isti proizvod, zadnja kupnja prema prethodnoj. Cijena po kg, l ili komadu, s PDV-om.</p>
+    return `<p class="muted small">Isti proizvod, zadnja kupnja prema prethodnoj. Cijena po kg, l ili komadu, s PDV-om. Dodirnite proizvod da vidite račune koji se uspoređuju.</p>
       ${moved.length ? `<h3 class="h">Promijenjene cijene</h3>${moved.map(row).join("")}` : ""}
       ${steady.length ? `<h3 class="h">Iste cijene</h3>${steady.map(row).join("")}` : ""}`;
   }
@@ -738,6 +759,13 @@
       if (r) markPaid(r.id, !isPaid(r));
     }));
     box.querySelectorAll("[data-kind]").forEach((b) => b.addEventListener("click", () => { kind = b.dataset.kind; open = null; render(); }));
+    box.querySelectorAll("[data-price]").forEach((b) => b.addEventListener("click", () => { openPrice = openPrice === b.dataset.price ? null : b.dataset.price; render(); }));
+    box.querySelectorAll("[data-goto]").forEach((b) => b.addEventListener("click", () => {
+      const r = receipts.find((x) => x.id === b.dataset.goto);
+      if (!r) return;
+      sub = "racuni"; month = monthOf(r); kind = ""; unpaidOnly = false; query = ""; open = r.id; catPick = null; render();
+      const el = box.querySelector(`[data-open="${CSS.escape(r.id)}"]`); if (el) el.scrollIntoView({ block: "start" });
+    }));
     box.querySelectorAll("[data-unpaid]").forEach((b) => b.addEventListener("click", () => { unpaidOnly = !unpaidOnly; open = null; render(); }));
     box.querySelectorAll("[data-showdup]").forEach((b) => b.addEventListener("click", () => { showDup = !showDup; render(); }));
     box.querySelectorAll("#rq").forEach((inp) => inp.addEventListener("input", () => {
@@ -746,12 +774,6 @@
     }));
     box.querySelectorAll("[data-notdup]").forEach((b) => b.addEventListener("click", async () => {
       try { await api(`/${b.dataset.notdup}/nije_isti`, { method: "POST" }); await load(); } catch (e) { err = e.message; render(); }
-    }));
-    box.querySelectorAll("[data-mer]").forEach((b) => b.addEventListener("click", async () => {
-      merBusy = true; render();
-      try { const r = await api("/mer", { method: "POST" }); mer = r.mer; await load(); }
-      catch (e) { err = "moj-eRačun: " + e.message; }
-      merBusy = false; render();
     }));
     box.querySelectorAll("[data-nodel]").forEach((b) => b.addEventListener("click", () => { confirmDel = null; render(); }));
     box.querySelectorAll("[data-retry]").forEach((b) => b.addEventListener("click", async () => {
