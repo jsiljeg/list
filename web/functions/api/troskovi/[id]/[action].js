@@ -90,7 +90,8 @@ export async function onRequestPost({ request, env, params }) {
     return reply(request, { ok: true, item: await readReceipt(env, id) });
   }
   if (action === "placeno") {
-    await setFields(env, id, { paid_at: b.paid === false ? null : zagrebDate() });
+    /* "ne" says he unmarked it — a card receipt he still owes on stays unpaid */
+    await setFields(env, id, { paid_at: b.paid === false ? "ne" : zagrebDate() });
     return reply(request, { ok: true, item: await readReceipt(env, id) });
   }
   if (action === "nije_isti") {

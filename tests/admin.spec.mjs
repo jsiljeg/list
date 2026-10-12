@@ -590,28 +590,6 @@ test("Troškovi: where the money goes, receipts by month, a category fixed in on
   expect(dialogs).toEqual([]);
 });
 
-test("Troškovi: the demo shows made-up receipts and simulates reading, without a single request", async ({ page }) => {
-  /* owner, 2026-10-12: mock data to show Filho how it works — never in the real database */
-  await board(page);
-  const calls = [];
-  await page.route("https://theatrium.devinos.hr/**", (route) => { calls.push(route.request().method()); return route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[],"limits":{"ready":true}}' }); });
-  await page.click('.tabs button[data-tab="troskovi"]');
-  await page.click('[data-demo="1"]');
-  const before = calls.length;
-  await expect(page.locator(".demo-bar")).toContainText("Primjer");
-  await expect(page.locator(".bars .bar").first()).toBeVisible();
-  await page.click('[data-sub="cijene"]');
-  await expect(page.locator("#tab-troskovi .pr").first()).toBeVisible();
-  await page.click('[data-sub="racuni"]');
-  await page.setInputFiles("[data-up][multiple]", { name: "r.png", mimeType: "image/png", buffer: readFileSync(new URL("../assets/qr.png", import.meta.url)) });
-  await page.click("[data-send]");
-  await expect(page.locator(".badge").filter({ hasText: "čita se" })).toBeVisible();
-  await expect(page.locator(".badge").filter({ hasText: "čita se" })).toHaveCount(0, { timeout: 12000 });
-  expect(calls.length - before, "nothing leaves the phone in the demo").toBe(0);
-  await page.click('[data-demo=""]');
-  await expect(page.locator(".demo-bar")).toHaveCount(0);
-});
-
 test("Troškovi: cash with no receipt is typed in, e-invoices are marked, a photographed twin is not counted", async ({ page }) => {
   /* Filho, 2026-10-12: "staviti račun plaćen gotovinom ali bez slike jer nema
      uvijek računa … majstora isto plaćam gotovinom bez računa — i da se prati";
@@ -664,9 +642,9 @@ test("Troškovi: cash with no receipt is typed in, e-invoices are marked, a phot
   expect(sent.items.map((i) => [i.total, i.category])).toEqual([[12.5, "povrce"], [80, "odrzavanje"]]);
 });
 
-test("Troškovi: a virman invoice waits in 'Za platiti' until one tap marks it paid, and the tap can be undone", async ({ page }) => {
-  /* owner, 2026-10-12: "some option to mark račun as plaćeno … some easy way".
-     Card and cash are paid by being a receipt; only virman waits. */
+test("Troškovi: PLAĆENO / NEPLAĆENO is one pill that toggles on every receipt; Za platiti lists the unpaid", async ({ page }) => {
+  /* owner, 2026-10-12: "simply click and toggle it", like NOVO. Until a tap,
+     card and cash count as paid and virman as not; a tap can override both. */
   await board(page);
   const now = new Date().toISOString().slice(0, 10), ym = now.slice(0, 7);
   const r = (id, payment, extra = {}) => ({ id, created_at: `${ym}-01T09:00:00Z`, updated_at: "", status: "done", vendor: "Dobavljač " + id,
@@ -689,11 +667,19 @@ test("Troškovi: a virman invoice waits in 'Za platiti' until one tap marks it p
   await page.click(".paybanner");
   /* only the unpaid virman one is listed */
   await expect(page.locator("#za-platiti .py")).toHaveCount(1);
-  await expect(page.locator('[data-open="late"] .badge')).toContainText("kasni");
-  await page.click('[data-paid="late"]');
-  await expect(page.locator("#za-platiti")).toContainText("označeno plaćeno");
+  await expect(page.locator('#za-platiti [data-togglepaid="late"]')).toHaveText("KASNI");
+  /* a card receipt is paid until he says otherwise — and one tap says it */
+  await expect(page.locator('[data-togglepaid="card"]')).toHaveText("PLAĆENO");
+  await page.click('[data-togglepaid="card"]');
+  await expect(page.locator('[data-togglepaid="card"]').first()).toHaveText("NEPLAĆENO");
+  await expect.poll(() => posts.map((p) => p.path + p.body)).toContain('/api/troskovi/card/placeno{"paid":false}');
+  await expect(page.locator("#za-platiti .py")).toHaveCount(2);
+  /* paying from Za platiti: the row stays a moment, so the same pill undoes it */
+  await page.locator('#za-platiti [data-togglepaid="late"]').click();
+  await expect(page.locator('#za-platiti [data-togglepaid="late"]')).toHaveText("PLAĆENO");
   await expect.poll(() => posts.map((p) => p.path + p.body)).toContain('/api/troskovi/late/placeno{"paid":true}');
-  await page.click('#za-platiti [data-unpaid="late"]');
-  await expect.poll(() => posts.map((p) => p.path + p.body)).toContain('/api/troskovi/late/placeno{"paid":false}');
-  await expect(page.locator('#za-platiti [data-paid="late"]')).toBeVisible();
+  await page.locator('#za-platiti [data-togglepaid="late"]').click();
+  await expect(page.locator('#za-platiti [data-togglepaid="late"]')).toHaveText("KASNI");
+  /* the made-up demo is gone (owner, 2026-10-12) */
+  await expect(page.getByText("Pogledaj primjer")).toHaveCount(0);
 });

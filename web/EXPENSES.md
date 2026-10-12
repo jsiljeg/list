@@ -172,3 +172,21 @@ Schema: `expense_receipts.source` and `.dup_of` are added by deploy-web's
 Not done, on purpose: MER is not told anything is paid (read only, as above),
 and payment is not matched against the bank — that would need the bank's
 statement, and is a later step if Filho wants it.
+
+### One pill that toggles (owner, 2026-10-12, same day)
+
+"Should we just click on NEPLAĆENO / PLAĆENO and it toggles? just like we do
+for NOVO." So the Za platiti buttons and the "poništi" step became one pill on
+**every** read receipt — in the list and in Za platiti — reading PLAĆENO,
+NEPLAĆENO, or KASNI past the due date. A tap flips it; the next tap flips it
+back. No confirm: it is reversible in one tap and loses nothing, which is the
+same reasoning NOVO uses. A row paid from Za platiti stays there six seconds
+so the same pill is still under the thumb.
+
+Until he taps, the default is the way it was paid: card or cash (Konzum Plus
+at the till) = paid, virman = not. `paid_at` therefore has three states — a
+date (he marked it paid), `"ne"` (he marked it not paid, which also overrides
+a card receipt he is still settling), empty (the default).
+
+The made-up demo ("Pogledaj primjer") was removed at the owner's request —
+the tab has real receipts now.
