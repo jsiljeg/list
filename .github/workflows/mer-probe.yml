@@ -1,0 +1,46 @@
+# TEMPORARY (2026-10-12): which field does MER object to? Prints only MER's
+# error text or a document count — never credentials, never invoice data
+# (the repo is public). Deleted once the connection works.
+name: MER probe
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    environment: theatrium
+    steps:
+      - name: Ask MER a few ways
+        env:
+          U: ${{ secrets.MER_USERNAME }}
+          P: ${{ secrets.MER_PASSWORD }}
+          C: ${{ secrets.MER_COMPANY_ID }}
+          S: ${{ secrets.MER_SOFTWARE_ID }}
+        run: |
+          node - <<'EOF'
+          const { U, P, C, S } = process.env;
+          const shape = (v) => `${v.length} chars, ${/^\d+$/.test(v) ? "digits" : /@/.test(v) ? "email" : "mixed"}${v !== v.trim() ? ", HAS WHITESPACE" : ""}`;
+          console.log("username:", shape(U), "| company:", shape(C), "| software:", shape(S));
+          const today = new Date().toISOString().slice(0, 10);
+          const ago = new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10);
+          const tries = [
+            ["as the site sends it", { From: ago, To: today + "T23:59:59" }],
+            ["no dates", {}],
+            ["dates only", { From: ago, To: today }],
+            ["wrong password", { From: ago, To: today }, { Password: "x-wrong-x" }],
+            ["fake software id", { From: ago, To: today }, { SoftwareId: "Test-001" }],
+            ["trimmed values", { From: ago, To: today }, { Username: U.trim(), Password: P.trim(), CompanyId: C.trim(), SoftwareId: S.trim() }],
+          ];
+          for (const [label, extra, over = {}] of tries) {
+            const body = { Username: U, Password: P, CompanyId: C, SoftwareId: S, ...extra, ...over };
+            try {
+              const r = await fetch("https://www.moj-eracun.hr/apis/v2/queryInbox", {
+                method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+              const t = await r.text();
+              let o; try { o = JSON.parse(t); } catch {}
+              let out;
+              if (Array.isArray(o)) out = `OK, ${o.length} documents`;
+              else if (o && typeof o === "object") out = JSON.stringify(Object.fromEntries(Object.entries(o).map(([k, v]) => [k, v && v.Messages ? v.Messages : typeof v])));
+              else out = t.replace(/\s+/g, " ").slice(0, 200);
+              console.log(`${label}: HTTP ${r.status} → ${out}`);
+            } catch (e) { console.log(`${label}: ${e.message}`); }
+          }
+          EOF
