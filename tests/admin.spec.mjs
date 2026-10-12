@@ -879,8 +879,8 @@ test("Troškovi: Cijene compares like with like and shows the invoices behind a 
     r("a", "03", "238442-31", [line("Römerquelle negazirana voda 0,75 l", "voda negazirana", "l", 1.6, 12),
       line("Römerquelle negazirana voda 0,33 l", "voda negazirana", "l", 2.77, 9.14),
       line("Povratna naknada za ambalažu", "povratna naknada", "kom", 0.1, 2)]),
-    r("b", "06", "241232-31", [line("Römerquelle negazirana voda 0,75 l", "voda negazirana", "l", 1.8, 13.5),
-      line("Römerquelle negazirana voda 0,75 l", "voda negazirana", "l", 1.8, 13.5),
+    r("b", "06", "241232-31", [line("Römerquelle negazirana voda 0,75 l", "voda negazirana", "l", 1.84, 13.8),
+      line("Römerquelle negazirana voda 0,75 l", "voda negazirana", "l", 1.84, 13.8),
       line("Povratna naknada", "povratna naknada", "kom", 0.2, 2)]),
   ];
   await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
@@ -889,16 +889,16 @@ test("Troškovi: Cijene compares like with like and shows the invoices behind a 
   await page.click('.tabs button[data-tab="troskovi"]');
   await page.click('[data-sub="cijene"]');
   /* one row: the 0,75 l, bought on two invoices; the 0,33 l and the deposit are not compared */
-  await expect(page.locator(".pr")).toHaveCount(1);
-  await expect(page.locator(".pr")).toContainText("0,75 l");
-  await expect(page.locator(".pr")).toContainText("2×");
-  await expect(page.locator(".pr")).toContainText("13%");
+  await expect(page.locator("#tab-troskovi .pr")).toHaveCount(1);
+  await expect(page.locator("#tab-troskovi .pr")).toContainText("0,75 l");
+  await expect(page.locator("#tab-troskovi .pr")).toContainText("2×");
+  await expect(page.locator("#tab-troskovi .pr")).toContainText("15%");
   /* the evidence: both invoices, by number; one tap opens the invoice */
-  await page.click(".pr .prh");
-  await expect(page.locator(".ph .phr")).toHaveCount(2);
-  await expect(page.locator(".ph")).toContainText("br. 241232-31");
-  await expect(page.locator(".ph")).toContainText("br. 238442-31");
-  await page.locator(".ph .phr").first().click();
+  await page.click("#tab-troskovi .pr .prh");
+  await expect(page.locator("#tab-troskovi .ph .phr")).toHaveCount(2);
+  await expect(page.locator("#tab-troskovi .ph")).toContainText("br. 241232-31");
+  await expect(page.locator("#tab-troskovi .ph")).toContainText("br. 238442-31");
+  await page.locator("#tab-troskovi .ph .phr").first().click();
   await expect(page.locator('[data-sub="racuni"]')).toHaveClass(/on/);
   await expect(page.locator(".rec.open")).toHaveCount(1);
 });
