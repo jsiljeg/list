@@ -27,6 +27,7 @@ jobs:
             ["dates only", { From: ago, To: today }],
             ["wrong password", { From: ago, To: today }, { Password: "x-wrong-x" }],
             ["fake software id", { From: ago, To: today }, { SoftwareId: "Test-001" }],
+            ...["Test-002", "software-123", "Theatrium-001", "THEATR1", "Test-999", "Apelacija-001"].map((v) => ["software " + v, { From: ago, To: today }, { SoftwareId: v }]),
             ["trimmed values", { From: ago, To: today }, { Username: U.trim(), Password: P.trim(), CompanyId: C.trim(), SoftwareId: S.trim() }],
           ];
           for (const [label, extra, over = {}] of tries) {
