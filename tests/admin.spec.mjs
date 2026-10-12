@@ -748,3 +748,12 @@ test("MER: the inbox list is asked for as JSON only", () => {
   const src = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
   expect(src).toMatch(/accept: path === "\/queryInbox" \? "application\/json" :/);
 });
+
+/* Backfilling August and September (owner, 2026-10-12) must not move the
+   forward check: last_ok is only set by a plain sync. */
+test("MER: a backfill range never moves last_ok", () => {
+  const src = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
+  expect(src).toMatch(/if \(!range && fresh\.length <= PER_SYNC\) await setState\(env, "last_ok", now\)/);
+  const api = readFileSync(new URL("../web/functions/api/troskovi/mer.js", import.meta.url), "utf8");
+  expect(api).toMatch(/merSync\(env, \{ force: true, range \}\)/);
+});

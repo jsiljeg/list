@@ -99,15 +99,20 @@ export async function findTwin(env, { vendor_oib, doc_no, doc_date, total }, wan
 /* Ask the inbox for anything new. Called on every staff read (throttled to
    EVERY_MIN) and by "provjeri sada". Never throws; failures are kept in the
    state so the tab can say what MER answered. */
-export async function merSync(env, { force = false } = {}) {
+/* `range` {from, to} (YYYY-MM-DD) is a backfill of older months (owner,
+   2026-10-12: "after October, pull in September and August"): the same
+   import, seen documents skipped, but last_ok is left alone — the forward
+   check keeps its place. */
+export async function merSync(env, { force = false, range = null } = {}) {
   if (!merReady(env) || !env.DB) return { state: "not_set_up" };
   const s = await getState(env);
   const now = nowIso();
   if (!force && s.last_try && Date.parse(now) - Date.parse(s.last_try) < EVERY_MIN * 60000) return { state: "fresh" };
   await setState(env, "last_try", now);
   try {
-    const from = s.last_ok ? day(s.last_ok, OVERLAP_DAYS) : firstFrom();
-    const list = JSON.parse(await call(env, "/queryInbox", { From: from, To: zagrebDate() + "T23:59:59" }));
+    const from = range ? range.from : s.last_ok ? day(s.last_ok, OVERLAP_DAYS) : firstFrom();
+    const to = (range ? range.to : zagrebDate()) + "T23:59:59";
+    const list = JSON.parse(await call(env, "/queryInbox", { From: from, To: to }));
     if (!Array.isArray(list)) throw new Error("MER je odgovorio nečim što nije popis dokumenata.");
     const docs = list.filter((d) => d && Number.isInteger(Number(d.ElectronicId)));
     const { results } = await env.DB.prepare("SELECT electronic_id FROM expense_mer_docs").all();
@@ -128,7 +133,7 @@ export async function merSync(env, { force = false } = {}) {
       await importDraft(env, eid, draft, d);
       imported += 1;
     }
-    if (fresh.length <= PER_SYNC) await setState(env, "last_ok", now);
+    if (!range && fresh.length <= PER_SYNC) await setState(env, "last_ok", now);
     await setState(env, "error", "");
     await setState(env, "imported", Number(s.imported || 0) + imported);
     if (imported) await pump(env);
