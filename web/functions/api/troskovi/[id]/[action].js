@@ -6,10 +6,11 @@
  *   uredi       (staff)  a hand-typed expense, typed again (same body as POST /api/troskovi)
  *   placeno     (staff)  {paid: true|false}: paid today, or not paid after all
  *   nije_isti   (staff)  "this is not the same invoice": a receipt marked as a twin counts again
- *   ponovi      (staff)  a failed receipt is read again
+ *   ponovi      (staff)  a receipt is read again — a failed one, or a photo read
+ *                        under older rules (categories chosen by hand are kept)
  *   obrisi      (staff)  the receipt and its photos are deleted for good */
 import { reply, isStaffAsync, isExpenseWorker, readReceipt, setFields, pump, clip, num, cleanItems, cleanManual,
-         mergeEinvoice, zagrebDate, CATEGORIES } from "../../../_lib/expenses.js";
+         mergeEinvoice, keepFixed, zagrebDate, CATEGORIES } from "../../../_lib/expenses.js";
 import { findTwin } from "../../../_lib/mer.js";
 
 export async function onRequestPost({ request, env, params }) {
@@ -38,7 +39,7 @@ export async function onRequestPost({ request, env, params }) {
         doc_date: date, doc_no: clip(b.doc_no, 60), total: num(b.total), vat: num(b.vat),
         payment: ["gotovina", "kartica", "virman"].includes(b.payment) ? b.payment : "",
         due_date: /^\d{4}-\d{2}-\d{2}$/.test(b.due_date || "") ? b.due_date : null,
-        items: JSON.stringify(cleanItems(b.items)), note: clip(b.note, 300),
+        items: JSON.stringify(keepFixed(item.items, cleanItems(b.items))), note: clip(b.note, 300),
       });
     }
     /* the same invoice, photographed and arrived from MER, counts once: the
@@ -99,7 +100,8 @@ export async function onRequestPost({ request, env, params }) {
     return reply(request, { ok: true, item: await readReceipt(env, id) });
   }
   if (action === "ponovi") {
-    if (item.status !== "failed") return reply(request, { error: "not_failed" }, 409);
+    if (item.status === "queued" || item.status === "working") return reply(request, { error: "busy" }, 409);
+    if (item.source !== "foto" && item.status !== "failed") return reply(request, { error: "not_photo" }, 409);
     await setFields(env, id, { status: "queued", runs: 0, error: "" });
     const pumped = await pump(env);
     return reply(request, { ok: true, item: await readReceipt(env, id), pumped });

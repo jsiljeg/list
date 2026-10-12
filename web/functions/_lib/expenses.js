@@ -170,18 +170,45 @@ export const CATEGORIES = ["meso", "riba", "povrce", "mlijecno", "suha", "pekara
   "vino", "zestoko", "pivo_sokovi", "kava",
   "ciscenje", "ambalaza", "oprema", "odrzavanje", "rezije", "usluge", "dekor", "ostalo"];
 const num = (v) => (v == null || v === "" || !Number.isFinite(Number(v)) ? null : Math.round(Number(v) * 100) / 100);
+/* Two sets of numbers per line, on purpose (owner, 2026-10-12: "numbers are
+   made up — Teranino didn't cost like you put it"). doc_* is the line exactly
+   as printed — what Filho checks against the paper, and what the tab shows.
+   total / qty / unit / unit_price are derived: the line's share of what was
+   paid (PDV included) for the sums, and a price per kg / l / kom for Cijene. */
+const num4 = (v) => (v == null || v === "" || !Number.isFinite(Number(v)) ? null : Math.round(Number(v) * 10000) / 10000);
 export function cleanItems(items) {
-  return (Array.isArray(items) ? items : []).slice(0, 200).map((it) => ({
-    name: clip(it && it.name, 120),
-    key: clip(it && it.key, 80).toLowerCase(),
-    qty: num(it && it.qty),
-    unit: clip(it && it.unit, 8).toLowerCase(),
-    unit_price: num(it && it.unit_price),
-    total: num(it && it.total),
-    category: CATEGORIES.includes(it && it.category) ? it.category : "ostalo",
-  })).filter((it) => it.name || it.total != null);
+  return (Array.isArray(items) ? items : []).slice(0, 200).map((it) => {
+    const out = {
+      name: clip(it && it.name, 120),
+      key: clip(it && it.key, 80).toLowerCase(),
+      qty: num4(it && it.qty),
+      unit: clip(it && it.unit, 8).toLowerCase(),
+      unit_price: num4(it && it.unit_price),
+      total: num(it && it.total),
+      category: CATEGORIES.includes(it && it.category) ? it.category : "ostalo",
+    };
+    if (it && it.doc_total != null) {
+      Object.assign(out, {
+        doc_qty: num4(it.doc_qty), doc_unit: clip(it.doc_unit, 8).toLowerCase(), doc_price: num4(it.doc_price), doc_base: num4(it.doc_base),
+        discount: num(it.discount), doc_total: num(it.doc_total), vat_rate: num(it.vat_rate),
+      });
+    }
+    if (it && it.fixed) out.fixed = true;
+    return out;
+  }).filter((it) => it.name || it.total != null);
 }
 export { num };
+
+/* A receipt read again keeps the categories Filho chose by hand: line by line
+   when the count is the same, otherwise where the product key matches. */
+export function keepFixed(oldItems, newItems) {
+  const fixed = (oldItems || []).filter((i) => i.fixed);
+  if (!fixed.length) return newItems;
+  return newItems.map((n, i) => {
+    const o = oldItems.length === newItems.length ? oldItems[i] : fixed.find((f) => f.key && f.key === n.key);
+    return o && o.fixed ? { ...n, category: o.category, fixed: true } : n;
+  });
+}
 
 /* The run's lines for an e-invoice: its names, keys, units and categories are
    taken, but never its money — the amounts are the invoice's own, exact.
@@ -191,6 +218,7 @@ export function mergeEinvoice(draftItems, readItems) {
   const read = cleanItems(readItems);
   if (read.length === draftItems.length) {
     return draftItems.map((d, i) => ({
+      ...d,                                   /* doc_*: the invoice's own */
       name: read[i].name || d.name, key: read[i].key,
       qty: read[i].qty ?? d.qty, unit: read[i].unit || d.unit,
       unit_price: read[i].unit_price ?? d.unit_price, total: d.total, category: read[i].category,

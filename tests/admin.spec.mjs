@@ -683,3 +683,27 @@ test("Troškovi: PLAĆENO / NEPLAĆENO is one pill that toggles on every receipt
   /* the made-up demo is gone (owner, 2026-10-12) */
   await expect(page.getByText("Pogledaj primjer")).toHaveCount(0);
 });
+
+test("Troškovi: a line shows what is printed on the paper, not the converted price", async ({ page }) => {
+  /* owner, 2026-10-12: "Teranino didn't cost like you put it". The LIGNUM
+     invoice prints 6 kom × 16,80 € − 5% = 95,76 € net; we showed 4,2 l × 28,50 €. */
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const items = [{ id: "lig", created_at: `${ym}-09T09:00:00Z`, updated_at: "", status: "done", vendor: "LIGNUM d.o.o.", vendor_oib: "47800348437",
+    doc_date: `${ym}-09`, doc_no: "313-01-91", total: 523.65, vat: 104.31, payment: "virman", photos: [], note: "", created_by: "", source: "foto",
+    dup_of: "", due_date: "", paid_at: "",
+    items: [{ name: "Teranino 0,7 l", key: "teranino", doc_qty: 6, doc_unit: "kom", doc_price: 16.8, discount: 5, doc_total: 95.76, vat_rate: 25,
+              qty: 4.2, unit: "l", unit_price: 28.5, total: 119.7, category: "zestoko" }] }];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="racuni"]');
+  await page.click('[data-open="lig"]');
+  const line = page.locator(".it").first();
+  await expect(line).toContainText(/6 kom × 16,80\s€ · rabat 5%/);
+  await expect(line.locator("b")).toContainText(/^95,76\s€/);
+  await expect(line.locator("b small")).toContainText(/s PDV-om 119,70\s€/);
+  await expect(line).not.toContainText("28,50");
+  await expect(page.locator('[data-retry="lig"]')).toHaveText("pročitaj ponovno");
+});

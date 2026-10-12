@@ -46,6 +46,8 @@ function find(el, names) {
 
 /* UN/ECE rec. 20 units → the three the Cijene tab compares by */
 const UNITS = { KGM: ["kg", 1], GRM: ["kg", 0.001], LTR: ["l", 1], MLT: ["l", 0.001], CLT: ["l", 0.01] };
+const DOC_UNITS = { KGM: "kg", GRM: "g", LTR: "l", MLT: "ml", CLT: "cl", H87: "kom", C62: "kom", PCE: "kom", EA: "kom",
+  XBX: "kut", XPK: "pak", XBO: "boca", MTR: "m", HUR: "h" };
 /* UNCL 4461 payment means */
 const PAYMENT = { 10: "gotovina", 48: "kartica", 54: "kartica", 55: "kartica" };
 
@@ -76,11 +78,19 @@ export function ublDraft(xml) {
     const price = num(txt(ln, "Price", "PriceAmount"));
     const net = num(txt(ln, "LineExtensionAmount"));
     const qty = qty0 == null ? null : Math.round(qty0 * k * 1000) / 1000;
+    /* the line's own rabat, as a percentage when the invoice states one */
+    const allow = kids(ln, "AllowanceCharge").find((a) => txt(a, "ChargeIndicator") === "false");
+    const discount = allow ? num(txt(allow, "MultiplierFactorNumeric")) : null;
     return {
       name: txt(ln, "Item", "Name") || txt(ln, "Item", "Description"),
+      /* as the invoice states it — what Filho compares with the PDF */
+      doc_qty: qty0, doc_unit: DOC_UNITS[(qEl && qEl.attrs.unitCode) || ""] || "kom",
+      doc_price: price, doc_base: base !== 1 ? base : null,     /* "20,74 € / 1000 g" stays that */
+      discount, doc_total: net == null ? null : r2(sign * net), vat_rate: rate,
+      /* derived: per kg / l / kom with PDV, for Cijene; the share of what was paid */
       qty,
       unit,
-      unit_price: price == null ? null : r2((price / base / k) * gross),
+      unit_price: price == null ? null : Math.round((price / base / k) * gross * 10000) / 10000,
       total: net == null ? null : r2(sign * net * gross),
     };
   });

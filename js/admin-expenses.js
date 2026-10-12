@@ -455,6 +455,22 @@
     return `<p class="mer">📨 e-Računi iz moj-eRačuna stižu sami${mer.last_ok ? ` · provjereno ${at(mer.last_ok)}` : ""}${btn}</p>`;
   }
 
+  /* A line as printed on the paper (owner, 2026-10-12: "Teranino didn't cost
+     like you put it"): 6 kom × 16,80 € · rabat 5%, then the printed amount.
+     The per-kg/l price with PDV that Cijene compares is never shown here. */
+  const nf = (n) => new Intl.NumberFormat("hr-HR", { maximumFractionDigits: 3 }).format(n);
+  function lineSmall(it) {
+    if (it.doc_total != null) {
+      const u = esc(it.doc_unit || "kom");
+      const q = it.doc_qty != null ? `${nf(it.doc_qty)} ${u}` : "";
+      const p = it.doc_price != null ? `${eur(it.doc_price)}${it.doc_base ? ` / ${nf(it.doc_base)} ${u}` : ""}` : "";
+      const parts = [[q, p].filter(Boolean).join(" × "), it.discount ? `rabat ${nf(it.discount)}%` : ""].filter(Boolean);
+      return parts.length ? `<small>${parts.join(" · ")}</small>` : "";
+    }
+    /* read before 2026-10-12: only the converted figures exist */
+    return it.qty != null ? `<small>${nf(it.qty)} ${esc(it.unit || "")}${it.unit_price != null ? ` × ${eur(it.unit_price)}` : ""}</small>` : "";
+  }
+
   function receiptRow(r) {
     {
       const st = r.status;
@@ -473,8 +489,9 @@
         ${r.note ? `<p class="muted small">${esc(r.note)}</p>` : ""}
         ${st === "failed" ? `<p class="err">${esc(r.error || "Račun se ne može pročitati.")}</p>` : ""}
         ${r.items.length ? `<div class="items">${r.items.map((it, i) => `
-          <div class="it"><span class="in">${esc(it.name)}${it.qty != null ? `<small>${String(it.qty).replace(".", ",")} ${esc(it.unit || "")}${it.unit_price != null ? ` × ${eur(it.unit_price)}` : ""}</small>` : ""}</span>
-            <b>${eur(it.total)}</b>
+          <div class="it"><span class="in">${esc(it.name)}${lineSmall(it)}</span>
+            <b>${eur(it.doc_total != null ? it.doc_total : it.total)}${it.doc_total != null && it.total != null && Math.abs(it.doc_total - it.total) > 0.01
+              ? `<small>s PDV-om ${eur(it.total)}</small>` : ""}</b>
             <button class="chip" data-cat="${esc(r.id)}|${i}" style="border-color:${groupOf(it.category)[3]}">${esc(CAT[it.category] || it.category)} ▾</button>
             ${catPick === `${r.id}|${i}` ? catPicker(`r|${r.id}|${i}`, it.category) : ""}
           </div>`).join("")}</div>` : ""}
@@ -486,7 +503,8 @@
         <div class="pics">${r.photos.map((n) => thumb(r, n)).join("")}</div>
         ${confirmDel === r.id
           ? `<div class="ch-acts"><button class="nema all" data-del="${esc(r.id)}" data-sure="1">da, obriši račun</button><button class="nema cancel" data-nodel>odustani</button></div>`
-          : `<div class="ch-acts">${st === "failed" ? `<button class="nema ok" data-retry="${esc(r.id)}">pokušaj ponovno</button>` : ""}
+          : `<div class="ch-acts">${st === "failed" ? `<button class="nema ok" data-retry="${esc(r.id)}">pokušaj ponovno</button>`
+              : st === "done" && r.source === "foto" ? `<button class="nema" data-retry="${esc(r.id)}">pročitaj ponovno</button>` : ""}
               ${r.source === "rucno" ? `<button class="nema" data-edit="${esc(r.id)}">ispravi</button>` : ""}
               ${st === "working" ? "" : `<button class="nema" data-del="${esc(r.id)}">obriši</button>`}</div>`}
       </div>`;

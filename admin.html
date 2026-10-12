@@ -183,7 +183,8 @@ button{font:inherit;cursor:pointer}
 .badge.bad{color:#e0a49c}
 .items{margin:4px 0 8px}
 .it{display:grid;grid-template-columns:1fr auto;gap:4px 10px;padding:7px 0;border-top:1px dashed #2c2a25;font-size:14px}
-.it b{font-weight:500;font-variant-numeric:tabular-nums}
+.it b{font-weight:500;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.it b small{display:block;color:var(--dim);font-size:12px;font-weight:400}
 .chip{grid-column:1/-1;justify-self:start;padding:3px 10px;border:1px solid;border-radius:999px;background:none;color:var(--dim);font-size:12px}
 /* the category picker: six groups always in view (a stripe of the group's
    colour), the chosen group's categories under them */
