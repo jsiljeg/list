@@ -642,7 +642,7 @@ test("Troškovi: cash with no receipt is typed in, e-invoices are marked, a phot
   expect(sent.items.map((i) => [i.total, i.category])).toEqual([[12.5, "povrce"], [80, "odrzavanje"]]);
 });
 
-test("Troškovi: PLAĆENO / NEPLAĆENO is one pill that toggles on every receipt; Za platiti lists the unpaid", async ({ page }) => {
+test("Troškovi: PLAĆENO / NEPLAĆENO is one pill that toggles on every receipt, with no separate unpaid list", async ({ page }) => {
   /* owner, 2026-10-12: "simply click and toggle it", like NOVO. Until a tap,
      card and cash count as paid and virman as not; a tap can override both. */
   await board(page);
@@ -661,25 +661,25 @@ test("Troškovi: PLAĆENO / NEPLAĆENO is one pill that toggles on every receipt
   await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
   await page.click('.tabs button[data-tab="troskovi"]');
 
-  /* Pregled names what is owed, and that it is late */
-  await expect(page.locator(".paybanner")).toContainText("1 račun");
-  await expect(page.locator(".paybanner")).toContainText("kasni");
-  await page.click(".paybanner");
-  /* only the unpaid virman one is listed */
-  await expect(page.locator("#za-platiti .py")).toHaveCount(1);
-  await expect(page.locator('#za-platiti [data-togglepaid="late"]')).toHaveText("KASNI");
+  /* Filho, 2026-10-12: "samo po mjesecima … bez ove gornje za neplaćene
+     posebno" — no banner on Pregled, no Za platiti card above the receipts */
+  await expect(page.locator(".big b")).toBeVisible();
+  await expect(page.locator(".paybanner")).toHaveCount(0);
+  await page.click('[data-sub="racuni"]');
+  await expect(page.locator("#za-platiti")).toHaveCount(0);
+  await expect(page.locator('[data-togglepaid="late"]')).toHaveCount(1);
+  await expect(page.locator('[data-togglepaid="late"]')).toHaveText("KASNI");
   /* a card receipt is paid until he says otherwise — and one tap says it */
   await expect(page.locator('[data-togglepaid="card"]')).toHaveText("PLAĆENO");
   await page.click('[data-togglepaid="card"]');
-  await expect(page.locator('[data-togglepaid="card"]').first()).toHaveText("NEPLAĆENO");
-  await expect.poll(() => posts.map((p) => p.path + p.body)).toContain('/api/troskovi/card/placeno{"paid":false}');
-  await expect(page.locator("#za-platiti .py")).toHaveCount(2);
-  /* paying from Za platiti: the row stays a moment, so the same pill undoes it */
-  await page.locator('#za-platiti [data-togglepaid="late"]').click();
-  await expect(page.locator('#za-platiti [data-togglepaid="late"]')).toHaveText("PLAĆENO");
-  await expect.poll(() => posts.map((p) => p.path + p.body)).toContain('/api/troskovi/late/placeno{"paid":true}');
-  await page.locator('#za-platiti [data-togglepaid="late"]').click();
-  await expect(page.locator('#za-platiti [data-togglepaid="late"]')).toHaveText("KASNI");
+  await expect(page.locator('[data-togglepaid="card"]')).toHaveText("NEPLAĆENO");
+  /* the body also says who tapped it (Povijest), so only the flag is compared */
+  await expect.poll(() => posts.some((p) => p.path === "/api/troskovi/card/placeno" && JSON.parse(p.body).paid === false)).toBe(true);
+  /* the same pill, tapped twice, comes back */
+  await page.click('[data-togglepaid="late"]');
+  await expect(page.locator('[data-togglepaid="late"]')).toHaveText("PLAĆENO");
+  await page.click('[data-togglepaid="late"]');
+  await expect(page.locator('[data-togglepaid="late"]')).toHaveText("KASNI");
   /* the made-up demo is gone (owner, 2026-10-12) */
   await expect(page.getByText("Pogledaj primjer")).toHaveCount(0);
 });
@@ -756,4 +756,43 @@ test("MER: a backfill range never moves last_ok", () => {
   expect(src).toMatch(/if \(!range && fresh\.length <= PER_SYNC\) await setState\(env, "last_ok", now\)/);
   const api = readFileSync(new URL("../web/functions/api/troskovi/mer.js", import.meta.url), "utf8");
   expect(api).toMatch(/merSync\(env, \{ force: true, range \}\)/);
+});
+
+/* Filho, 2026-10-12: "bilo bi dobro ako bi moglo i račune razvrstavat — kao
+   hrana, piće, potrošno, režije". A receipt's kind is the group most of its
+   money went to; the chips narrow the list and the month total with it. */
+test("Troškovi: receipts sorted by kind — chips with counts, the month total follows", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const r = (id, lines) => ({ id, created_at: `${ym}-03T09:00:00Z`, updated_at: "", status: "done", vendor: "Dobavljač " + id,
+    vendor_oib: "", doc_date: `${ym}-03`, doc_no: "", total: lines.reduce((s, [t]) => s + t, 0), vat: null, payment: "kartica",
+    photos: [], note: "", created_by: "", source: "mer", dup_of: "", due_date: "", paid_at: "",
+    items: lines.map(([total, category]) => ({ name: category, key: "", qty: null, unit: "", unit_price: null, total, category })) });
+  /* mostly food with a little detergent is a food receipt */
+  const items = [r("selecta", [[90, "meso"], [10, "ciscenje"]]), r("hep", [[200, "rezije"]]), r("vino", [[300, "vino"]])];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="racuni"]');
+
+  /* only the kinds that occur, each with its count */
+  await expect(page.locator(".kinds button")).toHaveText([/^Sve/, /^Hrana\s*1/, /^Piće\s*1/, /^Režije i usluge\s*1/]);
+  await expect(page.locator(".rec")).toHaveCount(3);
+  await expect(page.locator('[data-open="selecta"] .kind')).toHaveText("Hrana");
+  await page.click('.kinds [data-kind="rezije"]');
+  await expect(page.locator(".rec")).toHaveCount(1);
+  await expect(page.locator('[data-open="hep"]')).toBeVisible();
+  await expect(page.locator(".mh span").nth(1)).toHaveText(/^200\s€/);
+  await page.click('.kinds [data-kind=""]');
+  await expect(page.locator(".rec")).toHaveCount(3);
+  await expect(page.locator(".mh span").nth(1)).toHaveText(/^600\s€/);
+});
+
+/* A photo marked paid, then matched to its e-invoice, must not take the mark
+   with it into the twin pile (2026-10-12). Source assertion: server code. */
+test("Troškovi: a paid mark on a photo carries over to its e-invoice twin", () => {
+  const src = readFileSync(new URL("../web/functions/api/troskovi/[id]/[action].js", import.meta.url), "utf8");
+  expect(src).toMatch(/if \(photo\.paid_at && !einv\.paid_at\) await setFields\(env, einv\.id, \{ paid_at: photo\.paid_at \}\)/);
+  expect(readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8")).toMatch(/SELECT id, doc_no, doc_date, total, paid_at FROM/);
 });

@@ -58,6 +58,7 @@
   let opened = false;
   let receipts = [], limits = null, sub = "pregled", month = "", open = null, timer = null, err = "";
   let openGroup = null, catPick = null, confirmDel = null;
+  let kind = "";                /* Računi shows one kind of receipt, or all */
   const groupView = {};         /* picker scope → a group opened but not yet chosen from */
   const picked = [];            /* photos chosen, not yet sent */
   let oneReceipt = false, sending = "";
@@ -116,7 +117,6 @@
      "ne" = not paid, empty = by the way it was paid). */
   const todayIso = () => new Date().toISOString().slice(0, 10);
   const isPaid = (r) => (r.paid_at === "ne" ? false : r.paid_at ? true : r.payment !== "virman");
-  const toPay = (r) => r.status === "done" && !r.dup_of && !isPaid(r) && totalOf(r) > 0;
   const daysTo = (d) => Math.round((Date.parse(d) - Date.parse(todayIso())) / 86400000);
   const isLate = (r) => !!r.due_date && daysTo(r.due_date) < 0;
   function dueText(r) {
@@ -125,44 +125,44 @@
     return n < 0 ? `kasni ${-n} ${plural(-n, "dan", "dana", "dana")}` : n === 0 ? "dospijeva danas"
       : n === 1 ? "dospijeva sutra" : `dospijeva ${hrDate(r.due_date)}`;
   }
-  /* a row just paid stays in Za platiti a few seconds, so a wrong tap is
-     undone by tapping the same pill again */
-  const justPaid = new Map();
+  /* The pill on the receipt is the only place it is changed (Filho,
+     2026-10-12: "samo po mjesecima … bez ove gornje za neplaćene posebno") —
+     the separate Za platiti list above the receipts is gone. */
   async function markPaid(id, paid) {
     const r = receipts.find((x) => x.id === id);
     if (!r) return;
     const before = r.paid_at;
-    clearTimeout(justPaid.get(id)); justPaid.delete(id);
     r.paid_at = paid ? todayIso() : "ne";
-    if (paid && document.getElementById("za-platiti")) justPaid.set(id, setTimeout(() => { justPaid.delete(id); render(); }, 6000));
     render();
     try { await api(`/${id}/placeno`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ paid, by: who() }) }); }
-    catch (e) { r.paid_at = before; justPaid.delete(id); err = "Nije spremljeno: " + e.message; render(); }
+    catch (e) { r.paid_at = before; err = "Nije spremljeno: " + e.message; render(); }
   }
   function payPill(r) {
     const paid = isPaid(r), late = !paid && isLate(r);
     return `<button class="paypill ${paid ? "on" : late ? "late" : ""}" data-togglepaid="${esc(r.id)}" aria-pressed="${paid}"
       aria-label="${paid ? "Plaćeno — dodirnite za neplaćeno" : "Neplaćeno — dodirnite za plaćeno"}">${paid ? "PLAĆENO" : late ? "KASNI" : "NEPLAĆENO"}</button>`;
   }
-  const byDue = (a, b) => (a.due_date || "9999").localeCompare(b.due_date || "9999") || dateOf(a).localeCompare(dateOf(b));
-  function payList() {
-    const list = receipts.filter((r) => toPay(r) || justPaid.has(r.id)).sort(byDue);
-    if (!list.length) return "";
-    const sum = list.filter(toPay).reduce((s, r) => s + totalOf(r), 0);
-    return `<div class="card pay" id="za-platiti">
-      <h3 class="h mh"><span>Za platiti</span><span>${sum ? eur(sum) : ""}</span></h3>
-      ${list.map((r) => `<div class="py${isPaid(r) ? " done" : ""}">
-            <button class="pn" data-goto="${esc(r.id)}">${esc(r.vendor || "Račun")}<small class="${!isPaid(r) && isLate(r) ? "late" : ""}">${isPaid(r) ? "plaćeno — dodirnite opet ako nije" : dueText(r)}</small></button>
-            <b>${eur(totalOf(r))}</b>${payPill(r)}</div>`).join("")}
-    </div>`;
+
+  /* ---------- what kind of receipt (Filho, 2026-10-12: "bilo bi dobro ako
+     bi moglo i račune razvrstavat — kao hrana, piće, potrošno, režije") ----------
+     A receipt is the group most of its money went to, from its own lines, so
+     correcting a line's category moves the receipt with it. One that is not
+     read yet has no kind and shows only under Sve. */
+  function kindOf(r) {
+    if (r.status !== "done" || !r.items.length) return "";
+    const by = {};
+    for (const i of r.items) { const g = groupOf(i.category)[0]; by[g] = (by[g] || 0) + Math.abs(i.total || 0); }
+    return Object.entries(by).sort((a, b) => b[1] - a[1])[0][0];
   }
-  /* Pregled: one line, all months — a bill from last month is still owed */
-  function payBanner() {
-    const list = receipts.filter(toPay);
-    if (!list.length) return "";
-    const late = list.filter(isLate).length, sum = list.reduce((s, r) => s + totalOf(r), 0);
-    return `<button class="paybanner" data-sub="racuni">Za platiti <b>${eur0(sum)}</b>
-      <span>${list.length} ${plural(list.length, "račun", "računa", "računa")}${late ? ` · <em>${late} ${late === 1 ? "kasni" : "kasne"}</em>` : ""} ›</span></button>`;
+  function kindChips() {
+    const counts = {};
+    for (const r of done()) { const k = kindOf(r); if (k) counts[k] = (counts[k] || 0) + 1; }
+    const shown = GROUPS.filter(([k]) => counts[k] || k === kind);
+    if (shown.length < 2 && !kind) return "";
+    return `<div class="kinds" role="group" aria-label="Vrsta računa">
+      <button data-kind="" class="${kind ? "" : "on"}" aria-pressed="${!kind}">Sve</button>
+      ${shown.map(([k, label, , color]) => `<button data-kind="${k}" class="${kind === k ? "on" : ""}" aria-pressed="${kind === k}"
+        style="--c:${color}">${esc(label)}<small>${counts[k] || 0}</small></button>`).join("")}</div>`;
   }
 
   const shiftMonth = (m, d) => {
@@ -248,7 +248,6 @@
     const days = new Date(Date.UTC(+month.slice(0, 4), +month.slice(5, 7), 0)).getUTCDate();
     const today = new Date().toISOString().slice(0, 7) === month ? new Date().getDate() : days;
     return `
-      ${payBanner()}
       ${monthNav()}
       ${list.length ? `
       <div class="big"><b>${eur0(total)}</b>
@@ -425,19 +424,21 @@
 
   /* ---------- receipts ---------- */
   function receiptsView() {
-    /* grouped by month, each with its total, newest first */
+    /* grouped by month, each with its total, newest first; a kind chosen
+       above narrows the list and the month totals with it */
+    const fits = (r) => !kind || kindOf(r) === kind;
     let lastMonth = "";
-    const rows = receipts.map((r) => {
+    const rows = receipts.filter(fits).map((r) => {
       const m = monthOf(r);
       let headline = "";
       if (m !== lastMonth) {
         lastMonth = m;
-        const sum = inMonth(m).reduce((s, x) => s + totalOf(x), 0);
+        const sum = inMonth(m).filter(fits).reduce((s, x) => s + totalOf(x), 0);
         headline = `<h3 class="h mh"><span>${esc(monthName(m))}</span><span>${sum ? eur0(sum) : ""}</span></h3>`;
       }
       return headline + receiptRow(r);
     }).join("");
-    return `${uploadCard()}${merLine()}${payList()}${rows || `<p class="muted center">Nema računa.</p>`}`;
+    return `${uploadCard()}${merLine()}${kindChips()}${rows || `<p class="muted center">Nema računa.</p>`}`;
   }
 
   /* moj-eRačun: one quiet line. E-invoices come in by themselves; the line
@@ -482,9 +483,11 @@
       const st = r.status;
       const badge = st === "done" ? "" : st === "failed" ? `<span class="badge bad">nije pročitan</span>`
         : `<span class="badge">${r.source === "mer" ? "razvrstava se" : "čita se"}</span>`;
+      const k = kindOf(r), g = k && GROUPS.find((x) => x[0] === k);
+      const kindTag = g ? `<span class="kind" style="--c:${g[3]}">${esc(g[1])}</span> · ` : "";
       const src = r.source === "mer" ? `<span class="badge src">e-račun</span>` : r.source === "rucno" ? `<span class="badge src">bez računa</span>` : "";
       const head = `<button class="rhead" data-open="${esc(r.id)}" aria-expanded="${open === r.id}">
-        <span class="rv">${esc(r.vendor || (st === "done" ? "Nepoznat" : "Račun"))}${src}${r.dup_of ? `<span class="badge src dup">dvaput</span>` : ""}<small>${hrDate(dateOf(r))}${r.items.length ? ` · ${r.items.length} ${plural(r.items.length, "stavka", "stavke", "stavki")}` : ""}${r.created_by ? ` · ${esc(r.created_by)}` : ""}</small></span>
+        <span class="rv">${esc(r.vendor || (st === "done" ? "Nepoznat" : "Račun"))}${src}${r.dup_of ? `<span class="badge src dup">dvaput</span>` : ""}<small>${kindTag}${hrDate(dateOf(r))}${r.items.length ? ` · ${r.items.length} ${plural(r.items.length, "stavka", "stavke", "stavki")}` : ""}${r.created_by ? ` · ${esc(r.created_by)}` : ""}</small></span>
         <span class="rt">${st === "done" ? eur(totalOf(r)) : badge}</span></button>`;
       const cls = r.dup_of ? " dup" : "";
       const top = st === "done" && !r.dup_of ? `<div class="rrow">${head}${payPill(r)}</div>` : head;
@@ -682,10 +685,7 @@
       const r = receipts.find((x) => x.id === b.dataset.togglepaid);
       if (r) markPaid(r.id, !isPaid(r));
     }));
-    box.querySelectorAll("[data-goto]").forEach((b) => b.addEventListener("click", () => {
-      open = b.dataset.goto; catPick = null; confirmDel = null; render();
-      const el = box.querySelector(`[data-open="${CSS.escape(open)}"]`); if (el) el.scrollIntoView({ block: "start", behavior: "smooth" });
-    }));
+    box.querySelectorAll("[data-kind]").forEach((b) => b.addEventListener("click", () => { kind = b.dataset.kind; open = null; render(); }));
     box.querySelectorAll("[data-notdup]").forEach((b) => b.addEventListener("click", async () => {
       try { await api(`/${b.dataset.notdup}/nije_isti`, { method: "POST" }); await load(); } catch (e) { err = e.message; render(); }
     }));

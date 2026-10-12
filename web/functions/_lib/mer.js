@@ -88,7 +88,7 @@ const b64bytes = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
 export async function findTwin(env, { vendor_oib, doc_no, doc_date, total }, wantMer, exceptId) {
   if (!vendor_oib) return null;
   const { results } = await env.DB.prepare(
-    `SELECT id, doc_no, doc_date, total FROM expense_receipts
+    `SELECT id, doc_no, doc_date, total, paid_at FROM expense_receipts
       WHERE vendor_oib = ?1 AND id != ?2 AND dup_of IS NULL AND status = 'done'
         AND ${wantMer ? "source = 'mer'" : "COALESCE(source, 'foto') != 'mer'"}`).bind(vendor_oib, exceptId || "").all();
   const k = docKey(doc_no);

@@ -224,13 +224,6 @@ button{font:inherit;cursor:pointer}
 .mer .linkbtn{margin:0;padding:4px 0}
 .rec.dup .rv,.rec.dup .rt{opacity:.55}
 /* paid or not (2026-10-12) */
-.card.pay{padding:6px 14px 10px}
-.card.pay .mh{margin-top:10px}
-.card.pay .mh span:first-child{text-transform:uppercase}
-.py{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
-.py .pn{padding:0;border:none;background:none;color:var(--ink);text-align:left;font-size:15px;min-width:0}
-.py b{font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
-.py.done .pn small{color:#9cc79e}
 /* the paid pill: the NOVO switch's shape — dim when not, filled when it is */
 .rrow{display:flex;align-items:center;gap:10px}
 .rrow .rhead{flex:1;min-width:0}
@@ -239,11 +232,12 @@ button{font:inherit;cursor:pointer}
 .paypill.on{border-color:#3d5a3f;background:#1f2a20;color:#9cc79e}
 .paypill.late{border-color:#6a3530;background:#2a1c1a;color:#e0a49c}
 .late{color:#e0a49c !important}
-.paybanner{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;width:100%;margin:0 0 6px;padding:12px 14px;
-  border:1px solid #4a463e;border-radius:12px;background:transparent;color:var(--ink);font-size:15px;text-align:left}
-.paybanner b{color:var(--gold);font-size:17px}
-.paybanner span{margin-left:auto;color:var(--dim);font-size:13px}
-.paybanner em{font-style:normal;color:#e0a49c}
+/* what kind of receipt: one row of chips, the group's colour on the chosen one */
+.kinds{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px}
+.kinds button{min-height:40px;padding:0 12px;border:1px solid var(--line);border-radius:20px;background:transparent;color:var(--ink);font-size:14px}
+.kinds button small{margin-left:6px;color:var(--dim);font-size:12px}
+.kinds button.on{border-color:var(--c,var(--gold));background:color-mix(in srgb,var(--c,var(--gold)) 22%,transparent)}
+.rv .kind{color:var(--c)}
 .pr{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
 .pp{text-align:right;white-space:nowrap}
 .pp small{color:var(--dim)}

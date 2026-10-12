@@ -193,6 +193,25 @@ a card receipt he is still settling), empty (the default).
 The made-up demo ("Pogledaj primjer") was removed at the owner's request —
 the tab has real receipts now.
 
+### No separate Za platiti list (Filho, 2026-10-12, same evening)
+
+"Znači da bude samo po mjesecima i da na svakom stoji opcija plaćeno /
+neplaćeno i ti samo klikneš i mijenjaš, ali bez ove gornje za neplaćene
+posebno." The Za platiti card above the receipts and the Pregled banner are
+gone; the pill on each receipt, month by month, is the whole of it. What is
+above in this section about the list and the banner is history.
+
+## Receipts by kind (Filho, 2026-10-12)
+
+"Bilo bi dobro ako bi moglo i račune razvrstavat. Kao hrana, piće, potrošno,
+režije." Računi has a row of chips — **Sve · Hrana · Piće · Potrošno ·
+Oprema i održavanje · Režije i usluge · Ostalo**, each with its count, only
+the kinds that occur. A receipt's kind is the group most of its money went
+to, computed from its own lines (no new field), so re-filing a line moves the
+receipt with it; each row names its kind in the group's colour. The month
+totals follow the chosen kind. Pregled's bars stay line by line — a Selecta
+invoice that is mostly food but carries detergent splits there correctly.
+
 ## As printed, priced with PDV — and who marked it paid (owner, 2026-10-12)
 
 "Numbers are made up — Teranino didn't cost like you put it." They were

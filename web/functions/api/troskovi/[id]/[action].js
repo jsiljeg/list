@@ -52,6 +52,10 @@ export async function onRequestPost({ request, env, params }) {
       if (twin) {
         if (isMer) await setFields(env, twin.id, { dup_of: id });
         else await setFields(env, id, { dup_of: twin.id });
+        /* paid or not, as tapped on the photo, goes over to the e-invoice
+           that now counts — a photo set aside must not take the mark with it */
+        const photo = isMer ? twin : now, einv = isMer ? now : twin;
+        if (photo.paid_at && !einv.paid_at) await setFields(env, einv.id, { paid_at: photo.paid_at });
       }
     }
     await pump(env);
