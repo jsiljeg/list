@@ -648,7 +648,15 @@ test("Troškovi: cash with no receipt is typed in, e-invoices are marked, a phot
   await page.fill('[data-ml="1"][data-k=name]', "majstor za bojler");
   await page.fill('[data-ml="1"][data-k=total]', "80");
   await expect(page.locator("#man-total")).toHaveText(/92,50\s€/);
-  await expect(page.locator('[data-mlcat="1"]')).toHaveText("Održavanje");
+  /* the picker shows its group's categories, the guess already chosen */
+  await expect(page.locator('[data-pickscope="m|1"] .cg .on')).toHaveText("Oprema i održavanje");
+  await expect(page.locator('[data-pickscope="m|1"] .cs .on')).toHaveText("Održavanje");
+  /* a line with no guess: one tap on a group, one on a category */
+  await page.click('[data-pickg="m|0|pice"]');
+  await page.click('[data-pickc="m|0|kava"]');
+  await expect(page.locator('[data-pickscope="m|0"] .cs .on')).toHaveText("Kava i čaj");
+  await page.click('[data-pickg="m|0|hrana"]');
+  await page.click('[data-pickc="m|0|povrce"]');
   await page.click("[data-mansave]");
   await expect.poll(() => posts.find((p) => p.path === "/api/troskovi")).toBeTruthy();
   const sent = JSON.parse(posts.find((p) => p.path === "/api/troskovi").body);

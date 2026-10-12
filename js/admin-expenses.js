@@ -58,6 +58,7 @@
   let opened = false;
   let receipts = [], limits = null, sub = "pregled", month = "", open = null, timer = null, err = "";
   let openGroup = null, catPick = null, confirmDel = null;
+  const groupView = {};         /* picker scope → a group opened but not yet chosen from */
   const picked = [];            /* photos chosen, not yet sent */
   let oneReceipt = false, sending = "";
   /* an expense with no receipt being typed in, or one being corrected:
@@ -431,6 +432,23 @@
     [/struj|plin|najam|re[zž]ij/i, "rezije"],
     [/lonac|tav|no[zž]|[cč]a[sš]|tanjur|alat|aparat/i, "oprema"],
   ];
+  /* Categories in two short steps instead of eighteen at once (owner,
+     2026-10-12: "not intuitive to click and open all categories"): the six
+     groups always in view, the chosen group's own categories under them. A
+     group of one (Ostalo) is chosen by its own tap. scope says whose line it
+     is: "m|<line>" in the form, "r|<receipt>|<line>" on a read receipt. */
+  function catPicker(scope, current, hint) {
+    const g = groupView[scope] || groupOf(current)[0];
+    const members = (GROUPS.find((x) => x[0] === g) || GROUPS[5])[2];
+    return `<div class="catpick" data-pickscope="${esc(scope)}" data-cur="${esc(current)}">
+      <div class="cg">${GROUPS.map(([k, label, , color]) => `<button type="button" data-pickg="${esc(scope)}|${k}" class="${k === g ? "on" : ""}"
+        style="--c:${color}">${esc(label)}</button>`).join("")}</div>
+      ${members.length > 1 ? `<div class="cs">${members.map((c) => `<button type="button" data-pickc="${esc(scope)}|${c}"
+        ${scope[0] === "r" ? `data-setcat="${esc(scope.slice(2))}|${c}"` : ""} class="${c === current ? "on" : ""}">${esc(CAT[c])}</button>`).join("")}</div>` : ""}
+      ${hint && !groupView[scope] ? `<p class="muted small">${esc(hint)}</p>` : ""}
+    </div>`;
+  }
+
   const guess = (text) => (GUESS.find(([re]) => re.test(text || "")) || [, ""])[1];
   const amountOf = (v) => { const n = Number(String(v || "").replace(/\s/g, "").replace(",", ".")); return Number.isFinite(n) ? n : 0; };
   const blankLine = () => ({ name: "", total: "", category: "", picked: false });
@@ -441,6 +459,11 @@
       : { editId: "", vendor: "", date: new Date().toISOString().slice(0, 10), payment: "gotovina", lines: [blankLine()] };
     err = "";
   }
+  const lineCat = (l) => l.category || guess(l.name) || guess(manual.vendor) || "ostalo";
+  const linePicker = (i) => {
+    const l = manual.lines[i], c = lineCat(l);
+    return catPicker(`m|${i}`, c, !l.category && c === "ostalo" && (l.name || l.total) ? "Odaberite vrstu troška." : "");
+  };
   const manualTotal = () => manual.lines.reduce((s, l) => s + amountOf(l.total), 0);
   function manualForm() {
     const m = manual;
@@ -456,14 +479,13 @@
         `<button class="nema ${m.payment === p ? "ok" : ""}" data-pay="${p}">${p}</button>`).join("")}</div>
       <label class="f">Što je plaćeno</label>
       ${m.lines.map((l, i) => {
-        const c = l.category || guess(l.name) || guess(m.vendor) || "ostalo";
         return `<div class="ml">
-          <input type="text" data-ml="${i}" data-k="name" value="${esc(l.name)}" placeholder="${i ? "još nešto" : "npr. rajčica, tikvice, bosiljak"}" autocomplete="off" aria-label="Opis">
-          <span class="amt"><input type="text" inputmode="decimal" data-ml="${i}" data-k="total" value="${esc(l.total)}" placeholder="0,00" aria-label="Iznos"><span>€</span></span>
-          ${m.lines.length > 1 ? `<button class="x" data-mldel="${i}" aria-label="Makni stavku">✕</button>` : "<span></span>"}
-          <button class="chip" data-mlcat="${i}" style="border-color:${groupOf(c)[3]}">${esc(CAT[c])}</button>
-          ${catPick === `m|${i}` ? `<div class="catpick">${Object.keys(CAT).map((k) =>
-            `<button data-mlset="${i}|${k}" class="${k === c ? "on" : ""}">${esc(CAT[k])}</button>`).join("")}</div>` : ""}
+          <div class="mrow">
+            <input type="text" data-ml="${i}" data-k="name" value="${esc(l.name)}" placeholder="${i ? "još nešto" : "npr. rajčica, tikvice"}" autocomplete="off" aria-label="Opis">
+            <span class="amt"><input type="text" inputmode="decimal" data-ml="${i}" data-k="total" value="${esc(l.total)}" placeholder="0,00" aria-label="Iznos"><span>€</span></span>
+          </div>
+          ${linePicker(i)}
+          ${m.lines.length > 1 ? `<button class="linkbtn x" data-mldel="${i}">makni stavku</button>` : ""}
         </div>`;
       }).join("")}
       <button class="nema add" data-mladd>+ još jedna stavka</button>
@@ -573,9 +595,8 @@
         ${r.items.length ? `<div class="items">${r.items.map((it, i) => `
           <div class="it"><span class="in">${esc(it.name)}${it.qty != null ? `<small>${String(it.qty).replace(".", ",")} ${esc(it.unit || "")}${it.unit_price != null ? ` × ${eur(it.unit_price)}` : ""}</small>` : ""}</span>
             <b>${eur(it.total)}</b>
-            <button class="chip" data-cat="${esc(r.id)}|${i}" style="border-color:${groupOf(it.category)[3]}">${esc(CAT[it.category] || it.category)}</button>
-            ${catPick === `${r.id}|${i}` ? `<div class="catpick">${Object.keys(CAT).map((c) =>
-              `<button data-setcat="${esc(r.id)}|${i}|${c}" class="${c === it.category ? "on" : ""}">${esc(CAT[c])}</button>`).join("")}</div>` : ""}
+            <button class="chip" data-cat="${esc(r.id)}|${i}" style="border-color:${groupOf(it.category)[3]}">${esc(CAT[it.category] || it.category)} ▾</button>
+            ${catPick === `${r.id}|${i}` ? catPicker(`r|${r.id}|${i}`, it.category) : ""}
           </div>`).join("")}</div>` : ""}
         ${r.vat != null ? `<p class="muted small">PDV ${eur(r.vat)}${r.payment ? ` · ${esc(r.payment)}` : ""}${r.doc_no ? ` · br. ${esc(r.doc_no)}` : ""}</p>`
           : r.source === "rucno" ? `<p class="muted small">Plaćeno ${esc(r.payment || "gotovina")}, bez računa${r.created_by ? ` · upisao ${esc(r.created_by)}` : ""}</p>` : ""}
@@ -645,6 +666,40 @@
       ${steady.length ? `<h3 class="h">Iste cijene</h3>${steady.map(row).join("")}` : ""}`;
   }
 
+  /* a tap in a category picker: a group opens (or, alone, is chosen); a
+     category is chosen */
+  function pick(b) {
+    const g = b.dataset.pickg, raw = g || b.dataset.pickc;
+    const cut = raw.lastIndexOf("|"), scope = raw.slice(0, cut), val = raw.slice(cut + 1);
+    const node = () => $("tab-troskovi").querySelector(`[data-pickscope="${CSS.escape(scope)}"]`);
+    let c = val;
+    if (g) {
+      const members = GROUPS.find((x) => x[0] === val)[2];
+      if (members.length > 1) {
+        groupView[scope] = val;
+        const n = node(); if (n) n.outerHTML = catPicker(scope, n.dataset.cur);
+        return;
+      }
+      c = members[0];
+    }
+    delete groupView[scope];
+    if (scope[0] === "m") {
+      const i = Number(scope.slice(2));
+      manual.lines[i].category = c;
+      const n = node(); if (n) n.outerHTML = linePicker(i);
+      return;
+    }
+    setCat(scope.slice(2), c);
+  }
+  async function setCat(idI, c) {
+    const cut = idI.lastIndexOf("|"), id = idI.slice(0, cut), i = Number(idI.slice(cut + 1));
+    const r = receipts.find((x) => x.id === id);
+    const before = r.items[i].category;
+    r.items[i].category = c; catPick = null; render();         /* at once; the server follows */
+    try { await api(`/${id}/kategorija`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ i, category: c }) }); }
+    catch (e) { r.items[i].category = before; err = "Kategorija nije spremljena: " + e.message; render(); }
+  }
+
   /* ---------- wiring ---------- */
   function wire(box) {
     box.querySelectorAll("[data-demo]").forEach((b) => b.addEventListener("click", () => setDemo(!!b.dataset.demo)));
@@ -665,15 +720,14 @@
     box.querySelectorAll("[data-open]").forEach((b) => b.addEventListener("click", () => {
       open = open === b.dataset.open ? null : b.dataset.open; catPick = null; confirmDel = null; render();
     }));
-    box.querySelectorAll("[data-cat]").forEach((b) => b.addEventListener("click", () => { catPick = catPick === b.dataset.cat ? null : b.dataset.cat; render(); }));
-    box.querySelectorAll("[data-setcat]").forEach((b) => b.addEventListener("click", async () => {
-      const [id, i, c] = b.dataset.setcat.split("|");
-      const r = receipts.find((x) => x.id === id);
-      const before = r.items[i].category;
-      r.items[i].category = c; catPick = null; render();         /* at once; the server follows */
-      try { await api(`/${id}/kategorija`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ i: Number(i), category: c }) }); }
-      catch (e) { r.items[i].category = before; err = "Kategorija nije spremljena: " + e.message; render(); }
-    }));
+    box.querySelectorAll("[data-cat]").forEach((b) => b.addEventListener("click", () => { catPick = catPick === b.dataset.cat ? null : b.dataset.cat; delete groupView[`r|${b.dataset.cat}`]; render(); }));
+    if (!box.dataset.picks) {        /* once: the box outlives every render */
+      box.dataset.picks = "1";
+      box.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-pickg],[data-pickc]");
+        if (b) pick(b);
+      });
+    }
     box.querySelectorAll("[data-del]").forEach((b) => b.addEventListener("click", async () => {
       const id = b.dataset.del;
       if (!b.dataset.sure) { confirmDel = id; render(); return; }
@@ -688,11 +742,10 @@
       startManual(receipts.find((x) => x.id === b.dataset.edit)); sub = "racuni"; render();
       box.querySelector(".man") && box.querySelector(".man").scrollIntoView({ block: "start", behavior: "smooth" });
     }));
+    /* the guess follows the words; only the picker is redrawn, never the inputs */
     const showGuess = () => manual && manual.lines.forEach((l, i) => {
-      const chip = box.querySelector(`[data-mlcat="${i}"]`);
-      if (!chip || l.category) return;
-      const c = guess(l.name) || guess(manual.vendor) || "ostalo";
-      chip.textContent = CAT[c]; chip.style.borderColor = groupOf(c)[3];
+      const node = box.querySelector(`[data-pickscope="m|${i}"]`);
+      if (node && !l.category && !groupView[`m|${i}`] && node.dataset.cur !== lineCat(l)) node.outerHTML = linePicker(i);
     });
     box.querySelectorAll("[data-mf]").forEach((inp) => inp.addEventListener("input", () => { manual[inp.dataset.mf] = inp.value; showGuess(); }));
     box.querySelectorAll("[data-ml]").forEach((inp) => inp.addEventListener("input", () => {
@@ -713,10 +766,10 @@
       manual.lines.push(blankLine()); render();
       const last = box.querySelector(`[data-ml="${manual.lines.length - 1}"][data-k=name]`); if (last) last.focus();
     }));
-    box.querySelectorAll("[data-mldel]").forEach((b) => b.addEventListener("click", () => { manual.lines.splice(Number(b.dataset.mldel), 1); catPick = null; render(); }));
-    box.querySelectorAll("[data-mlcat]").forEach((b) => b.addEventListener("click", () => { const k = `m|${b.dataset.mlcat}`; catPick = catPick === k ? null : k; render(); }));
-    box.querySelectorAll("[data-mlset]").forEach((b) => b.addEventListener("click", () => {
-      const [i, c] = b.dataset.mlset.split("|"); manual.lines[Number(i)].category = c; catPick = null; render();
+    box.querySelectorAll("[data-mldel]").forEach((b) => b.addEventListener("click", () => {
+      manual.lines.splice(Number(b.dataset.mldel), 1);
+      Object.keys(groupView).forEach((k) => { if (k[0] === "m") delete groupView[k]; });
+      render();
     }));
     box.querySelectorAll("[data-mansave]").forEach((b) => b.addEventListener("click", saveManual));
     box.querySelectorAll("[data-mancancel]").forEach((b) => b.addEventListener("click", () => { manual = null; catPick = null; err = ""; render(); }));
