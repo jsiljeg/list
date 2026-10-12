@@ -278,7 +278,6 @@
     if (manual) return manualForm();
     const n = picked.length;
     return `<div class="card up${compact && !n ? " compact" : ""}">
-      ${compact && !n ? "" : `<p class="muted small" style="margin:0 0 10px">Slikajte račun ili ga odaberite iz galerije. Dug račun može imati više slika. Gotovina bez računa (plac, majstor) upisuje se ručno.</p>`}
       <div class="ch-acts">
         <label class="nema shot-btn">📷 Slikaj račun<input type="file" accept="image/*" capture="environment" data-up></label>
         <label class="nema shot-btn">🖼 Galerija<input type="file" accept="image/*,.heic,.heif" multiple data-up></label>
