@@ -149,12 +149,19 @@ async function importDraft(env, eid, draft, listed) {
   const vendor = draft.vendor || String(listed.SenderBusinessName || "");
   const oib = draft.vendor_oib || String(listed.SenderBusinessNumber || "").replace(/\D/g, "").slice(0, 11);
   const items = draft.items.map((i) => ({ ...i, key: "", category: "ostalo" }));
-  await env.DB.prepare(
-    `INSERT INTO expense_receipts (id, created_at, updated_at, created_by, status, source, vendor, vendor_oib, doc_date, doc_no,
-                                   total, vat, payment, items, note, error, due_date)
-     VALUES (?1, ?2, ?2, 'MER', 'queued', 'mer', ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, '', ?12)`)
-    .bind(id, now, vendor.slice(0, 120), oib, draft.doc_date, String(draft.doc_no || "").slice(0, 60),
-          draft.total, draft.vat, draft.payment, JSON.stringify(items), draft.credit ? "Odobrenje (storno) — iznos se oduzima." : "", draft.due_date).run();
+  /* The receipt and "this document is seen" are one write (2026-10-12): a
+     call that ran out of CPU decoding the PDF, between the two, left an
+     invoice that the next call imported again. */
+  await env.DB.batch([
+    env.DB.prepare(
+      `INSERT INTO expense_receipts (id, created_at, updated_at, created_by, status, source, vendor, vendor_oib, doc_date, doc_no,
+                                     total, vat, payment, items, note, error, due_date)
+       VALUES (?1, ?2, ?2, 'MER', 'queued', 'mer', ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, '', ?12)`)
+      .bind(id, now, vendor.slice(0, 120), oib, draft.doc_date, String(draft.doc_no || "").slice(0, 60),
+            draft.total, draft.vat, draft.payment, JSON.stringify(items), draft.credit ? "Odobrenje (storno) — iznos se oduzima." : "", draft.due_date),
+    env.DB.prepare("INSERT OR IGNORE INTO expense_mer_docs (electronic_id, receipt_id, seen_at, kind) VALUES (?1, ?2, ?3, 'invoice')")
+      .bind(eid, id, now),
+  ]);
   if (draft.pdf) {
     try {
       const bytes = b64bytes(draft.pdf);
@@ -164,6 +171,4 @@ async function importDraft(env, eid, draft, listed) {
       }
     } catch { /* a broken attachment is not a reason to lose the invoice */ }
   }
-  await env.DB.prepare("INSERT OR IGNORE INTO expense_mer_docs (electronic_id, receipt_id, seen_at, kind) VALUES (?1, ?2, ?3, 'invoice')")
-    .bind(eid, id, now).run();
 }

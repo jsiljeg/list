@@ -926,3 +926,11 @@ test("Troškovi: the receipts list passes stored lines through without re-parsin
   expect(src).toMatch(/replace\('"items":0', '"items":' \+ raw\)/);
   expect(src).not.toMatch(/items = \(results \|\| \[\]\)\.map\(\(r\) => shape\(r,/);
 });
+
+/* A MER import that ran out of CPU between writing the receipt and marking
+   the document seen imported one invoice twice (2026-10-12). Both writes are
+   now one batch. Source assertion: server code. */
+test("MER: an invoice and its seen-mark are written together", () => {
+  const src = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
+  expect(src).toMatch(/await env\.DB\.batch\(\[\s*env\.DB\.prepare\(\s*`INSERT INTO expense_receipts[\s\S]*?INSERT OR IGNORE INTO expense_mer_docs/);
+});
