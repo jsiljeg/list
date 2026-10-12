@@ -17,6 +17,6 @@ export async function onRequestPost({ request, env }) {
   const b = await request.json().catch(() => ({}));
   const ok = (d) => typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d);
   const range = b && ok(b.from) && ok(b.to) && b.from <= b.to ? { from: b.from, to: b.to } : null;
-  const sync = await merSync(env, { force: true, range });
+  const sync = await merSync(env, { force: true, range, retryFailed: !!(b && b.retry_failed) });
   return reply(request, { sync, mer: await merStatus(env) });
 }

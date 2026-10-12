@@ -21,7 +21,7 @@ import { newId, nowIso, zagrebDate, pump, PHOTO_MAX } from "./expenses.js";
 import { ublDraft } from "./ubl.js";
 
 const EVERY_MIN = 30;           /* a staff visit checks the inbox at most this often */
-const PER_SYNC = 10;            /* documents fetched per check; the rest next time (20 hit the CPU limit, 2026-10-12) */
+const PER_SYNC = 3;             /* documents fetched per check; the rest next time — a free Worker has 10 ms of CPU (20, then 10, hit it) */
 /* The very first check starts on the 1st of the current month (owner,
    2026-10-12: "fetch Oct documents"): older invoices are the backlog, not news. */
 const firstFrom = () => zagrebDate().slice(0, 8) + "01";
@@ -80,7 +80,7 @@ export async function merStatus(env) {
 
 const day = (iso, back) => new Date(Date.parse(iso) - back * 86400000).toISOString().slice(0, 10);
 const docKey = (s) => String(s || "").toLowerCase().replace(/[^0-9a-z]/g, "");
-const b64bytes = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+
 
 /* The same invoice photographed AND arrived as an e-invoice must count once.
    The e-invoice is exact, so it is the one kept; the photo is marked dup_of
@@ -103,7 +103,7 @@ export async function findTwin(env, { vendor_oib, doc_no, doc_date, total }, wan
    2026-10-12: "after October, pull in September and August"): the same
    import, seen documents skipped, but last_ok is left alone — the forward
    check keeps its place. */
-export async function merSync(env, { force = false, range = null } = {}) {
+export async function merSync(env, { force = false, range = null, retryFailed = false } = {}) {
   if (!merReady(env) || !env.DB) return { state: "not_set_up" };
   const s = await getState(env);
   const now = nowIso();
@@ -115,16 +115,27 @@ export async function merSync(env, { force = false, range = null } = {}) {
     const list = JSON.parse(await call(env, "/queryInbox", { From: from, To: to }));
     if (!Array.isArray(list)) throw new Error("MER je odgovorio nečim što nije popis dokumenata.");
     const docs = list.filter((d) => d && Number.isInteger(Number(d.ElectronicId)));
+    if (retryFailed) await env.DB.prepare("DELETE FROM expense_mer_docs WHERE kind = 'failed'").run();
     const { results } = await env.DB.prepare("SELECT electronic_id FROM expense_mer_docs").all();
     const seen = new Set((results || []).map((r) => Number(r.electronic_id)));
     const fresh = docs.filter((d) => !seen.has(Number(d.ElectronicId)))
       .sort((a, b) => String(a.Sent || "").localeCompare(String(b.Sent || "")));
-    let imported = 0;
+    let imported = 0, failed = 0;
     for (const d of fresh.slice(0, PER_SYNC)) {
       const eid = Number(d.ElectronicId);
-      let xml = await call(env, "/receive", { ElectronicId: eid });
-      if (/^\s*"/.test(xml)) xml = JSON.parse(xml);          /* some gateways wrap it in a JSON string */
-      const draft = ublDraft(xml);
+      /* one document MER cannot hand over must not hold up every one after
+         it: it is set aside as 'failed' (POST {retry_failed} asks again) */
+      let draft;
+      try {
+        let xml = await call(env, "/receive", { ElectronicId: eid });
+        if (/^\s*"/.test(xml)) xml = JSON.parse(xml);          /* some gateways wrap it in a JSON string */
+        draft = ublDraft(xml);
+      } catch (e) {
+        await env.DB.prepare("INSERT OR IGNORE INTO expense_mer_docs (electronic_id, receipt_id, seen_at, kind) VALUES (?1, NULL, ?2, 'failed')")
+          .bind(eid, now).run();
+        failed += 1;
+        continue;
+      }
       if (!draft) {
         await env.DB.prepare("INSERT OR IGNORE INTO expense_mer_docs (electronic_id, receipt_id, seen_at, kind) VALUES (?1, NULL, ?2, 'other')")
           .bind(eid, now).run();
@@ -137,7 +148,7 @@ export async function merSync(env, { force = false, range = null } = {}) {
     await setState(env, "error", "");
     await setState(env, "imported", Number(s.imported || 0) + imported);
     if (imported) await pump(env);
-    return { state: "ok", imported, more: Math.max(0, fresh.length - PER_SYNC) };
+    return { state: "ok", imported, failed, more: Math.max(0, fresh.length - PER_SYNC) };
   } catch (e) {
     await setState(env, "error", String(e.message || e).slice(0, 200));
     return { state: "error", error: e.message };
@@ -162,13 +173,13 @@ async function importDraft(env, eid, draft, listed) {
     env.DB.prepare("INSERT OR IGNORE INTO expense_mer_docs (electronic_id, receipt_id, seen_at, kind) VALUES (?1, ?2, ?3, 'invoice')")
       .bind(eid, id, now),
   ]);
-  if (draft.pdf) {
+  /* The PDF is kept as the base64 text it arrived in and decoded only when
+     someone opens it (foto/<n>): decoding a megabyte here, ten documents a
+     call, ran past a free Worker's 10 ms of CPU. Too big to keep is skipped. */
+  if (draft.pdf && draft.pdf.length * 0.74 <= PHOTO_MAX) {
     try {
-      const bytes = b64bytes(draft.pdf);
-      if (bytes.length <= PHOTO_MAX) {
-        await env.DB.prepare("INSERT INTO expense_photos (receipt_id, n, mime, bytes, created_at) VALUES (?1, 1, 'application/pdf', ?2, ?3)")
-          .bind(id, bytes, now).run();
-      }
+      await env.DB.prepare("INSERT INTO expense_photos (receipt_id, n, mime, bytes, created_at) VALUES (?1, 1, 'application/pdf;base64', ?2, ?3)")
+        .bind(id, draft.pdf, now).run();
     } catch { /* a broken attachment is not a reason to lose the invoice */ }
   }
 }

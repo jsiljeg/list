@@ -1,5 +1,7 @@
 /* /api/troskovi
- *   GET   (staff)  every receipt, newest first, without photos; plus the brakes.
+ *   GET   (staff)  receipts, newest first, without photos; plus the brakes.
+ *                  ?offset=&limit= pages them (limit ≤ 150): a free Worker has
+ *                  10 ms of CPU, and a whole year in one answer did not fit.
  *   POST  (staff)  one receipt: 1–4 photos (multipart "photo"), "by";
  *                  or, as JSON, an expense with no receipt at all:
  *                  {vendor, doc_date, payment, items: [{name, total, category}], note, by}
@@ -11,11 +13,18 @@ import { cors } from "../../_lib/wines.js";
 export async function onRequestGet({ request, env, waitUntil }) {
   if (!(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
   if (!env.DB) return reply(request, { error: "no_db" }, 503);
-  if (waitUntil) waitUntil(merSync(env));
-  const pumped = await pump(env);
+  const url = new URL(request.url);
+  const offset = Math.max(0, Math.floor(Number(url.searchParams.get("offset")) || 0));
+  const limit = Math.min(150, Math.max(1, Math.floor(Number(url.searchParams.get("limit")) || 150)));
+  /* the first page does the housekeeping; the rest only read */
+  if (!offset && waitUntil) waitUntil(merSync(env));
+  const pumped = offset ? null : await pump(env);
   const { results } = await env.DB.prepare(
     `SELECT r.*, (SELECT GROUP_CONCAT(n) FROM expense_photos p WHERE p.receipt_id = r.id) AS pics
-       FROM expense_receipts r ORDER BY COALESCE(r.doc_date, substr(r.created_at, 1, 10)) DESC, r.created_at DESC LIMIT 1500`).all();
+       FROM expense_receipts r ORDER BY COALESCE(r.doc_date, substr(r.created_at, 1, 10)) DESC, r.created_at DESC, r.id
+      LIMIT ?1 OFFSET ?2`).bind(limit + 1, offset).all();
+  const more = (results || []).length > limit;
+  if (more) results.pop();
   /* Each receipt's lines are stored as JSON already; they go out as stored
      rather than parsed and serialised again. At 280 receipts the round trip
      ran the Worker over its CPU limit one read in three (error 1102,
@@ -26,7 +35,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
     s.items = 0;
     return JSON.stringify(s).replace('"items":0', '"items":' + raw);
   });
-  const tail = JSON.stringify({ limits: await limits(env), pumped, mer: await merStatus(env) }).slice(1);
+  const tail = JSON.stringify({ more, limits: await limits(env), pumped, mer: await merStatus(env) }).slice(1);
   return new Response(`{"items":[${parts.join(",")}],${tail}`, {
     headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...cors(request) } });
 }

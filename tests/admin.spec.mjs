@@ -934,3 +934,101 @@ test("MER: an invoice and its seen-mark are written together", () => {
   const src = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
   expect(src).toMatch(/await env\.DB\.batch\(\[\s*env\.DB\.prepare\(\s*`INSERT INTO expense_receipts[\s\S]*?INSERT OR IGNORE INTO expense_mer_docs/);
 });
+
+/* Filho, 2026-10-12: "da ja stisnem usporedi mi sve cijene iz Moj Mesar i onda
+   on sve usporedi". Cijene takes one supplier: only that supplier's own
+   invoices, with a count of what went up and down. */
+test("Troškovi: Cijene compares one supplier's prices on its own invoices", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const line = (name, key, unit_price) => ({ name, key, qty: 1, unit: "kg", unit_price, total: unit_price, category: "meso" });
+  const r = (id, day, vendor, items) => ({ id, created_at: `${ym}-${day}T09:00:00Z`, updated_at: "", status: "done", vendor,
+    vendor_oib: vendor.length + "", doc_date: `${ym}-${day}`, doc_no: "N" + id, total: items.reduce((s, i) => s + i.total, 0), vat: null,
+    payment: "virman", photos: [], note: "", created_by: "", source: "mer", dup_of: "", due_date: "", paid_at: "", items });
+  const items = [
+    r("m1", "01", "MOJ MESAR d.o.o.", [line("Teleći but", "teleci but", 20), line("Juneći biftek", "juneci biftek", 38), line("Teleća jetrica", "teleca jetrica", 9)]),
+    r("m2", "08", "MOJ MESAR d.o.o.", [line("Teleći but", "teleci but", 22), line("Juneći biftek", "juneci biftek", 38)]),
+    r("s1", "02", "SELECTA ADRIA d.o.o.", [line("Teleći but", "teleci but", 30), line("Kapice", "kapica", 90)]),
+    r("s2", "09", "SELECTA ADRIA d.o.o.", [line("Kapice", "kapica", 81)]),
+  ];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="cijene"]');
+  await page.selectOption("#pv", "Moj Mesar");
+  /* veal leg compared on Moj Mesar's two invoices only — +10%, not Selecta's 30 € */
+  await expect(page.locator("#tab-troskovi .pr")).toHaveCount(2);
+  await expect(page.locator("#tab-troskovi .pr").filter({ hasText: "Teleći but" })).toContainText("10%");
+  await expect(page.locator(".psum")).toContainText("2 proizvoda");
+  await expect(page.locator(".psum")).toContainText("1 poskupio");
+  await expect(page.locator(".psum")).toContainText("1 ista cijena");
+  await expect(page.locator(".psum")).toContainText("Još 1 proizvod kupljeno samo jednom");
+  /* from an invoice: one tap to its supplier's prices */
+  await page.selectOption("#pv", "");
+  await page.click('[data-sub="racuni"]');
+  await page.click('[data-open="s2"]');
+  await page.click('[data-pricevendor="Selecta Adria"]');
+  await expect(page.locator("#pv")).toHaveValue("Selecta Adria");
+  await expect(page.locator("#tab-troskovi .pr")).toHaveCount(1);
+  await expect(page.locator("#tab-troskovi .pr")).toContainText("10%");
+});
+
+/* The manual form's category guesses had literal backspace characters where
+   \b was meant (since 76eaff8), so "luk", "sir", "vino", "kava", "pivo" never
+   matched. No source file may carry a control character. */
+test("Troškovi: source files carry no control characters, and the manual guess works on short words", async ({ page }) => {
+  for (const f of ["../js/admin-expenses.js", "../web/functions/_lib/ubl.js", "../web/functions/_lib/mer.js", "../web/functions/_lib/expenses.js"]) {
+    const src = readFileSync(new URL(f, import.meta.url), "utf8");
+    expect(src, f).not.toMatch(/[\x00-\x08\x0b\x0c\x0e-\x1f]/);
+  }
+  await board(page);
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items: [], limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="racuni"]').catch(() => {});
+  await page.click("[data-manual]");
+  await page.fill('[data-ml="0"][data-k=name]', "luk");
+  await expect(page.locator('[data-pickscope="m|0"] .cs .on')).toHaveText("Voće i povrće");
+  await page.fill('[data-ml="0"][data-k=name]', "vino");
+  await expect(page.locator('[data-pickscope="m|0"] .cs .on')).toHaveText("Vino");
+});
+
+/* A whole year in one list answer ran the free Worker past 10 ms of CPU
+   (2026-10-12). The list is paged, and the app reads every page. */
+test("Troškovi: the receipts list is read in pages", async ({ page }) => {
+  const api = readFileSync(new URL("../web/functions/api/troskovi/index.js", import.meta.url), "utf8");
+  expect(api).toMatch(/LIMIT \?1 OFFSET \?2/);
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const r = (id) => ({ id, created_at: `${ym}-02T09:00:00Z`, updated_at: "", status: "done", vendor: "Dobavljač " + id, vendor_oib: "",
+    doc_date: `${ym}-02`, doc_no: "", total: 10, vat: null, payment: "kartica", photos: [], note: "", created_by: "", source: "foto",
+    dup_of: "", due_date: "", paid_at: "", items: [{ name: "x", key: "", qty: null, unit: "", unit_price: null, total: 10, category: "meso" }] });
+  const asked = [];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => {
+    const u = new URL(route.request().url());
+    if (u.pathname !== "/api/troskovi") return route.fulfill({ status: 200, contentType: "application/json", body: "{}" });
+    const off = Number(u.searchParams.get("offset") || 0);
+    asked.push(off);
+    const page1 = off === 0;
+    return route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify({ items: page1 ? [r("a"), r("b")] : [r("c")], more: page1, limits: { ready: true } }) });
+  });
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await expect(page.locator(".big b")).toHaveText(/^30\s€/);
+  expect(asked.slice(0, 2)).toEqual([0, 2]);
+});
+
+/* An e-invoice's PDF is cut out before parsing and stored as base64 text,
+   decoded only when opened (2026-10-12: a March invoice's PDF ran an import
+   past the CPU limit). */
+test("MER: the PDF is cut out before parsing and decoded only when opened", () => {
+  const ubl = readFileSync(new URL("../web/functions/_lib/ubl.js", import.meta.url), "utf8");
+  expect(ubl.indexOf("EmbeddedDocumentBinaryObject\b")).toBeLessThan(ubl.indexOf("parseXml(xml)", ubl.indexOf("export function ublDraft")));
+  const mer = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
+  expect(mer).toMatch(/'application\/pdf;base64'/);
+  const foto = readFileSync(new URL("../web/functions/api/troskovi/[id]/foto/[n].js", import.meta.url), "utf8");
+  expect(foto).toMatch(/;base64\$/);
+});

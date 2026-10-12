@@ -58,6 +58,8 @@
      (HEP, CWS, PPD). The full name stays on the opened receipt. */
   const LEGAL = /[\s,]+(j\.?\s?d\.?\s?o\.?\s?o\.?|d\.?\s?o\.?\s?o\.?|d\.\s?d\.?|j\.?\s?t\.?\s?d\.?|društvo s ograničenom|obrt\b)(?=[\s,.]|$).*$/i;
   const SMALL_WORDS = new Set(["i", "u", "za", "na", "od", "s"]);
+  /* short words, not acronyms: MOJ MESAR is Moj Mesar, HEP stays HEP */
+  const SHORT_WORDS = new Set(["moj", "dan", "naš", "vaš", "tvoj", "dom", "sve", "pod", "kod", "put", "bio", "eko", "top", "vin", "riba", "mar"]);
   function shortName(v) {
     const cut = String(v || "").replace(LEGAL, "").trim();
     const name = cut || String(v || "").trim();
@@ -65,7 +67,7 @@
       if (!/\p{Lu}/u.test(w) || w !== w.toLocaleUpperCase("hr")) return w;   /* not all capitals: as written */
       const low = w.toLocaleLowerCase("hr");
       if (i > 0 && SMALL_WORDS.has(low)) return low;
-      if (w.length <= 3) return w;                                                  /* an acronym */
+      if (w.length <= 3 && !SHORT_WORDS.has(low)) return w;                         /* an acronym */
       return low[0].toLocaleUpperCase("hr") + low.slice(1);
     }).join("");
   }
@@ -98,8 +100,15 @@
   async function load() {
     clearTimeout(timer);
     try {
-      const b = await api("");
-      receipts = b.items || []; limits = b.limits; mer = b.mer || null; err = "";
+      /* in pages of 150: a whole year in one answer ran the server over its
+         CPU limit (2026-10-12) */
+      const b = await api("?limit=150");
+      let all = b.items || [], more = b.more;
+      while (more && all.length < 6000) {
+        const n = await api(`?offset=${all.length}&limit=150`);
+        all = all.concat(n.items || []); more = n.more;
+      }
+      receipts = all; limits = b.limits; mer = b.mer || null; err = "";
     } catch (e) { err = "Ne mogu učitati troškove: " + e.message; }
     if (!month) month = latestMonth();
     /* until the first receipt is read, the tab opens where receipts are added */
@@ -322,15 +331,15 @@
      run, nothing to wait for. */
   const GUESS = [
     [/majstor|popravak|popravi|servis|vodoinstal|elektri[cč]ar|bravar|stolar|keramičar|keramicar|limar|klima/i, "odrzavanje"],
-    [/povr[cć]|vo[cć]e|salat|raj[cč]ic|krumpir|luk|gljiv|tikvic|paprik|limun|bilj|za[cč]in|plac|tr[zž]nic|dolac|opg/i, "povrce"],
+    [/povr[cć]|vo[cć]e|salat|raj[cč]ic|krumpir|\bluk|gljiv|tikvic|paprik|limun|bilj|za[cč]in|plac|tr[zž]nic|dolac|opg/i, "povrce"],
     [/meso|mesn|pilet|piler|junet|june[cć]|svinj|tele[cć]|janj|kobasic|pr[sš]ut|slanin/i, "meso"],
     [/rib|[sš]kamp|lign|[sš]kolj|kamenic|dagnj|hobotnic/i, "riba"],
-    [/mlijek|sir|jaja|jaje|vrhnj|maslac|jogurt/i, "mlijecno"],
+    [/mlijek|\bsir|jaja|jaje|vrhnj|maslac|jogurt/i, "mlijecno"],
     [/kruh|pekar|peciv|kifl/i, "pekara"],
     [/cvije[cć]|svije[cć]|dekor|ukras/i, "dekor"],
     [/[cč]i[sš][cć]|deterd|sapun|spu[zž]v/i, "ciscenje"],
-    [/led|leda|vre[cć]ic|folij|salvet|ambala/i, "ambalaza"],
-    [/vin[oa]/i, "vino"], [/kav[ae]?|[cč]aj/i, "kava"], [/piv[oa]|sok|vod[ae]/i, "pivo_sokovi"],
+    [/\bled\b|leda\b|vre[cć]ic|folij|salvet|ambala/i, "ambalaza"],
+    [/\bvin[oa]\b/i, "vino"], [/\bkav[ae]?\b|\b[cč]aj/i, "kava"], [/\bpiv[oa]|\bsok|\bvod[ae]\b/i, "pivo_sokovi"],
     [/dostav|praonic|pranje|knjigov|ra[cč]unovod|taksi|parking/i, "usluge"],
     [/struj|plin|najam|re[zž]ij/i, "rezije"],
     [/lonac|tav|no[zž]|[cč]a[sš]|tanjur|alat|aparat/i, "oprema"],
@@ -566,6 +575,7 @@
           : `<div class="ch-acts">${st === "failed" ? `<button class="nema ok" data-retry="${esc(r.id)}">pokušaj ponovno</button>`
               : st === "done" && r.source === "foto" ? `<button class="nema" data-retry="${esc(r.id)}">pročitaj ponovno</button>` : ""}
               ${r.source === "rucno" ? `<button class="nema" data-edit="${esc(r.id)}">ispravi</button>` : ""}
+              ${st === "done" && r.source !== "rucno" && r.vendor ? `<button class="nema" data-pricevendor="${esc(shortName(r.vendor))}">usporedi cijene</button>` : ""}
               ${st === "working" ? "" : `<button class="nema" data-del="${esc(r.id)}">obriši</button>`}</div>`}
       </div>`;
     }
@@ -604,6 +614,10 @@
     return m ? `${m[1].replace(",", ".")}${m[2] ? "-" + m[2].replace(",", ".") : ""}${m[3].toLowerCase()}` : "";
   }
   let openPrice = null;
+  /* one supplier at a time (Filho, 2026-10-12: "da ja stisnem usporedi mi sve
+     cijene iz Moj Mesar i onda on sve usporedi"): only that supplier's own
+     invoices, every product bought from them at least twice */
+  let priceVendor = "";
   function pricesView() {
     const seen = {};
     for (const r of done().slice().sort((a, b) => dateOf(a).localeCompare(dateOf(b)))) {
@@ -618,7 +632,18 @@
           spent: it.total || 0, id: r.id, no: r.doc_no, line: lineSmall(it) });
       }
     }
-    const rows = Object.entries(seen).filter(([, h]) => h.length >= 2).map(([k, h]) => {
+    /* suppliers with something to compare, most products first */
+    const per = {};
+    for (const h of Object.values(seen)) {
+      const c = {};
+      for (const x of h) c[x.v] = (c[x.v] || 0) + 1;
+      for (const [v, n] of Object.entries(c)) if (n >= 2) per[v] = (per[v] || 0) + 1;
+    }
+    const vendors = Object.entries(per).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    if (priceVendor && !per[priceVendor]) priceVendor = "";
+    const hist = Object.entries(seen).map(([k, h]) => [k, priceVendor ? h.filter((x) => x.v === priceVendor) : h]);
+    const once = priceVendor ? hist.filter(([, h]) => h.length === 1).length : 0;
+    const rows = hist.filter(([, h]) => h.length >= 2).map(([k, h]) => {
       const last = h[h.length - 1], prev = h[h.length - 2], first = h[0];
       return { k, name: last.name, unit: last.unit, last, prev, first, h, n: h.length, change: pct(last.p, prev.p),
                since: pct(last.p, first.p), spent: h.reduce((s, x) => s + x.spent, 0) };
@@ -643,7 +668,17 @@
           <span>${hrDate(x.d)} · ${esc(x.v || "")}${x.no ? ` · br. ${esc(x.no)}` : ""}<small>${esc(x.name)}</small>${x.line}</span>
           <b>${eur(x.p)}<small>/${esc(x.unit || "kom")}</small></b></button>`).join("")}</div>` : ""}</div>`;
     };
+    const picker = vendors.length > 1 ? `<label class="f" for="pv">Dobavljač</label>
+      <select id="pv" class="pv"><option value="">Svi dobavljači</option>${vendors.map(([v, n]) =>
+        `<option value="${esc(v)}" ${v === priceVendor ? "selected" : ""}>${esc(v)} (${n})</option>`).join("")}</select>` : "";
+    const up = rows.filter((r) => (r.change || r.since) > 0).length, down = rows.filter((r) => (r.change || r.since) < 0).length;
+    const summary = priceVendor ? `<p class="psum"><b>${rows.length} ${plural(rows.length, "proizvod", "proizvoda", "proizvoda")}</b>
+      ${up ? ` · <span class="up">▲ ${up} ${plural(up, "poskupio", "poskupjela", "poskupjelo")}</span>` : ""}
+      ${down ? ` · <span class="down">▼ ${down} ${plural(down, "pojeftinio", "pojeftinila", "pojeftinilo")}</span>` : ""}
+      ${rows.length - up - down ? ` · ${rows.length - up - down} ${plural(rows.length - up - down, "ista cijena", "iste cijene", "istih cijena")}` : ""}
+      ${once ? `<small>Još ${once} ${plural(once, "proizvod", "proizvoda", "proizvoda")} kupljeno samo jednom — nema s čim usporediti.</small>` : ""}</p>` : "";
     return `<p class="muted small">Isti proizvod, zadnja kupnja prema prethodnoj. Cijena po kg, l ili komadu, s PDV-om. Dodirnite proizvod da vidite račune koji se uspoređuju.</p>
+      ${picker}${summary}
       ${moved.length ? `<h3 class="h">Promijenjene cijene</h3>${moved.map(row).join("")}` : ""}
       ${steady.length ? `<h3 class="h">Iste cijene</h3>${steady.map(row).join("")}` : ""}`;
   }
@@ -759,6 +794,10 @@
       if (r) markPaid(r.id, !isPaid(r));
     }));
     box.querySelectorAll("[data-kind]").forEach((b) => b.addEventListener("click", () => { kind = b.dataset.kind; open = null; render(); }));
+    box.querySelectorAll("#pv").forEach((sel) => sel.addEventListener("change", () => { priceVendor = sel.value; openPrice = null; render(); }));
+    box.querySelectorAll("[data-pricevendor]").forEach((b) => b.addEventListener("click", () => {
+      priceVendor = b.dataset.pricevendor; openPrice = null; sub = "cijene"; render(); window.scrollTo(0, 0);
+    }));
     box.querySelectorAll("[data-price]").forEach((b) => b.addEventListener("click", () => { openPrice = openPrice === b.dataset.price ? null : b.dataset.price; render(); }));
     box.querySelectorAll("[data-goto]").forEach((b) => b.addEventListener("click", () => {
       const r = receipts.find((x) => x.id === b.dataset.goto);

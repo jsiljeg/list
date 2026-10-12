@@ -24,7 +24,7 @@ export async function onRequestGet({ request, env, params }) {
 async function knownKeys(env) {
   const { results } = await env.DB.prepare(
     `SELECT items FROM expense_receipts WHERE status = 'done' AND dup_of IS NULL
-      ORDER BY COALESCE(doc_date, created_at) DESC LIMIT 400`).all();
+      ORDER BY COALESCE(doc_date, created_at) DESC LIMIT 200`).all();
   const seen = new Map();
   for (const row of results || []) {
     let items = [];

@@ -54,6 +54,14 @@ const PAYMENT = { 10: "gotovina", 48: "kartica", 54: "kartica", 55: "kartica" };
 /* → {vendor, vendor_oib, doc_date, due_date, doc_no, total, vat, payment, items[], pdf?}
    or null when the document is not an invoice or a credit note. */
 export function ublDraft(xml) {
+  /* The supplier's PDF rides inside the XML as megabytes of base64. Walking it
+     through the parser cost more than the 10 ms of CPU a free Worker gets
+     (error 1102, a March invoice, 2026-10-12), so it is cut out first by one
+     native regex and the parser sees an empty element. It stays the base64
+     it came as, line breaks and all: stripping them alone cost 4-10 ms. */
+  let pdf = null;
+  xml = String(xml).replace(/(<(?:[\w.-]+:)?EmbeddedDocumentBinaryObject\b[^>]*>)([\s\S]*?)(<\/(?:[\w.-]+:)?EmbeddedDocumentBinaryObject\s*>)/g,
+    (m, open, body, close) => { if (!pdf && /pdf/i.test(open)) pdf = body; return open + close; });
   const doc = find(parseXml(xml), ["Invoice", "CreditNote"]);
   if (!doc) return null;
   const credit = doc.name === "CreditNote";
@@ -95,11 +103,6 @@ export function ublDraft(xml) {
     };
   });
   const code = txt(doc, "PaymentMeans", "PaymentMeansCode");
-  let pdf = null;
-  for (const ref of kids(doc, "AdditionalDocumentReference")) {
-    const bin = kid(ref, "Attachment", "EmbeddedDocumentBinaryObject");
-    if (bin && /pdf/i.test(bin.attrs.mimeCode || "") && !pdf) pdf = bin.text.replace(/\s+/g, "");
-  }
   return {
     vendor, vendor_oib: oib,
     doc_date: /^\d{4}-\d{2}-\d{2}$/.test(txt(doc, "IssueDate")) ? txt(doc, "IssueDate") : null,
