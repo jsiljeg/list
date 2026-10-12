@@ -22,7 +22,9 @@ import { ublDraft } from "./ubl.js";
 
 const EVERY_MIN = 30;           /* a staff visit checks the inbox at most this often */
 const PER_SYNC = 20;            /* documents fetched per check; the rest next time */
-const FIRST_DAYS = 60;          /* how far back the very first check looks */
+/* The very first check starts on the 1st of the current month (owner,
+   2026-10-12: "fetch Oct documents"): older invoices are the backlog, not news. */
+const firstFrom = () => zagrebDate().slice(0, 8) + "01";
 const OVERLAP_DAYS = 3;         /* re-ask a little behind the last check: seen ids are skipped */
 
 export const merReady = (env) => !!(env && env.MER_USERNAME && env.MER_PASSWORD && env.MER_COMPANY_ID && env.MER_SOFTWARE_ID);
@@ -101,7 +103,7 @@ export async function merSync(env, { force = false } = {}) {
   if (!force && s.last_try && Date.parse(now) - Date.parse(s.last_try) < EVERY_MIN * 60000) return { state: "fresh" };
   await setState(env, "last_try", now);
   try {
-    const from = s.last_ok ? day(s.last_ok, OVERLAP_DAYS) : day(now, FIRST_DAYS);
+    const from = s.last_ok ? day(s.last_ok, OVERLAP_DAYS) : firstFrom();
     const list = JSON.parse(await call(env, "/queryInbox", { From: from, To: zagrebDate() + "T23:59:59" }));
     if (!Array.isArray(list)) throw new Error("MER je odgovorio nečim što nije popis dokumenata.");
     const docs = list.filter((d) => d && Number.isInteger(Number(d.ElectronicId)));

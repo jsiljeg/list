@@ -100,7 +100,7 @@ How (web/functions/_lib/mer.js, ubl.js):
 
 1. On a staff read of /api/troskovi (in the background, at most every 30
    min) or on **provjeri sada**: `queryInbox` from the last check minus 3
-   days (60 days the first time). Documents already in `expense_mer_docs`
+   days (from the 1st of the current month the first time). Documents already in `expense_mer_docs`
    are skipped — including ones Filho deleted, which must not come back.
 2. Each new one: `receive` → UBL, parsed here: supplier, OIB, date, number,
    payable amount, VAT, every line with VAT added back and g/ml converted to

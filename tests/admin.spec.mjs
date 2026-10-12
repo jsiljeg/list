@@ -730,3 +730,14 @@ test("Povijest: who marked an invoice PLAĆENO or NEPLAĆENO, among the wine lis
     "PLAĆENO|Račun: LIGNUM d.o.o. · 523,65 € · Filho",
   ]);
 });
+
+/* MER's first check starts on the 1st of the current month (owner,
+   2026-10-12: "fetch Oct documents"), and a check that leaves documents for
+   next time must not move last_ok past them. Source assertions: the sync runs
+   in a Pages Function the browser suite never boots. */
+test("MER: the first sync starts on the 1st of the month and never skips a remainder", () => {
+  const src = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
+  expect(src).toMatch(/const firstFrom = \(\) => zagrebDate\(\)\.slice\(0, 8\) \+ "01"/);
+  expect(src).toMatch(/s\.last_ok \? day\(s\.last_ok, OVERLAP_DAYS\) : firstFrom\(\)/);
+  expect(src).toMatch(/if \(fresh\.length <= PER_SYNC\) await setState\(env, "last_ok", now\)/);
+});
