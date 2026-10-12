@@ -743,7 +743,7 @@ test("MER: the first sync starts on the 1st of the month and never skips a remai
   const src = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
   expect(src).toMatch(/const firstFrom = \(\) => zagrebDate\(\)\.slice\(0, 8\) \+ "01"/);
   expect(src).toMatch(/s\.last_ok \? day\(s\.last_ok, OVERLAP_DAYS\) : firstFrom\(\)/);
-  expect(src).toMatch(/if \(fresh\.length <= PER_SYNC\) await setState\(env, "last_ok", now\)/);
+  expect(src).toMatch(/fresh\.length <= PER_SYNC\) await setState\(env, "last_ok", now\)/);
 });
 
 /* Live MER answered queryInbox in XML when offered both (2026-10-12), and the
@@ -917,4 +917,12 @@ test("Troškovi: a pump that loses a race gives its receipts back", () => {
   const src = readFileSync(new URL("../web/functions/_lib/expenses.js", import.meta.url), "utf8");
   expect(src).toMatch(/status = 'working' AND batch != \?1 AND batch < \?1/);
   expect(src).toMatch(/if \(rival \|\| !mine \|\| !mine\.n\)/);
+});
+
+/* At 280 receipts the list read ran the Worker over its CPU limit one time
+   in three (error 1102, 2026-10-12). The stored lines now go out as stored. */
+test("Troškovi: the receipts list passes stored lines through without re-parsing them", () => {
+  const src = readFileSync(new URL("../web/functions/api/troskovi/index.js", import.meta.url), "utf8");
+  expect(src).toMatch(/replace\('"items":0', '"items":' \+ raw\)/);
+  expect(src).not.toMatch(/items = \(results \|\| \[\]\)\.map\(\(r\) => shape\(r,/);
 });

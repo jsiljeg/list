@@ -21,7 +21,7 @@ import { newId, nowIso, zagrebDate, pump, PHOTO_MAX } from "./expenses.js";
 import { ublDraft } from "./ubl.js";
 
 const EVERY_MIN = 30;           /* a staff visit checks the inbox at most this often */
-const PER_SYNC = 20;            /* documents fetched per check; the rest next time */
+const PER_SYNC = 10;            /* documents fetched per check; the rest next time (20 hit the CPU limit, 2026-10-12) */
 /* The very first check starts on the 1st of the current month (owner,
    2026-10-12: "fetch Oct documents"): older invoices are the backlog, not news. */
 const firstFrom = () => zagrebDate().slice(0, 8) + "01";

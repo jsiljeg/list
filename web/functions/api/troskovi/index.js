@@ -6,6 +6,7 @@
  * A read also checks the moj-eRačun inbox (throttled, in the background). */
 import { reply, isStaffAsync, newId, nowIso, clip, savePhotos, readReceipt, shape, pump, limits, cleanManual, MAX_PHOTOS } from "../../_lib/expenses.js";
 import { merSync, merStatus } from "../../_lib/mer.js";
+import { cors } from "../../_lib/wines.js";
 
 export async function onRequestGet({ request, env, waitUntil }) {
   if (!(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
@@ -15,8 +16,19 @@ export async function onRequestGet({ request, env, waitUntil }) {
   const { results } = await env.DB.prepare(
     `SELECT r.*, (SELECT GROUP_CONCAT(n) FROM expense_photos p WHERE p.receipt_id = r.id) AS pics
        FROM expense_receipts r ORDER BY COALESCE(r.doc_date, substr(r.created_at, 1, 10)) DESC, r.created_at DESC LIMIT 1500`).all();
-  const items = (results || []).map((r) => shape(r, r.pics ? String(r.pics).split(",").map(Number) : []));
-  return reply(request, { items, limits: await limits(env), pumped, mer: await merStatus(env) });
+  /* Each receipt's lines are stored as JSON already; they go out as stored
+     rather than parsed and serialised again. At 280 receipts the round trip
+     ran the Worker over its CPU limit one read in three (error 1102,
+     2026-10-12) — and a full year is ~700. */
+  const parts = (results || []).map((r) => {
+    const raw = typeof r.items === "string" && r.items[0] === "[" && r.items[r.items.length - 1] === "]" ? r.items : "[]";
+    const s = shape({ ...r, items: null }, r.pics ? String(r.pics).split(",").map(Number) : []);
+    s.items = 0;
+    return JSON.stringify(s).replace('"items":0', '"items":' + raw);
+  });
+  const tail = JSON.stringify({ limits: await limits(env), pumped, mer: await merStatus(env) }).slice(1);
+  return new Response(`{"items":[${parts.join(",")}],${tail}`, {
+    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...cors(request) } });
 }
 
 export async function onRequestPost({ request, env }) {
