@@ -49,7 +49,7 @@ const UNITS = { KGM: ["kg", 1], GRM: ["kg", 0.001], LTR: ["l", 1], MLT: ["l", 0.
 /* UNCL 4461 payment means */
 const PAYMENT = { 10: "gotovina", 48: "kartica", 54: "kartica", 55: "kartica" };
 
-/* → {vendor, vendor_oib, doc_date, doc_no, total, vat, payment, items[], pdf?}
+/* → {vendor, vendor_oib, doc_date, due_date, doc_no, total, vat, payment, items[], pdf?}
    or null when the document is not an invoice or a credit note. */
 export function ublDraft(xml) {
   const doc = find(parseXml(xml), ["Invoice", "CreditNote"]);
@@ -93,6 +93,8 @@ export function ublDraft(xml) {
   return {
     vendor, vendor_oib: oib,
     doc_date: /^\d{4}-\d{2}-\d{2}$/.test(txt(doc, "IssueDate")) ? txt(doc, "IssueDate") : null,
+    /* when it must be paid: the invoice's own DueDate, or the payment means' */
+    due_date: [txt(doc, "DueDate"), txt(doc, "PaymentMeans", "PaymentDueDate")].find((d) => /^\d{4}-\d{2}-\d{2}$/.test(d)) || null,
     doc_no: txt(doc, "ID"),
     total: total == null ? null : r2(sign * total),
     vat: vat == null ? null : r2(sign * vat),

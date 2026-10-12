@@ -94,7 +94,7 @@ jobs:
               npx wrangler d1 execute theatrium --remote --command "ALTER TABLE $table ADD COLUMN $col" -y > /dev/null               || echo "::warning::could not add $table.$name"
             done
           }
-          add_cols expense_receipts "source TEXT" "dup_of TEXT"
+          add_cols expense_receipts "source TEXT" "dup_of TEXT" "due_date TEXT" "paid_at TEXT"
 
       # Attach theatrium.devinos.hr, once. Idempotent and non-fatal: a failure
       # here must not stop a deploy that is otherwise fine, because the site is

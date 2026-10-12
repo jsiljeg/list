@@ -4,11 +4,12 @@
  *   kategorija  (staff)  {i, category}: Filho moves one line to another category
  *   ispravi     (staff)  {vendor?, doc_date?, total?}: he corrects the header
  *   uredi       (staff)  a hand-typed expense, typed again (same body as POST /api/troskovi)
+ *   placeno     (staff)  {paid: true|false}: paid today, or not paid after all
  *   nije_isti   (staff)  "this is not the same invoice": a receipt marked as a twin counts again
  *   ponovi      (staff)  a failed receipt is read again
  *   obrisi      (staff)  the receipt and its photos are deleted for good */
 import { reply, isStaffAsync, isExpenseWorker, readReceipt, setFields, pump, clip, num, cleanItems, cleanManual,
-         mergeEinvoice, CATEGORIES } from "../../../_lib/expenses.js";
+         mergeEinvoice, zagrebDate, CATEGORIES } from "../../../_lib/expenses.js";
 import { findTwin } from "../../../_lib/mer.js";
 
 export async function onRequestPost({ request, env, params }) {
@@ -36,6 +37,7 @@ export async function onRequestPost({ request, env, params }) {
         vendor: clip(b.vendor, 120), vendor_oib: clip(b.vendor_oib, 11).replace(/\D/g, ""),
         doc_date: date, doc_no: clip(b.doc_no, 60), total: num(b.total), vat: num(b.vat),
         payment: ["gotovina", "kartica", "virman"].includes(b.payment) ? b.payment : "",
+        due_date: /^\d{4}-\d{2}-\d{2}$/.test(b.due_date || "") ? b.due_date : null,
         items: JSON.stringify(cleanItems(b.items)), note: clip(b.note, 300),
       });
     }
@@ -85,6 +87,10 @@ export async function onRequestPost({ request, env, params }) {
     const m = cleanManual(b);
     if (m.error) return reply(request, { error: m.error }, 400);
     await setFields(env, id, m.fields);
+    return reply(request, { ok: true, item: await readReceipt(env, id) });
+  }
+  if (action === "placeno") {
+    await setFields(env, id, { paid_at: b.paid === false ? null : zagrebDate() });
     return reply(request, { ok: true, item: await readReceipt(env, id) });
   }
   if (action === "nije_isti") {

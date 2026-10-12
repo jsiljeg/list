@@ -59,6 +59,9 @@ export function shape(row, photos = []) {
        rucno: typed in by hand, paid with no receipt (cash at the market, a
        repairman) — tracked on its own, since nothing documents it */
     source: row.source || "foto", dup_of: row.dup_of || "",
+    /* paid: a receipt paid by card or cash is paid by being a receipt; one
+       "na virman" waits until Filho marks it (paid_at, a Zagreb date) */
+    due_date: row.due_date || "", paid_at: row.paid_at || "",
   };
 }
 

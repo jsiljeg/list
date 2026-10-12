@@ -146,3 +146,29 @@ documents per check (subrequest budget), the rest on the next one.
 Schema: `expense_receipts.source` and `.dup_of` are added by deploy-web's
 "add missing columns" step (SQLite has no ADD COLUMN IF NOT EXISTS);
 `expense_mer_docs`, `expense_mer_state` are in schema.sql.
+
+## Plaćeno — what is still owed (owner, 2026-10-12)
+
+"We would also need some option to mark račun as plaćeno … some easy way."
+
+- **Card and cash need no mark**: a till receipt is paid by being one. Only a
+  receipt **na virman** — most e-invoices, every utility bill, a hand-typed
+  one marked virman — waits, until `paid_at` is set.
+- **Računi → Za platiti**, above the receipts: every unpaid one, latest due
+  date first, "kasni 3 dana" in red, and **✓ plaćeno** on the row. One tap
+  marks it paid today; the row turns into "✓ označeno plaćeno · poništi"
+  for six seconds, so a wrong tap costs another tap, never a dialog. A tap
+  on the name opens the receipt.
+- An open receipt says *Nije plaćeno · dospijeva 20. 10.* with the same
+  button, or *✓ Plaćeno 12. 10.* with "nije plaćeno".
+- **Pregled** leads with *Za platiti 4.370 € · 6 računa · 3 kasne ›*, across
+  all months — last month's bill is still owed.
+- **Due date** (`due_date`): from the e-invoice (UBL `DueDate`, or the payment
+  means' `PaymentDueDate`), or read off a photographed invoice ("datum
+  dospijeća"). Without one the row says when the invoice was issued.
+- API: `POST /api/troskovi/<id>/placeno {paid: true|false}`; the date is the
+  server's Zagreb day.
+
+Not done, on purpose: MER is not told anything is paid (read only, as above),
+and payment is not matched against the bank — that would need the bank's
+statement, and is a later step if Filho wants it.

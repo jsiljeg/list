@@ -172,6 +172,12 @@
     /* one that could not be read, as it will happen */
     out.push({ id: "demo-mutan", created_at: today.toISOString(), updated_at: "", created_by: "Filho", status: "failed",
       vendor: "", items: [], photos: [], note: "", error: "Slika je mutna — ukupni iznos se ne vidi. Slikajte račun ravno, pri svjetlu." });
+    for (const r of out) {
+      if (r.payment !== "virman" || !r.doc_date) continue;
+      const age = (Date.now() - Date.parse(r.doc_date)) / 86400000;
+      r.due_date = new Date(Date.parse(r.doc_date) + 15 * 86400000).toISOString().slice(0, 10);
+      if (age > 25) r.paid_at = r.due_date;
+    }
     return out.sort((a, b) => (b.doc_date || b.created_at).localeCompare(a.doc_date || a.created_at));
   }
   /* a receipt "sent" in the demo is read a few seconds later */
@@ -218,6 +224,7 @@
       return { ok: true };
     }
     if (action === "nije_isti") { r.dup_of = ""; return { ok: true }; }
+    if (action === "placeno") { r.paid_at = JSON.parse(opts.body).paid ? new Date().toISOString().slice(0, 10) : ""; return { ok: true }; }
     if (action === "uredi") {
       const b = JSON.parse(opts.body);
       Object.assign(r, { vendor: b.vendor || b.items[0].name, doc_date: b.doc_date, payment: b.payment,
@@ -283,6 +290,56 @@
     }
     return { cats, rest };
   }
+  /* ---------- paid or not (owner, 2026-10-12: "mark račun as plaćeno") ----------
+     A receipt paid by card or cash is paid by being a receipt. One "na virman"
+     — most e-invoices, every utility bill — waits until Filho taps
+     "✓ plaćeno"; the tap is undone in place, never confirmed first. */
+  const todayIso = () => new Date().toISOString().slice(0, 10);
+  const toPay = (r) => r.status === "done" && !r.dup_of && !r.paid_at && r.payment === "virman" && totalOf(r) > 0;
+  const daysTo = (d) => Math.round((Date.parse(d) - Date.parse(todayIso())) / 86400000);
+  const isLate = (r) => !!r.due_date && daysTo(r.due_date) < 0;
+  function dueText(r) {
+    if (!r.due_date) return `račun od ${hrDate(dateOf(r))}`;
+    const n = daysTo(r.due_date);
+    return n < 0 ? `kasni ${-n} ${plural(-n, "dan", "dana", "dana")}` : n === 0 ? "dospijeva danas"
+      : n === 1 ? "dospijeva sutra" : `dospijeva ${hrDate(r.due_date)}`;
+  }
+  const justPaid = new Map();   /* id → timer: "✓ plaćeno · poništi" stays a few seconds */
+  async function markPaid(id, paid) {
+    const r = receipts.find((x) => x.id === id);
+    if (!r) return;
+    const before = r.paid_at;
+    clearTimeout(justPaid.get(id)); justPaid.delete(id);
+    r.paid_at = paid ? todayIso() : "";
+    if (paid) justPaid.set(id, setTimeout(() => { justPaid.delete(id); render(); }, 6000));
+    render();
+    try { await api(`/${id}/placeno`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ paid }) }); }
+    catch (e) { r.paid_at = before; justPaid.delete(id); err = "Nije spremljeno: " + e.message; render(); }
+  }
+  const byDue = (a, b) => (a.due_date || "9999").localeCompare(b.due_date || "9999") || dateOf(a).localeCompare(dateOf(b));
+  function payList() {
+    const list = receipts.filter((r) => toPay(r) || justPaid.has(r.id)).sort(byDue);
+    if (!list.length) return "";
+    const sum = list.filter(toPay).reduce((s, r) => s + totalOf(r), 0);
+    return `<div class="card pay" id="za-platiti">
+      <h3 class="h mh"><span>Za platiti</span><span>${sum ? eur(sum) : ""}</span></h3>
+      ${list.map((r) => justPaid.has(r.id)
+        ? `<div class="py done"><span class="pn">${esc(r.vendor || "Račun")}<small>✓ označeno plaćeno</small></span>
+            <button class="nema cancel paybtn" data-unpaid="${esc(r.id)}">poništi</button></div>`
+        : `<div class="py"><button class="pn" data-goto="${esc(r.id)}">${esc(r.vendor || "Račun")}<small class="${isLate(r) ? "late" : ""}">${dueText(r)}</small></button>
+            <b>${eur(totalOf(r))}</b>
+            <button class="nema ok paybtn" data-paid="${esc(r.id)}">✓ plaćeno</button></div>`).join("")}
+    </div>`;
+  }
+  /* Pregled: one line, all months — a bill from last month is still owed */
+  function payBanner() {
+    const list = receipts.filter(toPay);
+    if (!list.length) return "";
+    const late = list.filter(isLate).length, sum = list.reduce((s, r) => s + totalOf(r), 0);
+    return `<button class="paybanner" data-sub="racuni">Za platiti <b>${eur0(sum)}</b>
+      <span>${list.length} ${plural(list.length, "račun", "računa", "računa")}${late ? ` · <em>${late} ${late === 1 ? "kasni" : "kasne"}</em>` : ""} ›</span></button>`;
+  }
+
   const shiftMonth = (m, d) => {
     const [y, mo] = m.split("-").map(Number);
     const t = new Date(Date.UTC(y, mo - 1 + d, 1));
@@ -369,6 +426,7 @@
     const days = new Date(Date.UTC(+month.slice(0, 4), +month.slice(5, 7), 0)).getUTCDate();
     const today = new Date().toISOString().slice(0, 7) === month ? new Date().getDate() : days;
     return `
+      ${payBanner()}
       ${monthNav()}
       ${list.length ? `
       <div class="big"><b>${eur0(total)}</b>
@@ -558,7 +616,7 @@
       }
       return headline + receiptRow(r);
     }).join("");
-    return `${uploadCard()}${merLine()}${rows || `<p class="muted center">Nema računa.</p>`}`;
+    return `${uploadCard()}${merLine()}${payList()}${rows || `<p class="muted center">Nema računa.</p>`}`;
   }
 
   /* moj-eRačun: one quiet line. E-invoices come in by themselves; the line
@@ -583,7 +641,7 @@
         : `<span class="badge">${r.source === "mer" ? "razvrstava se" : "čita se"}</span>`;
       const src = r.source === "mer" ? `<span class="badge src">e-račun</span>` : r.source === "rucno" ? `<span class="badge src">bez računa</span>` : "";
       const head = `<button class="rhead" data-open="${esc(r.id)}" aria-expanded="${open === r.id}">
-        <span class="rv">${esc(r.vendor || (st === "done" ? "Nepoznat" : "Račun"))}${src}${r.dup_of ? `<span class="badge src dup">dvaput</span>` : ""}<small>${hrDate(dateOf(r))}${r.items.length ? ` · ${r.items.length} ${plural(r.items.length, "stavka", "stavke", "stavki")}` : ""}${r.created_by ? ` · ${esc(r.created_by)}` : ""}</small></span>
+        <span class="rv">${esc(r.vendor || (st === "done" ? "Nepoznat" : "Račun"))}${src}${r.dup_of ? `<span class="badge src dup">dvaput</span>` : ""}${toPay(r) ? `<span class="badge src unpaid${isLate(r) ? " late" : ""}">${isLate(r) ? "kasni" : "neplaćeno"}</span>` : ""}<small>${hrDate(dateOf(r))}${r.items.length ? ` · ${r.items.length} ${plural(r.items.length, "stavka", "stavke", "stavki")}` : ""}${r.created_by ? ` · ${esc(r.created_by)}` : ""}</small></span>
         <span class="rt">${st === "done" ? eur(totalOf(r)) : badge}</span></button>`;
       const cls = r.dup_of ? " dup" : "";
       if (open !== r.id) return `<div class="rec${cls}">${head}</div>`;
@@ -599,7 +657,13 @@
             ${catPick === `${r.id}|${i}` ? catPicker(`r|${r.id}|${i}`, it.category) : ""}
           </div>`).join("")}</div>` : ""}
         ${r.vat != null ? `<p class="muted small">PDV ${eur(r.vat)}${r.payment ? ` · ${esc(r.payment)}` : ""}${r.doc_no ? ` · br. ${esc(r.doc_no)}` : ""}</p>`
-          : r.source === "rucno" ? `<p class="muted small">Plaćeno ${esc(r.payment || "gotovina")}, bez računa${r.created_by ? ` · upisao ${esc(r.created_by)}` : ""}</p>` : ""}
+          : r.source === "rucno" ? `<p class="muted small">${r.payment === "virman" ? "Na virman" : `Plaćeno ${esc(r.payment || "gotovina")}`}, bez računa${r.created_by ? ` · upisao ${esc(r.created_by)}` : ""}</p>` : ""}
+        ${st === "done" && !r.dup_of && (r.payment === "virman" || r.paid_at)
+          ? r.paid_at
+            ? `<p class="paid-line">✓ Plaćeno ${hrDate(r.paid_at)}<button class="linkbtn" data-unpaid="${esc(r.id)}">nije plaćeno</button></p>`
+            : `<div class="paid-line open"><span>Nije plaćeno<small class="${isLate(r) ? "late" : ""}">${dueText(r)}</small></span>
+                <button class="nema ok paybtn" data-paid="${esc(r.id)}">✓ plaćeno</button></div>`
+          : ""}
         <div class="pics">${r.photos.map((n) => thumb(r, n)).join("")}</div>
         ${confirmDel === r.id
           ? `<div class="ch-acts"><button class="nema all" data-del="${esc(r.id)}" data-sure="1">da, obriši račun</button><button class="nema cancel" data-nodel>odustani</button></div>`
@@ -773,6 +837,12 @@
     }));
     box.querySelectorAll("[data-mansave]").forEach((b) => b.addEventListener("click", saveManual));
     box.querySelectorAll("[data-mancancel]").forEach((b) => b.addEventListener("click", () => { manual = null; catPick = null; err = ""; render(); }));
+    box.querySelectorAll("[data-paid]").forEach((b) => b.addEventListener("click", () => markPaid(b.dataset.paid, true)));
+    box.querySelectorAll("[data-unpaid]").forEach((b) => b.addEventListener("click", () => markPaid(b.dataset.unpaid, false)));
+    box.querySelectorAll("[data-goto]").forEach((b) => b.addEventListener("click", () => {
+      open = b.dataset.goto; catPick = null; confirmDel = null; render();
+      const el = box.querySelector(`[data-open="${CSS.escape(open)}"]`); if (el) el.scrollIntoView({ block: "start", behavior: "smooth" });
+    }));
     box.querySelectorAll("[data-notdup]").forEach((b) => b.addEventListener("click", async () => {
       try { await api(`/${b.dataset.notdup}/nije_isti`, { method: "POST" }); await load(); } catch (e) { err = e.message; render(); }
     }));

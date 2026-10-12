@@ -663,3 +663,37 @@ test("Troškovi: cash with no receipt is typed in, e-invoices are marked, a phot
   expect(sent.payment).toBe("gotovina");
   expect(sent.items.map((i) => [i.total, i.category])).toEqual([[12.5, "povrce"], [80, "odrzavanje"]]);
 });
+
+test("Troškovi: a virman invoice waits in 'Za platiti' until one tap marks it paid, and the tap can be undone", async ({ page }) => {
+  /* owner, 2026-10-12: "some option to mark račun as plaćeno … some easy way".
+     Card and cash are paid by being a receipt; only virman waits. */
+  await board(page);
+  const now = new Date().toISOString().slice(0, 10), ym = now.slice(0, 7);
+  const r = (id, payment, extra = {}) => ({ id, created_at: `${ym}-01T09:00:00Z`, updated_at: "", status: "done", vendor: "Dobavljač " + id,
+    vendor_oib: "", doc_date: `${ym}-01`, doc_no: "", total: 100, vat: null, payment, photos: [], note: "", created_by: "", source: "foto",
+    dup_of: "", due_date: "", paid_at: "", items: [{ name: "x", key: "", qty: null, unit: "", unit_price: null, total: 100, category: "ostalo" }], ...extra });
+  const items = [r("late", "virman", { due_date: "2026-01-01" }), r("card", "kartica"), r("done", "virman", { paid_at: `${ym}-02` })];
+  const posts = [];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => {
+    const req = route.request();
+    if (req.method() === "POST") posts.push({ path: new URL(req.url()).pathname, body: req.postData() || "" });
+    return route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify(req.method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) });
+  });
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+
+  /* Pregled names what is owed, and that it is late */
+  await expect(page.locator(".paybanner")).toContainText("1 račun");
+  await expect(page.locator(".paybanner")).toContainText("kasni");
+  await page.click(".paybanner");
+  /* only the unpaid virman one is listed */
+  await expect(page.locator("#za-platiti .py")).toHaveCount(1);
+  await expect(page.locator('[data-open="late"] .badge')).toContainText("kasni");
+  await page.click('[data-paid="late"]');
+  await expect(page.locator("#za-platiti")).toContainText("označeno plaćeno");
+  await expect.poll(() => posts.map((p) => p.path + p.body)).toContain('/api/troskovi/late/placeno{"paid":true}');
+  await page.click('#za-platiti [data-unpaid="late"]');
+  await expect.poll(() => posts.map((p) => p.path + p.body)).toContain('/api/troskovi/late/placeno{"paid":false}');
+  await expect(page.locator('#za-platiti [data-paid="late"]')).toBeVisible();
+});

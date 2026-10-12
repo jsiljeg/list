@@ -283,6 +283,9 @@ CREATE TABLE IF NOT EXISTS expense_dispatches (
 --   source  TEXT  foto | mer | rucno — photographed, an e-invoice from
 --                 moj-eRačun, or typed in by hand with no receipt at all
 --   dup_of  TEXT  the e-invoice this photo duplicates; left out of every sum
+--   due_date TEXT when an invoice must be paid (UBL DueDate, or read off it)
+--   paid_at  TEXT the Zagreb date Filho marked it paid; NULL on a virman
+--                 invoice means still to pay (card and cash need no mark)
 -- moj-eRačun: every document the inbox has handed over, so none is fetched
 -- twice — including one Filho deleted, which must not come back.
 CREATE TABLE IF NOT EXISTS expense_mer_docs (

@@ -141,10 +141,10 @@ async function importDraft(env, eid, draft, listed) {
   const items = draft.items.map((i) => ({ ...i, key: "", category: "ostalo" }));
   await env.DB.prepare(
     `INSERT INTO expense_receipts (id, created_at, updated_at, created_by, status, source, vendor, vendor_oib, doc_date, doc_no,
-                                   total, vat, payment, items, note, error)
-     VALUES (?1, ?2, ?2, 'MER', 'queued', 'mer', ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, '')`)
+                                   total, vat, payment, items, note, error, due_date)
+     VALUES (?1, ?2, ?2, 'MER', 'queued', 'mer', ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, '', ?12)`)
     .bind(id, now, vendor.slice(0, 120), oib, draft.doc_date, String(draft.doc_no || "").slice(0, 60),
-          draft.total, draft.vat, draft.payment, JSON.stringify(items), draft.credit ? "Odobrenje (storno) — iznos se oduzima." : "").run();
+          draft.total, draft.vat, draft.payment, JSON.stringify(items), draft.credit ? "Odobrenje (storno) — iznos se oduzima." : "", draft.due_date).run();
   if (draft.pdf) {
     try {
       const bytes = b64bytes(draft.pdf);
