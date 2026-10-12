@@ -4,7 +4,8 @@
  * Hampden didn't increase 179%"). Cijene compares lines by key, and the key
  * used to be written per receipt, alone, under a rule that left the brand
  * out: Bumbu and Hampden were both "rum". This re-files lines onto one key
- * per article without reading a single receipt again. Only the key moves;
+ * per article without reading a single receipt again ("" = not a product:
+ * deposits, interest, fees). Only the key moves;
  * amounts, names and categories are untouched. */
 import { reply, isStaffAsync, readReceipt, setFields, clip } from "../../_lib/expenses.js";
 
@@ -26,7 +27,7 @@ export async function onRequestPost({ request, env }) {
     for (const c of list) {
       const it = r.items[c.i];
       const key = clip(c.key, 80).toLowerCase().trim();
-      if (!it || !key) { missing += 1; continue; }
+      if (!it) { missing += 1; continue; }        /* "" is allowed: not a product, never compared */
       if (it.key !== key) { it.key = key; dirty = true; changed += 1; }
     }
     if (dirty) await setFields(env, id, { items: JSON.stringify(r.items) });
