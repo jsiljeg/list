@@ -51,7 +51,7 @@ uploads no artifacts and its log prints counts and usage, never contents.
 2. `pump()` — after an upload and on every staff read — takes up to 8
    queued receipts as a batch (`working`) and dispatches `read-receipts.yml`
    in the private repo with **only the batch id**. Brakes: one run at a time,
-   24 runs a day (12 until the MER backfill, 2026-10-12), 200 a month, 3 tries per receipt, a batch silent for 30
+   80 runs a day (12, then 24, until the full-year MER backfill, 2026-10-12), 200 a month, 3 tries per receipt, a batch silent for 30
    minutes goes back in line.
 3. The run fetches `GET /api/troskovi/posao/<batch>` and the photos with
    `EXPENSE_WORKER_KEY`, runs Claude (`prompt.md` there; Read/Write/Glob in

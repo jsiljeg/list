@@ -17,9 +17,10 @@ import { reply, isStaffAsync } from "./wines.js";
 
 export { reply, isStaffAsync };
 export const BATCH = 8;
-/* 24 since 2026-10-12: the MER backfill of August and September (124
-   e-invoices, ~16 runs) stalled for a day at 12 */
-export const DAILY_RUNS = 24;
+/* 80 since 2026-10-12, for the backfill of the whole year from MER (~700
+   e-invoices) to be read overnight (owner: "have the full year"). Was 12,
+   then 24. The monthly brake is what bounds the spend. */
+export const DAILY_RUNS = 80;
 export const MONTHLY_RUNS = 200;
 export const MAX_TRIES = 3;
 export const MAX_PHOTOS = 4;           /* one long receipt can take several */
