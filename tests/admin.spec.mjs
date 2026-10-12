@@ -741,3 +741,10 @@ test("MER: the first sync starts on the 1st of the month and never skips a remai
   expect(src).toMatch(/s\.last_ok \? day\(s\.last_ok, OVERLAP_DAYS\) : firstFrom\(\)/);
   expect(src).toMatch(/if \(fresh\.length <= PER_SYNC\) await setState\(env, "last_ok", now\)/);
 });
+
+/* Live MER answered queryInbox in XML when offered both (2026-10-12), and the
+   sync died on JSON.parse. The list call must ask for JSON alone. */
+test("MER: the inbox list is asked for as JSON only", () => {
+  const src = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
+  expect(src).toMatch(/accept: path === "\/queryInbox" \? "application\/json" :/);
+});

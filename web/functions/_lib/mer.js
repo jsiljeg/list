@@ -35,10 +35,13 @@ const auth = (env) => ({
   ...(env.MER_COMPANY_BU ? { CompanyBu: String(env.MER_COMPANY_BU) } : {}),
 });
 
+/* The list must be asked for as JSON: offered both, live MER answers
+   queryInbox in XML (seen 2026-10-12). The document itself is XML either way. */
 async function call(env, path, body) {
   const r = await fetch(base(env) + path, {
     method: "POST",
-    headers: { "content-type": "application/json", accept: "application/json, application/xml, text/xml" },
+    headers: { "content-type": "application/json",
+               accept: path === "/queryInbox" ? "application/json" : "application/json, application/xml, text/xml" },
     body: JSON.stringify({ ...auth(env), ...body }),
   });
   const text = await r.text();
