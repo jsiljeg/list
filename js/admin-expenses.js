@@ -415,7 +415,7 @@
     "chablis la grand vale": "patrick-piuze--chablis-la-grande-vallee-2024",
     "jakopic rajnski rizling izb berba": "jakopic--rajnski-rizling-izborna-berba-2019",
     "h l lignier pommard l c l arveltes": "hubert-lignier--pommard-1er-cru-les-arvelets-2019",
-    "w h lowenstein riesling schiefer": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023,weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017",
+    "w h lowenstein riesling schiefer": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023",
     "savagnin 2018": "domaine-bourdy--savagnin-2018", "erdoro crni pinot 2021": "erdoro--pinot-noir-2021",
   };
   /* sold under a wine group but not wine */
