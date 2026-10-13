@@ -120,7 +120,7 @@ export async function monthSummary(env, month) {
    what leaked (storno, discounts, free items), and each waiter's bills and
    wine. Summed here so the browser only ranks it. A storno bill counts against
    the waiter who issued the original (Remaris puts it on them). */
-async function monthDetail(env, lo, hi) {
+export async function monthDetail(env, lo, hi) {
   const q = (sql, ...a) => env.DB.prepare(sql).bind(...a).all().then((r) => r.results || []);
   const WINE = "(l.grp LIKE '%vin%' OR l.grp LIKE '%ampanj%' OR l.grp LIKE '%jenu%')";
   const [items, weekdays, dayparts, leaks, waiters] = await Promise.all([
@@ -143,5 +143,78 @@ async function monthDetail(env, lo, hi) {
          COUNT(DISTINCT CASE WHEN ${WINE} THEN b.id END) AS wine_bills
        FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 GROUP BY b.waiter`, lo, hi),
   ]);
-  return { items, weekdays, dayparts, leaks, waiters };
+  return { items, weekdays, dayparts, leaks, waiters, staff: await staffData(env, lo, hi) };
+}
+
+/* ---------- Konobari (Filho, 2026-10-14: "koji je konobar što prodao, i koji
+   promet ima i što mu je palo … jer onda mogu upozorit i ispravit — dal mu
+   fali aperitiv, dal više proda pjenušca a ne šampanjca") ----------
+   Each waiter against the rest of the team, fairly: a lunch waiter is not
+   expected to sell what a dinner waiter does, so his expected share of bills
+   with, say, an aperitif is the team's share at lunch and at dinner, weighted
+   by how many of his bills were lunches and how many dinners. */
+export const STAFF_CAT = `CASE
+  WHEN l.grp LIKE '%oktel%' OR l.grp LIKE '%peritiv%' THEN 'aperitiv'
+  WHEN l.grp LIKE '%ampanj%' THEN 'sampanjac'
+  WHEN l.grp LIKE '%jenu%' THEN 'pjenusac'
+  WHEN l.grp LIKE '%na č%' OR l.grp LIKE '%na c%' THEN 'casa'
+  WHEN l.grp LIKE '%esertn%' THEN 'desertno'
+  WHEN l.grp LIKE '%vin%' THEN 'boca'
+  WHEN l.grp LIKE '%redjel%' OR l.grp LIKE '%juh%' THEN 'predjelo'
+  WHEN l.grp LIKE '%esert%' THEN 'desert'
+  WHEN l.grp LIKE '%akij%' OR l.grp LIKE '%rapp%' OR l.grp LIKE '%odka%' OR l.grp LIKE '%hisk%' OR l.grp LIKE '%rum%' OR l.grp LIKE '%ognac%' THEN 'zestoko'
+  ELSE NULL END`;
+export const STAFF_LABEL = {
+  aperitiv: "kokteli i aperitivi", sampanjac: "šampanjac", pjenusac: "pjenušac", casa: "vino na čašu",
+  boca: "vino na bocu", desertno: "desertno vino", predjelo: "predjela i juhe", desert: "deserti", zestoko: "žestoko",
+};
+const PART = "CASE WHEN substr(b.at, 12, 2) < '16' THEN 'rucak' ELSE 'vecera' END";
+
+export async function staffData(env, lo, hi) {
+  const q = (sql) => env.DB.prepare(sql).bind(lo, hi).all().then((r) => r.results || []);
+  const [bills, cats] = await Promise.all([
+    q(`SELECT b.waiter AS w, ${PART} AS p, COUNT(*) AS n, SUM(b.total) AS t FROM sales_bills b
+       WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 GROUP BY w, p`),
+    q(`SELECT b.waiter AS w, ${PART} AS p, ${STAFF_CAT} AS c, COUNT(DISTINCT b.id) AS n, SUM(l.total) AS t
+       FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
+       WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 GROUP BY w, p, c HAVING c IS NOT NULL`),
+  ]);
+  return staffReport(bills, cats);
+}
+
+/* Pure: rows → per waiter {n, total, avg, rate[c], exp[c], champ, champTeam, flags}. */
+export function staffReport(bills, cats) {
+  const who = [...new Set(bills.map((r) => r.w || "—"))];
+  const nOf = (w, p) => bills.filter((r) => (r.w || "—") === w && (!p || r.p === p)).reduce((a, r) => a + r.n, 0);
+  const cOf = (w, p, c, k = "n") => cats.filter((r) => (r.w || "—") === w && (!p || r.p === p) && r.c === c).reduce((a, r) => a + (r[k] || 0), 0);
+  const out = [];
+  for (const w of who) {
+    const n = nOf(w);
+    if (!n) continue;
+    const others = who.filter((x) => x !== w);
+    const total = bills.filter((r) => (r.w || "—") === w).reduce((a, r) => a + r.t, 0);
+    const rate = {}, exp = {}, flags = [];
+    for (const c of Object.keys(STAFF_LABEL)) {
+      rate[c] = cOf(w, null, c) / n;
+      /* expected: the others' share at lunch and at dinner, in his mix */
+      let e = 0;
+      for (const p of ["rucak", "vecera"]) {
+        const on = others.reduce((a, o) => a + nOf(o, p), 0), oc = others.reduce((a, o) => a + cOf(o, p, c), 0);
+        e += on ? (nOf(w, p) / n) * (oc / on) : 0;
+      }
+      exp[c] = e;
+      if (n >= 15 && e >= 0.05 && rate[c] < e * 0.7 && e - rate[c] >= 0.05) flags.push({ c, rate: rate[c], exp: e });
+    }
+    /* bubbles: of what he sold in bubbles, how much was champagne */
+    const champ = cOf(w, null, "sampanjac", "t"), pj = cOf(w, null, "pjenusac", "t");
+    const oc = others.reduce((a, o) => a + cOf(o, null, "sampanjac", "t"), 0), op = others.reduce((a, o) => a + cOf(o, null, "pjenusac", "t"), 0);
+    const share = champ + pj ? champ / (champ + pj) : null, team = oc + op ? oc / (oc + op) : null;
+    /* only with enough of it to mean something: a single bottle of champagne
+       on the team swings a share of two or three sales */
+    const bub = cOf(w, null, "sampanjac") + cOf(w, null, "pjenusac"), oChampN = others.reduce((a, o) => a + cOf(o, null, "sampanjac"), 0);
+    if (share != null && team != null && bub >= 5 && oChampN >= 4 && share < team * 0.6) flags.push({ c: "mjehurici", rate: share, exp: team });
+    flags.sort((a, b) => (a.rate - a.exp) - (b.rate - b.exp));
+    out.push({ waiter: w, n, total, avg: total / n, lunch: nOf(w, "rucak"), rate, exp, champ: share, champTeam: team, flags });
+  }
+  return out.sort((a, b) => b.total - a.total);
 }

@@ -9,7 +9,7 @@
  * January) and rejects a row that is not a bill. */
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
-import { cleanBill } from "../web/functions/_lib/sales.js";
+import { cleanBill, staffReport } from "../web/functions/_lib/sales.js";
 
 const month = new Date().toISOString().slice(0, 7);
 const summary = {
@@ -92,4 +92,22 @@ test("the till-to-list wine matcher is strict and never guesses", () => {
   const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
   expect(src).toContain("if (rest.length && nm.length < rest.length) continue;");
   expect(src).toContain("return c.length && !(c[1] && c[1].sc === c[0].sc) ? c[0].w : null;");
+});
+
+/* Konobari (Filho, 2026-10-14): a waiter is held against the others at his
+   own mix of lunches and dinners, so a lunch waiter is not flagged for the
+   aperitifs only dinner sells; and a gap needs 5 points to be a flag. */
+test("a waiter is compared at his own lunch/dinner mix", () => {
+  const bills = [
+    { w: "Ana", p: "vecera", n: 40, t: 6000 }, { w: "Ivo", p: "rucak", n: 40, t: 4000 },
+    { w: "Eva", p: "vecera", n: 40, t: 6000 }, { w: "Eva", p: "rucak", n: 40, t: 4000 },
+  ];
+  const cats = [
+    { w: "Ana", p: "vecera", c: "aperitiv", n: 4, t: 40 },           /* 10% where Eva sells 30% at dinner */
+    { w: "Eva", p: "vecera", c: "aperitiv", n: 12, t: 120 },
+    { w: "Ivo", p: "rucak", c: "aperitiv", n: 1, t: 10 },            /* lunch: Eva sells none — Ivo is fine */
+  ];
+  const r = Object.fromEntries(staffReport(bills, cats).map((w) => [w.waiter, w]));
+  expect(r.Ana.flags.map((f) => f.c)).toContain("aperitiv");
+  expect(r.Ivo.flags.map((f) => f.c)).not.toContain("aperitiv");
 });

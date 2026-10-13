@@ -38,10 +38,13 @@ export default {
     const from = topic ? `Theatrium · ${topic}` : "Theatrium";
     const click = typeof a.click === "string" && /^https:\/\//.test(a.click) ? a.click : "";
     const when = new Date().toISOString().slice(0, 16).replace("T", " ");
-    const text = `${String(a.body || "").slice(0, 4000)}${click ? `\n\n${click}` : ""}\n\n— ${from}, ${when} UTC\n`;
-    const raw = [
+    /* `to: "weekly"` → the Monday report's list (MAIL_TO_WEEKLY), else the
+       owner alone. Never an address from the request: only names chosen here. */
+    const list = a.to === "weekly" && env.MAIL_TO_WEEKLY ? env.MAIL_TO_WEEKLY.split(",").map((x) => x.trim()).filter(Boolean) : [env.MAIL_TO];
+    const text = `${String(a.body || "").slice(0, 6000)}${click ? `\n\n${click}` : ""}\n\n— ${from}, ${when} UTC\n`;
+    const raw = (to) => [
       `From: ${enc(from)} <${env.MAIL_FROM}>`,
-      `To: ${env.MAIL_TO}`,
+      `To: ${to}`,
       `Subject: ${enc(clean(a.title, 200))}`,
       `Date: ${new Date().toUTCString()}`,
       `Message-ID: <${crypto.randomUUID()}@${env.MAIL_FROM.split("@")[1]}>`,
@@ -51,12 +54,13 @@ export default {
       "",
       b64(text).replace(/.{76}/g, "$&\r\n"),
     ].join("\r\n");
-    try {
-      await env.MAIL.send(new EmailMessage(env.MAIL_FROM, env.MAIL_TO, raw));
-      return Response.json({ ok: true, mail: true });
-    } catch (e) {
-      console.log(`mail failed: ${e.message || e}`);
-      return Response.json({ ok: false, mail: false, why: String(e.message || e) }, { status: 502 });
+    /* one message per address: an address not yet verified must not stop
+       the others */
+    const sent = [], failed = [];
+    for (const to of list) {
+      try { await env.MAIL.send(new EmailMessage(env.MAIL_FROM, to, raw(to))); sent.push(to); }
+      catch (e) { console.log(`mail to ${to} failed: ${e.message || e}`); failed.push({ to, why: String(e.message || e) }); }
     }
+    return Response.json({ ok: sent.length > 0, mail: sent.length > 0, sent: sent.length, failed }, { status: sent.length ? 200 : 502 });
   },
 };

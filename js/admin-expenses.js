@@ -523,6 +523,47 @@
         x.unmatched.map((u) => `<div><span>${esc(u.name)}</span><b>${eur0(u.t)}</b></div>`).join("")) : ""}
       <p class="muted small">Povezano je ${Math.round((x.matched / Math.max(1, x.total)) * 100)}% prodaje vina. Blagajna vina zove svojim imenima; što nije sigurno povezano, ostaje na popisu "nije povezano" — Filho može reći što je što. Datum "na karti od" je iz povijesti karte (od 31. 7. 2026).</p>`;
   }
+  /* ---------- Konobari (Filho, 2026-10-14: "koji je konobar što prodao, i
+     koji promet ima i što mu je palo … jer onda mogu upozorit i ispravit —
+     dal mu fali aperitiv, dal više proda pjenušca a ne šampanjca") ----------
+     The server compares each waiter with the rest of the team at the same mix
+     of lunches and dinners (web/functions/_lib/sales.js, staffReport); here
+     his own last month is added: what fell. */
+  const STAFF_LABEL = { aperitiv: "kokteli i aperitivi", sampanjac: "šampanjac", pjenusac: "pjenušac", casa: "vino na čašu",
+    boca: "vino na bocu", desertno: "desertno vino", predjelo: "predjela i juhe", desert: "deserti", zestoko: "žestoko" };
+  const p0 = (x) => `${Math.round((x || 0) * 100)}%`;
+  function staffNotes(w, prevW) {
+    const notes = w.flags.map((f) => f.c === "mjehurici"
+      ? { bad: true, text: `Mjehurići: ${p0(f.rate)} šampanjca, ostali ${p0(f.exp)} — više pjenušca nego šampanjca` }
+      : { bad: true, text: `${cap(STAFF_LABEL[f.c])}: na ${p0(f.rate)} računa, ostali na istim stolovima ${p0(f.exp)}` });
+    if (prevW && prevW.n >= 15 && w.n >= 15) {
+      for (const c of Object.keys(STAFF_LABEL)) {
+        const was = prevW.rate[c] || 0, now = w.rate[c] || 0;
+        if (was >= 0.08 && now < was * 0.65 && !w.flags.some((f) => f.c === c)) notes.push({ bad: true, text: `${cap(STAFF_LABEL[c])} pali: ${p0(was)} → ${p0(now)} računa` });
+      }
+      const pa = prevW.avg, ca = w.avg;
+      if (pa && ca < pa * 0.92) notes.push({ bad: true, text: `Prosječni račun pao: ${eur0(pa)} → ${eur0(ca)}` });
+    }
+    return notes;
+  }
+  let openStaff = "";
+  function staffBox(s, prev) {
+    const prevBy = new Map(((prev && prev.staff) || []).map((w) => [w.waiter, w]));
+    const ws = (s.staff || []).filter((w) => w.n >= 5), wine = new Map((s.waiters || []).map((w) => [w.waiter, w.wine / Math.max(1, w.n)]));
+    if (!ws.length) return "";
+    return `<h3 class="h">Konobari <small>prema ostalima na istom omjeru ručkova i večera, i prema svom prošlom mjesecu</small></h3>
+      <div class="staff">${ws.map((w) => {
+        const pw = prevBy.get(w.waiter), notes = staffNotes(w, pw), tp = pw ? pct(w.avg, pw.avg) : null;
+        const open = openStaff === w.waiter;
+        return `<div class="sc"><button class="sh" data-staff="${esc(w.waiter)}" aria-expanded="${open}">
+          <b>${esc(w.waiter)}</b><span>${eur0(w.total)}</span></button>
+          <p class="muted small">${w.n} ${plural(w.n, "račun", "računa", "računa")}${w.lunch ? ` (${w.lunch} ručak)` : ""} · prosječno ${eur0(w.avg)}${wine.has(w.waiter) ? ` · vino ${eur0(wine.get(w.waiter))}/rač.` : ""}${tp ? ` <span class="${tp > 0 ? "down" : "up"}">${tp > 0 ? "▲" : "▼"} ${Math.abs(tp)}%</span>` : ""}</p>
+          ${notes.length ? notes.map((x) => `<p class="sn">${esc(x.text)}</p>`).join("") : `<p class="sn ok">U redu u odnosu na ostale.</p>`}
+          ${open ? `<div class="lines">${Object.keys(STAFF_LABEL).map((c) => `<div><span>${cap(STAFF_LABEL[c])}<small>ostali ${p0(w.exp[c])}${pw ? ` · prošli mj. ${p0(pw.rate[c])}` : ""}</small></span><b>${p0(w.rate[c])}</b></div>`).join("")}</div>
+            <p class="muted small">Postotak računa na kojima je bilo nešto iz te skupine.</p>` : ""}
+        </div>`;
+      }).join("")}</div>`;
+  }
   /* The evidence behind Pregled's list (2026-10-14): the dishes and wines
      that carry the month, with their move against last month per open day;
      the week; lunch against dinner; each waiter. */
@@ -540,8 +581,6 @@
     const wk = [1, 2, 3, 4, 5, 6, 0].map((d) => (s.weekdays || []).find((w) => w.wd === d)).filter(Boolean).map((w) => ({ ...w, per: w.total / Math.max(1, w.days) }));
     const wmax = Math.max(...wk.map((w) => w.per), 1);
     const parts = (s.dayparts || []).slice().sort((a) => (a.part === "rucak" ? -1 : 1));
-    const ws = (s.waiters || []).filter((w) => w.n >= 5).sort((a, b) => b.total - a.total);
-    const leak = new Map((s.leaks || []).map((l) => [l.waiter, l]));
     return `${dishes ? `<h3 class="h">Jela koja nose mjesec <small>▲▼ prema prošlom mjesecu, po radnom danu</small></h3><div class="lines">${dishes}</div>` : ""}
       ${menuSum.t ? `<div class="lines"><div><span>Grupni meniji<small>${nf(menuSum.q)} osoba · dolaze s grupama, pa ih nema svaki mjesec</small></span><b>${eur0(menuSum.t)}</b></div></div>` : ""}
       ${wineBox()}
@@ -550,10 +589,7 @@
         <span class="track"><span style="width:${Math.max(2, (w.per / wmax) * 100)}%;background:#c9a961"></span></span></div>`).join("")}</div>` : ""}
       ${parts.length ? `<h3 class="h">Ručak i večera <small>prije i poslije 16 h</small></h3>
       <div class="lines">${parts.map((x) => `<div><span>${x.part === "rucak" ? "Ručak" : "Večera"}<small>${x.n} ${plural(x.n, "račun", "računa", "računa")} · prosječno ${eur0(x.total / Math.max(1, x.n))}</small></span><b>${eur0(x.total)}</b></div>`).join("")}</div>` : ""}
-      ${ws.length ? `<h3 class="h">Konobari</h3>
-      <div class="wt"><div class="head"><span></span><span>računa</span><span>prosj.</span><span>vino/rač.</span><span>popusti</span></div>
-      ${ws.map((w) => { const l = leak.get(w.waiter) || {}; return `<div><span>${esc(w.waiter)}</span><span>${w.n}</span><span>${eur0(w.total / w.n)}</span>
-        <span>${eur0(w.wine / w.n)}</span><span>${l.disc ? eur0(l.disc) : "—"}</span></div>`; }).join("")}</div>` : ""}`;
+      ${staffBox(s, prev)}`;
   }
   /* the four rubrike as bars; a tap opens the till's own sales groups */
   function rubBars(s, total) {
@@ -717,6 +753,11 @@
         act: gain > 100 ? `Kad bi svi preporučivali vino barem kao sredina (${eur0(mid)} po računu), to je do ${eur0(gain)} mjesečno — dio razlike je i tko radi ručkove. "Pomozi mi odabrati" na tabletu pomaže.`
           : "Vino je najveća marža na stolu — preporuka uz svako glavno jelo." });
     }
+    /* 4. waiters — what Filho asked to see first among the details */
+    const pBy = new Map(((prev && prev.staff) || []).map((w) => [w.waiter, w]));
+    const notes = (s.staff || []).filter((w) => w.n >= 15).flatMap((w) => staffNotes(w, pBy.get(w.waiter)).map((x) => `${esc(w.waiter.split(" ")[0])}: ${esc(x.text.charAt(0).toLowerCase() + x.text.slice(1))}`));
+    if ((s.staff || []).length) out.push({ e: 0, sub: "prihodi", head: notes.length ? `Konobari: ${notes.length} ${plural(notes.length, "stvar", "stvari", "stvari")} za popraviti` : "Konobari: sve u redu",
+      why: notes.slice(0, 4).join("<br>") + (notes.length > 4 ? "<br>…" : ""), act: "Detalji po konobaru u Prihodima." });
     return out.filter(Boolean);
   }
   let allFocus = false;
@@ -1362,6 +1403,7 @@
   /* ---------- wiring ---------- */
   function wire(box) {
     box.querySelectorAll("[data-rub]").forEach((b) => b.addEventListener("click", () => { openRub = openRub === b.dataset.rub ? null : b.dataset.rub; render(); }));
+    box.querySelectorAll("[data-staff]").forEach((b) => b.addEventListener("click", () => { openStaff = openStaff === b.dataset.staff ? "" : b.dataset.staff; render(); }));
     box.querySelectorAll("[data-winebox]").forEach((b) => b.addEventListener("click", () => { openWineBox = openWineBox === b.dataset.winebox ? "" : b.dataset.winebox; render(); }));
     box.querySelectorAll("[data-allfocus]").forEach((b) => b.addEventListener("click", () => { allFocus = !allFocus; render(); }));
     box.querySelectorAll("[data-allcusts]").forEach((b) => b.addEventListener("click", () => { allCusts = !allCusts; render(); }));

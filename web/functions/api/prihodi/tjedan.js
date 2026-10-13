@@ -8,7 +8,7 @@
  * through Theatrium's own sender (web/alerts), which can only write to the
  * address verified in Cloudflare Email Routing.
  *   {dry: true}  returns the text without sending it. */
-import { reply, isExpenseWorker } from "../../_lib/sales.js";
+import { reply, isExpenseWorker, staffData, STAFF_LABEL } from "../../_lib/sales.js";
 
 const WINE = "(l.grp LIKE '%vin%' OR l.grp LIKE '%ampanj%' OR l.grp LIKE '%jenu%')";
 const WD = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
@@ -44,6 +44,20 @@ export async function onRequestPost({ request, env }) {
      WHERE b.day BETWEEN ?1 AND ?2 AND l.tax LIKE 'H%' AND l.grp NOT LIKE '%odat%' AND l.grp NOT LIKE '%epertoire%'
        AND l.name NOT LIKE '%COUVERT%' AND l.name NOT LIKE '%MENU%'
      GROUP BY l.name ORDER BY t DESC LIMIT 5`).bind(lo, hi).all()).results || [];
+  /* each waiter (Filho, 2026-10-14: "koji je konobar što prodao … što mu je
+     palo"): the week's takings, and where he is below the others at the same
+     mix of lunches and dinners */
+  const [staff, wine] = await Promise.all([staffData(env, lo, hi), env.DB.prepare(
+    `SELECT b.waiter AS w, COUNT(DISTINCT b.id) AS n, SUM(CASE WHEN ${WINE} THEN l.total ELSE 0 END) AS wine
+     FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 GROUP BY b.waiter`).bind(lo, hi).all()]);
+  const wineBy = new Map((wine.results || []).map((r) => [r.w, r.n ? r.wine / r.n : 0]));
+  const pc = (x) => `${Math.round((x || 0) * 100)}%`;
+  const staffLines = staff.filter((x) => x.n >= 5).flatMap((x) => [
+    `  ${x.waiter}: ${eur(x.total)} · ${x.n} računa · prosječno ${eur(x.avg)} · vino ${eur(wineBy.get(x.waiter) || 0)}/rač.`,
+    ...(x.n >= 10 ? x.flags.slice(0, 3) : []).map((f) => f.c === "mjehurici"
+      ? `      ! mjehurići: ${pc(f.rate)} šampanjca, ostali ${pc(f.exp)}`
+      : `      ! ${STAFF_LABEL[f.c]}: na ${pc(f.rate)} računa, ostali na istim stolovima ${pc(f.exp)}`),
+  ]);
   const m0 = hi.slice(0, 8) + "01", dayN = Number(hi.slice(8, 10));
   const pm = add(m0, -1).slice(0, 8) + "01";
   const pmEnd = add(pm, Math.min(dayN, Number(add(m0, -1).slice(8, 10))) - 1);
@@ -65,6 +79,9 @@ export async function onRequestPost({ request, env }) {
     ...days.map((d) => `  ${WD[new Date(d.day + "T12:00:00Z").getUTCDay()]} ${hr(d.day)}: ${eur(d.t)} · ${d.n} računa`),
     best.length > 1 ? `Najjači ${WD[new Date(best[0].day + "T12:00:00Z").getUTCDay()]}, najslabiji ${WD[new Date(best[best.length - 1].day + "T12:00:00Z").getUTCDay()]}.` : "",
     "",
+    staffLines.length ? "Konobari:" : "",
+    ...staffLines,
+    "",
     dishes.length ? "Jela koja su nosila tjedan:" : "",
     ...dishes.map((d) => `  ${name(d.name)}: ${Math.round(d.q)} × · ${eur(d.t)}`),
     "",
@@ -78,7 +95,8 @@ export async function onRequestPost({ request, env }) {
   if (!env.ALERTS) return reply(request, { ok: false, error: "no_alerts" }, 503);
   const r = await env.ALERTS.fetch("https://alerts/notify", {
     method: "POST", headers: { "content-type": "application/json" },
-    body: JSON.stringify({ topic: "Tjedni pregled", title, body: text, click: "https://theatrium.list.devinos.hr/admin.html" }),
+    body: JSON.stringify({ topic: "Tjedni pregled", to: "weekly", title, body: text, click: "https://theatrium.list.devinos.hr/admin.html" }),
   });
-  return reply(request, { ok: r.ok, title });
+  const sent = await r.json().catch(() => ({}));
+  return reply(request, { ok: r.ok, title, sent: sent.sent, failed: (sent.failed || []).map((f) => f.to) });
 }

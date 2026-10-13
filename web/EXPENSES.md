@@ -510,3 +510,27 @@ shown apart, with what they sold so far. The dates come from git history:
 on the deploy (checkout with fetch-depth: 0); history starts 2026-07-31, so a
 wine dated then counts as listed before it. July–September: 175 wines listed
 throughout did not sell once, 41 were new.
+
+### Konobari, and the Monday e-mail to Filho (2026-10-14)
+
+Filho: "koji je konobar što prodao, i koji promet ima i što mu je palo …
+jer onda mogu upozorit i ispravit — dal mu fali aperitiv, dal više proda
+pjenušca a ne šampanjca". `staffReport()` (web/functions/_lib/sales.js)
+puts every till line in a category (`STAFF_CAT`: kokteli i aperitivi,
+šampanjac, pjenušac, vino na čašu / na bocu, desertno vino, predjela,
+deserti, žestoko) and gives each waiter the share of their bills with it,
+against what the others sell **at the same mix of lunches and dinners** — a
+lunch waiter is not expected to sell dinner's aperitifs. A flag needs 15+
+bills, an expected share of 5%+, and the waiter below 70% of it **and** 5
+points under. Champagne vs sparkling: of what a waiter sold in bubbles, the
+champagne share against the others', once there are enough sales to mean it.
+Prihodi shows a card per waiter (takings, bills, average, wine per bill,
+the flags, and what fell against their own last month; a tap shows every
+category); Pregled's fourth card lists the flags; the Monday e-mail has a
+section per waiter for the week.
+
+The Monday e-mail goes to the owner and Filho (filip.horvat1312@gmail.com):
+web/alerts sends `to: "weekly"` to `MAIL_TO_WEEKLY`, one message per address,
+and the send_email binding allows exactly those two. **Each address must be
+verified in Cloudflare → Email Routing → Destination addresses**; until Filho
+clicks Cloudflare's link, his copy fails and the owner's still goes.
