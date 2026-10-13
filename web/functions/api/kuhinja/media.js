@@ -5,13 +5,14 @@
  * uploading the same photo twice stores it once, and /media/<id> can be cached
  * for ever. 1.5 MB cap: D1 rows top out at 2 MB, and a phone photo that is
  * still this big after resizing was not resized. */
-import { json, isDate, isStaff, denied } from "../../_lib/daily.js";
+import { json, isDate, denied } from "../../_lib/daily.js";
+import { isStaffAsync } from "../../_lib/wines.js";
 
 const TYPES = ["image/webp", "image/jpeg", "image/png", "image/avif"];
 const MAX = 1_500_000;
 
 export async function onRequestPost({ request, env }) {
-  if (!isStaff(request, env)) return denied(env);
+  if (!(await isStaffAsync(request, env))) return denied(env);
   if (!env.DB) return json({ error: "no_db" }, 503);
   const q = new URL(request.url).searchParams;
   const date = q.get("date");

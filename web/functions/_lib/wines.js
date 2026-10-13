@@ -41,7 +41,7 @@ export function cors(request) {
   return ORIGINS.includes(o)
     ? { "access-control-allow-origin": o, "vary": "origin",
         "access-control-allow-headers": "authorization, content-type",
-        "access-control-allow-methods": "GET, POST, OPTIONS", "access-control-max-age": "600" }
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS", "access-control-max-age": "600" }
     : {};
 }
 export const reply = (request, body, status = 200) => json(body, status, cors(request));
