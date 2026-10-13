@@ -111,3 +111,24 @@ test("a waiter is compared at his own lunch/dinner mix", () => {
   expect(r.Ana.flags.map((f) => f.c)).toContain("aperitiv");
   expect(r.Ivo.flags.map((f) => f.c)).not.toContain("aperitiv");
 });
+
+/* Filho's corrections (2026-10-14): the owner's bills are listed but never
+   compared, and a category is judged only on days anyone sold it — "bilo je
+   dosta dana bez deserta". */
+test("a day without desserts is nobody's missed dessert, and the owner is not compared", () => {
+  const bills = [
+    { w: "Ana", d: "2026-09-01", p: "vecera", n: 20, t: 3000 }, { w: "Ana", d: "2026-09-02", p: "vecera", n: 20, t: 3000 },
+    { w: "Eva", d: "2026-09-01", p: "vecera", n: 20, t: 3000 }, { w: "Eva", d: "2026-09-02", p: "vecera", n: 20, t: 3000 },
+    { w: "Filip Horvat", d: "2026-09-01", p: "vecera", n: 20, t: 3000 },
+  ];
+  /* desserts only on the 1st (none on the 2nd): Ana 8/20 that day, Eva 8/20 */
+  const cats = [
+    { w: "Ana", d: "2026-09-01", p: "vecera", c: "desert", n: 8, t: 80 },
+    { w: "Eva", d: "2026-09-01", p: "vecera", c: "desert", n: 8, t: 80 },
+  ];
+  const r = Object.fromEntries(staffReport(bills, cats).map((w) => [w.waiter, w]));
+  expect(r.Ana.rate.desert).toBeCloseTo(0.4);          /* over the 20 bills of the 1st, not 40 */
+  expect(r.Ana.flags).toEqual([]);
+  expect(r["Filip Horvat"].owner).toBe(true);
+  expect(r["Filip Horvat"].flags).toEqual([]);
+});

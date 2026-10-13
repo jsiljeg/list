@@ -536,6 +536,7 @@
     const notes = w.flags.map((f) => f.c === "mjehurici"
       ? { bad: true, text: `Mjehurići: ${p0(f.rate)} šampanjca, ostali ${p0(f.exp)} — više pjenušca nego šampanjca` }
       : { bad: true, text: `${cap(STAFF_LABEL[f.c])}: na ${p0(f.rate)} računa, ostali na istim stolovima ${p0(f.exp)}` });
+    if (w.owner) return [];
     if (prevW && prevW.n >= 15 && w.n >= 15) {
       for (const c of Object.keys(STAFF_LABEL)) {
         const was = prevW.rate[c] || 0, now = w.rate[c] || 0;
@@ -551,14 +552,17 @@
     const prevBy = new Map(((prev && prev.staff) || []).map((w) => [w.waiter, w]));
     const ws = (s.staff || []).filter((w) => w.n >= 5), wine = new Map((s.waiters || []).map((w) => [w.waiter, w.wine / Math.max(1, w.n)]));
     if (!ws.length) return "";
-    return `<h3 class="h">Konobari <small>prema ostalima na istom omjeru ručkova i večera, i prema svom prošlom mjesecu</small></h3>
+    const own = (s.ownTable || []).reduce((a, x) => ({ n: a.n + x.n, t: a.t + x.total }), { n: 0, t: 0 });
+    return `<h3 class="h">Konobari <small>prema ostalima na istom omjeru ručkova i večera, samo dane kad je toga bilo, i prema svom prošlom mjesecu</small></h3>
+      ${own.n ? `<p class="muted small">Stol bez hrane s 300 €+ vina (vaš stol): ${own.n} ${plural(own.n, "račun", "računa", "računa")}, ${eur0(own.t)} — izuzeto iz usporedbe konobara, prosječnog računa i vina po računu.</p>` : ""}
       <div class="staff">${ws.map((w) => {
         const pw = prevBy.get(w.waiter), notes = staffNotes(w, pw), tp = pw ? pct(w.avg, pw.avg) : null;
         const open = openStaff === w.waiter;
         return `<div class="sc"><button class="sh" data-staff="${esc(w.waiter)}" aria-expanded="${open}">
           <b>${esc(w.waiter)}</b><span>${eur0(w.total)}</span></button>
           <p class="muted small">${w.n} ${plural(w.n, "račun", "računa", "računa")}${w.lunch ? ` (${w.lunch} ručak)` : ""} · prosječno ${eur0(w.avg)}${wine.has(w.waiter) ? ` · vino ${eur0(wine.get(w.waiter))}/rač.` : ""}${tp ? ` <span class="${tp > 0 ? "down" : "up"}">${tp > 0 ? "▲" : "▼"} ${Math.abs(tp)}%</span>` : ""}</p>
-          ${notes.length ? notes.map((x) => `<p class="sn">${esc(x.text)}</p>`).join("") : `<p class="sn ok">U redu u odnosu na ostale.</p>`}
+          ${w.owner ? `<p class="muted small">Vlasnik — ne uspoređuje se.</p>` : notes.length ? notes.map((x) => `<p class="sn">${esc(x.text)}</p>`).join("") : `<p class="sn ok">U redu u odnosu na ostale.</p>`}
+          ${(w.topWines || []).length ? `<p class="muted small">Najviše vina: ${w.topWines.map((t) => esc(nameCase(t.name))).join(" · ")}</p>` : ""}
           ${open ? `<div class="lines">${Object.keys(STAFF_LABEL).map((c) => `<div><span>${cap(STAFF_LABEL[c])}<small>ostali ${p0(w.exp[c])}${pw ? ` · prošli mj. ${p0(pw.rate[c])}` : ""}</small></span><b>${p0(w.rate[c])}</b></div>`).join("")}</div>
             <p class="muted small">Postotak računa na kojima je bilo nešto iz te skupine.</p>` : ""}
         </div>`;
@@ -677,7 +681,7 @@
   /* group menus (Repertoire, "MENU 60") come with group bookings (Filho,
      2026-10-14: "Meniji su grupe, zato ih nema uvijek") — never ranked or
      trended as dishes, shown as one line of their own */
-  const isMenu = (it) => /repertoire|menu|meni/i.test(`${it.grp || ""} ${it.name || ""}`);
+  const isMenu = (it) => /repertoire|\bmenu\b|\bmeni\b/i.test(`${it.grp || ""} ${it.name || ""}`);   /* whole words: KAMENICA is oysters, not a menu */
   const isDish = (it) => rubricOf(it.grp, it.tax) === "hrana" && MAIN.test(it.grp || "") && !/couvert/i.test(it.name) && !isMenu(it);
   const isWine = (it) => rubricOf(it.grp, it.tax) === "vino";
   const nameCase = (n) => { const s = String(n || ""); return s === s.toLocaleUpperCase("hr") ? s.charAt(0) + s.slice(1).toLocaleLowerCase("hr") : s; };
@@ -737,9 +741,12 @@
     const out = [breakEven()];
     const lyN = ly ? ly.days.reduce((a, d) => a + d.n, 0) : 0;
     const lyW = ((ly && ly.waiters) || []).reduce((a, w) => ({ n: a.n + w.n, wine: a.wine + w.wine }), { n: 0, wine: 0 });
-    const n = s.days.reduce((a, d) => a + d.n, 0), total = incTotal(s);
+    /* without the owner's own table (Filho, 2026-10-14) — the waiter sums leave it out */
+    const sums = (x) => ((x && x.waiters) || []).reduce((a, w) => ({ n: a.n + w.n, t: a.t + w.total }), { n: 0, t: 0 });
+    const cur0 = sums(s), prev0 = sums(prev);
+    const n = cur0.n, total = cur0.t;
     if (n) {
-      const ca = total / n, pn = prev ? prev.days.reduce((a, d) => a + d.n, 0) : 0, pa = pn ? incTotal(prev) / pn : 0;
+      const ca = total / n, pn = prev0.n, pa = pn ? prev0.t / pn : 0;
       const part = (k) => { const x = (s.dayparts || []).find((d) => d.part === k); return x && x.n ? eur0(x.total / x.n) : "—"; };
       const p = pa ? pct(ca, pa) : null;
       out.push({ e: p != null && p < 0 ? (pa - ca) * n : 0, sub: "prihodi",

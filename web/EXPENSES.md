@@ -545,3 +545,15 @@ and with PDV, **every cost it counts, by category, per month** — so a missing
 one shows — and what closes the gap in bills a day or euros per bill.
 Filho expects break-even at 3.000–3.400 € a day against the 1.473 € (net) the
 data gives: costs are missing from Troškovi, or his figure is gross; asked.
+
+Filho's corrections the same night: his own table (Manuela rang it "7×, po
+500 € vina, nema hrane") — a bill with no food and 300 €+ of wine — is set
+apart (`OWN_TABLE`) and left out of every waiter comparison, the average
+bill and wine per bill, and shown as its own line; "Filip Horvat" is the
+owner (`OWNER_WAITERS`), listed but never compared nor part of the others'
+baseline; and a category is judged only on days someone sold it ("bilo je
+dosta dana bez deserta"). Each card also names the waiter's top three wines
+(Filho: Ahmed and Benjamin sell more Jules, Stela more Croatian). Open: 256
+of September's 578 bills are under the owner's name — if others ring on his
+login, they cannot be attributed. `isMenu` matches whole words since
+"KAMENICA" (oysters) was taken for a menu.

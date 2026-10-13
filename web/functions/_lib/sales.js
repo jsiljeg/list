@@ -141,9 +141,11 @@ export async function monthDetail(env, lo, hi) {
     q(`SELECT b.waiter AS waiter, COUNT(DISTINCT b.id) AS n, SUM(l.total) AS total,
          SUM(CASE WHEN ${WINE} THEN l.total ELSE 0 END) AS wine,
          COUNT(DISTINCT CASE WHEN ${WINE} THEN b.id END) AS wine_bills
-       FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 GROUP BY b.waiter`, lo, hi),
+       FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0
+         AND b.id NOT IN (${OWN_TABLE}) GROUP BY b.waiter`, lo, hi),
   ]);
-  return { items, weekdays, dayparts, leaks, waiters, staff: await staffData(env, lo, hi) };
+  const st = await staffData(env, lo, hi);
+  return { items, weekdays, dayparts, leaks, waiters, staff: st.waiters, ownTable: st.ownTable };
 }
 
 /* ---------- Konobari (Filho, 2026-10-14: "koji je konobar što prodao, i koji
@@ -170,51 +172,78 @@ export const STAFF_LABEL = {
 };
 const PART = "CASE WHEN substr(b.at, 12, 2) < '16' THEN 'rucak' ELSE 'vecera' END";
 
+/* Three corrections from Filho (2026-10-14), each a reason a waiter's numbers
+   were not theirs:
+   - "Manuela je radila 7× moj stol … po 500 € vina, nema hrane": the owner's
+     own table. A bill with no food and 300 €+ of wine is set apart
+     (`OWN_TABLE`), kept out of every waiter comparison and shown as its own
+     line, so it inflates nobody.
+   - "Filip Horvat" is the owner ringing bills for others ("pustim druge da
+     otkucaju"): listed, never compared, never part of the others' baseline.
+   - "Bilo je dosta dana bez deserta": a category is judged only on days
+     someone sold it at all — a day the kitchen had no dessert is nobody's
+     missed dessert. */
+export const OWNER_WAITERS = ["Filip Horvat"];
+const WINE_SQL = "(l.grp LIKE '%vin%' OR l.grp LIKE '%ampanj%' OR l.grp LIKE '%jenu%')";
+export const OWN_TABLE = `SELECT b.id FROM sales_bills b JOIN sales_lines l ON l.bill_id = b.id
+  WHERE b.day BETWEEN ?1 AND ?2 GROUP BY b.id
+  HAVING SUM(CASE WHEN l.tax LIKE 'H%' THEN 1 ELSE 0 END) = 0 AND SUM(CASE WHEN ${WINE_SQL} THEN l.total ELSE 0 END) >= 300`;
+
 export async function staffData(env, lo, hi) {
   const q = (sql) => env.DB.prepare(sql).bind(lo, hi).all().then((r) => r.results || []);
-  const [bills, cats] = await Promise.all([
-    q(`SELECT b.waiter AS w, ${PART} AS p, COUNT(*) AS n, SUM(b.total) AS t FROM sales_bills b
-       WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 GROUP BY w, p`),
-    q(`SELECT b.waiter AS w, ${PART} AS p, ${STAFF_CAT} AS c, COUNT(DISTINCT b.id) AS n, SUM(l.total) AS t
+  const [bills, cats, own, wines] = await Promise.all([
+    q(`SELECT b.waiter AS w, b.day AS d, ${PART} AS p, COUNT(*) AS n, SUM(b.total) AS t FROM sales_bills b
+       WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 AND b.id NOT IN (${OWN_TABLE}) GROUP BY w, d, p`),
+    q(`SELECT b.waiter AS w, b.day AS d, ${PART} AS p, ${STAFF_CAT} AS c, COUNT(DISTINCT b.id) AS n, SUM(l.total) AS t
        FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
-       WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 GROUP BY w, p, c HAVING c IS NOT NULL`),
+       WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 AND b.id NOT IN (${OWN_TABLE}) GROUP BY w, d, p, c HAVING c IS NOT NULL`),
+    q(`SELECT b.waiter AS w, COUNT(*) AS n, SUM(b.total) AS t FROM sales_bills b WHERE b.id IN (${OWN_TABLE}) GROUP BY w`),
+    q(`SELECT b.waiter AS w, l.name AS name, SUM(l.qty) AS q, SUM(l.total) AS t FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
+       WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 AND ${WINE_SQL} AND b.id NOT IN (${OWN_TABLE})
+       GROUP BY w, l.name ORDER BY t DESC LIMIT 300`),
   ]);
-  return staffReport(bills, cats);
+  const report = staffReport(bills, cats);
+  for (const r of report) r.topWines = wines.filter((x) => (x.w || "—") === r.waiter).slice(0, 3).map((x) => ({ name: x.name, q: x.q, t: x.t }));
+  return { waiters: report, ownTable: own.map((x) => ({ waiter: x.w || "—", n: x.n, total: x.t })) };
 }
 
-/* Pure: rows → per waiter {n, total, avg, rate[c], exp[c], champ, champTeam, flags}. */
+/* Pure. bills: {w, d, p, n, t}; cats: {w, d, p, c, n, t}. Per waiter: n, total,
+   avg, lunch, rate[c], exp[c] (both over the days c was on sale), champ,
+   champTeam, flags. The owner is listed but neither compared nor compared to. */
 export function staffReport(bills, cats) {
-  const who = [...new Set(bills.map((r) => r.w || "—"))];
-  const nOf = (w, p) => bills.filter((r) => (r.w || "—") === w && (!p || r.p === p)).reduce((a, r) => a + r.n, 0);
-  const cOf = (w, p, c, k = "n") => cats.filter((r) => (r.w || "—") === w && (!p || r.p === p) && r.c === c).reduce((a, r) => a + (r[k] || 0), 0);
+  const key = (r) => r.w || "—";
+  const owner = (w) => OWNER_WAITERS.includes(w);
+  const who = [...new Set(bills.map(key))];
+  const onSale = {};                                   /* c → days anyone sold it */
+  for (const r of cats) (onSale[r.c] = onSale[r.c] || new Set()).add(r.d);
+  const sumB = (f) => bills.filter(f).reduce((a, r) => a + r.n, 0);
+  const sumC = (f, k = "n") => cats.filter(f).reduce((a, r) => a + (r[k] || 0), 0);
   const out = [];
   for (const w of who) {
-    const n = nOf(w);
+    const n = sumB((r) => key(r) === w);
     if (!n) continue;
-    const others = who.filter((x) => x !== w);
-    const total = bills.filter((r) => (r.w || "—") === w).reduce((a, r) => a + r.t, 0);
+    const total = bills.filter((r) => key(r) === w).reduce((a, r) => a + r.t, 0);
     const rate = {}, exp = {}, flags = [];
+    const others = (r) => key(r) !== w && !owner(key(r));
     for (const c of Object.keys(STAFF_LABEL)) {
-      rate[c] = cOf(w, null, c) / n;
-      /* expected: the others' share at lunch and at dinner, in his mix */
+      const days = onSale[c] || new Set(), open = (r) => days.has(r.d);
+      const nw = sumB((r) => key(r) === w && open(r));
+      rate[c] = nw ? sumC((r) => key(r) === w && r.c === c) / nw : 0;
       let e = 0;
       for (const p of ["rucak", "vecera"]) {
-        const on = others.reduce((a, o) => a + nOf(o, p), 0), oc = others.reduce((a, o) => a + cOf(o, p, c), 0);
-        e += on ? (nOf(w, p) / n) * (oc / on) : 0;
+        const on = sumB((r) => others(r) && r.p === p && open(r)), oc = sumC((r) => others(r) && r.p === p && r.c === c);
+        e += nw && on ? (sumB((r) => key(r) === w && r.p === p && open(r)) / nw) * (oc / on) : 0;
       }
       exp[c] = e;
-      if (n >= 15 && e >= 0.05 && rate[c] < e * 0.7 && e - rate[c] >= 0.05) flags.push({ c, rate: rate[c], exp: e });
+      if (!owner(w) && nw >= 15 && e >= 0.05 && rate[c] < e * 0.7 && e - rate[c] >= 0.05) flags.push({ c, rate: rate[c], exp: e });
     }
-    /* bubbles: of what he sold in bubbles, how much was champagne */
-    const champ = cOf(w, null, "sampanjac", "t"), pj = cOf(w, null, "pjenusac", "t");
-    const oc = others.reduce((a, o) => a + cOf(o, null, "sampanjac", "t"), 0), op = others.reduce((a, o) => a + cOf(o, null, "pjenusac", "t"), 0);
+    const champ = sumC((r) => key(r) === w && r.c === "sampanjac", "t"), pj = sumC((r) => key(r) === w && r.c === "pjenusac", "t");
+    const oc = sumC((r) => others(r) && r.c === "sampanjac", "t"), op = sumC((r) => others(r) && r.c === "pjenusac", "t");
     const share = champ + pj ? champ / (champ + pj) : null, team = oc + op ? oc / (oc + op) : null;
-    /* only with enough of it to mean something: a single bottle of champagne
-       on the team swings a share of two or three sales */
-    const bub = cOf(w, null, "sampanjac") + cOf(w, null, "pjenusac"), oChampN = others.reduce((a, o) => a + cOf(o, null, "sampanjac"), 0);
-    if (share != null && team != null && bub >= 5 && oChampN >= 4 && share < team * 0.6) flags.push({ c: "mjehurici", rate: share, exp: team });
+    const bub = sumC((r) => key(r) === w && (r.c === "sampanjac" || r.c === "pjenusac")), oChampN = sumC((r) => others(r) && r.c === "sampanjac");
+    if (!owner(w) && share != null && team != null && bub >= 5 && oChampN >= 4 && share < team * 0.6) flags.push({ c: "mjehurici", rate: share, exp: team });
     flags.sort((a, b) => (a.rate - a.exp) - (b.rate - b.exp));
-    out.push({ waiter: w, n, total, avg: total / n, lunch: nOf(w, "rucak"), rate, exp, champ: share, champTeam: team, flags });
+    out.push({ waiter: w, owner: owner(w), n, total, avg: total / n, lunch: sumB((r) => key(r) === w && r.p === "rucak"), rate, exp, champ: share, champTeam: team, flags });
   }
-  return out.sort((a, b) => b.total - a.total);
+  return out.sort((a, b) => (a.owner - b.owner) || b.total - a.total);
 }
