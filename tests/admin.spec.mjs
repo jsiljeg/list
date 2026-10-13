@@ -1221,3 +1221,33 @@ test("Troškovi: Cijene has Plaće month by month, and sorts on a tap", async ({
   await page.click('[data-psort="potroseno"]');                   /* most spent first */
   await expect(rows.first()).toContainText("Plaće");
 });
+
+/* Filho, 2026-10-13: how much PDV he has to pay. Monthly, by invoice date
+   (the accountant). Pretporez from the invoices, rate by rate from an
+   e-invoice's lines; a credit note subtracts; cash with no receipt and a
+   photo's PDV are kept apart from the exact part. */
+test("Troškovi: PDV shows the month's pretporez, rate by rate", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const line = (net, rate) => ({ name: "x", key: "", qty: 1, unit: "kom", unit_price: null, total: Math.round(net * (1 + rate / 100) * 100) / 100,
+    doc_qty: 1, doc_unit: "kom", doc_price: net, doc_total: net, vat_rate: rate, category: "vino" });
+  const r = (id, source, items, vat, extra = {}) => ({ id, created_at: `${ym}-04T09:00:00Z`, updated_at: "", status: "done", vendor: "D " + id,
+    vendor_oib: "1", doc_date: `${ym}-04`, doc_no: "N" + id, total: items.reduce((s, i) => s + i.total, 0), vat, payment: "virman",
+    photos: [], note: "", created_by: "", source, dup_of: "", due_date: "", paid_at: "", items, ...extra });
+  const items = [
+    r("a", "mer", [line(100, 25), line(100, 13)], 38),                 /* 25 + 13 */
+    r("b", "mer", [line(-40, 25)], -10),                               /* a credit note */
+    r("c", "foto", [{ name: "y", key: "", total: 12.5, category: "suha" }], 2.5),
+    r("d", "rucno", [{ name: "plac", key: "", total: 50, category: "povrce" }], null),
+  ];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="pdv"]');
+  await expect(page.locator(".card.vat .vbig").first()).toHaveText(/^30,50\s€/);      /* 38 − 10 + 2,5 */
+  await expect(page.locator(".vrates")).toContainText(/25%\s*15,00\s€/);
+  await expect(page.locator(".vrates")).toContainText(/13%\s*13,00\s€/);
+  await expect(page.locator(".card.vat").first()).toContainText("od toga 2,50 € sa slikanih računa");
+  await expect(page.locator(".card.vat").first()).toContainText("3 računa");
+});

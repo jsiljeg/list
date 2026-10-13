@@ -218,12 +218,12 @@
     const waiting = receipts.filter((r) => r.status === "queued" || r.status === "working").length;
     box.innerHTML = `
       <div class="seg3" role="group" aria-label="Troškovi">
-        ${[["pregled", "Pregled"], ["racuni", "Računi"], ["cijene", "Cijene"]].map(([k, l]) =>
+        ${[["pregled", "Pregled"], ["racuni", "Računi"], ["cijene", "Cijene"], ["pdv", "PDV"]].map(([k, l]) =>
           `<button data-sub="${k}" class="${sub === k ? "on" : ""}" aria-pressed="${sub === k}">${l}</button>`).join("")}
       </div>
       ${err ? `<p class="err">${esc(err)}</p>` : ""}
       ${waiting ? `<p class="muted small center"><span class="spin"></span> ${waiting} ${waiting === 1 ? "račun se čita" : "računa se čita"} — obično minuta-dvije.</p>` : ""}
-      ${sub === "pregled" ? overview() : sub === "racuni" ? receiptsView() : pricesView()}`;
+      ${sub === "pregled" ? overview() : sub === "racuni" ? receiptsView() : sub === "pdv" ? vatView() : pricesView()}`;
     wire(box);
   }
 
@@ -617,6 +617,61 @@
       thumbs.set(k, URL.createObjectURL(blob));
       render();
     } catch { thumbs.delete(k); }
+  }
+
+  /* ---------- PDV (Filho, 2026-10-13: "koliko PDV-a moram platiti") ----------
+     PDV za uplatu = izlazni PDV (the till, Remaris) − pretporez (the invoices).
+     The accountant: monthly, by invoice date (fakturirana realizacija) — so an
+     invoice counts in its own month, paid or not — and the accountant takes
+     out what is not deductible (reprezentacija, cars), so this is an estimate.
+     Pretporez comes from Troškovi: e-invoices exactly, rate by rate from their
+     lines; a photographed receipt counts only if it was made out to the
+     company (R-1), which the reader cannot always tell, so photos are shown
+     apart. Hand-typed cash and Plaće carry no PDV. Izlazni PDV waits for the
+     Remaris CSV. */
+  function vatOf(list) {
+    const rates = {};
+    let total = 0, photos = 0, n = 0;
+    for (const r of list) {
+      if (r.source === "rucno" || r.vat == null) continue;
+      n += 1; total += r.vat;
+      if (r.source !== "mer") { photos += r.vat; continue; }
+      let lines = 0;
+      for (const i of r.items) {
+        if (i.vat_rate == null || i.doc_total == null || i.total == null) continue;
+        const v = i.total - i.doc_total;
+        rates[i.vat_rate] = (rates[i.vat_rate] || 0) + v; lines += v;
+      }
+      if (Math.abs(r.vat - lines) > 0.05) rates["?"] = (rates["?"] || 0) + (r.vat - lines);
+    }
+    return { total, photos, n, rates };
+  }
+  function vatView() {
+    const list = inMonth(month);
+    const v = vatOf(list);
+    const mloc = MONTHS_LOC[Number(month.slice(5, 7)) - 1];
+    const rateRows = Object.entries(v.rates).filter(([, x]) => Math.abs(x) > 0.004)
+      .sort((a, b) => (b[0] === "?" ? -1 : Number(b[0])) - (a[0] === "?" ? -1 : Number(a[0])))
+      .map(([k, x]) => `<div><span>${k === "?" ? "stopa nije na stavkama" : `${nf(Number(k))}%`}</span><b>${eur(x)}</b></div>`).join("");
+    const six = [...Array(6)].map((_, i) => shiftMonth(month, i - 5));
+    return `${monthNav()}
+      <div class="card vat">
+        <h3>Pretporez <small>PDV na ulaznim računima</small></h3>
+        <div class="vbig">${eur(v.total)}</div>
+        <p class="muted small">${v.n} ${plural(v.n, "račun", "računa", "računa")} u ${mloc}, prema datumu računa${v.photos ? ` · od toga ${eur(v.photos)} sa slikanih računa — priznaje se samo ako je račun izdan na tvrtku (R-1)` : ""}</p>
+        ${rateRows ? `<div class="vrates">${rateRows}</div>` : ""}
+      </div>
+      <div class="card vat">
+        <h3>Izlazni PDV <small>PDV na prodaji, iz Remarisa</small></h3>
+        <p class="muted small">Ovdje će se moći učitati izvoz (CSV) iz Remaris back officea za ${mloc} — u pripremi.</p>
+      </div>
+      <div class="card vat">
+        <h3>PDV za uplatu</h3>
+        <p class="muted small">Izlazni PDV − pretporez. Prikazat će se kad bude učitan izlazni PDV.</p>
+      </div>
+      <p class="muted small">Procjena, mjesečno, prema datumu računa (fakturirana realizacija). Računovodstvo izuzima troškove kod kojih se pretporez ne priznaje ili priznaje djelomično (reprezentacija, osobni automobili…), pa je stvarni pretporez nešto manji, a PDV za uplatu nešto veći.</p>
+      <h3 class="h">Pretporez, zadnjih 6 mjeseci</h3>
+      <div class="lines">${six.map((m) => `<div><span>${esc(monthName(m))}</span><b>${eur(vatOf(inMonth(m)).total)}</b></div>`).join("")}</div>`;
   }
 
   /* ---------- prices ----------

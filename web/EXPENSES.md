@@ -315,3 +315,21 @@ imports running at once were deleted (and the import can no longer do it);
 - **Promjena · Potrošeno · Naziv**: a tap sorts by it, a second tap turns it
   round. Default: biggest rise first.
 - September–December 2025 imported from MER the same day (24 documents).
+
+## PDV (Filho, 2026-10-13: how much PDV he has to pay)
+
+PDV za uplatu = izlazni PDV (sales, from the Remaris till) − pretporez
+(purchases, from Troškovi). The accountant: **monthly**, **fakturirana
+realizacija** (by invoice date — an invoice counts in its own month, paid or
+not), and the accountant takes out what is not or only partly deductible
+(reprezentacija, cars), so the tab says it is an estimate and why.
+
+- Tab **PDV**, same month switch. Pretporez: every receipt with PDV in the
+  month; for an e-invoice rate by rate from its lines (gross − net; the sum
+  matches the invoice total — September 4.919,71 € both ways); a credit note
+  subtracts. A photographed receipt counts only if made out to the company
+  (R-1), which cannot always be told, so its share is shown apart. Cash with
+  no receipt and Plaće carry no PDV.
+- Izlazni PDV: Remaris can export CSV from its back office. Waiting for a
+  sample month to learn the layout; it will be parsed on the server, no
+  reading run.
