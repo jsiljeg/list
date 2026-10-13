@@ -465,3 +465,22 @@ Storno, discounts, cost-share alarms, falling and slow dishes and weekdays
 are gone from Pregled; the rubrike show the 3-month share only. Group menus
 (Repertoire, "MENU 60") are never ranked or trended as dishes; Prihodi shows
 them as one line.
+
+### Last year, and the Monday e-mail (2026-10-14)
+
+- **2025 comes from Remaris a month a morning**: after the daily 4 days,
+  `sync.py` asks `/api/prihodi/uvoz` (GET) for the oldest day held and
+  exports the month before it, back to January 2025 — ~10.000 rows written a
+  morning, a tenth of D1's free day. A month that comes back empty sets
+  `floor` and the search stops. Only **income** is compared with last year:
+  e-invoices (MER) were not mandatory in 2025, so 2025 costs are incomplete;
+  the till's bills are not.
+- Prihodi's header and Pregled's average-bill and wine cards say "lani" once
+  the month a year back is in.
+- **Monday 8:00 Zagreb**, `weekly-report.yml` (theatrium-troskovi) asks
+  `/api/prihodi/tjedan`, which writes last week against the week before and
+  the same week last year — turnover, average bill, wine per bill, the days,
+  the five dishes, the month so far — and sends it through web/alerts. That
+  sender can only write to the address verified in Cloudflare Email Routing
+  (today the owner's Gmail); Filho's address needs verifying there first.
+  `{dry: true}` returns the text without sending.

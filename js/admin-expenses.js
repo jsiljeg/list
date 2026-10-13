@@ -359,6 +359,12 @@
     const p = pct(total, prevSame);
     const cmp = prevSame ? `<span class="${p >= 0 ? "down" : "up"}">${p >= 0 ? "▲" : "▼"} ${Math.abs(p)}%</span> ${running
         ? `u odnosu na 1.–${upTo}. ${MONTHS_GEN[Number(pm.slice(5, 7)) - 1]} (${eur0(prevSame)})` : `u odnosu na ${MONTHS[Number(pm.slice(5, 7)) - 1]} (${eur0(prevSame)})`}` : "";
+    /* the same month last year, the same days of it while this one runs
+       (2025 arrives a month a morning from 2026-10-14) */
+    const ly = needIncome(shiftMonth(month, -12));
+    const lySame = ly ? ly.days.filter((d) => !running || Number(d.day.slice(8, 10)) <= upTo).reduce((a, d) => a + d.total, 0) : 0;
+    const py = lySame ? pct(total, lySame) : null;
+    const cmpY = lySame ? `<span class="${py >= 0 ? "down" : "up"}">${py >= 0 ? "▲" : "▼"} ${Math.abs(py)}%</span> u odnosu na ${MONTHS[Number(month.slice(5, 7)) - 1]} ${Number(month.slice(0, 4)) - 1}. (${eur0(lySame)})` : "";
     const workDays = s.days.filter((d) => d.total > 0).length;
     const dmax = Math.max(...s.days.map((d) => d.total), 1);
     const custs = (s.custs || []).filter((c) => Math.abs(c.total) > 0.004);
@@ -366,7 +372,8 @@
       <div class="big"><b>${eur0(total)}</b>
         <span class="muted small">${n} ${plural(n, "račun", "računa", "računa")} · ${workDays} ${plural(workDays, "radni dan", "radna dana", "radnih dana")}</span>
         <span class="muted small">prosječni račun ${eur0(total / Math.max(1, n))} · prosječno ${eur0(total / Math.max(1, workDays))} po danu</span>
-        ${cmp ? `<span class="small">${cmp}</span>` : ""}</div>
+        ${cmp ? `<span class="small">${cmp}</span>` : ""}
+        ${cmpY ? `<span class="small">${cmpY}</span>` : ""}</div>
       <h3 class="h">Po danima</h3>
       <div class="days">${s.days.map((d) => `<span title="${hrDate(d.day)} · ${eur0(d.total)} · ${d.n} ${plural(d.n, "račun", "računa", "računa")}">
         <span style="height:${Math.max(2, (d.total / dmax) * 100)}%"></span><small>${Number(d.day.slice(8, 10))}</small></span>`).join("")}</div>
@@ -539,9 +546,11 @@
         : `Nedostaje ${eur0(-gap)} po radnom danu: to je ${Math.ceil(-gap / perBill)} ${plural(Math.ceil(-gap / perBill), "račun", "računa", "računa")} više dnevno (danas ih je ${Math.round(billsDay)}), ili ${eur0(-gap / billsDay)} više po računu.` };
   }
   function insights() {
-    const s = needIncome(month), prev = needIncome(shiftMonth(month, -1));
+    const s = needIncome(month), prev = needIncome(shiftMonth(month, -1)), ly = needIncome(shiftMonth(month, -12));
     if (!s) return [];
     const out = [breakEven()];
+    const lyN = ly ? ly.days.reduce((a, d) => a + d.n, 0) : 0;
+    const lyW = ((ly && ly.waiters) || []).reduce((a, w) => ({ n: a.n + w.n, wine: a.wine + w.wine }), { n: 0, wine: 0 });
     const n = s.days.reduce((a, d) => a + d.n, 0), total = incTotal(s);
     if (n) {
       const ca = total / n, pn = prev ? prev.days.reduce((a, d) => a + d.n, 0) : 0, pa = pn ? incTotal(prev) / pn : 0;
@@ -549,7 +558,7 @@
       const p = pa ? pct(ca, pa) : null;
       out.push({ e: p != null && p < 0 ? (pa - ca) * n : 0, sub: "prihodi",
         head: `Prosječni račun: ${eur0(ca)}${p ? ` <span class="${p > 0 ? "down" : "up"}">${p > 0 ? "▲" : "▼"} ${Math.abs(p)}%</span>` : ""}`,
-        why: `${pa ? `prošli mjesec ${eur0(pa)} · ` : ""}ručak ${part("rucak")} · večera ${part("vecera")} · ${n} računa`,
+        why: `${pa ? `prošli mjesec ${eur0(pa)} · ` : ""}${lyN ? `lani ${eur0(incTotal(ly) / lyN)} · ` : ""}ručak ${part("rucak")} · večera ${part("vecera")} · ${n} računa`,
         act: p != null && p < 0 ? `To je ${eur0((pa - ca) * n)} manje ovaj mjesec. Što se manje naručuje — predjela, deserti, vino? Pogledajte jela u Prihodima.`
           : `Svaki euro više po računu je ${eur0(n)} mjesečno. Predjelo ili desert više na stolu je ono što ga diže.` });
     }
@@ -566,7 +575,7 @@
       }
       out.push({ e: gain, sub: "prihodi",
         head: `Vino po računu: ${eur0(cur)}${p ? ` <span class="${p > 0 ? "down" : "up"}">${p > 0 ? "▲" : "▼"} ${Math.abs(p)}%</span>` : ""}`,
-        why: `vino na ${Math.round((all.wb / all.n) * 100)}% računa${ws.length >= 2 ? " · " + ws.map((w) => `${esc(w.waiter.split(" ")[0])} ${eur0(w.wpb)}`).join(" · ") : ""}`,
+        why: `${was ? `prošli mjesec ${eur0(was)} · ` : ""}${lyW.n ? `lani ${eur0(lyW.wine / lyW.n)} · ` : ""}vino na ${Math.round((all.wb / all.n) * 100)}% računa${ws.length >= 2 ? " · " + ws.map((w) => `${esc(w.waiter.split(" ")[0])} ${eur0(w.wpb)}`).join(" · ") : ""}`,
         act: gain > 100 ? `Kad bi svi preporučivali vino barem kao sredina (${eur0(mid)} po računu), to je do ${eur0(gain)} mjesečno — dio razlike je i tko radi ručkove. "Pomozi mi odabrati" na tabletu pomaže.`
           : "Vino je najveća marža na stolu — preporuka uz svako glavno jelo." });
     }
