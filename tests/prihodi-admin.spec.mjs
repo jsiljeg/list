@@ -2,7 +2,8 @@
  * from Remaris"). The income API on theatrium.devinos.hr is faked with
  * page.route(). Guards: the month's income, payments and sales groups are
  * drawn; Pregled's balance is income − expenses; the PDV tab's izlazni PDV is
- * total − net per tax group read off the line's own label; and the server's
+ * total − net per tax group, its rate off the label or, where Remaris prints
+ * none (drinks), from total ÷ net; and the server's
  * cleanBill() keys a bill by year + fiscal number (numbers restart each
  * January) and rejects a row that is not a bill. */
 import { test, expect } from "@playwright/test";
@@ -14,7 +15,7 @@ const summary = {
   days: [{ day: `${month}-01`, n: 2, total: 1000 }, { day: `${month}-02`, n: 1, total: 130 }],
   pays: [{ pay: "Visa", n: 2, total: 1000 }, { pay: "Gotovina", n: 1, total: 130 }],
   groups: [{ grp: "Glavna jela", total: 800, qty: 20 }, { grp: "Vina na čaše", total: 330, qty: 30 }],
-  taxes: [{ tax: "H (HRANA IZLAZ 13%)", total: 800, net: 707.96 }, { tax: "P (PIĆE IZLAZ 25%)", total: 330, net: 264 }],
+  taxes: [{ tax: "H (HRANA IZLAZ 13%)", total: 800, net: 707.96 }, { tax: "P (PIĆE IZLAZ)", total: 330, net: 264 }],
   custs: [{ cust: "LIGNUM DRUŠTVO S OGRANIČENOM", oib: "1", n: 1, total: 130, virman: 130 }],
   state: { last_ok: new Date().toISOString(), error: "" },
 };
@@ -47,6 +48,9 @@ test("Prihodi shows the month from Remaris, and Pregled and PDV use it", async (
   /* 800 − 707,96 + 330 − 264 = 158,04 izlazni; − 50 pretporez = 108,04 */
   await expect(page.locator(".card.vat").first()).toContainText("108,04 €");
   await expect(page.locator(".card.vat").nth(2)).toContainText("158,04 €");
+  /* Remaris prints the rate only on food; drinks' "P (PIĆE IZLAZ)" is 25% by its own sums */
+  await expect(page.locator(".card.vat").nth(2)).toContainText("25%");
+  await expect(page.locator(".card.vat").nth(2)).not.toContainText("bez porezne grupe");
 });
 
 test("a bill is keyed by year and fiscal number, and junk is refused", () => {

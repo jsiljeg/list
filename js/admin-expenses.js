@@ -372,13 +372,15 @@
     return null;
   }
   const incTotal = (s) => (s && s.days ? s.days.reduce((a, d) => a + d.total, 0) : 0);
-  /* izlazni PDV by rate, from the lines' own tax group: "H (HRANA IZLAZ 13%)" */
+  /* izlazni PDV by rate, per the lines' tax group. Only food's label carries
+     its rate ("H (HRANA IZLAZ 13%)"); drinks read "P (PIĆE IZLAZ)", so a
+     label without one takes it from its own sums, total ÷ net. */
   function outVat(s) {
     const rates = {};
     let total = 0;
     for (const t of (s && s.taxes) || []) {
       const v = (t.total || 0) - (t.net || 0), m = String(t.tax || "").match(/(\d+(?:[.,]\d+)?)\s*%/);
-      const k = m ? m[1].replace(",", ".") : "?";
+      const k = m ? m[1].replace(",", ".") : t.net > 0 ? String(Math.round(((t.total / t.net) - 1) * 100)) : "?";
       rates[k] = (rates[k] || 0) + v; total += v;
     }
     return { total, rates };
