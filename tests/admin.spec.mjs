@@ -932,7 +932,10 @@ test("Troškovi: the receipts list passes stored lines through without re-parsin
    now one batch. Source assertion: server code. */
 test("MER: an invoice and its seen-mark are written together", () => {
   const src = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
-  expect(src).toMatch(/await env\.DB\.batch\(\[\s*env\.DB\.prepare\(\s*`INSERT INTO expense_receipts[\s\S]*?INSERT OR IGNORE INTO expense_mer_docs/);
+  /* and the mark goes first, with no OR IGNORE: two imports at once (three
+     March invoices, 30 ms apart) — the second breaks the key and rolls back */
+  expect(src).toMatch(/await env\.DB\.batch\(\[\s*env\.DB\.prepare\("INSERT INTO expense_mer_docs[^"]*"\)[\s\S]*?INSERT INTO expense_receipts/);
+  expect(src).not.toMatch(/INSERT OR IGNORE INTO expense_mer_docs \(electronic_id, receipt_id, seen_at, kind\) VALUES \(\?1, \?2, \?3, 'invoice'\)/);
 });
 
 /* Filho, 2026-10-12: "da ja stisnem usporedi mi sve cijene iz Moj Mesar i onda

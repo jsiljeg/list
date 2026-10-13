@@ -141,8 +141,7 @@ export async function merSync(env, { force = false, range = null, retryFailed = 
           .bind(eid, now).run();
         continue;
       }
-      await importDraft(env, eid, draft, d);
-      imported += 1;
+      if ((await importDraft(env, eid, draft, d)) !== false) imported += 1;
     }
     if (!range && fresh.length <= PER_SYNC) await setState(env, "last_ok", now);
     await setState(env, "error", "");
@@ -163,16 +162,25 @@ async function importDraft(env, eid, draft, listed) {
   /* The receipt and "this document is seen" are one write (2026-10-12): a
      call that ran out of CPU decoding the PDF, between the two, left an
      invoice that the next call imported again. */
-  await env.DB.batch([
-    env.DB.prepare(
-      `INSERT INTO expense_receipts (id, created_at, updated_at, created_by, status, source, vendor, vendor_oib, doc_date, doc_no,
-                                     total, vat, payment, items, note, error, due_date)
-       VALUES (?1, ?2, ?2, 'MER', 'queued', 'mer', ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, '', ?12)`)
-      .bind(id, now, vendor.slice(0, 120), oib, draft.doc_date, String(draft.doc_no || "").slice(0, 60),
-            draft.total, draft.vat, draft.payment, JSON.stringify(items), draft.credit ? "Odobrenje (storno) — iznos se oduzima." : "", draft.due_date),
-    env.DB.prepare("INSERT OR IGNORE INTO expense_mer_docs (electronic_id, receipt_id, seen_at, kind) VALUES (?1, ?2, ?3, 'invoice')")
-      .bind(eid, id, now),
-  ]);
+  /* The seen-mark goes first, and without OR IGNORE: two imports running at
+     once (2026-10-12, three March invoices, 30 ms apart) both found the
+     document new; now the second one's mark breaks the primary key, the
+     batch rolls back, and no second receipt is written. */
+  try {
+    await env.DB.batch([
+      env.DB.prepare("INSERT INTO expense_mer_docs (electronic_id, receipt_id, seen_at, kind) VALUES (?1, ?2, ?3, 'invoice')")
+        .bind(eid, id, now),
+      env.DB.prepare(
+        `INSERT INTO expense_receipts (id, created_at, updated_at, created_by, status, source, vendor, vendor_oib, doc_date, doc_no,
+                                       total, vat, payment, items, note, error, due_date)
+         VALUES (?1, ?2, ?2, 'MER', 'queued', 'mer', ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, '', ?12)`)
+        .bind(id, now, vendor.slice(0, 120), oib, draft.doc_date, String(draft.doc_no || "").slice(0, 60),
+              draft.total, draft.vat, draft.payment, JSON.stringify(items), draft.credit ? "Odobrenje (storno) — iznos se oduzima." : "", draft.due_date),
+    ]);
+  } catch (e) {
+    if (/UNIQUE|PRIMARY KEY|constraint/i.test(String(e && e.message))) return false;   /* another import has it */
+    throw e;
+  }
   /* The PDF is kept as the base64 text it arrived in and decoded only when
      someone opens it (foto/<n>): decoding a megabyte here, ten documents a
      call, ran past a free Worker's 10 ms of CPU. Too big to keep is skipped. */
