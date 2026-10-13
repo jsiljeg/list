@@ -11,7 +11,7 @@
  *                        under older rules (categories chosen by hand are kept)
  *   obrisi      (staff)  the receipt and its photos are deleted for good */
 import { reply, isStaffAsync, isExpenseWorker, readReceipt, setFields, pump, clip, num, cleanItems, cleanManual,
-         mergeEinvoice, keepFixed, zagrebDate, logEvent, CATEGORIES } from "../../../_lib/expenses.js";
+         mergeEinvoice, keepFixed, zagrebDate, logEvent, pausePump, CATEGORIES } from "../../../_lib/expenses.js";
 import { findTwin } from "../../../_lib/mer.js";
 
 export async function onRequestPost({ request, env, params }) {
@@ -24,6 +24,16 @@ export async function onRequestPost({ request, env, params }) {
   if (action === "rezultat") {
     if (!isExpenseWorker(request, env)) return reply(request, { error: "key" }, 401);
     if (item.status !== "working") return reply(request, { error: "move", from: item.status }, 409);
+    if (b.status === "retry") {
+      /* the run could not start reading at all — Claude refused at once, most
+         likely the subscription's usage limit (2026-10-12: 337 receipts were
+         marked unreadable in 2-second runs). Back in line, this try not
+         counted, and reading pauses so the queue is not spent on a closed door. */
+      await env.DB.prepare("UPDATE expense_receipts SET status = 'queued', batch = NULL, runs = MAX(0, runs - 1), updated_at = ?2 WHERE id = ?1")
+        .bind(id, new Date().toISOString()).run();
+      await pausePump(env, 30);
+      return reply(request, { ok: true, paused: true });
+    }
     if (b.status === "failed") {
       await setFields(env, id, { status: "failed", batch: null, error: clip(b.error, 300) || "Račun se ne može pročitati." });
     } else if (item.source === "mer") {

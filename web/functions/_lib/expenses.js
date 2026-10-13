@@ -125,6 +125,14 @@ export async function limits(env) {
            ready: !!(env.EXPENSE_DISPATCH_TOKEN || env.GH_DISPATCH_TOKEN) && !!env.EXPENSE_WORKER_KEY };
 }
 
+/* No new run for `minutes` — a run reported that Claude refused to start
+   (usage limit). Kept in expense_mer_state, the small key–value table. */
+export async function pausePump(env, minutes) {
+  const until = new Date(Date.now() + minutes * 60000).toISOString();
+  await env.DB.prepare("INSERT INTO expense_mer_state (k, v) VALUES ('pump_pause_until', ?1) ON CONFLICT(k) DO UPDATE SET v = excluded.v")
+    .bind(until).run();
+}
+
 /* Start a run for the oldest waiting receipts, if every brake allows it.
    Called after an upload and on every staff read, so receipts held back by a
    cap start by themselves later. A batch silent for STALE_MIN is presumed dead:
@@ -139,6 +147,8 @@ export async function pump(env) {
   const token = env.EXPENSE_DISPATCH_TOKEN || env.GH_DISPATCH_TOKEN;
   if (!token || !env.EXPENSE_WORKER_KEY) return { held: "not_set_up" };
   if (await env.DB.prepare("SELECT id FROM expense_receipts WHERE status = 'working' LIMIT 1").first()) return { held: "busy" };
+  const pause = await env.DB.prepare("SELECT v FROM expense_mer_state WHERE k = 'pump_pause_until'").first().catch(() => null);
+  if (pause && pause.v > nowIso()) return { held: "paused", until: pause.v };
   const l = await limits(env);
   if (l.today >= DAILY_RUNS) return { held: "daily_cap" };
   if (l.month >= MONTHLY_RUNS) return { held: "monthly_cap" };

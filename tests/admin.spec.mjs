@@ -1074,3 +1074,14 @@ test("MER: an e-invoice line keeps the supplier's article number", () => {
   const eracun = readFileSync(new URL("../web/functions/api/troskovi/[id]/eracun.js", import.meta.url), "utf8");
   expect(eracun).toMatch(/code: doc_code \|\| ""/);
 });
+
+/* Overnight 2026-10-12, 337 receipts were marked unreadable in 2-second runs
+   while the Claude subscription was at its usage limit. A run that never read
+   reports "retry": the receipt goes back in line, the try is not counted,
+   and the pump pauses. Source assertion: server code. */
+test("Troškovi: a run that never read puts its receipts back in line and pauses reading", () => {
+  const act = readFileSync(new URL("../web/functions/api/troskovi/[id]/[action].js", import.meta.url), "utf8");
+  expect(act).toMatch(/b\.status === "retry"[\s\S]*?status = 'queued'[\s\S]*?runs = MAX\(0, runs - 1\)[\s\S]*?pausePump\(env, 30\)/);
+  const lib = readFileSync(new URL("../web/functions/_lib/expenses.js", import.meta.url), "utf8");
+  expect(lib).toMatch(/held: "paused"/);
+});
