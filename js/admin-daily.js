@@ -49,6 +49,7 @@
     no_dishes: "U ponudi nije ostalo nijedno jelo.",
     running: "Na ponudi se upravo radi — pričekajte.",
     too_late: "Već je objavljeno.",
+    stale: "Ova ponuda je za jučer — pošaljite današnji jelovnik.",
     run_timed_out: "Rad nije završio na vrijeme. Pokušajte ponovno.",
     too_many_rounds: "Previše pokušaja — javite vlasniku.",
     no_dispatch_token: "Čeka da vlasnik uključi automatsku obradu.",
@@ -100,7 +101,10 @@
     const lim = limits ? (limits.enabled
       ? `Danas ${limits.today}/${limits.dailyCap} · ovaj mjesec ${limits.month}/${limits.monthlyCap}`
       : "Automatska obrada je trenutno isključena — zahtjevi čekaju.") : "";
-    const shown = items.filter((i) => i.status !== "cancelled" && (i.date >= today || i.status !== "published"));
+    /* Only today's: an offer belongs to its service day and is gone from the
+       website and the tablets at the 03:00 UTC rollover, so yesterday's
+       preview has nothing left to publish. */
+    const shown = items.filter((i) => i.status !== "cancelled" && i.date === today);
     box.innerHTML = `
       ${liveCard()}
       <div class="card">

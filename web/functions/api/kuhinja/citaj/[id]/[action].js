@@ -10,7 +10,7 @@
  *   ponovi    (staff)   failed/ready → queued again, {remark} optional
  *   odustani  (staff)   anything not published → cancelled */
 import { reply, isStaffAsync, isWorker, notifyOwner } from "../../../../_lib/wines.js";
-import { normalizeOffer, readOffer } from "../../../../_lib/daily.js";
+import { normalizeOffer, readOffer, today } from "../../../../_lib/daily.js";
 import { readReq, setReq, pump, clip, person } from "../../../../_lib/daily-intake.js";
 
 const WORKER_MOVES = { working: ["working", "ready", "failed"] };
@@ -47,6 +47,9 @@ export async function onRequestPost({ request, env, params }) {
 
   if (action === "objavi") {
     if (!["ready", "published"].includes(item.status)) return reply(request, { error: "not_ready" }, 409);
+    /* An offer lives for its service day only (03:00 UTC rollover). Publishing
+       yesterday's preview would write a day nobody can see any more. */
+    if (item.date !== today()) return reply(request, { error: "stale" }, 409);
     let b;
     try { b = await request.json(); } catch { return reply(request, { error: "body" }, 400); }
     const body = normalizeOffer(b.offer || (item.result && item.result.offer) || {});
