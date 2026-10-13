@@ -1,9 +1,10 @@
 /* /api/troskovi/mer
  *   GET   (staff)  how the moj-eRačun connection stands
- *   POST  (staff)  "provjeri sada": ask the inbox now, not in half an hour;
+ *   POST  (staff, or the reading run's key)  ask the inbox now — "provjeri
+ *                  sada", and the scheduled check at 9:00 and 16:00 Zagreb;
  *                  {from, to} (YYYY-MM-DD) backfills an older range instead
  * Read only; design and the credentials it needs: web/EXPENSES.md. */
-import { reply, isStaffAsync } from "../../_lib/expenses.js";
+import { reply, isStaffAsync, isExpenseWorker } from "../../_lib/expenses.js";
 import { merSync, merStatus } from "../../_lib/mer.js";
 
 export async function onRequestGet({ request, env }) {
@@ -12,7 +13,9 @@ export async function onRequestGet({ request, env }) {
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
+  /* the private repo's scheduled check (9:00 and 16:00 Zagreb, 2026-10-13)
+     comes with the reading run's key */
+  if (!isExpenseWorker(request, env) && !(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
   if (!env.DB) return reply(request, { error: "no_db" }, 503);
   const b = await request.json().catch(() => ({}));
   const ok = (d) => typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d);

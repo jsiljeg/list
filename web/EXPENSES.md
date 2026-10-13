@@ -333,3 +333,19 @@ not), and the accountant takes out what is not or only partly deductible
 - Izlazni PDV: Remaris can export CSV from its back office. Waiting for a
   sample month to learn the layout; it will be parsed on the server, no
   reading run.
+
+## Faster to open; MER twice a day (owner, 2026-10-13)
+
+"It takes even 5 seconds when I click Troškovi." Five pages one after
+another. Now the newest 60 are shown as soon as they arrive, the first page
+says how many there are, and the rest are asked for all at once. Coming back
+to the tab shows what is already loaded and freshens it with the newest page
+(a full reload past 5 minutes); while receipts are being read the 10-second
+refresh asks only for the newest page, every sixth a full one.
+
+MER is now also asked at **9:00 and 16:00 Zagreb** by `mer-sync.yml` in the
+private repo (cron at both possible UTC hours, the step goes on only at 9 or
+16 in Zagreb), with the reading run's key; it asks until nothing is left.
+Opening the tab still checks too (at most every 30 minutes).
+
+PDV: "PDV za uplatu" is the first card; the 6 months run newest first.

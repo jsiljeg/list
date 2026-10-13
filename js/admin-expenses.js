@@ -102,28 +102,69 @@
     return b;
   }
 
-  async function load() {
+  /* In pages: a whole year in one answer ran the server over its CPU limit
+     (2026-10-12). And fast (2026-10-13: "it takes 5 seconds when I click
+     Troškovi"): the newest FIRST receipts are shown as soon as they arrive,
+     the rest are asked for all at once, not one page after another. While
+     receipts are being read, the 10-second refresh asks only for the newest
+     page and merges it in. */
+  const FIRST = 60, PAGE = 150;
+  let olderLoading = false, polls = 0;
+  async function load(quick) {
     clearTimeout(timer);
     try {
-      /* in pages of 150: a whole year in one answer ran the server over its
-         CPU limit (2026-10-12) */
-      const b = await api("?limit=150");
-      let all = b.items || [], more = b.more;
-      while (more && all.length < 6000) {
-        const n = await api(`?offset=${all.length}&limit=150`);
-        all = all.concat(n.items || []); more = n.more;
+      const b = await api(`?limit=${FIRST}`);
+      const head = b.items || [];
+      limits = b.limits; mer = b.mer || null; err = "";
+      if (quick === true && receipts.length) {
+        const ids = new Set(head.map((r) => r.id));
+        receipts = head.concat(receipts.filter((r) => !ids.has(r.id)));
+      } else {
+        receipts = head;
+        if (b.more) {
+          olderLoading = true; settle(); render();
+          let all = head;
+          if (b.total) {
+            const offs = [];
+            for (let o = head.length; o < Math.min(b.total, 6000); o += PAGE) offs.push(o);
+            const pages = await Promise.all(offs.map((o) => api(`?offset=${o}&limit=${PAGE}`)));
+            all = head.concat(...pages.map((p) => p.items || []));
+          } else {
+            /* a server without a total: the rest one page at a time */
+            for (let more = true; more && all.length < 6000;) {
+              const n = await api(`?offset=${all.length}&limit=${PAGE}`);
+              all = all.concat(n.items || []); more = n.more;
+            }
+          }
+          receipts = all;
+        }
+        loadedAt = Date.now();
       }
-      receipts = all; limits = b.limits; mer = b.mer || null; err = "";
     } catch (e) { err = "Ne mogu učitati troškove: " + e.message; }
+    olderLoading = false;
+    settle();
+    render();
+    /* every sixth refresh is a full one: a receipt being read can be an old
+       one (a backfill), which the newest page does not carry */
+    if (visible() && receipts.some((r) => r.status === "queued" || r.status === "working")) {
+      polls += 1;
+      timer = setTimeout(() => load(polls % 6 !== 0), POLL_MS);
+    }
+  }
+  function settle() {
     if (!month) month = latestMonth();
     /* until the first receipt is read, the tab opens where receipts are added */
     if (!opened) { opened = true; if (!receipts.some((r) => r.status === "done")) sub = "racuni"; }
-    render();
-    if (visible() && receipts.some((r) => r.status === "queued" || r.status === "working")) timer = setTimeout(load, POLL_MS);
   }
   const visible = () => { const t = $("tab-troskovi"); return t && !t.classList.contains("hidden"); };
   const latestMonth = () => new Date().toISOString().slice(0, 7);
-  window.loadExpenses = load;
+  /* coming back to the tab: what is already here is shown at once and freshened
+     with the newest page; a full reload only when it is over 5 minutes old */
+  let loadedAt = 0;
+  window.loadExpenses = () => {
+    if (receipts.length && Date.now() - loadedAt < 5 * 60000) { render(); return load(true); }
+    return load();
+  };
 
   /* ---------- numbers ---------- */
   /* a photo of an invoice that also came from MER counts once, as the e-invoice */
@@ -223,6 +264,7 @@
       </div>
       ${err ? `<p class="err">${esc(err)}</p>` : ""}
       ${waiting ? `<p class="muted small center"><span class="spin"></span> ${waiting} ${waiting === 1 ? "račun se čita" : "računa se čita"} — obično minuta-dvije.</p>` : ""}
+      ${olderLoading ? `<p class="muted small center"><span class="spin"></span> učitavam starije račune…</p>` : ""}
       ${sub === "pregled" ? overview() : sub === "racuni" ? receiptsView() : sub === "pdv" ? vatView() : pricesView()}`;
     wire(box);
   }
@@ -653,8 +695,13 @@
     const rateRows = Object.entries(v.rates).filter(([, x]) => Math.abs(x) > 0.004)
       .sort((a, b) => (b[0] === "?" ? -1 : Number(b[0])) - (a[0] === "?" ? -1 : Number(a[0])))
       .map(([k, x]) => `<div><span>${k === "?" ? "stopa nije na stavkama" : `${nf(Number(k))}%`}</span><b>${eur(x)}</b></div>`).join("");
-    const six = [...Array(6)].map((_, i) => shiftMonth(month, i - 5));
+    /* newest first; what he asked, first, its parts below it (owner, 2026-10-13) */
+    const six = [...Array(6)].map((_, i) => shiftMonth(month, -i));
     return `${monthNav()}
+      <div class="card vat">
+        <h3>PDV za uplatu</h3>
+        <p class="muted small">Izlazni PDV − pretporez. Prikazat će se kad bude učitan izlazni PDV.</p>
+      </div>
       <div class="card vat">
         <h3>Pretporez <small>PDV na ulaznim računima</small></h3>
         <div class="vbig">${eur(v.total)}</div>
@@ -664,10 +711,6 @@
       <div class="card vat">
         <h3>Izlazni PDV <small>PDV na prodaji, iz Remarisa</small></h3>
         <p class="muted small">Ovdje će se moći učitati izvoz (CSV) iz Remaris back officea za ${mloc} — u pripremi.</p>
-      </div>
-      <div class="card vat">
-        <h3>PDV za uplatu</h3>
-        <p class="muted small">Izlazni PDV − pretporez. Prikazat će se kad bude učitan izlazni PDV.</p>
       </div>
       <p class="muted small">Procjena, mjesečno, prema datumu računa (fakturirana realizacija). Računovodstvo izuzima troškove kod kojih se pretporez ne priznaje ili priznaje djelomično (reprezentacija, osobni automobili…), pa je stvarni pretporez nešto manji, a PDV za uplatu nešto veći.</p>
       <h3 class="h">Pretporez, zadnjih 6 mjeseci</h3>

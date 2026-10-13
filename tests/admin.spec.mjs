@@ -1248,6 +1248,46 @@ test("Troškovi: PDV shows the month's pretporez, rate by rate", async ({ page }
   await expect(page.locator(".card.vat .vbig").first()).toHaveText(/^30,50\s€/);      /* 38 − 10 + 2,5 */
   await expect(page.locator(".vrates")).toContainText(/25%\s*15,00\s€/);
   await expect(page.locator(".vrates")).toContainText(/13%\s*13,00\s€/);
-  await expect(page.locator(".card.vat").first()).toContainText("od toga 2,50 € sa slikanih računa");
-  await expect(page.locator(".card.vat").first()).toContainText("3 računa");
+  const pre = page.locator(".card.vat").filter({ has: page.locator("h3", { hasText: /^Pretporez/ }) });
+  await expect(pre).toContainText("od toga 2,50 € sa slikanih računa");
+  await expect(pre).toContainText("3 računa");
+  /* PDV za uplatu is the first card (owner, 2026-10-13) */
+  await expect(page.locator(".card.vat").first()).toContainText("PDV za uplatu");
+});
+
+/* Owner, 2026-10-13: "it takes even 5 seconds when I click Troškovi". The
+   newest page is shown first and the rest are asked for at once. */
+test("Troškovi: the newest receipts show before the older pages arrive, which come in parallel", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const r = (id) => ({ id, created_at: `${ym}-02T09:00:00Z`, updated_at: "", status: "done", vendor: "D " + id, vendor_oib: "",
+    doc_date: `${ym}-02`, doc_no: "", total: 10, vat: null, payment: "kartica", photos: [], note: "", created_by: "", source: "foto",
+    dup_of: "", due_date: "", paid_at: "", items: [{ name: "x", key: "", total: 10, category: "meso" }] });
+  const asked = [];
+  let release;
+  const gate = new Promise((res) => { release = res; });
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", async (route) => {
+    const u = new URL(route.request().url());
+    if (u.pathname !== "/api/troskovi") return route.fulfill({ status: 200, contentType: "application/json", body: "{}" });
+    const off = Number(u.searchParams.get("offset") || 0);
+    asked.push(off);
+    if (off === 0) return route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify({ items: [r("a")], more: true, total: 400, limits: { ready: true } }) });
+    await gate;                                       /* the older pages wait until we have looked */
+    return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ items: [r("o" + off)], more: false }) });
+  });
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await expect(page.locator(".big b")).toHaveText(/^10\s€/);                  /* the first page, already on screen */
+  await expect(page.getByText("učitavam starije račune")).toBeVisible();
+  await expect.poll(() => asked.length).toBe(4);                              /* all three older pages asked for, together */
+  release();
+  await expect(page.locator(".big b")).toHaveText(/^40\s€/);
+});
+
+/* The scheduled MER check (9:00, 16:00 Zagreb) comes with the reading run's
+   key. Source assertion: server code. */
+test("MER: the inbox check accepts the reading run's key", () => {
+  const src = readFileSync(new URL("../web/functions/api/troskovi/mer.js", import.meta.url), "utf8");
+  expect(src).toMatch(/onRequestPost[\s\S]*?isExpenseWorker\(request, env\) && !\(await isStaffAsync/);
 });

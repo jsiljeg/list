@@ -35,7 +35,13 @@ export async function onRequestGet({ request, env, waitUntil }) {
     s.items = 0;
     return JSON.stringify(s).replace('"items":0', '"items":' + raw);
   });
-  const tail = JSON.stringify({ more, limits: await limits(env), pumped, mer: await merStatus(env) }).slice(1);
+  /* the first page also says how many there are, so the app can ask for the
+     rest all at once (2026-10-13: five pages one after another took ~5 s);
+     the others carry only the page */
+  const tail = JSON.stringify(offset ? { more } : {
+    more, total: ((await env.DB.prepare("SELECT COUNT(*) AS n FROM expense_receipts").first()) || {}).n || 0,
+    limits: await limits(env), pumped, mer: await merStatus(env),
+  }).slice(1);
   return new Response(`{"items":[${parts.join(",")}],${tail}`, {
     headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...cors(request) } });
 }
