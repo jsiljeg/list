@@ -276,66 +276,6 @@
       <button data-m="1" aria-label="Sljedeći mjesec" ${month >= now ? "disabled" : ""}>›</button></div>`;
   }
 
-  /* ---------- Pregled (owner, 2026-10-14: "simple and effective … relevant
-     stats"; Filho: "rubrike Vino, Žestoko, Hrana") ----------
-     The month in three lines — what came in, what went out, what is left —
-     then each rubrika sold against what was bought for it, then the costs
-     that are not goods, then six months of both. The detail lives in
-     Prihodi, Računi and Cijene. */
-  function overview() {
-    const list = inMonth(month);
-    const total = list.reduce((s, r) => s + totalOf(r), 0);
-    const sales = needIncome(month);
-    const { cats, rest } = byCategory(list);
-    const catSum = (members) => members.reduce((a, c) => a + (cats[c] || 0), 0);
-
-    /* rubrike: sold (the till) against bought (the receipts) */
-    const sold = salesByRubric(sales);
-    const rubRows = RUBRICS.map(([k, label, members]) => {
-      const out = sold[k] ? sold[k].total : 0, cost = catSum(members);
-      const share = out > 0 && cost > 0 ? Math.round((cost / out) * 100) : null;
-      return `<div class="rub"><span class="rl">${esc(label)}</span><span>${out ? eur0(out) : "—"}</span><span>${cost ? eur0(cost) : "—"}</span>
-        <span class="rp ${share != null && share > 45 ? "up" : ""}">${share != null ? share + "%" : ""}</span></div>`;
-    }).join("");
-
-    /* the costs that are not goods for sale */
-    const others = GROUPS.filter(([k]) => !["hrana", "pice"].includes(k)).map(([k, label, members, color]) => ({
-      k, label, color, members, sum: catSum(members) + (k === "ostalo" ? rest : 0),
-    })).filter((g) => Math.abs(g.sum) > 0.004).sort((a, b) => b.sum - a.sum);
-    const omax = Math.max(...others.map((g) => g.sum), 1);
-    const otherBars = others.map((g) => `
-      <button class="bar" data-group="${g.k}" aria-expanded="${openGroup === g.k}">
-        <span class="bl">${esc(g.label)}</span><span class="bv">${eur0(g.sum)}</span>
-        <span class="track"><span style="width:${Math.max(2, (g.sum / omax) * 100)}%;background:${g.color}"></span></span>
-      </button>
-      ${openGroup === g.k ? `<div class="parts">${g.members.map((c) => [c, cats[c] || 0]).filter(([, v]) => Math.abs(v) > 0.004)
-        .map(([c, v]) => `<div><span>${esc(CAT[c])}</span><span>${eur0(v)}</span></div>`).join("")}${g.k === "ostalo" && Math.abs(rest) > 0.05
-        ? `<div><span>nerazvrstano</span><span>${eur0(rest)}</span></div>` : ""}</div>` : ""}`).join("");
-
-    /* six months, in and out side by side */
-    const six = [...Array(6)].map((_, i) => shiftMonth(month, i - 5));
-    const byM = Object.fromEntries(((sales && sales.months) || []).map((x) => [x.m, x.total]));
-    const outs = six.map((m) => inMonth(m).reduce((a, r) => a + totalOf(r), 0));
-    const smax = Math.max(...six.map((m) => byM[m] || 0), ...outs, 1);
-    const pairs = six.map((m, i) => `<button data-month="${m}" class="${m === month ? "on" : ""}">
-        <span class="cv">${byM[m] ? Math.round((byM[m] - outs[i]) / 1000) + "k" : ""}</span>
-        <span class="cb pair"><span class="in" style="height:${Math.max(byM[m] ? 3 : 0, ((byM[m] || 0) / smax) * 100)}%"></span><span style="height:${Math.max(outs[i] ? 3 : 0, (outs[i] / smax) * 100)}%"></span></span>
-        <span class="cl">${MONTHS[Number(m.slice(5, 7)) - 1].slice(0, 3)}</span></button>`).join("");
-
-    if (!list.length && !(sales && incTotal(sales))) {
-      return `${monthNav()}<p class="muted center">U ${MONTHS_LOC[Number(month.slice(5, 7)) - 1]} još nema ni prihoda ni troškova.</p>`;
-    }
-    return `
-      ${monthNav()}
-      ${balanceCard(total)}
-      <h3 class="h">Po rubrikama</h3>
-      <div class="rubs"><div class="rub head"><span></span><span>prodano</span><span>nabavljeno</span><span>udio</span></div>${rubRows}</div>
-      <p class="muted small">Udio = nabavljeno ÷ prodano u istom mjesecu, oboje s PDV-om. Za hranu je u restoranima obično 25–35%. Pivo se prodaje pod žestokim, a kupuje pod kavom i sokovima.</p>
-      ${others.length ? `<h3 class="h">Ostali troškovi</h3><div class="bars">${otherBars}</div>` : ""}
-      <h3 class="h">Zadnjih 6 mjeseci <small><i class="lg in"></i>prihodi <i class="lg"></i>troškovi · iznad: ostaje</small></h3>
-      <div class="cols">${pairs}</div>`;
-  }
-
   /* ---------- Prihodi (owner, 2026-10-13: "the counterpart of Kamo idu
      novci … income and expenses at the same admin place") ----------
      Every bill the till issued, read from Remaris every morning at 6:00 by
@@ -388,8 +328,9 @@
   function salesByRubric(s) {
     const by = {};
     for (const r of (s && s.groups) || []) {
-      const k = rubricOf(r.grp, r.tax), b = by[k] || (by[k] = { total: 0, groups: {} });
-      b.total += r.total || 0; b.groups[r.grp || "—"] = (b.groups[r.grp || "—"] || 0) + (r.total || 0);
+      const k = rubricOf(r.grp, r.tax), b = by[k] || (by[k] = { total: 0, net: 0, groups: {} });
+      b.total += r.total || 0; b.net += r.net != null ? r.net : (r.total || 0);
+      b.groups[r.grp || "—"] = (b.groups[r.grp || "—"] || 0) + (r.total || 0);
     }
     return by;
   }
@@ -431,10 +372,40 @@
         <span style="height:${Math.max(2, (d.total / dmax) * 100)}%"></span><small>${Number(d.day.slice(8, 10))}</small></span>`).join("")}</div>
       <h3 class="h">Što se prodaje</h3>
       <div class="bars">${rubBars(s, total)}</div>
+      ${salesDetail(s, prev)}
       ${custs.length ? `<h3 class="h">Tvrtke <small>računi izdani na tvrtku</small></h3>
       <div class="lines">${(allCusts ? custs : custs.slice(0, 8)).map((c) => `<div><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}</small></span><b>${eur(c.total)}</b></div>`).join("")}</div>
       ${custs.length > 8 ? `<button class="nema" data-allcusts>${allCusts ? "Manje" : `Sve tvrtke (${custs.length})`}</button>` : ""}` : ""}
       ${months12}${footer}`;
+  }
+  /* The evidence behind Pregled's list (2026-10-14): the dishes and wines
+     that carry the month, with their move against last month per open day;
+     the week; lunch against dinner; each waiter. */
+  function salesDetail(s, prev) {
+    const days = workDaysOf(s), pd = workDaysOf(prev);
+    const prevBy = new Map(((prev && prev.items) || []).map((i) => [i.name, i]));
+    const top = (test) => (s.items || []).filter(test).slice(0, 10).map((i) => {
+      const p = prevBy.get(i.name), ch = p && pd && days ? pct(i.qty / days, p.qty / pd) : null;
+      return `<div><span>${esc(nameCase(i.name))}<small>${nf(i.qty)} kom${ch != null && Math.abs(ch) >= 10
+        ? ` · <span class="${ch > 0 ? "down" : "up"}">${ch > 0 ? "▲" : "▼"} ${Math.abs(ch)}%</span>` : ""}</small></span><b>${eur0(i.total)}</b></div>`;
+    }).join("");
+    const dishes = top(isDish), wines = top(isWine);
+    const wk = [1, 2, 3, 4, 5, 6, 0].map((d) => (s.weekdays || []).find((w) => w.wd === d)).filter(Boolean).map((w) => ({ ...w, per: w.total / Math.max(1, w.days) }));
+    const wmax = Math.max(...wk.map((w) => w.per), 1);
+    const parts = (s.dayparts || []).slice().sort((a) => (a.part === "rucak" ? -1 : 1));
+    const ws = (s.waiters || []).filter((w) => w.n >= 5).sort((a, b) => b.total - a.total);
+    const leak = new Map((s.leaks || []).map((l) => [l.waiter, l]));
+    return `${dishes ? `<h3 class="h">Jela koja nose mjesec <small>▲▼ prema prošlom mjesecu, po radnom danu</small></h3><div class="lines">${dishes}</div>` : ""}
+      ${wines ? `<h3 class="h">Vina koja se najviše prodaju</h3><div class="lines">${wines}</div>` : ""}
+      ${wk.length ? `<h3 class="h">Dan u tjednu <small>prosječno po otvorenom danu</small></h3>
+      <div class="bars">${wk.map((w) => `<div class="bar"><span class="bl">${cap(WD[w.wd])} <small>${w.days}×</small></span><span class="bv">${eur0(w.per)}</span>
+        <span class="track"><span style="width:${Math.max(2, (w.per / wmax) * 100)}%;background:#c9a961"></span></span></div>`).join("")}</div>` : ""}
+      ${parts.length ? `<h3 class="h">Ručak i večera <small>prije i poslije 16 h</small></h3>
+      <div class="lines">${parts.map((x) => `<div><span>${x.part === "rucak" ? "Ručak" : "Večera"}<small>${x.n} ${plural(x.n, "račun", "računa", "računa")} · prosječno ${eur0(x.total / Math.max(1, x.n))}</small></span><b>${eur0(x.total)}</b></div>`).join("")}</div>` : ""}
+      ${ws.length ? `<h3 class="h">Konobari</h3>
+      <div class="wt"><div class="head"><span></span><span>računa</span><span>prosj.</span><span>vino/rač.</span><span>popusti</span></div>
+      ${ws.map((w) => { const l = leak.get(w.waiter) || {}; return `<div><span>${esc(w.waiter)}</span><span>${w.n}</span><span>${eur0(w.total / w.n)}</span>
+        <span>${eur0(w.wine / w.n)}</span><span>${l.disc ? eur0(l.disc) : "—"}</span></div>`; }).join("")}</div>` : ""}`;
   }
   /* the four rubrike as bars; a tap opens the till's own sales groups */
   function rubBars(s, total) {
@@ -446,17 +417,231 @@
       ${openRub === k ? `<div class="parts">${Object.entries(b.groups).sort((x, y) => y[1] - x[1])
         .map(([g, v]) => `<div><span>${esc(g)}</span><span>${eur0(v)}</span></div>`).join("")}</div>` : ""}`).join("");
   }
-  /* Pregled's first card: what came in, what went out, what is left */
-  function balanceCard(spent) {
-    const s = needIncome(month);
-    if (!s || !incTotal(s)) return "";
-    const inc = incTotal(s), left = inc - spent;
-    return `<div class="card bal" data-sub="prihodi" role="button" tabindex="0" aria-label="Otvori prihode">
-      <div><span>Prihodi</span><b>${eur0(inc)}</b></div>
-      <div><span>Troškovi</span><b>− ${eur0(spent)}</b></div>
-      <div class="sum"><span>Ostaje</span><b class="${left < 0 ? "up" : ""}">${left < 0 ? "− " : ""}${eur0(Math.abs(left))} <small>${Math.round((left / inc) * 100)}%</small></b></div>
-      <p class="muted small">Prihodi s blagajne (Remaris), troškovi s ulaznih računa — oboje s PDV-om. Plaće se vide samo ako su upisane.</p>
-    </div>`;
+  /* ---------- Pregled (owner, 2026-10-14: "not generic data, but the useful
+     ones … to drive him to the right direction"; the owner is the chef) ----------
+     It opens with what to look at, ranked by the euros at stake, each with
+     what to do. Then the month's result WITHOUT PDV (the till's PDV belongs to
+     the state, the receipts' PDV comes back as pretporez), prime cost, the
+     rubrike sold against bought over three months, the other costs and six
+     months. Everything else — the evidence — lives in Prihodi, Računi, Cijene. */
+  const netOf = (r) => { const t = totalOf(r); return r.vat != null && t ? t - r.vat : t; };
+  /* a receipt's lines without PDV: an e-invoice line has its own net
+     (doc_total), a photographed one shares its receipt's net ÷ gross */
+  function netByCategory(list) {
+    const cats = {};
+    let rest = 0;
+    for (const r of list) {
+      const t = totalOf(r), ratio = r.vat != null && t ? (t - r.vat) / t : 1;
+      let lines = 0;
+      for (const i of r.items) {
+        const v = r.source === "mer" && i.doc_total != null ? i.doc_total : (i.total || 0) * ratio;
+        cats[i.category] = (cats[i.category] || 0) + v; lines += v;
+      }
+      const gap = netOf(r) - lines;
+      if (Math.abs(gap) > 0.05) rest += gap;
+    }
+    return { cats, rest, total: list.reduce((a, r) => a + netOf(r), 0) };
+  }
+  const salesNet = (s) => ((s && s.taxes) || []).reduce((a, t) => a + (t.net || 0), 0);
+  const GOODS = RUBRICS.flatMap(([, , members]) => members);
+  /* Orientation, not law: the ranges a restaurant consultant quotes for the
+     share of sales spent on the goods sold. */
+  const BANDS = { hrana: [25, 35], vino: [30, 45], zestoko: [15, 25], ostalo: [15, 30] };
+  function rubricMonth(m) {
+    const s = needIncome(m);
+    if (!s) return null;
+    const sold = salesByRubric(s), { cats } = netByCategory(inMonth(m));
+    return Object.fromEntries(RUBRICS.map(([k, , members]) =>
+      [k, { sold: sold[k] ? sold[k].net : 0, bought: members.reduce((a, c) => a + (cats[c] || 0), 0) }]));
+  }
+  /* three months together: stock bought in one month is sold in the next */
+  function rubricRolling(m) {
+    const xs = [0, -1, -2].map((d) => rubricMonth(shiftMonth(m, d)));
+    if (xs.some((x) => !x)) return null;
+    return Object.fromEntries(RUBRICS.map(([k]) => [k, xs.reduce((a, x) => ({ sold: a.sold + x[k].sold, bought: a.bought + x[k].bought }), { sold: 0, bought: 0 })]));
+  }
+  const shareOf = (x) => (x && x.sold > 0 && x.bought > 0 ? (x.bought / x.sold) * 100 : null);
+  const isPast = (m) => m < new Date().toISOString().slice(0, 7);
+  const payroll = (m) => inMonth(m).reduce((a, r) => a + r.items.filter((i) => i.category === "place").reduce((b, i) => b + (i.total || 0), 0), 0);
+
+  /* what supplier price changes cost this month: every product bought this
+     month and before, (new − old price) × what was bought now */
+  function priceImpact(m) {
+    const { seen, mixed } = priceHistory();
+    const FRESH = new Set(["meso", "riba", "povrce"]);
+    const per = [];
+    for (const [k, h] of Object.entries(seen)) {
+      if (mixed.has(k)) continue;
+      let e = 0, bad = false;
+      for (let i = 1; i < h.length; i++) {
+        const x = h[i], y = h[i - 1];
+        if (x.d.slice(0, 7) !== m) continue;
+        const ch = pct(x.p, y.p), weighed = FRESH.has(x.cat) && /^(kg|g|l)$/.test(x.unit || "");
+        if (!weighed && ch != null && (ch > 60 || ch < -40)) { bad = true; break; }
+        e += (x.p - y.p) * (x.spent / x.p);
+      }
+      if (!bad && Math.abs(e) > 0.5) per.push({ name: h[h.length - 1].name, v: h[h.length - 1].v, e });
+    }
+    per.sort((a, b) => b.e - a.e);
+    return { total: per.reduce((a, x) => a + x.e, 0), up: per.filter((x) => x.e > 0) };
+  }
+
+  const WD = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
+  const cap = (w) => w[0].toLocaleUpperCase("hr") + w.slice(1);
+  const workDaysOf = (s) => ((s && s.days) || []).filter((d) => d.total > 0).length;
+  const MAIN = /glavn|predjel|juh|desert|repertoire|menu|abonn/i;     /* dishes, not couvert and sides */
+  const isDish = (it) => rubricOf(it.grp, it.tax) === "hrana" && MAIN.test(it.grp || "") && !/couvert/i.test(it.name);
+  const isWine = (it) => rubricOf(it.grp, it.tax) === "vino";
+  const nameCase = (n) => { const s = String(n || ""); return s === s.toLocaleUpperCase("hr") ? s.charAt(0) + s.slice(1).toLocaleLowerCase("hr") : s; };
+
+  /* The list. Each finding: euros at stake a month (0 = no figure honestly
+     possible), a headline, the evidence, the action. */
+  function insights() {
+    const s = needIncome(month), prev = needIncome(shiftMonth(month, -1));
+    const out = [];
+    if (!s) return out;
+    const n = s.days.reduce((a, d) => a + d.n, 0), total = incTotal(s), days = workDaysOf(s);
+    const roll = rubricRolling(month);
+    if (roll) for (const [k, label] of RUBRICS) {
+      const x = roll[k], sh = shareOf(x), [lo, hi] = BANDS[k];
+      if (sh == null || x.sold < 1500) continue;
+      if (sh > hi) out.push({ e: ((sh - hi) / 100) * (x.sold / 3), head: `${label}: nabava je ${Math.round(sh)}% prodaje`,
+        why: `zadnja 3 mjeseca, bez PDV-a · uobičajeno ${lo}–${hi}% · iznos je ono što je iznad ${hi}%`,
+        act: k === "hrana" ? "Provjeri porcije, otpis i cijene jela koja se najviše prodaju — svaki postotni bod je " + eur0(x.sold / 300) + " mjesečno."
+          : k === "vino" ? "Provjeri marže na karti prema nabavnim cijenama i vino koje stoji na zalihi."
+          : "Provjeri prodajne cijene prema nabavnim." });
+      else if (sh < lo - 7) out.push({ e: 0, head: `${label}: nabava samo ${Math.round(sh)}% prodaje`,
+        why: `zadnja 3 mjeseca · uobičajeno ${lo}–${hi}%`,
+        act: "Vjerojatno nedostaju ulazni računi (gotovina na tržnici, dobavljač bez e-računa) — dok ih nema, zarada izgleda veća nego što jest." });
+    }
+    const pi = priceImpact(month);
+    if (pi.total > 30) out.push({ e: pi.total, head: `Dobavljači su digli cijene: +${eur0(pi.total)} ovaj mjesec`,
+      why: pi.up.slice(0, 3).map((x) => `${esc(nameCase(x.name))} +${eur0(x.e)}`).join(" · "),
+      act: "Prenesi to u cijenu jela ili pića koje ga nosi, ili traži ponudu drugog dobavljača.", sub: "cijene" });
+
+    /* wine per bill, waiter by waiter: lift everyone below the middle to it */
+    const ws = (s.waiters || []).filter((w) => w.n >= 20).map((w) => ({ ...w, wpb: w.wine / w.n })).sort((a, b) => b.wpb - a.wpb);
+    if (ws.length >= 2) {
+      /* the true median: with four waiters, halfway between the middle two */
+      const h = ws.length / 2, mid = ws.length % 2 ? ws[Math.floor(h)].wpb : (ws[h - 1].wpb + ws[h].wpb) / 2;
+      const gain = ws.reduce((a, w) => a + Math.max(0, mid - w.wpb) * w.n, 0);
+      if (gain > 100) out.push({ e: gain, head: `Vino po računu: od ${eur0(ws[ws.length - 1].wpb)} do ${eur0(ws[0].wpb)}, ovisno o konobaru`,
+        why: ws.map((w) => `${esc(w.waiter.split(" ")[0])} ${eur0(w.wpb)}`).join(" · "),
+        act: `Kad bi svi preporučivali vino barem kao sredina (${eur0(mid)} po računu), to je do ${eur0(gain)} mjesečno — dio razlike je i to tko radi ručkove. Tablet s "Pomozi mi odabrati" na stolu pomaže.`, sub: "prihodi" });
+    }
+    const disc = (s.leaks || []).reduce((a, l) => a + (l.disc || 0), 0), free = (s.leaks || []).reduce((a, l) => a + (l.free || 0), 0);
+    if (disc + free > 100) {
+      const top = (s.leaks || []).slice().sort((a, b) => (b.disc + b.free) - (a.disc + a.free))[0];
+      out.push({ e: disc + free, head: `Popusti${free ? " i gratis" : ""}: ${eur0(disc + free)}`,
+        why: `${top ? `najviše ${esc(top.waiter)} (${eur0(top.disc + top.free)})` : ""}${total ? ` · ${(((disc + free) / total) * 100).toFixed(1).replace(".", ",")}% prometa` : ""}`,
+        act: "Popust je čista zarada koja ne dođe — provjeri je li svaki dogovoren." });
+    }
+    /* the average bill against last month */
+    if (prev && n >= 50) {
+      const pn = prev.days.reduce((a, d) => a + d.n, 0), pa = pn ? incTotal(prev) / pn : 0, ca = total / n;
+      if (pa && ca < pa * 0.95) out.push({ e: (pa - ca) * n, head: `Prosječni račun pao je s ${eur0(pa)} na ${eur0(ca)}`,
+        why: `${n} računa ovaj mjesec`, act: "Manje predjela, deserta ili vina po stolu? Provjeri što se manje naručuje u Prihodima." });
+    }
+    /* dishes: falling sellers (per open day, so a running month compares fairly) */
+    if (prev && days >= 7) {
+      const pd = workDaysOf(prev) || 1, cur = new Map((s.items || []).map((i) => [i.name, i]));
+      const falls = (prev.items || []).filter((i) => isDish(i) && i.total >= 400).map((p) => {
+        const c = cur.get(p.name), want = (p.total / pd) * days, got = c ? c.total : 0;
+        return { p, c, lost: want - got, rate: [p.qty / pd, c ? c.qty / days : 0] };
+      }).filter((x) => x.lost > 150 && x.rate[1] < x.rate[0] * 0.7).sort((a, b) => b.lost - a.lost);
+      if (falls.length) out.push({ e: falls.slice(0, 3).reduce((a, x) => a + x.lost, 0),
+        head: falls.length === 1 ? `${esc(nameCase(falls[0].p.name))} se prodaje manje` : `${falls.length} jela se prodaje manje nego prošli mjesec`,
+        why: falls.slice(0, 3).map((x) => `${esc(nameCase(x.p.name))} ${x.rate[0].toFixed(1).replace(".", ",")} → ${x.rate[1].toFixed(1).replace(".", ",")} dnevno`).join(" · "),
+        act: "Je li se promijenila cijena, porcija ili mjesto na karti — ili ga konobari manje preporučuju?", sub: "prihodi" });
+    }
+    /* the chef's list: dishes that barely sell over a whole month */
+    if (isPast(month) || new Date().getDate() >= 20) {
+      const slow = (s.items || []).filter((i) => isDish(i) && i.qty > 0 && i.qty <= 4);
+      if (slow.length >= 2) out.push({ e: 0, head: `${slow.length} jela prodano 4 puta ili manje`,
+        why: slow.slice(0, 6).map((i) => `${esc(nameCase(i.name))} (${nf(i.qty)})`).join(" · "),
+        act: "Kandidati za skidanje s karte: manje pripreme, manje otpisa, kraća karta." });
+    }
+    /* the weakest day of the week against the strongest */
+    const wd = (s.weekdays || []).filter((w) => w.days >= 2).map((w) => ({ ...w, per: w.total / w.days })).sort((a, b) => a.per - b.per);
+    if (wd.length >= 3 && wd[0].per < wd[wd.length - 1].per * 0.7) out.push({ e: 0,
+      head: `${cap(WD[wd[0].wd])}: ${eur0(wd[0].per)} po danu, ${WD[wd[wd.length - 1].wd]} ${eur0(wd[wd.length - 1].per)}`,
+      why: wd.map((w) => `${WD[w.wd].slice(0, 3)} ${eur0(w.per)}`).join(" · "),
+      act: `${cap(WD[wd[0].wd])}om: dnevna ponuda, degustacija ili događaj — ili kraće radno vrijeme ako dan ne pokriva troškove.` });
+    const st = (s.leaks || []).reduce((a, l) => ({ n: a.n + (l.storno_n || 0), v: a.v + (l.storno || 0) }), { n: 0, v: 0 });
+    if (st.n >= 5) out.push({ e: 0, head: `Storno: ${st.n} ${plural(st.n, "račun", "računa", "računa")} (${eur0(st.v)})`,
+      why: (s.leaks || []).filter((l) => l.storno_n).sort((a, b) => b.storno - a.storno).map((l) => `${esc(l.waiter.split(" ")[0])} ${l.storno_n}`).join(" · "),
+      act: "Većinom su to ispravci (drugi način plaćanja). Vrijedi pogledati one koji nisu odmah ponovno izdani." });
+    return out.sort((a, b) => (b.e > 0) - (a.e > 0) || b.e - a.e);
+  }
+  let allFocus = false;
+
+  function overview() {
+    const list = inMonth(month), sales = needIncome(month);
+    const net = netByCategory(list), incNet = salesNet(sales), mloc = MONTHS_LOC[Number(month.slice(5, 7)) - 1];
+    if (!list.length && !(sales && incTotal(sales))) {
+      return `${monthNav()}${sales ? `<p class="muted center">U ${mloc} još nema ni prihoda ni troškova.</p>` : `<p class="muted center"><span class="spin"></span> učitavam…</p>`}`;
+    }
+    const pay = payroll(month), goods = GOODS.reduce((a, c) => a + (net.cats[c] || 0), 0);
+    const result = incNet - net.total;
+    const out = sales && incTotal(sales) ? outVat(sales).total : 0, pre = vatOf(list).total;
+    const warn = !pay && isPast(month)
+      ? `<p class="warn">Plaće za ${mloc} nisu upisane, pa je rezultat previsok. Upišite ih u Računima (✍️ bez računa), s datumom u ${mloc}.</p>` : "";
+
+    const card = sales && incNet ? `<div class="card bal">
+      <div><span>Prihodi <small>bez PDV-a</small></span><b>${eur0(incNet)}</b></div>
+      <div><span>Troškovi <small>bez PDV-a${pay ? "" : ", bez plaća"}</small></span><b>− ${eur0(net.total)}</b></div>
+      <div class="sum"><span>Rezultat</span><b class="${result < 0 ? "up" : ""}">${result < 0 ? "− " : ""}${eur0(Math.abs(result))} <small>${Math.round((result / incNet) * 100)}%</small></b></div>
+      <div class="kpi"><span>Prime cost <small>roba + plaće ÷ prihodi · zdravo do ~65%</small></span><b>${pay ? Math.round(((goods + pay) / incNet) * 100) + "%" : "—"}</b></div>
+      ${out ? `<div class="kpi" data-sub="pdv" role="button"><span>PDV za uplatu <small>odvojite ga</small></span><b>${eur0(out - pre)}</b></div>` : ""}
+    </div>` : "";
+
+    const ins = insights(), shown = allFocus ? ins : ins.slice(0, 5);
+    const focus = ins.length ? `<h3 class="h">Na što se usredotočiti</h3>
+      <div class="focus">${shown.map((x) => `<div class="fc${x.sub ? " go" : ""}"${x.sub ? ` data-sub="${x.sub}" role="button"` : ""}>
+        <div class="fh"><b>${x.head}</b>${x.e > 0 ? `<span class="fe">${eur0(x.e)}<small>/mj</small></span>` : ""}</div>
+        ${x.why ? `<p class="muted small">${x.why}</p>` : ""}<p class="fa">${x.act}</p></div>`).join("")}</div>
+      ${ins.length > 5 ? `<button class="nema" data-allfocus>${allFocus ? "Manje" : `Sve (${ins.length})`}</button>` : ""}` : "";
+
+    const cur = rubricMonth(month), roll = rubricRolling(month);
+    const rubRows = RUBRICS.map(([k, label]) => {
+      const c = cur && cur[k], r = roll && roll[k], s3 = shareOf(r), s1 = shareOf(c), [lo, hi] = BANDS[k];
+      const cls = s3 == null ? "" : s3 > hi ? "up" : s3 < lo ? "low" : "ok";
+      return `<div class="rub"><span class="rl">${esc(label)}</span><span>${c && c.sold ? eur0(c.sold) : "—"}</span>
+        <span class="rp">${s1 != null ? Math.round(s1) + "%" : ""}</span><span class="rp ${cls}">${s3 != null ? Math.round(s3) + "%" : ""}</span>
+        <span class="rp dim">${lo}–${hi}%</span></div>`;
+    }).join("");
+
+    const others = GROUPS.filter(([k]) => !["hrana", "pice"].includes(k)).map(([k, label, members, color]) => ({
+      k, label, color, members, sum: members.reduce((a, c) => a + (net.cats[c] || 0), 0) + (k === "ostalo" ? net.rest : 0),
+    })).filter((g) => Math.abs(g.sum) > 0.004).sort((a, b) => b.sum - a.sum);
+    const omax = Math.max(...others.map((g) => g.sum), 1);
+    const otherBars = others.map((g) => `
+      <button class="bar" data-group="${g.k}" aria-expanded="${openGroup === g.k}">
+        <span class="bl">${esc(g.label)}</span><span class="bv">${eur0(g.sum)}</span>
+        <span class="track"><span style="width:${Math.max(2, (g.sum / omax) * 100)}%;background:${g.color}"></span></span>
+      </button>
+      ${openGroup === g.k ? `<div class="parts">${g.members.map((c) => [c, net.cats[c] || 0]).filter(([, v]) => Math.abs(v) > 0.004)
+        .map(([c, v]) => `<div><span>${esc(CAT[c])}</span><span>${eur0(v)}</span></div>`).join("")}${g.k === "ostalo" && Math.abs(net.rest) > 0.05
+        ? `<div><span>nerazvrstano</span><span>${eur0(net.rest)}</span></div>` : ""}</div>` : ""}`).join("");
+
+    const six = [...Array(6)].map((_, i) => shiftMonth(month, i - 5));
+    const byM = Object.fromEntries(((sales && sales.months) || []).map((x) => [x.m, x.total - (x.vat || 0)]));
+    const outs = six.map((m) => inMonth(m).reduce((a, r) => a + netOf(r), 0));
+    const smax = Math.max(...six.map((m) => byM[m] || 0), ...outs, 1);
+    const pairs = six.map((m, i) => `<button data-month="${m}" class="${m === month ? "on" : ""}">
+        <span class="cv">${byM[m] ? Math.round((byM[m] - outs[i]) / 1000) + "k" : ""}</span>
+        <span class="cb pair"><span class="in" style="height:${Math.max(byM[m] ? 3 : 0, ((byM[m] || 0) / smax) * 100)}%"></span><span style="height:${Math.max(outs[i] ? 3 : 0, (outs[i] / smax) * 100)}%"></span></span>
+        <span class="cl">${MONTHS[Number(m.slice(5, 7)) - 1].slice(0, 3)}</span></button>`).join("");
+
+    return `
+      ${monthNav()}
+      ${warn}${card}${focus}
+      <h3 class="h">Po rubrikama <small>bez PDV-a</small></h3>
+      <div class="rubs"><div class="rub head"><span></span><span>prodano</span><span>udio</span><span>3 mj.</span><span>uobič.</span></div>${rubRows}</div>
+      <p class="muted small">Udio = nabavljeno ÷ prodano. "3 mj." je mjerodavniji: roba kupljena jednog mjeseca prodaje se idućeg. Pivo se prodaje pod žestokim, a kupuje pod kavom i sokovima.</p>
+      ${others.length ? `<h3 class="h">Ostali troškovi <small>bez PDV-a</small></h3><div class="bars">${otherBars}</div>` : ""}
+      <h3 class="h">Zadnjih 6 mjeseci <small><i class="lg in"></i>prihodi <i class="lg"></i>troškovi · bez PDV-a</small></h3>
+      <div class="cols">${pairs}</div>`;
   }
 
   /* ---------- upload ---------- */
@@ -864,7 +1049,9 @@
   const PAY_KEY = "place|mj|";
   /* biggest rise first; a tap on another sort starts it at its natural end */
   const priceSort = { by: "promjena", dir: -1 };
-  function pricesView() {
+  /* every product's purchases in date order, shared by Cijene and Pregled's
+     price impact (2026-10-14) */
+  function priceHistory() {
     const seen = {}, mixed = new Set();
     for (const r of done().slice().sort((a, b) => dateOf(a).localeCompare(dateOf(b)))) {
       const here = new Map();
@@ -891,6 +1078,10 @@
           spent: it.total || 0, id: r.id, no: r.doc_no, line: lineSmall(it), cat: it.category });
       }
     }
+    return { seen, mixed };
+  }
+  function pricesView() {
+    const { seen, mixed } = priceHistory();
     /* Plaće, month against month (owner, 2026-10-13: "plaće could also be in
        Cijene"): not a unit price, but the same question — what did this
        month's salaries cost against the last. One entry per month, the
@@ -1025,6 +1216,7 @@
   /* ---------- wiring ---------- */
   function wire(box) {
     box.querySelectorAll("[data-rub]").forEach((b) => b.addEventListener("click", () => { openRub = openRub === b.dataset.rub ? null : b.dataset.rub; render(); }));
+    box.querySelectorAll("[data-allfocus]").forEach((b) => b.addEventListener("click", () => { allFocus = !allFocus; render(); }));
     box.querySelectorAll("[data-allcusts]").forEach((b) => b.addEventListener("click", () => { allCusts = !allCusts; render(); }));
     box.querySelectorAll("[data-sub]").forEach((b) => b.addEventListener("click", () => { sub = b.dataset.sub; render(); }));
     box.querySelectorAll("[data-m]").forEach((b) => b.addEventListener("click", () => { month = shiftMonth(month, Number(b.dataset.m)); openGroup = null; open = null; render(); }));

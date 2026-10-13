@@ -157,12 +157,24 @@ button{font:inherit;cursor:pointer}
 .days small{font-size:9px;color:var(--dim);margin-top:2px}
 .cols.c12{grid-template-columns:repeat(12,1fr);gap:2px}.cols.c12 .cv{font-size:9px}
 /* Pregled 2026-10-14: the rubrike table, in/out column pairs */
-.rubs{margin:6px 0}.rub{display:grid;grid-template-columns:1.4fr 1fr 1fr .55fr;gap:6px;padding:7px 0;border-bottom:1px solid var(--line);font-size:15px}
+.rubs{margin:6px 0}.rub{display:grid;grid-template-columns:1.5fr 1.1fr .6fr .6fr .8fr;gap:6px;padding:7px 0;border-bottom:1px solid var(--line);font-size:15px}
 .rub span:not(.rl){text-align:right}.rub.head{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;border:none;padding-bottom:0}
 .rub .rp{color:var(--dim)}.rub .rp.up{color:#e0a49c}
 .cols .cb.pair{gap:2px;width:80%}.cols .cb.pair span{flex:1;width:auto}.cols .cb.pair .in{background:#7a6a44}
 .cols button.on .cb.pair .in{background:var(--gold)}.cols button.on .cb.pair span:not(.in){background:#a5544a}
 .lg{display:inline-block;width:9px;height:9px;border-radius:2px;background:#4a463e;margin:0 3px 0 8px}.lg.in{background:var(--gold)}
+/* Pregled 2026-10-14: what to look at first, the KPI lines, waiters */
+.warn{background:#3a2a1c;border-left:3px solid #e0a49c;padding:10px 12px;border-radius:8px;font-size:14px;margin:10px 0}
+.focus{display:flex;flex-direction:column;gap:8px;margin:6px 0 10px}
+.fc{background:var(--panel);border-radius:12px;padding:12px 14px;border-left:3px solid var(--gold)}.fc.go{cursor:pointer}
+.fc .fh{display:flex;justify-content:space-between;gap:10px;align-items:baseline}.fc .fh b{font-size:15px;font-weight:600}
+.fc .fe{color:var(--gold);font-weight:600;white-space:nowrap}.fc .fe small{color:var(--dim);font-weight:400;margin-left:2px}
+.fc p{margin:4px 0 0}.fc .fa{font-size:14px}
+.card.bal .kpi{font-size:14px;color:var(--dim);border-top:1px dashed var(--line);margin-top:6px;padding-top:6px}.card.bal .kpi b{color:var(--ink)}
+.card.bal small{font-size:11px;color:var(--dim);margin-left:4px}
+.rub .rp.ok{color:#9cc79e}.rub .rp.low{color:#d9c27a}.rub .rp.dim{font-size:12px}
+.wt>div{display:grid;grid-template-columns:1.6fr .6fr .8fr .8fr .8fr;gap:6px;padding:7px 0;border-bottom:1px solid var(--line);font-size:14px}
+.wt>div span:not(:first-child){text-align:right}.wt .head{font-size:11px;color:var(--dim);text-transform:uppercase;border:none;padding-bottom:0}
 .card.bal{cursor:pointer}.card.bal>div{display:flex;justify-content:space-between;padding:3px 0;font-size:16px}
 .card.bal .sum{border-top:1px solid var(--line);margin-top:4px;padding-top:6px;font-size:18px}
 .mnav{display:flex;align-items:center;justify-content:space-between;margin:14px 0 6px}

@@ -408,3 +408,38 @@ want to click every day or force anyone to do this."
 - **Prihodi** no longer shows payment methods (owner: not relevant); it shows
   the average bill, and "Što se prodaje" by rubrika, opening onto the till's
   sales groups.
+
+### Pregled leads the owner somewhere (2026-10-14)
+
+"Not generic data, but the useful ones … to drive him to the right
+direction" — and the owner is the chef. Pregled opens with **Na što se
+usredotočiti**: findings ranked by the euros a month at stake, each with the
+evidence and one thing to do. A finding with no honest euro figure ranks
+after those with one. Five shown, the rest on a tap. What it looks for:
+
+- a rubrika's cost share (3 months, net) **above** its usual band — euros =
+  the part above the band; or far **below** it — most likely missing receipts
+  (cash at the market), said as such;
+- **supplier price rises** this month: (new − previous price) × what was
+  bought now, per product, from the Cijene history (`priceHistory()`);
+- **wine per bill by waiter** — euros = lifting everyone below the median to
+  it; it says lunch shifts explain part of the gap;
+- **discounts and free items**, and who gave the most;
+- the **average bill** falling ≥5% against last month;
+- **dishes selling less** than last month, per open day (a running month
+  compares fairly) — euros = the shortfall;
+- **dishes sold ≤4 times** in a month — the chef's candidates to drop;
+- the **weakest weekday** against the strongest; **storno** as a control.
+
+Below it: the result **without PDV** (the till's lines carry their net; a
+receipt line its e-invoice net, else its receipt's net ÷ gross), **prime
+cost** = (goods + plaće) ÷ net income, PDV to set aside, the rubrike with
+month and 3-month shares against their usual bands (25–35% food, 30–45% wine,
+15–25% spirits, 15–30% coffee/soft drinks — orientation, not law), the other
+costs and six months, all net. A past month with no Plaće says so on top: the
+result is too high without them, and they belong under the month they pay for.
+
+Prihodi gained the evidence: the dishes and wines that carry the month (▲▼
+per open day against last month), the week, lunch against dinner (16 h), and
+each waiter's bills, average bill, wine per bill and discounts. Payment
+methods are gone (owner: not relevant).
