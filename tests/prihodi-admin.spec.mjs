@@ -49,7 +49,7 @@ test("Prihodi shows the month from Remaris, and Pregled and PDV use it", async (
   await expect(page.locator(".card.bal .sum")).toContainText("622 €");
   /* Filho, 2026-10-14: only break-even, the average bill and wine per bill —
      discounts and storno are not shown ("nebitno") */
-  await expect(page.locator(".fc").first()).toContainText("Prag isplativosti");
+  await expect(page.locator(".fc").first()).toContainText("Zarada i prag čekaju plaće");
   await expect(page.locator(".fc", { hasText: "Prosječni račun" })).toBeVisible();
   await expect(page.locator(".fc", { hasText: "Vino po računu" })).toBeVisible();
   await expect(page.locator(".fc", { hasText: "Popusti" })).toHaveCount(0);

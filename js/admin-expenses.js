@@ -692,6 +692,8 @@
           what is sold (3 complete months, net of PDV, plaće included);
        2. the average bill;
        3. wine per bill, and by waiter. */
+  /* Filho's goal (2026-10-14): "dnevna zarada 1k € dnevno — što je meni cilj, tako i držat" */
+  const PROFIT_TARGET = 1000;
   function breakEven() {
     const end = isPast(month) ? month : shiftMonth(month, -1);
     const ms = [0, -1, -2].map((d) => shiftMonth(end, d));
@@ -699,25 +701,35 @@
     if (ss.some((x) => !x)) return null;
     const span = `${MONTHS[Number(ms[2].slice(5, 7)) - 1]}–${MONTHS[Number(ms[0].slice(5, 7)) - 1]}`;
     const noPay = ms.filter((m) => !payroll(m));
-    if (noPay.length) return { e: 0, head: "Prag isplativosti čeka plaće",
+    if (noPay.length) return { e: 0, head: "Zarada i prag čekaju plaće",
       why: `Za ${noPay.map((m) => MONTHS[Number(m.slice(5, 7)) - 1]).join(", ")} nema upisanih plaća.`,
       act: "Kad se upišu, ovdje piše koliko treba prodati po danu da se pokriju svi troškovi — i koliko do toga nedostaje ili ga prelazite." };
-    let inc = 0, goods = 0, other = 0, days = 0, bills = 0;
+    let inc = 0, gross = 0, goods = 0, other = 0, days = 0, bills = 0;
+    const parts = {};
     ms.forEach((m, i) => {
       const n = netByCategory(inMonth(m)), g = GOODS.reduce((a, c) => a + (n.cats[c] || 0), 0);
-      inc += salesNet(ss[i]); goods += g; other += n.total - g;
+      inc += salesNet(ss[i]); gross += incTotal(ss[i]); goods += g; other += n.total - g;
       days += workDaysOf(ss[i]); bills += ss[i].days.reduce((a, d) => a + d.n, 0);
+      for (const [c, v] of Object.entries(n.cats)) if (!GOODS.includes(c)) parts[c] = (parts[c] || 0) + v;
+      if (Math.abs(n.rest) > 0.05) parts.ostalo = (parts.ostalo || 0) + n.rest;
     });
     if (!inc || !days || !bills) return null;
     const keep = 1 - goods / inc;                 /* of each euro sold, what is left after the goods */
     if (keep <= 0) return null;
-    const need = other / keep / days, have = inc / days, gap = have - need;
-    const perBill = inc / bills, billsDay = bills / days;
-    return { e: gap < 0 ? (-gap * days) / 3 : 0, key: "prag",
-      head: gap >= 0 ? `Pokrivate troškove: ${eur0(have)} dnevno, prag je ${eur0(need)}` : `Ispod praga: ${eur0(have)} dnevno, a treba ${eur0(need)}`,
-      why: `${span}, bez PDV-a · ostali troškovi (plaće, režije…) ${eur0(other / 3)} mjesečno · od svakog eura prodaje nakon robe ostaje ${Math.round(keep * 100)} centi`,
-      act: gap >= 0 ? `Iznad praga ste ${eur0(gap)} po radnom danu — to je zarada.`
-        : `Nedostaje ${eur0(-gap)} po radnom danu: to je ${Math.ceil(-gap / perBill)} ${plural(Math.ceil(-gap / perBill), "račun", "računa", "računa")} više dnevno (danas ih je ${Math.round(billsDay)}), ili ${eur0(-gap / billsDay)} više po računu.` };
+    /* profit, not "revenue above the threshold" (2026-10-14: the card said
+       the 1.034 € above it was profit; profit is that × keep) */
+    const need = other / keep / days, have = inc / days, profit = (inc - goods - other) / days;
+    const toGo = PROFIT_TARGET - profit, perBill = gross / bills, billsDay = bills / days;
+    const moreSales = toGo > 0 ? toGo / keep : 0;               /* net sales a day that make up the gap */
+    const vatX = gross / inc;                                    /* the till's own gross ÷ net */
+    const costs = Object.entries(parts).filter(([, v]) => Math.abs(v) > 1).sort((a, b) => b[1] - a[1])
+      .map(([c, v]) => `${esc(CAT[c] || c)} ${eur0(v / 3)}`).join(" · ");
+    return { e: 0, key: "prag",
+      head: `Zarada: ${eur0(profit)} po radnom danu <small>cilj ${eur0(PROFIT_TARGET)}</small>`,
+      why: `${span}, bez PDV-a · prodaja ${eur0(have)} dnevno (s PDV-om ${eur0(have * vatX)}) · prag ${eur0(need)} (s PDV-om ${eur0(need * vatX)}) · od eura prodaje nakon robe ostaje ${Math.round(keep * 100)} centi<br>
+        Uračunati troškovi mjesečno: ${costs || "—"} — ako nešto fali (najam, kredit, knjigovodstvo, gotovina na tržnici), prag je viši, a zarada manja.`,
+      act: toGo > 0 ? `Do cilja nedostaje ${eur0(toGo)} zarade dnevno = ${eur0(moreSales * vatX)} više prometa dnevno: ${Math.ceil((moreSales * vatX) / perBill)} ${plural(Math.ceil((moreSales * vatX) / perBill), "račun", "računa", "računa")} više (danas ${Math.round(billsDay)}) ili ${eur0((moreSales * vatX) / billsDay)} više po računu.`
+        : `Cilj je ispunjen: ${eur0(-toGo)} iznad njega po radnom danu.` };
   }
   function insights() {
     const s = needIncome(month), prev = needIncome(shiftMonth(month, -1)), ly = needIncome(shiftMonth(month, -12));

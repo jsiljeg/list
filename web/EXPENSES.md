@@ -534,3 +534,14 @@ web/alerts sends `to: "weekly"` to `MAIL_TO_WEEKLY`, one message per address,
 and the send_email binding allows exactly those two. **Each address must be
 verified in Cloudflare → Email Routing → Destination addresses**; until Filho
 clicks Cloudflare's link, his copy fails and the owner's still goes.
+
+### The first card is profit against Filho's goal (2026-10-14)
+
+The card said the revenue above break-even "is profit" — it is not: profit
+is that × what is left of each euro after the goods. It now reads **Zarada:
+X € po radnom danu, cilj 1.000 €** (Filho: "dnevna zarada 1k € dnevno, što
+je meni cilj, tako i držat"; `PROFIT_TARGET`), with sales and break-even net
+and with PDV, **every cost it counts, by category, per month** — so a missing
+one shows — and what closes the gap in bills a day or euros per bill.
+Filho expects break-even at 3.000–3.400 € a day against the 1.473 € (net) the
+data gives: costs are missing from Troškovi, or his figure is gross; asked.
