@@ -207,6 +207,8 @@ export function cleanItems(items) {
         doc_qty: num4(it.doc_qty), doc_unit: clip(it.doc_unit, 8).toLowerCase(), doc_price: num4(it.doc_price), doc_base: num4(it.doc_base),
         discount: num(it.discount), doc_total: num(it.doc_total), vat_rate: num(it.vat_rate),
       });
+      /* the supplier's own article number (W067 0,75 l, W442 1,5 l) */
+      if (it.doc_code) out.doc_code = clip(it.doc_code, 40);
     }
     if (it && it.fixed) out.fixed = true;
     return out;

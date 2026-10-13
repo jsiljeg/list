@@ -91,6 +91,10 @@ export function ublDraft(xml) {
     const discount = allow ? num(txt(allow, "MultiplierFactorNumeric")) : null;
     return {
       name: txt(ln, "Item", "Name") || txt(ln, "Item", "Description"),
+      /* the supplier's article number: one name can be two articles (Henri
+         Giraud Esprit is W067 in 0,75 l and W442 in 1,5 l, both printed
+         "ESPRIT BRUT NAT." in the XML, 2026-10-12) */
+      doc_code: txt(ln, "Item", "SellersItemIdentification", "ID") || txt(ln, "Item", "StandardItemIdentification", "ID"),
       /* as the invoice states it — what Filho compares with the PDF */
       doc_qty: qty0, doc_unit: DOC_UNITS[(qEl && qEl.attrs.unitCode) || ""] || "kom",
       doc_price: price, doc_base: base !== 1 ? base : null,     /* "20,74 € / 1000 g" stays that */

@@ -611,25 +611,42 @@
   /* "0,75 l", "800 g", "300–400 g", "1,5 kg" in a line's name */
   function packOf(name) {
     const m = String(name || "").match(/(\d+(?:[.,]\d+)?)(?:\s*[-–]\s*(\d+(?:[.,]\d+)?))?\+?\s*(ml|cl|l|kg|g)\b/i);
-    return m ? `${m[1].replace(",", ".")}${m[2] ? "-" + m[2].replace(",", ".") : ""}${m[3].toLowerCase()}` : "";
+    if (m) return `${m[1].replace(",", ".")}${m[2] ? "-" + m[2].replace(",", ".") : ""}${m[3].toLowerCase()}`;
+    /* a bottle printed bare after the name: "BRUT NAT. 0,75", "… 1,50" */
+    const b = String(name || "").match(/\s(\d[.,]\d{1,3})\s*$/);
+    return b ? `${Number(b[1].replace(",", "."))}l` : "";
   }
+  /* a size that lives only in the key ("… brut nature 1,5 l") is shown on
+     the row, or a bottle and a magnum would read the same */
+  const keySize = (key, name) => {
+    if (packOf(name)) return "";
+    const m = String(key || "").match(/\s(\d+(?:,\d+)?\s?(?:l|ml|g|kg))$/);
+    return m ? ` · ${m[1]}` : "";
+  };
   let openPrice = null;
   /* one supplier at a time (Filho, 2026-10-12: "da ja stisnem usporedi mi sve
      cijene iz Moj Mesar i onda on sve usporedi"): only that supplier's own
      invoices, every product bought from them at least twice */
   let priceVendor = "";
   function pricesView() {
-    const seen = {};
+    const seen = {}, mixed = new Set();
     for (const r of done().slice().sort((a, b) => dateOf(a).localeCompare(dateOf(b)))) {
-      const here = new Set();
+      const here = new Map();
       for (const it of r.items) {
         if (!it.key || it.unit_price == null || it.unit_price <= 0 || ["rezije", "usluge", "odrzavanje"].includes(it.category)) continue;
         if (NOT_A_PRODUCT.test(it.name) || NOT_A_PRODUCT.test(it.key)) continue;
         const k = `${it.key}|${it.unit || ""}|${packOf(it.name)}`;
-        if (here.has(k)) continue;                 /* the same article twice on one invoice is one purchase */
-        here.add(k);
+        /* the same article twice on one invoice is one purchase; the same
+           name at two prices on one invoice is two articles the name does not
+           tell apart (a bottle and a magnum, two vintages, two origins) —
+           never compared, set aside to be checked (2026-10-12, Henri Giraud) */
+        if (here.has(k)) {
+          if (Math.abs(here.get(k) - it.unit_price) <= it.unit_price * 0.005) continue;
+          mixed.add(k);
+        }
+        here.set(k, it.unit_price);
         (seen[k] = seen[k] || []).push({ p: it.unit_price, d: dateOf(r), v: shortName(r.vendor), name: it.name, unit: it.unit,
-          spent: it.total || 0, id: r.id, no: r.doc_no, line: lineSmall(it) });
+          spent: it.total || 0, id: r.id, no: r.doc_no, line: lineSmall(it), cat: it.category });
       }
     }
     /* suppliers with something to compare, most products first */
@@ -652,6 +669,15 @@
       return `<p class="muted center">Kad isti proizvod kupite barem dvaput, ovdje se vidi kako mu se mijenja cijena.</p>`;
     }
     /* moved = changed since the last purchase, or since the first one we have */
+    /* A bottled or packed article does not really move +60% or −40% between
+       two deliveries; a jump like that is a magnum read as a bottle (Henri
+       Giraud's 1,5 l is "ESPRIT BRUT NAT." in the XML, like the 0,75 l). Fresh
+       goods can, with the season, so they are left alone. */
+    const PACKED = new Set(["vino", "zestoko", "pivo_sokovi", "kava", "ciscenje", "ambalaza"]);
+    const wild = (v) => v != null && (v > 60 || v < -40);
+    for (const r of rows) if (PACKED.has(r.last.cat) && (wild(r.change) || wild(r.since))) mixed.add(r.k);
+    const check = rows.filter((r) => mixed.has(r.k));
+    rows.splice(0, rows.length, ...rows.filter((r) => !mixed.has(r.k)));
     const moved = rows.filter((r) => r.change || r.since).sort((a, b) => Math.abs(b.change || b.since) - Math.abs(a.change || a.since));
     const steady = rows.filter((r) => !r.change && !r.since).sort((a, b) => b.spent - a.spent);
     const mname = (d) => MONTHS_LOC[Number(d.slice(5, 7)) - 1];
@@ -661,9 +687,9 @@
       const was = r.change ? `prije ${eur(r.prev.p)}` : r.since ? `u ${mname(r.first.d)} ${eur(r.first.p)}` : "";
       const isOpen = openPrice === r.k;
       return `<div class="pr${isOpen ? " open" : ""}"><button class="prh" data-price="${esc(r.k)}" aria-expanded="${isOpen}">
-      <span class="pn">${esc(r.name)}<small>${where} · ${r.n}× · zadnje ${hrDate(r.last.d)}${was ? ` · ${was}` : ""}</small></span>
+      <span class="pn">${esc(r.name)}${esc(keySize(r.k.split("|")[0], r.name))}<small>${where} · ${r.n}× · zadnje ${hrDate(r.last.d)}${was ? ` · ${was}` : ""}</small></span>
       <span class="pp"><b>${eur(r.last.p)}</b><small>/${esc(r.unit || "kom")}</small>
-        ${r.change ? arrow(r.change, "") : r.since ? arrow(r.since, ` od ${MONTHS_GEN[Number(r.first.d.slice(5, 7)) - 1]}`) : `<span class="muted">ista</span>`}</span></button>
+        ${mixed.has(r.k) ? `<span class="muted">provjeriti</span>` : r.change ? arrow(r.change, "") : r.since ? arrow(r.since, ` od ${MONTHS_GEN[Number(r.first.d.slice(5, 7)) - 1]}`) : `<span class="muted">ista</span>`}</span></button>
       ${isOpen ? `<div class="ph">${r.h.slice().reverse().map((x) => `<button class="phr" data-goto="${esc(x.id)}">
           <span>${hrDate(x.d)} · ${esc(x.v || "")}${x.no ? ` · br. ${esc(x.no)}` : ""}<small>${esc(x.name)}</small>${x.line}</span>
           <b>${eur(x.p)}<small>/${esc(x.unit || "kom")}</small></b></button>`).join("")}</div>` : ""}</div>`;
@@ -680,7 +706,8 @@
     return `<p class="muted small">Isti proizvod, zadnja kupnja prema prethodnoj. Cijena po kg, l ili komadu, s PDV-om. Dodirnite proizvod da vidite račune koji se uspoređuju.</p>
       ${picker}${summary}
       ${moved.length ? `<h3 class="h">Promijenjene cijene</h3>${moved.map(row).join("")}` : ""}
-      ${steady.length ? `<h3 class="h">Iste cijene</h3>${steady.map(row).join("")}` : ""}`;
+      ${steady.length ? `<h3 class="h">Iste cijene</h3>${steady.map(row).join("")}` : ""}
+      ${check.length ? `<h3 class="h">Treba provjeriti</h3><p class="muted small">Isti naziv po dvije cijene na istom računu, ili skok cijene kakav se ne događa — vjerojatno dva artikla (veličina boce, berba, porijeklo). Ne uspoređuje se dok se ne razdvoje; dodirnite da vidite stavke.</p>${check.map(row).join("")}` : ""}`;
   }
 
   /* a tap in a category picker: a group opens (or, alone, is chosen); a

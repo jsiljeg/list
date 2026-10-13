@@ -29,7 +29,9 @@ async function knownKeys(env) {
   for (const row of results || []) {
     let items = [];
     try { items = JSON.parse(row.items || "[]"); } catch { /* skip */ }
-    for (const it of items) if (it && it.key && !seen.has(it.key)) seen.set(it.key, String(it.name || "").slice(0, 80));
+    for (const it of items) if (it && it.key && !seen.has(it.key)) seen.set(it.key, [String(it.name || "").slice(0, 80), it.unit_price, it.unit]);
   }
-  return [...seen].slice(0, 800).map(([key, name]) => ({ key, name }));
+  /* with the latest price per unit, so a run can see that a 143 € "Esprit"
+     beside a known 69 € one is the magnum */
+  return [...seen].slice(0, 800).map(([key, [name, price, unit]]) => ({ key, name, price: price ?? null, unit: unit || "" }));
 }

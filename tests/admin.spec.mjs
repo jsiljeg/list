@@ -759,7 +759,7 @@ test("MER: a backfill range never moves last_ok", () => {
   const src = readFileSync(new URL("../web/functions/_lib/mer.js", import.meta.url), "utf8");
   expect(src).toMatch(/if \(!range && fresh\.length <= PER_SYNC\) await setState\(env, "last_ok", now\)/);
   const api = readFileSync(new URL("../web/functions/api/troskovi/mer.js", import.meta.url), "utf8");
-  expect(api).toMatch(/merSync\(env, \{ force: true, range \}\)/);
+  expect(api).toMatch(/merSync\(env, \{ force: true, range,/);
 });
 
 /* Filho, 2026-10-12: "bilo bi dobro ako bi moglo i račune razvrstavat — kao
@@ -1031,4 +1031,46 @@ test("MER: the PDF is cut out before parsing and decoded only when opened", () =
   expect(mer).toMatch(/'application\/pdf;base64'/);
   const foto = readFileSync(new URL("../web/functions/api/troskovi/[id]/foto/[n].js", import.meta.url), "utf8");
   expect(foto).toMatch(/;base64\$/);
+});
+
+/* Owner, 2026-10-12: Henri Giraud comes as 0,75 l and 1,5 l, and the XML
+   names both "ESPRIT BRUT NAT.". One name at two prices on one invoice, or
+   a jump no bottled article makes, is set aside to check — never compared.
+   A size that lives only in the key is shown on the row. */
+test("Troškovi: Cijene sets aside a bottle and a magnum under one name", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const hg = (unit_price, key = "sampanjac henri giraud esprit brut nature") =>
+    ({ name: "Šampanjac Henri Giraud Esprit Brut Nature", key, qty: 1, unit: "kom", unit_price, total: unit_price, category: "vino" });
+  const r = (id, day, items) => ({ id, created_at: `${ym}-${day}T09:00:00Z`, updated_at: "", status: "done", vendor: "WINE SELECT D.O.O.",
+    vendor_oib: "9", doc_date: `${ym}-${day}`, doc_no: "N" + id, total: items.reduce((s, i) => s + i.total, 0), vat: null, payment: "virman",
+    photos: [], note: "", created_by: "", source: "mer", dup_of: "", due_date: "", paid_at: "", items });
+  const items = [
+    r("a", "01", [hg(69), hg(143.75)]),                               /* both on one invoice */
+    r("b", "05", [hg(69)]),
+    r("c", "08", [hg(143.75, "sampanjac henri giraud esprit brut nature 1,5 l")]),
+    r("d", "09", [hg(143.75, "sampanjac henri giraud esprit brut nature 1,5 l")]),
+    r("e", "02", [{ ...hg(40, "rum x 0,7 l"), name: "Rum X 0,7 l", category: "zestoko" }]),
+    r("f", "06", [{ ...hg(90, "rum x 0,7 l"), name: "Rum X 0,7 l", category: "zestoko" }]),   /* +125% */
+  ];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="cijene"]');
+  const box = page.locator("#tab-troskovi");
+  await expect(box.getByText("Treba provjeriti")).toBeVisible();
+  await expect(box.locator(".pr").filter({ hasText: "provjeriti" })).toHaveCount(2);      /* the mixed 0,75 l and the rum jump */
+  await expect(box.locator(".pr").filter({ hasText: "Rum X" })).toContainText("provjeriti");
+  /* the magnum, on its own key, compares with itself and says its size */
+  await expect(box.locator(".pr").filter({ hasText: "· 1,5 l" })).toContainText("ista");
+  await expect(box.locator(".pr").filter({ hasText: /▲|▼/ })).toHaveCount(0);
+});
+
+/* The supplier's article number reaches the line (W067 vs W442). */
+test("MER: an e-invoice line keeps the supplier's article number", () => {
+  const ubl = readFileSync(new URL("../web/functions/_lib/ubl.js", import.meta.url), "utf8");
+  expect(ubl).toMatch(/doc_code: txt\(ln, "Item", "SellersItemIdentification", "ID"\)/);
+  const eracun = readFileSync(new URL("../web/functions/api/troskovi/[id]/eracun.js", import.meta.url), "utf8");
+  expect(eracun).toMatch(/code: doc_code \|\| ""/);
 });
