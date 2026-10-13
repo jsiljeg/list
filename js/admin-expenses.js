@@ -29,7 +29,7 @@
     meso: "Meso", riba: "Riba i plodovi mora", povrce: "Voće i povrće", mlijecno: "Mliječno i jaja",
     suha: "Suha roba", pekara: "Pekara", vino: "Vino", zestoko: "Žestoka pića", pivo_sokovi: "Pivo, sokovi, voda",
     kava: "Kava i čaj", ciscenje: "Čišćenje i higijena", ambalaza: "Ambalaža i potrošno", oprema: "Oprema i inventar",
-    odrzavanje: "Održavanje", rezije: "Režije i najam", usluge: "Usluge", dekor: "Cvijeće i dekor", ostalo: "Ostalo",
+    odrzavanje: "Održavanje", rezije: "Režije i najam", usluge: "Usluge", dekor: "Cvijeće i dekor", place: "Plaće", ostalo: "Ostalo",
   };
   /* Six groups a chef thinks in; categories inside them on a tap. */
   const GROUPS = [
@@ -38,9 +38,13 @@
     ["potrosno", "Potrošno", ["ciscenje", "ambalaza", "dekor"], "#6f8f9a"],
     ["oprema", "Oprema i održavanje", ["oprema", "odrzavanje"], "#8a7bb0"],
     ["rezije", "Režije i usluge", ["rezije", "usluge"], "#6c9a6f"],
+    /* salaries (owner, 2026-10-13): their own group, so a month's food and
+       drink are not read against a payroll that dwarfs them */
+    ["place", "Plaće", ["place"], "#b07a5a"],
     ["ostalo", "Ostalo", ["ostalo"], "#7d776b"],
   ];
-  const groupOf = (c) => (GROUPS.find((g) => g[2].includes(c)) || GROUPS[5]);
+  const OSTALO = GROUPS.find((g) => g[0] === "ostalo");
+  const groupOf = (c) => (GROUPS.find((g) => g[2].includes(c)) || OSTALO);
   const MONTHS = ["siječanj", "veljača", "ožujak", "travanj", "svibanj", "lipanj", "srpanj", "kolovoz", "rujan", "listopad", "studeni", "prosinac"];
   const MONTHS_GEN = ["siječnja", "veljače", "ožujka", "travnja", "svibnja", "lipnja", "srpnja", "kolovoza", "rujna", "listopada", "studenoga", "prosinca"];
   const MONTHS_LOC = ["siječnju", "veljači", "ožujku", "travnju", "svibnju", "lipnju", "srpnju", "kolovozu", "rujnu", "listopadu", "studenome", "prosincu"];
@@ -330,6 +334,7 @@
      words as he types and is one tap to change. Saved as read, at once — no
      run, nothing to wait for. */
   const GUESS = [
+    [/pla[cć]e\b|pla[cć]a\b|obra[cč]un pla|joppd|bruto|neto pla/i, "place"],
     [/majstor|popravak|popravi|servis|vodoinstal|elektri[cč]ar|bravar|stolar|keramičar|keramicar|limar|klima/i, "odrzavanje"],
     [/povr[cć]|vo[cć]e|salat|raj[cč]ic|krumpir|\bluk|gljiv|tikvic|paprik|limun|bilj|za[cč]in|plac|tr[zž]nic|dolac|opg/i, "povrce"],
     [/meso|mesn|pilet|piler|junet|june[cć]|svinj|tele[cć]|janj|kobasic|pr[sš]ut|slanin/i, "meso"],
@@ -351,7 +356,7 @@
      is: "m|<line>" in the form, "r|<receipt>|<line>" on a read receipt. */
   function catPicker(scope, current, hint) {
     const g = groupView[scope] || groupOf(current)[0];
-    const members = (GROUPS.find((x) => x[0] === g) || GROUPS[5])[2];
+    const members = (GROUPS.find((x) => x[0] === g) || OSTALO)[2];
     return `<div class="catpick" data-pickscope="${esc(scope)}" data-cur="${esc(current)}">
       <div class="cg">${GROUPS.map(([k, label, , color]) => `<button type="button" data-pickg="${esc(scope)}|${k}" class="${k === g ? "on" : ""}"
         style="--c:${color}">${esc(label)}</button>`).join("")}</div>
@@ -633,7 +638,7 @@
     for (const r of done().slice().sort((a, b) => dateOf(a).localeCompare(dateOf(b)))) {
       const here = new Map();
       for (const it of r.items) {
-        if (!it.key || it.unit_price == null || it.unit_price <= 0 || ["rezije", "usluge", "odrzavanje"].includes(it.category)) continue;
+        if (!it.key || it.unit_price == null || it.unit_price <= 0 || ["rezije", "usluge", "odrzavanje", "place"].includes(it.category)) continue;
         if (NOT_A_PRODUCT.test(it.name) || NOT_A_PRODUCT.test(it.key)) continue;
         const k = `${it.key}|${it.unit || ""}|${packOf(it.name)}`;
         /* the same article twice on one invoice is one purchase; the same

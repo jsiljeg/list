@@ -1085,3 +1085,41 @@ test("Troškovi: a run that never read puts its receipts back in line and pauses
   const lib = readFileSync(new URL("../web/functions/_lib/expenses.js", import.meta.url), "utf8");
   expect(lib).toMatch(/held: "paused"/);
 });
+
+/* Owner, 2026-10-13: "we would need Plaće category". A payroll is its own
+   group — a chip in Računi, a bar in Pregled — and never a Cijene product. */
+test("Troškovi: Plaće is its own kind, and a manual 'plaće' line guesses it", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const r = (id, vendor, total, category) => ({ id, created_at: `${ym}-03T09:00:00Z`, updated_at: "", status: "done", vendor, vendor_oib: "",
+    doc_date: `${ym}-03`, doc_no: "", total, vat: null, payment: "virman", photos: [], note: "", created_by: "", source: "foto",
+    dup_of: "", due_date: "", paid_at: "", items: [{ name: vendor, key: "", qty: null, unit: "", unit_price: null, total, category }] });
+  const items = [r("p", "Plaće", 9000, "place"), r("m", "Moj Mesar", 300, "meso")];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await expect(page.locator(".bars .bar").first()).toContainText("Plaće");
+  await page.click('[data-sub="racuni"]');
+  await expect(page.locator('.kinds [data-kind="place"]')).toContainText("1");
+  await page.click("[data-manual]");
+  await page.fill('[data-ml="0"][data-k=name]', "plaće za rujan");
+  await expect(page.locator('[data-pickscope="m|0"] .cg .on')).toHaveText("Plaće");
+});
+
+/* 113 reading runs in a night at 8 receipts each (2026-10-13): e-invoices
+   now go up to 24 a run, photos stay at 8. Source assertion: server code. */
+test("Troškovi: a reading run takes up to 24 e-invoices but only 8 photos", () => {
+  const lib = readFileSync(new URL("../web/functions/_lib/expenses.js", import.meta.url), "utf8");
+  expect(lib).toMatch(/BATCH_EINVOICE = 24/);
+  expect(lib).toMatch(/if \(photo && photos >= BATCH\) continue;/);
+  expect(lib).toMatch(/"place"/);
+});
+
+/* Salaries come as the bank's "Popis naloga za plaćanje", already paid
+   (owner, 2026-10-13). A read document may carry paid_date; it never
+   overwrites a mark set by hand. Source assertion: server code. */
+test("Troškovi: a document that proves payment arrives marked paid", () => {
+  const act = readFileSync(new URL("../web/functions/api/troskovi/[id]/[action].js", import.meta.url), "utf8");
+  expect(act).toMatch(/b\.paid_date[\s\S]{0,40}&& !item\.paid_at\) await setFields\(env, id, \{ paid_at: b\.paid_date \}\)/);
+});

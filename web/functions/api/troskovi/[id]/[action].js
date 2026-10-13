@@ -52,6 +52,10 @@ export async function onRequestPost({ request, env, params }) {
         due_date: /^\d{4}-\d{2}-\d{2}$/.test(b.due_date || "") ? b.due_date : null,
         items: JSON.stringify(keepFixed(item.items, cleanItems(b.items))), note: clip(b.note, 300),
       });
+      /* a document that is itself proof of payment — a bank's list of executed
+         payment orders, as salaries come (2026-10-13) — says when it was paid;
+         a mark Filho already set by hand is never overwritten */
+      if (/^\d{4}-\d{2}-\d{2}$/.test(b.paid_date || "") && !item.paid_at) await setFields(env, id, { paid_at: b.paid_date });
     }
     /* the same invoice, photographed and arrived from MER, counts once: the
        e-invoice is exact, so the photo is the one set aside */

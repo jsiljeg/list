@@ -16,7 +16,8 @@
 import { reply, isStaffAsync } from "./wines.js";
 
 export { reply, isStaffAsync };
-export const BATCH = 8;
+export const BATCH = 8;                /* photos per run */
+export const BATCH_EINVOICE = 24;      /* receipts per run when they are e-invoices */
 /* 80 since 2026-10-12, for the backfill of the whole year from MER (~700
    e-invoices) to be read overnight (owner: "have the full year"). Was 12,
    then 24. The monthly brake is what bounds the spend. */
@@ -152,9 +153,20 @@ export async function pump(env) {
   const l = await limits(env);
   if (l.today >= DAILY_RUNS) return { held: "daily_cap" };
   if (l.month >= MONTHLY_RUNS) return { held: "monthly_cap" };
-  const { results } = await env.DB.prepare(
-    "SELECT id FROM expense_receipts WHERE status = 'queued' ORDER BY created_at LIMIT ?1").bind(BATCH).all();
-  if (!results || !results.length) return { held: "empty" };
+  /* e-invoices are exact text and cheap to read, so a run takes up to
+     BATCH_EINVOICE of them; photos stay at BATCH (2026-10-13: 113 runs in a
+     night, each re-sending the prompt and 400 known keys, at 8 a run) */
+  const { results: waiting } = await env.DB.prepare(
+    "SELECT id, source FROM expense_receipts WHERE status = 'queued' ORDER BY created_at LIMIT ?1").bind(BATCH_EINVOICE).all();
+  if (!waiting || !waiting.length) return { held: "empty" };
+  const results = [];
+  let photos = 0;
+  for (const w of waiting) {
+    const photo = w.source !== "mer";
+    if (photo && photos >= BATCH) continue;
+    if (photo) photos += 1;
+    results.push(w);
+  }
   const batch = newId(), ids = results.map((r) => r.id);
   for (const id of ids) {
     await env.DB.prepare(
@@ -193,7 +205,9 @@ export async function pump(env) {
    unknown one becomes "ostalo" rather than a new heading nobody chose. */
 export const CATEGORIES = ["meso", "riba", "povrce", "mlijecno", "suha", "pekara",
   "vino", "zestoko", "pivo_sokovi", "kava",
-  "ciscenje", "ambalaza", "oprema", "odrzavanje", "rezije", "usluge", "dekor", "ostalo"];
+  "ciscenje", "ambalaza", "oprema", "odrzavanje", "rezije", "usluge", "dekor", "place", "ostalo"];
+/* place: salaries — one payroll document a month, its total the employer's
+   full cost (owner, 2026-10-13: "we would need Plaće category") */
 const num = (v) => (v == null || v === "" || !Number.isFinite(Number(v)) ? null : Math.round(Number(v) * 100) / 100);
 /* Two sets of numbers per line, on purpose (owner, 2026-10-12: "numbers are
    made up — Teranino didn't cost like you put it"). doc_* is the line exactly

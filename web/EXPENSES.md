@@ -248,3 +248,35 @@ list's changes. The wine list's history is its git log; receipts never touch
 git, so these come from `expense_events` in D1 (`GET /api/troskovi/povijest`,
 staff key), with supplier and amount copied in so a deleted receipt still
 reads. The toggle sends `by` — the name /admin is signed in as, as for NOVO.
+
+## Plaće (owner, 2026-10-13)
+
+"We would need Plaće category … I would upload it as 1 document from the
+gallery; total price is only what matters, but you need to recognize the
+month." A payroll document (obračun plaće, rekapitulacija, platna lista,
+JOPPD) is read as **one item**, `Plaće za rujan 2026`, category `place`:
+
+- the amount is the employer's full cost (ukupni trošak / bruto II); if the
+  paper shows only net or gross, that is taken and the note says which;
+- `doc_date` is the last day of the month the salaries are **for**, not the
+  day it was printed, so September's pay counts in September;
+- no employee's name, OIB, IBAN or individual pay is kept anywhere;
+- Plaće is its own group (chip, Pregled bar), never compared in Cijene.
+
+They come as the bank's **Popis naloga za plaćanje** (the owner's example:
+17 orders sent 15.09.2026 — pay "Plaća i naknade KOLOVOZ 2026", income-tax
+advances and contributions "za KOL 2026", one obustava; Ukupno EUR
+15.897,77). The total is Ukupno EUR, the month is KOLOVOZ (so 31.08.), and
+because a list of executed orders is proof of payment the reader also
+returns `paid_date` (15.09.) — the receipt arrives PLAĆENO. A mark set by
+hand is never overwritten.
+
+## Reading runs: 24 e-invoices, 8 photos (2026-10-13)
+
+113 runs in one night at 8 receipts each, every one re-sending the prompt
+and ~400 known keys. E-invoices are exact text, so a run now takes up to 24
+(`BATCH_EINVOICE`); photos stay at 8 (`BATCH`). 160 turns a run. A run Claude
+refuses to start reports `retry` (back in line, try not counted, reading
+paused 30 min); a silent batch is requeued after 15 min; the workflow has no
+concurrency group (GitHub cancelled waiting runs and stranded their batches);
+reports back retry on a dropped connection.
