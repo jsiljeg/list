@@ -361,7 +361,7 @@
      uploads anything. The server sums a month; this only draws it. */
   const INCOME_API = API.replace(/\/troskovi$/, "/prihodi");
   const income = {};            /* month → summary, or "loading" */
-  let incomeErr = "";
+  let incomeErr = "", allCusts = false;   /* 30 companies a month: the top 8 until asked */
   function needIncome(m) {
     if (income[m]) return income[m] === "loading" ? null : income[m];
     income[m] = "loading";
@@ -431,7 +431,8 @@
       <h3 class="h">Što se prodaje</h3>
       <div class="bars">${bars(s.groups.slice(0, 12), (r) => r.grp || "—", "#a5544a")}</div>
       ${custs.length ? `<h3 class="h">Tvrtke <small>računi izdani na tvrtku</small></h3>
-      <div class="lines">${custs.map((c) => `<div><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}</small></span><b>${eur(c.total)}</b></div>`).join("")}</div>` : ""}
+      <div class="lines">${(allCusts ? custs : custs.slice(0, 8)).map((c) => `<div><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}</small></span><b>${eur(c.total)}</b></div>`).join("")}</div>
+      ${custs.length > 8 ? `<button class="nema" data-allcusts>${allCusts ? "Manje" : `Sve tvrtke (${custs.length})`}</button>` : ""}` : ""}
       ${months12}${footer}`;
   }
   /* Pregled's first card: what came in, what went out, what is left */
@@ -1012,6 +1013,7 @@
 
   /* ---------- wiring ---------- */
   function wire(box) {
+    box.querySelectorAll("[data-allcusts]").forEach((b) => b.addEventListener("click", () => { allCusts = !allCusts; render(); }));
     box.querySelectorAll("[data-sub]").forEach((b) => b.addEventListener("click", () => { sub = b.dataset.sub; render(); }));
     box.querySelectorAll("[data-m]").forEach((b) => b.addEventListener("click", () => { month = shiftMonth(month, Number(b.dataset.m)); openGroup = null; open = null; render(); }));
     box.querySelectorAll("[data-month]").forEach((b) => b.addEventListener("click", () => { month = b.dataset.month; openGroup = null; render(); }));
