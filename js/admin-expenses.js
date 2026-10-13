@@ -259,13 +259,13 @@
     const waiting = receipts.filter((r) => r.status === "queued" || r.status === "working").length;
     box.innerHTML = `
       <div class="seg3" role="group" aria-label="Troškovi">
-        ${[["pregled", "Pregled"], ["racuni", "Računi"], ["cijene", "Cijene"], ["pdv", "PDV"]].map(([k, l]) =>
+        ${[["pregled", "Pregled"], ["prihodi", "Prihodi"], ["racuni", "Računi"], ["cijene", "Cijene"], ["pdv", "PDV"]].map(([k, l]) =>
           `<button data-sub="${k}" class="${sub === k ? "on" : ""}" aria-pressed="${sub === k}">${l}</button>`).join("")}
       </div>
       ${err ? `<p class="err">${esc(err)}</p>` : ""}
       ${waiting ? `<p class="muted small center"><span class="spin"></span> ${waiting} ${waiting === 1 ? "račun se čita" : "računa se čita"} — obično minuta-dvije.</p>` : ""}
       ${olderLoading ? `<p class="muted small center"><span class="spin"></span> učitavam starije račune…</p>` : ""}
-      ${sub === "pregled" ? overview() : sub === "racuni" ? receiptsView() : sub === "pdv" ? vatView() : pricesView()}`;
+      ${sub === "pregled" ? overview() : sub === "prihodi" ? incomeView() : sub === "racuni" ? receiptsView() : sub === "pdv" ? vatView() : pricesView()}`;
     wire(box);
   }
 
@@ -330,6 +330,7 @@
     const today = new Date().toISOString().slice(0, 7) === month ? new Date().getDate() : days;
     return `
       ${monthNav()}
+      ${balanceCard(total)}
       ${list.length ? `
       <div class="big"><b>${eur0(total)}</b>
         <span class="muted small">${list.length} ${list.length % 10 === 1 && list.length % 100 !== 11 ? "račun" : "računa"} · prosječno ${eur0(total / Math.max(1, today))} dnevno</span>
@@ -351,6 +352,97 @@
         <span class="cv">${sums[i] ? eur0(sums[i]).replace(" €", "") : ""}</span>
         <span class="cb"><span style="height:${Math.max(sums[i] ? 3 : 0, (sums[i] / smax) * 100)}%"></span></span>
         <span class="cl">${MONTHS[Number(m.slice(5, 7)) - 1].slice(0, 3)}</span></button>`).join("")}</div>`;
+  }
+
+  /* ---------- Prihodi (owner, 2026-10-13: "the counterpart of Kamo idu
+     novci … income and expenses at the same admin place") ----------
+     Every bill the till issued, read from Remaris every morning at 6:00 by
+     the private repo's run (theatrium-troskovi/remaris/sync.py); nobody
+     uploads anything. The server sums a month; this only draws it. */
+  const INCOME_API = API.replace(/\/troskovi$/, "/prihodi");
+  const income = {};            /* month → summary, or "loading" */
+  let incomeErr = "";
+  function needIncome(m) {
+    if (income[m]) return income[m] === "loading" ? null : income[m];
+    income[m] = "loading";
+    fetch(`${INCOME_API}?mjesec=${m}`, { headers: { authorization: "Bearer " + ghKey() } })
+      .then((r) => r.json().then((b) => { if (!r.ok) throw new Error(b.error || "HTTP " + r.status); return b; }))
+      .then((b) => { income[m] = b; incomeErr = ""; render(); })
+      .catch((e) => { delete income[m]; incomeErr = "Ne mogu učitati prihode: " + e.message; render(); });
+    return null;
+  }
+  const incTotal = (s) => (s && s.days ? s.days.reduce((a, d) => a + d.total, 0) : 0);
+  /* izlazni PDV by rate, from the lines' own tax group: "H (HRANA IZLAZ 13%)" */
+  function outVat(s) {
+    const rates = {};
+    let total = 0;
+    for (const t of (s && s.taxes) || []) {
+      const v = (t.total || 0) - (t.net || 0), m = String(t.tax || "").match(/(\d+(?:[.,]\d+)?)\s*%/);
+      const k = m ? m[1].replace(",", ".") : "?";
+      rates[k] = (rates[k] || 0) + v; total += v;
+    }
+    return { total, rates };
+  }
+  const PAY_LABEL = { Gotovina: "Gotovina", Virman: "Virman (na račun)" };
+  function incomeView() {
+    const s = needIncome(month), prev = needIncome(shiftMonth(month, -1));
+    if (!s) return `${monthNav()}${incomeErr ? `<p class="err">${esc(incomeErr)}</p>` : `<p class="muted center"><span class="spin"></span> učitavam prihode…</p>`}`;
+    const total = incTotal(s), n = s.days.reduce((a, d) => a + d.n, 0);
+    const state = s.state || {}, fail = (() => { try { return state.error ? JSON.parse(state.error) : null; } catch { return null; } })();
+    const footer = `<p class="muted small">Iz Remarisa, svako jutro u 6:00, sami.${state.last_ok
+        ? ` Zadnje čitanje: ${hrDate(state.last_ok.slice(0, 10))} u ${new Date(state.last_ok).toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" })}.` : ""}</p>
+      ${fail && fail.msg ? `<p class="err">Zadnje čitanje Remarisa nije uspjelo (${hrDate(fail.at.slice(0, 10))}): ${esc(fail.msg)}</p>` : ""}`;
+    const twelve = [...Array(12)].map((_, i) => shiftMonth(month, i - 11));
+    const byM = Object.fromEntries((s.months || []).map((x) => [x.m, x.total]));
+    const mmax = Math.max(...twelve.map((m) => byM[m] || 0), 1);
+    const months12 = `<h3 class="h">Zadnjih 12 mjeseci</h3>
+      <div class="cols c12">${twelve.map((m) => `<button data-month="${m}" class="${m === month ? "on" : ""}">
+        <span class="cv">${byM[m] ? Math.round(byM[m] / 1000) + "k" : ""}</span>
+        <span class="cb"><span style="height:${Math.max(byM[m] ? 3 : 0, ((byM[m] || 0) / mmax) * 100)}%"></span></span>
+        <span class="cl">${MONTHS[Number(m.slice(5, 7)) - 1].slice(0, 3)}</span></button>`).join("")}</div>`;
+    if (!n) return `${monthNav()}<p class="muted center">U ${MONTHS_LOC[Number(month.slice(5, 7)) - 1]} nema računa iz Remarisa.</p>${months12}${footer}`;
+    /* a running month against the same days of the last one, as Pregled does */
+    const running = month === new Date().toISOString().slice(0, 7), upTo = new Date().getDate();
+    const pm = shiftMonth(month, -1);
+    const prevSame = prev ? prev.days.filter((d) => !running || Number(d.day.slice(8, 10)) <= upTo).reduce((a, d) => a + d.total, 0) : 0;
+    const p = pct(total, prevSame);
+    const cmp = prevSame ? `<span class="${p >= 0 ? "down" : "up"}">${p >= 0 ? "▲" : "▼"} ${Math.abs(p)}%</span> ${running
+        ? `u odnosu na 1.–${upTo}. ${MONTHS_GEN[Number(pm.slice(5, 7)) - 1]} (${eur0(prevSame)})` : `u odnosu na ${MONTHS[Number(pm.slice(5, 7)) - 1]} (${eur0(prevSame)})`}` : "";
+    const workDays = s.days.filter((d) => d.total > 0).length;
+    const dmax = Math.max(...s.days.map((d) => d.total), 1);
+    const bars = (rows, label, color) => {
+      const max = Math.max(...rows.map((r) => r.total), 1);
+      return rows.filter((r) => Math.abs(r.total) > 0.004).map((r) => `<div class="bar"><span class="bl">${esc(label(r))}</span>
+        <span class="bv">${eur0(r.total)} <small>${total ? Math.round((r.total / total) * 100) : 0}%</small></span>
+        <span class="track"><span style="width:${Math.max(2, (r.total / max) * 100)}%;background:${color}"></span></span></div>`).join("");
+    };
+    const custs = (s.custs || []).filter((c) => Math.abs(c.total) > 0.004);
+    return `${monthNav()}
+      <div class="big"><b>${eur0(total)}</b>
+        <span class="muted small">${n} ${plural(n, "račun", "računa", "računa")} · ${workDays} ${plural(workDays, "radni dan", "radna dana", "radnih dana")} · prosječno ${eur0(total / Math.max(1, workDays))} po danu</span>
+        ${cmp ? `<span class="small">${cmp}</span>` : ""}</div>
+      <h3 class="h">Po danima</h3>
+      <div class="days">${s.days.map((d) => `<span title="${hrDate(d.day)} · ${eur0(d.total)} · ${d.n} ${plural(d.n, "račun", "računa", "računa")}">
+        <span style="height:${Math.max(2, (d.total / dmax) * 100)}%"></span><small>${Number(d.day.slice(8, 10))}</small></span>`).join("")}</div>
+      <h3 class="h">Kako se plaća</h3>
+      <div class="bars">${bars(s.pays, (r) => PAY_LABEL[r.pay] || r.pay || "—", "#c9a961")}</div>
+      <h3 class="h">Što se prodaje</h3>
+      <div class="bars">${bars(s.groups.slice(0, 12), (r) => r.grp || "—", "#a5544a")}</div>
+      ${custs.length ? `<h3 class="h">Tvrtke <small>računi izdani na tvrtku</small></h3>
+      <div class="lines">${custs.map((c) => `<div><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}</small></span><b>${eur(c.total)}</b></div>`).join("")}</div>` : ""}
+      ${months12}${footer}`;
+  }
+  /* Pregled's first card: what came in, what went out, what is left */
+  function balanceCard(spent) {
+    const s = needIncome(month);
+    if (!s || !incTotal(s)) return "";
+    const inc = incTotal(s), left = inc - spent;
+    return `<div class="card bal" data-sub="prihodi" role="button" tabindex="0" aria-label="Otvori prihode">
+      <div><span>Prihodi</span><b>${eur0(inc)}</b></div>
+      <div><span>Troškovi</span><b>− ${eur0(spent)}</b></div>
+      <div class="sum"><span>Ostaje</span><b class="${left < 0 ? "up" : ""}">${left < 0 ? "− " : ""}${eur0(Math.abs(left))}</b></div>
+      <p class="muted small">Prihodi s blagajne (Remaris), troškovi s računa u Troškovima — oboje s PDV-om. Plaće se vide samo ako su upisane.</p>
+    </div>`;
   }
 
   /* ---------- upload ---------- */
@@ -697,10 +789,17 @@
       .map(([k, x]) => `<div><span>${k === "?" ? "stopa nije na stavkama" : `${nf(Number(k))}%`}</span><b>${eur(x)}</b></div>`).join("");
     /* newest first; what he asked, first, its parts below it (owner, 2026-10-13) */
     const six = [...Array(6)].map((_, i) => shiftMonth(month, -i));
+    /* izlazni PDV from the till's own lines (Remaris, every morning) */
+    const sales = needIncome(month), out = sales && incTotal(sales) ? outVat(sales) : null;
+    const outRows = out ? Object.entries(out.rates).filter(([, x]) => Math.abs(x) > 0.004)
+      .sort((a, b) => Number(b[0]) - Number(a[0]))
+      .map(([k, x]) => `<div><span>${k === "?" ? "bez porezne grupe" : `${nf(Number(k))}%`}</span><b>${eur(x)}</b></div>`).join("") : "";
     return `${monthNav()}
       <div class="card vat">
         <h3>PDV za uplatu</h3>
-        <p class="muted small">Izlazni PDV − pretporez. Prikazat će se kad bude učitan izlazni PDV.</p>
+        ${out ? `<div class="vbig">${eur(out.total - v.total)}</div>
+        <p class="muted small">Izlazni PDV ${eur(out.total)} − pretporez ${eur(v.total)}</p>`
+        : `<p class="muted small">Izlazni PDV − pretporez. ${sales ? `Za ${mloc} još nema računa iz Remarisa.` : "Učitavam izlazni PDV…"}</p>`}
       </div>
       <div class="card vat">
         <h3>Pretporez <small>PDV na ulaznim računima</small></h3>
@@ -710,7 +809,10 @@
       </div>
       <div class="card vat">
         <h3>Izlazni PDV <small>PDV na prodaji, iz Remarisa</small></h3>
-        <p class="muted small">Ovdje će se moći učitati izvoz (CSV) iz Remaris back officea za ${mloc} — u pripremi.</p>
+        ${out ? `<div class="vbig">${eur(out.total)}</div>
+        <p class="muted small">s blagajne u ${mloc}, po poreznim grupama na stavkama računa; storno računi uključeni</p>
+        ${outRows ? `<div class="vrates">${outRows}</div>` : ""}`
+        : `<p class="muted small">Računi s blagajne čitaju se iz Remarisa svako jutro u 6:00.</p>`}
       </div>
       <p class="muted small">Procjena, mjesečno, prema datumu računa (fakturirana realizacija). Računovodstvo izuzima troškove kod kojih se pretporez ne priznaje ili priznaje djelomično (reprezentacija, osobni automobili…), pa je stvarni pretporez nešto manji, a PDV za uplatu nešto veći.</p>
       <h3 class="h">Pretporez, zadnjih 6 mjeseci</h3>

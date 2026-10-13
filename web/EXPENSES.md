@@ -349,3 +349,40 @@ private repo (cron at both possible UTC hours, the step goes on only at 9 or
 Opening the tab still checks too (at most every 30 minutes).
 
 PDV: "PDV za uplatu" is the first card; the 6 months run newest first.
+
+## Prihodi — the till's bills from Remaris (owner, 2026-10-13)
+
+"The counterpart of Kamo idu novci … income and expenses at the same admin
+place, and only then PDV." And: "this process has to be automated — I don't
+want to click every day or force anyone to do this."
+
+- **Remaris has no API** (Monri's manual, docs.monri.com, documents none; the
+  sales contact said "export CSV"). Its back office has *Analiza podataka →
+  Excel podaci → Računi*: every bill with its lines, storno bills, fiscal
+  data (JIR/ZKI) and each line's tax group.
+- **The morning run does those clicks as plain HTTP**, no browser:
+  `theatrium-troskovi/remaris/sync.py`, scheduled 6:00 Zagreb by
+  `remaris-sync.yml`. Log in (form post), `POST /ExcelData/StartExcelGeneration`
+  `{RequestGuid}`, `POST /ExcelData/GetInvoiceExcel?startDate&endDate&organizationId
+  &locationId&includeCanceled=true&exportInvoiceItems=true&exportFiskalizationInfo=true
+  &exportTaxGroupSign=true&includePivot=false&requestGuid`, poll
+  `ExcelGenerationStatus` for `downloadUrl` (remarisfiles.gastromaster.com.hr),
+  download, `GET /Account/LogOff`. Mapped 2026-10-13 by a one-off probe (in
+  that repo's history). Read-only: it never opens any other screen.
+- **The last 4 days every morning**, so a storno or a changed payment method
+  from yesterday lands. Each export is the truth for its days: bills are
+  replaced, and one the export no longer has is removed — except that an
+  *empty* export never deletes (a glitch must not wipe days). Backfill by hand
+  with the workflow's from/to; it exports a month at a time.
+- **Credentials** are the owner's Remaris user (`REMARIS_USER`/`REMARIS_PASS`
+  secrets, `REMARIS_URL` variable, in theatrium-troskovi); the run posts with
+  `EXPENSE_WORKER_KEY` to `/api/prihodi/uvoz`, ≤ 40 bills a post (a free
+  Worker's CPU). The log prints counts only.
+- **Stored** in `sales_bills` / `sales_lines`, id = year/fiscal number — the
+  numbers restart every January. A storno is its own negative bill, so sums
+  are right as they are. `/api/prihodi?mjesec=` sums a month in SQL.
+- **/admin**: Troškovi gets a *Prihodi* view (month, days, payment methods,
+  sales groups, company customers, 12 months); *Pregled* opens with Prihodi −
+  Troškovi = Ostaje; *PDV* fills izlazni PDV (total − net per line tax group)
+  and PDV za uplatu. A failed run shows its reason under Prihodi, and GitHub
+  mails the owner.

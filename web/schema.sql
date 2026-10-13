@@ -344,3 +344,36 @@ CREATE TABLE IF NOT EXISTS daily_dispatches (
   request_id  TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS idx_daily_disp_date ON daily_dispatches (date);
+
+-- Prihodi (2026-10-13): every bill the till issued, from Remaris "Excel
+-- podaci", read every morning by theatrium-troskovi/remaris/sync.py and
+-- posted to /api/prihodi/uvoz. id = year/fiscal number (numbers restart each
+-- January). A storno is its own bill with a negative total. See
+-- web/EXPENSES.md, "Prihodi", and functions/_lib/sales.js.
+CREATE TABLE IF NOT EXISTS sales_bills (
+  id     TEXT PRIMARY KEY,                   -- 2026/4179/P3/1
+  no     TEXT NOT NULL,                      -- fiscal number as printed
+  day    TEXT NOT NULL,                      -- accounting day (knjigovodstveni datum)
+  at     TEXT NOT NULL,                      -- issued, local time
+  pay    TEXT,                               -- Gotovina, Visa, Master, Virman…
+  waiter TEXT,
+  cust   TEXT,                               -- company on the bill, if any
+  oib    TEXT,
+  total  REAL NOT NULL,                      -- with PDV
+  vat    REAL NOT NULL DEFAULT 0,
+  pnp    REAL NOT NULL DEFAULT 0,
+  jir    TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_sales_bills_day ON sales_bills (day);
+CREATE TABLE IF NOT EXISTS sales_lines (
+  bill_id TEXT NOT NULL,
+  n       INTEGER NOT NULL,
+  code    TEXT, name TEXT, grp TEXT,         -- Remaris article code, name, sales group
+  tax     TEXT,                              -- tax group, e.g. "H (HRANA IZLAZ 13%)"
+  qty     REAL, price REAL, disc REAL, net REAL, total REAL,
+  PRIMARY KEY (bill_id, n)
+);
+CREATE TABLE IF NOT EXISTS sales_state (
+  k TEXT PRIMARY KEY,                        -- last_ok | last_range | error
+  v TEXT
+);
