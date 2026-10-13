@@ -1123,3 +1123,36 @@ test("Troškovi: a document that proves payment arrives marked paid", () => {
   const act = readFileSync(new URL("../web/functions/api/troskovi/[id]/[action].js", import.meta.url), "utf8");
   expect(act).toMatch(/b\.paid_date[\s\S]{0,40}&& !item\.paid_at\) await setFields\(env, id, \{ paid_at: b\.paid_date \}\)/);
 });
+
+/* Owner, 2026-10-13: "gallery should also accept PDF as well". A PDF is
+   offered, shown as a document tile, and sent as itself. */
+test("Troškovi: the gallery takes a PDF and sends it as a PDF", async ({ page }) => {
+  await board(page);
+  const posts = [];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => {
+    const req = route.request();
+    if (req.method() === "POST") posts.push(req.postDataBuffer() ? req.postDataBuffer().toString("latin1") : "");
+    return route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify(req.method() === "GET" ? { items: [], limits: { ready: true } } : { ok: true, item: {} }) });
+  });
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="racuni"]').catch(() => {});
+  const gallery = page.locator('input[type=file][multiple][data-up]');
+  await expect(gallery).toHaveAttribute("accept", /application\/pdf/);
+  await gallery.setInputFiles({ name: "place-kolovoz.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4\n%test\n") });
+  await expect(page.locator(".upth.pdf")).toContainText("place-kolovoz");
+  await page.click("[data-send]");
+  await expect.poll(() => posts.length).toBe(1);
+  expect(posts[0]).toMatch(/filename="racun\.pdf"\r\nContent-Type: application\/pdf/);
+  expect(posts[0]).toContain("%PDF-1.4");
+});
+
+/* The reading job hands a gallery PDF to the run (an e-invoice's own PDF
+   stays out of it). Source assertion: server code. */
+test("Troškovi: the reading job lists uploaded PDFs", () => {
+  const src = readFileSync(new URL("../web/functions/api/troskovi/posao/[batch].js", import.meta.url), "utf8");
+  expect(src).toMatch(/p\.mime = 'application\/pdf'\) AS pdfs/);
+  expect(src).toMatch(/pdfs: r\.source === "mer" \? \[\] : nums\(r\.pdfs\)/);
+  expect(readFileSync(new URL("../web/functions/_lib/expenses.js", import.meta.url), "utf8")).toMatch(/PHOTO_TYPES = \[[^\]]*"application\/pdf"/);
+});

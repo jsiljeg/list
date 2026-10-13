@@ -10,10 +10,14 @@ export async function onRequestGet({ request, env, params }) {
   if (!isExpenseWorker(request, env)) return reply(request, { error: "key" }, 401);
   if (!/^\d{8}-[0-9a-f]{12}$/.test(params.batch)) return reply(request, { error: "batch" }, 400);
   const { results } = await env.DB.prepare(
-    `SELECT r.id, r.source, (SELECT GROUP_CONCAT(n) FROM expense_photos p WHERE p.receipt_id = r.id AND p.mime LIKE 'image/%') AS pics
+    `SELECT r.id, r.source, (SELECT GROUP_CONCAT(n) FROM expense_photos p WHERE p.receipt_id = r.id AND p.mime LIKE 'image/%') AS pics,
+            (SELECT GROUP_CONCAT(n) FROM expense_photos p WHERE p.receipt_id = r.id AND p.mime = 'application/pdf') AS pdfs
        FROM expense_receipts r WHERE r.batch = ?1 AND r.status = 'working'`).bind(params.batch).all();
+  const nums = (v) => (v ? String(v).split(",").map(Number) : []);
+  /* an e-invoice's PDF is for Filho's eyes; a PDF uploaded from the gallery
+     is the document itself, and goes to the run as one (2026-10-13) */
   return reply(request, { receipts: (results || []).map((r) => ({ id: r.id, einvoice: r.source === "mer",
-    photos: r.source === "mer" || !r.pics ? [] : String(r.pics).split(",").map(Number) })),
+    photos: r.source === "mer" ? [] : nums(r.pics), pdfs: r.source === "mer" ? [] : nums(r.pdfs) })),
     known_keys: await knownKeys(env) });
 }
 

@@ -93,6 +93,7 @@
   let manual = null, saving = false;
   let mer = null;                       /* moj-eRačun: how the connection stands */
   const thumbs = new Map();
+  const pdfThumbs = new Set();          /* receipt|n whose file is a PDF */
 
   async function api(path, opts = {}) {
     const r = await fetch(API + path, { ...opts, headers: { authorization: "Bearer " + ghKey(), ...(opts.headers || {}) } });
@@ -317,10 +318,12 @@
     return `<div class="card up${compact && !n ? " compact" : ""}">
       <div class="ch-acts">
         <label class="nema shot-btn">📷 Slikaj račun<input type="file" accept="image/*" capture="environment" data-up></label>
-        <label class="nema shot-btn">🖼 Galerija<input type="file" accept="image/*,.heic,.heif" multiple data-up></label>
+        <label class="nema shot-btn">🖼 Galerija<input type="file" accept="image/*,.heic,.heif,application/pdf,.pdf" multiple data-up></label>
       </div>
       ${n ? "" : `<button class="nema man-btn" data-manual="">✍️ Plaćeno bez računa — upiši</button>`}
-      ${n ? `<div class="pics up-pics">${picked.map((f, i) => `<span class="upth" style="background-image:url(${esc(f.url)})"><button data-unpick="${i}" aria-label="Makni sliku">✕</button></span>`).join("")}</div>
+      ${n ? `<div class="pics up-pics">${picked.map((f, i) => isPdf(f.file)
+          ? `<span class="upth pdf" title="${esc(f.file.name)}">📄<small>${esc(f.file.name.slice(0, 18))}</small><button data-unpick="${i}" aria-label="Makni dokument">✕</button></span>`
+          : `<span class="upth" style="background-image:url(${esc(f.url)})"><button data-unpick="${i}" aria-label="Makni sliku">✕</button></span>`).join("")}</div>
         ${n > 1 ? `<div class="ch-acts seg2"><button class="nema ${oneReceipt ? "" : "ok"}" data-one="">${n} računa</button><button class="nema ${oneReceipt ? "ok" : ""}" data-one="1">1 račun, ${n} slike</button></div>` : ""}
         ${sending ? `<button class="btn wide busy" disabled><span class="spin"></span>${esc(sending)}</button>`
           : `<div class="ch-acts"><button class="nema ok" data-send>pošalji${n > 1 && !oneReceipt ? ` (${n})` : ""}</button><button class="nema cancel" data-clear>odustani</button></div>`}` : ""}
@@ -430,6 +433,8 @@
     } catch (e) { saving = false; err = "Nije spremljeno: " + e.message; render(); }
   }
 
+  const isPdf = (f) => f && (f.type === "application/pdf" || /\.pdf$/i.test(f.name || ""));
+  const PDF_MAX = 1_500_000;            /* the server's PHOTO_MAX */
   async function shrink(file) {
     const bmp = await createImageBitmap(file, { imageOrientation: "from-image" }).catch(() => createImageBitmap(file))
       .catch(() => { throw new Error("Ovu sliku telefon ne može otvoriti — odaberite drugu."); });
@@ -451,7 +456,13 @@
         i += 1;
         sending = groups.length > 1 ? `Šaljem ${i} od ${groups.length}…` : "Šaljem…"; render();
         const fd = new FormData();
-        for (const p of g) fd.append("photo", await shrink(p.file), "racun.jpg");
+        for (const p of g) {
+          /* a PDF goes as it is: it is text already, and smaller than a photo of it */
+          if (isPdf(p.file)) {
+            if (p.file.size > PDF_MAX) throw new Error(`PDF „${p.file.name}" je prevelik (najviše 1,5 MB) — pošaljite ga kao sliku stranica.`);
+            fd.append("photo", new Blob([p.file], { type: "application/pdf" }), "racun.pdf");
+          } else fd.append("photo", await shrink(p.file), "racun.jpg");
+        }
         fd.append("by", who());
         await api("", { method: "POST", body: fd });
       }
@@ -590,8 +601,9 @@
     const id = r.id, k = id + "|" + n;
     if (!thumbs.has(k)) loadThumb(id, n);
     const url = thumbs.get(k);
-    /* an e-invoice's attachment is the supplier's PDF, not a photo */
-    if (r.source === "mer") return url ? `<a class="nema shot-btn" href="${esc(url)}" target="_blank" rel="noopener">📄 Račun u PDF-u</a>` : "";
+    /* an e-invoice's attachment is the supplier's PDF, not a photo; so is a
+       PDF uploaded from the gallery */
+    if (r.source === "mer" || pdfThumbs.has(k)) return url ? `<a class="nema shot-btn" href="${esc(url)}" target="_blank" rel="noopener">📄 ${r.source === "mer" ? "Račun" : "Dokument"} u PDF-u</a>` : "";
     return url ? `<a href="${esc(url)}" target="_blank" rel="noopener"><img src="${esc(url)}" alt="Račun, slika ${n}"></a>` : `<span class="ph">${n}</span>`;
   }
   async function loadThumb(id, n) {
@@ -600,7 +612,9 @@
     try {
       const r = await fetch(`${API}/${id}/foto/${n}`, { headers: { authorization: "Bearer " + ghKey() } });
       if (!r.ok) throw new Error(r.status);
-      thumbs.set(k, URL.createObjectURL(await r.blob()));
+      const blob = await r.blob();
+      if (/pdf/.test(blob.type)) pdfThumbs.add(k);
+      thumbs.set(k, URL.createObjectURL(blob));
       render();
     } catch { thumbs.delete(k); }
   }

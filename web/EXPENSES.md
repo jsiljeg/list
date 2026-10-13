@@ -280,3 +280,11 @@ refuses to start reports `retry` (back in line, try not counted, reading
 paused 30 min); a silent batch is requeued after 15 min; the workflow has no
 concurrency group (GitHub cancelled waiting runs and stranded their batches);
 reports back retry on a dropped connection.
+
+## PDFs from the gallery (owner, 2026-10-13)
+
+"Gallery should also accept PDF as well." Galerija takes `.pdf` beside
+images; a PDF is sent as it is (no shrinking — it is text already), up to
+1,5 MB like a photo, stored with the photos, shown as "📄 Dokument u PDF-u",
+and handed to the reading run as `work/photos/<id>-<n>.pdf`, which Claude
+reads directly. An e-invoice's own PDF still stays out of the run.

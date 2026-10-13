@@ -26,7 +26,9 @@ export const MONTHLY_RUNS = 200;
 export const MAX_TRIES = 3;
 export const MAX_PHOTOS = 4;           /* one long receipt can take several */
 export const PHOTO_MAX = 1_500_000;
-export const PHOTO_TYPES = ["image/jpeg", "image/webp", "image/png"];
+/* a PDF from the gallery too (owner, 2026-10-13): the bank's payment list,
+   a supplier's invoice sent by mail — the reading run reads it as it is */
+export const PHOTO_TYPES = ["image/jpeg", "image/webp", "image/png", "application/pdf"];
 const STALE_MIN = 15;          /* a run takes 1-3 minutes; a batch silent this long went nowhere (was 30) */
 const REPO = "jsiljeg/theatrium-troskovi";
 const WORKFLOW = "read-receipts.yml";
