@@ -754,8 +754,8 @@
           <span>${hrDate(x.d)} · ${esc(x.v || "")}${x.no ? ` · br. ${esc(x.no)}` : ""}<small>${esc(x.name)}</small>${x.line}</span>
           <b>${eur(x.p)}<small>/${esc(x.unit || "kom")}</small></b></button>`).join("")}</div>` : ""}</div>`;
     };
-    const picker = vendors.length > 1 ? `<label class="f" for="pv">Dobavljač</label>
-      <select id="pv" class="pv"><option value="">Svi dobavljači</option>${vendors.map(([v, n]) =>
+    /* no heading: "Svi dobavljači" already says what it is (owner, 2026-10-13) */
+    const picker = vendors.length > 1 ? `<select id="pv" class="pv" aria-label="Dobavljač"><option value="">Svi dobavljači</option>${vendors.map(([v, n]) =>
         `<option value="${esc(v)}" ${v === priceVendor ? "selected" : ""}>${esc(v)} (${n})</option>`).join("")}</select>` : "";
     const up = rows.filter((r) => (r.change || r.since) > 0).length, down = rows.filter((r) => (r.change || r.since) < 0).length;
     const summary = priceVendor ? `<p class="psum"><b>${rows.length} ${plural(rows.length, "proizvod", "proizvoda", "proizvoda")}</b>
