@@ -248,6 +248,10 @@ button{font:inherit;cursor:pointer}
 /* Cijene: one supplier at a time (Filho, 2026-10-12) */
 .pv{width:100%;margin:0 0 10px;padding:11px 12px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;font:inherit}
 .psum{margin:0 0 6px;font-size:14px}
+/* Cijene: sort by change, money spent or name; a second tap turns it round */
+.psort{display:flex;gap:6px;margin:6px 0 2px}
+.psort button{flex:1;min-height:40px;border:1px solid var(--line);border-radius:20px;background:transparent;color:var(--ink);font-size:14px}
+.psort button.on{border-color:var(--gold);background:#2b2618;color:var(--gold)}
 .psum small{display:block;margin-top:4px;color:var(--dim);font-size:12px}
 .prh{display:flex;justify-content:space-between;gap:12px;width:100%;padding:9px 0;border:0;background:none;color:inherit;font:inherit;text-align:left}
 /* what a price row compares: every purchase, newest first, one tap to the invoice */

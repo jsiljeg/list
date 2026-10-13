@@ -647,6 +647,9 @@
      cijene iz Moj Mesar i onda on sve usporedi"): only that supplier's own
      invoices, every product bought from them at least twice */
   let priceVendor = "";
+  const PAY_KEY = "place|mj|";
+  /* biggest rise first; a tap on another sort starts it at its natural end */
+  const priceSort = { by: "promjena", dir: -1 };
   function pricesView() {
     const seen = {}, mixed = new Set();
     for (const r of done().slice().sort((a, b) => dateOf(a).localeCompare(dateOf(b)))) {
@@ -673,6 +676,23 @@
         (seen[k] = seen[k] || []).push({ p: it.unit_price, d: dateOf(r), v: shortName(r.vendor), name: it.name, unit: it.unit,
           spent: it.total || 0, id: r.id, no: r.doc_no, line: lineSmall(it), cat: it.category });
       }
+    }
+    /* Plaće, month against month (owner, 2026-10-13: "plaće could also be in
+       Cijene"): not a unit price, but the same question — what did this
+       month's salaries cost against the last. One entry per month, the
+       payroll documents of a month added together. */
+    const pay = new Map();
+    for (const r of done()) {
+      const sum = r.items.filter((i) => i.category === "place").reduce((s, i) => s + (i.total || 0), 0);
+      if (!sum) continue;
+      const m = monthOf(r), e = pay.get(m) || { p: 0, d: dateOf(r), ids: [], nos: [] };
+      e.p += sum; e.ids.push(r.id); if (r.doc_no) e.nos.push(r.doc_no);
+      pay.set(m, e);
+    }
+    if (pay.size) {
+      seen[PAY_KEY] = [...pay].sort((a, b) => a[0].localeCompare(b[0])).map(([m, e]) => ({
+        p: Math.round(e.p * 100) / 100, d: e.d, v: "Plaće", name: "Plaće · po mjesecu", unit: "mj", spent: e.p,
+        id: e.ids[0], no: "", line: `<small>${esc(monthName(m))}</small>`, cat: "place" }));
     }
     /* suppliers with something to compare, most products first */
     const per = {};
@@ -704,11 +724,22 @@
     const wild = (v) => v != null && (v > 60 || v < -40);
     /* fresh food is exempt only when it is weighed — a "kom" of peas is a bag */
     const weighed = (r) => FRESH.has(r.last.cat) && /^(kg|g|l)$/.test(r.unit || "");
-    for (const r of rows) if (!weighed(r) && (wild(r.change) || wild(r.since))) mixed.add(r.k);
+    /* salaries can move a lot with the season — never "two articles" */
+    for (const r of rows) if (r.k !== PAY_KEY && !weighed(r) && (wild(r.change) || wild(r.since))) mixed.add(r.k);
     const check = rows.filter((r) => mixed.has(r.k));
     rows.splice(0, rows.length, ...rows.filter((r) => !mixed.has(r.k)));
-    const moved = rows.filter((r) => r.change || r.since).sort((a, b) => Math.abs(b.change || b.since) - Math.abs(a.change || a.since));
-    const steady = rows.filter((r) => !r.change && !r.since).sort((a, b) => b.spent - a.spent);
+    /* sorted as he chooses (owner, 2026-10-13: "some sorting in Cijene, asc/desc
+       when I click"): by change, by money spent, or by name; a second tap on
+       the same one turns it round */
+    const mv = (r) => r.change || r.since || 0;
+    const by = {
+      promjena: (a, b) => mv(a) - mv(b) || a.spent - b.spent,
+      potroseno: (a, b) => a.spent - b.spent,
+      naziv: (a, b) => a.name.localeCompare(b.name, "hr"),
+    }[priceSort.by];
+    const sorted = (list) => list.slice().sort((a, b) => by(a, b) * priceSort.dir);
+    const moved = sorted(rows.filter((r) => r.change || r.since));
+    const steady = sorted(rows.filter((r) => !r.change && !r.since));
     const mname = (d) => MONTHS_LOC[Number(d.slice(5, 7)) - 1];
     const arrow = (v, text) => `<span class="${v > 0 ? "up" : "down"}">${v > 0 ? "▲" : "▼"} ${Math.abs(v)}%${text}</span>`;
     const row = (r) => {
@@ -734,6 +765,10 @@
       ${once ? `<small>Još ${once} ${plural(once, "proizvod", "proizvoda", "proizvoda")} kupljeno samo jednom — nema s čim usporediti.</small>` : ""}</p>` : "";
     return `<p class="muted small">Isti proizvod, zadnja kupnja prema prethodnoj. Cijena po kg, l ili komadu, s PDV-om. Dodirnite proizvod da vidite račune koji se uspoređuju.</p>
       ${picker}${summary}
+      <div class="psort" role="group" aria-label="Poredaj">${[["promjena", "Promjena"], ["potroseno", "Potrošeno"], ["naziv", "Naziv"]].map(([k, l]) => {
+        const on = priceSort.by === k, arrow = on ? (priceSort.dir < 0 ? (k === "naziv" ? " Ž–A" : " ▼") : (k === "naziv" ? " A–Ž" : " ▲")) : "";
+        return `<button data-psort="${k}" class="${on ? "on" : ""}" aria-pressed="${on}">${l}${arrow}</button>`;
+      }).join("")}</div>
       ${moved.length ? `<h3 class="h">Promijenjene cijene</h3>${moved.map(row).join("")}` : ""}
       ${steady.length ? `<h3 class="h">Iste cijene</h3>${steady.map(row).join("")}` : ""}
       ${check.length ? `<h3 class="h">Treba provjeriti</h3><p class="muted small">Isti naziv po dvije cijene na istom računu, ili skok cijene kakav se ne događa — vjerojatno dva artikla (veličina boce, berba, porijeklo). Ne uspoređuje se dok se ne razdvoje; dodirnite da vidite stavke.</p>${check.map(row).join("")}` : ""}`;
@@ -850,6 +885,12 @@
       if (r) markPaid(r.id, !isPaid(r));
     }));
     box.querySelectorAll("[data-kind]").forEach((b) => b.addEventListener("click", () => { kind = b.dataset.kind; open = null; render(); }));
+    box.querySelectorAll("[data-psort]").forEach((b) => b.addEventListener("click", () => {
+      const k = b.dataset.psort;
+      if (priceSort.by === k) priceSort.dir = -priceSort.dir;
+      else { priceSort.by = k; priceSort.dir = k === "naziv" ? 1 : -1; }
+      openPrice = null; render();
+    }));
     box.querySelectorAll("#pv").forEach((sel) => sel.addEventListener("change", () => { priceVendor = sel.value; openPrice = null; render(); }));
     box.querySelectorAll("[data-pricevendor]").forEach((b) => b.addEventListener("click", () => {
       priceVendor = b.dataset.pricevendor; openPrice = null; sub = "cijene"; render(); window.scrollTo(0, 0);

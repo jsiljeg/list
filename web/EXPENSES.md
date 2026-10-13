@@ -304,3 +304,14 @@ Year check the same morning: 660 receipts, all read; every 2026 document
 in the MER export is in Troškovi; 3 March invoices written twice by two
 imports running at once were deleted (and the import can no longer do it);
 6 other same-number pairs are real. 292 products compared, 12 to check.
+
+## Cijene: Plaće month by month, and sorting (owner, 2026-10-13)
+
+"Plaće could also be in Cijene … some sorting (asc/desc when I click)."
+- **Plaće · po mjesecu** is one row: each month's payroll documents added
+  together, compared month against month like a product (never set aside
+  as "two articles", salaries move with the season). It appears once two
+  months have one.
+- **Promjena · Potrošeno · Naziv**: a tap sorts by it, a second tap turns it
+  round. Default: biggest rise first.
+- September–December 2025 imported from MER the same day (24 documents).

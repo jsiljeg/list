@@ -1184,3 +1184,40 @@ test("Troškovi: Cijene compares the printed price per printed unit", async ({ p
   await expect(row).toContainText("/kom");
   await expect(row).toContainText("ista");
 });
+
+/* Owner, 2026-10-13: "plaće could also be in Cijene" and "some sorting in
+   Cijene (asc/desc when I click)". Plaće is one row, month against month;
+   the sort buttons choose the order and a second tap turns it round. */
+test("Troškovi: Cijene has Plaće month by month, and sorts on a tap", async ({ page }) => {
+  await board(page);
+  const [y, m] = new Date().toISOString().slice(0, 7).split("-").map(Number);
+  const mo = (d) => new Date(Date.UTC(y, m - 1 + d, 1)).toISOString().slice(0, 7);
+  const r = (id, ym, items) => ({ id, created_at: `${ym}-05T09:00:00Z`, updated_at: "", status: "done", vendor: id === "p1" || id === "p2" ? "Plaće" : "Moj Mesar",
+    vendor_oib: "7", doc_date: `${ym}-05`, doc_no: "N" + id, total: items.reduce((s, i) => s + i.total, 0), vat: null, payment: "virman",
+    photos: [], note: "", created_by: "", source: "foto", dup_of: "", due_date: "", paid_at: "", items });
+  const kg = (name, key, unit_price) => ({ name, key, qty: 1, unit: "kg", unit_price, total: unit_price, category: "meso" });
+  const items = [
+    r("p1", mo(-1), [{ name: "Plaće za prošli", key: "", total: 15000, category: "place" }]),
+    r("p2", mo(0), [{ name: "Plaće za ovaj", key: "", total: 16500, category: "place" }]),
+    r("a", mo(-1), [kg("Biftek", "biftek", 40), kg("Teletina", "teletina", 20)]),
+    r("b", mo(0), [kg("Biftek", "biftek", 36), kg("Teletina", "teletina", 21)]),
+  ];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="cijene"]');
+  const rows = page.locator("#tab-troskovi .pr .pn");
+  await expect(page.locator("#tab-troskovi .pr").filter({ hasText: "Plaće · po mjesecu" })).toContainText("10%");
+  /* default: biggest rise first — Plaće +10%, Teletina +5%, Biftek −10% */
+  await expect(rows.first()).toContainText("Plaće");
+  await expect(rows.last()).toContainText("Biftek");
+  await page.click('[data-psort="promjena"]');                    /* turned round: biggest drop first */
+  await expect(rows.first()).toContainText("Biftek");
+  await page.click('[data-psort="naziv"]');                       /* A–Ž */
+  await expect(rows.first()).toContainText("Biftek");
+  await expect(rows.last()).toContainText("Teletina");
+  await expect(page.locator('[data-psort="naziv"]')).toContainText("A–Ž");
+  await page.click('[data-psort="potroseno"]');                   /* most spent first */
+  await expect(rows.first()).toContainText("Plaće");
+});
