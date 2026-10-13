@@ -112,6 +112,34 @@ should be standardized" (owner). Review a dish band by band with
 - when the website moves to theatrium.hr, `DAILY_FEED` in js/app.js moves
   with it (CUTOVER).
 
+## From /admin — "Ponuda" tab (2026-10-13)
+
+The simple way in: Filho sends the menu the way he already makes it — a photo
+or screenshot of the graphic, or the text pasted — from the wine list's
+/admin, with the key that tablet already holds. Nothing else to fill in.
+
+1. `POST /api/kuhinja/citaj` stores it (`daily_requests`; photos in `media`)
+   and starts `daily-offer.yml` under the wine intake's brakes: one run at a
+   time, 6 a day, 60 a month, 3 per request, and the owner's switch
+   (`DAILY_INTAKE_ENABLED`, falling back to `WINE_INTAKE_ENABLED`).
+2. The run reads the menu with the **sommelier skill**
+   (`.github/daily-offer/prompt.md`): every dish in 8 languages, food tags and
+   styles from the shelf's vocabulary, 1–3 wines (one by the glass when one
+   fits), and a Croatian "why" per dish. It writes nothing in the repo.
+3. `.github/daily-offer/check.mjs` (no AI) drops any tag, style or wine the
+   shelf does not carry tonight and lists what it dropped; the result goes
+   back to the inbox as a preview.
+4. In /admin Filho sees the dishes with the wines' names and prices, may type
+   a price, remove a wine or a dish, and taps **Objavi** — `objavi` writes it
+   into `daily_offers` through `normalizeOffer()`, so the website and the
+   list's "Pomozi mi odabrati" have it within a minute. Republishing replaces
+   the day's offer but keeps its market photos, video and intro.
+   **Povuci objavu** sets the day's offer back to draft.
+
+`/api/kuhinja/*` accepts the /admin GitHub key (`isStaffAsync`) beside
+`STAFF_KEY`, with CORS for the list's origin (`api/kuhinja/_middleware.js`).
+The owner gets an e-mail when a preview is ready or a run fails.
+
 ## Open for the owner
 
 - **Link it**: nav, home page, or only Instagram/QR for now?

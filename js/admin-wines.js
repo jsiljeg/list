@@ -32,11 +32,12 @@
   const thumbs = new Map();   /* id|n -> object URL, so photos are fetched once */
 
   /* ---------- tabs ---------- */
+  window.adminTab = () => tab;
   document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => show(b.dataset.tab)));
   function show(name) {
     tab = name;
     document.querySelectorAll(".tabs button").forEach((b) => b.classList.toggle("on", b.dataset.tab === name));
-    ["karta", "novo", "povijest", "troskovi"].forEach((t) => $("tab-" + t) && $("tab-" + t).classList.toggle("hidden", t !== name));
+    ["karta", "novo", "ponuda", "povijest", "troskovi"].forEach((t) => $("tab-" + t) && $("tab-" + t).classList.toggle("hidden", t !== name));
     $("filters").classList.toggle("hidden", name !== "karta");
     clearTimeout(timer);
     /* Coming back to Karta always starts from the whole list. */
@@ -44,6 +45,7 @@
     if (name === "novo") loadRequests();
     if (name === "povijest") loadHistory();
     if (name === "troskovi" && window.loadExpenses) window.loadExpenses();
+    if (name === "ponuda" && window.loadDaily) window.loadDaily();
   }
 
   /* ---------- the inbox ---------- */

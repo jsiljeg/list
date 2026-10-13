@@ -1,0 +1,122 @@
+# Dnevna ponuda — read Filho's menu and write the day's offer with Claude.
+#
+# Started ONLY by the inbox on theatrium.devinos.hr (/api/kuhinja/citaj), with
+# the token that can do nothing but start workflows; its only input is a
+# request id. Nothing is committed: the run reads the menu, writes the offer
+# with the sommelier skill, a plain script checks it against the shelf, and
+# the result goes back to the inbox as a preview. Filho publishes it in
+# /admin. Design: web/DAILY-OFFER.md.
+#
+# The model holds no credential that can write: the worker key is only in the
+# steps around it, the checkout keeps no git credentials, and its tools are
+# allow-listed to reading the repo, the pairing bench and writing intake/.
+name: Dnevna ponuda — read
+
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "inbox request id"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-offer
+  cancel-in-progress: false
+
+env:
+  INBOX: https://theatrium.devinos.hr/api/kuhinja/citaj
+  SITE: https://theatrium.devinos.hr
+  ID: ${{ inputs.id }}
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    environment: wine-intake
+    timeout-minutes: 20
+    steps:
+      - name: Check the id
+        run: '[[ "$ID" =~ ^[0-9]{8}-[0-9a-f]{12}$ ]] || { echo "bad id"; exit 1; }'
+
+      - name: Fetch the request and its photos
+        env:
+          KEY: ${{ secrets.WINE_WORKER_KEY }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/intake"
+          curl -sfS -H "Authorization: Bearer $KEY" "$INBOX/$ID" > "$RUNNER_TEMP/req.json"
+          jq -e '.item.status == "working"' "$RUNNER_TEMP/req.json" > /dev/null || { echo "not working"; exit 1; }
+          i=0
+          for m in $(jq -r '.item.photos[]' "$RUNNER_TEMP/req.json"); do
+            [[ "$m" =~ ^[a-f0-9]{16,64}$ ]] || continue
+            i=$((i+1))
+            curl -sfS "$SITE/media/$m" -o "$RUNNER_TEMP/intake/photo-$i.jpg"
+          done
+          jq '.item | {date, text, remark, photos: [range(1; (.photos | length) + 1) | "intake/photo-\(.).jpg"]}' \
+             "$RUNNER_TEMP/req.json" > "$RUNNER_TEMP/intake/request.json"
+          cat "$RUNNER_TEMP/intake/request.json"
+          curl -sfS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
+               -d "{\"status\":\"working\",\"run_url\":\"$RUN_URL\"}" "$INBOX/$ID/stanje" > /dev/null
+
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Put the intake beside the repo
+        run: cp -r "$RUNNER_TEMP/intake" intake
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code@latest
+
+      - name: Write the offer
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          MODEL: ${{ vars.DAILY_MODEL || vars.WINE_MODEL || 'opus' }}
+        run: |
+          set -uo pipefail
+          cat > "$RUNNER_TEMP/settings.json" <<'JSON'
+          { "permissions": {
+              "deny": ["Read(/proc/**)", "Read(/sys/**)", "Read(/etc/**)", "Read(/root/**)",
+                       "Read(/home/runner/work/_temp/**)", "Read(/home/runner/.claude/**)",
+                       "Read(/home/runner/.config/**)", "Read(/home/runner/.gitconfig)",
+                       "Read(/tmp/**)", "Read(/opt/**)", "Read(/usr/**)", "Read(/var/**)",
+                       "Edit(library/**)", "Edit(lists/**)", "Edit(data/**)", "Edit(js/**)",
+                       "Edit(web/**)", "Edit(scripts/**)", "Edit(.github/**)", "Edit(.claude/**)",
+                       "Write(library/**)", "Write(lists/**)", "Write(data/**)", "Write(js/**)",
+                       "Write(web/**)", "Write(scripts/**)", "Write(.github/**)", "Write(.claude/**)"] } }
+          JSON
+          claude -p "$(cat .github/daily-offer/prompt.md)" \
+            --model "$MODEL" --fallback-model sonnet \
+            --max-turns 80 \
+            --settings "$RUNNER_TEMP/settings.json" \
+            --allowedTools 'Read,Write,Glob,Grep,Skill,Bash(node .claude/skills/sommelier/pair.mjs:*)' \
+            --output-format json > "$RUNNER_TEMP/claude.json"
+          echo "exit=$?"
+          jq '{turns: .num_turns, seconds: ((.duration_ms // 0) / 1000 | floor), cost_usd: .total_cost_usd,
+               model: (.modelUsage // {} | keys)}' "$RUNNER_TEMP/claude.json" > "$RUNNER_TEMP/usage.json" || echo '{}' > "$RUNNER_TEMP/usage.json"
+          cat "$RUNNER_TEMP/usage.json"
+          # The wine list must come out of this run untouched.
+          git diff --quiet || { echo "::error::the run changed tracked files"; git diff --stat; git checkout -- .; }
+
+      - name: Check and report to the inbox
+        if: always()
+        env:
+          KEY: ${{ secrets.WINE_WORKER_KEY }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -uo pipefail
+          usage=$(cat "$RUNNER_TEMP/usage.json" 2>/dev/null || echo '{}')
+          node .github/daily-offer/check.mjs intake/offer.json intake/result.json > "$RUNNER_TEMP/report.json" \
+            || echo '{"status":"failed","error":"Provjera ponude nije uspjela — pokušajte ponovno."}' > "$RUNNER_TEMP/report.json"
+          jq -c --argjson u "$usage" --arg run "$RUN_URL" '. + {usage: $u, run_url: $run}' "$RUNNER_TEMP/report.json" > "$RUNNER_TEMP/body.json"
+          jq '{status, error, dropped: .result.dropped, dishes: [.result.offer.dishes[]? | {n: .name.hr, pairings, styles, wines}]}' "$RUNNER_TEMP/body.json"
+          curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
+               --data-binary @"$RUNNER_TEMP/body.json" "$INBOX/$ID/stanje"

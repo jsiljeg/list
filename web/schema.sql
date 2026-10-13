@@ -310,3 +310,37 @@ CREATE TABLE IF NOT EXISTS expense_mer_state (
   k TEXT PRIMARY KEY,                        -- last_ok | last_try | error | imported
   v TEXT
 );
+
+-- Dnevna ponuda from /admin (2026-10-13): Filho sends the day's menu as he
+-- already makes it (a photo of the graphic, or the text) and a GitHub Actions
+-- run reads it with the sommelier skill and writes the offer: 8 languages,
+-- food tags, 1-3 wines a dish. The result waits here as a preview; only his
+-- "Objavi" writes it into daily_offers. Photos go to `media`. See
+-- web/DAILY-OFFER.md and functions/_lib/daily-intake.js.
+CREATE TABLE IF NOT EXISTS daily_requests (
+  id           TEXT PRIMARY KEY,
+  date         TEXT NOT NULL,               -- the service day it is for
+  created_at   TEXT NOT NULL,
+  updated_at   TEXT NOT NULL,
+  status       TEXT NOT NULL DEFAULT 'queued'
+               CHECK (status IN ('queued', 'working', 'ready', 'failed', 'cancelled', 'published')),
+  text         TEXT,                        -- the menu, pasted; data for the run
+  remark       TEXT,                        -- a short note from Filho
+  photos       TEXT,                        -- JSON array of media ids
+  runs         INTEGER NOT NULL DEFAULT 0,
+  result       TEXT,                        -- JSON {offer, notes, dropped}
+  run_url      TEXT,
+  error        TEXT,
+  usage        TEXT,
+  created_by   TEXT,
+  published_by TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_daily_req_date ON daily_requests (date, status);
+
+-- Every run start, for the daily and monthly caps.
+CREATE TABLE IF NOT EXISTS daily_dispatches (
+  at          TEXT NOT NULL,
+  date        TEXT NOT NULL,                -- Zagreb wall clock
+  request_id  TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_daily_disp_date ON daily_dispatches (date);
