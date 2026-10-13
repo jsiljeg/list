@@ -8,6 +8,7 @@
  * cleanBill() keys a bill by year + fiscal number (numbers restart each
  * January) and rejects a row that is not a bill. */
 import { test, expect } from "@playwright/test";
+import { readFileSync } from "node:fs";
 import { cleanBill } from "../web/functions/_lib/sales.js";
 
 const month = new Date().toISOString().slice(0, 7);
@@ -81,4 +82,14 @@ test("a bill is keyed by year and fiscal number, and junk is refused", () => {
   expect(b.lines[0].tax).toBe("H (HRANA IZLAZ 13%)");
   expect(cleanBill({ no: "x", day: "2026-10-01", at: "2026-10-01T12:00" })).toBeNull();
   expect(cleanBill({ no: "1/P3/1", day: "1.10.2026", at: "2026-10-01T12:00" })).toBeNull();
+});
+
+/* Vinska karta i blagajna (2026-10-14): a till name reaches its list wine
+   only when every word of it is the wine's — "PINOT GRIGIO" must never land
+   on a Pinot Noir, "ETNA ROSSO" on the Etna Bianco. Guarded at the source,
+   since the matcher runs in the page against the live list. */
+test("the till-to-list wine matcher is strict and never guesses", () => {
+  const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
+  expect(src).toContain("if (rest.length && nm.length < rest.length) continue;");
+  expect(src).toContain("return c.length && !(c[1] && c[1].sc === c[0].sc) ? c[0].w : null;");
 });

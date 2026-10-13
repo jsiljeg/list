@@ -385,6 +385,126 @@
       ${custs.length > 8 ? `<button class="nema" data-allcusts>${allCusts ? "Manje" : `Sve tvrtke (${custs.length})`}</button>` : ""}` : ""}
       ${months12}${footer}`;
   }
+  /* ---------- Vinska karta i blagajna (owner, 2026-10-14) ----------
+     Which wines on the list actually sell, by the bottle and by the glass,
+     and which have not sold for three months — money standing on a shelf.
+     The till names wines its own way ("BENVENUTI, MALVAZIJA 0,1L", "AMARONE
+     2015, Dal Forno", "MENENGHETTI BDB 0,75"), so a till name is matched to
+     a list ref:
+       1. TILL_ALIAS — names confirmed by hand (abbreviations, typos);
+       2. otherwise strictly: the producer's words, and every other word of
+          the till name must be in the wine's name; a till article keeps its
+          old vintage in its name, so a vintage up to 3 years off still
+          matches the line, a further one does not; a tie is no match.
+     A wrong wine is worse than none: what is not matched is listed, with its
+     takings, for Filho to confirm — and goes into TILL_ALIAS. */
+  const TILL_ALIAS = {
+    "esprit hg": "henri-giraud--esprit-nature", "esprit hg 0 1": "henri-giraud--esprit-nature",
+    "champagne chavost bdb": "chavost--blanc-de-chardonnay", "champagne chavost paradox": "chavost--paradoxe",
+    "menenghetti blanc de blancs": "meneghetti--blanc-de-blancs", "menenghetti bdb": "meneghetti--blanc-de-blancs",
+    "menenghetti menenghetti white": "meneghetti--white-2023",
+    "petrac karizma cuve 2020": "petrac--karizma-cuvee-2022", "terbotz": "jakopic--terbotz",
+    "saint hills black 2019": "saints-hills--black-2022", "edi simcic deut lex 2018": "edi-simcic--duet-lex-2022",
+    "graf 2020": "maria-sepp-muster--graf-2020", "duemani 2018": "azienda-duemani--duemani-2018",
+    "benvenuti santa elisabeta": "benvenuti--santa-elizabeta-2021", "benvenuti santa elisabetta": "benvenuti--santa-elizabeta-2021",
+    "pape st hills": "saints-hills--pape-2023", "saint hills le chiffre": "saints-hills--le-chiffre-2023",
+    "stalagmit": "milos--stalagmit-2022", "cifra": "azienda-duemani--cifra-2021", "cifra 2021": "azienda-duemani--cifra-2021",
+    "esprit": "henri-giraud--esprit-nature", "fass 4": "bernhard-ott--fass-4-gruner-veltliner-2023",
+    "a cluserath apotheke": "a-clusserath--trittenheimer-apotheke-kabinett-2024",
+    "riesling tritt apotheke kabinett": "a-clusserath--trittenheimer-apotheke-kabinett-2024",
+    "chablis la grand vale": "patrick-piuze--chablis-la-grande-vallee-2024",
+    "jakopic rajnski rizling izb berba": "jakopic--rajnski-rizling-izborna-berba-2019",
+    "h l lignier pommard l c l arveltes": "hubert-lignier--pommard-1er-cru-les-arvelets-2019",
+    "w h lowenstein riesling schiefer": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023,weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017",
+    "savagnin 2018": "domaine-bourdy--savagnin-2018", "erdoro crni pinot 2021": "erdoro--pinot-noir-2021",
+  };
+  /* sold under a wine group but not wine */
+  const NOT_WINE = /romerquelle|gin ?tonik|bezalkohol/i;
+  const TILL_STOP = new Set("de du la le les di del della e et und and the vino vina vinarija vinogradi podrum domaine dom chateau ch az agr azienda agricola weingut cantina tenuta estate winery cellars bodega bodegas maison famille fattoria podere opg srl doo 1er cru grand l".split(" "));
+  const tfold = (v) => String(v || "").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/gi, "d").toLowerCase();
+  /* "0,75L", "0.75", "0,1", "0,05L" are the size, not the name */
+  const tillKey = (v) => tfold(v).replace(/\b\d+[.,]\d+\s*l?\b/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
+  const ttoks = (v) => tillKey(v).split(" ").filter((x) => x.length > 1 && !TILL_STOP.has(x) && !/^(19|20)\d{2}$/.test(x));
+  const tyear = (v) => Number((String(v).match(/\b(19|20)\d{2}\b/) || [])[0] || 0);
+  const isGlass = (name) => /\b0[.,](05|1|125|15|2)\s*l?\b/i.test(name);
+  let wineList = null, wineListLoading = false, openWineBox = "";
+  function needWineList() {
+    if (wineList || wineListLoading) return wineList;
+    wineListLoading = true;
+    Promise.all([fetch("library/wines.json", { cache: "no-cache" }).then((r) => r.json()), fetch("lists/theatrium.json", { cache: "no-cache" }).then((r) => r.json())])
+      .then(([lib, list]) => {
+        const seen = new Map();
+        (function walk(o) {
+          if (Array.isArray(o)) return o.forEach(walk);
+          if (!o || typeof o !== "object") return;
+          if (o.ref && lib.wines[o.ref] && !(lib.wines[o.ref].insight || {}).kind) {
+            const w = lib.wines[o.ref], e = seen.get(o.ref) || { ref: o.ref, name: w.name, producer: w.producer, prices: [] };
+            if (o.price != null) e.prices.push(o.price);
+            seen.set(o.ref, e);
+          }
+          Object.values(o).forEach(walk);
+        })(list.sections || list);
+        wineList = [...seen.values()].map((w) => ({ ...w, p: ttoks(w.producer), n: ttoks(w.name), y: tyear(w.name) }));
+        render();
+      })
+      .catch(() => { wineList = []; })
+      .finally(() => { wineListLoading = false; });
+    return null;
+  }
+  function matchTill(name) {
+    const alias = TILL_ALIAS[tillKey(name).replace(/\s+/g, " ")];
+    if (alias) return wineList.find((w) => w.ref === alias) || null;
+    const all = ttoks(name), y = tyear(name), c = [];
+    /* the till cuts names short ("En Chaill", "Schiefer."): a word of 4+
+       letters matches the start of the wine's word */
+    const hit = (words, x) => words.some((w) => w === x || (x.length >= 4 && w.startsWith(x)));
+    for (const w of wineList) {
+      const pm = w.p.filter((x) => hit(all, x) || all.some((a) => a.length >= 4 && x.startsWith(a)));
+      const rest = all.filter((x) => !hit(w.p, x)), nm = rest.filter((x) => hit(w.n, x));
+      if (!pm.length && nm.length < 2) continue;
+      if (rest.length && nm.length < rest.length) continue;              /* its every own word is the wine's */
+      if (!rest.length && wineList.filter((o) => o.p.join() === w.p.join()).length > 1 && !(y && y === w.y)) continue;
+      if (y && w.y && Math.abs(y - w.y) > 3) continue;
+      c.push({ w, sc: pm.length * 2 + nm.length * 2 + (y && y === w.y ? 2 : 0) - (y && w.y ? Math.abs(y - w.y) : 0) });
+    }
+    c.sort((a, b) => b.sc - a.sc);
+    return c.length && !(c[1] && c[1].sc === c[0].sc) ? c[0].w : null;
+  }
+  /* three months to the shown one: what sold, what did not, what is unmatched */
+  function wineSales() {
+    if (!needWineList()) return null;
+    const ms = [0, -1, -2].map((d) => shiftMonth(month, d)), ss = ms.map(needIncome);
+    if (ss.some((x) => !x)) return null;
+    const by = new Map(), loose = new Map();
+    for (const s of ss) for (const it of s.items || []) {
+      if (!isWine(it) || !(it.qty > 0) || NOT_WINE.test(it.name)) continue;
+      const w = matchTill(it.name);
+      if (!w) { const l = loose.get(it.name) || { name: it.name, t: 0 }; l.t += it.total; loose.set(it.name, l); continue; }
+      const e = by.get(w.ref) || { w, bottles: 0, glasses: 0, t: 0 };
+      if (isGlass(it.name)) e.glasses += it.qty; else e.bottles += it.qty;
+      e.t += it.total; by.set(w.ref, e);
+    }
+    const sold = [...by.values()].sort((a, b) => b.t - a.t);
+    const still = wineList.filter((w) => !by.has(w.ref)).sort((a, b) => Math.max(0, ...b.prices) - Math.max(0, ...a.prices));
+    const unmatched = [...loose.values()].sort((a, b) => b.t - a.t);
+    const total = sold.reduce((a, x) => a + x.t, 0) + unmatched.reduce((a, x) => a + x.t, 0);
+    return { ms, sold, still, unmatched, total, matched: sold.reduce((a, x) => a + x.t, 0) };
+  }
+  function wineBox() {
+    const x = wineSales();
+    if (!x) return wineList === null || wineListLoading ? `<p class="muted small"><span class="spin"></span> povezujem vinsku kartu s blagajnom…</p>` : "";
+    const span = `${MONTHS[Number(x.ms[2].slice(5, 7)) - 1]}–${MONTHS[Number(x.ms[0].slice(5, 7)) - 1]}`;
+    const qty = (e) => [e.bottles ? `${nf(e.bottles)} ${plural(Math.round(e.bottles), "boca", "boce", "boca")}` : "", e.glasses ? `${nf(e.glasses)} ${plural(Math.round(e.glasses), "čaša", "čaše", "čaša")}` : ""].filter(Boolean).join(" · ");
+    const box = (k, title, rows) => `<button class="nema wide-left" data-winebox="${k}" aria-expanded="${openWineBox === k}">${title}</button>
+      ${openWineBox === k ? `<div class="lines">${rows}</div>` : ""}`;
+    return `<h3 class="h">Vinska karta i blagajna <small>${span}</small></h3>
+      <div class="lines">${x.sold.slice(0, 10).map((e) => `<div><span>${esc(e.w.producer)} · ${esc(e.w.name)}<small>${qty(e)}</small></span><b>${eur0(e.t)}</b></div>`).join("")}</div>
+      ${box("still", `Na karti, a nije se prodalo: ${x.still.length} ${plural(x.still.length, "vino", "vina", "vina")}`,
+        x.still.map((w) => `<div><span>${esc(w.producer)} · ${esc(w.name)}</span><b>${w.prices.length ? eur0(Math.max(...w.prices)) : ""}</b></div>`).join(""))}
+      ${x.unmatched.length ? box("loose", `Prodano, a nije povezano s kartom: ${x.unmatched.length} (${eur0(x.unmatched.reduce((a, u) => a + u.t, 0))})`,
+        x.unmatched.map((u) => `<div><span>${esc(u.name)}</span><b>${eur0(u.t)}</b></div>`).join("")) : ""}
+      <p class="muted small">Povezano je ${Math.round((x.matched / Math.max(1, x.total)) * 100)}% prodaje vina. Blagajna vina zove svojim imenima; što nije sigurno povezano, ostaje na popisu "nije povezano" — Filho može reći što je što. "Nije se prodalo" uključuje i vina povučena s karte (86).</p>`;
+  }
   /* The evidence behind Pregled's list (2026-10-14): the dishes and wines
      that carry the month, with their move against last month per open day;
      the week; lunch against dinner; each waiter. */
@@ -396,7 +516,7 @@
       return `<div><span>${esc(nameCase(i.name))}<small>${nf(i.qty)} kom${ch != null && Math.abs(ch) >= 10
         ? ` · <span class="${ch > 0 ? "down" : "up"}">${ch > 0 ? "▲" : "▼"} ${Math.abs(ch)}%</span>` : ""}</small></span><b>${eur0(i.total)}</b></div>`;
     }).join("");
-    const dishes = top(isDish), wines = top(isWine);
+    const dishes = top(isDish);
     const menus = (s.items || []).filter((i) => isMenu(i) && rubricOf(i.grp, i.tax) === "hrana");
     const menuSum = menus.reduce((a, i) => ({ q: a.q + i.qty, t: a.t + i.total }), { q: 0, t: 0 });
     const wk = [1, 2, 3, 4, 5, 6, 0].map((d) => (s.weekdays || []).find((w) => w.wd === d)).filter(Boolean).map((w) => ({ ...w, per: w.total / Math.max(1, w.days) }));
@@ -406,7 +526,7 @@
     const leak = new Map((s.leaks || []).map((l) => [l.waiter, l]));
     return `${dishes ? `<h3 class="h">Jela koja nose mjesec <small>▲▼ prema prošlom mjesecu, po radnom danu</small></h3><div class="lines">${dishes}</div>` : ""}
       ${menuSum.t ? `<div class="lines"><div><span>Grupni meniji<small>${nf(menuSum.q)} osoba · dolaze s grupama, pa ih nema svaki mjesec</small></span><b>${eur0(menuSum.t)}</b></div></div>` : ""}
-      ${wines ? `<h3 class="h">Vina koja se najviše prodaju</h3><div class="lines">${wines}</div>` : ""}
+      ${wineBox()}
       ${wk.length ? `<h3 class="h">Dan u tjednu <small>prosječno po otvorenom danu</small></h3>
       <div class="bars">${wk.map((w) => `<div class="bar"><span class="bl">${cap(WD[w.wd])} <small>${w.days}×</small></span><span class="bv">${eur0(w.per)}</span>
         <span class="track"><span style="width:${Math.max(2, (w.per / wmax) * 100)}%;background:#c9a961"></span></span></div>`).join("")}</div>` : ""}
@@ -1224,6 +1344,7 @@
   /* ---------- wiring ---------- */
   function wire(box) {
     box.querySelectorAll("[data-rub]").forEach((b) => b.addEventListener("click", () => { openRub = openRub === b.dataset.rub ? null : b.dataset.rub; render(); }));
+    box.querySelectorAll("[data-winebox]").forEach((b) => b.addEventListener("click", () => { openWineBox = openWineBox === b.dataset.winebox ? "" : b.dataset.winebox; render(); }));
     box.querySelectorAll("[data-allfocus]").forEach((b) => b.addEventListener("click", () => { allFocus = !allFocus; render(); }));
     box.querySelectorAll("[data-allcusts]").forEach((b) => b.addEventListener("click", () => { allCusts = !allCusts; render(); }));
     box.querySelectorAll("[data-sub]").forEach((b) => b.addEventListener("click", () => { sub = b.dataset.sub; render(); }));

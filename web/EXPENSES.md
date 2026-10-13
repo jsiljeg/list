@@ -484,3 +484,19 @@ them as one line.
   sender can only write to the address verified in Cloudflare Email Routing
   (today the owner's Gmail); Filho's address needs verifying there first.
   `{dry: true}` returns the text without sending.
+
+### Vinska karta i blagajna (2026-10-14)
+
+Prihodi shows, over the last three months, which list wines sold (bottles and
+glasses, takings), how many list wines did not sell at all, and the till's
+wine lines it could not tie to the list. The till names wines its own way, so
+`matchTill()` in js/admin-expenses.js uses `TILL_ALIAS` (names confirmed by
+hand) and otherwise a strict rule: the producer's words, every other word of
+the till name in the wine's name (a word of 4+ letters may be cut short), a
+vintage at most 3 years off (till articles keep old vintages in their names),
+and a tie is no match. A wrong wine is worse than none. On 2026-10-14 it tied
+90% of July–September wine takings. The rest is for Filho: wines sold that
+are not on the list (Bregh Blanc de Blancs, Tomac Millenium, Château de Pez
+2016…) and ambiguous names ("HENRI GIRAUD 0,75": Esprit or Hommage?, "Via de
+Romans 0,1", "C.COSTANTI, BRUNELLO": 2018 or 2020?). Each answer is one line
+in TILL_ALIAS.
