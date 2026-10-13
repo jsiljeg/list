@@ -500,3 +500,13 @@ are not on the list (Bregh Blanc de Blancs, Tomac Millenium, Château de Pez
 2016…) and ambiguous names ("HENRI GIRAUD 0,75": Esprit or Hommage?, "Via de
 Romans 0,1", "C.COSTANTI, BRUNELLO": 2018 or 2020?). Each answer is one line
 in TILL_ALIAS.
+
+Fair to a list that changes (owner, 2026-10-14: "the wine list changed, so
+be reasonable about it"): a wine is called unsold only if it was on the list
+the whole period and is not 86'd now, cheapest first — a trophy bottle that
+waits is normal, an everyday one is not. Wines added during the period are
+shown apart, with what they sold so far. The dates come from git history:
+`scripts/list-since.mjs`, run by site-files.sh into `data/list-since.json`
+on the deploy (checkout with fetch-depth: 0); history starts 2026-07-31, so a
+wine dated then counts as listed before it. July–September: 175 wines listed
+throughout did not sell once, 41 were new.

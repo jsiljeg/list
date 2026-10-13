@@ -427,24 +427,31 @@
   const ttoks = (v) => tillKey(v).split(" ").filter((x) => x.length > 1 && !TILL_STOP.has(x) && !/^(19|20)\d{2}$/.test(x));
   const tyear = (v) => Number((String(v).match(/\b(19|20)\d{2}\b/) || [])[0] || 0);
   const isGlass = (name) => /\b0[.,](05|1|125|15|2)\s*l?\b/i.test(name);
-  let wineList = null, wineListLoading = false, openWineBox = "";
+  let wineList = null, wineListLoading = false, openWineBox = "", listFrom = "";
   function needWineList() {
     if (wineList || wineListLoading) return wineList;
     wineListLoading = true;
-    Promise.all([fetch("library/wines.json", { cache: "no-cache" }).then((r) => r.json()), fetch("lists/theatrium.json", { cache: "no-cache" }).then((r) => r.json())])
-      .then(([lib, list]) => {
+    /* list-since.json is written by the deploy from git history (scripts/
+       list-since.mjs); unavailable.json is the 86 board. Both optional. */
+    const opt = (u, d) => fetch(u, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : d)).catch(() => d);
+    Promise.all([fetch("library/wines.json", { cache: "no-cache" }).then((r) => r.json()), fetch("lists/theatrium.json", { cache: "no-cache" }).then((r) => r.json()),
+      opt("data/list-since.json", { since: {} }), opt("data/unavailable.json", { hidden: [] })])
+      .then(([lib, list, since, una]) => {
+        listFrom = since.from || "";
+        const hidden = new Set((una.hidden || []).filter((h) => !h.where).map((h) => `${h.producer}|${h.name}`));
         const seen = new Map();
         (function walk(o) {
           if (Array.isArray(o)) return o.forEach(walk);
           if (!o || typeof o !== "object") return;
-          if (o.ref && lib.wines[o.ref] && !(lib.wines[o.ref].insight || {}).kind) {
+          if (o.ref && lib.wines[o.ref] && lib.wines[o.ref].insight && !lib.wines[o.ref].insight.kind) {   /* wines only: not spirits, not water */
             const w = lib.wines[o.ref], e = seen.get(o.ref) || { ref: o.ref, name: w.name, producer: w.producer, prices: [] };
             if (o.price != null) e.prices.push(o.price);
             seen.set(o.ref, e);
           }
           Object.values(o).forEach(walk);
         })(list.sections || list);
-        wineList = [...seen.values()].map((w) => ({ ...w, p: ttoks(w.producer), n: ttoks(w.name), y: tyear(w.name) }));
+        wineList = [...seen.values()].map((w) => ({ ...w, p: ttoks(w.producer), n: ttoks(w.name), y: tyear(w.name),
+          since: (since.since || {})[w.ref] || "", off: hidden.has(`${w.producer}|${w.name}`) }));
         render();
       })
       .catch(() => { wineList = []; })
@@ -485,10 +492,18 @@
       e.t += it.total; by.set(w.ref, e);
     }
     const sold = [...by.values()].sort((a, b) => b.t - a.t);
-    const still = wineList.filter((w) => !by.has(w.ref)).sort((a, b) => Math.max(0, ...b.prices) - Math.max(0, ...a.prices));
+    /* fair to the list (owner, 2026-10-14: "the wine list changed, so be
+       reasonable"): unsold only if on the list the whole period and not 86'd
+       now; a wine added since is "new", with what it sold so far. Cheapest
+       first: a trophy bottle that sits is normal, an everyday one is not. */
+    const start = `${ms[2]}-01`, price = (w) => (w.prices.length ? Math.min(...w.prices) : 0);
+    /* the history starts 2026-07-31: a wine dated then was there before it */
+    const isNew = (w) => !!w.since && w.since > start && w.since !== listFrom;
+    const still = wineList.filter((w) => !by.has(w.ref) && !isNew(w) && !w.off).sort((a, b) => price(a) - price(b));
+    const fresh = wineList.filter((w) => isNew(w) && !w.off).map((w) => ({ w, e: by.get(w.ref) })).sort((a, b) => (b.e ? b.e.t : 0) - (a.e ? a.e.t : 0));
     const unmatched = [...loose.values()].sort((a, b) => b.t - a.t);
     const total = sold.reduce((a, x) => a + x.t, 0) + unmatched.reduce((a, x) => a + x.t, 0);
-    return { ms, sold, still, unmatched, total, matched: sold.reduce((a, x) => a + x.t, 0) };
+    return { ms, sold, still, fresh, unmatched, total, matched: sold.reduce((a, x) => a + x.t, 0) };
   }
   function wineBox() {
     const x = wineSales();
@@ -499,11 +514,14 @@
       ${openWineBox === k ? `<div class="lines">${rows}</div>` : ""}`;
     return `<h3 class="h">Vinska karta i blagajna <small>${span}</small></h3>
       <div class="lines">${x.sold.slice(0, 10).map((e) => `<div><span>${esc(e.w.producer)} · ${esc(e.w.name)}<small>${qty(e)}</small></span><b>${eur0(e.t)}</b></div>`).join("")}</div>
-      ${box("still", `Na karti, a nije se prodalo: ${x.still.length} ${plural(x.still.length, "vino", "vina", "vina")}`,
-        x.still.map((w) => `<div><span>${esc(w.producer)} · ${esc(w.name)}</span><b>${w.prices.length ? eur0(Math.max(...w.prices)) : ""}</b></div>`).join(""))}
+      ${box("still", `Cijelo razdoblje na karti, a nije se prodalo: ${x.still.length} ${plural(x.still.length, "vino", "vina", "vina")}`,
+        `<p class="muted small">Najjeftinija prva: skupa boca koja stoji je normalna, svakodnevno vino koje se ne prodaje nije. Vina trenutačno skinuta s karte nisu ovdje.</p>`
+        + x.still.map((w) => `<div><span>${esc(w.producer)} · ${esc(w.name)}</span><b>${w.prices.length ? eur0(Math.min(...w.prices)) : ""}</b></div>`).join(""))}
+      ${x.fresh.length ? box("fresh", `Nova na karti u tom razdoblju: ${x.fresh.length}`,
+        x.fresh.map(({ w, e }) => `<div><span>${esc(w.producer)} · ${esc(w.name)}<small>na karti od ${hrDate(w.since)}${e ? ` · ${qty(e)}` : " · još nije prodano"}</small></span><b>${e ? eur0(e.t) : ""}</b></div>`).join("")) : ""}
       ${x.unmatched.length ? box("loose", `Prodano, a nije povezano s kartom: ${x.unmatched.length} (${eur0(x.unmatched.reduce((a, u) => a + u.t, 0))})`,
         x.unmatched.map((u) => `<div><span>${esc(u.name)}</span><b>${eur0(u.t)}</b></div>`).join("")) : ""}
-      <p class="muted small">Povezano je ${Math.round((x.matched / Math.max(1, x.total)) * 100)}% prodaje vina. Blagajna vina zove svojim imenima; što nije sigurno povezano, ostaje na popisu "nije povezano" — Filho može reći što je što. "Nije se prodalo" uključuje i vina povučena s karte (86).</p>`;
+      <p class="muted small">Povezano je ${Math.round((x.matched / Math.max(1, x.total)) * 100)}% prodaje vina. Blagajna vina zove svojim imenima; što nije sigurno povezano, ostaje na popisu "nije povezano" — Filho može reći što je što. Datum "na karti od" je iz povijesti karte (od 31. 7. 2026).</p>`;
   }
   /* The evidence behind Pregled's list (2026-10-14): the dishes and wines
      that carry the month, with their move against last month per open day;

@@ -37,6 +37,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # scripts/list-since.mjs reads the list's history
       - name: Syntax-check the scripts the page loads
         run: for f in js/*.js; do node --check "$f"; done
       - name: Validate the wine data (a broken edit never goes live)
