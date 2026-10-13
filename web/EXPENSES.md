@@ -443,3 +443,25 @@ Prihodi gained the evidence: the dishes and wines that carry the month (▲▼
 per open day against last month), the week, lunch against dinner (16 h), and
 each waiter's bills, average bill, wine per bill and discounts. Payment
 methods are gone (owner: not relevant).
+
+### Filho's cut: three cards (2026-10-14)
+
+Filho on the list above: "Prosječni račun je ok. Vina po računu. Ostale
+opaske su nebitne — nekad imaš puno ulaza rakije, al se prebacuje dalje",
+and "Meniji su grupe, zato ih nema uvijek". The owner: the house may be in
+danger; give him numbers to steer by. So Pregled leads with exactly three:
+
+1. **Prag isplativosti** — over the last 3 complete months, net: of each euro
+   sold, what is left after the goods (`keep`); every other cost (plaće,
+   režije, usluge, oprema, potrošno…) ÷ `keep` ÷ open days = what must be sold
+   per open day. Against what is sold: above it is profit, below it says how
+   many bills more a day, or how much more per bill, closes the gap. Until
+   plaće are entered for all three months it says so instead of a number.
+2. **Prosječni račun** — against last month, lunch and dinner.
+3. **Vino po računu** — against last month, share of bills with wine, by
+   waiter, and the euros to the median.
+
+Storno, discounts, cost-share alarms, falling and slow dishes and weekdays
+are gone from Pregled; the rubrike show the 3-month share only. Group menus
+(Repertoire, "MENU 60") are never ranked or trended as dishes; Prihodi shows
+them as one line.

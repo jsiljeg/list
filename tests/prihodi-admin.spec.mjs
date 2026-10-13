@@ -46,13 +46,15 @@ test("Prihodi shows the month from Remaris, and Pregled and PDV use it", async (
   /* net of PDV on both sides (2026-10-14): 707,96 + 264 sold − (400 − 50) bought */
   await expect(page.locator(".card.bal")).toContainText("972 €");
   await expect(page.locator(".card.bal .sum")).toContainText("622 €");
-  /* what to look at first: discounts 120 €, and wine per bill 10 € against 1 € */
-  await expect(page.locator(".fc", { hasText: "Popusti" })).toContainText("120 €");
+  /* Filho, 2026-10-14: only break-even, the average bill and wine per bill —
+     discounts and storno are not shown ("nebitno") */
+  await expect(page.locator(".fc").first()).toContainText("Prag isplativosti");
+  await expect(page.locator(".fc", { hasText: "Prosječni račun" })).toBeVisible();
   await expect(page.locator(".fc", { hasText: "Vino po računu" })).toBeVisible();
-  /* Filho's rubrike, net: food sold 708, bought 350 (the e-invoice line's net) → 49% */
+  await expect(page.locator(".fc", { hasText: "Popusti" })).toHaveCount(0);
+  /* Filho's rubrike, net: food sold 708 */
   const hrana = page.locator(".rub", { hasText: "Hrana" });
   await expect(hrana).toContainText("708 €");
-  await expect(hrana).toContainText("49%");
   await expect(page.locator(".rub", { hasText: "Vino" })).toContainText("264 €");
   await page.click('.seg3 [data-sub="prihodi"]');
   await expect(page.locator(".big b")).toHaveText("1.130 €");
