@@ -103,7 +103,7 @@ export async function monthSummary(env, month) {
        FROM sales_bills GROUP BY m ORDER BY m DESC LIMIT 24`),
     q(`SELECT day, COUNT(*) AS n, SUM(total) AS total FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY day ORDER BY day`, lo, hi),
     q(`SELECT pay, COUNT(*) AS n, SUM(total) AS total FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY pay ORDER BY total DESC`, lo, hi),
-    q(`SELECT l.grp AS grp, l.tax AS tax, SUM(l.total) AS total, SUM(l.qty) AS qty FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
+    q(`SELECT l.grp AS grp, l.tax AS tax, SUM(l.total) AS total, SUM(l.net) AS net, SUM(l.qty) AS qty FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
        WHERE b.day BETWEEN ?1 AND ?2 GROUP BY l.grp, l.tax ORDER BY total DESC`, lo, hi),
     q(`SELECT l.tax AS tax, SUM(l.total) AS total, SUM(l.net) AS net FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
        WHERE b.day BETWEEN ?1 AND ?2 GROUP BY l.tax ORDER BY total DESC`, lo, hi),
@@ -111,5 +111,37 @@ export async function monthSummary(env, month) {
        FROM sales_bills WHERE day BETWEEN ?1 AND ?2 AND cust IS NOT NULL GROUP BY oib ORDER BY total DESC LIMIT 30`, lo, hi),
     q("SELECT k, v FROM sales_state"),
   ]);
-  return { month, months, days, pays, groups, taxes, custs, state: Object.fromEntries(state.map((s) => [s.k, s.v])) };
+  const more = await monthDetail(env, lo, hi);
+  return { month, months, days, pays, groups, taxes, custs, ...more, state: Object.fromEntries(state.map((s) => [s.k, s.v])) };
+}
+
+/* What the owner can act on (2026-10-14: "useful data … to drive him to the
+   right direction"): every article sold, the shape of the week and the day,
+   what leaked (storno, discounts, free items), and each waiter's bills and
+   wine. Summed here so the browser only ranks it. A storno bill counts against
+   the waiter who issued the original (Remaris puts it on them). */
+async function monthDetail(env, lo, hi) {
+  const q = (sql, ...a) => env.DB.prepare(sql).bind(...a).all().then((r) => r.results || []);
+  const WINE = "(l.grp LIKE '%vin%' OR l.grp LIKE '%ampanj%' OR l.grp LIKE '%jenu%')";
+  const [items, weekdays, dayparts, leaks, waiters] = await Promise.all([
+    q(`SELECT l.name AS name, l.grp AS grp, l.tax AS tax, SUM(l.qty) AS qty, SUM(l.total) AS total, SUM(l.net) AS net
+       FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE b.day BETWEEN ?1 AND ?2
+       GROUP BY l.name ORDER BY total DESC LIMIT 400`, lo, hi),
+    q(`SELECT CAST(strftime('%w', day) AS INTEGER) AS wd, COUNT(DISTINCT day) AS days, COUNT(*) AS n, SUM(total) AS total
+       FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY wd`, lo, hi),
+    q(`SELECT CASE WHEN substr(at, 12, 2) < '16' THEN 'rucak' ELSE 'vecera' END AS part, COUNT(*) AS n, SUM(total) AS total
+       FROM sales_bills WHERE day BETWEEN ?1 AND ?2 AND total > 0 GROUP BY part`, lo, hi),
+    q(`SELECT b.waiter AS waiter,
+         SUM(CASE WHEN b.total < 0 AND l.n = 0 THEN 1 ELSE 0 END) AS storno_n,
+         SUM(CASE WHEN b.total < 0 THEN -l.total ELSE 0 END) AS storno,
+         SUM(CASE WHEN b.total >= 0 THEN l.disc ELSE 0 END) AS disc,
+         SUM(CASE WHEN b.total >= 0 AND l.qty > 0 AND l.price > 0 AND l.total = 0 THEN l.qty ELSE 0 END) AS free_n,
+         SUM(CASE WHEN b.total >= 0 AND l.qty > 0 AND l.price > 0 AND l.total = 0 THEN l.qty * l.price ELSE 0 END) AS free
+       FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE b.day BETWEEN ?1 AND ?2 GROUP BY b.waiter`, lo, hi),
+    q(`SELECT b.waiter AS waiter, COUNT(DISTINCT b.id) AS n, SUM(l.total) AS total,
+         SUM(CASE WHEN ${WINE} THEN l.total ELSE 0 END) AS wine,
+         COUNT(DISTINCT CASE WHEN ${WINE} THEN b.id END) AS wine_bills
+       FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 GROUP BY b.waiter`, lo, hi),
+  ]);
+  return { items, weekdays, dayparts, leaks, waiters };
 }
