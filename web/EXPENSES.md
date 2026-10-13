@@ -288,3 +288,19 @@ images; a PDF is sent as it is (no shrinking — it is text already), up to
 1,5 MB like a photo, stored with the photos, shown as "📄 Dokument u PDF-u",
 and handed to the reading run as `work/photos/<id>-<n>.pdf`, which Claude
 reads directly. An e-invoice's own PDF still stays out of the run.
+
+## Cijene compares the printed price (2026-10-13)
+
+With the whole year in, the biggest "moves" were the reader's per-kg
+conversion being unsteady: the same "3 kom" of ricotta at 7,70 € was 0,75 kg
+one week and 3 kg the next (−75%). A line with the paper's numbers now
+compares **total ÷ printed quantity** — with PDV, after the line's rabat — in
+the printed unit; only old photo lines without them fall back to the
+converted price. The "jump no real price makes" guard (+60% / −40%) covers
+everything except weighed fresh food (a "kom" of peas is a bag): a Tabasco
+jar and its box of twelve shared a name too.
+
+Year check the same morning: 660 receipts, all read; every 2026 document
+in the MER export is in Troškovi; 3 March invoices written twice by two
+imports running at once were deleted (and the import can no longer do it);
+6 other same-number pairs are real. 292 products compared, 12 to check.

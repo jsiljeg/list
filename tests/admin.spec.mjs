@@ -1159,3 +1159,28 @@ test("Troškovi: the reading job lists uploaded PDFs", () => {
   expect(src).toMatch(/pdfs: r\.source === "mer" \? \[\] : nums\(r\.pdfs\)/);
   expect(readFileSync(new URL("../web/functions/_lib/expenses.js", import.meta.url), "utf8")).toMatch(/PHOTO_TYPES = \[[^\]]*"application\/pdf"/);
 });
+
+/* 2026-10-13: the reader's per-kg conversion was unsteady — the same "3 kom"
+   of ricotta at 7,70 € became 0,75 kg one week and 3 kg the next, and Cijene
+   showed −75%. Lines with the paper's numbers compare the printed price per
+   printed unit (with PDV, after rabat). */
+test("Troškovi: Cijene compares the printed price per printed unit", async ({ page }) => {
+  await board(page);
+  const ym = new Date().toISOString().slice(0, 7);
+  const ric = (qty, unit_price) => ({ name: "Ricotta 250 g", key: "ricotta 250 g", qty, unit: "kg", unit_price, total: 25.99,
+    doc_qty: 3, doc_unit: "kom", doc_price: 7.7, discount: 10, doc_total: 20.79, vat_rate: 25, category: "mlijecno" });
+  const r = (id, day, it) => ({ id, created_at: `${ym}-${day}T09:00:00Z`, updated_at: "", status: "done", vendor: "Lareto grupa d.o.o.",
+    vendor_oib: "5", doc_date: `${ym}-${day}`, doc_no: "N" + id, total: 25.99, vat: null, payment: "virman", photos: [], note: "",
+    created_by: "", source: "mer", dup_of: "", due_date: "", paid_at: "", items: [it] });
+  /* the reader's conversion says 34,65 €/kg, then 8,66 €/kg — the paper says the same both times */
+  const items = [r("a", "02", ric(0.75, 34.6533)), r("b", "09", ric(3, 8.6633))];
+  await page.route("https://theatrium.devinos.hr/api/troskovi**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify(route.request().method() === "GET" ? { items, limits: { ready: true } } : { ok: true }) }));
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json", body: '{"items":[]}' }));
+  await page.click('.tabs button[data-tab="troskovi"]');
+  await page.click('[data-sub="cijene"]');
+  const row = page.locator("#tab-troskovi .pr").filter({ hasText: "Ricotta" });
+  await expect(row).toContainText("8,66 €");
+  await expect(row).toContainText("/kom");
+  await expect(row).toContainText("ista");
+});

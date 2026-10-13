@@ -651,7 +651,13 @@
     const seen = {}, mixed = new Set();
     for (const r of done().slice().sort((a, b) => dateOf(a).localeCompare(dateOf(b)))) {
       const here = new Map();
-      for (const it of r.items) {
+      for (const it0 of r.items) {
+        /* The printed price per printed unit, with PDV and after the line's
+           rabat, wherever the paper's numbers exist (2026-10-13). The reader's
+           per-kg conversion was not steady: the same "3 kom" of ricotta at
+           7,70 € became 0,75 kg one week and 3 kg the next. */
+        const printed = it0.doc_qty > 0 && it0.total > 0;
+        const it = printed ? { ...it0, unit_price: Math.round((it0.total / it0.doc_qty) * 10000) / 10000, unit: it0.doc_unit || "kom" } : it0;
         if (!it.key || it.unit_price == null || it.unit_price <= 0 || ["rezije", "usluge", "odrzavanje", "place"].includes(it.category)) continue;
         if (NOT_A_PRODUCT.test(it.name) || NOT_A_PRODUCT.test(it.key)) continue;
         const k = `${it.key}|${it.unit || ""}|${packOf(it.name)}`;
@@ -692,9 +698,13 @@
        two deliveries; a jump like that is a magnum read as a bottle (Henri
        Giraud's 1,5 l is "ESPRIT BRUT NAT." in the XML, like the 0,75 l). Fresh
        goods can, with the season, so they are left alone. */
-    const PACKED = new Set(["vino", "zestoko", "pivo_sokovi", "kava", "ciscenje", "ambalaza"]);
+    /* everything but fresh food: a jar of Tabasco and its box of twelve were
+       one name too (2026-10-13) */
+    const FRESH = new Set(["meso", "riba", "povrce"]);
     const wild = (v) => v != null && (v > 60 || v < -40);
-    for (const r of rows) if (PACKED.has(r.last.cat) && (wild(r.change) || wild(r.since))) mixed.add(r.k);
+    /* fresh food is exempt only when it is weighed — a "kom" of peas is a bag */
+    const weighed = (r) => FRESH.has(r.last.cat) && /^(kg|g|l)$/.test(r.unit || "");
+    for (const r of rows) if (!weighed(r) && (wild(r.change) || wild(r.since))) mixed.add(r.k);
     const check = rows.filter((r) => mixed.has(r.k));
     rows.splice(0, rows.length, ...rows.filter((r) => !mixed.has(r.k)));
     const moved = rows.filter((r) => r.change || r.since).sort((a, b) => Math.abs(b.change || b.since) - Math.abs(a.change || a.since));
