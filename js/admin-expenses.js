@@ -276,82 +276,64 @@
       <button data-m="1" aria-label="Sljedeći mjesec" ${month >= now ? "disabled" : ""}>›</button></div>`;
   }
 
+  /* ---------- Pregled (owner, 2026-10-14: "simple and effective … relevant
+     stats"; Filho: "rubrike Vino, Žestoko, Hrana") ----------
+     The month in three lines — what came in, what went out, what is left —
+     then each rubrika sold against what was bought for it, then the costs
+     that are not goods, then six months of both. The detail lives in
+     Prihodi, Računi and Cijene. */
   function overview() {
-    const list = inMonth(month), prev = inMonth(shiftMonth(month, -1));
-    const total = list.reduce((s, r) => s + totalOf(r), 0), prevTotal = prev.reduce((s, r) => s + totalOf(r), 0);
-    if (!done().length) {
-      /* Receipts are added in one place only, Računi (owner, 2026-10-12:
-         "why does Pregled also let me upload?"). */
-      return `<p class="muted center">Još nema pročitanih računa. Kad ih dodate, ovdje se vidi kamo odlazi novac.</p>
-        <button class="btn wide" data-sub="racuni">Dodaj račun</button>`;
-    }
-    /* A month still running is compared with the same days of the last one
-       — 12 days of October against all of September always looks like a drop. */
-    const pm = shiftMonth(month, -1), pmName = MONTHS_GEN[Number(pm.slice(5, 7)) - 1];
-    const running = month === new Date().toISOString().slice(0, 7);
-    const upTo = new Date().getDate();
-    const prevSame = running ? prev.filter((r) => Number(dateOf(r).slice(8, 10)) <= upTo).reduce((s, r) => s + totalOf(r), 0) : prevTotal;
-    const p = pct(total, prevSame);
-    const cmp = prevSame && list.length
-      ? `<span class="${p > 0 ? "up" : "down"}">${p > 0 ? "▲" : "▼"} ${Math.abs(p)}%</span> ${running
-          ? `u odnosu na 1.–${upTo}. ${pmName} (${eur0(prevSame)})` : `u odnosu na ${MONTHS[Number(pm.slice(5, 7)) - 1]} (${eur0(prevSame)})`}`
-      : "";
+    const list = inMonth(month);
+    const total = list.reduce((s, r) => s + totalOf(r), 0);
+    const sales = needIncome(month);
     const { cats, rest } = byCategory(list);
-    const groups = GROUPS.map(([k, label, members, color]) => ({
-      k, label, color, sum: members.reduce((s, c) => s + (cats[c] || 0), 0) + (k === "ostalo" ? rest : 0),
-      parts: members.map((c) => [c, cats[c] || 0]).filter(([, v]) => Math.abs(v) > 0.004).sort((a, b) => b[1] - a[1]),
+    const catSum = (members) => members.reduce((a, c) => a + (cats[c] || 0), 0);
+
+    /* rubrike: sold (the till) against bought (the receipts) */
+    const sold = salesByRubric(sales);
+    const rubRows = RUBRICS.map(([k, label, members]) => {
+      const out = sold[k] ? sold[k].total : 0, cost = catSum(members);
+      const share = out > 0 && cost > 0 ? Math.round((cost / out) * 100) : null;
+      return `<div class="rub"><span class="rl">${esc(label)}</span><span>${out ? eur0(out) : "—"}</span><span>${cost ? eur0(cost) : "—"}</span>
+        <span class="rp ${share != null && share > 45 ? "up" : ""}">${share != null ? share + "%" : ""}</span></div>`;
+    }).join("");
+
+    /* the costs that are not goods for sale */
+    const others = GROUPS.filter(([k]) => !["hrana", "pice"].includes(k)).map(([k, label, members, color]) => ({
+      k, label, color, members, sum: catSum(members) + (k === "ostalo" ? rest : 0),
     })).filter((g) => Math.abs(g.sum) > 0.004).sort((a, b) => b.sum - a.sum);
-    const max = Math.max(...groups.map((g) => g.sum), 1);
-    const bars = groups.map((g) => `
+    const omax = Math.max(...others.map((g) => g.sum), 1);
+    const otherBars = others.map((g) => `
       <button class="bar" data-group="${g.k}" aria-expanded="${openGroup === g.k}">
-        <span class="bl">${esc(g.label)}</span><span class="bv">${eur0(g.sum)} <small>${total ? Math.round((g.sum / total) * 100) : 0}%</small></span>
-        <span class="track"><span style="width:${Math.max(2, (g.sum / max) * 100)}%;background:${g.color}"></span></span>
+        <span class="bl">${esc(g.label)}</span><span class="bv">${eur0(g.sum)}</span>
+        <span class="track"><span style="width:${Math.max(2, (g.sum / omax) * 100)}%;background:${g.color}"></span></span>
       </button>
-      ${openGroup === g.k ? `<div class="parts">${g.parts.map(([c, v]) =>
-        `<div><span>${esc(CAT[c])}</span><span>${eur0(v)}</span></div>`).join("")}${g.k === "ostalo" && Math.abs(rest) > 0.05
+      ${openGroup === g.k ? `<div class="parts">${g.members.map((c) => [c, cats[c] || 0]).filter(([, v]) => Math.abs(v) > 0.004)
+        .map(([c, v]) => `<div><span>${esc(CAT[c])}</span><span>${eur0(v)}</span></div>`).join("")}${g.k === "ostalo" && Math.abs(rest) > 0.05
         ? `<div><span>nerazvrstano</span><span>${eur0(rest)}</span></div>` : ""}</div>` : ""}`).join("");
 
-    /* suppliers */
-    const vend = {};
-    for (const r of list) { const v = shortName(r.vendor) || "Nepoznat"; vend[v] = (vend[v] || 0) + totalOf(r); }
-    const topV = Object.entries(vend).sort((a, b) => b[1] - a[1]).slice(0, 5);
-    const vmax = Math.max(...topV.map(([, v]) => v), 1);
-
-    /* six months */
+    /* six months, in and out side by side */
     const six = [...Array(6)].map((_, i) => shiftMonth(month, i - 5));
-    const sums = six.map((m) => inMonth(m).reduce((s, r) => s + totalOf(r), 0));
-    const smax = Math.max(...sums, 1);
+    const byM = Object.fromEntries(((sales && sales.months) || []).map((x) => [x.m, x.total]));
+    const outs = six.map((m) => inMonth(m).reduce((a, r) => a + totalOf(r), 0));
+    const smax = Math.max(...six.map((m) => byM[m] || 0), ...outs, 1);
+    const pairs = six.map((m, i) => `<button data-month="${m}" class="${m === month ? "on" : ""}">
+        <span class="cv">${byM[m] ? Math.round((byM[m] - outs[i]) / 1000) + "k" : ""}</span>
+        <span class="cb pair"><span class="in" style="height:${Math.max(byM[m] ? 3 : 0, ((byM[m] || 0) / smax) * 100)}%"></span><span style="height:${Math.max(outs[i] ? 3 : 0, (outs[i] / smax) * 100)}%"></span></span>
+        <span class="cl">${MONTHS[Number(m.slice(5, 7)) - 1].slice(0, 3)}</span></button>`).join("");
 
-    /* the biggest single lines this month */
-    const lines = list.flatMap((r) => r.items.map((i) => ({ ...i, vendor: shortName(r.vendor), date: dateOf(r) })))
-      .filter((i) => i.total > 0).sort((a, b) => b.total - a.total).slice(0, 5);
-
-    const days = new Date(Date.UTC(+month.slice(0, 4), +month.slice(5, 7), 0)).getUTCDate();
-    const today = new Date().toISOString().slice(0, 7) === month ? new Date().getDate() : days;
+    if (!list.length && !(sales && incTotal(sales))) {
+      return `${monthNav()}<p class="muted center">U ${MONTHS_LOC[Number(month.slice(5, 7)) - 1]} još nema ni prihoda ni troškova.</p>`;
+    }
     return `
       ${monthNav()}
       ${balanceCard(total)}
-      ${list.length ? `
-      <div class="big"><b>${eur0(total)}</b>
-        <span class="muted small">${list.length} ${list.length % 10 === 1 && list.length % 100 !== 11 ? "račun" : "računa"} · prosječno ${eur0(total / Math.max(1, today))} dnevno</span>
-        ${cmp ? `<span class="small">${cmp}</span>` : ""}
-        ${(() => {
-          const cash = list.filter((r) => r.source === "rucno"), sum = cash.reduce((s, r) => s + totalOf(r), 0);
-          return cash.length ? `<span class="muted small">od toga bez računa ${eur0(sum)} (${cash.length} ${plural(cash.length, "upis", "upisa", "upisa")})</span>` : "";
-        })()}</div>
-      <h3 class="h">Kamo ide novac</h3>
-      <div class="bars">${bars}</div>
-      <h3 class="h">Dobavljači</h3>
-      <div class="vend">${topV.map(([v, s]) => `<div><span class="vn">${esc(v)}</span><span class="vt">${eur0(s)}</span>
-        <span class="track"><span style="width:${(s / vmax) * 100}%"></span></span></div>`).join("")}</div>
-      <h3 class="h">Najveće stavke</h3>
-      <div class="lines">${lines.map((i) => `<div><span>${esc(i.name)}<small>${esc(i.vendor || "")} · ${hrDate(i.date)}</small></span><b>${eur(i.total)}</b></div>`).join("")}</div>`
-      : `<p class="muted center">U ${MONTHS_LOC[Number(month.slice(5, 7)) - 1]} nema računa.</p>`}
-      <h3 class="h">Zadnjih 6 mjeseci</h3>
-      <div class="cols">${six.map((m, i) => `<button data-month="${m}" class="${m === month ? "on" : ""}">
-        <span class="cv">${sums[i] ? eur0(sums[i]).replace(" €", "") : ""}</span>
-        <span class="cb"><span style="height:${Math.max(sums[i] ? 3 : 0, (sums[i] / smax) * 100)}%"></span></span>
-        <span class="cl">${MONTHS[Number(m.slice(5, 7)) - 1].slice(0, 3)}</span></button>`).join("")}</div>`;
+      <h3 class="h">Po rubrikama</h3>
+      <div class="rubs"><div class="rub head"><span></span><span>prodano</span><span>nabavljeno</span><span>udio</span></div>${rubRows}</div>
+      <p class="muted small">Udio = nabavljeno ÷ prodano u istom mjesecu, oboje s PDV-om. Za hranu je u restoranima obično 25–35%. Pivo se prodaje pod žestokim, a kupuje pod kavom i sokovima.</p>
+      ${others.length ? `<h3 class="h">Ostali troškovi</h3><div class="bars">${otherBars}</div>` : ""}
+      <h3 class="h">Zadnjih 6 mjeseci <small><i class="lg in"></i>prihodi <i class="lg"></i>troškovi · iznad: ostaje</small></h3>
+      <div class="cols">${pairs}</div>`;
   }
 
   /* ---------- Prihodi (owner, 2026-10-13: "the counterpart of Kamo idu
@@ -385,7 +367,33 @@
     }
     return { total, rates };
   }
-  const PAY_LABEL = { Gotovina: "Gotovina", Virman: "Virman (na račun)" };
+  /* Filho's rubrike (2026-10-14: "Vino, Žestoko, Hrana"). A till line is
+     food by its tax group (H, 13%); a drink is wine when its sales group says
+     so, alcoholic (P) otherwise žestoko, and non-alcoholic (N) the rest. The
+     receipts side is the matching expense categories. */
+  const RUBRICS = [
+    ["hrana", "Hrana", ["meso", "riba", "povrce", "mlijecno", "suha", "pekara"]],
+    ["vino", "Vino", ["vino"]],
+    ["zestoko", "Žestoko", ["zestoko"]],
+    ["ostalo", "Kava, sokovi, voda", ["pivo_sokovi", "kava"]],
+  ];
+  function rubricOf(grp, tax) {
+    const g = String(grp || ""), t = String(tax || "");
+    if (/^H\b|HRAN/i.test(t)) return "hrana";
+    if (/vin|šampanj|sampanj|pjenu|champ|prosecc/i.test(g)) return "vino";
+    if (/^N\b|NAPIT/i.test(t) || /kav|sok|vod/i.test(g)) return "ostalo";
+    if (/^P\b|PIĆ|PIC/i.test(t) || /rakij|grapp|whisk|rum|gin|vodk|cognac|koktel|liker|pivo/i.test(g)) return "zestoko";
+    return "hrana";
+  }
+  function salesByRubric(s) {
+    const by = {};
+    for (const r of (s && s.groups) || []) {
+      const k = rubricOf(r.grp, r.tax), b = by[k] || (by[k] = { total: 0, groups: {} });
+      b.total += r.total || 0; b.groups[r.grp || "—"] = (b.groups[r.grp || "—"] || 0) + (r.total || 0);
+    }
+    return by;
+  }
+  let openRub = null;
   function incomeView() {
     const s = needIncome(month), prev = needIncome(shiftMonth(month, -1));
     if (!s) return `${monthNav()}${incomeErr ? `<p class="err">${esc(incomeErr)}</p>` : `<p class="muted center"><span class="spin"></span> učitavam prihode…</p>`}`;
@@ -412,28 +420,31 @@
         ? `u odnosu na 1.–${upTo}. ${MONTHS_GEN[Number(pm.slice(5, 7)) - 1]} (${eur0(prevSame)})` : `u odnosu na ${MONTHS[Number(pm.slice(5, 7)) - 1]} (${eur0(prevSame)})`}` : "";
     const workDays = s.days.filter((d) => d.total > 0).length;
     const dmax = Math.max(...s.days.map((d) => d.total), 1);
-    const bars = (rows, label, color) => {
-      const max = Math.max(...rows.map((r) => r.total), 1);
-      return rows.filter((r) => Math.abs(r.total) > 0.004).map((r) => `<div class="bar"><span class="bl">${esc(label(r))}</span>
-        <span class="bv">${eur0(r.total)} <small>${total ? Math.round((r.total / total) * 100) : 0}%</small></span>
-        <span class="track"><span style="width:${Math.max(2, (r.total / max) * 100)}%;background:${color}"></span></span></div>`).join("");
-    };
     const custs = (s.custs || []).filter((c) => Math.abs(c.total) > 0.004);
     return `${monthNav()}
       <div class="big"><b>${eur0(total)}</b>
-        <span class="muted small">${n} ${plural(n, "račun", "računa", "računa")} · ${workDays} ${plural(workDays, "radni dan", "radna dana", "radnih dana")} · prosječno ${eur0(total / Math.max(1, workDays))} po danu</span>
+        <span class="muted small">${n} ${plural(n, "račun", "računa", "računa")} · ${workDays} ${plural(workDays, "radni dan", "radna dana", "radnih dana")}</span>
+        <span class="muted small">prosječni račun ${eur0(total / Math.max(1, n))} · prosječno ${eur0(total / Math.max(1, workDays))} po danu</span>
         ${cmp ? `<span class="small">${cmp}</span>` : ""}</div>
       <h3 class="h">Po danima</h3>
       <div class="days">${s.days.map((d) => `<span title="${hrDate(d.day)} · ${eur0(d.total)} · ${d.n} ${plural(d.n, "račun", "računa", "računa")}">
         <span style="height:${Math.max(2, (d.total / dmax) * 100)}%"></span><small>${Number(d.day.slice(8, 10))}</small></span>`).join("")}</div>
-      <h3 class="h">Kako se plaća</h3>
-      <div class="bars">${bars(s.pays, (r) => PAY_LABEL[r.pay] || r.pay || "—", "#c9a961")}</div>
       <h3 class="h">Što se prodaje</h3>
-      <div class="bars">${bars(s.groups.slice(0, 12), (r) => r.grp || "—", "#a5544a")}</div>
+      <div class="bars">${rubBars(s, total)}</div>
       ${custs.length ? `<h3 class="h">Tvrtke <small>računi izdani na tvrtku</small></h3>
       <div class="lines">${(allCusts ? custs : custs.slice(0, 8)).map((c) => `<div><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}</small></span><b>${eur(c.total)}</b></div>`).join("")}</div>
       ${custs.length > 8 ? `<button class="nema" data-allcusts>${allCusts ? "Manje" : `Sve tvrtke (${custs.length})`}</button>` : ""}` : ""}
       ${months12}${footer}`;
+  }
+  /* the four rubrike as bars; a tap opens the till's own sales groups */
+  function rubBars(s, total) {
+    const by = salesByRubric(s), rows = RUBRICS.map(([k, label]) => [k, label, by[k]]).filter(([, , b]) => b && Math.abs(b.total) > 0.004);
+    const max = Math.max(...rows.map(([, , b]) => b.total), 1), color = { hrana: "#c9a961", vino: "#a5544a", zestoko: "#8a7bb0", ostalo: "#6f8f9a" };
+    return rows.map(([k, label, b]) => `<button class="bar" data-rub="${k}" aria-expanded="${openRub === k}">
+        <span class="bl">${esc(label)}</span><span class="bv">${eur0(b.total)} <small>${total ? Math.round((b.total / total) * 100) : 0}%</small></span>
+        <span class="track"><span style="width:${Math.max(2, (b.total / max) * 100)}%;background:${color[k]}"></span></span></button>
+      ${openRub === k ? `<div class="parts">${Object.entries(b.groups).sort((x, y) => y[1] - x[1])
+        .map(([g, v]) => `<div><span>${esc(g)}</span><span>${eur0(v)}</span></div>`).join("")}</div>` : ""}`).join("");
   }
   /* Pregled's first card: what came in, what went out, what is left */
   function balanceCard(spent) {
@@ -443,8 +454,8 @@
     return `<div class="card bal" data-sub="prihodi" role="button" tabindex="0" aria-label="Otvori prihode">
       <div><span>Prihodi</span><b>${eur0(inc)}</b></div>
       <div><span>Troškovi</span><b>− ${eur0(spent)}</b></div>
-      <div class="sum"><span>Ostaje</span><b class="${left < 0 ? "up" : ""}">${left < 0 ? "− " : ""}${eur0(Math.abs(left))}</b></div>
-      <p class="muted small">Prihodi s blagajne (Remaris), troškovi s računa u Troškovima — oboje s PDV-om. Plaće se vide samo ako su upisane.</p>
+      <div class="sum"><span>Ostaje</span><b class="${left < 0 ? "up" : ""}">${left < 0 ? "− " : ""}${eur0(Math.abs(left))} <small>${Math.round((left / inc) * 100)}%</small></b></div>
+      <p class="muted small">Prihodi s blagajne (Remaris), troškovi s ulaznih računa — oboje s PDV-om. Plaće se vide samo ako su upisane.</p>
     </div>`;
   }
 
@@ -1013,6 +1024,7 @@
 
   /* ---------- wiring ---------- */
   function wire(box) {
+    box.querySelectorAll("[data-rub]").forEach((b) => b.addEventListener("click", () => { openRub = openRub === b.dataset.rub ? null : b.dataset.rub; render(); }));
     box.querySelectorAll("[data-allcusts]").forEach((b) => b.addEventListener("click", () => { allCusts = !allCusts; render(); }));
     box.querySelectorAll("[data-sub]").forEach((b) => b.addEventListener("click", () => { sub = b.dataset.sub; render(); }));
     box.querySelectorAll("[data-m]").forEach((b) => b.addEventListener("click", () => { month = shiftMonth(month, Number(b.dataset.m)); openGroup = null; open = null; render(); }));

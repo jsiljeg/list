@@ -11,7 +11,12 @@
  * restarts every January. Each import covers whole accounting days and is the
  * truth for them — a bill gone from Remaris since (never, unless it was a
  * test) is deleted, a changed one (payment method, customer) is replaced. A
- * storno is its own bill with a negative total, so sums are right as they are. */
+ * storno is its own bill with a negative total, so sums are right as they are.
+ *
+ * Writes are the scarce thing (2026-10-13: the January–October backfill used
+ * 85% of the free plan's 100.000 rows a day — D1 counts every index entry). A
+ * bill is therefore written only when its content hash `h` differs from the
+ * stored one; the morning run re-sends 4 days and writes only what changed. */
 import { reply, isStaffAsync } from "./wines.js";
 import { isExpenseWorker } from "./expenses.js";
 
@@ -38,16 +43,30 @@ export function cleanBill(b) {
   };
 }
 
-/* Bills in, inside one D1 batch. `days` is the range the export covered. */
+async function hashOf(r) {
+  const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(r)));
+  return [...new Uint8Array(d).slice(0, 12)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+/* Bills in, inside one D1 batch. `from`..`to` is the range the export covered. */
 export async function importBills(env, { from, to, bills, last }) {
   const rows = bills.map(cleanBill).filter(Boolean);
+  for (const r of rows) r.h = await hashOf(r);
+  const have = new Map();
+  if (rows.length) {
+    const { results } = await env.DB.prepare(`SELECT id, h FROM sales_bills WHERE id IN (${rows.map((_, i) => "?" + (i + 1)).join(",")})`)
+      .bind(...rows.map((r) => r.id)).all();
+    for (const x of results || []) have.set(x.id, x.h);
+  }
   const st = [];
+  let same = 0;
   for (const r of rows) {
+    if (have.get(r.id) === r.h) { same += 1; continue; }
     st.push(env.DB.prepare("DELETE FROM sales_lines WHERE bill_id = ?1").bind(r.id));
     st.push(env.DB.prepare(
-      `INSERT OR REPLACE INTO sales_bills (id, no, day, at, pay, waiter, cust, oib, total, vat, pnp, jir)
-       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)`)
-      .bind(r.id, r.no, r.day, r.at, r.pay, r.waiter, r.cust || null, r.oib || null, r.total, r.vat, r.pnp, r.jir || null));
+      `INSERT OR REPLACE INTO sales_bills (id, no, day, at, pay, waiter, cust, oib, total, vat, pnp, jir, h)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13)`)
+      .bind(r.id, r.no, r.day, r.at, r.pay, r.waiter, r.cust || null, r.oib || null, r.total, r.vat, r.pnp, r.jir || null, r.h));
     r.lines.forEach((l, n) => st.push(env.DB.prepare(
       `INSERT INTO sales_lines (bill_id, n, code, name, grp, tax, qty, price, disc, net, total)
        VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)`)
@@ -68,7 +87,7 @@ export async function importBills(env, { from, to, bills, last }) {
       .bind(new Date().toISOString(), `${from}..${to}`));
   }
   for (let i = 0; i < st.length; i += 400) await env.DB.batch(st.slice(i, i + 400));
-  return { bills: rows.length, rejected: bills.length - rows.length, removed };
+  return { bills: rows.length, written: rows.length - same, rejected: bills.length - rows.length, removed };
 }
 
 export async function setState(env, k, v) {
@@ -84,8 +103,8 @@ export async function monthSummary(env, month) {
        FROM sales_bills GROUP BY m ORDER BY m DESC LIMIT 24`),
     q(`SELECT day, COUNT(*) AS n, SUM(total) AS total FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY day ORDER BY day`, lo, hi),
     q(`SELECT pay, COUNT(*) AS n, SUM(total) AS total FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY pay ORDER BY total DESC`, lo, hi),
-    q(`SELECT l.grp AS grp, SUM(l.total) AS total, SUM(l.qty) AS qty FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
-       WHERE b.day BETWEEN ?1 AND ?2 GROUP BY l.grp ORDER BY total DESC`, lo, hi),
+    q(`SELECT l.grp AS grp, l.tax AS tax, SUM(l.total) AS total, SUM(l.qty) AS qty FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
+       WHERE b.day BETWEEN ?1 AND ?2 GROUP BY l.grp, l.tax ORDER BY total DESC`, lo, hi),
     q(`SELECT l.tax AS tax, SUM(l.total) AS total, SUM(l.net) AS net FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
        WHERE b.day BETWEEN ?1 AND ?2 GROUP BY l.tax ORDER BY total DESC`, lo, hi),
     q(`SELECT cust, oib, COUNT(*) AS n, SUM(total) AS total, SUM(CASE WHEN pay = 'Virman' THEN total ELSE 0 END) AS virman

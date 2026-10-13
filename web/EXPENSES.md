@@ -386,3 +386,25 @@ want to click every day or force anyone to do this."
   Troškovi = Ostaje; *PDV* fills izlazni PDV (total − net per line tax group)
   and PDV za uplatu. A failed run shows its reason under Prihodi, and GitHub
   mails the owner.
+
+### Pregled redone; writes kept small (2026-10-14)
+
+- **D1's free plan writes 100.000 rows a day, and an index entry is a row.**
+  The January–October backfill (4.500 bills, 36.000 lines) used ~85% of one
+  day on its own (Cloudflare's warning, 2026-10-13). A bill now carries a
+  content hash `h` and is written only when it changed, so the morning run's
+  4-day overlap costs only the new bills (a few hundred rows). Any future
+  backfill: a few months per day, not a year.
+- **Pregled** (owner: "simple and effective … relevant stats"; Filho: "rubrike
+  Vino, Žestoko, Hrana"): Prihodi − Troškovi = Ostaje with its margin; then
+  *Po rubrikama* — Hrana, Vino, Žestoko, Kava/sokovi/voda — sold (the till)
+  against bought (the receipts) and the share; the costs that are not goods;
+  six months in and out. Suppliers and the biggest lines left Pregled
+  (Računi and Cijene have them).
+- A till line's rubrika: food by tax group H; a drink is wine when its sales
+  group says so (vin, šampanj, pjenušac), alcoholic (P) otherwise žestoko,
+  non-alcoholic (N) kava/sokovi/voda. Beer is sold under "Rakija, grappa,
+  pivo" but bought as pivo_sokovi — said under the table.
+- **Prihodi** no longer shows payment methods (owner: not relevant); it shows
+  the average bill, and "Što se prodaje" by rubrika, opening onto the till's
+  sales groups.

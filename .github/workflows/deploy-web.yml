@@ -95,6 +95,7 @@ jobs:
             done
           }
           add_cols expense_receipts "source TEXT" "dup_of TEXT" "due_date TEXT" "paid_at TEXT"
+          add_cols sales_bills "h TEXT"
 
       # Attach theatrium.devinos.hr, once. Idempotent and non-fatal: a failure
       # here must not stop a deploy that is otherwise fine, because the site is

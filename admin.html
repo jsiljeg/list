@@ -156,6 +156,13 @@ button{font:inherit;cursor:pointer}
 .days>span>span{width:100%;background:var(--gold);border-radius:2px 2px 0 0;opacity:.85}
 .days small{font-size:9px;color:var(--dim);margin-top:2px}
 .cols.c12{grid-template-columns:repeat(12,1fr);gap:2px}.cols.c12 .cv{font-size:9px}
+/* Pregled 2026-10-14: the rubrike table, in/out column pairs */
+.rubs{margin:6px 0}.rub{display:grid;grid-template-columns:1.4fr 1fr 1fr .55fr;gap:6px;padding:7px 0;border-bottom:1px solid var(--line);font-size:15px}
+.rub span:not(.rl){text-align:right}.rub.head{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em;border:none;padding-bottom:0}
+.rub .rp{color:var(--dim)}.rub .rp.up{color:#e0a49c}
+.cols .cb.pair{gap:2px;width:80%}.cols .cb.pair span{flex:1;width:auto}.cols .cb.pair .in{background:#7a6a44}
+.cols button.on .cb.pair .in{background:var(--gold)}.cols button.on .cb.pair span:not(.in){background:#a5544a}
+.lg{display:inline-block;width:9px;height:9px;border-radius:2px;background:#4a463e;margin:0 3px 0 8px}.lg.in{background:var(--gold)}
 .card.bal{cursor:pointer}.card.bal>div{display:flex;justify-content:space-between;padding:3px 0;font-size:16px}
 .card.bal .sum{border-top:1px solid var(--line);margin-top:4px;padding-top:6px;font-size:18px}
 .mnav{display:flex;align-items:center;justify-content:space-between;margin:14px 0 6px}

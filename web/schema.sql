@@ -362,7 +362,8 @@ CREATE TABLE IF NOT EXISTS sales_bills (
   total  REAL NOT NULL,                      -- with PDV
   vat    REAL NOT NULL DEFAULT 0,
   pnp    REAL NOT NULL DEFAULT 0,
-  jir    TEXT
+  jir    TEXT,
+  h      TEXT                                -- content hash: unchanged bills are not rewritten
 );
 CREATE INDEX IF NOT EXISTS idx_sales_bills_day ON sales_bills (day);
 CREATE TABLE IF NOT EXISTS sales_lines (
