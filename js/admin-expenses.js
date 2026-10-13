@@ -703,17 +703,25 @@
     const ms = [0, -1, -2].map((d) => shiftMonth(end, d));
     const ss = ms.map(needIncome);
     if (ss.some((x) => !x)) return null;
-    const span = `${MONTHS[Number(ms[2].slice(5, 7)) - 1]}–${MONTHS[Number(ms[0].slice(5, 7)) - 1]}`;
+    /* Only months with plaće count — a month without them would show a
+       profit nobody made. Of the three, those that have them are used and the
+       rest are named (owner, 2026-10-14: August showed "čeka plaće" for June
+       while July and August had them). */
+    const mName = (m) => MONTHS[Number(m.slice(5, 7)) - 1];
+    const use = ms.map((m, i) => [m, ss[i]]).filter(([m]) => payroll(m) > 0);
     const noPay = ms.filter((m) => !payroll(m));
-    if (noPay.length) return { e: 0, head: "Zarada i prag čekaju plaće",
-      why: `Za ${noPay.map((m) => MONTHS[Number(m.slice(5, 7)) - 1]).join(", ")} nema upisanih plaća.`,
+    if (!use.length) return { e: 0, head: "Zarada i prag čekaju plaće",
+      why: `Za ${noPay.map(mName).join(", ")} nema upisanih plaća.`,
       act: "Kad se upišu, ovdje piše koliko treba prodati po danu da se pokriju svi troškovi — i koliko do toga nedostaje ili ga prelazite." };
+    const span = (use.length === 1 ? mName(use[0][0]) : `${mName(use[use.length - 1][0])}–${mName(use[0][0])}`)
+      + (noPay.length ? ` (bez ${noPay.map((m) => MONTHS_GEN[Number(m.slice(5, 7)) - 1]).join(", ")} — nema plaća)` : "");
+    const k = use.length;
     let inc = 0, gross = 0, goods = 0, other = 0, days = 0, bills = 0;
     const parts = {};
-    ms.forEach((m, i) => {
+    use.forEach(([m, sm]) => {
       const n = netByCategory(inMonth(m)), g = GOODS.reduce((a, c) => a + (n.cats[c] || 0), 0);
-      inc += salesNet(ss[i]); gross += incTotal(ss[i]); goods += g; other += n.total - g;
-      days += workDaysOf(ss[i]); bills += ss[i].days.reduce((a, d) => a + d.n, 0);
+      inc += salesNet(sm); gross += incTotal(sm); goods += g; other += n.total - g;
+      days += workDaysOf(sm); bills += sm.days.reduce((a, d) => a + d.n, 0);
       for (const [c, v] of Object.entries(n.cats)) if (!GOODS.includes(c)) parts[c] = (parts[c] || 0) + v;
       if (Math.abs(n.rest) > 0.05) parts.ostalo = (parts.ostalo || 0) + n.rest;
     });
@@ -727,7 +735,7 @@
     const moreSales = toGo > 0 ? toGo / keep : 0;               /* net sales a day that make up the gap */
     const vatX = gross / inc;                                    /* the till's own gross ÷ net */
     const costs = Object.entries(parts).filter(([, v]) => Math.abs(v) > 1).sort((a, b) => b[1] - a[1])
-      .map(([c, v]) => `${esc(CAT[c] || c)} ${eur0(v / 3)}`).join(" · ");
+      .map(([c, v]) => `${esc(CAT[c] || c)} ${eur0(v / k)}`).join(" · ");
     return { e: 0, key: "prag",
       head: `Zarada: ${eur0(profit)} po radnom danu <small>cilj ${eur0(PROFIT_TARGET)}</small>`,
       why: `${span}, bez PDV-a · prodaja ${eur0(have)} dnevno (s PDV-om ${eur0(have * vatX)}) · prag ${eur0(need)} (s PDV-om ${eur0(need * vatX)}) · od eura prodaje nakon robe ostaje ${Math.round(keep * 100)} centi<br>
