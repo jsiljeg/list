@@ -16,6 +16,8 @@ const eur = (n) => new Intl.NumberFormat("hr-HR", { maximumFractionDigits: 0 }).
 const hr = (d) => `${Number(d.slice(8, 10))}. ${Number(d.slice(5, 7))}.`;
 const iso = (t) => new Date(t).toISOString().slice(0, 10);
 const add = (d, n) => iso(Date.parse(d + "T12:00:00Z") + n * 86400000);
+/* Croatian: 1 račun, 2–4 računa, 5+ računa (and 21 račun, 22 računa …) */
+const racuna = (n) => `${n} ${n % 10 === 1 && n % 100 !== 11 ? "račun" : "računa"}`;
 const arrow = (a, b) => (b ? `${a >= b ? "▲" : "▼"} ${Math.abs(Math.round(((a - b) / b) * 100))}%` : "");
 
 async function range(env, lo, hi) {
@@ -55,7 +57,7 @@ export async function onRequestPost({ request, env }) {
   const wineBy = new Map((wine.results || []).map((r) => [r.w, r.n ? r.wine / r.n : 0]));
   const pc = (x) => `${Math.round((x || 0) * 100)}%`;
   const staffLines = staff.filter((x) => x.n >= 5).flatMap((x) => [
-    `  ${x.waiter}${x.owner ? " (vlasnik)" : ""}: ${eur(x.total)} · ${x.n} računa · prosječno ${eur(x.avg)} · vino ${eur(wineBy.get(x.waiter) || 0)}/rač.`,
+    `  ${x.waiter}${x.owner ? " (vlasnik)" : ""}: ${eur(x.total)} · ${racuna(x.n)} · prosječno ${eur(x.avg)} · vino ${eur(wineBy.get(x.waiter) || 0)}/rač.`,
     ...(x.n >= 10 ? x.flags.slice(0, 3) : []).map((f) => f.c === "mjehurici"
       ? `      ! mjehurići: ${pc(f.rate)} šampanjca, ostali ${pc(f.exp)}`
       : `      ! ${STAFF_LABEL[f.c]}: na ${pc(f.rate)} računa, ostali na istim stolovima ${pc(f.exp)}`),
@@ -78,19 +80,19 @@ export async function onRequestPost({ request, env }) {
     `Računa: ${w.n}${p.n ? ` (prošli tjedan ${p.n})` : ""}`,
     "",
     "Po danima:",
-    ...days.map((d) => `  ${WD[new Date(d.day + "T12:00:00Z").getUTCDay()]} ${hr(d.day)}: ${eur(d.t)} · ${d.n} računa`),
-    best.length > 1 ? `Najjači ${WD[new Date(best[0].day + "T12:00:00Z").getUTCDay()]}, najslabiji ${WD[new Date(best[best.length - 1].day + "T12:00:00Z").getUTCDay()]}.` : "",
+    ...days.map((d) => `  ${WD[new Date(d.day + "T12:00:00Z").getUTCDay()]} ${hr(d.day)}: ${eur(d.t)} · ${racuna(d.n)}`),
+    best.length > 1 ? `Najbolji dan: ${WD[new Date(best[0].day + "T12:00:00Z").getUTCDay()]}, najslabiji: ${WD[new Date(best[best.length - 1].day + "T12:00:00Z").getUTCDay()]}.` : "",
     "",
-    staffLines.length ? "Konobari (bez vašeg stola; svatko prema ostalima na istim stolovima, samo dane kad je toga bilo):" : "",
+    staffLines.length ? "Konobari (bez Filhova stola; svatko prema ostalima na istim stolovima, samo dane kad je toga bilo):" : "",
     ...staffLines,
-    own.n ? `  Stol bez hrane, 300 €+ vina (vaš stol): ${own.n} računa, ${eur(own.t)} — izuzeto iz usporedbe.` : "",
+    own.n ? `  Stol bez hrane, 300 €+ vina (Filhov stol): ${racuna(own.n)}, ${eur(own.t)} — izuzeto iz usporedbe.` : "",
     "",
     dishes.length ? "Jela koja su nosila tjedan:" : "",
-    ...dishes.map((d) => `  ${name(d.name)}: ${Math.round(d.q)} × · ${eur(d.t)}`),
+    ...dishes.map((d) => `  ${name(d.name)}: ${Math.round(d.q)} kom · ${eur(d.t)}`),
     "",
     `Mjesec do sada (1.–${dayN}.): ${eur(mt.total)}${mp.total ? `  (${arrow(mt.total, mp.total)} prema istim danima prošlog mjeseca${my.total ? `, ${arrow(mt.total, my.total)} prema lani` : ""})` : ""}`,
     "",
-    "Prag isplativosti, troškovi i ostalo: /admin → Troškovi → Pregled.",
+    "Zarada, prag isplativosti i troškovi: poveznica ispod, pa Troškovi → Pregled.",
   ].filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
 
   const title = `Tjedan ${hr(lo)}–${hr(hi)}: ${eur(w.total)}${p.total ? ` ${arrow(w.total, p.total)}` : ""}`;

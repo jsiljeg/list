@@ -37,11 +37,15 @@ export default {
     const topic = clean(a.topic, 40);
     const from = topic ? `Theatrium · ${topic}` : "Theatrium";
     const click = typeof a.click === "string" && /^https:\/\//.test(a.click) ? a.click : "";
-    const when = new Date().toISOString().slice(0, 16).replace("T", " ");
+    /* Croatian, Zagreb time (owner, 2026-10-14: the e-mails are read in
+       Croatian) — "14. 10. 2026. u 08:00", not an ISO stamp in UTC */
+    const z = Object.fromEntries(new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Zagreb", day: "numeric", month: "numeric",
+      year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(new Date()).map((x) => [x.type, x.value]));
+    const when = `${z.day}. ${z.month}. ${z.year}. u ${z.hour}:${z.minute}`;
     /* `to: "weekly"` → the Monday report's list (MAIL_TO_WEEKLY), else the
        owner alone. Never an address from the request: only names chosen here. */
     const list = a.to === "weekly" && env.MAIL_TO_WEEKLY ? env.MAIL_TO_WEEKLY.split(",").map((x) => x.trim()).filter(Boolean) : [env.MAIL_TO];
-    const text = `${String(a.body || "").slice(0, 6000)}${click ? `\n\n${click}` : ""}\n\n— ${from}, ${when} UTC\n`;
+    const text = `${String(a.body || "").slice(0, 6000)}${click ? `\n\nOtvori: ${click}` : ""}\n\n— ${from}, ${when}\n`;
     const raw = (to) => [
       `From: ${enc(from)} <${env.MAIL_FROM}>`,
       `To: ${to}`,
