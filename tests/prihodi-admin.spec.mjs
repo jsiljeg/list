@@ -255,10 +255,14 @@ test("company advice follows the numbers", () => {
   expect(lost.join(" ")).toMatch(/Rijetko aperitiv/);
   expect(lost.join(" ")).toMatch(/Rijetko desert/);
   expect(lost.join(" ")).toMatch(/Filho osobno/);
-  /* two big parties are an event, not a regular to chase (owner, on Sintagma Media) */
+  /* two big parties are an event, not a regular (owner, on Sintagma Media):
+     labelled, never "they stopped coming" */
   const ev = companyAdvice({ n: 2, days: 2, last: "2026-04-13", virman: 1, size: 27, lunch: 0, wineShare: 0.01, total: 5864, rate: {}, topWine: [], perGuest: 109, guests: 54, menu: 0 }, house, "2026-10-14").join(" ");
   expect(ev).toMatch(/Događaj, ne redovit gost/);
-  expect(ev).not.toMatch(/Nisu bili|Filho osobno|Dolaze kao grupa/);
+  expect(ev).toMatch(/javite se za sljedeći događaj/);
+  expect(ev).not.toMatch(/Nisu bili/);
+  /* still advised like any company, only labelled (owner: "I like all companies listed") */
+  expect(ev).toMatch(/Dolaze kao grupa/);
   /* a group on a set menu has its dessert in the menu */
   expect(companyAdvice({ n: 3, days: 3, last: "2026-10-10", virman: 0, size: 10, lunch: 0.2, wineShare: 0.4, total: 900, rate: { aperitiv: 0.5 }, topWine: [], perGuest: 60, guests: 30, menu: 1 }, house, "2026-10-14").join(" ")).not.toMatch(/desert/);
   /* one visit, nothing unusual: nothing to say */

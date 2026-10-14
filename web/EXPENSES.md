@@ -663,7 +663,11 @@ for 60+ days, paid by the firm, comes as a group, comes for lunch, little
 wine, no aperitif, no dessert unless a set menu covers it, spends well above
 the house). Staff keep a note per company (`sales_companies`, by OIB) through
 `PUT /api/prihodi/tvrtke`. Under the month's companies, **Za nazvati** lists
-those that came twice or more and not for 60 days. The habits are summed from
+regulars (3+ days) not seen for 60 days, most frequent first, and apart from
+them **events** — 1–2 days with 15+ at the table (`isEvent()`). Events are
+listed and advised like any company, only labelled "događaj" everywhere
+(owner, 2026-10-14: "I like all companies listed … but denote it's not the
+same category"), and never told "they stopped coming". The habits are summed from
 the bills on every read; nothing about a company is stored but the note.
 
 `/api/prihodi?od=&do=` returns any span up to 93 days (days, articles,

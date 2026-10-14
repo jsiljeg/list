@@ -339,19 +339,27 @@
     const cs = needComps(), by = new Map(((cs && cs.companies) || []).map((c) => [c.oib, c]));
     const row = (c) => {
       const p = by.get(c.oib), on = openCust === c.oib;
-      return `<button class="custrow" data-cust="${esc(c.oib || "")}" aria-expanded="${on}" ${p ? "" : "disabled"}><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}${p && p.note ? " · ✎ bilješka" : ""}${p && p.advice.length ? ` · ${p.advice.length} ${plural(p.advice.length, "savjet", "savjeta", "savjeta")}` : ""}</small></span><b>${eur(c.total)}</b></button>${on && p ? custCard(p) : ""}`;
+      return `<button class="custrow" data-cust="${esc(c.oib || "")}" aria-expanded="${on}" ${p ? "" : "disabled"}><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}${p && p.event ? ' · <span class="evtag">događaj</span>' : ""}${p && p.note ? " · ✎ bilješka" : ""}${p && p.advice.length ? ` · ${p.advice.length} ${plural(p.advice.length, "savjet", "savjeta", "savjeta")}` : ""}</small></span><b>${eur(c.total)}</b></button>${on && p ? custCard(p) : ""}`;
     };
     /* regulars — 3+ days, not a one-off event — not seen for 60 days: a call
        to make. Most often first, not biggest: a party of 50 twice a year is an
        event, not a habit (owner, 2026-10-14, on Sintagma Media). */
     const today = new Date().toISOString().slice(0, 10);
-    const lost = ((cs && cs.companies) || []).filter((c) => !c.event && c.days >= 3 && (Date.parse(today) - Date.parse(c.last)) / 86400000 > 60)
-      .sort((a, b) => b.days - a.days || b.total - a.total).slice(0, 12);
+    const away = (c) => (Date.parse(today) - Date.parse(c.last)) / 86400000 > 60;
+    const all = (cs && cs.companies) || [];
+    const lost = all.filter((c) => !c.event && c.days >= 3 && away(c)).sort((a, b) => b.days - a.days || b.total - a.total).slice(0, 12);
+    /* events too (owner, 2026-10-14: "I like all companies listed"), as their
+       own group: a party of 50 is worth a call before December, but it is
+       not a regular who stopped coming */
+    const events = all.filter((c) => c.event && away(c)).sort((a, b) => b.total - a.total).slice(0, 12);
+    const lostRow = (c) => `<button class="custrow" data-cust="${esc(c.oib)}" aria-expanded="${openCust === c.oib}"><span>${esc(shortName(c.cust))}${c.event ? ' <span class="evtag">događaj</span>' : ""}<small>${c.event ? `${c.days} ${c.days === 1 ? "dan" : "dana"} · oko ${Math.round(c.size)} osoba` : `${c.days}×`} · zadnji put ${hrDate(c.last)}</small></span><b>${eur0(c.total)}</b></button>${openCust === c.oib ? custCard(c) : ""}`;
     return `<h3 class="h">Tvrtke <small>računi izdani na tvrtku · dodirnite za navike i savjet</small></h3>
       <div class="lines custs">${(allCusts ? custs : custs.slice(0, 8)).map(row).join("")}</div>
       ${custs.length > 8 ? `<button class="nema" data-allcusts>${allCusts ? "Manje" : `Sve tvrtke (${custs.length})`}</button>` : ""}
-      ${lost.length ? `<p class="small"><b>Za nazvati</b> — dolazile su barem 3 puta, a nisu bile 60+ dana (jednokratni događaji nisu tu):</p>
-      <div class="lines custs">${lost.map((c) => `<button class="custrow" data-cust="${esc(c.oib)}" aria-expanded="${openCust === c.oib}"><span>${esc(shortName(c.cust))}<small>${c.days}× · zadnji put ${hrDate(c.last)}</small></span><b>${eur0(c.total)}</b></button>${openCust === c.oib ? custCard(c) : ""}`).join("")}</div>` : ""}
+      ${lost.length ? `<p class="small"><b>Za nazvati — stalne tvrtke</b>: dolazile su barem 3 puta, a nisu bile 60+ dana.</p>
+      <div class="lines custs">${lost.map(lostRow).join("")}</div>` : ""}
+      ${events.length ? `<p class="small"><b>Za nazvati — događaji</b>: 1–2 dolaska s velikim stolom (15+ osoba), zadnji prije 60+ dana. Nisu stalni gosti, ali vrijedi ih pitati za sljedeći događaj.</p>
+      <div class="lines custs">${events.map(lostRow).join("")}</div>` : ""}
       ${compsErr ? `<p class="err">${esc(compsErr)}</p>` : !cs ? `<p class="muted small"><span class="spin"></span> učitavam navike tvrtki…</p>` : ""}`;
   }
   const incTotal = (s) => (s && s.days ? s.days.reduce((a, d) => a + d.total, 0) : 0);
