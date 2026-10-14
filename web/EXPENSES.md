@@ -601,3 +601,30 @@ counted), or `{none: "nije na karti" | "nije vino", why}`.
   289 articles were wrong; "Bijela vina DE/AUT" had become a catch-all
   (Sassicaia, Brunello, Amarone, glass pours). That matters beyond tidiness:
   the waiter comparison sorts čaša / boca / šampanjac by the till's group.
+
+## Marža po vinu (owner, 2026-10-14)
+
+"Do we even make money on drinks?" In Prihodi → Vinska karta i blagajna,
+**Marža po vinu** sets each wine's purchase price against the list:
+
+- **Cost** comes from the supplier receipts in Troškovi (net of PDV), mapped
+  once per supplier line name in **`data/buy-map.json`** — names and sizes
+  only, never a price (the repo is public; prices stay behind the receipts
+  API). A purchase in the size the list sells wins over a 3 l or a magnum,
+  which cost more per litre; then the latest.
+- **Cost %** = net cost ÷ list price without PDV (25%), per bottle and per
+  glass. A glass costs its pour — the till article's 0,1 or 0,05; 0,05 for a
+  dessert wine not yet sold by the glass. 60% and up is shown in red.
+- **Earned** in the three months = till takings without PDV minus litres
+  sold × cost per litre.
+- Supplier lines the map does not know yet wait in **Nabava, za povezati**,
+  answered with the same one tap, committed as "Nabava: X → Y".
+
+Found on the first run (2026-10-14): on the 109 wines with a known cost, cost
+is 39% of net wine sales. Benvenuti Malvazija alone earned ~8.100 € since
+December. Below cost or nearly: Quintarelli Amabile del Cerè at 25 € a glass
+(costs more than it earns even at 0,05 l), Prošek Ruža (75–77%), Corte Aura
+Franciacorta Brut, and a run of Burgundy priced close to cost (Montevertine
+Le Pergole Torte 76%, Chavy Murgers 76%, Jobard Bourgogne blanc 77%, Chavy
+Meursault Charmes 73%). Bernard-Bonin invoices five Meursaults under one line
+name, so they carry no cost until they are told apart.

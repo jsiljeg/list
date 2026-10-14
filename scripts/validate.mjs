@@ -66,6 +66,16 @@ try {
 } catch (e) {
   if (e.code !== "ENOENT") errors.push("data/till-map.json is not valid JSON: " + e.message);
 }
+/* data/buy-map.json — supplier line names to list wines (the margin side).
+   Same rule: a ref that is not in the library drops that wine's cost. */
+try {
+  const libWines = JSON.parse(fs.readFileSync("library/wines.json", "utf8")).wines;
+  const arts = JSON.parse(fs.readFileSync("data/buy-map.json", "utf8")).articles || {};
+  for (const [name, a] of Object.entries(arts))
+    if (a.ref && !libWines[a.ref]) errors.push(`buy-map.json: "${name}" → "${a.ref}" is not in library/wines.json`);
+} catch (e) {
+  if (e.code !== "ENOENT") errors.push("data/buy-map.json is not valid JSON: " + e.message);
+}
 
 const langs = LANGS.map((l) => l.code);
 

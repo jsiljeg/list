@@ -441,19 +441,25 @@
   }
   let wineList = null, wineListLoading = false, openWineBox = "", listFrom = "";
   let tillMap = null, tillSha = "", tillMsg = "", tillBusy = "";
+  /* the purchase side (2026-10-14, "margin per wine"): supplier line names
+     mapped once to list wines, like the till's. Prices never leave the
+     receipts API; the file holds names and sizes only. */
+  const BUY_PATH = "data/buy-map.json";
+  let buyMap = null, buySha = "";
   const ghHead = () => ({ Authorization: `Bearer ${ghKey()}`, Accept: "application/vnd.github+json" });
   const utf8b64 = (s) => { const b = new TextEncoder().encode(s); let o = ""; for (let i = 0; i < b.length; i += 0x8000) o += String.fromCharCode(...b.subarray(i, i + 0x8000)); return btoa(o); };
   const b64utf8 = (s) => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, "")), (c) => c.charCodeAt(0)));
   /* read from GitHub, not the site: a confirmation made a minute ago must
      not come back as a question while the deploy runs */
-  async function readTillMap() {
-    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${TILL_PATH}?ref=${GH_BRANCH}&t=${Date.now()}`, { headers: ghHead(), cache: "no-store" });
-    if (r.status === 404) { tillSha = ""; return { articles: {} }; }
+  async function readMap(path) {
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}?ref=${GH_BRANCH}&t=${Date.now()}`, { headers: ghHead(), cache: "no-store" });
+    if (r.status === 404) return { doc: { articles: {} }, sha: "" };
     if (!r.ok) throw new Error(`GitHub ${r.status}`);
     const j = await r.json();
-    tillSha = j.sha;
-    return JSON.parse(b64utf8(j.content));
+    return { doc: JSON.parse(b64utf8(j.content)), sha: j.sha };
   }
+  async function readTillMap() { const { doc, sha } = await readMap(TILL_PATH); tillSha = sha; return doc; }
+  async function readBuyMap() { const { doc, sha } = await readMap(BUY_PATH); buySha = sha; return doc; }
   function needWineList() {
     if (wineList || wineListLoading) return wineList;
     wineListLoading = true;
@@ -462,25 +468,26 @@
     const opt = (u, d) => fetch(u, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : d)).catch(() => d);
     Promise.all([fetch("library/wines.json", { cache: "no-cache" }).then((r) => r.json()), fetch("lists/theatrium.json", { cache: "no-cache" }).then((r) => r.json()),
       opt("data/list-since.json", { since: {} }), opt("data/unavailable.json", { hidden: [] }),
-      readTillMap().catch(() => opt(TILL_PATH, { articles: {} }))])
-      .then(([lib, list, since, una, tm]) => {
+      readTillMap().catch(() => opt(TILL_PATH, { articles: {} })), readBuyMap().catch(() => ({ articles: {} }))])
+      .then(([lib, list, since, una, tm, bm]) => {
         listFrom = since.from || "";
-        tillMap = tm;
+        tillMap = tm; buyMap = bm;
         const hidden = new Set((una.hidden || []).filter((h) => !h.where).map((h) => `${h.producer}|${h.name}`));
         const seen = new Map();
-        (function walk(o) {
-          if (Array.isArray(o)) return o.forEach(walk);
+        const walk = (o, sec) => {
+          if (Array.isArray(o)) return o.forEach((x) => walk(x, sec));
           if (!o || typeof o !== "object") return;
           if (o.ref && lib.wines[o.ref] && lib.wines[o.ref].insight && !lib.wines[o.ref].insight.kind) {   /* wines only: not spirits, not water */
-            const w = lib.wines[o.ref], e = seen.get(o.ref) || { ref: o.ref, name: w.name, producer: w.producer, prices: [], style: w.insight.style, country: w.insight.country };
-            if (o.price != null) e.prices.push(o.price);
+            const w = lib.wines[o.ref], e = seen.get(o.ref) || { ref: o.ref, name: w.name, producer: w.producer, prices: [], listings: [], style: w.insight.style, country: w.insight.country };
+            if (o.price != null) { e.prices.push(o.price); e.listings.push({ glass: sec === "glass", vol: o.vol || 0.75, price: o.price }); }
             seen.set(o.ref, e);
           }
-          Object.values(o).forEach(walk);
-        })(list.sections || list);
+          Object.values(o).forEach((x) => walk(x, sec));
+        };
+        for (const sec of list.sections || []) walk(sec, sec.id);
         /* a mapped wine that has since left the list still has a name to show */
         const extra = Object.values(tm.articles || {}).filter((a) => a.ref && !seen.has(a.ref) && lib.wines[a.ref]).map((a) => {
-          const w = lib.wines[a.ref]; return { ref: a.ref, name: w.name, producer: w.producer, prices: [], style: (w.insight || {}).style, country: (w.insight || {}).country, gone: true };
+          const w = lib.wines[a.ref]; return { ref: a.ref, name: w.name, producer: w.producer, prices: [], listings: [], style: (w.insight || {}).style, country: (w.insight || {}).country, gone: true };
         });
         wineList = [...seen.values(), ...extra].map((w) => ({ ...w, p: ttoks(w.producer), n: ttoks(w.name), y: tyear(w.name),
           since: (since.since || {})[w.ref] || "", off: hidden.has(`${w.producer}|${w.name}`) }));
@@ -514,23 +521,25 @@
   /* One article, one commit ("Blagajna: X → Y"). A 409 means another tablet
      or a commit from the office got there first: re-read and say so, never
      write over it (the 86 board's rule). */
-  async function saveTill(name, entry) {
+  const saveTill = (name, entry) => saveMap("till", name, entry);
+  async function saveMap(kind, name, entry) {
+    const buy = kind === "buy", path = buy ? BUY_PATH : TILL_PATH;
     tillBusy = name; tillMsg = ""; render();
     try {
-      const doc = await readTillMap();
+      const doc = buy ? await readBuyMap() : await readTillMap();
       doc.articles = doc.articles || {};
       doc.articles[name] = entry;
       doc.articles = Object.fromEntries(Object.keys(doc.articles).sort().map((k) => [k, doc.articles[k]]));
       const w = entry.ref && wineList.find((x) => x.ref === entry.ref);
       const what = entry.ref ? `${w ? `${w.producer} · ${w.name}` : entry.ref}${entry.vol <= 0.15 ? " (čaša)" : ""}` : entry.none;
-      const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${TILL_PATH}`, {
+      const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`, {
         method: "PUT", headers: { ...ghHead(), "Content-Type": "application/json" },
-        body: JSON.stringify({ message: `Blagajna: ${name} → ${what}${who() ? ` — ${who()}` : ""}`, content: utf8b64(JSON.stringify(doc, null, 1) + "\n"), sha: tillSha || undefined, branch: GH_BRANCH }),
+        body: JSON.stringify({ message: `${buy ? "Nabava" : "Blagajna"}: ${name} → ${what}${who() ? ` — ${who()}` : ""}`, content: utf8b64(JSON.stringify(doc, null, 1) + "\n"), sha: (buy ? buySha : tillSha) || undefined, branch: GH_BRANCH }),
       });
-      if (r.status === 409) { tillMap = await readTillMap(); throw new Error("netko je u međuvremenu mijenjao popis — osvježeno, ponovite"); }
+      if (r.status === 409) { if (buy) buyMap = await readBuyMap(); else tillMap = await readTillMap(); throw new Error("netko je u međuvremenu mijenjao popis — osvježeno, ponovite"); }
       if (!r.ok) throw new Error(`GitHub ${r.status}`);
-      tillSha = (await r.json()).content.sha;
-      tillMap = doc;
+      const sha = (await r.json()).content.sha;
+      if (buy) { buySha = sha; buyMap = doc; } else { tillSha = sha; tillMap = doc; }
       tillMsg = `Spremljeno: ${name} → ${what}`;
     } catch (e) { tillMsg = `Nije spremljeno: ${e.message}`; }
     tillBusy = ""; render();
@@ -554,9 +563,9 @@
       if (a.none) { off.push({ ...l, a }); if (a.none === "nije vino") wrong.push({ ...l, want: "izvan grupa vina" }); continue; }
       const w = byRef.get(a.ref);
       if (!w) { ask.push({ ...l, a: null, sug: null }); continue; }
-      const e = by.get(w.ref) || { w, bottles: 0, glasses: 0, t: 0 };
-      if (a.vol <= 0.15) e.glasses += l.q; else e.bottles += l.q * a.vol / 0.75;   /* a magnum counts two bottles */
-      e.t += l.t; by.set(w.ref, e);
+      const e = by.get(w.ref) || { w, bottles: 0, glasses: 0, t: 0, l: 0, pour: 0 };
+      if (a.vol <= 0.15) { e.glasses += l.q; e.pour = a.vol; } else e.bottles += l.q * a.vol / 0.75;   /* a magnum counts two bottles */
+      e.t += l.t; e.l += l.q * a.vol; by.set(w.ref, e);
       const want = tillGroup(w, a.vol);
       if (l.grp !== want) wrong.push({ ...l, want });
     }
@@ -575,6 +584,65 @@
     ask.sort((a, b) => b.t - a.t); off.sort((a, b) => b.t - a.t); wrong.sort((a, b) => b.t - a.t);
     const matched = sum(sold);
     return { ms, sold, still, fresh, ask, off, wrong, matched, total: matched + sum(ask) + sum(off) };
+  }
+  /* ---------- Marža po vinu (owner, 2026-10-14: "do we even make money on
+     drinks") ----------
+     What a bottle and a glass cost against what the list charges, both
+     without PDV, and what each wine earned in the three months. The cost is
+     the supplier's net price on the receipts (Troškovi): a purchase in the
+     size the list sells first — a 3 l or a magnum costs more per litre —
+     then the latest. A glass costs its pour: the till article says 0,1 or
+     0,05; with no glass sold yet, 0,05 for a dessert wine, 0,1 otherwise.
+     The till's "total" is with PDV, drinks are 25%. */
+  const DRINK_VAT = 1.25;
+  function wineCosts() {
+    if (!buyMap || !wineList) return null;
+    const arts = buyMap.articles || {}, byRef = new Map(wineList.map((w) => [w.ref, w])), best = new Map();
+    for (const r of done()) for (const it of r.items || []) {
+      if (it.category !== "vino" || !(it.doc_qty > 0) || !(it.total > 0)) continue;
+      const a = arts[it.key || it.name];
+      if (!a || !a.ref) continue;
+      const w = byRef.get(a.ref), bottles = w ? w.listings.filter((l) => !l.glass).map((l) => l.vol) : [];
+      const listVol = bottles.length && new Set(bottles).size === 1 ? bottles[0] : 0.75;
+      const vol = a.vol || listVol, std = vol === listVol;
+      const perl = it.total / (1 + (it.vat_rate || 0) / 100) / it.doc_qty / vol, d = dateOf(r) || "";
+      const c = best.get(a.ref);
+      if (!c || (std && !c.std) || (std === c.std && d > c.d)) best.set(a.ref, { perl, d, std });
+    }
+    return best;
+  }
+  /* purchase lines of wine the map does not know yet, or asks about */
+  function buyPending() {
+    const arts = (buyMap && buyMap.articles) || {}, m = new Map();
+    for (const r of done()) for (const it of r.items || []) {
+      if (it.category !== "vino") continue;
+      const k = it.key || it.name, a = arts[k];
+      if (a && !a.ask) continue;
+      const e = m.get(k) || { name: k, label: it.name, vendor: r.vendor, q: 0, t: 0, a };
+      e.q += it.doc_qty || 0; e.t += it.total || 0; m.set(k, e);
+    }
+    return [...m.values()].sort((a, b) => b.t - a.t);
+  }
+  function marginRows(x) {
+    const costs = wineCosts();
+    if (!costs) return null;
+    const sold = new Map(x.sold.map((e) => [e.w.ref, e]));
+    const rows = [];
+    for (const w of wineList) {
+      const c = costs.get(w.ref);
+      if (!c || w.gone || !w.listings.length) continue;
+      const e = sold.get(w.ref);
+      const pour = (e && e.pour) || (w.style === "sweet" ? 0.05 : 0.1);
+      const ls = w.listings.map((l) => {
+        const v = l.glass ? pour : l.vol;
+        return { label: l.glass ? "čaša" : l.vol === 0.75 ? "boca" : `${String(l.vol).replace(".", ",")} l`, price: l.price, pct: (c.perl * v) / (l.price / DRINK_VAT) };
+      });
+      rows.push({ w, c, ls, earned: e ? e.t / DRINK_VAT - e.l * c.perl : 0, rev: e ? e.t / DRINK_VAT : 0, off: w.off });
+    }
+    rows.sort((a, b) => b.earned - a.earned || a.ls[0].pct - b.ls[0].pct);
+    const rev = rows.reduce((a, r) => a + r.rev, 0), earned = rows.reduce((a, r) => a + r.earned, 0);
+    const nocost = wineList.filter((w) => !w.gone && !w.off && w.listings.length && !costs.has(w.ref)).length;
+    return { rows, rev, earned, nocost, pending: buyPending() };
   }
   function wineBox() {
     const x = wineSales();
@@ -613,7 +681,31 @@
       ${x.wrong.length ? box("wrong", `U blagajni u krivoj grupi: ${x.wrong.length}`,
         `<p class="muted small">Grupa u Remarisu prema karti: čaša je uvijek "Vina na čaše", boca po boji i zemlji. Krive grupe kvare i usporedbu konobara (čaša / boca / šampanjac).</p>`
         + x.wrong.map((u) => `<div><span>${esc(u.name)}<small>${esc(u.grp || "—")} → <b>${esc(u.want)}</b></small></span><b>${eur0(u.t)}</b></div>`).join("")) : ""}
+      ${marginBox(x, box, opts, sum)}
       <p class="muted small">Povezano je ${Math.round((x.matched / Math.max(1, x.total)) * 100)}% prodaje vina. Svaki artikl blagajne povezan je ručno s vinom s karte (data/till-map.json); novi artikli čekaju u "Za povezati". Datum "na karti od" je iz povijesti karte (od 31. 7. 2026).</p>`;
+  }
+  function marginBox(x, box, opts, sum) {
+    const m = marginRows(x);
+    if (!m) return "";
+    const pct = (p) => `<span${p >= 0.6 ? ' style="color:#e0a49c;font-weight:600"' : ""}>${Math.round(p * 100)}%</span>`;
+    const rows = m.rows.map((r) => `<div><span>${esc(r.w.producer)} · ${esc(r.w.name)}${r.off ? " <small>(skriveno)</small>" : ""}
+        <small>nabava ${eur(r.c.perl * 0.75)} / 0,75 l · ${r.ls.map((l) => `${l.label} ${eur0(l.price)} → ${pct(l.pct)}`).join(" · ")}</small></span>
+        <b>${r.rev ? eur0(r.earned) : "—"}</b></div>`).join("");
+    const buyRow = (u) => {
+      const busy = tillBusy === u.name, sug = u.a && u.a.ref ? wineList.find((w) => w.ref === u.a.ref) : suggestTill(u.label);
+      return `<div class="tillask"><span>${esc(u.label)}<small>${esc(shortName(u.vendor) || "")} · ${nf(u.q)} kom</small>
+          ${u.a && u.a.ask ? `<small class="q">${esc(u.a.ask)}</small>` : ""}
+          ${sug ? `<button class="pill" data-buyok="${esc(u.name)}" data-ref="${esc(sug.ref)}" ${busy ? "disabled" : ""}>✓ ${esc(sug.producer)} · ${esc(sug.name)}</button>` : ""}
+          <select data-buypick="${esc(u.name)}" ${busy ? "disabled" : ""}><option value="">${sug ? "drugo vino…" : "koje je to vino?"}</option>${opts}</select>
+          <p class="row"><button class="pill" data-buynone="${esc(u.name)}" data-none="nije na karti" ${busy ? "disabled" : ""}>nije na karti</button>
+          <button class="pill" data-buynone="${esc(u.name)}" data-none="nije za kartu" ${busy ? "disabled" : ""}>kuhinja / nije za kartu</button></p>
+        </span><b>${eur0(u.t)}</b></div>`;
+    };
+    const share = m.rev ? 1 - m.earned / m.rev : 0;
+    return `${box("margin", `Marža po vinu: ${m.rows.length} ${plural(m.rows.length, "vino", "vina", "vina")} s nabavnom cijenom · trošak ${Math.round(share * 100)}% prodaje`,
+        `<p class="muted small">Nabavna cijena s računa dobavljača, bez PDV-a; prodajna s karte, bez PDV-a (25%). Trošak = nabavna ÷ prodajna; uobičajeni cilj za vino je 30–35%; označeno crveno znači 60% i više — vino koje se prodaje skoro po nabavnoj cijeni. Desno: koliko je vino zaradilo u ova tri mjeseca (prodano bez PDV-a manje nabavna cijena). ${m.nocost ? `${m.nocost} vina s karte još nema nabavnu cijenu — kupljena prije e-računa ili od dobavljača kojeg Troškovi ne vide.` : ""}</p>` + rows)}
+      ${m.pending.length ? box("buyask", `Nabava, za povezati: ${m.pending.length}`,
+        `<p class="muted small">Stavke računa dobavljača koje karta još ne zna. Jednom potvrđeno, vrijedi za svaki sljedeći račun.</p>` + m.pending.map(buyRow).join("")) : ""}`;
   }
   /* ---------- Konobari (Filho, 2026-10-14: "koji je konobar što prodao, i
      koji promet ima i što mu je palo … jer onda mogu upozorit i ispravit —
@@ -1537,6 +1629,10 @@
     box.querySelectorAll("[data-tillok]").forEach((b) => b.addEventListener("click", () => saveTill(b.dataset.tillok, { ref: b.dataset.ref, vol: Number(b.dataset.vol) })));
     box.querySelectorAll("[data-tillpick]").forEach((s) => s.addEventListener("change", () => { if (s.value) saveTill(s.dataset.tillpick, { ref: s.value, vol: Number(s.dataset.vol) }); }));
     box.querySelectorAll("[data-tillnone]").forEach((b) => b.addEventListener("click", () => saveTill(b.dataset.tillnone, { none: b.dataset.none })));
+    /* Nabava, za povezati: the same, into data/buy-map.json */
+    box.querySelectorAll("[data-buyok]").forEach((b) => b.addEventListener("click", () => saveMap("buy", b.dataset.buyok, { ref: b.dataset.ref })));
+    box.querySelectorAll("[data-buypick]").forEach((sl) => sl.addEventListener("change", () => { if (sl.value) saveMap("buy", sl.dataset.buypick, { ref: sl.value }); }));
+    box.querySelectorAll("[data-buynone]").forEach((b) => b.addEventListener("click", () => saveMap("buy", b.dataset.buynone, { none: b.dataset.none })));
     box.querySelectorAll("[data-allfocus]").forEach((b) => b.addEventListener("click", () => { allFocus = !allFocus; render(); }));
     box.querySelectorAll("[data-allcusts]").forEach((b) => b.addEventListener("click", () => { allCusts = !allCusts; render(); }));
     box.querySelectorAll("[data-sub]").forEach((b) => b.addEventListener("click", () => { sub = b.dataset.sub; render(); }));

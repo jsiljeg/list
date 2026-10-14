@@ -177,3 +177,19 @@ test("the till map resolves, and only a confirmed article counts", () => {
   const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
   expect(src).toContain("if (!a || a.ask) { ask.push(");
 });
+
+/* Marža po vinu (owner, 2026-10-14): supplier line names map to list wines
+   in data/buy-map.json, which holds names and sizes only — never a price,
+   because the repo is public. A 3 l or a magnum costs more per litre, so the
+   cost prefers a purchase in the size the list sells. */
+test("the purchase map resolves and carries no prices", () => {
+  const lib = JSON.parse(readFileSync(new URL("../library/wines.json", import.meta.url), "utf8")).wines;
+  const map = JSON.parse(readFileSync(new URL("../data/buy-map.json", import.meta.url), "utf8")).articles;
+  for (const [name, a] of Object.entries(map)) {
+    if (a.ref) expect(lib[a.ref], name).toBeTruthy();
+    for (const k of Object.keys(a)) expect(["ref", "vol", "none", "why", "ask"], name).toContain(k);
+  }
+  expect(map["franciacorta brut 3 l"].vol).toBe(3);
+  const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
+  expect(src).toContain("if (!c || (std && !c.std) || (std === c.std && d > c.d)) best.set(a.ref, { perl, d, std });");
+});

@@ -1,0 +1,607 @@
+{
+ "_": "Nabava (stavke računa dobavljača, kategorija vino) → vinska karta. Ključ je 'key' stavke računa kako ga Troškovi spremaju; ref je vino iz library/wines.json, vol veličina boce kad nije 0,75. Bez cijena: cijene ostaju na theatrium.devinos.hr. 'ask' čeka odgovor, 'none' nije vino s karte. Uređuje se u /admin → Troškovi → Prihodi → Marža po vinu.",
+ "articles": {
+  "Financijsko odobrenje": {
+   "none": "nije za kartu",
+   "why": "kuhinja, stolno vino ili financijsko odobrenje"
+  },
+  "Financijsko odobrenje (storno)": {
+   "none": "nije za kartu",
+   "why": "kuhinja, stolno vino ili financijsko odobrenje"
+  },
+  "Odobrenje – ostvareni promet": {
+   "none": "nije za kartu",
+   "why": "kuhinja, stolno vino ili financijsko odobrenje"
+  },
+  "brunello di montalcino": {
+   "ref": "conti-costanti--brunello-di-montalcino-2020"
+  },
+  "dingac benmosche": {
+   "ref": "benmosche-family--dingac-2021"
+  },
+  "franciacorta brut": {
+   "ref": "corte-aura--franciacorta-brut"
+  },
+  "franciacorta brut 3 l": {
+   "ref": "corte-aura--franciacorta-brut",
+   "vol": 3.0
+  },
+  "franciacorta saten": {
+   "ref": "corte-aura--franciacorta-saten"
+  },
+  "gruner veltliner fass 4": {
+   "ref": "bernhard-ott--fass-4-gruner-veltliner-2023"
+  },
+  "gruner veltliner fass 4 1,5 l": {
+   "ref": "bernhard-ott--fass-4-gruner-veltliner-2023",
+   "vol": 1.5
+  },
+  "gruner veltliner fass 4 6 l": {
+   "ref": "bernhard-ott--fass-4-gruner-veltliner-2023",
+   "vol": 6.0
+  },
+  "monthelie 1er cru les vignes rondes": {
+   "none": "nije na karti",
+   "why": "Jobard Monthelie 1er Cru Les Vignes Rondes"
+  },
+  "muskat gerzinic": {
+   "ref": "gerzinic--muskat-2020"
+  },
+  "pjenusac astoria lounge": {
+   "none": "nije na karti",
+   "why": "Astoria Lounge (kuhinja / kokteli?)"
+  },
+  "pjenusac damjanic virtu brut": {
+   "none": "nije na karti",
+   "why": "Damjanić Virtu Brut"
+  },
+  "pjenusac meneghetti blanc de blancs": {
+   "ref": "meneghetti--blanc-de-blancs"
+  },
+  "pjenusac petrac chardonnay": {
+   "none": "nije na karti",
+   "why": "Petrač pjenušac Chardonnay (Bregh Blanc de Blancs?)"
+  },
+  "pjenusac petrac rose bregh": {
+   "ref": "petrac--bregh-rose"
+  },
+  "pjenusac sember": {
+   "none": "nije na karti",
+   "why": "Šember (ne Pavel)"
+  },
+  "pjenusac sember pavel": {
+   "ref": "sember--pavel"
+  },
+  "pjenusac terbotz": {
+   "ref": "jakopic--terbotz"
+  },
+  "prosecco millesimato": {
+   "ref": "contarini--prosecco-millesimato-2023"
+  },
+  "prosek ruza dalmatinska": {
+   "ref": "niko-bura--prosek-ruza-dalmatinska"
+  },
+  "rajnski rizling izborna berba": {
+   "ref": "jakopic--rajnski-rizling-izborna-berba-2019"
+  },
+  "riesling alsace": {
+   "ref": "domaine-albert-mann--riesling-2022"
+  },
+  "riesling aus den lagen christmann": {
+   "ref": "weingut-a-christmann--riesling-aus-den-lagen-2021"
+  },
+  "riesling butterfly": {
+   "ref": "zilliken--riesling-butterfly-2024"
+  },
+  "riesling rausch auslese goldene kapsel zilliken 0,375 l": {
+   "ref": "zilliken--riesling-auslese-goldkapsel-2009",
+   "vol": 0.375
+  },
+  "riesling rausch kabinett": {
+   "ref": "zilliken--rausch-kabinett-2025"
+  },
+  "riesling rottgen knebel": {
+   "ref": "weingut-knebel--riesling-rottgen-gg-2023"
+  },
+  "riesling schieferterrassen": {
+   "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023"
+  },
+  "riesling vom schiefer trocken": {
+   "ref": "a-clusserath--vom-schiefer-2020"
+  },
+  "riesling wachenheimer": {
+   "none": "nije na karti",
+   "why": "Bürklin-Wolf Wachenheimer Riesling"
+  },
+  "riesling wachenheimer goldbachel": {
+   "none": "nije na karti",
+   "why": "Bürklin-Wolf Wachenheimer Goldbächel"
+  },
+  "riesling wachenheimer goldbachel pc": {
+   "none": "nije na karti",
+   "why": "Bürklin-Wolf Wachenheimer Goldbächel"
+  },
+  "riesling wiltinger braune kupp kabinett": {
+   "none": "nije na karti",
+   "why": "Egon Müller Wiltinger Braune Kupp Kabinett"
+  },
+  "rizling jakopic": {
+   "ref": "jakopic--riesling-2024"
+  },
+  "sampanjac billecart-salmon inspiration 1818 brut": {
+   "none": "nije na karti",
+   "why": "Billecart-Salmon Inspiration 1818"
+  },
+  "sampanjac billecart-salmon le blanc de blancs": {
+   "ref": "billecart-salmon--blanc-de-blancs-grand-cru"
+  },
+  "sampanjac billecart-salmon le reserve": {
+   "ref": "billecart-salmon--le-reserve"
+  },
+  "sampanjac charles heidsieck brut reserve 1,5 l": {
+   "none": "nije na karti",
+   "why": "Charles Heidsieck Brut Réserve magnum"
+  },
+  "sampanjac chavost blanc de chardonnay": {
+   "ref": "chavost--blanc-de-chardonnay"
+  },
+  "sampanjac chavost paradoxe": {
+   "ref": "chavost--paradoxe"
+  },
+  "sampanjac delamotte blanc de blancs": {
+   "ref": "delamotte--blanc-de-blancs-2018"
+  },
+  "sampanjac deutz brut classic": {
+   "ref": "deutz--brut-classic"
+  },
+  "sampanjac henri giraud blanc de craie": {
+   "none": "nije na karti",
+   "why": "Henri Giraud Blanc de Craie"
+  },
+  "sampanjac henri giraud esprit brut nature": {
+   "ref": "henri-giraud--esprit-nature"
+  },
+  "sampanjac henri giraud esprit brut nature 1,5 l": {
+   "ref": "henri-giraud--esprit-nature",
+   "vol": 1.5
+  },
+  "sampanjac henri giraud hommage pinot noir": {
+   "ref": "henri-giraud--hommage-au-pinot-noir"
+  },
+  "sampanjac henri giraud hommage pinot noir 1,5 l": {
+   "ref": "henri-giraud--hommage-au-pinot-noir",
+   "vol": 1.5
+  },
+  "sampanjac henri giraud mv16 0,375 l": {
+   "none": "nije na karti",
+   "why": "Henri Giraud MV16 0,375"
+  },
+  "sampanjac jacquesson cuvee 748": {
+   "none": "nije na karti",
+   "why": "Jacquesson Cuvée 748"
+  },
+  "sampanjac roederer collection": {
+   "none": "nije na karti",
+   "why": "Louis Roederer Collection"
+  },
+  "sampanjac special club blanc de blancs grand cru": {
+   "none": "nije na karti",
+   "why": "Special Club Blanc de Blancs Grand Cru"
+  },
+  "sampanjac yann alexandre brut noir": {
+   "none": "nije na karti",
+   "why": "Yann Alexandre Brut Noir"
+  },
+  "sauvignon jakopic": {
+   "ref": "jakopic--sauvignon-2024"
+  },
+  "savigny les beaune aux fourneaux": {
+   "none": "nije na karti",
+   "why": "Briailles Savigny-lès-Beaune Aux Fourneaux"
+  },
+  "savigny les beaune les saucours blanc": {
+   "none": "nije na karti",
+   "why": "Briailles Savigny-lès-Beaune Les Saucours blanc"
+  },
+  "syrah le fales": {
+   "ref": "moret-nomine--syrah-le-fales-2024"
+  },
+  "trittenheimer apotheke riesling kabinett": {
+   "ref": "a-clusserath--trittenheimer-apotheke-kabinett-2024"
+  },
+  "vino barbera d'alba superiore": {
+   "ref": "az-agr-e-pira-figli-chiara-boschis--barbera-d-alba-superiore-2021"
+  },
+  "vino barolo cannubi": {
+   "none": "nije na karti",
+   "why": "Barolo Cannubi"
+  },
+  "vino bastian rose": {
+   "ref": "bastian--rose"
+  },
+  "vino benanti etna bianco": {
+   "ref": "benanti--etna-bianco-2023"
+  },
+  "vino benanti etna rosso": {
+   "none": "nije na karti",
+   "why": "Benanti Etna Rosso"
+  },
+  "vino benvenuti malvazija": {
+   "ref": "benvenuti--malvazija-2025"
+  },
+  "vino benvenuti teran santa elisabetta": {
+   "ref": "benvenuti--santa-elizabeta-2021"
+  },
+  "vino bire grk": {
+   "ref": "bire--grk-2025"
+  },
+  "vino bire grk defora": {
+   "none": "nije na karti",
+   "why": "Bire Grk Defora (dolazi na kartu)"
+  },
+  "vino blauburgunder mazzon": {
+   "none": "nije na karti",
+   "why": "Blauburgunder Mazzon"
+  },
+  "vino briailles savigny les beaune les saucours blanc": {
+   "none": "nije na karti",
+   "why": "Briailles Savigny-lès-Beaune Les Saucours blanc"
+  },
+  "vino carillon bourgogne cote d'or": {
+   "none": "nije na karti",
+   "why": "Carillon Bourgogne Côte d'Or"
+  },
+  "vino carillon saint-aubin 1er cru": {
+   "ref": "francois-carillon--saint-aubin-1er-cru-les-murgers-des-dents-de-chien-2023"
+  },
+  "vino casarojo cl 98 tempranillo": {
+   "ref": "casa-rojo--cl98-2020"
+  },
+  "vino chablis 1er cru butteaux": {
+   "ref": "pattes-loup--chablis-1er-cru-butteaux-2019"
+  },
+  "vino chartron puligny-montrachet": {
+   "ref": "domaine-jean-chartron--puligny-montrachet-1er-cru-clos-de-la-pucelle-monopole-2021"
+  },
+  "vino chartron rully montmorin": {
+   "ref": "domaine-jean-chartron--rully-montmorin-2023"
+  },
+  "vino chateau de pez": {
+   "ref": "chateau-de-pez--saint-estephe-2022"
+  },
+  "vino chateau fuisse bourgogne blanc": {
+   "none": "nije na karti",
+   "why": "Château Fuissé Bourgogne blanc"
+  },
+  "vino chavy bourgogne chardonnay": {
+   "ref": "philippe-chavy--bourgogne-chardonnay-2023"
+  },
+  "vino chavy meursault 1er cru les charmes": {
+   "ref": "philippe-chavy--meursault-1er-cru-les-charmes-2021"
+  },
+  "vino chavy saint-aubin 1er cru les murgers des dents de chien": {
+   "ref": "philippe-chavy--st-aubin-1er-cru-les-murgers-des-dents-de-chien-2021"
+  },
+  "vino coche-dury": {
+   "ref": "coche-dury--auxey-duresses-2018"
+  },
+  "vino crochet sancerre blanc": {
+   "ref": "francois-crochet--sancerre-blanc-2023"
+  },
+  "vino delas haut pierre": {
+   "none": "nije na karti",
+   "why": "Delas Haut Pierre"
+  },
+  "vino domaine bernard-bonin": {
+   "ask": "Bonin fakturira 5 Meursaulta pod istim imenom \"Domaine Bernard-Bonin 2023\" — po računu se ne zna koja je koja"
+  },
+  "vino duemani cifra": {
+   "ref": "azienda-duemani--cifra-2021"
+  },
+  "vino dvije ruze pinot crni": {
+   "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021"
+  },
+  "vino flor de vetus tinto": {
+   "none": "nije na karti",
+   "why": "Flor de Vetus Tinto"
+  },
+  "vino gramont nuits-saint-georges les hauts pruliers": {
+   "ref": "machard-de-gramont-bertrand--nuits-saint-georges-les-hauts-pruliers-2016"
+  },
+  "vino gramont nuits-saint-georges les hauts-pruliers": {
+   "ref": "machard-de-gramont-bertrand--nuits-saint-georges-les-hauts-pruliers-2016"
+  },
+  "vino gramont vosne-romanee": {
+   "ref": "machard-de-gramont-bertrand--vosne-romanee-2022"
+  },
+  "vino guillot-broux la myotte": {
+   "none": "nije na karti",
+   "why": "Guillot-Broux La Myotte"
+  },
+  "vino heba morellino di scansano": {
+   "ref": "fattoria-di-magliano--heba-2021"
+  },
+  "vino hubert lamy chassagne-montrachet la goujonne vieilles vignes rouge": {
+   "ref": "hubert-lamy--chassagne-montrachet-la-goujonne-vieilles-vignes-rouge-2023"
+  },
+  "vino hubert lamy saint-aubin 1er cru en remilly": {
+   "ref": "hubert-lamy--saint-aubin-1er-cru-en-remilly-2023"
+  },
+  "vino hubert lamy saint-aubin 1er cru les frionnes": {
+   "ref": "hubert-lamy--saint-aubin-1er-cru-les-frionnes-2023"
+  },
+  "vino hubert lamy saint-aubin la princee": {
+   "ref": "hubert-lamy--saint-aubin-la-princee-2023"
+  },
+  "vino hubert lamy santenay 1er cru clos des gravieres rouge": {
+   "ref": "hubert-lamy--santenay-1er-cru-clos-des-gravieres-vieilles-vignes-rouge-2023"
+  },
+  "vino hubert lamy santenay clos des hates rouge": {
+   "none": "nije na karti",
+   "why": "Hubert Lamy Santenay Clos des Hâtes (na karti je Clos des Gravières)"
+  },
+  "vino jean bourdy savagnin": {
+   "ref": "domaine-bourdy--savagnin-2018"
+  },
+  "vino jeka": {
+   "ref": "cecavac-gaspar--jeka-dalmatia-2020"
+  },
+  "vino jeka blanc": {
+   "ref": "cecavac--jeka-blanc-2024"
+  },
+  "vino jobard bourgogne cote d'or blanc": {
+   "ref": "remi-jobard--bourgogne-cote-d-or-blanc-2022"
+  },
+  "vino jobard volnay 1er cru les santenots": {
+   "ref": "remi-jobard--volnay-1er-cru-les-santenots-2022"
+  },
+  "vino jules desjourneys beaujolais": {
+   "ref": "jules-desjourneys--beaujolais-patacaisse-rouge-2022"
+  },
+  "vino jules desjourneys macon": {
+   "ask": "\"Jules Desjourneys Mâcon\" — na karti su Mâcon-Verzé i Mâcon-Prissé En Chailloux"
+  },
+  "vino jules desjourneys pouilly": {
+   "ask": "\"Jules Desjourneys Pouilly\" — Pouilly-Fuissé ili Pouilly-Vinzelles Les Longeays?"
+  },
+  "vino jules desjourneys rouge": {
+   "ref": "jules-desjourneys--rouge-2023"
+  },
+  "vino jules desjourneys saint veran": {
+   "ref": "jules-desjourneys--saint-veran-blanc-2021"
+  },
+  "vino korak chardonnay sur lie": {
+   "ref": "korak--chardonnay-sur-lie-2024"
+  },
+  "vino korak pinot crni": {
+   "ref": "korak--pinot-crni-2023"
+  },
+  "vino korak sauvignon": {
+   "ref": "korak--sauvignon-2024"
+  },
+  "vino krajancic posip intrada": {
+   "ref": "krajancic--posip-intrada-2025"
+  },
+  "vino kunjas grk": {
+   "ref": "kunjas--grk-2024"
+  },
+  "vino kunjas posip": {
+   "ref": "kunjas--posip-2024"
+  },
+  "vino le ragose amarone della valpolicella classico riserva": {
+   "ref": "le-ragose--amarone-classico-riserva-2013"
+  },
+  "vino le ragose amarone della valpolicella classico riserva caloetto": {
+   "ref": "le-ragose--amarone-classico-riserva-caloetto-2015"
+  },
+  "vino le ragose valpolicella classico": {
+   "none": "nije na karti",
+   "why": "Le Ragose Valpolicella"
+  },
+  "vino lignier bourgogne les grands chaillots": {
+   "ref": "hubert-lignier--bourgogne-2023"
+  },
+  "vino lignier morey-saint-denis 1er cru chenevery": {
+   "none": "nije na karti",
+   "why": "Lignier Morey-Saint-Denis 1er Cru Chenevery"
+  },
+  "vino lignier nuits-saint-georges 1er cru les didiers": {
+   "ref": "hubert-lignier--nuits-saint-georges-les-didiers-1er-cru-2013"
+  },
+  "vino lignier pommard en brescul": {
+   "none": "nije na karti",
+   "why": "Lignier Pommard En Brescul (na karti je Les Arvelets)"
+  },
+  "vino markus dan po dan posip": {
+   "ref": "markus--dan-po-dan-2022"
+  },
+  "vino markus fetivi": {
+   "ref": "markus--fetivi-2020"
+  },
+  "vino matosevic grimalda bijelo": {
+   "ref": "matosevic--grimalda-bijela-2022"
+  },
+  "vino matosevic grimalda crveno": {
+   "ref": "matosevic--grimalda-crna-2021"
+  },
+  "vino meneghetti red": {
+   "ref": "meneghetti--red-2020"
+  },
+  "vino meneghetti white": {
+   "ref": "meneghetti--white-2023"
+  },
+  "vino misto mare": {
+   "none": "nije na karti",
+   "why": "Misto Mare"
+  },
+  "vino montevertine le pergole torte": {
+   "ref": "montevertine--le-pergole-torte-2020"
+  },
+  "vino morellino di scansano heba 1,5 l": {
+   "ref": "fattoria-di-magliano--heba-2021",
+   "vol": 1.5
+  },
+  "vino moret chambolle musigny aux echanges": {
+   "none": "nije na karti",
+   "why": "David Moret Chambolle-Musigny Aux Échanges"
+  },
+  "vino moret chambolle-musigny aux echanges": {
+   "none": "nije na karti",
+   "why": "David Moret Chambolle-Musigny Aux Échanges"
+  },
+  "vino moret vosne-romanee": {
+   "none": "nije na karti",
+   "why": "David Moret Vosne-Romanée"
+  },
+  "vino morey saint denis": {
+   "none": "nije na karti",
+   "why": "Morey-Saint-Denis 2023 (Vino-Trade; na karti je Lignierov 2019)"
+  },
+  "vino ornellaia le volte": {
+   "none": "nije na karti",
+   "why": "Le Volte dell'Ornellaia"
+  },
+  "vino petrac chardonnay": {
+   "ref": "petrac--chardonnay-2023"
+  },
+  "vino petrac enigma": {
+   "ref": "petrac--enigma-2019"
+  },
+  "vino petrac grasevina": {
+   "ref": "petrac--grasevina-2024"
+  },
+  "vino petrac karizma": {
+   "ref": "petrac--karizma-cuvee-2022"
+  },
+  "vino piane": {
+   "ref": "le-piane--piane-2019"
+  },
+  "vino piuze chablis la grande vallee": {
+   "ref": "patrick-piuze--chablis-la-grande-vallee-2024"
+  },
+  "vino piuze chablis terroir de fye": {
+   "none": "nije na karti",
+   "why": "Piuze Chablis Terroir de Fyé (dolazi na kartu)"
+  },
+  "vino podversic friulano nekaj": {
+   "none": "nije na karti",
+   "why": "Podveršič Nekaj"
+  },
+  "vino podversic nekaj friulano": {
+   "none": "nije na karti",
+   "why": "Podveršič Nekaj"
+  },
+  "vino poggio bestiale": {
+   "ref": "fattoria-di-magliano--poggio-bestiale-2020"
+  },
+  "vino prager gruner veltliner hinter der burg federspiel": {
+   "ref": "weingut-prager--gruner-veltliner-federspiel-ried-hinter-der-burg-2024"
+  },
+  "vino quintarelli amabile del cere": {
+   "ref": "giuseppe-quintarelli--amabile-del-cere-2017"
+  },
+  "vino racines santa rita hills chardonnay": {
+   "none": "nije na karti",
+   "why": "Racines Santa Rita Hills Chardonnay"
+  },
+  "vino rajnski rizling izborna berba": {
+   "ref": "jakopic--rajnski-rizling-izborna-berba-2019"
+  },
+  "vino rizman tribidrag": {
+   "ref": "rizman--tribidrag-2022"
+  },
+  "vino roc de l'abbaye sauvignon blanc": {
+   "none": "nije na karti",
+   "why": "Roc de l'Abbaye Sauvignon Blanc"
+  },
+  "vino sagul plavac mali": {
+   "ref": "opg-vina-violic--sagul-plavac-mali-2022"
+  },
+  "vino saints hills black": {
+   "ref": "saints-hills--black-2022"
+  },
+  "vino saints hills le chiffre": {
+   "ref": "saints-hills--le-chiffre-2023"
+  },
+  "vino saints hills pape": {
+   "ref": "saints-hills--pape-2023"
+  },
+  "vino schutzen pinot blanc": {
+   "none": "nije na karti",
+   "why": "Schützen Pinot Blanc"
+  },
+  "vino simcic merlot opoka": {
+   "ref": "marjan-simcic--merlot-opoka-2017"
+  },
+  "vino simcic pinot grigio": {
+   "none": "nije na karti",
+   "why": "Marjan Simčič Pinot Grigio"
+  },
+  "vino simcic pinot noir opoka": {
+   "ref": "marjan-simcic--pinot-noir-opoka-2021"
+  },
+  "vino skaramuca dingac elegance": {
+   "ref": "skaramuca--dingac-elegance-2020"
+  },
+  "vino tenuta san guido guidalberto": {
+   "none": "nije na karti",
+   "why": "Guidalberto"
+  },
+  "vino tenute di toscana la vite lucente": {
+   "none": "nije na karti",
+   "why": "La Vite Lucente"
+  },
+  "vino terra unica zdrijebac 10 l": {
+   "none": "nije za kartu",
+   "why": "kuhinja, stolno vino ili financijsko odobrenje"
+  },
+  "vino tomaz teran barbarossa": {
+   "ref": "tomaz--teran-barbarossa-2020"
+  },
+  "vino touch vranac cabernet sauvignon 10 l": {
+   "none": "nije za kartu",
+   "why": "kuhinja, stolno vino ili financijsko odobrenje"
+  },
+  "vino touch vranac cabernet sauvignon bag-in-box 10 l": {
+   "none": "nije za kartu",
+   "why": "kuhinja, stolno vino ili financijsko odobrenje"
+  },
+  "vino vie di romans friulano dolee": {
+   "ref": "vie-di-romans--friulano-2023"
+  },
+  "vino vie di romans pinot grigio dessimis": {
+   "ref": "vie-di-romans--pinot-grigio-2023"
+  },
+  "vino voglar sauvignon": {
+   "ref": "peter-dipoli--sauvignon-voglar-2019"
+  },
+  "vino vupik vranac bag-in-box 3 l": {
+   "none": "nije za kartu",
+   "why": "kuhinja, stolno vino ili financijsko odobrenje"
+  },
+  "vino wittmann riesling aulerde gg": {
+   "ask": "Wittmann Aulerde GG — na karti su 2020 i 2023"
+  },
+  "vino wittmann riesling kirchspiel gg": {
+   "ref": "weingut-wittmann--riesling-kirchspiel-gg-2020"
+  },
+  "vino wittmann riesling morstein gg": {
+   "none": "nije na karti",
+   "why": "Wittmann Morstein GG"
+  },
+  "vino wittmann riesling westhofener trocken": {
+   "ref": "weingut-wittmann--riesling-westhofener-2021"
+  },
+  "vino zdrepceva krv": {
+   "none": "nije za kartu",
+   "why": "kuhinja, stolno vino ili financijsko odobrenje"
+  },
+  "vino zdrepceva krv 1 l": {
+   "none": "nije za kartu",
+   "why": "kuhinja, stolno vino ili financijsko odobrenje"
+  },
+  "zinfandel benmosche": {
+   "ref": "benmosche-family--zinfandel-2019"
+  }
+ }
+}
