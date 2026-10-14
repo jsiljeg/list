@@ -238,7 +238,9 @@ export function companyAdvice(p, house, today) {
   const low = (c) => house.rate[c] >= 0.05 && (p.rate[c] || 0) < house.rate[c] * 0.6 && p.n >= 2;
   if (low("aperitiv") && low("sampanjac") && low("pjenusac")) out.push(`Rijetko aperitiv (${pc((p.rate.aperitiv || 0) + (p.rate.sampanjac || 0) + (p.rate.pjenusac || 0))} računa): ponudite ga čim sjednu.`);
   if (low("desert") && !(p.menu >= 0.5)) out.push(`Rijetko desert (${pc(p.rate.desert)} računa, kuća ${pc(house.rate.desert)}): desert za stol na dijeljenje, uz čašu desertnog vina.`);
-  if (p.topWine.length) out.push(`Piju: ${p.topWine.slice(0, 2).map((w) => w.name).join(", ")}. Imajte ga spremnog i predložite jednu stepenicu više u istom stilu.`);
+  const title = (v) => { const t = String(v || ""); return t === t.toUpperCase() ? t.charAt(0) + t.slice(1).toLowerCase() : t; };
+  const tw = p.topWine.slice(0, 2).map((w) => title(w.name));
+  if (tw.length) out.push(`Piju: ${tw.join(", ")}. ${tw.length > 1 ? "Imajte ih spremne" : "Imajte ga spremnog"} i predložite jednu stepenicu više u istom stilu.`);
   if (house.perGuest && p.perGuest > house.perGuest * 1.25 && p.guests >= 4) out.push(`Troše više od prosjeka (${eur(p.perGuest)} po gostu, kuća ${eur(house.perGuest)}): neka Filho osobno dođe do stola.`);
   return out;
 }
