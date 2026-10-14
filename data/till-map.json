@@ -4,7 +4,7 @@
   "2005, ZILLIKEN AUSLESE GOLDEN": {
    "ref": "zilliken--riesling-auslese-goldkapsel-2009",
    "vol": 0.75,
-   "ask": "Zilliken Auslese Goldkapsel 2005 (2 boce, 720 €). Na karti je 2009. Je li 2005 još u podrumu? Ako da, treba je dodati na kartu."
+   "why": "2005 je bila prijašnja berba; sada je na karti 2009"
   },
   "2019 PETRAČ, ENIGMA 0,1L": {
    "ref": "petrac--enigma-2019",
@@ -61,7 +61,7 @@
   "ANSGAR CLUSSERATH, RIESLING 2018 0,1L": {
    "ref": "a-clusserath--vom-schiefer-2020",
    "vol": 0.1,
-   "ask": "Clüsserath Riesling 2018 na čašu (115 čaša, 10 €). Koji je to Riesling? Na karti je Clüsserathov Vom Schiefer 2020, ali on u blagajni ima svoj artikl."
+   "why": "Filho: to je Vom Schiefer"
   },
   "ANTINORI, TIGNANELLO 2020": {
    "ref": "antinori--tignanello-2020",
@@ -77,8 +77,7 @@
   },
   "BAROLO CANNUBI 2018 0,75": {
    "ref": "az-agr-e-pira-figli-chiara-boschis--barolo-2018",
-   "vol": 0.75,
-   "ask": "Barolo Cannubi 2018. Na karti je Pira & Figli (Chiara Boschis) Barolo 2018. Je li to ta boca?"
+   "vol": 0.75
   },
   "BASTIAN ROSE 0,1L": {
    "ref": "bastian--rose",
@@ -131,7 +130,7 @@
   "BILLECART-SALMON 0,1": {
    "ref": "billecart-salmon--le-reserve",
    "vol": 0.1,
-   "ask": "Billecart-Salmon na čašu (prosinac–siječanj, 46 čaša). Koji: Le Réserve, Blanc de Blancs ili Rosé?"
+   "why": "Filho: Le Réserve, i boca i čaša"
   },
   "BILLECART-SALMON LE RESERVE": {
    "ref": "billecart-salmon--le-reserve",
@@ -147,8 +146,7 @@
   },
   "BLANC DE BLANC GRAND CRU 0,75": {
    "ref": "billecart-salmon--blanc-de-blancs-grand-cru",
-   "vol": 0.75,
-   "ask": "\"Blanc de Blanc Grand Cru\" prodan 3× po 210 €. Čiji? Po cijeni Billecart-Salmon Blanc de Blancs, ali kupovali ste i \"Special Club Blanc de Blancs Grand Cru\"."
+   "vol": 0.75
   },
   "BOSCONIA TINTO RESERVA 0,1": {
    "ref": "lopez-de-heredia--bosconia-tinto-reserva-2013",
@@ -176,8 +174,7 @@
   },
   "C.COSTANTI, BRUNELLO DI MONTALCINO 0,75L": {
    "ref": "conti-costanti--brunello-di-montalcino-2018",
-   "vol": 0.75,
-   "ask": "Costanti Brunello bez berbe u blagajni (veljača–rujan). Na karti su 2018 i 2020. Koja se prodavala?"
+   "vol": 0.75
   },
   "CASA ROJO, CL98 2020 0,1L": {
    "ref": "casa-rojo--cl98-2020",
@@ -678,7 +675,7 @@
   "Jules Desjourneys Pouilly-Fuissé Les Lon": {
    "ref": "jules-desjourneys--pouilly-vinzelles-les-longeays-blanc-2021",
    "vol": 0.75,
-   "ask": "Desjourneys \"Pouilly-Fuissé Les Lon…\". Je li to Pouilly-Vinzelles Les Longeays s karte?"
+   "why": "blagajna piše Pouilly-Fuissé, a Les Longeays je Pouilly-Vinzelles"
   },
   "Jules Desjourneys Rouge 2023": {
    "ref": "jules-desjourneys--rouge-2023",
@@ -752,7 +749,7 @@
   "LE PIANE, BOCA 2009 0,75L": {
    "ref": "le-piane--boca-2019",
    "vol": 0.75,
-   "ask": "Le Piane Boca 2009. Na karti je 2019. Je li 2009 još u podrumu?"
+   "why": "2009 u blagajni je tipfeler, boca je 2019"
   },
   "LE PIANE, BOCA 2019 0,75L": {
    "ref": "le-piane--boca-2019",
@@ -772,8 +769,7 @@
   },
   "LE ROSE 0,75": {
    "ref": "billecart-salmon--le-rose",
-   "vol": 0.75,
-   "ask": "\"Le Rose\" prodan u prosincu po 170 €. Je li to Billecart-Salmon Le Rosé?"
+   "vol": 0.75
   },
   "LE VOLTE DELL ORNELLAIA 0,75": {
    "none": "nije na karti",
@@ -1161,7 +1157,7 @@
   },
   "RIESLING VON DEN TERRASSEN 0,1L": {
    "none": "nije na karti",
-   "why": "Riesling von den Terrassen"
+   "why": "Filho: više ga nema"
   },
   "RIZMAN, TRIBIDRAG 2020 0,1L": {
    "ref": "rizman--tribidrag-2022",
@@ -1197,8 +1193,7 @@
   },
   "SASSICAIA 0,75": {
    "ref": "tenuta-san-guido--sassicaia-2021",
-   "vol": 0.75,
-   "ask": "Sassicaia prodan u svibnju za 800 €, bez berbe u blagajni. Je li to bila 2020 (na karti 750 €) ili 2021 (850 €)?"
+   "vol": 0.75
   },
   "SASSICAIA 2020": {
    "ref": "tenuta-san-guido--sassicaia-2020",
@@ -1380,7 +1375,7 @@
   "Via de Romans 0,1": {
    "ref": "vie-di-romans--friulano-2023",
    "vol": 0.1,
-   "ask": "\"Via de Romans 0,1\" na čašu (23 čaše, srpanj–listopad). Friulano ili Pinot Grigio?"
+   "why": "Filho: i Friulano i Pinot Grigio pod istim artiklom — blagajna ih ne razdvaja; broji se na Friulano"
   },
   "W. KNEBEL, RIESLING ROTTGEN GG 0,75L": {
    "ref": "weingut-knebel--riesling-rottgen-gg-2023",
