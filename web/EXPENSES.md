@@ -631,10 +631,12 @@ Le Pergole Torte 76%, Chavy Murgers 76%, Jobard Bourgogne blanc 77%, Chavy
 Meursault Charmes 73%). Bernard-Bonin invoices five Meursaults under one line
 name, so they carry no cost until they are told apart.
 
-**A glass is 0,1 l** (owner, 2026-10-14) — 7,5 to a bottle, exactly what the
-till articles say. For one afternoon it was costed at 0,125 ("six to a
-bottle"); that was wrong and is gone. At 0,1 l cost is 41% of net wine sales
-on the 110 wines with a known cost.
+**A glass is poured 0,1 l, and a bottle gives 6** (owner, 2026-10-14 —
+both facts, after an afternoon of treating them as alternatives). The till
+sells "0,1" articles; the rest of each bottle goes to tasting, topping up and
+the last drop. So a glass costs a sixth of the bottle (`costVol()`), and the
+glass rule compares 6 glasses with the bottle price. Cost is 44% of net wine
+sales on the 110 wines with a known cost.
 
 ### Cijene, prijedlozi
 
@@ -645,7 +647,7 @@ trophy cannot be multiplied like an everyday wine. Every cost share in Marža
 po vinu is coloured against its own wine's target (green on target, amber
 3–12 points over, red 12+ over, blue 15+ under), with the tier table as the
 legend. Cheap: a bottle 12 points over target; a glass 7 points over, or the
-7,5 glasses of a bottle earning under 110% of the bottle's price. A
+6 glasses of a bottle earning under 110% of the bottle's price. A
 suggestion is the target price, never more than +40% in one step.
 Expensive: 15 points under target with no bottle sold in three months.
 

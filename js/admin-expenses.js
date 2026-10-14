@@ -341,14 +341,17 @@
       const p = by.get(c.oib), on = openCust === c.oib;
       return `<button class="custrow" data-cust="${esc(c.oib || "")}" aria-expanded="${on}" ${p ? "" : "disabled"}><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}${p && p.note ? " · ✎ bilješka" : ""}${p && p.advice.length ? ` · ${p.advice.length} ${plural(p.advice.length, "savjet", "savjeta", "savjeta")}` : ""}</small></span><b>${eur(c.total)}</b></button>${on && p ? custCard(p) : ""}`;
     };
-    /* companies that came more than once and not for 60 days: a call to make */
+    /* regulars — 3+ days, not a one-off event — not seen for 60 days: a call
+       to make. Most often first, not biggest: a party of 50 twice a year is an
+       event, not a habit (owner, 2026-10-14, on Sintagma Media). */
     const today = new Date().toISOString().slice(0, 10);
-    const lost = ((cs && cs.companies) || []).filter((c) => c.n >= 2 && (Date.parse(today) - Date.parse(c.last)) / 86400000 > 60).slice(0, 12);
+    const lost = ((cs && cs.companies) || []).filter((c) => !c.event && c.days >= 3 && (Date.parse(today) - Date.parse(c.last)) / 86400000 > 60)
+      .sort((a, b) => b.days - a.days || b.total - a.total).slice(0, 12);
     return `<h3 class="h">Tvrtke <small>računi izdani na tvrtku · dodirnite za navike i savjet</small></h3>
       <div class="lines custs">${(allCusts ? custs : custs.slice(0, 8)).map(row).join("")}</div>
       ${custs.length > 8 ? `<button class="nema" data-allcusts>${allCusts ? "Manje" : `Sve tvrtke (${custs.length})`}</button>` : ""}
-      ${lost.length ? `<p class="small"><b>Za nazvati</b> — dolazile su više puta, a nisu bile 60+ dana:</p>
-      <div class="lines custs">${lost.map((c) => `<button class="custrow" data-cust="${esc(c.oib)}" aria-expanded="${openCust === c.oib}"><span>${esc(shortName(c.cust))}<small>${c.n}× · zadnji put ${hrDate(c.last)}</small></span><b>${eur0(c.total)}</b></button>${openCust === c.oib ? custCard(c) : ""}`).join("")}</div>` : ""}
+      ${lost.length ? `<p class="small"><b>Za nazvati</b> — dolazile su barem 3 puta, a nisu bile 60+ dana (jednokratni događaji nisu tu):</p>
+      <div class="lines custs">${lost.map((c) => `<button class="custrow" data-cust="${esc(c.oib)}" aria-expanded="${openCust === c.oib}"><span>${esc(shortName(c.cust))}<small>${c.days}× · zadnji put ${hrDate(c.last)}</small></span><b>${eur0(c.total)}</b></button>${openCust === c.oib ? custCard(c) : ""}`).join("")}</div>` : ""}
       ${compsErr ? `<p class="err">${esc(compsErr)}</p>` : !cs ? `<p class="muted small"><span class="spin"></span> učitavam navike tvrtki…</p>` : ""}`;
   }
   const incTotal = (s) => (s && s.days ? s.days.reduce((a, d) => a + d.total, 0) : 0);
@@ -588,12 +591,15 @@
     } catch (e) { tillMsg = `Nije spremljeno: ${e.message}`; }
     tillBusy = ""; render();
   }
-  /* A glass is 0,1 l (owner, 2026-10-14, correcting the same day's "six to
-     a bottle"): 7,5 glasses to a 0,75 l bottle, which is what the till's
-     "0,1" articles say. A dessert article that says 0,05 is poured as it
+  /* A glass is poured 0,1 l, and a bottle gives 6 of them (owner,
+     2026-10-14: "we pour 6 glasses per bottle, and it's 0.1 — both are
+     true"): the rest of the bottle goes to tasting, topping up and the last
+     drop. So a glass sells as the till's "0,1" article and costs a sixth of
+     the bottle. A dessert article that says 0,05 is poured and costed as it
      says. */
   const GLASS_POUR = 0.1;
-  const GLASSES = 0.75 / GLASS_POUR;
+  const GLASSES = 6;
+  const costVol = (v) => (v >= 0.1 && v <= 0.15 ? 0.75 / GLASSES : v);
   /* three months to the shown one: what sold, what did not, what to map */
   function wineSales() {
     if (!needWineList() || !tillMap) return null;
@@ -616,7 +622,7 @@
       const e = by.get(w.ref) || { w, bottles: 0, glasses: 0, t: 0, l: 0, pour: 0 };
       const v = a.vol;
       if (a.vol <= 0.15) { e.glasses += l.q; e.pour = v; } else e.bottles += l.q * v / 0.75;   /* a magnum counts two bottles */
-      e.t += l.t; e.l += l.q * v; by.set(w.ref, e);
+      e.t += l.t; e.l += l.q * costVol(v); by.set(w.ref, e);
     }
     const sold = [...by.values()].sort((a, b) => b.t - a.t);
     /* fair to the list (owner, 2026-10-14: "the wine list changed, so be
@@ -640,8 +646,9 @@
      without PDV, and what each wine earned in the three months. The cost is
      the supplier's net price on the receipts (Troškovi): a purchase in the
      size the list sells first — a 3 l or a magnum costs more per litre —
-     then the latest. A glass costs its pour: 0,1 l, or 0,05 where a dessert
-     article says so; with no glass sold yet, 0,05 for a dessert wine.
+     then the latest. A glass costs a sixth of the bottle (costVol), or its
+     0,05 where a dessert article says so; with no glass sold yet, 0,05 for a
+     dessert wine.
      The till's "total" is with PDV, drinks are 25%. */
   const DRINK_VAT = 1.25;
   function wineCosts() {
@@ -684,7 +691,7 @@
       const pour = (e && e.pour) || (w.style === "sweet" ? 0.05 : GLASS_POUR);
       const ls = w.listings.map((l) => {
         const v = l.glass ? pour : l.vol;
-        return { label: l.glass ? "čaša" : l.vol === 0.75 ? "boca" : `${String(l.vol).replace(".", ",")} l`, glass: l.glass, vol: v, price: l.price, cost: c.perl * v, pct: (c.perl * v) / (l.price / DRINK_VAT) };
+        return { label: l.glass ? "čaša" : l.vol === 0.75 ? "boca" : `${String(l.vol).replace(".", ",")} l`, glass: l.glass, vol: v, price: l.price, cost: c.perl * costVol(v), pct: (c.perl * costVol(v)) / (l.price / DRINK_VAT) };
       });
       rows.push({ w, c, ls, bottles: e ? e.bottles : 0, glasses: e ? e.glasses : 0, earned: e ? e.t / DRINK_VAT - e.l * c.perl : 0, rev: e ? e.t / DRINK_VAT : 0, off: w.off });
     }
@@ -701,7 +708,7 @@
      55% above (COST_TIERS, which is also the colour legend). A bottle 12
      points or more over its target is cheap for what it costs us; the
      suggestion is the target price, at most +40%, rounded. A glass has the
-     same target and two tests: its cost 7 points over it, or the 7,5 glasses
+     same target and two tests: its cost 7 points over it, or the 6 glasses
      in a bottle earning under 110% of the bottle's own price (an open bottle
      carries the risk of the last glass); at most +40% too. Expensive: 15
      points under target and not one bottle sold in three months. Pure. */
@@ -797,13 +804,13 @@
     const share = m.rev ? 1 - m.earned / m.rev : 0;
     const adv = priceAdvice(m.rows), gain = adv.cheap.reduce((a, u) => a + u.gain, 0);
     const advRow = (u) => `<div><span>${esc(u.r.w.producer)} · ${esc(u.r.w.name)} <small>(${u.l.label})</small>
-        <small>trošak ${pct(u.l.pct, u.t)}, cilj ${Math.round(u.t * 100)}%${u.all ? ` · 7,5 čaša = ${eur0(u.all)}, boca ${eur0(u.bottle)}` : ""}${u.gain >= 1 ? ` · uz istu prodaju +${eur0(u.gain)} u 3 mj.` : ""}</small></span>
+        <small>trošak ${pct(u.l.pct, u.t)}, cilj ${Math.round(u.t * 100)}%${u.all ? ` · 6 čaša = ${eur0(u.all)}, boca ${eur0(u.bottle)}` : ""}${u.gain >= 1 ? ` · uz istu prodaju +${eur0(u.gain)} u 3 mj.` : ""}</small></span>
         <b>${eur0(u.l.price)} → ${eur0(u.sug)}</b></div>`;
     const dearRow = (u) => `<div><span>${esc(u.r.w.producer)} · ${esc(u.r.w.name)}<small>trošak ${pct(u.l.pct, u.t)}, cilj ${Math.round(u.t * 100)}% · u 3 mj. nije prodana nijedna boca</small></span><b>${eur0(u.l.price)}</b></div>`;
     return `${box("margin", `Marža po vinu: ${m.rows.length} ${plural(m.rows.length, "vino", "vina", "vina")} s nabavnom cijenom · trošak ${Math.round(share * 100)}% prodaje`,
-        `<p class="muted small">Nabavna cijena s računa dobavljača, bez PDV-a; prodajna s karte, bez PDV-a (25%). Trošak = nabavna ÷ prodajna; čaša je 0,1 l (7,5 čaša u boci). Cilj ovisi o tome koliko boca košta nas: skupa boca smije imati veći trošak (tablica). Boja kaže gdje je cijena prema svom cilju. Desno: koliko je vino zaradilo u ova tri mjeseca (prodano bez PDV-a manje nabavna cijena). ${m.nocost ? `${m.nocost} vina s karte još nema nabavnu cijenu — kupljena prije e-računa ili od dobavljača kojeg Troškovi ne vide.` : ""}</p>` + legend + rows)}
+        `<p class="muted small">Nabavna cijena s računa dobavljača, bez PDV-a; prodajna s karte, bez PDV-a (25%). Trošak = nabavna ÷ prodajna; čaša je 0,1 l, a iz boce izađe 6 čaša, pa čaša košta šestinu boce. Cilj ovisi o tome koliko boca košta nas: skupa boca smije imati veći trošak (tablica). Boja kaže gdje je cijena prema svom cilju. Desno: koliko je vino zaradilo u ova tri mjeseca (prodano bez PDV-a manje nabavna cijena). ${m.nocost ? `${m.nocost} vina s karte još nema nabavnu cijenu — kupljena prije e-računa ili od dobavljača kojeg Troškovi ne vide.` : ""}</p>` + legend + rows)}
       ${adv.cheap.length || adv.dear.length ? box("price", `Cijene, prijedlozi: ${adv.cheap.length} jeftino${adv.dear.length ? ` · ${adv.dear.length} skupo` : ""}${gain >= 1 ? ` · +${eur0(gain)} u 3 mj.` : ""}`,
-        `<p class="muted small">Cilj troška raste s cijenom vina: 30% za bocu do 15 € nabave, 33% do 35 €, 38% do 80 €, 45% do 200 €, 55% iznad — gost zna koliko skupa slavna boca stoji u dućanu, pa se ona ne množi kao obično vino. Jeftino: boca 12 postotnih bodova iznad cilja; čaša 7 bodova iznad cilja, ili kad 7,5 čaša iz boce donese manje od 110% cijene boce. Prijedlog je najviše +40% odjednom. Skupo: 15 bodova ispod cilja, a u tri mjeseca nije prodana nijedna boca. "+€" je dodatna zarada bez PDV-a da se prodalo isto koliko i dosad. Prijedlog je za razgovor, ne pravilo.</p>`
+        `<p class="muted small">Cilj troška raste s cijenom vina: 30% za bocu do 15 € nabave, 33% do 35 €, 38% do 80 €, 45% do 200 €, 55% iznad — gost zna koliko skupa slavna boca stoji u dućanu, pa se ona ne množi kao obično vino. Jeftino: boca 12 postotnih bodova iznad cilja; čaša 7 bodova iznad cilja, ili kad 6 čaša iz boce donese manje od 110% cijene boce. Prijedlog je najviše +40% odjednom. Skupo: 15 bodova ispod cilja, a u tri mjeseca nije prodana nijedna boca. "+€" je dodatna zarada bez PDV-a da se prodalo isto koliko i dosad. Prijedlog je za razgovor, ne pravilo.</p>`
         + (adv.cheap.length ? `<p class="small"><b>Jeftino za ono što nas košta</b></p>` + adv.cheap.map(advRow).join("") : "")
         + (adv.dear.length ? `<p class="small"><b>Možda preskupo — ne prodaje se</b></p>` + adv.dear.map(dearRow).join("") : "")) : ""}
       ${m.pending.length ? box("buyask", `Nabava, za povezati: ${m.pending.length}`,

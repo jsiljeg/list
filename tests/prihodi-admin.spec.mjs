@@ -224,14 +224,15 @@ test("the waiter categories come from the till map, not the till's groups", () =
   });
 });
 
-/* A glass is 0,1 l (owner, 2026-10-14, correcting "six to a bottle" the
-   same day), and the wrong-group box is gone with the decision not to fix
+/* A glass is poured 0,1 l and a bottle gives 6 (owner, 2026-10-14: both
+   are true, so a glass costs a sixth of the bottle), and the wrong-group box is gone with the decision not to fix
    Remaris. The price suggestions are a cost target that rises with the
    bottle's cost, and every cost share is coloured against that target. */
 test("a glass is 0,1 l, and the price box replaces the group box", () => {
   const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
   expect(src).toContain("const GLASS_POUR = 0.1;");
-  expect(src).not.toContain("0.75 / 6");
+  expect(src).toContain("const GLASSES = 6;");
+  expect(src).toContain("costVol(v)");
   expect(src).toContain("COST_TIERS");
   expect(src).toContain("toneOf(p, t)");
   expect(src).not.toContain('box("wrong"');
@@ -246,7 +247,7 @@ test("a glass is 0,1 l, and the price box replaces the group box", () => {
    nothing a company's bills do not support. */
 test("company advice follows the numbers", () => {
   const house = { wineShare: 0.3, perGuest: 70, rate: { aperitiv: 0.3, sampanjac: 0.1, pjenusac: 0.1, desert: 0.3 } };
-  const lost = companyAdvice({ n: 3, last: "2026-07-01", virman: 1, size: 10, lunch: 0.2, weekday: "5", wineShare: 0.05, total: 900, rate: {}, topWine: [{ name: "X" }], perGuest: 120, guests: 30, menu: 0 }, house, "2026-10-14");
+  const lost = companyAdvice({ n: 3, days: 3, last: "2026-07-01", virman: 1, size: 10, lunch: 0.2, weekday: "5", wineShare: 0.05, total: 900, rate: {}, topWine: [{ name: "X" }], perGuest: 120, guests: 30, menu: 0 }, house, "2026-10-14");
   expect(lost.join(" ")).toMatch(/Nisu bili 105 dana/);
   expect(lost.join(" ")).toMatch(/virman/);
   expect(lost.join(" ")).toMatch(/grupa \(oko 10 osoba\)/);
@@ -254,10 +255,14 @@ test("company advice follows the numbers", () => {
   expect(lost.join(" ")).toMatch(/Rijetko aperitiv/);
   expect(lost.join(" ")).toMatch(/Rijetko desert/);
   expect(lost.join(" ")).toMatch(/Filho osobno/);
+  /* two big parties are an event, not a regular to chase (owner, on Sintagma Media) */
+  const ev = companyAdvice({ n: 2, days: 2, last: "2026-04-13", virman: 1, size: 27, lunch: 0, wineShare: 0.01, total: 5864, rate: {}, topWine: [], perGuest: 109, guests: 54, menu: 0 }, house, "2026-10-14").join(" ");
+  expect(ev).toMatch(/Događaj, ne redovit gost/);
+  expect(ev).not.toMatch(/Nisu bili|Filho osobno|Dolaze kao grupa/);
   /* a group on a set menu has its dessert in the menu */
-  expect(companyAdvice({ n: 3, last: "2026-10-10", virman: 0, size: 10, lunch: 0.2, wineShare: 0.4, total: 900, rate: { aperitiv: 0.5 }, topWine: [], perGuest: 60, guests: 30, menu: 1 }, house, "2026-10-14").join(" ")).not.toMatch(/desert/);
+  expect(companyAdvice({ n: 3, days: 3, last: "2026-10-10", virman: 0, size: 10, lunch: 0.2, wineShare: 0.4, total: 900, rate: { aperitiv: 0.5 }, topWine: [], perGuest: 60, guests: 30, menu: 1 }, house, "2026-10-14").join(" ")).not.toMatch(/desert/);
   /* one visit, nothing unusual: nothing to say */
-  expect(companyAdvice({ n: 1, last: "2026-10-10", virman: 0, size: 2, lunch: 0, wineShare: 0.3, total: 150, rate: { aperitiv: 0.3, desert: 0.3 }, topWine: [], perGuest: 70, guests: 2, menu: 0 }, house, "2026-10-14")).toEqual([]);
+  expect(companyAdvice({ n: 1, days: 1, last: "2026-10-10", virman: 0, size: 2, lunch: 0, wineShare: 0.3, total: 150, rate: { aperitiv: 0.3, desert: 0.3 }, topWine: [], perGuest: 70, guests: 2, menu: 0 }, house, "2026-10-14")).toEqual([]);
 });
 
 /* The Monday letter carries spend per guest beside the average bill

@@ -216,6 +216,7 @@ export async function companyData(env) {
       weekday: Object.entries(wd).sort((a, c) => c[1] - a[1])[0]?.[0] ?? null,
       note: noteBy.get(b.oib)?.note || "", noteAt: noteBy.get(b.oib)?.updated_at || null,
     };
+    p.event = isEvent(p);
     p.advice = companyAdvice(p, base, new Date().toISOString().slice(0, 10));
     return p;
   }).sort((a, c) => c.total - a.total);
@@ -224,14 +225,19 @@ export async function companyData(env) {
 
 /* What to do with a company, from its numbers against the house's. Croatian,
    for Filho and the waiters; each line says why. Pure. */
+export const isEvent = (p) => p.days <= 2 && p.size >= 15;
 const WEEKDAY = ["nedjeljom", "ponedjeljkom", "utorkom", "srijedom", "četvrtkom", "petkom", "subotom"];
 export function companyAdvice(p, house, today) {
   const out = [], pc = (x) => `${Math.round((x || 0) * 100)}%`;
   const eur = (x) => `${Math.round(x || 0)} €`;
   const ago = today && p.last ? Math.round((Date.parse(today) - Date.parse(p.last)) / 86400000) : 0;
-  if (p.n >= 2 && ago > 60) out.push(`Nisu bili ${ago} dana (zadnji put ${p.last.slice(8, 10)}. ${p.last.slice(5, 7)}.), a dolazili su ${p.n}×: javite se s ponudom — prije prosinca posebno.`);
+  /* a company seen on one or two days with a big table is an event, not a
+     habit (owner, 2026-10-14, on Sintagma Media: "probably an outlier and
+     special event … not frequent and typical") */
+  if (isEvent(p)) out.push(`Događaj, ne redovit gost: ${p.days} ${p.days === 1 ? "dan" : "dana"}, oko ${Math.round(p.size)} osoba za stolom. Vrijedi im se javiti za sljedeći događaj, ali ne mjeriti kao stalnu tvrtku.`);
+  else if (p.days >= 3 && ago > 60) out.push(`Nisu bili ${ago} dana (zadnji put ${p.last.slice(8, 10)}. ${p.last.slice(5, 7)}.), a dolazili su ${p.days} puta: javite se s ponudom — prije prosinca posebno.`);
   if (p.virman >= 0.5) out.push("Plaća firma (virman): ponudite im božićni domjenak, poslovne ručkove na račun i poklon-bonove za klijente.");
-  if (p.size >= 8) out.push(`Dolaze kao grupa (oko ${Math.round(p.size)} osoba): unaprijed dogovoren meni s vinskom pratnjom po osobi — lakše njima, sigurniji prihod nama.`);
+  if (p.size >= 8 && !isEvent(p)) out.push(`Dolaze kao grupa (oko ${Math.round(p.size)} osoba): unaprijed dogovoren meni s vinskom pratnjom po osobi — lakše njima, sigurniji prihod nama.`);
   if (p.lunch >= 0.7 && p.n >= 2) out.push("Dolaze na ručak: brza usluga, čaša umjesto boce, poslovni ručak s čašom vina u cijeni.");
   else if (p.weekday != null && p.n >= 3) out.push(`Najčešće dolaze ${WEEKDAY[p.weekday]}.`);
   if (p.wineShare < house.wineShare * 0.7 && p.total >= 200) out.push(`Malo vina: ${pc(p.wineShare)} računa, kuća ${pc(house.wineShare)}. Na dolasku čaša pjenušca ili šampanjca, uz glavno jelo predložite bocu za stol.`);
@@ -241,7 +247,7 @@ export function companyAdvice(p, house, today) {
   const title = (v) => { const t = String(v || ""); return t === t.toUpperCase() ? t.charAt(0) + t.slice(1).toLowerCase() : t; };
   const tw = p.topWine.slice(0, 2).map((w) => title(w.name));
   if (tw.length) out.push(`Piju: ${tw.join(", ")}. ${tw.length > 1 ? "Imajte ih spremne" : "Imajte ga spremnog"} i predložite jednu stepenicu više u istom stilu.`);
-  if (house.perGuest && p.perGuest > house.perGuest * 1.25 && p.guests >= 4) out.push(`Troše više od prosjeka (${eur(p.perGuest)} po gostu, kuća ${eur(house.perGuest)}): neka Filho osobno dođe do stola.`);
+  if (house.perGuest && p.perGuest > house.perGuest * 1.25 && p.guests >= 4 && !isEvent(p)) out.push(`Troše više od prosjeka (${eur(p.perGuest)} po gostu, kuća ${eur(house.perGuest)}): neka Filho osobno dođe do stola.`);
   return out;
 }
 
