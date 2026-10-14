@@ -1,0 +1,1506 @@
+{
+ "_": "Blagajna (Remaris) → vinska karta. Ključ je ime artikla točno kako ga blagajna piše; ref je vino iz library/wines.json, vol veličina (0.1 = čaša). 'ask' = prijedlog koji čeka Filhovu potvrdu i ne broji se. 'none' = prodano, ali nije vino s karte. Uređuje se u /admin → Troškovi → Prihodi → Vinska karta i blagajna.",
+ "articles": {
+  "2005, ZILLIKEN AUSLESE GOLDEN": {
+   "ref": "zilliken--riesling-auslese-goldkapsel-2009",
+   "vol": 0.75,
+   "ask": "Auslese Goldkapsel 2005 u blagajni, na karti 2009: isto vino, druga berba?"
+  },
+  "2019 PETRAČ, ENIGMA 0,1L": {
+   "ref": "petrac--enigma-2019",
+   "vol": 0.1
+  },
+  "2019 PETRAČ, ENIGMA 0,75L": {
+   "ref": "petrac--enigma-2019",
+   "vol": 0.75
+  },
+  "A. LAGEDER, CHARDONNAY 2020 0,1L": {
+   "ref": "alois-lageder--chardonnay-2024",
+   "vol": 0.1
+  },
+  "A. LAGEDER, CHARDONNAY 2020 0,75L": {
+   "ref": "alois-lageder--chardonnay-2024",
+   "vol": 0.75
+  },
+  "A. LAGEDER, PINOT BIANCO HABERLE 0,75L": {
+   "none": "nije na karti",
+   "why": "Lageder Pinot Bianco Haberle"
+  },
+  "A. LAGEDER, PINOT GRIGIO PORER 0,75L": {
+   "ref": "alois-lageder--pinot-grigio-porer-2023",
+   "vol": 0.75
+  },
+  "A. LAGEDER, SAUVIGNON 2020 0,1L": {
+   "none": "nije na karti",
+   "why": "Lageder Sauvignon"
+  },
+  "A.CLUSERATH APOTHEKE 0.75": {
+   "ref": "a-clusserath--trittenheimer-apotheke-kabinett-2024",
+   "vol": 0.75
+  },
+  "A.CLUSSERATH, VOM SCHIEFER 0,1L": {
+   "ref": "a-clusserath--vom-schiefer-2020",
+   "vol": 0.1
+  },
+  "A.CLUSSERATH, VOM SCHIEFER 0,75L": {
+   "ref": "a-clusserath--vom-schiefer-2020",
+   "vol": 0.75
+  },
+  "AMARONE 2015, Dal Forno": {
+   "ref": "dal-forno-romano--amarone-della-valpolicella-d-o-c-2015",
+   "vol": 0.75
+  },
+  "AMARONE CALOETTO 0,75": {
+   "ref": "le-ragose--amarone-classico-riserva-caloetto-2015",
+   "vol": 0.75
+  },
+  "AMARONE CLASSICO RISERVA 2013, LE RAGOSE": {
+   "ref": "le-ragose--amarone-classico-riserva-2013",
+   "vol": 0.75
+  },
+  "ANSGAR CLUSSERATH, RIESLING 2018 0,1L": {
+   "ref": "a-clusserath--vom-schiefer-2020",
+   "vol": 0.1,
+   "ask": "\"Ansgar Clüsserath Riesling 2018\" na čašu: Vom Schiefer, ili Riesling kojeg više nema na karti?"
+  },
+  "ANTINORI, TIGNANELLO 2020": {
+   "ref": "antinori--tignanello-2020",
+   "vol": 0.75
+  },
+  "Auxey-Duresses 2018, Coche-Dury": {
+   "ref": "coche-dury--auxey-duresses-2018",
+   "vol": 0.75
+  },
+  "BARBERA, RINALDI": {
+   "none": "nije na karti",
+   "why": "Rinaldi Barbera"
+  },
+  "BAROLO CANNUBI 2018 0,75": {
+   "ref": "az-agr-e-pira-figli-chiara-boschis--barolo-2018",
+   "vol": 0.75,
+   "ask": "\"Barolo Cannubi 2018\": Pira & Figli (Chiara Boschis)?"
+  },
+  "BASTIAN ROSE 0,1L": {
+   "ref": "bastian--rose",
+   "vol": 0.1
+  },
+  "BASTIAN ROSE 0,75L": {
+   "ref": "bastian--rose",
+   "vol": 0.75
+  },
+  "BASTIAN, MUŠKAT": {
+   "none": "nije na karti",
+   "why": "Bastian Muškat"
+  },
+  "BAČIĆ, DUBROVAČKA MALVASIA 0,1L": {
+   "none": "nije na karti",
+   "why": "Bačić Dubrovačka malvasija"
+  },
+  "BENMOSCHE FAMILY, DINGAČ 2020,75L": {
+   "ref": "benmosche-family--dingac-2021",
+   "vol": 0.75
+  },
+  "BENMOSCHE FAMILY, ZINFANDEL 0,75L": {
+   "ref": "benmosche-family--zinfandel-2019",
+   "vol": 0.75
+  },
+  "BENVENUTI SANTA ELISABETA 0,1": {
+   "ref": "benvenuti--santa-elizabeta-2021",
+   "vol": 0.1
+  },
+  "BENVENUTI SANTA ELISABETTA  0,75": {
+   "ref": "benvenuti--santa-elizabeta-2021",
+   "vol": 0.75
+  },
+  "BENVENUTI, MALVAZIJA 0,1L": {
+   "ref": "benvenuti--malvazija-2025",
+   "vol": 0.1
+  },
+  "BENVENUTI, MALVAZIJA 0,75L": {
+   "ref": "benvenuti--malvazija-2025",
+   "vol": 0.75
+  },
+  "BERNARD BONIN LA RENCONTRE 075": {
+   "ref": "bernard-bonin--meursault-la-rencontre-2023",
+   "vol": 0.75
+  },
+  "BEZALKOHOLNO VINO 0,1": {
+   "none": "nije na karti",
+   "why": "bezalkoholno vino"
+  },
+  "BILLECART-SALMON 0,1": {
+   "ref": "billecart-salmon--le-reserve",
+   "vol": 0.1,
+   "ask": "Billecart-Salmon na čašu (pro 2025 – sij 2026): Le Réserve?"
+  },
+  "BILLECART-SALMON LE RESERVE": {
+   "ref": "billecart-salmon--le-reserve",
+   "vol": 0.75
+  },
+  "BIRE GRK DEFORA 0,75": {
+   "none": "nije na karti",
+   "why": "Bire Grk Defora"
+  },
+  "BIRE, GRK 0,75L": {
+   "ref": "bire--grk-2025",
+   "vol": 0.75
+  },
+  "BLANC DE BLANC GRAND CRU 0,75": {
+   "ref": "billecart-salmon--blanc-de-blancs-grand-cru",
+   "vol": 0.75,
+   "ask": "\"Blanc de Blanc Grand Cru\" za 210 €: po cijeni Billecart-Salmon BdB Grand Cru?"
+  },
+  "BOSCONIA TINTO RESERVA 0,1": {
+   "ref": "lopez-de-heredia--bosconia-tinto-reserva-2013",
+   "vol": 0.1
+  },
+  "BOURGOGNE, MACHARD DE GRAMONT 2016 0,1L": {
+   "none": "nije na karti",
+   "why": "Machard de Gramont Bourgogne 2016"
+  },
+  "BOURGOGNE, MIKULSKI 0,75": {
+   "ref": "francois-mikulski--bourgogne-2023",
+   "vol": 0.75
+  },
+  "BOŠKINAC, CUVE BOŠKINAC CRNI 0,75L": {
+   "ref": "boskinac--cuvee-boskinac-crni-2018",
+   "vol": 0.75
+  },
+  "BUDINSKI, REFOŠK OMO 2020 0,75L": {
+   "ref": "budinski--refosk-omo-2020",
+   "vol": 0.75
+  },
+  "BURA, DINGAČ 2021": {
+   "ref": "mrgudic--bura-2021",
+   "vol": 0.75
+  },
+  "C.COSTANTI, BRUNELLO DI MONTALCINO 0,75L": {
+   "ref": "conti-costanti--brunello-di-montalcino-2018",
+   "vol": 0.75,
+   "ask": "Costanti Brunello bez berbe (velj–ruj): 2018? 2020 je na kartu stigao tek u listopadu"
+  },
+  "CASA ROJO, CL98 2020 0,1L": {
+   "ref": "casa-rojo--cl98-2020",
+   "vol": 0.1
+  },
+  "CASA ROJO, CL98 2020 0,75L": {
+   "ref": "casa-rojo--cl98-2020",
+   "vol": 0.75
+  },
+  "CASA ROJO, ORANGE REPUBLIC 2021 0,1L": {
+   "ref": "casa-rojo--orange-republic-2021",
+   "vol": 0.1
+  },
+  "CASA ROJO, ORANGE REPUBLIC 2022 0,75L": {
+   "ref": "casa-rojo--orange-republic-2021",
+   "vol": 0.75
+  },
+  "CASA ROJO, TOKYO GOMEZ-ROJO 0,75L": {
+   "ref": "casa-rojo--tokyo-gomez-rojo-2021",
+   "vol": 0.75
+  },
+  "CHABLIS 1ER CRU BUTTEAUX 0,75": {
+   "ref": "pattes-loup--chablis-1er-cru-butteaux-2019",
+   "vol": 0.75
+  },
+  "CHABLIS LA GRAND VALE 0,1": {
+   "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
+   "vol": 0.1
+  },
+  "CHAMBOLLE MUSIGNY DAVID MORET 0.75": {
+   "none": "nije na karti",
+   "why": "David Moret Chambolle-Musigny"
+  },
+  "CHAMPAGNE CHAVOST, BDB": {
+   "ref": "chavost--blanc-de-chardonnay",
+   "vol": 0.75
+  },
+  "CHAMPAGNE CHAVOST, PARADOX": {
+   "ref": "chavost--paradoxe",
+   "vol": 0.75
+  },
+  "CHARLES HEIDSIECK 0,1 BRUT": {
+   "none": "nije na karti",
+   "why": "Charles Heidsieck"
+  },
+  "CHARLES HEIDSIECK MAGNUM": {
+   "none": "nije na karti",
+   "why": "Charles Heidsieck"
+  },
+  "CHAS.-MONTRACHET 1ER CRU BAUDINES 0,75L": {
+   "none": "nije na karti",
+   "why": "Chassagne-Montrachet 1er Cru Les Baudines"
+  },
+  "CHATEA CHALON 014": {
+   "ref": "domaine-bourdy--chateau-chalon-2014",
+   "vol": 0.1
+  },
+  "CHATEAU DE PEZ 2016": {
+   "ref": "chateau-de-pez--saint-estephe-2022",
+   "vol": 0.75
+  },
+  "CHATEAU MINUTY 0,1L": {
+   "none": "nije na karti",
+   "why": "Château Minuty"
+  },
+  "CHATEAU MINUTY 0,75L": {
+   "none": "nije na karti",
+   "why": "Château Minuty"
+  },
+  "CHATEAU PAVIE MACQUIN": {
+   "none": "nije na karti",
+   "why": "Château Pavie Macquin"
+  },
+  "CHATEU LA POINTE, POMEROL 2015 0,75L": {
+   "ref": "chateau-la-pointe--la-pointe-rouge-2022",
+   "vol": 0.75
+  },
+  "CHAVY, BOURGOGNE CHARDONNAY 0,1L": {
+   "ref": "philippe-chavy--bourgogne-chardonnay-2023",
+   "vol": 0.1
+  },
+  "CHAVY, BOURGOGNE CHARDONNAY 0,75L": {
+   "ref": "philippe-chavy--bourgogne-chardonnay-2023",
+   "vol": 0.75
+  },
+  "CHAVY, ST AUBIN 1ER CRU 2020 0,75L": {
+   "ref": "philippe-chavy--st-aubin-1er-cru-les-murgers-des-dents-de-chien-2021",
+   "vol": 0.75
+  },
+  "CIFRA 0,75": {
+   "ref": "azienda-duemani--cifra-2021",
+   "vol": 0.75
+  },
+  "CIFRA 2021 0,1": {
+   "ref": "azienda-duemani--cifra-2021",
+   "vol": 0.1
+  },
+  "CLAI, MALVAZIJA BARACIJA 2018 0,1L": {
+   "none": "nije na karti",
+   "why": "Clai Malvazija Baracija"
+  },
+  "CLAI, OTTOCENTO BIJELI 0,1L": {
+   "ref": "clai--ottocento-bijeli-2022",
+   "vol": 0.1
+  },
+  "CLAI, OTTOCENTO BIJELI 0,75L": {
+   "ref": "clai--ottocento-bijeli-2022",
+   "vol": 0.75
+  },
+  "CLAI, SV. JAKOV 0,75L": {
+   "ref": "clai--malvazija-sv-jakov-2021",
+   "vol": 0.75
+  },
+  "CONTARINI, PROSECCO MILLESIMATO 0,1L": {
+   "ref": "contarini--prosecco-millesimato-2023",
+   "vol": 0.1
+  },
+  "CONTARINI, PROSECCO MILLESIMATO 0,75L": {
+   "ref": "contarini--prosecco-millesimato-2023",
+   "vol": 0.75
+  },
+  "CORTE AURA, FRANCIACORTA 3L": {
+   "ref": "corte-aura--franciacorta-brut",
+   "vol": 3.0,
+   "ask": "Corte Aura 3 l: Brut ili Satèn?"
+  },
+  "CORTE AURA, FRANCIACORTA BRUT 0,1L": {
+   "ref": "corte-aura--franciacorta-brut",
+   "vol": 0.1
+  },
+  "CORTE AURA, FRANCIACORTA BRUT 0,75L": {
+   "ref": "corte-aura--franciacorta-brut",
+   "vol": 0.75
+  },
+  "D. DI MAGLIANO, HEBA 2018 0,1L": {
+   "ref": "fattoria-di-magliano--heba-2021",
+   "vol": 0.1
+  },
+  "D. DI MAGLIANO, POGGIO BESTIALE 0,75L": {
+   "ref": "fattoria-di-magliano--poggio-bestiale-2020",
+   "vol": 0.75
+  },
+  "D. PODVERSIC, RIBOLLA 2015 0,75L": {
+   "ref": "damijan-podversic--ribolla-2015",
+   "vol": 0.75
+  },
+  "D.A. MANN, PINOT GRIS G.C. HENGST 0,75L": {
+   "ref": "domaine-albert-mann--pinot-gris-grand-cru-hengst-2020",
+   "vol": 0.75
+  },
+  "D.A. MANN, RIESLING 2022 0,75L": {
+   "ref": "domaine-albert-mann--riesling-2022",
+   "vol": 0.75
+  },
+  "D.A. MANN,RIESLING G.C.SCHLOSSBERG 0,75L": {
+   "ref": "domaine-albert-mann--riesling-grand-cru-schlossberg-2020",
+   "vol": 0.75
+  },
+  "D.C. MOREY, CORTON-CHARLEMAGNE 0,75L": {
+   "none": "nije na karti",
+   "why": "Corton-Charlemagne D.C. Morey (na karti je Chartronov)"
+  },
+  "D.J. CHARTRON, RULLY MONTMORIN 0,75L": {
+   "ref": "domaine-jean-chartron--rully-montmorin-2023",
+   "vol": 0.75
+  },
+  "D.J.CHARTRON,CHASS.M. LES BENOITES 0,75L": {
+   "ref": "domaine-jean-chartron--chassagne-montrachet-les-benoites-2022",
+   "vol": 0.75
+  },
+  "D.M.C. CORTON LES PERRIERES 2018 0,75L": {
+   "none": "nije na karti",
+   "why": "Corton Les Perrières 2018"
+  },
+  "DAMIJAN PODVERSIC, MALVASIA 2018  0,75L": {
+   "ref": "damijan-podversic--malvasia-2018",
+   "vol": 0.75
+  },
+  "DAN PO DAN 0,75": {
+   "ref": "markus--dan-po-dan-2022",
+   "vol": 0.75
+  },
+  "DAVID MORET RULLY 2023 0,75": {
+   "ref": "david-moret--rully-2023",
+   "vol": 0.75
+  },
+  "DAVID MORET SAINT ROMAIN 2023 0,75": {
+   "ref": "david-moret--saint-romain-2023",
+   "vol": 0.75
+  },
+  "DE SOUSA, BRUT TRADITION 0,1L": {
+   "none": "nije na karti",
+   "why": "De Sousa Brut Tradition"
+  },
+  "DE SOUSA, BRUT TRADITION 0,75L": {
+   "none": "nije na karti",
+   "why": "De Sousa Brut Tradition"
+  },
+  "DE SOUSA, CUVE 3A GRAND CRU 0,75L": {
+   "ref": "de-sousa--cuvee-3a-grand-cru",
+   "vol": 0.75
+  },
+  "DELAMOTE BDB 2018": {
+   "ref": "delamotte--blanc-de-blancs-2018",
+   "vol": 0.75
+  },
+  "DEUTZ, BRUT CLASSIC 0,1L": {
+   "ref": "deutz--brut-classic",
+   "vol": 0.1
+  },
+  "DEUTZ, BRUT CLASSIC 0,75L": {
+   "ref": "deutz--brut-classic",
+   "vol": 0.75
+  },
+  "DINGAČ 2020 ELEGANCE, SKARAMUČA": {
+   "ref": "skaramuca--dingac-elegance-2020",
+   "vol": 0.75
+  },
+  "DINGAČ 2021, BURA": {
+   "ref": "mrgudic--bura-2021",
+   "vol": 0.75
+  },
+  "DOM PERIGNON P2": {
+   "ref": "moet-chandon--dom-perignon-p2-2004",
+   "vol": 0.75
+  },
+  "DOMAINE DAVID MORET, RULLY 2015 0,1L": {
+   "ref": "david-moret--rully-2023",
+   "vol": 0.1
+  },
+  "DOMAINE DAVID MORET, RULLY 2015 0,75L": {
+   "ref": "david-moret--rully-2023",
+   "vol": 0.75
+  },
+  "DOMAINE GUILLOT BOUX LA MYOTTE": {
+   "none": "nije na karti",
+   "why": "Guillot-Broux La Myotte"
+  },
+  "DOMAINE GUILLOT BOUX LA MYOTTE 0,1": {
+   "none": "nije na karti",
+   "why": "Guillot-Broux La Myotte"
+  },
+  "DR. B.WOLF, RIESLING W.GOLDBACHL  0,75L": {
+   "none": "nije na karti",
+   "why": "Bürklin-Wolf Wachenheimer Goldbächel (nije Gaisböhl)"
+  },
+  "DR. B.WOLF, RIESLING W.GOLDBACHL 0,1": {
+   "none": "nije na karti",
+   "why": "Bürklin-Wolf Wachenheimer Goldbächel"
+  },
+  "DUEMANI 2018 0.75": {
+   "ref": "azienda-duemani--duemani-2018",
+   "vol": 0.75
+  },
+  "EDI SIMCIC KOLOS 0,75": {
+   "none": "nije na karti",
+   "why": "Edi Simčič Kolos"
+  },
+  "EDI SIMČIĆ, DEUT LEX 2018 0,75L": {
+   "ref": "edi-simcic--duet-lex-2022",
+   "vol": 0.75
+  },
+  "EGON M. KABINET": {
+   "ref": "egon-muller--riesling-scharzhof-2023",
+   "vol": 0.75,
+   "ask": "\"Egon M. Kabinett\": na karti je Scharzhof, nije Kabinett. Ista boca?"
+  },
+  "ERDORO, BLEND ONE 0,75L": {
+   "none": "nije na karti",
+   "why": "Erdoro Blend One"
+  },
+  "ERDORO, CRNI PINOT 2021 0,1L": {
+   "ref": "erdoro--pinot-noir-2021",
+   "vol": 0.1
+  },
+  "ESPRIT 0,1 HG": {
+   "ref": "henri-giraud--esprit-nature",
+   "vol": 0.1
+  },
+  "ESPRIT 0,75": {
+   "ref": "henri-giraud--esprit-nature",
+   "vol": 0.1
+  },
+  "ESPRIT HG 0,1": {
+   "ref": "henri-giraud--esprit-nature",
+   "vol": 0.1
+  },
+  "ESPRIT HG 0,75": {
+   "ref": "henri-giraud--esprit-nature",
+   "vol": 0.75
+  },
+  "ETNA BIANCO 0,1, BENANTI": {
+   "ref": "benanti--etna-bianco-2023",
+   "vol": 0.1
+  },
+  "ETNA BIANCO 0,75, BENANTI": {
+   "ref": "benanti--etna-bianco-2023",
+   "vol": 0.75
+  },
+  "ETNA ROSSO 0,1, BENANTI": {
+   "none": "nije na karti",
+   "why": "Benanti Etna Rosso"
+  },
+  "ETNA ROSSO 0,75, BENANTI": {
+   "none": "nije na karti",
+   "why": "Benanti Etna Rosso"
+  },
+  "F. CROCHET, SANCERRE BLANC 2020 0,1L": {
+   "ref": "francois-crochet--sancerre-blanc-2023",
+   "vol": 0.1
+  },
+  "F. CROCHET, SANCERRE BLANC 2020 0,75L": {
+   "ref": "francois-crochet--sancerre-blanc-2023",
+   "vol": 0.75
+  },
+  "F. CROCHET, SANCERRE BLANC 2023 0,1": {
+   "ref": "francois-crochet--sancerre-blanc-2023",
+   "vol": 0.1
+  },
+  "FASS 4": {
+   "ref": "bernhard-ott--fass-4-gruner-veltliner-2023",
+   "vol": 0.75
+  },
+  "FASS 4, 0,1": {
+   "ref": "bernhard-ott--fass-4-gruner-veltliner-2023",
+   "vol": 0.1
+  },
+  "FASS4, 1,5L": {
+   "ref": "bernhard-ott--fass-4-gruner-veltliner-2023",
+   "vol": 1.5
+  },
+  "FRANCIACORTA SATEN 0,75": {
+   "ref": "corte-aura--franciacorta-saten",
+   "vol": 0.75
+  },
+  "FRIULANO VIE DI ROMANS 0,75": {
+   "ref": "vie-di-romans--friulano-2023",
+   "vol": 0.75
+  },
+  "G.CLAI, OTTOCENTO CRNI 2020 0,1L": {
+   "ref": "clai--ottocento-crni-2022",
+   "vol": 0.1
+  },
+  "G.CLAI, OTTOCENTO CRNI 2020 0,75L": {
+   "ref": "clai--ottocento-crni-2022",
+   "vol": 0.75
+  },
+  "G.CLAI, REFOŠK BARACIJA 2021 0,75L": {
+   "none": "nije na karti",
+   "why": "Clai Refošk Baracija"
+  },
+  "G.QUINTARELLI, RECIOTO CLASSICO 0,5L": {
+   "ref": "giuseppe-quintarelli--recioto-classico-2011",
+   "vol": 0.5
+  },
+  "GERŽINIĆ, MALVAZIJA 2020 0,1L": {
+   "none": "nije na karti",
+   "why": "Geržinić Malvazija"
+  },
+  "GERŽINIĆ, MUŠKAT 2020 0,05L": {
+   "ref": "gerzinic--muskat-2020",
+   "vol": 0.05
+  },
+  "GERŽINIĆ, MUŠKAT 2020 0,5L": {
+   "ref": "gerzinic--muskat-2020",
+   "vol": 0.5
+  },
+  "GIN TONIK": {
+   "none": "nije vino",
+   "why": "gin tonik upisan u grupu vina"
+  },
+  "GRAF 2020 0,75": {
+   "ref": "maria-sepp-muster--graf-2020",
+   "vol": 0.75
+  },
+  "GRAVONIA BLANCO CRIANZA 2015": {
+   "ref": "lopez-de-heredia--gravonia-crianza-2015",
+   "vol": 0.75
+  },
+  "GUIDALBERTO 2022, 0,75": {
+   "none": "nije na karti",
+   "why": "Guidalberto"
+  },
+  "Giuseppe Quintarelli 'Amabile del Cere'": {
+   "ref": "giuseppe-quintarelli--amabile-del-cere-2017",
+   "vol": 0.1
+  },
+  "H&L LIGNIER,POMMARD L.C.L ARVELTES 0,75L": {
+   "ref": "hubert-lignier--pommard-1er-cru-les-arvelets-2019",
+   "vol": 0.75
+  },
+  "H. LIGNIER, ALIGOTE 0,1": {
+   "ref": "hubert-lignier--aligote-2021",
+   "vol": 0.1
+  },
+  "H. LIGNIER, ALIGOTE 0,1L": {
+   "ref": "hubert-lignier--aligote-2021",
+   "vol": 0.1
+  },
+  "H. LIGNIER, ALIGOTE 0,75L": {
+   "ref": "hubert-lignier--aligote-2021",
+   "vol": 0.75
+  },
+  "HEBA, MAGNUM": {
+   "ref": "fattoria-di-magliano--heba-2021",
+   "vol": 1.5
+  },
+  "HENRI GIRAUD 0,75": {
+   "ref": "henri-giraud--esprit-nature",
+   "vol": 0.75
+  },
+  "HENRI GIRAUD MAGNUM": {
+   "ref": "henri-giraud--esprit-nature",
+   "vol": 1.5
+  },
+  "HUBERT LAMY CHASSAGNE MONTRACHET": {
+   "ref": "hubert-lamy--chassagne-montrachet-la-goujonne-vieilles-vignes-rouge-2023",
+   "vol": 0.75
+  },
+  "HUBERT LAMY EN REMILLY": {
+   "ref": "hubert-lamy--saint-aubin-1er-cru-en-remilly-2023",
+   "vol": 0.75
+  },
+  "HUBERT LAMY SANTENAY 1ER CRU": {
+   "ref": "hubert-lamy--santenay-1er-cru-clos-des-gravieres-vieilles-vignes-rouge-2023",
+   "vol": 0.75
+  },
+  "HUBERT LIGNIER, BOURGOGNE 2019 0,75L": {
+   "ref": "hubert-lignier--bourgogne-2023",
+   "vol": 0.75
+  },
+  "Hubert LAMY ST-AUBIN, LES FRI": {
+   "ref": "hubert-lamy--saint-aubin-1er-cru-les-frionnes-2023",
+   "vol": 0.75
+  },
+  "I. IVANIĆ, PINOT CRNI DVIJE RUŽE 0,1L": {
+   "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021",
+   "vol": 0.1
+  },
+  "I. IVANIĆ, PINOT CRNI DVIJE RUŽE 0,75L": {
+   "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021",
+   "vol": 0.75
+  },
+  "JACQUES SELOSSE VO 0.75": {
+   "ref": "jacques-selosse--version-originale",
+   "vol": 0.75
+  },
+  "JAKONČIĆ, BELA CAROLINA 0,75L": {
+   "none": "nije na karti",
+   "why": "Jakončič Bela Carolina"
+  },
+  "JAKONČIĆ, CAROLINA SELECT 2016": {
+   "none": "nije na karti",
+   "why": "Jakončič Carolina Select"
+  },
+  "JAKOPIĆ, PUŠIPEL 0,1L": {
+   "none": "nije na karti",
+   "why": "Jakopić Pušipel"
+  },
+  "JAKOPIĆ, RIESLING 0,75L": {
+   "ref": "jakopic--riesling-2024",
+   "vol": 0.75
+  },
+  "JAKOPIĆ, SAUVIGNON 0,1L": {
+   "ref": "jakopic--sauvignon-2024",
+   "vol": 0.1
+  },
+  "JAKOPIĆ, SAUVIGNON 0,75L": {
+   "ref": "jakopic--sauvignon-2024",
+   "vol": 0.75
+  },
+  "JAKOPIĆ,RAJNSKI RIZLING IZB. BERBA 0,05L": {
+   "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
+   "vol": 0.05
+  },
+  "JAKOPIĆ,RAJNSKI RIZLING IZB. BERBA 0,75L": {
+   "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
+   "vol": 0.75
+  },
+  "JEKA BLANC": {
+   "ref": "cecavac--jeka-blanc-2024",
+   "vol": 0.75
+  },
+  "Jules Desjourneys Beaujolais Patacaisse": {
+   "ref": "jules-desjourneys--beaujolais-patacaisse-rouge-2022",
+   "vol": 0.75
+  },
+  "Jules Desjourneys Mâcon Prissé En Chaill": {
+   "ref": "jules-desjourneys--macon-prisse-en-chailloux-blanc-2021",
+   "vol": 0.75
+  },
+  "Jules Desjourneys Mâcon Verzé Blanc": {
+   "ref": "jules-desjourneys--macon-verze-blanc-2021",
+   "vol": 0.75
+  },
+  "Jules Desjourneys Pouilly-Fuissé Blanc 2": {
+   "ref": "jules-desjourneys--pouilly-fuisse-blanc-2021",
+   "vol": 0.75
+  },
+  "Jules Desjourneys Pouilly-Fuissé Les Lon": {
+   "ref": "jules-desjourneys--pouilly-vinzelles-les-longeays-blanc-2021",
+   "vol": 0.75,
+   "ask": "\"Pouilly-Fuissé Les Lon…\": Les Longeays je Pouilly-Vinzelles, to je ta boca?"
+  },
+  "Jules Desjourneys Rouge 2023": {
+   "ref": "jules-desjourneys--rouge-2023",
+   "vol": 0.75
+  },
+  "Jules Desjourneys Saint-Véran Blanc": {
+   "ref": "jules-desjourneys--saint-veran-blanc-2021",
+   "vol": 0.75
+  },
+  "K.KINEYARDS, OCCIDENTAL 2018 0,75L": {
+   "ref": "occidental-kistler-vineyards--occidental-2018",
+   "vol": 0.75
+  },
+  "KORAK, CHARDONNAY ''SUR LIE'' 0,1L": {
+   "ref": "korak--chardonnay-sur-lie-2024",
+   "vol": 0.1
+  },
+  "KORAK, CHARDONNAY ''SUR LIE'' 0,75L": {
+   "ref": "korak--chardonnay-sur-lie-2024",
+   "vol": 0.75
+  },
+  "KORAK, PINOT CRNI 2020 0,1L": {
+   "ref": "korak--pinot-crni-2023",
+   "vol": 0.1
+  },
+  "KORAK, PINOT CRNI 2020 0,75L": {
+   "ref": "korak--pinot-crni-2023",
+   "vol": 0.75
+  },
+  "KORAK, SAUVIGNON 0,1L": {
+   "ref": "korak--sauvignon-2024",
+   "vol": 0.1
+  },
+  "KORAK, SAUVIGNON 0,75L": {
+   "ref": "korak--sauvignon-2024",
+   "vol": 0.75
+  },
+  "KOZLOVIĆ, MUŠKAT": {
+   "none": "nije na karti",
+   "why": "Kozlović Muškat"
+  },
+  "KRAJANČIĆ, POŠIP INTRADA 0,1L": {
+   "ref": "krajancic--posip-intrada-2025",
+   "vol": 0.1
+  },
+  "KRAJANČIĆ, POŠIP INTRADA 0,75L": {
+   "ref": "krajancic--posip-intrada-2025",
+   "vol": 0.75
+  },
+  "KRŠ BIJELI ŽILAVKA 0,1": {
+   "none": "nije na karti",
+   "why": "Krš Žilavka"
+  },
+  "KUNJAS POSIP 0,1": {
+   "ref": "kunjas--posip-2024",
+   "vol": 0.1
+  },
+  "KUNJAS, GRK 0,75L": {
+   "ref": "kunjas--grk-2024",
+   "vol": 0.75
+  },
+  "KUNJAS, POŠIP 0,75L": {
+   "ref": "kunjas--posip-2024",
+   "vol": 0.75
+  },
+  "L.L. CHABLIS GRAND CRU LES CLOS 0,75L": {
+   "ref": "patrick-piuze--chablis-grand-cru-les-clos-2023",
+   "vol": 0.75,
+   "ask": "\"L.L. Chablis Grand Cru Les Clos\" za 250 €: Piuzeov Les Clos?"
+  },
+  "LE PIANE, BOCA 2009 0,75L": {
+   "ref": "le-piane--boca-2019",
+   "vol": 0.75,
+   "ask": "Boca 2009 u blagajni, na karti 2019: isto vino, starija berba?"
+  },
+  "LE PIANE, BOCA 2019 0,75L": {
+   "ref": "le-piane--boca-2019",
+   "vol": 0.75
+  },
+  "LE PIANE, PIANE 2019 0,75L": {
+   "ref": "le-piane--piane-2019",
+   "vol": 0.75
+  },
+  "LE RAGOSE VALPOLICELLA 0,1": {
+   "none": "nije na karti",
+   "why": "Le Ragose Valpolicella"
+  },
+  "LE RAGOSE VALPOLICELLA 0,75": {
+   "none": "nije na karti",
+   "why": "Le Ragose Valpolicella"
+  },
+  "LE ROSE 0,75": {
+   "ref": "billecart-salmon--le-rose",
+   "vol": 0.75,
+   "ask": "\"Le Rose 0,75\" za 170 €: Billecart-Salmon Le Rosé?"
+  },
+  "LE VOLTE DELL ORNELLAIA 0,75": {
+   "none": "nije na karti",
+   "why": "Le Volte dell'Ornellaia (nije Ornellaia)"
+  },
+  "LE VOLTE ORNELLAIA ROSSO 0,1": {
+   "none": "nije na karti",
+   "why": "Le Volte dell'Ornellaia"
+  },
+  "LOUIS ROEDERER, COLLECTION 242 0,75L": {
+   "none": "nije na karti",
+   "why": "Louis Roederer Collection 242"
+  },
+  "Lamy, Santenay 2023": {
+   "ref": "hubert-lamy--santenay-1er-cru-clos-des-gravieres-vieilles-vignes-rouge-2023",
+   "vol": 0.75
+  },
+  "M. DE G.BERTRAND, VOSNE - ROMANE 0,75L": {
+   "ref": "machard-de-gramont-bertrand--vosne-romanee-2022",
+   "vol": 0.75
+  },
+  "M. DE G.BERTRAND,LE HAUTS PRULIERS 0,75L": {
+   "ref": "machard-de-gramont-bertrand--nuits-saint-georges-les-hauts-pruliers-2016",
+   "vol": 0.75
+  },
+  "M. DE G.BERTRAND,V.R. LES BARREUAX 0,75L": {
+   "ref": "machard-de-gramont-bertrand--vosne-romanee-les-barreaux-2022",
+   "vol": 0.75
+  },
+  "MARC HEBRART": {
+   "none": "nije na karti",
+   "why": "Marc Hébrart"
+  },
+  "MARJAN SIMCIC PINOT GRIGIO": {
+   "none": "nije na karti",
+   "why": "Marjan Simčič Pinot Grigio"
+  },
+  "MARKUS, DAN PO DAN": {
+   "ref": "markus--dan-po-dan-2022",
+   "vol": 0.75
+  },
+  "MARKUS, FETIVI 2020": {
+   "ref": "markus--fetivi-2020",
+   "vol": 0.75
+  },
+  "MASSETO 2019": {
+   "none": "nije na karti",
+   "why": "Masseto"
+  },
+  "MATOŠEVIĆ, GRIMALDA 2019 0,1L": {
+   "ref": "matosevic--grimalda-crna-2021",
+   "vol": 0.1
+  },
+  "MATOŠEVIĆ, GRIMALDA 2019 0,75L": {
+   "ref": "matosevic--grimalda-crna-2021",
+   "vol": 0.75
+  },
+  "MATOŠEVIĆ, GRIMALDA BIJELA 0,1L": {
+   "ref": "matosevic--grimalda-bijela-2022",
+   "vol": 0.1
+  },
+  "MATOŠEVIĆ, GRIMALDA BIJELA 0,75L": {
+   "ref": "matosevic--grimalda-bijela-2022",
+   "vol": 0.75
+  },
+  "MATRIS": {
+   "ref": "domaine-de-l-ecu--matris-2018",
+   "vol": 0.75
+  },
+  "MENEGHETTI RED 0,1": {
+   "ref": "meneghetti--red-2020",
+   "vol": 0.1
+  },
+  "MENEGHETTI RED 2018 0,75L": {
+   "ref": "meneghetti--red-2020",
+   "vol": 0.75
+  },
+  "MENEGHETTI WHITE 0,1": {
+   "ref": "meneghetti--white-2023",
+   "vol": 0.1
+  },
+  "MENENGHETTI BDB 0,75": {
+   "ref": "meneghetti--blanc-de-blancs",
+   "vol": 0.75
+  },
+  "MENENGHETTI BLANC DE BLANCS 0,1": {
+   "ref": "meneghetti--blanc-de-blancs",
+   "vol": 0.1
+  },
+  "MENENGHETTI, MENENGHETTI WHITE 0,75L": {
+   "ref": "meneghetti--white-2023",
+   "vol": 0.75
+  },
+  "MENENGHHETTI BLANC DE BLANCS 0,1": {
+   "ref": "meneghetti--blanc-de-blancs",
+   "vol": 0.1
+  },
+  "MENU 68": {
+   "none": "nije vino",
+   "why": "jelovnik (MENU 68) upisan u grupu vina"
+  },
+  "MERLOT 2017, OPOKA": {
+   "ref": "marjan-simcic--merlot-opoka-2017",
+   "vol": 0.75
+  },
+  "MERLOT OPOKA, SIMČIĆ": {
+   "ref": "marjan-simcic--merlot-opoka-2017",
+   "vol": 0.1
+  },
+  "MIKULSKI, BOURGOGNE 2023": {
+   "ref": "francois-mikulski--bourgogne-2023",
+   "vol": 0.75
+  },
+  "MILOŠ, PLAVAC MALI 2019 0,1L": {
+   "none": "nije na karti",
+   "why": "Miloš Plavac Mali"
+  },
+  "MILOŠ, STAGNUM 2012 0,75L": {
+   "ref": "milos--stagnum-2016",
+   "vol": 0.75
+  },
+  "MILOŠ, STAGNUM 2013 0,75L": {
+   "ref": "milos--stagnum-2016",
+   "vol": 0.75
+  },
+  "MILOŠ, STALAGMIT 2019 0,75L": {
+   "ref": "milos--stalagmit-2022",
+   "vol": 0.75
+  },
+  "MILOŠ, STALAGMIT 2021 0,75L": {
+   "ref": "milos--stalagmit-2022",
+   "vol": 0.75
+  },
+  "MONTEVERTINE, LE PERGOLE TORTE 0,75L": {
+   "ref": "montevertine--le-pergole-torte-2020",
+   "vol": 0.75
+  },
+  "MONTEVERTINE, MONTEVERTINE 2019 0,75L": {
+   "ref": "montevertine--montevertine-2019",
+   "vol": 0.75
+  },
+  "MONTHELIE 1er CRU, Jobarf": {
+   "none": "nije na karti",
+   "why": "Jobard Monthelie 1er Cru"
+  },
+  "MOREY ST.D. \"LES CHAFFOTS\" 1ER CRU 0,75L": {
+   "none": "nije na karti",
+   "why": "Morey-Saint-Denis 1er Cru Les Chaffots"
+  },
+  "MOVIA, PURO BRUT 0,75L": {
+   "ref": "movia--puro-brut",
+   "vol": 0.75
+  },
+  "MOVIA, PURO ROSE 0,75L": {
+   "ref": "movia--puro-rose",
+   "vol": 0.75
+  },
+  "MRGUDIĆ, POSTUP MARE 2018 0,75L": {
+   "ref": "mrgudic--postup-mare-2020",
+   "vol": 0.75
+  },
+  "MRGUDIĆ, PROŠEK MOSKAR 0,05L": {
+   "ref": "mrgudic--prosek-moskar",
+   "vol": 0.05
+  },
+  "N. BURA, PROŠEK RUŽA DALMATINSKA 0,05L": {
+   "ref": "niko-bura--prosek-ruza-dalmatinska",
+   "vol": 0.05
+  },
+  "NSG 2016, HAUTS PRULIERS": {
+   "ref": "machard-de-gramont-bertrand--nuits-saint-georges-les-hauts-pruliers-2016",
+   "vol": 0.75
+  },
+  "NUITS SAINT GEORGES 2013": {
+   "ref": "hubert-lignier--nuits-saint-georges-les-didiers-1er-cru-2013",
+   "vol": 0.75
+  },
+  "OLD FASHIONED S TARTUFIMA": {
+   "none": "nije vino",
+   "why": "koktel upisan u grupu vina"
+  },
+  "P. CHAVY, MERSAULT LES CHARMES 0,75L": {
+   "ref": "philippe-chavy--meursault-1er-cru-les-charmes-2021",
+   "vol": 0.75
+  },
+  "P. DIPOLI, SAUVIGNON VOGLAR 0,1L": {
+   "ref": "peter-dipoli--sauvignon-voglar-2019",
+   "vol": 0.1
+  },
+  "P. DIPOLI, SAUVIGNON VOGLAR 0,75L": {
+   "ref": "peter-dipoli--sauvignon-voglar-2019",
+   "vol": 0.75
+  },
+  "P. PIUZE, CHABLIS TERROIR 0,1L": {
+   "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
+   "vol": 0.1,
+   "ask": "isto, na čašu: Chablis Terroir u blagajni, La Grande Vallée na karti"
+  },
+  "P. PIUZE, CHABLIS TERROIR 0,75L": {
+   "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
+   "vol": 0.75,
+   "ask": "\"Chablis Terroir\" je druga Piuzeova cuvée od La Grande Vallée; na karti je samo La Grande Vallée"
+  },
+  "P.P. SCALETTE, IL CARBONAIONE 0,75L": {
+   "ref": "podere-poggio-scalette--il-carbonaione-2019",
+   "vol": 0.75
+  },
+  "PALLADIUS, V. PROSECCO MILLESIMATO 0,1L": {
+   "none": "nije na karti",
+   "why": "Palladius Prosecco"
+  },
+  "PAPE, ST HILLS": {
+   "ref": "saints-hills--pape-2023",
+   "vol": 0.75
+  },
+  "PATTES LOUP, CHABLIS 2020 0,75L": {
+   "ref": "pattes-loup--chablis-2022",
+   "vol": 0.75
+  },
+  "PAVEL, ŠEMBER 0,1": {
+   "ref": "sember--pavel",
+   "vol": 0.1
+  },
+  "PAVEL, ŠEMBER 0,75": {
+   "ref": "sember--pavel",
+   "vol": 0.75
+  },
+  "PERE&FILS, L'HOSTE 0,1L": {
+   "ref": "l-hoste-pere-fils--l-hoste-rose",
+   "vol": 0.1
+  },
+  "PERE&FILS, L'HOSTE ROSE 0,75L": {
+   "ref": "l-hoste-pere-fils--l-hoste-rose",
+   "vol": 0.75
+  },
+  "PERTOIS-MORISET, L'ANNEE MILLESIME 0,75L": {
+   "ref": "pertois-moriset--l-annee-millesime-grand-cru-blanc-de-blancs-2017",
+   "vol": 0.75
+  },
+  "PERTOIS-MORISET, L'ASSEMBLAGE BRUT 0,1L": {
+   "ref": "pertois-moriset--l-assemblage-brut",
+   "vol": 0.1
+  },
+  "PERTOIS-MORISET, L'ASSEMBLAGE BRUT 0,75L": {
+   "ref": "pertois-moriset--l-assemblage-brut",
+   "vol": 0.75
+  },
+  "PERTOIS-MORISET,LA COLLEC. ROSE&BL 0,75L": {
+   "ref": "pertois-moriset--la-collection-rose-blanc-grand-cru",
+   "vol": 0.75
+  },
+  "PETER DIPOLI, IUGUM 0,75L": {
+   "none": "nije na karti",
+   "why": "Peter Dipoli Iugum"
+  },
+  "PETRAČ, BREGH BLANC DE BLANCS BRUT 0,1L": {
+   "none": "nije na karti",
+   "why": "Petrač Bregh Blanc de Blancs"
+  },
+  "PETRAČ, BREGH BLANC DE BLANCS BRUT 0,75L": {
+   "none": "nije na karti",
+   "why": "Petrač Bregh Blanc de Blancs"
+  },
+  "PETRAČ, BREGH ROSE 0,1L": {
+   "ref": "petrac--bregh-rose",
+   "vol": 0.1
+  },
+  "PETRAČ, BREGH ROSE 0,75L": {
+   "ref": "petrac--bregh-rose",
+   "vol": 0.75
+  },
+  "PETRAČ, CHARDONNAY 0,1L": {
+   "ref": "petrac--chardonnay-2023",
+   "vol": 0.1
+  },
+  "PETRAČ, CHARDONNAY 0,75L": {
+   "ref": "petrac--chardonnay-2023",
+   "vol": 0.75
+  },
+  "PETRAČ, GRAŠEVINA 0,1L": {
+   "ref": "petrac--grasevina-2024",
+   "vol": 0.1
+  },
+  "PETRAČ, GRAŠEVINA 0,75L": {
+   "ref": "petrac--grasevina-2024",
+   "vol": 0.75
+  },
+  "PETRAČ, KARIZMA CUVE 2020 0,1L": {
+   "ref": "petrac--karizma-cuvee-2022",
+   "vol": 0.1
+  },
+  "PETRAČ, KARIZMA CUVE 2020 0,75L": {
+   "ref": "petrac--karizma-cuvee-2022",
+   "vol": 0.75
+  },
+  "PINOT BLANC SCHUTZEN": {
+   "none": "nije na karti",
+   "why": "Pinot Blanc Schützen"
+  },
+  "PINOT BLANC SCHUTZEN 2023, 0,1": {
+   "none": "nije na karti",
+   "why": "Pinot Blanc Schützen"
+  },
+  "PINOT GRIGIO, VIE DI ROMANS 0,75": {
+   "ref": "vie-di-romans--pinot-grigio-2023",
+   "vol": 0.75
+  },
+  "PINOT NOIR OPOKA, SIMČIĆ": {
+   "ref": "marjan-simcic--pinot-noir-opoka-2021",
+   "vol": 0.75
+  },
+  "PIRA&FIGLI,BARBERA D'ALBA SUPERIORE 0,75": {
+   "ref": "az-agr-e-pira-figli-chiara-boschis--barbera-d-alba-superiore-2021",
+   "vol": 0.75
+  },
+  "PODVERŠIĆ, RIBOLLA 2018": {
+   "ref": "damijan-podversic--ribolla-2020",
+   "vol": 0.1
+  },
+  "POGGIO DI SOTTO 2019, BRUNELLO": {
+   "ref": "poggio-di-sotto--brunello-di-montalcino-2019",
+   "vol": 0.75
+  },
+  "POGGIO DI SOTTO 2020, BRUNELO": {
+   "ref": "poggio-di-sotto--brunello-di-montalcino-2020",
+   "vol": 0.75
+  },
+  "POGGIO DI SOTTO ROSSO 2022": {
+   "none": "nije na karti",
+   "why": "Poggio di Sotto Rosso di Montalcino"
+  },
+  "POGGIO SCALETTE, IL CARBONAIONE 0,75L": {
+   "ref": "podere-poggio-scalette--il-carbonaione-2019",
+   "vol": 0.75
+  },
+  "POGGIOARGENTIERA, VIOGNER 0,75": {
+   "none": "nije na karti",
+   "why": "Poggio Argentiera Viognier"
+  },
+  "PORTO 10Y 0,05L": {
+   "none": "nije na karti",
+   "why": "Porto 10 godina"
+  },
+  "PORTO 5Y 0,05L": {
+   "none": "nije na karti",
+   "why": "Porto 5 godina"
+  },
+  "PRAGER, GRUNER VELTLINER 2023": {
+   "ref": "weingut-prager--gruner-veltliner-federspiel-ried-hinter-der-burg-2024",
+   "vol": 0.75
+  },
+  "PRAGER, RIESLING": {
+   "ref": "weingut-prager--riesling-smaragd-ried-klaus-2024",
+   "vol": 0.75
+  },
+  "PULIGNY MONTRACHET 2016, CHAVY": {
+   "none": "nije na karti",
+   "why": "Chavy Puligny-Montrachet 2016"
+  },
+  "PULIGNY MONTRACHET JEAN CHARTRON 0.75": {
+   "ref": "domaine-jean-chartron--puligny-montrachet-1er-cru-clos-de-la-pucelle-monopole-2021",
+   "vol": 0.75
+  },
+  "REISLING SMARAGD RIED KLAUS 2024 0,75": {
+   "ref": "weingut-prager--riesling-smaragd-ried-klaus-2024",
+   "vol": 0.75
+  },
+  "RESONANCE VINEYARD, RESONANCE 2015 0,75L": {
+   "ref": "resonance-vineyard--resonance-2015",
+   "vol": 0.75
+  },
+  "RHUM C": {
+   "none": "nije vino",
+   "why": "rum upisan u grupu vina"
+  },
+  "RIESLING PEGGYS HILL 2021 0,1L": {
+   "none": "nije na karti",
+   "why": "Riesling Peggy's Hill"
+  },
+  "RIESLING STOLZENBERG 2017": {
+   "ref": "weingut-heymann-lowenstein--riesling-stolzenberg-2017",
+   "vol": 0.75
+  },
+  "RIESLING TRITT. APOTHEKE KABINETT 0,75L": {
+   "ref": "a-clusserath--trittenheimer-apotheke-kabinett-2024",
+   "vol": 0.75
+  },
+  "RIESLING VON DEN TERRASSEN 0,1L": {
+   "none": "nije na karti",
+   "why": "Riesling von den Terrassen"
+  },
+  "RIZMAN, TRIBIDRAG 2020 0,1L": {
+   "ref": "rizman--tribidrag-2022",
+   "vol": 0.1
+  },
+  "RIZMAN, TRIBIDRAG 2020 0,75L": {
+   "ref": "rizman--tribidrag-2022",
+   "vol": 0.75
+  },
+  "ROMERQUELLE 0,33": {
+   "none": "nije vino",
+   "why": "Römerquelle (voda) upisana u grupu vina"
+  },
+  "RUPPERT LEROY, MARTIN FONTAINE 0,75L": {
+   "ref": "ruppert-leroy--martin-fontaine-2019",
+   "vol": 0.75
+  },
+  "SAINT HILLS DINGAC 0,75": {
+   "none": "nije na karti",
+   "why": "Saints Hills Dingač"
+  },
+  "SAINT HILLS, BLACK 2019 0,1L": {
+   "ref": "saints-hills--black-2022",
+   "vol": 0.1
+  },
+  "SAINT HILLS, BLACK 2019 0,75L": {
+   "ref": "saints-hills--black-2022",
+   "vol": 0.75
+  },
+  "SAINT HILLS, LE CHIFFRE 0,75L": {
+   "ref": "saints-hills--le-chiffre-2023",
+   "vol": 0.75
+  },
+  "SASSICAIA 0,75": {
+   "ref": "tenuta-san-guido--sassicaia-2021",
+   "vol": 0.75,
+   "ask": "Sassicaia bez berbe, prodan za 800 € u svibnju; 2020 je na karti 750 €, 2021 je 850 €. Koja?"
+  },
+  "SASSICAIA 2020": {
+   "ref": "tenuta-san-guido--sassicaia-2020",
+   "vol": 0.75
+  },
+  "SAUVIGNON CLASSY 2021": {
+   "ref": "erdoro--sauvignon-classy-2022",
+   "vol": 0.75
+  },
+  "SAUVIGNON VOM OPOK 0,1": {
+   "ref": "maria-sepp-muster--sauvignon-vom-opok-2021",
+   "vol": 0.1
+  },
+  "SAUVIGNON VOM OPOK 0,75": {
+   "ref": "maria-sepp-muster--sauvignon-vom-opok-2021",
+   "vol": 0.75
+  },
+  "SAVAGNIN 2018 0,75": {
+   "ref": "domaine-bourdy--savagnin-2018",
+   "vol": 0.75
+  },
+  "SAVIGNY LES BEAUNE AUX FOUMAUX": {
+   "none": "nije na karti",
+   "why": "Savigny-lès-Beaune Aux Fourneaux"
+  },
+  "SAVIGNY-LES BEAUNE BLANC": {
+   "none": "nije na karti",
+   "why": "Savigny-lès-Beaune blanc"
+  },
+  "SKARAMUCA DINGAC 0,1": {
+   "ref": "skaramuca--dingac-elegance-2020",
+   "vol": 0.1
+  },
+  "STALAGMIT 0,1": {
+   "ref": "milos--stalagmit-2022",
+   "vol": 0.1
+  },
+  "STINA, MAJSTOR PLAVAC": {
+   "none": "nije na karti",
+   "why": "Stina Majstor"
+  },
+  "STINA, POŠIP": {
+   "none": "nije na karti",
+   "why": "Stina Pošip"
+  },
+  "SYRAH LE FALES": {
+   "ref": "moret-nomine--syrah-le-fales-2024",
+   "vol": 0.75
+  },
+  "SYRAH LE FALES 0,1": {
+   "ref": "moret-nomine--syrah-le-fales-2024",
+   "vol": 0.1
+  },
+  "TERANINO SOUR": {
+   "none": "nije vino",
+   "why": "koktel (Teranino sour) upisan u grupu vina"
+  },
+  "TERBOTZ 0,75": {
+   "ref": "jakopic--terbotz",
+   "vol": 0.75
+  },
+  "TERRA FALCONIS 0,1L": {
+   "none": "nije na karti",
+   "why": "Terra Falconis"
+  },
+  "TOMAC DIPLOMAT MAGNUM": {
+   "ref": "tomac--diplomat",
+   "vol": 1.5
+  },
+  "TOMAC, BLANC DE NOIRS 0,75L": {
+   "ref": "tomac--blanc-de-noirs",
+   "vol": 0.75
+  },
+  "TOMAC, DIPLOMAT 0,1L": {
+   "ref": "tomac--diplomat",
+   "vol": 0.1
+  },
+  "TOMAC, DIPLOMAT 0,75L": {
+   "ref": "tomac--diplomat",
+   "vol": 0.75
+  },
+  "TOMAC, MILLENIUM 0,1L": {
+   "none": "nije na karti",
+   "why": "Tomac Millenium"
+  },
+  "TOMAC, MILLENIUM 0,75L": {
+   "none": "nije na karti",
+   "why": "Tomac Millenium"
+  },
+  "TOMAC, ROSE 0,1L": {
+   "ref": "tomac--rose",
+   "vol": 0.1
+  },
+  "TOMAC, ROSE 0,75L": {
+   "ref": "tomac--rose",
+   "vol": 0.75
+  },
+  "TOMAZ, TERAN BARBAROSSA 2019 0,1L": {
+   "ref": "tomaz--teran-barbarossa-2020",
+   "vol": 0.1
+  },
+  "TOMAZ, TERAN BARBAROSSA 2020 0,75L": {
+   "ref": "tomaz--teran-barbarossa-2020",
+   "vol": 0.75
+  },
+  "TOMAZ, TERAN SUPERRIOR 2019 0,1L": {
+   "ref": "tomaz--teran-2022",
+   "vol": 0.1,
+   "ask": "\"Tomaz Teran Superior 2019\" na čašu: Tomazov Teran (2022 na karti)?"
+  },
+  "TRES POMME DE CHRISTIAN 0,03": {
+   "none": "nije vino",
+   "why": "rakija upisana u grupu vina"
+  },
+  "TROPLONG MONDOT 2022": {
+   "ref": "chateau-troplong-mondot--saint-emilion-grand-cru-2020",
+   "vol": 0.75
+  },
+  "Terbotz": {
+   "ref": "jakopic--terbotz",
+   "vol": 0.1
+  },
+  "VALPOLICELLA 2015": {
+   "ref": "dal-forno-romano--valpolicella-d-o-c-superiore-2015",
+   "vol": 0.75
+  },
+  "VALPOLICELLA, CASALVEGRI 2018 0,1L": {
+   "none": "nije na karti",
+   "why": "Casalvegri Valpolicella"
+  },
+  "VEUVE CLICQUOT": {
+   "none": "nije na karti",
+   "why": "Veuve Clicquot"
+  },
+  "VEUVE CLICQUOT 0,1": {
+   "none": "nije na karti",
+   "why": "Veuve Clicquot"
+  },
+  "VIEUX SAJOUS 2018 0,03": {
+   "none": "nije vino",
+   "why": "žestoko upisano u grupu vina"
+  },
+  "VINA BOSCONIA TINTO RESERVA": {
+   "ref": "lopez-de-heredia--bosconia-tinto-reserva-2013",
+   "vol": 0.75
+  },
+  "VIOGNER 0,1": {
+   "none": "nije na karti",
+   "why": "Viognier na čašu"
+  },
+  "VIOLIĆ, SAGUL PLAVAC MALI 0,1L": {
+   "ref": "opg-vina-violic--sagul-plavac-mali-2022",
+   "vol": 0.1
+  },
+  "VIOLIĆ, SAGUL PLAVAC MALI 0,75L": {
+   "ref": "opg-vina-violic--sagul-plavac-mali-2022",
+   "vol": 0.75
+  },
+  "VIOLIĆ, SAGUL SELEKCIJA 2019": {
+   "none": "nije na karti",
+   "why": "Violić Sagul Selekcija"
+  },
+  "VISTAMARE 0,1": {
+   "none": "nije na karti",
+   "why": "Vistamare"
+  },
+  "VOLNAY 2022, JOBARD": {
+   "ref": "remi-jobard--volnay-1er-cru-les-santenots-2022",
+   "vol": 0.75
+  },
+  "VOSNE ROMANEE 2022": {
+   "ref": "machard-de-gramont-bertrand--vosne-romanee-2022",
+   "vol": 0.75
+  },
+  "VOUETTE&SORBE,TEXTURES BRUT NATURE 0,75L": {
+   "ref": "vouette-sorbee--textures-brut-nature",
+   "vol": 0.75
+  },
+  "Via de Romans 0,1": {
+   "ref": "vie-di-romans--friulano-2023",
+   "vol": 0.1,
+   "ask": "\"Via de Romans 0,1\": Friulano ili Pinot Grigio?"
+  },
+  "W. KNEBEL, RIESLING ROTTGEN GG 0,75L": {
+   "ref": "weingut-knebel--riesling-rottgen-gg-2023",
+   "vol": 0.75
+  },
+  "W. WITTMANN, RIESLING WESTHOFENER 0,75L": {
+   "ref": "weingut-wittmann--riesling-westhofener-2021",
+   "vol": 0.75
+  },
+  "W. WITTMANN,RIESLING MORSTEIN GG 0,75L": {
+   "none": "nije na karti",
+   "why": "Wittmann Morstein GG"
+  },
+  "W.A.CHRISTMANN REITERPFAD HOFSTUCK": {
+   "none": "nije na karti",
+   "why": "Christmann Reiterpfad Hofstück"
+  },
+  "W.A.CHRISTMANN RIESLING REITERPFAD 2017": {
+   "none": "nije na karti",
+   "why": "Christmann Reiterpfad"
+  },
+  "W.A.CHRISTMANN, IDIG RIESLING GG 0,75L": {
+   "ref": "weingut-a-christmann--idig-riesling-gg-2021",
+   "vol": 0.75
+  },
+  "W.A.CHRISTMANN, RIESLING A.D.LAGEN 0,1L": {
+   "ref": "weingut-a-christmann--riesling-aus-den-lagen-2021",
+   "vol": 0.1
+  },
+  "W.A.CHRISTMANN, RIESLING A.D.LAGEN 0,75L": {
+   "ref": "weingut-a-christmann--riesling-aus-den-lagen-2021",
+   "vol": 0.75
+  },
+  "W.H.LOWENSTEIN, RIESLING SCHIEFER. 0,1L": {
+   "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023",
+   "vol": 0.1
+  },
+  "W.H.LOWENSTEIN, RIESLING SCHIEFER. 0,75L": {
+   "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023",
+   "vol": 0.75
+  },
+  "W.H.LOWENSTEIN,RIESL S.BEERENAUSL. 0,75L": {
+   "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017",
+   "vol": 0.75
+  },
+  "W.J.J. PRUM, RIESLING KABINETT": {
+   "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-kabinett-2023",
+   "vol": 0.1
+  },
+  "W.J.J. PRUM, RIESLING KABINETT 0,75": {
+   "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-kabinett-2023",
+   "vol": 0.75
+  },
+  "W.J.J.PRUM, RIESLING WEHLENER 0,375L": {
+   "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-auslese-2023",
+   "vol": 0.375
+  },
+  "W.WITTMAN, RIESLING AULERDE AUS. 0,5L": {
+   "ref": "weingut-wittmann--riesling-aulerde-auslese-2015",
+   "vol": 0.5
+  },
+  "WACHENHEIMER RIESLING, WOLF 2017 0,75L": {
+   "none": "nije na karti",
+   "why": "Bürklin-Wolf Wachenheimer Riesling"
+  },
+  "WALTER SCOTT, PINOT NOIR": {
+   "ref": "walter-scott--cuvee-ruth-pinot-noir",
+   "vol": 0.75
+  },
+  "WEINGUT GOTTARDI 2019, 0,1": {
+   "none": "nije na karti",
+   "why": "Gottardi"
+  },
+  "WEINGUT GOTTARDI 2019, 0,75": {
+   "none": "nije na karti",
+   "why": "Gottardi"
+  },
+  "WHISKY JURA 1994": {
+   "none": "nije vino",
+   "why": "whisky upisan u grupu vina"
+  },
+  "WITTMANN, AULERDE 0,75": {
+   "ref": "weingut-wittmann--riesling-aulerde-gg-2020",
+   "vol": 0.75
+  },
+  "YANN ALEXANDRE 0,1": {
+   "none": "nije na karti",
+   "why": "Yann Alexandre"
+  },
+  "YANN ALEXANDRE 0,75": {
+   "none": "nije na karti",
+   "why": "Yann Alexandre"
+  },
+  "ZILLIKEN RAUCH, RIESLING 0,1L": {
+   "ref": "zilliken--rausch-kabinett-2025",
+   "vol": 0.1
+  },
+  "ZILLIKEN, BUTTERFLY 0,1": {
+   "ref": "zilliken--riesling-butterfly-2024",
+   "vol": 0.1
+  },
+  "ZILLIKEN, BUTTERFLY 0,75L": {
+   "ref": "zilliken--riesling-butterfly-2024",
+   "vol": 0.75
+  },
+  "ZILLIKEN, RAUSCH KABINET 0,1L": {
+   "ref": "zilliken--rausch-kabinett-2025",
+   "vol": 0.1
+  },
+  "ZILLIKEN, RAUSCH KABINET 0,75L": {
+   "ref": "zilliken--rausch-kabinett-2025",
+   "vol": 0.75
+  },
+  "ČEČEVAC GAŠPAR, JEKA 2019 0,75L": {
+   "ref": "cecavac-gaspar--jeka-dalmatia-2020",
+   "vol": 0.75
+  }
+ }
+}

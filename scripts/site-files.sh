@@ -36,7 +36,7 @@ cp -r css js assets "$out/"
 
 # the data the app polls — data/source/ is deliberately not copied
 mkdir -p "$out/data" "$out/library" "$out/lists"
-cp data/menu.json data/producers.json data/regions.json data/unavailable.json "$out/data/"
+cp data/menu.json data/producers.json data/regions.json data/unavailable.json data/till-map.json "$out/data/"
 # since when each wine is on the list, from git history — /admin's wine sales
 # call a wine unsold only if it was listed the whole period (2026-10-14)
 node scripts/list-since.mjs > "$out/data/list-since.json"

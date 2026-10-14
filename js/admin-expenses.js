@@ -392,46 +392,68 @@
   /* ---------- Vinska karta i blagajna (owner, 2026-10-14) ----------
      Which wines on the list actually sell, by the bottle and by the glass,
      and which have not sold for three months — money standing on a shelf.
+
      The till names wines its own way ("BENVENUTI, MALVAZIJA 0,1L", "AMARONE
-     2015, Dal Forno", "MENENGHETTI BDB 0,75"), so a till name is matched to
-     a list ref:
-       1. TILL_ALIAS — names confirmed by hand (abbreviations, typos);
-       2. otherwise strictly: the producer's words, and every other word of
-          the till name must be in the wine's name; a till article keeps its
-          old vintage in its name, so a vintage up to 3 years off still
-          matches the line, a further one does not; a tie is no match.
-     A wrong wine is worse than none: what is not matched is listed, with its
-     takings, for Filho to confirm — and goes into TILL_ALIAS. */
-  const TILL_ALIAS = {
-    "esprit hg": "henri-giraud--esprit-nature", "esprit hg 0 1": "henri-giraud--esprit-nature",
-    "champagne chavost bdb": "chavost--blanc-de-chardonnay", "champagne chavost paradox": "chavost--paradoxe",
-    "menenghetti blanc de blancs": "meneghetti--blanc-de-blancs", "menenghetti bdb": "meneghetti--blanc-de-blancs",
-    "menenghetti menenghetti white": "meneghetti--white-2023",
-    "petrac karizma cuve 2020": "petrac--karizma-cuvee-2022", "terbotz": "jakopic--terbotz",
-    "saint hills black 2019": "saints-hills--black-2022", "edi simcic deut lex 2018": "edi-simcic--duet-lex-2022",
-    "graf 2020": "maria-sepp-muster--graf-2020", "duemani 2018": "azienda-duemani--duemani-2018",
-    "benvenuti santa elisabeta": "benvenuti--santa-elizabeta-2021", "benvenuti santa elisabetta": "benvenuti--santa-elizabeta-2021",
-    "pape st hills": "saints-hills--pape-2023", "saint hills le chiffre": "saints-hills--le-chiffre-2023",
-    "stalagmit": "milos--stalagmit-2022", "cifra": "azienda-duemani--cifra-2021", "cifra 2021": "azienda-duemani--cifra-2021",
-    "esprit": "henri-giraud--esprit-nature", "fass 4": "bernhard-ott--fass-4-gruner-veltliner-2023",
-    "a cluserath apotheke": "a-clusserath--trittenheimer-apotheke-kabinett-2024",
-    "riesling tritt apotheke kabinett": "a-clusserath--trittenheimer-apotheke-kabinett-2024",
-    "chablis la grand vale": "patrick-piuze--chablis-la-grande-vallee-2024",
-    "jakopic rajnski rizling izb berba": "jakopic--rajnski-rizling-izborna-berba-2019",
-    "h l lignier pommard l c l arveltes": "hubert-lignier--pommard-1er-cru-les-arvelets-2019",
-    "w h lowenstein riesling schiefer": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023",
-    "savagnin 2018": "domaine-bourdy--savagnin-2018", "erdoro crni pinot 2021": "erdoro--pinot-noir-2021",
-  };
-  /* sold under a wine group but not wine */
-  const NOT_WINE = /romerquelle|gin ?tonik|bezalkohol/i;
+     2015, Dal Forno", "Hubert LAMY ST-AUBIN, LES FRI"), so every till article
+     is mapped to a list wine ONCE, by hand, in data/till-map.json (owner,
+     2026-10-14: "I need clarity on this topic and precise 1:1 mapping"):
+       {ref, vol}        the wine and the size the article pours (0.1 = glass)
+       {ref, vol, ask}   a suggestion waiting for Filho — not counted
+       {none, why}       sold, but not a wine on the list ("nije na karti")
+                         or not wine at all ("nije vino": a gin tonik rung
+                         under a wine group)
+     Only {ref, vol} counts. A till name the map has never seen — a new wine,
+     a new vintage, a renamed article — lands in "Za povezati" with the strict
+     matcher's guess as a suggestion, and one tap writes it into the map
+     through the GitHub contents API, as the 86 board writes its file. So
+     every Remaris pull is read against what was already agreed, and only
+     what is genuinely new is asked. */
+  const TILL_PATH = "data/till-map.json", GH_REPO = "jsiljeg/list", GH_BRANCH = "main";
   const TILL_STOP = new Set("de du la le les di del della e et und and the vino vina vinarija vinogradi podrum domaine dom chateau ch az agr azienda agricola weingut cantina tenuta estate winery cellars bodega bodegas maison famille fattoria podere opg srl doo 1er cru grand l".split(" "));
   const tfold = (v) => String(v || "").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/gi, "d").toLowerCase();
   /* "0,75L", "0.75", "0,1", "0,05L" are the size, not the name */
   const tillKey = (v) => tfold(v).replace(/\b\d+[.,]\d+\s*l?\b/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
   const ttoks = (v) => tillKey(v).split(" ").filter((x) => x.length > 1 && !TILL_STOP.has(x) && !/^(19|20)\d{2}$/.test(x));
   const tyear = (v) => Number((String(v).match(/\b(19|20)\d{2}\b/) || [])[0] || 0);
-  const isGlass = (name) => /\b0[.,](05|1|125|15|2)\s*l?\b/i.test(name);
+  /* the size a till name says; a name with none is a 0,75 bottle — the few
+     glass articles that print no size were set by hand in the map */
+  function tillVol(name) {
+    const n = String(name).toLowerCase().replace(/\s+/g, "");
+    if (/0[,.]05/.test(n)) return 0.05;
+    if (/0[,.]375/.test(n)) return 0.375;
+    if (/0[,.]5(?!\d)/.test(n)) return 0.5;
+    if (/0[,.]1/.test(n)) return 0.1;
+    if (/1[,.]5|magnum/.test(n)) return 1.5;
+    if (/(^|[^\d,.])3l/.test(n)) return 3;
+    return 0.75;
+  }
+  /* the Remaris group an article belongs in, from the wine itself: by the
+     glass is "Vina na čaše" whatever the colour; a bottle goes by style and
+     by the till's country pairs */
+  const TILL_REG = { HR: "HR/SLO", SI: "HR/SLO", DE: "DE/AUT", AT: "DE/AUT", FR: "FRA", IT: "ITA/ES", ES: "ITA/ES", US: "USA" };
+  function tillGroup(w, vol) {
+    if (vol <= 0.15) return "Vina na čaše";
+    const st = w.style || "";
+    if (st.startsWith("champagne")) return "Šampanjci";
+    if (st.startsWith("sparkling")) return "Pjenušci";
+    if (st === "sweet") return "Desertna vina";
+    return `${st.startsWith("red") ? "Crvena" : "Bijela"} vina ${TILL_REG[w.country] || ""}`.trim();
+  }
   let wineList = null, wineListLoading = false, openWineBox = "", listFrom = "";
+  let tillMap = null, tillSha = "", tillMsg = "", tillBusy = "";
+  const ghHead = () => ({ Authorization: `Bearer ${ghKey()}`, Accept: "application/vnd.github+json" });
+  const utf8b64 = (s) => { const b = new TextEncoder().encode(s); let o = ""; for (let i = 0; i < b.length; i += 0x8000) o += String.fromCharCode(...b.subarray(i, i + 0x8000)); return btoa(o); };
+  const b64utf8 = (s) => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, "")), (c) => c.charCodeAt(0)));
+  /* read from GitHub, not the site: a confirmation made a minute ago must
+     not come back as a question while the deploy runs */
+  async function readTillMap() {
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${TILL_PATH}?ref=${GH_BRANCH}&t=${Date.now()}`, { headers: ghHead(), cache: "no-store" });
+    if (r.status === 404) { tillSha = ""; return { articles: {} }; }
+    if (!r.ok) throw new Error(`GitHub ${r.status}`);
+    const j = await r.json();
+    tillSha = j.sha;
+    return JSON.parse(b64utf8(j.content));
+  }
   function needWineList() {
     if (wineList || wineListLoading) return wineList;
     wineListLoading = true;
@@ -439,37 +461,45 @@
        list-since.mjs); unavailable.json is the 86 board. Both optional. */
     const opt = (u, d) => fetch(u, { cache: "no-cache" }).then((r) => (r.ok ? r.json() : d)).catch(() => d);
     Promise.all([fetch("library/wines.json", { cache: "no-cache" }).then((r) => r.json()), fetch("lists/theatrium.json", { cache: "no-cache" }).then((r) => r.json()),
-      opt("data/list-since.json", { since: {} }), opt("data/unavailable.json", { hidden: [] })])
-      .then(([lib, list, since, una]) => {
+      opt("data/list-since.json", { since: {} }), opt("data/unavailable.json", { hidden: [] }),
+      readTillMap().catch(() => opt(TILL_PATH, { articles: {} }))])
+      .then(([lib, list, since, una, tm]) => {
         listFrom = since.from || "";
+        tillMap = tm;
         const hidden = new Set((una.hidden || []).filter((h) => !h.where).map((h) => `${h.producer}|${h.name}`));
         const seen = new Map();
         (function walk(o) {
           if (Array.isArray(o)) return o.forEach(walk);
           if (!o || typeof o !== "object") return;
           if (o.ref && lib.wines[o.ref] && lib.wines[o.ref].insight && !lib.wines[o.ref].insight.kind) {   /* wines only: not spirits, not water */
-            const w = lib.wines[o.ref], e = seen.get(o.ref) || { ref: o.ref, name: w.name, producer: w.producer, prices: [] };
+            const w = lib.wines[o.ref], e = seen.get(o.ref) || { ref: o.ref, name: w.name, producer: w.producer, prices: [], style: w.insight.style, country: w.insight.country };
             if (o.price != null) e.prices.push(o.price);
             seen.set(o.ref, e);
           }
           Object.values(o).forEach(walk);
         })(list.sections || list);
-        wineList = [...seen.values()].map((w) => ({ ...w, p: ttoks(w.producer), n: ttoks(w.name), y: tyear(w.name),
+        /* a mapped wine that has since left the list still has a name to show */
+        const extra = Object.values(tm.articles || {}).filter((a) => a.ref && !seen.has(a.ref) && lib.wines[a.ref]).map((a) => {
+          const w = lib.wines[a.ref]; return { ref: a.ref, name: w.name, producer: w.producer, prices: [], style: (w.insight || {}).style, country: (w.insight || {}).country, gone: true };
+        });
+        wineList = [...seen.values(), ...extra].map((w) => ({ ...w, p: ttoks(w.producer), n: ttoks(w.name), y: tyear(w.name),
           since: (since.since || {})[w.ref] || "", off: hidden.has(`${w.producer}|${w.name}`) }));
         render();
       })
-      .catch(() => { wineList = []; })
+      .catch(() => { wineList = []; tillMap = tillMap || { articles: {} }; })
       .finally(() => { wineListLoading = false; });
     return null;
   }
-  function matchTill(name) {
-    const alias = TILL_ALIAS[tillKey(name).replace(/\s+/g, " ")];
-    if (alias) return wineList.find((w) => w.ref === alias) || null;
+  /* The strict matcher only SUGGESTS now: the producer's words, and every
+     other word of the till name must be in the wine's name; a vintage more
+     than 3 years off is another wine; a tie is no suggestion. */
+  function suggestTill(name) {
     const all = ttoks(name), y = tyear(name), c = [];
     /* the till cuts names short ("En Chaill", "Schiefer."): a word of 4+
        letters matches the start of the wine's word */
     const hit = (words, x) => words.some((w) => w === x || (x.length >= 4 && w.startsWith(x)));
     for (const w of wineList) {
+      if (w.gone) continue;
       const pm = w.p.filter((x) => hit(all, x) || all.some((a) => a.length >= 4 && x.startsWith(a)));
       const rest = all.filter((x) => !hit(w.p, x)), nm = rest.filter((x) => hit(w.n, x));
       if (!pm.length && nm.length < 2) continue;
@@ -481,19 +511,54 @@
     c.sort((a, b) => b.sc - a.sc);
     return c.length && !(c[1] && c[1].sc === c[0].sc) ? c[0].w : null;
   }
-  /* three months to the shown one: what sold, what did not, what is unmatched */
+  /* One article, one commit ("Blagajna: X → Y"). A 409 means another tablet
+     or a commit from the office got there first: re-read and say so, never
+     write over it (the 86 board's rule). */
+  async function saveTill(name, entry) {
+    tillBusy = name; tillMsg = ""; render();
+    try {
+      const doc = await readTillMap();
+      doc.articles = doc.articles || {};
+      doc.articles[name] = entry;
+      doc.articles = Object.fromEntries(Object.keys(doc.articles).sort().map((k) => [k, doc.articles[k]]));
+      const w = entry.ref && wineList.find((x) => x.ref === entry.ref);
+      const what = entry.ref ? `${w ? `${w.producer} · ${w.name}` : entry.ref}${entry.vol <= 0.15 ? " (čaša)" : ""}` : entry.none;
+      const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${TILL_PATH}`, {
+        method: "PUT", headers: { ...ghHead(), "Content-Type": "application/json" },
+        body: JSON.stringify({ message: `Blagajna: ${name} → ${what}${who() ? ` — ${who()}` : ""}`, content: utf8b64(JSON.stringify(doc, null, 1) + "\n"), sha: tillSha || undefined, branch: GH_BRANCH }),
+      });
+      if (r.status === 409) { tillMap = await readTillMap(); throw new Error("netko je u međuvremenu mijenjao popis — osvježeno, ponovite"); }
+      if (!r.ok) throw new Error(`GitHub ${r.status}`);
+      tillSha = (await r.json()).content.sha;
+      tillMap = doc;
+      tillMsg = `Spremljeno: ${name} → ${what}`;
+    } catch (e) { tillMsg = `Nije spremljeno: ${e.message}`; }
+    tillBusy = ""; render();
+  }
+  /* three months to the shown one: what sold, what did not, what to map */
   function wineSales() {
-    if (!needWineList()) return null;
+    if (!needWineList() || !tillMap) return null;
     const ms = [0, -1, -2].map((d) => shiftMonth(month, d)), ss = ms.map(needIncome);
     if (ss.some((x) => !x)) return null;
-    const by = new Map(), loose = new Map();
+    const arts = tillMap.articles || {}, byRef = new Map(wineList.map((w) => [w.ref, w]));
+    const by = new Map(), lines = new Map();
     for (const s of ss) for (const it of s.items || []) {
-      if (!isWine(it) || !(it.qty > 0) || NOT_WINE.test(it.name)) continue;
-      const w = matchTill(it.name);
-      if (!w) { const l = loose.get(it.name) || { name: it.name, t: 0 }; l.t += it.total; loose.set(it.name, l); continue; }
+      if (!isWine(it) || !(it.qty > 0)) continue;
+      const l = lines.get(it.name) || { name: it.name, grp: it.grp, q: 0, t: 0 };
+      l.q += it.qty; l.t += it.total; lines.set(it.name, l);
+    }
+    const ask = [], off = [], wrong = [];
+    for (const l of lines.values()) {
+      const a = arts[l.name];
+      if (!a || a.ask) { ask.push({ ...l, a, sug: a && a.ask ? byRef.get(a.ref) : suggestTill(l.name) }); continue; }
+      if (a.none) { off.push({ ...l, a }); if (a.none === "nije vino") wrong.push({ ...l, want: "izvan grupa vina" }); continue; }
+      const w = byRef.get(a.ref);
+      if (!w) { ask.push({ ...l, a: null, sug: null }); continue; }
       const e = by.get(w.ref) || { w, bottles: 0, glasses: 0, t: 0 };
-      if (isGlass(it.name)) e.glasses += it.qty; else e.bottles += it.qty;
-      e.t += it.total; by.set(w.ref, e);
+      if (a.vol <= 0.15) e.glasses += l.q; else e.bottles += l.q * a.vol / 0.75;   /* a magnum counts two bottles */
+      e.t += l.t; by.set(w.ref, e);
+      const want = tillGroup(w, a.vol);
+      if (l.grp !== want) wrong.push({ ...l, want });
     }
     const sold = [...by.values()].sort((a, b) => b.t - a.t);
     /* fair to the list (owner, 2026-10-14: "the wine list changed, so be
@@ -503,11 +568,13 @@
     const start = `${ms[2]}-01`, price = (w) => (w.prices.length ? Math.min(...w.prices) : 0);
     /* the history starts 2026-07-31: a wine dated then was there before it */
     const isNew = (w) => !!w.since && w.since > start && w.since !== listFrom;
-    const still = wineList.filter((w) => !by.has(w.ref) && !isNew(w) && !w.off).sort((a, b) => price(a) - price(b));
-    const fresh = wineList.filter((w) => isNew(w) && !w.off).map((w) => ({ w, e: by.get(w.ref) })).sort((a, b) => (b.e ? b.e.t : 0) - (a.e ? a.e.t : 0));
-    const unmatched = [...loose.values()].sort((a, b) => b.t - a.t);
-    const total = sold.reduce((a, x) => a + x.t, 0) + unmatched.reduce((a, x) => a + x.t, 0);
-    return { ms, sold, still, fresh, unmatched, total, matched: sold.reduce((a, x) => a + x.t, 0) };
+    const live = wineList.filter((w) => !w.gone && !w.off);
+    const still = live.filter((w) => !by.has(w.ref) && !isNew(w)).sort((a, b) => price(a) - price(b));
+    const fresh = live.filter((w) => isNew(w)).map((w) => ({ w, e: by.get(w.ref) })).sort((a, b) => (b.e ? b.e.t : 0) - (a.e ? a.e.t : 0));
+    const sum = (xs) => xs.reduce((a, x) => a + x.t, 0);
+    ask.sort((a, b) => b.t - a.t); off.sort((a, b) => b.t - a.t); wrong.sort((a, b) => b.t - a.t);
+    const matched = sum(sold);
+    return { ms, sold, still, fresh, ask, off, wrong, matched, total: matched + sum(ask) + sum(off) };
   }
   function wineBox() {
     const x = wineSales();
@@ -516,16 +583,37 @@
     const qty = (e) => [e.bottles ? `${nf(e.bottles)} ${plural(Math.round(e.bottles), "boca", "boce", "boca")}` : "", e.glasses ? `${nf(e.glasses)} ${plural(Math.round(e.glasses), "čaša", "čaše", "čaša")}` : ""].filter(Boolean).join(" · ");
     const box = (k, title, rows) => `<button class="nema wide-left" data-winebox="${k}" aria-expanded="${openWineBox === k}">${title}</button>
       ${openWineBox === k ? `<div class="lines">${rows}</div>` : ""}`;
+    const sum = (xs) => eur0(xs.reduce((a, u) => a + u.t, 0));
+    const size = (v) => (v <= 0.15 ? "čaša" : v === 0.75 ? "boca" : `${String(v).replace(".", ",")} l`);
+    const opts = wineList.filter((w) => !w.gone).slice().sort((a, b) => `${a.producer} ${a.name}`.localeCompare(`${b.producer} ${b.name}`, "hr"))
+      .map((w) => `<option value="${esc(w.ref)}">${esc(w.producer)} · ${esc(w.name)}</option>`).join("");
+    const askRow = (u) => {
+      const v = u.a && u.a.vol ? u.a.vol : tillVol(u.name), busy = tillBusy === u.name;
+      return `<div class="tillask"><span>${esc(u.name)}<small>${u.grp ? `${esc(u.grp)} · ` : ""}${nf(u.q)} kom</small>
+          ${u.a && u.a.ask ? `<small class="q">${esc(u.a.ask)}</small>` : ""}
+          ${u.sug ? `<button class="pill" data-tillok="${esc(u.name)}" data-ref="${esc(u.sug.ref)}" data-vol="${v}" ${busy ? "disabled" : ""}>✓ ${esc(u.sug.producer)} · ${esc(u.sug.name)} · ${size(v)}</button>` : ""}
+          <select data-tillpick="${esc(u.name)}" data-vol="${v}" ${busy ? "disabled" : ""}><option value="">${u.sug ? "drugo vino…" : "koje je to vino?"}</option>${opts}</select>
+          <p class="row"><button class="pill" data-tillnone="${esc(u.name)}" data-none="nije na karti" ${busy ? "disabled" : ""}>nije na karti</button>
+          <button class="pill" data-tillnone="${esc(u.name)}" data-none="nije vino" ${busy ? "disabled" : ""}>nije vino</button></p>
+        </span><b>${eur0(u.t)}</b></div>`;
+    };
     return `<h3 class="h">Vinska karta i blagajna <small>${span}</small></h3>
       <div class="lines">${x.sold.slice(0, 10).map((e) => `<div><span>${esc(e.w.producer)} · ${esc(e.w.name)}<small>${qty(e)}</small></span><b>${eur0(e.t)}</b></div>`).join("")}</div>
+      ${tillMsg ? `<p class="small ${/^Nije/.test(tillMsg) ? "err" : "muted"}">${esc(tillMsg)}</p>` : ""}
+      ${x.ask.length ? box("ask", `Za povezati: ${x.ask.length} (${sum(x.ask)}) — ne broji se dok se ne potvrdi`,
+        `<p class="muted small">Artikli iz blagajne koje karta još ne zna. Jednom potvrđeno, vrijedi za svako sljedeće čitanje Remarisa.</p>` + x.ask.map(askRow).join("")) : ""}
       ${box("still", `Cijelo razdoblje na karti, a nije se prodalo: ${x.still.length} ${plural(x.still.length, "vino", "vina", "vina")}`,
-        `<p class="muted small">Najjeftinija prva: skupa boca koja stoji je normalna, svakodnevno vino koje se ne prodaje nije. Vina trenutačno skinuta s karte nisu ovdje.</p>`
+        `<p class="muted small">Najjeftinija prva: skupa boca koja stoji je normalna, svakodnevno vino koje se ne prodaje nije. Vina trenutačno skinuta s karte nisu ovdje.${x.ask.length ? " Dok je nešto u \"Za povezati\", ovaj popis može biti predug." : ""}</p>`
         + x.still.map((w) => `<div><span>${esc(w.producer)} · ${esc(w.name)}</span><b>${w.prices.length ? eur0(Math.min(...w.prices)) : ""}</b></div>`).join(""))}
       ${x.fresh.length ? box("fresh", `Nova na karti u tom razdoblju: ${x.fresh.length}`,
         x.fresh.map(({ w, e }) => `<div><span>${esc(w.producer)} · ${esc(w.name)}<small>na karti od ${hrDate(w.since)}${e ? ` · ${qty(e)}` : " · još nije prodano"}</small></span><b>${e ? eur0(e.t) : ""}</b></div>`).join("")) : ""}
-      ${x.unmatched.length ? box("loose", `Prodano, a nije povezano s kartom: ${x.unmatched.length} (${eur0(x.unmatched.reduce((a, u) => a + u.t, 0))})`,
-        x.unmatched.map((u) => `<div><span>${esc(u.name)}</span><b>${eur0(u.t)}</b></div>`).join("")) : ""}
-      <p class="muted small">Povezano je ${Math.round((x.matched / Math.max(1, x.total)) * 100)}% prodaje vina. Blagajna vina zove svojim imenima; što nije sigurno povezano, ostaje na popisu "nije povezano" — Filho može reći što je što. Datum "na karti od" je iz povijesti karte (od 31. 7. 2026).</p>`;
+      ${x.off.length ? box("off", `Prodano, a nije s karte: ${x.off.length} (${sum(x.off)})`,
+        `<p class="muted small">Vina kojih više nema na karti, i ono što nije vino a upisano je u grupu vina.</p>`
+        + x.off.map((u) => `<div><span>${esc(u.name)}<small>${esc(u.a.none)}${u.a.why ? ` · ${esc(u.a.why)}` : ""}</small></span><b>${eur0(u.t)}</b></div>`).join("")) : ""}
+      ${x.wrong.length ? box("wrong", `U blagajni u krivoj grupi: ${x.wrong.length}`,
+        `<p class="muted small">Grupa u Remarisu prema karti: čaša je uvijek "Vina na čaše", boca po boji i zemlji. Krive grupe kvare i usporedbu konobara (čaša / boca / šampanjac).</p>`
+        + x.wrong.map((u) => `<div><span>${esc(u.name)}<small>${esc(u.grp || "—")} → <b>${esc(u.want)}</b></small></span><b>${eur0(u.t)}</b></div>`).join("")) : ""}
+      <p class="muted small">Povezano je ${Math.round((x.matched / Math.max(1, x.total)) * 100)}% prodaje vina. Svaki artikl blagajne povezan je ručno s vinom s karte (data/till-map.json); novi artikli čekaju u "Za povezati". Datum "na karti od" je iz povijesti karte (od 31. 7. 2026).</p>`;
   }
   /* ---------- Konobari (Filho, 2026-10-14: "koji je konobar što prodao, i
      koji promet ima i što mu je palo … jer onda mogu upozorit i ispravit —
@@ -1445,6 +1533,10 @@
     box.querySelectorAll("[data-rub]").forEach((b) => b.addEventListener("click", () => { openRub = openRub === b.dataset.rub ? null : b.dataset.rub; render(); }));
     box.querySelectorAll("[data-staff]").forEach((b) => b.addEventListener("click", () => { openStaff = openStaff === b.dataset.staff ? "" : b.dataset.staff; render(); }));
     box.querySelectorAll("[data-winebox]").forEach((b) => b.addEventListener("click", () => { openWineBox = openWineBox === b.dataset.winebox ? "" : b.dataset.winebox; render(); }));
+    /* Za povezati: one tap writes the article into data/till-map.json */
+    box.querySelectorAll("[data-tillok]").forEach((b) => b.addEventListener("click", () => saveTill(b.dataset.tillok, { ref: b.dataset.ref, vol: Number(b.dataset.vol) })));
+    box.querySelectorAll("[data-tillpick]").forEach((s) => s.addEventListener("change", () => { if (s.value) saveTill(s.dataset.tillpick, { ref: s.value, vol: Number(s.dataset.vol) }); }));
+    box.querySelectorAll("[data-tillnone]").forEach((b) => b.addEventListener("click", () => saveTill(b.dataset.tillnone, { none: b.dataset.none })));
     box.querySelectorAll("[data-allfocus]").forEach((b) => b.addEventListener("click", () => { allFocus = !allFocus; render(); }));
     box.querySelectorAll("[data-allcusts]").forEach((b) => b.addEventListener("click", () => { allCusts = !allCusts; render(); }));
     box.querySelectorAll("[data-sub]").forEach((b) => b.addEventListener("click", () => { sub = b.dataset.sub; render(); }));

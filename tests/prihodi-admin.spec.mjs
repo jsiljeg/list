@@ -157,3 +157,23 @@ test("guests come from couverts, menus and stornos, and the bar is apart", async
   expect(r.rucak).toMatchObject({ guests: 10, total: 600 });                  /* menu 10 persons beats 4 couverts */
   expect(r.vecera).toMatchObject({ guests: 1, total: 60, other_n: 1, other: 8 });   /* 2 − 1 storno; the espresso apart */
 });
+
+/* Vinska karta i blagajna, 1:1 (owner, 2026-10-14: "precise 1:1 mapping").
+   Every till article is mapped once in data/till-map.json; a suggestion
+   (`ask`) and an article the map has never seen are listed for Filho and
+   counted nowhere, so a guess never reaches "prodano" or "nije se prodalo". */
+test("the till map resolves, and only a confirmed article counts", () => {
+  const lib = JSON.parse(readFileSync(new URL("../library/wines.json", import.meta.url), "utf8")).wines;
+  const map = JSON.parse(readFileSync(new URL("../data/till-map.json", import.meta.url), "utf8")).articles;
+  for (const [name, a] of Object.entries(map)) {
+    if (a.none) { expect(["nije na karti", "nije vino"]).toContain(a.none); continue; }
+    expect(lib[a.ref], name).toBeTruthy();
+    expect(a.vol, name).toBeGreaterThan(0);
+  }
+  /* the cases the old matcher got wrong stay wrong-proof */
+  expect(map["Hubert LAMY ST-AUBIN, LES FRI"].ref).toBe("hubert-lamy--saint-aubin-1er-cru-les-frionnes-2023");
+  expect(map["LE VOLTE DELL ORNELLAIA 0,75"].none).toBe("nije na karti");
+  expect(map["BENVENUTI, MALVAZIJA 0,1L"].vol).toBe(0.1);
+  const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
+  expect(src).toContain("if (!a || a.ask) { ask.push(");
+});

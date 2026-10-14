@@ -570,3 +570,34 @@ bar, a coffee, the owner's table) are shown as their own line, neither
 averaged in nor lost. It is only as good as the couvert: a table the waiter
 forgot to charge one counts nowhere, so the share of bills without one is
 worth watching.
+
+## Blagajna ↔ vinska karta, 1:1 (owner, 2026-10-14)
+
+"I need clarity on this topic and precise 1:1 mapping … each time we pull from
+Remaris, the new occurrence may happen." The fuzzy matcher guessed on every
+page load and remembered nothing. Now **`data/till-map.json`** holds every
+till wine article once: `{ref, vol}` (the list wine and the size it pours,
+0.1 = glass), `{ref, vol, ask}` (a suggestion waiting for Filho, not
+counted), or `{none: "nije na karti" | "nije vino", why}`.
+
+- All 371 wine articles sold Dec 2025 – Oct 2026 were mapped by hand on
+  2026-10-14: 263 confirmed, 17 asked, 82 sold but no longer on the list,
+  9 not wine at all (MENU 68, Römerquelle, gin tonik… rung under wine groups).
+  The old matcher had several of them wrong — Le Volte dell'Ornellaia as
+  Ornellaia, Bürklin-Wolf Goldbächel as Gaisböhl, Crochet's Sancerre as
+  Cotat's, Marjan Simčič Pinot Grigio as the Opoka Pinot Noir.
+- **Only `{ref, vol}` counts.** An article the map has never seen, or one with
+  `ask`, goes to **Za povezati** with the strict matcher's suggestion; one tap
+  (✓, another wine from the list, *nije na karti*, *nije vino*) commits it to
+  the file through the GitHub contents API, like the 86 board — one commit per
+  article, a 409 re-reads instead of writing over. Every later Remaris pull is
+  read against it, so only genuinely new articles are ever asked.
+- The map is read from GitHub, not the site, so a confirmation does not come
+  back as a question while the deploy runs. `validate.mjs` fails a ref that is
+  not in the library or an entry without a size.
+- **U blagajni u krivoj grupi** compares the till's group with the one the
+  wine belongs in — "Vina na čaše" for any glass, otherwise Šampanjci /
+  Pjenušci / Desertna / Bijela|Crvena vina + the till's country pair. 93 of
+  289 articles were wrong; "Bijela vina DE/AUT" had become a catch-all
+  (Sassicaia, Brunello, Amarone, glass pours). That matters beyond tidiness:
+  the waiter comparison sorts čaša / boca / šampanjac by the till's group.

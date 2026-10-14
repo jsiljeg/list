@@ -51,6 +51,22 @@ const errors = [];
    the wine is on the shelf, priced, and no guest ever sees it. */
 for (const ref of new Set(missing))
   errors.push(`lists/theatrium.json: "${ref}" is not in library/wines.json — check the ref`);
+/* data/till-map.json — the till's article names mapped to list wines
+   (owner, 2026-10-14: "precise 1:1 mapping"). A ref that is not in the
+   library would silently drop that article's sales out of "Vinska karta i
+   blagajna", so it fails the deploy like an unresolved listing does. */
+try {
+  const libWines = JSON.parse(fs.readFileSync("library/wines.json", "utf8")).wines;
+  const arts = JSON.parse(fs.readFileSync("data/till-map.json", "utf8")).articles || {};
+  for (const [name, a] of Object.entries(arts)) {
+    if (a.none) { if (!["nije na karti", "nije vino"].includes(a.none)) errors.push(`till-map.json: "${name}" has none="${a.none}"`); continue; }
+    if (!libWines[a.ref]) errors.push(`till-map.json: "${name}" → "${a.ref}" is not in library/wines.json`);
+    if (!(a.vol > 0 && a.vol <= 6)) errors.push(`till-map.json: "${name}" has no size (vol)`);
+  }
+} catch (e) {
+  if (e.code !== "ENOENT") errors.push("data/till-map.json is not valid JSON: " + e.message);
+}
+
 const langs = LANGS.map((l) => l.code);
 
 for (const sec of data.sections) {
