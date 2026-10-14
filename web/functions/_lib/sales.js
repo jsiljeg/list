@@ -146,7 +146,7 @@ export async function monthDetail(env, lo, hi) {
          AND b.id NOT IN (${OWN_TABLE}) GROUP BY b.waiter`, lo, hi),
   ]);
   const [st, guests] = await Promise.all([staffData(env, lo, hi), guestData(env, lo, hi)]);
-  return { items, weekdays, dayparts, leaks, waiters, staff: st.waiters, ownTable: st.ownTable, guests };
+  return { items, weekdays, dayparts, leaks, waiters, staff: st.waiters, staffBy: st.catBy, ownTable: st.ownTable, guests };
 }
 
 /* Potrošnja po gostu (owner, 2026-10-14: "average spendings per guest … map
@@ -239,8 +239,8 @@ async function staffCatFor(env) {
   try {
     const get = (p) => fetch(`${wineListOrigin(env)}/${p}`, { cf: { cacheTtl: 300, cacheEverything: true } }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
     const [till, list] = await Promise.all([get("data/till-map.json"), get("lists/theatrium.json")]);
-    return staffCatSql(tillCats(till, list));
-  } catch { return STAFF_CAT; }
+    return { sql: staffCatSql(tillCats(till, list)), by: "karta" };
+  } catch (e) { return { sql: STAFF_CAT, by: `grupe (${String((e && e.message) || e).slice(0, 80)})` }; }
 }
 
 /* Three corrections from Filho (2026-10-14), each a reason a waiter's numbers
@@ -262,7 +262,7 @@ export const OWN_TABLE = `SELECT b.id FROM sales_bills b JOIN sales_lines l ON l
 
 export async function staffData(env, lo, hi) {
   const q = (sql) => env.DB.prepare(sql).bind(lo, hi).all().then((r) => r.results || []);
-  const CAT = await staffCatFor(env);
+  const { sql: CAT, by } = await staffCatFor(env);
   const [bills, cats, own, wines] = await Promise.all([
     q(`SELECT b.waiter AS w, b.day AS d, ${PART} AS p, COUNT(*) AS n, SUM(b.total) AS t FROM sales_bills b
        WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 AND b.id NOT IN (${OWN_TABLE}) GROUP BY w, d, p`),
@@ -276,7 +276,7 @@ export async function staffData(env, lo, hi) {
   ]);
   const report = staffReport(bills, cats);
   for (const r of report) r.topWines = wines.filter((x) => (x.w || "—") === r.waiter).slice(0, 3).map((x) => ({ name: x.name, q: x.q, t: x.t }));
-  return { waiters: report, ownTable: own.map((x) => ({ waiter: x.w || "—", n: x.n, total: x.t })) };
+  return { catBy: by, waiters: report, ownTable: own.map((x) => ({ waiter: x.w || "—", n: x.n, total: x.t })) };
 }
 
 /* Pure. bills: {w, d, p, n, t}; cats: {w, d, p, c, n, t}. Per waiter: n, total,
