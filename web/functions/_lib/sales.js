@@ -149,6 +149,100 @@ export async function monthDetail(env, lo, hi) {
   return { items, weekdays, dayparts, leaks, waiters, staff: st.waiters, staffBy: st.catBy, ownTable: st.ownTable, guests };
 }
 
+/* Any span of days, not only a month (2026-10-14: "how did the past two
+   daily offers go" is a question about one evening against its weekdays). */
+export async function rangeSummary(env, lo, hi) {
+  const { results } = await env.DB.prepare(
+    "SELECT day, COUNT(*) AS n, SUM(total) AS total FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY day ORDER BY day").bind(lo, hi).all();
+  return { from: lo, to: hi, days: results || [], ...(await monthDetail(env, lo, hi)) };
+}
+
+/* ---------- Tvrtke (owner, 2026-10-14: "proactive approach to companies from
+   the invoices … custom tailored approach for each of these companies when
+   they arrive … habits directly in company info") ----------
+   Every company that has had a bill made out to it, over everything the till
+   holds: how often, how many, when, how much per guest, what they eat and
+   drink, and what they never take; the house's own rates beside them so the
+   advice is "less than the others", never a guess. Staff keep a note per
+   company (sales_companies). */
+const LINE_CAT = (cat) => `CASE WHEN l.tax LIKE 'H%' AND l.grp LIKE '%esert%' THEN 'desert' WHEN l.tax LIKE 'H%' THEN NULL ELSE ${cat} END`;
+export async function companyData(env) {
+  const q = (sql, ...a) => env.DB.prepare(sql).bind(...a).all().then((r) => r.results || []);
+  const { sql: CAT } = await staffCatFor(env);
+  const HAS = "b.oib IS NOT NULL AND b.oib <> '' AND b.total > 0";
+  const lo = "0000-00-00", hi = "9999-99-99";
+  const [bills, lines, cats, house, houseCats, notes, guests] = await Promise.all([
+    q(`SELECT b.oib AS oib, MAX(b.cust) AS cust, COUNT(*) AS n, SUM(b.total) AS total, MIN(b.day) AS first, MAX(b.day) AS last,
+         COUNT(DISTINCT b.day) AS days, SUM(CASE WHEN ${PART} = 'rucak' THEN 1 ELSE 0 END) AS lunch,
+         SUM(CASE WHEN b.pay = 'Virman' THEN 1 ELSE 0 END) AS virman,
+         GROUP_CONCAT(CAST(strftime('%w', b.day) AS INTEGER)) AS wds
+       FROM sales_bills b WHERE ${HAS} GROUP BY b.oib`),
+    q(`SELECT b.oib AS oib, l.name AS name, l.grp AS grp, l.tax AS tax, SUM(l.qty) AS q, SUM(l.total) AS t
+       FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE ${HAS} GROUP BY b.oib, l.name`),
+    q(`SELECT b.oib AS oib, ${LINE_CAT(CAT)} AS c, COUNT(DISTINCT b.id) AS n FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
+       WHERE ${HAS} GROUP BY b.oib, c HAVING c IS NOT NULL`),
+    q(`SELECT COUNT(DISTINCT b.id) AS n, SUM(CASE WHEN l.tax LIKE 'H%' THEN l.total ELSE 0 END) AS food,
+         SUM(CASE WHEN ${WINE_SQL} THEN l.total ELSE 0 END) AS wine, SUM(l.total) AS total
+       FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE b.total > 0 AND b.day >= date('now', '-365 day')`),
+    q(`SELECT ${LINE_CAT(CAT)} AS c, COUNT(DISTINCT b.id) AS n FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
+       WHERE b.total > 0 AND b.day >= date('now', '-365 day') GROUP BY c HAVING c IS NOT NULL`),
+    q("SELECT oib, note, updated_at FROM sales_companies").catch(() => []),
+    guestData(env, lo, hi),
+  ]);
+  const g = guests.reduce((a, r) => ({ guests: a.guests + (r.guests || 0), total: a.total + (r.total || 0) }), { guests: 0, total: 0 });
+  const h = house[0] || {};
+  const base = {
+    perGuest: g.guests ? g.total / g.guests : 0,
+    wineShare: h.total ? h.wine / h.total : 0,
+    rate: Object.fromEntries(houseCats.map((r) => [r.c, h.n ? r.n / h.n : 0])),
+  };
+  const noteBy = new Map(notes.map((x) => [x.oib, x]));
+  const out = bills.map((b) => {
+    const ls = lines.filter((l) => l.oib === b.oib);
+    const sum = (f) => ls.filter(f).reduce((a, l) => a + (l.t || 0), 0);
+    const cnt = (re) => ls.filter((l) => re.test(l.name || "")).reduce((a, l) => a + (l.q || 0), 0);
+    const menuN = cnt(/repertoire|\bmen[iu]\b/i), guestsN = Math.max(cnt(/couvert/i), menuN);
+    const food = sum((l) => /^H/.test(l.tax || "")), wine = sum((l) => /vin|ampanj|jenu/i.test(l.grp || ""));
+    const top = (f) => ls.filter(f).filter((l) => !/couvert/i.test(l.name || "")).sort((a, c) => c.t - a.t).slice(0, 4).map((l) => ({ name: l.name, q: l.q, t: l.t }));
+    const wd = {};
+    for (const d of String(b.wds || "").split(",")) if (d !== "") wd[d] = (wd[d] || 0) + 1;
+    const p = {
+      oib: b.oib, cust: b.cust, n: b.n, days: b.days, total: b.total, first: b.first, last: b.last,
+      lunch: b.n ? b.lunch / b.n : 0, virman: b.n ? b.virman / b.n : 0,
+      guests: guestsN, menu: guestsN ? Math.min(1, menuN / guestsN) : 0, perGuest: guestsN ? b.total / guestsN : 0, size: guestsN && b.n ? guestsN / b.n : 0,
+      food, wine, wineShare: b.total ? wine / b.total : 0,
+      rate: Object.fromEntries(cats.filter((c) => c.oib === b.oib).map((c) => [c.c, b.n ? c.n / b.n : 0])),
+      topFood: top((l) => /^H/.test(l.tax || "")), topWine: top((l) => /vin|ampanj|jenu/i.test(l.grp || "")),
+      weekday: Object.entries(wd).sort((a, c) => c[1] - a[1])[0]?.[0] ?? null,
+      note: noteBy.get(b.oib)?.note || "", noteAt: noteBy.get(b.oib)?.updated_at || null,
+    };
+    p.advice = companyAdvice(p, base, new Date().toISOString().slice(0, 10));
+    return p;
+  }).sort((a, c) => c.total - a.total);
+  return { house: base, companies: out };
+}
+
+/* What to do with a company, from its numbers against the house's. Croatian,
+   for Filho and the waiters; each line says why. Pure. */
+const WEEKDAY = ["nedjeljom", "ponedjeljkom", "utorkom", "srijedom", "četvrtkom", "petkom", "subotom"];
+export function companyAdvice(p, house, today) {
+  const out = [], pc = (x) => `${Math.round((x || 0) * 100)}%`;
+  const eur = (x) => `${Math.round(x || 0)} €`;
+  const ago = today && p.last ? Math.round((Date.parse(today) - Date.parse(p.last)) / 86400000) : 0;
+  if (p.n >= 2 && ago > 60) out.push(`Nisu bili ${ago} dana (zadnji put ${p.last.slice(8, 10)}. ${p.last.slice(5, 7)}.), a dolazili su ${p.n}×: javite se s ponudom — prije prosinca posebno.`);
+  if (p.virman >= 0.5) out.push("Plaća firma (virman): ponudite im božićni domjenak, poslovne ručkove na račun i poklon-bonove za klijente.");
+  if (p.size >= 8) out.push(`Dolaze kao grupa (oko ${Math.round(p.size)} osoba): unaprijed dogovoren meni s vinskom pratnjom po osobi — lakše njima, sigurniji prihod nama.`);
+  if (p.lunch >= 0.7 && p.n >= 2) out.push("Dolaze na ručak: brza usluga, čaša umjesto boce, poslovni ručak s čašom vina u cijeni.");
+  else if (p.weekday != null && p.n >= 3) out.push(`Najčešće dolaze ${WEEKDAY[p.weekday]}.`);
+  if (p.wineShare < house.wineShare * 0.7 && p.total >= 200) out.push(`Malo vina: ${pc(p.wineShare)} računa, kuća ${pc(house.wineShare)}. Na dolasku čaša pjenušca ili šampanjca, uz glavno jelo predložite bocu za stol.`);
+  const low = (c) => house.rate[c] >= 0.05 && (p.rate[c] || 0) < house.rate[c] * 0.6 && p.n >= 2;
+  if (low("aperitiv") && low("sampanjac") && low("pjenusac")) out.push(`Rijetko aperitiv (${pc((p.rate.aperitiv || 0) + (p.rate.sampanjac || 0) + (p.rate.pjenusac || 0))} računa): ponudite ga čim sjednu.`);
+  if (low("desert") && !(p.menu >= 0.5)) out.push(`Rijetko desert (${pc(p.rate.desert)} računa, kuća ${pc(house.rate.desert)}): desert za stol na dijeljenje, uz čašu desertnog vina.`);
+  if (p.topWine.length) out.push(`Piju: ${p.topWine.slice(0, 2).map((w) => w.name).join(", ")}. Imajte ga spremnog i predložite jednu stepenicu više u istom stilu.`);
+  if (house.perGuest && p.perGuest > house.perGuest * 1.25 && p.guests >= 4) out.push(`Troše više od prosjeka (${eur(p.perGuest)} po gostu, kuća ${eur(house.perGuest)}): neka Filho osobno dođe do stola.`);
+  return out;
+}
+
 /* Potrošnja po gostu (owner, 2026-10-14: "average spendings per guest … map
    it with number of couverts"). A bill's guests are its couverts, or the
    persons on a group menu when that is more (a group may not be charged a

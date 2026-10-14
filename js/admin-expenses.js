@@ -293,6 +293,64 @@
       .catch((e) => { delete income[m]; incomeErr = "Ne mogu učitati prihode: " + e.message; render(); });
     return null;
   }
+  /* Tvrtke (owner, 2026-10-14: "habits directly in company info, and a
+     custom, tailored way of what to sell them"): every company on the till's
+     bills, all time, with the server's advice (sales.js companyAdvice) and a
+     note the staff keep. Asked for once, when Prihodi first shows. */
+  let comps = null, compsErr = "", openCust = "", custMsg = "";
+  const custDraft = {};
+  function needComps() {
+    if (comps) return comps === "loading" ? null : comps;
+    comps = "loading";
+    fetch(`${INCOME_API}/tvrtke`, { headers: { authorization: "Bearer " + ghKey() } })
+      .then((r) => r.json().then((b) => { if (!r.ok) throw new Error(b.error || "HTTP " + r.status); return b; }))
+      .then((b) => { comps = b; compsErr = ""; render(); })
+      .catch((e) => { comps = null; compsErr = "Ne mogu učitati tvrtke: " + e.message; });
+    return null;
+  }
+  async function saveCustNote(oib) {
+    custMsg = "spremam…"; render();
+    try {
+      const r = await fetch(`${INCOME_API}/tvrtke`, { method: "PUT", headers: { authorization: "Bearer " + ghKey(), "Content-Type": "application/json" }, body: JSON.stringify({ oib, note: custDraft[oib] ?? "" }) });
+      const b = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(b.error || "HTTP " + r.status);
+      const c = comps && comps.companies && comps.companies.find((x) => x.oib === oib);
+      if (c) { c.note = b.note; c.noteAt = b.updated_at; }
+      delete custDraft[oib]; custMsg = "Spremljeno.";
+    } catch (e) { custMsg = "Nije spremljeno: " + e.message; }
+    render();
+  }
+  const WD_NAME = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
+  function custCard(c) {
+    const pc = (x) => `${Math.round((x || 0) * 100)}%`, title = (v) => { const t = String(v || ""); return t === t.toUpperCase() ? t.charAt(0) + t.slice(1).toLowerCase() : t; };
+    const note = custDraft[c.oib] ?? c.note ?? "";
+    return `<div class="custcard">
+      <p class="small">${c.n} ${plural(c.n, "račun", "računa", "računa")} od ${hrDate(c.first)} do ${hrDate(c.last)} · ukupno ${eur0(c.total)} · prosječni račun ${eur0(c.total / Math.max(1, c.n))}${c.guests ? ` · ${nf(c.guests)} ${plural(Math.round(c.guests), "gost", "gosta", "gostiju")}, ${eur0(c.perGuest)} po gostu (kuća ${eur0(comps.house.perGuest)})` : ""}</p>
+      <p class="small muted">${c.lunch >= 0.5 ? "uglavnom ručak" : "uglavnom večera"}${c.weekday != null ? ` · najčešće ${WD_NAME[c.weekday]}` : ""} · vino ${pc(c.wineShare)} računa (kuća ${pc(comps.house.wineShare)})${c.virman ? ` · virman ${pc(c.virman)}` : ""}</p>
+      ${c.topFood.length ? `<p class="small"><b>Jedu:</b> ${c.topFood.map((x) => `${esc(title(x.name))} ×${nf(x.q)}`).join(", ")}</p>` : ""}
+      ${c.topWine.length ? `<p class="small"><b>Piju:</b> ${c.topWine.map((x) => `${esc(title(x.name))} ×${nf(x.q)}`).join(", ")}</p>` : ""}
+      ${c.advice.length ? `<p class="small"><b>Kad dođu</b></p><ul class="small advice">${c.advice.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : ""}
+      <label class="small muted" for="cn-${esc(c.oib)}">Bilješka (kontakt, tko naručuje, što vole, alergije…)</label>
+      <textarea id="cn-${esc(c.oib)}" data-custnote="${esc(c.oib)}" rows="3">${esc(note)}</textarea>
+      <p class="row"><button class="pill" data-custsave="${esc(c.oib)}">Spremi bilješku</button>${custMsg ? ` <span class="small muted">${esc(custMsg)}</span>` : ""}${c.noteAt ? ` <span class="small muted">zadnje ${hrDate(c.noteAt.slice(0, 10))}</span>` : ""}</p>
+    </div>`;
+  }
+  function custList(custs) {
+    const cs = needComps(), by = new Map(((cs && cs.companies) || []).map((c) => [c.oib, c]));
+    const row = (c) => {
+      const p = by.get(c.oib), on = openCust === c.oib;
+      return `<button class="custrow" data-cust="${esc(c.oib || "")}" aria-expanded="${on}" ${p ? "" : "disabled"}><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}${p && p.note ? " · ✎ bilješka" : ""}${p && p.advice.length ? ` · ${p.advice.length} ${plural(p.advice.length, "savjet", "savjeta", "savjeta")}` : ""}</small></span><b>${eur(c.total)}</b></button>${on && p ? custCard(p) : ""}`;
+    };
+    /* companies that came more than once and not for 60 days: a call to make */
+    const today = new Date().toISOString().slice(0, 10);
+    const lost = ((cs && cs.companies) || []).filter((c) => c.n >= 2 && (Date.parse(today) - Date.parse(c.last)) / 86400000 > 60).slice(0, 12);
+    return `<h3 class="h">Tvrtke <small>računi izdani na tvrtku · dodirnite za navike i savjet</small></h3>
+      <div class="lines custs">${(allCusts ? custs : custs.slice(0, 8)).map(row).join("")}</div>
+      ${custs.length > 8 ? `<button class="nema" data-allcusts>${allCusts ? "Manje" : `Sve tvrtke (${custs.length})`}</button>` : ""}
+      ${lost.length ? `<p class="small"><b>Za nazvati</b> — dolazile su više puta, a nisu bile 60+ dana:</p>
+      <div class="lines custs">${lost.map((c) => `<button class="custrow" data-cust="${esc(c.oib)}" aria-expanded="${openCust === c.oib}"><span>${esc(shortName(c.cust))}<small>${c.n}× · zadnji put ${hrDate(c.last)}</small></span><b>${eur0(c.total)}</b></button>${openCust === c.oib ? custCard(c) : ""}`).join("")}</div>` : ""}
+      ${compsErr ? `<p class="err">${esc(compsErr)}</p>` : !cs ? `<p class="muted small"><span class="spin"></span> učitavam navike tvrtki…</p>` : ""}`;
+  }
   const incTotal = (s) => (s && s.days ? s.days.reduce((a, d) => a + d.total, 0) : 0);
   /* izlazni PDV by rate, per the lines' tax group. Only food's label carries
      its rate ("H (HRANA IZLAZ 13%)"); drinks read "P (PIĆE IZLAZ)", so a
@@ -384,9 +442,7 @@
       <h3 class="h">Što se prodaje</h3>
       <div class="bars">${rubBars(s, total)}</div>
       ${salesDetail(s, prev)}
-      ${custs.length ? `<h3 class="h">Tvrtke <small>računi izdani na tvrtku</small></h3>
-      <div class="lines">${(allCusts ? custs : custs.slice(0, 8)).map((c) => `<div><span>${esc(shortName(c.cust))}<small>${c.n} ${plural(c.n, "račun", "računa", "računa")}${c.virman ? ` · na virman ${eur(c.virman)}` : ""}</small></span><b>${eur(c.total)}</b></div>`).join("")}</div>
-      ${custs.length > 8 ? `<button class="nema" data-allcusts>${allCusts ? "Manje" : `Sve tvrtke (${custs.length})`}</button>` : ""}` : ""}
+      ${custs.length ? custList(custs) : ""}
       ${months12}${footer}`;
   }
   /* ---------- Vinska karta i blagajna (owner, 2026-10-14) ----------
@@ -532,11 +588,12 @@
     } catch (e) { tillMsg = `Nije spremljeno: ${e.message}`; }
     tillBusy = ""; render();
   }
-  /* Six glasses to a 0,75 l bottle (owner, 2026-10-14): the till's article
-     says "0,1", the pour is 0,125. A dessert article that says 0,05 is
-     poured as it says. */
-  const GLASS_POUR = 0.75 / 6;
-  const pourOf = (v) => (v >= 0.1 && v <= 0.15 ? GLASS_POUR : v);
+  /* A glass is 0,1 l (owner, 2026-10-14, correcting the same day's "six to
+     a bottle"): 7,5 glasses to a 0,75 l bottle, which is what the till's
+     "0,1" articles say. A dessert article that says 0,05 is poured as it
+     says. */
+  const GLASS_POUR = 0.1;
+  const GLASSES = 0.75 / GLASS_POUR;
   /* three months to the shown one: what sold, what did not, what to map */
   function wineSales() {
     if (!needWineList() || !tillMap) return null;
@@ -557,7 +614,7 @@
       const w = byRef.get(a.ref);
       if (!w) { ask.push({ ...l, a: null, sug: null }); continue; }
       const e = by.get(w.ref) || { w, bottles: 0, glasses: 0, t: 0, l: 0, pour: 0 };
-      const v = pourOf(a.vol);
+      const v = a.vol;
       if (a.vol <= 0.15) { e.glasses += l.q; e.pour = v; } else e.bottles += l.q * v / 0.75;   /* a magnum counts two bottles */
       e.t += l.t; e.l += l.q * v; by.set(w.ref, e);
     }
@@ -583,9 +640,8 @@
      without PDV, and what each wine earned in the three months. The cost is
      the supplier's net price on the receipts (Troškovi): a purchase in the
      size the list sells first — a 3 l or a magnum costs more per litre —
-     then the latest. A glass costs its pour: six to a bottle
-     (0,125 l), or 0,05 where a dessert article says so; with no glass sold
-     yet, 0,05 for a dessert wine, 0,125 otherwise.
+     then the latest. A glass costs its pour: 0,1 l, or 0,05 where a dessert
+     article says so; with no glass sold yet, 0,05 for a dessert wine.
      The till's "total" is with PDV, drinks are 25%. */
   const DRINK_VAT = 1.25;
   function wineCosts() {
@@ -642,14 +698,20 @@
      carry the most, trophies the least, because a guest knows what a famous
      bottle costs in a shop. So the target cost share rises with the cost:
      30% up to 15 € net a bottle, 33% to 35 €, 38% to 80 €, 45% to 200 €,
-     55% above. A bottle 12 points or more over its target is cheap for what
-     it costs us; the suggestion is the target price, at most +40%, rounded.
-     A glass is cheap when it costs us over 40% of its price, or when the six
-     glasses in a bottle earn under 110% of the bottle's own price (an open
-     bottle carries the risk of the last glass). Expensive: 15 points under
-     target and not one bottle sold in three months. Pure. */
-  const costTarget = (c75) => (c75 <= 15 ? 0.30 : c75 <= 35 ? 0.33 : c75 <= 80 ? 0.38 : c75 <= 200 ? 0.45 : 0.55);
+     55% above (COST_TIERS, which is also the colour legend). A bottle 12
+     points or more over its target is cheap for what it costs us; the
+     suggestion is the target price, at most +40%, rounded. A glass has the
+     same target and two tests: its cost 7 points over it, or the 7,5 glasses
+     in a bottle earning under 110% of the bottle's own price (an open bottle
+     carries the risk of the last glass); at most +40% too. Expensive: 15
+     points under target and not one bottle sold in three months. Pure. */
+  const COST_TIERS = [[15, 0.30], [35, 0.33], [80, 0.38], [200, 0.45], [Infinity, 0.55]];
+  const costTarget = (c75) => COST_TIERS.find(([lim]) => c75 <= lim)[1];
   const nicePrice = (p) => { const st = p < 30 ? 1 : p < 150 ? 5 : 10; return Math.ceil(p / st - 1e-9) * st; };
+  /* a cost share coloured against its own target (owner, 2026-10-14: "show
+     in colours … how the pricing should be") */
+  const PCT_TONE = { ok: "#8fc28f", near: "#e3c27a", cheap: "#e0a49c", dear: "#9db8d9" };
+  const toneOf = (p, t) => (p > t + 0.12 ? "cheap" : p > t + 0.03 ? "near" : p < t - 0.15 ? "dear" : "ok");
   function priceAdvice(rows) {
     const cheap = [], dear = [];
     for (const r of rows) {
@@ -658,12 +720,12 @@
       const bottle = r.ls.find((l) => !l.glass && l.vol === 0.75);
       for (const l of r.ls) {
         if (l.glass) {
-          const six = bottle && l.vol === GLASS_POUR ? l.price * 6 : 0;
-          if (!(l.pct > 0.40 || (six && six < bottle.price * 1.1))) continue;
-          let sug = nicePrice((l.cost * DRINK_VAT) / 0.33);
-          if (bottle && l.vol === GLASS_POUR) sug = Math.max(sug, Math.ceil((bottle.price * 1.1) / 6));
-          sug = Math.max(sug, l.price + 1);
-          cheap.push({ r, l, t: 0.33, sug, six, bottle: bottle && bottle.price, gain: ((sug - l.price) / DRINK_VAT) * r.glasses });
+          const all = bottle && l.vol === GLASS_POUR ? l.price * GLASSES : 0;
+          if (!(l.pct > t + 0.07 || (all && all < bottle.price * 1.1))) continue;
+          let sug = nicePrice((l.cost * DRINK_VAT) / t);
+          if (all) sug = Math.max(sug, Math.ceil((bottle.price * 1.1) / GLASSES));
+          sug = Math.max(Math.min(sug, Math.ceil(l.price * 1.4)), l.price + 1);
+          cheap.push({ r, l, t, sug, all, bottle: bottle && bottle.price, gain: ((sug - l.price) / DRINK_VAT) * r.glasses });
         } else if (l.pct > t + 0.12) {
           const sug = nicePrice(Math.min((l.cost * DRINK_VAT) / t, l.price * 1.4));
           if (sug <= l.price) continue;
@@ -715,10 +777,13 @@
   function marginBox(x, box, opts, sum) {
     const m = marginRows(x);
     if (!m) return "";
-    const pct = (p) => `<span${p >= 0.6 ? ' style="color:#e0a49c;font-weight:600"' : ""}>${Math.round(p * 100)}%</span>`;
-    const rows = m.rows.map((r) => `<div><span>${esc(r.w.producer)} · ${esc(r.w.name)}${r.off ? " <small>(skriveno)</small>" : ""}
-        <small>nabava ${eur(r.c.perl * 0.75)} / 0,75 l · ${r.ls.map((l) => `${l.label} ${eur0(l.price)} → ${pct(l.pct)}`).join(" · ")}</small></span>
-        <b>${r.rev ? eur0(r.earned) : "—"}</b></div>`).join("");
+    const pct = (p, t) => `<span style="color:${PCT_TONE[toneOf(p, t)]};font-weight:600">${Math.round(p * 100)}%</span>`;
+    const rows = m.rows.map((r) => { const t = costTarget(r.c.perl * 0.75); return `<div><span>${esc(r.w.producer)} · ${esc(r.w.name)}${r.off ? " <small>(skriveno)</small>" : ""}
+        <small>nabava ${eur(r.c.perl * 0.75)} / 0,75 l · cilj ${Math.round(t * 100)}% · ${r.ls.map((l) => `${l.label} ${eur0(l.price)} → ${pct(l.pct, t)}`).join(" · ")}</small></span>
+        <b>${r.rev ? eur0(r.earned) : "—"}</b></div>`; }).join("");
+    const lim = (x) => (x === Infinity ? "iznad 200 €" : `do ${x} €`);
+    const legend = `<table class="tiers"><tr><th>nabava boce</th><th>cilj troška</th><th>cijena ≈ nabava ×</th></tr>${COST_TIERS.map(([x, t]) => `<tr><td>${lim(x)}</td><td>${Math.round(t * 100)}%</td><td>${nf(Math.round((DRINK_VAT / t) * 10) / 10)}</td></tr>`).join("")}</table>
+      <p class="small">${[["ok", "na cilju"], ["near", "malo jeftino (3–12 bodova iznad cilja)"], ["cheap", "jeftino (12+ bodova iznad)"], ["dear", "15+ bodova ispod — skupo ako se ne prodaje"]].map(([k, v]) => `<span style="color:${PCT_TONE[k]}">■</span> ${v}`).join(" · ")}</p>`;
     const buyRow = (u) => {
       const busy = tillBusy === u.name, sug = u.a && u.a.ref ? wineList.find((w) => w.ref === u.a.ref) : suggestTill(u.label);
       return `<div class="tillask"><span>${esc(u.label)}<small>${esc(shortName(u.vendor) || "")} · ${nf(u.q)} kom</small>
@@ -732,13 +797,13 @@
     const share = m.rev ? 1 - m.earned / m.rev : 0;
     const adv = priceAdvice(m.rows), gain = adv.cheap.reduce((a, u) => a + u.gain, 0);
     const advRow = (u) => `<div><span>${esc(u.r.w.producer)} · ${esc(u.r.w.name)} <small>(${u.l.label})</small>
-        <small>trošak ${pct(u.l.pct)}, cilj ${Math.round(u.t * 100)}%${u.six ? ` · 6 čaša = ${eur0(u.six)}, boca ${eur0(u.bottle)}` : ""}${u.gain >= 1 ? ` · uz istu prodaju +${eur0(u.gain)} u 3 mj.` : ""}</small></span>
+        <small>trošak ${pct(u.l.pct, u.t)}, cilj ${Math.round(u.t * 100)}%${u.all ? ` · 7,5 čaša = ${eur0(u.all)}, boca ${eur0(u.bottle)}` : ""}${u.gain >= 1 ? ` · uz istu prodaju +${eur0(u.gain)} u 3 mj.` : ""}</small></span>
         <b>${eur0(u.l.price)} → ${eur0(u.sug)}</b></div>`;
-    const dearRow = (u) => `<div><span>${esc(u.r.w.producer)} · ${esc(u.r.w.name)}<small>trošak ${pct(u.l.pct)}, cilj ${Math.round(u.t * 100)}% · u 3 mj. nije prodana nijedna boca</small></span><b>${eur0(u.l.price)}</b></div>`;
+    const dearRow = (u) => `<div><span>${esc(u.r.w.producer)} · ${esc(u.r.w.name)}<small>trošak ${pct(u.l.pct, u.t)}, cilj ${Math.round(u.t * 100)}% · u 3 mj. nije prodana nijedna boca</small></span><b>${eur0(u.l.price)}</b></div>`;
     return `${box("margin", `Marža po vinu: ${m.rows.length} ${plural(m.rows.length, "vino", "vina", "vina")} s nabavnom cijenom · trošak ${Math.round(share * 100)}% prodaje`,
-        `<p class="muted small">Nabavna cijena s računa dobavljača, bez PDV-a; prodajna s karte, bez PDV-a (25%). Trošak = nabavna ÷ prodajna; čaša je šestina boce (0,125 l). Cilj ovisi o cijeni vina (vidi "Cijene, prijedlozi"); crveno znači 60% i više — vino koje se prodaje skoro po nabavnoj cijeni. Desno: koliko je vino zaradilo u ova tri mjeseca (prodano bez PDV-a manje nabavna cijena). ${m.nocost ? `${m.nocost} vina s karte još nema nabavnu cijenu — kupljena prije e-računa ili od dobavljača kojeg Troškovi ne vide.` : ""}</p>` + rows)}
+        `<p class="muted small">Nabavna cijena s računa dobavljača, bez PDV-a; prodajna s karte, bez PDV-a (25%). Trošak = nabavna ÷ prodajna; čaša je 0,1 l (7,5 čaša u boci). Cilj ovisi o tome koliko boca košta nas: skupa boca smije imati veći trošak (tablica). Boja kaže gdje je cijena prema svom cilju. Desno: koliko je vino zaradilo u ova tri mjeseca (prodano bez PDV-a manje nabavna cijena). ${m.nocost ? `${m.nocost} vina s karte još nema nabavnu cijenu — kupljena prije e-računa ili od dobavljača kojeg Troškovi ne vide.` : ""}</p>` + legend + rows)}
       ${adv.cheap.length || adv.dear.length ? box("price", `Cijene, prijedlozi: ${adv.cheap.length} jeftino${adv.dear.length ? ` · ${adv.dear.length} skupo` : ""}${gain >= 1 ? ` · +${eur0(gain)} u 3 mj.` : ""}`,
-        `<p class="muted small">Cilj troška raste s cijenom vina: 30% za bocu do 15 € nabave, 33% do 35 €, 38% do 80 €, 45% do 200 €, 55% iznad — gost zna koliko skupa slavna boca stoji u dućanu, pa se ona ne množi kao obično vino. Jeftino: boca 12 postotnih bodova iznad cilja (prijedlog najviše +40%), ili čaša kojoj trošak prelazi 40%, ili kad 6 čaša iz boce donese manje od 110% cijene boce. Skupo: 15 bodova ispod cilja, a u tri mjeseca nije prodana nijedna boca. "+€" je dodatna zarada bez PDV-a da se prodalo isto koliko i dosad. Prijedlog je za razgovor, ne pravilo.</p>`
+        `<p class="muted small">Cilj troška raste s cijenom vina: 30% za bocu do 15 € nabave, 33% do 35 €, 38% do 80 €, 45% do 200 €, 55% iznad — gost zna koliko skupa slavna boca stoji u dućanu, pa se ona ne množi kao obično vino. Jeftino: boca 12 postotnih bodova iznad cilja; čaša 7 bodova iznad cilja, ili kad 7,5 čaša iz boce donese manje od 110% cijene boce. Prijedlog je najviše +40% odjednom. Skupo: 15 bodova ispod cilja, a u tri mjeseca nije prodana nijedna boca. "+€" je dodatna zarada bez PDV-a da se prodalo isto koliko i dosad. Prijedlog je za razgovor, ne pravilo.</p>`
         + (adv.cheap.length ? `<p class="small"><b>Jeftino za ono što nas košta</b></p>` + adv.cheap.map(advRow).join("") : "")
         + (adv.dear.length ? `<p class="small"><b>Možda preskupo — ne prodaje se</b></p>` + adv.dear.map(dearRow).join("") : "")) : ""}
       ${m.pending.length ? box("buyask", `Nabava, za povezati: ${m.pending.length}`,
@@ -1672,6 +1737,9 @@
     box.querySelectorAll("[data-buynone]").forEach((b) => b.addEventListener("click", () => saveMap("buy", b.dataset.buynone, { none: b.dataset.none })));
     box.querySelectorAll("[data-allfocus]").forEach((b) => b.addEventListener("click", () => { allFocus = !allFocus; render(); }));
     box.querySelectorAll("[data-allcusts]").forEach((b) => b.addEventListener("click", () => { allCusts = !allCusts; render(); }));
+    box.querySelectorAll("[data-cust]").forEach((b) => b.addEventListener("click", () => { openCust = openCust === b.dataset.cust ? "" : b.dataset.cust; custMsg = ""; render(); }));
+    box.querySelectorAll("[data-custnote]").forEach((t) => t.addEventListener("input", () => { custDraft[t.dataset.custnote] = t.value; }));
+    box.querySelectorAll("[data-custsave]").forEach((b) => b.addEventListener("click", () => saveCustNote(b.dataset.custsave)));
     box.querySelectorAll("[data-sub]").forEach((b) => b.addEventListener("click", () => { sub = b.dataset.sub; render(); }));
     box.querySelectorAll("[data-m]").forEach((b) => b.addEventListener("click", () => { month = shiftMonth(month, Number(b.dataset.m)); openGroup = null; open = null; render(); }));
     box.querySelectorAll("[data-month]").forEach((b) => b.addEventListener("click", () => { month = b.dataset.month; openGroup = null; render(); }));

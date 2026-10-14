@@ -480,7 +480,9 @@ them as one line.
 - **Monday 8:00 Zagreb**, `weekly-report.yml` (theatrium-troskovi) asks
   `/api/prihodi/tjedan`, which writes last week against the week before and
   the same week last year — turnover, average bill, wine per bill, the days,
-  the five dishes, the month so far — and sends it through web/alerts. That
+  the five dishes, the month so far — and sends it through web/alerts.
+  Spend per guest sits under the average bill (owner, 2026-10-14), with lunch
+  and dinner apart and the guest count, each against the week before. That
   sender can only write to the address verified in Cloudflare Email Routing
   (today the owner's Gmail); Filho's address needs verifying there first.
   `{dry: true}` returns the text without sending.
@@ -628,3 +630,40 @@ Franciacorta Brut, and a run of Burgundy priced close to cost (Montevertine
 Le Pergole Torte 76%, Chavy Murgers 76%, Jobard Bourgogne blanc 77%, Chavy
 Meursault Charmes 73%). Bernard-Bonin invoices five Meursaults under one line
 name, so they carry no cost until they are told apart.
+
+**A glass is 0,1 l** (owner, 2026-10-14) — 7,5 to a bottle, exactly what the
+till articles say. For one afternoon it was costed at 0,125 ("six to a
+bottle"); that was wrong and is gone. At 0,1 l cost is 41% of net wine sales
+on the 110 wines with a known cost.
+
+### Cijene, prijedlozi
+
+The target cost share rises with what the bottle costs us (`COST_TIERS` in
+js/admin-expenses.js): 30% to 15 € net, 33% to 35 €, 38% to 80 €, 45% to
+200 €, 55% above — a guest knows the shop price of a famous bottle, so a
+trophy cannot be multiplied like an everyday wine. Every cost share in Marža
+po vinu is coloured against its own wine's target (green on target, amber
+3–12 points over, red 12+ over, blue 15+ under), with the tier table as the
+legend. Cheap: a bottle 12 points over target; a glass 7 points over, or the
+7,5 glasses of a bottle earning under 110% of the bottle's price. A
+suggestion is the target price, never more than +40% in one step.
+Expensive: 15 points under target with no bottle sold in three months.
+
+## Tvrtke (owner, 2026-10-14)
+
+"Proactive approach to companies from the invoices, and a custom tailored
+approach for each of these companies when they arrive." In Prihodi, each
+company is a row that opens its card: bills, first and last visit, guests and
+spend per guest against the house, lunch or dinner, the usual weekday, wine's
+share, virman, what they eat and drink most, and advice (`companyAdvice()` in
+_lib/sales.js — each line from their numbers against the house's: not seen
+for 60+ days, paid by the firm, comes as a group, comes for lunch, little
+wine, no aperitif, no dessert unless a set menu covers it, spends well above
+the house). Staff keep a note per company (`sales_companies`, by OIB) through
+`PUT /api/prihodi/tvrtke`. Under the month's companies, **Za nazvati** lists
+those that came twice or more and not for 60 days. The habits are summed from
+the bills on every read; nothing about a company is stored but the note.
+
+`/api/prihodi?od=&do=` returns any span up to 93 days (days, articles,
+weekdays, waiters, guests) — used to judge one evening, such as a daily offer.
+

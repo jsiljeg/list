@@ -3,12 +3,14 @@
  * The owner's Monday e-mail (2026-10-14: "a Monday email with the top
  * findings, so he does not have to open the admin"). Last week (Monday to
  * Sunday, Zagreb) against the week before and the same week last year, the
- * three numbers Filho steers by — turnover, the average bill, wine per bill —
+ * numbers Filho steers by — turnover, the average bill, spend per guest
+ * (owner, 2026-10-14: "spending per guest and prosječan račun should be in
+ * weekly letter … compared to the previous week"), wine per bill —
  * the days, the dishes that carried it, and the month so far. Plain text,
  * through Theatrium's own sender (web/alerts), which can only write to the
  * address verified in Cloudflare Email Routing.
  *   {dry: true}  returns the text without sending it. */
-import { reply, isExpenseWorker, staffData, STAFF_LABEL, OWN_TABLE } from "../../_lib/sales.js";
+import { reply, isExpenseWorker, staffData, guestData, STAFF_LABEL, OWN_TABLE } from "../../_lib/sales.js";
 
 const WINE = "(l.grp LIKE '%vin%' OR l.grp LIKE '%ampanj%' OR l.grp LIKE '%jenu%')";
 const WD = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
@@ -37,6 +39,10 @@ export async function onRequestPost({ request, env }) {
   const dow = new Date(today + "T12:00:00Z").getUTCDay();
   const hi = add(today, -(dow === 0 ? 7 : dow)), lo = add(hi, -6);           /* last Monday–Sunday */
   const [w, p, y] = await Promise.all([range(env, lo, hi), range(env, add(lo, -7), add(hi, -7)), range(env, add(lo, -364), add(hi, -364))]);
+  /* guests by their couverts (sales.js guestData), lunch and dinner apart */
+  const [gw, gp, gy] = await Promise.all([[lo, hi], [add(lo, -7), add(hi, -7)], [add(lo, -364), add(hi, -364)]].map(([a, z]) => guestData(env, a, z)));
+  const per = (rows, part) => { const r = rows.filter((x) => !part || x.part === part), g = r.reduce((a, x) => a + (x.guests || 0), 0); return g > 0 ? r.reduce((a, x) => a + (x.total || 0), 0) / g : 0; };
+  const guests = (rows) => Math.round(rows.reduce((a, x) => a + (x.guests || 0), 0));
   if (!w.n) return reply(request, { ok: true, skipped: "no bills last week" });
 
   const days = (await env.DB.prepare("SELECT day, COUNT(*) AS n, SUM(total) AS t FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY day ORDER BY day")
@@ -76,6 +82,8 @@ export async function onRequestPost({ request, env }) {
     "",
     line("Promet", w.total, p.total, y.total),
     line("Prosječni račun", avg(w), avg(p), avg(y)),
+    per(gw) ? line("Po gostu", per(gw), per(gp), per(gy)) : null,
+    per(gw) ? `  ručak ${eur(per(gw, "rucak"))}${per(gp, "rucak") ? ` (${arrow(per(gw, "rucak"), per(gp, "rucak"))})` : ""} · večera ${eur(per(gw, "vecera"))}${per(gp, "vecera") ? ` (${arrow(per(gw, "vecera"), per(gp, "vecera"))})` : ""} · ${guests(gw)} gostiju${guests(gp) ? ` (prošli tjedan ${guests(gp)})` : ""}` : null,
     line("Vino po računu", wpb(w), wpb(p), wpb(y)),
     `Računa: ${w.n}${p.n ? ` (prošli tjedan ${p.n})` : ""}`,
     "",
@@ -93,7 +101,7 @@ export async function onRequestPost({ request, env }) {
     `Mjesec do sada (1.–${dayN}.): ${eur(mt.total)}${mp.total ? `  (${arrow(mt.total, mp.total)} prema istim danima prošlog mjeseca${my.total ? `, ${arrow(mt.total, my.total)} prema lani` : ""})` : ""}`,
     "",
     "Zarada, prag isplativosti i troškovi: poveznica ispod, pa Troškovi → Pregled.",
-  ].filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
+  ].filter((x) => x !== null).filter((x, i, a) => !(x === "" && a[i - 1] === "")).join("\n");
 
   const title = `Tjedan ${hr(lo)}–${hr(hi)}: ${eur(w.total)}${p.total ? ` ${arrow(w.total, p.total)}` : ""}`;
   if (b && b.dry) return reply(request, { ok: true, title, text });

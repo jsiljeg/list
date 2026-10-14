@@ -374,6 +374,14 @@ CREATE TABLE IF NOT EXISTS sales_lines (
   qty     REAL, price REAL, disc REAL, net REAL, total REAL,
   PRIMARY KEY (bill_id, n)
 );
+-- Tvrtke (2026-10-14): the staff's note on a company that dines on invoice
+-- ("custom tailored approach … when they arrive"). Keyed by the OIB on its
+-- bills; the habits themselves are summed from sales_* on every read.
+CREATE TABLE IF NOT EXISTS sales_companies (
+  oib        TEXT PRIMARY KEY,
+  note       TEXT NOT NULL DEFAULT '',
+  updated_at TEXT
+);
 CREATE TABLE IF NOT EXISTS sales_state (
   k TEXT PRIMARY KEY,                        -- last_ok | last_range | error
   v TEXT
