@@ -124,11 +124,6 @@
          "recommended": true
         },
         {
-         "ref": "weingut-wittmann--riesling-aulerde-gg-2023",
-         "price": 15,
-         "recommended": true
-        },
-        {
          "ref": "meneghetti--white-2023",
          "price": 10,
          "anchor": 10
@@ -654,11 +649,6 @@
          "ref": "weingut-wittmann--riesling-aulerde-gg-2020",
          "price": 136,
          "anchor": 136
-        },
-        {
-         "ref": "weingut-wittmann--riesling-aulerde-gg-2023",
-         "price": 200,
-         "recommended": true
         },
         {
          "ref": "weingut-wittmann--riesling-kirchspiel-gg-2020",

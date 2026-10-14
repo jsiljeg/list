@@ -18,6 +18,7 @@
  * bill is therefore written only when its content hash `h` differs from the
  * stored one; the morning run re-sends 4 days and writes only what changed. */
 import { reply, isStaffAsync } from "./wines.js";
+import { wineListOrigin } from "./daily.js";
 import { isExpenseWorker } from "./expenses.js";
 
 export { reply, isStaffAsync, isExpenseWorker };
@@ -197,6 +198,51 @@ export const STAFF_LABEL = {
 };
 const PART = "CASE WHEN substr(b.at, 12, 2) < '16' THEN 'rucak' ELSE 'vecera' END";
 
+/* Wine is counted by our map, not by the till's groups (owner, 2026-10-14:
+   "we will not fix Remaris, just have it and count it right in our place").
+   93 of 289 wine articles sit in the wrong group — a Champagne under "Bijela
+   vina DE/AUT" is a bottle of white to the group rule, so a waiter who sold it
+   was told he sells no Champagne. data/till-map.json says which wine and size
+   each article is, lists/theatrium.json which shelf that wine is on: a glass
+   is "vino na čašu", a bottle is Champagne, sparkling, dessert or a bottle of
+   wine by its shelf. An article the map has never seen keeps the group rule,
+   and so does everything that is not wine. Pure, so it is tested without D1. */
+export function tillCats(till, list) {
+  const shelf = new Map();                              /* ref → bottle category */
+  const walk = (o, sec, cat) => {
+    if (Array.isArray(o)) return o.forEach((x) => walk(x, sec, cat));
+    if (!o || typeof o !== "object") return;
+    if (o.ref && sec.startsWith("bottle-") && !shelf.has(o.ref))
+      shelf.set(o.ref, sec === "bottle-sparkling" ? (cat === "champagne" ? "sampanjac" : "pjenusac") : sec === "bottle-dessert" ? "desertno" : "boca");
+    for (const [k, v] of Object.entries(o)) if (k !== "ref") walk(v, sec, cat);
+  };
+  for (const sec of (list && list.sections) || []) for (const c of sec.categories || []) walk(c, sec.id, c.id);
+  const out = { casa: [], sampanjac: [], pjenusac: [], desertno: [], boca: [], other: [] };
+  for (const [name, a] of Object.entries((till && till.articles) || {})) {
+    if (a.none === "nije vino") out.other.push(name);
+    else if (a.ref && a.vol <= 0.15) out.casa.push(name);
+    else if (a.ref) out[shelf.get(a.ref) || "boca"].push(name);
+    else if (a.none) out.boca.push(name);              /* a wine no longer on the list is still a bottle sold */
+  }
+  return out;
+}
+const sqlIn = (names) => `l.name IN (${names.map((n) => `'${String(n).replace(/'/g, "''")}'`).join(", ")})`;
+export function staffCatSql(cats) {
+  const nonWine = STAFF_CAT.split("\n").filter((x) => !/ampanj|jenu|na č|esertn|'%vin%'/.test(x)).join("\n");
+  const when = ["casa", "sampanjac", "pjenusac", "desertno", "boca"].filter((c) => cats[c].length).map((c) => `WHEN ${sqlIn(cats[c])} THEN '${c}'`);
+  if (!when.length) return STAFF_CAT;
+  return `CASE ${when.join(" ")}${cats.other.length ? ` WHEN ${sqlIn(cats.other)} THEN (${nonWine})` : ""} ELSE ${STAFF_CAT} END`;
+}
+/* the map and the list from the published wine list, five minutes at the
+   edge; if either cannot be read, the group rule as before */
+async function staffCatFor(env) {
+  try {
+    const get = (p) => fetch(`${wineListOrigin(env)}/${p}`, { cf: { cacheTtl: 300, cacheEverything: true } }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+    const [till, list] = await Promise.all([get("data/till-map.json"), get("lists/theatrium.json")]);
+    return staffCatSql(tillCats(till, list));
+  } catch { return STAFF_CAT; }
+}
+
 /* Three corrections from Filho (2026-10-14), each a reason a waiter's numbers
    were not theirs:
    - "Manuela je radila 7× moj stol … po 500 € vina, nema hrane": the owner's
@@ -216,10 +262,11 @@ export const OWN_TABLE = `SELECT b.id FROM sales_bills b JOIN sales_lines l ON l
 
 export async function staffData(env, lo, hi) {
   const q = (sql) => env.DB.prepare(sql).bind(lo, hi).all().then((r) => r.results || []);
+  const CAT = await staffCatFor(env);
   const [bills, cats, own, wines] = await Promise.all([
     q(`SELECT b.waiter AS w, b.day AS d, ${PART} AS p, COUNT(*) AS n, SUM(b.total) AS t FROM sales_bills b
        WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 AND b.id NOT IN (${OWN_TABLE}) GROUP BY w, d, p`),
-    q(`SELECT b.waiter AS w, b.day AS d, ${PART} AS p, ${STAFF_CAT} AS c, COUNT(DISTINCT b.id) AS n, SUM(l.total) AS t
+    q(`SELECT b.waiter AS w, b.day AS d, ${PART} AS p, ${CAT} AS c, COUNT(DISTINCT b.id) AS n, SUM(l.total) AS t
        FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id
        WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0 AND b.id NOT IN (${OWN_TABLE}) GROUP BY w, d, p, c HAVING c IS NOT NULL`),
     q(`SELECT b.waiter AS w, COUNT(*) AS n, SUM(b.total) AS t FROM sales_bills b WHERE b.id IN (${OWN_TABLE}) GROUP BY w`),

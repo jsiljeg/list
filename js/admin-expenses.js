@@ -427,18 +427,6 @@
     if (/(^|[^\d,.])3l/.test(n)) return 3;
     return 0.75;
   }
-  /* the Remaris group an article belongs in, from the wine itself: by the
-     glass is "Vina na čaše" whatever the colour; a bottle goes by style and
-     by the till's country pairs */
-  const TILL_REG = { HR: "HR/SLO", SI: "HR/SLO", DE: "DE/AUT", AT: "DE/AUT", FR: "FRA", IT: "ITA/ES", ES: "ITA/ES", US: "USA" };
-  function tillGroup(w, vol) {
-    if (vol <= 0.15) return "Vina na čaše";
-    const st = w.style || "";
-    if (st.startsWith("champagne")) return "Šampanjci";
-    if (st.startsWith("sparkling")) return "Pjenušci";
-    if (st === "sweet") return "Desertna vina";
-    return `${st.startsWith("red") ? "Crvena" : "Bijela"} vina ${TILL_REG[w.country] || ""}`.trim();
-  }
   let wineList = null, wineListLoading = false, openWineBox = "", listFrom = "";
   let tillMap = null, tillSha = "", tillMsg = "", tillBusy = "";
   /* the purchase side (2026-10-14, "margin per wine"): supplier line names
@@ -544,6 +532,11 @@
     } catch (e) { tillMsg = `Nije spremljeno: ${e.message}`; }
     tillBusy = ""; render();
   }
+  /* Six glasses to a 0,75 l bottle (owner, 2026-10-14): the till's article
+     says "0,1", the pour is 0,125. A dessert article that says 0,05 is
+     poured as it says. */
+  const GLASS_POUR = 0.75 / 6;
+  const pourOf = (v) => (v >= 0.1 && v <= 0.15 ? GLASS_POUR : v);
   /* three months to the shown one: what sold, what did not, what to map */
   function wineSales() {
     if (!needWineList() || !tillMap) return null;
@@ -556,18 +549,17 @@
       const l = lines.get(it.name) || { name: it.name, grp: it.grp, q: 0, t: 0 };
       l.q += it.qty; l.t += it.total; lines.set(it.name, l);
     }
-    const ask = [], off = [], wrong = [];
+    const ask = [], off = [];
     for (const l of lines.values()) {
       const a = arts[l.name];
       if (!a || a.ask) { ask.push({ ...l, a, sug: a && a.ask ? byRef.get(a.ref) : suggestTill(l.name) }); continue; }
-      if (a.none) { off.push({ ...l, a }); if (a.none === "nije vino") wrong.push({ ...l, want: "izvan grupa vina" }); continue; }
+      if (a.none) { off.push({ ...l, a }); continue; }
       const w = byRef.get(a.ref);
       if (!w) { ask.push({ ...l, a: null, sug: null }); continue; }
       const e = by.get(w.ref) || { w, bottles: 0, glasses: 0, t: 0, l: 0, pour: 0 };
-      if (a.vol <= 0.15) { e.glasses += l.q; e.pour = a.vol; } else e.bottles += l.q * a.vol / 0.75;   /* a magnum counts two bottles */
-      e.t += l.t; e.l += l.q * a.vol; by.set(w.ref, e);
-      const want = tillGroup(w, a.vol);
-      if (l.grp !== want) wrong.push({ ...l, want });
+      const v = pourOf(a.vol);
+      if (a.vol <= 0.15) { e.glasses += l.q; e.pour = v; } else e.bottles += l.q * v / 0.75;   /* a magnum counts two bottles */
+      e.t += l.t; e.l += l.q * v; by.set(w.ref, e);
     }
     const sold = [...by.values()].sort((a, b) => b.t - a.t);
     /* fair to the list (owner, 2026-10-14: "the wine list changed, so be
@@ -581,9 +573,9 @@
     const still = live.filter((w) => !by.has(w.ref) && !isNew(w)).sort((a, b) => price(a) - price(b));
     const fresh = live.filter((w) => isNew(w)).map((w) => ({ w, e: by.get(w.ref) })).sort((a, b) => (b.e ? b.e.t : 0) - (a.e ? a.e.t : 0));
     const sum = (xs) => xs.reduce((a, x) => a + x.t, 0);
-    ask.sort((a, b) => b.t - a.t); off.sort((a, b) => b.t - a.t); wrong.sort((a, b) => b.t - a.t);
+    ask.sort((a, b) => b.t - a.t); off.sort((a, b) => b.t - a.t);
     const matched = sum(sold);
-    return { ms, sold, still, fresh, ask, off, wrong, matched, total: matched + sum(ask) + sum(off) };
+    return { ms, sold, still, fresh, ask, off, matched, total: matched + sum(ask) + sum(off) };
   }
   /* ---------- Marža po vinu (owner, 2026-10-14: "do we even make money on
      drinks") ----------
@@ -591,8 +583,9 @@
      without PDV, and what each wine earned in the three months. The cost is
      the supplier's net price on the receipts (Troškovi): a purchase in the
      size the list sells first — a 3 l or a magnum costs more per litre —
-     then the latest. A glass costs its pour: the till article says 0,1 or
-     0,05; with no glass sold yet, 0,05 for a dessert wine, 0,1 otherwise.
+     then the latest. A glass costs its pour: six to a bottle
+     (0,125 l), or 0,05 where a dessert article says so; with no glass sold
+     yet, 0,05 for a dessert wine, 0,125 otherwise.
      The till's "total" is with PDV, drinks are 25%. */
   const DRINK_VAT = 1.25;
   function wineCosts() {
@@ -632,17 +625,55 @@
       const c = costs.get(w.ref);
       if (!c || w.gone || !w.listings.length) continue;
       const e = sold.get(w.ref);
-      const pour = (e && e.pour) || (w.style === "sweet" ? 0.05 : 0.1);
+      const pour = (e && e.pour) || (w.style === "sweet" ? 0.05 : GLASS_POUR);
       const ls = w.listings.map((l) => {
         const v = l.glass ? pour : l.vol;
-        return { label: l.glass ? "čaša" : l.vol === 0.75 ? "boca" : `${String(l.vol).replace(".", ",")} l`, price: l.price, pct: (c.perl * v) / (l.price / DRINK_VAT) };
+        return { label: l.glass ? "čaša" : l.vol === 0.75 ? "boca" : `${String(l.vol).replace(".", ",")} l`, glass: l.glass, vol: v, price: l.price, cost: c.perl * v, pct: (c.perl * v) / (l.price / DRINK_VAT) };
       });
-      rows.push({ w, c, ls, earned: e ? e.t / DRINK_VAT - e.l * c.perl : 0, rev: e ? e.t / DRINK_VAT : 0, off: w.off });
+      rows.push({ w, c, ls, bottles: e ? e.bottles : 0, glasses: e ? e.glasses : 0, earned: e ? e.t / DRINK_VAT - e.l * c.perl : 0, rev: e ? e.t / DRINK_VAT : 0, off: w.off });
     }
     rows.sort((a, b) => b.earned - a.earned || a.ls[0].pct - b.ls[0].pct);
     const rev = rows.reduce((a, r) => a + r.rev, 0), earned = rows.reduce((a, r) => a + r.earned, 0);
     const nocost = wineList.filter((w) => !w.gone && !w.off && w.listings.length && !costs.has(w.ref)).length;
     return { rows, rev, earned, nocost, pending: buyPending() };
+  }
+  /* Cijene: prijedlozi (owner, 2026-10-14: "show things that are underpriced/
+     overpriced"). A wine list is not marked up by one factor: cheap bottles
+     carry the most, trophies the least, because a guest knows what a famous
+     bottle costs in a shop. So the target cost share rises with the cost:
+     30% up to 15 € net a bottle, 33% to 35 €, 38% to 80 €, 45% to 200 €,
+     55% above. A bottle 12 points or more over its target is cheap for what
+     it costs us; the suggestion is the target price, at most +40%, rounded.
+     A glass is cheap when it costs us over 40% of its price, or when the six
+     glasses in a bottle earn under 110% of the bottle's own price (an open
+     bottle carries the risk of the last glass). Expensive: 15 points under
+     target and not one bottle sold in three months. Pure. */
+  const costTarget = (c75) => (c75 <= 15 ? 0.30 : c75 <= 35 ? 0.33 : c75 <= 80 ? 0.38 : c75 <= 200 ? 0.45 : 0.55);
+  const nicePrice = (p) => { const st = p < 30 ? 1 : p < 150 ? 5 : 10; return Math.ceil(p / st - 1e-9) * st; };
+  function priceAdvice(rows) {
+    const cheap = [], dear = [];
+    for (const r of rows) {
+      if (r.off) continue;
+      const c75 = r.c.perl * 0.75, t = costTarget(c75);
+      const bottle = r.ls.find((l) => !l.glass && l.vol === 0.75);
+      for (const l of r.ls) {
+        if (l.glass) {
+          const six = bottle && l.vol === GLASS_POUR ? l.price * 6 : 0;
+          if (!(l.pct > 0.40 || (six && six < bottle.price * 1.1))) continue;
+          let sug = nicePrice((l.cost * DRINK_VAT) / 0.33);
+          if (bottle && l.vol === GLASS_POUR) sug = Math.max(sug, Math.ceil((bottle.price * 1.1) / 6));
+          sug = Math.max(sug, l.price + 1);
+          cheap.push({ r, l, t: 0.33, sug, six, bottle: bottle && bottle.price, gain: ((sug - l.price) / DRINK_VAT) * r.glasses });
+        } else if (l.pct > t + 0.12) {
+          const sug = nicePrice(Math.min((l.cost * DRINK_VAT) / t, l.price * 1.4));
+          if (sug <= l.price) continue;
+          cheap.push({ r, l, t, sug, gain: ((sug - l.price) / DRINK_VAT) * (r.bottles * 0.75 / l.vol) });
+        } else if (l.pct < t - 0.15 && !r.bottles) dear.push({ r, l, t });
+      }
+    }
+    cheap.sort((a, b) => b.gain - a.gain || b.l.pct - a.l.pct);
+    dear.sort((a, b) => a.l.pct - b.l.pct);
+    return { cheap, dear };
   }
   function wineBox() {
     const x = wineSales();
@@ -678,9 +709,6 @@
       ${x.off.length ? box("off", `Prodano, a nije s karte: ${x.off.length} (${sum(x.off)})`,
         `<p class="muted small">Vina kojih više nema na karti, i ono što nije vino a upisano je u grupu vina.</p>`
         + x.off.map((u) => `<div><span>${esc(u.name)}<small>${esc(u.a.none)}${u.a.why ? ` · ${esc(u.a.why)}` : ""}</small></span><b>${eur0(u.t)}</b></div>`).join("")) : ""}
-      ${x.wrong.length ? box("wrong", `U blagajni u krivoj grupi: ${x.wrong.length}`,
-        `<p class="muted small">Grupa u Remarisu prema karti: čaša je uvijek "Vina na čaše", boca po boji i zemlji. Krive grupe kvare i usporedbu konobara (čaša / boca / šampanjac).</p>`
-        + x.wrong.map((u) => `<div><span>${esc(u.name)}<small>${esc(u.grp || "—")} → <b>${esc(u.want)}</b></small></span><b>${eur0(u.t)}</b></div>`).join("")) : ""}
       ${marginBox(x, box, opts, sum)}
       <p class="muted small">Povezano je ${Math.round((x.matched / Math.max(1, x.total)) * 100)}% prodaje vina. Svaki artikl blagajne povezan je ručno s vinom s karte (data/till-map.json); novi artikli čekaju u "Za povezati". Datum "na karti od" je iz povijesti karte (od 31. 7. 2026).</p>`;
   }
@@ -702,8 +730,17 @@
         </span><b>${eur0(u.t)}</b></div>`;
     };
     const share = m.rev ? 1 - m.earned / m.rev : 0;
+    const adv = priceAdvice(m.rows), gain = adv.cheap.reduce((a, u) => a + u.gain, 0);
+    const advRow = (u) => `<div><span>${esc(u.r.w.producer)} · ${esc(u.r.w.name)} <small>(${u.l.label})</small>
+        <small>trošak ${pct(u.l.pct)}, cilj ${Math.round(u.t * 100)}%${u.six ? ` · 6 čaša = ${eur0(u.six)}, boca ${eur0(u.bottle)}` : ""}${u.gain >= 1 ? ` · uz istu prodaju +${eur0(u.gain)} u 3 mj.` : ""}</small></span>
+        <b>${eur0(u.l.price)} → ${eur0(u.sug)}</b></div>`;
+    const dearRow = (u) => `<div><span>${esc(u.r.w.producer)} · ${esc(u.r.w.name)}<small>trošak ${pct(u.l.pct)}, cilj ${Math.round(u.t * 100)}% · u 3 mj. nije prodana nijedna boca</small></span><b>${eur0(u.l.price)}</b></div>`;
     return `${box("margin", `Marža po vinu: ${m.rows.length} ${plural(m.rows.length, "vino", "vina", "vina")} s nabavnom cijenom · trošak ${Math.round(share * 100)}% prodaje`,
-        `<p class="muted small">Nabavna cijena s računa dobavljača, bez PDV-a; prodajna s karte, bez PDV-a (25%). Trošak = nabavna ÷ prodajna; uobičajeni cilj za vino je 30–35%; označeno crveno znači 60% i više — vino koje se prodaje skoro po nabavnoj cijeni. Desno: koliko je vino zaradilo u ova tri mjeseca (prodano bez PDV-a manje nabavna cijena). ${m.nocost ? `${m.nocost} vina s karte još nema nabavnu cijenu — kupljena prije e-računa ili od dobavljača kojeg Troškovi ne vide.` : ""}</p>` + rows)}
+        `<p class="muted small">Nabavna cijena s računa dobavljača, bez PDV-a; prodajna s karte, bez PDV-a (25%). Trošak = nabavna ÷ prodajna; čaša je šestina boce (0,125 l). Cilj ovisi o cijeni vina (vidi "Cijene, prijedlozi"); crveno znači 60% i više — vino koje se prodaje skoro po nabavnoj cijeni. Desno: koliko je vino zaradilo u ova tri mjeseca (prodano bez PDV-a manje nabavna cijena). ${m.nocost ? `${m.nocost} vina s karte još nema nabavnu cijenu — kupljena prije e-računa ili od dobavljača kojeg Troškovi ne vide.` : ""}</p>` + rows)}
+      ${adv.cheap.length || adv.dear.length ? box("price", `Cijene, prijedlozi: ${adv.cheap.length} jeftino${adv.dear.length ? ` · ${adv.dear.length} skupo` : ""}${gain >= 1 ? ` · +${eur0(gain)} u 3 mj.` : ""}`,
+        `<p class="muted small">Cilj troška raste s cijenom vina: 30% za bocu do 15 € nabave, 33% do 35 €, 38% do 80 €, 45% do 200 €, 55% iznad — gost zna koliko skupa slavna boca stoji u dućanu, pa se ona ne množi kao obično vino. Jeftino: boca 12 postotnih bodova iznad cilja (prijedlog najviše +40%), ili čaša kojoj trošak prelazi 40%, ili kad 6 čaša iz boce donese manje od 110% cijene boce. Skupo: 15 bodova ispod cilja, a u tri mjeseca nije prodana nijedna boca. "+€" je dodatna zarada bez PDV-a da se prodalo isto koliko i dosad. Prijedlog je za razgovor, ne pravilo.</p>`
+        + (adv.cheap.length ? `<p class="small"><b>Jeftino za ono što nas košta</b></p>` + adv.cheap.map(advRow).join("") : "")
+        + (adv.dear.length ? `<p class="small"><b>Možda preskupo — ne prodaje se</b></p>` + adv.dear.map(dearRow).join("") : "")) : ""}
       ${m.pending.length ? box("buyask", `Nabava, za povezati: ${m.pending.length}`,
         `<p class="muted small">Stavke računa dobavljača koje karta još ne zna. Jednom potvrđeno, vrijedi za svaki sljedeći račun.</p>` + m.pending.map(buyRow).join("")) : ""}`;
   }

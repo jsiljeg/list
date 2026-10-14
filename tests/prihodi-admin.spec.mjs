@@ -10,7 +10,7 @@
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { DatabaseSync } from "node:sqlite";
-import { cleanBill, staffReport, guestData } from "../web/functions/_lib/sales.js";
+import { cleanBill, staffReport, guestData, tillCats, staffCatSql } from "../web/functions/_lib/sales.js";
 
 const month = new Date().toISOString().slice(0, 7);
 const summary = {
@@ -192,4 +192,44 @@ test("the purchase map resolves and carries no prices", () => {
   expect(map["franciacorta brut 3 l"].vol).toBe(3);
   const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
   expect(src).toContain("if (!c || (std && !c.std) || (std === c.std && d > c.d)) best.set(a.ref, { perl, d, std });");
+});
+
+/* The waiters are compared on our map, not on Remaris' groups (owner,
+   2026-10-14: "we will not fix Remaris, just have it and count it right in
+   our place"). A Champagne rung up under "Bijela vina DE/AUT" is Champagne,
+   a "0,1" article is a glass whatever its group, and an article the map has
+   never seen keeps the group rule. Run on SQLite, which is what D1 is. */
+test("the waiter categories come from the till map, not the till's groups", () => {
+  const till = { articles: {
+    "KRUG GRANDE CUVEE": { ref: "krug--grande-cuvee", vol: 0.75 },
+    "MALVAZIJA 0,1L": { ref: "benvenuti--malvazija", vol: 0.1 },
+    "GIN TONIK": { none: "nije vino", why: "koktel" },
+  } };
+  const list = { sections: [
+    { id: "glass", categories: [{ id: "white", groups: [{ items: [{ ref: "benvenuti--malvazija" }] }] }] },
+    { id: "bottle-sparkling", categories: [{ id: "champagne", groups: [{ items: [{ ref: "krug--grande-cuvee" }] }] }] },
+  ] };
+  const cats = tillCats(till, list);
+  expect(cats.sampanjac).toEqual(["KRUG GRANDE CUVEE"]);
+  expect(cats.casa).toEqual(["MALVAZIJA 0,1L"]);
+  const db = new DatabaseSync(":memory:");
+  db.exec(`CREATE TABLE sales_lines (name TEXT, grp TEXT);
+    INSERT INTO sales_lines VALUES ('KRUG GRANDE CUVEE', 'Bijela vina DE/AUT'), ('MALVAZIJA 0,1L', 'Bijela vina HR/SLO'),
+      ('GIN TONIK', 'Vina na čaše'), ('NEPOZNATO VINO', 'Pjenušci')`);
+  const got = db.prepare(`SELECT name, ${staffCatSql(cats)} AS c FROM sales_lines l`).all();
+  expect(Object.fromEntries(got.map((r) => [r.name, r.c]))).toEqual({
+    "KRUG GRANDE CUVEE": "sampanjac", "MALVAZIJA 0,1L": "casa", "GIN TONIK": null, "NEPOZNATO VINO": "pjenusac",
+  });
+});
+
+/* Six glasses to a bottle (owner, 2026-10-14), and the wrong-group box is
+   gone with the decision not to fix Remaris. The price suggestions are a
+   cost target that rises with the bottle's cost. */
+test("a glass is a sixth of a bottle, and the price box replaces the group box", () => {
+  const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
+  expect(src).toContain("const GLASS_POUR = 0.75 / 6;");
+  expect(src).not.toContain('box("wrong"');
+  expect(src).toContain('box("price"');
+  const lib = JSON.parse(readFileSync(new URL("../library/wines.json", import.meta.url), "utf8")).wines;
+  expect(lib["weingut-wittmann--riesling-aulerde-gg-2023"]).toBeUndefined();   /* the owner's test wine */
 });

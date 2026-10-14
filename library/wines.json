@@ -14485,55 +14485,6 @@
     "drinking_now"
    ]
   },
-  "weingut-wittmann--riesling-aulerde-gg-2023": {
-   "name": "Riesling Aulerde GG 2023",
-   "producer": "Weingut Wittmann",
-   "insight": {
-    "grape": "Riesling",
-    "region": "Westhofen, Wonnegau, Rheinhessen",
-    "country": "DE",
-    "style": "white_mineral",
-    "body": "full",
-    "aromas": [
-     "blood_orange",
-     "citrus",
-     "ginger",
-     "flint",
-     "saline"
-    ],
-    "pairings": [
-     "asian",
-     "shellfish",
-     "white_fish",
-     "poultry"
-    ],
-    "temp": "10–12",
-    "alcohol": "12.5",
-    "sweetness": "dry"
-   },
-   "terroir": "Aulerde",
-   "ratings": [
-    {
-     "critic": "Robert Parker",
-     "score": "94",
-     "checked": "2026-10-11"
-    },
-    {
-     "critic": "James Suckling",
-     "score": "97"
-    }
-   ],
-   "note": {
-    "hr": "Aulerde je najtopliji kut Westhofena, u podnožju Kirchspiela, i to se pije: krvava naranča, đumbir i sol, mesnatije i zrelije nego gore na brdu — a opet suho do posljednje kapi. Lijep je već danas, a izdržat će desetljeća.",
-    "en": "Aulerde is the warmest corner of Westhofen, at the foot of Kirchspiel, and you can taste it: blood orange, ginger and salt, fleshier and riper than up on the hill — and still dry to the last drop. Lovely today, and it will go for decades.",
-    "it": "Aulerde è l'angolo più caldo di Westhofen, ai piedi del Kirchspiel, e si sente nel bicchiere: arancia rossa, zenzero e sale, più polposo e maturo che su in collina — eppure secco fino all'ultima goccia. Bello già oggi, e reggerà per decenni.",
-    "fr": "Aulerde est le coin le plus chaud de Westhofen, au pied du Kirchspiel, et cela se goûte : orange sanguine, gingembre et sel, plus charnu et plus mûr que là-haut sur la colline — et pourtant sec jusqu'à la dernière goutte. Beau dès aujourd'hui, et parti pour des décennies.",
-    "de": "Aulerde ist die wärmste Ecke von Westhofen, am Fuß des Kirchspiels, und man schmeckt es: Blutorange, Ingwer und Salz, fleischiger und reifer als oben am Hang — und trotzdem trocken bis zum letzten Tropfen. Heute schon schön, und er hält Jahrzehnte.",
-    "zh": "奥尔埃德是韦斯特霍芬最温暖的一角，就在基希施皮尔山脚下，喝得出来：血橙、姜和盐，比山坡上更丰腴、更成熟——却依旧干到最后一滴。今天已很迷人，还能陈放数十年。",
-    "sl": "Aulerde je najtoplejši kotiček Westhofna, ob vznožju Kirchspiela, in to se okusi: rdeča pomaranča, ingver in sol, bolj mesnato in zrelo kot zgoraj na hribu — pa vendar suho do zadnje kapljice. Lep je že danes, zdržal pa bo desetletja.",
-    "es": "Aulerde es el rincón más cálido de Westhofen, al pie del Kirchspiel, y se nota en la copa: naranja sanguina, jengibre y sal, más carnoso y maduro que arriba en la colina — y aun así seco hasta la última gota. Precioso ya hoy, y aguantará décadas."
-   }
-  },
   "coche-dury--auxey-duresses-2018": {
    "name": "Auxey-Duresses 2018",
    "producer": "Coche-Dury",
