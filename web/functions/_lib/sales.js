@@ -144,8 +144,33 @@ export async function monthDetail(env, lo, hi) {
        FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE b.day BETWEEN ?1 AND ?2 AND b.total > 0
          AND b.id NOT IN (${OWN_TABLE}) GROUP BY b.waiter`, lo, hi),
   ]);
-  const st = await staffData(env, lo, hi);
-  return { items, weekdays, dayparts, leaks, waiters, staff: st.waiters, ownTable: st.ownTable };
+  const [st, guests] = await Promise.all([staffData(env, lo, hi), guestData(env, lo, hi)]);
+  return { items, weekdays, dayparts, leaks, waiters, staff: st.waiters, ownTable: st.ownTable, guests };
+}
+
+/* Potrošnja po gostu (owner, 2026-10-14: "average spendings per guest … map
+   it with number of couverts"). A bill's guests are its couverts, or the
+   persons on a group menu when that is more (a group may not be charged a
+   couvert). A storno bill takes them back with its negative couvert. Bills
+   with no guest on them — the bar, a coffee, the owner's table — are counted
+   apart, so they do not pull the per-guest figure down and are not lost. */
+export async function guestData(env, lo, hi) {
+  const words = "(' ' || lower(replace(replace(COALESCE(l.grp, '') || ' ' || COALESCE(l.name, ''), ',', ' '), '.', ' ')) || ' ')";
+  const MENU = `(${words} LIKE '%repertoire%' OR ${words} LIKE '% menu %' OR ${words} LIKE '% meni %')`;
+  const { results } = await env.DB.prepare(
+    `SELECT part, SUM(CASE WHEN g <> 0 THEN 1 ELSE 0 END) AS n, SUM(g) AS guests,
+       SUM(CASE WHEN g <> 0 THEN t ELSE 0 END) AS total,
+       SUM(CASE WHEN g = 0 THEN 1 ELSE 0 END) AS other_n, SUM(CASE WHEN g = 0 THEN t ELSE 0 END) AS other
+     FROM (SELECT ${PART} AS part, b.total AS t,
+             CASE WHEN b.total < 0 THEN MIN(c, m) ELSE MAX(c, m) END AS g
+           FROM sales_bills b JOIN (
+             SELECT l.bill_id AS id,
+               SUM(CASE WHEN lower(l.name) LIKE '%couvert%' THEN l.qty ELSE 0 END) AS c,
+               SUM(CASE WHEN ${MENU} THEN l.qty ELSE 0 END) AS m
+             FROM sales_lines l JOIN sales_bills b2 ON b2.id = l.bill_id
+             WHERE b2.day BETWEEN ?1 AND ?2 GROUP BY l.bill_id) x ON x.id = b.id)
+     GROUP BY part`).bind(lo, hi).all();
+  return results || [];
 }
 
 /* ---------- Konobari (Filho, 2026-10-14: "koji je konobar što prodao, i koji

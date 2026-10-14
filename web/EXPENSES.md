@@ -557,3 +557,16 @@ dosta dana bez deserta"). Each card also names the waiter's top three wines
 of September's 578 bills are under the owner's name — if others ring on his
 login, they cannot be attributed. `isMenu` matches whole words since
 "KAMENICA" (oysters) was taken for a menu.
+
+## Potrošnja po gostu (owner, 2026-10-14)
+
+"We need average spendings per guest … map it with number of couverts."
+`guestData()` in `_lib/sales.js` counts a bill's guests as its **couverts**,
+or the persons on a **group menu** when that is more (a group may not be
+charged a couvert). A storno bill takes its couvert back. Per guest = the
+takings of bills with guests ÷ those guests, for the month and for lunch and
+dinner apart, with ▲▼ against last month. Bills with no guest on them (the
+bar, a coffee, the owner's table) are shown as their own line, neither
+averaged in nor lost. It is only as good as the couvert: a table the waiter
+forgot to charge one counts nowhere, so the share of bills without one is
+worth watching.

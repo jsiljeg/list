@@ -9,7 +9,8 @@
  * January) and rejects a row that is not a bill. */
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
-import { cleanBill, staffReport } from "../web/functions/_lib/sales.js";
+import { DatabaseSync } from "node:sqlite";
+import { cleanBill, staffReport, guestData } from "../web/functions/_lib/sales.js";
 
 const month = new Date().toISOString().slice(0, 7);
 const summary = {
@@ -20,6 +21,7 @@ const summary = {
   items: [{ name: "BEEF WELLINGTON", grp: "Glavna jela", tax: "H (HRANA IZLAZ 13%)", qty: 20, total: 800, net: 707.96 }],
   weekdays: [{ wd: 1, days: 1, n: 2, total: 1000 }, { wd: 2, days: 1, n: 1, total: 130 }],
   dayparts: [{ part: "vecera", n: 3, total: 1130 }],
+  guests: [{ part: "vecera", n: 2, guests: 5, total: 1000, other_n: 1, other: 130 }],
   leaks: [{ waiter: "Ana", storno_n: 0, storno: 0, disc: 120, free_n: 0, free: 0 }],
   waiters: [{ waiter: "Ana", n: 30, total: 900, wine: 300, wine_bills: 20 }, { waiter: "Ivo", n: 30, total: 230, wine: 30, wine_bills: 3 }],
   taxes: [{ tax: "H (HRANA IZLAZ 13%)", total: 800, net: 707.96 }, { tax: "P (PIĆE IZLAZ)", total: 330, net: 264 }],
@@ -58,7 +60,11 @@ test("Prihodi shows the month from Remaris, and Pregled and PDV use it", async (
   await expect(hrana).toContainText("708 €");
   await expect(page.locator(".rub", { hasText: "Vino" })).toContainText("264 €");
   await page.click('.seg3 [data-sub="prihodi"]');
-  await expect(page.locator(".big b")).toHaveText("1.130 €");
+  await expect(page.locator(".big > b")).toHaveText("1.130 €");
+  /* potrošnja po gostu (owner, 2026-10-14): the bills with couverts over
+     their guests, 1000 / 5; the bar's 130 is told apart, not averaged in */
+  await expect(page.locator(".big")).toContainText("po gostu 200 €");
+  await expect(page.locator(".big")).toContainText("računi bez couverta (šank, kava, vaš stol): 1, 130 €");
   /* payments are not shown (owner, 2026-10-14); rubrike open onto the sales groups */
   await expect(page.locator("#tab-troskovi")).not.toContainText("Visa");
   await page.click('[data-rub="vino"]');
@@ -131,4 +137,23 @@ test("a day without desserts is nobody's missed dessert, and the owner is not co
   expect(r.Ana.flags).toEqual([]);
   expect(r["Filip Horvat"].owner).toBe(true);
   expect(r["Filip Horvat"].flags).toEqual([]);
+});
+
+/* Potrošnja po gostu (owner, 2026-10-14): guests are a bill's couverts, or
+   the persons on a group menu when that is more; a storno takes its couvert
+   back; a bill with no guest (a coffee at the bar) is counted apart. Run on
+   SQLite, which is what D1 is. */
+test("guests come from couverts, menus and stornos, and the bar is apart", async () => {
+  const db = new DatabaseSync(":memory:");
+  db.exec(`CREATE TABLE sales_bills (id TEXT, day TEXT, at TEXT, total REAL);
+    CREATE TABLE sales_lines (bill_id TEXT, n INT, name TEXT, grp TEXT, qty REAL, total REAL);
+    INSERT INTO sales_bills VALUES ('a','2026-10-01','2026-10-01T20:00',120), ('b','2026-10-01','2026-10-01T20:30',-60),
+      ('c','2026-10-01','2026-10-01T13:00',600), ('d','2026-10-01','2026-10-01T22:00',8);
+    INSERT INTO sales_lines VALUES ('a',0,'COUVERT','Couvert',2,6), ('a',1,'BEEF','Glavna jela',2,114),
+      ('b',0,'COUVERT','Couvert',-1,-3), ('b',1,'BEEF','Glavna jela',-1,-57),
+      ('c',0,'MENU 60','Meniji',10,600), ('c',1,'COUVERT','Couvert',4,0), ('d',0,'ESPRESSO','Kava',2,8);`);
+  const env = { DB: { prepare: (s) => ({ bind: (...a) => ({ all: async () => ({ results: db.prepare(s.replace(/\?\d/g, "?")).all(...a) }) }) }) } };
+  const r = Object.fromEntries((await guestData(env, "2026-10-01", "2026-10-31")).map((x) => [x.part, x]));
+  expect(r.rucak).toMatchObject({ guests: 10, total: 600 });                  /* menu 10 persons beats 4 couverts */
+  expect(r.vecera).toMatchObject({ guests: 1, total: 60, other_n: 1, other: 8 });   /* 2 − 1 storno; the espresso apart */
 });

@@ -368,10 +368,14 @@
     const workDays = s.days.filter((d) => d.total > 0).length;
     const dmax = Math.max(...s.days.map((d) => d.total), 1);
     const custs = (s.custs || []).filter((c) => Math.abs(c.total) > 0.004);
+    const g = guestSum(s.guests), gp = guestSum(prev && prev.guests);
+    const gch = g.guests && gp.guests ? pct(g.total / g.guests, gp.total / gp.guests) : null;
     return `${monthNav()}
       <div class="big"><b>${eur0(total)}</b>
         <span class="muted small">${n} ${plural(n, "račun", "računa", "računa")} · ${workDays} ${plural(workDays, "radni dan", "radna dana", "radnih dana")}</span>
         <span class="muted small">prosječni račun ${eur0(total / Math.max(1, n))} · prosječno ${eur0(total / Math.max(1, workDays))} po danu</span>
+        ${g.guests > 0 ? `<span class="small">po gostu <b>${eur0(g.total / g.guests)}</b> · ${nf(g.guests)} ${plural(Math.round(g.guests), "gost", "gosta", "gostiju")} po couvertu${gch != null ? ` <span class="${gch >= 0 ? "down" : "up"}">${gch >= 0 ? "▲" : "▼"} ${Math.abs(gch)}%</span>` : ""}</span>
+        <span class="muted small">računi bez couverta (šank, kava, vaš stol): ${g.other_n}, ${eur0(g.other)} — nisu u potrošnji po gostu</span>` : ""}
         ${cmp ? `<span class="small">${cmp}</span>` : ""}
         ${cmpY ? `<span class="small">${cmpY}</span>` : ""}</div>
       <h3 class="h">Po danima</h3>
@@ -592,8 +596,17 @@
       <div class="bars">${wk.map((w) => `<div class="bar"><span class="bl">${cap(WD[w.wd])} <small>${w.days}×</small></span><span class="bv">${eur0(w.per)}</span>
         <span class="track"><span style="width:${Math.max(2, (w.per / wmax) * 100)}%;background:#c9a961"></span></span></div>`).join("")}</div>` : ""}
       ${parts.length ? `<h3 class="h">Ručak i večera <small>prije i poslije 16 h</small></h3>
-      <div class="lines">${parts.map((x) => `<div><span>${x.part === "rucak" ? "Ručak" : "Večera"}<small>${x.n} ${plural(x.n, "račun", "računa", "računa")} · prosječno ${eur0(x.total / Math.max(1, x.n))}</small></span><b>${eur0(x.total)}</b></div>`).join("")}</div>` : ""}
+      <div class="lines">${parts.map((x) => {
+        const gx = (s.guests || []).find((r) => r.part === x.part);
+        const per = gx && gx.guests > 0 ? ` · po gostu ${eur0(gx.total / gx.guests)} (${nf(gx.guests)} ${plural(Math.round(gx.guests), "gost", "gosta", "gostiju")})` : "";
+        return `<div><span>${x.part === "rucak" ? "Ručak" : "Večera"}<small>${x.n} ${plural(x.n, "račun", "računa", "računa")} · prosječno ${eur0(x.total / Math.max(1, x.n))}${per}</small></span><b>${eur0(x.total)}</b></div>`;
+      }).join("")}</div>` : ""}
       ${staffBox(s, prev)}`;
+  }
+  /* lunch + dinner rows of /api/prihodi's `guests` summed (sales.js guestData) */
+  function guestSum(rows) {
+    return (rows || []).reduce((a, r) => ({ guests: a.guests + (r.guests || 0), total: a.total + (r.total || 0),
+      other_n: a.other_n + (r.other_n || 0), other: a.other + (r.other || 0) }), { guests: 0, total: 0, other_n: 0, other: 0 });
   }
   /* the four rubrike as bars; a tap opens the till's own sales groups */
   function rubBars(s, total) {
