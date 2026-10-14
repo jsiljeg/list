@@ -743,8 +743,7 @@
   },
   "L.L. CHABLIS GRAND CRU LES CLOS 0,75L": {
    "ref": "patrick-piuze--chablis-grand-cru-les-clos-2023",
-   "vol": 0.75,
-   "ask": "\"L.L. Chablis Grand Cru Les Clos\" prodan u veljači za 250 €. Na karti je Piuzeov Les Clos. Je li to on, ili drugi proizvođač (\"L.L.\")?"
+   "vol": 0.75
   },
   "LE PIANE, BOCA 2009 0,75L": {
    "ref": "le-piane--boca-2019",
@@ -1300,9 +1299,9 @@
    "vol": 0.75
   },
   "TOMAZ, TERAN SUPERRIOR 2019 0,1L": {
-   "ref": "tomaz--teran-2022",
+   "ref": "tomaz--teran-barbarossa-2020",
    "vol": 0.1,
-   "ask": "Tomaz \"Teran Superior 2019\" na čašu. Je li to Tomazov Teran s karte (2022), ili drugo vino?"
+   "why": "owner: Superior je Barbarossa"
   },
   "TRES POMME DE CHRISTIAN 0,03": {
    "none": "nije vino",
