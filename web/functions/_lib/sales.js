@@ -203,26 +203,41 @@ const PART = "CASE WHEN substr(b.at, 12, 2) < '16' THEN 'rucak' ELSE 'vecera' EN
    93 of 289 wine articles sit in the wrong group — a Champagne under "Bijela
    vina DE/AUT" is a bottle of white to the group rule, so a waiter who sold it
    was told he sells no Champagne. data/till-map.json says which wine and size
-   each article is, lists/theatrium.json which shelf that wine is on: a glass
-   is "vino na čašu", a bottle is Champagne, sparkling, dessert or a bottle of
-   wine by its shelf. An article the map has never seen keeps the group rule,
-   and so does everything that is not wine. Pure, so it is tested without D1. */
+   each article is, lists/theatrium.json which shelf that wine is on. Bubbles
+   are their own decision by the glass too (Filho: "više proda pjenušca a ne
+   šampanjca" is the aperitif glass as much as the bottle), so a glass of
+   Champagne is Champagne, a glass of sparkling is sparkling, a dessert pour
+   is dessert wine and any other glass is "vino na čašu"; a bottle is
+   Champagne, sparkling, dessert or a bottle of wine by its shelf. An article
+   the map has never seen, or knows only as off the list, keeps the group
+   rule, and so does everything that is not wine. Pure, so it is tested
+   without D1. */
 export function tillCats(till, list) {
-  const shelf = new Map();                              /* ref → bottle category */
+  const shelf = new Map();                              /* "g|ref" / "b|ref" → category */
+  const kind = (sec, cat) => {
+    const g = sec === "glass";
+    if (!g && !sec.startsWith("bottle-")) return null;
+    if (cat === "champagne") return "sampanjac";
+    if (cat === "sparkling") return "pjenusac";
+    if (cat === "dessert") return "desertno";
+    return g ? "casa" : "boca";
+  };
   const walk = (o, sec, cat) => {
     if (Array.isArray(o)) return o.forEach((x) => walk(x, sec, cat));
     if (!o || typeof o !== "object") return;
-    if (o.ref && sec.startsWith("bottle-") && !shelf.has(o.ref))
-      shelf.set(o.ref, sec === "bottle-sparkling" ? (cat === "champagne" ? "sampanjac" : "pjenusac") : sec === "bottle-dessert" ? "desertno" : "boca");
-    for (const [k, v] of Object.entries(o)) if (k !== "ref") walk(v, sec, cat);
+    const k = `${sec === "glass" ? "g" : "b"}|${o.ref}`, c = o.ref && kind(sec, cat);
+    if (c && !shelf.has(k)) shelf.set(k, c);
+    for (const [key, v] of Object.entries(o)) if (key !== "ref") walk(v, sec, cat);
   };
   for (const sec of (list && list.sections) || []) for (const c of sec.categories || []) walk(c, sec.id, c.id);
   const out = { casa: [], sampanjac: [], pjenusac: [], desertno: [], boca: [], other: [] };
   for (const [name, a] of Object.entries((till && till.articles) || {})) {
     if (a.none === "nije vino") out.other.push(name);
-    else if (a.ref && a.vol <= 0.15) out.casa.push(name);
-    else if (a.ref) out[shelf.get(a.ref) || "boca"].push(name);
-    else if (a.none) out.boca.push(name);              /* a wine no longer on the list is still a bottle sold */
+    else if (a.ref && a.vol <= 0.15) {                  /* a pour not on the glass list: its bottle's shelf */
+      const bt = shelf.get(`b|${a.ref}`);
+      out[shelf.get(`g|${a.ref}`) || (bt && bt !== "boca" ? bt : "casa")].push(name);
+    }
+    else if (a.ref) out[shelf.get(`b|${a.ref}`) || "boca"].push(name);
   }
   return out;
 }

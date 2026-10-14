@@ -204,13 +204,15 @@ test("the waiter categories come from the till map, not the till's groups", () =
     "KRUG GRANDE CUVEE": { ref: "krug--grande-cuvee", vol: 0.75 },
     "MALVAZIJA 0,1L": { ref: "benvenuti--malvazija", vol: 0.1 },
     "GIN TONIK": { none: "nije vino", why: "koktel" },
+    "KRUG 0,1": { ref: "krug--grande-cuvee", vol: 0.1 },
   } };
   const list = { sections: [
-    { id: "glass", categories: [{ id: "white", groups: [{ items: [{ ref: "benvenuti--malvazija" }] }] }] },
+    { id: "glass", categories: [{ id: "champagne", groups: [{ items: [{ ref: "krug--grande-cuvee" }] }] },
+      { id: "white", groups: [{ items: [{ ref: "benvenuti--malvazija" }] }] }] },
     { id: "bottle-sparkling", categories: [{ id: "champagne", groups: [{ items: [{ ref: "krug--grande-cuvee" }] }] }] },
   ] };
   const cats = tillCats(till, list);
-  expect(cats.sampanjac).toEqual(["KRUG GRANDE CUVEE"]);
+  expect(cats.sampanjac).toEqual(["KRUG GRANDE CUVEE", "KRUG 0,1"]);   /* a glass of Champagne is Champagne */
   expect(cats.casa).toEqual(["MALVAZIJA 0,1L"]);
   const db = new DatabaseSync(":memory:");
   db.exec(`CREATE TABLE sales_lines (name TEXT, grp TEXT);
