@@ -638,7 +638,13 @@ the last drop. So a glass costs a sixth of the bottle (`costVol()`), and the
 glass rule compares 6 glasses with the bottle price. Cost is 44% of net wine
 sales on the 110 wines with a known cost.
 
-### Cijene, prijedlozi
+### Gdje zarađujemo malo (was "Cijene, prijedlozi")
+
+Renamed 2026-10-14 after Filho: "ne mogu dizat cijene … na knap u odnosu na
+druge restorane". The targets are cost-based and cannot see the market, so the
+box shows where margin is thin, with the target price for comparison, not a
+list of rises.
+
 
 The target cost share rises with what the bottle costs us (`COST_TIERS` in
 js/admin-expenses.js): 30% to 15 € net, 33% to 35 €, 38% to 80 €, 45% to
