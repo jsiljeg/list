@@ -4,7 +4,7 @@
   "2005, ZILLIKEN AUSLESE GOLDEN": {
    "ref": "zilliken--riesling-auslese-goldkapsel-2009",
    "vol": 0.75,
-   "ask": "Auslese Goldkapsel 2005 u blagajni, na karti 2009: isto vino, druga berba?"
+   "ask": "Zilliken Auslese Goldkapsel 2005 (2 boce, 720 €). Na karti je 2009. Je li 2005 još u podrumu? Ako da, treba je dodati na kartu."
   },
   "2019 PETRAČ, ENIGMA 0,1L": {
    "ref": "petrac--enigma-2019",
@@ -61,7 +61,7 @@
   "ANSGAR CLUSSERATH, RIESLING 2018 0,1L": {
    "ref": "a-clusserath--vom-schiefer-2020",
    "vol": 0.1,
-   "ask": "\"Ansgar Clüsserath Riesling 2018\" na čašu: Vom Schiefer, ili Riesling kojeg više nema na karti?"
+   "ask": "Clüsserath Riesling 2018 na čašu (115 čaša, 10 €). Koji je to Riesling? Na karti je Clüsserathov Vom Schiefer 2020, ali on u blagajni ima svoj artikl."
   },
   "ANTINORI, TIGNANELLO 2020": {
    "ref": "antinori--tignanello-2020",
@@ -78,7 +78,7 @@
   "BAROLO CANNUBI 2018 0,75": {
    "ref": "az-agr-e-pira-figli-chiara-boschis--barolo-2018",
    "vol": 0.75,
-   "ask": "\"Barolo Cannubi 2018\": Pira & Figli (Chiara Boschis)?"
+   "ask": "Barolo Cannubi 2018. Na karti je Pira & Figli (Chiara Boschis) Barolo 2018. Je li to ta boca?"
   },
   "BASTIAN ROSE 0,1L": {
    "ref": "bastian--rose",
@@ -131,7 +131,7 @@
   "BILLECART-SALMON 0,1": {
    "ref": "billecart-salmon--le-reserve",
    "vol": 0.1,
-   "ask": "Billecart-Salmon na čašu (pro 2025 – sij 2026): Le Réserve?"
+   "ask": "Billecart-Salmon na čašu (prosinac–siječanj, 46 čaša). Koji: Le Réserve, Blanc de Blancs ili Rosé?"
   },
   "BILLECART-SALMON LE RESERVE": {
    "ref": "billecart-salmon--le-reserve",
@@ -148,7 +148,7 @@
   "BLANC DE BLANC GRAND CRU 0,75": {
    "ref": "billecart-salmon--blanc-de-blancs-grand-cru",
    "vol": 0.75,
-   "ask": "\"Blanc de Blanc Grand Cru\" za 210 €: po cijeni Billecart-Salmon BdB Grand Cru?"
+   "ask": "\"Blanc de Blanc Grand Cru\" prodan 3× po 210 €. Čiji? Po cijeni Billecart-Salmon Blanc de Blancs, ali kupovali ste i \"Special Club Blanc de Blancs Grand Cru\"."
   },
   "BOSCONIA TINTO RESERVA 0,1": {
    "ref": "lopez-de-heredia--bosconia-tinto-reserva-2013",
@@ -177,7 +177,7 @@
   "C.COSTANTI, BRUNELLO DI MONTALCINO 0,75L": {
    "ref": "conti-costanti--brunello-di-montalcino-2018",
    "vol": 0.75,
-   "ask": "Costanti Brunello bez berbe (velj–ruj): 2018? 2020 je na kartu stigao tek u listopadu"
+   "ask": "Costanti Brunello bez berbe u blagajni (veljača–rujan). Na karti su 2018 i 2020. Koja se prodavala?"
   },
   "CASA ROJO, CL98 2020 0,1L": {
    "ref": "casa-rojo--cl98-2020",
@@ -301,8 +301,7 @@
   },
   "CORTE AURA, FRANCIACORTA 3L": {
    "ref": "corte-aura--franciacorta-brut",
-   "vol": 3.0,
-   "ask": "Corte Aura 3 l: Brut ili Satèn?"
+   "vol": 3.0
   },
   "CORTE AURA, FRANCIACORTA BRUT 0,1L": {
    "ref": "corte-aura--franciacorta-brut",
@@ -441,9 +440,8 @@
    "vol": 0.75
   },
   "EGON M. KABINET": {
-   "ref": "egon-muller--riesling-scharzhof-2023",
-   "vol": 0.75,
-   "ask": "\"Egon M. Kabinett\": na karti je Scharzhof, nije Kabinett. Ista boca?"
+   "none": "nije na karti",
+   "why": "Egon Müller Wiltinger Braune Kupp Kabinett (na karti je Scharzhof)"
   },
   "ERDORO, BLEND ONE 0,75L": {
    "none": "nije na karti",
@@ -680,7 +678,7 @@
   "Jules Desjourneys Pouilly-Fuissé Les Lon": {
    "ref": "jules-desjourneys--pouilly-vinzelles-les-longeays-blanc-2021",
    "vol": 0.75,
-   "ask": "\"Pouilly-Fuissé Les Lon…\": Les Longeays je Pouilly-Vinzelles, to je ta boca?"
+   "ask": "Desjourneys \"Pouilly-Fuissé Les Lon…\". Je li to Pouilly-Vinzelles Les Longeays s karte?"
   },
   "Jules Desjourneys Rouge 2023": {
    "ref": "jules-desjourneys--rouge-2023",
@@ -749,12 +747,12 @@
   "L.L. CHABLIS GRAND CRU LES CLOS 0,75L": {
    "ref": "patrick-piuze--chablis-grand-cru-les-clos-2023",
    "vol": 0.75,
-   "ask": "\"L.L. Chablis Grand Cru Les Clos\" za 250 €: Piuzeov Les Clos?"
+   "ask": "\"L.L. Chablis Grand Cru Les Clos\" prodan u veljači za 250 €. Na karti je Piuzeov Les Clos. Je li to on, ili drugi proizvođač (\"L.L.\")?"
   },
   "LE PIANE, BOCA 2009 0,75L": {
    "ref": "le-piane--boca-2019",
    "vol": 0.75,
-   "ask": "Boca 2009 u blagajni, na karti 2019: isto vino, starija berba?"
+   "ask": "Le Piane Boca 2009. Na karti je 2019. Je li 2009 još u podrumu?"
   },
   "LE PIANE, BOCA 2019 0,75L": {
    "ref": "le-piane--boca-2019",
@@ -775,7 +773,7 @@
   "LE ROSE 0,75": {
    "ref": "billecart-salmon--le-rose",
    "vol": 0.75,
-   "ask": "\"Le Rose 0,75\" za 170 €: Billecart-Salmon Le Rosé?"
+   "ask": "\"Le Rose\" prodan u prosincu po 170 €. Je li to Billecart-Salmon Le Rosé?"
   },
   "LE VOLTE DELL ORNELLAIA 0,75": {
    "none": "nije na karti",
@@ -970,14 +968,12 @@
    "vol": 0.75
   },
   "P. PIUZE, CHABLIS TERROIR 0,1L": {
-   "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
-   "vol": 0.1,
-   "ask": "isto, na čašu: Chablis Terroir u blagajni, La Grande Vallée na karti"
+   "none": "nije na karti",
+   "why": "Piuze Chablis Terroir de Fyé, na čašu"
   },
   "P. PIUZE, CHABLIS TERROIR 0,75L": {
-   "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
-   "vol": 0.75,
-   "ask": "\"Chablis Terroir\" je druga Piuzeova cuvée od La Grande Vallée; na karti je samo La Grande Vallée"
+   "none": "nije na karti",
+   "why": "Piuze Chablis Terroir de Fyé — dobavljač ga fakturira posebno od La Grande Vallée"
   },
   "P.P. SCALETTE, IL CARBONAIONE 0,75L": {
    "ref": "podere-poggio-scalette--il-carbonaione-2019",
@@ -1202,7 +1198,7 @@
   "SASSICAIA 0,75": {
    "ref": "tenuta-san-guido--sassicaia-2021",
    "vol": 0.75,
-   "ask": "Sassicaia bez berbe, prodan za 800 € u svibnju; 2020 je na karti 750 €, 2021 je 850 €. Koja?"
+   "ask": "Sassicaia prodan u svibnju za 800 €, bez berbe u blagajni. Je li to bila 2020 (na karti 750 €) ili 2021 (850 €)?"
   },
   "SASSICAIA 2020": {
    "ref": "tenuta-san-guido--sassicaia-2020",
@@ -1311,7 +1307,7 @@
   "TOMAZ, TERAN SUPERRIOR 2019 0,1L": {
    "ref": "tomaz--teran-2022",
    "vol": 0.1,
-   "ask": "\"Tomaz Teran Superior 2019\" na čašu: Tomazov Teran (2022 na karti)?"
+   "ask": "Tomaz \"Teran Superior 2019\" na čašu. Je li to Tomazov Teran s karte (2022), ili drugo vino?"
   },
   "TRES POMME DE CHRISTIAN 0,03": {
    "none": "nije vino",
@@ -1384,7 +1380,7 @@
   "Via de Romans 0,1": {
    "ref": "vie-di-romans--friulano-2023",
    "vol": 0.1,
-   "ask": "\"Via de Romans 0,1\": Friulano ili Pinot Grigio?"
+   "ask": "\"Via de Romans 0,1\" na čašu (23 čaše, srpanj–listopad). Friulano ili Pinot Grigio?"
   },
   "W. KNEBEL, RIESLING ROTTGEN GG 0,75L": {
    "ref": "weingut-knebel--riesling-rottgen-gg-2023",
