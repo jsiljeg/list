@@ -1,5 +1,6 @@
-# Theatrium's clock (see worker.js): starts the Remaris and MER syncs in
-# jsiljeg/theatrium-troskovi on time. Deployed by deploy-web.yml.
+# Theatrium's clock (see worker.js): starts the Remaris and MER syncs and the
+# Monday report in jsiljeg/theatrium-troskovi on time. Deployed by
+# deploy-web.yml.
 name = "theatrium-clock"
 main = "worker.js"
 compatibility_date = "2026-09-01"
@@ -10,3 +11,8 @@ REPO = "jsiljeg/theatrium-troskovi"
 
 [triggers]
 crons = ["10 * * * *"]
+
+# a start GitHub refuses is mailed to the owner through Theatrium's sender
+[[services]]
+binding = "ALERTS"
+service = "theatrium-alerts"

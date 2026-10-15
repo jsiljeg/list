@@ -280,13 +280,18 @@ test("the weekly letter has spend per guest", () => {
 /* Theatrium's clock (2026-10-15): GitHub's schedule started the 6:10 Remaris
    run at 11:28 and skipped the next morning's entirely, so a Cloudflare Cron
    Trigger dispatches the syncs on the Zagreb hour, summer and winter alike. */
-test("the clock starts Remaris at 6, 9 and 16 Zagreb and MER at 9 and 16", async () => {
-  const { SLOTS, zagrebHour } = await import("../web/clock/worker.js");
-  const at = (iso) => SLOTS[zagrebHour(new Date(iso))] || [];
-  expect(at("2026-10-15T04:10:00Z")).toEqual(["remaris-sync.yml"]);                  /* 6:10 summer */
-  expect(at("2026-11-16T05:10:00Z")).toEqual(["remaris-sync.yml"]);                  /* 6:10 winter */
-  expect(at("2026-11-16T04:10:00Z")).toEqual([]);                                    /* 5:10 winter */
-  expect(at("2026-10-15T14:10:00Z")).toEqual(["remaris-sync.yml", "mer-sync.yml"]);  /* 16:10 */
+test("the clock: Remaris 6:10 and 16:10, MER 9:10 and 17:10, the report Monday 8:10", async () => {
+  /* owner, 2026-10-15: "reliable 2 Remaris per day and 2 MER per day" */
+  const { dueAt } = await import("../web/clock/worker.js");
+  const at = (iso) => dueAt(new Date(iso));
+  expect(at("2026-10-15T04:10:00Z")).toEqual(["remaris-sync.yml"]);   /* 6:10 summer */
+  expect(at("2026-11-17T05:10:00Z")).toEqual(["remaris-sync.yml"]);   /* 6:10 winter */
+  expect(at("2026-11-17T04:10:00Z")).toEqual([]);                     /* 5:10 winter */
+  expect(at("2026-10-15T07:10:00Z")).toEqual(["mer-sync.yml"]);       /* 9:10 */
+  expect(at("2026-10-15T14:10:00Z")).toEqual(["remaris-sync.yml"]);   /* 16:10 */
+  expect(at("2026-10-15T15:10:00Z")).toEqual(["mer-sync.yml"]);       /* 17:10 */
+  expect(at("2026-10-19T06:10:00Z")).toEqual(["weekly-report.yml"]);  /* Monday 8:10 */
+  expect(at("2026-10-20T06:10:00Z")).toEqual([]);                     /* Tuesday 8:10 */
   const toml = readFileSync(new URL("../web/clock/wrangler.toml", import.meta.url), "utf8");
   expect(toml).toContain('crons = ["10 * * * *"]');
   expect(readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8")).not.toContain("svako jutro u 6:00");
