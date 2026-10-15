@@ -689,7 +689,7 @@ cover the slots in summer and winter time) starts
 the workflows in theatrium-troskovi through `workflow_dispatch`, which begins
 within seconds, and it is the **only** clock: the workflows' own `schedule`
 was removed (owner: "I want it to work even when nothing is checking from my
-side"). The Zagreb hour decides (`SLOTS`, `WEEKLY`), twice a day each:
+side"). The Zagreb hour decides (`SLOTS`, `WEEKLY`):
 
 - Remaris 6:10 (yesterday, whole: the till's day closes overnight), 16:10
   (today's lunch the same afternoon) and 23:10 (dinner the same night,
