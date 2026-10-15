@@ -684,7 +684,8 @@ weekdays, waiters, guests) — used to judge one evening, such as a daily offer.
 GitHub's scheduled runs proved unreliable on this account: on 2026-10-14 the
 6:10 Remaris run started at 11:28 and MER's 9:05 at 14:49; on 2026-10-15 the
 6:10 and 7:10 never started. GitHub only promises to *try* a schedule. So
-`web/clock/` is a Worker whose one Cron Trigger (every hour at :10 UTC) starts
+`web/clock/` is a Worker whose one Cron Trigger (at :10 on 8 UTC hours, which
+cover the slots in summer and winter time) starts
 the workflows in theatrium-troskovi through `workflow_dispatch`, which begins
 within seconds, and it is the **only** clock: the workflows' own `schedule`
 was removed (owner: "I want it to work even when nothing is checking from my
@@ -696,7 +697,7 @@ side"). The Zagreb hour decides (`SLOTS`, `WEEKLY`), twice a day each:
 - the weekly report, Monday 8:10.
 
 A start GitHub refuses is mailed to the owner through ALERTS, so silence
-means it worked. Cost: 24 Worker invocations a day (free plan: 100.000), and
+means it worked. Cost: 8 Worker invocations a day (free plan: 100.000), and
 about 2 × 5 + 2 × 1 GitHub Actions minutes a day. Its token is
 `EXPENSE_DISPATCH_TOKEN` (or `GH_DISPATCH_TOKEN`), set by deploy-web.yml,
 which also checks that the token can see theatrium-troskovi. It has no fetch

@@ -8,8 +8,9 @@
  * even when nothing is checking from my side"); the workflows in
  * theatrium-troskovi have no schedule of their own any more.
  *
- * One trigger, every hour at :10 UTC; the Zagreb hour decides, so summer and
- * winter time need no second cron. Twice a day each (owner: "reliable 2
+ * One trigger at :10 on the UTC hours that are 6, 8, 9, 16 or 17 in Zagreb in
+ * summer or winter (8 wake-ups a day); the Zagreb hour decides which act, so
+ * the clock change needs no edit. Twice a day each (owner: "reliable 2
  * Remaris per day and 2 MER per day"):
  *   Remaris  6:10  yesterday, whole — the till's day closes overnight
  *            16:10 today's lunch, the same afternoon
