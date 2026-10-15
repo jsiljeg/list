@@ -14528,6 +14528,46 @@
     "sl": "Svet to hišo pozna po belih vinih; to je njeno rdeče — z 2 parcel, Les Fosses in Les Boutonniers, skupaj komaj pol hektarja. Grozdje je v celoti razpecljano, vino narejeno nežno: češnja in zmečkana jagoda, sočna svežina in zemeljski ton spodaj. Najtišji vstop v eno najbolj iskanih imen Burgundije.",
     "es": "El mundo conoce esta casa por sus blancos; este es su tinto — de 2 parcelas, Les Fosses y Les Boutonniers, apenas media hectárea entre las dos. Uva totalmente despalillada y elaboración delicada: cereza y fresa aplastada, frescura jugosa y una nota terrosa debajo. La entrada más discreta a uno de los nombres más buscados de Borgoña."
    }
+  },
+  "meneghetti--classic-2021": {
+   "name": "Classic 2021",
+   "producer": "Meneghetti",
+   "insight": {
+    "grape": "Chardonnay 60%, Pinot Blanc 40%",
+    "region": "Centralna Istra, Hrvatska Istra",
+    "country": "HR",
+    "style": "sparkling",
+    "body": "medium",
+    "aromas": [
+     "peach",
+     "pear",
+     "white_flowers",
+     "hazelnut",
+     "brioche"
+    ],
+    "pairings": [
+     "white_fish",
+     "aperitif",
+     "light_starters",
+     "shellfish",
+     "white_meat"
+    ],
+    "temp": "6–8",
+    "alcohol": "12.6",
+    "dosage": "Brut"
+   },
+   "terroir": "Višnjan, Motovun",
+   "notePlain": true,
+   "note": {
+    "hr": "Isto vino kao Meneghettijev Blanc de Blancs: isti chardonnay s crvenice kod Višnjana, isti pinot bijeli s bijele zemlje oko Motovuna, iste 3 godine na kvascu u boci. Razlika je samo u zadnjem koraku — Blanc de Blancs ostaje bez doziranja, a ovaj dobiva malo šećera i postaje Brut, pa je okrugliji i kremastiji. Dobar par za usporediti što doziranje radi pjenušcu.",
+    "en": "The same wine as Meneghetti's Blanc de Blancs: the same Chardonnay from the red soil near Višnjan, the same Pinot Blanc from the white soil around Motovun, the same 3 years on the yeast in bottle. Only the last step differs — the Blanc de Blancs gets no dosage, this one a little sugar that makes it a Brut, rounder and creamier. A good pair for tasting what dosage does to a sparkling wine.",
+    "it": "Lo stesso vino del Blanc de Blancs di Meneghetti: lo stesso chardonnay dalla terra rossa di Višnjan, lo stesso pinot bianco dalla terra bianca intorno a Motovun, gli stessi 3 anni sui lieviti in bottiglia. Cambia solo l'ultimo passo — il Blanc de Blancs resta senza dosaggio, questo riceve un po' di zucchero e diventa Brut, più rotondo e cremoso. Una bella coppia per capire che cosa fa il dosaggio a uno spumante.",
+    "fr": "Le même vin que le Blanc de Blancs de Meneghetti : le même chardonnay de la terre rouge de Višnjan, le même pinot blanc de la terre blanche autour de Motovun, les mêmes 3 ans sur lies en bouteille. Seule la dernière étape change — le Blanc de Blancs reste sans dosage, celui-ci reçoit un peu de sucre et devient Brut, plus rond et plus crémeux. Une belle paire pour goûter ce que le dosage fait à un effervescent.",
+    "de": "Derselbe Wein wie Meneghettis Blanc de Blancs: derselbe Chardonnay von der roten Erde bei Višnjan, derselbe Weißburgunder von der weißen Erde um Motovun, dieselben 3 Jahre auf der Hefe in der Flasche. Nur der letzte Schritt ist anders — der Blanc de Blancs bleibt ohne Dosage, dieser bekommt etwas Zucker und wird zum Brut, runder und cremiger. Ein schönes Paar, um zu schmecken, was die Dosage mit einem Schaumwein macht.",
+    "zh": "与 Meneghetti 的 Blanc de Blancs 是同一款酒：同样来自维什尼安红土的霞多丽，同样来自莫托文周边白土的白皮诺，同样在瓶中带酒泥陈酿 3 年。只有最后一步不同——Blanc de Blancs 不加补液，这一款加入少许糖分成为 Brut，更圆润、更绵密。两款并饮，正好尝出补液对一款气泡酒的影响。",
+    "sl": "Isto vino kot Meneghettijev Blanc de Blancs: isti chardonnay z rdeče zemlje pri Višnjanu, isti beli pinot z bele zemlje okoli Motovuna, ista 3 leta na kvasovkah v steklenici. Razlikuje se le zadnji korak — Blanc de Blancs ostane brez doziranja, ta dobi malo sladkorja in postane Brut, bolj okrogel in kremast. Lep par, da okusiš, kaj doziranje naredi penini.",
+    "es": "El mismo vino que el Blanc de Blancs de Meneghetti: el mismo chardonnay de la tierra roja de Višnjan, el mismo pinot blanc de la tierra blanca alrededor de Motovun, los mismos 3 años sobre lías en botella. Solo cambia el último paso — el Blanc de Blancs se queda sin dosage, este recibe un poco de azúcar y se convierte en Brut, más redondo y cremoso. Una buena pareja para probar lo que el dosage le hace a un espumoso."
+   }
   }
  }
 }
