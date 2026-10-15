@@ -679,3 +679,17 @@ the bills on every read; nothing about a company is stored but the note.
 `/api/prihodi?od=&do=` returns any span up to 93 days (days, articles,
 weekdays, waiters, guests) — used to judge one evening, such as a daily offer.
 
+## Theatrium's clock (2026-10-15)
+
+GitHub's scheduled runs proved unreliable on this account: on 2026-10-14 the
+6:10 Remaris run started at 11:28 and MER's 9:05 at 14:49; on 2026-10-15 the
+6:10 and 7:10 never started. GitHub only promises to *try* a schedule. So
+`web/clock/` is a Worker whose one Cron Trigger (every hour at :10 UTC) starts
+the workflows in theatrium-troskovi through `workflow_dispatch`, which begins
+within seconds. The Zagreb hour decides (`SLOTS`): Remaris at 6:10, 9:10 and
+16:10, MER at 9:10 and 16:10. The workflows keep their own cron as a fallback;
+a duplicate run changes nothing. Its token is `EXPENSE_DISPATCH_TOKEN` (or
+`GH_DISPATCH_TOKEN`), set by deploy-web.yml, which also checks that the token
+can see theatrium-troskovi. It has no fetch handler and no route. Logs:
+Cloudflare → Workers → theatrium-clock → Logs.
+

@@ -1,0 +1,12 @@
+# Theatrium's clock (see worker.js): starts the Remaris and MER syncs in
+# jsiljeg/theatrium-troskovi on time. Deployed by deploy-web.yml.
+name = "theatrium-clock"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = false
+
+[vars]
+REPO = "jsiljeg/theatrium-troskovi"
+
+[triggers]
+crons = ["10 * * * *"]
