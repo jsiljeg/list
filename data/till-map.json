@@ -298,7 +298,7 @@
   },
   "CORTE AURA, FRANCIACORTA 3L": {
    "ref": "corte-aura--franciacorta-brut",
-   "vol": 3.0
+   "vol": 3
   },
   "CORTE AURA, FRANCIACORTA BRUT 0,1L": {
    "ref": "corte-aura--franciacorta-brut",
@@ -1358,6 +1358,10 @@
   "VISTAMARE 0,1": {
    "none": "nije na karti",
    "why": "Vistamare"
+  },
+  "VODOPIVEC, ORIGINE 2016 0,75L": {
+   "ref": "vodopivec--origine-2016",
+   "vol": 0.75
   },
   "VOLNAY 2022, JOBARD": {
    "ref": "remi-jobard--volnay-1er-cru-les-santenots-2022",
