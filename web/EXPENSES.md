@@ -67,8 +67,13 @@ uploads no artifacts and its log prints counts and usage, never contents.
 - `EXPENSE_DISPATCH_TOKEN` — optional; a fine-grained token allowed to start
   workflows in the private repo. Without it the inbox uses
   `GH_DISPATCH_TOKEN`, which then needs that repo added to its access.
-- `CLAUDE_CODE_OAUTH_TOKEN` — a secret of the private repo (the owner's
-  subscription), set by the owner.
+- `CLAUDE_CODE_OAUTH_TOKEN` and `CLAUDE_CODE_OAUTH_TOKEN_2` — secrets of the
+  private repo, the owner's two subscriptions. A run starts on the first and
+  moves to the second when the first is at its usage limit; when both are,
+  the receipts go back in line (not "nije pročitan"), reading pauses 30 min,
+  and the owner gets one e-mail. The step must not run claude under `bash -e`
+  — that is what broke it on 2026-10-15; `scripts/check-claude-runs.mjs`
+  (workflow `claude-runs-check.yml` in both repos) fails on it.
 - Variable `EXPENSE_MODEL` in the private repo overrides the model (`opus`).
 
 ## Bez računa — cash with no receipt (Filho, 2026-10-12)

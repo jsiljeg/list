@@ -9,9 +9,11 @@
  *   ponovi    (staff)   failed → queued, inside the per-wine run limit.
  *   odustani  (staff)   anything not yet published → cancelled.
  *   stanje    (worker)  the run reports: working | needs_info | ready |
- *                       published | failed, with questions / result / branch /
+ *                       published | failed | retry (Claude refused to start:
+ *                       back in line, not counted), with questions / result / branch /
  *                       run_url / ref / usage / error. Only legal moves. */
-import { reply, isStaffAsync, isWorker, readRequest, setStatus, addPhase, savePhotos, pump, startPublish, clip, euros, notifyOwner, person, setPerson } from "../../../_lib/wines.js";
+import { reply, isStaffAsync, isWorker, readRequest, setStatus, addPhase, savePhotos, pump, startPublish, clip, euros, notifyOwner, person, setPerson,
+         requeueLater, RETRY_MIN, LIMIT_WAIT } from "../../../_lib/wines.js";
 
 const WORKER_MOVES = {
   working: ["working", "needs_info", "ready", "failed"],
@@ -35,6 +37,17 @@ export async function onRequestPost({ request, env, params }) {
       return reply(request, { ok: true });
     }
     if (b.phase) await addPhase(env, id, clip(b.phase, 120), !!b.reset);
+    if (b.status === "retry") {
+      /* Claude refused at once on both accounts — a usage limit, nothing was
+         tried (2026-10-15: two wines failed in 2-second runs). Back in line,
+         neither the run nor the dispatch counted, and held for RETRY_MIN so
+         the queue does not knock on a closed door; the owner hears once. */
+      if (item.status !== "working") return reply(request, { error: "move", from: item.status, to: "retry" }, 409);
+      await requeueLater(env, id, RETRY_MIN);
+      if (item.error !== LIMIT_WAIT) await notifyOwner(env, "Dodaj vino: Claude na granici",
+        `Oba Claude računa su trenutno na granici korištenja. Zahtjev ${id} čeka i pokrenut će se sam za ${RETRY_MIN} min.`, b.run_url || item.run_url);
+      return reply(request, { ok: true, held: RETRY_MIN });
+    }
     const allowed = WORKER_MOVES[item.status] || [];
     if (!allowed.includes(b.status)) return reply(request, { error: "move", from: item.status, to: b.status }, 409);
     const f = { status: b.status };

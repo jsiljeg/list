@@ -1,0 +1,18 @@
+# A workflow that runs Claude must survive one account at its usage limit
+# (owner, 2026-10-15: "I don't want these surprises any more"). Runs on every
+# change to a workflow; a failure is GitHub's usual e-mail to the owner. It
+# deliberately gates nothing: an 86 or a price still deploys.
+name: Claude runs survive a usage limit
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/**", "scripts/check-claude-runs.mjs"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node scripts/check-claude-runs.mjs

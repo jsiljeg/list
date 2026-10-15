@@ -36,6 +36,15 @@ preview of the card          ◀───────  ready (result, branch)  �
 
 Caps are counted from `wine_dispatches`, a log, never from request rows.
 
+**Both Claude accounts at their limit** (2026-10-15). A run tries
+`CLAUDE_CODE_OAUTH_TOKEN`, then `CLAUDE_CODE_OAUTH_TOKEN_2`. When both refuse,
+the run reports `retry`: the wine goes back in line with that run and its
+dispatch taken off MAX_RUNS and the daily cap (nothing was tried), held for
+`RETRY_MIN` (30 min, an `updated_at` in the future that `pump()` skips), and
+the owner gets one e-mail. That day it had instead failed twice in 2 seconds,
+because the step ran claude under `bash -e` and never reached the second
+account; `scripts/check-claude-runs.mjs` now fails any such workflow.
+
 ## Who can do what
 
 - **Staff** (`STAFF_KEY`, the daily offer's key): create, answer, publish,

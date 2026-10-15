@@ -245,8 +245,9 @@ export async function pump(env) {
   if (env.WINE_INTAKE_ENABLED !== "1") return { held: "disabled" };
   const busy = await env.DB.prepare("SELECT id FROM wine_requests WHERE status = 'working' LIMIT 1").first();
   if (busy) return { held: "busy" };
+  /* updated_at in the future = held back by requeueLater() */
   const next = await env.DB.prepare(
-    "SELECT id, runs FROM wine_requests WHERE status = 'queued' ORDER BY updated_at LIMIT 1").first();
+    "SELECT id, runs FROM wine_requests WHERE status = 'queued' AND updated_at <= ?1 ORDER BY updated_at LIMIT 1").bind(nowIso()).first();
   if (!next) return { held: "empty" };
   if (next.runs >= MAX_RUNS) {
     await setStatus(env, next.id, { status: "failed", error: "too_many_rounds" });
@@ -264,6 +265,21 @@ export async function pump(env) {
   const d = await dispatch(env, "add", next.id);
   if (d.error) await setStatus(env, next.id, { status: "queued", runs: next.runs, error: d.error });
   return d.error ? { held: d.error } : { started: next.id };
+}
+
+/* Claude refused to start on both accounts (a usage limit). The request goes
+   back in line with this run and its dispatch uncounted — nothing was tried,
+   so it must not eat Filho's MAX_RUNS or the daily cap — and is held for
+   `minutes` by an updated_at in the future, which pump() skips. */
+export const RETRY_MIN = 30;
+export const LIMIT_WAIT = "Claude je trenutno zauzet — vino čeka u redu i pokrenut će se samo.";
+export async function requeueLater(env, id, minutes) {
+  const until = new Date(Date.now() + minutes * 60000).toISOString();
+  await env.DB.prepare("UPDATE wine_requests SET status = 'queued', runs = MAX(0, runs - 1), error = ?2, updated_at = ?3 WHERE id = ?1")
+    .bind(id, LIMIT_WAIT, until).run();
+  await env.DB.prepare(
+    "DELETE FROM wine_dispatches WHERE rowid = (SELECT rowid FROM wine_dispatches WHERE request_id = ?1 AND kind = 'add' ORDER BY at DESC LIMIT 1)")
+    .bind(id).run();
 }
 
 /* A person's name as the device gave it: letters, spaces and dashes only. */

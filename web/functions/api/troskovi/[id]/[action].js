@@ -13,6 +13,7 @@
 import { reply, isStaffAsync, isExpenseWorker, readReceipt, setFields, pump, clip, num, cleanItems, cleanManual,
          mergeEinvoice, keepFixed, zagrebDate, logEvent, pausePump, CATEGORIES } from "../../../_lib/expenses.js";
 import { findTwin } from "../../../_lib/mer.js";
+import { notifyOwner } from "../../../_lib/wines.js";
 
 export async function onRequestPost({ request, env, params }) {
   const { id, action } = params;
@@ -31,7 +32,12 @@ export async function onRequestPost({ request, env, params }) {
          counted, and reading pauses so the queue is not spent on a closed door. */
       await env.DB.prepare("UPDATE expense_receipts SET status = 'queued', batch = NULL, runs = MAX(0, runs - 1), updated_at = ?2 WHERE id = ?1")
         .bind(id, new Date().toISOString()).run();
+      /* the owner hears once per pause, not once per receipt (2026-10-15) */
+      const p = await env.DB.prepare("SELECT v FROM expense_mer_state WHERE k = 'pump_pause_until'").first().catch(() => null);
+      const already = p && p.v > new Date().toISOString();
       await pausePump(env, 30);
+      if (!already) await notifyOwner(env, "Računi: Claude na granici",
+        "Oba Claude računa su trenutno na granici korištenja. Računi čekaju u redu i čitanje se nastavlja samo za 30 min.");
       return reply(request, { ok: true, paused: true });
     }
     if (b.status === "failed") {
