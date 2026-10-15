@@ -378,6 +378,22 @@ test("Dodaj vino: Filho corrects the preview — a price at once, a word through
   expect(posts[0].body.edits).toEqual([{ field: "alcohol", from: "16", to: "16,5" }]);
 });
 
+test("Dodaj vino: Filho's answers stay on the card while the run works", async ({ page }) => {
+  /* 2026-10-15: he answered, the run started, and nothing on the card said
+     his answers had arrived — the new run resets its own steps. */
+  await board(page);
+  const item = { id: "r3", status: "working", created_at: "2026-10-15T10:54:00Z", updated_at: "2026-10-15T11:23:04Z",
+    price_bottle: 70, price_glass: 11, vol: null, photos: [], questions: [], progress: [],
+    answers: [{ q: "Magnum ili 0,75 l?", a: "0,75", at: "2026-10-15T11:22:53Z" },
+              { kind: "novo", to: true, at: "2026-10-15T11:24:00Z" }], result: null };
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => route.fulfill({ status: 200, contentType: "application/json",
+    body: JSON.stringify({ items: [item], limits: { enabled: true, today: 1, dailyCap: 10, month: 1, monthlyCap: 60 } }) }));
+  await page.click('.tabs button[data-tab="novo"]');
+  await expect(page.locator("#req-r3 .qa")).toContainText("Magnum ili 0,75 l?");
+  await expect(page.locator("#req-r3 .qa b")).toHaveText(["0,75"]);
+  await expect(page.locator("#req-r3 .prog")).toContainText("Odgovori primljeni");
+});
+
 test("the board's views are one choice: Sve, Skriveno or NOVO, never two at once", async ({ page }) => {
   /* Owner, 2026-10-10: two independent toggles had to be undone by hand
      before the other meant anything. Now picking one replaces the other, and

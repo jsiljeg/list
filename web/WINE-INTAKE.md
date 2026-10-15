@@ -28,7 +28,7 @@ preview of the card          ◀───────  ready (result, branch)  �
 |---|---|---|
 | `WINE_INTAKE_ENABLED` | must be `"1"` | the owner's off switch; without it requests wait |
 | one at a time | — | a second request waits for the first |
-| `DAILY_CAP` | 5 | owner's choice |
+| `DAILY_CAP` | 10 | owner's choice (5 until 2026-10-15) |
 | `MONTHLY_CAP` | 60 | the subscription has no hard $ limit, so ours is the limit |
 | `MAX_RUNS` per wine | 3 | first run + two rounds of questions |
 | photos | ≤ 3 per post, ≤ 6 per wine, ≤ 1,5 MB | shrunk to 2000 px JPEG on the tablet |

@@ -305,8 +305,21 @@
      come from the run itself; the page only adds the clock. */
   const hm = (iso) => new Date(iso).toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" });
   const mins = (from) => Math.max(0, Math.floor((Date.now() - Date.parse(from)) / 60000));
+  /* the questions he answered, in order (edits and NOVO marks have a kind) */
+  const qaOf = (it) => (it.answers || []).filter((a) => a && !a.kind && a.q);
+  function answered(it) {
+    const qa = qaOf(it);
+    if (!qa.length) return "";
+    return `<div class="qa"><p class="lbl">Vaši odgovori</p>${qa.map((a) =>
+      `<p class="muted small">${esc(a.q)}<br><b>${esc(a.a)}</b> · ${esc(hm(a.at))}</p>`).join("")}</div>`;
+  }
   function progress(it) {
-    const steps = [{ t: "Poslano", at: it.created_at }, ...(it.progress || [])];
+    /* his answers are a step too: a new run resets the run's own steps, and
+       without this line nothing said they had arrived (2026-10-15) */
+    const qa = qaOf(it), lastQa = qa.length ? qa[qa.length - 1].at : "";
+    const steps = [{ t: "Poslano", at: it.created_at },
+      ...(lastQa ? [{ t: "Odgovori primljeni", at: lastQa }] : []), ...(it.progress || [])]
+      .sort((a, b) => String(a.at).localeCompare(String(b.at)));
     const live = ["queued", "working", "publishing"].includes(it.status);
     if (it.status === "queued") steps.push({ t: it.error ? errText(it.error) : "Čeka na red", at: it.updated_at });
     const li = steps.map((s, i) => {
@@ -381,7 +394,7 @@
       <div class="req-head"><div><div class="nm">${esc(title)}</div><div class="muted">${esc(prices)} · ${esc(it.created_at.slice(0, 10))}${it.created_by ? ` · poslao ${esc(it.created_by)}` : ""}${it.published_by ? ` · objavio ${esc(it.published_by)}` : ""}</div></div>
         <span class="badge">${esc(label)}</span></div>
       ${hint ? `<p class="muted">${esc(hint)}</p>` : ""}
-      <div class="pics">${pics}</div>${body}</div>`;
+      <div class="pics">${pics}</div>${it.status === "published" ? "" : answered(it)}${body}</div>`;
   }
 
   /* The card as the guest will read it, in Croatian, plus what the run could
