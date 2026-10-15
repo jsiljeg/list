@@ -24,7 +24,7 @@
   },
   "franciacorta brut 3 l": {
    "ref": "corte-aura--franciacorta-brut",
-   "vol": 3.0
+   "vol": 3
   },
   "franciacorta saten": {
    "ref": "corte-aura--franciacorta-saten"
@@ -38,7 +38,7 @@
   },
   "gruner veltliner fass 4 6 l": {
    "ref": "bernhard-ott--fass-4-gruner-veltliner-2023",
-   "vol": 6.0
+   "vol": 6
   },
   "monthelie 1er cru les vignes rondes": {
    "none": "nije na karti",
@@ -423,6 +423,9 @@
   },
   "vino matosevic grimalda crveno": {
    "ref": "matosevic--grimalda-crna-2021"
+  },
+  "vino meneghetti crveno": {
+   "ref": "meneghetti--red-2020"
   },
   "vino meneghetti red": {
    "ref": "meneghetti--red-2020"
