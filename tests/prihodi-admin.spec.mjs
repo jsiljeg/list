@@ -292,9 +292,11 @@ test("the clock: Remaris 6:10 and 16:10, MER 9:10 and 17:10, the report Monday 8
   expect(at("2026-10-15T15:10:00Z")).toEqual(["mer-sync.yml"]);       /* 17:10 */
   expect(at("2026-10-19T06:10:00Z")).toEqual(["weekly-report.yml"]);  /* Monday 8:10 */
   expect(at("2026-10-20T06:10:00Z")).toEqual([]);                     /* Tuesday 8:10 */
+  expect(at("2026-10-15T21:10:00Z")).toEqual(["remaris-sync.yml"]);   /* 23:10 summer */
+  expect(at("2026-11-17T22:10:00Z")).toEqual(["remaris-sync.yml"]);   /* 23:10 winter */
   const toml = readFileSync(new URL("../web/clock/wrangler.toml", import.meta.url), "utf8");
-  expect(toml).toContain('crons = ["10 4,5,6,7,8,14,15,16 * * *"]');
+  expect(toml).toContain('crons = ["10 4,5,6,7,8,14,15,16,21,22 * * *"]');
   /* every slot's hour, summer and winter, is one the trigger wakes on */
-  for (const [h, off] of [[6, 2], [6, 1], [8, 2], [8, 1], [9, 2], [9, 1], [16, 2], [16, 1], [17, 2], [17, 1]]) expect([4, 5, 6, 7, 8, 14, 15, 16]).toContain(h - off);
+  for (const [h, off] of [[6, 2], [6, 1], [8, 2], [8, 1], [9, 2], [9, 1], [16, 2], [16, 1], [17, 2], [17, 1], [23, 2], [23, 1]]) expect([4, 5, 6, 7, 8, 14, 15, 16, 21, 22]).toContain(h - off);
   expect(readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8")).not.toContain("svako jutro u 6:00");
 });

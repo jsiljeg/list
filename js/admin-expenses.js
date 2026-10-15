@@ -409,7 +409,7 @@
     if (!s) return `${monthNav()}${incomeErr ? `<p class="err">${esc(incomeErr)}</p>` : `<p class="muted center"><span class="spin"></span> učitavam prihode…</p>`}`;
     const total = incTotal(s), n = s.days.reduce((a, d) => a + d.n, 0);
     const state = s.state || {}, fail = (() => { try { return state.error ? JSON.parse(state.error) : null; } catch { return null; } })();
-    const footer = `<p class="muted small">Iz Remarisa, sami: ujutro u 6:10 (cijeli jučerašnji dan) i poslijepodne u 16:10 (današnji ručak; večera stiže sljedeće jutro).${state.last_ok
+    const footer = `<p class="muted small">Iz Remarisa, sami: u 6:10 (cijeli jučerašnji dan), u 16:10 (današnji ručak) i u 23:10 (večera; stolovi zatvoreni kasnije stižu u 6:10).${state.last_ok
         ? ` Zadnje čitanje: ${hrDate(state.last_ok.slice(0, 10))} u ${new Date(state.last_ok).toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" })}.` : ""}</p>
       ${fail && fail.msg ? `<p class="err">Zadnje čitanje Remarisa nije uspjelo (${hrDate(fail.at.slice(0, 10))}): ${esc(fail.msg)}</p>` : ""}`;
     const twelve = [...Array(12)].map((_, i) => shiftMonth(month, i - 11));

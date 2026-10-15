@@ -8,19 +8,20 @@
  * even when nothing is checking from my side"); the workflows in
  * theatrium-troskovi have no schedule of their own any more.
  *
- * One trigger at :10 on the UTC hours that are 6, 8, 9, 16 or 17 in Zagreb in
- * summer or winter (8 wake-ups a day); the Zagreb hour decides which act, so
- * the clock change needs no edit. Twice a day each (owner: "reliable 2
- * Remaris per day and 2 MER per day"):
+ * One trigger at :10 on the UTC hours that are 6, 8, 9, 16, 17 or 23 in Zagreb
+ * in summer or winter (10 wake-ups a day); the Zagreb hour decides which act, so
+ * the clock change needs no edit. Remaris three times, MER twice (owner:
+ * "reliable 2 Remaris per day and 2 MER per day", then "add the 23:10 run"):
  *   Remaris  6:10  yesterday, whole — the till's day closes overnight
  *            16:10 today's lunch, the same afternoon
+ *            23:10 tonight's dinner, the same night (late tables at 6:10)
  *   MER      9:10 and 17:10 — e-invoices are issued through the working day
  *   Weekly report, Monday 8:10
  * A start GitHub refuses is mailed to the owner (ALERTS), so silence means it
  * worked. No fetch handler and no route: nothing outside can make it run.
  * Deployed by .github/workflows/deploy-web.yml with DISPATCH_TOKEN (the token
  * that may start theatrium-troskovi's workflows). Plain JavaScript, no build. */
-export const SLOTS = { 6: ["remaris-sync.yml"], 9: ["mer-sync.yml"], 16: ["remaris-sync.yml"], 17: ["mer-sync.yml"] };
+export const SLOTS = { 6: ["remaris-sync.yml"], 9: ["mer-sync.yml"], 16: ["remaris-sync.yml"], 17: ["mer-sync.yml"], 23: ["remaris-sync.yml"] };
 export const WEEKLY = { day: 1, hour: 8, wf: "weekly-report.yml" };   /* Monday */
 const zagreb = (d) => Object.fromEntries(new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Zagreb", weekday: "short", hour: "2-digit", hour12: false })
   .formatToParts(d).map((x) => [x.type, x.value]));
