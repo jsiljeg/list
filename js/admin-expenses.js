@@ -952,7 +952,11 @@
      Vinska karta (data/till-map.json), a glass article to the category the
      wine is poured under by the glass, a bottle to its bottle category. What
      the map has not settled is shown as such, never guessed. */
-  let wineByTill = false;
+  let wineByTill = false, openVinCat = "";
+  /* inside a category, by country, largest first (owner, 2026-10-16:
+     "some country data … clarity, not overdo it") — one tap away */
+  const COUNTRY_HR = { HR: "Hrvatska", FR: "Francuska", IT: "Italija", DE: "Njemačka", AT: "Austrija", SI: "Slovenija",
+    ES: "Španjolska", US: "SAD", CN: "Kina", PT: "Portugal" };
   const LIST_CATS = [["sparkling", "Pjenušci"], ["champagne", "Šampanjci"], ["white", "Bijela vina"], ["rose", "Rosé"],
     ["red", "Crvena vina"], ["dessert", "Desertna vina"]];
   const catOfStyle = (st) => { const x = String(st || "");
@@ -969,12 +973,21 @@
       const a = arts[it.name], w = a && !a.ask && a.ref ? byRef.get(a.ref) : null;
       /* "nije vino" (a gin tonik rung under wine) apart from real wine the
          till sells that our list does not carry */
-      if (a && a.none) { (/vino/i.test(a.none) && !/na karti/i.test(a.none) ? none : offList).t += it.total || 0; continue; }
+      if (a && a.none) {
+        const bin = /vino/i.test(a.none) && !/na karti/i.test(a.none) ? none : offList;
+        bin.t += it.total || 0; /* the map's note names the wine; a remark ("Filho: više ga nema") or an
+           aside after a dash is not a name, so the till's own name is used there */
+        const name = a.why && !/^filho:/i.test(a.why) ? a.why.split(/ — | \(|, na čašu/)[0] : nameCase(it.name);
+        (bin.lines || (bin.lines = [])).push({ name, t: it.total || 0 });
+        continue;
+      }
       if (!w) { open.t += it.total || 0; open.n++; continue; }
       const glass = a.vol <= 0.15;
       const c = (glass ? w.cats.glass || w.cats.bottle : w.cats.bottle || w.cats.glass) || catOfStyle(w.style);
-      const e = cats[c] || (cats[c] = { t: 0, glass: 0, bottle: 0 });
+      const e = cats[c] || (cats[c] = { t: 0, glass: 0, bottle: 0, by: {} });
       e.t += it.total || 0; e[glass ? "glass" : "bottle"] += it.total || 0;
+      const k = w.country || "—", ce = e.by[k] || (e.by[k] = { t: 0, glass: 0, bottle: 0 });
+      ce.t += it.total || 0; ce[glass ? "glass" : "bottle"] += it.total || 0;
     }
     /* the month's articles come capped at 400; what did not fit is unsettled too */
     open.t += Math.max(0, rubTotal - seen);
@@ -985,9 +998,19 @@
     if (!v) return `<div class="parts"><p class="muted small"><span class="spin"></span> učitavam vinsku kartu…</p></div>`;
     const rows = LIST_CATS.filter(([k]) => v.cats[k]).map(([k, label]) => [label, v.cats[k]]).sort((x, y) => y[1].t - x[1].t);
     const split = (e) => [e.bottle > 0.004 ? `boca ${eur0(e.bottle)}` : "", e.glass > 0.004 ? `čaša ${eur0(e.glass)}` : ""].filter(Boolean).join(" · ");
-    return `<div class="parts">${rows.map(([label, e]) => `<div><span>${esc(label)}<br><small class="muted">${split(e)}</small></span><span>${eur0(e.t)}</span></div>`).join("")}
-      ${v.offList.t > 0.004 ? `<div><span>Vina koja nisu na karti<br><small class="muted">prodana iz blagajne, a nema ih na vinskoj karti</small></span><span>${eur0(v.offList.t)}</span></div>` : ""}
-      ${v.none.t > 0.004 ? `<div><span>Nije vino<br><small class="muted">npr. gin tonik ili voda upisani u grupu vina</small></span><span>${eur0(v.none.t)}</span></div>` : ""}
+    const row = (key, label, sub, t, inner) => `<button class="vrow" data-vincat="${key}" aria-expanded="${openVinCat === key}">
+        <span>${esc(label)} <span class="muted">${openVinCat === key ? "▾" : "▸"}</span><br><small class="muted">${sub}</small></span><span>${eur0(t)}</span></button>
+      ${openVinCat === key ? `<div class="vsub">${inner}</div>` : ""}`;
+    /* countries: the share of the category, bottle/glass under each */
+    const byCountry = (e) => Object.entries(e.by).sort((x, y) => y[1].t - x[1].t).map(([k, c]) =>
+      `<div><span>${esc(COUNTRY_HR[k] || k)} <small class="muted">${e.t ? Math.round((c.t / e.t) * 100) : 0}%</small><br><small class="muted">${split(c)}</small></span><span>${eur0(c.t)}</span></div>`).join("");
+    /* what the till sold off the list, by name — what to ask Filho about */
+    const byName = (bin) => { const m = new Map();
+      for (const l of bin.lines || []) m.set(l.name, (m.get(l.name) || 0) + l.t);
+      return [...m].sort((x, y) => y[1] - x[1]).map(([n, t]) => `<div><span>${esc(n)}</span><span>${eur0(t)}</span></div>`).join(""); };
+    return `<div class="parts">${rows.map(([label, e]) => row(label, label, split(e), e.t, byCountry(e))).join("")}
+      ${v.offList.t > 0.004 ? row("offlist", "Vina koja nisu na karti", "prodana iz blagajne, a nema ih na vinskoj karti", v.offList.t, byName(v.offList)) : ""}
+      ${v.none.t > 0.004 ? row("none", "Nije vino", "npr. gin tonik ili voda upisani u grupu vina", v.none.t, byName(v.none)) : ""}
       ${v.open.t > 0.004 ? `<div><span>Nepovezano<br><small class="muted">artikli iz blagajne koji još nisu povezani s vinom — Vinska karta › Za povezati</small></span><span>${eur0(v.open.t)}</span></div>` : ""}</div>
       <button class="linkish small" data-vinsrc="till">po grupama u Remarisu</button>`;
   }
@@ -1817,6 +1840,7 @@
   function wire(box) {
     box.querySelectorAll("[data-rub]").forEach((b) => b.addEventListener("click", () => { openRub = openRub === b.dataset.rub ? null : b.dataset.rub; render(); }));
     box.querySelectorAll(".days [data-day]").forEach((b) => b.addEventListener("click", () => { selDay = b.dataset.day; render(); }));
+    box.querySelectorAll("[data-vincat]").forEach((b) => b.addEventListener("click", () => { openVinCat = openVinCat === b.dataset.vincat ? "" : b.dataset.vincat; render(); }));
     box.querySelectorAll("[data-vinsrc]").forEach((b) => b.addEventListener("click", () => { wineByTill = b.dataset.vinsrc === "till"; render(); }));
     box.querySelectorAll("[data-staff]").forEach((b) => b.addEventListener("click", () => { openStaff = openStaff === b.dataset.staff ? "" : b.dataset.staff; render(); }));
     box.querySelectorAll("[data-winebox]").forEach((b) => b.addEventListener("click", () => { openWineBox = openWineBox === b.dataset.winebox ? "" : b.dataset.winebox; render(); }));
