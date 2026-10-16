@@ -19,10 +19,14 @@ export async function onRequestGet({ request, env, waitUntil }) {
   /* the first page does the housekeeping; the rest only read */
   if (!offset && waitUntil) waitUntil(merSync(env));
   const pumped = offset ? null : await pump(env);
+  /* The page's ids first, sorted on narrow columns (idx_exp_order), then
+     only those rows in full: sorting the whole table with every receipt's
+     lines attached took ~1,5 s a page at 712 receipts (2026-10-16). */
   const { results } = await env.DB.prepare(
-    `SELECT r.*, (SELECT GROUP_CONCAT(n) FROM expense_photos p WHERE p.receipt_id = r.id) AS pics
-       FROM expense_receipts r ORDER BY COALESCE(r.doc_date, substr(r.created_at, 1, 10)) DESC, r.created_at DESC, r.id
-      LIMIT ?1 OFFSET ?2`).bind(limit + 1, offset).all();
+    `WITH page AS (SELECT id, COALESCE(doc_date, substr(created_at, 1, 10)) AS d, created_at AS c FROM expense_receipts
+                    ORDER BY COALESCE(doc_date, substr(created_at, 1, 10)) DESC, created_at DESC, id LIMIT ?1 OFFSET ?2)
+     SELECT r.*, (SELECT GROUP_CONCAT(n) FROM expense_photos p WHERE p.receipt_id = r.id) AS pics
+       FROM page JOIN expense_receipts r ON r.id = page.id ORDER BY page.d DESC, page.c DESC, page.id`).bind(limit + 1, offset).all();
   const more = (results || []).length > limit;
   if (more) results.pop();
   /* Each receipt's lines are stored as JSON already; they go out as stored

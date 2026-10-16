@@ -67,9 +67,19 @@ test("Prihodi shows the month from Remaris, and Pregled and PDV use it", async (
   await expect(page.locator(".big")).toContainText("računi bez couverta (šank, kava, vaš stol): 1, 130 €");
   /* payments are not shown (owner, 2026-10-14); rubrike open onto the sales groups */
   await expect(page.locator("#tab-troskovi")).not.toContainText("Visa");
+  /* Vino opens on the list's own categories (owner, 2026-10-16); a till
+     article the map has not settled is said to be so, never guessed, and the
+     till's own groups are one tap away */
   await page.click('[data-rub="vino"]');
-  await expect(page.locator("#tab-troskovi")).toContainText("Vina na čaše");
-  await expect(page.locator(".days > span")).toHaveCount(2);
+  await expect(page.locator(".parts")).toContainText("Nepovezano");
+  await expect(page.locator(".parts")).toContainText("330 €");
+  await page.click('[data-vinsrc="till"]');
+  await expect(page.locator(".parts")).toContainText("Vina na čaše");
+  /* a tablet has no hover (2026-10-16): the latest day is shown, a tap shows another */
+  await expect(page.locator(".days > button")).toHaveCount(2);
+  await expect(page.locator(".dayline")).toContainText("130 €");
+  await page.click(`.days [data-day="${month}-01"]`);
+  await expect(page.locator(".dayline")).toContainText("1.000 € · 2 računa");
   await expect(page.locator("#tab-troskovi")).toContainText("Beef wellington");
   await expect(page.locator(".wt")).toContainText("Ivo");
   await page.click('.seg3 [data-sub="pdv"]');

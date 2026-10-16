@@ -260,6 +260,8 @@ CREATE TABLE IF NOT EXISTS expense_receipts (
 );
 CREATE INDEX IF NOT EXISTS idx_exp_status ON expense_receipts (status, updated_at);
 CREATE INDEX IF NOT EXISTS idx_exp_date ON expense_receipts (doc_date);
+-- the receipts list's own order, so a page is read without sorting the table (2026-10-16)
+CREATE INDEX IF NOT EXISTS idx_exp_order ON expense_receipts (COALESCE(doc_date, substr(created_at, 1, 10)) DESC, created_at DESC, id);
 
 CREATE TABLE IF NOT EXISTS expense_photos (
   receipt_id  TEXT NOT NULL,

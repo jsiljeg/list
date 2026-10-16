@@ -163,8 +163,24 @@
   let loadedAt = 0;
   window.loadExpenses = () => {
     if (receipts.length && Date.now() - loadedAt < 5 * 60000) { render(); return load(true); }
-    return load();
+    warmIncome();
+    /* tapped while the quiet fetch below is still on its way: wait for it */
+    return warming || load();
   };
+  let warming = null;
+  /* The tab took 5–8 s to open (owner, 2026-10-16): the receipts, then the
+     month's sales only once they had drawn. Now the sales are asked for at
+     the same moment as the receipts, and both are fetched quietly a moment
+     after /admin opens, so the tab is usually ready before it is tapped. */
+  function warmIncome() {
+    const m = month || latestMonth();
+    [m, shiftMonth(m, -1), shiftMonth(m, -12)].forEach(needIncome);
+  }
+  setTimeout(() => {
+    if (!ghKey() || receipts.length || loadedAt) return;
+    warmIncome();
+    warming = load().finally(() => { warming = null; });
+  }, 1500);
 
   /* ---------- numbers ---------- */
   /* a photo of an invoice that also came from MER counts once, as the e-invoice */
@@ -404,6 +420,17 @@
     return by;
   }
   let openRub = null;
+  /* A tablet has no hover (owner, 2026-10-16): a tap on a day's bar shows
+     its numbers under the chart, and the latest day is shown until then. */
+  let selDay = "";   /* WD (weekday names) is declared with Po danu u tjednu below */
+  const pickDay = (s) => (s.days.some((d) => d.day === selDay) ? selDay : (s.days.filter((d) => d.total > 0).slice(-1)[0] || {}).day || "");
+  function dayLine(s, avg) {
+    const d = s.days.find((x) => x.day === pickDay(s));
+    if (!d) return "";
+    const p = avg && d.total ? pct(d.total, avg) : null;
+    return `<p class="dayline small"><b>${WD[new Date(d.day + "T12:00:00").getDay()]} ${hrDate(d.day)}</b> · ${eur0(d.total)} · ${d.n} ${plural(d.n, "račun", "računa", "računa")}${d.n ? ` · prosječni ${eur0(d.total / d.n)}` : ""}${p != null
+      ? ` · <span class="${p >= 0 ? "down" : "up"}">${p >= 0 ? "▲" : "▼"} ${Math.abs(p)}%</span> od prosjeka dana` : ""}${selDay ? "" : ` <span class="muted">· dodirnite stupac za drugi dan</span>`}</p>`;
+  }
   function incomeView() {
     const s = needIncome(month), prev = needIncome(shiftMonth(month, -1));
     if (!s) return `${monthNav()}${incomeErr ? `<p class="err">${esc(incomeErr)}</p>` : `<p class="muted center"><span class="spin"></span> učitavam prihode…</p>`}`;
@@ -448,8 +475,9 @@
         ${cmp ? `<span class="small">${cmp}</span>` : ""}
         ${cmpY ? `<span class="small">${cmpY}</span>` : ""}</div>
       <h3 class="h">Po danima</h3>
-      <div class="days">${s.days.map((d) => `<span title="${hrDate(d.day)} · ${eur0(d.total)} · ${d.n} ${plural(d.n, "račun", "računa", "računa")}">
-        <span style="height:${Math.max(2, (d.total / dmax) * 100)}%"></span><small>${Number(d.day.slice(8, 10))}</small></span>`).join("")}</div>
+      <div class="days">${s.days.map((d) => `<button data-day="${d.day}" class="${d.day === pickDay(s) ? "on" : ""}" title="${hrDate(d.day)} · ${eur0(d.total)} · ${d.n} ${plural(d.n, "račun", "računa", "računa")}">
+        <span style="height:${Math.max(2, (d.total / dmax) * 100)}%"></span><small>${Number(d.day.slice(8, 10))}</small></button>`).join("")}</div>
+      ${dayLine(s, total / Math.max(1, workDays))}
       <h3 class="h">Što se prodaje</h3>
       <div class="bars">${rubBars(s, total)}</div>
       ${salesDetail(s, prev)}
@@ -529,20 +557,23 @@
         tillMap = tm; buyMap = bm;
         const hidden = new Set((una.hidden || []).filter((h) => !h.where).map((h) => `${h.producer}|${h.name}`));
         const seen = new Map();
-        const walk = (o, sec) => {
-          if (Array.isArray(o)) return o.forEach((x) => walk(x, sec));
+        const walk = (o, sec, cat) => {
+          if (Array.isArray(o)) return o.forEach((x) => walk(x, sec, cat));
           if (!o || typeof o !== "object") return;
           if (o.ref && lib.wines[o.ref] && lib.wines[o.ref].insight && !lib.wines[o.ref].insight.kind) {   /* wines only: not spirits, not water */
-            const w = lib.wines[o.ref], e = seen.get(o.ref) || { ref: o.ref, name: w.name, producer: w.producer, prices: [], listings: [], style: w.insight.style, country: w.insight.country };
+            const w = lib.wines[o.ref], e = seen.get(o.ref) || { ref: o.ref, name: w.name, producer: w.producer, prices: [], listings: [], style: w.insight.style, country: w.insight.country, cats: {} };
             if (o.price != null) { e.prices.push(o.price); e.listings.push({ glass: sec === "glass", vol: o.vol || 0.75, price: o.price }); }
+            /* the list's own category, by the glass and by the bottle */
+            const side = sec === "glass" ? "glass" : "bottle";
+            if (cat && !e.cats[side]) e.cats[side] = cat;
             seen.set(o.ref, e);
           }
-          Object.values(o).forEach((x) => walk(x, sec));
+          Object.values(o).forEach((x) => walk(x, sec, cat));
         };
-        for (const sec of list.sections || []) walk(sec, sec.id);
+        for (const sec of list.sections || []) for (const c of sec.categories || []) walk(c, sec.id, c.id);
         /* a mapped wine that has since left the list still has a name to show */
         const extra = Object.values(tm.articles || {}).filter((a) => a.ref && !seen.has(a.ref) && lib.wines[a.ref]).map((a) => {
-          const w = lib.wines[a.ref]; return { ref: a.ref, name: w.name, producer: w.producer, prices: [], listings: [], style: (w.insight || {}).style, country: (w.insight || {}).country, gone: true };
+          const w = lib.wines[a.ref]; return { ref: a.ref, name: w.name, producer: w.producer, prices: [], listings: [], style: (w.insight || {}).style, country: (w.insight || {}).country, gone: true, cats: {} };
         });
         wineList = [...seen.values(), ...extra].map((w) => ({ ...w, p: ttoks(w.producer), n: ttoks(w.name), y: tyear(w.name),
           since: (since.since || {})[w.ref] || "", off: hidden.has(`${w.producer}|${w.name}`) }));
@@ -912,8 +943,53 @@
     return rows.map(([k, label, b]) => `<button class="bar" data-rub="${k}" aria-expanded="${openRub === k}">
         <span class="bl">${esc(label)}</span><span class="bv">${eur0(b.total)} <small>${total ? Math.round((b.total / total) * 100) : 0}%</small></span>
         <span class="track"><span style="width:${Math.max(2, (b.total / max) * 100)}%;background:${color[k]}"></span></span></button>
-      ${openRub === k ? `<div class="parts">${Object.entries(b.groups).sort((x, y) => y[1] - x[1])
-        .map(([g, v]) => `<div><span>${esc(g)}</span><span>${eur0(v)}</span></div>`).join("")}</div>` : ""}`).join("");
+      ${openRub === k ? (k === "vino" && !wineByTill ? vinoParts(s, b) : `<div class="parts">${Object.entries(b.groups).sort((x, y) => y[1] - x[1])
+        .map(([g, v]) => `<div><span>${esc(g)}</span><span>${eur0(v)}</span></div>`).join("")}</div>${k === "vino"
+        ? `<button class="linkish small" data-vinsrc="list">po kategorijama vinske karte</button>` : ""}`) : ""}`).join("");
+  }
+  /* Vino split by the list's own categories (owner, 2026-10-16), not by the
+     till's groups: every till article goes through the same 1:1 map as
+     Vinska karta (data/till-map.json), a glass article to the category the
+     wine is poured under by the glass, a bottle to its bottle category. What
+     the map has not settled is shown as such, never guessed. */
+  let wineByTill = false;
+  const LIST_CATS = [["sparkling", "Pjenušci"], ["champagne", "Šampanjci"], ["white", "Bijela vina"], ["rose", "Rosé"],
+    ["red", "Crvena vina"], ["dessert", "Desertna vina"]];
+  const catOfStyle = (st) => { const x = String(st || "");
+    return /^champagne/.test(x) ? "champagne" : /sparkling/.test(x) ? "sparkling" : /^rose/.test(x) ? "rose"
+      : /^red/.test(x) ? "red" : /dessert|sweet/.test(x) ? "dessert" : "white"; };
+  function vinoSplit(s, rubTotal) {
+    if (!needWineList() || !tillMap) return null;
+    const arts = tillMap.articles || {}, byRef = new Map(wineList.map((w) => [w.ref, w]));
+    const cats = {}, none = { t: 0 }, offList = { t: 0 }, open = { t: 0, n: 0 };
+    let seen = 0;
+    for (const it of s.items || []) {
+      if (!isWine(it)) continue;
+      seen += it.total || 0;
+      const a = arts[it.name], w = a && !a.ask && a.ref ? byRef.get(a.ref) : null;
+      /* "nije vino" (a gin tonik rung under wine) apart from real wine the
+         till sells that our list does not carry */
+      if (a && a.none) { (/vino/i.test(a.none) && !/na karti/i.test(a.none) ? none : offList).t += it.total || 0; continue; }
+      if (!w) { open.t += it.total || 0; open.n++; continue; }
+      const glass = a.vol <= 0.15;
+      const c = (glass ? w.cats.glass || w.cats.bottle : w.cats.bottle || w.cats.glass) || catOfStyle(w.style);
+      const e = cats[c] || (cats[c] = { t: 0, glass: 0, bottle: 0 });
+      e.t += it.total || 0; e[glass ? "glass" : "bottle"] += it.total || 0;
+    }
+    /* the month's articles come capped at 400; what did not fit is unsettled too */
+    open.t += Math.max(0, rubTotal - seen);
+    return { cats, none, offList, open };
+  }
+  function vinoParts(s, b) {
+    const v = vinoSplit(s, b.total);
+    if (!v) return `<div class="parts"><p class="muted small"><span class="spin"></span> učitavam vinsku kartu…</p></div>`;
+    const rows = LIST_CATS.filter(([k]) => v.cats[k]).map(([k, label]) => [label, v.cats[k]]).sort((x, y) => y[1].t - x[1].t);
+    const split = (e) => [e.bottle > 0.004 ? `boca ${eur0(e.bottle)}` : "", e.glass > 0.004 ? `čaša ${eur0(e.glass)}` : ""].filter(Boolean).join(" · ");
+    return `<div class="parts">${rows.map(([label, e]) => `<div><span>${esc(label)}<br><small class="muted">${split(e)}</small></span><span>${eur0(e.t)}</span></div>`).join("")}
+      ${v.offList.t > 0.004 ? `<div><span>Vina koja nisu na karti<br><small class="muted">prodana iz blagajne, a nema ih na vinskoj karti</small></span><span>${eur0(v.offList.t)}</span></div>` : ""}
+      ${v.none.t > 0.004 ? `<div><span>Nije vino<br><small class="muted">npr. gin tonik ili voda upisani u grupu vina</small></span><span>${eur0(v.none.t)}</span></div>` : ""}
+      ${v.open.t > 0.004 ? `<div><span>Nepovezano<br><small class="muted">artikli iz blagajne koji još nisu povezani s vinom — Vinska karta › Za povezati</small></span><span>${eur0(v.open.t)}</span></div>` : ""}</div>
+      <button class="linkish small" data-vinsrc="till">po grupama u Remarisu</button>`;
   }
   /* ---------- Pregled (owner, 2026-10-14: "not generic data, but the useful
      ones … to drive him to the right direction"; the owner is the chef) ----------
@@ -1740,6 +1816,8 @@
   /* ---------- wiring ---------- */
   function wire(box) {
     box.querySelectorAll("[data-rub]").forEach((b) => b.addEventListener("click", () => { openRub = openRub === b.dataset.rub ? null : b.dataset.rub; render(); }));
+    box.querySelectorAll(".days [data-day]").forEach((b) => b.addEventListener("click", () => { selDay = b.dataset.day; render(); }));
+    box.querySelectorAll("[data-vinsrc]").forEach((b) => b.addEventListener("click", () => { wineByTill = b.dataset.vinsrc === "till"; render(); }));
     box.querySelectorAll("[data-staff]").forEach((b) => b.addEventListener("click", () => { openStaff = openStaff === b.dataset.staff ? "" : b.dataset.staff; render(); }));
     box.querySelectorAll("[data-winebox]").forEach((b) => b.addEventListener("click", () => { openWineBox = openWineBox === b.dataset.winebox ? "" : b.dataset.winebox; render(); }));
     /* Za povezati: one tap writes the article into data/till-map.json */
