@@ -96,13 +96,15 @@ export async function onRequestGet({ request, env }) {
   // checking the list, so it stays out of the totals unless ?all=1.
   const guestsOnly = params.get("all") !== "1";
   const q = (sql) => env.DB.prepare(guestsOnly ? sql.replace(/WHERE date >= \?1/g, "WHERE date >= ?1 AND device != 'desktop'") : sql).bind(since).all().then((r) => r.results || []);
-  const [languages, depth, devices, byHour, byDay, wines, winesByLang, sections, searches, empty, features, totals] = await Promise.all([
+  const [languages, depth, devices, byHour, byDay, byDayDevice, wines, winesByLang, sections, searches, empty, features, totals] = await Promise.all([
     // Per language: tables, cards opened, searches, minutes browsing.
     q(`SELECT lang, SUM(n) AS tables, SUM(cards) AS cards, SUM(searches) AS searches, SUM(seconds) AS seconds FROM guest_sessions WHERE date >= ?1 GROUP BY lang ORDER BY tables DESC`),
     q(`SELECT lang, depth, SUM(n) AS tables FROM guest_sessions WHERE date >= ?1 GROUP BY lang, depth`),
     q(`SELECT device, SUM(n) AS tables FROM guest_sessions WHERE date >= ?1 GROUP BY device`),
     q(`SELECT hour, SUM(n) AS tables FROM guest_sessions WHERE date >= ?1 GROUP BY hour ORDER BY hour`),
     q(`SELECT date, SUM(n) AS tables, SUM(cards) AS cards FROM guest_sessions WHERE date >= ?1 GROUP BY date ORDER BY date`),
+    // Each day per device: did more guests open the list on their own phone (QR) once the codes were on the tables?
+    q(`SELECT date, device, SUM(n) AS tables, SUM(cards) AS cards, SUM(seconds) AS seconds FROM guest_sessions WHERE date >= ?1 GROUP BY date, device ORDER BY date`),
     q(`SELECT key AS wine, SUM(n) AS n FROM guest_events WHERE date >= ?1 AND kind = 'wine' GROUP BY key ORDER BY n DESC LIMIT 15`),
     // Each language's three most opened wines.
     q(`SELECT lang, wine, n FROM (SELECT lang, key AS wine, SUM(n) AS n, ROW_NUMBER() OVER (PARTITION BY lang ORDER BY SUM(n) DESC) AS r
@@ -113,5 +115,5 @@ export async function onRequestGet({ request, env }) {
     q(`SELECT key AS feature, SUM(n) AS n FROM guest_events WHERE date >= ?1 AND kind = 'feature' GROUP BY key ORDER BY n DESC`),
     q(`SELECT kind, SUM(n) AS n FROM guest_events WHERE date >= ?1 GROUP BY kind`),
   ]);
-  return json({ since, days, languages, depth, devices, byHour, byDay, wines, winesByLang, sections, searches, empty, features, totals }, 200, { "cache-control": "no-store" });
+  return json({ since, days, languages, depth, devices, byHour, byDay, byDayDevice, wines, winesByLang, sections, searches, empty, features, totals }, 200, { "cache-control": "no-store" });
 }
