@@ -17,8 +17,12 @@ export async function onRequestGet({ request, env, waitUntil }) {
   const offset = Math.max(0, Math.floor(Number(url.searchParams.get("offset")) || 0));
   const limit = Math.min(150, Math.max(1, Math.floor(Number(url.searchParams.get("limit")) || 150)));
   /* the first page does the housekeeping; the rest only read */
-  if (!offset && waitUntil) waitUntil(merSync(env));
-  const pumped = offset ? null : await pump(env);
+  /* in the background, after the answer: they need nothing from it, and
+     awaited they cost the first page ~1 s of one-at-a-time queries (2026-10-16) */
+  if (!offset && waitUntil) { waitUntil(merSync(env)); waitUntil(pump(env)); }
+  const pumped = offset || waitUntil ? null : await pump(env);
+  /* the first page's totals, asked for together with the page */
+  const extras = offset ? null : Promise.all([env.DB.prepare("SELECT COUNT(*) AS n FROM expense_receipts").first(), limits(env), merStatus(env)]);
   /* The page's ids first, sorted on narrow columns (idx_exp_order), then
      only those rows in full: sorting the whole table with every receipt's
      lines attached took ~1,5 s a page at 712 receipts (2026-10-16). */
@@ -42,9 +46,9 @@ export async function onRequestGet({ request, env, waitUntil }) {
   /* the first page also says how many there are, so the app can ask for the
      rest all at once (2026-10-13: five pages one after another took ~5 s);
      the others carry only the page */
+  const [count, lim, mer] = extras ? await extras : [];
   const tail = JSON.stringify(offset ? { more } : {
-    more, total: ((await env.DB.prepare("SELECT COUNT(*) AS n FROM expense_receipts").first()) || {}).n || 0,
-    limits: await limits(env), pumped, mer: await merStatus(env),
+    more, total: (count || {}).n || 0, limits: lim, pumped, mer,
   }).slice(1);
   return new Response(`{"items":[${parts.join(",")}],${tail}`, {
     headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...cors(request) } });
