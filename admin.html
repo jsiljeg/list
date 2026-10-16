@@ -201,6 +201,18 @@ button{font:inherit;cursor:pointer}
 .parts{margin:0 0 6px 12px;padding-left:10px;border-left:2px solid var(--line);font-size:14px;color:var(--dim)}
 .parts div,.lines div,.vend div{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
 .parts .vrow{display:flex;justify-content:space-between;gap:10px;width:100%;padding:5px 0;background:none;border:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+/* Every row that opens shows it (owner, 2026-10-16: tapping a waiter showed
+   more, "but not clear this is an option even"): a chevron at the row's end,
+   pointing down once open. One rule for every expandable row in Troškovi. */
+#tab-troskovi button[aria-expanded]::after{content:"";flex:none;align-self:center;width:7px;height:7px;margin-left:8px;
+  border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg);opacity:.75;transition:transform .15s}
+#tab-troskovi button[aria-expanded="true"]::after{transform:rotate(45deg);opacity:1}
+#tab-troskovi .bars .bar{grid-template-columns:1fr auto auto}
+#tab-troskovi .bars .bar::after{grid-column:3;grid-row:1}
+#tab-troskovi .nema.wide-left[aria-expanded]{display:flex;justify-content:space-between;align-items:center}
+#tab-troskovi button[aria-expanded]>:nth-last-child(1):not(:first-child){margin-left:auto}
+.sc .sh b::after{content:" · detalji";font-weight:400;font-size:12px;color:var(--dim)}
+.sc .sh[aria-expanded="true"] b::after{content:""}
 .parts .vsub{display:block;margin:0 0 6px 10px;padding-left:10px;border-left:1px dashed var(--line);font-size:13px}
 .vend div{display:grid;grid-template-columns:1fr auto;padding:6px 0}
 .vend .track{height:5px}

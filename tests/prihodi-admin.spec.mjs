@@ -70,6 +70,11 @@ test("Prihodi shows the month from Remaris, and Pregled and PDV use it", async (
   /* Vino opens on the list's own categories (owner, 2026-10-16); a till
      article the map has not settled is said to be so, never guessed, and the
      till's own groups are one tap away */
+  /* every row that opens says so (2026-10-16: tapping a waiter showed more,
+     "but not clear this is an option even") — a chevron on each */
+  const noChevron = await page.evaluate(() => [...document.querySelectorAll("#tab-troskovi button[aria-expanded]")]
+    .filter((b) => getComputedStyle(b, "::after").borderRightStyle !== "solid").length);
+  expect(noChevron).toBe(0);
   await page.click('[data-rub="vino"]');
   await expect(page.locator(".parts")).toContainText("Nepovezano");
   await expect(page.locator(".parts")).toContainText("330 €");

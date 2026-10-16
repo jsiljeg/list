@@ -999,7 +999,7 @@
     const rows = LIST_CATS.filter(([k]) => v.cats[k]).map(([k, label]) => [label, v.cats[k]]).sort((x, y) => y[1].t - x[1].t);
     const split = (e) => [e.bottle > 0.004 ? `boca ${eur0(e.bottle)}` : "", e.glass > 0.004 ? `čaša ${eur0(e.glass)}` : ""].filter(Boolean).join(" · ");
     const row = (key, label, sub, t, inner) => `<button class="vrow" data-vincat="${key}" aria-expanded="${openVinCat === key}">
-        <span>${esc(label)} <span class="muted">${openVinCat === key ? "▾" : "▸"}</span><br><small class="muted">${sub}</small></span><span>${eur0(t)}</span></button>
+        <span>${esc(label)}<br><small class="muted">${sub}</small></span><span>${eur0(t)}</span></button>
       ${openVinCat === key ? `<div class="vsub">${inner}</div>` : ""}`;
     /* countries: the share of the category, bottle/glass under each */
     const byCountry = (e) => Object.entries(e.by).sort((x, y) => y[1].t - x[1].t).map(([k, c]) =>
