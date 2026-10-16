@@ -171,6 +171,11 @@
          "anchor": 11
         },
         {
+         "ref": "casa-rojo--enemigo-mio-garnacha-2022",
+         "price": 11,
+         "new": true
+        },
+        {
          "ref": "moret-nomine--syrah-le-fales-2024",
          "price": 12,
          "anchor": 12
@@ -1648,6 +1653,11 @@
          "ref": "marques-de-murrieta--castillo-ygay-2012",
          "price": 350,
          "anchor": 350
+        },
+        {
+         "ref": "casa-rojo--enemigo-mio-garnacha-2022",
+         "price": 60,
+         "new": true
         },
         {
          "ref": "casa-rojo--cl98-2020",

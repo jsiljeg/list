@@ -14568,6 +14568,47 @@
     "sl": "Isto vino kot Meneghettijev Blanc de Blancs: isti chardonnay z rdeče zemlje pri Višnjanu, isti beli pinot z bele zemlje okoli Motovuna, ista 3 leta na kvasovkah v steklenici. Razlikuje se le zadnji korak — Blanc de Blancs ostane brez doziranja, ta dobi malo sladkorja in postane Brut, bolj okrogel in kremast. Lep par, da okusiš, kaj doziranje naredi penini.",
     "es": "El mismo vino que el Blanc de Blancs de Meneghetti: el mismo chardonnay de la tierra roja de Višnjan, el mismo pinot blanc de la tierra blanca alrededor de Motovun, los mismos 3 años sobre lías en botella. Solo cambia el último paso — el Blanc de Blancs se queda sin dosage, este recibe un poco de azúcar y se convierte en Brut, más redondo y cremoso. Una buena pareja para probar lo que el dosage le hace a un espumoso."
    }
+  },
+  "casa-rojo--enemigo-mio-garnacha-2022": {
+   "name": "Enemigo Mío Garnacha 2022",
+   "producer": "Casa Rojo",
+   "insight": {
+    "grape": "Garnacha",
+    "region": "Tierra de Murcia",
+    "country": "ES",
+    "style": "red_medium",
+    "body": "medium",
+    "aromas": [
+     "raspberry",
+     "cherry",
+     "licorice",
+     "balsamic",
+     "herbs",
+     "mint"
+    ],
+    "pairings": [
+     "charcuterie",
+     "white_meat",
+     "cheese_hard",
+     "pork",
+     "stews"
+    ],
+    "temp": "14–16",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Neprijatelj s etikete je divlja svinja: krajem ljeta šeće među trsovima i odnese dobar dio garnache prije berača. Ono što ostane, 2022. se bralo ručno i noću, od 25. kolovoza, da grožđe u podrum stigne svježe.",
+    "en": "The enemy on the label is the wild boar: at the end of summer it roams the rows and takes a good share of the Garnacha before the pickers do. What was left in 2022 was picked by hand, at night, from 25 August, so the grapes reached the cellar fresh.",
+    "it": "Il nemico dell'etichetta è il cinghiale: a fine estate gira tra i filari e si prende una buona parte della garnacha prima dei vendemmiatori. Quello che è rimasto, nel 2022 è stato raccolto a mano e di notte, dal 25 agosto, perché l'uva arrivasse fresca in cantina.",
+    "fr": "L'ennemi de l'étiquette, c'est le sanglier : à la fin de l'été, il se promène entre les rangs et prend une bonne part du grenache avant les vendangeurs. Ce qui restait en 2022 a été vendangé à la main et de nuit, dès le 25 août, pour que le raisin arrive frais au chai.",
+    "de": "Der Feind auf dem Etikett ist das Wildschwein: Ende des Sommers streift es durch die Rebzeilen und holt sich einen guten Teil der Garnacha, bevor die Lesehelfer kommen. Was 2022 übrig blieb, wurde ab dem 25. August von Hand und nachts gelesen, damit die Trauben frisch in den Keller kamen.",
+    "zh": "酒标上的「敌人」是野猪：每到夏末，它们在葡萄行间游荡，抢在采摘工之前吃掉不少歌海娜。2022 年剩下的葡萄从 8 月 25 日起在夜里手工采收，好让果实新鲜地进入酒窖。",
+    "sl": "Sovražnik z etikete je divja svinja: konec poletja se sprehaja med trsi in odnese dober del garnache, preden pridejo obiralci. Kar je ostalo, so leta 2022 obrali ročno in ponoči, od 25. avgusta, da je grozdje v klet prišlo sveže.",
+    "es": "El enemigo de la etiqueta es el jabalí: a finales de verano se pasea entre las cepas y se lleva buena parte de la garnacha antes que los vendimiadores. Lo que quedó en 2022 se vendimió a mano y de noche, desde el 25 de agosto, para que la uva llegara fresca a la bodega."
+   },
+   "notePlain": true
   }
  }
 }
