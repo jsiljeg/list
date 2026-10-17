@@ -158,7 +158,11 @@ export async function monthDetail(env, lo, hi) {
 export async function rangeSummary(env, lo, hi) {
   const { results } = await env.DB.prepare(
     "SELECT day, COUNT(*) AS n, SUM(total) AS total FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY day ORDER BY day").bind(lo, hi).all();
-  return { from: lo, to: hi, days: results || [], ...(await monthDetail(env, lo, hi)) };
+  /* bills by the hour they were closed, per day (2026-10-17: "no table was
+     closed in the past 4 hours" — normal for that day, or not?) */
+  const hours = await env.DB.prepare(
+    "SELECT day, substr(at, 12, 2) AS h, COUNT(*) AS n FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY day, h ORDER BY day, h").bind(lo, hi).all();
+  return { from: lo, to: hi, days: results || [], hours: hours.results || [], ...(await monthDetail(env, lo, hi)) };
 }
 
 /* ---------- Tvrtke (owner, 2026-10-14: "proactive approach to companies from
