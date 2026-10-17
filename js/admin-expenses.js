@@ -431,13 +431,21 @@
     return `<p class="dayline small"><b>${WD[new Date(d.day + "T12:00:00").getDay()]} ${hrDate(d.day)}</b> · ${eur0(d.total)} · ${d.n} ${plural(d.n, "račun", "računa", "računa")}${d.n ? ` · prosječni ${eur0(d.total / d.n)}` : ""}${p != null
       ? ` · <span class="${p >= 0 ? "down" : "up"}">${p >= 0 ? "▲" : "▼"} ${Math.abs(p)}%</span> od prosjeka dana` : ""}${selDay ? "" : ` <span class="muted">· dodirnite stupac za drugi dan</span>`}</p>`;
   }
+  /* Remaris exports a bill once the table is closed, so a read during service
+     can add nothing — say when the newest bill was issued (owner, 2026-10-17:
+     "the workflow was successful, but the number is the same") */
+  function lastBillText(state) {
+    const at = String(state.last_bill || ""), m = at.match(/^(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2})/);
+    if (!m) return "";
+    return ` Zadnji zatvoreni račun: ${hrDate(m[1])} u ${m[2]} — stolovi koji su još otvoreni dolaze s prvim čitanjem nakon što se zatvore.`;
+  }
   function incomeView() {
     const s = needIncome(month), prev = needIncome(shiftMonth(month, -1));
     if (!s) return `${monthNav()}${incomeErr ? `<p class="err">${esc(incomeErr)}</p>` : `<p class="muted center"><span class="spin"></span> učitavam prihode…</p>`}`;
     const total = incTotal(s), n = s.days.reduce((a, d) => a + d.n, 0);
     const state = s.state || {}, fail = (() => { try { return state.error ? JSON.parse(state.error) : null; } catch { return null; } })();
     const footer = `<p class="muted small">Iz Remarisa, sami: u 6:10 (cijeli jučerašnji dan), u 16:10 (današnji ručak) i u 23:10 (večera; stolovi zatvoreni kasnije stižu u 6:10).${state.last_ok
-        ? ` Zadnje čitanje: ${hrDate(state.last_ok.slice(0, 10))} u ${new Date(state.last_ok).toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" })}.` : ""}</p>
+        ? ` Zadnje čitanje: ${hrDate(state.last_ok.slice(0, 10))} u ${new Date(state.last_ok).toLocaleTimeString("hr-HR", { hour: "2-digit", minute: "2-digit" })}.` : ""}${lastBillText(state)}</p>
       ${fail && fail.msg ? `<p class="err">Zadnje čitanje Remarisa nije uspjelo (${hrDate(fail.at.slice(0, 10))}): ${esc(fail.msg)}</p>` : ""}`;
     const twelve = [...Array(12)].map((_, i) => shiftMonth(month, i - 11));
     const byM = Object.fromEntries((s.months || []).map((x) => [x.m, x.total]));

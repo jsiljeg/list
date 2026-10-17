@@ -26,7 +26,7 @@ const summary = {
   waiters: [{ waiter: "Ana", n: 30, total: 900, wine: 300, wine_bills: 20 }, { waiter: "Ivo", n: 30, total: 230, wine: 30, wine_bills: 3 }],
   taxes: [{ tax: "H (HRANA IZLAZ 13%)", total: 800, net: 707.96 }, { tax: "P (PIĆE IZLAZ)", total: 330, net: 264 }],
   custs: [{ cust: "LIGNUM DRUŠTVO S OGRANIČENOM", oib: "1", n: 1, total: 130, virman: 130 }],
-  state: { last_ok: new Date().toISOString(), error: "" },
+  state: { last_ok: new Date().toISOString(), error: "", last_bill: `${month}-02T15:42:11` },
 };
 
 test("Prihodi shows the month from Remaris, and Pregled and PDV use it", async ({ page }) => {
@@ -61,6 +61,10 @@ test("Prihodi shows the month from Remaris, and Pregled and PDV use it", async (
   await expect(page.locator(".rub", { hasText: "Vino" })).toContainText("264 €");
   await page.click('.seg3 [data-sub="prihodi"]');
   await expect(page.locator(".big > b")).toHaveText("1.130 €");
+  /* a read during service adds nothing while tables are open (2026-10-17):
+     the footer says when the newest bill was closed */
+  await expect(page.locator("#tab-troskovi")).toContainText("Zadnji zatvoreni račun:");
+  await expect(page.locator("#tab-troskovi")).toContainText("u 15:42");
   /* potrošnja po gostu (owner, 2026-10-14): the bills with couverts over
      their guests, 1000 / 5; the bar's 130 is told apart, not averaged in */
   await expect(page.locator(".big")).toContainText("po gostu 200 €");

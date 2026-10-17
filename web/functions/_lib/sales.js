@@ -99,7 +99,7 @@ export async function setState(env, k, v) {
 export async function monthSummary(env, month) {
   const lo = `${month}-01`, hi = `${month}-31`;
   const q = (sql, ...a) => env.DB.prepare(sql).bind(...a).all().then((r) => r.results || []);
-  const [months, days, pays, groups, taxes, custs, state] = await Promise.all([
+  const [months, days, pays, groups, taxes, custs, state, last] = await Promise.all([
     q(`SELECT substr(day, 1, 7) AS m, COUNT(*) AS n, SUM(total) AS total, SUM(vat) AS vat
        FROM sales_bills GROUP BY m ORDER BY m DESC LIMIT 24`),
     q(`SELECT day, COUNT(*) AS n, SUM(total) AS total FROM sales_bills WHERE day BETWEEN ?1 AND ?2 GROUP BY day ORDER BY day`, lo, hi),
@@ -111,9 +111,13 @@ export async function monthSummary(env, month) {
     q(`SELECT cust, oib, COUNT(*) AS n, SUM(total) AS total, SUM(CASE WHEN pay = 'Virman' THEN total ELSE 0 END) AS virman
        FROM sales_bills WHERE day BETWEEN ?1 AND ?2 AND cust IS NOT NULL GROUP BY oib ORDER BY total DESC LIMIT 30`, lo, hi),
     q("SELECT k, v FROM sales_state"),
+    /* the newest bill the till has issued: a read at 20:00 on a Saturday adds
+       nothing while dinner tables are still open (2026-10-17), and the page
+       must say so rather than look stuck */
+    q("SELECT day, at FROM sales_bills ORDER BY day DESC, at DESC LIMIT 1"),
   ]);
   const more = await monthDetail(env, lo, hi);
-  return { month, months, days, pays, groups, taxes, custs, ...more, state: Object.fromEntries(state.map((s) => [s.k, s.v])) };
+  return { month, months, days, pays, groups, taxes, custs, ...more, state: { ...Object.fromEntries(state.map((s) => [s.k, s.v])), last_bill: (last[0] && last[0].at) || "" } };
 }
 
 /* What the owner can act on (2026-10-14: "useful data … to drive him to the
