@@ -26,12 +26,43 @@
   Storage.prototype.setItem = function (k, v) { if (k !== LS_KEY) si.call(this, k, v); };
   Storage.prototype.removeItem = function (k) { if (k !== LS_KEY) ri.call(this, k); };
   if (navigator.sendBeacon) navigator.sendBeacon = () => true;
+  /* Nobody real is signed in (owner, 2026-10-18: "remove any reference to me
+     or Filho"). The admin sets who it is and its key's fingerprint on window;
+     in the demo those are fixed and its writes ignored. */
+  const PERSON = "Šef";
+  Object.defineProperty(window, "adminWho", { get: () => () => PERSON, set() {}, configurable: true });
+  Object.defineProperty(window, "adminKeyPrint", { get: () => "demo", set() {}, configurable: true });
+  const SCRUB = [[/Filhov(a|e|u|om|og)? izbor/g, "Izbor kuće"], [/Filhov(a|e|u|om|og)?\b/g, "Šefov$1"], [/\bFilho\b/g, PERSON], [/\bJure\b/g, "Vlasnik"],
+    [/Theatrium( by Filho)?/g, "Demo restoran"], [/ključ [0-9a-f]{16}/g, "demo"]];
+  const scrub = (t) => SCRUB.reduce((x, [re, to]) => x.replace(re, to), t);
 
   const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json" } });
   const nowIso = () => new Date().toISOString();
   const b64 = (s) => { const b = new TextEncoder().encode(s); let o = ""; for (let i = 0; i < b.length; i += 0x8000) o += String.fromCharCode(...b.subarray(i, i + 0x8000)); return btoa(o); };
   const unb64 = (s) => new TextDecoder().decode(Uint8Array.from(atob(String(s).replace(/\s/g, "")), (c) => c.charCodeAt(0)));
   const later = (ms, f) => setTimeout(f, ms);
+
+  const commit = (at, message) => ({ sha: "demo" + Math.random().toString(16).slice(2), commit: { message, author: { name: "demo", date: at } } });
+  /* two weeks of invented changes on the list, signed by the invented staff */
+  function history(lib, list) {
+    const refs = []; for (const sec of list.sections) for (const c of sec.categories) for (const g of c.groups) for (const it of g.items) if (lib[it.ref] && lib[it.ref].producer) refs.push([it.ref, it.price]);
+    const name = (r) => `${lib[r].producer} ${lib[r].name}`, by = ["Šef", "Ana Kovač", "Marko Babić"], out = [];
+    let x = 7;
+    const nx = (n) => (x = (x * 48271) % 2147483647) % n;
+    for (let i = 0; i < 26; i++) {
+      /* during the working day, a change or two a day, newest first */
+      const [r, price] = refs[nx(refs.length)], who = by[nx(3)], d = new Date(Date.now() - Math.floor(i / 2) * 86400000);
+      d.setHours(10 + nx(12), nx(60)); if (d > new Date()) d.setDate(d.getDate() - 1);
+      const at = d.toISOString();
+      const m = [`Nema: ${name(r)} — ${who}`, `Vraćeno na kartu: ${name(r)} — ${who}`, `Nema na čašu: ${name(r)} — ${who}`,
+        `Cijena: ${name(r)}: ${price} → ${price + Math.max(1, Math.round(price * 0.06))} € — Šef`, `NOVO: ${name(r)} — dodano — Šef`][nx(5)];
+      out.push(commit(at, m));
+    }
+    return out;
+  }
+  /* receipts marked paid, for the Troškovi half of Povijest */
+  const paidEvents = (rs) => rs.filter((r) => r.paid_at && r.paid_at !== "ne" && r.total).slice(0, 12)
+    .map((r, i) => ({ at: (() => { const d = new Date(Date.now() - Math.floor(i / 2) * 86400000); d.setHours(9 + (i * 5) % 10, (i * 17) % 60); if (d > new Date()) d.setDate(d.getDate() - 1); return d.toISOString(); })(), who: i % 2 ? "Ana Kovač" : "Šef", receipt_id: r.id, action: "placeno", vendor: r.vendor, amount: r.total }));
 
   /* ---------- state: loaded once, changed in memory ---------- */
   const files = {};                 /* repo path → text, as GitHub would hold it */
@@ -52,8 +83,12 @@
       vendor: "Pekara Primjer", doc_date: nowIso().slice(0, 10), doc_no: "12-1-1", total: 23.4, vat: 2.69, payment: "gotovina",
       items: [{ name: "Kruh od kiselog tijesta", key: "Kruh od kiselog tijesta", qty: 12, unit: "kom", unit_price: 1.95, total: 23.4, category: "pekara" }] }));
     files["data/till-map.json"] = tm; files["data/buy-map.json"] = bm;
-    return { receipts: tr.items, limits: tr.limits, mer: tr.mer, prihodi: pr, tvrtke: tv, vina: vi.items || [], vinaLimits: vi.limits, povijest: po,
-      citaj: [], offer: null };
+    const lib = await realFetch("library/wines.json").then((r) => r.json()).then((j) => j.wines).catch(() => ({}));
+    /* today's offer is already out, as it would be by lunch */
+    const offer = { ...demoOffer(), status: "published", date: nowIso().slice(0, 10) };
+    const done = { id: "demo-jutro", status: "published", created_at: nowIso(), updated_at: nowIso(), date: nowIso().slice(0, 10), result: { offer: demoOffer(), notes: "", dropped: [] }, error: "" };
+    return { receipts: tr.items, limits: tr.limits, mer: tr.mer, prihodi: pr, tvrtke: tv, vina: (vi.items || []).map((v) => ({ ...v, created_by: "Šef" })), vinaLimits: vi.limits,
+      povijest: { events: (po.events || []).concat(paidEvents(tr.items)) }, citaj: [done], offer, commits: history(lib, JSON.parse(lst)) };
   })();
 
   /* ---------- pictures: a drawn receipt or label, never a photo ---------- */
@@ -70,12 +105,13 @@
   async function github(url, opts) {
     const u = new URL(url), m = u.pathname.match(/^\/repos\/[^/]+\/[^/]+\/contents\/(.+)$/), method = (opts && opts.method) || "GET";
     if (u.pathname === "/user") return json({ login: "demo" });
-    if (/\/commits$/.test(u.pathname)) return json([]);
+    if (/\/commits$/.test(u.pathname)) { const st = await ready; return json(u.searchParams.get("path") === "lists/theatrium.json" ? st.commits : []); }
     if (!m || !(m[1] in files)) return json({ message: "Not Found (demo)" }, 404);
     const p = decodeURIComponent(m[1]);
     if (method === "PUT") {
       const b = JSON.parse(opts.body);
       files[p] = unb64(b.content);
+      (await ready).commits.unshift(commit(nowIso(), scrub(b.message)));
       return json({ content: { sha: "demo" + ++sha, path: p }, commit: { sha: "demo" + sha, message: b.message } });
     }
     return json({ sha: "demo" + sha, path: p, content: b64(files[p]), encoding: "base64" });
@@ -130,7 +166,8 @@
       if (!it) return json({ error: "not_found" }, 404);
       const a = mm[2];
       if (a === "obrisi") { st.receipts.splice(i, 1); return json({ ok: true }); }
-      if (a === "placeno") it.paid_at = b.paid ? nowIso().slice(0, 10) : "ne";
+      if (a === "placeno") { it.paid_at = b.paid ? nowIso().slice(0, 10) : "ne";
+        st.povijest.events.unshift({ at: nowIso(), who: PERSON, receipt_id: it.id, action: b.paid ? "placeno" : "neplaceno", vendor: it.vendor, amount: it.total }); }
       if (a === "kategorija" && it.items[b.i]) it.items[b.i].category = b.category;
       if (a === "ispravi") Object.assign(it, ...["vendor", "doc_date", "total"].filter((k) => b[k] != null).map((k) => ({ [k]: b[k] })));
       if (a === "nije_isti") it.dup_of = "";
@@ -213,6 +250,17 @@
     bar.className = "demo-bar";
     bar.innerHTML = "<b>DEMO</b> — svi podaci su izmišljeni, ništa se ne sprema i nigdje ne šalje. Osvježavanje stranice vraća sve na početak.";
     document.body.prepend(bar);
+    const clean = (root) => {
+      const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      for (let n = w.nextNode(); n; n = w.nextNode()) { const t = scrub(n.nodeValue); if (t !== n.nodeValue) n.nodeValue = t; }
+      if (root.querySelectorAll) root.querySelectorAll("[placeholder],[title]").forEach((el) => {
+        for (const a of ["placeholder", "title"]) if (el.hasAttribute(a)) { const v = scrub(el.getAttribute(a)); if (v !== el.getAttribute(a)) el.setAttribute(a, v); } });
+    };
+    clean(document.body);
+    new MutationObserver((ms) => { for (const m of ms) for (const n of m.addedNodes) clean(n.nodeType === 3 ? n.parentNode || document.body : n);
+      for (const m of ms) if (m.type === "characterData") clean(m.target.parentNode || document.body);
+      for (const m of ms) if (m.type === "attributes") { const v = scrub(m.target.getAttribute(m.attributeName) || ""); if (v !== m.target.getAttribute(m.attributeName)) m.target.setAttribute(m.attributeName, v); } })
+      .observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["title", "placeholder"] });
     document.title = "Demo · osoblje";
   });
   addEventListener("load", () => {

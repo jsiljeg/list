@@ -36,4 +36,9 @@ test("the demo script is inert without ?demo", () => {
   /* and it is loaded before the admin's own scripts, so it can answer their first request */
   const page = readFileSync("admin.html", "utf8");
   expect(page.indexOf("js/admin-demo.js")).toBeLessThan(page.indexOf("js/admin.js"));
+  /* 2026-10-18: the name scrub's \b were written as backspace characters,
+     so "Filho" and the key's fingerprint stayed on screen; no control
+     character belongs in this file */
+  expect(src).not.toMatch(/[\x00-\x08\x0b\x0c\x0e-\x1f]/);
+  expect(src).toContain(String.raw`[/\bFilho\b/g, PERSON]`);
 });
