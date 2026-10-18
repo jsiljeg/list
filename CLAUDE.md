@@ -1983,3 +1983,24 @@ merges, applies his prices/NOVO, validates, deploys.
 - **Keys**: STAFF_KEY (Filho), WINE_WORKER_KEY (the runs), WINE_READ_KEY
   (pr-checkups, read only), GH_DISPATCH_TOKEN (Actions only), NTFY_TOPIC
   (owner's phone). Never one key doing another's job.
+
+## The demo /admin (2026-10-18)
+
+`admin.html?demo` is the whole staff side with invented data, for showing to
+venues that are not Theatrium (the owner's middleman, sales meetings). No PIN,
+no key, a banner on top, and **nothing leaves the page**: `js/admin-demo.js`
+loads first, does nothing without `?demo`, and with it answers every request
+to GitHub and to theatrium.devinos.hr from `demo/*.json`, keeping changes in
+memory until a reload. An address it does not know is answered with an error,
+never passed through — verified with a browser that recorded zero outside
+requests across every tab.
+
+`demo/*.json` is written on every deploy by `scripts/make-demo.mjs`: an
+invented SQLite database (web/schema.sql, a fixed seed, dates relative to
+today) run through the **real** `/api` handlers, so the demo cannot drift from
+the real admin. The only real inputs are public repo files (the list, the
+menu, the till and purchase maps — names and sizes, no prices). Invented on
+purpose and kept clearly so: waiters (Ana Kovač …), companies with OIBs
+starting 0, vendors called "… Primjer", totals scaled well below a real busy
+month. `tests/admin-demo.spec.mjs` fails if a real name could have got in.
+Needs Node 22 (node:sqlite), which deploy.yml now sets up.

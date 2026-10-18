@@ -41,6 +41,9 @@ cp data/menu.json data/producers.json data/regions.json data/unavailable.json da
 # call a wine unsold only if it was listed the whole period (2026-10-14)
 node scripts/list-since.mjs > "$out/data/list-since.json"
 cp library/wines.json "$out/library/"
+# the demo /admin's invented data (admin.html?demo; scripts/make-demo.mjs runs
+# the real server code over an invented database — nothing of Theatrium's)
+node scripts/make-demo.mjs "$out" > /dev/null
 cp lists/theatrium.json "$out/lists/"
 
 # The code version (2026-10-03). The owner has no hands on the tablets, so a

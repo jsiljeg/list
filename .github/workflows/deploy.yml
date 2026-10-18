@@ -53,6 +53,10 @@ jobs:
       # is indexable as one. Add a line here when the app starts loading a new
       # file; `scripts/site-files.sh` is the same list, so the local check and
       # the deploy cannot drift.
+      # Node 22: scripts/make-demo.mjs (the demo /admin's data) uses node:sqlite
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - name: Assemble the site (nothing internal reaches the domain)
         run: bash scripts/site-files.sh _site
       # A file the app loads but the allowlist forgot is a 404 nobody sees
