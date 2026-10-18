@@ -11,9 +11,12 @@
  *     seeing the board. It is client-side and protects nothing else.
  *   - The GitHub token is the only real credential. It lives in this tablet's
  *     localStorage. Issue it fine-grained, scoped to jsiljeg/list, Contents:
- *     Read and write, and nothing else — then the worst anyone who takes the
- *     tablet can do is hide and unhide wines on our own list, and revoking it
- *     on github.com/settings/tokens takes a minute.
+ *     Read and write, and nothing else. On GitHub it can hide wines and change
+ *     prices on our own list. On theatrium.devinos.hr it also opens Troškovi,
+ *     Prihodi and Novo vino, but only if its fingerprint is in TABLET_KEYS in
+ *     web/functions/_lib/wines.js (2026-10-18). Any other key of the owner's
+ *     account is refused there. Revoking it on github.com/settings/tokens
+ *     takes a minute and locks it out of both.
  *
  * Prices are edited here too (owner, 2026-10-10: "so Filho could do it by
  * himself"). Tapping a price opens a field; saving rewrites `price` on that one

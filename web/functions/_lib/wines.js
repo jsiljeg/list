@@ -66,10 +66,28 @@ export function isReader(request, env) {
    in WINE_GH_LOGINS (default the owner's) — so a key that is not one of his
    gets nothing here, and revoking it on github.com revokes it here too. The
    daily offer's STAFF_KEY still works, for /kuhinja/-style use. */
+/* Only the keys listed here, by fingerprint (owner, 2026-10-18). Before, any
+   key of the owner's account got in — a leaked gh CLI key or an old personal
+   one would have opened the receipts and the revenue too. The fingerprint is
+   the one /admin shows on Povijest ("ključ …"): the first 16 hex of the key's
+   SHA-256. It cannot be turned back into the key and is safe in a public repo.
+   A new device: read its fingerprint off Povijest (or the refusal e-mail),
+   add a line, deploy. Lost device: delete its line, or revoke the key on
+   github.com — either alone locks it out. WINE_GH_KEYS (comma-separated) adds
+   to the list without a deploy. The 86 board writes to GitHub directly and
+   does not pass through here, so an unlisted key still hides wines. */
+export const TABLET_KEYS = {
+  "b9cd7ec0570a5b64": "the owner's own key, 2026-10-11",
+  "448f5153728f7edc": "Filho, seen on Povijest 2026-10-18",
+};
+const keyPrint = async (token) => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(token)))]
+  .map((b) => b.toString(16).padStart(2, "0")).join("");
+const listedKey = (print, env) => print.slice(0, 16) in TABLET_KEYS
+  || String((env && env.WINE_GH_KEYS) || "").split(",").map((s) => s.trim().toLowerCase()).includes(print.slice(0, 16));
+const REFUSED = new Set();    /* fingerprints already reported, per isolate: one e-mail, not one per request */
+
 const GH_CACHE = new Map();   /* sha256(token) -> {login, until}; per isolate, best effort */
-async function githubLogin(token) {
-  const h = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(token)))]
-    .map((b) => b.toString(16).padStart(2, "0")).join("");
+async function githubLogin(token, h) {
   const hit = GH_CACHE.get(h);
   if (hit && hit.until > Date.now()) return hit.login;
   const r = await fetch("https://api.github.com/user", {
@@ -84,7 +102,18 @@ export async function isStaffAsync(request, env) {
   const got = (request.headers.get("authorization") || "").replace(/^Bearer\s+/i, "");
   if (!/^(github_pat_|ghp_|gho_)[A-Za-z0-9_]{20,}$/.test(got)) return false;
   const allowed = String((env && env.WINE_GH_LOGINS) || "jsiljeg").split(",").map((s) => s.trim().toLowerCase());
-  return allowed.includes((await githubLogin(got)).toLowerCase());
+  const print = await keyPrint(got);
+  const owners = allowed.includes((await githubLogin(got, print)).toLowerCase());
+  if (owners && listedKey(print, env)) return true;
+  /* A genuine key of the owner's that is not on the list: most likely a new
+     device, so say which one, once — a lockout must never be silent. */
+  if (owners && !REFUSED.has(print.slice(0, 16))) {
+    REFUSED.add(print.slice(0, 16));
+    await notifyOwner(env, "Odbijen ključ",
+      `Ključ ${print.slice(0, 16)} pripada tvom GitHub računu, ali nije na popisu uređaja (TABLET_KEYS u web/functions/_lib/wines.js). `
+      + `Ako je tvoj uređaj, dodaj ga; ako nije, opozovi ključ na github.com/settings/tokens.`);
+  }
+  return false;
 }
 export { isStaff };
 

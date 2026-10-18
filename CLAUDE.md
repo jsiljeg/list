@@ -1224,9 +1224,18 @@ through the GitHub contents API. Staff-facing, deliberately not sharing
 page ships with it. The **PIN (`const PIN` in js/admin.js) is a screen lock**,
 nothing more. The **token is the only credential** — fine-grained, `jsiljeg/list`
 only, Contents: Read and write, held in that tablet's localStorage. Worst case
-if a tablet walks: someone hides and unhides wines on our own list, and
-revoking takes a minute. Don't "improve" this with a hashed PIN; it would only
-look like security.
+if a tablet walks: someone changes the list (86s, prices, NOVO) and reads
+Troškovi/Prihodi, and revoking takes a minute. Don't "improve" this with a
+hashed PIN; it would only look like security.
+
+**The server takes listed keys only** (owner, 2026-10-18). theatrium.devinos.hr
+used to accept *any* key of the jsiljeg account, so a leaked gh CLI key would
+have opened the receipts and the revenue. Now `isStaffAsync()` also needs the
+key's fingerprint (first 16 hex of its SHA-256, shown on Povijest) in
+`TABLET_KEYS` in web/functions/_lib/wines.js, or in the `WINE_GH_KEYS` env var.
+An unlisted key of the owner's is refused, and the owner gets one e-mail naming
+its fingerprint, so a new device is never locked out silently. The 86 board
+writes to GitHub directly and is unaffected.
 
 **The receipt is the feature**, not the switch. A switch you don't trust is
 worse than editing JSON, because typing JSON at least feels like it did
