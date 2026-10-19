@@ -57,3 +57,15 @@ test("a wine both accounts refused goes back in line, uncounted", () => {
   expect(lib).toMatch(/DELETE FROM wine_dispatches/);
   expect(lib).toMatch(/status = 'queued' AND updated_at <= \?1/);
 });
+
+/* 2026-10-19: a correction run (Testament, "is the vineyard Jadrtovac?")
+   opened its progress with "Čita etiketu" and looked to the owner like the
+   whole card starting over, and it repeated the Parker lookup the first run
+   had already made. An edit run now says what it is correcting and skips
+   Parker. */
+test("a correction run says what it corrects and does not re-check Parker", () => {
+  const wf = readFileSync(".github/workflows/add-wine.yml", "utf8");
+  expect(wf).not.toMatch(/'\{"phase":"Čita etiketu"\}'/);
+  expect(wf).toMatch(/second="Ispravlja: \$\{what:-karticu\}"/);
+  expect(wf).toMatch(/if \[ "\$MODE" != edit \] && \[ -n "\$ref" \]/);
+});

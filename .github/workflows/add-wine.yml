@@ -74,8 +74,25 @@ jobs:
               edits: [$i.answers[] | select(.kind == "edit") | {field, from, to}],
               ratings_given: ([$i.answers[] | select(.kind == "ratings") | .to] | last // ""),
               photos: [$i.photos[] | "intake/photo-\(.).jpg"] }' "$RUNNER_TEMP/req.json" > "$RUNNER_TEMP/intake/request.json"
+          # What the progress list says first (owner, 2026-10-19: a correction
+          # run opened with "Čita etiketu" and looked like a fresh start). An
+          # edit run names the fields of the batch just sent, in the preview's
+          # own words; the label is read only if Claude actually opens it.
+          if [ "$mode" = edit ]; then
+            what=$(jq -r '[.item.answers[] | select(.kind == "edit")] as $e
+              | ($e | map(.at) | max) as $last
+              | [$e[] | select(.at == $last) | .field] | unique
+              | map({price_bottle:"cijena boce", price_glass:"cijena čaše", grape:"sorta", region:"regija",
+                     terroir:"položaj", alcohol:"alkohol", temp:"posluživanje", ratings:"ocjene",
+                     note:"bilješka", blurb:"priča o vinariji", komentar:"tvoja napomena"}[.] // .)
+              | join(", ")' "$RUNNER_TEMP/req.json")
+            first="Ispravak — priprema"; second="Ispravlja: ${what:-karticu}"
+          else
+            first="Pokrenuto — priprema"; second="Čita etiketu"
+          fi
+          echo "second=$second" >> "$GITHUB_OUTPUT"
           curl -sfS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
-               -d "{\"status\":\"working\",\"run_url\":\"$RUN_URL\",\"phase\":\"Pokrenuto — priprema\",\"reset\":true}" "$INBOX/$ID/stanje" > /dev/null
+               -d "$(jq -nc --arg u "$RUN_URL" --arg p "$first" '{status:"working", run_url:$u, phase:$p, reset:true}')" "$INBOX/$ID/stanje" > /dev/null
 
       - uses: actions/checkout@v4
         with:
@@ -112,12 +129,13 @@ jobs:
           MODEL: ${{ vars.WINE_MODEL || 'opus' }}
           # For progress.mjs only — removed from Claude's environment below.
           WK: ${{ secrets.WINE_WORKER_KEY }}
+          SECOND: ${{ steps.fetch.outputs.second }}
         run: |
           set -uo pipefail
           # If progress.mjs could not be fetched there is no live progress,
           # but the run is unaffected.
           curl -sS -X POST -H "Authorization: Bearer $WK" -H "content-type: application/json" \
-               -d '{"phase":"Čita etiketu"}' "$INBOX/$ID/stanje" > /dev/null || true
+               -d "$(jq -nc --arg p "$SECOND" '{phase:$p}')" "$INBOX/$ID/stanje" > /dev/null || true
           # The settings deny reading anything outside the checkout, so the
           # token in this process's environment cannot be read back through a
           # file tool and handed to a web fetch.
@@ -255,9 +273,12 @@ jobs:
           # Robert Parker, looked up here on the commercial subscription
           # (owner, 2026-10-11). A fixed script, no AI: the password and the
           # logged-in page never reach Claude. Skipped when the card already
-          # has a Parker score (given up front, or a wine we already pour).
+          # has a Parker score (given up front, or a wine we already pour), and
+          # on a correction run (owner, 2026-10-19): the first run already
+          # looked, and a correction does not change what Parker scored. A miss
+          # is still caught by the daily pr-checkups sweep.
           ref=$(jq -r '.ref // empty' out/result.json)
-          if [ -n "$ref" ] && ! jq -e --arg r "$ref" '[.wines[$r].ratings // [] | .[] | select(.critic == "Robert Parker")] | length > 0' library/wines.json > /dev/null; then
+          if [ "$MODE" != edit ] && [ -n "$ref" ] && ! jq -e --arg r "$ref" '[.wines[$r].ratings // [] | .[] | select(.critic == "Robert Parker")] | length > 0' library/wines.json > /dev/null; then
             curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
                  -d '{"phase":"Provjerava ocjenu Roberta Parkera"}' "$INBOX/$ID/stanje" > /dev/null || true
             mkdir -p "$RUNNER_TEMP/rp"
