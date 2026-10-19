@@ -5,6 +5,7 @@
    of the owner's is reported once rather than refused silently. */
 import { test, expect } from "@playwright/test";
 import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { isStaffAsync, TABLET_KEYS } from "../web/functions/_lib/wines.js";
 
 const print = (t) => createHash("sha256").update(t).digest("hex").slice(0, 16);
@@ -27,4 +28,13 @@ test("only a listed key of the owner's account is staff", async () => {
     /* the code list holds fingerprints, never keys */
     expect(Object.keys(TABLET_KEYS).every((k) => /^[0-9a-f]{16}$/.test(k))).toBe(true);
   } finally { globalThis.fetch = real; }
+});
+
+/* 2026-10-19: Filho's phone carried a third key and read a bare "key" under
+   Troškovi. The refusal must say what it means on the page as well. */
+test("a refused key reads as a sentence on /admin", () => {
+  const src = readFileSync("js/admin-expenses.js", "utf8");
+  expect(src).toMatch(/e === "key" \? "ovaj uređaj još nije odobren/);
+  expect(src).not.toMatch(/new Error\(b\.error \|\|/);
+  expect(Object.keys(TABLET_KEYS)).toContain("48f16cffe8e5b9ed");
 });

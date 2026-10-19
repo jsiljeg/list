@@ -95,10 +95,14 @@
   const thumbs = new Map();
   const pdfThumbs = new Set();          /* receipt|n whose file is a PDF */
 
+  /* The server answers "key" when this device's key is not on its list
+     (2026-10-19: Filho read a bare "key" off his phone). The owner gets an
+     e-mail with the fingerprint at the same moment. */
+  const keyErr = (e) => (e === "key" ? "ovaj uređaj još nije odobren — vlasnik je dobio e-mail s njegovim ključem (" + (window.adminKeyPrint || "?") + ")" : e);
   async function api(path, opts = {}) {
     const r = await fetch(API + path, { ...opts, headers: { authorization: "Bearer " + ghKey(), ...(opts.headers || {}) } });
     const b = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(b.error || "HTTP " + r.status);
+    if (!r.ok) throw new Error(keyErr(b.error) || "HTTP " + r.status);
     return b;
   }
 
@@ -304,7 +308,7 @@
     if (income[m]) return income[m] === "loading" ? null : income[m];
     income[m] = "loading";
     fetch(`${INCOME_API}?mjesec=${m}`, { headers: { authorization: "Bearer " + ghKey() } })
-      .then((r) => r.json().then((b) => { if (!r.ok) throw new Error(b.error || "HTTP " + r.status); return b; }))
+      .then((r) => r.json().then((b) => { if (!r.ok) throw new Error(keyErr(b.error) || "HTTP " + r.status); return b; }))
       .then((b) => { income[m] = b; incomeErr = ""; render(); })
       .catch((e) => { delete income[m]; incomeErr = "Ne mogu učitati prihode: " + e.message; render(); });
     return null;
@@ -319,7 +323,7 @@
     if (comps) return comps === "loading" ? null : comps;
     comps = "loading";
     fetch(`${INCOME_API}/tvrtke`, { headers: { authorization: "Bearer " + ghKey() } })
-      .then((r) => r.json().then((b) => { if (!r.ok) throw new Error(b.error || "HTTP " + r.status); return b; }))
+      .then((r) => r.json().then((b) => { if (!r.ok) throw new Error(keyErr(b.error) || "HTTP " + r.status); return b; }))
       .then((b) => { comps = b; compsErr = ""; render(); })
       .catch((e) => { comps = null; compsErr = "Ne mogu učitati tvrtke: " + e.message; });
     return null;
@@ -329,7 +333,7 @@
     try {
       const r = await fetch(`${INCOME_API}/tvrtke`, { method: "PUT", headers: { authorization: "Bearer " + ghKey(), "Content-Type": "application/json" }, body: JSON.stringify({ oib, note: custDraft[oib] ?? "" }) });
       const b = await r.json().catch(() => ({}));
-      if (!r.ok) throw new Error(b.error || "HTTP " + r.status);
+      if (!r.ok) throw new Error(keyErr(b.error) || "HTTP " + r.status);
       const c = comps && comps.companies && comps.companies.find((x) => x.oib === oib);
       if (c) { c.note = b.note; c.noteAt = b.updated_at; }
       delete custDraft[oib]; custMsg = "Spremljeno.";

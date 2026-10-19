@@ -78,7 +78,8 @@ export function isReader(request, env) {
    does not pass through here, so an unlisted key still hides wines. */
 export const TABLET_KEYS = {
   "b9cd7ec0570a5b64": "the owner's own key, 2026-10-11",
-  "448f5153728f7edc": "Filho, seen on Povijest 2026-10-18",
+  "448f5153728f7edc": "seen on the owner's Povijest as Filho, 2026-10-18",
+  "48f16cffe8e5b9ed": "Filho's phone (refusal e-mail, 2026-10-19)",
 };
 const keyPrint = async (token) => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(token)))]
   .map((b) => b.toString(16).padStart(2, "0")).join("");
