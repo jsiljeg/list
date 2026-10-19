@@ -197,6 +197,11 @@
          "anchor": 10
         },
         {
+         "ref": "testament--babic-2023",
+         "price": 10,
+         "new": true
+        },
+        {
          "ref": "skaramuca--dingac-elegance-2020",
          "price": 14,
          "anchor": 14
@@ -1175,6 +1180,11 @@
          "ref": "boskinac--cuvee-boskinac-crni-2018",
          "price": 90,
          "anchor": 90
+        },
+        {
+         "ref": "testament--babic-2023",
+         "price": 55,
+         "new": true
         },
         {
          "ref": "opg-vina-violic--sagul-plavac-mali-2022",

@@ -14609,6 +14609,46 @@
     "es": "El enemigo de la etiqueta es el jabalí: a finales de verano se pasea entre las cepas y se lleva buena parte de la garnacha antes que los vendimiadores. Lo que quedó en 2022 se vendimió a mano y de noche, desde el 25 de agosto, para que la uva llegara fresca a la bodega."
    },
    "notePlain": true
+  },
+  "testament--babic-2023": {
+   "name": "Babić 2023",
+   "producer": "Testament",
+   "insight": {
+    "grape": "Babić",
+    "region": "Šibenik, Sjeverna Dalmacija",
+    "country": "HR",
+    "style": "red_full",
+    "body": "full",
+    "aromas": [
+     "sour_cherry",
+     "cranberry",
+     "pepper",
+     "dark_chocolate",
+     "earth"
+    ],
+    "pairings": [
+     "beef",
+     "lamb",
+     "game",
+     "pasticada",
+     "prosciutto"
+    ],
+    "temp": "16–18",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "Jadrtovac",
+   "note": {
+    "hr": "Babić je sorta šibenskog kamena: sitne bobice debele kožice, na trsu koji se kroz krš mora probiti duboko do vode — malo grozdova, puno okusa. Višnja i papar, a kiselina ga drži svježim i pod dalmatinskim suncem.",
+    "en": "Babić is the grape of Šibenik's stone: small, thick-skinned berries on vines that have to push deep through the karst to find water — few bunches, a lot of flavour. Sour cherry and pepper, with an acidity that keeps it fresh under the Dalmatian sun.",
+    "it": "Il Babić è il vitigno della pietra di Sebenico: acini piccoli dalla buccia spessa, su viti che devono spingersi in profondità nel carso per trovare l'acqua — pochi grappoli, molto sapore. Amarena e pepe, con un'acidità che lo tiene fresco anche sotto il sole dalmata.",
+    "fr": "Le babić est le cépage de la pierre de Šibenik : de petites baies à peau épaisse, sur des ceps qui doivent descendre loin dans le karst pour trouver l'eau — peu de grappes, beaucoup de goût. Griotte et poivre, avec une acidité qui le garde frais même sous le soleil dalmate.",
+    "de": "Babić ist die Rebe des Šibeniker Steins: kleine, dickschalige Beeren an Stöcken, die sich tief durch den Karst zum Wasser vorarbeiten müssen — wenige Trauben, viel Geschmack. Sauerkirsche und Pfeffer, mit einer Säure, die ihn auch unter der dalmatinischen Sonne frisch hält.",
+    "zh": "巴比奇是希贝尼克石头上的葡萄：果粒小、果皮厚，葡萄藤必须穿过喀斯特岩层深深扎根才能找到水——果串少，滋味足。酸樱桃与胡椒，酸度让它即使在达尔马提亚的阳光下也保持清新。",
+    "sl": "Babić je sorta šibeniškega kamna: drobne jagode debele kožice, na trti, ki se mora skozi kras prebiti globoko do vode — malo grozdov, veliko okusa. Višnja in poper, kislina pa ga ohranja svežega tudi pod dalmatinskim soncem.",
+    "es": "El Babić es la uva de la piedra de Šibenik: bayas pequeñas de piel gruesa, en cepas que deben abrirse paso hondo por el karst para encontrar agua — pocos racimos, mucho sabor. Guinda y pimienta, con una acidez que lo mantiene fresco aun bajo el sol dálmata."
+   },
+   "notePlain": true
   }
  }
 }
