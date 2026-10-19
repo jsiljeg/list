@@ -24,7 +24,14 @@
     "alcohol": "",
     "dosage": "Brut"
    },
-   "terroir": "Železna Gora, Štrigova"
+   "terroir": "Železna Gora, Štrigova",
+   "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "14.5/20",
+     "checked": "2026-10-19"
+    }
+   ]
   },
   "petrac--bregh-rose": {
    "name": "Bregh Rose",
@@ -127,6 +134,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "16.5/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "James Suckling",
      "score": "93"
     },
@@ -176,6 +188,11 @@
      "critic": "Robert Parker",
      "score": "90",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "16.5+/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Decanter",
@@ -444,7 +461,14 @@
     "zh": "卡利坎特长在埃特纳的黑沙上，别处采收早已结束时它才开始。灰烬、柠檬皮与盐——还有一份笔直站立的酸度。",
     "sl": "Carricante na črnem pesku Etne, obran, ko je drugod trgatev že zdavnaj končana. Pepel, limonina lupina in sol — ter kislina, ki stoji pokonci.",
     "es": "Carricante sobre la arena negra del Etna, recogido cuando en otros sitios la vendimia terminó hace semanas. Ceniza, piel de limón y sal — y una acidez que se mantiene erguida."
-   }
+   },
+   "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "16.5+/20",
+     "checked": "2026-10-19"
+    }
+   ]
   },
   "patrick-piuze--chablis-la-grande-vallee-2024": {
    "name": "Chablis La Grande Vallée 2024",
@@ -1343,7 +1367,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "16+/20"
+     "score": "16+/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "James Suckling",
@@ -1534,6 +1559,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Vinous",
      "score": "91"
     },
@@ -1596,6 +1626,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "James Suckling",
      "score": "93"
     },
@@ -1638,7 +1673,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17.5+/20"
+     "score": "17.5++/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Wine Spectator",
@@ -1774,7 +1810,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17/20"
+     "score": "17/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "James Suckling",
@@ -1906,6 +1943,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Vinous",
      "score": "93"
     },
@@ -1966,6 +2008,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Wine Spectator",
      "score": "96"
     }
@@ -2009,7 +2056,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "16/20"
+     "score": "16/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "James Suckling",
@@ -2053,7 +2101,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17/20"
+     "score": "17/20",
+     "checked": "2026-10-19"
     }
    ]
   },
@@ -2093,6 +2142,11 @@
      "critic": "Robert Parker",
      "score": "96",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Wine Spectator",
@@ -2143,7 +2197,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17+/20"
+     "score": "16/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -2209,7 +2264,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "16.5/20"
+     "score": "16.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Wine Spectator",
@@ -2315,7 +2371,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "18.5+/20"
+     "score": "18.5+/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Wine Spectator",
@@ -2361,6 +2418,12 @@
      "critic": "Robert Parker",
      "score": "94",
      "checked": "2026-09-06",
+     "release": "174ème Édition"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "18/20",
+     "checked": "2026-10-19",
      "release": "174ème Édition"
     },
     {
@@ -2421,6 +2484,11 @@
      "critic": "Robert Parker",
      "score": "98",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "19/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Wine Spectator",
@@ -2489,7 +2557,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "18.5/20"
+     "score": "18.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Wine Spectator",
@@ -2816,7 +2885,14 @@
     "sweetness": "dry",
     "glass": "riesling"
    },
-   "terroir": "Brdo, Grimalda"
+   "terroir": "Brdo, Grimalda",
+   "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20",
+     "checked": "2026-10-19"
+    }
+   ]
   },
   "clai--malvazija-sv-jakov-2021": {
    "name": "Malvazija Sv. Jakov 2021",
@@ -3221,6 +3297,11 @@
      "critic": "Robert Parker",
      "score": "92+",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
     }
    ]
   },
@@ -3254,6 +3335,11 @@
      "critic": "Robert Parker",
      "score": "91-93",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Falstaff",
@@ -3338,6 +3424,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Falstaff",
      "score": "93+"
     }
@@ -3379,7 +3470,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "18/20"
+     "score": "18/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Falstaff",
@@ -3512,6 +3604,11 @@
      "critic": "Robert Parker",
      "score": "94",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "James Suckling",
@@ -3716,6 +3813,11 @@
    "terroir": "Weißenkirchen",
    "ratings": [
     {
+     "critic": "Jancis Robinson",
+     "score": "16/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Falstaff",
      "score": "92"
     }
@@ -3753,6 +3855,11 @@
    },
    "terroir": "Weißenkirchen",
    "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "17+/20",
+     "checked": "2026-10-19"
+    },
     {
      "critic": "Falstaff",
      "score": "98"
@@ -4212,7 +4319,14 @@
     "alcohol": "13",
     "sweetness": "dry"
    },
-   "terroir": ""
+   "terroir": "",
+   "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "16.5/20",
+     "checked": "2026-10-19"
+    }
+   ]
   },
   "david-moret--saint-romain-2023": {
    "name": "Saint-Romain 2023",
@@ -4241,7 +4355,14 @@
     "alcohol": "13",
     "sweetness": "dry"
    },
-   "terroir": ""
+   "terroir": "",
+   "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "16.5/20",
+     "checked": "2026-10-19"
+    }
+   ]
   },
   "david-moret--auxey-duresses-2023": {
    "name": "Auxey-Duresses 2023",
@@ -4268,7 +4389,14 @@
     "alcohol": "13",
     "sweetness": "dry"
    },
-   "terroir": ""
+   "terroir": "",
+   "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "16.5/20",
+     "checked": "2026-10-19"
+    }
+   ]
   },
   "david-moret--meursault-2020": {
    "name": "Meursault 2020",
@@ -6981,7 +7109,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17/20"
+     "score": "17/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -7164,7 +7293,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "16.5/20"
+     "score": "16.5++/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Wine Spectator",
@@ -7213,6 +7343,11 @@
      "critic": "Robert Parker",
      "score": "98+",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "16.5++/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -7276,7 +7411,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17/20"
+     "score": "17.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -7335,7 +7471,8 @@
    "ratings": [
     {
      "critic": "Jancis Robinson",
-     "score": "16/20"
+     "score": "16.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -7388,7 +7525,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17.5/20"
+     "score": "17.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "James Suckling",
@@ -7431,6 +7569,11 @@
      "critic": "Robert Parker",
      "score": "94+",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -8192,7 +8335,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17.5/20"
+     "score": "17.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Wine Spectator",
@@ -8252,7 +8396,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17.5/20"
+     "score": "17.5+/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -8615,6 +8760,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Wine Spectator",
      "score": "94"
     },
@@ -8673,7 +8823,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17/20"
+     "score": "17/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -9050,7 +9201,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "16/20"
+     "score": "16/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Falstaff",
@@ -9188,6 +9340,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17+/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Vinous",
      "score": "94"
     },
@@ -9252,7 +9409,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "18/20"
+     "score": "17+/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -9315,7 +9473,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17/20"
+     "score": "17.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -9378,7 +9537,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "18/20"
+     "score": "18/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -9438,6 +9598,11 @@
      "critic": "Robert Parker",
      "score": "96",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -9503,7 +9668,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17.5/20"
+     "score": "17.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -9563,6 +9729,11 @@
      "critic": "Robert Parker",
      "score": "97+",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -9739,6 +9910,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "16.5/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Wine Spectator",
      "score": "95"
     },
@@ -9822,6 +9998,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Tim Atkin",
      "score": "95"
     },
@@ -9871,6 +10052,11 @@
      "critic": "Robert Parker",
      "score": "92",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "16/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -9923,6 +10109,12 @@
      "critic": "Robert Parker",
      "score": "94",
      "checked": "2026-09-06",
+     "release": "2022"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "16.5/20",
+     "checked": "2026-10-19",
      "release": "2022"
     },
     {
@@ -10126,6 +10318,11 @@
    "terroir": "",
    "ratings": [
     {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Wine Spectator",
      "score": "91"
     },
@@ -10219,6 +10416,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "16.5/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Wine Spectator",
      "score": "92"
     }
@@ -10305,7 +10507,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17.5/20"
+     "score": "17/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -10391,7 +10594,8 @@
    "ratings": [
     {
      "critic": "Jancis Robinson",
-     "score": "16.5/20"
+     "score": "16.5++/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
@@ -10449,6 +10653,11 @@
      "critic": "Robert Parker",
      "score": "95",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "16+/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Decanter",
@@ -10550,6 +10759,11 @@
      "critic": "Robert Parker",
      "score": "96",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17.5+/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "James Suckling",
@@ -10776,6 +10990,11 @@
    "terroir": "Pantelleria",
    "ratings": [
     {
+     "critic": "Jancis Robinson",
+     "score": "18/20",
+     "checked": "2026-10-19"
+    },
+    {
      "critic": "Falstaff",
      "score": "95"
     }
@@ -10854,7 +11073,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "17/20"
+     "score": "17/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Jeff Leve",
@@ -10911,6 +11131,11 @@
      "critic": "Robert Parker",
      "score": "99+",
      "checked": "2026-09-06"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "18/20",
+     "checked": "2026-10-19"
     },
     {
      "critic": "Vinous",
