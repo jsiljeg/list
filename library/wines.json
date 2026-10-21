@@ -14874,6 +14874,65 @@
     "es": "El Babić es la uva de la piedra de Šibenik: bayas pequeñas de piel gruesa, en cepas que deben abrirse paso hondo por el karst para encontrar agua — pocos racimos, mucho sabor. Guinda y pimienta, con una acidez que lo mantiene fresco aun bajo el sol dálmata."
    },
    "notePlain": true
+  },
+  "tenuta-san-guido--guidalberto-2024": {
+   "name": "Guidalberto 2024",
+   "producer": "Tenuta San Guido",
+   "insight": {
+    "grape": "Cabernet Sauvignon, Merlot",
+    "region": "Bolgheri, Toscana",
+    "country": "IT",
+    "style": "red_medium",
+    "body": "medium",
+    "aromas": [
+     "cherry",
+     "red_currant",
+     "lavender",
+     "thyme",
+     "blood_orange",
+     "spice"
+    ],
+    "pairings": [
+     "beef",
+     "lamb",
+     "pasta",
+     "cheese_hard",
+     "game"
+    ],
+    "temp": "16–18",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Crkvica na etiketi je oratorij San Guido, na dnu dvostrukog drvoreda čempresa koji vodi u Bolgheri — onog iz Carduccijeve pjesme *Davanti San Guido*, koju talijanska djeca uče u školi. Vino nosi ime Guidalberta della Gherardesce, pretka obitelji koji je, kažu u kući, taj drvored i zacrtao. Isti podrum kao Sassicaia, ali vino za večeras, a ne za 2040.",
+    "en": "The little chapel on the label is the oratory of San Guido, at the foot of the double row of cypresses that runs up to Bolgheri — the one in Carducci's poem *Davanti San Guido*, which every Italian child learns at school. The wine is named after Guidalberto della Gherardesca, a family ancestor who, the house says, laid out that avenue. Same cellar as Sassicaia, but a wine for tonight rather than for 2040.",
+    "it": "La chiesetta in etichetta è l'oratorio di San Guido, ai piedi del duplice filare di cipressi che sale a Bolgheri — quello della poesia di Carducci *Davanti San Guido*, che ogni bambino italiano impara a scuola. Il vino porta il nome di Guidalberto della Gherardesca, antenato di famiglia che, dicono in casa, quel viale lo disegnò. La stessa cantina del Sassicaia, ma un vino per stasera e non per il 2040.",
+    "fr": "La petite chapelle de l'étiquette est l'oratoire de San Guido, au pied de la double rangée de cyprès qui monte à Bolgheri — celle du poème de Carducci *Davanti San Guido*, que tout écolier italien apprend par cœur. Le vin porte le nom de Guidalberto della Gherardesca, un ancêtre de la famille qui, dit la maison, a tracé cette allée. Le même chai que le Sassicaia, mais un vin pour ce soir plutôt que pour 2040.",
+    "de": "Die kleine Kapelle auf dem Etikett ist das Oratorium San Guido, am Fuß der doppelten Zypressenallee, die nach Bolgheri hinaufführt — jener aus Carduccis Gedicht *Davanti San Guido*, das jedes italienische Schulkind lernt. Der Wein trägt den Namen von Guidalberto della Gherardesca, einem Vorfahren der Familie, der diese Allee, so sagt das Haus, angelegt hat. Derselbe Keller wie der Sassicaia, aber ein Wein für heute Abend statt für 2040.",
+    "zh": "酒标上的小教堂是圣圭多祈祷堂，位于通往博尔盖里的双排柏树大道脚下——正是卡尔杜奇诗作《在圣圭多前》里的那条大道，意大利孩子在学校都会背诵。酒名取自家族先人圭达尔贝托·德拉·盖拉尔代斯卡，据酒庄说，这条大道正是他规划的。与西施佳雅同一个酒窖，却是一款今晚就喝的酒，而不是留到 2040 年。",
+    "sl": "Cerkvica na etiketi je oratorij San Guido, ob vznožju dvojnega drevoreda cipres, ki vodi v Bolgheri — tistega iz Carduccijeve pesmi *Davanti San Guido*, ki se jo italijanski otroci učijo v šoli. Vino nosi ime Guidalberta della Gherardesce, prednika družine, ki je ta drevored, pravijo v hiši, tudi zasnoval. Ista klet kot Sassicaia, a vino za nocoj, ne za leto 2040.",
+    "es": "La capillita de la etiqueta es el oratorio de San Guido, al pie de la doble hilera de cipreses que sube a Bolgheri — la del poema de Carducci *Davanti San Guido*, que todo niño italiano aprende en la escuela. El vino lleva el nombre de Guidalberto della Gherardesca, un antepasado de la familia que, según la casa, trazó esa avenida. La misma bodega que el Sassicaia, pero un vino para esta noche y no para 2040."
+   },
+   "notePlain": true,
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-10-21"
+    },
+    {
+     "critic": "Decanter",
+     "score": "93"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "95"
+    }
+   ],
+   "tags": [
+    "drinking_now"
+   ]
   }
  }
 }

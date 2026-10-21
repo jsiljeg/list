@@ -181,6 +181,11 @@
          "anchor": 12
         },
         {
+         "ref": "tenuta-san-guido--guidalberto-2024",
+         "price": 15,
+         "new": true
+        },
+        {
          "ref": "opg-vina-violic--sagul-plavac-mali-2022",
          "price": 8,
          "anchor": 8
@@ -1603,6 +1608,11 @@
          "ref": "angelo-gaja--barbaresco-2020",
          "price": 745,
          "anchor": 745
+        },
+        {
+         "ref": "tenuta-san-guido--guidalberto-2024",
+         "price": 125,
+         "new": true
         },
         {
          "ref": "tenuta-san-guido--sassicaia-2020",
