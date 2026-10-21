@@ -66,6 +66,7 @@ jobs:
           # Through the environment, never ${{ }} inside the script: the title
           # is a wine name the model wrote, and must not be parsed as shell.
           TITLE: ${{ steps.req.outputs.title }}
+          REF: ${{ steps.req.outputs.ref }}
           BY: ${{ steps.req.outputs.by }}
           SENT: ${{ steps.req.outputs.sent }}
         run: |
@@ -76,7 +77,14 @@ jobs:
           git config user.name "Dodaj vino"
           git config user.email "novo-vino@users.noreply.github.com"
           git fetch origin "wine/$ID"
-          git merge --squash "origin/wine/$ID"
+          # Cards written side by side all append to the same file ends, so
+          # the second one published conflicts textually; replay it as data
+          # instead (.github/wine-intake/replay.py says why).
+          if ! git merge --squash "origin/wine/$ID"; then
+            git reset -q --hard HEAD
+            phase "Spaja uz ostala nova vina"
+            python3 .github/wine-intake/replay.py "$REF" "origin/wine/$ID"
+          fi
           sed -i 's/\r$//' library/wines.json lists/theatrium.json data/producers.json data/unavailable.json js/zh-terms.js js/i18n.js
           # Prices are Filho's and may have been corrected on the preview after
           # the card was written: the request holds the latest. Set them on this

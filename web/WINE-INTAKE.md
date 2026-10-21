@@ -28,9 +28,9 @@ preview of the card          ◀───────  ready (result, branch)  �
 |---|---|---|
 | `WINE_INTAKE_ENABLED` | must be `"1"` | the owner's off switch; without it requests wait |
 | one at a time | — | a second request waits for the first |
-| `DAILY_CAP` | 10 | owner's choice (5 until 2026-10-15) |
+| `DAILY_CAP` | 30 | owner's choice (5, then 10 from 2026-10-15, 30 from 2026-10-21 for a batch of 20+); every run counts, answers and corrections included |
 | `MONTHLY_CAP` | 60 | the subscription has no hard $ limit, so ours is the limit |
-| `MAX_RUNS` per wine | 3 | first run + two rounds of questions |
+| `MAX_RUNS` per wine | 5 | first run, two rounds of questions, two rounds of corrections |
 | photos | ≤ 3 per post, ≤ 6 per wine, ≤ 1,5 MB | shrunk to 2000 px JPEG on the tablet |
 | stale run | 40 min | a dead runner cannot block the queue |
 
@@ -44,6 +44,24 @@ dispatch taken off MAX_RUNS and the daily cap (nothing was tried), held for
 the owner gets one e-mail. That day it had instead failed twice in 2 seconds,
 because the step ran claude under `bash -e` and never reached the second
 account; `scripts/check-claude-runs.mjs` now fails any such workflow.
+
+## Many wines at once (2026-10-21)
+
+Every card is written on `wine/<id>` cut from main at its own run, and add.py
+appends the wine and the house at the end of their files. With two cards on
+the preview at once, the second "Objavi" used to conflict in `git merge
+--squash`, and failed the same way on every retry. `publish-wine.yml` now falls
+back to `.github/wine-intake/replay.py`, which lays the card onto today's main
+as data: new library keys and houses, the listing beside the same neighbour,
+86 rules, and a union merge of the one-line-per-entry vocabulary files. Two
+bottles of one new house both write its story; the first published wins. The
+same bottle sent twice is refused on the second publish ("već je na karti").
+Guarded end to end by `tests/wine-batch.spec.mjs`.
+
+Throughput: runs take 2–6 minutes and go one at a time, so 20 bottles with no
+questions is about 1½ hours. The queue advances by itself when a run reports
+back. A wait for a Claude usage limit (30 min), or a cap reached, resumes only
+when someone opens /admin, which reads the list and starts the next one.
 
 ## Who can do what
 

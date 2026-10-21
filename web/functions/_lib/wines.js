@@ -23,7 +23,8 @@
  *      from that log, not from request rows that can change state. */
 import { json, isStaff } from "./daily.js";
 
-export const DAILY_CAP = 10;       /* owner: 5 on 2026-10-10, 10 on 2026-10-15 */
+export const DAILY_CAP = 30;       /* owner: 5 on 2026-10-10, 10 on 2026-10-15, 30 on 2026-10-21 for a
+                                      batch of 20+ bottles — answers and corrections count as runs too */
 export const MONTHLY_CAP = 60;
 export const MAX_RUNS = 5;         /* the first run, two rounds of questions, two rounds of edits */
 export const MAX_PHOTOS = 6;       /* across all rounds */
