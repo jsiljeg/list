@@ -14972,6 +14972,34 @@
     "sl": "Löwenstein je vse življenje Mozelo potiskal proti suhemu — a vino pusti vreti le toliko, kolikor samo hoče. V deževnem letu 2013 je bila plemenita plesen povsod ob Mozeli, to vino pa se je ustavilo pri 8,5% alkohola — preostanek je sladkor. Zlata kapsula pomeni izbor celo med auslesami.",
     "es": "Löwenstein pasó la vida empujando el Mosela hacia el seco — pero deja fermentar un vino solo hasta donde él quiere llegar. En el lluvioso 2013 la podredumbre noble estaba por todo el Mosela, y este se detuvo en 8,5% de alcohol — el resto es azúcar. La cápsula dorada indica una selección incluso entre las Auslesen."
    }
+  },
+  "weingut-knebel--riesling-uhlen-auslese-2023": {
+   "name": "Riesling Uhlen Auslese 2023",
+   "producer": "Weingut Knebel",
+   "insight": {
+    "grape": "Riesling",
+    "region": "Winningen, Terrassenmosel, Mosel",
+    "country": "DE",
+    "style": "sweet",
+    "body": "light",
+    "aromas": [
+     "apricot",
+     "peach",
+     "white_flowers",
+     "honey",
+     "wet_stone"
+    ],
+    "pairings": [
+     "foie_gras",
+     "cheese_blue",
+     "desserts",
+     "fruit_desserts"
+    ],
+    "temp": "8–10",
+    "alcohol": "8.5",
+    "sweetness": "sweet"
+   },
+   "terroir": "Uhlen"
   }
  }
 }
