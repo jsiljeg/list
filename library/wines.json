@@ -15000,6 +15000,46 @@
     "sweetness": "sweet"
    },
    "terroir": "Uhlen"
+  },
+  "marco-de-bartoli--marsala-superiore-oro-vigna-la-miccia-riserva-2019": {
+   "name": "Marsala Superiore Oro Vigna La Miccia Riserva 2019",
+   "producer": "Marco De Bartoli",
+   "insight": {
+    "grape": "Grillo",
+    "region": "Marsala, Sicilia",
+    "country": "IT",
+    "style": "sweet",
+    "body": "full",
+    "aromas": [
+     "dried_apricot",
+     "raisin",
+     "candied_citrus",
+     "white_flowers",
+     "saline"
+    ],
+    "pairings": [
+     "foie_gras",
+     "cheese_blue",
+     "desserts",
+     "nuts"
+    ],
+    "temp": "14–16",
+    "alcohol": "18",
+    "sweetness": "semi_sweet",
+    "rs": "53"
+   },
+   "terroir": "La Miccia",
+   "note": {
+    "hr": "Jedina Marsala ove kuće koja nije oksidativna. Grillo vrije u čeliku, pojača se mistelom od vlastitog mošta i destilata, pa 4 godine leži u francuskim bačvama koje se stalno nadolijevaju — bez zraka, bez solere. Ishod je svjež kao bijelo vino, samo s 18% alkohola. Tko Marsalu zna iz zabagliona, ovdje počinje ispočetka.",
+    "en": "The only Marsala this house makes that is not oxidative. The Grillo ferments in steel, is fortified with a mistella of its own must and spirit, then spends 4 years in French barrels kept constantly topped up — no air, no solera. It comes out as fresh as a white wine, only at 18%. Anyone who knows Marsala from zabaglione starts again here.",
+    "it": "L'unico Marsala della casa che non è ossidativo. Il Grillo fermenta in acciaio, si fortifica con una mistella del proprio mosto e del proprio distillato, poi passa 4 anni in botti francesi sempre colmate — niente aria, niente solera. Ne esce fresco come un bianco, solo a 18%. Chi conosce il Marsala dallo zabaione qui ricomincia da capo.",
+    "fr": "Le seul Marsala de la maison qui ne soit pas oxydatif. Le Grillo fermente en cuve inox, est muté avec une mistelle de son propre moût et de sa propre eau-de-vie, puis passe 4 ans en fûts français toujours ouillés — pas d'air, pas de solera. Il en sort frais comme un blanc, simplement à 18%. Qui connaît le Marsala par le sabayon repart ici de zéro.",
+    "de": "Der einzige Marsala des Hauses, der nicht oxidativ ist. Der Grillo gärt im Stahl, wird mit einer Mistella aus eigenem Most und eigenem Destillat aufgespritet und liegt dann 4 Jahre in französischen Fässern, die ständig aufgefüllt werden — keine Luft, keine Solera. Heraus kommt er frisch wie ein Weißwein, nur mit 18%. Wer Marsala von der Zabaione kennt, fängt hier von vorn an.",
+    "zh": "这是酒庄唯一一款不走氧化路线的马尔萨拉。格里洛在不锈钢罐中发酵，再用自家葡萄汁与自家蒸馏酒调成的 mistella 加强，然后在始终添满的法国橡木桶里放 4 年——不碰空气，不进索莱拉。出来的酒清新得像一款白葡萄酒，只是有 18% 的酒精。只在萨芭雍里认识马尔萨拉的人，在这里会重新认识它。",
+    "sl": "Edina marsala te hiše, ki ni oksidativna. Grillo vre v jeklu, okrepijo ga z mistelo iz lastnega mošta in destilata, nato 4 leta leži v francoskih sodih, ki jih ves čas dolivajo — brez zraka, brez solere. Rezultat je svež kot belo vino, le z 18% alkohola. Kdor marsalo pozna iz zabajona, tu začne znova.",
+    "es": "El único Marsala de la casa que no es oxidativo. El Grillo fermenta en acero, se encabeza con una mistela de su propio mosto y su propio destilado, y pasa 4 años en barricas francesas siempre rellenas — sin aire, sin solera. Sale fresco como un blanco, sólo que con 18%. Quien conoce el Marsala por el zabaione empieza aquí de nuevo."
+   },
+   "notePlain": true
   }
  }
 }
