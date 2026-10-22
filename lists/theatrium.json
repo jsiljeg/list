@@ -130,7 +130,7 @@
         },
         {
          "ref": "meneghetti--white-2023",
-         "price": 12,
+         "price": 15,
          "anchor": 10
         }
        ]
@@ -213,7 +213,7 @@
         },
         {
          "ref": "meneghetti--red-2020",
-         "price": 15,
+         "price": 20,
          "anchor": 15,
          "recommended": true
         },
