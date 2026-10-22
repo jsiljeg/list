@@ -1832,6 +1832,12 @@
          "vol": 0.375
         },
         {
+         "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-auslese-goldkapsel-2013",
+         "price": 150,
+         "vol": 0.375,
+         "new": true
+        },
+        {
          "ref": "weingut-wittmann--riesling-aulerde-auslese-2015",
          "price": 94,
          "anchor": 94,

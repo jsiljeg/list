@@ -14933,6 +14933,45 @@
    "tags": [
     "drinking_now"
    ]
+  },
+  "weingut-heymann-lowenstein--riesling-schieferterrassen-auslese-goldkapsel-2013": {
+   "name": "Riesling Schieferterrassen Auslese Goldkapsel 2013",
+   "producer": "Weingut Heymann-Löwenstein",
+   "insight": {
+    "grape": "Riesling",
+    "region": "Winningen, Terrassenmosel, Mosel",
+    "country": "DE",
+    "style": "sweet",
+    "body": "medium",
+    "aromas": [
+     "apricot",
+     "honey",
+     "candied_fruit",
+     "citrus_peel",
+     "flint"
+    ],
+    "pairings": [
+     "foie_gras",
+     "cheese_blue",
+     "desserts",
+     "fruit_desserts"
+    ],
+    "temp": "8–10",
+    "alcohol": "8.5",
+    "sweetness": "sweet"
+   },
+   "terroir": "",
+   "notePlain": true,
+   "note": {
+    "hr": "Löwenstein je cijeli život tjerao Mosel prema suhom — ali vino pušta da vrije samo koliko ono hoće. U kišnoj 2013. plemenita plijesan bila je posvuda po Moselu, a ovo je vino stalo na 8,5% alkohola — ostatak je šećer. Zlatna kapsula znači da je i među auslesama odabrano.",
+    "en": "Löwenstein spent his life pushing the Mosel towards dry — but he lets a wine ferment only as far as it wants to. In rainy 2013 noble rot was everywhere on the Mosel, and this one stopped at 8.5% alcohol — the rest is sugar. The gold capsule means a selection even among the Auslesen.",
+    "it": "Löwenstein ha passato la vita a spingere la Mosella verso il secco — ma lascia fermentare un vino solo fin dove vuole arrivare. Nella piovosa 2013 la muffa nobile era ovunque sulla Mosella, e questo si è fermato a 8,5% di alcol — il resto è zucchero. La capsula d'oro indica una selezione anche tra le Auslese.",
+    "fr": "Löwenstein a passé sa vie à pousser la Moselle vers le sec — mais il ne laisse un vin fermenter que jusqu'où il veut aller. Dans le pluvieux 2013, la pourriture noble était partout sur la Moselle, et celui-ci s'est arrêté à 8,5% d'alcool — le reste est du sucre. La capsule dorée signale une sélection parmi les Auslesen mêmes.",
+    "de": "Löwenstein hat sein Leben lang die Mosel Richtung trocken geschoben — aber er lässt einen Wein nur so weit gären, wie er selbst will. Im verregneten 2013 war die Edelfäule überall an der Mosel, und dieser blieb bei 8,5% Alkohol stehen — der Rest ist Zucker. Die Goldkapsel heißt: eine Auswahl selbst unter den Auslesen.",
+    "zh": "勒文施泰因一生都在把摩泽尔推向干型——但他只让一款酒发酵到它自己想停下的地方。多雨的 2013 年，摩泽尔到处是贵腐菌，这款酒停在了 8.5% 的酒精度——剩下的都是糖分。金帽意味着即便在精选（Auslese）里也是再选一遍。",
+    "sl": "Löwenstein je vse življenje Mozelo potiskal proti suhemu — a vino pusti vreti le toliko, kolikor samo hoče. V deževnem letu 2013 je bila plemenita plesen povsod ob Mozeli, to vino pa se je ustavilo pri 8,5% alkohola — preostanek je sladkor. Zlata kapsula pomeni izbor celo med auslesami.",
+    "es": "Löwenstein pasó la vida empujando el Mosela hacia el seco — pero deja fermentar un vino solo hasta donde él quiere llegar. En el lluvioso 2013 la podredumbre noble estaba por todo el Mosela, y este se detuvo en 8,5% de alcohol — el resto es azúcar. La cápsula dorada indica una selección incluso entre las Auslesen."
+   }
   }
  }
 }
