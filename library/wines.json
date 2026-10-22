@@ -15040,6 +15040,34 @@
     "es": "El único Marsala de la casa que no es oxidativo. El Grillo fermenta en acero, se encabeza con una mistela de su propio mosto y su propio destilado, y pasa 4 años en barricas francesas siempre rellenas — sin aire, sin solera. Sale fresco como un blanco, sólo que con 18%. Quien conoce el Marsala por el zabaione empieza aquí de nuevo."
    },
    "notePlain": true
+  },
+  "francois-carillon--bourgogne-cote-d-or-chardonnay-2024": {
+   "name": "Bourgogne Côte d'Or Chardonnay 2024",
+   "producer": "François Carillon",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "white_rich",
+    "body": "medium",
+    "aromas": [
+     "citrus",
+     "white_flowers",
+     "hazelnut",
+     "wet_stone"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "risotto",
+     "veal"
+    ],
+    "temp": "10–12",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "notePlain": true
   }
  }
 }
