@@ -556,6 +556,8 @@
     "Weißenkirchen": "魏森基兴",
     "Westhofen": "韦斯特霍芬",
     "Wiltingen": "维尔廷根",
+    "Mužla": "穆日拉",
+    "Štúrovo": "什图罗沃",
     "Winningen": "温宁根",
     "Zagorje – Međimurje": "扎戈列-梅吉穆列",
     "Zagorje-Međimurje": "扎戈列-梅吉穆列",

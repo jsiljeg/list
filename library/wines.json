@@ -15068,6 +15068,56 @@
    },
    "terroir": "",
    "notePlain": true
+  },
+  "chateau-bela--riesling-2023": {
+   "name": "Riesling 2023",
+   "producer": "Château Belá",
+   "insight": {
+    "grape": "Riesling",
+    "region": "Mužla, Štúrovo",
+    "country": "SK",
+    "style": "white_mineral",
+    "body": "medium",
+    "aromas": [
+     "lime",
+     "apricot",
+     "white_flowers",
+     "wet_stone"
+    ],
+    "pairings": [
+     "asian",
+     "pork",
+     "white_fish",
+     "poultry",
+     "veal"
+    ],
+    "temp": "10–12",
+    "alcohol": "13",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Na etiketi piše „neskorý zber“ — kasna berba — a odmah ispod „suché“, suho. Grožđe je ostavljeno da dozrije na toplom dunavskom suncu, a vino je ipak dovršeno do kraja suho. Kod kuće na Saaru Egon Müller radi obrnuto: njegov Scharzhof ima 8,5% alkohola i ostatak slatkoće. Isti čovjek, ista sorta, dvije sasvim različite ćudi.",
+    "en": "The label says “neskorý zber” — late harvest — and right below it “suché”, dry. The grapes were left to ripen in the warm Danube sun, and the wine was still fermented all the way to dry. At home on the Saar, Egon Müller does the opposite: his Scharzhof has 8.5% alcohol and a touch of sweetness. Same man, same grape, two quite different temperaments.",
+    "it": "In etichetta c'è scritto “neskorý zber” — vendemmia tardiva — e subito sotto “suché”, secco. L'uva è stata lasciata maturare al sole caldo del Danubio, eppure il vino è stato portato fino in fondo al secco. A casa sua, sulla Saar, Egon Müller fa il contrario: il suo Scharzhof ha l'8,5% di alcol e un residuo di dolcezza. Stesso uomo, stessa uva, due caratteri del tutto diversi.",
+    "fr": "L'étiquette dit « neskorý zber » — vendange tardive — et juste en dessous « suché », sec. Le raisin a mûri sous le soleil chaud du Danube, et le vin a pourtant été mené jusqu'au sec. Chez lui, sur la Sarre, Egon Müller fait l'inverse : son Scharzhof titre 8,5% et garde une pointe de douceur. Le même homme, le même cépage, deux tempéraments bien différents.",
+    "de": "Auf dem Etikett steht „neskorý zber“ — Spätlese — und gleich darunter „suché“, trocken. Die Trauben durften in der warmen Donausonne ausreifen, und doch wurde der Wein ganz durchgegoren. Daheim an der Saar macht Egon Müller es umgekehrt: Sein Scharzhof hat 8,5% Alkohol und eine Spur Süße. Derselbe Mann, dieselbe Rebsorte, zwei ganz verschiedene Temperamente.",
+    "zh": "酒标上写着“neskorý zber”——晚收——紧接着下面是“suché”，干型。葡萄在多瑙河畔温暖的阳光下充分成熟，酒却一直发酵到完全干。回到萨尔河畔的家里，伊慕（Egon Müller）做的恰恰相反：他的 Scharzhof 只有 8.5% 酒精，带一丝甜。同一个人，同一个品种，两种截然不同的性格。",
+    "sl": "Na etiketi piše „neskorý zber“ — pozna trgatev — tik pod tem pa „suché“, suho. Grozdje je zorelo na toplem podonavskem soncu, vino pa je kljub temu povrelo do konca suho. Doma ob Saari Egon Müller dela ravno obratno: njegov Scharzhof ima 8,5% alkohola in kanček sladkobe. Isti človek, ista sorta, dva povsem različna značaja.",
+    "es": "La etiqueta dice «neskorý zber» — vendimia tardía — y justo debajo «suché», seco. La uva maduró al sol cálido del Danubio y aun así el vino fermentó hasta quedar completamente seco. En casa, en el Sarre, Egon Müller hace lo contrario: su Scharzhof tiene 8,5% de alcohol y un punto de dulzor. El mismo hombre, la misma uva, dos temperamentos muy distintos."
+   },
+   "notePlain": true,
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-10-22"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "92"
+    }
+   ]
   }
  }
 }
