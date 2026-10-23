@@ -15408,6 +15408,34 @@
     "es": "Corvée es la vieja palabra francesa para los días de trabajo que el siervo debía gratis a su señor. Hoy es un cuarto de hectárea de cepas de 40 años en el borde de la denominación — el único Puligny que hace Vincent, así que hay poco."
    },
    "notePlain": true
+  },
+  "domaine-jean-chartron--rully-montmorin-2024": {
+   "name": "Rully Montmorin 2024",
+   "producer": "Domaine Jean Chartron",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Rully, Côte Chalonnaise, Bourgogne",
+    "country": "FR",
+    "style": "white_rich",
+    "body": "medium",
+    "aromas": [
+     "citrus",
+     "white_flowers",
+     "apple",
+     "pear",
+     "wet_stone"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "veal",
+     "cheese_fresh"
+    ],
+    "temp": "13–15",
+    "alcohol": "13",
+    "sweetness": "dry"
+   },
+   "terroir": "Montmorin"
   }
  }
 }
