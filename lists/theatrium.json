@@ -1399,6 +1399,11 @@
          "ref": "jules-desjourneys--rouge-2023",
          "price": 80,
          "anchor": 80
+        },
+        {
+         "ref": "domaine-a-f-gros--moulin-a-vent-en-mortperay-2022",
+         "price": 150,
+         "new": true
         }
        ]
       },
