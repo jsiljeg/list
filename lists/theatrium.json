@@ -1004,14 +1004,12 @@
         {
          "ref": "jules-desjourneys--pouilly-vinzelles-les-longeays-blanc-2021",
          "price": 139,
-         "anchor": 139,
-         "new": true
+         "anchor": 139
         },
         {
          "ref": "jules-desjourneys--saint-veran-blanc-2021",
          "price": 129,
-         "anchor": 129,
-         "new": true
+         "anchor": 129
         }
        ]
       },
