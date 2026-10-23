@@ -420,6 +420,7 @@
     "Trittenheimer Apotheke": "特里滕海姆药园",
     "Uhlen Blaufüßer Lay": "乌伦蓝足岩",
     "Medana Breg": "梅达纳布雷格",
+    "Medana Jama": "梅达纳亚马",
     "Jadrtovac": "亚德尔托瓦茨",
     "Imotski": "伊莫茨基",
     "Hvar": "赫瓦尔",

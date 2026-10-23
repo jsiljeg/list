@@ -15625,6 +15625,33 @@
      "checked": "2026-10-23"
     }
    ]
+  },
+  "marjan-simcic--pinot-noir-cru-selection-2024": {
+   "name": "Pinot Noir Cru Selection 2024",
+   "producer": "Marjan Simčič",
+   "insight": {
+    "grape": "Pinot Noir",
+    "region": "Goriška brda, Primorska",
+    "country": "SI",
+    "style": "red_light",
+    "body": "light",
+    "aromas": [
+     "strawberry",
+     "sour_cherry",
+     "raspberry",
+     "toasted_coffee"
+    ],
+    "pairings": [
+     "poultry",
+     "mushrooms",
+     "veal"
+    ],
+    "temp": "14–16",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "Medana Jama",
+   "notePlain": true
   }
  }
 }
