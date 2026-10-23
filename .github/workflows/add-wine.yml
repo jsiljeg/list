@@ -49,6 +49,7 @@ jobs:
     outputs:
       status: ${{ steps.out.outputs.status }}
       mode: ${{ steps.fetch.outputs.mode }}
+      base: ${{ steps.base.outputs.sha }}
     steps:
       - name: Check the id
         run: '[[ "$ID" =~ ^[0-9]{8}-[0-9a-f]{12}$ ]] || { echo "bad id"; exit 1; }'
@@ -107,6 +108,15 @@ jobs:
         with:
           persist-credentials: false
           ref: ${{ steps.fetch.outputs.mode == 'edit' && steps.fetch.outputs.branch || 'main' }}
+
+      # The exact list Claude reads. The card is saved onto this commit, not
+      # onto main as it is by then (2026-10-23): with wines published while it
+      # was written, the patch no longer applied to main, and a finished card
+      # failed at "Provjerava i sprema karticu". Publishing merges it forward
+      # (replay.py handles cards written side by side).
+      - name: Note the list this card is written against
+        id: base
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-node@v4
         with:
@@ -260,6 +270,7 @@ jobs:
         if: needs.write.outputs.status == 'ready'
         env:
           MODE: ${{ needs.write.outputs.mode }}
+          BASE: ${{ needs.write.outputs.base }}
           KEY: ${{ secrets.WINE_WORKER_KEY }}
           PU: ${{ secrets.PARKER_USER }}
           PP: ${{ secrets.PARKER_PASS }}
@@ -268,7 +279,7 @@ jobs:
           curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" \
                -d '{"phase":"Provjerava i sprema karticu"}' "$INBOX/$ID/stanje" > /dev/null || true
           branch="wine/$ID"
-          if [ "$MODE" = "edit" ]; then git checkout "$branch"; else git checkout -B "$branch" origin/main; fi
+          if [ "$MODE" = "edit" ]; then git checkout "$branch"; else git checkout -B "$branch" "${BASE:-origin/main}"; fi
           # The model may only have changed data files; anything else in the
           # patch means something went wrong, and nothing is applied.
           bad=$(grep '^diff --git' out/card.patch | awk '{print $3}' | sed 's#^a/##' \

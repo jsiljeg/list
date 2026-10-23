@@ -98,3 +98,15 @@ test("a stuck Parker lookup cannot take the card down with it", () => {
   expect(wf).toMatch(/timeout -k 10 150 env PARKER_USER="\$PU" PARKER_PASS="\$PP" node "\$RUNNER_TEMP\/rp\/parker\.mjs"/);
   expect(wf).toMatch(/timeout 180 npx --yes playwright@[\d.]+ install/);
 });
+
+/* 2026-10-23: with wines published while a card was being written, the
+   card's patch no longer applied to main ("patch failed: library/wines.json")
+   and a finished 179 € card failed at "Provjerava i sprema karticu". The card
+   is saved onto the commit Claude read; publishing merges it forward. */
+test("a card is saved onto the list it was written against, not today's main", () => {
+  const wf = readFileSync(".github/workflows/add-wine.yml", "utf8");
+  expect(wf).toMatch(/id: base\s+run: echo "sha=\$\(git rev-parse HEAD\)"/);
+  expect(wf).toContain("base: ${{ steps.base.outputs.sha }}");
+  expect(wf).toContain('BASE: ${{ needs.write.outputs.base }}');
+  expect(wf).toContain('git checkout -B "$branch" "${BASE:-origin/main}"');
+});
