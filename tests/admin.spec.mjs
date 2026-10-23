@@ -1322,4 +1322,9 @@ test("the service worker leaves the admin and its APIs alone", () => {
   expect(head).toContain("admin(\\.html)?|js\\/admin");
   const admin = readFileSync(new URL("../js/admin.js", import.meta.url), "utf8");
   expect(admin).not.toMatch(/fetch\("library\/wines\.json", \{ cache: "no-cache" \}\)/);
+  /* and the board drops a worker that already controls it (an old one in
+     Safari does not swap itself until a later load), reloading only once */
+  const html = readFileSync(new URL("../admin.html", import.meta.url), "utf8");
+  const top = html.slice(0, html.indexOf("<title"));
+  expect(top).toMatch(/sw\.controller[\s\S]*unregister\(\)[\s\S]*if \(!once\) location\.reload\(\)/);
 });

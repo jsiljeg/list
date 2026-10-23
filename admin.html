@@ -2,6 +2,23 @@
 <html lang="hr">
 <head>
 <meta charset="utf-8">
+<script>
+/* The board is never served by the guest app's service worker (2026-10-23).
+   Filho's MacBook Safari kept an old worker that answered every failed call
+   with "Response served by service worker is an error", and a worker only
+   swaps itself on a *later* load — so a fix to sw.js alone could not reach
+   him. If one controls this page, unregister it and reload once; the guest
+   app registers it again on its own next visit. */
+(function () {
+  var sw = navigator.serviceWorker;
+  if (!sw || !sw.controller) return;
+  var once = false;
+  try { once = sessionStorage.getItem("sw-off") === "1"; sessionStorage.setItem("sw-off", "1"); } catch (e) {}
+  sw.getRegistrations().then(function (rs) {
+    return Promise.all(rs.map(function (r) { return r.unregister(); }));
+  }).then(function () { if (!once) location.reload(); }).catch(function () {});
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#161513">
 <title>Theatrium — čega nema i cijene</title>
