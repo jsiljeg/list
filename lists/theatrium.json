@@ -44,6 +44,10 @@
        "country": null,
        "items": [
         {
+         "ref": "chavost--blanc-de-chardonnay",
+         "price": 16
+        },
+        {
          "ref": "deutz--brut-classic",
          "price": 16,
          "anchor": 16
