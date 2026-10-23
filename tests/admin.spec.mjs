@@ -1378,3 +1378,31 @@ test("Dodaj vino: several bottles at once, and a half-typed form survives a poll
   for (const p of posts) expect(p, "re-encoded as JPEG").toContain("image/jpeg");
   await expect(page.locator("#b-rows .brow"), "sent rows leave the batch").toHaveCount(0);
 });
+
+/* 2026-10-23: with wines in the queue the board polls every 8 s, and each
+   poll rebuilt the request cards — the owner's remark on a ready preview
+   ("+ Što još promijeniti?") vanished mid-sentence. A poll now leaves the
+   list alone while something in it is being written. */
+test("Dodaj vino: a remark being typed on a preview survives the polls", async ({ page }) => {
+  await board(page);
+  const lib = JSON.parse(readFileSync(new URL("../library/wines.json", import.meta.url), "utf8")).wines;
+  let gets = 0;
+  const ready = { id: "r3", status: "ready", created_at: "2026-10-23T10:00:00Z", price_bottle: 199, price_glass: null,
+    vol: null, photos: [], questions: [], answers: [],
+    result: { draft: { wine: lib["le-ragose--amarone-classico-riserva-2013"], listings: [] }, gaps: [] } };
+  const queued = { id: "q9", status: "queued", created_at: "2026-10-23T10:05:00Z", updated_at: "2026-10-23T10:05:00Z",
+    price_bottle: 100, price_glass: null, vol: null, photos: [], progress: [], answers: [] };
+  await page.route("https://theatrium.devinos.hr/api/vina**", (route) => {
+    if (route.request().method() === "GET") gets++;
+    return route.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify({ items: [queued, ready], limits: { enabled: true, today: 1, dailyCap: 30, month: 1, monthlyCap: 60 } }) });
+  });
+  await page.click('.tabs button[data-tab="novo"]');
+  await page.click('[data-edit="komentar"][data-id="r3"]');
+  await page.fill(".editbox textarea", "dodaj u dnevnu ponudu");
+  const before = gets;
+  await expect.poll(() => gets, { timeout: 20000 }).toBeGreaterThan(before + 1);
+  await expect(page.locator(".editbox textarea"), "two polls later the remark is still there").toHaveValue("dodaj u dnevnu ponudu");
+  await page.click(".editbox .ok");
+  await expect(page.locator(".req").filter({ hasText: "dodaj u dnevnu ponudu" })).toHaveCount(1);
+});

@@ -79,16 +79,16 @@
   };
   const errText = (e) => MSG[e] || (/^github_/.test(e || "") ? "Pokretanje nije uspjelo — pokušat će ponovno." : e);
 
-  async function loadRequests() {
+  async function loadRequests(poll) {
     try {
       const b = await api("");
       items = b.items || []; limits = b.limits;
-      renderNovo();
+      renderNovo(!!poll);
       for (const it of items) for (const n of it.photos) loadThumb(it.id, n);
     } catch (e) { renderNovo(); $("novo-msg").textContent = "Ne mogu učitati: " + e.message; }
     /* Poll while something is moving; a finished list does not need it. */
     if (tab === "novo" && items.some((i) => ["queued", "working", "publishing"].includes(i.status)))
-      timer = setTimeout(loadRequests, POLL_MS);
+      timer = setTimeout(() => loadRequests(true), POLL_MS);
   }
 
   async function loadThumb(id, n) {
@@ -142,7 +142,16 @@
      for the next wine while the last one was being written — exactly how a
      batch of new bottles gets entered. Only the request list redraws now. */
   let formEl = null;
-  function renderNovo() {
+  /* Something is being written in a request card: an open ✎ box, or a
+     field with focus or with text in it (an answer, a correction). */
+  function editing(root) {
+    if (!root) return false;
+    if (root.querySelector(".editbox")) return true;
+    const a = document.activeElement;
+    if (a && root.contains(a) && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) return true;
+    return [...root.querySelectorAll("textarea, input[type=text]")].some((f) => f.value.trim());
+  }
+  function renderNovo(fromPoll) {
     const box = $("tab-novo");
     const lim = limits ? (limits.enabled
       ? `Danas ${limits.today}/${limits.dailyCap} · ovaj mjesec ${limits.month}/${limits.monthlyCap}`
@@ -154,6 +163,10 @@
     }
     $("novo-lim").textContent = lim;
     const reqs = $("novo-reqs");
+    /* A poll never redraws under a hand that is typing (owner, 2026-10-23:
+       a remark on a preview vanished mid-sentence, every 8 s). The next poll
+       after the box is closed brings the list up to date. */
+    if (fromPoll && editing(reqs)) return;
     reqs.innerHTML = `
       ${shown().length ? `<h2 class="sec">Zahtjevi</h2>` : ""}
       ${shown().map(card).join("")}`;
