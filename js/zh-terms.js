@@ -367,6 +367,7 @@
     "Les Barreaux": "巴罗",
     "Les Benoites": "贝努瓦特",
     "Les Chenevottes": "舍纳沃特",
+    "Corvées des Vignes": "科尔韦德维涅",
     "Les Frionnes": "弗里翁",
     "Les Monts Damnés": "蒙丹",
     "Les Murgers des Dents de Chien": "犬齿石垣园",

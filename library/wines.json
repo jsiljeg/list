@@ -15357,6 +15357,57 @@
      "score": "92-95"
     }
    ]
+  },
+  "jean-marc-vincent--puligny-montrachet-corvees-des-vignes-2023": {
+   "name": "Puligny-Montrachet Corvées des Vignes 2023",
+   "producer": "Jean-Marc Vincent",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Puligny-Montrachet, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "white_rich",
+    "body": "medium",
+    "aromas": [
+     "grapefruit",
+     "pear",
+     "white_flowers",
+     "white_pepper",
+     "ginger",
+     "chalk"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "shellfish",
+     "veal"
+    ],
+    "temp": "12–14",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "Corvées des Vignes",
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-10-23"
+    },
+    {
+     "critic": "Vinous",
+     "score": "90-92"
+    }
+   ],
+   "note": {
+    "hr": "Corvée je stara francuska riječ za dane rada koje je kmet besplatno dugovao gospodaru. Danas je to četvrt hektara trsova starih 40 godina na rubu apelacije — jedini Puligny koji Vincent radi, pa ga ima malo.",
+    "en": "A corvée is the old French word for the days of work a serf owed his lord for nothing. Today it is a quarter of a hectare of 40-year-old vines at the edge of the appellation — the only Puligny Vincent makes, so there is little of it.",
+    "it": "Corvée è l'antica parola francese per le giornate di lavoro che il servo doveva gratis al signore. Oggi è un quarto di ettaro di viti di 40 anni al margine della denominazione — l'unico Puligny di Vincent, quindi ce n'è poco.",
+    "fr": "La corvée, ce sont les journées de travail que le serf devait gratuitement à son seigneur. Aujourd'hui, c'est un quart d'hectare de vignes de 40 ans en lisière de l'appellation — le seul Puligny de Vincent, donc il y en a peu.",
+    "de": "Corvée ist das alte französische Wort für die Frondienste, die der Leibeigene seinem Herrn unentgeltlich schuldete. Heute sind es 0,25 Hektar 40 Jahre alter Reben am Rand der Appellation — Vincents einziger Puligny, und entsprechend wenig gibt es davon.",
+    "zh": "Corvée 是法语古词，指农奴无偿为领主劳作的日子。如今这里是位于产区边缘的四分之一公顷、树龄40年的葡萄园——Vincent 唯一的 Puligny，产量很少。",
+    "sl": "Corvée je stara francoska beseda za dneve tlake, ki jih je podložnik brezplačno dolgoval gospodu. Danes je to četrt hektarja 40 let starih trt na robu apelacije — Vincentov edini Puligny, zato ga je malo.",
+    "es": "Corvée es la vieja palabra francesa para los días de trabajo que el siervo debía gratis a su señor. Hoy es un cuarto de hectárea de cepas de 40 años en el borde de la denominación — el único Puligny que hace Vincent, así que hay poco."
+   },
+   "notePlain": true
   }
  }
 }
