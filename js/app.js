@@ -134,6 +134,9 @@ const esc = (s) => String(s == null ? "" : s)
    the JSON, converted here **after** esc() has run: by that point every < and
    & is already an entity, so nothing an author writes can become markup.
    Deliberately only <em>; a blurb has no business emitting anything else. */
+/* *word* in a note or a winery story is italics — a poem, a nickname, a
+   foreign term. Notes were left out until 2026-10-23 (Guidalberto showed
+   "*Davanti San Guido*" with its asterisks). */
 const emph = (escaped) => escaped.replace(/\*([^*\n]+)\*/g, "<em>$1</em>");
 const T = () => I18N[lang] || I18N.en;
 
@@ -1511,8 +1514,8 @@ function openDetail(ref, back, scope) {
       ? esc(spiritTerm("classes", ins.class))
       : esc(t.styles[ins.style] || "") + (ins.dosage ? " · " + esc(localizeDosage(ins.dosage)) : "") + (ins.sweetness && t.sweetness ? " · " + esc(t.sweetness[ins.sweetness] || ins.sweetness) : "")}</div>
     ${noteText ? (item.notePlain
-      ? `<div class="detail-note">${esc(noteText)}</div>`
-      : `<div class="detail-note">„${esc(noteText)}“ <span class="detail-note-sig">— ${esc(item.noteSig || "Filho")}</span></div>`) : ""}
+      ? `<div class="detail-note">${emph(esc(noteText))}</div>`
+      : `<div class="detail-note">„${emph(esc(noteText))}“ <span class="detail-note-sig">— ${esc(item.noteSig || "Filho")}</span></div>`) : ""}
     <div class="detail-grid">
       ${spirit ? `
       ${field(su.base, esc(slist(ins.base, "bases")))}

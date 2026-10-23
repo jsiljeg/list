@@ -236,3 +236,14 @@ test("a wine does not stay lit after the card is closed with Esc", async ({ page
   expect(lit.focusedItem, "the row that opened the card still holds focus").toBe(false);
   expect(lit.anyVisible, "a row is still drawn as focused").toBe(0);
 });
+
+/* 2026-10-23: Guidalberto's note printed "*Davanti San Guido*" with its
+   asterisks — the winery story turned *…* into italics, the wine's note did
+   not. A note now does too, and no card shows a bare asterisk pair. */
+test("a note's *title* is italics, never asterisks", async ({ page }) => {
+  await openApp(page, { lang: "hr" });
+  await openWine(page, "Guidalberto");
+  const note = page.locator(".detail-note");
+  await expect(note.locator("em")).toHaveText("Davanti San Guido");
+  expect(await note.innerText()).not.toContain("*");
+});

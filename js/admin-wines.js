@@ -25,6 +25,8 @@
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  /* *word* is italics, as on the guest's card (js/app.js) */
+  const emph = (escaped) => escaped.replace(/\*([^*\n]+)\*/g, "<em>$1</em>");
   const eur = (n) => (n == null ? "" : String(n).replace(".", ",") + " €");
 
   const ghKey = () => localStorage.getItem(LS_GH) || "";
@@ -589,7 +591,7 @@
       : status === "none" ? "Vinarija nema priču na karti" : "";
     if (!head) return "";
     return `<div class="winery"><div class="w-head">${head}</div>
-      ${text ? `<p class="blurb${mine.blurb ? " changed" : ""}"><b>${esc(name)}</b> — ${esc(mine.blurb ? mine.blurb.to : text)}
+      ${text ? `<p class="blurb${mine.blurb ? " changed" : ""}"><b>${esc(name)}</b> — ${emph(esc(mine.blurb ? mine.blurb.to : text))}
         <button class="pen" data-edit="blurb" data-id="${esc(it.id)}" data-long="1" data-from="${esc(text)}" aria-label="Ispravi priču o vinariji">✎</button></p>` : ""}
       ${r.producer_note ? `<p class="muted small">${esc(r.producer_note)}</p>` : ""}</div>`;
   }
@@ -626,7 +628,7 @@
         ${row("Uz jelo", (i.pairings || []).map((k) => tr("pairings", k)).join(", "))}
         ${ed("Ocjene", "ratings", (w.ratings || []).map((x) => `${x.critic} ${x.score}`).join(", "))}
       </table>
-      ${note ? `<p class="note${mine.note ? " changed" : ""}">${w.notePlain ? "" : "„"}${esc(note)}${w.notePlain ? "" : "“ — Filho"}
+      ${note ? `<p class="note${mine.note ? " changed" : ""}">${w.notePlain ? "" : "„"}${emph(esc(note))}${w.notePlain ? "" : "“ — Filho"}
         <button class="pen" data-edit="note" data-id="${esc(it.id)}" data-long="1" data-from="${esc((w.note && w.note.hr) || "")}" aria-label="Ispravi bilješku">✎</button></p>`
         /* No note is a normal card (owner, 2026-10-11: a note is earned, never forced). */
         : `<p class="muted small">Bez bilješke — vino je ne treba ako nema što posebno reći.
