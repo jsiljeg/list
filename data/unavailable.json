@@ -198,11 +198,6 @@
    "since": "2026-10-10"
   },
   {
-   "producer": "Jakopić",
-   "name": "Terbotz",
-   "since": "2026-10-15"
-  },
-  {
    "producer": "Meneghetti",
    "name": "Blanc de Blancs",
    "since": "2026-10-15"
@@ -303,6 +298,12 @@
    "producer": "Baraka",
    "name": "Malena 2022",
    "since": "2026-10-22"
+  },
+  {
+   "producer": "Jakopić",
+   "name": "Terbotz",
+   "where": "glass",
+   "since": "2026-10-23"
   }
  ]
 }
