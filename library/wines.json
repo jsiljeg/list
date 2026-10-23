@@ -15483,6 +15483,53 @@
      "checked": "2026-10-23"
     }
    ]
+  },
+  "domaine-chandon-de-briailles--savigny-les-beaune-les-saucours-2022": {
+   "name": "Savigny-lès-Beaune Les Saucours 2022",
+   "producer": "Domaine Chandon de Briailles",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Savigny-lès-Beaune, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "white_rich",
+    "body": "medium",
+    "aromas": [
+     "white_flowers",
+     "citrus",
+     "pear",
+     "white_peach",
+     "beeswax",
+     "chalk"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "risotto",
+     "shellfish",
+     "veal"
+    ],
+    "temp": "10–12",
+    "alcohol": "13",
+    "sweetness": "dry"
+   },
+   "terroir": "Les Saucours",
+   "note": {
+    "hr": "Savigny je selo crnog vina — bijelo je ovdje rijetkost. Les Saucours je parcela od samo 0,6 hektara na bijelom laporu, a berba 2022 vrela je polako, gotovo godinu dana, u velikim drvenim bačvama uz tek trag sumpora. Zato je istodobno zrela i napeta.",
+    "en": "Savigny is a red-wine village — white is a rarity here. Les Saucours is a parcel of just 0.6 hectares on white marl, and the 2022 fermented slowly, for almost a year, in large wooden vats with almost no sulphur. That is why it is ripe and taut at once.",
+    "it": "Savigny è un villaggio da vino rosso — il bianco qui è una rarità. Les Saucours è una parcella di appena 0,6 ettari su marne bianche, e il 2022 ha fermentato lentamente, quasi un anno, in grandi tini di legno e quasi senza solfiti. Per questo è insieme maturo e teso.",
+    "fr": "Savigny est un village de vin rouge — le blanc y est une rareté. Les Saucours est une parcelle de 0,6 hectare à peine sur marnes blanches, et le 2022 a fermenté lentement, près d'un an, en grandes cuves de bois et presque sans soufre. D'où ce vin à la fois mûr et tendu.",
+    "de": "Savigny ist ein Rotweindorf — Weißwein ist hier eine Rarität. Les Saucours ist eine Parzelle von nur 0,6 Hektar auf weißem Mergel, und der 2022er gärte langsam, fast ein Jahr lang, in großen Holzfässern und fast ohne Schwefel. Deshalb ist er zugleich reif und straff.",
+    "zh": "萨维尼-莱博讷是红葡萄酒村，白葡萄酒在这里很少见。索库尔园只有 0.6 公顷，土壤是白色泥灰岩；2022 年份在大木桶中缓慢发酵了将近一年，几乎不加硫。所以它既成熟又紧致。",
+    "sl": "Savigny je vas rdečega vina — belo je tu redkost. Les Saucours je parcela s komaj 0,6 hektarja na belem laporju, letnik 2022 pa je počasi, skoraj leto dni, vrel v velikih lesenih sodih in skoraj brez žvepla. Zato je hkrati zrel in napet.",
+    "es": "Savigny es un pueblo de vino tinto — el blanco aquí es una rareza. Les Saucours es una parcela de apenas 0,6 hectáreas sobre margas blancas, y el 2022 fermentó despacio, casi un año, en grandes cubas de madera y casi sin sulfuroso. Por eso es maduro y tenso a la vez."
+   },
+   "notePlain": true,
+   "ratings": [
+    {
+     "critic": "Vinous",
+     "score": "91"
+    }
+   ]
   }
  }
 }

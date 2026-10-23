@@ -364,6 +364,7 @@
      * Latin is always kept alongside so the label can still be matched. */
     "Les Arvelets": "阿维莱",
     "Les Pimentiers": "皮芒蒂耶",
+    "Les Saucours": "索库尔",
     "Les Barreaux": "巴罗",
     "Les Benoites": "贝努瓦特",
     "Les Chenevottes": "舍纳沃特",
