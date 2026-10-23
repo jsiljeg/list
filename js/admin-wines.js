@@ -775,9 +775,9 @@
          ("3 promjene na karti") lists its changes one per line in the body,
          and each becomes its own row, under the batch's signer. */
       const kind = (m) => (/^Nema/.test(m) ? "makn" : /^Vraćeno/.test(m) ? "vrac"
-        : /^Cijena:/.test(m) ? "cijena" : /^NOVO:/.test(m) ? "flag"
+        : /^Cijena:/.test(m) ? "cijena" : /^Na čašu:/.test(m) ? "casa" : /^NOVO:/.test(m) ? "flag"
         : /joins NOVO|joins the list|joins|^Novo vino|^Dodaj vino/i.test(m) ? "novo" : null);
-      const label = { novo: "Dodano", makn: "Skinuto", vrac: "Vraćeno", cijena: "Cijena", flag: "NOVO",
+      const label = { novo: "Dodano", makn: "Skinuto", vrac: "Vraćeno", cijena: "Cijena", casa: "Na čašu", flag: "NOVO",
                       placeno: "PLAĆENO", neplaceno: "NEPLAĆENO" };
       const entries = [];
       for (const c of rows) {
@@ -809,6 +809,9 @@
           what = item.replace(/^(Nema na čašu|Nema na bocu|Nema|Vraćeno na kartu):\s*/, "");
         } else if (k === "cijena") {
           what = item.replace(/^Cijena:\s*/, "");
+        } else if (k === "casa") {
+          /* a bottle now poured by the glass, from "+ čaša" on the board (2026-10-23) */
+          what = item.replace(/^Na čašu:\s*/, "");
         } else if (k === "flag") {
           const on = / — dodano$/.test(item);
           badge = on ? "NOVO uklj." : "NOVO isklj.";

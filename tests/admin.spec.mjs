@@ -458,7 +458,10 @@ test("Povijest shows every change between the two of them, and who made it", asy
      batch commit split into its changes; an older unsigned NOVO commit's
      "— dodano" must not be read as a person. */
   await board(page);
+  /* 2026-10-23: "+ čaša" commits ("Na čašu: …") were skipped, so a wine put
+     on by the glass never showed here. */
   const commits = [
+    ["Na čašu: Marjan Simčič Pinot Noir Opoka 2021: 14 € — Filho", "2026-10-11T09:55:00Z", "Filho"],
     ["Cijena: Marjan Simčič Merlot Opoka 2017: 125 → 150 € — Jure", "2026-10-11T09:51:00Z", "jsiljeg"],
     ["NOVO: Le Ragose Caloetto 2015 — maknuto — Filho", "2026-10-11T09:40:00Z", "Filho"],
     ["2 promjene na karti — Filho\n\nNema: Kilchoman Machir Bay\nNema na čašu: Meneghetti Red 2020", "2026-10-11T09:30:00Z", "Filho"],
@@ -471,6 +474,7 @@ test("Povijest shows every change between the two of them, and who made it", asy
   const rows = await page.locator(".hist").evaluateAll((els) => els.map((e) =>
     `${e.querySelector(".badge").textContent}|${e.querySelector(".what").textContent}`));
   expect(rows).toEqual([
+    "Na čašu|Marjan Simčič Pinot Noir Opoka 2021: 14 € · Filho",
     "Cijena|Marjan Simčič Merlot Opoka 2017: 125 → 150 € · Jure",
     "NOVO isklj.|Le Ragose Caloetto 2015 · Filho",
     "Skinuto|Kilchoman Machir Bay · Filho",
