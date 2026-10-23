@@ -211,7 +211,7 @@ function collect(library, list) {
           /* The listing object itself, so an edit lands on the document that
              is written back. Same wine twice on one shelf (a magnum beside the
              bottle) is two listings, told apart by `vol`. */
-          if (entry.price != null) row.listings.push({ entry, glass: sec.id === "glass" });
+          if (entry.price != null) row.listings.push({ entry, glass: sec.id === "glass", sec: sec.id, cat: cat.id });
         }
       }
     }
@@ -288,6 +288,50 @@ function savePrice(key, idx, text, sure) {
   drain();
 }
 
+/* A bottle that starts being poured by the glass (owner, 2026-10-23: "so
+   Filho can do it by himself", the same way as a price). The pour goes on the
+   glass shelf in the bottle's own category — a Champagne among the
+   Champagnes — at the place the list keeps: lightest to fullest, then
+   cheapest (CLAUDE.md, "The by-the-glass list is ordered"). It carries no
+   anchor (it had no glass price on the reference day) and no NOVO (the wine
+   did not arrive today; Filho can still tap NOVO). */
+const BODY_RANK = { light: 0, medium: 1, full: 2 };
+let glassAsk = null;         /* key of the wine whose "+ čaša" line is open */
+let glassDraft = "";
+let glassNote = "";
+function addGlass(key, text) {
+  const w = wines.find((x) => x.key === key);
+  const bottle = w && w.listings.find((l) => !l.glass && l.sec.startsWith("bottle"));
+  if (!bottle) return;
+  glassDraft = text;
+  const price = parsePrice(text);
+  if (price == null) { glassNote = "Upišite cijenu čaše u eurima, npr. 9 ili 12,50."; render(); return; }
+  if (price >= bottle.entry.price) { glassNote = `Čaša ne može koštati koliko boca (${fmtEur(bottle.entry.price)} €).`; render(); return; }
+  const shelf = listDoc.sections.find((s) => s.id === "glass");
+  if (!shelf) return;
+  let cat = shelf.categories.find((c) => c.id === bottle.cat);
+  if (!cat) {
+    /* no such category on the glass shelf yet (a first rosé by the glass) */
+    cat = { id: bottle.cat, groups: [{ country: null, items: [] }] };
+    shelf.categories.push(cat);
+  }
+  const items = cat.groups[0].items;
+  const ref = bottle.entry.ref;
+  const rank = (r, pr) => [BODY_RANK[((library[r] || {}).insight || {}).body] ?? 1, pr];
+  const mine = rank(ref, price);
+  let at = 0;
+  items.forEach((it, i) => {
+    const o = rank(it.ref, it.price);
+    if (o[0] < mine[0] || (o[0] === mine[0] && o[1] <= mine[1])) at = i + 1;
+  });
+  items.splice(at, 0, { ref, price });
+  glassAsk = null; glassDraft = ""; glassNote = "";
+  wines = collect(library, listDoc);
+  render();
+  queue.push({ file: "list", message: `Na čašu: ${w.producer} ${w.name}: ${fmtEur(price)} €` });
+  drain();
+}
+
 async function loadRules() {
   const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${PATH}?ref=${BRANCH}&t=${Date.now()}`,
     { headers: ghHeaders(), cache: "no-store" });
@@ -353,6 +397,9 @@ function render() {
       return `<button class="price ${out(l.glass) ? "gone" : ""} ${editing === id ? "open" : ""}" data-k="${esc(w.key)}" data-i="${i}"
           aria-label="${esc(label)} — promijeni cijenu"><span class="k">${esc(label)}</span> ${esc(fmtEur(l.entry.price))} €</button>`;
     }).join('<span class="sep">·</span>');
+    const canPour = w.inBottle && !w.inGlass && w.listings.some((l) => !l.glass && l.sec.startsWith("bottle"));
+    const plusGlass = canPour
+      ? `<button class="price addglass ${glassAsk === w.key ? "open" : ""}" data-k="${esc(w.key)}" aria-label="Dodaj na čašu">+ čaša</button>` : "";
     const partial = st === "glass" || st === "bottle"
       ? `<span class="partial">nema na ${HALF[st][0]}</span>` : "";
     const since = st !== "on" && rule && (rule.since || rule.reason)
@@ -381,6 +428,13 @@ function render() {
           ? `da, ${esc(fmtEur(bigAsk.value))} €` : "spremi"}</button>`,
         priceNote ? `<div class="note">${esc(priceNote)}</div>` : "", "pedit");
     }
+    if (glassAsk === w.key) {
+      choose = panel(
+        `<span class="field"><input type="text" inputmode="decimal" value="${esc(glassDraft)}" placeholder="cijena čaše"
+           data-k="${esc(w.key)}" aria-label="Cijena čaše"><span class="eur">€</span></span>
+         <button class="nema ok" data-k="${esc(w.key)}">dodaj na čašu</button>`,
+        glassNote ? `<div class="note">${esc(glassNote)}</div>` : "", "gedit");
+    }
     if (novoAsk === w.key) {
       choose = panel(`<button class="nema yes novo-yes" data-k="${esc(w.key)}">${isNew ? "isključi NOVO" : "uključi NOVO"}</button>`);
     }
@@ -404,12 +458,13 @@ function render() {
       <div class="who"><span class="nm">${esc(w.name)}</span> <span class="pr">${esc(w.producer)}</span></div>
       <button class="sw ${st === "glass" || st === "bottle" ? "half" : ""}" data-k="${esc(w.key)}" data-both="${both ? 1 : ""}"
               aria-pressed="${st === "off"}" aria-label="${esc(w.name)}"></button>
-      <div class="line2">${prices}${novo}${partial}${since}</div>
+      <div class="line2">${prices}${plusGlass}${novo}${partial}${since}</div>
       ${choose}
     </div>`;
   }).join("");
 
-  const closeAll = () => { choosing = null; editing = null; novoAsk = null; priceNote = ""; bigAsk = null; priceDraft = null; };
+  const closeAll = () => { choosing = null; editing = null; novoAsk = null; priceNote = ""; bigAsk = null; priceDraft = null;
+    glassAsk = null; glassDraft = ""; glassNote = ""; };
   $("rows").querySelectorAll(".sw").forEach((b) =>
     b.addEventListener("click", () => {
       const k = b.dataset.k, was = choosing === k; closeAll(); choosing = was ? null : k; render();
@@ -422,11 +477,24 @@ function render() {
     b.addEventListener("click", () => { const k = b.dataset.k, was = novoAsk === k; closeAll(); novoAsk = was ? null : k; render(); }));
   $("rows").querySelectorAll(".novo-yes").forEach((b) =>
     b.addEventListener("click", () => { const k = b.dataset.k; closeAll(); toggleNew(k); }));
-  $("rows").querySelectorAll(".price").forEach((b) =>
+  $("rows").querySelectorAll(".addglass").forEach((b) =>
+    b.addEventListener("click", () => { const k = b.dataset.k, was = glassAsk === k; closeAll(); glassAsk = was ? null : k; render(); }));
+  $("rows").querySelectorAll(".price:not(.addglass)").forEach((b) =>
     b.addEventListener("click", () => {
       const id = b.dataset.k + "|" + b.dataset.i, was = editing === id;
       closeAll(); editing = was ? null : id; render();
     }));
+  const gfield = $("rows").querySelector(".gedit input");
+  if (gfield) {
+    gfield.focus();
+    const go = () => addGlass(gfield.dataset.k, gfield.value);
+    gfield.addEventListener("input", () => { glassDraft = gfield.value; });
+    gfield.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") go();
+      if (e.key === "Escape") { closeAll(); render(); }
+    });
+    $("rows").querySelector(".gedit .ok").addEventListener("click", go);
+  }
   const field = $("rows").querySelector(".pedit input");
   if (field) {
     field.focus();

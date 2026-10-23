@@ -1406,3 +1406,31 @@ test("Dodaj vino: a remark being typed on a preview survives the polls", async (
   await page.click(".editbox .ok");
   await expect(page.locator(".req").filter({ hasText: "dodaj u dnevnu ponudu" })).toHaveCount(1);
 });
+
+/* 2026-10-23, owner: a wine sold only by the bottle can start being poured by
+   the glass from the board, "so Filho can easily navigate it", the same way a
+   price is changed. The pour lands on the glass shelf in the bottle's own
+   category, at its place by body then price, with no anchor and no NOVO. */
+test("a bottle-only wine is put on by the glass from the board", async ({ page }) => {
+  const state = await board(page);
+  await page.fill("#q", "Merlot Opoka");
+  await page.waitForTimeout(200);
+  const row = page.locator(".row").filter({ hasText: "Merlot Opoka" });
+  await row.locator(".addglass").click();
+  await page.fill(".gedit input", "150");
+  await page.click(".gedit .ok");
+  await expect(page.locator(".gedit .note"), "a glass cannot cost a bottle").toContainText("boca");
+  expect(state.listPuts).toEqual([]);
+  await page.fill(".gedit input", "14");
+  await page.click(".gedit .ok");
+  await expect.poll(() => state.listPuts.length).toBe(1);
+  expect(state.listPuts[0]).toMatch(/^Na čašu: Marjan Simčič Merlot Opoka 2017: 14 €/);
+  const red = state.list.sections.find((s) => s.id === "glass").categories.find((c) => c.id === "red").groups[0].items;
+  const i = red.findIndex((it) => it.ref === "marjan-simcic--merlot-opoka-2017");
+  expect(i, "on the red glass shelf").toBeGreaterThanOrEqual(0);
+  expect(red[i], "no anchor, no NOVO").toEqual({ ref: "marjan-simcic--merlot-opoka-2017", price: 14 });
+  expect(i, "after the cheaper full reds, not at the top").toBeGreaterThan(0);
+  /* the row now shows both prices, and no "+ čaša" */
+  await expect(row.locator(".price", { hasText: "čaša" })).toContainText("14");
+  await expect(row.locator(".addglass")).toHaveCount(0);
+});
