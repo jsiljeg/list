@@ -31,6 +31,7 @@ export const MAX_PHOTOS = 6;       /* across all rounds */
 export const PHOTO_MAX = 1_500_000;
 export const PHOTO_TYPES = ["image/jpeg", "image/webp", "image/png"];
 const STALE_MIN = 40;              /* a "working" row older than this has died */
+const LOST_MIN = 15;               /* claimed this long and no step reported: GitHub never ran it */
 
 const REPO = "jsiljeg/list";
 const WORKFLOWS = { add: "add-wine.yml", publish: "publish-wine.yml" };
@@ -269,7 +270,22 @@ async function dispatch(env, kind, id) {
    run that has been "working" for STALE_MIN is presumed dead and failed, so a
    crashed runner cannot block the queue for ever. */
 export async function pump(env) {
+  /* A start GitHub threw away (2026-10-23): two pumps raced, both dispatched,
+     and the concurrency group keeps one pending run — the other was cancelled
+     before it ran a step, leaving its wine "working" with nobody on it. One
+     claimed LOST_MIN ago that never reported past "Pokreće se" goes back to
+     its place in the line, the try not counted. */
+  const lost = new Date(Date.now() - LOST_MIN * 60000).toISOString();
+  await env.DB.prepare(
+    `UPDATE wine_requests SET status = 'queued', runs = MAX(0, runs - 1), error = '', updated_at = created_at
+      WHERE status = 'working' AND updated_at < ?1
+        AND id NOT IN (SELECT request_id FROM wine_progress WHERE json_array_length(steps) > 1)`).bind(lost).run();
+  /* A run that died part-way is tried again rather than failed (owner,
+     2026-10-23: "I don't want them to expire") — until MAX_RUNS says stop. */
   const stale = new Date(Date.now() - STALE_MIN * 60000).toISOString();
+  await env.DB.prepare(
+    `UPDATE wine_requests SET status = 'queued', error = '', updated_at = created_at
+      WHERE status = 'working' AND updated_at < ?1 AND runs < ?2`).bind(stale, MAX_RUNS).run();
   await env.DB.prepare(
     `UPDATE wine_requests SET status = 'failed', error = 'run_timed_out', updated_at = ?1
       WHERE status = 'working' AND updated_at < ?2`).bind(nowIso(), stale).run();
@@ -287,9 +303,13 @@ export async function pump(env) {
   const c = await counts(env);
   if (c.today >= DAILY_CAP) return { held: "daily_cap" };
   if (c.month >= MONTHLY_CAP) return { held: "monthly_cap" };
-  /* Claim before dispatching, so two pumps racing cannot both start it. */
+  /* Claim before dispatching, so two pumps racing cannot both start it — nor
+     start two different wines: the claim holds only while nothing else is
+     working, checked in the same statement (2026-10-23). */
   const claim = await env.DB.prepare(
-    "UPDATE wine_requests SET status = 'working', runs = runs + 1, error = '', updated_at = ?2 WHERE id = ?1 AND status = 'queued'")
+    `UPDATE wine_requests SET status = 'working', runs = runs + 1, error = '', updated_at = ?2
+      WHERE id = ?1 AND status = 'queued'
+        AND NOT EXISTS (SELECT 1 FROM wine_requests WHERE status = 'working')`)
     .bind(next.id, nowIso()).run();
   if (!claim.meta || !claim.meta.changes) return { held: "raced" };
   await addPhase(env, next.id, "Pokreće se — čeka slobodan server", true);
