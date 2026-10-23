@@ -15652,6 +15652,53 @@
    },
    "terroir": "Medana Jama",
    "notePlain": true
+  },
+  "jean-marc-vincent--auxey-duresses-les-hautes-2023": {
+   "name": "Auxey-Duresses Les Hautés 2023",
+   "producer": "Jean-Marc Vincent",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Auxey-Duresses, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "white_rich",
+    "body": "medium",
+    "aromas": [
+     "white_peach",
+     "apple",
+     "white_flowers",
+     "hazelnut",
+     "chalk"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "shellfish",
+     "veal",
+     "cheese_hard"
+    ],
+    "temp": "12–14",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "Les Hautés",
+   "note": {
+    "hr": "Ovo je boca zbog koje je Kermit Lynch, legendarni kalifornijski uvoznik francuskih vina, pokucao na Vincentova vrata. Rekao je da ga Auxey-Duresses dotad gotovo nikad nije uzbudio — i da je, kad je kušao ovaj, znao da je naletio na nešto.",
+    "en": "This is the bottle that brought Kermit Lynch, the legendary Californian importer of French wine, to Vincent's door. He said an Auxey-Duresses had rarely excited him before — and that when he tasted this one he knew he was onto something.",
+    "it": "È la bottiglia che ha portato alla porta di Vincent Kermit Lynch, il leggendario importatore californiano di vini francesi. Disse che un Auxey-Duresses lo aveva emozionato di rado — e che assaggiando questo capì di aver trovato qualcosa.",
+    "fr": "C'est la bouteille qui a mené Kermit Lynch, le légendaire importateur californien de vins français, jusqu'à la porte de Vincent. Il disait qu'un Auxey-Duresses l'avait rarement enthousiasmé — et qu'en goûtant celui-ci, il avait su qu'il tenait quelque chose.",
+    "de": "Das ist die Flasche, die Kermit Lynch, den legendären kalifornischen Importeur französischer Weine, an Vincents Tür führte. Ein Auxey-Duresses habe ihn selten begeistert, sagte er — bei diesem habe er gewusst, dass er auf etwas gestoßen war.",
+    "zh": "正是这瓶酒，把传奇的加州法国葡萄酒进口商 Kermit Lynch 带到了 Vincent 的门前。他说，欧克塞-迪雷斯的酒以前很少让他心动——而尝到这一瓶时，他知道自己发现了好东西。",
+    "sl": "To je steklenica, ki je Kermita Lyncha, legendarnega kalifornijskega uvoznika francoskih vin, pripeljala pred Vincentova vrata. Rekel je, da ga Auxey-Duresses dotlej skoraj nikoli ni navdušil — in da je ob tem vedel, da je naletel na nekaj.",
+    "es": "Es la botella que llevó a la puerta de Vincent a Kermit Lynch, el legendario importador californiano de vinos franceses. Dijo que un Auxey-Duresses rara vez lo había entusiasmado — y que al probar este supo que había dado con algo."
+   },
+   "notePlain": true,
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-10-23"
+    }
+   ]
   }
  }
 }
