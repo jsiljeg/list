@@ -30,8 +30,7 @@
         },
         {
          "ref": "meneghetti--classic-2021",
-         "price": 11,
-         "new": true
+         "price": 11
         }
        ]
       }
@@ -290,8 +289,7 @@
         },
         {
          "ref": "meneghetti--classic-2021",
-         "price": 76,
-         "new": true
+         "price": 76
         },
         {
          "ref": "tomac--rose",
