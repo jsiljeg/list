@@ -15231,6 +15231,45 @@
      "checked": "2026-10-23"
     }
    ]
+  },
+  "philippe-chavy--saint-aubin-1er-cru-les-murgers-des-dents-de-chien-2022": {
+   "name": "Saint-Aubin 1er Cru Les Murgers des Dents de Chien 2022",
+   "producer": "Philippe Chavy",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Saint-Aubin, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "white_rich",
+    "body": "full",
+    "aromas": [
+     "citrus",
+     "apple",
+     "melon",
+     "flint",
+     "butter"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "shellfish",
+     "veal"
+    ],
+    "temp": "12–14",
+    "alcohol": "13",
+    "sweetness": "dry"
+   },
+   "terroir": "Les Murgers des Dents de Chien",
+   "notePlain": true,
+   "note": {
+    "hr": "Isti vinograd, isti vinar, dvije sasvim različite godine. 2021. je travanjski mraz u Burgundiji odnio velik dio berbe i ostavio napeto, škrto vino; 2022. bila je topla i izdašna, a vino je ipak ostalo svježe — zrela jabuka i citrus, dug završetak. Ako je i 2021. na karti, naručite obje i usporedite.",
+    "en": "The same vineyard, the same grower, two very different years. In 2021 an April frost took much of the Burgundy harvest and left a taut, spare wine; 2022 was warm and generous, and the wine still kept its freshness — ripe apple and citrus, a long finish. If the 2021 is on the list too, order both and compare.",
+    "it": "La stessa vigna, lo stesso vignaiolo, due annate molto diverse. Nel 2021 una gelata d'aprile si portò via buona parte della vendemmia in Borgogna e lasciò un vino teso e asciutto; il 2022 fu caldo e generoso, eppure il vino è rimasto fresco — mela matura e agrumi, un finale lungo. Se in carta c'è anche il 2021, ordinateli entrambi e confrontateli.",
+    "fr": "La même vigne, le même vigneron, deux années très différentes. En 2021, le gel d'avril a emporté une bonne partie de la récolte en Bourgogne et laissé un vin tendu, économe ; 2022 fut chaud et généreux, et le vin a pourtant gardé sa fraîcheur — pomme mûre et agrumes, une longue finale. Si le 2021 est aussi à la carte, commandez les deux et comparez.",
+    "de": "Derselbe Weinberg, derselbe Winzer, zwei sehr verschiedene Jahre. 2021 nahm ein Aprilfrost einen großen Teil der burgundischen Ernte und hinterließ einen straffen, kargen Wein; 2022 war warm und großzügig, und der Wein blieb trotzdem frisch — reifer Apfel und Zitrus, ein langer Abgang. Steht auch der 2021er auf der Karte, bestellen Sie beide und vergleichen Sie.",
+    "zh": "同一片园，同一位酒农，两个截然不同的年份。2021 年四月的霜冻夺走了勃艮第大部分收成，酒紧致而清瘦；2022 年温暖丰产，酒却依然清新——熟苹果与柑橘，余味悠长。如果菜单上也有 2021 年，两款都点来比一比吧。",
+    "sl": "Isti vinograd, isti vinar, dve povsem različni leti. Leta 2021 je aprilska pozeba v Burgundiji vzela velik del trgatve in pustila napeto, skopo vino; 2022 je bilo toplo in radodarno, vino pa je vseeno ostalo sveže — zrelo jabolko in citrusi, dolg zaključek. Če je na karti tudi 2021, naročite oba in primerjajte.",
+    "es": "La misma viña, el mismo viticultor, dos años muy distintos. En 2021 una helada de abril se llevó buena parte de la cosecha en Borgoña y dejó un vino tenso y austero; 2022 fue cálido y generoso, y aun así el vino conservó su frescura — manzana madura y cítricos, un final largo. Si el 2021 también está en la carta, pidan los dos y compárenlos."
+   }
   }
  }
 }
