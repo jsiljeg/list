@@ -61,6 +61,10 @@
         {
          "ref": "billecart-salmon--le-reserve",
          "price": 16
+        },
+        {
+         "ref": "chavost--paradoxe",
+         "price": 16
         }
        ]
       }
