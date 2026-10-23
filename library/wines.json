@@ -15311,6 +15311,52 @@
    "tags": [
     "drinking_now"
    ]
+  },
+  "pierre-yves-colin-morey--chassagne-montrachet-1er-cru-les-chenevottes-2023": {
+   "name": "Chassagne-Montrachet 1er Cru Les Chenevottes 2023",
+   "producer": "Pierre-Yves Colin-Morey",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Chassagne-Montrachet, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "white_rich",
+    "body": "full",
+    "aromas": [
+     "candied_citrus",
+     "pear",
+     "white_flowers",
+     "flint",
+     "chalk"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "risotto",
+     "shellfish",
+     "veal"
+    ],
+    "temp": "12–14",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "Les Chenevottes",
+   "note": {
+    "hr": "Ime na etiketi je brak: Pierre-Yves Colin oženio je Caroline Morey, a dvije od tri parcele ovog vina došle su od njezina oca, Jean-Marca Moreyja. Loze su posađene 1960., a ispod njih je jedva 15 cm zemlje — onda čisti vapnenac.",
+    "en": "The name on the label is a marriage: Pierre-Yves Colin married Caroline Morey, and two of the three plots behind this wine came from her father, Jean-Marc Morey. The vines were planted in 1960, and beneath them lie barely 15 cm of soil — then pure limestone.",
+    "it": "Il nome in etichetta è un matrimonio: Pierre-Yves Colin ha sposato Caroline Morey, e due delle tre parcelle di questo vino vengono da suo padre, Jean-Marc Morey. Le viti sono del 1960, e sotto di loro ci sono appena 15 cm di terra — poi calcare puro.",
+    "fr": "Le nom sur l'étiquette est un mariage : Pierre-Yves Colin a épousé Caroline Morey, et deux des trois parcelles de ce vin viennent de son père, Jean-Marc Morey. Les vignes ont été plantées en 1960, et sous elles il y a à peine 15 cm de terre — puis le calcaire pur.",
+    "de": "Der Name auf dem Etikett ist eine Ehe: Pierre-Yves Colin heiratete Caroline Morey, und zwei der drei Parzellen dieses Weins kamen von ihrem Vater, Jean-Marc Morey. Die Reben wurden 1960 gepflanzt, und unter ihnen liegen kaum 15 cm Erde — dann reiner Kalkstein.",
+    "zh": "酒标上的名字是一桩婚姻：Pierre-Yves Colin 娶了 Caroline Morey，这款酒的三块地里有两块来自她的父亲 Jean-Marc Morey。葡萄藤种于 1960 年，根下只有薄薄 15 厘米的土——再往下就是纯石灰岩。",
+    "sl": "Ime na etiketi je zakon: Pierre-Yves Colin se je poročil s Caroline Morey, in dve od treh parcel tega vina sta prišli od njenega očeta, Jean-Marca Moreyja. Trte so bile posajene leta 1960, pod njimi pa je komaj 15 cm zemlje — potem čisti apnenec.",
+    "es": "El nombre de la etiqueta es un matrimonio: Pierre-Yves Colin se casó con Caroline Morey, y dos de las tres parcelas de este vino vinieron de su padre, Jean-Marc Morey. Las cepas se plantaron en 1960, y bajo ellas hay apenas 15 cm de tierra — luego, caliza pura."
+   },
+   "notePlain": true,
+   "ratings": [
+    {
+     "critic": "Jasper Morris",
+     "score": "92-95"
+    }
+   ]
   }
  }
 }
