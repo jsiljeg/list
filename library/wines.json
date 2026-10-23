@@ -15578,6 +15578,53 @@
      "checked": "2026-10-23"
     }
    ]
+  },
+  "patrick-piuze--chablis-1er-cru-les-sechets-2024": {
+   "name": "Chablis 1er Cru Les Séchets 2024",
+   "producer": "Patrick Piuze",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Chablis, Bourgogne",
+    "country": "FR",
+    "style": "white_mineral",
+    "body": "medium",
+    "aromas": [
+     "citrus",
+     "green_apple",
+     "white_flowers",
+     "flint",
+     "saline"
+    ],
+    "pairings": [
+     "white_fish",
+     "oysters",
+     "shellfish",
+     "risotto"
+    ],
+    "temp": "10–12",
+    "alcohol": "11.5",
+    "sweetness": "dry",
+    "glass": "chardonnay"
+   },
+   "terroir": "Les Séchets",
+   "notePlain": true,
+   "note": {
+    "hr": "U 2024. Chablis je tukla tuča: oluja 1. svibnja najjače je pogodila lijevu obalu Sereina, a na njoj leži Vaillons, čiji je dio i Séchets. Ondje je dio vinogradara izgubio i tri četvrtine roda, pa je ovakvih boca malo. Hladna, kišna godina dala je Chablis kakav se nekad pio: tanak kao oštrica, sav limun i kreda.",
+    "en": "In 2024 hail struck Chablis: the storm of 1 May hit the left bank of the Serein hardest, and that is where Vaillons lies, Séchets being part of it. Some growers there lost three quarters of their crop, so bottles like this one are few. A cold, wet year gave Chablis the way it used to be drunk: thin as a blade, all lemon and chalk.",
+    "it": "Nel 2024 la grandine ha colpito Chablis: la tempesta del 1° maggio si è abbattuta soprattutto sulla riva sinistra del Serein, ed è lì che si trova Vaillons, di cui Séchets fa parte. Alcuni viticoltori hanno perso tre quarti del raccolto, perciò bottiglie come questa sono poche. Un anno freddo e piovoso ha dato lo Chablis di una volta: sottile come una lama, tutto limone e gesso.",
+    "fr": "En 2024, la grêle a frappé Chablis : l'orage du 1er mai a touché le plus durement la rive gauche du Serein, là où se trouve Vaillons, dont Séchets fait partie. Certains vignerons y ont perdu les trois quarts de leur récolte, si bien que les bouteilles comme celle-ci sont rares. Une année froide et pluvieuse a donné un chablis comme on le buvait autrefois : fin comme une lame, tout en citron et en craie.",
+    "de": "2024 traf der Hagel Chablis: Das Unwetter vom 1. Mai erwischte das linke Ufer des Serein am härtesten, und dort liegt Vaillons, zu dem Séchets gehört. Manche Winzer verloren dort drei Viertel ihrer Ernte, entsprechend wenige Flaschen wie diese gibt es. Ein kaltes, nasses Jahr ergab Chablis, wie man ihn früher trank: dünn wie eine Klinge, ganz Zitrone und Kreide.",
+    "zh": "2024 年冰雹袭击了夏布利：5 月 1 日的风暴对瑟兰河左岸打击最重，而瓦永正位于左岸，塞谢便是瓦永的一部分。那里有些果农失去了四分之三的收成，因此这样的酒所剩无几。寒冷多雨的一年，酿出了旧日人们喝的那种夏布利：薄如刀锋，满是柠檬与白垩。",
+    "sl": "Leta 2024 je Chablis tolkla toča: neurje 1. maja je najhuje prizadelo levi breg Sereina, kjer leži Vaillons, katerega del je Séchets. Nekateri vinogradniki so tam izgubili tri četrtine pridelka, zato je takih steklenic malo. Hladno, deževno leto je dalo chablis, kakršnega so pili nekoč: tanek kot rezilo, sama limona in kreda.",
+    "es": "En 2024 el granizo golpeó Chablis: la tormenta del 1 de mayo castigó sobre todo la orilla izquierda del Serein, y allí está Vaillons, del que Séchets forma parte. Algunos viticultores perdieron tres cuartas partes de la cosecha, así que botellas como esta hay pocas. Un año frío y lluvioso dio el Chablis de antes: fino como una hoja, todo limón y tiza."
+   },
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92",
+     "checked": "2026-10-23"
+    }
+   ]
   }
  }
 }

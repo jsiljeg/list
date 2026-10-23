@@ -342,6 +342,7 @@
     "Preuses": "普尔兹",
     "Vaillons": "瓦永",
     "Butteaux": "布托",
+    "Les Séchets": "塞谢",
     "Clos du Mesnil": "梅尼尔园",
     "Clos d'Ambonnay": "昂博纳伊园",
     "Schlossberg": "城堡山",
