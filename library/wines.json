@@ -15699,6 +15699,34 @@
      "checked": "2026-10-23"
     }
    ]
+  },
+  "domaine-jean-chartron--puligny-montrachet-2022": {
+   "name": "Puligny-Montrachet 2022",
+   "producer": "Domaine Jean Chartron",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Puligny-Montrachet, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "white_rich",
+    "body": "full",
+    "aromas": [
+     "citrus",
+     "white_flowers",
+     "flint",
+     "hazelnut"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "shellfish",
+     "veal"
+    ],
+    "temp": "12–14",
+    "alcohol": "13",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "notePlain": true
   }
  }
 }
