@@ -28,8 +28,8 @@ preview of the card          ◀───────  ready (result, branch)  �
 |---|---|---|
 | `WINE_INTAKE_ENABLED` | must be `"1"` | the owner's off switch; without it requests wait |
 | one at a time | — | a second request waits for the first |
-| `DAILY_CAP` | 30 | owner's choice (5, then 10 from 2026-10-15, 30 from 2026-10-21 for a batch of 20+); every run counts, answers and corrections included |
-| `MONTHLY_CAP` | 60 | the subscription has no hard $ limit, so ours is the limit |
+| `DAILY_CAP` | 45 | owner's choice (5, then 10 from 2026-10-15, 30 from 2026-10-21 for a batch of 20+, 45 from 2026-10-23); every run counts, answers and corrections included |
+| `MONTHLY_CAP` | 90 | 60 until 2026-10-23; the subscription has no hard $ limit, so ours is the limit |
 | `MAX_RUNS` per wine | 5 | first run, two rounds of questions, two rounds of corrections |
 | photos | ≤ 3 per post, ≤ 6 per wine, ≤ 1,5 MB | shrunk to 2000 px JPEG on the tablet |
 | stale run | 40 min | a dead runner cannot block the queue |

@@ -23,9 +23,10 @@
  *      from that log, not from request rows that can change state. */
 import { json, isStaff } from "./daily.js";
 
-export const DAILY_CAP = 30;       /* owner: 5 on 2026-10-10, 10 on 2026-10-15, 30 on 2026-10-21 for a
-                                      batch of 20+ bottles — answers and corrections count as runs too */
-export const MONTHLY_CAP = 60;
+export const DAILY_CAP = 45;       /* owner: 5 on 2026-10-10, 10 on 2026-10-15, 30 on 2026-10-21 for a
+                                      batch of 20+ bottles, 45 on 2026-10-23 ("15 more changes for today")
+                                      — answers and corrections count as runs too */
+export const MONTHLY_CAP = 90;     /* 60, then 90 on 2026-10-23: October stood at 47 with 15 more wanted */
 export const MAX_RUNS = 5;         /* the first run, two rounds of questions, two rounds of edits */
 export const MAX_PHOTOS = 6;       /* across all rounds */
 export const PHOTO_MAX = 1_500_000;
