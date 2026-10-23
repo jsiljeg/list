@@ -15118,6 +15118,40 @@
      "score": "92"
     }
    ]
+  },
+  "weingut-wittmann--riesling-aulerde-gg-2022": {
+   "name": "Riesling Aulerde GG 2022",
+   "producer": "Weingut Wittmann",
+   "insight": {
+    "grape": "Riesling",
+    "region": "Westhofen, Wonnegau, Rheinhessen",
+    "country": "DE",
+    "style": "white_mineral",
+    "body": "full",
+    "aromas": [
+     "peach",
+     "pineapple",
+     "mirabelle",
+     "lemon",
+     "flint"
+    ],
+    "pairings": [
+     "asian",
+     "white_fish",
+     "poultry"
+    ],
+    "temp": "10–12",
+    "alcohol": "12.5",
+    "sweetness": "dry"
+   },
+   "terroir": "Aulerde",
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-10-23"
+    }
+   ]
   }
  }
 }
