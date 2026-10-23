@@ -3,7 +3,9 @@
    concurrency group cancelled one pending run — its wine sat "working" with
    nobody on it, to be failed 40 min later. Guards, on the real pump() over
    the real schema (node:sqlite standing in for D1):
-   - two pumps at once start one wine and dispatch once;
+   - two pumps at once never start more than PARALLEL (2) wines, and never
+     the same wine twice; each start names a Claude account;
+   - a wine Filho has answered goes before every new bottle;
    - a claimed wine that never reported a step goes back to its place, the
      try not counted;
    - a run that died part-way is re-queued, failed only when MAX_RUNS is spent. */
@@ -29,17 +31,28 @@ test("the wine queue never strands or expires a wine", async () => {
   ins.run("lost", ago(30), ago(20), "working", 1); steps("lost", 1);
   ins.run("q1", ago(25), ago(25), "queued", 0);
   ins.run("q2", ago(5), ago(5), "queued", 0);
+  ins.run("answered", ago(3), ago(1), "queued", 1);
   const calls = [];
   const realFetch = globalThis.fetch;
-  globalThis.fetch = async (u) => { calls.push(String(u)); return new Response(null, { status: 204 }); };
+  globalThis.fetch = async (u, init) => { calls.push(JSON.parse(init.body)); return new Response(null, { status: 204 }); };
   try {
     const env = { DB: D1, WINE_INTAKE_ENABLED: "1", GH_DISPATCH_TOKEN: "x" };
     await Promise.all([pump(env), pump(env)]);
     const rows = Object.fromEntries(db.prepare("SELECT id, status, runs FROM wine_requests").all().map((r) => [r.id, { ...r }]));
-    expect(calls, "one dispatch, not two").toHaveLength(1);
-    expect(rows.lost, "the lost wine is first in line again and its try was not counted").toMatchObject({ status: "working", runs: 1 });
+    expect(calls, "two wines at once, not three").toHaveLength(2);
+    expect(new Set(calls.map((c) => c.inputs.id)).size, "never the same wine twice").toBe(2);
+    for (const c of calls) expect(["1", "2"]).toContain(c.inputs.account);
+    expect(rows.answered, "an answered wine goes first").toMatchObject({ status: "working", runs: 2 });
+    expect(rows.lost, "the lost wine kept its place and its try was not counted").toMatchObject({ status: "working", runs: 1 });
     expect(rows.q1.status).toBe("queued");
     expect(rows.q2.status).toBe("queued");
+
+    /* one finishes: the next start fills exactly that slot, on the other account */
+    db.prepare("UPDATE wine_requests SET status = 'ready' WHERE id = 'answered'").run();
+    calls.length = 0;
+    await pump(env);
+    expect(calls).toHaveLength(1);
+    expect(calls[0].inputs.id).toBe("q1");
 
     db.exec("DELETE FROM wine_requests; DELETE FROM wine_progress;");
     ins.run("dead", ago(60), ago(45), "working", 2); steps("dead", 3);

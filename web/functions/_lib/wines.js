@@ -31,7 +31,8 @@ export const MAX_PHOTOS = 6;       /* across all rounds */
 export const PHOTO_MAX = 1_500_000;
 export const PHOTO_TYPES = ["image/jpeg", "image/webp", "image/png"];
 const STALE_MIN = 40;              /* a "working" row older than this has died */
-const LOST_MIN = 15;               /* claimed this long and no step reported: GitHub never ran it */
+const LOST_MIN = 15;
+const PARALLEL = 2;                /* wines written at once */               /* claimed this long and no step reported: GitHub never ran it */
 
 const REPO = "jsiljeg/list";
 const WORKFLOWS = { add: "add-wine.yml", publish: "publish-wine.yml" };
@@ -250,13 +251,13 @@ export async function limits(env) {
            month: c.month, monthlyCap: MONTHLY_CAP };
 }
 
-async function dispatch(env, kind, id) {
+async function dispatch(env, kind, id, extra = {}) {
   if (!env.GH_DISPATCH_TOKEN) return { error: "no_dispatch_token" };
   const r = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${WORKFLOWS[kind]}/dispatches`, {
     method: "POST",
     headers: { authorization: `Bearer ${env.GH_DISPATCH_TOKEN}`, accept: "application/vnd.github+json",
                "x-github-api-version": "2022-11-28", "user-agent": "theatrium-wine-intake" },
-    body: JSON.stringify({ ref: "main", inputs: { id } }),
+    body: JSON.stringify({ ref: "main", inputs: { id, ...extra } }),
   });
   if (r.status !== 204) return { error: `github_${r.status}` };
   await env.DB.prepare("INSERT INTO wine_dispatches (at, date, request_id, kind) VALUES (?1, ?2, ?3, ?4)")
@@ -290,11 +291,29 @@ export async function pump(env) {
     `UPDATE wine_requests SET status = 'failed', error = 'run_timed_out', updated_at = ?1
       WHERE status = 'working' AND updated_at < ?2`).bind(nowIso(), stale).run();
   if (env.WINE_INTAKE_ENABLED !== "1") return { held: "disabled" };
-  const busy = await env.DB.prepare("SELECT id FROM wine_requests WHERE status = 'working' LIMIT 1").first();
-  if (busy) return { held: "busy" };
-  /* updated_at in the future = held back by requeueLater() */
+  /* Up to PARALLEL wines at once (owner, 2026-10-23, ten bottles queued:
+     "1 updating, others stuck"). Each start is claimed on its own, so a
+     second pump racing this one can only fill a slot that is still free. */
+  const started = [];
+  let held = null;
+  for (let i = 0; i < PARALLEL; i++) {
+    const r = await startOne(env);
+    if (!r.started) { held = r.held; break; }
+    started.push(r.started);
+  }
+  return started.length ? { started } : { held };
+}
+
+async function startOne(env) {
+  const working = await env.DB.prepare("SELECT COUNT(*) AS n FROM wine_requests WHERE status = 'working'").first();
+  if ((working && working.n) >= PARALLEL) return { held: "busy" };
+  /* A wine Filho has answered goes first (owner, 2026-10-23: the Rully's
+     alcohol was answered and it then waited behind every new bottle). It has
+     done its expensive half already, and he is standing there waiting for it.
+     An updated_at in the future = held back by requeueLater(). */
   const next = await env.DB.prepare(
-    "SELECT id, runs FROM wine_requests WHERE status = 'queued' AND updated_at <= ?1 ORDER BY updated_at LIMIT 1").bind(nowIso()).first();
+    `SELECT id, runs FROM wine_requests WHERE status = 'queued' AND updated_at <= ?1
+      ORDER BY (runs > 0) DESC, updated_at LIMIT 1`).bind(nowIso()).first();
   if (!next) return { held: "empty" };
   if (next.runs >= MAX_RUNS) {
     await setStatus(env, next.id, { status: "failed", error: "too_many_rounds" });
@@ -303,17 +322,20 @@ export async function pump(env) {
   const c = await counts(env);
   if (c.today >= DAILY_CAP) return { held: "daily_cap" };
   if (c.month >= MONTHLY_CAP) return { held: "monthly_cap" };
-  /* Claim before dispatching, so two pumps racing cannot both start it — nor
-     start two different wines: the claim holds only while nothing else is
-     working, checked in the same statement (2026-10-23). */
+  /* Claim before dispatching, so two pumps racing cannot both start it — and
+     the number working is checked in the same statement, so a race cannot
+     push it past PARALLEL (2026-10-23). */
   const claim = await env.DB.prepare(
     `UPDATE wine_requests SET status = 'working', runs = runs + 1, error = '', updated_at = ?2
       WHERE id = ?1 AND status = 'queued'
-        AND NOT EXISTS (SELECT 1 FROM wine_requests WHERE status = 'working')`)
-    .bind(next.id, nowIso()).run();
+        AND (SELECT COUNT(*) FROM wine_requests WHERE status = 'working') < ?3`)
+    .bind(next.id, nowIso(), PARALLEL).run();
   if (!claim.meta || !claim.meta.changes) return { held: "raced" };
   await addPhase(env, next.id, "Pokreće se — čeka slobodan server", true);
-  const d = await dispatch(env, "add", next.id);
+  /* The runs alternate between the two Claude accounts, so neither carries
+     the whole batch; each still falls back to the other when refused. */
+  const n = await env.DB.prepare("SELECT COUNT(*) AS n FROM wine_dispatches WHERE kind = 'add'").first();
+  const d = await dispatch(env, "add", next.id, { account: String(1 + ((n && n.n) || 0) % 2) });
   if (d.error) await setStatus(env, next.id, { status: "queued", runs: next.runs, error: d.error });
   return d.error ? { held: d.error } : { started: next.id };
 }

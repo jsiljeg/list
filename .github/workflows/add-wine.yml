@@ -20,12 +20,21 @@ on:
         description: "inbox request id"
         required: true
         type: string
+      account:
+        description: "which Claude account to try first (1 or 2); the other is the fallback"
+        required: false
+        default: "1"
+        type: string
 
 permissions:
   contents: read
 
+# One slot per wine (2026-10-23): the inbox now writes two wines at once, and
+# a single group keeps only one pending run, so a second start was cancelled
+# before it ran. The inbox decides how many run; this only stops one wine
+# being written twice at the same time.
 concurrency:
-  group: wine-intake
+  group: wine-intake-${{ inputs.id }}
   cancel-in-progress: false
 
 env:
@@ -126,6 +135,7 @@ jobs:
         env:
           TOKEN_1: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           TOKEN_2: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN_2 }}
+          ACCOUNT: ${{ inputs.account }}
           MODEL: ${{ vars.WINE_MODEL || 'opus' }}
           # For progress.mjs only — removed from Claude's environment below.
           WK: ${{ secrets.WINE_WORKER_KEY }}
@@ -159,6 +169,9 @@ jobs:
           # limit: that ended the step before the second account was tried
           # (2026-10-15, every wine and receipt failed in 2 seconds)
           set +e
+          # Two wines run at once, alternating accounts (the inbox picks): the
+          # one named goes first, the other is still the fallback.
+          if [ "${ACCOUNT:-1}" = 2 ] && [ -n "$TOKEN_2" ]; then X="$TOKEN_1"; TOKEN_1="$TOKEN_2"; TOKEN_2="$X"; unset X; fi
           for T in "$TOKEN_1" "$TOKEN_2"; do
             [ -n "$T" ] || continue
             env -u WK -u TOKEN_1 -u TOKEN_2 CLAUDE_CODE_OAUTH_TOKEN="$T" claude -p "$(cat .github/wine-intake/prompt.md)" \
