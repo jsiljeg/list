@@ -1400,8 +1400,7 @@
         {
          "ref": "jules-desjourneys--rouge-2023",
          "price": 80,
-         "anchor": 80,
-         "new": true
+         "anchor": 80
         }
        ]
       },
