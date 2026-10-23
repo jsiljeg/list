@@ -15150,6 +15150,11 @@
      "critic": "Robert Parker",
      "score": "94",
      "checked": "2026-10-23"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17+/20",
+     "checked": "2026-10-23"
     }
    ]
   },
@@ -15352,6 +15357,16 @@
    },
    "notePlain": true,
    "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "92-94",
+     "checked": "2026-10-23"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-10-23"
+    },
     {
      "critic": "Jasper Morris",
      "score": "92-95"
