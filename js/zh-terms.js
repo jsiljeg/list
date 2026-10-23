@@ -381,6 +381,7 @@
     "La Goujonne": "古荣",
     "La Princée": "普兰塞",
     "La Grande Vallée": "大谷园",
+    "Fyé": "菲耶",
     "En Remilly": "雷米利",
     "Clos du Cromin": "克罗曼园",
     "Clos des Gravières": "砾石园",

@@ -15530,6 +15530,54 @@
      "score": "91"
     }
    ]
+  },
+  "patrick-piuze--chablis-terroir-de-fye-2024": {
+   "name": "Chablis Terroir de Fyé 2024",
+   "producer": "Patrick Piuze",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Chablis, Bourgogne",
+    "country": "FR",
+    "style": "white_mineral",
+    "body": "medium",
+    "aromas": [
+     "lemon_zest",
+     "white_peach",
+     "acacia",
+     "green_apple",
+     "wet_stone",
+     "saline"
+    ],
+    "pairings": [
+     "white_fish",
+     "oysters",
+     "shellfish",
+     "sushi"
+    ],
+    "temp": "10–12",
+    "alcohol": "11.5",
+    "sweetness": "dry",
+    "glass": "chardonnay"
+   },
+   "terroir": "Fyé",
+   "note": {
+    "hr": "Seoski Chablis s grand cru adresom: 2,5 hektara u Fyéu, preko puta Blanchota i ispod premier cru padine Montée de Tonnerre. Isti kimeridžijski vapnenac punjen fosilima kamenica, samo bez drva — vrenje i odležavanje isključivo u inoksu, pa kamen ostaje glavni.",
+    "en": "A village Chablis with a grand cru address: 2.5 hectares in Fyé, across the road from Blanchot and below the premier cru slope of Montée de Tonnerre. The same Kimmeridgian limestone packed with fossil oyster shells, only without wood — fermented and aged in steel alone, so the stone does the talking.",
+    "it": "Uno Chablis village con un indirizzo da grand cru: 2,5 ettari a Fyé, di fronte a Blanchot e sotto il pendio premier cru di Montée de Tonnerre. Lo stesso calcare kimmeridgiano pieno di conchiglie d'ostrica fossili, solo senza legno — fermentato e affinato soltanto in acciaio, così a parlare è la pietra.",
+    "fr": "Un chablis village à l'adresse de grand cru : 2,5 hectares à Fyé, en face de Blanchot et sous le coteau premier cru de Montée de Tonnerre. Le même calcaire kimméridgien bourré d'huîtres fossiles, seulement sans bois — fermenté et élevé uniquement en cuve inox, pour que la pierre parle.",
+    "de": "Ein Village-Chablis mit Grand-Cru-Adresse: 2,5 Hektar in Fyé, gegenüber von Blanchot und unterhalb des Premier-Cru-Hangs Montée de Tonnerre. Derselbe Kimmeridge-Kalk voller fossiler Austernschalen, nur ohne Holz — vergoren und ausgebaut allein im Edelstahl, damit der Stein spricht.",
+    "zh": "一款有着特级园地址的村级夏布利：菲耶的2.5公顷葡萄园，与布朗硕隔路相望，位于一级园蒙德托内尔（Montée de Tonnerre）山坡之下。同样是布满牡蛎化石的启莫里阶石灰岩，只是不用橡木——仅在不锈钢罐中发酵和陈酿，让石头说话。",
+    "sl": "Vaški chablis z naslovom grand cruja: 2,5 hektara v Fyéju, čez cesto od Blanchota in pod premier cru pobočjem Montée de Tonnerre. Isti kimeridžijski apnenec, poln fosilnih ostrig, le brez lesa — vrenje in zorenje samo v inoksu, da govori kamen.",
+    "es": "Un Chablis village con dirección de grand cru: 2,5 hectáreas en Fyé, frente a Blanchot y bajo la ladera premier cru de Montée de Tonnerre. La misma caliza kimmeridgiense llena de ostras fósiles, solo que sin madera — fermentado y criado únicamente en acero, para que hable la piedra."
+   },
+   "notePlain": true,
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "89",
+     "checked": "2026-10-23"
+    }
+   ]
   }
  }
 }
