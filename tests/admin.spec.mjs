@@ -1307,3 +1307,19 @@ test("MER: the inbox check accepts the reading run's key", () => {
   const src = readFileSync(new URL("../web/functions/api/troskovi/mer.js", import.meta.url), "utf8");
   expect(src).toMatch(/onRequestPost[\s\S]*?isExpenseWorker\(request, env\) && !\(await isStaffAsync/);
 });
+
+/* 2026-10-23: on Filho's MacBook (Safari) the board read "ne mogu učitati
+   kartu: Response served by service worker is an error" — the guest app's
+   service worker proxied the admin's GitHub and devinos.hr calls and answered
+   a failed fetch with Response.error(). Staff traffic must bypass it. Source
+   assertion: no desktop test browser reproduces Safari's worker. */
+test("the service worker leaves the admin and its APIs alone", () => {
+  const sw = readFileSync(new URL("../sw.js", import.meta.url), "utf8");
+  const head = sw.slice(sw.indexOf('addEventListener("fetch"'), sw.indexOf("e.respondWith"));
+  expect(head).toMatch(/api\.github\.com"[^\n]*\) return;/);
+  expect(head).toMatch(/devinos\.hr"[^\n]*\) return;/);
+  expect(head).toMatch(/cache === "no-store"\) return;/);
+  expect(head).toContain("admin(\\.html)?|js\\/admin");
+  const admin = readFileSync(new URL("../js/admin.js", import.meta.url), "utf8");
+  expect(admin).not.toMatch(/fetch\("library\/wines\.json", \{ cache: "no-cache" \}\)/);
+});

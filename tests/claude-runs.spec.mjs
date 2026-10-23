@@ -69,3 +69,22 @@ test("a correction run says what it corrects and does not re-check Parker", () =
   expect(wf).toMatch(/second="Ispravlja: \$\{what:-karticu\}"/);
   expect(wf).toMatch(/if \[ "\$MODE" != edit \] && \[ -n "\$ref" \]/);
 });
+
+/* 2026-10-22: account 1 was refused with "Your organization has disabled
+   Claude subscription access for Claude Code" (17:11 and 18:08 UTC). The loop
+   moved to account 2 only on a *usage-limit* message, so it never tried it,
+   and the owner got "both accounts at their limit" while the second account
+   was nowhere near it. Any refusal to start — limit, policy or login — moves
+   to the next account, in every workflow that runs Claude here. */
+test("a refusal that is not a usage limit still tries the second account", () => {
+  for (const f of [".github/workflows/add-wine.yml", ".github/workflows/daily-offer.yml"]) {
+    const wf = readFileSync(f, "utf8");
+    const loops = wf.match(/jq -e '\.is_error == true and[^\n]*/g) || [];
+    expect(loops.length, f).toBeGreaterThan(0);
+    for (const l of loops) {
+      expect(l, f).toContain("usage limit reached");
+      expect(l, f).toContain("disabled Claude subscription access");
+      expect(l, f).toContain("please run /login");
+    }
+  }
+});

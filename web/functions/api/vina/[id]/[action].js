@@ -44,8 +44,8 @@ export async function onRequestPost({ request, env, params }) {
          the queue does not knock on a closed door; the owner hears once. */
       if (item.status !== "working") return reply(request, { error: "move", from: item.status, to: "retry" }, 409);
       await requeueLater(env, id, RETRY_MIN);
-      if (item.error !== LIMIT_WAIT) await notifyOwner(env, "Dodaj vino: Claude na granici",
-        `Oba Claude računa su trenutno na granici korištenja. Zahtjev ${id} čeka i pokrenut će se sam za ${RETRY_MIN} min.`, b.run_url || item.run_url);
+      if (item.error !== LIMIT_WAIT) await notifyOwner(env, "Dodaj vino: Claude odbija posao",
+        `Claude je odbio posao na oba računa (granica korištenja ili zabrana pristupa — razlog je u logu runa). Zahtjev ${id} čeka i pokrenut će se sam za ${RETRY_MIN} min.`, b.run_url || item.run_url);
       return reply(request, { ok: true, held: RETRY_MIN });
     }
     const allowed = WORKER_MOVES[item.status] || [];

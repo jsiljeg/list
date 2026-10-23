@@ -17,6 +17,18 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
+  /* Staff traffic is none of this worker's business (2026-10-23). It used to
+     proxy the /admin page's GitHub and devinos.hr calls too — never cacheable,
+     authenticated, and on Filho's MacBook Safari the proxied fetch failed and
+     the board read "Response served by service worker is an error". So: the
+     APIs, anything asked for with no-store, and the admin page and its
+     scripts go straight to the network, as if there were no worker. The one
+     devinos.hr address a *guest* tablet reads, the daily offer, stays here so
+     it still has a copy when the Wi-Fi drops. */
+  const u = new URL(e.request.url);
+  if (u.hostname === "api.github.com" || (u.hostname.endsWith("devinos.hr") && u.origin !== location.origin && u.pathname !== "/api/dnevna-ponuda")) return;
+  if (e.request.cache === "no-store") return;
+  if (/\/(admin(\.html)?|js\/admin[^/]*\.js)$/.test(u.pathname)) return;
   /* App code and data bypass the HTTP cache (revalidate with the server
      via ETag) so a new deploy is picked up on the next page load instead
      of after GitHub Pages' 10-minute max-age. Fonts/images stay cached. */

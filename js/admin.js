@@ -173,7 +173,7 @@ async function start() {
   window.adminKeyPrint = keyPrint;
   setState("busy", "učitavam kartu…");
   try {
-    const lib = await fetch("library/wines.json", { cache: "no-cache" }).then((r) => r.json());
+    const lib = await fetch("library/wines.json", { cache: "no-store" }).then((r) => r.json());
     library = lib.wines || {};
     /* The list comes from GitHub, not from the site: a price is written back to
        this exact document, and the deployed copy can be a minute behind it. */

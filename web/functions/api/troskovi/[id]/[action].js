@@ -36,8 +36,8 @@ export async function onRequestPost({ request, env, params }) {
       const p = await env.DB.prepare("SELECT v FROM expense_mer_state WHERE k = 'pump_pause_until'").first().catch(() => null);
       const already = p && p.v > new Date().toISOString();
       await pausePump(env, 30);
-      if (!already) await notifyOwner(env, "Računi: Claude na granici",
-        "Oba Claude računa su trenutno na granici korištenja. Računi čekaju u redu i čitanje se nastavlja samo za 30 min.");
+      if (!already) await notifyOwner(env, "Računi: Claude odbija posao",
+        "Claude je odbio posao na oba računa (granica korištenja ili zabrana pristupa — razlog je u logu runa na GitHubu). Računi čekaju u redu i čitanje se nastavlja samo za 30 min.");
       return reply(request, { ok: true, paused: true });
     }
     if (b.status === "failed") {

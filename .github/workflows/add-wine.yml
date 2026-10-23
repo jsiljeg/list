@@ -171,9 +171,9 @@ jobs:
               | { if [ -f "$RUNNER_TEMP/progress.mjs" ]; then KEY="$WK" node "$RUNNER_TEMP/progress.mjs"; else cat > /dev/null; fi; }
             code=${PIPESTATUS[0]}
             jq -s '[.[] | select(.type == "result")] | last // {}' "$RUNNER_TEMP/stream.jsonl" > "$RUNNER_TEMP/claude.json"
-            jq -e '.is_error == true and ((.result // "") | test("usage limit reached|hit your ([a-z0-9-]+ )?limit|out of (extra )?usage"; "i"))' \
+            jq -e '.is_error == true and ((.result // "") | test("usage limit reached|hit your ([a-z0-9-]+ )?limit|out of (extra )?usage|disabled Claude subscription access|ask your admin to enable|invalid (api key|bearer token)|oauth token (has )?(expired|been revoked)|authentication_error|please run /login"; "i"))' \
               "$RUNNER_TEMP/claude.json" > /dev/null || break
-            echo "::warning::Claude account hit its usage limit — trying the next one"
+            echo "::warning::Claude account refused the run (usage limit or access) — trying the next one: $(jq -r '(.result // "")[0:160]' "$RUNNER_TEMP/claude.json")"
           done
           echo "exit=$code" >> "$GITHUB_OUTPUT"
           jq '{turns: .num_turns, seconds: ((.duration_ms // 0) / 1000 | floor), cost_usd: .total_cost_usd,
@@ -200,7 +200,7 @@ jobs:
           if [ -f intake/result.json ] && jq -e '.status == "ready" or .status == "needs_info" or .status == "already_listed"' intake/result.json > /dev/null; then
             cp intake/result.json out/result.json
             echo "status=$(jq -r .status intake/result.json)" >> "$GITHUB_OUTPUT"
-          elif jq -e '.is_error == true and ((.result // "") | test("usage limit reached|hit your ([a-z0-9-]+ )?limit|out of (extra )?usage"; "i"))' \
+          elif jq -e '.is_error == true and ((.result // "") | test("usage limit reached|hit your ([a-z0-9-]+ )?limit|out of (extra )?usage|disabled Claude subscription access|ask your admin to enable|invalid (api key|bearer token)|oauth token (has )?(expired|been revoked)|authentication_error|please run /login"; "i"))' \
                "$RUNNER_TEMP/claude.json" > /dev/null 2>&1; then
             # both accounts at their limit: nothing was tried, so the wine goes
             # back in line instead of failing (2026-10-15)
