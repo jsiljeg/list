@@ -15181,6 +15181,56 @@
     "sweetness": "dry"
    },
    "terroir": "En Mortperay"
+  },
+  "tenuta-dell-ornellaia--le-volte-2023": {
+   "name": "Le Volte 2023",
+   "producer": "Tenuta dell'Ornellaia",
+   "insight": {
+    "grape": "Cabernet Sauvignon 55%, Merlot 40%, Petit Verdot 5%",
+    "region": "Bolgheri, Toscana",
+    "country": "IT",
+    "style": "red_medium",
+    "body": "medium",
+    "aromas": [
+     "blueberry",
+     "blackberry",
+     "dark_cherry",
+     "spice",
+     "cedar"
+    ],
+    "pairings": [
+     "beef",
+     "lamb",
+     "pasta",
+     "charcuterie",
+     "cheese_hard"
+    ],
+    "temp": "16–18",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Barikovi se u Ornellaiji ne bacaju nakon velikog vina: Le Volte 10 mjeseci odleži dijelom u bačvama u kojima je prije toga sazrijevala sama Ornellaia, a dijelom u betonu. Drvo je vaniliju već predalo velikom vinu, pa ovome ostavlja samo dah — voće ostaje naprijed.",
+    "en": "At Ornellaia the barriques are not thrown out after the grand vin: Le Volte spends 10 months partly in barrels that have already held Ornellaia itself, and partly in concrete. The wood has given its vanilla to the big wine, so here it leaves only a breath — the fruit stays in front.",
+    "it": "In Ornellaia le barrique non si buttano dopo il grande vino: Le Volte passa 10 mesi in parte nelle botti che hanno già ospitato l'Ornellaia stessa, in parte nel cemento. Il legno ha già ceduto la sua vaniglia al grande vino, e qui lascia solo un respiro — il frutto resta davanti.",
+    "fr": "À Ornellaia, on ne jette pas les barriques après le grand vin : Le Volte passe 10 mois en partie dans des fûts qui ont déjà élevé l'Ornellaia lui-même, en partie en cuve béton. Le bois a déjà donné sa vanille au grand vin ; ici il ne laisse qu'un souffle, et le fruit reste devant.",
+    "de": "Bei Ornellaia werden die Barriques nach dem großen Wein nicht ausrangiert: Le Volte reift 10 Monate teils in Fässern, in denen zuvor der Ornellaia selbst lag, teils in Beton. Das Holz hat seine Vanille schon an den großen Wein abgegeben und hinterlässt hier nur einen Hauch — die Frucht bleibt vorn.",
+    "zh": "在奥纳亚，橡木桶装过正牌酒之后并不丢弃：Le Volte 在其中陈酿 10 个月——一部分用的正是此前盛过奥纳亚本身的旧桶，另一部分在混凝土罐中。木桶已把香草气息交给了正牌酒，留给这款酒的只是一缕，果香始终在前。",
+    "sl": "Pri Ornellaii barikov po velikem vinu ne zavržejo: Le Volte 10 mesecev zori deloma v sodih, v katerih je pred tem zorela sama Ornellaia, deloma v betonu. Les je vanilijo že predal velikemu vinu, temu pusti le dih — sadje ostane spredaj.",
+    "es": "En Ornellaia las barricas no se tiran después del gran vino: Le Volte pasa 10 meses en parte en barricas que ya criaron el propio Ornellaia, y en parte en hormigón. La madera ya le dio su vainilla al gran vino, así que aquí deja solo un soplo — la fruta va delante."
+   },
+   "notePlain": true,
+   "tags": [
+    "drinking_now"
+   ],
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "87",
+     "checked": "2026-10-23"
+    }
+   ]
   }
  }
 }

@@ -1625,6 +1625,11 @@
          "price": 125
         },
         {
+         "ref": "tenuta-dell-ornellaia--le-volte-2023",
+         "price": 105,
+         "new": true
+        },
+        {
          "ref": "tenuta-san-guido--sassicaia-2020",
          "price": 750,
          "anchor": 750
