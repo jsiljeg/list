@@ -432,7 +432,7 @@ function render() {
       choose = panel(
         `<span class="field"><input type="text" inputmode="decimal" value="${esc(glassDraft)}" placeholder="cijena čaše"
            data-k="${esc(w.key)}" aria-label="Cijena čaše"><span class="eur">€</span></span>
-         <button class="nema ok" data-k="${esc(w.key)}">dodaj na čašu</button>`,
+         <button class="nema ok" data-k="${esc(w.key)}">dodaj</button>`,
         glassNote ? `<div class="note">${esc(glassNote)}</div>` : "", "gedit");
     }
     if (novoAsk === w.key) {
