@@ -283,11 +283,15 @@ jobs:
                  -d '{"phase":"Provjerava ocjenu Roberta Parkera"}' "$INBOX/$ID/stanje" > /dev/null || true
             mkdir -p "$RUNNER_TEMP/rp"
             if curl -sfS "https://raw.githubusercontent.com/${{ github.repository }}/main/.github/wine-intake/parker.mjs" -o "$RUNNER_TEMP/rp/parker.mjs" \
-               && (cd "$RUNNER_TEMP/rp" && npm init -y > /dev/null && npm install --no-save --silent playwright-core@1.62.0 \
-                   && npx --yes playwright@1.62.0 install --with-deps chromium > /dev/null 2>&1); then
+               && (cd "$RUNNER_TEMP/rp" && npm init -y > /dev/null && timeout 150 npm install --no-save --silent playwright-core@1.62.0 \
+                   && timeout 180 npx --yes playwright@1.62.0 install --with-deps chromium > /dev/null 2>&1); then
               producer=$(jq -r --arg r "$ref" '.wines[$r].producer' library/wines.json)
               wname=$(jq -r --arg r "$ref" '.wines[$r].name' library/wines.json)
-              PARKER_USER="$PU" PARKER_PASS="$PP" node "$RUNNER_TEMP/rp/parker.mjs" "$RUNNER_TEMP/parker.json" "$producer" "$wname" || true
+              # a hard limit (2026-10-23): a lookup that hung on robertparker.com
+              # ran into the job's 10 minutes and took a finished card down with
+              # it. Over time, the card goes through as "Parker nije provjeren"
+              # and the daily sweep looks again.
+              timeout -k 10 150 env PARKER_USER="$PU" PARKER_PASS="$PP" node "$RUNNER_TEMP/rp/parker.mjs" "$RUNNER_TEMP/parker.json" "$producer" "$wname" || true
             fi
             [ -f "$RUNNER_TEMP/parker.json" ] || echo '{"status":"error","note":"lookup did not run"}' > "$RUNNER_TEMP/parker.json"
             if jq -e '.status == "found"' "$RUNNER_TEMP/parker.json" > /dev/null; then

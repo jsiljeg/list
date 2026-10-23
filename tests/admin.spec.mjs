@@ -1328,3 +1328,53 @@ test("the service worker leaves the admin and its APIs alone", () => {
   const top = html.slice(0, html.indexOf("<title"));
   expect(top).toMatch(/sw\.controller[\s\S]*unregister\(\)[\s\S]*if \(!once\) location\.reload\(\)/);
 });
+
+/* 2026-10-23: Filho had ~10 bottles to add and the form took one at a time —
+   and the tab redrew itself every 8 s while a wine was being written, wiping
+   a price typed for the next one. Now: several labels picked at once, one
+   request each, and the form survives a poll. */
+test("Dodaj vino: several bottles at once, and a half-typed form survives a poll", async ({ page }) => {
+  await board(page);
+  const posts = [];
+  let gets = 0;
+  await page.route("https://theatrium.devinos.hr/api/vina**", async (route) => {
+    const req = route.request();
+    const send = (b, s = 200) => route.fulfill({ status: s, contentType: "application/json", body: JSON.stringify(b) });
+    if (req.method() === "GET") {
+      gets++;
+      /* something always "working", so the tab keeps polling */
+      return send({ items: [{ id: "w0", status: "working", created_at: "2026-10-23T08:00:00Z", updated_at: "2026-10-23T08:00:00Z",
+        price_bottle: 50, price_glass: null, vol: null, photos: [], progress: [], answers: [] }],
+        limits: { enabled: true, today: 0, dailyCap: 30, month: 0, monthlyCap: 60 } });
+    }
+    posts.push(req.postData() || "");
+    return send({ ok: true }, 201);
+  });
+  await page.click('.tabs button[data-tab="novo"]');
+  await expect(page.locator("#novo-lim")).toContainText("Danas 0/30");
+
+  await page.fill("#n-bottle", "77");
+  const before = gets;
+  await expect.poll(() => gets, { timeout: 20000 }).toBeGreaterThan(before);
+  await expect(page.locator("#n-bottle"), "a poll does not wipe the form").toHaveValue("77");
+
+  const png = readFileSync(new URL("../assets/qr.png", import.meta.url));
+  await page.setInputFiles("#b-pick", ["a", "b", "c"].map((n) => ({ name: n + ".png", mimeType: "image/png", buffer: png })));
+  await expect(page.locator("#b-rows .brow")).toHaveCount(3);
+  const rows = page.locator("#b-rows .brow");
+  await rows.nth(0).locator('[data-k="bottle"]').fill("120");
+  await rows.nth(1).locator('[data-k="glass"]').fill("9");
+  await page.click("#b-send");
+  await expect(page.locator("#b-msg"), "a bottle with no price stops the batch").toContainText("jedno vino");
+  expect(posts).toEqual([]);
+
+  await rows.nth(2).locator('[data-k="bottle"]').fill("65");
+  await page.click("#b-send");
+  await expect(page.locator("#b-msg")).toContainText("Poslano 3", { timeout: 20000 });
+  expect(posts).toHaveLength(3);
+  expect(posts[0]).toContain("120");
+  expect(posts[1]).toMatch(/name="price_glass"\r\n\r\n9\r\n/);
+  expect(posts[2]).toContain("65");
+  for (const p of posts) expect(p, "re-encoded as JPEG").toContain("image/jpeg");
+  await expect(page.locator("#b-rows .brow"), "sent rows leave the batch").toHaveCount(0);
+});

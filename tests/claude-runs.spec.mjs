@@ -88,3 +88,13 @@ test("a refusal that is not a usage limit still tries the second account", () =>
     }
   }
 });
+
+/* 2026-10-23: the Parker lookup hung on robertparker.com, ran into the job's
+   10 minutes, and a finished 199 € card failed with "Stalo kod: Provjerava
+   ocjenu Roberta Parkera". The install and the lookup each carry a limit
+   well inside the job's, so a stuck site costs the score, never the card. */
+test("a stuck Parker lookup cannot take the card down with it", () => {
+  const wf = readFileSync(".github/workflows/add-wine.yml", "utf8");
+  expect(wf).toMatch(/timeout -k 10 150 env PARKER_USER="\$PU" PARKER_PASS="\$PP" node "\$RUNNER_TEMP\/rp\/parker\.mjs"/);
+  expect(wf).toMatch(/timeout 180 npx --yes playwright@[\d.]+ install/);
+});

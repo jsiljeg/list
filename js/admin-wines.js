@@ -137,12 +137,32 @@
     cancelled: ["Odustano", ""],
   };
 
+  /* The form is built once and kept (2026-10-23). The tab used to be redrawn
+     whole every 8 s while anything was queued, which wiped a price half-typed
+     for the next wine while the last one was being written — exactly how a
+     batch of new bottles gets entered. Only the request list redraws now. */
+  let formEl = null;
   function renderNovo() {
     const box = $("tab-novo");
     const lim = limits ? (limits.enabled
       ? `Danas ${limits.today}/${limits.dailyCap} · ovaj mjesec ${limits.month}/${limits.monthlyCap}`
       : "Unos novih vina je trenutno isključen — zahtjevi čekaju.") : "";
-    box.innerHTML = `
+    if (!formEl || !box.contains(formEl)) {
+      box.innerHTML = `<div id="novo-form">${formHtml()}</div><div id="novo-reqs"></div>`;
+      formEl = $("novo-form");
+      wireForm();
+    }
+    $("novo-lim").textContent = lim;
+    const reqs = $("novo-reqs");
+    reqs.innerHTML = `
+      ${shown().length ? `<h2 class="sec">Zahtjevi</h2>` : ""}
+      ${shown().map(card).join("")}`;
+    reqs.querySelectorAll("[data-act]").forEach((b) => b.addEventListener("click", () => act(b.dataset.act, b.dataset.id, b)));
+    reqs.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => editField(b)));
+  }
+
+  function formHtml() {
+    return `
       <div class="card">
         <p class="muted" style="margin:0">Fotografirajte etiketu i upišite cijenu.</p>
         <div class="shots">
@@ -169,10 +189,13 @@
             <input id="n-remark" type="text" maxlength="300" placeholder="npr. zamjenjuje Amarone Ravazzol"></label>
         </details>
         <div id="n-send-row">${sendRow()}</div>
-        <div class="muted center" id="novo-msg">${esc(lim)}</div>
+        <div class="muted center" id="novo-msg"></div>
+        <div class="muted center" id="novo-lim"></div>
       </div>
-      ${shown().length ? `<h2 class="sec">Zahtjevi</h2>` : ""}
-      ${shown().map(card).join("")}`;
+      ${bulkHtml()}`;
+  }
+
+  function wireForm() {
     wireSend();
     /* A photo slot shows what was taken, so Filho sees the label is readable
        before anything is sent. */
@@ -185,8 +208,129 @@
         tile.querySelector(".shot-img").style.backgroundImage = `url(${URL.createObjectURL(f)})`;
       });
     }
-    box.querySelectorAll("[data-act]").forEach((b) => b.addEventListener("click", () => act(b.dataset.act, b.dataset.id, b)));
-    box.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => editField(b)));
+    wireBulk();
+  }
+
+  /* After a send the form is emptied by hand — it is no longer redrawn. */
+  function resetForm() {
+    for (const slot of ["n-front", "n-back"]) {
+      delete picked[slot];
+      const tile = $(slot + "-tile");
+      tile.classList.remove("has");
+      tile.querySelector(".shot-img").style.backgroundImage = "";
+      for (const inp of tile.querySelectorAll("input")) inp.value = "";
+    }
+    for (const id of ["n-bottle", "n-glass", "n-remark", "n-vol"]) $(id).value = "";
+    $("n-rec").checked = false;
+    $("n-ratings").innerHTML = criticsGrid("");
+  }
+
+  /* Several bottles at once (owner, 2026-10-23: "he needs to add like 10
+     bottles, not one after the other"). Each photo picked is one wine, its
+     front label; a back label can be added per row. "Pošalji sve" posts them
+     as ordinary requests, one by one, and the inbox already runs its queue
+     one wine after another — so nothing on the server changed. Ratings are
+     left to the single form and to ✎ on the preview; the run looks Parker up
+     anyway. */
+  const bulk = [];
+  let bulkSending = false;
+  function bulkHtml() {
+    return `
+      <div class="card" id="bulk">
+        <b>Više vina odjednom</b>
+        <p class="muted small" style="margin:6px 0 0">Odaberite prednje etikete svih boca odjednom — svaka slika je jedno vino.
+          Upišite cijene i pošaljite sve; vina se rade jedno za drugim.</p>
+        <span class="shot-btns inline">
+          <label class="shot-btn">🖼 Odaberi slike<input id="b-pick" type="file" accept="image/*,.heic,.heif" multiple></label>
+          <label class="shot-btn">📷 Slikaj<input id="b-cam" type="file" accept="image/*" capture="environment"></label>
+        </span>
+        <div id="b-rows"></div>
+        <div id="b-send-row"></div>
+        <div class="muted center" id="b-msg"></div>
+      </div>`;
+  }
+  function wireBulk() {
+    for (const id of ["b-pick", "b-cam"]) {
+      $(id).addEventListener("change", (e) => {
+        for (const f of e.target.files) bulk.push({ front: f, back: null, url: URL.createObjectURL(f), bottle: "", glass: "", state: "" });
+        e.target.value = "";
+        $("b-msg").textContent = "";
+        renderBulk();
+      });
+    }
+    renderBulk();
+  }
+  function renderBulk() {
+    const rows = $("b-rows");
+    if (!rows) return;
+    rows.innerHTML = bulk.map((r, i) => {
+      const done = r.state === "sent", busy = r.state === "sending", off = done || busy || bulkSending;
+      return `<div class="brow" data-i="${i}">
+        <span class="bimg" style="background-image:url(${esc(r.url)})"></span>
+        <div class="bmid">
+          <div class="grid2">
+            <label class="lbl">Boca (€)<input data-k="bottle" type="text" inputmode="decimal" placeholder="npr. 130" value="${esc(r.bottle)}"${off ? " disabled" : ""}></label>
+            <label class="lbl">Čaša (€)<input data-k="glass" type="text" inputmode="decimal" placeholder="ako se toči" value="${esc(r.glass)}"${off ? " disabled" : ""}></label>
+          </div>
+          ${done ? `<p class="muted small">✓ Poslano</p>` : busy ? `<p class="muted small"><span class="spin"></span> Šaljem…</p>` : bulkSending ? "" : `
+          <span class="shot-btns inline">
+            <label class="shot-btn">${r.back ? "✓ Stražnja etiketa" : "+ Stražnja etiketa"}<input data-back type="file" accept="image/*,.heic,.heif"></label>
+            <button type="button" class="shot-btn" data-del>✕ Makni</button>
+          </span>`}
+          ${r.state.startsWith("err:") ? `<p class="err">${esc(r.state.slice(4))}</p>` : ""}
+        </div></div>`;
+    }).join("");
+    rows.querySelectorAll(".brow").forEach((el) => {
+      const r = bulk[Number(el.dataset.i)];
+      el.querySelectorAll("[data-k]").forEach((inp) => inp.addEventListener("input", () => {
+        r[inp.dataset.k] = inp.value;
+        if (r.state.startsWith("err:")) r.state = "";
+      }));
+      const back = el.querySelector("[data-back]");
+      if (back) back.addEventListener("change", () => { if (back.files[0]) { r.back = back.files[0]; renderBulk(); } });
+      const del = el.querySelector("[data-del]");
+      if (del) del.addEventListener("click", () => { URL.revokeObjectURL(r.url); bulk.splice(Number(el.dataset.i), 1); renderBulk(); });
+    });
+    const left = bulk.filter((r) => r.state !== "sent").length;
+    $("b-send-row").innerHTML = !left ? "" : bulkSending
+      ? `<button class="btn wide busy" disabled><span class="spin"></span>Šaljem…</button>`
+      : `<button class="btn wide" id="b-send">Pošalji sve (${left})</button>`;
+    const go = $("b-send");
+    if (go) go.addEventListener("click", sendBulk);
+  }
+  async function sendBulk() {
+    const todo = bulk.filter((r) => r.state !== "sent");
+    const noPrice = todo.filter((r) => !r.bottle.trim() && !r.glass.trim());
+    if (noPrice.length) {
+      for (const r of noPrice) r.state = "err:" + MSG.no_price;
+      renderBulk();
+      $("b-msg").textContent = `Upišite cijenu za ${noPrice.length === 1 ? "jedno vino" : noPrice.length + " vina"}.`;
+      return;
+    }
+    bulkSending = true; $("b-msg").textContent = "";
+    let sent = 0, failed = 0;
+    for (const r of todo) {
+      r.state = "sending"; renderBulk();
+      try {
+        const fd = new FormData();
+        for (const f of [r.front, r.back].filter(Boolean)) fd.append("photo", await shrink(f), "label.jpg");
+        fd.append("price_bottle", r.bottle);
+        fd.append("price_glass", r.glass);
+        fd.append("vol", "");
+        fd.append("remark", "");
+        fd.append("ratings", "");
+        fd.append("by", (window.adminWho && window.adminWho()) || "");
+        await api("", { method: "POST", body: fd });
+        r.state = "sent"; sent++;
+      } catch (e) { r.state = "err:Nije poslano: " + e.message; failed++; }
+    }
+    bulkSending = false;
+    for (let i = bulk.length - 1; i >= 0; i--) if (bulk[i].state === "sent") { URL.revokeObjectURL(bulk[i].url); bulk.splice(i, 1); }
+    renderBulk();
+    $("b-msg").textContent = failed
+      ? `Poslano ${sent}, nije poslano ${failed} — pokušajte ih ponovno.`
+      : `Poslano ${sent} — vina se rade jedno za drugim, napredak pratite ispod.`;
+    await loadRequests();
   }
 
   /* Filho's corrections, held on the tablet until he sends them. A field is
@@ -524,7 +668,7 @@
       sending = "Šaljem…"; setSend();
       await api("", { method: "POST", body: fd });
       sending = "";
-      delete picked["n-front"]; delete picked["n-back"];
+      resetForm(); setSend();
       await loadRequests();
       $("novo-msg").textContent = "Poslano — napredak pratite ispod.";
       const first = document.querySelector("#tab-novo .req");
