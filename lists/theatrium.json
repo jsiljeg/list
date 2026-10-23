@@ -1360,6 +1360,11 @@
          "anchor": 290
         },
         {
+         "ref": "domaine-a-f-gros--savigny-les-beaune-les-pimentiers-2023",
+         "price": 199,
+         "new": true
+        },
+        {
          "ref": "chateau-de-pez--saint-estephe-2022",
          "price": 155,
          "anchor": 155

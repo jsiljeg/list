@@ -304,6 +304,7 @@
     "Santa Cruz Mountains": "圣克鲁兹山",
     "Santenay": "桑特奈",
     "Sauternes": "苏玳",
+    "Savigny-lès-Beaune": "萨维尼-莱博讷",
     "Sicilia": "西西里",
     "Sonoma Coast": "索诺玛海岸",
     "Spring Mountain": "春山",
@@ -362,6 +363,7 @@
      * transliterations in the same spirit as the village names above — the
      * Latin is always kept alongside so the label can still be matched. */
     "Les Arvelets": "阿维莱",
+    "Les Pimentiers": "皮芒蒂耶",
     "Les Barreaux": "巴罗",
     "Les Benoites": "贝努瓦特",
     "Les Frionnes": "弗里翁",

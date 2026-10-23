@@ -15270,6 +15270,47 @@
     "sl": "Isti vinograd, isti vinar, dve povsem različni leti. Leta 2021 je aprilska pozeba v Burgundiji vzela velik del trgatve in pustila napeto, skopo vino; 2022 je bilo toplo in radodarno, vino pa je vseeno ostalo sveže — zrelo jabolko in citrusi, dolg zaključek. Če je na karti tudi 2021, naročite oba in primerjajte.",
     "es": "La misma viña, el mismo viticultor, dos años muy distintos. En 2021 una helada de abril se llevó buena parte de la cosecha en Borgoña y dejó un vino tenso y austero; 2022 fue cálido y generoso, y aun así el vino conservó su frescura — manzana madura y cítricos, un final largo. Si el 2021 también está en la carta, pidan los dos y compárenlos."
    }
+  },
+  "domaine-a-f-gros--savigny-les-beaune-les-pimentiers-2023": {
+   "name": "Savigny-lès-Beaune Les Pimentiers 2023",
+   "producer": "Domaine A.-F. Gros",
+   "insight": {
+    "grape": "Pinot Noir",
+    "region": "Savigny-lès-Beaune, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "red_medium",
+    "body": "medium",
+    "aromas": [
+     "cherry",
+     "raspberry",
+     "violet",
+     "earth"
+    ],
+    "pairings": [
+     "poultry",
+     "mushrooms",
+     "veal",
+     "cheese_hard"
+    ],
+    "temp": "16–18",
+    "alcohol": "13",
+    "sweetness": "dry"
+   },
+   "terroir": "Les Pimentiers",
+   "note": {
+    "hr": "Pimentiers je najveći seoski vinograd Savignyja, 16 hektara u podnožju brda — i po tom podnožju, pied du mont, dobio je ime, a ne po papru, kako zvuči. Pinot iz Savignyja ne traži godine u podrumu: voćan je i mekan već sada.",
+    "en": "Les Pimentiers is the largest village vineyard in Savigny, 16 hectares at the foot of the hill — and that foot, the pied du mont, is where the name comes from, not pepper, as it sounds. Savigny Pinot does not ask for years in the cellar: it is fruity and supple already.",
+    "it": "Les Pimentiers è la vigna village più grande di Savigny, 16 ettari ai piedi della collina — ed è da quel piede, il pied du mont, che viene il nome, non dal peperoncino, come sembrerebbe. Il Pinot di Savigny non chiede anni di cantina: è fruttato e morbido già adesso.",
+    "fr": "Les Pimentiers est le plus vaste climat village de Savigny, 16 hectares au pied de la montagne — et c'est ce pied qui lui a donné son nom, pas le piment, comme on pourrait le croire. Le pinot de Savigny ne demande pas des années de cave : il est fruité et souple dès maintenant.",
+    "de": "Les Pimentiers ist die größte Village-Lage von Savigny, 16 Hektar am Fuß des Hügels — und von diesem Fuß, dem pied du mont, hat sie ihren Namen, nicht vom Pfeffer, wie es klingt. Pinot aus Savigny verlangt keine Jahre im Keller: Er ist schon jetzt fruchtig und geschmeidig.",
+    "zh": "皮芒蒂耶是萨维尼最大的村级园，16公顷，位于山脚下——名字正是来自这“山脚”（pied du mont），而不是听起来像的“辣椒”。萨维尼的黑皮诺不必在酒窖里等上多年：现在就果香充沛、柔顺可口。",
+    "sl": "Les Pimentiers je največji vaški vinograd v Savignyju, 16 hektarjev ob vznožju hriba — in po tem vznožju, pied du mont, je dobil ime, ne po popru, kot zveni. Pinot iz Savignyja ne potrebuje let v kleti: sadežen in mehak je že zdaj.",
+    "es": "Les Pimentiers es el mayor viñedo village de Savigny, 16 hectáreas al pie de la colina — y de ese pie, el pied du mont, viene el nombre, no de la pimienta, como parece. El Pinot de Savigny no pide años de bodega: ya es frutal y suave."
+   },
+   "notePlain": true,
+   "tags": [
+    "drinking_now"
+   ]
   }
  }
 }
