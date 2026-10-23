@@ -15436,6 +15436,53 @@
     "sweetness": "dry"
    },
    "terroir": "Montmorin"
+  },
+  "jean-marc-vincent--santenay-1er-cru-passetemps-2023": {
+   "name": "Santenay 1er Cru Passetemps 2023",
+   "producer": "Jean-Marc Vincent",
+   "insight": {
+    "grape": "Pinot Noir",
+    "region": "Santenay, Côte de Beaune, Bourgogne",
+    "country": "FR",
+    "style": "red_medium",
+    "body": "medium",
+    "aromas": [
+     "strawberry",
+     "cherry",
+     "violet",
+     "earth",
+     "spice"
+    ],
+    "pairings": [
+     "poultry",
+     "mushrooms",
+     "game",
+     "veal",
+     "beef"
+    ],
+    "temp": "16–18",
+    "alcohol": "14.5",
+    "sweetness": "dry"
+   },
+   "terroir": "Passetemps",
+   "note": {
+    "hr": "Dio Passetempsa Jean-Marc je 2002. presadio na 14.000 trsova po hektaru, dok se u Burgundiji obično sadi 9.000 do 10.000. Gusto posađeni trsovi daju manje i sitnije grozdove, pa i mlada loza donosi koncentraciju kakvu inače daju samo stari trsovi. Istu ideju Olivier Lamy u Saint-Aubinu tjera do 30.000.",
+    "en": "In 2002 Jean-Marc replanted part of Passetemps at 14,000 vines per hectare, where Burgundy usually plants 9,000 to 10,000. Vines that close together give fewer, smaller bunches, so even young vines bring the concentration you normally only get from old ones. Olivier Lamy, in Saint-Aubin, pushes the same idea to 30,000.",
+    "it": "Nel 2002 Jean-Marc ha reimpiantato una parte di Passetemps a 14.000 ceppi per ettaro, dove in Borgogna se ne piantano di solito da 9.000 a 10.000. Viti così fitte danno grappoli più pochi e più piccoli, e anche le vigne giovani portano la concentrazione che di solito danno solo quelle vecchie. Olivier Lamy, a Saint-Aubin, spinge la stessa idea fino a 30.000.",
+    "fr": "En 2002, Jean-Marc a replanté une partie de Passetemps à 14 000 pieds à l'hectare, là où la Bourgogne en plante d'ordinaire 9 000 à 10 000. Des ceps aussi serrés donnent des grappes moins nombreuses et plus petites, si bien que même de jeunes vignes apportent la concentration qu'on n'obtient d'habitude que des vieilles. Olivier Lamy, à Saint-Aubin, pousse la même idée jusqu'à 30 000.",
+    "de": "2002 hat Jean-Marc einen Teil von Passetemps mit 14.000 Stöcken je Hektar neu bepflanzt, wo man im Burgund sonst 9.000 bis 10.000 setzt. So dicht stehende Reben tragen weniger und kleinere Trauben, und selbst junge Stöcke bringen die Konzentration, die man sonst nur von alten bekommt. Olivier Lamy treibt dieselbe Idee in Saint-Aubin bis auf 30.000.",
+    "zh": "2002 年，让-马克把 Passetemps 的一部分以每公顷 14.000 株重新种植，而勃艮第通常只种 9.000 到 10.000 株。如此密植的葡萄藤结出的果串更少、更小，于是连年轻的藤也能带来通常只有老藤才有的浓郁度。圣欧班的奥利维耶·拉米把同一个想法推到了 30.000 株。",
+    "sl": "Leta 2002 je Jean-Marc del Passetempsa presadil na 14.000 trt na hektar, medtem ko se v Burgundiji običajno sadi 9.000 do 10.000. Tako gosto posajene trte dajo manj in drobnejših grozdov, zato tudi mlada trta prinese koncentracijo, kakršno sicer dajo le stare. Olivier Lamy v Saint-Aubinu isto zamisel žene do 30.000.",
+    "es": "En 2002 Jean-Marc replantó parte de Passetemps a 14.000 cepas por hectárea, donde en Borgoña se plantan normalmente de 9.000 a 10.000. Cepas tan juntas dan racimos menos numerosos y más pequeños, así que incluso las viñas jóvenes aportan la concentración que normalmente solo dan las viejas. Olivier Lamy, en Saint-Aubin, lleva la misma idea hasta 30.000."
+   },
+   "notePlain": true,
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "94",
+     "checked": "2026-10-23"
+    }
+   ]
   }
  }
 }

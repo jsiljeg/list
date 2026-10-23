@@ -383,6 +383,7 @@
     "En Remilly": "雷米利",
     "Clos du Cromin": "克罗曼园",
     "Clos des Gravières": "砾石园",
+    "Passetemps": "帕斯唐",
     "Sous la Velle": "苏拉维尔",
     "Montmorin": "蒙莫兰",
     "Best of 17 Grands Crus + Hautvillers Premier Cru": "十七特级园精选与欧维莱一级园",
