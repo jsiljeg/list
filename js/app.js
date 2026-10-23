@@ -1268,18 +1268,27 @@ function renderContent() {
     }).join("");
     if (!REGIONS.length) html = `<p class="no-results">${t.ui.noResults}</p>`;
   } else if (currentSection === "__new" && !picksOnly && !ratedOnly && !prideOnly) {
-    let newHtml = "";
+    /* Glass and bottle under their own headings (owner, 2026-10-23: "reads a
+       bit off just without saying what is what") — the same Babić at 10 € and
+       at 55 € side by side looked like a mistake. Glass first, as on the list.
+       Under a heading the row's small line no longer repeats "by the glass"
+       and names the colour instead. */
+    const fresh = { glass: "", bottle: "" };
     DATA.sections.forEach((sec, si) => {
       sec.categories.forEach((cat, ci) => {
         cat.groups.forEach((g, gi) => {
           g.items.forEach((item, ii) => {
             if (!item.new) return;
-            const ctx = [t.sections[sec.id], g.country ? t.countries[g.country] : null].filter(Boolean).join(" · ");
-            newHtml += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
+            const glass = sec.id === "glass";
+            const ctx = [glass ? t.categories[cat.id] : t.sections[sec.id], g.country ? t.countries[g.country] : null].filter(Boolean).join(" · ");
+            fresh[glass ? "glass" : "bottle"] += itemHtml(item, [si, ci, gi, ii].join("."), ctx);
           });
         });
       });
     });
+    const sub = (label) => `<div class="search-group">${esc(label)}</div>`;
+    const newHtml = (fresh.glass ? sub(t.ui.newGlass || t.sections.glass) + fresh.glass : "") +
+      (fresh.bottle ? sub(t.ui.newBottle || "") + fresh.bottle : "");
     html = newHtml
       ? `<section class="cat"><h2 class="cat-title"><span class="pride-badge">${ICONS.sparkle}</span>${esc(t.ui.newArrivals)}</h2><div class="ornament" aria-hidden="true">${ICONS.grape}</div>${newHtml}</section>`
       : `<p class="no-results">${t.ui.noResults}</p>`;

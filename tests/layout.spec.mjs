@@ -499,3 +499,19 @@ test("the list dissolves under the header instead of being cut", async () => {
   expect(pad, "the .nav padding shorthand should carry a bottom value").not.toBeNull();
   expect(Number(pad[1])).toBeGreaterThan(0);
 });
+
+/* 2026-10-23, owner: NOVO mixed glass pours and bottles with nothing saying
+   which was which — Testament's Babić at 10 € and at 55 € side by side read as
+   a mistake. Two headings now, glass first, in every language. */
+test("NOVO says which wines are by the glass and which by the bottle", async ({ page }) => {
+  await openApp(page, { lang: "hr" });
+  await page.click('[data-sec="__new"]');
+  const heads = page.locator("#content .search-group");
+  await expect(heads).toHaveText(["Na čašu", "Na bocu"]);
+  const firstBottleIsAfterGlass = await page.evaluate(() => {
+    const els = [...document.querySelectorAll("#content .search-group, #content .item")];
+    const iBottle = els.findIndex((e) => e.textContent === "Na bocu");
+    return iBottle > 1 && els.slice(1, iBottle).every((e) => e.classList.contains("item"));
+  });
+  expect(firstBottleIsAfterGlass, "the glass pours sit between the two headings").toBe(true);
+});

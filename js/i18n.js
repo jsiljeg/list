@@ -57,6 +57,7 @@ hr: {
     prideSub: "Za velike trenutke. Za Vas.",
     newBadge: "Novo",
     newArrivals: "Novo",
+    newGlass: "Na čašu", newBottle: "Na bocu",
     regions: "Regije"
   },
   helper: {
@@ -200,6 +201,7 @@ en: {
     prideSub: "For the great moments. For you.",
     newBadge: "New",
     newArrivals: "New",
+    newGlass: "By the glass", newBottle: "By the bottle",
     regions: "Regions"
   },
   helper: {
@@ -343,6 +345,7 @@ it: {
     prideSub: "Per i grandi momenti. Per Voi.",
     newBadge: "Novità",
     newArrivals: "Novità",
+    newGlass: "Al calice", newBottle: "In bottiglia",
     regions: "Regioni"
   },
   helper: {
@@ -486,6 +489,7 @@ fr: {
     prideSub: "Pour les grands moments. Pour Vous.",
     newBadge: "Nouveau",
     newArrivals: "Nouveautés",
+    newGlass: "Au verre", newBottle: "À la bouteille",
     regions: "Régions"
   },
   helper: {
@@ -629,6 +633,7 @@ de: {
     prideSub: "Für die großen Momente. Für Sie.",
     newBadge: "Neu",
     newArrivals: "Neu",
+    newGlass: "Glasweise", newBottle: "Ganze Flasche",
     regions: "Regionen"
   },
   helper: {
@@ -772,6 +777,7 @@ zh: {
     prideSub: "为重要时刻，为您。",
     newBadge: "新品",
     newArrivals: "新品",
+    newGlass: "单杯", newBottle: "整瓶",
     regions: "产区"
   },
   helper: {
@@ -924,6 +930,7 @@ sl: {
     "prideSub": "Za velike trenutke. Za vas.",
     "newBadge": "Novo",
     "newArrivals": "Novo",
+    "newGlass": "Na kozarec", "newBottle": "Na steklenico",
     "regions": "Regije"
   },
   "helper": {
@@ -1378,6 +1385,7 @@ es: {
     "prideSub": "Para los grandes momentos. Para usted.",
     "newBadge": "Nuevo",
     "newArrivals": "Nuevo",
+    "newGlass": "Por copa", "newBottle": "Por botella",
     "regions": "Regiones"
   },
   "helper": {
