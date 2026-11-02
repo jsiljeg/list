@@ -15742,6 +15742,35 @@
    },
    "terroir": "",
    "notePlain": true
+  },
+  "damijan-podversic--nekaj-2019": {
+   "name": "Nekaj 2019",
+   "producer": "Damijan Podveršič",
+   "insight": {
+    "grape": "Friulano",
+    "region": "Gorizia, Collio, Friuli",
+    "country": "IT",
+    "style": "orange",
+    "body": "full",
+    "aromas": [
+     "almond",
+     "dried_fruit",
+     "herbs",
+     "honey",
+     "orange_peel"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "charcuterie",
+     "mushrooms",
+     "white_meat"
+    ],
+    "temp": "12–14",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "notePlain": true
   }
  }
 }
