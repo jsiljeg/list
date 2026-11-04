@@ -9,7 +9,8 @@
  *
  * For each step that calls `claude -p`, this requires:
  *   - both tokens, CLAUDE_CODE_OAUTH_TOKEN and CLAUDE_CODE_OAUTH_TOKEN_2
- *   - a loop over them that moves on when the result says "usage limit"
+ *   - a loop over them that stops only on a clean result — any failure
+ *     tries the other account (2026-11-04)
  *   - exit-on-error off for the loop: `set +e` before it, or `|| true` on
  *     the claude command itself
  *   - something that reads the refusal after the loop, so a run where both
@@ -21,7 +22,7 @@
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
-const LIMIT_RE = "usage limit reached";
+const SUCCESS_BREAK = `'.is_error == false'`;
 const dirs = [".github/workflows", ...process.argv.slice(2)];
 const problems = [];
 let steps = 0;
@@ -49,7 +50,13 @@ for (const dir of dirs) {
       const command = lines.slice(0, n + 1).join("\n");
       const eOff = /\n\s*set \+e\b/.test(before) || /\|\|\s*true\s*$/.test(command);
       if (!eOff) problems.push(`${where}: claude runs under bash -e — a usage limit ends the step before the second account (add set +e before the loop)`);
-      if (!after.includes(LIMIT_RE)) problems.push(`${where}: the loop never checks for a usage limit`);
+      /* The loop stops only on a clean result; anything else tries the other
+         account (owner, 2026-11-04). It used to move on only for a list of
+         known wordings, and "Failed to authenticate: OAuth token revoked" was
+         not on it, so the receipts stopped on account 1 and never tried 2. */
+      const body = after.slice(0, after.search(/\n\s*done\b/));
+      if (!body.includes(SUCCESS_BREAK)) problems.push(`${where}: the loop must stop only on success (${SUCCESS_BREAK}) and try the other account on any failure`);
+      if (/\|\|\s*break\b/.test(body)) problems.push(`${where}: "|| break" — the loop gives up on a failure instead of trying the other account`);
     }
     /* the refusal must be read after the loop, somewhere in the same file */
     const loopAt = text.indexOf('for T in "$TOKEN_1" "$TOKEN_2"');
