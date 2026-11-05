@@ -319,3 +319,23 @@ test("the clock: Remaris 6:10 and 16:10, MER 9:10 and 17:10, the report Monday 8
   for (const [h, off] of [[6, 2], [6, 1], [8, 2], [8, 1], [9, 2], [9, 1], [16, 2], [16, 1], [17, 2], [17, 1], [23, 2], [23, 1]]) expect([4, 5, 6, 7, 8, 14, 15, 16, 21, 22]).toContain(h - off);
   expect(readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8")).not.toContain("svako jutro u 6:00");
 });
+
+/* Caught 2026-11: the clock mailed "mer-sync.yml — GitHub 500" after one try.
+   A 5xx is retried and mails nothing if a later try starts the run; a bad
+   token (401) is not retried, since waiting cannot fix it. */
+test("the clock retries a GitHub 5xx and mails only what stays broken", async () => {
+  const { dispatch } = await import("../web/clock/worker.js");
+  const env = { DISPATCH_TOKEN: "t", REPO: "o/r" };
+  const run = async (statuses) => {
+    let n = 0;
+    const fetchFn = async () => { const s = statuses[n++]; if (s === "net") throw new Error("network"); return { ok: s < 300, status: s, text: async () => "x" }; };
+    return { why: await dispatch("mer-sync.yml", env, { fetchFn, sleep: async () => {}, waits: [1, 1] }), tries: n };
+  };
+  expect(await run([500, 204])).toEqual({ why: "", tries: 2 });
+  expect(await run(["net", 502, 204])).toEqual({ why: "", tries: 3 });
+  const down = await run([500, 500, 503]);
+  expect(down.tries).toBe(3);
+  expect(down.why).toMatch(/GitHub 503/);
+  expect(await run([401])).toEqual({ why: "GitHub 401: x", tries: 1 });
+  expect(await dispatch("mer-sync.yml", {}, {})).toBe("no DISPATCH_TOKEN");
+});
