@@ -1643,7 +1643,8 @@
         },
         {
          "ref": "le-ragose--amarone-classico-riserva-2013",
-         "price": 130
+         "price": 130,
+         "new": true
         },
         {
          "ref": "le-ragose--amarone-classico-riserva-caloetto-2015",
