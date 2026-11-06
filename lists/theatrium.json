@@ -1648,7 +1648,8 @@
         },
         {
          "ref": "le-ragose--amarone-classico-riserva-caloetto-2015",
-         "price": 130
+         "price": 130,
+         "new": true
         },
         {
          "ref": "montevertine--le-pergole-torte-2020",
