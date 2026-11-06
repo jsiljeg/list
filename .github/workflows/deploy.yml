@@ -63,8 +63,20 @@ jobs:
       # until a tablet shows a blank screen mid-service. This opens the
       # assembled directory and fails on any request that is not 200 — and on
       # anything internal that is still reachable.
+      #
+      # No --with-deps (2026-11-06): it apt-installs fonts on every deploy, and
+      # that day the Ubuntu mirror ran at 26 kB/s — 11 minutes on fonts this
+      # check never needs, three of Filho's 86s held back, and the 15-minute
+      # "86 board not publishing" alarm fired. The runner image already carries
+      # every library Chromium links against; apt is reached only if it cannot
+      # actually launch.
       - name: Check the assembled site loads and hides the internals
-        run: npm ci && npx playwright install --with-deps chromium && node scripts/check-site.mjs _site
+        run: |
+          npm ci
+          npx playwright install chromium
+          node -e "require('@playwright/test').chromium.launch().then(b => b.close())" \
+            || timeout 600 npx playwright install-deps chromium
+          node scripts/check-site.mjs _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

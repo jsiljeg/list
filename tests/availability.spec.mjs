@@ -326,3 +326,14 @@ test("a rewritten blurb reaches an open page without a reload", async ({ page })
       { message: "the blurb never arrived on the open page" })
     .toBe(true);
 });
+
+/* Caught 2026-11-06: "86 board not publishing". The deploy's site check ran
+   `playwright install --with-deps`, which apt-installs fonts every time; the
+   Ubuntu mirror crawled and the 86s sat behind 11 minutes of fonts. The
+   deploy path must not depend on apt unless Chromium cannot launch. */
+test("the deploy does not wait on apt to publish an 86", () => {
+  const yml = readFileSync(resolve(ROOT, ".github/workflows/deploy.yml"), "utf8");
+  expect(yml).not.toMatch(/playwright install --with-deps/);
+  expect(yml).toContain("chromium.launch()");
+  expect(yml).toMatch(/\|\| timeout \d+ npx playwright install-deps chromium/);
+});
