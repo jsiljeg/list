@@ -23,6 +23,10 @@
          "anchor": 8
         },
         {
+         "ref": "tomac--diplomat",
+         "price": 10
+        },
+        {
          "ref": "meneghetti--blanc-de-blancs",
          "price": 11,
          "anchor": 9,
