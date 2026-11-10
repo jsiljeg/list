@@ -15771,6 +15771,47 @@
    },
    "terroir": "",
    "notePlain": true
+  },
+  "le-ragose--valpolicella-classico-2023": {
+   "name": "Valpolicella Classico 2023",
+   "producer": "Le Ragose",
+   "insight": {
+    "grape": "Corvina 50%, Corvinone 20%, Rondinella 20%, ostale sorte 10%",
+    "region": "Negrar, Valpolicella Classica, Veneto",
+    "country": "IT",
+    "style": "red_light",
+    "body": "light",
+    "aromas": [
+     "cherry",
+     "rose",
+     "sour_cherry",
+     "almond"
+    ],
+    "pairings": [
+     "charcuterie",
+     "white_meat",
+     "pasta",
+     "cheese_fresh"
+    ],
+    "temp": "14–16",
+    "alcohol": "13",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Isto grožđe s istih terasa kao Amarone do njega — samo što ovdje ne vene mjesecima, nego ide ravno u prešu. Divlji kvasci, inox, bez drva: 13% umjesto 16%, višnja i ruža umjesto suhog voća. Valpolicella kakvu Verona pije svaki dan.",
+    "en": "The same grapes from the same terraces as the Amarone beside it — except here they are not left to wither for months but go straight to the press. Wild yeasts, steel, no wood: 13% instead of 16%, cherry and rose instead of dried fruit. Valpolicella the way Verona drinks it every day.",
+    "it": "Le stesse uve delle stesse terrazze dell'Amarone accanto — solo che qui non appassiscono per mesi, vanno dritte in pressa. Lieviti indigeni, acciaio, niente legno: 13% invece di 16%, ciliegia e rosa invece della frutta secca. La Valpolicella come Verona la beve tutti i giorni.",
+    "fr": "Les mêmes raisins, des mêmes terrasses que l'Amarone voisin — sauf qu'ici ils ne se flétrissent pas des mois mais vont droit au pressoir. Levures indigènes, inox, pas de bois : 13% au lieu de 16%, cerise et rose au lieu de fruits secs. La Valpolicella telle que Vérone la boit tous les jours.",
+    "de": "Dieselben Trauben von denselben Terrassen wie der Amarone daneben — nur welken sie hier nicht monatelang, sondern gehen direkt in die Presse. Wilde Hefen, Edelstahl, kein Holz: 13% statt 16%, Kirsche und Rose statt Trockenfrucht. Valpolicella, wie Verona sie jeden Tag trinkt.",
+    "zh": "与旁边的阿玛罗尼同样的葡萄、同样的梯田——只是这里的葡萄不经数月风干，而是直接送去压榨。野生酵母、不锈钢罐、不用木桶：酒精 13% 而非 16%，樱桃与玫瑰取代了果干。这是维罗纳人每天喝的瓦坡里切拉。",
+    "sl": "Isto grozdje z istih teras kot Amarone ob njem — le da tu ne veni mesece, ampak gre naravnost v stiskalnico. Divje kvasovke, inox, brez lesa: 13% namesto 16%, češnja in vrtnica namesto suhega sadja. Valpolicella, kakršno Verona pije vsak dan.",
+    "es": "Las mismas uvas de las mismas terrazas que el Amarone de al lado — sólo que aquí no se pasifican durante meses, sino que van directas a la prensa. Levaduras autóctonas, acero, nada de madera: 13% en vez de 16%, cereza y rosa en lugar de fruta seca. La Valpolicella tal como Verona la bebe a diario."
+   },
+   "notePlain": true,
+   "tags": [
+    "drinking_now"
+   ]
   }
  }
 }

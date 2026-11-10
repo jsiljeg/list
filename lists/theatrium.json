@@ -1645,6 +1645,11 @@
          "anchor": 260
         },
         {
+         "ref": "le-ragose--valpolicella-classico-2023",
+         "price": 65,
+         "new": true
+        },
+        {
          "ref": "le-ragose--amarone-classico-riserva-2013",
          "price": 140,
          "new": true
