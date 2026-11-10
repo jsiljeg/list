@@ -13,7 +13,7 @@
        "items": [
         {
          "ref": "petrac--bregh-rose",
-         "price": 8,
+         "price": 10,
          "anchor": 8,
          "recommended": true
         },
@@ -280,7 +280,7 @@
         },
         {
          "ref": "petrac--bregh-rose",
-         "price": 48,
+         "price": 59,
          "anchor": 48,
          "recommended": true
         },
