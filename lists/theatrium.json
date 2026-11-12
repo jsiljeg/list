@@ -197,6 +197,11 @@
          "anchor": 12
         },
         {
+         "ref": "benanti--etna-rosso-2023",
+         "price": 13,
+         "new": true
+        },
+        {
          "ref": "tenuta-san-guido--guidalberto-2024",
          "price": 15
         },
@@ -1744,6 +1749,11 @@
          "ref": "poggio-di-sotto--brunello-di-montalcino-2020",
          "price": 495,
          "anchor": 495
+        },
+        {
+         "ref": "benanti--etna-rosso-2023",
+         "price": 97,
+         "new": true
         }
        ]
       },

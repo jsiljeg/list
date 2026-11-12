@@ -27,6 +27,8 @@
     "Canaiolo": "卡内奥罗",
     "Carignan": "佳丽酿",
     "Carricante": "卡利坎特",
+    "Nerello Mascalese": "马斯卡斯奈莱洛",
+    "Nerello Cappuccio": "卡普奇奥奈莱洛",
     "Chardonnay": "霞多丽",
     "Chenin Blanc": "白诗南",
     "Colorino": "科罗里诺",

@@ -15852,6 +15852,46 @@
     "es": "El Pinot Grigio tiene la piel rosada, y este reposa sobre ella hasta 24 horas — justo lo bastante para dar al vino un toque de cobre en la copa. En Friuli y en Brda ese estilo se llama ramato, cobrizo, y es más antiguo que el Pinot Grigio incoloro que el mundo conoce hoy."
    },
    "notePlain": true
+  },
+  "benanti--etna-rosso-2023": {
+   "name": "Etna Rosso 2023",
+   "producer": "Benanti",
+   "insight": {
+    "grape": "Nerello Mascalese, Nerello Cappuccio",
+    "region": "Etna, Sicilia",
+    "country": "IT",
+    "style": "red_medium",
+    "body": "medium",
+    "aromas": [
+     "cherry",
+     "strawberry",
+     "smoke",
+     "herbs",
+     "saline"
+    ],
+    "pairings": [
+     "poultry",
+     "mushrooms",
+     "charcuterie",
+     "cheese_hard",
+     "lamb"
+    ],
+    "temp": "16–18",
+    "alcohol": "14",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Blijedo kao pinot crni, a ništa u njemu nije lagano. Nerello Mascalese na Etni dozrijeva sporo, do listopada i na 900 metara visine — boja ostaje prozirna, a voće, dim i sol dobiju punu snagu.",
+    "en": "Pale as a Pinot Noir, yet nothing about it is light. Nerello Mascalese ripens slowly on Etna, into October and up to 900 metres — the colour stays translucent while the fruit, smoke and salt come in at full strength.",
+    "it": "Pallido come un Pinot Nero, eppure non ha nulla di leggero. Il Nerello Mascalese sull'Etna matura lentamente, fino a ottobre e fino a 900 metri — il colore resta trasparente, mentre frutto, fumo e sale arrivano a piena forza.",
+    "fr": "Pâle comme un pinot noir, et pourtant rien de léger. Le nerello mascalese mûrit lentement sur l'Etna, jusqu'en octobre et jusqu'à 900 mètres — la couleur reste translucide, tandis que le fruit, la fumée et le sel arrivent à pleine puissance.",
+    "de": "Blass wie ein Pinot Noir, und doch nichts daran ist leicht. Nerello Mascalese reift am Ätna langsam, bis in den Oktober und bis auf 900 Meter — die Farbe bleibt durchscheinend, Frucht, Rauch und Salz kommen mit voller Kraft.",
+    "zh": "颜色淡如黑皮诺，却丝毫不轻。马斯卡斯奈莱洛在埃特纳火山上缓慢成熟，一直到十月、一直到海拔900米——酒色依旧透亮，果味、烟熏与咸鲜却来得十足。",
+    "sl": "Bledo kot modri pinot, pa vendar v njem ni nič lahkega. Nerello Mascalese na Etni zori počasi, do oktobra in do 900 metrov visoko — barva ostane prosojna, sadje, dim in sol pa pridejo v polni moči.",
+    "es": "Pálido como un Pinot Noir, y sin embargo nada en él es ligero. El Nerello Mascalese madura despacio en el Etna, hasta octubre y hasta 900 metros — el color sigue translúcido, mientras la fruta, el humo y la sal llegan con toda su fuerza."
+   },
+   "notePlain": true
   }
  }
 }
