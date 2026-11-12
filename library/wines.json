@@ -15812,6 +15812,46 @@
    "tags": [
     "drinking_now"
    ]
+  },
+  "marjan-simcic--pinot-grigio-classic-2025": {
+   "name": "Pinot Grigio Classic 2025",
+   "producer": "Marjan Simčič",
+   "insight": {
+    "grape": "Pinot Grigio",
+    "region": "Goriška brda, Primorska",
+    "country": "SI",
+    "style": "white_fresh",
+    "body": "medium",
+    "aromas": [
+     "pear",
+     "red_apple",
+     "sweet_spice",
+     "mirabelle",
+     "wet_stone"
+    ],
+    "pairings": [
+     "white_fish",
+     "seafood",
+     "light_starters",
+     "pasta",
+     "asian"
+    ],
+    "temp": "10–12",
+    "alcohol": "",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Pinot Grigio ima ružičastu kožicu, a ovaj na njoj odleži do 24 sata — taman toliko da vino u čaši dobije dašak bakra. U Friuliju i Brdima takav se stil zove ramato, bakreni, i stariji je od bezbojnog Pinot Grigia kakav svijet danas poznaje.",
+    "en": "Pinot Grigio has pink skins, and this one rests on them for up to 24 hours — just long enough to give the wine a touch of copper in the glass. In Friuli and Brda that style is called ramato, coppery, and it is older than the colourless Pinot Grigio the world knows today.",
+    "it": "Il Pinot Grigio ha la buccia rosata, e questo vi riposa sopra fino a 24 ore — quanto basta per dare al vino un riflesso di rame nel bicchiere. In Friuli e nel Brda questo stile si chiama ramato, ed è più antico del Pinot Grigio incolore che il mondo conosce oggi.",
+    "fr": "Le pinot grigio a la peau rose, et celui-ci repose dessus jusqu'à 24 heures — juste assez pour donner au vin un reflet cuivré dans le verre. Dans le Frioul et le Brda, ce style s'appelle ramato, cuivré, et il est plus ancien que le pinot grigio incolore que le monde connaît aujourd'hui.",
+    "de": "Pinot Grigio hat rosa Beerenhäute, und dieser liegt bis zu 24 Stunden darauf — gerade lang genug für einen Hauch Kupfer im Glas. Im Friaul und in Brda heißt dieser Stil ramato, kupfern, und er ist älter als der farblose Pinot Grigio, den die Welt heute kennt.",
+    "zh": "灰皮诺的果皮是粉红色的，这款酒在果皮上浸渍最多 24 小时——刚好让杯中的酒染上一抹铜色。在弗留利和布尔达，这种风格叫作 ramato，意为“铜色”，它比今天全世界熟悉的无色灰皮诺还要古老。",
+    "sl": "Sivi pinot ima rožnato kožico, ta pa na njej počiva do 24 ur — ravno dovolj, da vino v kozarcu dobi pridih bakra. V Furlaniji in Brdih se temu slogu reče ramato, bakreni, in je starejši od brezbarvnega sivega pinota, kakršnega svet pozna danes.",
+    "es": "El Pinot Grigio tiene la piel rosada, y este reposa sobre ella hasta 24 horas — justo lo bastante para dar al vino un toque de cobre en la copa. En Friuli y en Brda ese estilo se llama ramato, cobrizo, y es más antiguo que el Pinot Grigio incoloro que el mundo conoce hoy."
+   },
+   "notePlain": true
   }
  }
 }

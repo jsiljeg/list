@@ -113,6 +113,11 @@
          "anchor": 11
         },
         {
+         "ref": "marjan-simcic--pinot-grigio-classic-2025",
+         "price": 11,
+         "new": true
+        },
+        {
          "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
          "price": 12,
          "anchor": 12
@@ -1159,6 +1164,11 @@
       {
        "country": "SI",
        "items": [
+        {
+         "ref": "marjan-simcic--pinot-grigio-classic-2025",
+         "price": 80,
+         "new": true
+        },
         {
          "ref": "marjan-simcic--sauvignon-vert",
          "price": 100,
