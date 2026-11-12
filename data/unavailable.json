@@ -364,6 +364,12 @@
    "producer": "Meneghetti",
    "name": "Blanc de Blancs",
    "since": "2026-11-09"
+  },
+  {
+   "producer": "Chavost",
+   "name": "Blanc de Chardonnay",
+   "where": "glass",
+   "since": "2026-11-12"
   }
  ]
 }
