@@ -15892,6 +15892,43 @@
     "es": "Pálido como un Pinot Noir, y sin embargo nada en él es ligero. El Nerello Mascalese madura despacio en el Etna, hasta octubre y hasta 900 metros — el color sigue translúcido, mientras la fruta, el humo y la sal llegan con toda su fuerza."
    },
    "notePlain": true
+  },
+  "petrac--bregh-blanc-de-blancs": {
+   "name": "Bregh Blanc de Blancs",
+   "producer": "Petrač",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Zabok, Zagorje-Međimurje",
+    "country": "HR",
+    "style": "sparkling",
+    "body": "medium",
+    "aromas": [
+     "green_apple",
+     "citrus",
+     "brioche"
+    ],
+    "pairings": [
+     "white_fish",
+     "aperitif",
+     "light_starters",
+     "seafood"
+    ],
+    "temp": "6–8",
+    "alcohol": "12.5",
+    "dosage": "Brut"
+   },
+   "terroir": "Hršak Breg",
+   "notePlain": true,
+   "note": {
+    "hr": "Najmanje 24 mjeseca na kvascu — dvostruko više od 12 koje pravila traže za Champagne bez berbe. Odatle kremoznost koju zagorski chardonnay inače nema prilike pokazati.",
+    "en": "At least 24 months on its lees — twice the 12 the rules ask of a non-vintage Champagne. That is where the creaminess comes from, something Zagorje Chardonnay rarely gets the chance to show.",
+    "it": "Almeno 24 mesi sui lieviti — il doppio dei 12 che il disciplinare chiede a uno Champagne senza annata. Da qui la cremosità che lo chardonnay dello Zagorje raramente ha occasione di mostrare.",
+    "fr": "Au moins 24 mois sur lies — le double des 12 que les règles exigent d'un champagne non millésimé. De là vient une crémosité que le chardonnay du Zagorje a rarement l'occasion de montrer.",
+    "de": "Mindestens 24 Monate auf der Hefe — doppelt so lang wie die 12, die die Regeln einem Champagner ohne Jahrgang abverlangen. Daher die Cremigkeit, die Chardonnay aus dem Zagorje sonst selten zeigen darf.",
+    "zh": "至少24个月带酒泥陈酿——是无年份香槟规定的12个月的两倍。扎戈列的霞多丽难得有机会展现的那份奶油般的质感，正来自于此。",
+    "sl": "Najmanj 24 mesecev na kvasovkah — dvakrat več od 12, ki jih pravila zahtevajo za šampanjec brez letnika. Od tod kremnost, ki je zagorski chardonnay sicer redko pokaže.",
+    "es": "Al menos 24 meses sobre lías — el doble de los 12 que las normas exigen a un Champagne sin añada. De ahí la cremosidad que el chardonnay del Zagorje rara vez tiene ocasión de mostrar."
+   }
   }
  }
 }

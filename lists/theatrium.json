@@ -18,6 +18,11 @@
          "recommended": true
         },
         {
+         "ref": "petrac--bregh-blanc-de-blancs",
+         "price": 10,
+         "new": true
+        },
+        {
          "ref": "jakopic--terbotz",
          "price": 10,
          "anchor": 8
@@ -293,6 +298,11 @@
          "price": 59,
          "anchor": 48,
          "recommended": true
+        },
+        {
+         "ref": "petrac--bregh-blanc-de-blancs",
+         "price": 59,
+         "new": true
         },
         {
          "ref": "sember--pavel",
