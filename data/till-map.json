@@ -1309,6 +1309,10 @@
   "TESTAMENT, BABIĆ": {
    "none": "nije na karti"
   },
+  "TESTEMENT 0,1": {
+   "ref": "testament--babic-2023",
+   "vol": 0.1
+  },
   "TOMAC DIPLOMAT MAGNUM": {
    "ref": "tomac--diplomat",
    "vol": 1.5
