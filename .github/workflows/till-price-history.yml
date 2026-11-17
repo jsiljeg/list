@@ -1,0 +1,50 @@
+name: Till price history (bazna cijena)
+
+# The bazna cijena for food and drink is the price charged on 2 May 2025
+# (Pravilnik o isticanju bazne cijene proizvoda, NN 132/2026, čl. 3) — or, for
+# an article first sold later, the price on the day it was first offered. The
+# only record of those prices is the till: every Remaris bill since 2025-01-01
+# sits in D1 (sales_lines). This reads, per till article and unit price, the
+# first and last day that price was charged — and nothing else: no bills, no
+# totals, no waiters, no guests. Those are menu prices, public by nature, so
+# the result may sit in a short-lived artifact of a public repo.
+#
+# Read-only. scripts/bazna-cijena.mjs turns the artifact into the anchors.
+#
+#   gh workflow run till-price-history.yml
+#   gh run download <id> -n till-price-history
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    environment: theatrium
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Read article prices from the till history
+        working-directory: web
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          id=$(npx --yes wrangler@3.114.17 d1 list --json | jq -r '.[] | select(.name == "theatrium") | .uuid')
+          sed -i "s/PASTE_AFTER_wrangler_d1_create/$id/" wrangler.toml
+          q() { npx --yes wrangler@3.114.17 d1 execute theatrium --remote --json -y --command "$1" | jq '.[0].results'; }
+          span=$(q "SELECT MIN(day) AS oldest, MAX(day) AS newest, COUNT(*) AS bills FROM sales_bills")
+          prices=$(q "SELECT l.name AS name, l.price AS price, MIN(b.day) AS first, MAX(b.day) AS last, COUNT(*) AS n FROM sales_lines l JOIN sales_bills b ON b.id = l.bill_id WHERE l.price > 0 AND b.total > 0 GROUP BY l.name, l.price ORDER BY l.name, first")
+          mkdir -p ../out
+          jq -n --argjson span "$span" --argjson prices "$prices" '{span: $span[0], prices: $prices}' > ../out/till-price-history.json
+          jq '.span, (.prices | length)' ../out/till-price-history.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: till-price-history
+          path: out/till-price-history.json
+          retention-days: 1
