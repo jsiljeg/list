@@ -57,6 +57,18 @@ Every staff endpoint calls `isStaffAsync()`: STAFF_KEY, or a GitHub key of
    in another tab now reloads this one, so nothing of Filho's stays in
    memory. (Label photos in Dodaj vino are cached for an hour; they are his
    tab's own content.)
+9. **The way round, through a card.** Dodaj vino's Claude run reads text a
+   person types (remark, answers, corrections) and a label photo, and Toni
+   may tap Objavi on his own card. A card may change `js/i18n.js` and
+   `js/zh-terms.js`, and `js/i18n.js` is loaded by /admin itself — so a line
+   of script slipped in by a prompt injection would run on Filho's /admin
+   with Filho's key and Troškovi in reach. → `scripts/check-card-patch.mjs`:
+   in those two files a card may only add or remove `key: "string"` /
+   `key: number` entries (several per line, or one `key: { … }`) and
+   one-line comments — every line a card run has written to them in the
+   repo's history passes, except one multi-line comment. add-wine.yml checks
+   the patch before applying it; publish-wine.yml checks the whole merge
+   before it reaches main.
 8. **Existence leaks.** `/api/troskovi/:id/:action` read the receipt before
    checking the key, so a 404 told anyone whether a receipt id exists. Found
    by the new spec; the key is checked first now, as in the vina and kuhinja
@@ -217,6 +229,11 @@ let him change prices without letting him change the rules.
   Filho's are); the server limits their size and signs them, but a hostile
   page could word one misleadingly. The diff itself is what git keeps.
 - The public git history (§2.7) is visible to everyone.
+- A card's **data** is still written by a model that reads his text: a
+  wrong price, a misleading note or a bogus wine on the list is possible,
+  as it is with Filho today. It is data, it is in git, and it cannot run.
+  A card run that wants a multi-line comment or a new multi-line block in
+  i18n.js now fails instead of publishing; the owner fixes that by hand.
 
 ## 6. Tests
 

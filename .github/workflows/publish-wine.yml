@@ -122,6 +122,10 @@ jobs:
           open(p, "w", encoding="utf-8", newline="\n").write(json.dumps(doc, ensure_ascii=False, indent=1) + "\n")
           PY
           phase "Provjerava cijelu kartu"
+          # What reaches main is data only, whoever wrote or published the
+          # card (web/ROLES.md): the same check as when the card was written.
+          git diff HEAD > "$RUNNER_TEMP/publish.patch"
+          node scripts/check-card-patch.mjs "$RUNNER_TEMP/publish.patch"
           node --check js/zh-terms.js && node --check js/i18n.js
           node scripts/validate.mjs
           phase "Sprema na kartu"

@@ -28,6 +28,7 @@ import { pathToFileURL, fileURLToPath } from "node:url";
 import { ACCESS, SOMM_KEYS, resolveRoute, sommMay } from "../web/functions/_lib/roles.js";
 import { checkList, checkRules, cleanMessage } from "../web/functions/_lib/karta.js";
 import { onRequest as middleware } from "../web/functions/api/_middleware.js";
+import { checkPatch } from "../scripts/check-card-patch.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API = path.join(ROOT, "web/functions/api");
@@ -437,6 +438,28 @@ test("/api/karta without its server token says so and writes nothing", async () 
   expect(g.res.status).toBe(503);
   expect(await g.res.json()).toEqual({ error: "not_configured" });
   expect(gh.calls.filter((c) => c.includes("api.github.com"))).toEqual([]);
+});
+
+/* ---- the way round: a card that carries code ----
+   Dodaj vino's run reads text he types and he may publish his own card; a
+   card may touch js/i18n.js, which /admin loads. A line of script there
+   would run on Filho's /admin with Filho's key in reach. */
+test("a card may add vocabulary to the JS files, never code — checked when written and when published", () => {
+  const patch = (file, lines) => `diff --git a/${file} b/${file}\nindex 1..2 100644\n--- a/${file}\n+++ b/${file}\n@@ -1,2 +1,3 @@\n context\n${lines.map((l) => "+" + l).join("\n")}\n`;
+  /* what card runs have actually written */
+  for (const ok of [['    "Nerello Mascalese": "马斯卡斯奈莱洛",'], ["  cherry: \"višnja\", plum: \"šljiva\","], ['    "Tribidrag (Zinfandel)": 1'],
+    ["  countries: { HR: \"Hrvatska\", DE: \"Njemačka\" },"], ["    // a note"], [""]]) expect(checkPatch(patch("js/zh-terms.js", ok)), ok[0]).toBe("");
+  expect(checkPatch(patch("library/wines.json", ["anything at all in a data file"]))).toBe("");
+  /* what an injection would need */
+  for (const bad of [["  x: \"a\", y: (() => 1)(),"], ["evil: fetch(\"//x\"),"], ["\"a\": \"b\" + document.cookie,"], ["}); fetch(1); ({"],
+    ["a: `x${1}`,"], ["/* opens", "*/ fetch(1); /*", "x */"], ["  a: \"b\", // trailing"], ["window.x = 1;"], ["}"]])
+    expect(checkPatch(patch("js/i18n.js", bad)), bad.join(" | ")).not.toBe("");
+  for (const file of ["js/admin.js", "web/functions/_lib/roles.js", ".github/workflows/deploy-web.yml", "admin.html"])
+    expect(checkPatch(patch(file, ['"a": "b",'])), file).toMatch(/touches/);
+  expect(checkPatch("diff --git a/js/i18n.js b/js/i18n.js\nold mode 100644\nnew mode 100755\n")).not.toBe("");
+  /* and both workflows run it */
+  expect(fs.readFileSync(path.join(ROOT, ".github/workflows/add-wine.yml"), "utf8")).toMatch(/node scripts\/check-card-patch\.mjs out\/card\.patch\n\s+git apply/);
+  expect(fs.readFileSync(path.join(ROOT, ".github/workflows/publish-wine.yml"), "utf8")).toMatch(/git diff HEAD > "\$RUNNER_TEMP\/publish\.patch"\n\s+node scripts\/check-card-patch\.mjs/);
 });
 
 /* ---- Filho, unchanged ---- */
