@@ -4,10 +4,10 @@
  * a deleted photo shows a broken image to guests, and the staff page only
  * removes a photo from the *offer* — this is the tidy-up after that. */
 import { json, denied } from "../../../_lib/daily.js";
-import { isStaffAsync } from "../../../_lib/wines.js";
+import { staffOrSomm } from "../../../_lib/roles.js";   /* full or somm (web/ROLES.md) */
 
 export async function onRequestDelete({ request, env, params }) {
-  if (!(await isStaffAsync(request, env))) return denied(env);
+  if (!(await staffOrSomm(request, env))) return denied(env);
   const id = String(params.id || "");
   if (!/^[a-f0-9]{16,64}$/.test(id)) return json({ error: "id" }, 400);
   const used = await env.DB.prepare("SELECT date FROM daily_offers WHERE instr(body, ?1) > 0 LIMIT 1").bind(id).first();

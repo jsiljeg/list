@@ -12,8 +12,9 @@
  *                       published | failed | retry (Claude refused to start:
  *                       back in line, not counted), with questions / result / branch /
  *                       run_url / ref / usage / error. Only legal moves. */
-import { reply, isStaffAsync, isWorker, readRequest, setStatus, addPhase, savePhotos, pump, startPublish, clip, euros, notifyOwner, person, setPerson,
+import { reply, isWorker, readRequest, setStatus, addPhase, savePhotos, pump, startPublish, clip, euros, notifyOwner, person, setPerson,
          requeueLater, RETRY_MIN, LIMIT_WAIT } from "../../../_lib/wines.js";
+import { staffOrSomm, forRole } from "../../../_lib/roles.js";
 
 const WORKER_MOVES = {
   working: ["working", "needs_info", "ready", "failed"],
@@ -22,11 +23,15 @@ const WORKER_MOVES = {
 
 export async function onRequestPost({ request, env, params }) {
   const { id, action } = params;
+  /* The key first, then the row: a caller without one learns nothing, not
+     even whether a request exists (web/ROLES.md). */
+  const a = action === "stanje" ? null : await staffOrSomm(request, env);
+  if (action === "stanje" ? !isWorker(request, env) : !a) return reply(request, { error: "key" }, 401);
   const item = await readRequest(env, id);
   if (!item) return reply(request, { error: "not_found" }, 404);
+  const out = async () => forRole(await readRequest(env, id), a);
 
   if (action === "stanje") {
-    if (!isWorker(request, env)) return reply(request, { error: "key" }, 401);
     let b;
     try { b = await request.json(); } catch { return reply(request, { error: "body" }, 400); }
     /* A step report ({phase}, no status) changes nothing but the progress
@@ -84,8 +89,6 @@ export async function onRequestPost({ request, env, params }) {
     return reply(request, { ok: true });
   }
 
-  if (!(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
-
   if (action === "odgovor") {
     if (item.status !== "needs_info") return reply(request, { error: "not_waiting" }, 409);
     let form;
@@ -103,15 +106,15 @@ export async function onRequestPost({ request, env, params }) {
     if (saved.error) return reply(request, { error: saved.error }, 400);
     await setStatus(env, id, { status: "queued", answers: JSON.stringify(answers), questions: "[]" });
     const pumped = await pump(env);
-    return reply(request, { ok: true, item: await readRequest(env, id), pumped });
+    return reply(request, { ok: true, item: await out(), pumped });
   }
 
   if (action === "objavi") {
     /* who tapped it — the publish commit is authored in that name */
     const b = await request.json().catch(() => ({}));
-    await setPerson(env, id, "published_by", person(b.by));
+    await setPerson(env, id, "published_by", a.role === "somm" ? a.who : person(b.by));
     const d = await startPublish(env, id);
-    return d.error ? reply(request, { error: d.error }, 409) : reply(request, { ok: true, item: await readRequest(env, id) });
+    return d.error ? reply(request, { error: d.error }, 409) : reply(request, { ok: true, item: await out() });
   }
 
   /* Filho's corrections on the preview (owner, 2026-10-10: "move a word or
@@ -143,11 +146,11 @@ export async function onRequestPost({ request, env, params }) {
     if (!edits.length && !novo.length && !Object.keys(priceFields).length) return reply(request, { error: "empty" }, 400);
     if (Object.keys(priceFields).length) await setStatus(env, id, priceFields);
     if (novo.length) await setStatus(env, id, { answers: JSON.stringify(item.answers.concat(novo)) });
-    if (!edits.length) return reply(request, { ok: true, item: await readRequest(env, id) });
+    if (!edits.length) return reply(request, { ok: true, item: await out() });
     const now = await readRequest(env, id);
     await setStatus(env, id, { status: "queued", answers: JSON.stringify(now.answers.concat(edits)) });
     const pumped = await pump(env);
-    return reply(request, { ok: true, item: await readRequest(env, id), pumped });
+    return reply(request, { ok: true, item: await out(), pumped });
   }
 
   /* A failed run goes back in the queue — still inside MAX_RUNS, which pump()
@@ -156,14 +159,14 @@ export async function onRequestPost({ request, env, params }) {
     if (item.status !== "failed") return reply(request, { error: "not_failed" }, 409);
     await setStatus(env, id, { status: "queued", error: "" });
     const pumped = await pump(env);
-    return reply(request, { ok: true, item: await readRequest(env, id), pumped });
+    return reply(request, { ok: true, item: await out(), pumped });
   }
 
   if (action === "odustani") {
     if (["published", "publishing", "cancelled"].includes(item.status)) return reply(request, { error: "too_late" }, 409);
     if (item.status === "working") return reply(request, { error: "running" }, 409);
     await setStatus(env, id, { status: "cancelled" });
-    return reply(request, { ok: true, item: await readRequest(env, id) });
+    return reply(request, { ok: true, item: await out() });
   }
 
   return reply(request, { error: "action" }, 404);

@@ -7,10 +7,10 @@
  * Every write goes through normalizeOffer(), so whatever the page sends, what
  * is stored has one shape. */
 import { json, isDate, today, denied, normalizeOffer, readOffer, recentPublished } from "../../_lib/daily.js";
-import { isStaffAsync } from "../../_lib/wines.js";
+import { staffOrSomm } from "../../_lib/roles.js";   /* full or somm (web/ROLES.md) */
 
 export async function onRequestGet({ request, env }) {
-  if (!(await isStaffAsync(request, env))) return denied(env);
+  if (!(await staffOrSomm(request, env))) return denied(env);
   const q = new URL(request.url).searchParams;
   const date = isDate(q.get("date")) ? q.get("date") : today();
   const [offer, recent] = await Promise.all([readOffer(env, date), recentPublished(env, 30)]);
@@ -18,7 +18,7 @@ export async function onRequestGet({ request, env }) {
 }
 
 export async function onRequestPut({ request, env }) {
-  if (!(await isStaffAsync(request, env))) return denied(env);
+  if (!(await staffOrSomm(request, env))) return denied(env);
   if (!env.DB) return json({ error: "no_db" }, 503);
   let b;
   try { b = await request.json(); } catch { return json({ error: "body" }, 400); }
@@ -39,7 +39,7 @@ export async function onRequestPut({ request, env }) {
 }
 
 export async function onRequestDelete({ request, env }) {
-  if (!(await isStaffAsync(request, env))) return denied(env);
+  if (!(await staffOrSomm(request, env))) return denied(env);
   const date = new URL(request.url).searchParams.get("date");
   if (!isDate(date)) return json({ error: "date" }, 400);
   await env.DB.prepare("DELETE FROM daily_offers WHERE date = ?1").bind(date).run();
