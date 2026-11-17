@@ -9,13 +9,19 @@ name: Till price history (bazna cijena)
 # totals, no waiters, no guests. Those are menu prices, public by nature, so
 # the result may sit in a short-lived artifact of a public repo.
 #
-# Read-only. scripts/bazna-cijena.mjs turns the artifact into the anchors.
+# Read-only. The same read, every morning after the Remaris sync, also checks
+# that the till charges what the list says (scripts/till-check.mjs): Filho
+# changes prices in /admin, and Remaris has to be told by hand. On 2026-11-17
+# 30 such prices had gone unnoticed for four weeks. A mismatch fails the run,
+# so GitHub mails the owner; the Croatian table is on the run's summary page.
 #
 #   gh workflow run till-price-history.yml
 #   gh run download <id> -n till-price-history
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "40 5 * * *"     # after the 04:10 / 05:10 UTC Remaris syncs
 
 permissions:
   contents: read
@@ -48,3 +54,5 @@ jobs:
           name: till-price-history
           path: out/till-price-history.json
           retention-days: 1
+      - name: Does the till charge what the list says?
+        run: node scripts/till-check.mjs out/till-price-history.json

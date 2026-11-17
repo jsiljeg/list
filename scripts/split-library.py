@@ -39,7 +39,7 @@ LIST = ROOT / "lists" / "theatrium.json"
 # can be listed as a magnum and as a 0,75 without being two wines. `anchor` is
 # the price this venue charged on 10.09.2026 — a fact about this list on one
 # day, not about the wine, so it stays here even though it never changes again.
-VENUE_FIELDS = ("price", "anchor", "recommended", "new", "vol")
+VENUE_FIELDS = ("price", "anchor", "anchorDate", "recommended", "new", "vol")
 
 # Croatian and the other Latin alphabets on the list, flattened for slugs.
 # unicodedata strips the combining accents; đ/ð and ß have no decomposition.

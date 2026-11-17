@@ -75,17 +75,8 @@ Nađite vino (Ctrl+F / ⌘+F) i promijenite **samo `price`** — bez navodnika i
 > `price` promijeni. Ako je slučajno promijenite, objava će se zaustaviti i
 > javiti vam koji je broj bio ispravan.
 
-> **Trenutno pauzirano (od 03.10.2026.):** cjenik i sidrena cijena odgođeni
-> su za mjesec dana, pa nakon promjene cijene **ne treba** pokretati
-> `npm run cjenik`. Kad se uvede ponovno, vrijedi ovo:
-
-Nakon svake promjene cijene pokrenite i:
-```
-npm run cjenik
-```
-To osvježi strojno čitljiv cjenik u mapi `cjenik/` (XML i CSV), koji zakon
-traži da bude objavljen na stranici. Bez toga objava ne prolazi — javit će
-`cjenik/ is out of date`.
+Cjenik (`/cjenik/`) više se ne pokreće ručno: objava ga sama napravi iz
+karte nakon svake promjene (17.11.2026.). Vidi odjeljak o baznoj cijeni.
 
 Novo vino koje na 10.09.2026. nije bilo na karti **nema `anchor`** — taj redak
 jednostavno izostavite.
@@ -380,24 +371,29 @@ ono što razlikuje baš tu bocu.
 > `js/app.js` (`SHOW_ANCHOR`) i `scripts/lib/cjenik-publish.json`
 > (`"publish": true`, pa `npm run cjenik`). Opis ispod vrijedi kad se uključi.
 
-Tri stvari koje zakon traži, i gdje su riješene:
+**Od 17.11.2026. vrijedi zakon** (Zakon o zaštiti potrošača, NN 59/2026, i
+pravilnici NN 132/2026). Sidrena cijena sada se zove **bazna cijena**.
 
-1. **Sidrena cijena uz svaku cijenu.** Piše ispod cijene na svakom retku
-   (`10.09.2026. · 49 €`) i na kartici vina, na svih osam jezika. Podatak je
-   `"anchor"` u `lists/theatrium.json`; nikad se ne mijenja.
-2. **Cjenik u strojno čitljivom formatu na stranici.** Mapa `cjenik/`:
-   `cjenik.xml` i `cjenik.csv` su uvijek važeći cjenik, na stalnoj adresi
-   `theatrium.list.devinos.hr/cjenik/`. CSV se otvara u Excelu dvoklikom.
-3. **Arhiva od najmanje 30 dana.** Svaka promjena zapiše i `cjenik-DATUM.xml`
-   / `.csv`, a `cjenik/index.html` ih sve izlistava. Ništa se ne briše.
+1. **Bazna cijena uz svaku cijenu.** Za piće je to cijena od **2.5.2025.**, a
+   za ono što je došlo kasnije, cijena prvog dana ponude, s tim datumom
+   (`2. 5. 2025. · 49 €`). Brojke i datume **odobrava Filho** na stranici
+   za pregled; `node scripts/bazna-cijena.mjs <mapa-s-odlukama> --write` ih
+   upiše kao `"anchor"` i `"anchorDate"`. Nikad se ne mijenjaju ručno.
+2. **Cjenik na stranici**, u formatu iz pravilnika: CSV (`;`, UTF-8) i XML,
+   naziv datoteke s OIB-om 30290222993. **Radi ga objava sama** nakon svake
+   promjene cijene, sakrivanja vina ili novog vina; sakrivena vina nisu u
+   njemu. Stalna adresa: `theatrium.list.devinos.hr/cjenik/`.
+3. **Arhiva 15 dana.** Zamijenjeni cjenik ostaje objavljen 15 dana, pa se
+   sam makne.
 
-Cijeli postupak nakon promjene cijena: uredite `price`, pokrenite
-`npm run cjenik`, spremite (commit + push). Objava sama provjerava je li
-cjenik u koraku s kartom i neće proći ako nije.
+Uključuje se jednim potezom kad Filho odobri cijene: `SHOW_ANCHOR = true`
+u `js/app.js` i `"publish": true` u `scripts/lib/cjenik-publish.json`.
 
-**Još nije riješeno, treba vaša odluka:** mjera za žestoka pića, rakije i
-likere (npr. 0,03 l) — u podacima je nemamo, pa u cjeniku stoji prazno polje;
-i OIB tvrtke, koji bi trebao stajati u zaglavlju cjenika.
+**Blagajna:** cijena promijenjena na karti mora se ručno promijeniti i u
+Remarisu. Svako jutro provjera javlja razlike (GitHub, „Till price history“).
+
+**Još nije riješeno:** mjera za žestoka pića, rakije i likere (npr. 0,03 l)
+— u podacima je nemamo, pa u cjeniku stoji prazno polje.
 
 ## Ostalo što se može urediti
 

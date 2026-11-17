@@ -18,16 +18,16 @@ mkdir -p "$out"
 # pages, the service worker, and the crawler/TDM declarations (see LICENSE)
 cp index.html admin.html qr.html manifest.webmanifest sw.js robots.txt LICENSE "$out/"
 
-# the price list in a form a machine can read, plus its archive. Croatian law
-# from 01.10.2026: published on the website, refreshed as soon as anything
-# changes, and every published version reachable for at least 30 days. The
-# whole directory goes, because the archive *is* the retention.
+# the price list in a form a machine can read (Pravilnik o načinu objave
+# cjenika proizvoda, NN 132/2026). Written here, on every build, from the same
+# data the tablets read, so it is never older than the list; the previous
+# files still owed (15 days) are carried over from the live site.
 #
-# Postponed with the anchor price (owner, 2026-10-03): one switch,
-# scripts/lib/cjenik-publish.json. While it is false the directory simply is
-# not published, and check-site.mjs makes sure of that.
+# One switch, scripts/lib/cjenik-publish.json, shared with the bazna cijena
+# going live. While it is false nothing is published, and check-site.mjs
+# makes sure of that.
 if grep -q '"publish": true' scripts/lib/cjenik-publish.json; then
-  cp -r cjenik "$out/"
+  node scripts/make-cjenik.mjs --site "$out"
 fi
 cp -r .well-known "$out/"
 

@@ -698,8 +698,16 @@ const alcText = (a) => {
    machine-readable cjenik is a separate file and still carries the column. */
 const SHOW_ANCHOR = false;
 
+/* Each base price carries its own day (`anchorDate`, ISO): 2.5.2025. for
+   most of the list, the first day offered for anything added since (NN
+   132/2026-1583, čl. 3). The old seed had one day for every row and no field;
+   `ui.anchorDate` is its wording, kept as the fallback. */
+const anchorDay = (item) => (item.anchorDate
+  ? new Date(item.anchorDate + "T12:00:00").toLocaleDateString(PRICE_LOCALE[lang] || "hr-HR",
+      { day: "numeric", month: "numeric", year: "numeric" })
+  : T().ui.anchorDate);
 const anchorText = (item) =>
-  (!SHOW_ANCHOR || item.anchor == null ? "" :`${T().ui.anchorDate} · ${fmtPrice(item.anchor)} €`);
+  (!SHOW_ANCHOR || item.anchor == null ? "" :`${anchorDay(item)} · ${fmtPrice(item.anchor)} €`);
 
 function priceHtml(item) {
   if (item.price == null) return "";
@@ -1502,7 +1510,7 @@ function openDetail(ref, back, scope) {
     ${(item.tags && item.tags.length) ? `<div class="detail-tags">${item.tags.map((tg) => `<span class="wine-tag tag-${tg}">${TAG_ICON[tg] ? `<span class="marker">${ICONS[TAG_ICON[tg]]}</span>` : ""}${esc(t.tags[tg] || tg)}</span>`).join("")}</div>` : ""}
     ${item.ratings && item.ratings.length ? `<div class="detail-ratings"><span class="detail-label">${esc(t.ui.ratings)}</span>${item.ratings.map((r) => `<span class="rating-chip"><b>${esc(r.score)}</b> ${esc(criticName(r.critic))}${r.release ? `<i class="rating-release">${esc(r.release)}</i>` : ""}</span>`).join("")}</div>` : ""}
     ${item.price != null ? `<div class="detail-price">${fmtPrice(item.price)} €${
-      SHOW_ANCHOR && item.anchor != null ? `<span class="detail-anchor">${esc(t.ui.anchorLabel)} · ${esc(t.ui.anchorDate)} · ${fmtPrice(item.anchor)} €</span>` : ""}</div>` : ""}
+      SHOW_ANCHOR && item.anchor != null ? `<span class="detail-anchor">${esc(t.ui.anchorLabel)} · ${esc(anchorDay(item))} · ${fmtPrice(item.anchor)} €</span>` : ""}</div>` : ""}
     ${/* The one thing the card could not do: get the wine from the guest to the
           waiter. Half of this list is unpronounceable to the guest reading it —
           "Riesling Wehlener Sonnenuhr Auslese 2023 – 0,375 l" defeats anyone

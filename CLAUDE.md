@@ -489,7 +489,52 @@ vermouth and bitter are the same moment of the evening and the same two
 bottles in a Negroni, while the `liqueur` shelf next door is after-dinner
 (Jägermeister, pelinkovac, umeshu). Split at two, widen the heading at one.
 
-## The anchor price, and the cjenik (2026-09-21)
+## The bazna cijena and the cjenik (2026-11-17) — supersedes the anchor notes below
+
+The rules became law on **17.11.2026**: Zakon o zaštiti potrošača čl. 7
+(NN 59/2026) and two pravilnici in NN 132/2026 — **1583** (isticanje bazne
+cijene) and **1584** (objava cjenika). The temporary "sidrena cijena"
+decisions (NN 75/2025, 101/2026, 110/2026) were repealed on 14.11.
+
+- **Reference day: 2.5.2025.** Čl. 3 of 1583 gives that day to food and drink
+  and 10.09.2026 to other goods and services; no text mentions restaurants.
+  Owner, 2026-11-17: go with 2.5.2025. An item first offered later takes the
+  price and day it was first offered. **Filho decides every figure and day**
+  — nothing is seeded from a guess.
+- **Where the figures come from.** The till: every Remaris bill since
+  2.1.2025 is in D1. `till-price-history.yml` reads per article and price the
+  first and last day charged (nothing else) → `data/source/bazna-prijedlog-2026-11-17.json`
+  (214 listings; 228 have no till record — all spirits, beers, waters).
+  Filho reviews them on a claude.ai artifact (collection `odluke`, one doc per
+  listing: `{s:"ok"}` or `{s:"fix", cijena, datum, napomena}`), and
+  `node scripts/bazna-cijena.mjs <export-dir> --write` writes `anchor` +
+  `anchorDate` (ISO) on each decided listing, drops them from undecided ones,
+  and writes the warrant `data/source/bazna-cijena.json`. From then on
+  `scripts/lib/bazna.mjs` holds the list to that warrant (price AND day);
+  until then to the old 10.09.2026 seed.
+- **Display.** Each row prints its own day (`anchorDay()` in js/app.js),
+  labelled "Bazna cijena". Still behind `SHOW_ANCHOR = false`.
+- **Cjenik** (1584): goods format, 10 columns in the pravilnik's order, `;`,
+  UTF-8 without BOM, file named `30290222993_RESTORAN_TESLINA_7_ZAGREB_P3_ROBA_<n>_<GGGGMMDD_SSMM>`
+  (OIB of Apelacija d.o.o.; P3 is the till's premises code in every fiscal
+  number), stable aliases `cjenik.csv/xml`, replaced files kept **15 days**.
+  **Written by the deploy, never committed** (`make-cjenik.mjs --site`, from
+  site-files.sh): every price edit, 86 and new wine passes through a deploy,
+  so it cannot go stale, and 86'd wines are left out. The archive lives on the
+  live site: the build reads `/cjenik/manifest.json` and carries the owed files
+  over; a fetch error stops the deploy rather than drop one. Only base prices
+  Filho decided (those with `anchorDate`) go in the bazna column.
+- **One switch for both**: `SHOW_ANCHOR` and `scripts/lib/cjenik-publish.json`
+  must agree (a test fails otherwise). Turn both on once Filho's figures are in.
+- **The till drifts from the list.** Remaris has no write API; a price changed
+  in /admin must be retyped there, and on 2026-11-17 30 had not been (two
+  wines overcharged). `till-price-history.yml` now runs every morning with
+  `scripts/till-check.mjs` and fails, with a Croatian table, on any mismatch.
+- Unsettled readings, flagged to the owner: how the "akcija" flag is written
+  (we never run one), dot vs comma decimals, whether a vintage change is a new
+  product.
+
+## The anchor price, and the cjenik (2026-09-21) — history; see the section above
 
 Croatian rules in force **01.10.2026**: beside the price a guest pays, a list
 must show the regular price that item carried on the reference day, and a

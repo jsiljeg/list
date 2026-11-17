@@ -1309,56 +1309,49 @@ test("the Grimalda on the list is the crna, not the blue-label plava", () => {
   expect(crna.insight.grape).toMatch(/^Merlot 60%, Teran 30%/);
 });
 
-/* ---------- the anchor price ("sidrena cijena") ----------
-   Croatian rules in force 01.10.2026: beside every price, the regular price
-   that item carried on the reference day, 10.09.2026. Added with the change,
-   not run (standing rule) — so these are deliberately assertions about data
-   and source text rather than about rendered geometry, which is the kind that
-   fails silently for weeks. */
+/* ---------- the bazna cijena (NN 132/2026) ----------
+   Beside every price, the base price of that listing: for food and drink the
+   price charged on 2.5.2025., or on the first day an item was offered
+   (Pravilnik 1583 čl. 3). Filho decides the figures (owner, 2026-11-17);
+   scripts/bazna-cijena.mjs writes them with their day, scripts/lib/bazna.mjs
+   says which warrant holds the list. Added 2026-11-17 with the change, not
+   run (standing rule) — assertions about data and pure functions, not
+   rendered geometry. */
 
-const ANCHOR_DATE = "2026-09-10";
-const warrant = JSON.parse(readFileSync(resolve(ROOT, `data/source/anchor-prices-${ANCHOR_DATE}.json`), "utf8"));
 const rawList = JSON.parse(readFileSync(resolve(ROOT, "lists/theatrium.json"), "utf8"));
-const anchorShelf = (id) => (id === "glass" ? "glass" : id.startsWith("bottle-") ? "bottle" : id);
 const listings = [];
 for (const sec of rawList.sections)
   for (const cat of sec.categories)
     for (const g of cat.groups)
       for (const it of g.items) listings.push({ sec: sec.id, cat: cat.id, ...it });
 
-test("every priced listing carries its anchor price, frozen at the reference day", () => {
-  const byKey = new Map(warrant.prices.map((p) =>
-    [[p.shelf, p.ref, p.vol == null ? "" : String(p.vol)].join("|"), p.price]));
-  const drifted = [], lost = [];
-  for (const it of listings) {
-    const key = [anchorShelf(it.sec), it.ref, it.vol == null ? "" : String(it.vol)].join("|");
-    const was = byKey.get(key);
-    if (was === undefined) continue;                 /* added after the reference day */
-    if (it.anchor === undefined) lost.push(it.ref);
-    else if (it.anchor !== was) drifted.push(`${it.ref}: ${it.anchor} vs ${was}`);
-  }
-  expect(lost).toEqual([]);
-  expect(drifted).toEqual([]);
-  expect(warrant.date).toBe(ANCHOR_DATE);
+test("every listing's base price agrees with the warrant in force", async () => {
+  const { loadWarrant, checkListing } = await import("../scripts/lib/bazna.mjs");
+  const w = loadWarrant(ROOT);
+  const bad = listings.flatMap((it) => checkListing(w, it.sec, it));
+  expect(bad).toEqual([]);
 });
 
-test("an anchor price is a number, like a price", () => {
-  /* Same trap as `vol` before it: a "45 €" here would print a currency twice
-     and sort as a string. */
-  const wrong = listings.filter((it) => it.anchor !== undefined && typeof it.anchor !== "number");
+test("a base price is a number and its day an ISO date", () => {
+  /* Same trap as `vol` before it: a "45 €" would print a currency twice and
+     sort as a string; a "2.5.2025." would not parse in seven of eight locales. */
+  const wrong = listings.filter((it) =>
+    (it.anchor !== undefined && typeof it.anchor !== "number") ||
+    (it.anchorDate !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(it.anchorDate)));
   expect(wrong.map((i) => i.ref)).toEqual([]);
 });
 
-test("the anchor price is rendered, and the date is in all eight languages", () => {
-  /* Two designs were tried on 2026-09-21. The row carries the date *and* the
-     figure, stacked under the price — Filho's call, over a column layout that
-     said the date once per list. Asserted so a future tidy-up of the repeated
-     date is a decision someone makes, not one they make by accident. */
+test("the base price is rendered with its own day, and named in all eight languages", () => {
+  /* The row carries the date *and* the figure, stacked under the price —
+     Filho's call on 2026-09-21. Since the bazna cijena each row has its own
+     day (`anchorDate`): 2.5.2025., or the day an item was first offered. */
   const app = readFileSync(resolve(ROOT, "js/app.js"), "utf8");
-  expect(app).toContain("item-anchor");             /* the list row */
-  expect(app).toContain("const anchorText");        /* date + figure, per row */
-  expect(app).toContain("detail-anchor");           /* the wine card */
-  expect(app).toContain("anchorNote");              /* the footer, saying what it is */
+  expect(app).toContain("item-anchor");
+  expect(app).toContain("const anchorText");
+  expect(app).toContain("const anchorDay");
+  expect(app).toContain("item.anchorDate");
+  expect(app).toContain("detail-anchor");
+  expect(app).toContain("anchorNote");
   const css = readFileSync(resolve(ROOT, "css/style.css"), "utf8");
   expect(css).toContain(".item-anchor");
   expect(css).toContain(".detail-anchor");
@@ -1370,11 +1363,10 @@ test("the anchor price is rendered, and the date is in all eight languages", () 
     const ui = ctx.I18N[code].ui;
     for (const k of ["anchorDate", "anchorLabel", "anchorNote"])
       expect(`${code}.${k}: ${ui[k] || ""}`).toMatch(/: .+/);
-    /* Whatever the language writes the date as, it is the 10th of the 9th,
-       2026 — a translated note that quietly moved the day would be the one
-       error a guest could not catch and an inspector could. */
-    expect(`${code}: ${ui.anchorDate}`).toMatch(/2026/);
-    expect(`${code}: ${ui.anchorNote}`).toMatch(/2026/);
+    /* the note names the day the law names; a translation that moved it is
+       the one error a guest could not catch and an inspector could */
+    expect(`${code}: ${ui.anchorNote}`).toMatch(/2025/);
+    expect(`${code}: ${ui.anchorLabel}`).not.toMatch(/sidren|reference|riferimento|référence|Referenz|参考|referenč/i);
   }
 });
 
@@ -1392,30 +1384,100 @@ test("every row keeps a chevron cell, so the prices line up", () => {
 
 const CJENIK_SWITCH = JSON.parse(readFileSync(resolve(ROOT, "scripts/lib/cjenik-publish.json"), "utf8"));
 
-test("the cjenik switch is a plain boolean, and every guard reads it", () => {
-  /* Postponed with the anchor price (owner, 2026-10-03). One switch for the
-     deploy, the validator and the site check — a half-paused cjenik (copied
-     but not validated, or validated but not copied) is the failure this stops. */
+test("the cjenik and the base price on the card go live together", () => {
+  /* One obligation, two surfaces: a cjenik with base prices the card does not
+     show, or the reverse, is the half-switched state this stops. */
   expect(typeof CJENIK_SWITCH.publish).toBe("boolean");
-  for (const f of ["scripts/site-files.sh", "scripts/validate.mjs", "scripts/check-site.mjs"])
+  for (const f of ["scripts/site-files.sh", "scripts/check-site.mjs"])
     expect(readFileSync(resolve(ROOT, f), "utf8"), f).toContain("cjenik-publish.json");
+  const show = /const SHOW_ANCHOR = true;/.test(readFileSync(resolve(ROOT, "js/app.js"), "utf8"));
+  expect(show, "SHOW_ANCHOR and cjenik-publish.json disagree").toBe(CJENIK_SWITCH.publish);
 });
 
-test("the published cjenik is the list, in both machine formats", () => {
-  /* Rules 4-6: published on the site, refreshed on every change, kept 30 days.
-     The digest is what makes "on every change" checkable — validate.mjs fails
-     the deploy when these disagree. Only while it is published: postponed, the
-     stored files are allowed to go stale until it is switched back on. */
-  test.skip(!CJENIK_SWITCH.publish, "cjenik postponed (scripts/lib/cjenik-publish.json)");
-  const xml = readFileSync(resolve(ROOT, "cjenik/cjenik.xml"), "utf8");
-  const csv = readFileSync(resolve(ROOT, "cjenik/cjenik.csv"), "utf8");
-  expect(xml).toContain(`datum_sidrene_cijene="${ANCHOR_DATE}"`);
-  expect(csv.charCodeAt(0)).toBe(0xfeff);            /* BOM, so Croatian Excel opens it */
-  expect(csv.split(/\r\n/)[0].split(";").length).toBe(8);
-  /* one <stavka> per listing, one CSV row per listing */
-  expect((xml.match(/<stavka /g) || []).length).toBe(listings.length);
-  expect(csv.trimEnd().split(/\r\n/).length - 1).toBe(listings.length);
-  /* and an archive exists to retain — the retention is the archive */
-  const archive = readdirSync(resolve(ROOT, "cjenik")).filter((f) => /^cjenik-\d{4}-\d{2}-\d{2}\.xml$/.test(f));
-  expect(archive.length).toBeGreaterThan(0);
+test("the cjenik file follows Pravilnik 1584: columns, separator, encoding, name", async () => {
+  const m = await import("../scripts/make-cjenik.mjs");
+  /* čl. 3 st. 2, in this order */
+  expect(m.COLUMNS).toEqual(["naziv", "sifra", "marka", "neto_kolicina", "jedinica_mjere",
+    "maloprodajna_cijena", "cijena_za_jedinicu_mjere", "barkod", "ean_barkod", "bazna_cijena"]);
+  const r = m.rows();
+  const csv = m.csv(r);
+  expect(csv.charCodeAt(0)).not.toBe(0xfeff);              /* plain UTF-8, čl. 6 st. 6 */
+  const lines = csv.trimEnd().split("\r\n");
+  expect(lines[0].split(";")).toEqual(m.COLUMNS);           /* ";" between columns, čl. 6 st. 7 */
+  expect(lines.length - 1).toBe(r.length);
+  /* OIB _ sales point _ goods _ number _ GGGGMMDD_SSMM, in Zagreb time (čl. 6 st. 3) */
+  const base = m.fileBase(7, m.stampOf(new Date("2026-11-17T09:05:00Z")));
+  expect(base).toBe("30290222993_RESTORAN_TESLINA_7_ZAGREB_P3_ROBA_7_20261117_1005");
+  /* only a base price Filho decided, i.e. one that carries its day */
+  expect(r.filter((x) => x.bazna_cijena != null && !x.bazna_datum)).toEqual([]);
+});
+
+test("the cjenik leaves out what is 86'd tonight", async () => {
+  const m = await import("../scripts/make-cjenik.mjs");
+  const all = m.rows({ unavailable: { hidden: [] } });
+  const first = all[0];
+  const name = first.naziv.replace(/ \(čaša\)$/, "").slice(first.marka.length + 1);
+  const hid = m.rows({ unavailable: { hidden: [{ producer: first.marka, name }] } });
+  expect(hid.length).toBeLessThan(all.length);
+  expect(hid.some((x) => x.sifra === first.sifra)).toBe(false);
+});
+
+test("a replaced cjenik stays published 15 days, and an unchanged list publishes nothing new", async () => {
+  const { nextManifest } = await import("../scripts/make-cjenik.mjs");
+  const a = nextManifest(null, "d1", new Date("2026-11-17T10:00:00Z"), 3);
+  expect(a.changed).toBe(true);
+  expect(nextManifest(a.manifest, "d1", new Date("2026-11-17T11:00:00Z"), 3).changed).toBe(false);
+  const c = nextManifest(a.manifest, "d2", new Date("2026-11-18T08:00:00Z"), 3);
+  expect(c.manifest.files.map((f) => !!f.replaced)).toEqual([false, true]);
+  expect(c.manifest.seq).toBe(2);
+  const day14 = nextManifest(c.manifest, "d2", new Date("2026-12-02T07:59:00Z"), 3);
+  expect(day14.manifest.files).toHaveLength(2);             /* still owed */
+  const day16 = nextManifest(c.manifest, "d2", new Date("2026-12-04T08:01:00Z"), 3);
+  expect(day16.manifest.files).toHaveLength(1);             /* retention over */
+});
+
+test("Filho's decisions become base prices, and nothing undecided gets one", async () => {
+  const { decide, applyToList, listingId } = await import("../scripts/bazna-cijena.mjs");
+  const { isoDay } = await import("../scripts/lib/bazna.mjs");
+  const list = { sections: [{ id: "glass", categories: [{ id: "c", groups: [{ items: [
+    { ref: "a--x", price: 10, anchor: 8 }, { ref: "b--y", price: 12 }, { ref: "c--z", price: 20 }, { ref: "d--w", price: 5 }] }] }] }] };
+  const proposal = { prices: [{ id: listingId("glass", "a--x"), price: 7, date: "2025-05-02" }] };
+  const res = decide(list, proposal, {
+    [listingId("glass", "a--x")]: { s: "ok" },
+    [listingId("glass", "b--y")]: { s: "fix", cijena: "9,50", datum: "3.7.2025." },
+    [listingId("glass", "c--z")]: { s: "fix", cijena: "18", datum: "" },
+  });
+  expect(res.problems).toEqual([]);
+  expect(res.pending).toEqual([listingId("glass", "d--w")]);
+  expect(res.rows.map((r) => [r.ref, r.price, r.date])).toEqual([
+    ["a--x", 7, "2025-05-02"], ["b--y", 9.5, "2025-07-03"], ["c--z", 18, "2025-05-02"]]);
+  const items = applyToList(list, res.rows).sections[0].categories[0].groups[0].items;
+  expect(items[0]).toEqual({ ref: "a--x", price: 10, anchor: 7, anchorDate: "2025-05-02" });
+  expect(items[3]).toEqual({ ref: "d--w", price: 5 });      /* undecided: no base price at all */
+  expect(decide(list, proposal, { [listingId("glass", "d--w")]: { s: "fix", cijena: "abc" } }).problems).toHaveLength(1);
+  expect(isoDay("2.5.2025.")).toBe("2025-05-02");
+  expect(isoDay("sutra")).toBe(undefined);
+  expect(isoDay("")).toBe(null);
+});
+
+test("the till check names an overcharge, an old price, a bottle price on a glass and an old vintage", async () => {
+  /* 2026-11-17: 30 prices changed in /admin never reached Remaris. Added with
+     scripts/till-check.mjs, not run (standing rule). */
+  const { tillProblems } = await import("../scripts/till-check.mjs");
+  const list = { sections: [
+    { id: "glass", categories: [{ id: "w", groups: [{ items: [{ ref: "g--a", price: 16 }] }] }] },
+    { id: "bottle-red", categories: [{ id: "r", groups: [{ items: [
+      { ref: "p--over-2020", price: 145 }, { ref: "p--old-2022", price: 90 }, { ref: "p--fine", price: 50 }] }] }] }] };
+  const library = { "g--a": { producer: "G", name: "A" }, "p--over-2020": { producer: "P", name: "Over 2020" },
+    "p--old-2022": { producer: "P", name: "Old 2022" }, "p--fine": { producer: "P", name: "Fine" } };
+  const tillMap = { articles: { "A 0,1": { ref: "g--a", vol: 0.1 }, "OVER 2020": { ref: "p--over-2020", vol: 0.75 },
+    "OLD 2019": { ref: "p--old-2022", vol: 0.75 }, "FINE": { ref: "p--fine", vol: 0.75 } } };
+  const history = { prices: [
+    { name: "A 0,1", price: 120, first: "2026-11-01", last: "2026-11-16" },
+    { name: "OVER 2020", price: 155, first: "2026-01-01", last: "2026-11-16" },
+    { name: "OLD 2019", price: 63, first: "2026-01-01", last: "2026-11-16" },
+    { name: "FINE", price: 50, first: "2026-01-01", last: "2026-11-16" },
+    { name: "FINE", price: 40, first: "2025-01-01", last: "2025-12-31" }] };
+  const got = tillProblems({ history, tillMap, list, library, since: "2026-11-14" }).map((p) => `${p.kind}:${p.art}`);
+  expect(got).toEqual(["PREPLATA:OVER 2020", "VELIČINA:A 0,1", "STARA CIJENA:OLD 2019", "BERBA:OLD 2019"]);
 });
