@@ -1675,13 +1675,11 @@
         },
         {
          "ref": "le-ragose--amarone-classico-riserva-2013",
-         "price": 140,
-         "new": true
+         "price": 140
         },
         {
          "ref": "le-ragose--amarone-classico-riserva-caloetto-2015",
-         "price": 140,
-         "new": true
+         "price": 140
         },
         {
          "ref": "montevertine--le-pergole-torte-2020",
@@ -1785,8 +1783,7 @@
         },
         {
          "ref": "marjan-simcic--pinot-noir-cru-selection-2024",
-         "price": 100,
-         "new": true
+         "price": 100
         }
        ]
       },
