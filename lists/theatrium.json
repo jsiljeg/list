@@ -777,8 +777,7 @@
        "items": [
         {
          "ref": "chateau-bela--riesling-2023",
-         "price": 100,
-         "new": true
+         "price": 100
         }
        ]
       },
@@ -848,8 +847,7 @@
         },
         {
          "ref": "francois-carillon--bourgogne-cote-d-or-chardonnay-2024",
-         "price": 115,
-         "new": true
+         "price": 115
         },
         {
          "ref": "domaine-jean-chartron--rully-montmorin-2023",
