@@ -57,7 +57,16 @@ Every staff endpoint calls `isStaffAsync()`: STAFF_KEY, or a GitHub key of
    in another tab now reloads this one, so nothing of Filho's stays in
    memory. (Label photos in Dodaj vino are cached for an hour; they are his
    tab's own content.)
-9. **The way round, through a card.** Dodaj vino's Claude run reads text a
+6. **Error messages and e-mails.** A refusal is `{"error":"role"}` and
+   nothing else. Alerts go to the owner only; none are sent to Toni.
+7. **Public anyway, stated so nobody assumes otherwise.** The repo is
+   public: its commit history (every price change, every 86, who signed it),
+   `data/till-map.json`, `data/buy-map.json` (supplier line names, no prices)
+   and `data/list-since.json` can be read by anyone on github.com, Toni
+   included. Povijest's wine half adds nothing to that; its Troškovi half is
+   the secret one, and it is closed. `GET /api/stat` (guest statistics,
+   aggregates) has never needed a key — unchanged, not part of this.
+8. **The way round, through a card.** Dodaj vino's Claude run reads text a
    person types (remark, answers, corrections) and a label photo, and Toni
    may tap Objavi on his own card. A card may change `js/i18n.js` and
    `js/zh-terms.js`, and `js/i18n.js` is loaded by /admin itself — so a line
@@ -69,19 +78,10 @@ Every staff endpoint calls `isStaffAsync()`: STAFF_KEY, or a GitHub key of
    repo's history passes, except one multi-line comment. add-wine.yml checks
    the patch before applying it; publish-wine.yml checks the whole merge
    before it reaches main.
-8. **Existence leaks.** `/api/troskovi/:id/:action` read the receipt before
+9. **Existence leaks.** `/api/troskovi/:id/:action` read the receipt before
    checking the key, so a 404 told anyone whether a receipt id exists. Found
    by the new spec; the key is checked first now, as in the vina and kuhinja
    actions (which had the same order and were changed with this work).
-6. **Error messages and e-mails.** A refusal is `{"error":"role"}` and
-   nothing else. Alerts go to the owner only; none are sent to Toni.
-7. **Public anyway, stated so nobody assumes otherwise.** The repo is
-   public: its commit history (every price change, every 86, who signed it),
-   `data/till-map.json`, `data/buy-map.json` (supplier line names, no prices)
-   and `data/list-since.json` can be read by anyone on github.com, Toni
-   included. Povijest's wine half adds nothing to that; its Troškovi half is
-   the secret one, and it is closed. `GET /api/stat` (guest statistics,
-   aggregates) has never needed a key — unchanged, not part of this.
 
 ## 3. The design
 
