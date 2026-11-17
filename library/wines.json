@@ -14922,6 +14922,11 @@
      "checked": "2026-10-21"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "15.5/20",
+     "checked": "2026-11-17"
+    },
+    {
      "critic": "Decanter",
      "score": "93"
     },
@@ -15234,6 +15239,11 @@
      "critic": "Robert Parker",
      "score": "87",
      "checked": "2026-10-23"
+    },
+    {
+     "critic": "Jancis Robinson",
+     "score": "17/20",
+     "checked": "2026-11-17"
     }
    ]
   },
@@ -15960,6 +15970,11 @@
    "terroir": "Ruffoli",
    "ratings": [
     {
+     "critic": "Jancis Robinson",
+     "score": "16.5/20",
+     "checked": "2026-11-17"
+    },
+    {
      "critic": "Falstaff",
      "score": "92"
     }
@@ -16004,6 +16019,11 @@
    },
    "notePlain": true,
    "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "16.5/20",
+     "checked": "2026-11-17"
+    },
     {
      "critic": "Vinous",
      "score": "92"
@@ -16082,7 +16102,8 @@
    "ratings": [
     {
      "critic": "Jancis Robinson",
-     "score": "16.5+/20"
+     "score": "16.5+/20",
+     "checked": "2026-11-17"
     },
     {
      "critic": "Vinous",
