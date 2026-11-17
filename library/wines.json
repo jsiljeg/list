@@ -16112,6 +16112,57 @@
    "tags": [
     "excellent_vintage"
    ]
+  },
+  "a-clusserath--steinreich-riesling-2021": {
+   "name": "Steinreich Riesling 2021",
+   "producer": "A. Clüsserath",
+   "insight": {
+    "grape": "Riesling",
+    "region": "Trittenheim, Mittelmosel, Mosel",
+    "country": "DE",
+    "style": "white_mineral",
+    "body": "light",
+    "aromas": [
+     "white_peach",
+     "pear",
+     "lime",
+     "white_flowers",
+     "saline"
+    ],
+    "pairings": [
+     "asian",
+     "shellfish",
+     "white_fish",
+     "sushi",
+     "salads"
+    ],
+    "temp": "8–10",
+    "alcohol": "11",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "notePlain": true,
+   "note": {
+    "hr": "Ime je igra riječi: steinreich na njemačkom znači »bogat kao Krez«, a doslovno »bogat kamenom«. Ova boca drži se ovog drugog — bogatstvo joj nije u šećeru ni u snazi, nego u škriljevcu, koji na kraju gutljaja ostavlja slanost.",
+    "en": "The name is a pun: steinreich is German for \"filthy rich\", and literally \"rich in stone\". This bottle means the second — its wealth is not in sugar or power but in the slate, which leaves a salty edge at the end of every sip.",
+    "it": "Il nome è un gioco di parole: steinreich in tedesco significa «ricco sfondato», e alla lettera «ricco di pietra». Questa bottiglia intende la seconda — la sua ricchezza non sta nello zucchero né nella potenza, ma nell'ardesia, che lascia una nota salina in fondo a ogni sorso.",
+    "fr": "Le nom est un jeu de mots : steinreich veut dire en allemand « riche à millions », et littéralement « riche en pierre ». Cette bouteille parle de la seconde — sa richesse n'est ni dans le sucre ni dans la puissance, mais dans l'ardoise, qui laisse une pointe saline au bout de chaque gorgée.",
+    "de": "Der Name ist ein Wortspiel: steinreich heißt sehr reich, und wörtlich reich an Stein. Diese Flasche meint das Zweite — ihr Reichtum liegt nicht im Zucker und nicht in der Wucht, sondern im Schiefer, der am Ende jedes Schlucks eine salzige Spur hinterlässt.",
+    "zh": "酒名是个双关：steinreich 在德语里意为“富得流油”，字面却是“满是石头”。这瓶酒取的是后一层意思——它的富足不在糖分，也不在力量，而在板岩，每一口的尾韵都留下一丝咸鲜。",
+    "sl": "Ime je besedna igra: steinreich v nemščini pomeni »bogat kot Krez«, dobesedno pa »bogat s kamnom«. Ta steklenica misli drugo — njeno bogastvo ni v sladkorju ne v moči, temveč v skrilavcu, ki na koncu vsakega požirka pusti slanost.",
+    "es": "El nombre es un juego de palabras: steinreich significa en alemán «podrido de dinero», y literalmente «rico en piedra». Esta botella va por lo segundo — su riqueza no está en el azúcar ni en la potencia, sino en la pizarra, que deja un final salino en cada sorbo."
+   },
+   "ratings": [
+    {
+     "critic": "Robert Parker",
+     "score": "88",
+     "checked": "2026-11-17"
+    },
+    {
+     "critic": "Falstaff",
+     "score": "91+"
+    }
+   ]
   }
  }
 }
