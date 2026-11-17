@@ -1455,6 +1455,11 @@
          "anchor": 155
         },
         {
+         "ref": "chateau-pedesclaux--pauillac-2015",
+         "price": 145,
+         "new": true
+        },
+        {
          "ref": "chateau-troplong-mondot--saint-emilion-grand-cru-2020",
          "price": 478,
          "anchor": 478

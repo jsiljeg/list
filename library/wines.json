@@ -15964,6 +15964,66 @@
      "score": "92"
     }
    ]
+  },
+  "chateau-pedesclaux--pauillac-2015": {
+   "name": "Pauillac 2015",
+   "producer": "Château Pédesclaux",
+   "insight": {
+    "grape": "Cabernet Sauvignon 52%, Merlot 42%, Petit Verdot 6%",
+    "region": "Pauillac, Médoc, Bordeaux",
+    "country": "FR",
+    "style": "red_full",
+    "body": "full",
+    "aromas": [
+     "blackcurrant",
+     "orange_peel",
+     "licorice",
+     "cinnamon",
+     "tobacco"
+    ],
+    "pairings": [
+     "beef",
+     "steak",
+     "lamb",
+     "cheese_hard"
+    ],
+    "temp": "16–18",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "2015. je prva berba u kojoj je Pédesclaux dodao petit verdot — samo 6%, a imanje mu pripisuje koru naranče i začine koji se osjete u nosu, prije crnog ribiza. Deset godina u boci ugladilo je tanine: Pauillac koji je spreman sada, bez čekanja.",
+    "en": "2015 is the first vintage in which Pédesclaux added Petit Verdot — only 6%, and the estate credits it with the orange peel and spice you find on the nose, ahead of the blackcurrant. Ten years in bottle have smoothed the tannins: a Pauillac that is ready now, with no waiting.",
+    "it": "Il 2015 è la prima annata in cui Pédesclaux ha aggiunto il petit verdot — appena il 6%, e la tenuta gli attribuisce la scorza d'arancia e le spezie che si sentono al naso, prima del ribes nero. Dieci anni in bottiglia hanno levigato i tannini: un Pauillac pronto adesso, senza attese.",
+    "fr": "2015 est le premier millésime où Pédesclaux a ajouté du petit verdot — 6% seulement, et le château lui attribue l'écorce d'orange et les épices du nez, avant le cassis. Dix ans de bouteille ont poli les tanins : un Pauillac prêt maintenant, sans attendre.",
+    "de": "2015 ist der erste Jahrgang, in dem Pédesclaux Petit Verdot zugab — nur 6%, und das Château schreibt ihm die Orangenschale und die Würze in der Nase zu, noch vor der schwarzen Johannisbeere. 10 Jahre auf der Flasche haben die Tannine geschliffen: ein Pauillac, der jetzt bereit ist, ohne Warten.",
+    "zh": "2015 是 Pédesclaux 首次在混酿中加入小维多的年份——只有 6%，酒庄却把鼻中先于黑醋栗出现的橙皮与香料气息归功于它。瓶中 10 年已把单宁磨得圆润：一款此刻就已适饮、无需再等的波亚克。",
+    "sl": "2015 je prvi letnik, v katerega je Pédesclaux dodal petit verdot — samo 6%, posestvo pa mu pripisuje pomarančno lupino in začimbe v vonju, še pred črnim ribezom. 10 let v steklenici je zgladilo tanine: Pauillac, ki je pripravljen zdaj, brez čakanja.",
+    "es": "2015 es la primera añada en que Pédesclaux añadió Petit Verdot — solo un 6%, y el château le atribuye la piel de naranja y las especias de la nariz, antes que la grosella negra. 10 años en botella han pulido los taninos: un Pauillac listo ya, sin esperar."
+   },
+   "notePlain": true,
+   "ratings": [
+    {
+     "critic": "Vinous",
+     "score": "92"
+    },
+    {
+     "critic": "Jeff Leve",
+     "score": "92"
+    },
+    {
+     "critic": "Decanter",
+     "score": "94"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "94"
+    }
+   ],
+   "tags": [
+    "excellent_vintage"
+   ]
   }
  }
 }
