@@ -16024,6 +16024,33 @@
    "tags": [
     "excellent_vintage"
    ]
+  },
+  "alois-lageder--pinot-bianco-versalto-2024": {
+   "name": "Pinot Bianco Versalto 2024",
+   "producer": "Alois Lageder",
+   "insight": {
+    "grape": "Pinot Bianco",
+    "region": "Alto Adige",
+    "country": "IT",
+    "style": "white_fresh",
+    "body": "medium",
+    "aromas": [
+     "pear",
+     "apple",
+     "peach",
+     "chalk"
+    ],
+    "pairings": [
+     "white_fish",
+     "seafood",
+     "light_starters",
+     "poultry",
+     "asparagus"
+    ],
+    "temp": "10–12",
+    "alcohol": "12",
+    "sweetness": "dry"
+   }
   }
  }
 }
