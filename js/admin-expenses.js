@@ -13,8 +13,13 @@
  *
  * Confidential: receipts never touch the public repo. Photos and results live
  * on theatrium.devinos.hr behind the same GitHub key as the rest of /admin
- * (web/EXPENSES.md). */
+ * (web/EXPENSES.md).
+ *
+ * Loaded by js/admin.js for a full key only (web/ROLES.md); the guard below
+ * is the belt to that brace: on any other page it does nothing at all — no
+ * prefetch, no handlers. */
 (function () {
+  if (!window.adminMode || window.adminMode() !== "full") return;
   const API = window.EXPENSE_API || "https://theatrium.devinos.hr/api/troskovi";
   const LS_GH = "theatrium-admin-token";
   const POLL_MS = 10000;

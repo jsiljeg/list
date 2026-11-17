@@ -19,7 +19,20 @@
   window.ADMIN_DEMO = true;
 
   const realFetch = window.fetch.bind(window);
-  const LS_KEY = "theatrium-admin-token", DEMO_KEY = "github_pat_DEMO_DEMO_DEMO_DEMO_DEMO_DEMO";
+  /* ?demo&uloga=somm: the head sommelier's page (web/ROLES.md) — a somm_ key,
+     his three tabs, and this fake server refusing him everything else the
+     way the real one does. */
+  const SOMM = new URLSearchParams(location.search).get("uloga") === "somm";
+  const LS_KEY = "theatrium-admin-token", DEMO_KEY = SOMM ? "somm_DEMO_DEMO_DEMO_DEMO_DEMO_DEMO_DEMO_DEMO_DEMO" : "github_pat_DEMO_DEMO_DEMO_DEMO_DEMO_DEMO";
+  /* the routes the server's ACCESS table opens to somm (web/functions/_lib/roles.js) */
+  const SOMM_OK = [
+    [/^(GET)$/, /^\/api\/uloga$/], [/^(GET|PUT)$/, /^\/api\/karta$/],
+    [/^(GET|POST)$/, /^\/api\/vina$/], [/^GET$/, /^\/api\/vina\/(?!test-obavijest$)[^/]+$/],
+    [/^GET$/, /^\/api\/vina\/[^/]+\/foto\/[^/]+$/], [/^POST$/, /^\/api\/vina\/[^/]+\/[^/]+$/],
+    [/^(GET|POST)$/, /^\/api\/kuhinja\/citaj$/], [/^GET$/, /^\/api\/kuhinja\/citaj\/[^/]+$/],
+    [/^POST$/, /^\/api\/kuhinja\/citaj\/[^/]+\/[^/]+$/], [/^POST$/, /^\/api\/kuhinja\/media$/],
+    [/^DELETE$/, /^\/api\/kuhinja\/media\/[^/]+$/], [/^(GET|PUT|DELETE)$/, /^\/api\/kuhinja\/ponuda$/]];
+  const sommMay = (method, p) => SOMM_OK.some(([m, r]) => m.test(method) && r.test(p));
   /* the admin reads its key from localStorage; the demo hands it a dummy and never stores one */
   const gi = Storage.prototype.getItem, si = Storage.prototype.setItem, ri = Storage.prototype.removeItem;
   Storage.prototype.getItem = function (k) { return k === LS_KEY ? DEMO_KEY : gi.call(this, k); };
@@ -69,12 +82,15 @@
   let sha = 0;
   const ready = (async () => {
     const get = (p) => realFetch(p, { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error(p + " " + r.status); return r; });
+    /* the sommelier's demo does not even load the invented books */
+    const books = (f, empty) => (SOMM ? Promise.resolve(empty) : get(f).then((r) => r.json()));
     const [tr, pr, tv, vi, po, una, lst, tm, bm] = await Promise.all([
-      get("demo/troskovi.json").then((r) => r.json()), get("demo/prihodi.json").then((r) => r.json()),
-      get("demo/tvrtke.json").then((r) => r.json()), get("demo/vina.json").then((r) => r.json()),
-      get("demo/povijest.json").then((r) => r.json()).catch(() => ({ events: [] })),
+      books("demo/troskovi.json", { items: [], limits: {} }), books("demo/prihodi.json", {}),
+      books("demo/tvrtke.json", {}), get("demo/vina.json").then((r) => r.json()),
+      books("demo/povijest.json", { events: [] }).catch(() => ({ events: [] })),
       get("data/unavailable.json").then((r) => r.text()), get("lists/theatrium.json").then((r) => r.text()),
-      get("data/till-map.json").then((r) => r.text()), get("demo/buy-map.json").then((r) => r.text()).catch(() => '{"articles":{}}')]);
+      SOMM ? '{"articles":{}}' : get("data/till-map.json").then((r) => r.text()),
+      SOMM ? '{"articles":{}}' : get("demo/buy-map.json").then((r) => r.text()).catch(() => '{"articles":{}}')]);
     /* tonight's 86 board starts with a few, not whatever Theatrium has hidden today */
     let rules = []; try { rules = (JSON.parse(una).hidden || []).slice(0, 4); } catch { /* none */ }
     files["data/unavailable.json"] = JSON.stringify({ hidden: rules }, null, 1) + "\n"; files["lists/theatrium.json"] = lst;
@@ -105,6 +121,9 @@
   async function github(url, opts) {
     const u = new URL(url), m = u.pathname.match(/^\/repos\/[^/]+\/[^/]+\/contents\/(.+)$/), method = (opts && opts.method) || "GET";
     if (u.pathname === "/user") return json({ login: "demo" });
+    /* the files are filled once the demo data has loaded; a board that asks
+       sooner (a slow first load) got a 404 and "ne mogu učitati kartu" */
+    await ready;
     if (/\/commits$/.test(u.pathname)) { const st = await ready; return json(u.searchParams.get("path") === "lists/theatrium.json" ? st.commits : []); }
     if (!m || !(m[1] in files)) return json({ message: "Not Found (demo)" }, 404);
     const p = decodeURIComponent(m[1]);
@@ -135,6 +154,22 @@
     let b = {};
     if (opts && typeof opts.body === "string") { try { b = JSON.parse(opts.body); } catch { /* not JSON */ } }
     let mm;
+
+    /* who the key is, and the sommelier's limits (web/ROLES.md) */
+    if (SOMM && !sommMay(method, p)) return json({ error: "role" }, 403);
+    if (p === "/api/uloga") return json(SOMM ? { role: "somm", who: "Somelijer", print: "demo" } : { role: "full", print: "demo" });
+    /* his board's two files, through the server, as GitHub would hold them */
+    if (p === "/api/karta") {
+      const f = method === "GET" ? q.get("file") : b.file;
+      if (!["lists/theatrium.json", "data/unavailable.json"].includes(f)) return json({ error: "file" }, 400);
+      if (method === "GET") return json({ sha: "demo" + sha, content: b64(files[f]) });
+      files[f] = unb64(b.content);
+      st.commits.unshift(commit(nowIso(), scrub(String(b.message || "") + " — " + (SOMM ? "Somelijer" : PERSON))));
+      return json({ content: { sha: "demo" + ++sha } });
+    }
+
+    /* the staff log Povijest shows beside git (full only — refused above for somm) */
+    if (p === "/api/dnevnik") return json({ events: [] });
 
     /* Troškovi */
     if (p === "/api/troskovi" && method === "GET") {

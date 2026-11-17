@@ -290,6 +290,9 @@ jobs:
                 | grep -vE '^(library/wines\.json|lists/theatrium\.json|data/producers\.json|data/unavailable\.json|js/zh-terms\.js|js/i18n\.js)$' || true)
           [ -z "$bad" ] || { echo "patch touches $bad"; exit 1; }
           [ -s out/card.patch ] || { echo "empty patch"; exit 1; }
+          # …and in the two JS files only plain "key": "value" entries: the run
+          # reads text people type (web/ROLES.md), and js/i18n.js runs on /admin
+          node scripts/check-card-patch.mjs out/card.patch
           git apply --whitespace=nowarn out/card.patch
           # The repo stores LF; a CR that slipped in turns a 50-line card into
           # a rewrite of every line of the data files.

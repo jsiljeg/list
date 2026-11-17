@@ -388,3 +388,20 @@ CREATE TABLE IF NOT EXISTS sales_state (
   k TEXT PRIMARY KEY,                        -- last_ok | last_range | error
   v TEXT
 );
+
+-- Who did what on /admin's Dodaj vino and Ponuda (web/ROLES.md, 2026-11-17).
+-- Owner: "we need to see his activities in history, but he should not see any
+-- history." Karta is already in git, signed; these two live in D1, so their
+-- trail lives here. `who` is the server's name for the key (a sommelier's is
+-- never taken from the page); read by Filho's Povijest through /api/dnevnik,
+-- which ACCESS gives to full keys only.
+CREATE TABLE IF NOT EXISTS staff_log (
+  id    INTEGER PRIMARY KEY AUTOINCREMENT,
+  at    TEXT NOT NULL,
+  who   TEXT NOT NULL,
+  role  TEXT NOT NULL,                       -- full | somm
+  area  TEXT NOT NULL,                       -- vina | ponuda
+  what  TEXT NOT NULL,                       -- one line, Croatian, as Povijest shows it
+  ref   TEXT NOT NULL DEFAULT ''             -- the request id, date or photo id it was about
+);
+CREATE INDEX IF NOT EXISTS staff_log_at ON staff_log (at);

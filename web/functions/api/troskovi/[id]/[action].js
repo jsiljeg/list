@@ -17,6 +17,10 @@ import { notifyOwner } from "../../../_lib/wines.js";
 
 export async function onRequestPost({ request, env, params }) {
   const { id, action } = params;
+  /* The key first, then the receipt: a caller without one learns nothing,
+     not even whether a receipt id exists (web/ROLES.md, 2026-11-17). */
+  if (action === "rezultat" ? !isExpenseWorker(request, env) : !(await isStaffAsync(request, env)))
+    return reply(request, { error: "key" }, 401);
   const item = await readReceipt(env, id);
   if (!item) return reply(request, { error: "not_found" }, 404);
   let b = {};

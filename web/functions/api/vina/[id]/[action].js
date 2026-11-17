@@ -12,8 +12,15 @@
  *                       published | failed | retry (Claude refused to start:
  *                       back in line, not counted), with questions / result / branch /
  *                       run_url / ref / usage / error. Only legal moves. */
-import { reply, isStaffAsync, isWorker, readRequest, setStatus, addPhase, savePhotos, pump, startPublish, clip, euros, notifyOwner, person, setPerson,
+import { reply, isWorker, readRequest, setStatus, addPhase, savePhotos, pump, startPublish, clip, euros, notifyOwner, person, setPerson,
          requeueLater, RETRY_MIN, LIMIT_WAIT } from "../../../_lib/wines.js";
+import { staffOrSomm, forRole, actorName, logStaff } from "../../../_lib/roles.js";
+
+/* "Château X — Grand Vin 2019", or the request id until the card exists */
+const label = (item) => {
+  const w = item && item.result && item.result.draft && item.result.draft.wine;
+  return w ? `${w.producer} — ${w.name}` : `zahtjev ${item.id}`;
+};
 
 const WORKER_MOVES = {
   working: ["working", "needs_info", "ready", "failed"],
@@ -22,11 +29,15 @@ const WORKER_MOVES = {
 
 export async function onRequestPost({ request, env, params }) {
   const { id, action } = params;
+  /* The key first, then the row: a caller without one learns nothing, not
+     even whether a request exists (web/ROLES.md). */
+  const a = action === "stanje" ? null : await staffOrSomm(request, env);
+  if (action === "stanje" ? !isWorker(request, env) : !a) return reply(request, { error: "key" }, 401);
   const item = await readRequest(env, id);
   if (!item) return reply(request, { error: "not_found" }, 404);
+  const out = async () => forRole(await readRequest(env, id), a);
 
   if (action === "stanje") {
-    if (!isWorker(request, env)) return reply(request, { error: "key" }, 401);
     let b;
     try { b = await request.json(); } catch { return reply(request, { error: "body" }, 400); }
     /* A step report ({phase}, no status) changes nothing but the progress
@@ -84,8 +95,6 @@ export async function onRequestPost({ request, env, params }) {
     return reply(request, { ok: true });
   }
 
-  if (!(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
-
   if (action === "odgovor") {
     if (item.status !== "needs_info") return reply(request, { error: "not_waiting" }, 409);
     let form;
@@ -102,16 +111,19 @@ export async function onRequestPost({ request, env, params }) {
     const saved = await savePhotos(env, id, photos);
     if (saved.error) return reply(request, { error: saved.error }, 400);
     await setStatus(env, id, { status: "queued", answers: JSON.stringify(answers), questions: "[]" });
+    await logStaff(env, a, form.get("by"), "vina", `Odgovorio na pitanja: ${label(item)}${photos.length ? ` (+${photos.length} foto)` : ""}`, id);
     const pumped = await pump(env);
-    return reply(request, { ok: true, item: await readRequest(env, id), pumped });
+    return reply(request, { ok: true, item: await out(), pumped });
   }
 
   if (action === "objavi") {
     /* who tapped it — the publish commit is authored in that name */
     const b = await request.json().catch(() => ({}));
-    await setPerson(env, id, "published_by", person(b.by));
+    await setPerson(env, id, "published_by", actorName(a, b.by));
     const d = await startPublish(env, id);
-    return d.error ? reply(request, { error: d.error }, 409) : reply(request, { ok: true, item: await readRequest(env, id) });
+    if (d.error) return reply(request, { error: d.error }, 409);
+    await logStaff(env, a, b.by, "vina", `Objavio na kartu: ${label(item)}`, id);
+    return reply(request, { ok: true, item: await out() });
   }
 
   /* Filho's corrections on the preview (owner, 2026-10-10: "move a word or
@@ -143,11 +155,17 @@ export async function onRequestPost({ request, env, params }) {
     if (!edits.length && !novo.length && !Object.keys(priceFields).length) return reply(request, { error: "empty" }, 400);
     if (Object.keys(priceFields).length) await setStatus(env, id, priceFields);
     if (novo.length) await setStatus(env, id, { answers: JSON.stringify(item.answers.concat(novo)) });
-    if (!edits.length) return reply(request, { ok: true, item: await readRequest(env, id) });
+    const said = [
+      ...Object.entries(priceFields).map(([k, v]) => `${k === "price_glass" ? "čaša" : "boca"} ${v == null ? "—" : String(v).replace(".", ",") + " €"}`),
+      ...novo.map((n) => (n.to ? "NOVO uklj." : "NOVO isklj.")),
+      ...edits.map((e) => e.field),
+    ];
+    await logStaff(env, a, b.by, "vina", `Ispravio: ${label(item)} (${said.join(", ")})`, id);
+    if (!edits.length) return reply(request, { ok: true, item: await out() });
     const now = await readRequest(env, id);
     await setStatus(env, id, { status: "queued", answers: JSON.stringify(now.answers.concat(edits)) });
     const pumped = await pump(env);
-    return reply(request, { ok: true, item: await readRequest(env, id), pumped });
+    return reply(request, { ok: true, item: await out(), pumped });
   }
 
   /* A failed run goes back in the queue — still inside MAX_RUNS, which pump()
@@ -155,15 +173,17 @@ export async function onRequestPost({ request, env, params }) {
   if (action === "ponovi") {
     if (item.status !== "failed") return reply(request, { error: "not_failed" }, 409);
     await setStatus(env, id, { status: "queued", error: "" });
+    await logStaff(env, a, (await request.json().catch(() => ({}))).by, "vina", `Pokrenuo ponovno: ${label(item)}`, id);
     const pumped = await pump(env);
-    return reply(request, { ok: true, item: await readRequest(env, id), pumped });
+    return reply(request, { ok: true, item: await out(), pumped });
   }
 
   if (action === "odustani") {
     if (["published", "publishing", "cancelled"].includes(item.status)) return reply(request, { error: "too_late" }, 409);
     if (item.status === "working") return reply(request, { error: "running" }, 409);
     await setStatus(env, id, { status: "cancelled" });
-    return reply(request, { ok: true, item: await readRequest(env, id) });
+    await logStaff(env, a, (await request.json().catch(() => ({}))).by, "vina", `Odustao: ${label(item)}`, id);
+    return reply(request, { ok: true, item: await out() });
   }
 
   return reply(request, { error: "action" }, 404);

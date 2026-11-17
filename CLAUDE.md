@@ -2058,3 +2058,34 @@ purpose and kept clearly so: waiters (Ana Kovač …), companies with OIBs
 starting 0, vendors called "… Primjer", totals scaled well below a real busy
 month. `tests/admin-demo.spec.mjs` fails if a real name could have got in.
 Needs Node 22 (node:sqlite), which deploy.yml now sets up.
+
+## Staff roles: the head sommelier (2026-11-17)
+
+Toni (head sommelier) gets /admin with **Karta, Dodaj vino and Ponuda only**
+— never Povijest or Troškovi (owner: "not even 1% chance"). Full design,
+enrolment and residual risk: `web/ROLES.md`. The rules that matter when
+touching any of it:
+
+- **The server decides, by the key.** His key is a server key (`somm_…`,
+  `scripts/new-somm-key.mjs`), stored as its SHA-256 in `SOMM_KEYS`
+  (web/functions/_lib/roles.js) or `WINE_SOMM_KEYS`. He never gets a GitHub
+  token: one that writes the list can write `web/`, and a push there deploys
+  the server.
+- **Every `/api` route and method is a line in `ACCESS`** (roles.js). A new
+  endpoint needs its line, or `tests/roles.spec.mjs` fails; a somm key is
+  refused by `api/_middleware.js` anywhere `ACCESS` does not say `somm`, and
+  `isStaffAsync()` stays full-only, so a function opts in to him only by
+  calling `staffOrSomm()`. Widening his list is a decision — the spec pins it.
+- **His Karta writes go through `/api/karta`**, which diffs against GitHub and
+  takes only price, NOVO, hide/return and + čaša, committed with the server's
+  `KARTA_GH_TOKEN` and signed with his name.
+- **Povijest and Troškovi are not in admin.html.** js/admin.js adds their
+  tabs and loads js/admin-history.js + js/admin-expenses.js for a full key
+  only. Never put them back in the static page or load them unconditionally —
+  admin-expenses prefetches Troškovi 1.5 s after load.
+- **Everything he does is in Filho's Povijest, and none of it is his to
+  read.** Karta through signed commits; every Dodaj vino and Ponuda write
+  calls `logStaff()` (D1 `staff_log`, name from the key, never from `by`),
+  read by Povijest through `/api/dnevnik`, full only. A new write endpoint
+  he can reach must log too.
+- Demo: `admin.html?demo&uloga=somm`.

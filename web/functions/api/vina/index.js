@@ -7,11 +7,13 @@
  *                              remark (a short note from Filho, ≤ 300 chars)
  *
  * A staff GET also pumps the queue — see pump() in _lib/wines.js. */
-import { reply, isStaffAsync, isWorker, isReader, newId, savePhotos, readRequest, shape, pump, limits,
+import { reply, isWorker, isReader, newId, savePhotos, readRequest, shape, pump, limits,
          euros, clip, person, setPerson } from "../../_lib/wines.js";
+import { staffOrSomm, forRole, actorName, logStaff } from "../../_lib/roles.js";
 
 export async function onRequestGet({ request, env }) {
-  const staff = await isStaffAsync(request, env);
+  const a = await staffOrSomm(request, env);   /* full or somm (web/ROLES.md) */
+  const staff = !!a;
   if (!staff && !isWorker(request, env) && !isReader(request, env)) return reply(request, { error: "key" }, 401);
   if (!env.DB) return reply(request, { error: "no_db" }, 503);
   const pumped = staff ? await pump(env) : null;
@@ -21,12 +23,13 @@ export async function onRequestGet({ request, env }) {
        FROM wine_requests r LEFT JOIN wine_people w ON w.request_id = r.id
        LEFT JOIN wine_progress g ON g.request_id = r.id
       ORDER BY r.created_at DESC LIMIT 100`).all();
-  const items = (results || []).map((r) => shape(r, r.pics ? String(r.pics).split(",").map(Number) : []));
+  const items = (results || []).map((r) => forRole(shape(r, r.pics ? String(r.pics).split(",").map(Number) : []), a));
   return reply(request, { items, limits: await limits(env), pumped });
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
+  const a = await staffOrSomm(request, env);
+  if (!a) return reply(request, { error: "key" }, 401);
   if (!env.DB) return reply(request, { error: "no_db" }, 503);
   let form;
   try { form = await request.formData(); } catch { return reply(request, { error: "body" }, 400); }
@@ -56,7 +59,10 @@ export async function onRequestPost({ request, env }) {
     await env.DB.prepare("DELETE FROM wine_requests WHERE id = ?1").bind(id).run();
     return reply(request, { error: saved.error }, 400);
   }
-  await setPerson(env, id, "created_by", person(form.get("by")));
+  /* the sommelier's name is the server's, not the page's */
+  await setPerson(env, id, "created_by", actorName(a, form.get("by")));
+  const priced = [bottle != null ? `boca ${String(bottle).replace(".", ",")} €` : "", glass != null ? `čaša ${String(glass).replace(".", ",")} €` : ""].filter(Boolean).join(", ");
+  await logStaff(env, a, form.get("by"), "vina", `Poslao novo vino (${priced}, ${photos.length} foto)`, id);
   const pumped = await pump(env);
-  return reply(request, { ok: true, item: await readRequest(env, id), pumped }, 201);
+  return reply(request, { ok: true, item: forRole(await readRequest(env, id), a), pumped }, 201);
 }

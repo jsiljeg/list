@@ -9,7 +9,8 @@
  *                       and intro when the new one has none.
  *   ponovi    (staff)   failed/ready → queued again, {remark} optional
  *   odustani  (staff)   anything not published → cancelled */
-import { reply, isStaffAsync, isWorker, notifyOwner } from "../../../../_lib/wines.js";
+import { reply, isWorker, notifyOwner } from "../../../../_lib/wines.js";
+import { staffOrSomm, forRole, actorName, logStaff } from "../../../../_lib/roles.js";
 import { normalizeOffer, readOffer, today } from "../../../../_lib/daily.js";
 import { readReq, setReq, pump, clip, person } from "../../../../_lib/daily-intake.js";
 
@@ -17,11 +18,14 @@ const WORKER_MOVES = { working: ["working", "ready", "failed"] };
 
 export async function onRequestPost({ request, env, params }) {
   const { id, action } = params;
+  /* The key first, then the row (web/ROLES.md). */
+  const a = action === "stanje" ? null : await staffOrSomm(request, env);
+  if (action === "stanje" ? !isWorker(request, env) : !a) return reply(request, { error: "key" }, 401);
   const item = await readReq(env, id);
   if (!item) return reply(request, { error: "not_found" }, 404);
+  const out = async () => forRole(await readReq(env, id), a);
 
   if (action === "stanje") {
-    if (!isWorker(request, env)) return reply(request, { error: "key" }, 401);
     let b;
     try { b = await request.json(); } catch { return reply(request, { error: "body" }, 400); }
     if (!(WORKER_MOVES[item.status] || []).includes(b.status)) return reply(request, { error: "move", from: item.status, to: b.status }, 409);
@@ -42,8 +46,6 @@ export async function onRequestPost({ request, env, params }) {
     if (b.status !== "working") await pump(env);
     return reply(request, { ok: true });
   }
-
-  if (!(await isStaffAsync(request, env))) return reply(request, { error: "key" }, 401);
 
   if (action === "objavi") {
     if (!["ready", "published"].includes(item.status)) return reply(request, { error: "not_ready" }, 409);
@@ -70,9 +72,10 @@ export async function onRequestPost({ request, env, params }) {
     /* One live request per day: an older one stops claiming to be on the site. */
     await env.DB.prepare("UPDATE daily_requests SET status = 'ready' WHERE date = ?1 AND status = 'published' AND id != ?2")
       .bind(item.date, id).run();
-    await setReq(env, id, { status: "published", published_by: person(b.by) || null,
+    await setReq(env, id, { status: "published", published_by: actorName(a, b.by),
       result: JSON.stringify({ ...(item.result || {}), offer: body }) });
-    return reply(request, { ok: true, item: await readReq(env, id) });
+    await logStaff(env, a, b.by, "ponuda", `Objavio dnevnu ponudu za ${item.date} (${body.dishes.length} jela)`, id);
+    return reply(request, { ok: true, item: await out() });
   }
 
   if (action === "ponovi") {
@@ -81,14 +84,16 @@ export async function onRequestPost({ request, env, params }) {
     const f = { status: "queued", error: "" };
     if (b && b.remark) f.remark = clip(b.remark, 300);
     await setReq(env, id, f);
-    return reply(request, { ok: true, item: await readReq(env, id), pumped: await pump(env) });
+    await logStaff(env, a, b && b.by, "ponuda", `Pokrenuo ponovno jelovnik za ${item.date}`, id);
+    return reply(request, { ok: true, item: await out(), pumped: await pump(env) });
   }
 
   if (action === "odustani") {
     if (["published", "cancelled"].includes(item.status)) return reply(request, { error: "too_late" }, 409);
     if (item.status === "working") return reply(request, { error: "running" }, 409);
     await setReq(env, id, { status: "cancelled" });
-    return reply(request, { ok: true, item: await readReq(env, id) });
+    await logStaff(env, a, (await request.json().catch(() => ({}))).by, "ponuda", `Odustao od jelovnika za ${item.date}`, id);
+    return reply(request, { ok: true, item: await out() });
   }
 
   return reply(request, { error: "action" }, 404);
