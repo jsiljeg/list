@@ -16051,6 +16051,67 @@
     "alcohol": "12",
     "sweetness": "dry"
    }
+  },
+  "clos-des-jacobins--saint-emilion-grand-cru-2016": {
+   "name": "Saint-Émilion Grand Cru 2016",
+   "producer": "Clos des Jacobins",
+   "insight": {
+    "grape": "Merlot 80%, Cabernet Franc 18%, Cabernet Sauvignon 2%",
+    "region": "Saint-Émilion, Libournais, Bordeaux",
+    "country": "FR",
+    "style": "red_full",
+    "body": "full",
+    "aromas": [
+     "plum",
+     "cherry",
+     "licorice",
+     "espresso",
+     "cedar"
+    ],
+    "pairings": [
+     "beef",
+     "lamb",
+     "game",
+     "cheese_hard"
+    ],
+    "temp": "16–18",
+    "alcohol": "14.5",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "16.5+/20"
+    },
+    {
+     "critic": "Vinous",
+     "score": "92"
+    },
+    {
+     "critic": "Jeff Leve",
+     "score": "92"
+    },
+    {
+     "critic": "Wine Spectator",
+     "score": "87"
+    },
+    {
+     "critic": "Decanter",
+     "score": "91"
+    },
+    {
+     "critic": "James Suckling",
+     "score": "94"
+    },
+    {
+     "critic": "Jeb Dunnuck",
+     "score": "89"
+    }
+   ],
+   "tags": [
+    "excellent_vintage"
+   ]
   }
  }
 }
