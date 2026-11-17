@@ -262,6 +262,6 @@ ways to look at it without touching production:
 - [x] Investigation and plan (this file)
 - [x] Server: roles.js, middleware, opt-in endpoints, /api/uloga, /api/karta
 - [x] Page: somm mode, tabs built per mode, Povijest moved out, demo mode
-- [x] Tests written and run: tests/roles.spec.mjs (17), tests/admin-somm.spec.mjs (9), all three viewports
+- [x] Tests written and run: tests/roles.spec.mjs (18), tests/admin-somm.spec.mjs (9), all three viewports
 - [x] PR opened (not merged, not deployed)
 - [ ] Owner: manual test, then `KARTA_GH_TOKEN` and Toni's key (§4)

@@ -121,6 +121,9 @@
   async function github(url, opts) {
     const u = new URL(url), m = u.pathname.match(/^\/repos\/[^/]+\/[^/]+\/contents\/(.+)$/), method = (opts && opts.method) || "GET";
     if (u.pathname === "/user") return json({ login: "demo" });
+    /* the files are filled once the demo data has loaded; a board that asks
+       sooner (a slow first load) got a 404 and "ne mogu učitati kartu" */
+    await ready;
     if (/\/commits$/.test(u.pathname)) { const st = await ready; return json(u.searchParams.get("path") === "lists/theatrium.json" ? st.commits : []); }
     if (!m || !(m[1] in files)) return json({ message: "Not Found (demo)" }, 404);
     const p = decodeURIComponent(m[1]);
