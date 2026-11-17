@@ -51,8 +51,13 @@ jobs:
           echo "by=$(jq -r '.item.published_by // ""' req.json | tr -cd '[:alpha:] .-' | cut -c1-40)" >> "$GITHUB_OUTPUT"
           echo "sent=$(jq -r '.item.created_by // ""' req.json | tr -cd '[:alpha:] .-' | cut -c1-40)" >> "$GITHUB_OUTPUT"
 
+      # main as it is NOW, not the commit main was at when Filho tapped: the
+      # concurrency group can hold this run while another publish lands, and
+      # the dispatch SHA then predates it (2026-11-17: Clos des Jacobins was
+      # merged onto a main without Lageder's card, and the push was refused).
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - uses: actions/setup-node@v4
@@ -134,7 +139,13 @@ jobs:
           if [ -s "$RUNNER_TEMP/novo" ]; then joins="joins NOVO"; else joins="joins the list"; fi
           git commit -q --author="$who <$email>" -m "$TITLE $joins — $who" \
                      -m "Added through Dodaj vino (request $ID): sent by ${SENT:-?}, published by $who from /admin."
-          git push origin HEAD:main
+          # A price or an 86 from /admin can land in the seconds between the
+          # checkout and here: replay this commit on top and try again.
+          for try in 1 2 3; do
+            git push origin HEAD:main && break
+            [ "$try" = 3 ] && exit 1
+            git fetch -q origin main && git rebase -q origin/main && node scripts/validate.mjs
+          done
           git push origin --delete "wine/$ID" || true
 
       - name: Start the deploys

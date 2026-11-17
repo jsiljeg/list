@@ -62,3 +62,44 @@ test("the wine queue never strands or expires a wine", async () => {
     expect(after).toEqual({ dead: "queued", spent: "failed" });
   } finally { globalThis.fetch = realFetch; }
 });
+
+test("a publish GitHub cancelled before it ran is started again, never left 'publishing'", async () => {
+  /* 2026-11-17: three "Objavi" taps in nine seconds; the concurrency group
+     cancelled the pending middle run, and its wine sat "publishing" for good.
+     Also: a publish that died part-way goes back to "Objavi" with a message,
+     never published blind. Added with the fix, not run (standing rule). */
+  const db = new DatabaseSync(":memory:");
+  db.exec(readFileSync("web/schema.sql", "utf8"));
+  const D1 = { prepare(sql) { const st = db.prepare(sql); let a = []; const o = {
+    bind(...x) { a = x.map((v) => (v === undefined ? null : v)); return o; },
+    all: async () => ({ results: st.all(...a) }), first: async () => st.get(...a) ?? null,
+    run: async () => ({ meta: { changes: st.run(...a).changes } }) };
+    return o; } };
+  const { pump } = await import(pathToFileURL(join(process.cwd(), "web/functions/_lib/wines.js")).href);
+  const ago = (m) => new Date(Date.now() - m * 60000).toISOString();
+  const ins = db.prepare("INSERT INTO wine_requests (id, created_at, updated_at, status, price_bottle, runs) VALUES (?, ?, ?, ?, 100, 1)");
+  const steps = (id, n) => db.prepare("INSERT INTO wine_progress (request_id, steps) VALUES (?, ?)")
+    .run(id, JSON.stringify(Array.from({ length: n }, (_, i) => ({ t: "s" + i, at: ago(20) }))));
+  ins.run("cancelled", ago(60), ago(20), "publishing"); steps("cancelled", 1);   /* only "Pokreće objavu" */
+  ins.run("running", ago(60), ago(1), "publishing"); steps("running", 1);         /* tapped a minute ago */
+  ins.run("died", ago(90), ago(45), "publishing"); steps("died", 4);              /* got as far as merging */
+  const calls = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (u, init) => { calls.push({ u: String(u), body: JSON.parse(init.body) }); return new Response(null, { status: 204 }); };
+  try {
+    await pump({ DB: D1, WINE_INTAKE_ENABLED: "1", GH_DISPATCH_TOKEN: "x" });
+    const st = Object.fromEntries(db.prepare("SELECT id, status, error FROM wine_requests").all().map((r) => [r.id, { ...r }]));
+    const pubs = calls.filter((c) => /publish-wine/.test(c.u)).map((c) => c.body.inputs.id);
+    expect(pubs, "only the cancelled one is dispatched again").toEqual(["cancelled"]);
+    expect(st.cancelled.status).toBe("publishing");
+    expect(st.running.status, "a publish in flight is left alone").toBe("publishing");
+    expect(st.died.status).toBe("ready");
+    expect(st.died.error).toMatch(/pokušajte ponovno/);
+  } finally { globalThis.fetch = realFetch; }
+});
+
+test("the publish run merges onto main as it is when it runs", () => {
+  const wf = readFileSync(".github/workflows/publish-wine.yml", "utf8");
+  expect(wf).toMatch(/uses: actions\/checkout@v4\s+with:\s+ref: main/);
+  expect(wf).toMatch(/git rebase -q origin\/main/);
+});

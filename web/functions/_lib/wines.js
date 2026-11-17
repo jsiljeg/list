@@ -291,6 +291,25 @@ export async function pump(env) {
   await env.DB.prepare(
     `UPDATE wine_requests SET status = 'failed', error = 'run_timed_out', updated_at = ?1
       WHERE status = 'working' AND updated_at < ?2`).bind(nowIso(), stale).run();
+  /* The same loss on the publish side (2026-11-17): Filho tapped "Objavi" on
+     three wines within nine seconds; publish-wine.yml's concurrency group
+     keeps one pending run, so GitHub cancelled the middle one before it ran a
+     step, and its wine sat "publishing" with nobody on it — the job that
+     reports back never ran. Filho already said publish, so one that never got
+     past "Pokreće objavu" is started again; one that died part-way goes back
+     to "Objavi" with the usual message rather than being published blind. */
+  const lostPub = (await env.DB.prepare(
+    `SELECT id FROM wine_requests WHERE status = 'publishing' AND updated_at < ?1
+        AND id NOT IN (SELECT request_id FROM wine_progress WHERE json_array_length(steps) > 1)`)
+    .bind(lost).all()).results || [];
+  for (const { id } of lostPub) {
+    await env.DB.prepare("UPDATE wine_requests SET status = 'ready' WHERE id = ?1 AND status = 'publishing'").bind(id).run();
+    await startPublish(env, id);
+  }
+  await env.DB.prepare(
+    `UPDATE wine_requests SET status = 'ready', error = ?1, updated_at = ?2
+      WHERE status = 'publishing' AND updated_at < ?3`)
+    .bind("Objava nije uspjela — pokušajte ponovno za minutu. Ako se ponovi, javite vlasniku.", nowIso(), stale).run();
   if (env.WINE_INTAKE_ENABLED !== "1") return { held: "disabled" };
   /* Up to PARALLEL wines at once (owner, 2026-10-23, ten bottles queued:
      "1 updating, others stuck"). Each start is claimed on its own, so a
