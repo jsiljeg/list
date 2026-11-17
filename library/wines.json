@@ -1855,6 +1855,11 @@
      "checked": "2026-09-06"
     },
     {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20",
+     "checked": "2026-11-17"
+    },
+    {
      "critic": "Decanter",
      "score": "90"
     },
@@ -1900,7 +1905,8 @@
     },
     {
      "critic": "Jancis Robinson",
-     "score": "16.5/20"
+     "score": "16.5/20",
+     "checked": "2026-11-17"
     },
     {
      "critic": "Vinous",
@@ -6489,7 +6495,14 @@
     "alcohol": "14",
     "sweetness": "dry"
    },
-   "terroir": "Sveti Roko"
+   "terroir": "Sveti Roko",
+   "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "17+/20",
+     "checked": "2026-11-17"
+    }
+   ]
   },
   "kunjas--pagadebit-2018": {
    "name": "Pagadebit 2018",
@@ -10551,6 +10564,11 @@
    },
    "terroir": "Monte Bello",
    "ratings": [
+    {
+     "critic": "Jancis Robinson",
+     "score": "17.5/20",
+     "checked": "2026-11-17"
+    },
     {
      "critic": "Vinous",
      "score": "93"
