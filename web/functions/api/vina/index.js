@@ -9,7 +9,7 @@
  * A staff GET also pumps the queue — see pump() in _lib/wines.js. */
 import { reply, isWorker, isReader, newId, savePhotos, readRequest, shape, pump, limits,
          euros, clip, person, setPerson } from "../../_lib/wines.js";
-import { staffOrSomm, forRole } from "../../_lib/roles.js";
+import { staffOrSomm, forRole, actorName, logStaff } from "../../_lib/roles.js";
 
 export async function onRequestGet({ request, env }) {
   const a = await staffOrSomm(request, env);   /* full or somm (web/ROLES.md) */
@@ -60,7 +60,9 @@ export async function onRequestPost({ request, env }) {
     return reply(request, { error: saved.error }, 400);
   }
   /* the sommelier's name is the server's, not the page's */
-  await setPerson(env, id, "created_by", a.role === "somm" ? a.who : person(form.get("by")));
+  await setPerson(env, id, "created_by", actorName(a, form.get("by")));
+  const priced = [bottle != null ? `boca ${String(bottle).replace(".", ",")} €` : "", glass != null ? `čaša ${String(glass).replace(".", ",")} €` : ""].filter(Boolean).join(", ");
+  await logStaff(env, a, form.get("by"), "vina", `Poslao novo vino (${priced}, ${photos.length} foto)`, id);
   const pumped = await pump(env);
   return reply(request, { ok: true, item: forRole(await readRequest(env, id), a), pumped }, 201);
 }

@@ -10,7 +10,7 @@
  *   ponovi    (staff)   failed/ready → queued again, {remark} optional
  *   odustani  (staff)   anything not published → cancelled */
 import { reply, isWorker, notifyOwner } from "../../../../_lib/wines.js";
-import { staffOrSomm, forRole } from "../../../../_lib/roles.js";
+import { staffOrSomm, forRole, actorName, logStaff } from "../../../../_lib/roles.js";
 import { normalizeOffer, readOffer, today } from "../../../../_lib/daily.js";
 import { readReq, setReq, pump, clip, person } from "../../../../_lib/daily-intake.js";
 
@@ -72,8 +72,9 @@ export async function onRequestPost({ request, env, params }) {
     /* One live request per day: an older one stops claiming to be on the site. */
     await env.DB.prepare("UPDATE daily_requests SET status = 'ready' WHERE date = ?1 AND status = 'published' AND id != ?2")
       .bind(item.date, id).run();
-    await setReq(env, id, { status: "published", published_by: (a.role === "somm" ? a.who : person(b.by)) || null,
+    await setReq(env, id, { status: "published", published_by: actorName(a, b.by),
       result: JSON.stringify({ ...(item.result || {}), offer: body }) });
+    await logStaff(env, a, b.by, "ponuda", `Objavio dnevnu ponudu za ${item.date} (${body.dishes.length} jela)`, id);
     return reply(request, { ok: true, item: await out() });
   }
 
@@ -83,6 +84,7 @@ export async function onRequestPost({ request, env, params }) {
     const f = { status: "queued", error: "" };
     if (b && b.remark) f.remark = clip(b.remark, 300);
     await setReq(env, id, f);
+    await logStaff(env, a, b && b.by, "ponuda", `Pokrenuo ponovno jelovnik za ${item.date}`, id);
     return reply(request, { ok: true, item: await out(), pumped: await pump(env) });
   }
 
@@ -90,6 +92,7 @@ export async function onRequestPost({ request, env, params }) {
     if (["published", "cancelled"].includes(item.status)) return reply(request, { error: "too_late" }, 409);
     if (item.status === "working") return reply(request, { error: "running" }, 409);
     await setReq(env, id, { status: "cancelled" });
+    await logStaff(env, a, (await request.json().catch(() => ({}))).by, "ponuda", `Odustao od jelovnika za ${item.date}`, id);
     return reply(request, { ok: true, item: await out() });
   }
 

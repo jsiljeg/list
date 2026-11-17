@@ -108,7 +108,7 @@ test.beforeAll(() => {
     if (/\/library\/wines\.json$/.test(u)) return new Response(LIB, { status: 200 });
     if (/\/lists\/theatrium\.json$/.test(u)) return new Response(LIST, { status: 200 });
     if (/\/data\/unavailable\.json$/.test(u)) return new Response('{"hidden":[]}', { status: 200 });
-    return new Response("{}", { status: 204 });
+    return new Response(null, { status: 204 });          /* a workflow dispatch, an alert */
   };
 });
 test.afterAll(() => { globalThis.fetch = realFetch; });
@@ -164,6 +164,17 @@ test("only somm-allowed routes may call staffOrSomm — the second lock opens no
   }
 });
 
+test("every write route open to him records who did it — git for Karta, staff_log for the rest", () => {
+  for (const f of FILES) {
+    const writes = Object.entries(ACCESS[f.route] || {}).some(([m, rs]) => rs.includes("somm") && !["GET", "OPTIONS"].includes(m));
+    if (!writes) continue;
+    const src = fs.readFileSync(f.file, "utf8");
+    if (f.route === "/api/karta") expect(src, f.route).toMatch(/writeFile\(env, b\.file, next, cur\.sha, cleanMessage\(b\.message\), who\)/);
+    else expect(src, `${f.route} lets him write but never calls logStaff`).toMatch(/logStaff\(env, a,/);
+    expect(src, `${f.route} names a sommelier from the page`).not.toMatch(/person\((form\.get\("by"\)|b\.by)\)(?![^\n]*actorName)/);
+  }
+});
+
 /* ---- lock 1: the middleware, every handler ---- */
 test("a somm key through the middleware: 403 {error:role} on every route that is not his, and the function never runs", async () => {
   const seen = [];
@@ -179,7 +190,7 @@ test("a somm key through the middleware: 403 {error:role} on every route that is
   /* the ones that matter most, by name, so a rename cannot slip past */
   for (const must of ["GET /api/troskovi", "POST /api/troskovi", "GET /api/troskovi/povijest", "GET /api/troskovi/:id/foto/:n",
     "POST /api/troskovi/:id/:action", "GET /api/troskovi/mer", "POST /api/troskovi/kljucevi", "GET /api/prihodi",
-    "GET /api/prihodi/tvrtke", "PUT /api/prihodi/tvrtke", "POST /api/vina/test-obavijest"]) expect(seen).toContain(must);
+    "GET /api/prihodi/tvrtke", "PUT /api/prihodi/tvrtke", "POST /api/vina/test-obavijest", "GET /api/dnevnik"]) expect(seen).toContain(must);
 });
 
 test("an unknown or malformed somm key is refused everywhere, also on his own routes", async () => {
@@ -438,6 +449,102 @@ test("/api/karta without its server token says so and writes nothing", async () 
   expect(g.res.status).toBe(503);
   expect(await g.res.json()).toEqual({ error: "not_configured" });
   expect(gh.calls.filter((c) => c.includes("api.github.com"))).toEqual([]);
+});
+
+/* ---- his activities in Filho's history, never his to read (owner, 2026-11-17) ---- */
+test("every write he can make in Dodaj vino and Ponuda is logged as Toni — even when the page says it was Filho", async () => {
+  const env = envOf({ WINE_INTAKE_ENABLED: "1", GH_DISPATCH_TOKEN: "dispatch" });
+  const db = (sql, ...v) => env.DB.prepare(sql).bind(...v).run();
+  const at = (route, method, p, opts = {}) => call(H(method, route), SOMM,
+    { env, url: "https://theatrium.devinos.hr" + p, params: opts.params, body: opts.body, headers: opts.headers });
+  const asFilho = JSON.stringify({ by: "Filho" });
+
+  /* Dodaj vino: send, answer, correct, retry, publish, cancel */
+  const fd = new FormData(); fd.append("photo", photo()); fd.append("price_bottle", "95"); fd.append("by", "Filho");
+  const { item } = await (await at("/api/vina", "POST", "/api/vina", { body: fd })).res.json();
+  const id = item.id, P = (action) => ({ id, action });
+  await db("UPDATE wine_requests SET status = 'needs_info', questions = ?1 WHERE id = ?2", '["Alkohol?"]', id);
+  const ans = new FormData(); ans.append("answer_0", "13,5"); ans.append("by", "Filho");
+  expect((await at("/api/vina/:id/:action", "POST", `/api/vina/${id}/odgovor`, { params: P("odgovor"), body: ans })).res.status).toBe(200);
+  await db("UPDATE wine_requests SET status = 'ready', result = ?1 WHERE id = ?2", JSON.stringify({ draft: { wine: { producer: "Vinar", name: "Vino 2020" } } }), id);
+  expect((await at("/api/vina/:id/:action", "POST", `/api/vina/${id}/ispravak`, { params: P("ispravak"),
+    body: JSON.stringify({ price_bottle: "99", novo: false, by: "Filho" }) })).res.status).toBe(200);
+  expect((await at("/api/vina/:id/:action", "POST", `/api/vina/${id}/objavi`, { params: P("objavi"), body: asFilho })).res.status).toBe(200);
+  await db("UPDATE wine_requests SET status = 'failed' WHERE id = ?1", id);
+  expect((await at("/api/vina/:id/:action", "POST", `/api/vina/${id}/ponovi`, { params: P("ponovi"), body: asFilho })).res.status).toBe(200);
+  await db("UPDATE wine_requests SET status = 'needs_info' WHERE id = ?1", id);
+  expect((await at("/api/vina/:id/:action", "POST", `/api/vina/${id}/odustani`, { params: P("odustani"), body: asFilho })).res.status).toBe(200);
+
+  /* Ponuda: send a menu, publish it, retry, cancel, a photo in and out, save, publish and delete the offer */
+  const date = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
+  const mf = new FormData(); mf.append("text", "Juha\nObrazi"); mf.append("by", "Filho");
+  const { id: did } = await (await at("/api/kuhinja/citaj", "POST", "/api/kuhinja/citaj", { body: mf })).res.json();
+  const offer = { title: { hr: "Danas" }, dishes: [{ course: "mains", name: { hr: "Obrazi" }, price: 29, wines: [] }] };
+  await db("UPDATE daily_requests SET status = 'ready', result = ?1 WHERE id = ?2", JSON.stringify({ offer }), did);
+  const D = (action) => ({ id: did, action });
+  expect((await at("/api/kuhinja/citaj/:id/:action", "POST", `/api/kuhinja/citaj/${did}/objavi`, { params: D("objavi"),
+    body: JSON.stringify({ offer, by: "Filho" }) })).res.status).toBe(200);
+  await db("UPDATE daily_requests SET status = 'failed' WHERE id = ?1", did);
+  expect((await at("/api/kuhinja/citaj/:id/:action", "POST", `/api/kuhinja/citaj/${did}/ponovi`, { params: D("ponovi"), body: asFilho })).res.status).toBe(200);
+  await db("UPDATE daily_requests SET status = 'ready' WHERE id = ?1", did);
+  expect((await at("/api/kuhinja/citaj/:id/:action", "POST", `/api/kuhinja/citaj/${did}/odustani`, { params: D("odustani"), body: asFilho })).res.status).toBe(200);
+  const pic = await at("/api/kuhinja/media", "POST", `/api/kuhinja/media?date=${date}`, { body: new Uint8Array([9, 8, 7]), headers: { "content-type": "image/webp" } });
+  const mid = (await pic.res.json()).id;
+  expect((await at("/api/kuhinja/media/:id", "DELETE", `/api/kuhinja/media/${mid}`, { params: { id: mid } })).res.status).toBe(200);
+  for (const status of ["draft", "published"])
+    expect((await at("/api/kuhinja/ponuda", "PUT", "/api/kuhinja/ponuda", { body: JSON.stringify({ date, status, ...offer, by: "Filho" }) })).res.status).toBe(200);
+  expect((await at("/api/kuhinja/ponuda", "DELETE", `/api/kuhinja/ponuda?date=${date}`)).res.status).toBe(200);
+
+  /* Filho reads it */
+  const log = await call(H("GET", "/api/dnevnik"), STAFF, { env });
+  expect(log.res.status).toBe(200);
+  const { events } = await log.res.json();
+  expect(events.map((e) => `${e.area}: ${e.what.split(/[: (]/)[0]}`).sort()).toEqual([
+    "ponuda: Dodao", "ponuda: Objavio", "ponuda: Objavio", "ponuda: Obrisao", "ponuda: Obrisao", "ponuda: Odustao",
+    "ponuda: Pokrenuo", "ponuda: Poslao", "ponuda: Spremio",
+    "vina: Ispravio", "vina: Objavio", "vina: Odgovorio", "vina: Odustao", "vina: Pokrenuo", "vina: Poslao",
+  ]);
+  expect(events.every((e) => e.who === "Toni" && e.role === "somm"), JSON.stringify(events.filter((e) => e.who !== "Toni"))).toBe(true);
+  expect(events.find((e) => /^Ispravio/.test(e.what)).what).toBe("Ispravio: Vinar — Vino 2020 (boca 99 €, NOVO isklj.)");
+  /* and the request rows carry his name too */
+  expect((await env.DB.prepare("SELECT created_by, published_by FROM wine_people WHERE request_id = ?1").bind(id).first()))
+    .toEqual({ created_by: "Toni", published_by: "Toni" });
+  expect((await env.DB.prepare("SELECT created_by, published_by FROM daily_requests WHERE id = ?1").bind(did).first()))
+    .toEqual({ created_by: "Toni", published_by: "Toni" });
+});
+
+test("Filho's own writes are logged under the name his page sends; the log is his to read, never Toni's", async () => {
+  const env = envOf();
+  const fd = new FormData(); fd.append("text", "Juha"); fd.append("by", "Jure");
+  await call(H("POST", "/api/kuhinja/citaj"), STAFF, { env, body: fd });
+  const log = await (await call(H("GET", "/api/dnevnik"), STAFF, { env })).res.json();
+  expect(log.events.map((e) => [e.who, e.role])).toEqual([["Jure", "full"]]);
+  /* Toni: refused by the middleware, and by the function itself */
+  const viaMw = await call(H("GET", "/api/dnevnik"), SOMM, { env });
+  expect(viaMw.ran).toBe(false);
+  expect(viaMw.res.status).toBe(403);
+  expect(await viaMw.res.json()).toEqual({ error: "role" });
+  const direct = await H("GET", "/api/dnevnik").fn({ request: req("GET", "https://theatrium.devinos.hr/api/dnevnik", SOMM), env });
+  expect(direct.status).toBe(401);
+  expect(await direct.json()).toEqual({ error: "key" });
+  expect(ACCESS["/api/dnevnik"].GET).toEqual(["full"]);
+});
+
+test("he can bring a wine back — vrati na kartu — including one Filho hid, a glass-only hide, and an old rule", async () => {
+  const w = Object.values(JSON.parse(LIB).wines).find((x) => x.producer);
+  gh.files["data/unavailable.json"] = { sha: "U0", text: JSON.stringify({ _: "x", hidden: [
+    { producer: w.producer, name: w.name, since: "2026-11-01" },
+    { producer: w.producer, name: w.name, where: "glass", since: "2026-11-02" },
+    { name: "Staro pravilo" }] }, null, 1) + "\n" };
+  /* the glass pour back, the rest stays */
+  const step1 = { _: "x", hidden: [{ producer: w.producer, name: w.name, since: "2026-11-01" }, { name: "Staro pravilo" }] };
+  const a = await putKarta("data/unavailable.json", step1, "U0", `Vraćeno na kartu: ${w.producer} ${w.name}`);
+  expect(a.res.status).toBe(200);
+  /* everything back */
+  const b = await putKarta("data/unavailable.json", { _: "x", hidden: [] }, "U1", "2 promjene na karti\n\nVraćeno na kartu: A\nVraćeno na kartu: B");
+  expect(b.res.status).toBe(200);
+  expect(JSON.parse(gh.files["data/unavailable.json"].text).hidden).toEqual([]);
+  expect(gh.puts.map((p) => p.message.split("\n")[0])).toEqual([`Vraćeno na kartu: ${w.producer} ${w.name} — Toni`, "2 promjene na karti — Toni"]);
 });
 
 /* ---- the way round: a card that carries code ----

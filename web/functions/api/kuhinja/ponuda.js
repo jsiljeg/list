@@ -7,10 +7,11 @@
  * Every write goes through normalizeOffer(), so whatever the page sends, what
  * is stored has one shape. */
 import { json, isDate, today, denied, normalizeOffer, readOffer, recentPublished } from "../../_lib/daily.js";
-import { staffOrSomm } from "../../_lib/roles.js";   /* full or somm (web/ROLES.md) */
+import { staffOrSomm, logStaff } from "../../_lib/roles.js";   /* full or somm (web/ROLES.md) */
 
 export async function onRequestGet({ request, env }) {
-  if (!(await staffOrSomm(request, env))) return denied(env);
+  const a = await staffOrSomm(request, env);
+  if (!a) return denied(env);
   const q = new URL(request.url).searchParams;
   const date = isDate(q.get("date")) ? q.get("date") : today();
   const [offer, recent] = await Promise.all([readOffer(env, date), recentPublished(env, 30)]);
@@ -18,7 +19,8 @@ export async function onRequestGet({ request, env }) {
 }
 
 export async function onRequestPut({ request, env }) {
-  if (!(await staffOrSomm(request, env))) return denied(env);
+  const a = await staffOrSomm(request, env);
+  if (!a) return denied(env);
   if (!env.DB) return json({ error: "no_db" }, 503);
   let b;
   try { b = await request.json(); } catch { return json({ error: "body" }, 400); }
@@ -35,13 +37,16 @@ export async function onRequestPut({ request, env }) {
        published_at = CASE WHEN excluded.status = 'published'
                            THEN COALESCE(daily_offers.published_at, excluded.updated_at) END`
   ).bind(b.date, status, JSON.stringify(body), now).run();
+  await logStaff(env, a, b.by, "ponuda", `${status === "published" ? "Objavio" : "Spremio"} dnevnu ponudu za ${b.date} (${body.dishes.length} jela)`, b.date);
   return json({ ok: true, date: b.date, status, updatedAt: now, offer: { date: b.date, status, ...body } });
 }
 
 export async function onRequestDelete({ request, env }) {
-  if (!(await staffOrSomm(request, env))) return denied(env);
+  const a = await staffOrSomm(request, env);
+  if (!a) return denied(env);
   const date = new URL(request.url).searchParams.get("date");
   if (!isDate(date)) return json({ error: "date" }, 400);
   await env.DB.prepare("DELETE FROM daily_offers WHERE date = ?1").bind(date).run();
+  await logStaff(env, a, "", "ponuda", `Obrisao dnevnu ponudu za ${date}`, date);
   return json({ ok: true });
 }

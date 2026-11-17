@@ -12,9 +12,9 @@
  * still writes to GitHub with his own key. Every write is checked against the
  * file as GitHub has it now by _lib/karta.js and committed with the server's
  * KARTA_GH_TOKEN, signed with the key's name — never one the page sends. */
-import { reply, cors, person } from "../_lib/wines.js";
+import { reply, cors } from "../_lib/wines.js";
 import { wineListOrigin } from "../_lib/daily.js";
-import { staffOrSomm } from "../_lib/roles.js";
+import { staffOrSomm, actorName } from "../_lib/roles.js";
 import { FILES, checkList, checkRules, cleanMessage, readFile, writeFile, b64decode } from "../_lib/karta.js";
 
 export const onRequestOptions = ({ request }) => new Response(null, { status: 204, headers: cors(request) });
@@ -57,7 +57,7 @@ export async function onRequestPut({ request, env }) {
     console.log(`karta: refused ${b.file} from ${a.role}: ${why}`);
     return reply(request, { error: "change", why }, 422);
   }
-  const who = a.role === "somm" ? a.who : (person(b.by) || "Filho");
+  const who = actorName(a, b.by);   /* a sommelier is named by his key, never by the page */
   const w = await writeFile(env, b.file, next, cur.sha, cleanMessage(b.message), who);
   if (w.error === "conflict") return reply(request, { error: "conflict" }, 409);
   if (w.error) return reply(request, { error: w.error }, 502);

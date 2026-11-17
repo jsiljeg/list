@@ -175,6 +175,26 @@ GitHub right that still writes those two files, and any right that writes
 them writes the server too (§2.4). The server endpoint is the only way to
 let him change prices without letting him change the rules.
 
+### 3.4b His activities in Filho's history (owner, 2026-11-17)
+
+"We need to see his activities in history, but he should not see any
+history." Every write he can make is attributed with the **name from his
+key on the server** — a `by` the page sends is ignored for a somm key:
+
+| Where | Trail | Povijest shows it as |
+|---|---|---|
+| Karta (86, return, price, NOVO, + čaša) | git commit through `/api/karta`, signed "— Toni", authored Toni | the existing rows (Skinuto, Vraćeno, Cijena, NOVO, Na čašu) |
+| Dodaj vino: send, answer, correct, publish, retry, cancel | `staff_log` row (D1) + `created_by`/`published_by` on the request; publishing also makes the git commit "… joins NOVO — Toni" | **Dodaj vino** · Poslao novo vino / Odgovorio / Ispravio / Objavio na kartu / Pokrenuo ponovno / Odustao |
+| Ponuda: send a menu, publish, retry, cancel, offer save/publish/delete, photo add/delete | `staff_log` row (D1) + `created_by`/`published_by` on the request | **Ponuda** · Poslao jelovnik / Objavio / Spremio / Obrisao / Dodao fotografiju … |
+
+- `staff_log (at, who, role, area, what, ref)` is in web/schema.sql; the
+  deploy's `schema.sql` run creates it (`CREATE TABLE IF NOT EXISTS`).
+  `logStaff()` in roles.js writes it and never fails the write it records.
+  Filho's own writes are logged too, under the name his page sends.
+- **`GET /api/dnevnik`** reads it, and `ACCESS` gives it to **full only**:
+  the middleware refuses a somm key with 403, the function with 401. Only
+  js/admin-history.js (full mode only) calls it.
+
 ### 3.5 The page: his tabs are the only tabs that exist
 
 - The mode is read off the key: a `somm_` key is somm mode, anything else is
@@ -262,6 +282,7 @@ ways to look at it without touching production:
 - [x] Investigation and plan (this file)
 - [x] Server: roles.js, middleware, opt-in endpoints, /api/uloga, /api/karta
 - [x] Page: somm mode, tabs built per mode, Povijest moved out, demo mode
-- [x] Tests written and run: tests/roles.spec.mjs (18), tests/admin-somm.spec.mjs (9), all three viewports
+- [x] Tests written and run: tests/roles.spec.mjs, tests/admin-somm.spec.mjs, all three viewports
 - [x] PR opened (not merged, not deployed)
+- [x] His activities in Povijest (§3.4b): staff_log + /api/dnevnik (full only); tests: roles.spec 21, admin-somm.spec 10
 - [ ] Owner: manual test, then `KARTA_GH_TOKEN` and Toni's key (§4)

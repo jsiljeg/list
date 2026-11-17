@@ -6,13 +6,14 @@
  * for ever. 1.5 MB cap: D1 rows top out at 2 MB, and a phone photo that is
  * still this big after resizing was not resized. */
 import { json, isDate, denied } from "../../_lib/daily.js";
-import { staffOrSomm } from "../../_lib/roles.js";   /* full or somm (web/ROLES.md) */
+import { staffOrSomm, logStaff } from "../../_lib/roles.js";   /* full or somm (web/ROLES.md) */
 
 const TYPES = ["image/webp", "image/jpeg", "image/png", "image/avif"];
 const MAX = 1_500_000;
 
 export async function onRequestPost({ request, env }) {
-  if (!(await staffOrSomm(request, env))) return denied(env);
+  const a = await staffOrSomm(request, env);
+  if (!a) return denied(env);
   if (!env.DB) return json({ error: "no_db" }, 503);
   const q = new URL(request.url).searchParams;
   const date = q.get("date");
@@ -29,5 +30,6 @@ export async function onRequestPost({ request, env }) {
     `INSERT OR IGNORE INTO media (id, date, mime, width, height, bytes, created_at)
      VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)`
   ).bind(hash, date, mime, w, h, bytes, new Date().toISOString()).run();
+  await logStaff(env, a, "", "ponuda", `Dodao fotografiju za ${date}`, hash);
   return json({ ok: true, id: hash, url: `/media/${hash}` }, 201);
 }

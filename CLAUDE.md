@@ -2038,4 +2038,9 @@ touching any of it:
   tabs and loads js/admin-history.js + js/admin-expenses.js for a full key
   only. Never put them back in the static page or load them unconditionally —
   admin-expenses prefetches Troškovi 1.5 s after load.
+- **Everything he does is in Filho's Povijest, and none of it is his to
+  read.** Karta through signed commits; every Dodaj vino and Ponuda write
+  calls `logStaff()` (D1 `staff_log`, name from the key, never from `by`),
+  read by Povijest through `/api/dnevnik`, full only. A new write endpoint
+  he can reach must log too.
 - Demo: `admin.html?demo&uloga=somm`.

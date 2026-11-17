@@ -27,6 +27,12 @@
          failure there must not cost the wine list its history */
       const expenses = fetch("https://theatrium.devinos.hr/api/troskovi/povijest", { headers: { Authorization: "Bearer " + token } })
         .then((r) => (r.ok ? r.json() : { events: [] })).then((b) => b.events || []).catch(() => []);
+      /* Dodaj vino and Ponuda keep theirs in D1 (staff_log), named by the
+         server — the sommelier's work among it (owner, 2026-11-17: "we need
+         to see his activities in history, but he should not see any
+         history"; /api/dnevnik is full keys only) */
+      const staff = fetch("https://theatrium.devinos.hr/api/dnevnik", { headers: { Authorization: "Bearer " + token } })
+        .then((r) => (r.ok ? r.json() : { events: [] })).then((b) => b.events || []).catch(() => []);
       const lists = await Promise.all(paths.map((p) => fetch(
         `https://api.github.com/repos/jsiljeg/list/commits?sha=main&path=${encodeURIComponent(p)}&per_page=40`,
         { headers: { Authorization: "Bearer " + token, Accept: "application/vnd.github+json" } }).then((r) => (r.ok ? r.json() : []))));
@@ -42,7 +48,7 @@
         : /^Cijena:/.test(m) ? "cijena" : /^Na čašu:/.test(m) ? "casa" : /^NOVO:/.test(m) ? "flag"
         : /joins NOVO|joins the list|joins|^Novo vino|^Dodaj vino/i.test(m) ? "novo" : null);
       const label = { novo: "Dodano", makn: "Skinuto", vrac: "Vraćeno", cijena: "Cijena", casa: "Na čašu", flag: "NOVO",
-                      placeno: "PLAĆENO", neplaceno: "NEPLAĆENO" };
+                      placeno: "PLAĆENO", neplaceno: "NEPLAĆENO", vina: "Dodaj vino", ponuda: "Ponuda" };
       const entries = [];
       for (const c of rows) {
         const lines = c.commit.message.split("\n");
@@ -63,6 +69,9 @@
       const money = (n) => (n == null ? "" : " · " + new Intl.NumberFormat("hr-HR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n) + " €");
       for (const e of await expenses) {
         entries.push({ at: e.at, item: `Račun: ${e.vendor || "bez naziva"}${money(e.amount)}`, k: e.action, by: e.who || "?" });
+      }
+      for (const e of await staff) {
+        if (e.area === "vina" || e.area === "ponuda") entries.push({ at: e.at, item: e.what, k: e.area, by: e.who || "?" });
       }
       entries.sort((a, b) => b.at.localeCompare(a.at));
       box.innerHTML = entries.slice(0, 80).map(({ at, item, k, by }) => {

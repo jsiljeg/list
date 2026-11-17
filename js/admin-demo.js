@@ -168,6 +168,9 @@
       return json({ content: { sha: "demo" + ++sha } });
     }
 
+    /* the staff log Povijest shows beside git (full only — refused above for somm) */
+    if (p === "/api/dnevnik") return json({ events: [] });
+
     /* Troškovi */
     if (p === "/api/troskovi" && method === "GET") {
       const off = Number(q.get("offset") || 0), lim = Number(q.get("limit") || 150), page = st.receipts.slice(off, off + lim);

@@ -6,7 +6,7 @@
  *
  * A staff GET also pumps the queue. */
 import { reply, isWorker } from "../../../_lib/wines.js";
-import { staffOrSomm, forRole } from "../../../_lib/roles.js";
+import { staffOrSomm, forRole, actorName, logStaff } from "../../../_lib/roles.js";
 import { isDate } from "../../../_lib/daily.js";
 import { today, newId, clip, person, shape, storePhoto, pump, limits, MAX_PHOTOS } from "../../../_lib/daily-intake.js";
 
@@ -43,7 +43,8 @@ export async function onRequestPost({ request, env }) {
   await env.DB.prepare(
     `INSERT INTO daily_requests (id, date, created_at, updated_at, status, text, remark, photos, runs, created_by)
      VALUES (?1, ?2, ?3, ?3, 'queued', ?4, ?5, ?6, 0, ?7)`)
-    .bind(id, date, now, text, clip(form.get("remark"), 300), JSON.stringify(photos), (a.role === "somm" ? a.who : person(form.get("by"))) || null).run();
+    .bind(id, date, now, text, clip(form.get("remark"), 300), JSON.stringify(photos), actorName(a, form.get("by"))).run();
+  await logStaff(env, a, form.get("by"), "ponuda", `Poslao jelovnik za ${date}${files.length ? ` (${files.length} foto)` : ""}`, id);
   const pumped = await pump(env);
   return reply(request, { ok: true, id, pumped }, 201);
 }

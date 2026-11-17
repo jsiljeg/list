@@ -33,16 +33,16 @@ const FILHO = "github_pat_fake";
 const LIST = readFileSync(new URL("../lists/theatrium.json", import.meta.url), "utf8");
 const LIB = JSON.parse(readFileSync(new URL("../library/wines.json", import.meta.url), "utf8")).wines;
 /* Troškovi's and Povijest's data, code, and the files only they read */
-const FORBIDDEN = /\/api\/(troskovi|prihodi)|api\.github\.com|\/admin-expenses\.js|\/admin-history\.js|till-map|buy-map|list-since/;
+const FORBIDDEN = /\/api\/(troskovi|prihodi|dnevnik)|api\.github\.com|\/admin-expenses\.js|\/admin-history\.js|till-map|buy-map|list-since/;
 const b64 = (s) => Buffer.from(s, "utf8").toString("base64");
 const unb64 = (s) => Buffer.from(s, "base64").toString("utf8");
 
 /** The venue's server and the published files, in memory. Every request the
     page makes is recorded in `state.requests`. */
-async function site(page, { enrolled = true } = {}) {
+async function site(page, { enrolled = true, hidden = [] } = {}) {
   const state = {
     requests: [], karta: [], refused: [],
-    files: { "lists/theatrium.json": { doc: JSON.parse(LIST), sha: "L0" }, "data/unavailable.json": { doc: { _: "x", hidden: [] }, sha: "U0" } },
+    files: { "lists/theatrium.json": { doc: JSON.parse(LIST), sha: "L0" }, "data/unavailable.json": { doc: { _: "x", hidden }, sha: "U0" } },
     vina: [], citaj: [], offer: null, posts: [],
   };
   page.on("request", (r) => state.requests.push(`${r.method()} ${r.url()}`));
@@ -110,6 +110,10 @@ async function site(page, { enrolled = true } = {}) {
       vendor: "TAJNI DOBAVLJAČ d.o.o.", doc_date: new Date().toISOString().slice(0, 10), total: 777.77, vat: null, payment: "gotovina",
       items: [{ name: "Tajna stavka", key: "tajna", qty: 1, unit: "kom", unit_price: 777.77, total: 777.77, category: "meso" }],
       photos: [], note: "", created_by: "Filho" }], limits: { ready: true } });
+    /* Dodaj vino and Ponuda's staff log, as the server writes it (full keys only) */
+    if (p === "/api/dnevnik") return send(route, { events: [
+      { at: "2026-11-03T10:00:00Z", who: "Toni", role: "somm", area: "vina", what: "Poslao novo vino (boca 95 €, 2 foto)", ref: "r1" },
+      { at: "2026-11-03T09:00:00Z", who: "Toni", role: "somm", area: "ponuda", what: "Objavio dnevnu ponudu za 2026-11-03 (4 jela)", ref: "d1" }] });
     if (p === "/api/troskovi/povijest") return send(route, { events: [{ at: "2026-11-02T10:00:00Z", who: "Filho", action: "placeno", vendor: "TAJNI DOBAVLJAČ d.o.o.", amount: 777.77 }] });
     if (p.startsWith("/api/prihodi")) return send(route, {});
     return send(route, { items: [] });
@@ -207,8 +211,10 @@ test("as the sommelier: hide, return, a price, NOVO and + čaša all work — th
   await expect.poll(() => putsTo("data/unavailable.json"), { timeout: 15000 }).toBe(1);
   expect(state.files["data/unavailable.json"].doc.hidden.map((h) => h.name)).toEqual([name]);
   await one.locator(".sw").click();
+  await expect(one.locator(".nema.all")).toHaveText(/vrati/);       /* "vrati na kartu" / "vrati sve" */
   await one.locator(".nema.all").click();
   await expect.poll(() => putsTo("data/unavailable.json"), { timeout: 15000 }).toBe(2);
+  expect(state.karta.filter((k) => k.file === "data/unavailable.json").at(-1).message).toMatch(/^Vraćeno na kartu: /);
   expect(state.files["data/unavailable.json"].doc.hidden).toEqual([]);
 
   /* a price */
@@ -269,6 +275,45 @@ test("as the sommelier: Dodaj vino sends a bottle, Ponuda sends a menu", async (
   await page.waitForTimeout(2000);
   expect(forbidden(state)).toEqual([]);
   expect(state.refused).toEqual([]);
+});
+
+test("as the sommelier: vrati na kartu brings back a wine Filho hid, and a glass pour on its own", async ({ page }) => {
+  /* two wines Filho had hidden: one everywhere, one only by the glass */
+  const list = JSON.parse(LIST);
+  const both = new Map();
+  for (const s of list.sections) for (const c of s.categories) for (const g of c.groups) for (const it of g.items) {
+    const w = LIB[it.ref];
+    if (!w || !w.producer) continue;
+    const e = both.get(it.ref) || { w, glass: false, bottle: false };
+    if (s.id === "glass") e.glass = true; else if (s.id.startsWith("bottle")) e.bottle = true;
+    both.set(it.ref, e);
+  }
+  const [x, y] = [...both.values()].filter((e) => e.glass && e.bottle);
+  const state = await site(page, { hidden: [
+    { producer: x.w.producer, name: x.w.name, since: "2026-11-01" },
+    { producer: y.w.producer, name: y.w.name, where: "glass", since: "2026-11-02" }] });
+  await login(page, SOMM);
+  await waitRows(page);
+  await expect(page.locator("#n-hidden")).toHaveText("2");
+  /* everything back on x */
+  await page.fill("#q", x.w.name);
+  const rx = page.locator(".row").filter({ hasText: x.w.name }).filter({ hasText: x.w.producer }).first();
+  await rx.locator(".sw").click();
+  await expect(rx.locator(".nema.all")).toContainText("vrati");
+  await rx.locator(".nema.all").click();
+  await expect.poll(() => state.karta.filter((k) => !k.why).length, { timeout: 15000 }).toBe(1);
+  /* only the glass back on y */
+  await page.fill("#q", y.w.name);
+  const ry = page.locator(".row").filter({ hasText: y.w.name }).filter({ hasText: y.w.producer }).first();
+  await ry.locator(".sw").click();
+  await expect(ry.locator('.nema[data-w="glass"]')).toContainText("vrati");
+  await ry.locator('.nema[data-w="glass"]').click();
+  await expect.poll(() => state.karta.filter((k) => !k.why).length, { timeout: 15000 }).toBe(2);
+  expect(state.files["data/unavailable.json"].doc.hidden).toEqual([]);
+  expect(state.karta.map((k) => k.message.split("\n")[0])).toEqual([`Vraćeno na kartu: ${x.w.producer} ${x.w.name}`, `Vraćeno na kartu: ${y.w.producer} ${y.w.name}`]);
+  expect(state.karta.filter((k) => k.why)).toEqual([]);
+  await expect(page.locator("#n-hidden")).toHaveText("0");
+  expect(forbidden(state)).toEqual([]);
 });
 
 test("a sommelier key the server does not know draws nothing", async ({ page }) => {
@@ -338,6 +383,11 @@ test("Filho's page is unchanged: five tabs, Povijest and Troškovi load, the boa
   await expect(page.locator("#tab-povijest .hist").first()).toBeVisible();
   await expect(page.locator("#tab-povijest")).toContainText(/tajni/i);
   expect(state.requests.some((r) => /api\.github\.com\/repos\/jsiljeg\/list\/commits/.test(r))).toBe(true);
+  /* Toni's work in Dodaj vino and Ponuda, from the server's log, by his name */
+  const rows = await page.locator("#tab-povijest .hist").evaluateAll((els) => els.map((e) =>
+    `${e.querySelector(".badge").textContent}|${e.querySelector(".what").textContent}`));
+  expect(rows).toContain("Dodaj vino|Poslao novo vino (boca 95 €, 2 foto) · Toni");
+  expect(rows).toContain("Ponuda|Objavio dnevnu ponudu za 2026-11-03 (4 jela) · Toni");
   await page.click('.tabs button[data-tab="troskovi"]');
   await page.locator('[data-sub="racuni"]').click();
   await expect(page.locator("#tab-troskovi")).toContainText(/tajni/i);

@@ -17,7 +17,7 @@
  *      the functions that opted in call staffOrSomm().
  * tests/roles.spec.mjs fails if a route file has a handler this table does
  * not declare, or the table declares one that does not exist. */
-import { isStaffAsync } from "./wines.js";
+import { isStaffAsync, person } from "./wines.js";
 
 export const ACCESS = {
   "/api/availability":                { GET: ["public"] },
@@ -27,6 +27,7 @@ export const ACCESS = {
   "/api/stat":                        { GET: ["public"], POST: ["public"], OPTIONS: ["public"] },
 
   "/api/uloga":                       { GET: ["full", "somm"], OPTIONS: ["public"] },
+  "/api/dnevnik":                     { GET: ["full"], OPTIONS: ["public"] },
   "/api/karta":                       { GET: ["full", "somm"], PUT: ["full", "somm"], OPTIONS: ["public"] },
 
   "/api/vina":                        { GET: ["full", "somm", "worker", "reader"], POST: ["full", "somm"] },
@@ -120,6 +121,23 @@ export async function staffOrSomm(request, env) {
     return who ? { role: "somm", who } : null;
   }
   return (await isStaffAsync(request, env)) ? { role: "full", who: "" } : null;
+}
+
+/* The name a write is recorded under. A sommelier's is the server's, from
+   his key — whatever the page sends as `by`. A full key's is what its page
+   says (Filho's page sends "Filho", the owner's "Jure"), as before. */
+export const actorName = (a, by) => (a && a.role === "somm" ? a.who : person(by) || "Filho");
+
+/* One line in staff_log (schema.sql), for Povijest (owner, 2026-11-17: "we
+   need to see his activities in history, but he should not see any
+   history"). Every write Dodaj vino and Ponuda can make calls this; Karta's
+   are in git. Never throws: a log line must not fail the write it records. */
+export async function logStaff(env, a, by, area, what, ref = "") {
+  if (!a || !env || !env.DB) return;
+  try {
+    await env.DB.prepare("INSERT INTO staff_log (at, who, role, area, what, ref) VALUES (?1, ?2, ?3, ?4, ?5, ?6)")
+      .bind(new Date().toISOString(), actorName(a, by), a.role, area, String(what).slice(0, 300), String(ref || "").slice(0, 120)).run();
+  } catch (e) { console.log(`staff_log: ${e}`); }
 }
 
 /* What a Claude run cost is the owner's, not the sommelier's. */
