@@ -21,7 +21,7 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#161513">
-<title>Theatrium — čega nema i cijene</title>
+<title>Theatrium · osoblje</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -507,25 +507,21 @@ button{font:inherit;cursor:pointer}
 <!-- ---------- PIN gate ---------- -->
 <section id="gate" class="gate">
   <h1>Theatrium</h1>
-  <p>Čega trenutno nema, i cijene. Samo za osoblje.</p>
+  <p>Samo za osoblje.</p>
   <input id="pin" type="password" inputmode="numeric" autocomplete="off" placeholder="PIN">
   <button class="btn" id="pin-go">Otvori</button>
   <div class="err" id="pin-err"></div>
-  <p class="muted" style="margin-top:28px">PIN samo sprječava da netko slučajno
-  otvori ovu stranicu. Ništa se ne može promijeniti bez GitHub ključa
-  spremljenog na ovom tabletu.</p>
 </section>
 
 <!-- ---------- token setup ---------- -->
 <section id="setup" class="gate hidden">
   <h1>Ključ</h1>
-  <p>Zalijepite svoj ključ: GitHub token (fine-grained, samo <code>jsiljeg/list</code>,
-     dozvola <b>Contents: Read and write</b>) ili ključ somelijera
-     (<code>somm_…</code>) koji ste dobili od vlasnika. Ostaje spremljen na
-     ovom tabletu.</p>
-  <input id="token" type="password" autocomplete="off" placeholder="github_pat_… ili somm_…"
+  <!-- Owner, 2026-11-17: the page tells a visitor nothing about how access
+       works — no key formats, no permissions, no repository. What a key is
+       and where it comes from is in web/ROLES.md and CLAUDE.md. -->
+  <input id="token" type="password" autocomplete="off" placeholder="Ključ"
          style="letter-spacing:normal;font-size:15px">
-  <button class="btn" id="token-go">Spremi i provjeri</button>
+  <button class="btn" id="token-go">Spremi</button>
   <div class="err" id="token-err"></div>
 </section>
 

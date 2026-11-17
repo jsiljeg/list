@@ -1481,3 +1481,22 @@ test("the till check names an overcharge, an old price, a bottle price on a glas
   const got = tillProblems({ history, tillMap, list, library, since: "2026-11-14" }).map((p) => `${p.kind}:${p.art}`);
   expect(got).toEqual(["PREPLATA:OVER 2020", "VELIČINA:A 0,1", "STARA CIJENA:OLD 2019", "BERBA:OLD 2019"]);
 });
+
+test("the staff page tells a visitor nothing about how access works", () => {
+  /* Owner, 2026-11-17: "from security perspective I don't want such messages
+     public". The gate and key screens used to explain that the PIN guards
+     nothing, that a GitHub fine-grained token with Contents write on
+     jsiljeg/list opens the board, and what a sommelier key looks like. Added
+     with the change, not run (standing rule). */
+  const html = readFileSync(resolve(ROOT, "admin.html"), "utf8");
+  const visible = (id) => {
+    const s = html.indexOf(`id="${id}"`), e = html.indexOf("</section>", s);
+    return html.slice(s, e).replace(/<!--[\s\S]*?-->/g, "").replace(/<[^>]+>/g, " ");
+  };
+  const placeholders = (html.match(/placeholder="[^"]*"/g) || []).join(" ");
+  for (const text of [visible("gate"), visible("setup"), placeholders])
+    expect(text).not.toMatch(/github|pat_|somm_|jsiljeg|Contents|token|fine-grained|sprječava/i);
+  const js = readFileSync(resolve(ROOT, "js/admin.js"), "utf8");
+  const shown = (js.match(/textContent = [^;]+;|new Error\([^)]*\)/g) || []).join(" ");
+  expect(shown).not.toMatch(/fine-grained|Contents: Read|jsiljeg\/list/);
+});

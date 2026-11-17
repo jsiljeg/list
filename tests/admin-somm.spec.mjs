@@ -321,13 +321,13 @@ test("a sommelier key the server does not know draws nothing", async ({ page }) 
   await page.goto("/admin.html");
   await page.fill("#pin", PIN); await page.click("#pin-go");
   await page.fill("#token", SOMM); await page.click("#token-go");
-  await expect(page.locator("#token-err")).toContainText("nije odobren");
+  await expect(page.locator("#token-err")).toContainText("nije prihvaćen");
   await expect(page.locator("#main")).toBeHidden();
   /* stored by an earlier visit: the same on the next load */
   await page.evaluate((k) => localStorage.setItem("theatrium-admin-token", k), SOMM);
   await page.reload();
   await page.fill("#pin", PIN); await page.click("#pin-go");
-  await expect(page.locator("#token-err")).toContainText("nije odobren");
+  await expect(page.locator("#token-err")).toContainText("nije prihvaćen");
   await expect(page.locator("#main")).toBeHidden();
   await expect(page.locator(".row")).toHaveCount(0);
   expect(forbidden(state)).toEqual([]);

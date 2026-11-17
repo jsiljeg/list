@@ -162,13 +162,13 @@ $("token-go").addEventListener("click", async () => {
       const r = await fetch(`${SITE_API}/uloga`, { headers: { authorization: "Bearer " + t }, cache: "no-store" });
       const j = r.ok ? await r.json().catch(() => ({})) : {};
       if (j.role !== "somm") throw new Error(r.status === 401 || r.status === 403
-        ? "Ovaj ključ nije odobren. Javite vlasniku." : `Provjera nije uspjela (${r.status}).`);
+        ? "Ključ nije prihvaćen." : `Provjera nije uspjela (${r.status}).`);
     } else {
       const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${PATH}?ref=${BRANCH}`,
         { headers: ghHeaders(t) });
+      /* Owner, 2026-11-17: say nothing about what kind of key would work. */
       if (!r.ok) throw new Error(r.status === 401 || r.status === 403
-        ? "GitHub odbija ovaj ključ. Provjerite da je fine-grained, za jsiljeg/list, s dozvolom Contents: Read and write."
-        : `GitHub je vratio ${r.status}.`);
+        ? "Ključ nije prihvaćen." : `Provjera nije uspjela (${r.status}).`);
     }
     localStorage.setItem(LS_TOKEN, t);
     token = t;
@@ -236,7 +236,7 @@ async function start() {
     if (!j || j.role !== "somm") {
       $("setup").classList.remove("hidden");
       $("token-err").textContent = j && (j.status === 401 || j.status === 403)
-        ? "Ovaj ključ nije odobren. Javite vlasniku."
+        ? "Ključ nije prihvaćen."
         : "Ne mogu provjeriti ključ — provjerite mrežu i otvorite stranicu ponovno.";
       return;
     }
