@@ -18,6 +18,15 @@
  *     account is refused there. Revoking it on github.com/settings/tokens
  *     takes a minute and locks it out of both.
  *
+ * Two kinds of key, two pages (web/ROLES.md, owner 2026-11-17). A GitHub key
+ * is Filho's or the owner's: all five tabs, writes straight to GitHub, as
+ * before. A "somm_…" key is the head sommelier's: the server says who he is
+ * (/api/uloga), the page builds Karta, Dodaj vino and Ponuda only — Povijest
+ * and Troškovi are not in admin.html at all and their scripts are never
+ * loaded — and the board reads and writes through /api/karta, because he has
+ * no GitHub key. The server refuses him everything else whatever this page
+ * does; this page is the second lock, not the first.
+ *
  * Prices are edited here too (owner, 2026-10-10: "so Filho could do it by
  * himself"). Tapping a price opens a field; saving rewrites `price` on that one
  * listing in lists/theatrium.json through the same contents API, the same
@@ -49,6 +58,15 @@ const BRANCH = "main";
    screen and not a credential. The token is the credential. */
 const PIN = "7777";
 const LS_TOKEN = "theatrium-admin-token";
+/* theatrium.devinos.hr's /api: who a sommelier key is, and his board's writes */
+const SITE_API = window.ADMIN_API || "https://theatrium.devinos.hr/api";
+const isSommKey = (t) => /^somm_/.test(String(t || ""));
+/* "full" (a GitHub key) or "somm"; set in start() and never changed after —
+   a different key means a reload (see the storage listener below). */
+let mode = "";
+window.adminMode = () => mode;
+/* The version the page was deployed with, for the scripts loaded later. */
+const VERSION = (() => { try { return new URL(document.currentScript.src).searchParams.get("v") || ""; } catch (e) { return ""; } })();
 /* Who is making the change (owner, 2026-10-11): the GitHub key on the device
    says it. Filho's phone keeps the key it has; the owner uses a second key
    of his own. GitHub shows the same account for both, so the page tells them
@@ -65,7 +83,8 @@ const DEFAULT_PERSON = "Filho";
 let who = "";
 let keyPrint = "";
 const authorOf = (name) => ({ name, email: `${name.toLowerCase().replace(/[^a-z0-9]+/g, "")}@theatrium-admin.invalid` });
-const signed = (message) => message.replace(/^([^\n]*)/, `$1 — ${who}`);
+/* the server signs a sommelier's commits with his name; the page does not */
+const signed = (message) => (mode === "somm" ? message : message.replace(/^([^\n]*)/, `$1 — ${who}`));
 window.adminWho = () => who;
 async function keyFingerprint(t) {
   const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t));
@@ -138,11 +157,19 @@ $("token-go").addEventListener("click", async () => {
   if (!t) return;
   $("token-err").textContent = "provjeravam…";
   try {
-    const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${PATH}?ref=${BRANCH}`,
-      { headers: ghHeaders(t) });
-    if (!r.ok) throw new Error(r.status === 401 || r.status === 403
-      ? "GitHub odbija ovaj ključ. Provjerite da je fine-grained, za jsiljeg/list, s dozvolom Contents: Read and write."
-      : `GitHub je vratio ${r.status}.`);
+    if (isSommKey(t)) {
+      /* a sommelier key is the server's: only the server can say it is one */
+      const r = await fetch(`${SITE_API}/uloga`, { headers: { authorization: "Bearer " + t }, cache: "no-store" });
+      const j = r.ok ? await r.json().catch(() => ({})) : {};
+      if (j.role !== "somm") throw new Error(r.status === 401 || r.status === 403
+        ? "Ovaj ključ nije odobren. Javite vlasniku." : `Provjera nije uspjela (${r.status}).`);
+    } else {
+      const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${PATH}?ref=${BRANCH}`,
+        { headers: ghHeaders(t) });
+      if (!r.ok) throw new Error(r.status === 401 || r.status === 403
+        ? "GitHub odbija ovaj ključ. Provjerite da je fine-grained, za jsiljeg/list, s dozvolom Contents: Read and write."
+        : `GitHub je vratio ${r.status}.`);
+    }
     localStorage.setItem(LS_TOKEN, t);
     token = t;
     $("setup").classList.add("hidden");
@@ -156,6 +183,10 @@ $("logout").addEventListener("click", () => {
   localStorage.removeItem(LS_TOKEN);
   location.reload();
 });
+/* A key changed in another tab of this browser (Filho logs out, Toni logs
+   in): this page reloads rather than carry on with what it holds in memory
+   under a key that is no longer the one on the device. */
+addEventListener("storage", (e) => { if (e.key === LS_TOKEN || e.key === null) location.reload(); });
 
 const ghHeaders = (t) => ({
   "Authorization": "Bearer " + (t || token),
@@ -164,10 +195,57 @@ const ghHeaders = (t) => ({
 });
 
 /* ---------- load ---------- */
+/* Povijest and Troškovi exist only for a full key: their buttons, their
+   containers and their scripts are added here and nowhere else, so a
+   sommelier's page never has them in the DOM, never runs their code, and
+   never asks for their data (web/ROLES.md §3.5). */
+const FULL_TABS = [["povijest", "Povijest"], ["troskovi", "Troškovi"]];
+const FULL_SCRIPTS = ["admin-history", "admin-expenses"];
+function mountFull() {
+  if (mode !== "full") return null;
+  if ($("tab-troskovi")) return window.adminReady;
+  const nav = document.querySelector(".tabs");
+  for (const [id, label] of FULL_TABS) {
+    const b = document.createElement("button");
+    b.dataset.tab = id; b.textContent = label;
+    nav.appendChild(b);
+    const box = document.createElement("div");
+    box.id = "tab-" + id; box.className = "hidden";
+    $("main").appendChild(box);
+  }
+  window.adminReady = Promise.all(FULL_SCRIPTS.map((f) => new Promise((res) => {
+    const s = document.createElement("script");
+    s.src = `js/${f}.js${VERSION ? "?v=" + VERSION : ""}`;
+    s.async = false;
+    s.onload = s.onerror = res;
+    document.body.appendChild(s);
+  })));
+  return window.adminReady;
+}
+
 async function start() {
-  $("main").classList.remove("hidden");
   keyPrint = await keyFingerprint(token);
-  who = KEY_PEOPLE[keyPrint] || DEFAULT_PERSON;
+  mode = isSommKey(token) ? "somm" : "full";
+  if (mode === "somm") {
+    /* Nothing is drawn until the server says this key is a sommelier's. */
+    let j = null;
+    try {
+      const r = await fetch(`${SITE_API}/uloga`, { headers: { authorization: "Bearer " + token }, cache: "no-store" });
+      j = r.ok ? await r.json() : { status: r.status };
+    } catch (e) { j = null; }
+    if (!j || j.role !== "somm") {
+      $("setup").classList.remove("hidden");
+      $("token-err").textContent = j && (j.status === 401 || j.status === 403)
+        ? "Ovaj ključ nije odobren. Javite vlasniku."
+        : "Ne mogu provjeriti ključ — provjerite mrežu i otvorite stranicu ponovno.";
+      return;
+    }
+    who = j.who || "Somelijer";
+  } else {
+    who = KEY_PEOPLE[keyPrint] || DEFAULT_PERSON;
+    mountFull();
+  }
+  $("main").classList.remove("hidden");
   $("who").textContent = who;
   $("who").title = `ključ ${keyPrint}`;
   window.adminKeyPrint = keyPrint;
@@ -219,10 +297,42 @@ function collect(library, list) {
   return [...seen.values()];
 }
 
+/* Where the board's two files are read and written. A full key: GitHub, as
+   it always was. A sommelier key: /api/karta, which answers in GitHub's own
+   envelope and checks every write (web/ROLES.md §3.4). */
+const readUrl = (path) => (mode === "somm"
+  ? `${SITE_API}/karta?file=${encodeURIComponent(path)}&t=${Date.now()}`
+  : `https://api.github.com/repos/${REPO}/contents/${path}?ref=${BRANCH}&t=${Date.now()}`);
+const readHeaders = () => (mode === "somm" ? { authorization: "Bearer " + token } : ghHeaders());
+const writeFile = (path, content, sha, message) => (mode === "somm"
+  ? fetch(`${SITE_API}/karta`, {
+    method: "PUT",
+    headers: { authorization: "Bearer " + token, "Content-Type": "application/json" },
+    body: JSON.stringify({ file: path, message, content, sha, by: who })
+  })
+  : fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    method: "PUT",
+    headers: { ...ghHeaders(), "Content-Type": "application/json" },
+    body: JSON.stringify({ message: signed(message), content, sha, branch: BRANCH, author: authorOf(who) })
+  }));
+const SERVER_SAYS = {
+  not_configured: "pisanje na kartu s ovim ključem još nije uključeno — javite vlasniku",
+  change: "ova promjena nije dopuštena",
+  role: "ovaj ključ to ne smije",
+  key: "ključ nije odobren"
+};
+async function writeError(r) {
+  const t = await r.text().catch(() => "");
+  if (mode === "somm") {
+    let e = ""; try { e = JSON.parse(t).error; } catch (x) { /* not JSON */ }
+    return new Error(SERVER_SAYS[e] || `poslužitelj ${r.status}`);
+  }
+  return new Error(`GitHub ${r.status}${t ? " — " + t.slice(0, 120) : ""}`);
+}
+
 async function loadList() {
-  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${LIST_PATH}?ref=${BRANCH}&t=${Date.now()}`,
-    { headers: ghHeaders(), cache: "no-store" });
-  if (!r.ok) throw new Error(`GitHub ${r.status} pri čitanju ${LIST_PATH}`);
+  const r = await fetch(readUrl(LIST_PATH), { headers: readHeaders(), cache: "no-store" });
+  if (!r.ok) throw new Error(`${mode === "somm" ? "poslužitelj" : "GitHub"} ${r.status} pri čitanju ${LIST_PATH}`);
   const j = await r.json();
   listSha = j.sha;
   listDoc = JSON.parse(b64decode(j.content));
@@ -333,9 +443,8 @@ function addGlass(key, text) {
 }
 
 async function loadRules() {
-  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${PATH}?ref=${BRANCH}&t=${Date.now()}`,
-    { headers: ghHeaders(), cache: "no-store" });
-  if (!r.ok) throw new Error(`GitHub ${r.status} pri čitanju ${PATH}`);
+  const r = await fetch(readUrl(PATH), { headers: readHeaders(), cache: "no-store" });
+  if (!r.ok) throw new Error(`${mode === "somm" ? "poslužitelj" : "GitHub"} ${r.status} pri čitanju ${PATH}`);
   const j = await r.json();
   sha = j.sha;
   const doc = JSON.parse(b64decode(j.content));
@@ -625,20 +734,13 @@ async function put(next, message) {
     _: "Vina koja se trenutno NE prikazuju gostima. Uređuje se preko /admin.html ili ručno.",
     hidden: next
   }, null, 1) + "\n";
-  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${PATH}`, {
-    method: "PUT",
-    headers: { ...ghHeaders(), "Content-Type": "application/json" },
-    body: JSON.stringify({ message: signed(message), content: b64encode(body), sha, branch: BRANCH, author: authorOf(who) })
-  });
+  const r = await writeFile(PATH, b64encode(body), sha, message);
   if (r.status === 409) {
     await loadRules();
     render();
     throw new Error("netko je u međuvremenu mijenjao popis — osvježeno, ponovite izmjenu");
   }
-  if (!r.ok) {
-    const t = await r.text().catch(() => "");
-    throw new Error(`GitHub ${r.status}${t ? " — " + t.slice(0, 120) : ""}`);
-  }
+  if (!r.ok) throw await writeError(r);
   const j = await r.json();
   sha = j.content && j.content.sha;
 }
@@ -650,20 +752,13 @@ async function put(next, message) {
    newline), so the commit diff is the price lines and nothing else. */
 async function putList(message) {
   const body = JSON.stringify(listDoc, null, 1) + "\n";
-  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${LIST_PATH}`, {
-    method: "PUT",
-    headers: { ...ghHeaders(), "Content-Type": "application/json" },
-    body: JSON.stringify({ message: signed(message), content: b64encode(body), sha: listSha, branch: BRANCH, author: authorOf(who) })
-  });
+  const r = await writeFile(LIST_PATH, b64encode(body), listSha, message);
   if (r.status === 409) {
     await loadList();
     render();
     throw new Error("karta je u međuvremenu promijenjena — osvježeno, ponovite cijenu");
   }
-  if (!r.ok) {
-    const t = await r.text().catch(() => "");
-    throw new Error(`GitHub ${r.status}${t ? " — " + t.slice(0, 120) : ""}`);
-  }
+  if (!r.ok) throw await writeError(r);
   const j = await r.json();
   listSha = j.content && j.content.sha;
 }

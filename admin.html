@@ -519,10 +519,11 @@ button{font:inherit;cursor:pointer}
 <!-- ---------- token setup ---------- -->
 <section id="setup" class="gate hidden">
   <h1>Ključ</h1>
-  <p>Zalijepite GitHub token (fine-grained, samo <code>jsiljeg/list</code>,
-     dozvola <b>Contents: Read and write</b>). Ostaje spremljen na ovom
-     tabletu i nigdje se ne šalje osim GitHubu.</p>
-  <input id="token" type="password" autocomplete="off" placeholder="github_pat_…"
+  <p>Zalijepite svoj ključ: GitHub token (fine-grained, samo <code>jsiljeg/list</code>,
+     dozvola <b>Contents: Read and write</b>) ili ključ somelijera
+     (<code>somm_…</code>) koji ste dobili od vlasnika. Ostaje spremljen na
+     ovom tabletu.</p>
+  <input id="token" type="password" autocomplete="off" placeholder="github_pat_… ili somm_…"
          style="letter-spacing:normal;font-size:15px">
   <button class="btn" id="token-go">Spremi i provjeri</button>
   <div class="err" id="token-err"></div>
@@ -543,8 +544,8 @@ button{font:inherit;cursor:pointer}
       <button data-tab="karta" class="on">Karta</button>
       <button data-tab="novo">Dodaj vino</button>
       <button data-tab="ponuda" title="Dnevna ponuda">Ponuda</button>
-      <button data-tab="povijest">Povijest</button>
-      <button data-tab="troskovi">Troškovi</button>
+      <!-- Povijest and Troškovi are not in this page (web/ROLES.md): the board's
+           script builds them, and loads their scripts, only for a full key. -->
     </nav>
     <div class="filters" id="filters">
       <input id="q" type="search" placeholder="Traži vino ili vinara…" autocomplete="off">
@@ -558,8 +559,6 @@ button{font:inherit;cursor:pointer}
   <div id="tab-karta"><div id="rows"></div></div>
   <div id="tab-novo" class="hidden"></div>
   <div id="tab-ponuda" class="hidden"></div>
-  <div id="tab-povijest" class="hidden"></div>
-  <div id="tab-troskovi" class="hidden"></div>
 </div>
 
 <div id="receipt" class="receipt hidden">
@@ -576,7 +575,6 @@ button{font:inherit;cursor:pointer}
 <script src="js/admin.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/admin-wines.js"></script>
-<script src="js/admin-expenses.js"></script>
 <script src="js/admin-daily.js"></script>
 </body>
 </html>
