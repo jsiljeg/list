@@ -1603,6 +1603,11 @@
          "anchor": 93
         },
         {
+         "ref": "podere-poggio-scalette--chianti-classico-2023",
+         "price": 75,
+         "new": true
+        },
+        {
          "ref": "podere-poggio-scalette--il-carbonaione-2019",
          "price": 100,
          "anchor": 100

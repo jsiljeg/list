@@ -15929,6 +15929,41 @@
     "sl": "Najmanj 24 mesecev na kvasovkah — dvakrat več od 12, ki jih pravila zahtevajo za šampanjec brez letnika. Od tod kremnost, ki je zagorski chardonnay sicer redko pokaže.",
     "es": "Al menos 24 meses sobre lías — el doble de los 12 que las normas exigen a un Champagne sin añada. De ahí la cremosidad que el chardonnay del Zagorje rara vez tiene ocasión de mostrar."
    }
+  },
+  "podere-poggio-scalette--chianti-classico-2023": {
+   "name": "Chianti Classico 2023",
+   "producer": "Podere Poggio Scalette",
+   "insight": {
+    "grape": "Sangiovese",
+    "region": "Greve in Chianti, Chianti Classico, Toscana",
+    "country": "IT",
+    "style": "red_medium",
+    "body": "medium",
+    "aromas": [
+     "cherry",
+     "sour_cherry",
+     "violet",
+     "rosemary",
+     "plum",
+     "pepper"
+    ],
+    "pairings": [
+     "pasta",
+     "cheese_hard",
+     "charcuterie",
+     "beef"
+    ],
+    "temp": "16–18",
+    "alcohol": "13.5",
+    "sweetness": "dry"
+   },
+   "terroir": "Ruffoli",
+   "ratings": [
+    {
+     "critic": "Falstaff",
+     "score": "92"
+    }
+   ]
   }
  }
 }
