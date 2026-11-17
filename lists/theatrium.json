@@ -202,8 +202,7 @@
         },
         {
          "ref": "benanti--etna-rosso-2023",
-         "price": 13,
-         "new": true
+         "price": 13
         },
         {
          "ref": "tenuta-san-guido--guidalberto-2024",
@@ -1770,8 +1769,7 @@
         },
         {
          "ref": "benanti--etna-rosso-2023",
-         "price": 97,
-         "new": true
+         "price": 97
         }
        ]
       },
