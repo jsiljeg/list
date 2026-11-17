@@ -707,19 +707,32 @@
      dessert wine.
      The till's "total" is with PDV, drinks are 25%. */
   const DRINK_VAT = 1.25;
+  /* One invoice line, several wines (owner, 2026-11-17): Bonin bills five
+     Meursaults as one "Domaine Bernard-Bonin 2023", Desjourneys its two Mâcons
+     and its two Pouillys the same way. `"split": [refs]` in buy-map.json
+     shares the line's price between them in proportion to their bottle price
+     on the list — a guess, but one that adds back up to the invoice when one
+     of each was bought. Shared equally when a price is missing. */
+  function splitShares(refs, byRef) {
+    const p = refs.map((r) => { const w = byRef.get(r), b = w && w.listings.find((l) => !l.glass); return b ? b.price : 0; });
+    const ok = p.every((x) => x > 0), mean = ok ? p.reduce((a, b) => a + b, 0) / p.length : 1;
+    return refs.map((ref, i) => ({ ref, f: ok ? p[i] / mean : 1 }));
+  }
   function wineCosts() {
     if (!buyMap || !wineList) return null;
     const arts = buyMap.articles || {}, byRef = new Map(wineList.map((w) => [w.ref, w])), best = new Map();
     for (const r of done()) for (const it of r.items || []) {
       if (it.category !== "vino" || !(it.doc_qty > 0) || !(it.total > 0)) continue;
       const a = arts[it.key || it.name];
-      if (!a || !a.ref) continue;
-      const w = byRef.get(a.ref), bottles = w ? w.listings.filter((l) => !l.glass).map((l) => l.vol) : [];
-      const listVol = bottles.length && new Set(bottles).size === 1 ? bottles[0] : 0.75;
-      const vol = a.vol || listVol, std = vol === listVol;
-      const perl = it.total / (1 + (it.vat_rate || 0) / 100) / it.doc_qty / vol, d = dateOf(r) || "";
-      const c = best.get(a.ref);
-      if (!c || (std && !c.std) || (std === c.std && d > c.d)) best.set(a.ref, { perl, d, std });
+      const targets = !a ? [] : Array.isArray(a.split) ? splitShares(a.split, byRef) : a.ref ? [{ ref: a.ref, f: 1 }] : [];
+      for (const { ref, f } of targets) {
+        const w = byRef.get(ref), bottles = w ? w.listings.filter((l) => !l.glass).map((l) => l.vol) : [];
+        const listVol = bottles.length && new Set(bottles).size === 1 ? bottles[0] : 0.75;
+        const vol = a.vol || listVol, std = vol === listVol;
+        const perl = (f * it.total) / (1 + (it.vat_rate || 0) / 100) / it.doc_qty / vol, d = dateOf(r) || "";
+        const c = best.get(ref);
+        if (!c || (std && !c.std) || (std === c.std && d > c.d)) best.set(ref, { perl, d, std, split: f !== 1 || targets.length > 1 });
+      }
     }
     return best;
   }

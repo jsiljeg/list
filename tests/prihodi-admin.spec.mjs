@@ -206,11 +206,31 @@ test("the purchase map resolves and carries no prices", () => {
   const map = JSON.parse(readFileSync(new URL("../data/buy-map.json", import.meta.url), "utf8")).articles;
   for (const [name, a] of Object.entries(map)) {
     if (a.ref) expect(lib[a.ref], name).toBeTruthy();
-    for (const k of Object.keys(a)) expect(["ref", "vol", "none", "why", "ask"], name).toContain(k);
+    for (const r of a.split || []) expect(lib[r], `${name} → ${r}`).toBeTruthy();
+    for (const k of Object.keys(a)) expect(["ref", "split", "vol", "none", "why", "ask"], name).toContain(k);
   }
   expect(map["franciacorta brut 3 l"].vol).toBe(3);
   const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
-  expect(src).toContain("if (!c || (std && !c.std) || (std === c.std && d > c.d)) best.set(a.ref, { perl, d, std });");
+  expect(src).toContain("if (!c || (std && !c.std) || (std === c.std && d > c.d)) best.set(ref, { perl, d, std,");
+});
+
+test("one invoice line for several wines is shared by list price and adds back up", () => {
+  /* Owner, 2026-11-17: Bonin bills five Meursaults as one line, Desjourneys
+     its Mâcons and Pouillys likewise — "distribute them ... based on price (to
+     add it up)". Added with the change, not run (standing rule). */
+  const map = JSON.parse(readFileSync(new URL("../data/buy-map.json", import.meta.url), "utf8")).articles;
+  expect(map["vino domaine bernard-bonin"].split).toHaveLength(5);
+  expect(map["vino jules desjourneys macon"].split).toHaveLength(2);
+  expect(map["vino jules desjourneys pouilly"].split).toHaveLength(2);
+  const src = readFileSync(new URL("../js/admin-expenses.js", import.meta.url), "utf8");
+  const fn = src.slice(src.indexOf("function splitShares"), src.indexOf("function wineCosts"));
+  const splitShares = new Function(`${fn}; return splitShares;`)();
+  const byRef = new Map([["a", { listings: [{ glass: false, price: 790 }] }], ["b", { listings: [{ glass: true, price: 30 }, { glass: false, price: 970 }] }]]);
+  const s = splitShares(["a", "b"], byRef);
+  expect(s.map((x) => x.ref)).toEqual(["a", "b"]);
+  expect(s[0].f + s[1].f).toBeCloseTo(2);                      /* one of each: the line's total, exactly */
+  expect(s[1].f / s[0].f).toBeCloseTo(970 / 790);              /* dearer bottle, dearer share */
+  expect(splitShares(["a", "x"], byRef).map((x) => x.f)).toEqual([1, 1]);   /* a price missing: equal */
 });
 
 /* The waiters are compared on our map, not on Remaris' groups (owner,

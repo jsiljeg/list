@@ -311,7 +311,14 @@
    "why": "Delas Haut Pierre"
   },
   "vino domaine bernard-bonin": {
-   "ask": "Bonin fakturira 5 Meursaulta pod istim imenom \"Domaine Bernard-Bonin 2023\" — po računu se ne zna koja je koja"
+   "split": [
+    "bernard-bonin--meursault-la-rencontre-2023",
+    "bernard-bonin--meursault-clos-du-cromin-le-pre-manche-2023",
+    "bernard-bonin--meursault-les-tillets-2023",
+    "bernard-bonin--meursault-villages-le-limozin-2023",
+    "bernard-bonin--meursault-les-narvaux-dessus-2023"
+   ],
+   "why": "Bonin fakturira 5 Meursaulta pod jednim imenom; cijena se dijeli po cijeni boce na karti (vlasnik, 2026-11-17)"
   },
   "vino duemani cifra": {
    "ref": "azienda-duemani--cifra-2021"
@@ -389,10 +396,18 @@
    "ref": "jules-desjourneys--beaujolais-patacaisse-rouge-2022"
   },
   "vino jules desjourneys macon": {
-   "ask": "\"Jules Desjourneys Mâcon\" — na karti su Mâcon-Verzé i Mâcon-Prissé En Chailloux"
+   "split": [
+    "jules-desjourneys--macon-verze-blanc-2021",
+    "jules-desjourneys--macon-prisse-en-chailloux-blanc-2021"
+   ],
+   "why": "jedna stavka za oba Mâcona; dijeli se po cijeni na karti (vlasnik, 2026-11-17)"
   },
   "vino jules desjourneys pouilly": {
-   "ask": "\"Jules Desjourneys Pouilly\" — Pouilly-Fuissé ili Pouilly-Vinzelles Les Longeays?"
+   "split": [
+    "jules-desjourneys--pouilly-fuisse-blanc-2021",
+    "jules-desjourneys--pouilly-vinzelles-les-longeays-blanc-2021"
+   ],
+   "why": "jedna stavka za Pouilly-Fuissé i Pouilly-Vinzelles Les Longeays; dijeli se po cijeni na karti (vlasnik, 2026-11-17)"
   },
   "vino jules desjourneys rouge": {
    "ref": "jules-desjourneys--rouge-2023"
