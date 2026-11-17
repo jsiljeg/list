@@ -50,13 +50,17 @@ Every staff endpoint calls `isStaffAsync()`: STAFF_KEY, or a GitHub key of
    GitHub token.** His key is a server key that GitHub has never heard of,
    and his Karta writes go through a server endpoint that accepts only the
    changes the Karta tab can make (§3.4).
-5. **Browser caches on a shared device.** API JSON is `no-store`. Receipt
-   photos were `private, max-age=3600` — a browser that showed Filho a
-   receipt could hand the same bytes to a later fetch of that URL without
-   asking the server. → receipt photos are `no-store` now. localStorage
-   holds only the key; the service worker never controls /admin (admin.html
-   unregisters it). Logout reloads the page, and a key changed in another
-   tab reloads this one, so nothing of Filho's stays in memory.
+5. **Browser caches on a shared device.** API JSON is `no-store`, and so
+   are receipt photos (`private, no-store`, checked — nothing to change).
+   localStorage holds only the key; the service worker never controls /admin
+   (admin.html unregisters it). Logout reloads the page, and a key changed
+   in another tab now reloads this one, so nothing of Filho's stays in
+   memory. (Label photos in Dodaj vino are cached for an hour; they are his
+   tab's own content.)
+8. **Existence leaks.** `/api/troskovi/:id/:action` read the receipt before
+   checking the key, so a 404 told anyone whether a receipt id exists. Found
+   by the new spec; the key is checked first now, as in the vina and kuhinja
+   actions (which had the same order and were changed with this work).
 6. **Error messages and e-mails.** A refusal is `{"error":"role"}` and
    nothing else. Alerts go to the owner only; none are sent to Toni.
 7. **Public anyway, stated so nobody assumes otherwise.** The repo is
@@ -221,10 +225,26 @@ let him change prices without letting him change the rules.
 | `tests/roles.spec.mjs` | every `/api` handler is declared in `ACCESS` and vice versa; table-driven over **every** route and method: a somm key through the middleware gets `403 {"error":"role"}` without the function running unless allowlisted; called directly, every non-somm staff function refuses a somm key with an error-only body; the allowlisted ones work for somm against a real SQLite D1; full keys still pass everywhere they did; `/api/karta`'s change checker accepts exactly the board's edits and refuses the rest |
 | `tests/admin-somm.spec.mjs` | in the browser, as somm: Povijest and Troškovi are absent from the DOM (not hidden), no address/hash/console trick opens them, the full session's network log never touches `/api/troskovi`, `/api/prihodi` or the commits API, and hide/unhide, price, + čaša, NOVO, Dodaj vino and Ponuda all work; a tablet re-keyed from Filho to Toni carries nothing over; Filho's page still has all five tabs |
 
-## 7. Status
+## 7. Manual test before merging (the owner)
+
+No preview deployment exists for this: deploy-web.yml deploys only `main`
+to production, and GitHub Pages (where /admin lives) has no previews. Two
+ways to look at it without touching production:
+
+1. **The page, with invented data** — after `npm run site`, serve `_site/`
+   (`cd _site && python -m http.server 4173`) and open
+   `http://127.0.0.1:4173/admin.html?demo&uloga=somm` (Toni) and
+   `…/admin.html?demo` (Filho). The demo's fake server refuses Toni exactly
+   what the real one does.
+2. **The real thing, after merge, before Toni has a key** — merge and deploy,
+   then enrol a throw-away key for yourself as somm (§4), try everything in
+   the checklist in the PR on your own phone, and delete that key again.
+
+## 8. Status
 
 - [x] Investigation and plan (this file)
-- [ ] Server: roles.js, middleware, opt-in endpoints, /api/uloga, /api/karta
-- [ ] Page: somm mode, tabs built per mode, Povijest moved out, demo mode
-- [ ] Tests written and run
-- [ ] PR opened (not merged, not deployed)
+- [x] Server: roles.js, middleware, opt-in endpoints, /api/uloga, /api/karta
+- [x] Page: somm mode, tabs built per mode, Povijest moved out, demo mode
+- [x] Tests written and run: tests/roles.spec.mjs (17), tests/admin-somm.spec.mjs (9), all three viewports
+- [x] PR opened (not merged, not deployed)
+- [ ] Owner: manual test, then `KARTA_GH_TOKEN` and Toni's key (§4)

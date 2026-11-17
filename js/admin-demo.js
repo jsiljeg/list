@@ -82,12 +82,15 @@
   let sha = 0;
   const ready = (async () => {
     const get = (p) => realFetch(p, { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error(p + " " + r.status); return r; });
+    /* the sommelier's demo does not even load the invented books */
+    const books = (f, empty) => (SOMM ? Promise.resolve(empty) : get(f).then((r) => r.json()));
     const [tr, pr, tv, vi, po, una, lst, tm, bm] = await Promise.all([
-      get("demo/troskovi.json").then((r) => r.json()), get("demo/prihodi.json").then((r) => r.json()),
-      get("demo/tvrtke.json").then((r) => r.json()), get("demo/vina.json").then((r) => r.json()),
-      get("demo/povijest.json").then((r) => r.json()).catch(() => ({ events: [] })),
+      books("demo/troskovi.json", { items: [], limits: {} }), books("demo/prihodi.json", {}),
+      books("demo/tvrtke.json", {}), get("demo/vina.json").then((r) => r.json()),
+      books("demo/povijest.json", { events: [] }).catch(() => ({ events: [] })),
       get("data/unavailable.json").then((r) => r.text()), get("lists/theatrium.json").then((r) => r.text()),
-      get("data/till-map.json").then((r) => r.text()), get("demo/buy-map.json").then((r) => r.text()).catch(() => '{"articles":{}}')]);
+      SOMM ? '{"articles":{}}' : get("data/till-map.json").then((r) => r.text()),
+      SOMM ? '{"articles":{}}' : get("demo/buy-map.json").then((r) => r.text()).catch(() => '{"articles":{}}')]);
     /* tonight's 86 board starts with a few, not whatever Theatrium has hidden today */
     let rules = []; try { rules = (JSON.parse(una).hidden || []).slice(0, 4); } catch { /* none */ }
     files["data/unavailable.json"] = JSON.stringify({ hidden: rules }, null, 1) + "\n"; files["lists/theatrium.json"] = lst;
