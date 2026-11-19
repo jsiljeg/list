@@ -375,6 +375,11 @@
          "price": 110
         },
         {
+         "ref": "la-rogerie--le-bourg-sud-grand-cru-reserve-perpetuelle",
+         "price": 225,
+         "new": true
+        },
+        {
          "ref": "de-sousa--chemins-des-terroirs",
          "price": 100,
          "anchor": 100

@@ -16242,6 +16242,46 @@
     "sl": "Trta, posajena leta 1968 z množično selekcijo z iste parcele, in niti grama sladkorja: ta polnitev (letnika 2021 in 2019) je izšla brez doziranja, čeprav jo hiša sicer dozira z lastnim rezervnim vinom. Pinot noir se tu nima kam skriti — in mu tudi ni treba.",
     "es": "Cepas plantadas en 1968 por selección masal de la misma parcela, y ni un gramo de azúcar: esta salida (vendimias 2021 y 2019) salió sin dosificar, aunque la casa suele dosificarla con su propio vino de reserva. El Pinot Noir no tiene dónde esconderse aquí — y no lo necesita."
    }
+  },
+  "la-rogerie--le-bourg-sud-grand-cru-reserve-perpetuelle": {
+   "name": "Le Bourg Sud Grand Cru Réserve Perpétuelle",
+   "producer": "La Rogerie",
+   "insight": {
+    "grape": "Chardonnay",
+    "region": "Champagne",
+    "country": "FR",
+    "style": "champagne_bdb",
+    "body": "medium",
+    "aromas": [
+     "citrus",
+     "white_flowers",
+     "brioche",
+     "chalk",
+     "green_apple"
+    ],
+    "pairings": [
+     "poultry",
+     "white_fish",
+     "oysters",
+     "shellfish",
+     "cheese_hard"
+    ],
+    "temp": "8–10",
+    "alcohol": "12.5",
+    "dosage": "Extra Brut"
+   },
+   "terroir": "Avize, Oger",
+   "notePlain": true,
+   "note": {
+    "hr": "Réserve perpétuelle: svake godine dio novog vina ulijeva se u veliku bačvu koja se nikad ne prazni, pa ova boca nosi u sebi svaku berbu od 2018. naovamo. Bourg Sud znači „selo, jug” — vinogradi s južne strane Avizea; sestrinski Bourg Nord dolazi sa sjeverne. Isto načelo, nekoliko ulica dalje u istom selu, Anselme Selosse zove Substance.",
+    "en": "Réserve perpétuelle: every year part of the new wine goes into a large cask that is never emptied, so this bottle carries every harvest since 2018. Bourg Sud means “village, south” — the vines on the south side of Avize; its sister, Bourg Nord, comes from the north. A few streets away in the same village, Anselme Selosse calls the same idea Substance.",
+    "it": "Réserve perpétuelle: ogni anno una parte del vino nuovo finisce in una grande botte che non si svuota mai, così questa bottiglia porta con sé ogni vendemmia dal 2018 in poi. Bourg Sud vuol dire «paese, sud» — le vigne sul lato sud di Avize; la sorella, Bourg Nord, viene dal lato nord. Poche strade più in là, nello stesso paese, Anselme Selosse chiama la stessa idea Substance.",
+    "fr": "Réserve perpétuelle : chaque année, une part du vin nouveau rejoint un grand foudre qu'on ne vide jamais, si bien que cette bouteille porte chaque vendange depuis 2018. Bourg Sud, ce sont les vignes du côté sud d'Avize ; sa sœur, Bourg Nord, vient du côté nord. À quelques rues de là, dans le même village, Anselme Selosse appelle la même idée Substance.",
+    "de": "Réserve perpétuelle: Jedes Jahr kommt ein Teil des neuen Weins in ein großes Fass, das nie geleert wird – so trägt diese Flasche jeden Jahrgang seit 2018 in sich. Bourg Sud heißt „Dorf, Süden“ – die Reben an der Südseite von Avize; die Schwester, Bourg Nord, kommt von der Nordseite. Ein paar Straßen weiter, im selben Dorf, nennt Anselme Selosse dieselbe Idee Substance.",
+    "zh": "永续储备（Réserve perpétuelle）：每年把一部分新酒注入一只从不清空的大木桶，于是这一瓶里装着 2018 年以来的每一个年份。Bourg Sud 意为“村子·南”——阿维兹南侧的葡萄园；它的姊妹款 Bourg Nord 来自北侧。同一个村子里隔几条街，塞洛斯把同样的做法叫作 Substance。",
+    "sl": "Réserve perpétuelle: vsako leto gre del novega vina v velik sod, ki se nikoli ne izprazni, zato ta steklenica nosi v sebi vsako trgatev od leta 2018. Bourg Sud pomeni »vas, jug« — vinogradi na južni strani Avizea; sestrski Bourg Nord prihaja s severne. Nekaj ulic stran, v isti vasi, Anselme Selosse isto zamisel imenuje Substance.",
+    "es": "Réserve perpétuelle: cada año parte del vino nuevo entra en un gran fudre que nunca se vacía, así que esta botella lleva dentro cada vendimia desde 2018. Bourg Sud significa «pueblo, sur»: las viñas del lado sur de Avize; su hermana, Bourg Nord, viene del lado norte. A unas calles, en el mismo pueblo, Anselme Selosse llama a la misma idea Substance."
+   }
   }
  }
 }
