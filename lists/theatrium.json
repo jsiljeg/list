@@ -361,6 +361,11 @@
        "country": null,
        "items": [
         {
+         "ref": "aurore-casanova--puisieulx-grand-cru-les-petites-vignes-pinot-noir",
+         "price": 295,
+         "new": true
+        },
+        {
          "ref": "chavost--paradoxe",
          "price": 105,
          "new": true

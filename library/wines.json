@@ -16202,6 +16202,46 @@
      "score": "91+"
     }
    ]
+  },
+  "aurore-casanova--puisieulx-grand-cru-les-petites-vignes-pinot-noir": {
+   "name": "Puisieulx Grand Cru Les Petites Vignes Pinot Noir",
+   "producer": "Aurore Casanova",
+   "insight": {
+    "grape": "Pinot Noir",
+    "region": "Champagne",
+    "country": "FR",
+    "style": "champagne_bdn",
+    "body": "full",
+    "aromas": [
+     "red_currant",
+     "cherry",
+     "candied_fruit",
+     "saline",
+     "toast"
+    ],
+    "pairings": [
+     "poultry",
+     "mushrooms",
+     "charcuterie",
+     "cheese_hard",
+     "white_fish"
+    ],
+    "temp": "10–12",
+    "alcohol": "13",
+    "dosage": "Brut Nature"
+   },
+   "terroir": "Les Petites Vignes, Puisieulx, Montagne de Reims",
+   "notePlain": true,
+   "note": {
+    "hr": "Trs posađen 1968., masalnom selekcijom s iste parcele, i nijedan gram šećera: ovo punjenje (berbe 2021. i 2019.) izašlo je bez doziranja, iako ga kuća inače zaslađuje vlastitom rezervom. Pinot noir ovdje nema čime se sakriti — i ne treba mu.",
+    "en": "Vines planted in 1968 by massal selection from the same plot, and not a gram of sugar: this release (harvests 2021 and 2019) went out undosed, though the house usually doses it with its own reserve wine. The Pinot Noir has nowhere to hide here — and needs nowhere.",
+    "it": "Viti piantate nel 1968 per selezione massale dalla stessa parcella, e nemmeno un grammo di zucchero: questa uscita (vendemmie 2021 e 2019) è partita senza dosaggio, anche se di solito la casa la dosa con il proprio vino di riserva. Il Pinot Noir qui non ha dove nascondersi — e non ne ha bisogno.",
+    "fr": "Des vignes plantées en 1968 en sélection massale issue de la même parcelle, et pas un gramme de sucre : ce tirage (vendanges 2021 et 2019) est sorti non dosé, alors que la maison le dose d'habitude avec son propre vin de réserve. Le Pinot Noir n'a nulle part où se cacher — et n'en a pas besoin.",
+    "de": "Reben von 1968, per Massenselektion aus derselben Parzelle vermehrt, und kein Gramm Zucker: Diese Füllung (Lesen 2021 und 2019) kam ohne Dosage heraus, obwohl das Haus sie sonst mit eigenem Reservewein dosiert. Der Pinot Noir kann sich hier nirgends verstecken — und muss es auch nicht.",
+    "zh": "1968年以同一地块的混合选育种下的老藤，加上零克糖：这一批（2021与2019年采收）以零补液出品，而酒庄平时会用自家的储备酒补液。黑皮诺在这里无处可藏——也无需躲藏。",
+    "sl": "Trta, posajena leta 1968 z množično selekcijo z iste parcele, in niti grama sladkorja: ta polnitev (letnika 2021 in 2019) je izšla brez doziranja, čeprav jo hiša sicer dozira z lastnim rezervnim vinom. Pinot noir se tu nima kam skriti — in mu tudi ni treba.",
+    "es": "Cepas plantadas en 1968 por selección masal de la misma parcela, y ni un gramo de azúcar: esta salida (vendimias 2021 y 2019) salió sin dosificar, aunque la casa suele dosificarla con su propio vino de reserva. El Pinot Noir no tiene dónde esconderse aquí — y no lo necesita."
+   }
   }
  }
 }
