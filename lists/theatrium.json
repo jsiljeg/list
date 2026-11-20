@@ -187,6 +187,11 @@
          "anchor": 10
         },
         {
+         "ref": "casa-castillo--el-molar-2021",
+         "price": 75,
+         "new": true
+        },
+        {
          "ref": "azienda-duemani--cifra-2021",
          "price": 11,
          "anchor": 11

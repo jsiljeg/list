@@ -16282,6 +16282,46 @@
     "sl": "Réserve perpétuelle: vsako leto gre del novega vina v velik sod, ki se nikoli ne izprazni, zato ta steklenica nosi v sebi vsako trgatev od leta 2018. Bourg Sud pomeni »vas, jug« — vinogradi na južni strani Avizea; sestrski Bourg Nord prihaja s severne. Nekaj ulic stran, v isti vasi, Anselme Selosse isto zamisel imenuje Substance.",
     "es": "Réserve perpétuelle: cada año parte del vino nuevo entra en un gran fudre que nunca se vacía, así que esta botella lleva dentro cada vendimia desde 2018. Bourg Sud significa «pueblo, sur»: las viñas del lado sur de Avize; su hermana, Bourg Nord, viene del lado norte. A unas calles, en el mismo pueblo, Anselme Selosse llama a la misma idea Substance."
    }
+  },
+  "casa-castillo--el-molar-2021": {
+   "name": "El Molar 2021",
+   "producer": "Casa Castillo",
+   "insight": {
+    "grape": "Garnacha",
+    "region": "Jumilla, Murcia",
+    "country": "ES",
+    "style": "red_full",
+    "body": "full",
+    "aromas": [
+     "raspberry",
+     "cherry",
+     "violet",
+     "spice",
+     "herbs"
+    ],
+    "pairings": [
+     "beef",
+     "lamb",
+     "game",
+     "stews",
+     "cheese_hard"
+    ],
+    "temp": "16–18",
+    "alcohol": "14.5",
+    "sweetness": "dry"
+   },
+   "terroir": "El Molar",
+   "note": {
+    "hr": "Garnacha u zemlji Monastrella: tri parcele na padinama Sierre del Molar, na 750 do 800 m, u pijesku i šljunku preko vapnenca. Visina i velike bačve, u kojima drvo ne prekriva voće, razlog su zašto se 14,5% ovdje pije svježe, a ne teško.",
+    "en": "Garnacha in Monastrell country: three plots on the slopes of the Sierra del Molar, 750 to 800 m up, in sand and gravel over limestone. The altitude and the big casks, where the wood never covers the fruit, are why 14.5% drinks fresh here rather than heavy.",
+    "it": "Garnacha in terra di Monastrell: tre parcelle sulle pendici della Sierra del Molar, tra 750 e 800 m, su sabbia e ghiaia sopra il calcare. L'altitudine e le grandi botti, dove il legno non copre mai il frutto, sono il motivo per cui qui il 14,5% si beve fresco e non pesante.",
+    "fr": "Du grenache au pays du monastrell : trois parcelles sur les pentes de la Sierra del Molar, entre 750 et 800 m, dans le sable et le gravier sur calcaire. L'altitude et les grands foudres, où le bois ne couvre jamais le fruit, expliquent pourquoi ses 14,5% se boivent frais et non lourds.",
+    "de": "Garnacha im Land des Monastrell: drei Parzellen an den Hängen der Sierra del Molar, auf 750 bis 800 m, in Sand und Kies über Kalk. Die Höhe und die großen Fässer, in denen das Holz die Frucht nie zudeckt, sind der Grund, warum sich 14,5% hier frisch trinken und nicht schwer.",
+    "zh": "在慕合怀特的地盘上种歌海娜：三块地位于莫拉尔山脉的山坡上，海拔 750 至 800 米，石灰岩之上是沙土和砾石。海拔和大橡木桶——木头从不盖过果味——让这里的 14.5% 喝起来清新而不沉重。",
+    "sl": "Garnacha v deželi monastrella: tri parcele na pobočjih Sierre del Molar, na 750 do 800 m, v pesku in produ nad apnencem. Višina in veliki sodi, v katerih les nikoli ne prekrije sadja, so razlog, da se 14,5% tu pije sveže in ne težko.",
+    "es": "Garnacha en tierra de Monastrell: tres parcelas en las laderas de la Sierra del Molar, entre 750 y 800 m, en arena y grava sobre caliza. La altitud y los fudres grandes, donde la madera nunca tapa la fruta, explican que aquí el 14,5% se beba fresco y no pesado."
+   },
+   "notePlain": true
   }
  }
 }

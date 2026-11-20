@@ -288,6 +288,8 @@
     "Castilla y León": "卡斯蒂利亚-莱昂",
     "Murcia": "穆尔西亚",
     "Tierra de Murcia": "穆尔西亚大地",
+    "Jumilla": "胡米利亚",
+    "El Molar": "埃尔莫拉尔",
     "Primorska": "滨海产区",
     "Spring Mountain District": "春山产区",
     "Sonoma County": "索诺玛县",
