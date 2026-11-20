@@ -168,7 +168,7 @@ jobs:
                        "Edit(.github/**)", "Write(.github/**)", "Edit(.claude/**)", "Write(.claude/**)"] } }
           JSON
           tools='Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Skill'
-          tools+=',Bash(node scripts/validate.mjs),Bash(node scripts/after-86.mjs)'
+          tools+=',Bash(node scripts/validate.mjs),Bash(node scripts/after-86.mjs),Bash(node scripts/card-placement.mjs)'
           tools+=',Bash(node .claude/skills/add-wine/neighbours.mjs:*),Bash(python3 .claude/skills/add-wine/add.py:*)'
           tools+=',Bash(node .claude/skills/sommelier/pair.mjs:*),Bash(python3 scripts/rank-ratings.py)'
           # Streamed, so each step can be shown to Filho as it happens; the
@@ -300,6 +300,16 @@ jobs:
           git diff --stat
           node --check js/zh-terms.js && node --check js/i18n.js
           node scripts/validate.mjs
+          # Where the card put the wine, read from the list — never the model's
+          # sentence (2026-11-20: El Molar's preview said "po boci", the card
+          # put it on the glass list next to the other CL98). A listing that
+          # does not match the prices Filho gave stops the card here.
+          git fetch -q origin main
+          curl -sfS -H "Authorization: Bearer $KEY" "$INBOX/$ID" > "$RUNNER_TEMP/req-now.json"
+          if ! node scripts/card-placement.mjs --base "$(git merge-base HEAD origin/main)" \
+                 --request "$RUNNER_TEMP/req-now.json" --result out/result.json --write; then
+            echo "placement=bad" >> "$GITHUB_OUTPUT"; exit 1
+          fi
 
           # Robert Parker, looked up here on the commercial subscription
           # (owner, 2026-10-11). A fixed script, no AI: the password and the
@@ -372,6 +382,7 @@ jobs:
           STATUS: ${{ needs.write.outputs.status }}
           APPLIED: ${{ steps.apply.outcome }}
           BRANCH: ${{ steps.apply.outputs.branch }}
+          PLACEMENT: ${{ steps.apply.outputs.placement }}
         run: |
           set -uo pipefail
           usage=$(cat out/usage.json 2>/dev/null || echo '{}')
@@ -394,6 +405,7 @@ jobs:
           else
             err="Kartica nije prošla provjeru — vlasnik je obaviješten."
             [ "$STATUS" = "failed" ] && err="Kartica nije dovršena — pokušajte ponovno."
+            [ "${PLACEMENT:-}" = "bad" ] && err="Vino je stavljeno na krivo mjesto (čaša ili boca ne odgovara upisanim cijenama) — pokušajte ponovno."
             body=$(jq -nc --arg e "$err" --argjson u "$usage" --arg run "$RUN_URL" '{status: "failed", error: $e, usage: $u, run_url: $run}')
           fi
           curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" -d "$body" "$INBOX/$ID/stanje"

@@ -110,6 +110,29 @@ jobs:
                       for it in g["items"]:
                           if it.get("ref") == ref and "anchor" not in it:
                               mine.append((sec["id"], it))
+          # A price Filho cleared on the preview takes its listing with it
+          # (2026-11-20, El Molar: a glass listing with no glass price went
+          # live at the bottle's 75 €). Only listings this card added: what
+          # main already had (HEAD, before the merge) is never touched.
+          import subprocess
+          base = json.loads(subprocess.run(["git", "show", "HEAD:" + p], capture_output=True, text=True, check=True).stdout)
+          had = {}
+          for sec in base["sections"]:
+              for cat in sec["categories"]:
+                  for g in cat["groups"]:
+                      for it in g["items"]:
+                          if it.get("ref") == ref:
+                              k = (sec["id"], cat["id"], it.get("vol") or 0.75); had[k] = had.get(k, 0) + 1
+          for sec in doc["sections"]:
+              for cat in sec["categories"]:
+                  for g in cat["groups"]:
+                      for it in list(g["items"]):
+                          if it.get("ref") != ref: continue
+                          k = (sec["id"], cat["id"], it.get("vol") or 0.75)
+                          if had.get(k, 0) > 0: had[k] -= 1; continue
+                          if (pg if sec["id"] == "glass" else pb) is None:
+                              g["items"].remove(it)
+                              mine = [(s, x) for s, x in mine if x is not it]
           # This wine's listings added on the branch (no anchor). One bottle
           # listing takes the bottle price; with several sizes, only the size
           # Filho asked for (an auto-detected size is the single listing).
@@ -126,6 +149,11 @@ jobs:
           open(os.environ["RUNNER_TEMP"] + "/novo", "w").write("1" if novo else "")
           open(p, "w", encoding="utf-8", newline="\n").write(json.dumps(doc, ensure_ascii=False, indent=1) + "\n")
           PY
+          # …and every price Filho gave has its listing: čaša on the glass
+          # list, boca among the bottles (scripts/card-placement.mjs).
+          if ! node scripts/card-placement.mjs --base HEAD --request "$RUNNER_TEMP/req.json" --result "$RUNNER_TEMP/no-result.json" --ref "$REF"; then
+            echo "placement" > "$RUNNER_TEMP/why"; exit 1
+          fi
           phase "Provjerava cijelu kartu"
           # What reaches main is data only, whoever wrote or published the
           # card (web/ROLES.md): the same check as when the card was written.
@@ -169,5 +197,8 @@ jobs:
           else
             # back to ready, so "Objavi" can simply be tapped again
             body='{"status":"ready","error":"Objava nije uspjela — pokušajte ponovno za minutu. Ako se ponovi, javite vlasniku."}'
+            if [ "$(cat "$RUNNER_TEMP/why" 2>/dev/null)" = placement ]; then
+              body='{"status":"ready","error":"Cijena čaše ili boce ne odgovara mjestu na karti. Ako ste cijenu čaše dodali naknadno: objavite bez nje, pa na Karti tapnite „+ čaša”."}'
+            fi
           fi
           curl -sS -X POST -H "Authorization: Bearer $KEY" -H "content-type: application/json" -d "$body" "$INBOX/$ID/stanje"

@@ -103,3 +103,35 @@ test("the publish run merges onto main as it is when it runs", () => {
   expect(wf).toMatch(/uses: actions\/checkout@v4\s+with:\s+ref: main/);
   expect(wf).toMatch(/git rebase -q origin\/main/);
 });
+
+/* 2026-11-20, El Molar 2021: Filho gave a bottle price only. The run's
+   preview said "Crna vina po boci → Španjolska, iza Casa Rojo CL98", and the
+   card inserted the listing after the *glass* CL98 — CL98 is on both shelves.
+   It went live at 75 € a glass. The placement is now read from the files and
+   a listing that does not match Filho's prices stops the card and the publish. */
+test("a card's listings must match the prices Filho gave", async () => {
+  const { placementProblems, describe } = await import(pathToFileURL(join(process.cwd(), "scripts/card-placement.mjs")).href);
+  const shelf = (id, cat, items, country = null) => ({ id, categories: [{ id: cat, groups: [{ country, items }] }] });
+  const cl98g = { ref: "casa-rojo--cl98-2020", price: 10 }, cl98b = { ref: "casa-rojo--cl98-2020", price: 68 };
+  const molar = { ref: "x--el-molar", price: 75, new: true };
+  const base = { sections: [shelf("glass", "red", [cl98g]), shelf("bottle-red", "red", [cl98b], "ES")] };
+  const wrong = { sections: [shelf("glass", "red", [cl98g, molar]), shelf("bottle-red", "red", [cl98b], "ES")] };
+  const right = { sections: [shelf("glass", "red", [cl98g]), shelf("bottle-red", "red", [cl98b, molar], "ES")] };
+  const prices = { priceBottle: 75, priceGlass: null };
+  expect(placementProblems({ base, list: wrong, ref: "x--el-molar", ...prices })).toHaveLength(2);
+  expect(placementProblems({ base, list: right, ref: "x--el-molar", ...prices })).toEqual([]);
+  expect(placementProblems({ base, list: right, ref: "x--el-molar", priceBottle: 75, priceGlass: 9 })).toHaveLength(1);
+  /* already listed by the glass: a new bottle beside it is fine */
+  expect(placementProblems({ base: wrong, list: { sections: [shelf("glass", "red", [cl98g, molar]), shelf("bottle-red", "red", [cl98b, molar], "ES")] },
+    ref: "x--el-molar", priceBottle: 75, priceGlass: 9 })).toEqual([]);
+  expect(describe(base, wrong, "x--el-molar")).toMatch(/^Vina na čašu/);
+  expect(describe(base, right, "x--el-molar", {}, { ES: "Španjolska" })).toMatch(/^Crna vina po boci → Španjolska, iza casa-rojo--cl98-2020/);
+
+  const add = readFileSync(".github/workflows/add-wine.yml", "utf8");
+  expect(add).toContain("node scripts/card-placement.mjs --base");
+  expect(add).toContain("--result out/result.json --write");
+  expect(add).toContain("Bash(node scripts/card-placement.mjs)");
+  const pub = readFileSync(".github/workflows/publish-wine.yml", "utf8");
+  expect(pub).toContain("node scripts/card-placement.mjs --base HEAD");
+  expect(pub).toMatch(/A price Filho cleared on the preview takes its listing with it/);
+});

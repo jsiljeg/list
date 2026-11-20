@@ -63,6 +63,13 @@ this one wine.
   `price_glass`, `vol`. A bottle price → a listing in the right bottle
   section beside its peers; a glass price → a listing in `glass` too. A new
   listing never gets an `anchor`; `new` follows the NOVO rule above.
+  No glass price → **no** listing in `glass`; no bottle price → no bottle
+  listing. Many wines sit on both shelves under the same name (CL98 is poured
+  by the glass *and* sold by the bottle), so insert beside the neighbour **in
+  the section you mean**, then run `node scripts/card-placement.mjs`: it prints
+  where the listings really are and fails on a mismatch (2026-11-20, El
+  Molar: the note said "po boci", the listing went after the glass CL98).
+  `placement` in result.json is overwritten from the files, so don't polish it.
   `recommended: true` means it
   is Filho's own pick: his signed note (no `notePlain`) and
   `recommended: true` on the listing. Otherwise `notePlain: true`.
