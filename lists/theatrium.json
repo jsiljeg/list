@@ -187,11 +187,6 @@
          "anchor": 10
         },
         {
-         "ref": "casa-castillo--el-molar-2021",
-         "price": 75,
-         "new": true
-        },
-        {
          "ref": "azienda-duemani--cifra-2021",
          "price": 11,
          "anchor": 11
@@ -1830,6 +1825,11 @@
          "ref": "casa-rojo--cl98-2020",
          "price": 68,
          "anchor": 68
+        },
+        {
+         "ref": "casa-castillo--el-molar-2021",
+         "price": 75,
+         "new": true
         },
         {
          "ref": "casa-rojo--tokyo-gomez-rojo-2021",
