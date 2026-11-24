@@ -3236,6 +3236,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "caol-ila--15y-bourbon-finish-2010",
+   "vol": null,
+   "price": 10,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "chelo-saint-michael--vieux-sajous-2018",
    "vol": null,
    "price": 13,

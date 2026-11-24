@@ -2694,6 +2694,8 @@
         {
          "ref": "caol-ila--15y-bourbon-finish-2010",
          "price": 10,
+         "anchor": 10,
+         "anchorDate": "2026-11-24",
          "new": true
         },
         {
