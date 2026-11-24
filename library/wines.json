@@ -16579,6 +16579,56 @@
     "es": "Un acabado en bota de jerez suele durar unos meses; este whisky pasó los últimos 4 de sus 18 años en una bota recién vaciada de Pedro Ximénez. Así que aquí el jerez no es una capa de barniz sino la mitad del carácter — pasas, higos y miel de castaño, y debajo de todo, todavía Speyside. La bota la eligió y embotelló Wilson & Morgan, una casa italiana de Treviso: una bota, 197 botellas."
    },
    "notePlain": true
+  },
+  "glenturret--12y-barrel-selection-2013": {
+   "name": "12Y Barrel Selection 2013",
+   "producer": "Glenturret",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_highland",
+    "region": "Crieff, Highlands",
+    "country": "SCT",
+    "base": [
+     "barley_malt_peated"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_sherry_oloroso"
+    ],
+    "age": "12",
+    "alcohol": "50",
+    "bottler": "Barrel Selection — Wilson & Morgan",
+    "aromas": [
+     "leather",
+     "nutty",
+     "peat",
+     "pepper",
+     "earth",
+     "licorice"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "dark_chocolate",
+     "cigars"
+    ]
+   },
+   "note": {
+    "hr": "Glenturret je inače viski bez dima; ovo je njihov rjeđi, tresetni destilat. Wilson & Morgan, nezavisni punitelj iz Trevisa, držao ga je zadnjih 46 mjeseci u bačvi od oloroso sherryja — to više nije završni dodir, nego gotovo 4 godine. Zato je dim tih, a koža, orah i papar glasni.",
+    "en": "Glenturret is usually a whisky without smoke; this is their rarer, peated spirit. Wilson & Morgan, an independent bottler from Treviso, gave it its last 46 months in an oloroso sherry butt — not so much a finish as almost 4 years. So the smoke is quiet, and the leather, walnut and pepper are loud.",
+    "it": "Glenturret di solito è un whisky senza fumo; questo è il loro distillato torbato, più raro. Wilson & Morgan, imbottigliatore indipendente di Treviso, gli ha dato gli ultimi 46 mesi in una botte ex oloroso — più che un finish, quasi 4 anni. Per questo il fumo è sommesso, e cuoio, noce e pepe parlano forte.",
+    "fr": "Glenturret est d'ordinaire un whisky sans fumée ; voici leur distillat tourbé, plus rare. Wilson & Morgan, embouteilleur indépendant de Trévise, lui a donné ses 46 derniers mois en fût d'oloroso — moins un finish que presque 4 ans. La fumée reste donc discrète, et le cuir, la noix et le poivre parlent fort.",
+    "de": "Glenturret ist sonst ein Whisky ohne Rauch; dies ist ihr seltenerer, getorfter Brand. Wilson & Morgan, ein unabhängiger Abfüller aus Treviso, gab ihm seine letzten 46 Monate in einem Oloroso-Sherryfass — weniger ein Finish als fast 4 Jahre. Darum ist der Rauch leise, und Leder, Walnuss und Pfeffer sind laut.",
+    "zh": "Glenturret 平时做的是不带烟熏的威士忌；这是他们较少见的泥煤款。来自特雷维索的独立装瓶商 Wilson & Morgan 让它最后 46 个月待在欧罗索雪莉桶里——与其说是过桶收尾，不如说是将近 4 年。所以烟熏很轻，皮革、核桃与胡椒却很响亮。",
+    "sl": "Glenturret je sicer viski brez dima; to je njihov redkejši, šotni destilat. Wilson & Morgan, neodvisni polnilec iz Trevisa, ga je zadnjih 46 mesecev hranil v sodu od oloroso sherryja — to ni več zaključni dotik, temveč skoraj 4 leta. Zato je dim tih, usnje, oreh in poper pa glasni.",
+    "es": "Glenturret suele ser un whisky sin humo; este es su destilado turbado, más raro. Wilson & Morgan, embotellador independiente de Treviso, le dio sus últimos 46 meses en una bota de oloroso — más que un acabado, casi 4 años. Por eso el humo es discreto, y el cuero, la nuez y la pimienta hablan alto."
+   },
+   "notePlain": true
   }
  }
 }

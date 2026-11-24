@@ -2573,6 +2573,19 @@
     "sl": "Ko so leta 1974 škotski blenderji razvrstili sladne viskije vse države, se je Glenlossie uvrstil med ducat najboljših — in prav zato ga skoraj nihče ni pokusil pod lastnim imenom. Skoraj vse, kar destilarna naredi, gre v mešanice, predvsem v Haig, lastnik pa ga kot single malt polni komaj kdaj. Skrivnost je ena cev: med kotlom in hladilnikom stoji čistilnik, ki težje pare vrača nazaj na ponovno destilacijo, zato destilat pride ven lahek, pa vendar oljnat. Ko ga komu od zunaj uspe kupiti, je to sod, ki ga blenderji niso dobili.",
     "es": "Cuando en 1974 los mezcladores escoceses clasificaron las maltas de todo el país, Glenlossie entró entre la docena mejor — y precisamente por eso casi nadie lo ha probado con su propio nombre. Casi todo lo que hace la destilería va a parar a blends, Haig ante todo, y su dueño casi nunca lo embotella como single malt. El secreto es un tubo: entre el alambique y el condensador hay un purificador que devuelve los vapores más pesados a otra destilación, así que el destilado sale ligero y, aun así, oleoso. Cuando alguien de fuera consigue comprar una barrica, es una que los mezcladores no tuvieron."
    }
+  },
+  "Glenturret": {
+   "region": "",
+   "blurb": {
+    "hr": "Najslavniji djelatnik Glenturreta bila je mačka. Towser je 24 godine čuvala ječam od miševa i, prema Guinnessovoj knjizi rekorda, ulovila ih 28.899 — oko 3 na dan, svaki dan. Pred destilerijom u Crieffu danas stoji njezin brončani kip. Njezina nasljednica Amber, kažu, nije ulovila nijednog miša.",
+    "en": "Glenturret's most famous employee was a cat. Towser guarded the barley from mice for 24 years and, according to Guinness World Records, caught 28,899 of them — about 3 a day, every day. Her bronze statue now stands outside the distillery in Crieff. Her successor, Amber, is said never to have caught a single mouse.",
+    "it": "Il dipendente più famoso di Glenturret era una gatta. Towser ha difeso l'orzo dai topi per 24 anni e, secondo il Guinness dei primati, ne ha presi 28.899 — circa 3 al giorno, tutti i giorni. Oggi davanti alla distilleria di Crieff c'è la sua statua di bronzo. La sua erede, Amber, a quanto pare non ha mai preso un solo topo.",
+    "fr": "Le plus célèbre employé de Glenturret était une chatte. Towser a protégé l'orge des souris pendant 24 ans et, selon le Guinness des records, en a attrapé 28 899 — environ 3 par jour, tous les jours. Sa statue de bronze se dresse aujourd'hui devant la distillerie de Crieff. Sa remplaçante, Amber, n'aurait jamais attrapé une seule souris.",
+    "de": "Der berühmteste Mitarbeiter von Glenturret war eine Katze. Towser bewachte 24 Jahre lang die Gerste vor Mäusen und fing laut Guinness-Buch der Rekorde 28.899 davon — rund 3 am Tag, jeden Tag. Vor der Brennerei in Crieff steht heute ihre Bronzestatue. Ihre Nachfolgerin Amber soll keine einzige Maus gefangen haben.",
+    "zh": "Glenturret 最出名的员工是一只猫。Towser 替酒厂看守大麦 24 年，据吉尼斯世界纪录，一共抓了 28,899 只老鼠——差不多每天 3 只，天天如此。如今克里夫酒厂门前立着她的铜像。据说她的继任者 Amber 一只老鼠也没抓到过。",
+    "sl": "Najslavnejši uslužbenec Glenturreta je bila mačka. Towser je 24 let varovala ječmen pred mišmi in jih po Guinnessovi knjigi rekordov ujela 28.899 — okoli 3 na dan, vsak dan. Pred destilarno v Crieffu danes stoji njen bronasti kip. Njena naslednica Amber menda ni ujela niti ene miši.",
+    "es": "El empleado más famoso de Glenturret fue una gata. Towser protegió la cebada de los ratones durante 24 años y, según el Guinness de los récords, cazó 28.899 — unos 3 al día, todos los días. Hoy su estatua de bronce está frente a la destilería de Crieff. De su sucesora, Amber, se dice que nunca cazó un solo ratón."
+   }
   }
  }
 }

@@ -2691,6 +2691,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "glenturret--12y-barrel-selection-2013",
+         "price": 10,
+         "new": true
+        },
+        {
          "ref": "glenlossie--18y-sherry-finish-px-2008",
          "price": 12,
          "new": true
