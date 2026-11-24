@@ -2685,6 +2685,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "laphroaig--2014-wilson-morgan",
+         "price": 10,
+         "new": true
+        },
+        {
          "ref": "bowmore--20y-barrel-selection-2005",
          "price": 20,
          "new": true

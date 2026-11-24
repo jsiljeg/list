@@ -16679,6 +16679,52 @@
     "es": "Una sola barrica de bourbon de primer llenado: 20 años, 271 botellas — y esta es la número 252. La eligió y embotelló Wilson & Morgan, una casa italiana de Treviso, sin rebajar. La madera ha domado el humo de Bowmore casi hasta un susurro, pero con 55,6% solo se abre de verdad con una gota de agua."
    },
    "notePlain": true
+  },
+  "laphroaig--2014-wilson-morgan": {
+   "name": "2014 – Wilson & Morgan",
+   "producer": "Laphroaig",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_islay",
+    "region": "Islay",
+    "country": "SCT",
+    "base": [
+     "barley_malt_peated"
+    ],
+    "still": [
+     "pot"
+    ],
+    "alcohol": "57.1",
+    "bottler": "Wilson & Morgan Barrel Selection",
+    "aromas": [
+     "iodine",
+     "peat",
+     "brine",
+     "grapefruit",
+     "eucalyptus",
+     "white_pepper"
+    ],
+    "serve": [
+     "drop_of_water",
+     "neat"
+    ],
+    "pairings": [
+     "smoked_fish",
+     "oysters",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "„100 U.K. Proof” na etiketi nije ukras: to je stara britanska mjera, jačina pri kojoj barut natopljen pićem još uvijek plane — 57,1%. Jedna bačva, 220 boca, punjeno bez razrjeđivanja; talijanski Wilson & Morgan odabrao ju je za Njemačku, a završila je u Zagrebu. Kap vode otvara grejp i limetu ispod joda.",
+    "en": "\"100 U.K. Proof\" on the label is not decoration: it is the old British measure, the strength at which gunpowder soaked in the spirit will still catch fire — 57.1%. One cask, 220 bottles, bottled without reduction; Italy's Wilson & Morgan chose it for Germany, and it ended up in Zagreb. A drop of water opens the grapefruit and lime under the iodine.",
+    "it": "\"100 U.K. Proof\" in etichetta non è un ornamento: è la vecchia misura britannica, la gradazione alla quale la polvere da sparo imbevuta del distillato prende ancora fuoco — 57,1%. Una botte, 220 bottiglie, imbottigliato senza riduzione; il trevigiano Wilson & Morgan l'ha scelta per la Germania, ed è finita a Zagabria. Una goccia d'acqua apre il pompelmo e il lime sotto lo iodio.",
+    "fr": "« 100 U.K. Proof » sur l'étiquette n'est pas un ornement : c'est l'ancienne mesure britannique, le degré auquel de la poudre à canon imbibée d'alcool s'enflamme encore — 57,1%. Un seul fût, 220 bouteilles, embouteillé sans réduction ; l'italien Wilson & Morgan l'a choisi pour l'Allemagne, et il a fini à Zagreb. Une goutte d'eau ouvre le pamplemousse et le citron vert sous l'iode.",
+    "de": "„100 U.K. Proof“ auf dem Etikett ist kein Schmuck: Es ist das alte britische Maß, die Stärke, bei der mit dem Brand getränktes Schießpulver noch zündet — 57,1%. Ein Fass, 220 Flaschen, ohne Herabsetzung abgefüllt; der italienische Abfüller Wilson & Morgan hat es für Deutschland ausgewählt, gelandet ist es in Zagreb. Ein Tropfen Wasser öffnet Grapefruit und Limette unter dem Jod.",
+    "zh": "酒标上的「100 U.K. Proof」不是装饰：这是英国的旧度量——浸过这种烈酒的火药仍能点燃的酒精度，即 57.1%。单桶，220 瓶，未经稀释装瓶；意大利的 Wilson & Morgan 为德国市场挑中了这一桶，最后却来到了萨格勒布。加一滴水，碘味之下的西柚和青柠便会打开。",
+    "sl": "„100 U.K. Proof“ na etiketi ni okras: to je stara britanska mera, jakost, pri kateri smodnik, prepojen z žganjem, še vedno vzplamti — 57,1%. En sod, 220 steklenic, polnjeno brez redčenja; italijanski Wilson & Morgan ga je izbral za Nemčijo, končal pa je v Zagrebu. Kapljica vode odpre grenivko in limeto pod jodom.",
+    "es": "«100 U.K. Proof» en la etiqueta no es un adorno: es la vieja medida británica, la graduación a la que la pólvora empapada en el destilado aún prende — 57,1%. Una sola barrica, 220 botellas, embotellado sin rebajar; el italiano Wilson & Morgan la eligió para Alemania y acabó en Zagreb. Una gota de agua abre el pomelo y la lima bajo el yodo."
+   },
+   "notePlain": true
   }
  }
 }
