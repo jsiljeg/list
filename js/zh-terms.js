@@ -145,6 +145,7 @@
     "Petín": "佩廷",
     "Islay": "艾雷岛",
     "Bowmore": "波摩",
+    "Port Askaig": "阿斯凯格港",
     "Speyside": "斯佩塞",
     "Highlands": "高地",
     "Lowlands": "低地",

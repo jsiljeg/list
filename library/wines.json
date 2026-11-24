@@ -16856,6 +16856,57 @@
     "es": "Al pie de la etiqueta pone «100 U.K. Proof» — y 57,1% es exactamente eso: la vieja medida británica de graduación, de cuando el ron se probaba vertiéndolo sobre pólvora. Si la pólvora aún prendía, nadie lo había aguado. El italiano Wilson & Morgan guardó después esta barrica otros 45 meses en una bota de oloroso de primer llenado — tanto tiempo que ya no es un acabado, sino una segunda vida. Una gota de agua abre las especias y una nota de mostarda."
    },
    "notePlain": true
+  },
+  "caol-ila--15y-bourbon-finish-2010": {
+   "name": "15Y Bourbon Finish 2010",
+   "producer": "Caol Ila",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_islay",
+    "region": "Port Askaig, Islay",
+    "country": "SCT",
+    "base": [
+     "barley_malt_peated"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "age": "15",
+    "alcohol": "56.7",
+    "bottler": "Wilson & Morgan — Barrel Selection",
+    "aromas": [
+     "peat",
+     "tar",
+     "vanilla",
+     "toffee",
+     "banana",
+     "malt"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "oysters",
+     "smoked_fish",
+     "cheese_hard"
+    ]
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Jedna bačva, 274 boce, punjeno pri punoj jačini iz bačve. Talijanski punitelj Wilson & Morgan iz Trevisa držao je ovaj viski posljednjih 69 mjeseci — gotovo 6 godina — u bačvi prvog punjenja od bourbona, pa je treset ostao iza vanilije, toffeeja i banane. Nekoliko kapi vode ga otvori.",
+    "en": "One cask, 274 bottles, bottled at full cask strength. The Italian bottler Wilson & Morgan, from Treviso, kept this whisky for its last 69 months — almost 6 years — in a first-fill bourbon cask, so the peat stands behind vanilla, toffee and banana. A few drops of water open it up.",
+    "it": "Una botte, 274 bottiglie, imbottigliato a piena gradazione di botte. L'imbottigliatore trevigiano Wilson & Morgan ha tenuto questo whisky per gli ultimi 69 mesi — quasi 6 anni — in una botte ex bourbon di primo riempimento, così la torba resta dietro vaniglia, toffee e banana. Qualche goccia d'acqua lo apre.",
+    "fr": "Un fût, 274 bouteilles, embouteillé à pleine puissance de fût. L'embouteilleur italien Wilson & Morgan, de Trévise, a gardé ce whisky ses 69 derniers mois — presque 6 ans — dans un fût de bourbon de premier remplissage, si bien que la tourbe reste derrière la vanille, le caramel au beurre et la banane. Quelques gouttes d'eau l'ouvrent.",
+    "de": "Ein Fass, 274 Flaschen, in voller Fassstärke abgefüllt. Der italienische Abfüller Wilson & Morgan aus Treviso hat diesen Whisky seine letzten 69 Monate — fast 6 Jahre — in einem Erstbefüllungs-Bourbonfass reifen lassen, deshalb steht der Torf hinter Vanille, Toffee und Banane. Ein paar Tropfen Wasser öffnen ihn.",
+    "zh": "一只桶，274 瓶，以原桶强度装瓶。来自特雷维索的意大利装瓶商 Wilson & Morgan 让这支威士忌在最后 69 个月——将近 6 年——里待在首次填充的波本桶中，所以泥煤退到了香草、太妃糖和香蕉之后。加几滴水，它就打开了。",
+    "sl": "En sod, 274 steklenic, polnjeno pri polni moči iz soda. Italijanski polnilec Wilson & Morgan iz Trevisa je ta viski zadnjih 69 mesecev — skoraj 6 let — hranil v sodu prvega polnjenja po bourbonu, zato je šota ostala za vaniljo, toffeejem in banano. Nekaj kapljic vode ga odpre.",
+    "es": "Una barrica, 274 botellas, embotellado a plena graduación de barrica. El embotellador italiano Wilson & Morgan, de Treviso, guardó este whisky sus últimos 69 meses — casi 6 años — en una barrica de bourbon de primer llenado, así que la turba queda detrás de la vainilla, el toffee y el plátano. Unas gotas de agua lo abren."
+   },
+   "notePlain": true
   }
  }
 }
