@@ -140,6 +140,10 @@ jobs:
       - name: Install Claude Code
         run: npm install -g @anthropic-ai/claude-code@latest
 
+      # CLAUDE.md is loaded into every turn; the full one is ~38k tokens of
+      # project history. Only the wine sections stay, in this runner only.
+      - name: Only the wine rules in CLAUDE.md
+        run: node scripts/claude-md-for-cards.mjs
       - name: Write the card
         id: claude
         env:
