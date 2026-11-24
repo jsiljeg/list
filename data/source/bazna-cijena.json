@@ -3468,6 +3468,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "linkwood--2015-sherry-finish-wilson-morgan",
+   "vol": null,
+   "price": 9,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "long-pond--cambridge-2005",
    "vol": null,
    "price": 27,
