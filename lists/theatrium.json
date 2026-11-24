@@ -2497,6 +2497,8 @@
         {
          "ref": "wise-grus--vodka",
          "price": 8,
+         "anchor": 8,
+         "anchorDate": "2026-11-24",
          "new": true
         },
         {

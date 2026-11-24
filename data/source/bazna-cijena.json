@@ -3657,6 +3657,14 @@
    "price": 5,
    "date": "2026-09-10",
    "source": "vlasnik, 24.11.2026.: cijena s liste toga dana, datum 10.9.2026."
+  },
+  {
+   "shelf": "spirits",
+   "ref": "wise-grus--vodka",
+   "vol": null,
+   "price": 8,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
   }
  ]
 }
