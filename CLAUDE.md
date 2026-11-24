@@ -491,6 +491,21 @@ bottles in a Negroni, while the `liqueur` shelf next door is after-dinner
 
 ## The bazna cijena and the cjenik (2026-11-17) — supersedes the anchor notes below
 
+**LIVE since 24.11.2026 — owner's decision, supersedes the 2.5.2025 plan below.**
+The bazna cijena of every listing is **its price on the list on 24.11.2026,
+dated 10.9.2026** (owner: "I need it on 10.9.2026 and with the same prices as
+today"). All 448 listings carry `anchor` + `anchorDate: "2026-09-10"`, the
+warrant is `data/source/bazna-cijena.json`, `SHOW_ANCHOR` and
+`cjenik-publish.json` are both on, and `ui.anchorNote` names 10.9.2026 in all
+8 languages. The till proposal and Filho's review page are no longer needed.
+**Anything listed later** gets its first price and first day automatically:
+`scripts/bazna-new.mjs` runs at the start of every deploy, stamps a listing
+that has a price and no `anchor`, and commits it back (deploy.yml now has
+`contents: write`). A listing that returns keeps its old warrant row.
+Still open: 66 spirits/rakija/coffee rows go into the cjenik with no
+`neto_kolicina` — the pour measure is Filho's to give.
+
+
 The rules became law on **17.11.2026**: Zakon o zaštiti potrošača čl. 7
 (NN 59/2026) and two pravilnici in NN 132/2026 — **1583** (isticanje bazne
 cijene) and **1584** (objava cjenika). The temporary "sidrena cijena"
