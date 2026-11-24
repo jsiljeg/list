@@ -3508,6 +3508,38 @@
   },
   {
    "shelf": "spirits",
+   "ref": "old-pilot-s--barrel-aged-gin",
+   "vol": null,
+   "price": 8,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
+   "ref": "old-pilot-s--london-dry-gin",
+   "vol": null,
+   "price": 9,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
+   "ref": "old-pilot-s--strawberry-gin",
+   "vol": null,
+   "price": 8,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
+   "ref": "old-pilot-s--vodka",
+   "vol": null,
+   "price": 9,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "scotland--bladnoch-19y",
    "vol": null,
    "price": 36,
