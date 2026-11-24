@@ -130,6 +130,31 @@ def search(page, base):
     page.wait_for_timeout(500)
 
 
+@state
+def countries(page, base):
+    """Bijela vina po boci with the country chips (2026-11-24)."""
+    enter(page, base)
+    to_list(page)
+    page.click('#nav button[data-sec="bottle-white"]')
+    page.wait_for_timeout(400)
+
+
+@state
+def country_it(page, base):
+    """…filtered to Italy."""
+    countries(page, base)
+    page.click('.country-chip[data-cc="IT"]')
+    page.wait_for_timeout(400)
+
+
+@state
+def sparkling(page, base):
+    enter(page, base)
+    to_list(page)
+    page.click('#nav button[data-sec="bottle-sparkling"]')
+    page.wait_for_timeout(400)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("states", nargs="*", default=None,

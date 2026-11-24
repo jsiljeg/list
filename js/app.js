@@ -1179,6 +1179,24 @@ function ornamentFor(sectionId) {
   return ICONS.grape;
 }
 
+/* The country chips (see renderContent). Only the bottle shelves get them:
+   the glass list is short and ordered by body on purpose, spirits are a
+   different question. A wine's country is its group's, or — on the
+   sparkling shelf, which is not grouped by country — the wine's own. */
+let countryFilter = { sec: null, cc: null };
+const itemCountry = (item, g) => g.country || (item.insight && item.insight.country) || "";
+function countryCounts(sec) {
+  if (!sec || !sec.id.startsWith("bottle-")) return [];
+  const order = [], n = {};
+  for (const cat of sec.categories) for (const g of cat.groups) for (const item of g.items) {
+    const cc = itemCountry(item, g);
+    if (!cc) continue;
+    if (!(cc in n)) { order.push(cc); n[cc] = 0; }
+    n[cc]++;
+  }
+  return order.map((cc) => ({ cc, n: n[cc] }));
+}
+
 function renderContent() {
   const t = T();
   const q = expandQuery($("search").value.trim().toLowerCase());
@@ -1191,6 +1209,7 @@ function renderContent() {
   const box = $("content");
   let html = "";
 
+  if (q) countryFilter = { sec: null, cc: null };
   if (q) {
     /* Global search across all sections, in two halves:
 
@@ -1367,12 +1386,30 @@ function renderContent() {
   } else {
     const sec = DATA.sections.find((s) => s.id === currentSection);
     const si = DATA.sections.indexOf(sec);
+    /* Country chips on the bottle shelves (owner, 2026-11-24, after Mano's
+       list): "Sve zemlje · 121", "Hrvatska · 20", … A filter, not a jump.
+       Counts come from DATA, so an 86'd wine is already out of them. The
+       filter belongs to one section: leaving it — chip, swipe, search —
+       drops it, so nobody lands on a short list without knowing why. */
+    const counts = countryCounts(sec);
+    if (countryFilter.sec !== sec.id || !counts.some((c) => c.cc === countryFilter.cc)) countryFilter = { sec: null, cc: null };
+    const only = countryFilter.cc;
+    if (counts.length > 1) {
+      const total = counts.reduce((n, c) => n + c.n, 0);
+      const chip = (cc, label, n) => `<button class="country-chip${(only || "") === cc ? " active" : ""}" data-cc="${esc(cc)}">` +
+        (cc && COUNTRY_FLAGS[cc] ? `<span class="country-flag">${COUNTRY_FLAGS[cc]()}</span>` : "") +
+        `<span>${esc(label)}</span><span class="country-chip-n">${n}</span></button>`;
+      html += `<div class="country-chips" role="group">${chip("", t.ui.allCountries, total)}${counts.map((c) => chip(c.cc, t.countries[c.cc] || c.cc, c.n)).join("")}</div>`;
+    }
     sec.categories.forEach((cat, ci) => {
+      const groups = cat.groups.map((g, gi) => ({ g, gi, items: g.items.map((item, ii) => ({ item, ii }))
+        .filter(({ item }) => !only || itemCountry(item, g) === only) })).filter((x) => x.items.length);
+      if (!groups.length) return;
       html += `<section class="cat"><h2 class="cat-title">${esc(t.categories[cat.id] || cat.id)}${cat.serving ? ` <span class="cat-serving">${cat.serving}</span>` : ""}</h2><div class="ornament" aria-hidden="true">${ornamentFor(sec.id)}</div>`;
       if (cat.priceNote) html += `<p class="price-note">${t.ui.priceNote}</p>`;
-      cat.groups.forEach((g, gi) => {
+      groups.forEach(({ g, gi, items }) => {
         if (g.country) html += `<h3 class="country">${COUNTRY_FLAGS[g.country] ? `<span class="country-flag">${COUNTRY_FLAGS[g.country]()}</span>` : ""}<span>${esc(t.countries[g.country] || g.country)}</span></h3>`;
-        html += g.items.map((item, ii) => itemHtml(item, [si, ci, gi, ii].join("."))).join("");
+        html += items.map(({ item, ii }) => itemHtml(item, [si, ci, gi, ii].join("."))).join("");
       });
       html += `</section>`;
     });
@@ -1388,6 +1425,12 @@ function renderContent() {
      the category and into the reds is noise, and it makes both ends of the
      set mean something ("that is all of them") instead of one end being the
      end of the entire cellar. */
+  box.querySelectorAll(".country-chip").forEach((b) => b.addEventListener("click", () => {
+    countryFilter = { sec: currentSection, cc: b.dataset.cc || null };
+    renderContent();
+    const row = box.querySelector(".country-chips");
+    if (row && row.getBoundingClientRect().top < 0) row.scrollIntoView({ block: "start" });
+  }));
   const shown = Array.from(box.querySelectorAll(".item.clickable"));
   const scope = shown.map((b) => b.dataset.ref);
   shown.forEach((b) => b.addEventListener("click", () => openDetail(b.dataset.ref, null, scope)));

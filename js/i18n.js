@@ -58,7 +58,8 @@ hr: {
     newBadge: "Novo",
     newArrivals: "Novo",
     newGlass: "Na čašu", newBottle: "Na bocu",
-    regions: "Regije"
+    regions: "Regije",
+    allCountries: "Sve zemlje"
   },
   helper: {
     title: "Pomozi mi odabrati",
@@ -202,7 +203,8 @@ en: {
     newBadge: "New",
     newArrivals: "New",
     newGlass: "By the glass", newBottle: "By the bottle",
-    regions: "Regions"
+    regions: "Regions",
+    allCountries: "All countries"
   },
   helper: {
     title: "Help me choose",
@@ -346,7 +348,8 @@ it: {
     newBadge: "Novità",
     newArrivals: "Novità",
     newGlass: "Al calice", newBottle: "In bottiglia",
-    regions: "Regioni"
+    regions: "Regioni",
+    allCountries: "Tutti i paesi"
   },
   helper: {
     title: "Aiutami a scegliere",
@@ -490,7 +493,8 @@ fr: {
     newBadge: "Nouveau",
     newArrivals: "Nouveautés",
     newGlass: "Au verre", newBottle: "À la bouteille",
-    regions: "Régions"
+    regions: "Régions",
+    allCountries: "Tous les pays"
   },
   helper: {
     title: "Aidez-moi à choisir",
@@ -634,7 +638,8 @@ de: {
     newBadge: "Neu",
     newArrivals: "Neu",
     newGlass: "Glasweise", newBottle: "Ganze Flasche",
-    regions: "Regionen"
+    regions: "Regionen",
+    allCountries: "Alle Länder"
   },
   helper: {
     title: "Hilfe bei der Auswahl",
@@ -778,7 +783,8 @@ zh: {
     newBadge: "新品",
     newArrivals: "新品",
     newGlass: "单杯", newBottle: "整瓶",
-    regions: "产区"
+    regions: "产区",
+    allCountries: "全部国家"
   },
   helper: {
     title: "帮我选酒",
@@ -931,7 +937,8 @@ sl: {
     "newBadge": "Novo",
     "newArrivals": "Novo",
     "newGlass": "Na kozarec", "newBottle": "Na steklenico",
-    "regions": "Regije"
+    "regions": "Regije",
+    "allCountries": "Vse države"
   },
   "helper": {
     "title": "Pomagaj mi izbrati",
@@ -1386,7 +1393,8 @@ es: {
     "newBadge": "Nuevo",
     "newArrivals": "Nuevo",
     "newGlass": "Por copa", "newBottle": "Por botella",
-    "regions": "Regiones"
+    "regions": "Regiones",
+    "allCountries": "Todos los países"
   },
   "helper": {
     "title": "Ayúdame a elegir",

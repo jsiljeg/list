@@ -1050,3 +1050,25 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .exit-hint { transition: none; }
 }
+
+/* Country chips on the bottle shelves (2026-11-24). They wrap rather than
+   scroll: a sideways drag on the list belongs to the section swipe. */
+.country-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: .2rem 0 1.6rem; }
+.country-chip {
+  display: inline-flex; align-items: center; gap: .5rem;
+  min-height: 44px; padding: .45rem .95rem;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: transparent; color: var(--text-dim, var(--text));
+  font: inherit; font-size: .95rem; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.country-chip .country-flag svg, .country-chip .country-flag .flag-img { width: 21px; height: 14px; }
+.country-chip-n { color: var(--text-faint); font-variant-numeric: tabular-nums; }
+.country-chip.active { border-color: var(--gold); color: var(--gold); background: rgba(201,169,97,.1); }
+.country-chip.active .country-chip-n { color: var(--gold-soft); }
+@media (hover: hover) { .country-chip:hover { border-color: var(--gold-soft); } }
+@media (max-width: 600px) {
+  .country-chips { gap: .35rem; margin-bottom: 1.2rem; }
+  .country-chip { min-height: 36px; padding: .25rem .65rem; gap: .35rem; font-size: .82rem; }
+  .country-chip .country-flag svg, .country-chip .country-flag .flag-img { width: 18px; height: 12px; }
+}
