@@ -16529,6 +16529,56 @@
     "es": "La etiqueta es una pequeña historia del vuelo: Leonardo, los hermanos Wright, el Spirit of St. Louis, la Voyager — y el Homo volans, el hombre bajo un paracaídas del libro de Fausto Veranzio, natural de Šibenik. En la botella hay Maris Otter, la vieja cebada inglesa que los cerveceros adoran por su sabor a pan y galleta, destilada dos veces y criada en barricas de roble americano de 190 litros. El humo es solo un rastro."
    },
    "notePlain": true
+  },
+  "glenlossie--18y-sherry-finish-px-2008": {
+   "name": "18Y Sherry Finish PX 2008",
+   "producer": "Glenlossie",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_speyside",
+    "region": "Elgin, Speyside",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_sherry_px"
+    ],
+    "age": "18",
+    "alcohol": "50.5",
+    "bottler": "Wilson & Morgan Barrel Selection",
+    "aromas": [
+     "raisin",
+     "plum",
+     "fig",
+     "dried_apricot",
+     "honey",
+     "dark_chocolate"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "cheese_hard",
+     "cigars"
+    ]
+   },
+   "note": {
+    "hr": "Završno dozrijevanje u bačvi od sherryja obično traje nekoliko mjeseci; ovaj je viski posljednje 4 od svojih 18 godina proveo u bačvi iz koje je upravo istočen Pedro Ximénez. Zato sherry ovdje nije premaz nego pola karaktera — grožđice, smokve i kestenov med, a ispod svega i dalje Speyside. Bačvu je odabrala i napunila talijanska kuća Wilson & Morgan iz Trevisa: jedna bačva, 197 boca.",
+    "en": "A sherry finish usually lasts a few months; this whisky spent the last 4 of its 18 years in a cask that had just been emptied of Pedro Ximénez. So the sherry here is not a coat of varnish but half the character — raisins, figs and chestnut honey, with Speyside still underneath it all. The cask was chosen and bottled by Wilson & Morgan, an Italian house from Treviso: one cask, 197 bottles.",
+    "it": "Un finish in botte di sherry di solito dura qualche mese; questo whisky ha passato gli ultimi 4 dei suoi 18 anni in una botte appena svuotata di Pedro Ximénez. Così lo sherry qui non è una mano di vernice ma metà del carattere — uvetta, fichi e miele di castagno, e sotto tutto ancora lo Speyside. La botte l'ha scelta e imbottigliata Wilson & Morgan, casa di Treviso: una botte, 197 bottiglie.",
+    "fr": "Un finish en fût de sherry dure d'ordinaire quelques mois ; ce whisky a passé les 4 dernières de ses 18 années dans un fût tout juste vidé de son Pedro Ximénez. Le sherry n'est donc pas ici un vernis mais la moitié du caractère — raisins secs, figues et miel de châtaignier, avec le Speyside toujours dessous. Le fût a été choisi et embouteillé par Wilson & Morgan, maison italienne de Trévise : un fût, 197 bouteilles.",
+    "de": "Ein Sherry-Finish dauert gewöhnlich ein paar Monate; dieser Whisky hat die letzten 4 seiner 18 Jahre in einem Fass verbracht, aus dem gerade erst Pedro Ximénez gelaufen war. Der Sherry ist hier deshalb kein Lack, sondern der halbe Charakter — Rosinen, Feigen und Kastanienhonig, und darunter immer noch die Speyside. Ausgewählt und abgefüllt hat das Fass Wilson & Morgan, ein italienisches Haus aus Treviso: ein Fass, 197 Flaschen.",
+    "zh": "雪莉桶过桶通常只有几个月；这支威士忌 18 年里的最后 4 年，都待在一只刚倒空 PX 雪莉的桶里。所以这里的雪莉不是一层漆，而是一半的性格——葡萄干、无花果、栗子蜂蜜，底下依然是斯佩塞。挑桶并装瓶的是来自特雷维索的意大利酒商 Wilson & Morgan：一只桶，197 瓶。",
+    "sl": "Zaključno zorenje v sodu po sherryju običajno traja nekaj mesecev; ta viski je zadnja 4 od svojih 18 let preživel v sodu, iz katerega so pravkar iztočili Pedro Ximénez. Zato sherry tu ni premaz, ampak pol značaja — rozine, fige in kostanjev med, pod vsem pa še vedno Speyside. Sod je izbrala in polnila italijanska hiša Wilson & Morgan iz Trevisa: en sod, 197 steklenic.",
+    "es": "Un acabado en bota de jerez suele durar unos meses; este whisky pasó los últimos 4 de sus 18 años en una bota recién vaciada de Pedro Ximénez. Así que aquí el jerez no es una capa de barniz sino la mitad del carácter — pasas, higos y miel de castaño, y debajo de todo, todavía Speyside. La bota la eligió y embotelló Wilson & Morgan, una casa italiana de Treviso: una bota, 197 botellas."
+   },
+   "notePlain": true
   }
  }
 }

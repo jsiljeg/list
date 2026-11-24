@@ -132,6 +132,7 @@
     "Serravalle Scrivia": "塞拉瓦莱斯克里维亚",
     "Segonzac": "塞贡扎克",
     "Tain": "泰恩",
+    "Elgin": "埃尔金",
     "Wigtownshire": "威格敦郡",
     "Jesús María": "赫苏斯玛丽亚",
     "Los Valles": "洛斯瓦列斯",
