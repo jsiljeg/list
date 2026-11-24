@@ -21,12 +21,17 @@ import { execFileSync } from "node:child_process";
 import vm from "node:vm";
 
 const isGlass = (sid) => sid === "glass";
+/* Three kinds of shelf (2026-11-24, Filho's first gin through Dodaj vino):
+   "glass" takes the glass price, "bottle-*" the bottle price, and every other
+   shelf (spirits, rakija, liqueurs) sells ONE serving — the pour Filho types
+   in the čaša field, or his bottle figure if that is all he gave. */
+export const shelfKind = (sid) => (sid === "glass" ? "glass" : sid.startsWith("bottle-") ? "bottle" : "pour");
 
 /** Every listing of `ref`: [{sid, cat, idx, items, it}] in list order. */
 export function listingsOf(list, ref) {
   const out = [];
   for (const sec of list.sections) for (const cat of sec.categories) for (const g of cat.groups)
-    g.items.forEach((it, idx) => { if (it.ref === ref) out.push({ sid: sec.id, cat: cat.id, country: g.country, idx, items: g.items, it }); });
+    g.items.forEach((it, idx) => { if (it.ref === ref) out.push({ sid: sec.id, cat: cat.id, serving: cat.serving, country: g.country, idx, items: g.items, it }); });
   return out;
 }
 
@@ -42,17 +47,19 @@ export function added(base, list, ref) {
 /** Pure. [] when the card's listings agree with Filho's prices. */
 export function placementProblems({ base, list, ref, priceBottle, priceGlass }) {
   const had = listingsOf(base, ref), now = added(base, list, ref);
+  const k = (xs, kind) => xs.filter((l) => shelfKind(l.sid) === kind);
   const p = [];
-  const glassNew = now.filter((l) => isGlass(l.sid)), bottleNew = now.filter((l) => !isGlass(l.sid));
-  if (glassNew.length && priceGlass == null) p.push("vino je stavljeno na čašu, a cijena čaše nije zadana");
-  if (bottleNew.length && priceBottle == null) p.push("vino je stavljeno među boce, a cijena boce nije zadana");
-  const hasGlass = (xs) => xs.some((l) => isGlass(l.sid)), hasBottle = (xs) => xs.some((l) => !isGlass(l.sid));
-  if (priceGlass != null && !hasGlass(now) && !hasGlass(had)) p.push("zadana je cijena čaše, a vino nije na čaši");
-  if (priceBottle != null && !hasBottle(now) && !hasBottle(had)) p.push("zadana je cijena boce, a vino nije među bocama");
+  if (k(now, "glass").length && priceGlass == null) p.push("vino je stavljeno na čašu, a cijena čaše nije zadana");
+  if (k(now, "bottle").length && priceBottle == null) p.push("vino je stavljeno među boce, a cijena boce nije zadana");
+  if (k(now, "pour").length && priceGlass == null && priceBottle == null) p.push("piće je stavljeno na kartu bez cijene");
+  const all = [...now, ...had];
+  if (priceGlass != null && !k(all, "glass").length && !k(all, "pour").length) p.push("zadana je cijena čaše, a vino nije na čaši");
+  if (priceBottle != null && !k(all, "bottle").length && !(k(all, "pour").length && priceGlass == null))
+    p.push(k(all, "pour").length ? "zadane su dvije cijene, a žestica na karti ima jednu (cijenu točenja)" : "zadana je cijena boce, a vino nije među bocama");
   return p;
 }
 
-const SHELF = { glass: "Vina na čašu", "bottle-sparkling": "Pjenušci po boci", "bottle-white": "Bijela vina po boci",
+const SHELF = { spirits: "Žestoka pića", "rakija-beer": "Rakije, likeri i pivo", glass: "Vina na čašu", "bottle-sparkling": "Pjenušci po boci", "bottle-white": "Bijela vina po boci",
   "bottle-rose": "Rosé po boci", "bottle-red": "Crna vina po boci", "bottle-dessert": "Desertna vina po boci" };
 const CAT = { sparkling: "pjenušci", champagne: "champagne", white: "bijela", red: "crna", rose: "rosé", dessert: "desertna" };
 
@@ -61,10 +68,13 @@ export function describe(base, list, ref, library = {}, countries = {}) {
   const name = (r) => { const w = library[r]; return w ? `${w.producer} ${w.name}` : r; };
   const eur = (n) => `${String(n).replace(".", ",")} €`;
   return added(base, list, ref).map((l) => {
-    const where = isGlass(l.sid) ? `${SHELF.glass} → ${CAT[l.cat] || l.cat}` : `${SHELF[l.sid] || l.sid}${l.country ? ` → ${countries[l.country] || l.country}` : ""}`;
+    const where = isGlass(l.sid) ? `${SHELF.glass} → ${CAT[l.cat] || l.cat}`
+      : shelfKind(l.sid) === "pour" ? `${SHELF[l.sid] || l.sid} → ${l.cat}`
+      : `${SHELF[l.sid] || l.sid}${l.country ? ` → ${countries[l.country] || l.country}` : ""}`;
     const prev = l.items[l.idx - 1], next = l.items[l.idx + 1];
     const beside = [prev && `iza ${name(prev.ref)}`, next && `ispred ${name(next.ref)}`].filter(Boolean).join(", ");
-    const size = isGlass(l.sid) ? "čaša" : `boca ${String(l.it.vol ?? 0.75).replace(".", ",")} l`;
+    const kind = shelfKind(l.sid);
+    const size = kind === "glass" ? "čaša" : kind === "pour" ? (l.serving ? `mjera ${l.serving}` : "mjera") : `boca ${String(l.it.vol ?? 0.75).replace(".", ",")} l`;
     return `${where}${beside ? `, ${beside}` : ""}: ${l.it.price != null ? eur(l.it.price) : "bez cijene"}, ${size}.`;
   }).join(" ");
 }

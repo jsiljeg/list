@@ -70,6 +70,10 @@ this one wine.
   where the listings really are and fails on a mismatch (2026-11-20, El
   Molar: the note said "po boci", the listing went after the glass CL98).
   `placement` in result.json is overwritten from the files, so don't polish it.
+  **A spirit** (gin, whisky, rum, rakija, liqueur…) goes on ONE listing in
+  its `spirits` / `rakija-beer` category, never in `glass` or `bottle-*`.
+  That shelf sells one pour (0,03 l): its price is `price_glass`, or
+  `price_bottle` if that is the only one given (2026-11-24, Filho's gin).
   `recommended: true` means it
   is Filho's own pick: his signed note (no `notePlain`) and
   `recommended: true` on the listing. Otherwise `notePlain: true`.

@@ -135,3 +135,19 @@ test("a card's listings must match the prices Filho gave", async () => {
   expect(pub).toContain("node scripts/card-placement.mjs --base HEAD");
   expect(pub).toMatch(/A price Filho cleared on the preview takes its listing with it/);
 });
+
+/* 2026-11-24: Filho's first gin through Dodaj vino went onto the spirits shelf
+   at his 9 € pour price, and the placement check refused it as "a bottle with
+   no bottle price" — it knew only glass and bottle shelves. */
+test("a spirit on its own shelf takes the one pour price", async () => {
+  const { placementProblems, shelfKind } = await import(pathToFileURL(join(process.cwd(), "scripts/card-placement.mjs")).href);
+  const mk = (sid, items) => ({ sections: [{ id: sid, categories: [{ id: "gin", serving: "0,03 l", groups: [{ items }] }] }] });
+  const base = mk("spirits", [{ ref: "a" }]), list = mk("spirits", [{ ref: "a" }, { ref: "g", price: 9 }]);
+  expect(shelfKind("spirits")).toBe("pour");
+  expect(shelfKind("rakija-beer")).toBe("pour");
+  expect(placementProblems({ base, list, ref: "g", priceGlass: 9, priceBottle: null })).toEqual([]);
+  expect(placementProblems({ base, list, ref: "g", priceGlass: null, priceBottle: 9 })).toEqual([]);
+  expect(placementProblems({ base, list, ref: "g", priceGlass: null, priceBottle: null })).toHaveLength(1);
+  const wf = readFileSync(join(process.cwd(), ".github/workflows/publish-wine.yml"), "utf8");
+  expect(wf).toContain("def want_for(sid)");
+});

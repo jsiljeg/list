@@ -101,6 +101,13 @@ jobs:
           # NOVO: Filho's last tap on the preview, else what the run proposed.
           taps = [a for a in req.get("answers") or [] if a.get("kind") == "novo"]
           novo = bool(taps[-1]["to"]) if taps else (req.get("result") or {}).get("novo", True) is not False
+          # glass -> glass price, bottle-* -> bottle price, any other shelf
+          # (spirits, rakija, liqueurs) sells one pour: the čaša figure, or
+          # the bottle one if that is all Filho gave (scripts/card-placement.mjs).
+          def want_for(sid):
+              if sid == "glass": return pg
+              if sid.startswith("bottle-"): return pb
+              return pg if pg is not None else pb
           p = "lists/theatrium.json"
           doc = json.load(open(p, encoding="utf-8"))
           mine = []
@@ -130,18 +137,18 @@ jobs:
                           if it.get("ref") != ref: continue
                           k = (sec["id"], cat["id"], it.get("vol") or 0.75)
                           if had.get(k, 0) > 0: had[k] -= 1; continue
-                          if (pg if sec["id"] == "glass" else pb) is None:
+                          if want_for(sec["id"]) is None:
                               g["items"].remove(it)
                               mine = [(s, x) for s, x in mine if x is not it]
           # This wine's listings added on the branch (no anchor). One bottle
           # listing takes the bottle price; with several sizes, only the size
           # Filho asked for (an auto-detected size is the single listing).
-          bottles = [it for s, it in mine if s != "glass"]
+          bottles = [it for s, it in mine if s.startswith("bottle-")]
           for sid, it in mine:
               if novo: it["new"] = True
               else: it.pop("new", None)
-              want = pg if sid == "glass" else pb
-              if sid != "glass" and len(bottles) > 1 and (it.get("vol") or 0.75) != (req.get("vol") or 0.75):
+              want = want_for(sid)
+              if sid.startswith("bottle-") and len(bottles) > 1 and (it.get("vol") or 0.75) != (req.get("vol") or 0.75):
                   continue   # a magnum beside it keeps its own price
               if want is not None:
                   it["price"] = int(want) if float(want).is_integer() else want
