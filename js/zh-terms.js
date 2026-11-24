@@ -143,6 +143,7 @@
     "Saint-Michel-de-l'Attalaye": "圣米歇尔德拉塔莱",
     "Petín": "佩廷",
     "Islay": "艾雷岛",
+    "Bowmore": "波摩",
     "Speyside": "斯佩塞",
     "Highlands": "高地",
     "Lowlands": "低地",

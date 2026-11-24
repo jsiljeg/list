@@ -16629,6 +16629,56 @@
     "es": "Glenturret suele ser un whisky sin humo; este es su destilado turbado, más raro. Wilson & Morgan, embotellador independiente de Treviso, le dio sus últimos 46 meses en una bota de oloroso — más que un acabado, casi 4 años. Por eso el humo es discreto, y el cuero, la nuez y la pimienta hablan alto."
    },
    "notePlain": true
+  },
+  "bowmore--20y-barrel-selection-2005": {
+   "name": "20Y Barrel Selection 2005",
+   "producer": "Bowmore",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_islay",
+    "region": "Bowmore, Islay",
+    "country": "SCT",
+    "base": [
+     "barley_malt_peated"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "age": "20",
+    "alcohol": "55.6",
+    "bottler": "Barrel Selection — Wilson & Morgan",
+    "aromas": [
+     "peat",
+     "malt",
+     "banana",
+     "lemon_zest",
+     "almond",
+     "leather"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "smoked_fish",
+     "cheese_hard",
+     "cigars"
+    ]
+   },
+   "note": {
+    "hr": "Jedna jedina bačva od bourbona, prvo punjenje: 20 godina, 271 boca — a ovo je boca broj 252. Bačvu je odabrala i napunila talijanska kuća Wilson & Morgan iz Trevisa, bez razrjeđivanja. Drvo je Bowmoreov dim ukrotilo gotovo do šapta, ali s 55,6% ga tek kap vode zaista otvori.",
+    "en": "One single first-fill bourbon barrel: 20 years, 271 bottles — and this is bottle number 252. The cask was chosen and bottled by Wilson & Morgan, an Italian house from Treviso, without diluting. The wood has tamed Bowmore's smoke almost to a whisper, but at 55.6% it only truly opens with a drop of water.",
+    "it": "Un'unica botte ex bourbon di primo riempimento: 20 anni, 271 bottiglie — e questa è la numero 252. L'ha scelta e imbottigliata Wilson & Morgan, casa trevigiana, senza diluire. Il legno ha domato il fumo di Bowmore quasi fino a un sussurro, ma a 55,6% si apre davvero solo con una goccia d'acqua.",
+    "fr": "Un seul et unique fût de bourbon de premier remplissage : 20 ans, 271 bouteilles — et celle-ci porte le numéro 252. Le fût a été choisi et embouteillé par Wilson & Morgan, une maison italienne de Trévise, sans réduction. Le bois a apprivoisé la fumée de Bowmore presque jusqu'au murmure, mais à 55,6% il ne s'ouvre vraiment qu'avec une goutte d'eau.",
+    "de": "Ein einziges First-Fill-Bourbonfass: 20 Jahre, 271 Flaschen — und dies ist Flasche Nummer 252. Ausgewählt und abgefüllt hat es Wilson & Morgan, ein italienisches Haus aus Treviso, unverdünnt. Das Holz hat Bowmores Rauch fast bis zum Flüstern gezähmt, doch mit 55,6% öffnet er sich erst mit einem Tropfen Wasser wirklich.",
+    "zh": "仅此一桶，首次填充的波本桶：20 年，271 瓶——这是第 252 瓶。挑桶装瓶的是来自特雷维索的意大利酒商 Wilson & Morgan，不加水稀释。木桶把波摩的烟熏驯服得几乎只剩低语，但 55.6% 的酒度，要加一滴水才真正打开。",
+    "sl": "En sam sod od bourbona, prvo polnjenje: 20 let, 271 steklenic — in to je steklenica številka 252. Sod je izbrala in napolnila italijanska hiša Wilson & Morgan iz Trevisa, brez redčenja. Les je Bowmorov dim ukrotil skoraj do šepeta, a pri 55,6% se zares odpre šele s kapljo vode.",
+    "es": "Una sola barrica de bourbon de primer llenado: 20 años, 271 botellas — y esta es la número 252. La eligió y embotelló Wilson & Morgan, una casa italiana de Treviso, sin rebajar. La madera ha domado el humo de Bowmore casi hasta un susurro, pero con 55,6% solo se abre de verdad con una gota de agua."
+   },
+   "notePlain": true
   }
  }
 }
