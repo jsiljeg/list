@@ -16907,6 +16907,35 @@
     "es": "Una barrica, 274 botellas, embotellado a plena graduación de barrica. El embotellador italiano Wilson & Morgan, de Treviso, guardó este whisky sus últimos 69 meses — casi 6 años — en una barrica de bourbon de primer llenado, así que la turba queda detrás de la vainilla, el toffee y el plátano. Unas gotas de agua lo abren."
    },
    "notePlain": true
+  },
+  "wise-grus--premium-dry-gin": {
+   "name": "Premium Dry Gin",
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "gin_contemporary",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "juniper_botanicals"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "juniper",
+     "citrus",
+     "herbs"
+    ],
+    "serve": [
+     "with_tonic",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "aperitif"
+    ]
+   }
   }
  }
 }
