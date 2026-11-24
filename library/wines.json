@@ -16756,6 +16756,57 @@
      "smoked_fish"
     ]
    }
+  },
+  "glen-keith--30y-traditional-oak-1994": {
+   "name": "30Y Traditional Oak 1994",
+   "producer": "Glen Keith",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_speyside",
+    "region": "Keith, Speyside",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "refill"
+    ],
+    "age": "30",
+    "alcohol": "52.7",
+    "bottler": "Wilson & Morgan Barrel Selection",
+    "aromas": [
+     "pineapple",
+     "passion_fruit",
+     "beeswax",
+     "honey",
+     "chamomile",
+     "cinnamon"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "nuts",
+     "dark_chocolate"
+    ]
+   },
+   "note": {
+    "hr": "Destilirano 1994., 5 godina prije nego što je Glen Keith utihnuo na 14 godina. Bačva je rabljena bačva od bourbona koja više ništa ne nameće, pa ananas, marakuja i pčelinji vosak dolaze iz samog destilata — tropski ton koji Speyside razvije tek nakon 30 godina. Punjeno u jakosti bačve, bez razrjeđivanja: jedna bačva, 136 boca, koju je odabrao Wilson & Morgan iz Trevisa. Kap vode ga otvara.",
+    "en": "Distilled in 1994, 5 years before Glen Keith fell silent for 14. The cask is a refill bourbon barrel with nothing left to impose, so the pineapple, passion fruit and beeswax come from the spirit itself — the tropical note Speyside only develops after 30 years. Bottled at cask strength, undiluted: one cask, 136 bottles, chosen by Wilson & Morgan of Treviso. A drop of water opens it up.",
+    "it": "Distillato nel 1994, 5 anni prima che Glen Keith tacesse per 14. La botte è un barile ex bourbon di riempimento che non ha più nulla da imporre, così ananas, frutto della passione e cera d'api vengono dal distillato stesso — la nota tropicale che lo Speyside sviluppa solo dopo 30 anni. Imbottigliato a grado pieno, senza diluizione: una botte, 136 bottiglie, scelta da Wilson & Morgan di Treviso. Una goccia d'acqua lo apre.",
+    "fr": "Distillé en 1994, 5 ans avant que Glen Keith ne se taise pendant 14 ans. Le fût est un ancien fût de bourbon de remplissage qui n'a plus rien à imposer : l'ananas, le fruit de la passion et la cire d'abeille viennent du distillat lui-même — la note tropicale que le Speyside ne développe qu'après 30 ans. Embouteillé brut de fût, sans réduction : un fût, 136 bouteilles, choisi par Wilson & Morgan, de Trévise. Une goutte d'eau l'ouvre.",
+    "de": "Gebrannt 1994, 5 Jahre bevor Glen Keith für 14 Jahre verstummte. Das Fass ist ein wiederbefülltes Bourbonfass, das nichts mehr aufdrängt, also kommen Ananas, Passionsfrucht und Bienenwachs aus dem Destillat selbst — die tropische Note, die Speyside erst nach 30 Jahren entwickelt. In Fassstärke abgefüllt, unverdünnt: ein Fass, 136 Flaschen, ausgewählt von Wilson & Morgan aus Treviso. Ein Tropfen Wasser öffnet ihn.",
+    "zh": "1994 年蒸馏，5 年后 Glen Keith 停产，一停就是 14 年。酒桶是一只再填的波本桶，已没有什么可强加的，所以菠萝、百香果与蜂蜡都来自酒液本身——斯佩塞要过 30 年才会长出的热带气息。原桶强度装瓶，未经稀释：一只桶，136 瓶，由特雷维索的 Wilson & Morgan 挑选。加一滴水，它就打开了。",
+    "sl": "Destilirano leta 1994, 5 let preden je Glen Keith utihnil za 14 let. Sod je ponovno polnjen sod od bourbona, ki ničesar več ne vsiljuje, zato ananas, pasijonka in čebelji vosek prihajajo iz samega destilata — tropski ton, ki ga Speyside razvije šele po 30 letih. Polnjeno v moči soda, brez redčenja: en sod, 136 steklenic, ki ga je izbral Wilson & Morgan iz Trevisa. Kapljica vode ga odpre.",
+    "es": "Destilado en 1994, 5 años antes de que Glen Keith callara durante 14. La barrica es un barril de bourbon de relleno que ya no impone nada, así que la piña, la fruta de la pasión y la cera de abeja vienen del propio destilado — la nota tropical que el Speyside solo desarrolla después de 30 años. Embotellado a graduación de barrica, sin rebajar: una barrica, 136 botellas, elegida por Wilson & Morgan, de Treviso. Una gota de agua lo abre."
+   },
+   "notePlain": true
   }
  }
 }
