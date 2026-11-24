@@ -3212,6 +3212,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "bowmore--20y-barrel-selection-2005",
+   "vol": null,
+   "price": 20,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "brick-gin--straight-organic-distilled-dry-gin",
    "vol": null,
    "price": 5,
@@ -3433,6 +3441,14 @@
    "price": 6,
    "date": "2026-09-10",
    "source": "vlasnik, 24.11.2026.: cijena s liste toga dana, datum 10.9.2026."
+  },
+  {
+   "shelf": "spirits",
+   "ref": "laphroaig--2014-wilson-morgan",
+   "vol": null,
+   "price": 10,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
   },
   {
    "shelf": "spirits",
