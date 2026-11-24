@@ -91,25 +91,31 @@ jobs:
           node -e "require('@playwright/test').chromium.launch().then(b => b.close())" \
             || timeout 600 npx playwright install-deps chromium
           node scripts/check-site.mjs _site
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      # Pages actions brought up to date on 2026-11-24: deploy-pages@v4 began
+      # failing that day to find the artifact upload-pages-artifact@v3 had just
+      # uploaded ("Found 0 artifact(s)", 4 of 13 deploys; none in the 100
+      # before). v5 drops dotfiles unless told otherwise, and the site needs
+      # /.well-known/tdmrep.json (the text-and-data-mining reservation).
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+          include-hidden-files: true
       # GitHub Pages sometimes loses the artifact it was just handed
       # ("Fetching artifact metadata failed", three times on 2026-11-24),
       # and a deploy that dies there leaves Filho's change unpublished until
       # the next push. Retry it twice before giving up.
       - id: deploy1
         continue-on-error: true
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
       - if: steps.deploy1.outcome == 'failure'
         run: sleep 30
       - id: deploy2
         if: steps.deploy1.outcome == 'failure'
         continue-on-error: true
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
       - if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
         run: sleep 60
       - id: deployment
         if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
