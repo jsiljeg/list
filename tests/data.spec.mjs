@@ -1365,7 +1365,7 @@ test("the base price is rendered with its own day, and named in all eight langua
       expect(`${code}.${k}: ${ui[k] || ""}`).toMatch(/: .+/);
     /* the note names the day the law names; a translation that moved it is
        the one error a guest could not catch and an inspector could */
-    expect(`${code}: ${ui.anchorNote}`).toMatch(/2025/);
+    expect(`${code}: ${ui.anchorNote}`).toMatch(/2026/);
     expect(`${code}: ${ui.anchorLabel}`).not.toMatch(/sidren|reference|riferimento|référence|Referenz|参考|referenč/i);
   }
 });

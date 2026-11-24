@@ -696,7 +696,7 @@ const alcText = (a) => {
    anchors stay frozen and correct while nobody sees them. Turning it back on
    is this one constant; tests/anchor.spec.mjs follows it either way. The
    machine-readable cjenik is a separate file and still carries the column. */
-const SHOW_ANCHOR = false;
+const SHOW_ANCHOR = true;
 
 /* Each base price carries its own day (`anchorDate`, ISO): 2.5.2025. for
    most of the list, the first day offered for anything added since (NN

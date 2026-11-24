@@ -1,4 +1,4 @@
 {
- "publish": false,
+ "publish": true,
  "why": "Off until Filho has decided the bazna cijena (owner, 2026-11-17: he decides the prices and their dates). Turn on together with SHOW_ANCHOR in js/app.js. While false: /cjenik/ is not published and check-site.mjs requires it to be absent. While true: every build writes /cjenik/ itself (scripts/make-cjenik.mjs --site) from the list, leaving out 86'd wines, and carries the replaced files from the live site for 15 days — nobody runs anything by hand."
 }

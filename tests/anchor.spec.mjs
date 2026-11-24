@@ -33,6 +33,6 @@ test(`list rows, the wine card and the notice follow SHOW_ANCHOR (${SHOW ? "on" 
   await expect(page.locator(".detail-anchor")).toHaveCount(SHOW ? 1 : 0);
 
   const legal = await page.locator("#legal").innerText();
-  if (SHOW) expect(legal).toMatch(/2025/); else expect(legal).not.toMatch(/2\.5\.2025/);
+  if (SHOW) expect(legal).toMatch(/2026/); else expect(legal).not.toMatch(/2\.5\.2025/);
   expectClean(bag);
 });

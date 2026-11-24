@@ -14,32 +14,41 @@
         {
          "ref": "petrac--bregh-rose",
          "price": 10,
-         "anchor": 8,
+         "anchor": 10,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "petrac--bregh-blanc-de-blancs",
          "price": 10,
+         "anchor": 10,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "jakopic--terbotz",
          "price": 10,
-         "anchor": 8
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tomac--diplomat",
-         "price": 10
+         "price": 10,
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "meneghetti--blanc-de-blancs",
          "price": 11,
-         "anchor": 9,
+         "anchor": 11,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "meneghetti--classic-2021",
-         "price": 11
+         "price": 11,
+         "anchor": 11,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -54,26 +63,34 @@
        "items": [
         {
          "ref": "chavost--blanc-de-chardonnay",
-         "price": 16
+         "price": 16,
+         "anchor": 16,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "deutz--brut-classic",
          "price": 16,
-         "anchor": 16
+         "anchor": 16,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "henri-giraud--esprit-nature",
          "price": 16,
          "anchor": 16,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "billecart-salmon--le-reserve",
-         "price": 16
+         "price": 16,
+         "anchor": 16,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chavost--paradoxe",
-         "price": 16
+         "price": 16,
+         "anchor": 16,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -89,70 +106,84 @@
         {
          "ref": "zilliken--riesling-butterfly-2024",
          "price": 8,
-         "anchor": 8
+         "anchor": 8,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jakopic--sauvignon-2024",
          "price": 9,
-         "anchor": 9
+         "anchor": 9,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "zilliken--rausch-kabinett-2025",
          "price": 13,
          "anchor": 13,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "benvenuti--malvazija-2025",
          "price": 8,
-         "anchor": 8
+         "anchor": 8,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "kunjas--posip-2024",
          "price": 9,
-         "anchor": 9
+         "anchor": 9,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "vie-di-romans--pinot-grigio-2023",
          "price": 11,
-         "anchor": 11
+         "anchor": 11,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "marjan-simcic--pinot-grigio-classic-2025",
          "price": 11,
+         "anchor": 11,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
          "price": 12,
-         "anchor": 12
+         "anchor": 12,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "benanti--etna-bianco-2023",
          "price": 12,
          "anchor": 12,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "vie-di-romans--friulano-2023",
          "price": 12,
-         "anchor": 12
+         "anchor": 12,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "philippe-chavy--bourgogne-chardonnay-2023",
          "price": 14,
-         "anchor": 14
+         "anchor": 14,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "milos--stalagmit-2022",
          "price": 15,
          "anchor": 15,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "meneghetti--white-2023",
          "price": 15,
-         "anchor": 10
+         "anchor": 15,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -168,81 +199,101 @@
         {
          "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021",
          "price": 11,
-         "anchor": 8,
+         "anchor": 11,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "petrac--karizma-cuvee-2022",
          "price": 10,
-         "anchor": 8
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tomaz--teran-barbarossa-2020",
          "price": 11,
-         "anchor": 8
+         "anchor": 11,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "casa-rojo--cl98-2020",
          "price": 10,
-         "anchor": 10
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "azienda-duemani--cifra-2021",
          "price": 11,
-         "anchor": 11
+         "anchor": 11,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "casa-rojo--enemigo-mio-garnacha-2022",
-         "price": 10
+         "price": 10,
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "moret-nomine--syrah-le-fales-2024",
          "price": 12,
-         "anchor": 12
+         "anchor": 12,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "benanti--etna-rosso-2023",
-         "price": 13
+         "price": 13,
+         "anchor": 13,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tenuta-san-guido--guidalberto-2024",
-         "price": 15
+         "price": 15,
+         "anchor": 15,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "opg-vina-violic--sagul-plavac-mali-2022",
          "price": 8,
-         "anchor": 8
+         "anchor": 8,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "petrac--enigma-2019",
          "price": 14,
-         "anchor": 10,
+         "anchor": 14,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "rizman--tribidrag-2022",
          "price": 10,
-         "anchor": 10
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "testament--babic-2023",
-         "price": 10
+         "price": 10,
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "skaramuca--dingac-elegance-2020",
          "price": 14,
-         "anchor": 14
+         "anchor": 14,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "meneghetti--red-2020",
          "price": 16,
-         "anchor": 15,
+         "anchor": 16,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "benvenuti--santa-elizabeta-2021",
          "price": 15,
-         "anchor": 15
+         "anchor": 15,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -258,17 +309,20 @@
         {
          "ref": "gerzinic--muskat-2020",
          "price": 8,
-         "anchor": 5
+         "anchor": 8,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
          "price": 8,
-         "anchor": 8
+         "anchor": 8,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "niko-bura--prosek-ruza-dalmatinska",
          "price": 8,
-         "anchor": 8
+         "anchor": 8,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -288,67 +342,82 @@
         {
          "ref": "jakopic--terbotz",
          "price": 60,
-         "anchor": 49
+         "anchor": 60,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "petrac--bregh-rose",
          "price": 59,
-         "anchor": 48,
+         "anchor": 59,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "petrac--bregh-blanc-de-blancs",
          "price": 59,
+         "anchor": 59,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "sember--pavel",
          "price": 58,
-         "anchor": 58
+         "anchor": 58,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tomac--diplomat",
          "price": 55,
-         "anchor": 55
+         "anchor": 55,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tomac--blanc-de-noirs",
          "price": 67,
-         "anchor": 67
+         "anchor": 67,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "meneghetti--classic-2021",
-         "price": 76
+         "price": 76,
+         "anchor": 76,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tomac--rose",
          "price": 48,
-         "anchor": 48
+         "anchor": 48,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "contarini--prosecco-millesimato-2023",
          "price": 40,
-         "anchor": 40
+         "anchor": 40,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "corte-aura--franciacorta-brut",
          "price": 67,
-         "anchor": 67
+         "anchor": 67,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "corte-aura--franciacorta-saten",
          "price": 84,
-         "anchor": 84
+         "anchor": 84,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "movia--puro-rose",
          "price": 70,
-         "anchor": 70
+         "anchor": 70,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "movia--puro-brut",
          "price": 70,
-         "anchor": 70
+         "anchor": 70,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -363,184 +432,224 @@
         {
          "ref": "aurore-casanova--puisieulx-grand-cru-les-petites-vignes-pinot-noir",
          "price": 295,
+         "anchor": 295,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "chavost--paradoxe",
          "price": 105,
+         "anchor": 105,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "chavost--blanc-de-chardonnay",
-         "price": 110
+         "price": 110,
+         "anchor": 110,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "la-rogerie--le-bourg-sud-grand-cru-reserve-perpetuelle",
          "price": 225,
+         "anchor": 225,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "de-sousa--chemins-des-terroirs",
          "price": 100,
-         "anchor": 100
+         "anchor": 100,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "de-sousa--cuvee-3a-grand-cru",
          "price": 170,
-         "anchor": 170
+         "anchor": 170,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "de-sousa--mycorhize-grand-cru",
          "price": 167,
-         "anchor": 167
+         "anchor": 167,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "pertois-moriset--l-assemblage-brut",
          "price": 100,
-         "anchor": 100
+         "anchor": 100,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "pertois-moriset--l-annee-millesime-grand-cru-blanc-de-blancs-2017",
          "price": 190,
          "anchor": 190,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "pertois-moriset--la-collection-rose-blanc-grand-cru",
          "price": 127,
-         "anchor": 127
+         "anchor": 127,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "l-hoste-pere-fils--l-hoste-rose",
          "price": 97,
-         "anchor": 97
+         "anchor": 97,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "delamotte--blanc-de-blancs-2018",
          "price": 240,
-         "anchor": 240
+         "anchor": 240,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "deutz--brut-classic",
          "price": 125,
-         "anchor": 115
+         "anchor": 125,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "egly-ouriet--grand-cru-brut-tradition",
          "price": 170,
-         "anchor": 170
+         "anchor": 170,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "louis-roederer--cristal-2015",
          "price": 540,
-         "anchor": 540
+         "anchor": 540,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "vouette-sorbee--textures-brut-nature",
          "price": 170,
-         "anchor": 170
+         "anchor": 170,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "ruppert-leroy--martin-fontaine-2019",
          "price": 160,
-         "anchor": 160
+         "anchor": 160,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "ruppert-leroy--papillon",
          "price": 170,
-         "anchor": 170
+         "anchor": 170,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "billecart-salmon--le-reserve",
          "price": 135,
-         "anchor": 135
+         "anchor": 135,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "billecart-salmon--blanc-de-blancs-grand-cru",
          "price": 210,
-         "anchor": 210
+         "anchor": 210,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "billecart-salmon--le-rose",
          "price": 185,
-         "anchor": 185
+         "anchor": 185,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "henri-giraud--esprit-nature",
          "price": 155,
-         "anchor": 120,
+         "anchor": 155,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "henri-giraud--hommage-au-pinot-noir",
          "price": 160,
-         "anchor": 135
+         "anchor": 160,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jacques-selosse--initial-brut",
          "price": 560,
-         "anchor": 560
+         "anchor": 560,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jacques-selosse--version-originale",
          "price": 650,
-         "anchor": 650
+         "anchor": 650,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jacques-selosse--les-carelles",
          "price": 850,
-         "anchor": 850
+         "anchor": 850,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jacques-selosse--rose-brut",
          "price": 790,
          "anchor": 790,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "moet-chandon--dom-perignon-2015",
          "price": 480,
-         "anchor": 480
+         "anchor": 480,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "moet-chandon--dom-perignon-p2-2004",
          "price": 1450,
-         "anchor": 1450
+         "anchor": 1450,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "moet-chandon--dom-perignon-p3-1993",
          "price": 4850,
-         "anchor": 4850
+         "anchor": 4850,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "salon--salon-blanc-de-blancs-2013",
          "price": 1650,
-         "anchor": 1650
+         "anchor": 1650,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "krug--krug-grande-cuvee",
          "price": 510,
-         "anchor": 510
+         "anchor": 510,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "krug--krug-1996",
          "price": 1780,
-         "anchor": 1780
+         "anchor": 1780,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "krug--krug-2004",
          "price": 890,
-         "anchor": 890
+         "anchor": 890,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "krug--clos-du-mesnil-2008",
          "price": 2780,
-         "anchor": 2780
+         "anchor": 2780,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "krug--clos-d-ambonnay-1996",
          "price": 4890,
-         "anchor": 4890
+         "anchor": 4890,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -560,103 +669,123 @@
         {
          "ref": "petrac--grasevina-2024",
          "price": 39,
-         "anchor": 39
+         "anchor": 39,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "petrac--chardonnay-2023",
          "price": 46,
-         "anchor": 46
+         "anchor": 46,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "erdoro--sauvignon-classy-2022",
          "price": 75,
-         "anchor": 75
+         "anchor": 75,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "korak--sauvignon-2024",
          "price": 64,
-         "anchor": 54
+         "anchor": 64,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "korak--chardonnay-sur-lie-2024",
          "price": 78,
-         "anchor": 70
+         "anchor": 78,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jakopic--sauvignon-2024",
          "price": 45,
-         "anchor": 45
+         "anchor": 45,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jakopic--riesling-2024",
          "price": 45,
-         "anchor": 45
+         "anchor": 45,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "benvenuti--malvazija-2025",
          "price": 44,
-         "anchor": 44
+         "anchor": 44,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "matosevic--grimalda-bijela-2022",
          "price": 60,
-         "anchor": 60
+         "anchor": 60,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "clai--malvazija-sv-jakov-2021",
          "price": 60,
-         "anchor": 60
+         "anchor": 60,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "clai--ottocento-bijeli-2022",
          "price": 70,
-         "anchor": 62
+         "anchor": 70,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "meneghetti--white-2023",
          "price": 87,
-         "anchor": 87
+         "anchor": 87,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "saints-hills--le-chiffre-2023",
          "price": 140,
-         "anchor": 140
+         "anchor": 140,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "krajancic--posip-intrada-2025",
          "price": 73,
-         "anchor": 73
+         "anchor": 73,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "kunjas--posip-2024",
          "price": 49,
-         "anchor": 49
+         "anchor": 49,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "kunjas--grk-2024",
          "price": 90,
-         "anchor": 63
+         "anchor": 90,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "milos--stalagmit-2022",
          "price": 120,
          "anchor": 120,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "markus--dan-po-dan-2022",
          "price": 90,
-         "anchor": 90
+         "anchor": 90,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "bire--grk-2025",
          "price": 100,
-         "anchor": 100
+         "anchor": 100,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "cecavac--jeka-blanc-2024",
          "price": 130,
          "anchor": 130,
+         "anchorDate": "2026-09-10",
          "recommended": true
         }
        ]
@@ -667,93 +796,113 @@
         {
          "ref": "a-clusserath--vom-schiefer-2020",
          "price": 45,
-         "anchor": 45
+         "anchor": 45,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "a-clusserath--steinreich-riesling-2021",
          "price": 75,
+         "anchor": 75,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "a-clusserath--trittenheimer-apotheke-kabinett-2024",
          "price": 80,
-         "anchor": 80
+         "anchor": 80,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "zilliken--riesling-butterfly-2024",
          "price": 55,
-         "anchor": 55
+         "anchor": 55,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "zilliken--rausch-kabinett-2025",
          "price": 91,
          "anchor": 91,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-2023",
          "price": 89,
-         "anchor": 89
+         "anchor": 89,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-heymann-lowenstein--riesling-stolzenberg-2017",
          "price": 97,
-         "anchor": 97
+         "anchor": 97,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-heymann-lowenstein--riesling-uhlen-blaufusser-lay-gg-2022",
          "price": 145,
-         "anchor": 145
+         "anchor": 145,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-wittmann--riesling-westhofener-2021",
          "price": 87,
-         "anchor": 87
+         "anchor": 87,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-wittmann--riesling-aulerde-gg-2020",
          "price": 136,
-         "anchor": 136
+         "anchor": 136,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-wittmann--riesling-aulerde-gg-2022",
-         "price": 190
+         "price": 190,
+         "anchor": 190,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-wittmann--riesling-kirchspiel-gg-2020",
          "price": 180,
          "anchor": 180,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "weingut-knebel--riesling-rottgen-gg-2023",
          "price": 140,
-         "anchor": 110
+         "anchor": 140,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "dr-burklin-wolf--riesling-gaisbohl-gg-2017",
          "price": 140,
-         "anchor": 140
+         "anchor": 140,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-kabinett-2023",
          "price": 110,
-         "anchor": 110
+         "anchor": 110,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-a-christmann--riesling-aus-den-lagen-2021",
          "price": 52,
-         "anchor": 52
+         "anchor": 52,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-a-christmann--idig-riesling-gg-2021",
          "price": 189,
-         "anchor": 189
+         "anchor": 189,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "egon-muller--riesling-scharzhof-2023",
          "price": 170,
-         "anchor": 170
+         "anchor": 170,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -763,27 +912,32 @@
         {
          "ref": "bernhard-ott--fass-4-gruner-veltliner-2023",
          "price": 57,
-         "anchor": 57
+         "anchor": 57,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-prager--gruner-veltliner-federspiel-ried-hinter-der-burg-2024",
          "price": 110,
-         "anchor": 110
+         "anchor": 110,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "weingut-prager--riesling-smaragd-ried-klaus-2024",
          "price": 150,
-         "anchor": 150
+         "anchor": 150,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "maria-sepp-muster--sauvignon-vom-opok-2021",
          "price": 67,
-         "anchor": 67
+         "anchor": 67,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "maria-sepp-muster--graf-2020",
          "price": 87,
-         "anchor": 87
+         "anchor": 87,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -792,7 +946,9 @@
        "items": [
         {
          "ref": "chateau-bela--riesling-2023",
-         "price": 100
+         "price": 100,
+         "anchor": 100,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -802,293 +958,362 @@
         {
          "ref": "patrick-piuze--chablis-la-grande-vallee-2024",
          "price": 90,
-         "anchor": 90
+         "anchor": 90,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "patrick-piuze--chablis-terroir-de-fye-2024",
-         "price": 99
+         "price": 99,
+         "anchor": 99,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "pattes-loup--chablis-2022",
          "price": 87,
          "anchor": 87,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "pattes-loup--chablis-1er-cru-butteaux-2019",
          "price": 178,
-         "anchor": 178
+         "anchor": 178,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "patrick-piuze--chablis-1er-cru-les-sechets-2024",
          "price": 179,
+         "anchor": 179,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "rene-vincent-dauvissat--chablis-1er-cru-vaillons-2018",
          "price": 750,
-         "anchor": 750
+         "anchor": 750,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "patrick-piuze--chablis-grand-cru-les-clos-2023",
          "price": 250,
-         "anchor": 250
+         "anchor": 250,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "patrick-piuze--chablis-grand-cru-preuses-2022",
          "price": 250,
          "anchor": 250,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "domaine-francois-raveneau--chablis-grand-cru-valmur-2020",
          "price": 1450,
-         "anchor": 1450
+         "anchor": 1450,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "remi-jobard--bourgogne-cote-d-or-blanc-2022",
          "price": 75,
-         "anchor": 75
+         "anchor": 75,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "philippe-chavy--bourgogne-chardonnay-2023",
          "price": 99,
-         "anchor": 89
+         "anchor": 99,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "francois-mikulski--bourgogne-2023",
          "price": 110,
-         "anchor": 110
+         "anchor": 110,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "francois-carillon--bourgogne-cote-d-or-chardonnay-2024",
-         "price": 115
+         "price": 115,
+         "anchor": 115,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-jean-chartron--rully-montmorin-2023",
          "price": 88,
-         "anchor": 88
+         "anchor": 88,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-jean-chartron--rully-montmorin-2024",
-         "price": 99
+         "price": 99,
+         "anchor": 99,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "david-moret--rully-2023",
          "price": 97,
-         "anchor": 97
+         "anchor": 97,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "david-moret--saint-romain-2023",
          "price": 115,
-         "anchor": 115
+         "anchor": 115,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "david-moret--auxey-duresses-2023",
          "price": 107,
-         "anchor": 107
+         "anchor": 107,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jean-marc-vincent--auxey-duresses-les-hautes-2023",
-         "price": 240
+         "price": 240,
+         "anchor": 240,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-chandon-de-briailles--savigny-les-beaune-les-saucours-2022",
-         "price": 239
+         "price": 239,
+         "anchor": 239,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "david-moret--meursault-2020",
          "price": 210,
-         "anchor": 210
+         "anchor": 210,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "theo-dancer--bourgogne-aligote-2023",
          "price": 135,
-         "anchor": 135
+         "anchor": 135,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hubert-lignier--aligote-2021",
          "price": 65,
-         "anchor": 65
+         "anchor": 65,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-jean-chartron--chassagne-montrachet-les-benoites-2022",
          "price": 146,
-         "anchor": 146
+         "anchor": 146,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "pierre-yves-colin-morey--chassagne-montrachet-1er-cru-les-chenevottes-2023",
          "price": 395,
+         "anchor": 395,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "domaine-jean-chartron--puligny-montrachet-2022",
          "price": 200,
+         "anchor": 200,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "domaine-jean-chartron--puligny-montrachet-1er-cru-clos-de-la-pucelle-monopole-2021",
          "price": 245,
-         "anchor": 245
+         "anchor": 245,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jean-marc-vincent--puligny-montrachet-corvees-des-vignes-2023",
          "price": 260,
+         "anchor": 260,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "francois-carillon--saint-aubin-1er-cru-les-murgers-des-dents-de-chien-2023",
          "price": 178,
+         "anchor": 178,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "philippe-chavy--st-aubin-1er-cru-les-murgers-des-dents-de-chien-2021",
          "price": 185,
-         "anchor": 127
+         "anchor": 185,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "philippe-chavy--saint-aubin-1er-cru-les-murgers-des-dents-de-chien-2022",
-         "price": 195
+         "price": 195,
+         "anchor": 195,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hubert-lamy--saint-aubin-1er-cru-en-remilly-2023",
          "price": 400,
          "anchor": 400,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "hubert-lamy--saint-aubin-1er-cru-les-frionnes-2023",
          "price": 295,
          "anchor": 295,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "hubert-lamy--saint-aubin-la-princee-2023",
          "price": 270,
-         "anchor": 270
+         "anchor": 270,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "philippe-chavy--meursault-1er-cru-les-charmes-2021",
          "price": 268,
-         "anchor": 268
+         "anchor": 268,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "remi-jobard--meursault-sous-la-velle-2022",
          "price": 190,
          "anchor": 190,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "remi-jobard--meursault-1er-cru-le-poruzot-dessus-2022",
          "price": 284,
-         "anchor": 284
+         "anchor": 284,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "bernard-bonin--meursault-les-tillets-2023",
          "price": 920,
-         "anchor": 920
+         "anchor": 920,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "bernard-bonin--meursault-la-rencontre-2023",
          "price": 790,
          "anchor": 790,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "bernard-bonin--meursault-clos-du-cromin-le-pre-manche-2023",
          "price": 790,
-         "anchor": 790
+         "anchor": 790,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "bernard-bonin--meursault-les-narvaux-dessus-2023",
          "price": 970,
-         "anchor": 970
+         "anchor": 970,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "bernard-bonin--meursault-villages-le-limozin-2023",
          "price": 970,
-         "anchor": 970
+         "anchor": 970,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-jean-chartron--corton-charlemagne-grand-cru-2022",
          "price": 560,
-         "anchor": 560
+         "anchor": 560,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "francois-crochet--sancerre-blanc-2023",
          "price": 115,
-         "anchor": 87
+         "anchor": 115,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "pascal-cotat--sancerre-blanc-les-monts-damnes-2020",
          "price": 127,
-         "anchor": 127
+         "anchor": 127,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-albert-mann--riesling-2022",
          "price": 81,
-         "anchor": 81
+         "anchor": 81,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-albert-mann--riesling-grand-cru-schlossberg-2020",
          "price": 155,
-         "anchor": 155
+         "anchor": 155,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-albert-mann--riesling-grand-cru-furstentum-2020",
          "price": 155,
-         "anchor": 155
+         "anchor": 155,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-albert-mann--pinot-gris-grand-cru-hengst-2020",
          "price": 87,
-         "anchor": 87
+         "anchor": 87,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-de-l-ecu--matris-2018",
          "price": 65,
-         "anchor": 65
+         "anchor": 65,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-bourdy--savagnin-2018",
          "price": 53,
-         "anchor": 53
+         "anchor": 53,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-bourdy--vin-jaune-2014",
          "price": 64,
          "anchor": 64,
+         "anchorDate": "2026-09-10",
          "vol": 0.62
         },
         {
          "ref": "domaine-bourdy--chateau-chalon-2014",
          "price": 135,
-         "anchor": 135
+         "anchor": 135,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jules-desjourneys--macon-prisse-en-chailloux-blanc-2021",
          "price": 90,
-         "anchor": 90
+         "anchor": 90,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jules-desjourneys--macon-verze-blanc-2021",
          "price": 90,
-         "anchor": 90
+         "anchor": 90,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jules-desjourneys--pouilly-fuisse-blanc-2021",
          "price": 120,
-         "anchor": 120
+         "anchor": 120,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jules-desjourneys--pouilly-vinzelles-les-longeays-blanc-2021",
          "price": 139,
-         "anchor": 139
+         "anchor": 139,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jules-desjourneys--saint-veran-blanc-2021",
          "price": 129,
-         "anchor": 129
+         "anchor": 129,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -1098,71 +1323,87 @@
         {
          "ref": "alois-lageder--chardonnay-2024",
          "price": 47,
-         "anchor": 47
+         "anchor": 47,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "alois-lageder--pinot-bianco-versalto-2023",
          "price": 47,
-         "anchor": 47
+         "anchor": 47,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "alois-lageder--pinot-bianco-versalto-2024",
-         "price": 75
+         "price": 75,
+         "anchor": 75,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "alois-lageder--pinot-grigio-porer-2023",
          "price": 55,
-         "anchor": 55
+         "anchor": 55,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "peter-dipoli--sauvignon-voglar-2019",
          "price": 50,
-         "anchor": 50
+         "anchor": 50,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "damijan-podversic--ribolla-2015",
          "price": 95,
-         "anchor": 95
+         "anchor": 95,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "damijan-podversic--ribolla-2020",
          "price": 77,
-         "anchor": 77
+         "anchor": 77,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "damijan-podversic--kaplja-2018",
          "price": 120,
-         "anchor": 95
+         "anchor": 120,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "damijan-podversic--malvasia-2018",
          "price": 120,
-         "anchor": 93
+         "anchor": 120,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "damijan-podversic--nekaj-2019",
-         "price": 120
+         "price": 120,
+         "anchor": 120,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "benanti--etna-bianco-2023",
          "price": 95,
          "anchor": 95,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "vodopivec--origine-2016",
          "price": 96,
-         "anchor": 96
+         "anchor": 96,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "vodopivec--solo-2018",
          "price": 130,
-         "anchor": 109
+         "anchor": 130,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "dario-princic--jakot-2019",
          "price": 75,
-         "anchor": 75
+         "anchor": 75,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -1172,17 +1413,20 @@
         {
          "ref": "marques-de-murrieta--capellania-2019",
          "price": 180,
-         "anchor": 180
+         "anchor": 180,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "lopez-de-heredia--gravonia-crianza-2015",
          "price": 90,
-         "anchor": 90
+         "anchor": 90,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "casa-rojo--orange-republic-2021",
          "price": 68,
-         "anchor": 68
+         "anchor": 68,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -1192,12 +1436,15 @@
         {
          "ref": "marjan-simcic--pinot-grigio-classic-2025",
          "price": 80,
+         "anchor": 80,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "marjan-simcic--sauvignon-vert",
          "price": 100,
-         "anchor": 100
+         "anchor": 100,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -1217,12 +1464,14 @@
         {
          "ref": "baraka--malena-2022",
          "price": 50,
-         "anchor": 50
+         "anchor": 50,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "bastian--rose",
          "price": 50,
-         "anchor": 50
+         "anchor": 50,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -1242,139 +1491,167 @@
         {
          "ref": "petrac--karizma-cuvee-2022",
          "price": 55,
-         "anchor": 50
+         "anchor": 55,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "petrac--enigma-2019",
          "price": 75,
          "anchor": 75,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "igor-ivanic--pinot-crni-dvije-ruze-2021",
          "price": 54,
          "anchor": 54,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "erdoro--pinot-noir-2021",
          "price": 70,
-         "anchor": 70
+         "anchor": 70,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "korak--pinot-crni-2023",
          "price": 75,
-         "anchor": 70
+         "anchor": 75,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "matosevic--grimalda-crna-2021",
          "price": 66,
-         "anchor": 66
+         "anchor": 66,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "clai--ottocento-crni-2022",
          "price": 87,
-         "anchor": 66
+         "anchor": 87,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "budinski--refosk-omo-2020",
          "price": 100,
-         "anchor": 100
+         "anchor": 100,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tomaz--teran-2022",
          "price": 70,
-         "anchor": 60
+         "anchor": 70,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "boskinac--cuvee-boskinac-crni-2018",
          "price": 90,
-         "anchor": 90
+         "anchor": 90,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "testament--babic-2023",
-         "price": 55
+         "price": 55,
+         "anchor": 55,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "opg-vina-violic--sagul-plavac-mali-2022",
          "price": 49,
-         "anchor": 49
+         "anchor": 49,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mrgudic--postup-mare-2020",
          "price": 96,
-         "anchor": 96
+         "anchor": 96,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "benmosche-family--dingac-2021",
          "price": 91,
-         "anchor": 91
+         "anchor": 91,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "benmosche-family--zinfandel-2019",
          "price": 89,
-         "anchor": 89
+         "anchor": 89,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "saints-hills--black-2022",
          "price": 70,
-         "anchor": 70
+         "anchor": 70,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "rizman--tribidrag-2022",
          "price": 75,
-         "anchor": 75
+         "anchor": 75,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "kunjas--pagadebit-2018",
          "price": 85,
-         "anchor": 85
+         "anchor": 85,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "saints-hills--pape-2023",
          "price": 70,
-         "anchor": 70
+         "anchor": 70,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "milos--stagnum-2016",
          "price": 145,
-         "anchor": 145
+         "anchor": 145,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "cecavac-gaspar--jeka-dalmatia-2020",
          "price": 250,
-         "anchor": 250
+         "anchor": 250,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mrgudic--bura-2021",
          "price": 195,
-         "anchor": 195
+         "anchor": 195,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "meneghetti--red-2020",
          "price": 120,
-         "anchor": 180,
+         "anchor": 120,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "markus--fetivi-2020",
          "price": 145,
-         "anchor": 145
+         "anchor": 145,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "markus--pepejuh-2019",
          "price": 150,
-         "anchor": 150
+         "anchor": 150,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "markus--pepejuh-2017",
          "price": 160,
-         "anchor": 160
+         "anchor": 160,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "skaramuca--dingac-elegance-2020",
          "price": 75,
-         "anchor": 75
+         "anchor": 75,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -1384,137 +1661,170 @@
         {
          "ref": "hubert-lignier--bourgogne-2023",
          "price": 106,
-         "anchor": 106
+         "anchor": 106,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hubert-lignier--pommard-1er-cru-les-arvelets-2019",
          "price": 186,
-         "anchor": 186
+         "anchor": 186,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hubert-lignier--charmes-chambertin-grand-cru-2021",
          "price": 650,
-         "anchor": 650
+         "anchor": 650,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hubert-lignier--morey-saint-denis-2019",
          "price": 178,
-         "anchor": 178
+         "anchor": 178,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "machard-de-gramont-bertrand--vosne-romanee-2022",
          "price": 178,
-         "anchor": 178
+         "anchor": 178,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "machard-de-gramont-bertrand--vosne-romanee-les-barreaux-2022",
          "price": 210,
          "anchor": 210,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "machard-de-gramont-bertrand--nuits-saint-georges-les-hauts-pruliers-2016",
          "price": 195,
-         "anchor": 127
+         "anchor": 195,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hubert-lignier--nuits-saint-georges-les-didiers-1er-cru-2013",
          "price": 340,
-         "anchor": 340
+         "anchor": 340,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-armand-rousseau-pere-fils--gevrey-chambertin-1er-cru-lavaux-2018",
          "price": 1400,
          "anchor": 1400,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "remi-jobard--volnay-1er-cru-les-santenots-2022",
          "price": 255,
-         "anchor": 235,
+         "anchor": 255,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "coche-dury--auxey-duresses-2018",
-         "price": 395
+         "price": 395,
+         "anchor": 395,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hubert-lamy--chassagne-montrachet-la-goujonne-vieilles-vignes-rouge-2023",
          "price": 280,
-         "anchor": 280
+         "anchor": 280,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hubert-lamy--santenay-1er-cru-clos-des-gravieres-vieilles-vignes-rouge-2023",
          "price": 290,
-         "anchor": 290
+         "anchor": 290,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jean-marc-vincent--santenay-1er-cru-passetemps-2023",
          "price": 255,
+         "anchor": 255,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "domaine-a-f-gros--savigny-les-beaune-les-pimentiers-2023",
-         "price": 199
+         "price": 199,
+         "anchor": 199,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chateau-de-pez--saint-estephe-2022",
          "price": 155,
-         "anchor": 155
+         "anchor": 155,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "clos-des-jacobins--saint-emilion-grand-cru-2016",
          "price": 125,
+         "anchor": 125,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "chateau-pedesclaux--pauillac-2015",
          "price": 145,
+         "anchor": 145,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "chateau-troplong-mondot--saint-emilion-grand-cru-2020",
          "price": 478,
-         "anchor": 478
+         "anchor": 478,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chateau-gazin--pomerol-2020",
          "price": 390,
-         "anchor": 390
+         "anchor": 390,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chateau-la-pointe--la-pointe-rouge-2022",
          "price": 220,
-         "anchor": 220
+         "anchor": 220,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chateau-canon--saint-emilion-grand-cru-2020",
          "price": 390,
-         "anchor": 390
+         "anchor": 390,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chateau-leoville-barton--saint-julien-2021",
          "price": 390,
-         "anchor": 390
+         "anchor": 390,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "moret-nomine--syrah-le-fales-2024",
          "price": 80,
-         "anchor": 80
+         "anchor": 80,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jules-desjourneys--beaujolais-patacaisse-rouge-2022",
          "price": 80,
-         "anchor": 80
+         "anchor": 80,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jules-desjourneys--rouge-2023",
          "price": 80,
-         "anchor": 80
+         "anchor": 80,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-a-f-gros--moulin-a-vent-en-mortperay-2022",
          "price": 150,
+         "anchor": 150,
+         "anchorDate": "2026-09-10",
          "new": true
         }
        ]
@@ -1525,263 +1835,323 @@
         {
          "ref": "alois-lageder--pinot-nero-krafuss-2019",
          "price": 110,
-         "anchor": 110
+         "anchor": 110,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "alois-lageder--cabernet-lowengang-2013",
          "price": 110,
-         "anchor": 110
+         "anchor": 110,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "az-agr-e-pira-figli-chiara-boschis--barbera-d-alba-superiore-2021",
          "price": 75,
-         "anchor": 63
+         "anchor": 75,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "az-agr-e-pira-figli-chiara-boschis--barolo-2018",
          "price": 210,
-         "anchor": 210
+         "anchor": 210,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "roagna--barolo-pira-2018",
          "price": 380,
-         "anchor": 380
+         "anchor": 380,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "roagna--barbaresco-albesani-2019",
          "price": 580,
-         "anchor": 580
+         "anchor": 580,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "roagna--barbaresco-asili-vecchie-viti-2019",
          "price": 550,
-         "anchor": 550
+         "anchor": 550,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "roagna--barbaresco-paje-2019",
          "price": 410,
-         "anchor": 410
+         "anchor": 410,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "crissante-alessandria--barolo-la-morra-docg-2021",
          "price": 290,
-         "anchor": 290
+         "anchor": 290,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "lalu--langhe-nebbiolo-2023",
          "price": 95,
-         "anchor": 95
+         "anchor": 95,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "isole-e-olena--cabernet-sauvignon-collezione-de-marchi-2013",
          "price": 210,
-         "anchor": 210
+         "anchor": 210,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "isole-e-olena--cepparello-2019",
          "price": 210,
-         "anchor": 210
+         "anchor": 210,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "le-piane--boca-2019",
          "price": 120,
          "anchor": 120,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "le-piane--plinius-2017",
          "price": 200,
-         "anchor": 200
+         "anchor": 200,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "le-piane--piane-2019",
          "price": 90,
-         "anchor": 90
+         "anchor": 90,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "conti-costanti--brunello-di-montalcino-2018",
          "price": 190,
          "anchor": 190,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "conti-costanti--brunello-di-montalcino-2020",
          "price": 190,
+         "anchor": 190,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "fattoria-di-magliano--heba-2021",
          "price": 52,
          "anchor": 52,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "fattoria-di-magliano--poggio-bestiale-2020",
          "price": 93,
-         "anchor": 93
+         "anchor": 93,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "podere-poggio-scalette--chianti-classico-2023",
          "price": 75,
+         "anchor": 75,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "podere-poggio-scalette--il-carbonaione-2019",
          "price": 100,
-         "anchor": 100
+         "anchor": 100,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "podere-poggio-scalette--piantonaia-2019",
          "price": 250,
-         "anchor": 250
+         "anchor": 250,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chiara-condello--predappio-sangiovese-2023",
          "price": 145,
-         "anchor": 145
+         "anchor": 145,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chiara-condello--predappio-sangiovese-2023",
          "price": 290,
          "anchor": 290,
+         "anchorDate": "2026-09-10",
          "vol": 1.5
         },
         {
          "ref": "chiara-condello--riserva-le-lucciole-2022",
          "price": 160,
-         "anchor": 160
+         "anchor": 160,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chiara-condello--riserva-le-lucciole-2022",
          "price": 340,
          "anchor": 340,
+         "anchorDate": "2026-09-10",
          "vol": 1.5
         },
         {
          "ref": "antinori--tignanello-2019",
          "price": 284,
-         "anchor": 284
+         "anchor": 284,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "antinori--tignanello-2020",
          "price": 250,
-         "anchor": 250
+         "anchor": 250,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "dal-forno-romano--valpolicella-d-o-c-superiore-2015",
          "price": 260,
-         "anchor": 260
+         "anchor": 260,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "dal-forno-romano--amarone-della-valpolicella-d-o-c-2015",
          "price": 689,
-         "anchor": 689
+         "anchor": 689,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "ca-la-bionda--amarone-classico-vigna-ravazzol-2016",
          "price": 130,
-         "anchor": 130
+         "anchor": 130,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "giuseppe-quintarelli--amarone-classico-2015",
          "price": 757,
-         "anchor": 757
+         "anchor": 757,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "giuseppe-quintarelli--valpolicella-superiore-2015",
          "price": 260,
-         "anchor": 260
+         "anchor": 260,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "le-ragose--valpolicella-classico-2023",
-         "price": 65
+         "price": 65,
+         "anchor": 65,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "le-ragose--amarone-classico-riserva-2013",
-         "price": 140
+         "price": 140,
+         "anchor": 140,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "le-ragose--amarone-classico-riserva-caloetto-2015",
-         "price": 140
+         "price": 140,
+         "anchor": 140,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "montevertine--le-pergole-torte-2020",
          "price": 550,
-         "anchor": 410
+         "anchor": 550,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "montevertine--montevertine-2019",
          "price": 150,
-         "anchor": 150
+         "anchor": 150,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "azienda-duemani--cifra-2021",
          "price": 88,
-         "anchor": 88
+         "anchor": 88,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "azienda-duemani--duemani-2018",
          "price": 350,
-         "anchor": 350
+         "anchor": 350,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "radikon--pignoli-2010",
          "price": 94,
          "anchor": 94,
+         "anchorDate": "2026-09-10",
          "vol": 0.5
         },
         {
          "ref": "soldera--case-basse-2020",
          "price": 1540,
          "anchor": 1540,
+         "anchorDate": "2026-09-10",
          "recommended": true
         },
         {
          "ref": "angelo-gaja--barbaresco-2020",
          "price": 745,
-         "anchor": 745
+         "anchor": 745,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tenuta-san-guido--guidalberto-2024",
-         "price": 125
+         "price": 125,
+         "anchor": 125,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tenuta-dell-ornellaia--le-volte-2023",
-         "price": 105
+         "price": 105,
+         "anchor": 105,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tenuta-san-guido--sassicaia-2020",
          "price": 750,
-         "anchor": 750
+         "anchor": 750,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tenuta-san-guido--sassicaia-2021",
          "price": 850,
-         "anchor": 850
+         "anchor": 850,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tenuta-dell-ornellaia--ornellaia-2020",
          "price": 750,
-         "anchor": 750
+         "anchor": 750,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "antinori--solaia-2020",
          "price": 945,
-         "anchor": 945
+         "anchor": 945,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "poggio-di-sotto--brunello-di-montalcino-2019",
          "price": 495,
-         "anchor": 495
+         "anchor": 495,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "poggio-di-sotto--brunello-di-montalcino-2020",
          "price": 495,
-         "anchor": 495
+         "anchor": 495,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "benanti--etna-rosso-2023",
-         "price": 97
+         "price": 97,
+         "anchor": 97,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -1791,21 +2161,26 @@
         {
          "ref": "edi-simcic--duet-lex-2022",
          "price": 130,
-         "anchor": 130
+         "anchor": 130,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "marjan-simcic--merlot-opoka-2017",
          "price": 150,
-         "anchor": 125
+         "anchor": 150,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "marjan-simcic--pinot-noir-opoka-2021",
          "price": 150,
-         "anchor": 125
+         "anchor": 150,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "marjan-simcic--pinot-noir-cru-selection-2024",
-         "price": 100
+         "price": 100,
+         "anchor": 100,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -1815,31 +2190,39 @@
         {
          "ref": "marques-de-murrieta--castillo-ygay-2012",
          "price": 350,
-         "anchor": 350
+         "anchor": 350,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "casa-rojo--enemigo-mio-garnacha-2022",
-         "price": 50
+         "price": 50,
+         "anchor": 50,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "casa-rojo--cl98-2020",
          "price": 68,
-         "anchor": 68
+         "anchor": 68,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "casa-castillo--el-molar-2021",
          "price": 75,
+         "anchor": 75,
+         "anchorDate": "2026-09-10",
          "new": true
         },
         {
          "ref": "casa-rojo--tokyo-gomez-rojo-2021",
          "price": 180,
-         "anchor": 180
+         "anchor": 180,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "lopez-de-heredia--bosconia-tinto-reserva-2013",
          "price": 75,
-         "anchor": 75
+         "anchor": 75,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -1849,67 +2232,80 @@
         {
          "ref": "resonance-vineyard--resonance-2015",
          "price": 100,
-         "anchor": 100
+         "anchor": 100,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "walter-scott--cuvee-ruth-pinot-noir",
          "price": 90,
-         "anchor": 90
+         "anchor": 90,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tyler--mae-estate-2019",
          "price": 120,
-         "anchor": 120
+         "anchor": 120,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "occidental-kistler-vineyards--occidental-2018",
          "price": 140,
-         "anchor": 140
+         "anchor": 140,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "duckhorn--merlot-2018",
          "price": 160,
-         "anchor": 160
+         "anchor": 160,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "cakebread-cellars--cabernet-sauvignon-2018",
          "price": 170,
-         "anchor": 170
+         "anchor": 170,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "heitz-cellar--cabernet-sauvignon-2016",
          "price": 225,
-         "anchor": 225
+         "anchor": 225,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mayacamas--cabernet-sauvignon-2019",
          "price": 270,
-         "anchor": 270
+         "anchor": 270,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "tanbark-hill-philip-togni--cabernet-sauvignon-2018",
          "price": 150,
-         "anchor": 150
+         "anchor": 150,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "philip-togni--cabernet-sauvignon-2019",
          "price": 280,
-         "anchor": 280
+         "anchor": 280,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "domaine-eden--cabernet-sauvignon-2017",
          "price": 170,
-         "anchor": 170
+         "anchor": 170,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "ridge--cabernet-sauvignon-2018",
          "price": 170,
-         "anchor": 170
+         "anchor": 170,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "ridge--geyserville-2021",
          "price": 140,
-         "anchor": 140
+         "anchor": 140,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -1919,7 +2315,8 @@
         {
          "ref": "lvmh-shangri-la--ao-yun-2018",
          "price": 525,
-         "anchor": 525
+         "anchor": 525,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -1940,30 +2337,35 @@
          "ref": "gerzinic--muskat-2020",
          "price": 31,
          "anchor": 31,
+         "anchorDate": "2026-09-10",
          "vol": 0.5
         },
         {
          "ref": "mrgudic--prosek-moskar",
          "price": 45,
          "anchor": 45,
+         "anchorDate": "2026-09-10",
          "vol": 0.375
         },
         {
          "ref": "niko-bura--prosek-ruza-dalmatinska",
          "price": 58,
          "anchor": 58,
+         "anchorDate": "2026-09-10",
          "vol": 0.375
         },
         {
          "ref": "clai--tasel",
          "price": 64,
          "anchor": 64,
+         "anchorDate": "2026-09-10",
          "vol": 0.375
         },
         {
          "ref": "jakopic--rajnski-rizling-izborna-berba-2019",
          "price": 60,
-         "anchor": 60
+         "anchor": 60,
+         "anchorDate": "2026-09-10"
         }
        ]
       },
@@ -1974,35 +2376,43 @@
          "ref": "weingut-joh-jos-prum--riesling-wehlener-sonnenuhr-auslese-2023",
          "price": 70,
          "anchor": 70,
+         "anchorDate": "2026-09-10",
          "vol": 0.375
         },
         {
          "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-beerenauslese-2017",
          "price": 115,
          "anchor": 115,
+         "anchorDate": "2026-09-10",
          "vol": 0.375
         },
         {
          "ref": "weingut-knebel--riesling-uhlen-auslese-2023",
          "price": 130,
+         "anchor": 130,
+         "anchorDate": "2026-09-10",
          "vol": 0.375,
          "new": true
         },
         {
          "ref": "weingut-heymann-lowenstein--riesling-schieferterrassen-auslese-goldkapsel-2013",
          "price": 150,
+         "anchor": 150,
+         "anchorDate": "2026-09-10",
          "vol": 0.375
         },
         {
          "ref": "weingut-wittmann--riesling-aulerde-auslese-2015",
          "price": 94,
          "anchor": 94,
+         "anchorDate": "2026-09-10",
          "vol": 0.5
         },
         {
          "ref": "zilliken--riesling-auslese-goldkapsel-2009",
          "price": 390,
          "anchor": 390,
+         "anchorDate": "2026-09-10",
          "vol": 0.375,
          "recommended": true
         }
@@ -2015,28 +2425,34 @@
          "ref": "giuseppe-quintarelli--recioto-classico-2011",
          "price": 250,
          "anchor": 250,
+         "anchorDate": "2026-09-10",
          "vol": 0.5
         },
         {
          "ref": "ca-la-bionda--recioto-classico-2015",
          "price": 145,
-         "anchor": 145
+         "anchor": 145,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "donnafugata--ben-rye-2019",
          "price": 100,
          "anchor": 100,
+         "anchorDate": "2026-09-10",
          "vol": 0.75
         },
         {
          "ref": "marco-de-bartoli--marsala-superiore-oro-vigna-la-miccia-riserva-2019",
          "price": 150,
+         "anchor": 150,
+         "anchorDate": "2026-09-10",
          "vol": 0.5
         },
         {
          "ref": "giuseppe-quintarelli--amabile-del-cere-2017",
          "price": 495,
          "anchor": 495,
+         "anchorDate": "2026-09-10",
          "vol": 0.375
         }
        ]
@@ -2047,12 +2463,14 @@
         {
          "ref": "chateau-d-yquem--sauternes-1er-cru-superieur-2020",
          "price": 880,
-         "anchor": 880
+         "anchor": 880,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chateau-d-yquem--sauternes-1er-cru-superieur-2015",
          "price": 940,
-         "anchor": 940
+         "anchor": 940,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2072,7 +2490,8 @@
         {
          "ref": "latvijas-balzams--elit-stolichnaya",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2087,27 +2506,32 @@
         {
          "ref": "gibson-s--london-dry-gin",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "aura--karbun",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "brick-gin--straight-organic-distilled-dry-gin",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "aviation--american-gin",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "monkey-47--schwarzwald-dry-gin",
          "price": 7,
-         "anchor": 7
+         "anchor": 7,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2122,22 +2546,26 @@
         {
          "ref": "mulassano--bianco",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mulassano--rosso",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mulassano--extra-dry",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mulassano--bitter",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2151,27 +2579,32 @@
         {
          "ref": "cimarron--blanco",
          "price": 4,
-         "anchor": 4
+         "anchor": 4,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "fortaleza--blanco",
          "price": 9,
-         "anchor": 9
+         "anchor": 9,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "fortaleza--reposado",
          "price": 15,
-         "anchor": 15
+         "anchor": 15,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "fortaleza--anejo",
          "price": 18,
-         "anchor": 18
+         "anchor": 18,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "clase-azul--reposado",
          "price": 28,
-         "anchor": 28
+         "anchor": 28,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2185,12 +2618,14 @@
         {
          "ref": "del-maguey--vida",
          "price": 7,
-         "anchor": 7
+         "anchor": 7,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "bruxo--bruxo",
          "price": 7,
-         "anchor": 7
+         "anchor": 7,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2205,67 +2640,80 @@
         {
          "ref": "kilchoman-scotland--machir-bay",
          "price": 6,
-         "anchor": 6
+         "anchor": 6,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "scotland--glen-rothes-9y-artist-collective-2015",
          "price": 19,
-         "anchor": 19
+         "anchor": 19,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "scotland--sponge-ed-jura-1994",
          "price": 73,
-         "anchor": 73
+         "anchor": 73,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "scotland--bladnoch-19y",
          "price": 36,
-         "anchor": 36
+         "anchor": 36,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "scotland--glenmorangie-signet",
          "price": 36,
-         "anchor": 36
+         "anchor": 36,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "kavalan-taiwan--distillery-select",
          "price": 8,
-         "anchor": 8
+         "anchor": 8,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "kavalan-taiwan--ex-sherry-oak",
          "price": 11,
-         "anchor": 11
+         "anchor": 11,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "kavalan-taiwan--solist",
          "price": 25,
-         "anchor": 25
+         "anchor": 25,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mars-japan--maltage-cosmo",
          "price": 9,
-         "anchor": 9
+         "anchor": 9,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mars-japan--tsunuki-edition-2023",
          "price": 16,
-         "anchor": 16
+         "anchor": 16,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mars-japan--komagatake-limited-edition-2018",
          "price": 36,
-         "anchor": 36
+         "anchor": 36,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "usa--westward",
          "price": 18,
-         "anchor": 18
+         "anchor": 18,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "usa--redemption",
          "price": 6,
-         "anchor": 6
+         "anchor": 6,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2280,87 +2728,104 @@
         {
          "ref": "veritas--white-blended-rum",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "clairin--sajous",
          "price": 6,
-         "anchor": 6
+         "anchor": 6,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "clairin--casimir",
          "price": 6,
-         "anchor": 6
+         "anchor": 6,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "clairin--vaval",
          "price": 6,
-         "anchor": 6
+         "anchor": 6,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hampden-estate--hlcf-classic-4y",
          "price": 7,
-         "anchor": 7
+         "anchor": 7,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hampden-estate--pure-single-jamaican-rum-8y",
          "price": 10,
-         "anchor": 10
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "velier--papalim-7y",
          "price": 10,
-         "anchor": 10
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "long-pond--cambridge-2005",
          "price": 27,
-         "anchor": 27
+         "anchor": 27,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "mount-gay--last-ward-2007-barbados",
          "price": 30,
-         "anchor": 30
+         "anchor": 30,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "chelo-saint-michael--vieux-sajous-2018",
          "price": 13,
-         "anchor": 13
+         "anchor": 13,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "beenleigh--australia-2015",
          "price": 10,
-         "anchor": 10
+         "anchor": 10,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "japanese-rhum--nine-leaves-2016",
          "price": 20,
-         "anchor": 20
+         "anchor": 20,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hampden-estate--pagos-sherry-cask",
          "price": 12,
-         "anchor": 12
+         "anchor": 12,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "hampden-estate--great-house-2024",
          "price": 13,
-         "anchor": 13
+         "anchor": 13,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "foursquare--raconteur",
          "price": 35,
-         "anchor": 35
+         "anchor": 35,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "habitation-velier--renegade-2020",
          "price": 14,
-         "anchor": 14
+         "anchor": 14,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "foursquare--absolutio-15y",
          "price": 27,
-         "anchor": 27
+         "anchor": 27,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2375,12 +2840,14 @@
         {
          "ref": "through-the-grapevine--chateau-de-beaulon-1988-fins-bois",
          "price": 25,
-         "anchor": 25
+         "anchor": 25,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "through-the-grapevine--michel-forgeron-1992-grande-champagne",
          "price": 25,
-         "anchor": 25
+         "anchor": 25,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2395,7 +2862,8 @@
         {
          "ref": "ohishi--premium-mizunara",
          "price": 16,
-         "anchor": 16
+         "anchor": 16,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2415,42 +2883,50 @@
         {
          "ref": "wise-grus--sljivovica",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "wise-grus--viljamovka",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "wise-grus--travarica",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "wise-grus--loza",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "wise-grus--orahovac",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "wise-grus--visnjevac",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "wise-grus--medica",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "wise-grus--teranino",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2465,22 +2941,26 @@
         {
          "ref": "lorenzo-inga--bianca",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "lorenzo-inga--barrique",
          "price": 5,
-         "anchor": 5
+         "anchor": 5,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "lorenzo-inga--riserva-18-mesi",
          "price": 6,
-         "anchor": 6
+         "anchor": 6,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "lorenzo-inga--amarone-invecchiata",
          "price": 8,
-         "anchor": 8
+         "anchor": 8,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2495,22 +2975,26 @@
         {
          "ref": "umeshu-genshu",
          "price": 6,
-         "anchor": 6
+         "anchor": 6,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "appenzeller",
          "price": 6,
-         "anchor": 6
+         "anchor": 6,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "wise-grus--ginko-pelinkovac",
          "price": 4,
-         "anchor": 4
+         "anchor": 4,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "jagermeister-manifest",
          "price": 9,
-         "anchor": 9
+         "anchor": 9,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
@@ -2526,6 +3010,7 @@
          "ref": "zmajska-pivovara--pils",
          "price": 6,
          "anchor": 6,
+         "anchorDate": "2026-09-10",
          "vol": 0.5
         }
        ]
@@ -2547,72 +3032,84 @@
          "ref": "romerquelle",
          "price": 5,
          "anchor": 5,
+         "anchorDate": "2026-09-10",
          "vol": 0.75
         },
         {
          "ref": "romerquelle-gazirana",
          "price": 5,
          "anchor": 5,
+         "anchorDate": "2026-09-10",
          "vol": 0.75
         },
         {
          "ref": "romerquelle-limunska-trava",
          "price": 3.7,
          "anchor": 3.7,
+         "anchorDate": "2026-09-10",
          "vol": 0.35
         },
         {
          "ref": "saint-geron",
          "price": 6.5,
          "anchor": 6.5,
+         "anchorDate": "2026-09-10",
          "vol": 0.75
         },
         {
          "ref": "saint-geron-gazirana",
          "price": 6.5,
          "anchor": 6.5,
+         "anchorDate": "2026-09-10",
          "vol": 0.75
         },
         {
          "ref": "artesian",
          "price": 6.5,
          "anchor": 6.5,
+         "anchorDate": "2026-09-10",
          "vol": 0.75
         },
         {
          "ref": "artesian-gazirana",
          "price": 6.5,
          "anchor": 6.5,
+         "anchorDate": "2026-09-10",
          "vol": 0.75
         },
         {
          "ref": "jana",
          "price": 4,
          "anchor": 4,
+         "anchorDate": "2026-09-10",
          "vol": 0.25
         },
         {
          "ref": "jana",
          "price": 5,
          "anchor": 5,
+         "anchorDate": "2026-09-10",
          "vol": 0.75
         },
         {
          "ref": "jamnica",
          "price": 4,
          "anchor": 4,
+         "anchorDate": "2026-09-10",
          "vol": 0.33
         },
         {
          "ref": "jamnica",
          "price": 5,
          "anchor": 5,
+         "anchorDate": "2026-09-10",
          "vol": 0.75
         },
         {
          "ref": "jamnica-sensation",
          "price": 3,
          "anchor": 3,
+         "anchorDate": "2026-09-10",
          "vol": 0.25
         }
        ]
@@ -2629,6 +3126,7 @@
          "ref": "schweppes-indian-tonic-water",
          "price": 4,
          "anchor": 4,
+         "anchorDate": "2026-09-10",
          "vol": 0.25
         }
        ]
@@ -2645,18 +3143,21 @@
          "ref": "svjeze-cijedeni-sok",
          "price": 5,
          "anchor": 5,
+         "anchorDate": "2026-09-10",
          "vol": 0.3
         },
         {
          "ref": "coca-cola",
          "price": 4,
          "anchor": 4,
+         "anchorDate": "2026-09-10",
          "vol": 0.25
         },
         {
          "ref": "coca-cola-zero",
          "price": 4,
          "anchor": 4,
+         "anchorDate": "2026-09-10",
          "vol": 0.25
         }
        ]
@@ -2672,12 +3173,14 @@
         {
          "ref": "espresso",
          "price": 4,
-         "anchor": 4
+         "anchor": 4,
+         "anchorDate": "2026-09-10"
         },
         {
          "ref": "macchiato",
          "price": 4,
-         "anchor": 4
+         "anchor": 4,
+         "anchorDate": "2026-09-10"
         }
        ]
       }
