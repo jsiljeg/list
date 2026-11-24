@@ -3340,6 +3340,22 @@
   },
   {
    "shelf": "spirits",
+   "ref": "glenlossie--18y-sherry-finish-px-2008",
+   "vol": null,
+   "price": 12,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
+   "ref": "glenturret--12y-barrel-selection-2013",
+   "vol": null,
+   "price": 10,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "habitation-velier--renegade-2020",
    "vol": null,
    "price": 14,
