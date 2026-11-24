@@ -3284,6 +3284,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "duh-u-boci--nebo-single-malt",
+   "vol": null,
+   "price": 10,
+   "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "fortaleza--anejo",
    "vol": null,
    "price": 18,

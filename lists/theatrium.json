@@ -2674,6 +2674,8 @@
         {
          "ref": "duh-u-boci--nebo-single-malt",
          "price": 10,
+         "anchor": 10,
+         "anchorDate": "2026-11-24",
          "new": true
         },
         {
