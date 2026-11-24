@@ -2559,15 +2559,13 @@
          "ref": "old-pilot-s--barrel-aged-gin",
          "price": 8,
          "anchor": 8,
-         "anchorDate": "2026-11-24",
-         "new": true
+         "anchorDate": "2026-11-24"
         },
         {
          "ref": "old-pilot-s--london-dry-gin",
          "price": 8,
          "anchor": 9,
-         "anchorDate": "2026-11-24",
-         "new": true
+         "anchorDate": "2026-11-24"
         },
         {
          "ref": "old-pilot-s--strawberry-gin",
