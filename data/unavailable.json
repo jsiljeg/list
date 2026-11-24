@@ -420,6 +420,11 @@
    "producer": "Kavalan",
    "name": "Distillery Select",
    "since": "2026-11-24"
+  },
+  {
+   "producer": "Kavalan",
+   "name": "Solist",
+   "since": "2026-11-24"
   }
  ]
 }
