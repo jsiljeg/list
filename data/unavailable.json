@@ -365,6 +365,11 @@
    "producer": "Gibson's",
    "name": "London Dry Gin",
    "since": "2026-11-24"
+  },
+  {
+   "producer": "Aviation",
+   "name": "American Gin",
+   "since": "2026-11-24"
   }
  ]
 }
