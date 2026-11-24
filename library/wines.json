@@ -16807,6 +16807,55 @@
     "es": "Destilado en 1994, 5 años antes de que Glen Keith callara durante 14. La barrica es un barril de bourbon de relleno que ya no impone nada, así que la piña, la fruta de la pasión y la cera de abeja vienen del propio destilado — la nota tropical que el Speyside solo desarrolla después de 30 años. Embotellado a graduación de barrica, sin rebajar: una barrica, 136 botellas, elegida por Wilson & Morgan, de Treviso. Una gota de agua lo abre."
    },
    "notePlain": true
+  },
+  "linkwood--2015-sherry-finish-wilson-morgan": {
+   "name": "2015 Sherry Finish – Wilson & Morgan",
+   "producer": "Linkwood",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_speyside",
+    "region": "Elgin, Speyside",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_sherry_oloroso"
+    ],
+    "age": "",
+    "alcohol": "57.1",
+    "bottler": "Wilson & Morgan — Barrel Selection",
+    "aromas": [
+     "banana",
+     "apricot",
+     "plum",
+     "mirabelle",
+     "quince",
+     "brown_spices"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Na dnu etikete piše „100 U.K. Proof” — i 57,1% je točno to: stara britanska mjera jakosti, iz vremena kad se rum provjeravao tako da se njime polije barut. Ako se barut i dalje zapalio, nitko ga nije razvodnio. Ovu je bačvu talijanski Wilson & Morgan još 45 mjeseci držao u bačvi od oloroso sherryja iz prvog punjenja — toliko dugo da to više nije završni dodir, nego drugi život. Kap vode otvara začine i ton mostarde.",
+    "en": "The bottom of the label says \"100 U.K. Proof\" — and 57.1% is exactly that: the old British measure of strength, from the days when rum was tested by pouring it over gunpowder. If the powder still caught fire, nobody had watered it down. Italy's Wilson & Morgan then kept this cask for another 45 months in a first-fill oloroso sherry butt — long enough that it is no longer a finishing touch but a second life. A drop of water brings out the spice and a note of mostarda.",
+    "it": "In fondo all'etichetta c'è scritto \"100 U.K. Proof\" — e 57,1% è esattamente questo: la vecchia misura britannica della gradazione, dei tempi in cui il rum si provava versandolo sulla polvere da sparo. Se la polvere prendeva ancora fuoco, nessuno l'aveva annacquato. Il trevigiano Wilson & Morgan ha poi tenuto questa botte altri 45 mesi in una botte di sherry oloroso di primo riempimento — così a lungo che non è più un tocco finale, ma una seconda vita. Una goccia d'acqua apre le spezie e una nota di mostarda.",
+    "fr": "En bas de l'étiquette, on lit « 100 U.K. Proof » — et 57,1 % c'est exactement cela : l'ancienne mesure britannique du degré, du temps où l'on éprouvait le rhum en le versant sur de la poudre à canon. Si la poudre s'enflammait encore, personne ne l'avait mouillé. L'italien Wilson & Morgan a ensuite gardé ce fût 45 mois de plus dans un fût d'oloroso de premier remplissage — si longtemps que ce n'est plus une finition, mais une seconde vie. Une goutte d'eau ouvre les épices et une note de mostarda.",
+    "de": "Unten auf dem Etikett steht „100 U.K. Proof“ — und 57,1% ist genau das: das alte britische Maß für Stärke, aus der Zeit, als man Rum prüfte, indem man ihn über Schießpulver goss. Zündete das Pulver noch, hatte niemand ihn verwässert. Der Italiener Wilson & Morgan legte dieses Fass dann weitere 45 Monate in ein Oloroso-Sherryfass aus Erstbefüllung — so lange, dass es kein Finish mehr ist, sondern ein zweites Leben. Ein Tropfen Wasser öffnet die Würze und einen Hauch Mostarda.",
+    "zh": "酒标最下方写着「100 U.K. Proof」——57.1% 正是这个意思：旧时英国的酒精强度标准，那时检验朗姆酒的办法是把它浇在火药上。火药若还能点着，就说明没人往里兑水。意大利的 Wilson & Morgan 随后又把这桶酒放进首次填充的 oloroso 雪莉桶里 45 个月——久到这已不是收尾，而是第二段生命。滴一滴水，辛香便会打开，还带出一丝意式芥末果脯（mostarda）的味道。",
+    "sl": "Na dnu etikete piše »100 U.K. Proof« — in 57,1% je natanko to: stara britanska mera jakosti, iz časov, ko so rum preizkušali tako, da so ga zlili na smodnik. Če se je smodnik še vžgal, ga ni nihče razredčil. Italijanski Wilson & Morgan je ta sod nato še 45 mesecev hranil v sodu po oloroso sherryju iz prvega polnjenja — tako dolgo, da to ni več zaključni dotik, ampak drugo življenje. Kapljica vode odpre začimbe in noto mostarde.",
+    "es": "Al pie de la etiqueta pone «100 U.K. Proof» — y 57,1% es exactamente eso: la vieja medida británica de graduación, de cuando el ron se probaba vertiéndolo sobre pólvora. Si la pólvora aún prendía, nadie lo había aguado. El italiano Wilson & Morgan guardó después esta barrica otros 45 meses en una bota de oloroso de primer llenado — tanto tiempo que ya no es un acabado, sino una segunda vida. Una gota de agua abre las especias y una nota de mostarda."
+   },
+   "notePlain": true
   }
  }
 }
