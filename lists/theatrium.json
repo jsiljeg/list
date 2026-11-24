@@ -2493,6 +2493,11 @@
          "price": 5,
          "anchor": 5,
          "anchorDate": "2026-09-10"
+        },
+        {
+         "ref": "old-pilot-s--vodka",
+         "price": 9,
+         "new": true
         }
        ]
       }
@@ -2534,6 +2539,21 @@
          "price": 7,
          "anchor": 7,
          "anchorDate": "2026-09-10"
+        },
+        {
+         "ref": "old-pilot-s--barrel-aged-gin",
+         "price": 8,
+         "new": true
+        },
+        {
+         "ref": "old-pilot-s--london-dry-gin",
+         "price": 9,
+         "new": true
+        },
+        {
+         "ref": "old-pilot-s--strawberry-gin",
+         "price": 8,
+         "new": true
         }
        ]
       }

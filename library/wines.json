@@ -16322,6 +16322,172 @@
     "es": "Garnacha en tierra de Monastrell: tres parcelas en las laderas de la Sierra del Molar, entre 750 y 800 m, en arena y grava sobre caliza. La altitud y los fudres grandes, donde la madera nunca tapa la fruta, explican que aquí el 14,5% se beba fresco y no pesado."
    },
    "notePlain": true
+  },
+  "old-pilot-s--barrel-aged-gin": {
+   "name": "Barrel Aged Gin",
+   "producer": "Old Pilot's",
+   "insight": {
+    "region": "Zagreb",
+    "country": "HR",
+    "base": [
+     "juniper_botanicals"
+    ],
+    "cask": [
+     "slavonian_oak"
+    ],
+    "alcohol": "43",
+    "aromas": [
+     "juniper",
+     "orange_peel",
+     "sage",
+     "lavender",
+     "vanilla",
+     "dried_fruit"
+    ],
+    "serve": [
+     "neat",
+     "rocks",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "gin_contemporary"
+   },
+   "note": {
+    "hr": "Istih 6 hrvatskih biljaka kao u njihovu London Dryju — borovica iz Otočca, kora naranče i lavanda s otoka i s Neretve, kadulja i maslinov list s Velebita i Biokova, anđelika iz Bjelovara — a onda 3 mjeseca u bačvama od američkog i hrvatskog hrasta. Američki hrast donosi vaniliju i slatkoću, hrvatski gorčinu i suho voće. Otuda zlatna boja, i otuda gin koji se pije kao viski.",
+    "en": "The same 6 Croatian botanicals as their London Dry — juniper from Otočac, orange peel and lavender from the islands and the Neretva, sage and olive leaf from Velebit and Biokovo, angelica from Bjelovar — then 3 months in American and Croatian oak. The American oak brings vanilla and sweetness, the Croatian bitterness and dried fruit. Hence the gold colour, and hence a gin you drink like a whisky.",
+    "it": "Le stesse 6 botaniche croate del loro London Dry — ginepro di Otočac, scorza d'arancia e lavanda delle isole e della Narenta, salvia e foglia d'olivo del Velebit e del Biokovo, angelica di Bjelovar — poi 3 mesi in botti di rovere americano e croato. Il rovere americano porta vaniglia e dolcezza, quello croato amaro e frutta secca. Da qui il colore dorato, e da qui un gin che si beve come un whisky.",
+    "fr": "Les 6 mêmes plantes croates que leur London Dry — genièvre d'Otočac, écorce d'orange et lavande des îles et de la Neretva, sauge et feuille d'olivier du Velebit et du Biokovo, angélique de Bjelovar — puis 3 mois en fûts de chêne américain et croate. Le chêne américain apporte vanille et douceur, le croate amertume et fruits secs. D'où la couleur dorée, et d'où un gin qui se boit comme un whisky.",
+    "de": "Dieselben 6 kroatischen Botanicals wie ihr London Dry — Wacholder aus Otočac, Orangenschale und Lavendel von den Inseln und der Neretva, Salbei und Olivenblatt vom Velebit und Biokovo, Angelika aus Bjelovar — dann 3 Monate in Fässern aus amerikanischer und kroatischer Eiche. Die amerikanische Eiche bringt Vanille und Süße, die kroatische Bitterkeit und Trockenfrüchte. Daher die goldene Farbe, und daher ein Gin, den man trinkt wie einen Whisky.",
+    "zh": "与他们的伦敦干金酒用的是同样 6 种克罗地亚植物——奥托恰茨的杜松子，海岛与内雷特瓦河谷的橙皮和薰衣草，韦莱比特山与比奥科沃山的鼠尾草和橄榄叶，别洛瓦尔的欧白芷——之后在美国橡木与克罗地亚橡木桶中静置 3 个月。美国橡木带来香草与甜润，克罗地亚橡木带来苦味与干果。金色由此而来，这也是一款可以像威士忌那样喝的金酒。",
+    "sl": "Istih 6 hrvaških zelišč kot v njunem London Dryju — brin iz Otočca, pomarančna lupina in sivka z otokov in z Neretve, žajbelj in olivni list z Velebita in Biokova, angelika iz Bjelovarja — potem pa 3 mesece v sodih iz ameriškega in hrvaškega hrasta. Ameriški hrast prinese vaniljo in sladkobo, hrvaški grenkobo in suho sadje. Od tod zlata barva, in od tod gin, ki se pije kot viski.",
+    "es": "Los mismos 6 botánicos croatas que su London Dry — enebro de Otočac, piel de naranja y lavanda de las islas y del Neretva, salvia y hoja de olivo del Velebit y el Biokovo, angélica de Bjelovar — y después 3 meses en barricas de roble americano y croata. El roble americano aporta vainilla y dulzor, el croata amargor y fruta seca. De ahí el color dorado, y de ahí una ginebra que se bebe como un whisky."
+   },
+   "notePlain": true
+  },
+  "old-pilot-s--london-dry-gin": {
+   "name": "London Dry Gin",
+   "producer": "Old Pilot's",
+   "insight": {
+    "region": "Zagreb",
+    "country": "HR",
+    "base": [
+     "juniper_botanicals"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "45",
+    "aromas": [
+     "juniper",
+     "orange_peel",
+     "sage",
+     "lavender",
+     "angelica"
+    ],
+    "serve": [
+     "with_tonic",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "gin_london_dry"
+   },
+   "note": {
+    "hr": "Hrvatska u šest biljaka: borovica iz Otočca, kadulja s podnožja Velebita, list masline s Biokova, naranče iz doline Neretve, lavanda s otoka i anđelika s kontinenta. Sve ide u kotao zajedno, kako London Dry traži, i izlazi s 45% — dovoljno snage da se borovica čuje i kroz tonik.",
+    "en": "Croatia in six plants: juniper from Otočac, sage from the foot of Velebit, olive leaf from Biokovo, oranges from the Neretva valley, lavender from the islands and angelica from the continent. All of it goes into the still together, as London Dry demands, and comes out at 45% — enough strength for the juniper to be heard through the tonic.",
+    "it": "La Croazia in sei piante: ginepro di Otočac, salvia ai piedi del Velebit, foglia d'olivo del Biokovo, arance della valle della Neretva, lavanda delle isole e angelica dell'entroterra. Tutto entra nell'alambicco insieme, come vuole il London Dry, ed esce a 45% — abbastanza forza perché il ginepro si senta anche attraverso la tonica.",
+    "fr": "La Croatie en six plantes : genièvre d'Otočac, sauge du pied du Velebit, feuille d'olivier du Biokovo, oranges de la vallée de la Neretva, lavande des îles et angélique de l'intérieur. Tout passe ensemble dans l'alambic, comme l'exige le London Dry, et en ressort à 45% — assez de force pour que le genièvre s'entende à travers le tonic.",
+    "de": "Kroatien in sechs Pflanzen: Wacholder aus Otočac, Salbei vom Fuß des Velebit, Olivenblatt vom Biokovo, Orangen aus dem Neretva-Tal, Lavendel von den Inseln und Engelwurz aus dem Binnenland. Alles geht zusammen in die Brennblase, wie London Dry es verlangt, und kommt mit 45% heraus — genug Kraft, dass der Wacholder auch durch das Tonic zu hören ist.",
+    "zh": "六种植物里的克罗地亚：奥托查茨的杜松子、韦莱比特山脚的鼠尾草、比奥科沃的橄榄叶、内雷特瓦河谷的橙子、海岛上的薰衣草，以及内陆的欧白芷。按 London Dry 的规矩，它们一起进蒸馏器，出来时 45% ——足够有力，让杜松子穿过汤力水也听得见。",
+    "sl": "Hrvaška v šestih rastlinah: brin iz Otočca, žajbelj z vznožja Velebita, oljčni list z Biokova, pomaranče iz doline Neretve, sivka z otokov in angelika iz celinskega dela. Vse gre v kotel skupaj, kot zahteva London Dry, in pride ven s 45% — dovolj moči, da se brin sliši tudi skozi tonik.",
+    "es": "Croacia en seis plantas: enebro de Otočac, salvia del pie del Velebit, hoja de olivo del Biokovo, naranjas del valle del Neretva, lavanda de las islas y angélica del interior. Todo entra junto en el alambique, como exige el London Dry, y sale a 45% — fuerza suficiente para que el enebro se oiga a través de la tónica."
+   },
+   "notePlain": true
+  },
+  "old-pilot-s--strawberry-gin": {
+   "name": "Strawberry Gin",
+   "producer": "Old Pilot's",
+   "insight": {
+    "region": "Zagreb",
+    "country": "HR",
+    "base": [
+     "juniper_botanicals"
+    ],
+    "alcohol": "43",
+    "aromas": [
+     "strawberry",
+     "juniper",
+     "herbs",
+     "citrus"
+    ],
+    "serve": [
+     "with_tonic",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "aperitif"
+    ],
+    "kind": "spirit",
+    "class": "gin_contemporary"
+   },
+   "note": {
+    "hr": "Ne očekujte ružičasti liker. U čaši je bistar, ima 43%, a jagoda je lagan voćni miris nad borovicom — bez bojila i umjetnih aroma, kako piše na etiketi. Suci World Gin Awardsa 2025. pohvalili su upravo to: ravnotežu bez suvišne slatkoće.",
+    "en": "Don't expect a pink liqueur. In the glass it is clear, it is 43%, and the strawberry is a light fruit scent above the juniper — no colouring and no artificial flavouring, as the label says. The World Gin Awards 2025 judges praised exactly that: balance without excess sweetness.",
+    "it": "Non aspettatevi un liquore rosa. Nel bicchiere è limpido, ha 43% e la fragola è un leggero profumo di frutta sopra il ginepro — senza coloranti né aromi artificiali, come dice l'etichetta. I giudici dei World Gin Awards 2025 hanno lodato proprio questo: equilibrio senza dolcezza superflua.",
+    "fr": "N'attendez pas une liqueur rose. Dans le verre il est limpide, il titre 43%, et la fraise n'est qu'un léger parfum de fruit au-dessus du genièvre — sans colorant ni arôme artificiel, comme le dit l'étiquette. Les juges des World Gin Awards 2025 ont salué précisément cela : l'équilibre sans sucre de trop.",
+    "de": "Erwarten Sie keinen rosa Likör. Im Glas ist er klar, hat 43%, und die Erdbeere ist ein leichter Fruchtduft über dem Wacholder — ohne Farbstoff und ohne künstliche Aromen, wie das Etikett sagt. Die Juroren der World Gin Awards 2025 lobten genau das: Balance ohne überflüssige Süße.",
+    "zh": "别指望一杯粉色利口酒。它在杯中清澈透明，酒精度 43%，草莓只是杜松子之上一缕轻盈的果香——正如酒标所写，不加色素、不加人工香精。2025 年世界金酒大奖的评委称赞的正是这一点：平衡，而不过分甜腻。",
+    "sl": "Ne pričakujte rožnatega likerja. V kozarcu je bister, ima 43%, jagoda pa je le lahek sadni vonj nad brinom — brez barvil in umetnih arom, kot piše na etiketi. Sodniki World Gin Awards 2025 so pohvalili prav to: ravnovesje brez odvečne sladkobe.",
+    "es": "No espere un licor rosa. En la copa es transparente, tiene 43%, y la fresa es un ligero aroma frutal sobre el enebro — sin colorantes ni aromas artificiales, como dice la etiqueta. Los jueces de los World Gin Awards 2025 elogiaron justo eso: equilibrio sin dulzor de más."
+   },
+   "notePlain": true
+  },
+  "old-pilot-s--vodka": {
+   "name": "Vodka",
+   "producer": "Old Pilot's",
+   "insight": {
+    "region": "Zagreb",
+    "country": "HR",
+    "base": [
+     "grain_neutral"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "creamy",
+     "bread",
+     "white_pepper"
+    ],
+    "serve": [
+     "chilled",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "caviar",
+     "oysters",
+     "smoked_fish"
+    ],
+    "kind": "spirit",
+    "class": "vodka"
+   },
+   "note": {
+    "hr": "Na staklu je otisnuta zrakoplovna karta neba nad Zagrebom — radijali, visine, točke javljanja — a preko nje je prikovan aluminijski avion. Unutra je pšenični destilat pročišćen četiri puta kroz različite filtre i kroz platinu, pa razrijeđen vodom koja se filtrira zasebno. Mekana, gotovo kremasta votka; najbolja iz hladnjaka.",
+    "en": "The glass is printed with an aeronautical chart of the sky over Zagreb — radials, altitudes, reporting points — with an aluminium aeroplane fixed across it. Inside is a wheat distillate purified four times through different filters and through platinum, then cut with water filtered separately. A soft, almost creamy vodka; best straight from the fridge.",
+    "it": "Sul vetro è stampata una carta aeronautica del cielo sopra Zagabria — radiali, quote, punti di riporto — con un aereo d'alluminio fissato sopra. Dentro c'è un distillato di frumento purificato quattro volte attraverso filtri diversi e attraverso il platino, poi ridotto con acqua filtrata a parte. Una vodka morbida, quasi cremosa; al meglio appena uscita dal frigo.",
+    "fr": "Le verre porte une carte aéronautique du ciel de Zagreb — radiales, altitudes, points de report — et un avion en aluminium fixé par-dessus. Dedans, un distillat de blé purifié quatre fois à travers différents filtres et sur platine, puis réduit avec une eau filtrée à part. Une vodka souple, presque crémeuse ; à son meilleur sortie du réfrigérateur.",
+    "de": "Auf das Glas ist eine Fliegerkarte des Himmels über Zagreb gedruckt — Radiale, Flughöhen, Meldepunkte —, und darüber ist ein Flugzeug aus Aluminium befestigt. Drinnen ein Weizendestillat, viermal durch verschiedene Filter und über Platin gereinigt, dann mit separat gefiltertem Wasser herabgesetzt. Ein weicher, fast cremiger Wodka; am besten direkt aus dem Kühlschrank.",
+    "zh": "瓶身印着一张萨格勒布上空的航图——径向线、高度、报告点——上面还固定着一架铝制飞机。瓶里是小麦蒸馏酒，经四道不同的过滤器并以铂金净化，再兑上单独过滤的水。口感柔和，近乎奶油般顺滑；冰箱里取出最好。",
+    "sl": "Na steklo je natisnjena letalska karta neba nad Zagrebom — radiali, višine, javljalne točke — čez njo pa je pritrjeno aluminijasto letalo. V notranjosti je pšenični destilat, štirikrat prečiščen skozi različne filtre in skozi platino, nato razredčen z vodo, ki jo filtrirajo posebej. Mehka, skoraj kremasta vodka; najboljša naravnost iz hladilnika.",
+    "es": "El cristal lleva impresa una carta aeronáutica del cielo de Zagreb — radiales, altitudes, puntos de notificación — con un avión de aluminio fijado encima. Dentro, un destilado de trigo purificado cuatro veces con filtros distintos y con platino, rebajado después con agua filtrada aparte. Un vodka suave, casi cremoso; en su mejor momento recién salido de la nevera."
+   },
+   "notePlain": true
   }
  }
 }
