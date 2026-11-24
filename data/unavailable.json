@@ -455,6 +455,11 @@
    "producer": "Clairin",
    "name": "Casimir",
    "since": "2026-11-24"
+  },
+  {
+   "producer": "Clairin",
+   "name": "Vaval",
+   "since": "2026-11-24"
   }
  ]
 }
