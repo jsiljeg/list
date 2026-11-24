@@ -2495,6 +2495,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "wise-grus--vodka",
+         "price": 8,
+         "new": true
+        },
+        {
          "ref": "old-pilot-s--vodka",
          "price": 9,
          "anchor": 9,

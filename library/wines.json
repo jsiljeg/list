@@ -16725,6 +16725,37 @@
     "es": "«100 U.K. Proof» en la etiqueta no es un adorno: es la vieja medida británica, la graduación a la que la pólvora empapada en el destilado aún prende — 57,1%. Una sola barrica, 220 botellas, embotellado sin rebajar; el italiano Wilson & Morgan la eligió para Alemania y acabó en Zagreb. Una gota de agua abre el pomelo y la lima bajo el yodo."
    },
    "notePlain": true
+  },
+  "wise-grus--vodka": {
+   "name": "Vodka",
+   "producer": "Wise Grus",
+   "insight": {
+    "kind": "spirit",
+    "class": "vodka",
+    "region": "Daruvar, Slavonija",
+    "country": "HR",
+    "base": [
+     "grain_neutral"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "creamy",
+     "bread",
+     "white_pepper"
+    ],
+    "serve": [
+     "chilled",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "caviar",
+     "oysters",
+     "smoked_fish"
+    ]
+   }
   }
  }
 }
