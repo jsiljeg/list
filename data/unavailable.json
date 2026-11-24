@@ -435,6 +435,16 @@
    "producer": "Westward",
    "name": "American Single Malt",
    "since": "2026-11-24"
+  },
+  {
+   "producer": "Redemption",
+   "name": "Rye",
+   "since": "2026-11-24"
+  },
+  {
+   "producer": "Veritas",
+   "name": "White Blended Rum",
+   "since": "2026-11-24"
   }
  ]
 }
