@@ -2483,6 +2483,7 @@
    "categories": [
     {
      "id": "vodka",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
@@ -2499,6 +2500,7 @@
     },
     {
      "id": "gin",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
@@ -2539,6 +2541,7 @@
     },
     {
      "id": "vermouth",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
@@ -2573,6 +2576,7 @@
     },
     {
      "id": "tequila",
+     "serving": "0,03 l",
      "groups": [
       {
        "items": [
@@ -2612,6 +2616,7 @@
     },
     {
      "id": "mezcal",
+     "serving": "0,03 l",
      "groups": [
       {
        "items": [
@@ -2633,6 +2638,7 @@
     },
     {
      "id": "whisky",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
@@ -2721,6 +2727,7 @@
     },
     {
      "id": "rum",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
@@ -2833,6 +2840,7 @@
     },
     {
      "id": "cognac",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
@@ -2855,6 +2863,7 @@
     },
     {
      "id": "shochu",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
@@ -2876,6 +2885,7 @@
    "categories": [
     {
      "id": "rakija",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
@@ -2934,6 +2944,7 @@
     },
     {
      "id": "grappa",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
@@ -2968,6 +2979,7 @@
     },
     {
      "id": "liqueur",
+     "serving": "0,03 l",
      "groups": [
       {
        "country": null,
