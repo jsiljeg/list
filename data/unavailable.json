@@ -445,6 +445,11 @@
    "producer": "Veritas",
    "name": "White Blended Rum",
    "since": "2026-11-24"
+  },
+  {
+   "producer": "Clairin",
+   "name": "Sajous",
+   "since": "2026-11-24"
   }
  ]
 }
