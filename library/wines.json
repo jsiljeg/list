@@ -16488,6 +16488,47 @@
     "es": "El cristal lleva impresa una carta aeronáutica del cielo de Zagreb — radiales, altitudes, puntos de notificación — con un avión de aluminio fijado encima. Dentro, un destilado de trigo purificado cuatro veces con filtros distintos y con platino, rebajado después con agua filtrada aparte. Un vodka suave, casi cremoso; en su mejor momento recién salido de la nevera."
    },
    "notePlain": true
+  },
+  "duh-u-boci--nebo-single-malt": {
+   "name": "Nebo Single Malt",
+   "producer": "Duh u boci",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_croatia",
+    "region": "Zagreb",
+    "country": "HR",
+    "base": [
+     "barley_malt"
+    ],
+    "alcohol": "42",
+    "aromas": [
+     "red_apple",
+     "caramel",
+     "honey",
+     "vanilla",
+     "brown_spices",
+     "smoke"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Etiketa je mala povijest letenja: Leonardo, braća Wright, Spirit of St. Louis, Voyager — i Homo volans, čovjek pod padobranom iz knjige Šibenčanina Fausta Vrančića. U boci je Maris Otter, stari engleski ječam koji pivari vole zbog okusa kruha i biskvita, dvaput destiliran i odležan u bačvama od 190 litara od američkog hrasta. Dim je tu samo u tragu.",
+    "en": "The label is a small history of flight: Leonardo, the Wright brothers, the Spirit of St. Louis, Voyager — and Homo volans, the man under a parachute from the book of Faust Vrančić of Šibenik. In the bottle is Maris Otter, the old English barley brewers love for its taste of bread and biscuit, distilled twice and aged in 190-litre American oak casks. The smoke is only a trace.",
+    "it": "L'etichetta è una piccola storia del volo: Leonardo, i fratelli Wright, lo Spirit of St. Louis, il Voyager — e l'Homo volans, l'uomo col paracadute dal libro di Fausto Veranzio, nato a Sebenico. Nella bottiglia c'è Maris Otter, il vecchio orzo inglese che i birrai amano per il suo sapore di pane e biscotto, distillato due volte e affinato in botti di rovere americano da 190 litri. Il fumo è solo una traccia.",
+    "fr": "L'étiquette est une petite histoire du vol : Léonard, les frères Wright, le Spirit of St. Louis, Voyager — et l'Homo volans, l'homme sous parachute tiré du livre de Faust Vrančić, natif de Šibenik. Dans la bouteille, du Maris Otter, la vieille orge anglaise que les brasseurs aiment pour son goût de pain et de biscuit, distillée deux fois et élevée en fûts de chêne américain de 190 litres. La fumée n'est qu'une trace.",
+    "de": "Das Etikett ist eine kleine Geschichte des Fliegens: Leonardo, die Brüder Wright, die Spirit of St. Louis, Voyager — und der Homo volans, der Mann am Fallschirm aus dem Buch des Faust Vrančić aus Šibenik. In der Flasche steckt Maris Otter, die alte englische Gerste, die Brauer für ihren Geschmack nach Brot und Keks lieben, zweimal gebrannt und in 190-Liter-Fässern aus amerikanischer Eiche gereift. Der Rauch ist nur eine Spur.",
+    "zh": "酒标是一部小小的飞行史：达·芬奇、莱特兄弟、圣路易斯精神号、旅行者号——还有“飞人”（Homo volans），出自希贝尼克人福斯特·弗兰契奇书中那个挂着降落伞的人。瓶中是 Maris Otter，一种古老的英国大麦，酿酒师钟爱它的面包与饼干味；经两次蒸馏，在 190 升美国橡木桶中陈年。烟熏只是一丝痕迹。",
+    "sl": "Etiketa je majhna zgodovina letenja: Leonardo, brata Wright, Spirit of St. Louis, Voyager — in Homo volans, človek pod padalom iz knjige Šibeničana Fausta Vrančića. V steklenici je Maris Otter, star angleški ječmen, ki ga pivovarji ljubijo zaradi okusa po kruhu in piškotu, dvakrat destiliran in zorjen v 190-litrskih sodih iz ameriškega hrasta. Dim je le v sledu.",
+    "es": "La etiqueta es una pequeña historia del vuelo: Leonardo, los hermanos Wright, el Spirit of St. Louis, la Voyager — y el Homo volans, el hombre bajo un paracaídas del libro de Fausto Veranzio, natural de Šibenik. En la botella hay Maris Otter, la vieja cebada inglesa que los cerveceros adoran por su sabor a pan y galleta, destilada dos veces y criada en barricas de roble americano de 190 litros. El humo es solo un rastro."
+   },
+   "notePlain": true
   }
  }
 }
