@@ -1198,6 +1198,16 @@ function countryCounts(sec) {
   return order.map((cc) => ({ cc, n: n[cc] }));
 }
 
+/* Show only the rows of the chosen country, in place: no re-render, no
+   fade. A country heading and a category with nothing left are hidden too. */
+function applyCountryFilter(box) {
+  const only = countryFilter.sec === currentSection ? countryFilter.cc : null;
+  box.querySelectorAll(".country-chip").forEach((b) => b.classList.toggle("active", (b.dataset.cc || null) === only));
+  box.querySelectorAll(".cc-row").forEach((r) => r.classList.toggle("cc-off", !!only && r.dataset.cc !== only));
+  box.querySelectorAll("h3.country[data-cc]").forEach((h) => h.classList.toggle("cc-off", !!only && h.dataset.cc !== only));
+  box.querySelectorAll("section.cat").forEach((c) => c.classList.toggle("cc-off", !!c.querySelector(".cc-row") && !c.querySelector(".cc-row:not(.cc-off)")));
+}
+
 function renderContent() {
   const t = T();
   const q = expandQuery($("search").value.trim().toLowerCase());
@@ -1403,14 +1413,16 @@ function renderContent() {
       html += `<div class="country-chips" role="group">${chip("", t.ui.allCountries, total)}${counts.map((c) => chip(c.cc, t.countries[c.cc] || c.cc, c.n)).join("")}</div>`;
     }
     sec.categories.forEach((cat, ci) => {
-      const groups = cat.groups.map((g, gi) => ({ g, gi, items: g.items.map((item, ii) => ({ item, ii }))
-        .filter(({ item }) => !only || itemCountry(item, g) === only) })).filter((x) => x.items.length);
-      if (!groups.length) return;
+      /* Everything is rendered and every row carries its country; the chip
+         only hides rows (applyCountryFilter). Re-rendering on each tap
+         replayed the list's fade-in and rebuilt the chips under the finger,
+         which read as a glitch (owner, 2026-11-24). */
+      const groups = cat.groups.map((g, gi) => ({ g, gi, items: g.items.map((item, ii) => ({ item, ii, cc: itemCountry(item, g) })) }));
       html += `<section class="cat"><h2 class="cat-title">${esc(t.categories[cat.id] || cat.id)}${cat.serving ? ` <span class="cat-serving">${cat.serving}</span>` : ""}</h2><div class="ornament" aria-hidden="true">${ornamentFor(sec.id)}</div>`;
       if (cat.priceNote) html += `<p class="price-note">${t.ui.priceNote}</p>`;
       groups.forEach(({ g, gi, items }) => {
-        if (g.country) html += `<h3 class="country">${COUNTRY_FLAGS[g.country] ? `<span class="country-flag">${COUNTRY_FLAGS[g.country]()}</span>` : ""}<span>${esc(t.countries[g.country] || g.country)}</span></h3>`;
-        html += items.map(({ item, ii }) => itemHtml(item, [si, ci, gi, ii].join("."))).join("");
+        if (g.country) html += `<h3 class="country" data-cc="${esc(g.country)}">${COUNTRY_FLAGS[g.country] ? `<span class="country-flag">${COUNTRY_FLAGS[g.country]()}</span>` : ""}<span>${esc(t.countries[g.country] || g.country)}</span></h3>`;
+        html += items.map(({ item, ii, cc }) => `<div class="cc-row" data-cc="${esc(cc)}">${itemHtml(item, [si, ci, gi, ii].join("."))}</div>`).join("");
       });
       html += `</section>`;
     });
@@ -1428,13 +1440,15 @@ function renderContent() {
      end of the entire cellar. */
   box.querySelectorAll(".country-chip").forEach((b) => b.addEventListener("click", () => {
     countryFilter = { sec: currentSection, cc: b.dataset.cc || null };
-    renderContent();
+    applyCountryFilter(box);
     const row = box.querySelector(".country-chips");
     if (row && row.getBoundingClientRect().top < 0) row.scrollIntoView({ block: "start" });
   }));
-  const shown = Array.from(box.querySelectorAll(".item.clickable"));
-  const scope = shown.map((b) => b.dataset.ref);
-  shown.forEach((b) => b.addEventListener("click", () => openDetail(b.dataset.ref, null, scope)));
+  applyCountryFilter(box);
+  /* The scope is read at the tap, so it follows the country filter. */
+  box.querySelectorAll(".item.clickable").forEach((b) => b.addEventListener("click", () =>
+    openDetail(b.dataset.ref, null, Array.from(box.querySelectorAll(".item.clickable"))
+      .filter((x) => !x.closest(".cc-off")).map((x) => x.dataset.ref))));
 }
 
 /* producer blurb: longest producers.json key contained in the wine's
