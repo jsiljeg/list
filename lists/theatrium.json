@@ -2728,6 +2728,8 @@
         {
          "ref": "glen-keith--30y-traditional-oak-1994",
          "price": 45,
+         "anchor": 45,
+         "anchorDate": "2026-11-24",
          "new": true
         },
         {
