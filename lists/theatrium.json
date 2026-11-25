@@ -2982,6 +2982,8 @@
         {
          "ref": "christian-drouin--tres-pomme",
          "price": 10,
+         "anchor": 10,
+         "anchorDate": "2026-11-25",
          "new": true
         },
         {
