@@ -119,3 +119,21 @@ test("publish-wine.yml queues itself instead of a concurrency group", () => {
 ]*
 \s+git fetch -q origin main && git rebase/);
 });
+
+/* 2026-11-25: Shakara added Thailand and the akvavit card Norway to the same
+   one-line countries dictionary. --union pasted both lines, i18n.js stopped
+   parsing, and Filho was told his price was wrong. The clash is now merged
+   entry by entry, and a crash in the placement check exits 2, not 1. */
+test("replay.py merges a one-line dictionary clash entry by entry", () => {
+  const py = `import sys; sys.path.insert(0, ".github/wine-intake"); import replay, json
+b = ['  countries: { HR: "Kroatien", SK: "Slowakei" },']
+o = ['  countries: { HR: "Kroatien", SK: "Slowakei", TH: "Thailand" },']
+t = ['  countries: { HR: "Kroatien", SK: "Slowakei", NO: "Norwegen" },']
+b2 = ['    "SK": "Eslovaquia"']; o2 = ['    "SK": "Eslovaquia",', '    "TH": "Tailandia"']; t2 = ['    "SK": "Eslovaquia",', '    "NO": "Noruega"']
+print(json.dumps([replay._resolve(o, b, t), replay._resolve(o2, b2, t2)]))`;
+  const [one, many] = JSON.parse(execFileSync("python3", ["-c", py], { encoding: "utf8" }));
+  expect(one).toEqual(['  countries: { HR: "Kroatien", SK: "Slowakei", NO: "Norwegen", TH: "Thailand" },']);
+  expect(many).toEqual(['    "SK": "Eslovaquia",', '    "NO": "Noruega",', '    "TH": "Tailandia"']);
+  expect(readFileSync(".github/wine-intake/replay.py", "utf8")).not.toMatch(/"--union"/);
+  expect(readFileSync("scripts/card-placement.mjs", "utf8")).toMatch(/rc = 2/);
+});

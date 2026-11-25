@@ -171,8 +171,12 @@ jobs:
           PY
           # …and every price Filho gave has its listing: čaša on the glass
           # list, boca among the bottles (scripts/card-placement.mjs).
-          if ! node scripts/card-placement.mjs --base HEAD --request "$RUNNER_TEMP/req.json" --result "$RUNNER_TEMP/no-result.json" --ref "$REF"; then
-            echo "placement" > "$RUNNER_TEMP/why"; exit 1
+          # Exit 1 is a real mismatch; anything else (a crash — 2026-11-25, a
+          # broken i18n.js) is not the price's fault and gets the plain message.
+          rc=0; node scripts/card-placement.mjs --base HEAD --request "$RUNNER_TEMP/req.json" --result "$RUNNER_TEMP/no-result.json" --ref "$REF" || rc=$?
+          if [ "$rc" != 0 ]; then
+            if [ "$rc" = 1 ]; then echo "placement" > "$RUNNER_TEMP/why"; fi
+            exit 1
           fi
           phase "Provjerava cijelu kartu"
           # What reaches main is data only, whoever wrote or published the

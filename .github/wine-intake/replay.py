@@ -25,14 +25,15 @@ against its own merge-base is computed per file and laid onto main.
 - lists/theatrium.json: the branch's listings of <ref> that its base did not
   have, placed in the same section/category/group beside the same neighbour.
 - data/unavailable.json: hide rules the branch added or removed.
-- js/i18n.js, js/zh-terms.js, js/spirits.js: a three-way `git merge-file`, and --union when
-  that conflicts. Both files are one entry per line with trailing commas, so
+- js/i18n.js, js/zh-terms.js, js/spirits.js: a three-way `git merge-file`; a
+  clash is merged entry by entry (never --union, which broke i18n.js). Both files are one entry per line with trailing commas, so
   two cards adding a term each keep both lines.
 
 Files round-trip with json.dumps(ensure_ascii=False, indent=1) + "\\n", LF.
 """
 import json
 import subprocess
+import re
 import sys
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -141,6 +142,68 @@ def merge_hidden(base, branch, main):
     main["hidden"] += [r for r in added if rule_key(r) not in have]
 
 
+# A plain `key: "text"` pair, as check-card-patch.mjs allows them.
+_STR = r'(?:"(?:[^"\\\n]|\\.)*"|\'(?:[^\'\\\n]|\\.)*\')'
+_PAIR = re.compile(r'(%s|[A-Za-z_$][\w$]*)\s*:\s*(%s|-?\d+(?:\.\d+)?)' % (_STR, _STR))
+
+
+def _pairs(lines):
+    out = {}
+    for ln in lines:
+        for m in _PAIR.finditer(ln):
+            out[m.group(1).strip("\"'")] = (m.group(1), m.group(2))
+    return out
+
+
+def _resolve(ours, base, theirs):
+    """One conflicting hunk of a dictionary file, merged entry by entry
+    (2026-11-25: Shakara added Thailand and the akvavit card Norway to the
+    same one-line `countries: {...}`; --union pasted both lines and broke
+    i18n.js). Keeps main's lines, takes the card's changed values, and adds
+    the card's new entries — into main's line when the hunk is one line,
+    as one line each otherwise. Returns None when it is not that shape."""
+    po, pb, pt = _pairs(ours), _pairs(base), _pairs(theirs)
+    if not pt:
+        return None
+    lines = list(ours)
+    for k, (kt, vt) in pt.items():
+        if k in pb and pb[k][1] != vt and k in po and po[k][1] == pb[k][1]:
+            for i, ln in enumerate(lines):   # the card changed it, main did not
+                lines[i] = re.sub(r'(%s\s*:\s*)%s' % (re.escape(po[k][0]), re.escape(po[k][1])),
+                                  lambda m: m.group(1) + vt, ln, count=1)
+    # Each new entry goes right after the entry that precedes it in the card's
+    # version — in the same line for a one-line dictionary, as its own line
+    # where the card wrote one entry per line.
+    order = [(m.group(1).strip("\"'"), m.group(1), m.group(2), len(_PAIR.findall(ln)))
+             for ln in theirs for m in _PAIR.finditer(ln)]
+    for i, (k, kt, vt, per_line) in enumerate(order):
+        if k in po or k in pb:
+            continue
+        prev = order[i - 1][1] if i else None
+        if prev is None:
+            return None
+        hit = None
+        for j, ln in enumerate(lines):
+            m = re.search(r'%s\s*:\s*(?:%s|-?\d+(?:\.\d+)?)' % (re.escape(prev), _STR), ln)
+            if m:
+                hit = (j, m)
+        if hit is None:
+            return None
+        j, m = hit
+        ln = lines[j]
+        if per_line == 1 and len(_PAIR.findall(ln)) == 1:
+            indent = re.match(r"\s*", ln).group(0)
+            if ln.rstrip().endswith(","):
+                lines.insert(j + 1, "%s%s: %s," % (indent, kt, vt))
+            else:
+                lines[j] = ln.rstrip() + ","
+                lines.insert(j + 1, "%s%s: %s" % (indent, kt, vt))
+        else:
+            lines[j] = ln[:m.end()] + ", %s: %s" % (kt, vt) + ln[m.end():]
+        po[k] = (kt, vt)
+    return lines
+
+
 def merge_js(path, base_rev, branch):
     base, theirs = show(base_rev, path), show(branch, path)
     if base == theirs:
@@ -150,15 +213,36 @@ def merge_js(path, base_rev, branch):
         tmp[name] = "%s.%s" % (path, name)
         with open(tmp[name], "w", encoding="utf-8", newline="\n") as fh:
             fh.write(text.replace("\r\n", "\n"))
-    r = git("merge-file", path, tmp["base"], tmp["theirs"], check=False)
-    if r.returncode:
-        git("checkout", "--", path)
-        git("merge-file", "--union", path, tmp["base"], tmp["theirs"])
-        print("union   %s" % path)
-    else:
-        print("merged  %s" % path)
+    r = git("merge-file", "-p", "--diff3", path, tmp["base"], tmp["theirs"], check=False)
     for f in tmp.values():
         subprocess.run(["rm", "-f", f])
+    if r.returncode == 0:
+        print("merged  %s" % path)
+        out = r.stdout
+    else:
+        out, state, o, b, t, n = [], None, [], [], [], 0
+        for ln in r.stdout.split("\n"):
+            if ln.startswith("<<<<<<< "):
+                state, o, b, t = "o", [], [], []
+            elif ln.startswith("||||||| ") and state == "o":
+                state = "b"
+            elif ln.startswith("=======") and state in ("o", "b"):
+                state = "t"
+            elif ln.startswith(">>>>>>> ") and state == "t":
+                got = _resolve(o, b, t)
+                if got is None:
+                    sys.exit("%s: a change the card made clashes with today's list and cannot be merged entry by entry" % path)
+                out.extend(got); state = None; n += 1
+            elif state == "o": o.append(ln)
+            elif state == "b": b.append(ln)
+            elif state == "t": t.append(ln)
+            else: out.append(ln)
+        out = "\n".join(out)
+        print("entries %s (%d clash%s merged entry by entry)" % (path, n, "" if n == 1 else "es"))
+    with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(out)
+    if subprocess.run(["node", "--check", path], capture_output=True).returncode:
+        sys.exit("%s: the merged file is not valid JavaScript — nothing published" % path)
 
 
 def main(ref, branch):

@@ -105,4 +105,9 @@ function main() {
   return problems.length ? 1 : 0;
 }
 
-if (process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/\\/g, "/").split("/").pop())) process.exit(main());
+/* A crash exits 2, so the workflow never tells Filho a broken file is a wrong price
+   (2026-11-25: a merge broke i18n.js and Bareksten read "cijena ne odgovara"). */
+if (process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/\\/g, "/").split("/").pop())) {
+  let rc; try { rc = main(); } catch (e) { console.error(e); rc = 2; }
+  process.exit(rc);
+}
