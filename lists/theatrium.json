@@ -2752,6 +2752,8 @@
         {
          "ref": "glenlossie--16y-maja-s-choice-2009",
          "price": 15,
+         "anchor": 15,
+         "anchorDate": "2026-11-25",
          "new": true
         },
         {
@@ -2958,6 +2960,8 @@
         {
          "ref": "renegade--renegade-old-bacolet",
          "price": 14,
+         "anchor": 14,
+         "anchorDate": "2026-11-25",
          "new": true
         },
         {

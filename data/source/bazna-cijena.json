@@ -3388,6 +3388,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "glenlossie--16y-maja-s-choice-2009",
+   "vol": null,
+   "price": 15,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "glenlossie--18y-sherry-finish-px-2008",
    "vol": null,
    "price": 12,
@@ -3640,6 +3648,14 @@
    "vol": null,
    "price": 9,
    "date": "2026-11-24",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
+   "ref": "renegade--renegade-old-bacolet",
+   "vol": null,
+   "price": 14,
+   "date": "2026-11-25",
    "source": "prvi dan na listi (upisao deploy)"
   },
   {
