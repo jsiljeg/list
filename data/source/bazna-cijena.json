@@ -3364,6 +3364,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "glen-elgin--2012-sherry-finish-px-wilson-morgan",
+   "vol": null,
+   "price": 18,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "glen-keith--30y-traditional-oak-1994",
    "vol": null,
    "price": 45,
@@ -3431,6 +3439,14 @@
    "ref": "hennessy--very-special",
    "vol": null,
    "price": 7,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
+   "ref": "hine--rare-the-original",
+   "vol": null,
+   "price": 15,
    "date": "2026-11-25",
    "source": "prvi dan na listi (upisao deploy)"
   },
@@ -3665,6 +3681,14 @@
    "price": 25,
    "date": "2026-09-10",
    "source": "vlasnik, 24.11.2026.: cijena s liste toga dana, datum 10.9.2026."
+  },
+  {
+   "shelf": "spirits",
+   "ref": "two-oak-nuts--12y-the-affair",
+   "vol": null,
+   "price": 15,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
   },
   {
    "shelf": "spirits",
