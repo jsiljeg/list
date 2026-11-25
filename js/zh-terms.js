@@ -169,6 +169,7 @@
     "Cognac": "干邑",
     "Grande Champagne": "大香槟区",
     "Fins Bois": "优质林区",
+    "Fine Champagne": "特优香槟区",
     "Schwarzwald": "黑森林",
     "Thüringen": "图林根",
     "Erfurt": "埃尔福特",

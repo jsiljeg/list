@@ -17118,6 +17118,54 @@
     "es": "El Pedro Ximénez es el más dulce de todos los jereces, y este Glen Elgin pasó 52 meses en una bota de PX fresca — Wilson & Morgan esperaron hasta que estuvo exactamente a su gusto. Y sin embargo en boca no es dulce: seco, algo astringente, salado y especiado como un zumo de naranja sin azúcar, y solo después se relaja en orejones. Una sola bota, la número 806861."
    },
    "notePlain": true
+  },
+  "hine--rare-the-original": {
+   "name": "Rare The Original",
+   "producer": "Hine",
+   "insight": {
+    "kind": "spirit",
+    "class": "cognac_grande_champagne",
+    "region": "Fine Champagne, Cognac",
+    "country": "FR",
+    "base": [
+     "grapes_wine"
+    ],
+    "still": [
+     "alembic_charentais"
+    ],
+    "cask": [
+     "french_oak"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "nectarine",
+     "apricot",
+     "melon",
+     "brioche",
+     "vanilla"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "fruit_desserts",
+     "nuts",
+     "dark_chocolate",
+     "digestif"
+    ]
+   },
+   "note": {
+    "hr": "Fine Champagne nije krug nego zakonski spoj dvaju najboljih: najmanje polovica Grande Champagne, ostatak Petite Champagne. Prvi daje dužinu, drugi voće — zato ovaj cognac miriše na nektarinu i marelicu prije nego na hrast. Bernard Hine sastavio ga je od dvadesetak destilata kao klasik kuće.",
+    "en": "Fine Champagne is not a cru but a blend the law defines: at least half Grande Champagne, the rest Petite Champagne. The first gives length, the second fruit — which is why this cognac smells of nectarine and apricot before it smells of oak. Bernard Hine put it together from some twenty eaux-de-vie as the house classic.",
+    "it": "Fine Champagne non è un cru ma un assemblaggio definito dalla legge: almeno metà Grande Champagne, il resto Petite Champagne. La prima dà lunghezza, la seconda frutto — per questo questo cognac sa di pesca noce e albicocca prima che di rovere. Bernard Hine lo ha composto da una ventina di acquaviti come classico della casa.",
+    "fr": "La Fine Champagne n'est pas un cru mais un assemblage défini par la loi : au moins la moitié de Grande Champagne, le reste de Petite Champagne. La première donne la longueur, la seconde le fruit — d'où ce cognac qui sent la nectarine et l'abricot avant le chêne. Bernard Hine l'a composé d'une vingtaine d'eaux-de-vie, comme le classique de la maison.",
+    "de": "Fine Champagne ist kein Cru, sondern ein gesetzlich festgelegter Verschnitt: mindestens die Hälfte Grande Champagne, der Rest Petite Champagne. Die erste gibt Länge, die zweite Frucht — deshalb riecht dieser Cognac nach Nektarine und Aprikose, bevor er nach Eiche riecht. Bernard Hine hat ihn aus rund 20 Eaux-de-vie als Klassiker des Hauses zusammengestellt.",
+    "zh": "特优香槟区不是一个产区，而是法律规定的调配：至少一半来自大香槟区，其余来自小香槟区。前者给出悠长，后者给出果香——所以这款干邑先闻到油桃和杏子，然后才是橡木。Bernard Hine 用二十来种生命之水把它调成了这家酒庄的经典。",
+    "sl": "Fine Champagne ni krog, ampak z zakonom določena zvrst: najmanj polovica Grande Champagne, ostalo Petite Champagne. Prvi da dolžino, drugi sadje — zato ta konjak diši po nektarini in marelici, preden zadiši po hrastu. Bernard Hine ga je sestavil iz kakih 20 destilatov kot klasiko hiše.",
+    "es": "Fine Champagne no es un cru sino una mezcla que define la ley: al menos la mitad de Grande Champagne, el resto de Petite Champagne. La primera da longitud, la segunda fruta — por eso este coñac huele a nectarina y albaricoque antes que a roble. Bernard Hine lo compuso con una veintena de aguardientes como el clásico de la casa."
+   },
+   "notePlain": true
   }
  }
 }
