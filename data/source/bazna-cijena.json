@@ -3212,6 +3212,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "bordiga--excelsior-superiore-riserva",
+   "vol": null,
+   "price": 10,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "bowmore--20y-barrel-selection-2005",
    "vol": null,
    "price": 20,
