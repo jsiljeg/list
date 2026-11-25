@@ -3236,6 +3236,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "bruichladdich--the-classic-laddie",
+   "vol": null,
+   "price": 15,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "bruxo--bruxo",
    "vol": null,
    "price": 7,
