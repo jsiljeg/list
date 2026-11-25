@@ -2603,6 +2603,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "bordiga--excelsior-superiore-riserva",
+         "price": 10,
+         "new": true
+        },
+        {
          "ref": "mulassano--bitter",
          "price": 5,
          "anchor": 5,

@@ -16936,6 +16936,50 @@
      "aperitif"
     ]
    }
+  },
+  "bordiga--excelsior-superiore-riserva": {
+   "name": "Excelsior Superiore Riserva",
+   "producer": "Bordiga",
+   "insight": {
+    "region": "Cuneo, Piemonte",
+    "country": "IT",
+    "base": [
+     "grapes_wine"
+    ],
+    "still": [
+     "maceration"
+    ],
+    "alcohol": "18",
+    "aromas": [
+     "wormwood",
+     "licorice",
+     "balsamic",
+     "bitter_orange",
+     "brown_spices"
+    ],
+    "serve": [
+     "neat",
+     "before_dinner",
+     "after_dinner"
+    ],
+    "pairings": [
+     "aperitif",
+     "dark_chocolate"
+    ],
+    "kind": "spirit",
+    "class": "vermouth_rosso"
+   },
+   "note": {
+    "hr": "Vermut s Barolom u boci. Bordiga ga je složio za 130. rođendan destilerije, što bliže recepturi iz 1888.: baza je cortese, a uz njega ide Barolo koji je prije toga 3 godine odležao u hrastu. Od Barola dolazi ono što vermuti inače nemaju — blagi tanin na kraju i gorčina koja traje dulje od slatkoće. Zato se pije čist, bez leda.",
+    "en": "A vermouth with Barolo in it. Bordiga made it for the distillery's 130th birthday, as close as they could come to the 1888 recipe: a Cortese base, and alongside it Barolo that had already spent 3 years in oak. The Barolo brings what vermouth usually lacks — a light grip of tannin at the end, and a bitterness that outlasts the sweetness. Which is why it is drunk neat, without ice.",
+    "it": "Un vermouth con dentro il Barolo. Bordiga lo ha creato per i 130 anni della distilleria, il più vicino possibile alla ricetta del 1888: base di Cortese e, accanto, un Barolo che aveva già passato 3 anni in rovere. Dal Barolo arriva ciò che al vermouth di solito manca — un leggero tannino in chiusura e un amaro che dura più della dolcezza. Per questo si beve liscio, senza ghiaccio.",
+    "fr": "Un vermouth avec du Barolo dedans. Bordiga l'a composé pour les 130 ans de la distillerie, au plus près de la recette de 1888 : une base de cortese et, à côté, un Barolo qui avait déjà passé 3 ans en chêne. Le Barolo apporte ce qui manque d'ordinaire au vermouth — une légère trame tannique en finale, et une amertume qui dure plus longtemps que le sucre. C'est pourquoi on le boit pur, sans glace.",
+    "de": "Ein Wermut mit Barolo darin. Bordiga hat ihn zum 130. Geburtstag der Brennerei komponiert, so nah wie möglich am Rezept von 1888: eine Basis aus Cortese und daneben ein Barolo, der zuvor schon 3 Jahre im Eichenholz verbracht hatte. Der Barolo bringt, was Wermut sonst fehlt — einen leichten Gerbstoff im Abgang und eine Bitterkeit, die länger anhält als die Süße. Deshalb trinkt man ihn pur, ohne Eis.",
+    "zh": "一款里面有巴罗洛的味美思。Bordiga 为酒厂 130 周年创制了它，尽量贴近 1888 年的配方：以 Cortese 为基酒，再加入一份事先已在橡木中陈放 3 年的巴罗洛。巴罗洛带来了味美思通常没有的东西——收尾一丝轻微的单宁，以及比甜味更持久的苦。所以它要纯饮，不加冰。",
+    "sl": "Vermut, v katerem je Barolo. Bordiga ga je sestavil za 130. rojstni dan destilarne, čim bliže recepturi iz leta 1888: osnova je cortese, ob njem pa Barolo, ki je pred tem že 3 leta zorel v hrastu. Barolo prinese, česar vermut navadno nima — rahel tanin v zaključku in grenčino, ki traja dlje od sladkosti. Zato se pije čist, brez ledu.",
+    "es": "Un vermut con Barolo dentro. Bordiga lo compuso para los 130 años de la destilería, lo más cerca posible de la receta de 1888: una base de cortese y, junto a ella, un Barolo que ya había pasado 3 años en roble. El Barolo aporta lo que al vermut suele faltarle — un ligero tanino al final y un amargor que dura más que el dulzor. Por eso se bebe solo, sin hielo."
+   },
+   "notePlain": true
   }
  }
 }

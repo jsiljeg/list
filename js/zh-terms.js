@@ -129,6 +129,7 @@
   // appellations without an established Chinese name are omitted on purpose.
   g.ZH_REGION = {
     "Torino": "都灵",
+    "Cuneo": "库内奥",
     "Serravalle Scrivia": "塞拉瓦莱斯克里维亚",
     "Segonzac": "塞贡扎克",
     "Tain": "泰恩",
