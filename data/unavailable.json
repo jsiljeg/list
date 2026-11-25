@@ -531,6 +531,11 @@
    "producer": "Jack Daniel's",
    "name": "Old No. 7",
    "since": "2026-11-25"
+  },
+  {
+   "producer": "Jameson",
+   "name": "Irish Whiskey",
+   "since": "2026-11-25"
   }
  ]
 }
