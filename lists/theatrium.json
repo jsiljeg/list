@@ -2572,6 +2572,11 @@
          "price": 8,
          "anchor": 8,
          "anchorDate": "2026-11-24"
+        },
+        {
+         "ref": "bareksten--botanical-aquavit",
+         "price": 15,
+         "new": true
         }
        ]
       }

@@ -17592,6 +17592,51 @@
     "es": "En su propia etiqueta Bumbu no se llama ron sino «spirit drink», y por algo: la UE permite al ron 20 g de azúcar por litro como máximo, y Bumbu lleva unos 45, con vainilla y especias. De ahí su suavidad, casi de postre — el polo opuesto de Foursquare, una destilería de la misma isla que no añade ni un gramo de azúcar a su ron."
    },
    "notePlain": true
+  },
+  "bareksten--botanical-aquavit": {
+   "name": "Botanical Aquavit",
+   "producer": "Bareksten",
+   "insight": {
+    "region": "Bergen, Vestland",
+    "country": "NO",
+    "base": [
+     "potato_caraway"
+    ],
+    "cask": [
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "caraway",
+     "citrus",
+     "anise",
+     "fennel",
+     "licorice",
+     "dried_herbs"
+    ],
+    "serve": [
+     "neat",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "lamb",
+     "pork",
+     "smoked_fish"
+    ],
+    "kind": "spirit",
+    "class": "aquavit"
+   },
+   "note": {
+    "hr": "Akvavit je žestica s kimom, a Norvežani ga rade drukčije od susjeda: od krumpira umjesto od žita, i odležan u drvu, dok je danski i švedski uglavnom bistar. Ovaj je odmarao u bačvama od oloroso sherryja, koje kimu i anisu dodaju blagu slatkoću. Zato se ne pije ledeno, nego na sobnoj temperaturi — u Norveškoj uz božićna janjeća i svinjska rebra.",
+    "en": "Aquavit is a caraway spirit, and Norway makes it differently from its neighbours: from potatoes rather than grain, and aged in wood, where Danish and Swedish aquavit is mostly clear. This one rested in oloroso sherry casks, which lend the caraway and anise a gentle sweetness. So it is not drunk ice-cold but at room temperature — in Norway, beside the Christmas ribs of lamb and pork.",
+    "it": "L'aquavit è un distillato al carvi, e la Norvegia lo fa diversamente dai vicini: da patate invece che da cereali, e affinato in legno, mentre quello danese e svedese è per lo più trasparente. Questo ha riposato in botti di sherry oloroso, che aggiungono al carvi e all'anice una dolcezza leggera. Per questo non si beve ghiacciato ma a temperatura ambiente — in Norvegia, accanto alle costolette natalizie d'agnello e di maiale.",
+    "fr": "L'aquavit est une eau-de-vie au carvi, et la Norvège la fait autrement que ses voisins : de pomme de terre plutôt que de grain, et vieillie sous bois, quand l'aquavit danoise et suédoise est surtout incolore. Celle-ci a reposé en fûts de sherry oloroso, qui donnent au carvi et à l'anis une douceur légère. Elle ne se boit donc pas glacée mais à température ambiante — en Norvège, avec les côtes d'agneau et de porc de Noël.",
+    "de": "Aquavit ist ein Kümmelbrand, und Norwegen macht ihn anders als die Nachbarn: aus Kartoffeln statt Getreide und im Holz gereift, während dänischer und schwedischer Aquavit meist klar ist. Dieser hat in Oloroso-Sherryfässern geruht, die Kümmel und Anis eine sanfte Süße geben. Darum trinkt man ihn nicht eiskalt, sondern zimmerwarm — in Norwegen zu den weihnachtlichen Lamm- und Schweinerippen.",
+    "zh": "阿夸维特是以葛缕子调香的烈酒，而挪威的做法与邻国不同：用马铃薯而不是谷物，并在木桶中陈放；丹麦和瑞典的阿夸维特则大多清澈无色。这一款在 oloroso 雪莉旧桶中静置，桶为葛缕子和茴芹添上一丝柔和的甜润。所以它不冰着喝，而是常温饮用——在挪威，配圣诞节的羊排和猪排。",
+    "sl": "Akvavit je žganje s kumino, Norvežani pa ga delajo drugače od sosedov: iz krompirja namesto iz žita in starano v lesu, medtem ko je danski in švedski večinoma bister. Ta je počival v sodih po oloroso sherryju, ki kumini in janežu dodajo blago sladkobo. Zato se ne pije leden, temveč pri sobni temperaturi — na Norveškem ob božičnih jagnječjih in svinjskih rebrcih.",
+    "es": "El aquavit es un aguardiente de alcaravea, y Noruega lo hace distinto que sus vecinos: de patata en lugar de cereal, y envejecido en madera, mientras que el danés y el sueco suelen ser transparentes. Este reposó en botas de oloroso, que dan a la alcaravea y al anís un dulzor suave. Por eso no se bebe helado, sino a temperatura ambiente — en Noruega, junto a las costillas navideñas de cordero y de cerdo."
+   },
+   "notePlain": true
   }
  }
 }

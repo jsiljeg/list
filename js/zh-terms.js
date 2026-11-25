@@ -184,6 +184,8 @@
     "Niedersachsen": "下萨克森",
     "Appenzell": "阿彭策尔",
     "Riga": "里加",
+    "Bergen": "卑尔根",
+    "Vestland": "韦斯特兰",
     "Trelawny": "特里劳尼",
     "St Philip": "圣菲利普",
     "St Lucy": "圣卢西",
