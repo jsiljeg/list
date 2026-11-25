@@ -485,6 +485,12 @@
    "producer": "Foursquare",
    "name": "Raconteur",
    "since": "2026-11-24"
+  },
+  {
+   "producer": "Petrač",
+   "name": "Bregh Blanc de Blancs",
+   "where": "glass",
+   "since": "2026-11-25"
   }
  ]
 }
