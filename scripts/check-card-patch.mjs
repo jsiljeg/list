@@ -27,7 +27,10 @@ const STR = String.raw`(?:"(?:[^"\\\n]|\\.)*"|'(?:[^'\\\n]|\\.)*')`;
 const KEY = String.raw`(?:${STR}|[A-Za-z_$][\w$]*)`;
 const PAIR = String.raw`${KEY}\s*:\s*(?:${STR}|-?\d+(?:\.\d+)?)`;
 const PAIRS = String.raw`${PAIR}(?:\s*,\s*${PAIR})*`;
-export const DATA_LINE = new RegExp(String.raw`^\s*(?:${PAIRS}|${KEY}\s*:\s*\{\s*${PAIRS}\s*,?\s*\})\s*,?\s*$`);
+/* A trailing comment that closes on the same line and holds no "*\/" of its
+   own (2026-11-25: the calvados card wrote `x: "snifter",   /* why *\/`). */
+const TAIL = String.raw`(?:\/\*(?:(?!\*\/).)*\*\/\s*)?`;
+export const DATA_LINE = new RegExp(String.raw`^\s*(?:${PAIRS}|${KEY}\s*:\s*\{\s*${PAIRS}\s*,?\s*\})\s*,?\s*${TAIL}$`);
 /* A comment that opens and closes on its own line cannot reach code. One
    spread over several lines is refused: a line starting "*" could just as
    well be "*\/ fetch(…) /*". */
