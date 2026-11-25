@@ -16980,6 +16980,47 @@
     "es": "Un vermut con Barolo dentro. Bordiga lo compuso para los 130 años de la destilería, lo más cerca posible de la receta de 1888: una base de cortese y, junto a ella, un Barolo que ya había pasado 3 años en roble. El Barolo aporta lo que al vermut suele faltarle — un ligero tanino al final y un amargor que dura más que el dulzor. Por eso se bebe solo, sin hielo."
    },
    "notePlain": true
+  },
+  "hennessy--very-special": {
+   "name": "Very Special",
+   "producer": "Hennessy",
+   "insight": {
+    "kind": "spirit",
+    "class": "rakija_grape",
+    "vessel": "snifter",
+    "region": "Cognac",
+    "country": "FR",
+    "base": [
+     "grapes_wine"
+    ],
+    "still": [
+     "alembic_charentais"
+    ],
+    "cask": [
+     "french_oak"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "toasted_wood",
+     "almond",
+     "caramel",
+     "vanilla",
+     "white_flowers"
+    ],
+    "serve": [
+     "neat",
+     "rocks",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "digestif",
+     "nuts",
+     "dark_chocolate",
+     "cigars"
+    ]
+   },
+   "terroir": "",
+   "notePlain": true
   }
  }
 }
