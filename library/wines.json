@@ -17315,6 +17315,55 @@
     "es": "Una barrica, dos elecciones. Luigi y Maja, una pareja de Zagreb, compraron una barrica de Glenlossie y la embotellaron dos veces. Luigi rebajó su parte con agua hasta el 46% — el agua, dice, no lo debilita, lo revela. Maja dejó la suya tal como salió de la bota de jerez oloroso: 60,5% y 239 botellas. Esta es la elección de Maja; el agua, si la quiere, la añade usted."
    },
    "notePlain": true
+  },
+  "renegade--renegade-old-bacolet": {
+   "name": "Renegade Old Bacolet",
+   "producer": "Renegade",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_cane_juice",
+    "region": "St Andrew",
+    "country": "GD",
+    "base": [
+     "cane_juice"
+    ],
+    "still": [
+     "double_retort_pot"
+    ],
+    "cask": [
+     "unaged"
+    ],
+    "alcohol": "55",
+    "bottler": "Habitation Velier",
+    "aromas": [
+     "olive",
+     "grass",
+     "white_flowers",
+     "brine",
+     "earth",
+     "smoke"
+    ],
+    "serve": [
+     "neat",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "seafood",
+     "spicy",
+     "charcuterie"
+    ]
+   },
+   "note": {
+    "hr": "Osam dana vrenja: 195 sati, dok se većina ruma fermentira dan-dva. Toliko treba kvascima da iz soka trske s Old Bacoleta — prve zemlje koju su Francuzi na Grenadi obrađivali, ravnice između dvije rječice — izvuku maslinu, cvijeće i salamuru. Onda samo bakreni kotao, bez kolone, i ništa dodano.",
+    "en": "Eight days of fermentation: 195 hours, where most rum ferments in a day or two. That is how long the yeasts need to pull olive, flowers and brine out of cane juice from Old Bacolet — the first land the French farmed on Grenada, a plain between two small rivers. Then a copper pot still only, no column, and nothing added.",
+    "it": "Otto giorni di fermentazione: 195 ore, dove la maggior parte del rum fermenta in un giorno o due. Tanto serve ai lieviti per tirare fuori oliva, fiori e salamoia dal succo di canna di Old Bacolet — la prima terra che i francesi coltivarono a Grenada, una piana tra due piccoli fiumi. Poi solo alambicco di rame, nessuna colonna, e niente di aggiunto.",
+    "fr": "Huit jours de fermentation : 195 heures, quand la plupart des rhums fermentent en un jour ou deux. C'est le temps qu'il faut aux levures pour tirer l'olive, les fleurs et la saumure du jus de canne d'Old Bacolet — la première terre que les Français ont cultivée à la Grenade, une plaine entre deux petites rivières. Puis l'alambic à repasse en cuivre seul, sans colonne, et rien d'ajouté.",
+    "de": "Acht Tage Gärung: 195 Stunden, wo die meisten Rums in ein, zwei Tagen vergären. So lange brauchen die Hefen, um aus dem Zuckerrohrsaft von Old Bacolet — dem ersten Land, das die Franzosen auf Grenada bestellten, einer Ebene zwischen zwei kleinen Flüssen — Olive, Blüten und Salzlake herauszuholen. Dann nur die kupferne Pot Still, keine Kolonne, und nichts zugesetzt.",
+    "zh": "八天发酵：195 小时，而大多数朗姆只发酵一两天。酵母需要这么久，才能从 Old Bacolet 的甘蔗汁里引出橄榄、花香与盐卤——那是法国人在格林纳达最早开垦的土地，两条小河之间的一片平原。之后只用铜制壶式蒸馏器，不用蒸馏柱，什么也不加。",
+    "sl": "Osem dni vrenja: 195 ur, medtem ko večina ruma fermentira dan ali dva. Toliko kvasovke potrebujejo, da iz soka trsa z Old Bacoleta — prve zemlje, ki so jo Francozi na Grenadi obdelovali, ravnice med dvema rečicama — izvlečejo oljko, cvetje in slanico. Nato le bakren kotel, brez kolone, in nič dodanega.",
+    "es": "Ocho días de fermentación: 195 horas, cuando la mayoría del ron fermenta en uno o dos días. Es lo que necesitan las levaduras para sacar aceituna, flores y salmuera del jugo de caña de Old Bacolet — la primera tierra que los franceses cultivaron en Granada, una llanura entre dos riachuelos. Después solo el alambique de cobre, sin columna, y nada añadido."
+   },
+   "notePlain": true
   }
  }
 }

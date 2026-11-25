@@ -2956,6 +2956,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "renegade--renegade-old-bacolet",
+         "price": 14,
+         "new": true
+        },
+        {
          "ref": "foursquare--absolutio-15y",
          "price": 27,
          "anchor": 27,
