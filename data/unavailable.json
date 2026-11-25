@@ -536,6 +536,21 @@
    "producer": "Jameson",
    "name": "Irish Whiskey",
    "since": "2026-11-25"
+  },
+  {
+   "producer": "Glen Keith",
+   "name": "30Y Traditional Oak 1994",
+   "since": "2026-11-25"
+  },
+  {
+   "producer": "Two Oak Nuts",
+   "name": "12Y The Affair",
+   "since": "2026-11-25"
+  },
+  {
+   "producer": "Glen Elgin",
+   "name": "2012 Sherry Finish PX – Wilson & Morgan",
+   "since": "2026-11-25"
   }
  ]
 }
