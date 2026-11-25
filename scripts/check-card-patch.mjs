@@ -10,7 +10,8 @@
  * line of script slipped into it (a prompt injection through that text, or
  * through a label) would run on Filho's /admin with Filho's key in reach.
  *
- * So the two JS files may only gain or lose plain entries — `"Nerello
+ * js/spirits.js joined them on 2026-11-25 (Jameson, a calvados and an
+ * akvavit all stopped on a missing class word). So the JS files may only gain or lose plain entries — `"Nerello
  * Mascalese": "马斯卡斯奈莱洛",` — a key, a colon, one string literal, a
  * comma. That is every line a card run has ever written to them. Anything
  * else in a JS file, any other file, a rename, a mode change or a binary is
@@ -18,7 +19,7 @@
 import fs from "node:fs";
 
 export const ALLOWED = ["library/wines.json", "lists/theatrium.json", "data/producers.json", "data/unavailable.json",
-  "js/zh-terms.js", "js/i18n.js"];
+  "js/zh-terms.js", "js/i18n.js", "js/spirits.js"];
 /* key: literal pairs, nothing else. A literal is a quoted string or a plain
    number; a line may carry several pairs (the vocabulary is written that
    way) or one `key: { pairs }` (the countries). No expression fits. */

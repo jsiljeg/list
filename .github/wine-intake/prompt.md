@@ -46,8 +46,9 @@ this one wine.
 - **Do not commit, push, or touch git.** The workflow does that after you.
 - **Write only** `library/wines.json`, `lists/theatrium.json`,
   `data/producers.json`, `data/unavailable.json` (only if the remark says
-  this bottle replaces one), `js/zh-terms.js`, `js/i18n.js`, and
-  `intake/result.json`. Use `.claude/skills/add-wine/add.py` to write the
+  this bottle replaces one), `js/zh-terms.js`, `js/i18n.js`,
+  `js/spirits.js`, and `intake/result.json`. In the three JS files add only
+  plain `key: "text"` entries (all 8 languages); anything else stops the card. Use `.claude/skills/add-wine/add.py` to write the
   wine. Anything else you change is thrown away.
 - **Size**: `vol: null` means Filho left it to you — read it off the label
   (750 ml, 1,5 l, 37,5 cl). A magnum is `vol: 1.5` on the listing, never in
@@ -74,6 +75,18 @@ this one wine.
   its `spirits` / `rakija-beer` category, never in `glass` or `bottle-*`.
   That shelf sells one pour (0,03 l): its price is `price_glass`, or
   `price_bottle` if that is the only one given (2026-11-24, Filho's gin).
+  **A word the spirit needs and the list lacks** (a class like
+  `blended_irish`, a base, a cask, an aroma) is yours to add to
+  `js/spirits.js`, all 8 languages, beside its neighbours, and a glass in
+  its glass map. Never ask Filho or the owner to add vocabulary or a
+  category — that is the card's job (2026-11-25: Jameson, a calvados and an
+  akvavit all stopped on that question). **Where it goes:** a new style of
+  a kind we already pour joins that category (an Irish whiskey → `whisky`).
+  A new *kind* of spirit with one bottle widens the nearest category's
+  heading in `js/i18n.js` `categories`, all 8 languages, the way
+  "Vermut i bitter" did — calvados → `cognac` as "Cognac i calvados",
+  akvavit → `gin` as "Gin i akvavit". From the second bottle of a kind it
+  gets its own category. Say what you did in `placement`.
   `recommended: true` means it
   is Filho's own pick: his signed note (no `notePlain`) and
   `recommended: true` on the listing. Otherwise `notePlain: true`.

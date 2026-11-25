@@ -557,6 +557,9 @@ test("a card may add vocabulary to the JS files, never code — checked when wri
   for (const ok of [['    "Nerello Mascalese": "马斯卡斯奈莱洛",'], ["  cherry: \"višnja\", plum: \"šljiva\","], ['    "Tribidrag (Zinfandel)": 1'],
     ["  countries: { HR: \"Hrvatska\", DE: \"Njemačka\" },"], ["    // a note"], [""]]) expect(checkPatch(patch("js/zh-terms.js", ok)), ok[0]).toBe("");
   expect(checkPatch(patch("library/wines.json", ["anything at all in a data file"]))).toBe("");
+  /* 2026-11-25: a spirit card adds its class word to js/spirits.js, under the same rule */
+  expect(checkPatch(patch("js/spirits.js", ["    blended_irish: \"Irski viski · blended\","]))).toBe("");
+  expect(checkPatch(patch("js/spirits.js", ["window.x = 1;"]))).not.toBe("");
   /* what an injection would need */
   for (const bad of [["  x: \"a\", y: (() => 1)(),"], ["evil: fetch(\"//x\"),"], ["\"a\": \"b\" + document.cookie,"], ["}); fetch(1); ({"],
     ["a: `x${1}`,"], ["/* opens", "*/ fetch(1); /*", "x */"], ["  a: \"b\", // trailing"], ["window.x = 1;"], ["}"]])

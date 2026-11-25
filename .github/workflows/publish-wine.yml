@@ -90,7 +90,7 @@ jobs:
             phase "Spaja uz ostala nova vina"
             python3 .github/wine-intake/replay.py "$REF" "origin/wine/$ID"
           fi
-          sed -i 's/\r$//' library/wines.json lists/theatrium.json data/producers.json data/unavailable.json js/zh-terms.js js/i18n.js
+          sed -i 's/\r$//' library/wines.json lists/theatrium.json data/producers.json data/unavailable.json js/zh-terms.js js/i18n.js js/spirits.js
           # Prices are Filho's and may have been corrected on the preview after
           # the card was written: the request holds the latest. Set them on this
           # wine's new listings — glass in the glass section, bottle elsewhere.
@@ -166,7 +166,7 @@ jobs:
           # card (web/ROLES.md): the same check as when the card was written.
           git diff HEAD > "$RUNNER_TEMP/publish.patch"
           node scripts/check-card-patch.mjs "$RUNNER_TEMP/publish.patch"
-          node --check js/zh-terms.js && node --check js/i18n.js
+          node --check js/zh-terms.js && node --check js/i18n.js && node --check js/spirits.js
           node scripts/validate.mjs
           phase "Sprema na kartu"
           who="${BY:-Filho}"

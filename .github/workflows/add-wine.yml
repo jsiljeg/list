@@ -291,7 +291,7 @@ jobs:
           # The model may only have changed data files; anything else in the
           # patch means something went wrong, and nothing is applied.
           bad=$(grep '^diff --git' out/card.patch | awk '{print $3}' | sed 's#^a/##' \
-                | grep -vE '^(library/wines\.json|lists/theatrium\.json|data/producers\.json|data/unavailable\.json|js/zh-terms\.js|js/i18n\.js)$' || true)
+                | grep -vE '^(library/wines\.json|lists/theatrium\.json|data/producers\.json|data/unavailable\.json|js/zh-terms\.js|js/i18n\.js|js/spirits\.js)$' || true)
           [ -z "$bad" ] || { echo "patch touches $bad"; exit 1; }
           [ -s out/card.patch ] || { echo "empty patch"; exit 1; }
           # …and in the two JS files only plain "key": "value" entries: the run
@@ -300,9 +300,9 @@ jobs:
           git apply --whitespace=nowarn out/card.patch
           # The repo stores LF; a CR that slipped in turns a 50-line card into
           # a rewrite of every line of the data files.
-          sed -i 's/\r$//' library/wines.json lists/theatrium.json data/producers.json data/unavailable.json js/zh-terms.js js/i18n.js
+          sed -i 's/\r$//' library/wines.json lists/theatrium.json data/producers.json data/unavailable.json js/zh-terms.js js/i18n.js js/spirits.js
           git diff --stat
-          node --check js/zh-terms.js && node --check js/i18n.js
+          node --check js/zh-terms.js && node --check js/i18n.js && node --check js/spirits.js
           node scripts/validate.mjs
           # Where the card put the wine, read from the list — never the model's
           # sentence (2026-11-20: El Molar's preview said "po boci", the card
