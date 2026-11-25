@@ -2996,8 +2996,7 @@
          "ref": "renegade--renegade-old-bacolet",
          "price": 14,
          "anchor": 14,
-         "anchorDate": "2026-11-25",
-         "new": true
+         "anchorDate": "2026-11-25"
         },
         {
          "ref": "foursquare--absolutio-15y",
@@ -3009,8 +3008,7 @@
          "ref": "bumbu--the-original",
          "price": 12,
          "anchor": 12,
-         "anchorDate": "2026-11-25",
-         "new": true
+         "anchorDate": "2026-11-25"
         }
        ]
       }
@@ -3027,8 +3025,7 @@
          "ref": "hennessy--very-special",
          "price": 7,
          "anchor": 7,
-         "anchorDate": "2026-11-25",
-         "new": true
+         "anchorDate": "2026-11-25"
         },
         {
          "ref": "through-the-grapevine--chateau-de-beaulon-1988-fins-bois",
@@ -3053,8 +3050,7 @@
          "ref": "hine--rare-the-original",
          "price": 15,
          "anchor": 15,
-         "anchorDate": "2026-11-25",
-         "new": true
+         "anchorDate": "2026-11-25"
         }
        ]
       }
