@@ -2716,6 +2716,11 @@
          "new": true
         },
         {
+         "ref": "bruichladdich--the-classic-laddie",
+         "price": 15,
+         "new": true
+        },
+        {
          "ref": "bowmore--20y-barrel-selection-2005",
          "price": 20,
          "anchor": 20,

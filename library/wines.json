@@ -17502,6 +17502,54 @@
     "es": "Lo que hace de este un Tennessee whiskey y no un bourbon ocurre antes de la barrica: el destilado recién hecho cae gota a gota a través de 3 metros de carbón de arce azucarero. El carbón le quita el filo al maíz, y en la copa quedan caramelo, vainilla y ese plátano que es la firma de Jack."
    },
    "notePlain": true
+  },
+  "bruichladdich--the-classic-laddie": {
+   "name": "The Classic Laddie",
+   "producer": "Bruichladdich",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_island",
+    "region": "Bruichladdich, Islay",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "ex_wine"
+    ],
+    "alcohol": "50",
+    "aromas": [
+     "malt",
+     "honey",
+     "baked_apple",
+     "brine",
+     "orange_peel",
+     "vanilla"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "smoked_fish"
+    ]
+   },
+   "note": {
+    "hr": "Na boci je otisnut kod serije: upišite ga na stranici destilerije i saznat ćete točno od kojih je bačava baš ta serija složena — bourbon, ali i bačve od vina, svaki put malo drukčije. Godine na etiketi nema, ali ništa nije skriveno.",
+    "en": "The bottle carries a batch code: enter it on the distillery's website and it tells you exactly which casks that batch was built from — bourbon, but wine casks too, a little different every time. No age on the label, but nothing hidden.",
+    "it": "Sulla bottiglia c'è un codice di lotto: inseritelo sul sito della distilleria e saprete esattamente da quali botti è composto quel lotto — bourbon, ma anche botti ex vino, ogni volta un po' diverso. Nessuna età in etichetta, ma niente di nascosto.",
+    "fr": "La bouteille porte un code de lot : saisissez-le sur le site de la distillerie et vous saurez exactement de quels fûts ce lot est composé — bourbon, mais aussi fûts de vin, un peu différent à chaque fois. Pas d'âge sur l'étiquette, mais rien de caché.",
+    "de": "Auf der Flasche steht ein Chargencode: Gibt man ihn auf der Website der Brennerei ein, erfährt man genau, aus welchen Fässern diese Charge zusammengesetzt ist — Bourbon, aber auch Weinfässer, jedes Mal ein wenig anders. Kein Alter auf dem Etikett, aber nichts verborgen.",
+    "zh": "瓶身上印有批次码：在酒厂网站输入，就能查到这一批究竟由哪些桶调配而成——波本桶，也有葡萄酒桶，每一批都略有不同。酒标上没有年份，但什么也不隐瞒。",
+    "sl": "Na steklenici je natisnjena koda serije: vpišite jo na spletni strani destilarne in izvedeli boste natanko, iz katerih sodov je sestavljena prav ta serija — bourbon, pa tudi sodi od vina, vsakič malo drugače. Starosti na etiketi ni, skritega pa nič.",
+    "es": "La botella lleva un código de lote: introdúzcalo en la web de la destilería y sabrá exactamente de qué barricas se compone ese lote — bourbon, pero también barricas de vino, cada vez un poco distinto. Sin edad en la etiqueta, pero nada oculto."
+   },
+   "notePlain": true
   }
  }
 }

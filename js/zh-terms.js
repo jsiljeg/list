@@ -150,6 +150,7 @@
     "Islay": "艾雷岛",
     "Bowmore": "波摩",
     "Port Askaig": "阿斯凯格港",
+    "Bruichladdich": "布赫拉迪",
     "Speyside": "斯佩塞",
     "Highlands": "高地",
     "Lowlands": "低地",
