@@ -3204,6 +3204,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "bareksten--botanical-aquavit",
+   "vol": null,
+   "price": 15,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "beenleigh--australia-2015",
    "vol": null,
    "price": 10,
