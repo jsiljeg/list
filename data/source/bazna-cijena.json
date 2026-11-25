@@ -3756,6 +3756,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "willett-distillery--old-bardstown",
+   "vol": null,
+   "price": 7,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "wise-grus--premium-dry-gin",
    "vol": null,
    "price": 7,
