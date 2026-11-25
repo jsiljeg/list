@@ -3428,6 +3428,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "hennessy--very-special",
+   "vol": null,
+   "price": 7,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "japanese-rhum--nine-leaves-2016",
    "vol": null,
    "price": 20,

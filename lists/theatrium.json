@@ -2949,6 +2949,8 @@
         {
          "ref": "hennessy--very-special",
          "price": 7,
+         "anchor": 7,
+         "anchorDate": "2026-11-25",
          "new": true
         },
         {
