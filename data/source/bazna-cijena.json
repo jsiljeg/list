@@ -3468,6 +3468,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "jack-daniel-s--old-no-7",
+   "vol": null,
+   "price": 7,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "jameson--irish-whiskey",
    "vol": null,
    "price": 8,
