@@ -2875,8 +2875,7 @@
          "ref": "willett-distillery--old-bardstown",
          "price": 7,
          "anchor": 7,
-         "anchorDate": "2026-11-25",
-         "new": true
+         "anchorDate": "2026-11-25"
         }
        ]
       }
@@ -2965,8 +2964,7 @@
          "ref": "shakara--12y",
          "price": 10,
          "anchor": 10,
-         "anchorDate": "2026-11-25",
-         "new": true
+         "anchorDate": "2026-11-25"
         },
         {
          "ref": "hampden-estate--pagos-sherry-cask",
