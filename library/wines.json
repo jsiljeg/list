@@ -17266,6 +17266,55 @@
     "es": "Shakara es el sánscrito śarkarā — azúcar. A través del persa y del árabe, la misma palabra se convirtió en nuestro azúcar, el italiano zucchero y el inglés sugar, y a través del turco en el croata šećer. Pronuncia el nombre de este ron cada vez que endulza un café."
    },
    "notePlain": true
+  },
+  "glenlossie--16y-maja-s-choice-2009": {
+   "name": "16Y Maja's Choice 2009",
+   "producer": "Glenlossie",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_speyside",
+    "region": "Elgin, Speyside",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_sherry_oloroso"
+    ],
+    "age": "16",
+    "alcohol": "60.5",
+    "bottler": "Two Oak Nuts — LM Cask",
+    "aromas": [
+     "dried_fruit",
+     "walnut",
+     "toffee",
+     "oak",
+     "orange_peel"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "cheese_hard",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Jedna bačva, dva izbora. Luigi i Maja, par iz Zagreba, kupili su bačvu Glenlossieja i napunili je dvaput. Luigi je svoj dio razrijedio vodom na 46% — voda ga, kaže, ne slabi, nego otkriva. Maja je svoj ostavila točno onakvim kakav je izašao iz bačve od oloroso sherryja: 60,5% i 239 boca. Ovo je Majin izbor; vodu, ako je želite, dodajete sami.",
+    "en": "One cask, two choices. Luigi and Maja, a couple from Zagreb, bought a cask of Glenlossie and bottled it twice. Luigi cut his share with water to 46% — water, he says, does not weaken it, it reveals it. Maja left hers exactly as it came out of the oloroso sherry butt: 60.5% and 239 bottles. This is Maja's choice; the water, if you want it, is yours to add.",
+    "it": "Una botte, due scelte. Luigi e Maja, una coppia di Zagabria, hanno comprato una botte di Glenlossie e l'hanno imbottigliata due volte. Luigi ha allungato la sua parte con l'acqua fino al 46% — l'acqua, dice, non lo indebolisce, lo rivela. Maja ha lasciato la sua esattamente com'è uscita dalla botte di sherry oloroso: 60,5% e 239 bottiglie. Questa è la scelta di Maja; l'acqua, se la volete, aggiungetela voi.",
+    "fr": "Un fût, deux choix. Luigi et Maja, un couple de Zagreb, ont acheté un fût de Glenlossie et l'ont mis en bouteille deux fois. Luigi a réduit sa part à l'eau jusqu'à 46% — l'eau, dit-il, ne l'affaiblit pas, elle le révèle. Maja a laissé la sienne telle qu'elle est sortie du fût de sherry oloroso : 60,5% et 239 bouteilles. Voici le choix de Maja ; l'eau, si vous la voulez, c'est à vous de l'ajouter.",
+    "de": "Ein Fass, zwei Entscheidungen. Luigi und Maja, ein Paar aus Zagreb, haben ein Fass Glenlossie gekauft und es zweimal abgefüllt. Luigi hat seinen Teil mit Wasser auf 46% gebracht — Wasser, sagt er, schwächt ihn nicht, es enthüllt ihn. Maja hat ihren genau so gelassen, wie er aus dem Oloroso-Sherryfass kam: 60,5% und 239 Flaschen. Das ist Majas Wahl; das Wasser, wenn Sie es möchten, geben Sie selbst dazu.",
+    "zh": "一只桶，两种选择。来自萨格勒布的一对伴侣 Luigi 和 Maja 买下一桶 Glenlossie，分两次装瓶。Luigi 把他那份加水降到 46%——他说，水不会削弱它，只会让它显露真相。Maja 则把她那份原封不动地留着，就像刚从欧罗索雪莉桶里流出来时那样：60.5%，239 瓶。这是 Maja 的选择；想加水的话，由您自己来加。",
+    "sl": "En sod, dve odločitvi. Luigi in Maja, par iz Zagreba, sta kupila sod Glenlossieja in ga napolnila dvakrat. Luigi je svoj del z vodo razredčil na 46% — voda ga, pravi, ne oslabi, ampak razkrije. Maja je svojega pustila natanko takega, kot je prišel iz soda po oloroso sherryju: 60,5% in 239 steklenic. To je Majina izbira; vodo, če jo želite, dodate sami.",
+    "es": "Una barrica, dos elecciones. Luigi y Maja, una pareja de Zagreb, compraron una barrica de Glenlossie y la embotellaron dos veces. Luigi rebajó su parte con agua hasta el 46% — el agua, dice, no lo debilita, lo revela. Maja dejó la suya tal como salió de la bota de jerez oloroso: 60,5% y 239 botellas. Esta es la elección de Maja; el agua, si la quiere, la añade usted."
+   },
+   "notePlain": true
   }
  }
 }
