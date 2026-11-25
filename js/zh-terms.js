@@ -188,6 +188,7 @@
     "St Philip": "圣菲利普",
     "St Lucy": "圣卢西",
     "St Andrew": "圣安德鲁",
+    "St Michael": "圣迈克尔",
     "Artibonite": "阿蒂博尼特",
     "Nippes": "尼普",
     "Sud": "南部省",

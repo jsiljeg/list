@@ -17550,6 +17550,48 @@
     "es": "La botella lleva un código de lote: introdúzcalo en la web de la destilería y sabrá exactamente de qué barricas se compone ese lote — bourbon, pero también barricas de vino, cada vez un poco distinto. Sin edad en la etiqueta, pero nada oculto."
    },
    "notePlain": true
+  },
+  "bumbu--the-original": {
+   "name": "The Original",
+   "producer": "Bumbu",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_barbados",
+    "region": "St Michael",
+    "country": "BB",
+    "base": [
+     "molasses"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "banana",
+     "vanilla",
+     "cinnamon",
+     "nutmeg",
+     "toffee"
+    ],
+    "serve": [
+     "rocks",
+     "after_dinner",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "desserts",
+     "dark_chocolate"
+    ]
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Bumbu na vlastitoj etiketi sebe ne zove rumom, nego „spirit drink“, i to s razlogom: EU rumu dopušta najviše 20 g šećera po litri, a Bumbu ga ima oko 45, uz vaniliju i začine. Zato je mekan i gotovo desertni — suprotni pol Foursquareu, destileriji s istog otoka koja rumu ne dodaje ni gram šećera.",
+    "en": "Bumbu's own label calls it not rum but \"spirit drink\", and for a reason: the EU allows rum at most 20 g of sugar per litre, and Bumbu carries about 45, with vanilla and spices. Hence the softness, almost a dessert — the opposite pole to Foursquare, a distillery on the same island that adds not a gram of sugar to its rum.",
+    "it": "Sulla propria etichetta Bumbu non si chiama rum ma «spirit drink», e c'è un motivo: l'UE concede al rum al massimo 20 g di zucchero per litro, e Bumbu ne ha circa 45, con vaniglia e spezie. Da qui la morbidezza, quasi da dessert — l'opposto di Foursquare, distilleria della stessa isola che al suo rum non aggiunge un grammo di zucchero.",
+    "fr": "Sur sa propre étiquette, Bumbu ne se dit pas rhum mais « spirit drink », et pour cause : l'UE autorise au rhum 20 g de sucre par litre au plus, et Bumbu en compte environ 45, avec vanille et épices. D'où sa rondeur, presque un dessert — l'exact opposé de Foursquare, distillerie de la même île qui n'ajoute pas un gramme de sucre à son rhum.",
+    "de": "Auf dem eigenen Etikett nennt sich Bumbu nicht Rum, sondern „spirit drink“, und das hat einen Grund: Die EU erlaubt Rum höchstens 20 g Zucker pro Liter, Bumbu hat etwa 45, dazu Vanille und Gewürze. Daher die Weichheit, fast ein Dessert — der Gegenpol zu Foursquare, einer Brennerei auf derselben Insel, die ihrem Rum kein Gramm Zucker zusetzt.",
+    "zh": "Bumbu 自己的酒标上写的不是朗姆，而是“spirit drink”（烈酒饮品），这是有原因的：欧盟规定朗姆每升最多含 20 克糖，而 Bumbu 约有 45 克，另加香草与香料。所以它柔顺，近乎甜点——与同岛的 Foursquare 恰成两极，那家酒厂的朗姆一克糖也不加。",
+    "sl": "Bumbu se na lastni etiketi ne imenuje rum, ampak „spirit drink“, in to z razlogom: EU rumu dovoljuje največ 20 g sladkorja na liter, Bumbu ga ima okoli 45, poleg vanilije in začimb. Zato je mehak, skoraj desertni — nasprotni pol Foursquaru, destilarni z istega otoka, ki rumu ne doda niti grama sladkorja.",
+    "es": "En su propia etiqueta Bumbu no se llama ron sino «spirit drink», y por algo: la UE permite al ron 20 g de azúcar por litro como máximo, y Bumbu lleva unos 45, con vainilla y especias. De ahí su suavidad, casi de postre — el polo opuesto de Foursquare, una destilería de la misma isla que no añade ni un gramo de azúcar a su ron."
+   },
+   "notePlain": true
   }
  }
 }

@@ -2997,6 +2997,11 @@
          "price": 27,
          "anchor": 27,
          "anchorDate": "2026-09-10"
+        },
+        {
+         "ref": "bumbu--the-original",
+         "price": 12,
+         "new": true
         }
        ]
       }
