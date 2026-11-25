@@ -137,6 +137,7 @@ const VESSEL_BY_CLASS = {
   clairin: "snifter", rum_cane_juice: "snifter", rum_japanese: "snifter",
   rum_australian: "snifter",
   cognac_grande_champagne: "snifter", cognac_fins_bois: "snifter",
+  calvados_pays_d_auge: "snifter",
   shochu_rice: "nosing",   /* owner, 2026-08-01: the shochu is nosed, not rocked */
   rakija_fruit: "tulip", rakija_grape: "tulip", rakija_herbal: "tulip",
   rakija_honey: "tulip",
@@ -191,6 +192,7 @@ hr: {
     rum_australian: "Australski rum",
     cognac_grande_champagne: "Cognac · Grande Champagne",
     cognac_fins_bois: "Cognac · Fins Bois",
+    calvados_pays_d_auge: "Calvados · Pays d'Auge",
     shochu_rice: "Shochu · od riže (kome-jochu)",
     rakija_fruit: "Voćna rakija",
     rakija_grape: "Rakija od grožđa",
@@ -214,6 +216,7 @@ hr: {
     agave_espadin: "agava espadín", agave_blue: "plava agava",
     molasses: "melasa šećerne trske", cane_juice: "svježi sok šećerne trske",
     cane_syrup: "sirup šećerne trske",
+    cider: "jabukovača",
     grapes_wine: "vino", grape_pomace: "komina grožđa", grape_spirit: "rakija od grožđa",
     rice: "riža", ume: "ume, japanska marelica",
     plums: "šljive", pears: "kruške williams", walnuts: "zeleni orasi",
@@ -225,6 +228,7 @@ hr: {
   stills: {
     column: "kolona, kontinuirano", pot: "bakreni kotao (pot still)",
     double_retort_pot: "dvostruki kotao s retortama", pot_and_column: "kotao i kolona",
+    alembic_repasse: "bakreni kotao, dvokratno",
     alembic_charentais: "charentski alambik, dvokratno", atmospheric_pot: "kotao, na atmosferskom tlaku",
     vacuum_pot: "destilacija u vakuumu", maceration: "maceracija, bez ponovne destilacije"
   },
@@ -298,6 +302,7 @@ en: {
     rum_australian: "Australian rum",
     cognac_grande_champagne: "Cognac · Grande Champagne",
     cognac_fins_bois: "Cognac · Fins Bois",
+    calvados_pays_d_auge: "Calvados · Pays d'Auge",
     shochu_rice: "Shochu · rice (kome-jochu)",
     rakija_fruit: "Fruit rakija",
     rakija_grape: "Grape rakija",
@@ -321,6 +326,7 @@ en: {
     agave_espadin: "espadín agave", agave_blue: "blue agave",
     molasses: "sugar-cane molasses", cane_juice: "fresh sugar-cane juice",
     cane_syrup: "sugar-cane syrup",
+    cider: "cider",
     grapes_wine: "wine", grape_pomace: "grape pomace", grape_spirit: "grape spirit",
     rice: "rice", ume: "ume, the Japanese apricot",
     plums: "plums", pears: "Williams pears", walnuts: "green walnuts",
@@ -332,6 +338,7 @@ en: {
   stills: {
     column: "column, continuous", pot: "copper pot still",
     double_retort_pot: "double-retort pot still", pot_and_column: "pot and column",
+    alembic_repasse: "copper pot still, twice",
     alembic_charentais: "Charentais alembic, twice", atmospheric_pot: "pot still, atmospheric",
     vacuum_pot: "vacuum distillation", maceration: "maceration, not redistilled"
   },
@@ -405,6 +412,7 @@ it: {
     rum_australian: "Rum australiano",
     cognac_grande_champagne: "Cognac · Grande Champagne",
     cognac_fins_bois: "Cognac · Fins Bois",
+    calvados_pays_d_auge: "Calvados · Pays d'Auge",
     shochu_rice: "Shochu · di riso (kome-jochu)",
     rakija_fruit: "Acquavite di frutta",
     rakija_grape: "Acquavite d'uva",
@@ -428,6 +436,7 @@ it: {
     agave_espadin: "agave espadín", agave_blue: "agave blu",
     molasses: "melassa di canna", cane_juice: "succo fresco di canna",
     cane_syrup: "sciroppo di canna",
+    cider: "sidro di mele",
     grapes_wine: "vino", grape_pomace: "vinacce", grape_spirit: "acquavite d'uva",
     rice: "riso", ume: "ume, albicocca giapponese",
     plums: "prugne", pears: "pere Williams", walnuts: "noci verdi",
@@ -439,6 +448,7 @@ it: {
   stills: {
     column: "colonna, in continuo", pot: "alambicco discontinuo in rame",
     double_retort_pot: "alambicco a doppia retorta", pot_and_column: "alambicco e colonna",
+    alembic_repasse: "alambicco discontinuo, doppia distillazione",
     alembic_charentais: "alambicco charentais, doppia distillazione", atmospheric_pot: "alambicco a pressione atmosferica",
     vacuum_pot: "distillazione sottovuoto", maceration: "macerazione, senza ridistillazione"
   },
@@ -512,6 +522,7 @@ fr: {
     rum_australian: "Rhum australien",
     cognac_grande_champagne: "Cognac · Grande Champagne",
     cognac_fins_bois: "Cognac · Fins Bois",
+    calvados_pays_d_auge: "Calvados · Pays d'Auge",
     shochu_rice: "Shochu · de riz (kome-jochu)",
     rakija_fruit: "Eau-de-vie de fruits",
     rakija_grape: "Eau-de-vie de raisin",
@@ -535,6 +546,7 @@ fr: {
     agave_espadin: "agave espadín", agave_blue: "agave bleue",
     molasses: "mélasse de canne", cane_juice: "jus de canne frais",
     cane_syrup: "sirop de canne",
+    cider: "cidre",
     grapes_wine: "vin", grape_pomace: "marc de raisin", grape_spirit: "eau-de-vie de raisin",
     rice: "riz", ume: "ume, abricot du Japon",
     plums: "prunes", pears: "poires Williams", walnuts: "noix vertes",
@@ -546,6 +558,7 @@ fr: {
   stills: {
     column: "colonne, en continu", pot: "alambic à repasse en cuivre",
     double_retort_pot: "alambic à double retorte", pot_and_column: "alambic et colonne",
+    alembic_repasse: "alambic à repasse, double distillation",
     alembic_charentais: "alambic charentais, double chauffe", atmospheric_pot: "alambic à pression atmosphérique",
     vacuum_pot: "distillation sous vide", maceration: "macération, sans redistillation"
   },
@@ -619,6 +632,7 @@ de: {
     rum_australian: "Australischer Rum",
     cognac_grande_champagne: "Cognac · Grande Champagne",
     cognac_fins_bois: "Cognac · Fins Bois",
+    calvados_pays_d_auge: "Calvados · Pays d'Auge",
     shochu_rice: "Shochu · aus Reis (Kome-Jochu)",
     rakija_fruit: "Obstbrand",
     rakija_grape: "Traubenbrand",
@@ -642,6 +656,7 @@ de: {
     agave_espadin: "Espadín-Agave", agave_blue: "blaue Agave",
     molasses: "Zuckerrohrmelasse", cane_juice: "frischer Zuckerrohrsaft",
     cane_syrup: "Zuckerrohrsirup",
+    cider: "Cidre",
     grapes_wine: "Wein", grape_pomace: "Traubentrester", grape_spirit: "Traubenbrand",
     rice: "Reis", ume: "Ume, japanische Aprikose",
     plums: "Zwetschgen", pears: "Williams-Birnen", walnuts: "grüne Walnüsse",
@@ -653,6 +668,7 @@ de: {
   stills: {
     column: "Kolonne, kontinuierlich", pot: "kupferne Pot Still",
     double_retort_pot: "Pot Still mit zwei Retorten", pot_and_column: "Pot Still und Kolonne",
+    alembic_repasse: "Pot Still, zweifach",
     alembic_charentais: "Charentais-Alambic, zweifach", atmospheric_pot: "Pot Still, atmosphärisch",
     vacuum_pot: "Vakuumdestillation", maceration: "Mazeration, nicht nachdestilliert"
   },
@@ -726,6 +742,7 @@ zh: {
     rum_australian: "澳大利亚朗姆",
     cognac_grande_champagne: "干邑 · 大香槟区",
     cognac_fins_bois: "干邑 · 优质林区",
+    calvados_pays_d_auge: "卡尔瓦多斯 · 奥日地区",
     shochu_rice: "烧酎 · 米（米烧酎）",
     rakija_fruit: "水果蒸馏酒",
     rakija_grape: "葡萄蒸馏酒",
@@ -749,6 +766,7 @@ zh: {
     agave_espadin: "espadín 龙舌兰", agave_blue: "蓝色龙舌兰",
     molasses: "甘蔗糖蜜", cane_juice: "新鲜甘蔗汁",
     cane_syrup: "甘蔗糖浆",
+    cider: "苹果酒",
     grapes_wine: "葡萄酒", grape_pomace: "葡萄皮渣", grape_spirit: "葡萄蒸馏酒",
     rice: "大米", ume: "青梅（日本杏）",
     plums: "李子", pears: "威廉姆斯梨", walnuts: "青核桃",
@@ -760,6 +778,7 @@ zh: {
   stills: {
     column: "连续式塔式蒸馏", pot: "铜制壶式蒸馏器",
     double_retort_pot: "双蒸馏罐壶式蒸馏器", pot_and_column: "壶式与塔式并用",
+    alembic_repasse: "铜制壶式，两次蒸馏",
     alembic_charentais: "夏朗德壶式，两次蒸馏", atmospheric_pot: "常压壶式蒸馏",
     vacuum_pot: "减压蒸馏", maceration: "浸渍，未再蒸馏"
   },
@@ -833,6 +852,7 @@ sl: {
     rum_australian: "Avstralski rum",
     cognac_grande_champagne: "Konjak · Grande Champagne",
     cognac_fins_bois: "Konjak · Fins Bois",
+    calvados_pays_d_auge: "Calvados · Pays d'Auge",
     shochu_rice: "Shochu · iz riža (kome-jochu)",
     rakija_fruit: "Sadje žganje",
     rakija_grape: "Grozdno žganje",
@@ -856,6 +876,7 @@ sl: {
     agave_espadin: "agava espadín", agave_blue: "modra agava",
     molasses: "melasa sladkornega trsa", cane_juice: "svež sok sladkornega trsa",
     cane_syrup: "sirup sladkornega trsa",
+    cider: "jabolčnik",
     grapes_wine: "vino", grape_pomace: "grozdne tropine", grape_spirit: "grozdno žganje",
     rice: "riž", ume: "ume, japonska marelica",
     plums: "slive", pears: "hruške viljamovke", walnuts: "zeleni orehi",
@@ -867,6 +888,7 @@ sl: {
   stills: {
     column: "kolona, neprekinjeno", pot: "bakreni kotel (pot still)",
     double_retort_pot: "kotel z dvema retortama", pot_and_column: "kotel in kolona",
+    alembic_repasse: "bakreni kotel, dvakrat",
     alembic_charentais: "charentais alambik, dvakrat", atmospheric_pot: "kotel, pri atmosferskem tlaku",
     vacuum_pot: "vakuumska destilacija", maceration: "maceracija, brez ponovne destilacije"
   },
@@ -940,6 +962,7 @@ es: {
     rum_australian: "Ron australiano",
     cognac_grande_champagne: "Coñac · Grande Champagne",
     cognac_fins_bois: "Coñac · Fins Bois",
+    calvados_pays_d_auge: "Calvados · Pays d'Auge",
     shochu_rice: "Shochu · de arroz (kome-jochu)",
     rakija_fruit: "Aguardiente de fruta",
     rakija_grape: "Aguardiente de uva",
@@ -963,6 +986,7 @@ es: {
     agave_espadin: "agave espadín", agave_blue: "agave azul",
     molasses: "melaza de caña", cane_juice: "jugo fresco de caña",
     cane_syrup: "jarabe de caña",
+    cider: "sidra",
     grapes_wine: "vino", grape_pomace: "orujo de uva", grape_spirit: "aguardiente de uva",
     rice: "arroz", ume: "ume, albaricoque japonés",
     plums: "ciruelas", pears: "peras Williams", walnuts: "nueces verdes",
@@ -974,6 +998,7 @@ es: {
   stills: {
     column: "columna, en continuo", pot: "alambique de cobre",
     double_retort_pot: "alambique de doble retorta", pot_and_column: "alambique y columna",
+    alembic_repasse: "alambique de cobre, doble destilación",
     alembic_charentais: "alambique charentais, doble destilación", atmospheric_pot: "alambique a presión atmosférica",
     vacuum_pot: "destilación al vacío", maceration: "maceración, sin redestilar"
   },

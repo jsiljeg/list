@@ -2980,6 +2980,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "christian-drouin--tres-pomme",
+         "price": 10,
+         "new": true
+        },
+        {
          "ref": "hine--rare-the-original",
          "price": 15,
          "anchor": 15,

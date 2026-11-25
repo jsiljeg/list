@@ -17166,6 +17166,56 @@
     "es": "Fine Champagne no es un cru sino una mezcla que define la ley: al menos la mitad de Grande Champagne, el resto de Petite Champagne. La primera da longitud, la segunda fruta — por eso este coñac huele a nectarina y albaricoque antes que a roble. Bernard Hine lo compuso con una veintena de aguardientes como el clásico de la casa."
    },
    "notePlain": true
+  },
+  "christian-drouin--tres-pomme": {
+   "name": "Très Pomme",
+   "producer": "Christian Drouin",
+   "insight": {
+    "kind": "spirit",
+    "class": "calvados_pays_d_auge",
+    "region": "Coudray-Rabut, Pays d'Auge, Normandie",
+    "country": "FR",
+    "base": [
+     "cider"
+    ],
+    "still": [
+     "alembic_repasse"
+    ],
+    "cask": [
+     "refill"
+    ],
+    "age": "2",
+    "alcohol": "53",
+    "aromas": [
+     "apple",
+     "baked_apple",
+     "green_apple",
+     "vanilla"
+    ],
+    "serve": [
+     "neat",
+     "after_dinner"
+    ],
+    "pairings": [
+     "fruit_desserts",
+     "cheese_hard",
+     "digestif"
+    ]
+   },
+   "note": {
+    "hr": "Kuća poznata po starim calvadosima ovdje radi suprotno: bačve od samo 2 godine — najmanje što zakon traži da bi se smjelo zvati Pays d'Auge — odabrane jer su najjače mirisale, i punjene na 53%. Drvo je jedva dotaknulo destilat, pa u čaši ostaje ono zbog čega calvados uopće postoji: jabuka, u punoj snazi. 1.450 boca, punjeno 2022.",
+    "en": "A house known for old calvados doing the opposite: casks of only 2 years — the legal minimum to be called Pays d'Auge — chosen because they smelled the strongest, and bottled at 53%. The wood has barely touched the spirit, so what stays in the glass is the reason calvados exists at all: apple, at full strength. 1,450 bottles, bottled in 2022.",
+    "it": "Una casa nota per i calvados vecchi qui fa il contrario: botti di soli 2 anni — il minimo di legge per chiamarsi Pays d'Auge — scelte perché erano le più profumate, e imbottigliate a 53%. Il legno ha appena sfiorato il distillato, e nel bicchiere resta la ragione per cui il calvados esiste: la mela, a piena forza. 1.450 bottiglie, imbottigliato nel 2022.",
+    "fr": "Une maison connue pour ses vieux calvados fait ici l'inverse : des fûts de 2 ans seulement — le minimum légal pour s'appeler Pays d'Auge — choisis parce qu'ils sentaient le plus fort, et embouteillés à 53%. Le bois a à peine effleuré l'eau-de-vie, et il reste dans le verre ce pour quoi le calvados existe : la pomme, à pleine puissance. 1 450 bouteilles, mises en 2022.",
+    "de": "Ein Haus, das für alte Calvados bekannt ist, macht hier das Gegenteil: Fässer von nur 2 Jahren — das gesetzliche Minimum, um Pays d'Auge heißen zu dürfen —, ausgewählt, weil sie am stärksten dufteten, und mit 53% abgefüllt. Das Holz hat das Destillat kaum berührt, also bleibt im Glas, wofür es Calvados überhaupt gibt: Apfel, in voller Kraft. 1.450 Flaschen, abgefüllt 2022.",
+    "zh": "一家以老卡尔瓦多斯闻名的酒庄，这一次反其道而行：只陈 2 年的桶——够得上「奥日地区」这个名号的法定最低年限——挑的是香气最浓的几桶，以 53% 装瓶。木桶几乎没碰过酒液，杯中留下的正是卡尔瓦多斯存在的理由：苹果，全力以赴。共 1450 瓶，2022 年装瓶。",
+    "sl": "Hiša, znana po starih calvadosih, tu dela ravno nasprotno: sodi, stari komaj 2 leti — zakonski minimum za ime Pays d'Auge — izbrani, ker so najmočneje dišali, in polnjeni pri 53%. Les se destilata komaj dotakne, zato v kozarcu ostane tisto, zaradi česar calvados sploh obstaja: jabolko, v polni moči. 1.450 steklenic, polnjeno 2022.",
+    "es": "Una casa conocida por sus calvados viejos hace aquí lo contrario: barricas de solo 2 años — el mínimo legal para llamarse Pays d'Auge — elegidas porque eran las que más olían, y embotelladas a 53%. La madera apenas ha rozado el destilado, y en la copa queda la razón por la que existe el calvados: la manzana, con toda su fuerza. 1.450 botellas, embotellado en 2022."
+   },
+   "notePlain": true,
+   "tags": [
+    "rare"
+   ]
   }
  }
 }
