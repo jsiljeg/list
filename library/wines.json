@@ -17021,6 +17021,53 @@
    },
    "terroir": "",
    "notePlain": true
+  },
+  "two-oak-nuts--12y-the-affair": {
+   "name": "12Y The Affair",
+   "producer": "Two Oak Nuts",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_speyside",
+    "region": "Speyside",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "age": "12",
+    "alcohol": "58.4",
+    "bottler": "LM Cask, Zagreb",
+    "aromas": [
+     "spring_flowers",
+     "green_apple",
+     "vanilla",
+     "malt"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "nuts"
+    ]
+   },
+   "note": {
+    "hr": "Na kraju reda u skladištu kraj Elgina stajale su 3 bačve. Prve dvije već su dobile „finish” — završne mjesece u bačvi od sherryja, koji viskiju dodaju još jedan sloj. Treća, broj 1134, još je bila u bačvi od bourbona. M u njoj nalazi proljetno cvijeće pod injem, L zelene jabuke, i L kaže čovjeku iz destilerije: „Nemojte ga finiširati.” Ostala je kakva jest — 244 boce.",
+    "en": "At the end of a row in a warehouse outside Elgin stood 3 casks. The first two had already had their \"finish\" — final months in a sherry cask, which lays one more coat over a whisky. The third, number 1134, was still in its bourbon barrel. M found frosted spring flowers in it, L found green apples, and L told the man from the distillery: \"Don't finish it.\" It was left as it was — 244 bottles.",
+    "it": "In fondo a una fila, in un magazzino alle porte di Elgin, c'erano 3 botti. Le prime due avevano già avuto il loro \"finish\" — gli ultimi mesi in una botte di sherry, che stende sul whisky un'altra mano. La terza, numero 1134, era ancora nel suo barile di bourbon. M ci trovò fiori di primavera brinati, L mele verdi, e L disse all'uomo della distilleria: \"Non finitelo.\" È rimasto com'era — 244 bottiglie.",
+    "fr": "Au bout d'une rangée, dans un chai aux portes d'Elgin, se tenaient 3 fûts. Les deux premiers avaient déjà eu leur « finish » — des derniers mois en fût de sherry, qui posent sur un whisky une couche de plus. Le troisième, numéro 1134, était encore dans son fût de bourbon. M y a trouvé des fleurs de printemps givrées, L des pommes vertes, et L a dit à l'homme de la distillerie : « Ne le finissez pas. » Il est resté tel quel — 244 bouteilles.",
+    "de": "Am Ende einer Reihe, in einem Lagerhaus am Rand von Elgin, standen 3 Fässer. Die ersten beiden hatten ihr „Finish“ schon hinter sich — letzte Monate in einem Sherryfass, die einem Whisky noch eine Schicht auflegen. Das dritte, Nummer 1134, lag noch in seinem Bourbonfass. M fand darin bereifte Frühlingsblumen, L grüne Äpfel, und L sagte zu dem Mann von der Brennerei: „Nicht finishen.“ Er blieb, wie er war — 244 Flaschen.",
+    "zh": "埃尔金城郊的一间酒窖里，一排的尽头立着 3 只桶。前两只已经做过「过桶」（finish）——在雪莉桶里度过最后几个月，给威士忌再添一层。第三只，编号 1134，还待在它的波本桶里。M 从中闻到覆着白霜的春花，L 尝到青苹果，L 对酒厂的人说：「别给它过桶。」于是它保持原样——244 瓶。",
+    "sl": "Na koncu vrste v skladišču pri Elginu so stali 3 sodi. Prva dva sta že dobila »finish« — zadnje mesece v sodu po sherryju, ki viskiju doda še eno plast. Tretji, številka 1134, je bil še v sodu po bourbonu. M v njem najde pomladno cvetje pod ivjem, L zelena jabolka, in L reče človeku iz destilarne: »Ne finiširajte ga.« Ostal je, kakršen je — 244 steklenic.",
+    "es": "Al final de una fila, en una bodega a las afueras de Elgin, había 3 barricas. Las dos primeras ya habían tenido su «finish» — unos últimos meses en bota de jerez, que le ponen al whisky una capa más. La tercera, la número 1134, seguía en su barril de bourbon. M encontró en ella flores de primavera escarchadas, L manzanas verdes, y L le dijo al hombre de la destilería: «No lo terminéis.» Se quedó como estaba — 244 botellas."
+   },
+   "notePlain": true
   }
  }
 }
