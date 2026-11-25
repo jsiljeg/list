@@ -526,6 +526,11 @@
    "producer": "Willett Distillery",
    "name": "Old Bardstown",
    "since": "2026-11-25"
+  },
+  {
+   "producer": "Jack Daniel's",
+   "name": "Old No. 7",
+   "since": "2026-11-25"
   }
  ]
 }
