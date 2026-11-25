@@ -17364,6 +17364,46 @@
     "es": "Ocho días de fermentación: 195 horas, cuando la mayoría del ron fermenta en uno o dos días. Es lo que necesitan las levaduras para sacar aceituna, flores y salmuera del jugo de caña de Old Bacolet — la primera tierra que los franceses cultivaron en Granada, una llanura entre dos riachuelos. Después solo el alambique de cobre, sin columna, y nada añadido."
    },
    "notePlain": true
+  },
+  "willett-distillery--old-bardstown": {
+   "name": "Old Bardstown",
+   "producer": "Willett Distillery",
+   "insight": {
+    "kind": "spirit",
+    "class": "rye_american",
+    "region": "Bardstown, Kentucky",
+    "country": "US",
+    "base": [
+     "corn_grain",
+     "rye_grain",
+     "barley_malt"
+    ],
+    "still": [
+     "column"
+    ],
+    "cask": [
+     "virgin_american_oak"
+    ],
+    "alcohol": "45",
+    "aromas": [
+     "caramel",
+     "vanilla",
+     "orange_peel",
+     "brown_spices",
+     "oak"
+    ],
+    "serve": [
+     "neat",
+     "rocks",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "bbq",
+     "pork",
+     "charcuterie"
+    ]
+   },
+   "notePlain": true
   }
  }
 }

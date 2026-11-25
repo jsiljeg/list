@@ -2842,6 +2842,11 @@
          "price": 6,
          "anchor": 6,
          "anchorDate": "2026-09-10"
+        },
+        {
+         "ref": "willett-distillery--old-bardstown",
+         "price": 7,
+         "new": true
         }
        ]
       }

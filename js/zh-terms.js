@@ -191,6 +191,8 @@
     "Daruvar": "达鲁瓦尔",
     "Slavonija": "斯拉沃尼亚",
     "Indiana": "印第安纳",
+    "Kentucky": "肯塔基",
+    "Bardstown": "巴兹敦",
     "Portland": "波特兰",
     "Alba": "阿尔巴",
     "Alexander Valley": "亚历山大谷",
