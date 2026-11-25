@@ -192,6 +192,8 @@ jobs:
           for try in 1 2 3; do
             git push origin HEAD:main && break
             [ "$try" = 3 ] && exit 1
+            git status --short   # what was left behind (2026-11-25: it blocked the rebase)
+            git reset -q --hard HEAD   # the commit is made; anything else here is leftover
             git fetch -q origin main && git rebase -q origin/main && node scripts/validate.mjs
           done
           git push origin --delete "wine/$ID" || true

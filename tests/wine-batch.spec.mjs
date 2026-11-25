@@ -114,4 +114,8 @@ test("publish-wine.yml queues itself instead of a concurrency group", () => {
   const y = readFileSync(new URL("../.github/workflows/publish-wine.yml", import.meta.url), "utf8");
   expect(y).not.toMatch(/^concurrency:/m);
   expect(y).toMatch(/Wait for the publishes started before this one/);
+  /* and a push race retries from a clean tree ("cannot rebase: You have unstaged changes") */
+  expect(y).toMatch(/git reset -q --hard HEAD[^
+]*
+\s+git fetch -q origin main && git rebase/);
 });
