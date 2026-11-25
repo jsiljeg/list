@@ -17404,6 +17404,55 @@
     ]
    },
    "notePlain": true
+  },
+  "jameson--irish-whiskey": {
+   "name": "Irish Whiskey",
+   "producer": "Jameson",
+   "insight": {
+    "kind": "spirit",
+    "class": "blended_irish",
+    "region": "Midleton, Cork",
+    "country": "IE",
+    "base": [
+     "barley_mixed",
+     "corn_grain"
+    ],
+    "still": [
+     "pot_and_column"
+    ],
+    "cask": [
+     "ex_bourbon",
+     "ex_sherry_oloroso"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "floral",
+     "vanilla",
+     "toasted_wood",
+     "pepper",
+     "nutty"
+    ],
+    "serve": [
+     "neat",
+     "rocks",
+     "with_soda"
+    ],
+    "pairings": [
+     "charcuterie",
+     "cheese_hard"
+    ]
+   },
+   "note": {
+    "hr": "Neslađeni ječam u kotlu ostatak je jednog poreza: kad je Britanija oporezovala slad, irske su destilerije počele dodavati sirovi ječam — i od zaobilaženja poreza nastao je kremasti, papreni stil koji Irci zovu pot still. Ovdje je spojen sa žitnim viskijem, pa je mekan i bez dima: viski koji podnosi i led.",
+    "en": "The unmalted barley in the still is what is left of a tax: when Britain taxed malt, Irish distillers began adding raw barley — and dodging the tax gave Ireland its creamy, peppery pot still style. Here it is married to grain whiskey, so it is soft and smokeless: a whiskey that takes ice happily.",
+    "it": "L'orzo non maltato nell'alambicco è ciò che resta di una tassa: quando la Gran Bretagna tassò il malto, i distillatori irlandesi cominciarono ad aggiungere orzo crudo — e dall'aggirare la tassa nacque lo stile pot still irlandese, cremoso e pepato. Qui è unito al whiskey di cereali, ed è morbido e senza fumo: un whiskey che regge volentieri il ghiaccio.",
+    "fr": "L'orge non maltée dans l'alambic est le reste d'un impôt : quand la Grande-Bretagne a taxé le malt, les distillateurs irlandais ont ajouté de l'orge crue — et contourner la taxe a donné à l'Irlande son style pot still, crémeux et poivré. Ici il est marié à un whiskey de grain, d'où sa douceur sans fumée : un whiskey qui accepte volontiers la glace.",
+    "de": "Die ungemälzte Gerste in der Brennblase ist der Rest einer Steuer: Als Großbritannien das Malz besteuerte, gaben die irischen Brenner rohe Gerste dazu — und aus dem Umgehen der Steuer wurde Irlands cremiger, pfeffriger Pot-Still-Stil. Hier ist er mit Grain Whiskey vermählt, darum weich und ohne Rauch: ein Whiskey, der Eis gern verträgt.",
+    "zh": "壶式蒸馏器里那些未发芽的大麦，是一项税留下的痕迹：英国对麦芽征税时，爱尔兰酒厂开始掺入生大麦——为了避税，反倒成就了爱尔兰那种奶油般、带胡椒感的壶式蒸馏风格。这里它与谷物威士忌调和，所以柔和、没有烟熏味：一支加冰也很好喝的威士忌。",
+    "sl": "Neslajeni ječmen v kotlu je ostanek nekega davka: ko je Britanija obdavčila slad, so irski destilarji začeli dodajati surov ječmen — in iz izogibanja davku je nastal kremasti, poprasti irski slog pot still. Tu je združen z žitnim viskijem, zato je mehak in brez dima: viski, ki rad prenese tudi led.",
+    "es": "La cebada sin maltear del alambique es lo que queda de un impuesto: cuando Gran Bretaña gravó la malta, los destiladores irlandeses empezaron a añadir cebada cruda — y esquivar el impuesto le dio a Irlanda su estilo pot still, cremoso y especiado. Aquí va unido a whiskey de grano, por eso es suave y sin humo: un whiskey que acepta el hielo de buen grado."
+   },
+   "notePlain": true
   }
  }
 }

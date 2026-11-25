@@ -170,6 +170,8 @@
     "Ōtsu": "大津",
     "Nakhon Pathom": "佛统",
     "Yilan": "宜兰",
+    "Midleton": "米德尔顿",
+    "Cork": "科克",
     "Cognac": "干邑",
     "Grande Champagne": "大香槟区",
     "Fins Bois": "优质林区",

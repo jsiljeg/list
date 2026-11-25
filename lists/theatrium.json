@@ -2796,6 +2796,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "jameson--irish-whiskey",
+         "price": 8,
+         "new": true
+        },
+        {
          "ref": "kavalan-taiwan--distillery-select",
          "price": 8,
          "anchor": 8,
