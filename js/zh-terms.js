@@ -168,6 +168,7 @@
     "Kuma": "球磨",
     "Shiga": "滋贺",
     "Ōtsu": "大津",
+    "Nakhon Pathom": "佛统",
     "Yilan": "宜兰",
     "Cognac": "干邑",
     "Grande Champagne": "大香槟区",

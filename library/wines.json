@@ -17216,6 +17216,56 @@
    "tags": [
     "rare"
    ]
+  },
+  "shakara--12y": {
+   "name": "12Y",
+   "producer": "Shakara",
+   "insight": {
+    "kind": "spirit",
+    "class": "rum_japanese",
+    "region": "Nakhon Pathom",
+    "country": "TH",
+    "base": [
+     "molasses"
+    ],
+    "still": [
+     "column"
+    ],
+    "cask": [
+     "ex_bourbon"
+    ],
+    "age": "12",
+    "alcohol": "45.7",
+    "bottler": "La Maison & Velier",
+    "aromas": [
+     "caramel",
+     "walnut",
+     "dried_apricot",
+     "vanilla",
+     "oak",
+     "brown_spices"
+    ],
+    "serve": [
+     "neat",
+     "rocks"
+    ],
+    "pairings": [
+     "dark_chocolate",
+     "cigars",
+     "solo"
+    ]
+   },
+   "note": {
+    "hr": "Shakara je sanskrtska riječ śarkarā — šećer. Preko perzijskog i turskog ista je riječ postala naš šećer, a preko arapskog talijanski zucchero i engleski sugar. Ime ovog ruma izgovarate svaki put kad zasladite kavu.",
+    "en": "Shakara is the Sanskrit śarkarā — sugar. By way of Persian and Arabic the same word became Italian zucchero, French sucre and English sugar, and by way of Turkish the Croatian šećer. You say this rum's name every time you sweeten a coffee.",
+    "it": "Shakara è il sanscrito śarkarā — zucchero. Attraverso il persiano e l'arabo la stessa parola è diventata il nostro zucchero, il francese sucre e l'inglese sugar, e attraverso il turco il croato šećer. Il nome di questo rum lo pronunciate ogni volta che zuccherate un caffè.",
+    "fr": "Shakara, c'est le sanskrit śarkarā — sucre. Par le persan et l'arabe, le même mot est devenu notre sucre, l'italien zucchero et l'anglais sugar, et par le turc le croate šećer. Vous prononcez le nom de ce rhum chaque fois que vous sucrez un café.",
+    "de": "Shakara ist das Sanskrit-Wort śarkarā — Zucker. Über das Persische und Arabische wurde daraus unser Zucker, das italienische zucchero und das englische sugar, über das Türkische das kroatische šećer. Den Namen dieses Rums sprechen Sie jedes Mal aus, wenn Sie einen Kaffee süßen.",
+    "zh": "Shakara 就是梵语 śarkarā——糖。这个词经波斯语和阿拉伯语，变成了意大利语的 zucchero、法语的 sucre、英语的 sugar，又经土耳其语变成克罗地亚语的 šećer。欧洲人每次往咖啡里加糖，说的都是这瓶朗姆的名字。",
+    "sl": "Shakara je sanskrtska beseda śarkarā — sladkor. Prek perzijščine in arabščine je ista beseda postala italijanski zucchero in angleški sugar, prek nemščine naš pogovorni cuker, prek turščine pa hrvaški šećer. Ime tega ruma izgovorite vsakič, ko si osladite kavo s cukrom.",
+    "es": "Shakara es el sánscrito śarkarā — azúcar. A través del persa y del árabe, la misma palabra se convirtió en nuestro azúcar, el italiano zucchero y el inglés sugar, y a través del turco en el croata šećer. Pronuncia el nombre de este ron cada vez que endulza un café."
+   },
+   "notePlain": true
   }
  }
 }

@@ -2920,6 +2920,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "shakara--12y",
+         "price": 10,
+         "new": true
+        },
+        {
          "ref": "hampden-estate--pagos-sherry-cask",
          "price": 12,
          "anchor": 12,
