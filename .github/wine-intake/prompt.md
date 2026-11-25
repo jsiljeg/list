@@ -84,8 +84,9 @@ this one wine.
   a kind we already pour joins that category (an Irish whiskey → `whisky`).
   A new *kind* of spirit with one bottle widens the nearest category's
   heading in `js/i18n.js` `categories`, all 8 languages, the way
-  "Vermut i bitter" did — calvados → `cognac` as "Cognac i calvados",
-  akvavit → `gin` as "Gin i akvavit". From the second bottle of a kind it
+  "Vermut i bitter" did. Already settled (owner, 2026-11-25): calvados goes
+  in `cognac` ("Cognac i calvados"), akvavit in `gin` ("Gin i akvavit") —
+  the headings already say so. From the second bottle of a kind it
   gets its own category. Say what you did in `placement`.
   `recommended: true` means it
   is Filho's own pick: his signed note (no `notePlain`) and
