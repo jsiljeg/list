@@ -96,3 +96,14 @@ test("the publish workflow replays a card whose squash merge conflicts", () => {
   const wf = readFileSync(".github/workflows/publish-wine.yml", "utf8");
   expect(wf).toMatch(/if ! git merge --squash "origin\/wine\/\$ID"; then[\s\S]*replay\.py "\$REF"/);
 });
+
+/* 2026-11-25: Jameson's publish failed twice. A card may write js/spirits.js
+   (check-card-patch ALLOWED), but replay.py did not carry it, so a card that
+   conflicted with another lost its new class word and validate stopped it.
+   Every JS file a card may write must be one replay.py merges. */
+test("replay.py carries every JS file a card may write", async () => {
+  const { ALLOWED } = await import("../scripts/check-card-patch.mjs");
+  const src = (await import("node:fs")).readFileSync(new URL("../.github/wine-intake/replay.py", import.meta.url), "utf8");
+  const js = JSON.parse(src.match(/^JS_FILES = (\[.*?\])/m)[1]);
+  for (const f of ALLOWED.filter((f) => f.endsWith(".js"))) expect(js, f).toContain(f);
+});

@@ -25,7 +25,7 @@ against its own merge-base is computed per file and laid onto main.
 - lists/theatrium.json: the branch's listings of <ref> that its base did not
   have, placed in the same section/category/group beside the same neighbour.
 - data/unavailable.json: hide rules the branch added or removed.
-- js/i18n.js, js/zh-terms.js: a three-way `git merge-file`, and --union when
+- js/i18n.js, js/zh-terms.js, js/spirits.js: a three-way `git merge-file`, and --union when
   that conflicts. Both files are one entry per line with trailing commas, so
   two cards adding a term each keep both lines.
 
@@ -39,7 +39,7 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 JSON_FILES = ["library/wines.json", "data/producers.json", "lists/theatrium.json", "data/unavailable.json"]
-JS_FILES = ["js/i18n.js", "js/zh-terms.js"]
+JS_FILES = ["js/i18n.js", "js/zh-terms.js", "js/spirits.js"]   # spirits.js: 2026-11-25, Jameson lost its class word on a replay
 
 
 def git(*args, check=True):
