@@ -107,3 +107,11 @@ test("replay.py carries every JS file a card may write", async () => {
   const js = JSON.parse(src.match(/^JS_FILES = (\[.*?\])/m)[1]);
   for (const f of ALLOWED.filter((f) => f.endsWith(".js"))) expect(js, f).toContain(f);
 });
+
+/* 2026-11-25: six "Objavi" taps, four cancelled by GitHub before a step ran —
+   a concurrency group keeps one pending run. Publishes queue themselves. */
+test("publish-wine.yml queues itself instead of a concurrency group", () => {
+  const y = readFileSync(new URL("../.github/workflows/publish-wine.yml", import.meta.url), "utf8");
+  expect(y).not.toMatch(/^concurrency:/m);
+  expect(y).toMatch(/Wait for the publishes started before this one/);
+});

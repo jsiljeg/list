@@ -19,9 +19,11 @@ permissions:
   contents: write
   actions: write
 
-concurrency:
-  group: wine-publish
-  cancel-in-progress: false
+# No concurrency group (2026-11-25). GitHub keeps ONE pending run per group
+# and cancels the rest, so Filho tapping "Objavi" on six cards lost four of
+# them before a step ran ("Pokreće objavu" for 15 minutes, then the inbox
+# restarted them all at once and lost most again). The first step below
+# queues instead: it waits until every publish started before it is done.
 
 env:
   INBOX: https://theatrium.devinos.hr/api/vina
@@ -31,8 +33,19 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     environment: wine-intake
-    timeout-minutes: 10
+    timeout-minutes: 40
     steps:
+      - name: Wait for the publishes started before this one
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 180); do
+            ahead=$(gh api "repos/${{ github.repository }}/actions/workflows/publish-wine.yml/runs?per_page=50"               --jq "[.workflow_runs[] | select(.id < ${{ github.run_id }} and (.status != \"completed\"))] | length")
+            [ "$ahead" = 0 ] && exit 0
+            [ "$i" = 1 ] && curl -sS -X POST -H "Authorization: Bearer ${{ secrets.WINE_WORKER_KEY }}" -H "content-type: application/json"                  -d '{"phase":"Čeka da se objave vina prije njega"}' "$INBOX/$ID/stanje" > /dev/null || true
+            echo "waiting on $ahead earlier publish(es)"; sleep 10
+          done
+          echo "::error::earlier publishes still running after 30 min"; exit 1
       - name: Check the id and the request
         id: req
         env:
