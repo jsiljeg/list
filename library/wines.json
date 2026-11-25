@@ -17068,6 +17068,56 @@
     "es": "Al final de una fila, en una bodega a las afueras de Elgin, había 3 barricas. Las dos primeras ya habían tenido su «finish» — unos últimos meses en bota de jerez, que le ponen al whisky una capa más. La tercera, la número 1134, seguía en su barril de bourbon. M encontró en ella flores de primavera escarchadas, L manzanas verdes, y L le dijo al hombre de la destilería: «No lo terminéis.» Se quedó como estaba — 244 botellas."
    },
    "notePlain": true
+  },
+  "glen-elgin--2012-sherry-finish-px-wilson-morgan": {
+   "name": "2012 Sherry Finish PX – Wilson & Morgan",
+   "producer": "Glen Elgin",
+   "insight": {
+    "kind": "spirit",
+    "class": "malt_speyside",
+    "region": "Elgin, Speyside",
+    "country": "SCT",
+    "base": [
+     "barley_malt"
+    ],
+    "still": [
+     "pot"
+    ],
+    "cask": [
+     "ex_sherry_px"
+    ],
+    "age": "",
+    "alcohol": "57.1",
+    "bottler": "Wilson & Morgan Barrel Selection",
+    "aromas": [
+     "orange",
+     "dried_apricot",
+     "peach",
+     "floral",
+     "saline",
+     "pepper"
+    ],
+    "serve": [
+     "neat",
+     "drop_of_water"
+    ],
+    "pairings": [
+     "cheese_hard",
+     "nuts",
+     "dark_chocolate"
+    ]
+   },
+   "note": {
+    "hr": "Pedro Ximénez je najslađi od svih sherryja, a ovaj je Glen Elgin u svježoj PX bačvi proveo 52 mjeseca — Wilson & Morgan čekali su dok im nije bio točno po ukusu. Ipak u ustima nije sladak: suh, pomalo opor, slan i papren, poput nezaslađenog soka od naranče, i tek se onda opusti u suhe marelice. Jedna bačva, broj 806861.",
+    "en": "Pedro Ximénez is the sweetest of all sherries, and this Glen Elgin spent 52 months in a fresh PX butt — Wilson & Morgan waited until it was exactly to their taste. Yet it is not sweet on the palate: dry, a little astringent, salty and peppery, like unsweetened orange juice, and only then does it relax into dried apricots. One cask, number 806861.",
+    "it": "Il Pedro Ximénez è il più dolce di tutti gli sherry, e questo Glen Elgin ha passato 52 mesi in una botte di PX fresca — Wilson & Morgan hanno aspettato finché non fosse esattamente di loro gusto. Eppure in bocca non è dolce: secco, un po' astringente, salato e pepato, come un succo d'arancia non zuccherato, e solo dopo si distende nelle albicocche secche. Una botte, la numero 806861.",
+    "fr": "Le Pedro Ximénez est le plus doux de tous les sherrys, et ce Glen Elgin a passé 52 mois dans un fût de PX frais — Wilson & Morgan ont attendu qu'il soit exactement à leur goût. Pourtant il n'est pas doux en bouche : sec, un peu astringent, salé et poivré, comme un jus d'orange sans sucre, et ce n'est qu'ensuite qu'il se détend sur l'abricot sec. Un seul fût, le numéro 806861.",
+    "de": "Pedro Ximénez ist der süßeste aller Sherrys, und dieser Glen Elgin hat 52 Monate in einem frischen PX-Fass verbracht — Wilson & Morgan haben gewartet, bis er genau nach ihrem Geschmack war. Trotzdem ist er am Gaumen nicht süß: trocken, etwas adstringierend, salzig und pfeffrig wie ungesüßter Orangensaft, und erst dann entspannt er sich in getrocknete Aprikosen. Ein Fass, Nummer 806861.",
+    "zh": "PX（佩德罗-希梅内斯）是所有雪莉酒里最甜的一种，而这支 Glen Elgin 在一只新鲜的 PX 雪莉桶里待了 52 个月——Wilson & Morgan 一直等到它完全合自己的口味才装瓶。可入口并不甜：干、略带涩感，咸而带胡椒味，像没加糖的橙汁，之后才舒展成杏干的味道。单桶，桶号 806861。",
+    "sl": "Pedro Ximénez je najslajši od vseh sherryjev, ta Glen Elgin pa je v svežem sodu po PX preživel 52 mesecev — Wilson & Morgan so čakali, dokler ni bil povsem po njihovem okusu. Vendar v ustih ni sladek: suh, malce trpek, slan in poprnat kot nesladkan pomarančni sok, in šele nato se sprosti v suhe marelice. En sod, številka 806861.",
+    "es": "El Pedro Ximénez es el más dulce de todos los jereces, y este Glen Elgin pasó 52 meses en una bota de PX fresca — Wilson & Morgan esperaron hasta que estuvo exactamente a su gusto. Y sin embargo en boca no es dulce: seco, algo astringente, salado y especiado como un zumo de naranja sin azúcar, y solo después se relaja en orejones. Una sola bota, la número 806861."
+   },
+   "notePlain": true
   }
  }
 }
