@@ -3676,6 +3676,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "shakara--12y",
+   "vol": null,
+   "price": 10,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "through-the-grapevine--chateau-de-beaulon-1988-fins-bois",
    "vol": null,
    "price": 25,
