@@ -2726,15 +2726,13 @@
          "ref": "bruichladdich--the-classic-laddie",
          "price": 15,
          "anchor": 15,
-         "anchorDate": "2026-11-25",
-         "new": true
+         "anchorDate": "2026-11-25"
         },
         {
          "ref": "bowmore--20y-barrel-selection-2005",
          "price": 20,
          "anchor": 20,
-         "anchorDate": "2026-11-24",
-         "new": true
+         "anchorDate": "2026-11-24"
         },
         {
          "ref": "scotland--glen-rothes-9y-artist-collective-2015",
