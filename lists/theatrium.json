@@ -2699,8 +2699,7 @@
          "ref": "duh-u-boci--nebo-single-malt",
          "price": 10,
          "anchor": 10,
-         "anchorDate": "2026-11-24",
-         "new": true
+         "anchorDate": "2026-11-24"
         },
         {
          "ref": "kilchoman-scotland--machir-bay",
@@ -2712,8 +2711,7 @@
          "ref": "caol-ila--15y-bourbon-finish-2010",
          "price": 10,
          "anchor": 10,
-         "anchorDate": "2026-11-24",
-         "new": true
+         "anchorDate": "2026-11-24"
         },
         {
          "ref": "laphroaig--2014-wilson-morgan",
