@@ -2851,6 +2851,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "jack-daniel-s--old-no-7",
+         "price": 7,
+         "new": true
+        },
+        {
          "ref": "willett-distillery--old-bardstown",
          "price": 7,
          "anchor": 7,

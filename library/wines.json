@@ -17453,6 +17453,55 @@
     "es": "La cebada sin maltear del alambique es lo que queda de un impuesto: cuando Gran Bretaña gravó la malta, los destiladores irlandeses empezaron a añadir cebada cruda — y esquivar el impuesto le dio a Irlanda su estilo pot still, cremoso y especiado. Aquí va unido a whiskey de grano, por eso es suave y sin humo: un whiskey que acepta el hielo de buen grado."
    },
    "notePlain": true
+  },
+  "jack-daniel-s--old-no-7": {
+   "name": "Old No. 7",
+   "producer": "Jack Daniel's",
+   "insight": {
+    "kind": "spirit",
+    "class": "rye_american",
+    "region": "Lynchburg, Tennessee",
+    "country": "US",
+    "base": [
+     "corn_grain",
+     "rye_grain",
+     "barley_malt"
+    ],
+    "still": [
+     "column"
+    ],
+    "cask": [
+     "virgin_american_oak"
+    ],
+    "alcohol": "40",
+    "aromas": [
+     "caramel",
+     "vanilla",
+     "banana",
+     "oak",
+     "brown_spices"
+    ],
+    "serve": [
+     "neat",
+     "rocks",
+     "in_cocktails"
+    ],
+    "pairings": [
+     "bbq",
+     "pork"
+    ]
+   },
+   "note": {
+    "hr": "Ono što ovaj viski čini Tennesseejem, a ne bourbonom, događa se prije bačve: svježi destilat kap po kap prolazi kroz 3 metra drvenog ugljena od šećernog javora. Ugljen odnese oštrinu kukuruza, pa u čaši ostanu karamela, vanilija i ona banana koja je Jackov potpis.",
+    "en": "What makes this Tennessee whiskey rather than bourbon happens before the barrel: the new spirit drips, drop by drop, through 3 metres of sugar-maple charcoal. The charcoal takes the edge off the corn, and what is left in the glass is caramel, vanilla and the banana that is Jack's signature.",
+    "it": "Ciò che fa di questo un Tennessee whiskey e non un bourbon succede prima della botte: il distillato appena fatto scende goccia a goccia attraverso 3 metri di carbone d'acero da zucchero. Il carbone toglie lo spigolo al mais, e nel bicchiere restano caramello, vaniglia e quella banana che è la firma di Jack.",
+    "fr": "Ce qui fait de celui-ci un Tennessee whiskey et non un bourbon se passe avant le fût : le distillat neuf traverse goutte à goutte 3 mètres de charbon d'érable à sucre. Le charbon ôte au maïs son tranchant, et il reste dans le verre le caramel, la vanille et cette banane qui est la signature de Jack.",
+    "de": "Was diesen Whiskey zum Tennessee Whiskey macht und nicht zum Bourbon, geschieht vor dem Fass: Der frische Brand tropft Tropfen für Tropfen durch 3 Meter Holzkohle aus Zuckerahorn. Die Kohle nimmt dem Mais die Schärfe, und im Glas bleiben Karamell, Vanille und jene Banane, die Jacks Handschrift ist.",
+    "zh": "让它成为田纳西威士忌而不是波本的那一步，发生在进桶之前：新酒一滴一滴地穿过 3 米厚的糖枫木炭。木炭磨去了玉米的棱角，杯中留下焦糖、香草，以及那股作为 Jack 招牌的香蕉味。",
+    "sl": "Kar ta viski naredi za Tennessee in ne za bourbon, se zgodi pred sodom: svež destilat kaplja za kapljo pronica skozi 3 metre oglja iz sladkornega javorja. Oglje koruzi vzame ostrino, v kozarcu pa ostanejo karamela, vanilja in tista banana, ki je Jackov podpis.",
+    "es": "Lo que hace de este un Tennessee whiskey y no un bourbon ocurre antes de la barrica: el destilado recién hecho cae gota a gota a través de 3 metros de carbón de arce azucarero. El carbón le quita el filo al maíz, y en la copa quedan caramelo, vainilla y ese plátano que es la firma de Jack."
+   },
+   "notePlain": true
   }
  }
 }

@@ -196,6 +196,8 @@
     "Kentucky": "肯塔基",
     "Bardstown": "巴兹敦",
     "Portland": "波特兰",
+    "Lynchburg": "林奇堡",
+    "Tennessee": "田纳西",
     "Alba": "阿尔巴",
     "Alexander Valley": "亚历山大谷",
     "Alsace": "阿尔萨斯",
