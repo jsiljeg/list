@@ -3468,6 +3468,14 @@
   },
   {
    "shelf": "spirits",
+   "ref": "jameson--irish-whiskey",
+   "vol": null,
+   "price": 8,
+   "date": "2026-11-25",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "spirits",
    "ref": "japanese-rhum--nine-leaves-2016",
    "vol": null,
    "price": 20,

@@ -2798,6 +2798,8 @@
         {
          "ref": "jameson--irish-whiskey",
          "price": 8,
+         "anchor": 8,
+         "anchorDate": "2026-11-25",
          "new": true
         },
         {
