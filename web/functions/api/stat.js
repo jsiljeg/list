@@ -26,6 +26,9 @@ const EVENT_KINDS = ["wine", "search", "search-empty", "feature"];
 const FEATURES = ["helper", "picks", "rated", "pride", "lang-switch"];
 /* Taps on the category bar count as "nav:<section id>" (regions, new arrivals, each drink section). */
 const NAV = /^nav:[a-z_-]{2,30}$/;
+/* Where a visit came from, once per visit (js/app.js entrySource): theatrium.hr's menu, a search
+   engine, social media, another site, or nothing (QR, tablet, typed link). */
+const ENTRY = /^entry:(web|search|social|other|direct)$/;
 const DEVICES = ["tablet", "phone", "desktop"];
 
 const ZAGREB = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zagreb", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", hourCycle: "h23" });
@@ -45,7 +48,7 @@ function cleanKey(kind, raw) {
     const q = s.toLowerCase().slice(0, 40);
     return q.length >= 3 && !/[<>{}]/.test(q) ? q : null;
   }
-  if (kind === "feature") return FEATURES.includes(s) || NAV.test(s) ? s : null;
+  if (kind === "feature") return FEATURES.includes(s) || NAV.test(s) || ENTRY.test(s) ? s : null;
   return null;
 }
 

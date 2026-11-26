@@ -97,6 +97,26 @@ function beacon(body) {
 function stat(kind, key, extra = {}) {
   if (key && lang) beacon({ kind, key, lang, ...extra });
 }
+/* Where this visit came from, counted once per visit (owner, 2026-11-26: Filho wants to know how
+   many guests reach the list from the "How to solve drinking problems" menu on theatrium.hr). The
+   browser's referrer gives the site only, never the page or the guest: theatrium.hr's link carries
+   no rel="noreferrer", so a visit from it says so. No referrer at all is a QR scan, the restaurant
+   tablet, a typed or saved link. sessionStorage keeps the idle reloads of one visit from counting
+   it again. Sent with the language the guest is reading in, or "hr" before they have picked one. */
+function entrySource() {
+  let h = "";
+  try { h = new URL(document.referrer).hostname.replace(/^www\./, ""); } catch { /* no referrer */ }
+  if (!h || h === location.hostname) return "direct";
+  if (/(^|\.)theatrium\.hr$/.test(h)) return "web";
+  if (/(^|\.)google\./.test(h) || /(^|\.)bing\.com$/.test(h)) return "search";
+  if (/(^|\.)(instagram|facebook|threads)\.(com|net)$/.test(h) || h === "t.co") return "social";
+  return "other";
+}
+function countEntry(l) {
+  if (!STATS_ON) return;
+  try { if (sessionStorage.getItem("entry-counted")) return; sessionStorage.setItem("entry-counted", "1"); } catch { /* private mode: count it */ }
+  beacon({ kind: "feature", key: `entry:${entrySource()}`, lang: l || "hr" });
+}
 let session = null;
 function startSession() {
   if (!session && lang) session = { cards: 0, searches: 0, started: Date.now(), touched: Date.now() };
@@ -119,6 +139,7 @@ document.addEventListener("visibilitychange", () => { if (document.visibilitySta
 
 let DATA = null;
 let lang = localStorage.getItem(LS_KEY);
+countEntry(lang);
 let currentSection = null;
 let picksOnly = false;
 let ratedOnly = false;
