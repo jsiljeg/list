@@ -118,5 +118,10 @@ export async function onRequestGet({ request, env }) {
     q(`SELECT key AS feature, SUM(n) AS n FROM guest_events WHERE date >= ?1 AND kind = 'feature' GROUP BY key ORDER BY n DESC`),
     q(`SELECT kind, SUM(n) AS n FROM guest_events WHERE date >= ?1 GROUP BY kind`),
   ]);
-  return json({ since, days, languages, depth, devices, byHour, byDay, byDayDevice, wines, winesByLang, sections, searches, empty, features, totals }, 200, { "cache-control": "no-store" });
+  /* Where visits came from counts every device (2026-11-26): a guest who finds the list through
+     theatrium.hr's menu is often on a laptop, and staff checking the list arrive "direct" anyway. */
+  const entries = (await env.DB.prepare(
+    `SELECT substr(key, 7) AS source, device, SUM(n) AS n FROM guest_events WHERE date >= ?1 AND kind = 'feature' AND key LIKE 'entry:%' GROUP BY key, device ORDER BY n DESC`,
+  ).bind(since).all()).results || [];
+  return json({ since, days, languages, depth, devices, byHour, byDay, byDayDevice, wines, winesByLang, sections, searches, empty, features, totals, entries }, 200, { "cache-control": "no-store" });
 }

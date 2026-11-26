@@ -24,6 +24,8 @@ test("a referrer is sorted into one of five sources", () => {
 test("the stats endpoint takes exactly those sources, and the visit is counted once", () => {
   const stat = readFileSync(new URL("../web/functions/api/stat.js", import.meta.url), "utf8");
   expect(stat).toMatch(/const ENTRY = \/\^entry:\(web\|search\|social\|other\|direct\)\$\//);
+  /* every device: a computer from theatrium.hr is a guest too */
+  expect(stat).toMatch(/key LIKE 'entry:%' GROUP BY key, device/);
   expect(app).toMatch(/sessionStorage\.getItem\("entry-counted"\)/);
   expect(app).toMatch(/let lang = localStorage\.getItem\(LS_KEY\);\ncountEntry\(lang\);/);
 });
