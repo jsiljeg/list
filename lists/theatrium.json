@@ -1523,6 +1523,8 @@
         {
          "ref": "tomac--pinot-crni-dvije-zime-2022",
          "price": 100,
+         "anchor": 100,
+         "anchorDate": "2026-11-27",
          "new": true
         },
         {

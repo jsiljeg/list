@@ -2340,6 +2340,14 @@
   },
   {
    "shelf": "bottle",
+   "ref": "tomac--pinot-crni-dvije-zime-2022",
+   "vol": null,
+   "price": 100,
+   "date": "2026-11-27",
+   "source": "prvi dan na listi (upisao deploy)"
+  },
+  {
+   "shelf": "bottle",
    "ref": "tomac--rose",
    "vol": null,
    "price": 48,
