@@ -17637,6 +17637,44 @@
     "es": "El aquavit es un aguardiente de alcaravea, y Noruega lo hace distinto que sus vecinos: de patata en lugar de cereal, y envejecido en madera, mientras que el danés y el sueco suelen ser transparentes. Este reposó en botas de oloroso, que dan a la alcaravea y al anís un dulzor suave. Por eso no se bebe helado, sino a temperatura ambiente — en Noruega, junto a las costillas navideñas de cordero y de cerdo."
    },
    "notePlain": true
+  },
+  "tomac--pinot-crni-dvije-zime-2022": {
+   "name": "Pinot Crni Dvije Zime 2022",
+   "producer": "Tomac",
+   "insight": {
+    "grape": "Pinot Noir",
+    "region": "Plešivica – Okić, Plešivica",
+    "country": "HR",
+    "style": "red_medium",
+    "body": "medium",
+    "aromas": [
+     "cherry",
+     "spice",
+     "forest_floor",
+     "wet_stone"
+    ],
+    "pairings": [
+     "poultry",
+     "mushrooms",
+     "game",
+     "veal"
+    ],
+    "temp": "16–18",
+    "alcohol": "14",
+    "sweetness": "dry"
+   },
+   "terroir": "",
+   "note": {
+    "hr": "Ime je doslovno: vino dozrijeva kroz dvije zime. Kad je Axl Rose iz Guns N' Rosesa 2025. proveo dan kod Tomaca, za uspomenu im je potpisao bocu rizlinga — ali najviše ga je, kažu, oborio ovaj pinot.",
+    "en": "The name is literal: the wine matures through two winters. When Axl Rose of Guns N' Roses spent a day with the Tomacs in 2025, he signed them a bottle of Riesling as a keepsake — but it was this Pinot, they say, that floored him.",
+    "it": "Il nome è letterale: il vino matura per due inverni. Quando Axl Rose dei Guns N' Roses passò una giornata dai Tomac nel 2025, firmò loro per ricordo una bottiglia di Riesling — ma a stenderlo, raccontano, fu questo Pinot.",
+    "fr": "Le nom est littéral : le vin mûrit pendant deux hivers. Quand Axl Rose, de Guns N' Roses, a passé une journée chez les Tomac en 2025, il leur a dédicacé une bouteille de riesling en souvenir — mais c'est ce pinot, dit-on, qui l'a terrassé.",
+    "de": "Der Name ist wörtlich: Der Wein reift zwei Winter lang. Als Axl Rose von Guns N' Roses 2025 einen Tag bei den Tomacs verbrachte, signierte er ihnen zur Erinnerung eine Flasche Riesling — umgehauen hat ihn aber, so heißt es, dieser Pinot.",
+    "zh": "酒名就是字面意思：这款酒要熬过两个冬天才成熟。2025 年枪炮与玫瑰乐队的 Axl Rose 在托马茨家待了一天，临走在一瓶雷司令上签名留念——但据说真正把他征服的，是这款黑皮诺。",
+    "sl": "Ime je dobesedno: vino zori dve zimi. Ko je Axl Rose iz Guns N' Roses leta 2025 preživel dan pri Tomcih, jim je za spomin podpisal steklenico rizlinga — najbolj pa ga je, pravijo, podrl ta pinot.",
+    "es": "El nombre es literal: el vino madura durante dos inviernos. Cuando Axl Rose, de Guns N' Roses, pasó un día con los Tomac en 2025, les firmó de recuerdo una botella de riesling — pero lo que lo dejó sin palabras, dicen, fue este pinot."
+   },
+   "notePlain": true
   }
  }
 }

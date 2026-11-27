@@ -1521,6 +1521,11 @@
          "anchorDate": "2026-09-10"
         },
         {
+         "ref": "tomac--pinot-crni-dvije-zime-2022",
+         "price": 100,
+         "new": true
+        },
+        {
          "ref": "matosevic--grimalda-crna-2021",
          "price": 66,
          "anchor": 66,
